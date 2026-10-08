@@ -1,0 +1,41 @@
+# Python environments and caches
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.cache/
+.coverage
+htmlcov/
+
+# Local environment, secrets, and authentication
+.env
+.env.*
+!.env.example
+.secrets/
+.auth/
+credentials.json
+token.json
+*.pem
+*.key
+
+# Local databases, logs, and model weights
+*.db
+*.sqlite
+*.sqlite3
+*.log
+logs/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.gguf
+
+# Operating system files
+.DS_Store
+Thumbs.db
