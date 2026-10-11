@@ -1,0 +1,61 @@
+id,text,label,group_id,source
+department-재무-017-v1,부가가치세 신고 자료를 회계에 전달하는 방법을 알려 주세요.,finance,department-재무-017,synthetic-ko:ieum-department-v2
+department-IT-014-v1,업무용 컴퓨터의 운영체제 업데이트 기준은 무엇인가요?,it,department-IT-014,synthetic-ko:ieum-department-v2
+department-총무-014-v2,사무실에서 잃어버린 물품의 보관 안내를 알려 주세요.,general_affairs,department-총무-014,synthetic-ko:ieum-department-v2
+department-총무-013-v2,업무용 택배 수령과 보관 안내를 확인하고 싶어요.,general_affairs,department-총무-013,synthetic-ko:ieum-department-v2
+department-IT-016-v1,사내 화상회의 프로그램의 마이크 설정 방법을 알려 주세요.,it,department-IT-016,synthetic-ko:ieum-department-v2
+department-총무-014-v1,사내 분실물은 어디에 접수하고 확인하나요?,general_affairs,department-총무-014,synthetic-ko:ieum-department-v2
+department-None-016-v1,가을 풍경에 관한 시를 써 주세요.,other,department-None-016,synthetic-ko:ieum-department-v2
+department-None-017-v2,무슨 대상인지는 모르겠는데 방법을 알려 줘.,other,department-None-017,synthetic-ko:ieum-department-v2
+department-인사-015-v1,근로계약 갱신 절차와 안내 시점을 알려 주세요.,hr,department-인사-015,synthetic-ko:ieum-department-v2
+department-재무-018-v1,법인카드 지출 한도를 조정하는 절차를 알려 주세요.,finance,department-재무-018,synthetic-ko:ieum-department-v2
+department-총무-016-v2,직원 좌석 변경과 시설 배치 요청 방법을 알려 주세요.,general_affairs,department-총무-016,synthetic-ko:ieum-department-v2
+department-인사-015-v2,직원 계약 연장에 관한 인사 규정을 확인하고 싶어요.,hr,department-인사-015,synthetic-ko:ieum-department-v2
+department-None-013-v2,집에서 재미있게 읽을 문학 작품이 궁금해요.,other,department-None-013,synthetic-ko:ieum-department-v2
+department-IT-013-v1,피싱 의심 이메일을 받으면 어떻게 신고해야 하나요?,it,department-IT-013,synthetic-ko:ieum-department-v2
+department-인사-017-v2,출퇴근 기록 수정에 관한 인사 기준을 설명해 주세요.,hr,department-인사-017,synthetic-ko:ieum-department-v2
+department-None-017-v1,그거 어떻게 하는 거야?,other,department-None-017,synthetic-ko:ieum-department-v2
+department-총무-013-v1,회사 택배를 받는 장소와 수령 방법을 알려 주세요.,general_affairs,department-총무-013,synthetic-ko:ieum-department-v2
+department-IT-017-v1,프린터 드라이버를 회사 컴퓨터에 연결하는 방법을 알려 주세요.,it,department-IT-017,synthetic-ko:ieum-department-v2
+department-인사-017-v1,근태 기록이 잘못되었을 때 정정하는 방법을 알려 주세요.,hr,department-인사-017,synthetic-ko:ieum-department-v2
+department-재무-017-v2,회사 부가세 증빙 취합 기준을 확인하고 싶어요.,finance,department-재무-017,synthetic-ko:ieum-department-v2
+department-재무-013-v1,해외 출장 비용의 환율 적용 기준은 무엇인가요?,finance,department-재무-013,synthetic-ko:ieum-department-v2
+department-IT-013-v2,수상한 업무 메일에 대한 정보보안 신고 절차를 알려 주세요.,it,department-IT-013,synthetic-ko:ieum-department-v2
+department-재무-014-v2,매출 청구 금액 변경의 회계 기준을 확인하고 싶어요.,finance,department-재무-014,synthetic-ko:ieum-department-v2
+department-IT-014-v2,회사 PC 보안 패치를 적용하는 방법을 설명해 주세요.,it,department-IT-014,synthetic-ko:ieum-department-v2
+department-인사-014-v2,직원 전보 신청 방법을 알려 주세요.,hr,department-인사-014,synthetic-ko:ieum-department-v2
+department-IT-016-v2,온라인 회의 도구에서 소리가 안 들릴 때 기술 안내를 찾아 주세요.,it,department-IT-016,synthetic-ko:ieum-department-v2
+department-총무-018-v1,회사 공용 프린터의 종이와 토너를 요청하는 방법은 무엇인가요?,general_affairs,department-총무-018,synthetic-ko:ieum-department-v2
+department-총무-016-v1,사무실 책상 자리를 옮기려면 어떤 절차가 필요한가요?,general_affairs,department-총무-016,synthetic-ko:ieum-department-v2
+department-재무-016-v2,고객 대금 환불의 정산 절차를 설명해 주세요.,finance,department-재무-016,synthetic-ko:ieum-department-v2
+department-IT-018-v1,회사 모바일 기기 관리 프로그램 등록 절차는 무엇인가요?,it,department-IT-018,synthetic-ko:ieum-department-v2
+department-총무-017-v2,사무실 화재 시 대피 동선과 안전 수칙을 요약해 주세요.,general_affairs,department-총무-017,synthetic-ko:ieum-department-v2
+department-재무-013-v2,외화 영수증을 정산할 때 원화 환산 방법을 설명해 주세요.,finance,department-재무-013,synthetic-ko:ieum-department-v2
+department-IT-015-v2,외부 저장소에 업무 데이터를 업로드하는 보안 정책을 알려 주세요.,it,department-IT-015,synthetic-ko:ieum-department-v2
+department-None-015-v1,개인 게임 캐릭터의 이름을 지어 주세요.,other,department-None-015,synthetic-ko:ieum-department-v2
+department-인사-016-v2,사내 복직 신청 절차를 알려 주세요.,hr,department-인사-016,synthetic-ko:ieum-department-v2
+department-None-018-v2,다음에 또 이야기하자. 안녕!,other,department-None-018,synthetic-ko:ieum-department-v2
+department-재무-015-v2,업무 비용 선지급에 관한 회계 규정을 요약해 주세요.,finance,department-재무-015,synthetic-ko:ieum-department-v2
+department-총무-017-v1,회사 비상 대피 장소와 시설 안전 안내를 알려 주세요.,general_affairs,department-총무-017,synthetic-ko:ieum-department-v2
+department-IT-015-v1,회사 자료를 외부 클라우드에 올릴 때 지켜야 할 보안 기준은 무엇인가요?,it,department-IT-015,synthetic-ko:ieum-department-v2
+department-총무-018-v2,사무기기 소모품 지급 절차를 설명해 주세요.,general_affairs,department-총무-018,synthetic-ko:ieum-department-v2
+department-None-013-v1,개인 휴가 때 읽을 소설책을 추천해 주세요.,other,department-None-013,synthetic-ko:ieum-department-v2
+department-인사-013-v1,직원 건강검진 지원 대상과 이용 방법은 무엇인가요?,hr,department-인사-013,synthetic-ko:ieum-department-v2
+department-인사-018-v2,직장 내 괴롭힘 상담과 인사 접수 절차를 확인하고 싶어요.,hr,department-인사-018,synthetic-ko:ieum-department-v2
+department-None-018-v1,이제 대화를 마칠게요. 잘 있어요.,other,department-None-018,synthetic-ko:ieum-department-v2
+department-None-016-v2,업무와 관계없이 짧은 시 한 편 만들어 주세요.,other,department-None-016,synthetic-ko:ieum-department-v2
+department-총무-015-v2,회사 사물함 이용과 열쇠 지급 기준을 요약해 주세요.,general_affairs,department-총무-015,synthetic-ko:ieum-department-v2
+department-인사-016-v1,휴직 후 복직할 때 준비해야 할 서류는 무엇인가요?,hr,department-인사-016,synthetic-ko:ieum-department-v2
+department-인사-013-v2,사내 건강검진 복지 안내를 요약해 주세요.,hr,department-인사-013,synthetic-ko:ieum-department-v2
+department-None-014-v2,개인 산책을 하려는데 주말 날씨가 궁금해요.,other,department-None-014,synthetic-ko:ieum-department-v2
+department-재무-015-v1,회사 가지급금을 신청하고 정산하는 방법을 알려 주세요.,finance,department-재무-015,synthetic-ko:ieum-department-v2
+department-None-014-v1,오늘 우리 동네 날씨를 알려 주세요.,other,department-None-014,synthetic-ko:ieum-department-v2
+department-총무-015-v1,직원 개인 사물함을 배정받는 절차가 무엇인가요?,general_affairs,department-총무-015,synthetic-ko:ieum-department-v2
+department-인사-018-v1,사내 고충 상담을 신청하는 방법을 알려 주세요.,hr,department-인사-018,synthetic-ko:ieum-department-v2
+department-None-015-v2,취미로 쓰는 게임 닉네임을 추천해 주세요.,other,department-None-015,synthetic-ko:ieum-department-v2
+department-인사-014-v1,사내 부서 이동을 요청하려면 어떤 절차가 필요한가요?,hr,department-인사-014,synthetic-ko:ieum-department-v2
+department-재무-014-v1,거래처에 발행한 청구서를 수정하는 절차를 알려 주세요.,finance,department-재무-014,synthetic-ko:ieum-department-v2
+department-IT-018-v2,업무 휴대전화의 MDM 설정 안내를 요약해 주세요.,it,department-IT-018,synthetic-ko:ieum-department-v2
+department-재무-016-v1,거래처 환불 금액을 회계 처리하는 방법은 무엇인가요?,finance,department-재무-016,synthetic-ko:ieum-department-v2
+department-IT-017-v2,공용 프린터의 PC 연결 오류를 해결하는 순서를 설명해 주세요.,it,department-IT-017,synthetic-ko:ieum-department-v2
+department-재무-018-v2,회사 카드 결제 한도 변경의 재무 승인 기준이 궁금해요.,finance,department-재무-018,synthetic-ko:ieum-department-v2
