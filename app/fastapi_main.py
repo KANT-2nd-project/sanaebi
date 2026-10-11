@@ -3,6 +3,7 @@ from datetime import date
 from pathlib import Path
 from typing import Literal
 
+import joblib
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.exceptions import RequestValidationError
@@ -49,6 +50,12 @@ class Employee(EmployeeCreate):
     employment_status: Literal["재직", "퇴직"] = "재직"  # 등록 시 재직으로 저장
 
 
+# 질문 분류 결과
+class ClassificationResponse(BaseModel):
+    question: str  # 입력한 질문
+    category: Literal["lookup", "inquiry", "other"]  # 조회 / 문의 / 기타
+
+
 ##### 변수 #####
 
 # 직원 정보가 저장될 파일 경로
@@ -56,6 +63,16 @@ SAVE_PATH = Path(__file__).resolve().parent
 
 employee_file = SAVE_PATH / "employees.jsonl"
 EMPLOYEE_ID_PREFIX = "EMP-"  # 직원 ID의 공통 접두사
+
+# 학습 스크립트에서 저장한 TF-IDF + 로지스틱 회귀 모델 경로
+TFIDF_LR_MODEL_PATH = (
+    SAVE_PATH.parent / "classification" / "model" / "tfidf_logistic_regression.joblib"
+)
+
+# 서버가 이 파일을 읽을 때 모델을 한 번 불러오기 (다시 학습하지 않음)
+tfidf_lr_model = None  # 모델이 없으면 분류 요청에서 안내 메시지 반환
+if TFIDF_LR_MODEL_PATH.is_file():
+    tfidf_lr_model = joblib.load(TFIDF_LR_MODEL_PATH)
 
 
 ##### API 엔드포인트 #####
@@ -85,6 +102,24 @@ async def handle_validation_error(
 @app.post("/ask", response_model=AnswerResponse)
 async def ask(request: QuestionRequest) -> AnswerResponse:
     return AnswerResponse(answer="답변 : " + request.question)
+
+
+# TF-IDF + 로지스틱 회귀로 질문 분류
+@app.post(
+    "/classify/tfidf-lr",
+    response_model=ClassificationResponse,
+    summary="TF-IDF + 로지스틱 회귀 질문 분류",
+)
+async def classify_tfidf_lr(request: QuestionRequest) -> ClassificationResponse:
+    if tfidf_lr_model is None:
+        raise HTTPException(
+            status_code=503,
+            detail="해당 모델이 존재하지 않습니다.",
+        )
+
+    # 저장된 모델로 질문을 변환하고 분류 (다시 학습하지 않음)
+    category = tfidf_lr_model.predict([request.question])[0]
+    return ClassificationResponse(question=request.question, category=category)
 
 
 # 직원 등록
