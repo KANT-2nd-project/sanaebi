@@ -768,6 +768,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "fastapi", extra = ["standard"] },
+    { name = "joblib" },
     { name = "scikit-learn" },
 ]
 
@@ -779,6 +780,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.143.0" },
+    { name = "joblib", specifier = ">=1.6.0" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
 ]
 
