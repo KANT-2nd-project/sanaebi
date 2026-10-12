@@ -36,25 +36,21 @@ INPUT_PATH = ROOT / "steps" / "examples" / "inquiries_development.jsonl"
 # 새 모델 실험 결과는 이전 development01 결과를 보존하도록 development02에 기록합니다.
 COMPARISON_PATH = INQUIRY_DIR / "comparisons" / "development02" / "results.jsonl"
 
-# 제공자, 접속 주소, 모델 이름은 환경 변수로 바꿀 수 있습니다.
+# 제공자, 로컬 Ollama 주소와 모델 이름은 환경 변수로 바꿀 수 있습니다.
 
 # PROVIDER가 지정되지 않으면 기본 호출은 로컬 Ollama를 사용합니다.
 PROVIDER = os.getenv("PROVIDER", "ollama")
 OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct-2507-q4_K_M")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-6-luna")
-DEEPSEEK_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
-DEEPSEEK_MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-flash")
-MOONSHOT_URL = os.getenv("MOONSHOT_BASE_URL", "https://api.moonshot.ai/v1")
-KIMI_MODEL = os.getenv("KIMI_MODEL", "kimi-k3")
-# 각 외부 제공자에서 읽을 키 환경 변수 이름입니다. 키 값은 코드에 넣지 않습니다.
-API_KEY_ENV = {
-    "openai": "OPENAI_API_KEY",
-    "deepseek": "DEEPSEEK_API_KEY",
-    "kimi": "MOONSHOT_API_KEY",
-}
+# 전체 가중치 모델 대신 Ollama에서 실행할 DeepSeek 증류 모델을 기본으로 씁니다.
+DEEPSEEK_MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-r1:8b")
+# Kimi 공식 가중치를 Ollama용으로 양자화한 커뮤니티 모델을 사용합니다.
+KIMI_MODEL = os.getenv("KIMI_MODEL", "richardyoung/kimi-vl-a3b-thinking")
+# API 키 입력은 비교에서 사용하는 OpenAI에만 필요합니다.
+API_KEY_ENV = {"openai": "OPENAI_API_KEY"}
 # 연결 제한 시간은 초 단위이며, 질문의 길이는 문자 수로 제한합니다.
-TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "120"))
+TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "600"))
 MAX_INPUT_CHARS = int(os.getenv("MAX_INPUT_CHARS", "4000"))
 # 분류기가 없으므로 라벨을 요청에서 받지 못했을 때 사용할 더미 기본값입니다.
 DUMMY_LABEL = "others"
@@ -141,13 +137,13 @@ def build_prompt(question, label):
     )
 
 
-def call_ollama(prompt):
-    """Ollama의 비스트리밍 generate API를 호출하고 공통 결과 형식으로 바꿉니다."""
+def call_ollama(prompt, model=OLLAMA_MODEL):
+    """지정한 Ollama 로컬 모델을 호출하고 공통 결과 형식으로 바꿉니다."""
     response = httpx.post(
         # 설정 URL 뒤에 슬래시가 있어도 경로 구분자가 중복되지 않게 정리합니다.
         f"{OLLAMA_URL.rstrip('/')}/api/generate",
         json={
-            "model": OLLAMA_MODEL,
+            "model": model,
             "prompt": prompt,
             # 전체 응답을 한 번에 받으므로 스트림 조립 코드는 필요하지 않습니다.
             "stream": False,
@@ -165,7 +161,7 @@ def call_ollama(prompt):
     return {
         # Ollama generate 응답에서 생성한 본문을 가져옵니다.
         "text": body["response"],
-        "model": OLLAMA_MODEL,
+        "model": model,
         # Ollama가 토큰 수를 제공하지 않는 경우에는 None으로 남깁니다.
         "usage": {
             "input_tokens": body.get("prompt_eval_count"),
@@ -189,9 +185,7 @@ def ensure_api_key(provider):
     if not sys.stdin.isatty():
         raise RuntimeError(f"비대화형 실행에는 {key_name} 환경 변수가 필요합니다.")
     # 각 제공자 이름을 프롬프트에 표시하고 입력 문자는 화면에 보이지 않게 받습니다.
-    provider_name = {"openai": "OpenAI", "deepseek": "DeepSeek", "kimi": "Kimi"}[
-        provider
-    ]
+    provider_name = {"openai": "OpenAI"}[provider]
     api_key = getpass.getpass(f"{provider_name} API 키를 입력하세요: ").strip()
     if not api_key:
         raise ValueError(f"{provider_name} API 키가 비어 있습니다.")
@@ -228,60 +222,14 @@ def call_openai(prompt):
     }
 
 
-def call_compatible_api(prompt, model, key_name, base_url, **options):
-    """OpenAI 호환 Chat Completions API를 호출해 DeepSeek/Kimi 결과를 공통 형식으로 만듭니다."""
-    # 제공자마다 키 이름은 다르지만 OpenAI SDK 호출 형식은 공유합니다.
-    api_key = os.getenv(key_name)
-    if not api_key:
-        raise RuntimeError(f"{key_name}가 설정되지 않았습니다.")
-    # DeepSeek와 Moonshot API는 지정된 base_url을 사용하는 OpenAI 호환 서버입니다.
-    with OpenAI(
-        api_key=api_key,
-        base_url=base_url,
-        timeout=TIMEOUT,
-        max_retries=0,
-    ) as client:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            **options,
-        )
-    # 각 API의 메시지와 usage 구조를 기존 실행 기록에서 쓰는 공통 필드로 바꿉니다.
-    choice = response.choices[0]
-    usage = response.usage
-    return {
-        "text": choice.message.content or "",
-        "model": model,
-        "usage": {
-            "input_tokens": usage.prompt_tokens if usage else None,
-            "output_tokens": usage.completion_tokens if usage else None,
-        },
-        "finish_reason": choice.finish_reason,
-    }
-
-
 def call_deepseek(prompt):
-    """DeepSeek V4.1 Flash를 최대 추론 강도로 호출합니다."""
-    return call_compatible_api(
-        prompt,
-        DEEPSEEK_MODEL,
-        "DEEPSEEK_API_KEY",
-        DEEPSEEK_URL,
-        max_tokens=512,
-        reasoning_effort="max",
-    )
+    """DeepSeek R1의 Ollama 로컬 모델을 호출합니다."""
+    return call_ollama(prompt, DEEPSEEK_MODEL)
 
 
 def call_kimi(prompt):
-    """Kimi K3를 최대 추론 강도로 호출합니다."""
-    return call_compatible_api(
-        prompt,
-        KIMI_MODEL,
-        "MOONSHOT_API_KEY",
-        MOONSHOT_URL,
-        max_completion_tokens=512,
-        reasoning_effort="max",
-    )
+    """Kimi-VL Thinking의 Ollama 로컬 모델을 호출합니다."""
+    return call_ollama(prompt, KIMI_MODEL)
 
 
 def call_model(provider, prompt):
@@ -297,7 +245,7 @@ def call_model(provider, prompt):
         "error": None,
     }
     try:
-        # 단일 모드는 선택한 제공자 하나만 호출하고 compare는 네 함수를 병렬 분기에서 호출합니다.
+        # 단일 모드는 모델 하나를 고르고 compare는 네 모델을 병렬로 호출합니다.
         if provider == "ollama":
             result.update(call_ollama(prompt))
         elif provider == "openai":
@@ -437,9 +385,8 @@ def run_comparison():
     # 기존 결과를 덮어쓰지 않도록, 결과가 있으면 실행을 시작하기 전에 중단합니다.
     if COMPARISON_PATH.exists():
         raise FileExistsError(f"비교 결과가 이미 있습니다: {COMPARISON_PATH}")
-    # 비교 체인의 외부 세 제공자 키를 병렬 호출 시작 전에 차례로 확보합니다.
-    for provider in ("openai", "deepseek", "kimi"):
-        ensure_api_key(provider)
+    # 비교 체인에서 API 키가 필요한 OpenAI 키만 병렬 호출 전에 확보합니다.
+    ensure_api_key("openai")
     # 입력 파일이나 샘플 사례가 생기기 전에 결과 폴더를 미리 준비합니다.
     COMPARISON_PATH.parent.mkdir(parents=True, exist_ok=True)
     # 네 모델 branch를 가진 병렬 체인을 한 번 만들고 모든 사례에 재사용합니다.
