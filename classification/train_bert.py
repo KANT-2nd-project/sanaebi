@@ -15,7 +15,7 @@ MODEL_NAME = "klue/bert-base"  # 사용할 한국어 사전학습 BERT
 MAX_LENGTH = 192  # 특수 토큰을 포함한 최대 토큰 수
 BATCH_SIZE = 4  # 한 번에 꺼낼 문장 수
 LEARNING_RATE = 2e-5  # 학습률: 0.00002
-EPOCHS = 3  # 전체 학습 데이터를 반복할 횟수
+EPOCHS = 10  # 실험할 전체 학습 데이터 반복 횟수 (최적 횟수는 검증으로 판단)
 SEED = 42  # 새 분류층의 초기 가중치를 재현하기 위한 난수값
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"  # 사용할 장치
 
@@ -145,6 +145,9 @@ model = AutoModelForSequenceClassification.from_pretrained(
     label2id=label2id,
 )
 model = model.to(DEVICE)  # 모델을 CPU 또는 GPU로 이동
+print("사용 장치:", DEVICE)
+if DEVICE == "cuda":
+    print("GPU:", torch.cuda.get_device_name(torch.cuda.current_device()))
 
 ##### 가중치를 변경할 도구 준비 #####
 
