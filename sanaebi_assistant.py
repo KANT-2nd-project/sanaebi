@@ -2,7 +2,7 @@
 
 기본 흐름은 요청 객체 변환 → 질문과 라벨 확인 → 프롬프트 생성 → 모델 호출 →
 응답 및 실행 기록 저장입니다. 라벨은 요청에서 받는 값이며, 이 모듈은 분류하지
-않습니다. `call`, LangChain 기반 `chain`, 두 제공자를 병렬 호출하는 `compare` 모드를
+않습니다. `call`, LangChain 기반 `chain`, 네 제공자를 병렬 호출하는 `compare` 모드를
 명령행에서 선택할 수 있습니다.
 """
 
@@ -19,7 +19,7 @@ from collections.abc import Mapping
 from datetime import UTC, datetime
 from pathlib import Path
 
-# 외부 라이브러리: Ollama HTTP 호출, OpenAI 호출, LangChain Runnable 구성에 사용합니다.
+# 외부 라이브러리: Ollama HTTP 호출, OpenAI 호환 API 호출, LangChain Runnable 구성에 사용합니다.
 import httpx
 from langchain_core.runnables import RunnableLambda, RunnableParallel
 from openai import OpenAI
@@ -33,16 +33,26 @@ RESPONSE_PATH = INQUIRY_DIR / "responses.jsonl"
 EXECUTION_PATH = INQUIRY_DIR / "execution_records.jsonl"
 # 비교 입력 파일이 없으면 아래 SAMPLE_CASES를 대신 사용합니다.
 INPUT_PATH = ROOT / "steps" / "examples" / "inquiries_development.jsonl"
-# compare 모드 결과는 비교 실행 전용 하위 경로에 한 번 기록합니다.
-COMPARISON_PATH = INQUIRY_DIR / "comparisons" / "development01" / "results.jsonl"
+# 새 모델 실험 결과는 이전 development01 결과를 보존하도록 development02에 기록합니다.
+COMPARISON_PATH = INQUIRY_DIR / "comparisons" / "development02" / "results.jsonl"
 
-# 모델 제공자와 접속 주소, 모델 이름은 환경 변수로 바꿀 수 있습니다.
+# 제공자, 접속 주소, 모델 이름은 환경 변수로 바꿀 수 있습니다.
 
 # PROVIDER가 지정되지 않으면 기본 호출은 로컬 Ollama를 사용합니다.
 PROVIDER = os.getenv("PROVIDER", "ollama")
 OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct-2507-q4_K_M")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-6-luna")
+DEEPSEEK_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
+DEEPSEEK_MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-flash")
+MOONSHOT_URL = os.getenv("MOONSHOT_BASE_URL", "https://api.moonshot.ai/v1")
+KIMI_MODEL = os.getenv("KIMI_MODEL", "kimi-k3")
+# 각 외부 제공자에서 읽을 키 환경 변수 이름입니다. 키 값은 코드에 넣지 않습니다.
+API_KEY_ENV = {
+    "openai": "OPENAI_API_KEY",
+    "deepseek": "DEEPSEEK_API_KEY",
+    "kimi": "MOONSHOT_API_KEY",
+}
 # 연결 제한 시간은 초 단위이며, 질문의 길이는 문자 수로 제한합니다.
 TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "120"))
 MAX_INPUT_CHARS = int(os.getenv("MAX_INPUT_CHARS", "4000"))
@@ -151,7 +161,7 @@ def call_ollama(prompt):
     # 4xx/5xx 상태를 정상 응답처럼 읽지 않고 예외 처리 경로로 보냅니다.
     response.raise_for_status()
     body = response.json()
-    # 두 제공자의 서로 다른 응답 모양을 아래 공통 필드로 맞춥니다.
+    # Ollama 응답을 나머지 제공자와 같은 공통 필드로 맞춥니다.
     return {
         # Ollama generate 응답에서 생성한 본문을 가져옵니다.
         "text": body["response"],
@@ -166,21 +176,27 @@ def call_ollama(prompt):
     }
 
 
-def ensure_openai_api_key():
-    """환경 변수 키가 없으면 대화형 CLI에서 숨김 입력으로 키를 한 번 받습니다."""
-    # 이미 설정된 키를 우선 사용해 자동 실행과 서버 환경 설정을 그대로 지원합니다.
-    if os.getenv("OPENAI_API_KEY"):
+def ensure_api_key(provider):
+    """외부 제공자의 환경 변수 키가 없으면 대화형 CLI에서 숨김 입력으로 받습니다."""
+    # 로컬 Ollama는 API 키가 필요 없고, 미지원 제공자는 dispatch 단계에서 오류 처리됩니다.
+    key_name = API_KEY_ENV.get(provider)
+    if key_name is None:
+        return
+    # 이미 환경 변수에 키가 있으면 입력을 생략해 자동 실행과 서비스 환경을 지원합니다.
+    if os.getenv(key_name):
         return
     # 비대화형 실행에서는 키 입력을 기다릴 수 없으므로 환경 변수 설정을 안내합니다.
     if not sys.stdin.isatty():
-        raise RuntimeError("비대화형 실행에는 OPENAI_API_KEY 환경 변수가 필요합니다.")
-    # getpass는 입력 문자를 터미널에 표시하지 않아 화면이나 터미널 기록에 노출되지 않습니다.
-    api_key = getpass.getpass("OpenAI API 키를 입력하세요: ").strip()
+        raise RuntimeError(f"비대화형 실행에는 {key_name} 환경 변수가 필요합니다.")
+    # 각 제공자 이름을 프롬프트에 표시하고 입력 문자는 화면에 보이지 않게 받습니다.
+    provider_name = {"openai": "OpenAI", "deepseek": "DeepSeek", "kimi": "Kimi"}[
+        provider
+    ]
+    api_key = getpass.getpass(f"{provider_name} API 키를 입력하세요: ").strip()
     if not api_key:
-        raise ValueError("OpenAI API 키가 비어 있습니다.")
-    # OpenAI SDK가 기본 환경 변수에서 읽도록 현재 프로세스에만 설정합니다.
-    # 파일이나 JSONL 기록에는 저장하지 않습니다.
-    os.environ["OPENAI_API_KEY"] = api_key
+        raise ValueError(f"{provider_name} API 키가 비어 있습니다.")
+    # SDK가 읽도록 현재 프로세스에만 설정하고, 파일이나 JSONL에는 기록하지 않습니다.
+    os.environ[key_name] = api_key
 
 
 def call_openai(prompt):
@@ -202,7 +218,7 @@ def call_openai(prompt):
     return {
         "text": response.output_text,
         "model": OPENAI_MODEL,
-        # 두 제공자 간 결과 기록 구조를 동일하게 맞춥니다.
+        # OpenAI Responses 결과를 공통 실행 기록 필드에 맞춥니다.
         "usage": {
             "input_tokens": usage.input_tokens if usage else None,
             "output_tokens": usage.output_tokens if usage else None,
@@ -212,8 +228,64 @@ def call_openai(prompt):
     }
 
 
+def call_compatible_api(prompt, model, key_name, base_url, **options):
+    """OpenAI 호환 Chat Completions API를 호출해 DeepSeek/Kimi 결과를 공통 형식으로 만듭니다."""
+    # 제공자마다 키 이름은 다르지만 OpenAI SDK 호출 형식은 공유합니다.
+    api_key = os.getenv(key_name)
+    if not api_key:
+        raise RuntimeError(f"{key_name}가 설정되지 않았습니다.")
+    # DeepSeek와 Moonshot API는 지정된 base_url을 사용하는 OpenAI 호환 서버입니다.
+    with OpenAI(
+        api_key=api_key,
+        base_url=base_url,
+        timeout=TIMEOUT,
+        max_retries=0,
+    ) as client:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            **options,
+        )
+    # 각 API의 메시지와 usage 구조를 기존 실행 기록에서 쓰는 공통 필드로 바꿉니다.
+    choice = response.choices[0]
+    usage = response.usage
+    return {
+        "text": choice.message.content or "",
+        "model": model,
+        "usage": {
+            "input_tokens": usage.prompt_tokens if usage else None,
+            "output_tokens": usage.completion_tokens if usage else None,
+        },
+        "finish_reason": choice.finish_reason,
+    }
+
+
+def call_deepseek(prompt):
+    """DeepSeek V4.1 Flash를 최대 추론 강도로 호출합니다."""
+    return call_compatible_api(
+        prompt,
+        DEEPSEEK_MODEL,
+        "DEEPSEEK_API_KEY",
+        DEEPSEEK_URL,
+        max_tokens=512,
+        reasoning_effort="max",
+    )
+
+
+def call_kimi(prompt):
+    """Kimi K3를 최대 추론 강도로 호출합니다."""
+    return call_compatible_api(
+        prompt,
+        KIMI_MODEL,
+        "MOONSHOT_API_KEY",
+        MOONSHOT_URL,
+        max_completion_tokens=512,
+        reasoning_effort="max",
+    )
+
+
 def call_model(provider, prompt):
-    """제공자에 맞는 모델 함수를 호출하고 성공과 실패를 같은 dict로 반환합니다."""
+    """Ollama, OpenAI, DeepSeek, Kimi 중 하나를 호출하고 같은 dict 형식으로 반환합니다."""
     # perf_counter는 벽시계 변경 영향을 받지 않는 경과 시간 측정용 시계입니다.
     started = time.perf_counter()
     # 실패하더라도 결과 기록의 필드 구성이 유지되도록 기본값을 먼저 만듭니다.
@@ -225,14 +297,20 @@ def call_model(provider, prompt):
         "error": None,
     }
     try:
-        # 선택된 제공자만 호출합니다. compare 모드는 이 함수를 제공자별로 각각 호출합니다.
+        # 단일 모드는 선택한 제공자 하나만 호출하고 compare는 네 함수를 병렬 분기에서 호출합니다.
         if provider == "ollama":
             result.update(call_ollama(prompt))
         elif provider == "openai":
             result.update(call_openai(prompt))
+        elif provider == "deepseek":
+            result.update(call_deepseek(prompt))
+        elif provider == "kimi":
+            result.update(call_kimi(prompt))
         else:
             # 오타나 지원하지 않는 설정도 기록 가능한 호출 실패로 변환합니다.
-            raise ValueError("provider는 ollama 또는 openai여야 합니다.")
+            raise ValueError(
+                "provider는 ollama, openai, deepseek, kimi 중 하나여야 합니다."
+            )
     except Exception as error:  # noqa: BLE001 - 실패 정보를 실행 기록에 저장합니다.
         # 예외 메시지나 전체 traceback 대신 예외 클래스명만 저장합니다.
         result["error"] = type(error).__name__
@@ -329,13 +407,15 @@ def create_chain(provider=PROVIDER):
 
 
 def create_comparison_chain():
-    """한 번 전처리한 질문을 Ollama와 OpenAI에 LangChain 병렬 Runnable로 보냅니다."""
+    """한 번 전처리한 질문을 네 모델에 LangChain 병렬 Runnable로 보냅니다."""
     return RunnableLambda(prepare_chain_input) | RunnableParallel(
-        # 공통 입력을 각 branch가 함께 받고, RunnableParallel이 branch를 동시에 실행합니다.
+        # 공통 입력을 각 branch가 함께 받고, RunnableParallel이 모든 모델 호출을 동시에 실행합니다.
         question=RunnableLambda(lambda item: item["question"]),
         classification_label=RunnableLambda(lambda item: item["classification_label"]),
         ollama=RunnableLambda(lambda item: call_model("ollama", item["prompt"])),
         openai=RunnableLambda(lambda item: call_model("openai", item["prompt"])),
+        deepseek=RunnableLambda(lambda item: call_model("deepseek", item["prompt"])),
+        kimi=RunnableLambda(lambda item: call_model("kimi", item["prompt"])),
     )
 
 
@@ -353,24 +433,25 @@ def read_cases():
 
 
 def run_comparison():
-    """입력 사례마다 Ollama와 OpenAI를 병렬 호출해 비교 JSONL을 새로 작성합니다."""
+    """입력 사례마다 네 모델을 병렬 호출해 비교 JSONL을 새로 작성합니다."""
     # 기존 결과를 덮어쓰지 않도록, 결과가 있으면 실행을 시작하기 전에 중단합니다.
     if COMPARISON_PATH.exists():
         raise FileExistsError(f"비교 결과가 이미 있습니다: {COMPARISON_PATH}")
-    # 비교 체인에는 OpenAI branch가 포함되므로 병렬 실행 전에 키를 확보합니다.
-    ensure_openai_api_key()
+    # 비교 체인의 외부 세 제공자 키를 병렬 호출 시작 전에 차례로 확보합니다.
+    for provider in ("openai", "deepseek", "kimi"):
+        ensure_api_key(provider)
     # 입력 파일이나 샘플 사례가 생기기 전에 결과 폴더를 미리 준비합니다.
     COMPARISON_PATH.parent.mkdir(parents=True, exist_ok=True)
-    # 두 모델 branch를 가진 병렬 체인을 한 번 만들고 모든 사례에 재사용합니다.
+    # 네 모델 branch를 가진 병렬 체인을 한 번 만들고 모든 사례에 재사용합니다.
     chain = create_comparison_chain()
     # 결과 파일은 신규 생성 모드로 열어 기존 파일을 이어 쓰지 않습니다.
     with COMPARISON_PATH.open("w", encoding="utf-8") as stream:
-        # 한 입력 사례는 한 번의 invoke에서 두 제공자 branch에 동시에 전달됩니다.
+        # 한 입력 사례는 한 번의 invoke에서 네 모델 branch에 동시에 전달됩니다.
         for case in read_cases():
-            # invoke는 전처리한 뒤 두 모델 호출이 모두 끝날 때까지 기다립니다.
+            # invoke는 전처리한 뒤 네 모델 호출이 모두 끝날 때까지 기다립니다.
             results = chain.invoke(case)
-            # 출력 순서는 Ollama 다음 OpenAI로 고정해 비교 파일의 재현성을 유지합니다.
-            for provider in ("ollama", "openai"):
+            # 출력 순서는 고정해 병렬 실행이어도 JSONL 레코드 순서를 재현할 수 있습니다.
+            for provider in ("ollama", "openai", "deepseek", "kimi"):
                 model_result = results[provider]
                 # 비교에 필요한 질문과 제공자 결과만 골라 JSONL 레코드로 만듭니다.
                 record = {
@@ -408,10 +489,10 @@ def main():
     )
     mode = parser.parse_args().mode
 
-    # 단일 call/chain 모드의 기본 제공자가 OpenAI일 때 키를 먼저 확보합니다.
+    # 단일 call/chain 모드에서 Ollama 외 제공자를 선택하면 해당 키를 먼저 확보합니다.
     # compare는 run_comparison 내부에서 병렬 호출 직전에 키를 확보합니다.
-    if mode != "compare" and PROVIDER == "openai":
-        ensure_openai_api_key()
+    if mode != "compare":
+        ensure_api_key(PROVIDER)
 
     if mode == "call":
         # 샘플 문의를 일반 처리 함수에 전달하고 반환값을 보기 좋은 JSON으로 출력합니다.
