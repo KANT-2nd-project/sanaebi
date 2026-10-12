@@ -14,6 +14,8 @@ from sklearn.pipeline import make_pipeline
 # 실행하는 위치와 관계없이 프로젝트의 data/questions 폴더를 찾기
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "questions"
 
+LABELS = ["it","hr","finance","general_affairs","other"]
+
 ##### CSV 읽기 #####
 
 # DictReader는 각 행을 {"text": "질문 문장", "label": "lookup", ...} 형태로 읽기
@@ -74,7 +76,6 @@ print("검증 벡터 크기:", validation_vectors.shape)
 
 # C가 작을수록 가중치가 지나치게 커지는 것을 강하게 억제
 c_candidates = [0.1, 0.5, 1.0, 10.0]
-labels = ["lookup", "inquiry", "other"]
 best_classifier = None
 best_c = None
 best_score = -1.0  # F1은 0~1이므로 첫 후보부터 비교 가능
@@ -94,17 +95,17 @@ for c in c_candidates:
     score = f1_score(
         validation_labels,
         candidate_predictions,
-        labels=labels,
+        labels=LABELS,
         average="macro",
         zero_division=0,
     )
     print(f"\nC={c}: 검증 정확도={accuracy:.4f}, Macro F1={score:.4f}")
 
     # 각 C 후보의 혼동행렬: 행은 실제 정답, 열은 예측
-    matrix = confusion_matrix(validation_labels, candidate_predictions, labels=labels)
+    matrix = confusion_matrix(validation_labels, candidate_predictions, labels=LABELS)
     print("검증 혼동행렬: 행은 정답, 열은 예측")
-    print("카테고리 순서:", labels)
-    for label, row in zip(labels, matrix):
+    print("카테고리 순서:", LABELS)
+    for label, row in zip(LABELS, matrix):
         print(label, row.tolist())
 
     # 동점이면 먼저 비교한 후보 유지
@@ -139,7 +140,7 @@ test_accuracy = accuracy_score(test_labels, test_predictions)
 test_macro_f1 = f1_score(
     test_labels,
     test_predictions,
-    labels=labels,
+    labels=LABELS,
     average="macro",
     zero_division=0,
 )
@@ -148,10 +149,10 @@ print("테스트 데이터:", len(test_rows), "개")
 print("테스트 정확도:", round(test_accuracy, 4))
 print("테스트 Macro F1:", round(test_macro_f1, 4))
 
-test_matrix = confusion_matrix(test_labels, test_predictions, labels=labels)
+test_matrix = confusion_matrix(test_labels, test_predictions, labels=LABELS)
 print("테스트 혼동행렬: 행은 정답, 열은 예측")
-print("카테고리 순서:", labels)
-for label, row in zip(labels, test_matrix):
+print("카테고리 순서:", LABELS)
+for label, row in zip(LABELS, test_matrix):
     print(label, row.tolist())
 
 print("테스트에서 틀린 질문:")
