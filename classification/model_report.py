@@ -147,11 +147,19 @@ def write_report(kind, report):
     test = report["test"]
     timing = report["benchmark"]
     memory = timing["process_rss_mib"]
+    is_api = timing.get("mode") == "api"
+    model_size = report["model_size_mib"]
     cards = [
         ("테스트 Macro F1", f"{test['macro_f1']:.4f}"),
         ("테스트 정확도", f"{test['accuracy']:.2%}"),
-        ("질문 1개 평균 시간 · CPU", f"{timing['mean_ms']:.2f} ms"),
-        ("모델 파일 크기", f"{report['model_size_mib']:.2f} MiB"),
+        (
+            "질문 1개 평균 시간 · API" if is_api else "질문 1개 평균 시간 · CPU",
+            f"{timing['mean_ms']:.2f} ms",
+        ),
+        (
+            "모델 파일 크기",
+            f"{model_size:.2f} MiB" if model_size is not None else "원격 모델",
+        ),
     ]
     body = (
         '<div class="cards">'
@@ -168,10 +176,14 @@ def write_report(kind, report):
             [
                 [
                     "모델 선택 기준",
-                    "검증 Macro F1 최대 · 동점이면 먼저 선택한 결과 유지",
+                    "고정된 API 모델·카테고리 기준으로 평가 (가중치 학습 없음)"
+                    if is_api
+                    else "검증 Macro F1 최대 · 동점이면 먼저 선택한 결과 유지",
                 ],
                 [
-                    "학습 / 검증 / 테스트 문장 수",
+                    "사용한 학습 / 검증 / 테스트 문장 수"
+                    if is_api
+                    else "학습 / 검증 / 테스트 문장 수",
                     " / ".join(
                         str(report["counts"][s])
                         for s in ["train", "validation", "test"]
@@ -183,7 +195,9 @@ def write_report(kind, report):
                 ],
                 [
                     "학습 당시 기록 · 최고 검증 Macro F1",
-                    report["settings"].get("validation_macro_f1", "미기록"),
+                    "해당 없음 (학습하지 않음)"
+                    if is_api
+                    else report["settings"].get("validation_macro_f1", "미기록"),
                 ],
                 ["데이터 식별자 · test SHA-256", report["data_hashes"]["test"]],
             ],
@@ -224,33 +238,58 @@ def write_report(kind, report):
         + "".join(f"<th>{name}</th>" for name in LABEL_NAMES)
         + f"</tr></thead><tbody>{matrix_rows}</tbody></table></div></section>"
     )
+    if is_api:
+        resource_rows = [
+            ["측정 방식", "원격 API · 네트워크와 서비스 처리 시간 포함"],
+            [
+                "질문 1개 평균 / 중앙값 / P95",
+                f"{timing['mean_ms']:.2f} / {timing['median_ms']:.2f} / {timing['p95_ms']:.2f} ms",
+            ],
+            [
+                "측정 횟수",
+                f"실제 테스트 요청 {timing['samples']}회 (추가 속도 측정 요청 없음)",
+            ],
+            ["서버 RAM / 모델 파일 크기", "측정 불가 (원격 서비스)"],
+        ]
+        resource_note = "API 시간에는 네트워크와 서비스 처리가 포함됩니다. 로컬 모델의 CPU 예측 시간과 조건이 다르므로, 서비스 응답 시간 관점에서 구분해서 비교하세요. 원격 모델의 크기와 메모리는 측정하지 않았습니다."
+    else:
+        resource_rows = [
+            ["측정 장치 / 스레드 제한", f"CPU / {CPU_THREADS}"],
+            ["모델 로딩 시간", f"{timing['load_seconds']:.3f} 초"],
+            [
+                "질문 1개 평균 / 중앙값 / P95",
+                f"{timing['mean_ms']:.2f} / {timing['median_ms']:.2f} / {timing['p95_ms']:.2f} ms",
+            ],
+            [
+                "측정 횟수",
+                f"테스트 질문 {report['counts']['test']}개 × 3회 = {timing['samples']}회",
+            ],
+            [
+                "추론 후 별도 프로세스 RAM · RSS",
+                f"{memory:.1f} MiB"
+                if memory is not None
+                else "현재 OS에서는 측정하지 못함",
+            ],
+        ]
+        resource_note = "질문 한 개의 변환과 예측을 함께 측정합니다. 3회 준비 실행 후 로딩 시간을 제외하고 측정했으며, HTTP 통신 시간은 포함하지 않습니다. RAM은 라이브러리와 모델을 포함한 프로세스 전체 사용량이고, 모델만의 사용량이나 순간 최대값이 아닙니다. 컴퓨터 부하에 따라 시간이 달라집니다."
     body += (
-        "<section><h2>속도와 자원 · 동일한 CPU 조건</h2>"
+        (
+            "<section><h2>속도와 자원 · API</h2>"
+            if is_api
+            else "<section><h2>속도와 자원 · 동일한 CPU 조건</h2>"
+        )
         + table(
             ["항목", "측정값"],
-            [
-                ["측정 장치 / 스레드 제한", f"CPU / {CPU_THREADS}"],
-                ["모델 로딩 시간", f"{timing['load_seconds']:.3f} 초"],
-                [
-                    "질문 1개 평균 / 중앙값 / P95",
-                    f"{timing['mean_ms']:.2f} / {timing['median_ms']:.2f} / {timing['p95_ms']:.2f} ms",
-                ],
-                [
-                    "측정 횟수",
-                    f"테스트 질문 {report['counts']['test']}개 × 3회 = {timing['samples']}회",
-                ],
-                [
-                    "추론 후 별도 프로세스 RAM · RSS",
-                    f"{memory:.1f} MiB"
-                    if memory is not None
-                    else "현재 OS에서는 측정하지 못함",
-                ],
-            ],
+            resource_rows,
         )
-        + '<p class="note">질문 한 개의 변환과 예측을 함께 측정합니다. 3회 준비 실행 후 로딩 시간을 제외하고 측정했으며, HTTP 통신 시간은 포함하지 않습니다. RAM은 라이브러리와 모델을 포함한 프로세스 전체 사용량이고, 모델만의 사용량이나 순간 최대값이 아닙니다. 컴퓨터 부하에 따라 시간이 달라집니다.</p></section>'
+        + f'<p class="note">{escape(resource_note)}</p></section>'
     )
     body += (
-        "<section><h2>선택한 모델의 학습 설정</h2>"
+        (
+            "<section><h2>API 모델과 분류 기준</h2>"
+            if is_api
+            else "<section><h2>선택한 모델의 학습 설정</h2>"
+        )
         + table(
             ["설정", "값"],
             [
@@ -280,7 +319,7 @@ def write_report(kind, report):
             )
             + "</section>"
         )
-    else:
+    elif not is_api:
         body += "<section><h2>후보별 학습·검증 기록</h2><p>이 저장 모델에는 전체 후보 기록이 없습니다. 변경된 학습 스크립트로 다음 학습을 완료하면 함께 기록됩니다.</p></section>"
     errors = test["errors"]
     body += f"<section><h2>테스트 오답 · {len(errors)}개</h2>"
@@ -295,7 +334,12 @@ def write_report(kind, report):
     output.write_text(
         page(
             report["title"],
-            f"저장 모델 재평가 · {report['created_at']} · 학습 코드와 분리된 CPU 프로세스",
+            f"{report['created_at']} · "
+            + (
+                "고정된 API 모델·프롬프트 평가"
+                if is_api
+                else "저장 모델 재평가 · 학습 코드와 분리된 CPU 프로세스"
+            ),
             body,
             root_prefix="../",
         ),
@@ -311,6 +355,9 @@ def write_comparison():
     rows = [
         [
             r["title"],
+            "API · 네트워크 포함"
+            if r["benchmark"].get("mode") == "api"
+            else "로컬 CPU",
             f"{r['validation']['macro_f1']:.4f}",
             f"{r['test']['macro_f1']:.4f}",
             f"{r['test']['accuracy']:.2%}",
@@ -318,7 +365,9 @@ def write_comparison():
             f"{r['benchmark']['process_rss_mib']:.1f}"
             if r["benchmark"]["process_rss_mib"] is not None
             else "미측정",
-            f"{r['model_size_mib']:.2f}",
+            f"{r['model_size_mib']:.2f}"
+            if r["model_size_mib"] is not None
+            else "미공개",
         ]
         for r in reports
     ]
@@ -327,6 +376,7 @@ def write_comparison():
         + table(
             [
                 "모델",
+                "측정 방식",
                 "검증 F1",
                 "테스트 F1",
                 "정확도",
@@ -340,11 +390,11 @@ def write_comparison():
     )
     if reports and any(r["data_hashes"] != reports[0]["data_hashes"] for r in reports):
         body += '<p class="note">보고서의 평가 데이터가 서로 다릅니다. 동일한 CSV로 보고서를 다시 생성한 후 비교하세요.</p>'
-    body += "<section><h2>비교할 때 확인할 점</h2><p>모델·설정 선택에는 검증 F1을 사용하고 테스트 점수는 최종 평가로 남깁니다. 비슷한 점수라면 오답 유형, 응답 시간과 자원 사용량을 함께 확인하세요.</p><p>모든 모델은 CPU·스레드 제한 4·질문 1개 단위로 측정합니다. 각 측정은 별도 프로세스이며 RAM에는 라이브러리 메모리도 포함됩니다.</p></section>"
+    body += "<section><h2>비교할 때 확인할 점</h2><p>모델·설정 선택에는 검증 F1을 사용하고 테스트 점수는 최종 평가로 남깁니다. 비슷한 점수라면 오답 유형, 응답 시간과 자원 사용량을 함께 확인하세요.</p><p>로컬 모델은 CPU·스레드 제한 4·질문 1개 단위로 측정하며, RAM에는 라이브러리 메모리도 포함됩니다. API 모델의 응답 시간은 네트워크를 포함하고 서버 RAM·모델 크기는 측정할 수 없어 같은 장치의 속도 비교로 해석하면 안 됩니다.</p></section>"
     (RESULT_DIR / "comparison.html").write_text(
         page(
             "질문 분류 모델 비교",
-            "같은 질문 · 같은 카테고리 · 같은 CPU 측정 조건",
+            "같은 질문 · 같은 카테고리 · 로컬 CPU와 원격 API 구분",
             body,
         ),
         encoding="utf-8",
@@ -359,6 +409,15 @@ def main():
     args = parser.parse_args()
     if Path(args.kind).name != args.kind or args.kind in {".", ".."}:
         parser.error("모델 폴더 이름만 입력하세요.")
+    # API 평가는 저장된 결과로 HTML만 재생성 (추가 유료 요청 없음)
+    metrics_path = report_dir(args.kind) / "metrics.json"
+    if metrics_path.is_file():
+        saved = json.loads(metrics_path.read_text(encoding="utf-8"))
+        if saved["benchmark"].get("mode") == "api":
+            output = write_report(args.kind, saved)
+            write_comparison()
+            print("HTML 보고서:", output)
+            return
     rows = {split: read_rows(split) for split in ["train", "validation", "test"]}
     if not rows["test"] or not rows["validation"]:
         raise ValueError("검증·테스트 CSV는 비어 있을 수 없습니다.")
