@@ -25,6 +25,7 @@ token.json
 
 # Local databases, logs, and model weights
 employees.jsonl
+documents.jsonl
 *.db
 *.sqlite
 *.sqlite3
