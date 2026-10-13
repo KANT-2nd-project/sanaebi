@@ -4,11 +4,13 @@ from pathlib import Path
 from typing import Literal
 
 import joblib
+import torch
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 # 실행 코드
 # python -m uv run fastapi dev .\fastapi_main.py
@@ -53,7 +55,7 @@ class Employee(EmployeeCreate):
 # 질문 분류 결과
 class ClassificationResponse(BaseModel):
     question: str  # 입력한 질문
-    category: Literal["lookup", "inquiry", "other"]  # 조회 / 문의 / 기타
+    category: Literal["it", "hr", "finance", "general_affairs", "other"]  # 담당 영역
 
 
 ##### 변수 #####
@@ -64,15 +66,33 @@ SAVE_PATH = Path(__file__).resolve().parent
 employee_file = SAVE_PATH / "employees.jsonl"
 EMPLOYEE_ID_PREFIX = "EMP-"  # 직원 ID의 공통 접두사
 
+
 # 학습 스크립트에서 저장한 TF-IDF + 로지스틱 회귀 모델 경로
 TFIDF_LR_MODEL_PATH = (
     SAVE_PATH.parent / "classification" / "model" / "tfidf_logistic_regression.joblib"
 )
 
+# 학습한 BERT 모델과 토크나이저가 저장된 폴더 경로
+BERT_MODEL_PATH = SAVE_PATH.parent / "classification" / "model" / "bert"
+BERT_MAX_LENGTH = 192  # BERT 학습 때와 같은 최대 토큰 수
+
+
 # 서버가 이 파일을 읽을 때 모델을 한 번 불러오기 (다시 학습하지 않음)
 tfidf_lr_model = None  # 모델이 없으면 분류 요청에서 안내 메시지 반환
 if TFIDF_LR_MODEL_PATH.is_file():
     tfidf_lr_model = joblib.load(TFIDF_LR_MODEL_PATH)
+
+# 서버가 이 파일을 읽을 때 저장된 BERT를 한 번 불러오기
+bert_tokenizer = None
+bert_model = None
+if BERT_MODEL_PATH.is_dir():
+    bert_tokenizer = AutoTokenizer.from_pretrained(
+        BERT_MODEL_PATH, local_files_only=True
+    )  # 저장된 토크나이저 사용
+    bert_model = AutoModelForSequenceClassification.from_pretrained(
+        BERT_MODEL_PATH, local_files_only=True
+    )  # 저장된 가중치 사용 (다시 학습하지 않음)
+    bert_model.eval()  # 예측을 위한 평가 모드
 
 
 ##### API 엔드포인트 #####
@@ -119,6 +139,34 @@ async def classify_tfidf_lr(request: QuestionRequest) -> ClassificationResponse:
 
     # 저장된 모델로 질문을 변환하고 분류 (다시 학습하지 않음)
     category = tfidf_lr_model.predict([request.question])[0]
+    return ClassificationResponse(question=request.question, category=category)
+
+
+# BERT로 질문 분류
+@app.post(
+    "/classify/bert", response_model=ClassificationResponse, summary="BERT 질문 분류"
+)
+async def classify_bert(request: QuestionRequest) -> ClassificationResponse:
+    if bert_model is None or bert_tokenizer is None:
+        raise HTTPException(status_code=503, detail="해당 모델이 존재하지 않습니다.")
+
+    # 입력 질문을 학습 때와 같은 방식으로 토큰화
+    inputs = bert_tokenizer(
+        request.question,
+        padding="max_length",
+        truncation=True,
+        max_length=BERT_MAX_LENGTH,
+        return_tensors="pt",
+    )
+
+    with torch.inference_mode():  # 학습 없이 예측만 수행
+        output = bert_model(
+            input_ids=inputs["input_ids"],
+            attention_mask=inputs["attention_mask"],
+        )
+
+    label_id = output.logits.argmax(dim=1).item()  # 가장 높은 점수의 번호
+    category = bert_model.config.id2label[label_id]  # 번호를 카테고리 이름으로 변환
     return ClassificationResponse(question=request.question, category=category)
 
 
