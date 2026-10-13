@@ -69,7 +69,11 @@ EMPLOYEE_ID_PREFIX = "EMP-"  # 직원 ID의 공통 접두사
 
 # 학습 스크립트에서 저장한 TF-IDF + 로지스틱 회귀 모델 경로
 TFIDF_LR_MODEL_PATH = (
-    SAVE_PATH.parent / "classification" / "model" / "tfidf_logistic_regression.joblib"
+    SAVE_PATH.parent
+    / "classification"
+    / "model"
+    / "tf-idf"
+    / "tfidf_logistic_regression.joblib"
 )
 
 # 학습한 BERT 모델과 토크나이저가 저장된 폴더 경로
