@@ -1,4 +1,4 @@
-# 문서 분류 데이터셋 v0.1
+# 문서 분류 데이터셋 v0.2
 
 [단일 라벨 기준 v2.0](../docs/label-taxonomy.md)에 따른 한국어 문서 분류용 CSV 600건입니다. 준비 원본과 전체 검수 증거는 로컬 보관 자료로 유지하며, 이 CSV를 읽는 데 필요하지 않습니다. 공개 자료의 `source_id`는 [출처·이용 조건 표](ATTRIBUTION.md)에서 원문 제목, URL, 제공자, 이용 조건과 근거를 확인할 수 있습니다.
 
@@ -12,17 +12,17 @@ import csv
 with open("data/dataset.csv", encoding="utf-8-sig", newline="") as file:
     rows = list(csv.DictReader(file))
 
-train = [row for row in rows if row["split"] == "train"]
-inputs = [row["title"] + "\n" + row["text"] for row in train]
-targets = [row["label"] for row in train]
+inputs = [row["title"] + "\n" + row["text"] for row in rows]
+targets = [row["label"] for row in rows]
 ```
+
+위 코드는 전체 자료를 읽는 예시입니다. 학습·검증·테스트 분할은 아래 기준에 따라 학습 코드에서 구현해야 합니다.
 
 | 열 | 의미 |
 |---|---|
 | `document_id` | 문서의 고유 ID |
 | `title`, `text` | 모델 입력인 제목과 전체 본문 |
 | `label` | 대표 업무 주제 하나인 정답 |
-| `split` | 고정된 `train`, `validation`, `test` 분할 |
 | `source_id` | ATTRIBUTION의 원문 ID 또는 합성 설정 ID |
 | `source_group_id` | 개정·복제·파생 문서가 분할 사이에 섞이지 않게 묶은 계열 ID |
 | `kind` | `excerpt`(한국어 발췌), `translation`(한국어 번역), `synthetic`(합성) |
@@ -31,15 +31,20 @@ targets = [row["label"] for row in train]
 
 ## 구성과 범위
 
-전체 600건은 `train` 420건, `validation` 90건, `test` 90건입니다. 여섯 라벨(`HR`, `IT`, `FINANCE_PROCUREMENT`, `WORKPLACE`, `SECURITY_LEGAL`, `COMPANY`)은 각각 100건입니다. 유형별로는 발췌 105건, 번역 255건, 합성 240건입니다. 라벨 버전은 2.0, 데이터셋 버전은 0.1로 유지됩니다.
+전체 600건이며 여섯 라벨(`HR`, `IT`, `FINANCE_PROCUREMENT`, `WORKPLACE`, `SECURITY_LEGAL`, `COMPANY`)은 각각 100건입니다. 유형별로는 발췌 105건, 번역 255건, 합성 240건입니다. 각 라벨에는 공개 발췌·번역 60건과 합성 40건이 있습니다. 라벨 버전은 2.0, 데이터셋 버전은 0.2입니다.
 
-| 분할 | 공개 발췌·번역 | 합성 | 라벨별 |
-|---|---:|---:|---:|
-| train | 180 | 240 | 70 |
-| validation | 90 | 0 | 15 |
-| test | 90 | 0 | 15 |
+v0.2는 v0.1 CSV에서 `split` 열만 제거한 7개 열 형식입니다. 600건의 순서와 나머지 값, 본문 줄바꿈은 유지했습니다. 기존 고정 분할은 로컬 원본 묶음에 보존하며, 현재 CSV에는 분할 정보를 저장하지 않습니다.
 
-시드 `20261013`으로 정한 원문 계열 분할을 그대로 유지합니다. 합성 자료는 학습에만 사용했고 검증·테스트 자료로 학습용 합성을 만들지 않았습니다. 전처리는 train으로만 맞추고 모델 선택은 validation, 최종 평가는 test로 수행합니다.
+### 후속 학습 코드의 분할 기준
+
+- `document_id` 기준으로 입력 순서를 고정하고 `RANDOM_SEED = 20261013`을 사용합니다. TF-IDF와 BERT는 공통 분할 로직으로 같은 문서 구성을 사용합니다.
+- 같은 `source_group_id`는 학습·검증·테스트 중 하나에만 배치합니다. 행 단위 무작위 분할로 같은 원문 계열을 흩어 놓지 않습니다.
+- `kind == "synthetic"`인 240건은 학습에만 넣습니다. 나머지 공개 발췌·번역 360건은 50:25:25로 나눈 뒤 합성 자료를 학습에 더해 전체 70:15:15를 목표로 합니다.
+- 라벨 비율도 최대한 유지하되 원문 계열 보존을 우선합니다. 학습 420·검증 90·테스트 90건과 라벨별 70·15·15건은 목표이며 정확한 수량을 강제하지 않습니다.
+- 실제 분할별·라벨별 수량, 각 분할의 문서 ID와 시드를 실험 결과에 기록합니다. 원문 계열이 분할 사이에 겹치지 않는지와 합성 자료의 학습 전용 배치를 학습 코드에서 확인해야 합니다.
+- 전처리는 train으로만 맞추고 모델 선택은 validation, 최종 평가는 test로 수행합니다.
+
+위 내용은 분류 담당자가 구현할 계약입니다. 현재 `classification/`은 기존 질문 데이터를 사용하며 새 문서 CSV 연결과 런타임 분할은 아직 구현하지 않았습니다.
 
 600건 모두 기록된 절차에 따른 AI 검수를 거쳤고, 사람 승인 상태인 `approved`는 0건입니다. 따라서 사람 정답으로 확정된 평가 자료가 아니며, 이 데이터만으로 현재 6개 라벨 모델의 학습·평가 결과나 실제 서비스 성능을 주장하지 않습니다.
 
@@ -56,4 +61,4 @@ uv run --locked python scripts/validate_dataset.py
 uv run --locked python -m unittest discover -s tests -v
 ```
 
-필수 열·빈 값·단일 라벨·수량·중복·원문 계열 분리·합성의 학습 전용 배치를 검사합니다. 이는 문서의 의미상 정답이나 모델 성능을 보증하지 않습니다. 기존 수집·준비 도구는 로컬 `data/local/preparation-archive/`에 보존하며 CSV 사용에는 필요하지 않습니다.
+UTF-8 BOM·필수 7개 열·빈 값·고유 ID·유효한 단일 라벨과 자료 유형·전체 600건·라벨별 100건·정규화한 제목과 본문의 완전 중복을 검사합니다. 분할 검사는 후속 학습 코드에서 수행하며, 이 검사는 문서의 의미상 정답이나 모델 성능을 보증하지 않습니다. 기존 수집·준비 도구는 로컬 `data/local/preparation-archive/`에 보존하며 CSV 사용에는 필요하지 않습니다.

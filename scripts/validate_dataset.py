@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -14,16 +14,12 @@ COLUMNS = (
     "title",
     "text",
     "label",
-    "split",
     "source_id",
     "source_group_id",
     "kind",
 )
 LABELS = ("HR", "IT", "FINANCE_PROCUREMENT", "WORKPLACE", "SECURITY_LEGAL", "COMPANY")
-SPLITS = ("train", "validation", "test")
 KINDS = ("excerpt", "translation", "synthetic")
-EXPECTED_SPLIT_COUNTS = {"train": 420, "validation": 90, "test": 90}
-EXPECTED_PER_LABEL_SPLIT = {"train": 70, "validation": 15, "test": 15}
 DEFAULT_DATASET = Path(__file__).resolve().parents[1] / "data" / "dataset.csv"
 
 
@@ -34,12 +30,11 @@ class DatasetValidationError(ValueError):
 @dataclass(frozen=True)
 class DatasetSummary:
     rows: int
-    splits: dict[str, int]
     labels: dict[str, int]
 
 
 def validate_dataset(path: Path) -> DatasetSummary:
-    """Validate *path* and return its row, split, and label counts."""
+    """Validate *path* and return its row and label counts."""
     errors: list[str] = []
     rows: list[dict[str, str]] = []
 
@@ -70,9 +65,7 @@ def validate_dataset(path: Path) -> DatasetSummary:
 
     ids: set[str] = set()
     duplicates: set[tuple[str, str]] = set()
-    group_splits: dict[str, set[str]] = defaultdict(set)
-    split_counts: Counter[str] = Counter()
-    label_split_counts: Counter[tuple[str, str]] = Counter()
+    label_counts: Counter[str] = Counter()
 
     for line_number, row in enumerate(rows, start=2):
         for column, value in row.items():
@@ -87,24 +80,12 @@ def validate_dataset(path: Path) -> DatasetSummary:
         label = row["label"]
         if label not in LABELS:
             errors.append(f"row {line_number}: invalid scalar label {label!r}")
-
-        split = row["split"]
-        if split not in SPLITS:
-            errors.append(f"row {line_number}: invalid split {split!r}")
         else:
-            split_counts[split] += 1
-            if label in LABELS:
-                label_split_counts[(label, split)] += 1
+            label_counts[label] += 1
 
         kind = row["kind"]
         if kind not in KINDS:
             errors.append(f"row {line_number}: invalid kind {kind!r}")
-        elif kind == "synthetic" and split != "train":
-            errors.append(f"row {line_number}: synthetic rows must be in train")
-
-        group_id = row["source_group_id"]
-        if group_id.strip() and split in SPLITS:
-            group_splits[group_id].add(split)
 
         title_text = (" ".join(row["title"].split()), " ".join(row["text"].split()))
         if all(title_text):
@@ -114,24 +95,10 @@ def validate_dataset(path: Path) -> DatasetSummary:
                 )
             duplicates.add(title_text)
 
-    for group_id, splits in group_splits.items():
-        if len(splits) > 1:
-            errors.append(
-                f"source_group_id {group_id!r} appears in multiple splits: {', '.join(sorted(splits))}"
-            )
-
-    if dict(split_counts) != EXPECTED_SPLIT_COUNTS:
-        actual = ", ".join(f"{split}={split_counts[split]}" for split in SPLITS)
-        errors.append(
-            f"split counts must be train=420, validation=90, test=90; got {actual}"
-        )
-
     for label in LABELS:
-        actual = {split: label_split_counts[(label, split)] for split in SPLITS}
-        if actual != EXPECTED_PER_LABEL_SPLIT:
-            counts = ", ".join(f"{split}={actual[split]}" for split in SPLITS)
+        if label_counts[label] != 100:
             errors.append(
-                f"label/split counts for {label} must be 70/15/15; got {counts}"
+                f"label count for {label} must be 100, got {label_counts[label]}"
             )
 
     if errors:
@@ -139,11 +106,7 @@ def validate_dataset(path: Path) -> DatasetSummary:
 
     return DatasetSummary(
         rows=len(rows),
-        splits={split: split_counts[split] for split in SPLITS},
-        labels={
-            label: sum(label_split_counts[(label, split)] for split in SPLITS)
-            for label in LABELS
-        },
+        labels={label: label_counts[label] for label in LABELS},
     )
 
 
@@ -158,11 +121,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Dataset validation failed:\n{exc}", file=sys.stderr)
         return 1
 
-    split_summary = ", ".join(f"{split}={summary.splits[split]}" for split in SPLITS)
     label_summary = ", ".join(f"{label}={summary.labels[label]}" for label in LABELS)
-    print(
-        f"Validated {summary.rows} rows; splits: {split_summary}; labels: {label_summary}"
-    )
+    print(f"Validated {summary.rows} rows; labels: {label_summary}")
     return 0
 
 
