@@ -17,11 +17,24 @@ import numpy as np
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from threadpoolctl import threadpool_limits
 
+if __package__:
+    from .document_split import document_input, read_recorded_splits
+else:
+    from document_split import document_input, read_recorded_splits
+
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT.parent / "data" / "questions"
 RESULT_DIR = ROOT / "result"
 LABELS = ["it", "hr", "finance", "general_affairs", "other"]
 LABEL_NAMES = ["IT", "인사", "재무", "총무", "기타"]
+DOCUMENT_LABEL_NAMES = {
+    "HR": "인사",
+    "IT": "IT",
+    "FINANCE_PROCUREMENT": "재무·구매",
+    "WORKPLACE": "업무 공간·총무",
+    "SECURITY_LEGAL": "보안·법무",
+    "COMPANY": "회사·조직",
+}
 CPU_THREADS = 4
 
 
@@ -120,30 +133,41 @@ footer{{color:#657389;font-size:13px;margin-top:24px}}
 </main></body></html>"""
 
 
-def evaluate(rows, predictions):
+def evaluate(rows, predictions, labels=None):
+    labels = LABELS if labels is None else labels
     actual = [row["label"] for row in rows]
-    if len(predictions) != len(rows) or set(predictions) - set(LABELS):
+    if (
+        len(predictions) != len(rows)
+        or set(predictions) - set(labels)
+        or set(actual) - set(labels)
+    ):
         raise ValueError("예측 개수 또는 라벨이 현재 데이터와 맞지 않습니다.")
     scores = classification_report(
-        actual, predictions, labels=LABELS, output_dict=True, zero_division=0
+        actual, predictions, labels=labels, output_dict=True, zero_division=0
     )
     errors = [
-        [row["id"], row["text"], row["label"], prediction]
+        [row.get("document_id", row.get("id")), row["text"], row["label"], prediction]
         for row, prediction in zip(rows, predictions)
         if row["label"] != prediction
     ]
     return {
         "accuracy": accuracy_score(actual, predictions),
         "macro_f1": scores["macro avg"]["f1-score"],
-        "per_class": {label: scores[label] for label in LABELS},
+        "per_class": {label: scores[label] for label in labels},
         "confusion_matrix": confusion_matrix(
-            actual, predictions, labels=LABELS
+            actual, predictions, labels=labels
         ).tolist(),
         "errors": errors,
     }
 
 
 def write_report(kind, report):
+    labels = report["settings"].get("labels", LABELS)
+    old_names = dict(zip(LABELS, LABEL_NAMES))
+    label_names = [
+        DOCUMENT_LABEL_NAMES.get(label, old_names.get(label, label)) for label in labels
+    ]
+    split_record = report["settings"].get("data_split")
     test = report["test"]
     timing = report["benchmark"]
     memory = timing["process_rss_mib"]
@@ -205,6 +229,36 @@ def write_report(kind, report):
         + "</section>"
     )
     per_class = test["per_class"]
+    if split_record:
+        body += (
+            "<section><h2>문서 분할 기록</h2>"
+            + f"<p>시드: {split_record['seed']} · 입력: 제목 + 줄바꿈 + 본문</p>"
+            + table(
+                ["라벨", "학습", "검증", "테스트"],
+                [
+                    [
+                        label,
+                        *[
+                            split_record["splits"][name]["label_counts"][label]
+                            for name in ["train", "validation", "test"]
+                        ],
+                    ]
+                    for label in labels
+                ],
+            )
+            + table(
+                ["분할", "문서 수", "kind별 수량"],
+                [
+                    [
+                        name,
+                        data["count"],
+                        json.dumps(data["kind_counts"], ensure_ascii=False),
+                    ]
+                    for name, data in split_record["splits"].items()
+                ],
+            )
+        )
+        body += "</section>"
     body += (
         "<section><h2>테스트 · 카테고리별 성능</h2>"
         + table(
@@ -217,7 +271,7 @@ def write_report(kind, report):
                     f"{per_class[label]['f1-score']:.4f}",
                     int(per_class[label]["support"]),
                 ]
-                for label, name in zip(LABELS, LABEL_NAMES)
+                for label, name in zip(labels, label_names)
             ],
         )
         + '<p class="muted">Precision: 해당 분류로 예측한 것 중 맞은 비율 · Recall: 실제 해당 분류 중 찾아낸 비율</p></section>'
@@ -230,12 +284,12 @@ def write_report(kind, report):
             for j, count in enumerate(row)
         )
         + "</tr>"
-        for i, (name, row) in enumerate(zip(LABEL_NAMES, matrix))
+        for i, (name, row) in enumerate(zip(label_names, matrix))
     )
     body += '<section><h2>테스트 · 혼동행렬</h2><p class="muted">행은 실제 정답, 열은 예측입니다. 대각선은 정답, 붉은 칸은 오분류입니다.</p>'
     body += (
         '<div class="scroll"><table class="matrix"><thead><tr><th>정답 ↓ / 예측 →</th>'
-        + "".join(f"<th>{name}</th>" for name in LABEL_NAMES)
+        + "".join(f"<th>{escape(name)}</th>" for name in label_names)
         + f"</tr></thead><tbody>{matrix_rows}</tbody></table></div></section>"
     )
     if is_api:
@@ -295,7 +349,7 @@ def write_report(kind, report):
             [
                 [key, json.dumps(value, ensure_ascii=False)]
                 for key, value in report["settings"].items()
-                if key not in {"trials", "test_confusion_matrix"}
+                if key not in {"trials", "test_confusion_matrix", "data_split"}
             ],
         )
         + "</section>"
@@ -324,7 +378,9 @@ def write_report(kind, report):
     errors = test["errors"]
     body += f"<section><h2>테스트 오답 · {len(errors)}개</h2>"
     body += (
-        table(["ID", "질문", "실제 정답", "예측"], errors)
+        table(
+            ["ID", "문서 입력" if split_record else "질문", "실제 정답", "예측"], errors
+        )
         if errors
         else "<p>현재 테스트 데이터에서 오답이 없습니다.</p>"
     )
@@ -418,9 +474,6 @@ def main():
             write_comparison()
             print("HTML 보고서:", output)
             return
-    rows = {split: read_rows(split) for split in ["train", "validation", "test"]}
-    if not rows["test"] or not rows["validation"]:
-        raise ValueError("검증·테스트 CSV는 비어 있을 수 없습니다.")
     model_path = (
         ROOT
         / "model"
@@ -442,6 +495,32 @@ def main():
         if summary_path.is_file()
         else {}
     )
+    split_record = settings.get("data_split")
+    labels = settings.get("labels", LABELS)
+    if split_record:
+        # 모델이 학습할 때 기록한 ID로 분할을 복원해 동일한 문서로 평가
+        rows = read_recorded_splits(split_record)
+        for data in rows.values():
+            for row in data:
+                row["text"] = document_input(row)
+        data_hashes = {
+            name: hashlib.sha256(
+                json.dumps(
+                    [(row["document_id"], row["text"], row["label"]) for row in data],
+                    ensure_ascii=False,
+                ).encode("utf-8")
+            ).hexdigest()
+            for name, data in rows.items()
+        }
+    else:
+        # 이전 질문 분류 모델의 보고서도 계속 확인 가능
+        rows = {split: read_rows(split) for split in ["train", "validation", "test"]}
+        data_hashes = {
+            split: hashlib.sha256((DATA_DIR / f"{split}.csv").read_bytes()).hexdigest()
+            for split in rows
+        }
+    if not rows["test"] or not rows["validation"]:
+        raise ValueError("검증·테스트 데이터는 비어 있을 수 없습니다.")
     started = perf_counter()
     if args.kind != "tfidf_lr":
         import torch
@@ -469,7 +548,9 @@ def main():
                 )
             return model.config.id2label[output.logits.argmax(dim=1).item()]
 
-        title = f"{args.kind.upper()} · 질문 분류"
+        title = f"{args.kind.upper()} · " + (
+            "문서 분류" if split_record else "질문 분류"
+        )
     else:
         import joblib
 
@@ -478,7 +559,9 @@ def main():
         def predict(text):
             return str(model.predict([text])[0])
 
-        title = "TF-IDF + 로지스틱 회귀 · 질문 분류"
+        title = "TF-IDF + 로지스틱 회귀 · " + (
+            "문서 분류" if split_record else "질문 분류"
+        )
     load_seconds = perf_counter() - started
     with threadpool_limits(limits=CPU_THREADS):
         validation_predictions = [predict(row["text"]) for row in rows["validation"]]
@@ -498,13 +581,10 @@ def main():
             "%Y-%m-%d %H:%M KST"
         ),
         "counts": {split: len(data) for split, data in rows.items()},
-        "data_hashes": {
-            split: hashlib.sha256((DATA_DIR / f"{split}.csv").read_bytes()).hexdigest()
-            for split in rows
-        },
+        "data_hashes": data_hashes,
         "settings": settings,
-        "validation": evaluate(rows["validation"], validation_predictions),
-        "test": evaluate(rows["test"], test_predictions),
+        "validation": evaluate(rows["validation"], validation_predictions, labels),
+        "test": evaluate(rows["test"], test_predictions, labels),
         "model_size_mib": sum(
             p.stat().st_size
             for p in files
