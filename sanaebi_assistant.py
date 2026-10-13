@@ -1,44 +1,46 @@
 """문의 요청을 모델에 전달하고 결과와 실행 메타데이터를 JSONL로 저장합니다.
 
-기본 흐름은 요청 객체 변환 → 질문과 라벨 확인 → 프롬프트 생성 → 모델 호출 →
-응답 및 실행 기록 저장입니다. 라벨은 요청에서 받는 값이며, 이 모듈은 분류하지
-않습니다. `call`, LangChain 기반 `chain`, 네 제공자를 병렬 호출하는 `compare` 모드를
-명령행에서 선택할 수 있습니다.
+기본 흐름: 요청 객체 변환 → 질문과 라벨 확인 → 프롬프트 생성 → 모델 호출 →
+응답 및 실행 기록 저장.
+  라벨은 요청에서 받는 값이며, `call`, `chain`, provider를 병렬 호출하는 `compare` 모드를
+명령행에서 선택할 수 있음.
 """
 
-# 표준 라이브러리: CLI 인자, 숨김 키 입력, JSONL 직렬화, 환경 변수, 경과 시간과 ID
-# 생성, 요청 매핑, UTC 시각, 저장소 내 파일 경로, 터미널 확인을 처리합니다.
 import argparse
 import getpass
 import json
 import os
+import re
 import sys
 import time
-import uuid
-from collections.abc import Mapping
+import uuid  # 요청 처리마다 uuid.uuid4().hex로 실행 ID를 생성
+import warnings  # 요청은 계속 처리하되 자료 문제를 실행 화면에 알림
+from collections.abc import Mapping  # 매핑은 키로 값을 찾는 자료형
 from datetime import UTC, datetime
 from pathlib import Path
 
-# 외부 라이브러리: Ollama HTTP 호출, OpenAI 호환 API 호출, LangChain Runnable 구성에 사용합니다.
-import httpx
+import httpx  # HTTP 요청을 보내는 외부 라이브러리
 from langchain_core.runnables import RunnableLambda, RunnableParallel
 from openai import OpenAI
 
-# 이 파일이 있는 저장소 루트를 기준으로 데이터 파일의 경로를 계산합니다.
 ROOT = Path(__file__).resolve().parent
-# 모든 문의 관련 결과를 learner 구분 없이 공통 폴더에 저장합니다.
-INQUIRY_DIR = ROOT / "artifacts" / "step_by_step" / "inquiries"
-# 일반 호출의 응답 본문과 실행 메타데이터를 각각 별도 JSONL 파일에 누적합니다.
+INQUIRY_DIR = ROOT / "artifacts" / "step_by_step" / "inquiries"  # 공통 폴더 저장
+
 RESPONSE_PATH = INQUIRY_DIR / "responses.jsonl"
 EXECUTION_PATH = INQUIRY_DIR / "execution_records.jsonl"
-# 비교 입력 파일이 없으면 아래 SAMPLE_CASES를 대신 사용합니다.
+
+# [SAMPLE_CASES] 비교 입력 파일이 없는 경우
 INPUT_PATH = ROOT / "steps" / "examples" / "inquiries_development.jsonl"
-# 새 모델 실험 결과는 이전 development01 결과를 보존하도록 development02에 기록합니다.
+COMPANY_DATABASE_PATH = ROOT / "company_database" / "ieum_works.jsonl"
+COMPANY_CATALOG_PATH = ROOT / "company_database" / "required_documents.jsonl"
+COMPANY_DATABASE_PATHS = (COMPANY_DATABASE_PATH, COMPANY_CATALOG_PATH)
+
+# 새 모델 실험 결과는 기존 development01 파일과 분리해 저장합니다.
 COMPARISON_PATH = INQUIRY_DIR / "comparisons" / "development02" / "results.jsonl"
 
-# 제공자, 로컬 Ollama 주소와 모델 이름은 환경 변수로 바꿀 수 있습니다.
 
-# PROVIDER가 지정되지 않으면 기본 호출은 로컬 Ollama를 사용합니다.
+# 환경 변수
+
 PROVIDER = os.getenv("PROVIDER", "ollama")
 OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct-2507-q4_K_M")
@@ -52,6 +54,8 @@ API_KEY_ENV = {"openai": "OPENAI_API_KEY"}
 # 연결 제한 시간은 초 단위이며, 질문의 길이는 문자 수로 제한합니다.
 TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "600"))
 MAX_INPUT_CHARS = int(os.getenv("MAX_INPUT_CHARS", "4000"))
+# 생성 길이 제한에 걸려 끝난 상태값입니다(Ollama done_reason, OpenAI Responses status).
+TRUNCATED_REASONS = {"length", "incomplete"}
 # 분류기가 없으므로 라벨을 요청에서 받지 못했을 때 사용할 더미 기본값입니다.
 DUMMY_LABEL = "others"
 
@@ -120,11 +124,98 @@ def question_from(payload):
     return question.strip()
 
 
+def label_from(payload):
+    """요청의 라벨을 반환하고, 라벨이 없거나 None이면 더미 라벨을 사용합니다."""
+    # Pydantic Optional 필드는 값이 없을 때 None으로 덤프되므로 키 누락과 같게 봅니다.
+    label = payload.get("classification_label")
+    return DUMMY_LABEL if label is None else label
+
+
+def read_jsonl(path):
+    """JSONL 파일의 각 줄을 JSON 객체로 읽고, 객체가 아닌 줄은 경고 후 건너뜁니다."""
+    records = []
+    # Windows 편집기가 붙이는 UTF-8 BOM을 허용하고 빈 줄은 건너뜁니다.
+    lines = path.read_text(encoding="utf-8-sig").splitlines()
+    for number, line in enumerate(lines, start=1):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except json.JSONDecodeError:
+            record = None
+        # 잘못된 줄 하나 때문에 모든 요청이 실패하지 않도록 해당 줄만 제외합니다.
+        if not isinstance(record, dict):
+            warnings.warn(
+                f"JSON 객체가 아닌 줄을 건너뜁니다: {path}:{number}", stacklevel=2
+            )
+            continue
+        records.append(record)
+    return records
+
+
+def retrieve_company_data(question, label):
+    """라벨과 질문에 맞는 회사 자료를 JSONL 데이터베이스에서 최대 세 건 찾습니다.
+
+    문서 리트리버 파이프라인만 준비한 상태이며, 응답 모델 프롬프트에는 반영하지 않습니다.
+    """
+    # 질문의 한국어·영어 단어를 뽑아 자료의 제목과 본문에서 겹치는 단어를 셉니다.
+    question_terms = set(re.findall(r"[가-힣A-Za-z0-9]+", question.casefold()))
+    matches = []
+    # 예시 정책과 50개 문서 카탈로그를 같은 검색 흐름에서 읽습니다.
+    records = []
+    for path in COMPANY_DATABASE_PATHS:
+        # 새 clone처럼 파일이 없을 때 빈 검색 결과를 조용히 반환하지 않도록 경고를 남깁니다.
+        if not path.exists():
+            warnings.warn(
+                f"회사 자료 파일이 없어 검색에서 제외합니다: {path}", stacklevel=2
+            )
+            continue
+        records.extend(read_jsonl(path))
+    for record in records:
+        # labels가 null이거나 문자열 하나로 적혀 있어도 태그 목록으로 비교합니다.
+        labels = record.get("labels")
+        if isinstance(labels, str):
+            labels = [labels]
+        elif not isinstance(labels, list):
+            labels = []
+        # others는 분류 라벨이 불명확하므로 모든 분야의 자료를 검색합니다.
+        if label != "others" and label not in labels:
+            continue
+        document_terms = re.findall(
+            r"[가-힣A-Za-z0-9]+",
+            " ".join(
+                str(record.get(field, ""))
+                for field in (
+                    "title",
+                    "content",
+                    "obligation",
+                    "applies_when",
+                    "legal_basis",
+                    "labels",
+                )
+            ).casefold(),
+        )
+        # 한국어 조사가 붙은 단어도 제목의 짧은 핵심어와 맞으면 검색 결과로 봅니다.
+        score = sum(
+            any(term in word or word in term for word in document_terms)
+            for term in question_terms
+            if len(term) > 1
+        )
+        if score:
+            matches.append((score, record))
+    # 관련도가 높은 자료 세 건만 반환합니다.
+    return [
+        record
+        for _, record in sorted(matches, key=lambda item: item[0], reverse=True)[:3]
+    ]
+
+
 def build_prompt(question, label):
     """확인된 질문과 라벨 정책으로 모델 입력 문자열을 만듭니다."""
     # 임의 라벨로 정책 키 조회가 실패하거나 정책 없이 호출되는 것을 방지합니다.
     if label not in POLICIES:
         raise ValueError(f"알 수 없는 classification_label: {label}")
+    # 응답 모델 단계이므로 문서 리트리버 결과는 프롬프트에 넣지 않습니다.
     return (
         # 답변의 언어와 JSON 모양을 지정하고, 확인되지 않은 정보를 만들지 않도록 합니다.
         '한국어로 간단히 답하고 JSON 객체 {"answer": "...", "next_steps": []}로 작성하세요. '
@@ -184,7 +275,6 @@ def ensure_api_key(provider):
     # 비대화형 실행에서는 키 입력을 기다릴 수 없으므로 환경 변수 설정을 안내합니다.
     if not sys.stdin.isatty():
         raise RuntimeError(f"비대화형 실행에는 {key_name} 환경 변수가 필요합니다.")
-    # 각 제공자 이름을 프롬프트에 표시하고 입력 문자는 화면에 보이지 않게 받습니다.
     provider_name = {"openai": "OpenAI"}[provider]
     api_key = getpass.getpass(f"{provider_name} API 키를 입력하세요: ").strip()
     if not api_key:
@@ -262,6 +352,9 @@ def call_model(provider, prompt):
     except Exception as error:  # noqa: BLE001 - 실패 정보를 실행 기록에 저장합니다.
         # 예외 메시지나 전체 traceback 대신 예외 클래스명만 저장합니다.
         result["error"] = type(error).__name__
+    # 생성 길이 제한으로 잘린 응답은 본문이 있어도 성공으로 세지 않습니다.
+    if result["error"] is None and result["finish_reason"] in TRUNCATED_REASONS:
+        result["error"] = "TruncatedOutput"
     # 모델 호출 예외를 외부로 다시 던지지 않고 시간과 제공자 정보를 붙여 반환합니다.
     return {
         **result,
@@ -287,7 +380,7 @@ def process_question(request, provider=PROVIDER):
     # 질문 검증이 실패하면 이 지점에서 중단되어 모델 호출이나 기록 저장은 하지 않습니다.
     question = question_from(payload)
     # 분류 모델은 없으며, 요청에 라벨이 없을 때는 더미 라벨만 적용합니다.
-    label = payload.get("classification_label", DUMMY_LABEL)
+    label = label_from(payload)
     # 두 파일에서 같은 처리를 서로 연결할 수 있도록 한 ID를 공유합니다.
     execution_id = uuid.uuid4().hex
     # 시작 시각은 모델 호출 직전에 UTC ISO 형식으로 기록합니다.
@@ -337,7 +430,7 @@ def prepare_chain_input(value):
     payload = {"text": value} if isinstance(value, str) else payload_dict(value)
     question = question_from(payload)
     # chain도 일반 호출과 같은 더미 라벨 기본값과 정책 검증을 사용합니다.
-    label = payload.get("classification_label", DUMMY_LABEL)
+    label = label_from(payload)
     return {
         "question": question,
         "classification_label": label,
@@ -372,41 +465,29 @@ def read_cases():
     # 개발 입력 파일이 없는 환경에서도 compare의 입력 구조를 확인할 수 있게 합니다.
     if not INPUT_PATH.exists():
         return SAMPLE_CASES
-    # UTF-8 BOM을 허용하고 빈 줄은 건너뛰며 나머지는 각각 JSON 객체로 읽습니다.
-    return [
-        json.loads(line)
-        for line in INPUT_PATH.read_text(encoding="utf-8-sig").splitlines()
-        if line.strip()
-    ]
+    # 회사 자료와 같은 JSONL 읽기 규칙(BOM 허용, 빈 줄·잘못된 줄 제외)을 사용합니다.
+    return read_jsonl(INPUT_PATH)
 
 
 def run_comparison():
-    """입력 사례마다 네 모델을 병렬 호출해 비교 JSONL을 새로 작성합니다."""
-    # 기존 결과를 덮어쓰지 않도록, 결과가 있으면 실행을 시작하기 전에 중단합니다.
-    if COMPARISON_PATH.exists():
-        raise FileExistsError(f"비교 결과가 이미 있습니다: {COMPARISON_PATH}")
-    # 비교 체인에서 API 키가 필요한 OpenAI 키만 병렬 호출 전에 확보합니다.
+    """입력 사례마다 네 모델을 병렬 호출해 새 비교 JSONL 파일에 저장합니다."""
     ensure_api_key("openai")
-    # 입력 파일이나 샘플 사례가 생기기 전에 결과 폴더를 미리 준비합니다.
     COMPARISON_PATH.parent.mkdir(parents=True, exist_ok=True)
-    # 네 모델 branch를 가진 병렬 체인을 한 번 만들고 모든 사례에 재사용합니다.
     chain = create_comparison_chain()
-    # 결과 파일은 신규 생성 모드로 열어 기존 파일을 이어 쓰지 않습니다.
-    with COMPARISON_PATH.open("w", encoding="utf-8") as stream:
-        # 한 입력 사례는 한 번의 invoke에서 네 모델 branch에 동시에 전달됩니다.
+    run_id = uuid.uuid4().hex
+    run_started_at = datetime.now(UTC).isoformat()
+    with COMPARISON_PATH.open("x", encoding="utf-8") as stream:
         for case in read_cases():
-            # invoke는 전처리한 뒤 네 모델 호출이 모두 끝날 때까지 기다립니다.
             results = chain.invoke(case)
-            # 출력 순서는 고정해 병렬 실행이어도 JSONL 레코드 순서를 재현할 수 있습니다.
             for provider in ("ollama", "openai", "deepseek", "kimi"):
                 model_result = results[provider]
-                # 비교에 필요한 질문과 제공자 결과만 골라 JSONL 레코드로 만듭니다.
                 record = {
+                    "run_id": run_id,
+                    "run_started_at": run_started_at,
                     "id": case.get("id"),
                     "question": results["question"],
                     "classification_label": results["classification_label"],
                     **{
-                        # finish_reason 등 비교 화면에 필요하지 않은 필드는 이 파일에서 생략합니다.
                         key: model_result[key]
                         for key in (
                             "provider",
@@ -414,13 +495,12 @@ def run_comparison():
                             "text",
                             "usage",
                             "latency_seconds",
+                            "finish_reason",
                             "error",
                         )
                     },
                 }
-                # 사례-제공자 조합별로 한 줄씩 즉시 씁니다.
                 stream.write(json.dumps(record, ensure_ascii=False) + "\n")
-    # 사용자가 저장 위치를 바로 확인할 수 있도록 최종 경로를 출력합니다.
     print("저장 위치:", COMPARISON_PATH)
 
 
