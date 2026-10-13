@@ -1,6 +1,7 @@
 # Jev API로 질문 분류 및 CSV 평가 (별도 학습 없음)
 
 import argparse
+import csv
 import hashlib
 import json
 import os
@@ -100,6 +101,27 @@ def classify_question(question: str) -> str:
     return request_classification(question)["answers"]["category"]["choice"]
 
 
+def save_probability_csv(output_dir, predictions):
+    # 원본 확률은 JSON에 유지하고, CSV에서는 퍼센트로 표시
+    fields = ["split", "id", "question", "actual", "predicted", "confidence"]
+    fields += [f"{label}_percent" for label in CATEGORIES]
+    with (output_dir / "prediction_probabilities.csv").open(
+        "w", encoding="utf-8-sig", newline=""
+    ) as file:
+        writer = csv.DictWriter(file, fieldnames=fields)
+        writer.writeheader()
+        for prediction in predictions:
+            row = {field: prediction.get(field, "") for field in fields[:6]}
+            probabilities = prediction.get("probabilities") or {}
+            for label in CATEGORIES:
+                probability = probabilities.get(label)
+                # API에서 확률을 주지 않았다면 빈 칸으로 남기기
+                row[f"{label}_percent"] = (
+                    round(probability * 100, 2) if probability is not None else ""
+                )
+            writer.writerow(row)
+
+
 ##### 검증·테스트 CSV 평가 #####
 
 
@@ -139,6 +161,9 @@ def evaluate_csv():
                     "actual": row["label"],
                     "predicted": answer["choice"],
                     "confidence": answer.get("confidence"),
+                    "probabilities": answer.get(
+                        "probabilities"
+                    ),  # 카테고리별 확률 (0~1)
                     "model": result.get("model"),
                     "elapsed_ms": elapsed_ms,
                 }
@@ -196,6 +221,7 @@ def evaluate_csv():
             json.dumps(content, ensure_ascii=False, indent=2), encoding="utf-8"
         )
     output = write_report(MODEL_FOLDER, report)
+    save_probability_csv(output_dir, predictions_log)
     write_comparison()
     print("HTML 보고서:", output)
 
@@ -211,6 +237,23 @@ if __name__ == "__main__":
     if args.evaluate:
         evaluate_csv()
     else:
-        category = classify_question(QUESTION)
+        result = request_classification(QUESTION)
+        answer = result["answers"]["category"]
+        # 질문 하나만 실행해도 원본 확률을 저장
+        prediction = {
+            "question": QUESTION,
+            "predicted": answer["choice"],
+            "confidence": answer.get("confidence"),
+            "probabilities": answer.get("probabilities"),
+            "model": result.get("model"),
+        }
+        output_dir = report_dir(MODEL_FOLDER)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        (output_dir / "single_prediction.json").write_text(
+            json.dumps(prediction, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
         print("질문:", QUESTION)
-        print("분류:", category)
+        print("분류:", answer["choice"])
+        for label, probability in (answer.get("probabilities") or {}).items():
+            print(f"{label}: {probability:.2%}")
+        print("저장 위치:", output_dir / "single_prediction.json")
