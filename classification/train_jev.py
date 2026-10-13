@@ -175,7 +175,7 @@ def evaluate_csv():
         },
         "validation": scores["validation"],
         "test": scores["test"],
-        "model_size_mib": None,  # APIモデルの重みはローカルに保存しない
+        "model_size_mib": None,  # API 모델의 가중치는 로컬에 저장하지 않음
         "benchmark": {
             "mode": "api",
             "load_seconds": None,
@@ -183,7 +183,7 @@ def evaluate_csv():
             "median_ms": statistics.median(durations),
             "p95_ms": float(np.percentile(durations, 95)),
             "samples": len(durations),
-            "process_rss_mib": None,  # サービス側のメモリ使用量は測れない
+            "process_rss_mib": None,  # 서비스 측의 메모리 사용량은 측정할 수 없음
         },
     }
     output_dir = report_dir(MODEL_FOLDER)
