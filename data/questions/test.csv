@@ -1,0 +1,61 @@
+id,text,label,group_id,source
+department-IT-019-v1,업무용 API 인증키를 발급받는 절차를 알려 주세요.,it,department-IT-019,synthetic-ko:ieum-department-v2
+department-재무-019-v2,지출 항목을 회계 계정으로 구분하는 방법을 설명해 주세요.,finance,department-재무-019,synthetic-ko:ieum-department-v2
+department-총무-020-v1,구내식당 운영 시간과 이용 방법을 알려 주세요.,general_affairs,department-총무-020,synthetic-ko:ieum-department-v2
+department-재무-021-v1,퇴직금 지급 일정과 계산 기준을 알려 주세요.,finance,department-재무-021,synthetic-ko:ieum-department-v2
+department-IT-023-v2,회사 업무 서비스의 장애 현황을 확인하는 방법을 알려 주세요.,it,department-IT-023,synthetic-ko:ieum-department-v2
+department-재무-024-v2,거래처 미수금 확인과 정산 안내를 찾아 주세요.,finance,department-재무-024,synthetic-ko:ieum-department-v2
+department-재무-022-v2,월말 회계 결산을 위한 비용 자료 제출 방법을 설명해 주세요.,finance,department-재무-022,synthetic-ko:ieum-department-v2
+department-None-020-v1,집에서 키울 화분을 추천해 주세요.,other,department-None-020,synthetic-ko:ieum-department-v2
+department-None-024-v1,아직 질문을 정하지 못했어요.,other,department-None-024,synthetic-ko:ieum-department-v2
+department-None-023-v1,우주를 배경으로 상상 이야기를 써 주세요.,other,department-None-023,synthetic-ko:ieum-department-v2
+department-인사-022-v2,사내 가족돌봄휴가 신청 안내를 요약해 주세요.,hr,department-인사-022,synthetic-ko:ieum-department-v2
+department-None-022-v2,가족 저녁 모임에 어울리는 식당을 골라 주세요.,other,department-None-022,synthetic-ko:ieum-department-v2
+department-인사-020-v1,출산휴가 신청 방법과 기간 기준을 알려 주세요.,hr,department-인사-020,synthetic-ko:ieum-department-v2
+department-총무-022-v2,사내 공간 이전에 필요한 총무 지원 안내를 요약해 주세요.,general_affairs,department-총무-022,synthetic-ko:ieum-department-v2
+department-재무-019-v1,회사 비용의 계정과목을 선택하는 기준을 알려 주세요.,finance,department-재무-019,synthetic-ko:ieum-department-v2
+department-None-024-v2,무엇을 물어볼지는 모르겠는데 도와줘요.,other,department-None-024,synthetic-ko:ieum-department-v2
+department-None-019-v1,개인 캠핑에 가져갈 물품을 추천해 주세요.,other,department-None-019,synthetic-ko:ieum-department-v2
+department-인사-020-v2,직원의 출산휴가 사용 요건을 설명해 주세요.,hr,department-인사-020,synthetic-ko:ieum-department-v2
+department-총무-021-v2,회의 공간 가구 수리 요청 절차를 알려 주세요.,general_affairs,department-총무-021,synthetic-ko:ieum-department-v2
+department-IT-022-v1,회사 컴퓨터를 원격으로 접속할 때 보안 기준은 무엇인가요?,it,department-IT-022,synthetic-ko:ieum-department-v2
+department-IT-024-v2,업무 PC를 비울 때 적용하는 화면 보안 규칙을 요약해 주세요.,it,department-IT-024,synthetic-ko:ieum-department-v2
+department-재무-023-v1,사업 비용의 현금영수증 처리 기준은 무엇인가요?,finance,department-재무-023,synthetic-ko:ieum-department-v2
+department-재무-024-v1,매출 입금이 누락되었을 때 확인하는 재무 절차는 무엇인가요?,finance,department-재무-024,synthetic-ko:ieum-department-v2
+department-재무-023-v2,업무용 현금영수증의 회계 등록 절차를 알려 주세요.,finance,department-재무-023,synthetic-ko:ieum-department-v2
+department-IT-024-v1,회사 화면 잠금과 자동 로그아웃 정책을 알려 주세요.,it,department-IT-024,synthetic-ko:ieum-department-v2
+department-재무-022-v1,회사 결산 자료를 제출하는 기한을 알려 주세요.,finance,department-재무-022,synthetic-ko:ieum-department-v2
+department-총무-022-v1,회사 사무실 이사 때 물품을 옮기는 절차를 알려 주세요.,general_affairs,department-총무-022,synthetic-ko:ieum-department-v2
+department-IT-019-v2,사내 서비스 API 키 관리 규정을 확인하고 싶어요.,it,department-IT-019,synthetic-ko:ieum-department-v2
+department-IT-022-v2,업무 PC 원격 접속 허용 조건을 설명해 주세요.,it,department-IT-022,synthetic-ko:ieum-department-v2
+department-총무-024-v1,업무용 장비의 자산 인수 확인서를 작성하는 방법을 알려 주세요.,general_affairs,department-총무-024,synthetic-ko:ieum-department-v2
+department-None-022-v1,개인적으로 갈 맛집을 추천해 주세요.,other,department-None-022,synthetic-ko:ieum-department-v2
+department-인사-024-v2,사내 인턴 전환 평가와 안내 절차를 요약해 주세요.,hr,department-인사-024,synthetic-ko:ieum-department-v2
+department-재무-021-v2,퇴직 급여 정산의 재무 안내를 요약해 주세요.,finance,department-재무-021,synthetic-ko:ieum-department-v2
+department-IT-021-v1,업무용 클라우드 계정이 잠겼을 때 어떻게 복구하나요?,it,department-IT-021,synthetic-ko:ieum-department-v2
+department-재무-020-v2,월급 수령 계좌 변경에 필요한 재무 서류를 알려 주세요.,finance,department-재무-020,synthetic-ko:ieum-department-v2
+department-None-021-v1,친구와 다퉜는데 화해 문자를 써 주세요.,other,department-None-021,synthetic-ko:ieum-department-v2
+department-None-021-v2,개인적인 친구 관계 고민을 들어줄래요?,other,department-None-021,synthetic-ko:ieum-department-v2
+department-None-019-v2,회사와 무관한 주말 캠핑 준비물을 알려 주세요.,other,department-None-019,synthetic-ko:ieum-department-v2
+department-인사-019-v2,사내 직급 승격 평가 규정을 요약해 주세요.,hr,department-인사-019,synthetic-ko:ieum-department-v2
+department-총무-020-v2,회사 식당의 시설 이용 안내를 요약해 주세요.,general_affairs,department-총무-020,synthetic-ko:ieum-department-v2
+department-인사-019-v1,직원의 승진 심사 기준과 절차를 알려 주세요.,hr,department-인사-019,synthetic-ko:ieum-department-v2
+department-총무-019-v2,휴일에 사무 공간에 출입하는 시설 기준이 궁금해요.,general_affairs,department-총무-019,synthetic-ko:ieum-department-v2
+department-IT-023-v1,사내 시스템 장애 공지는 어디서 확인하나요?,it,department-IT-023,synthetic-ko:ieum-department-v2
+department-인사-023-v2,직원 개인 정보 수정 절차를 설명해 주세요.,hr,department-인사-023,synthetic-ko:ieum-department-v2
+department-총무-024-v2,회사 자산 지급과 반납 대장 관리 절차를 설명해 주세요.,general_affairs,department-총무-024,synthetic-ko:ieum-department-v2
+department-IT-021-v2,회사 클라우드 서비스 로그인 잠금 해제 절차를 알려 주세요.,it,department-IT-021,synthetic-ko:ieum-department-v2
+department-총무-021-v1,사내 회의실의 의자와 책상 파손을 접수하는 방법은 무엇인가요?,general_affairs,department-총무-021,synthetic-ko:ieum-department-v2
+department-인사-022-v1,가족돌봄휴가를 사용할 수 있는 조건은 무엇인가요?,hr,department-인사-022,synthetic-ko:ieum-department-v2
+department-총무-023-v1,사무실 폐기 비품을 반납하는 방법을 알려 주세요.,general_affairs,department-총무-023,synthetic-ko:ieum-department-v2
+department-인사-024-v1,인턴의 정규직 전환 심사 기준을 알려 주세요.,hr,department-인사-024,synthetic-ko:ieum-department-v2
+department-재무-020-v1,급여 지급 계좌를 변경하려면 어떤 정산 절차가 필요한가요?,finance,department-재무-020,synthetic-ko:ieum-department-v2
+department-None-023-v2,개인 창작용으로 우주 여행 소설을 만들어 주세요.,other,department-None-023,synthetic-ko:ieum-department-v2
+department-IT-020-v1,회사에서 업무 파일을 암호화하는 기준을 알려 주세요.,it,department-IT-020,synthetic-ko:ieum-department-v2
+department-IT-020-v2,사내 자료 암호화 도구 사용 안내를 요약해 주세요.,it,department-IT-020,synthetic-ko:ieum-department-v2
+department-인사-023-v1,인사 기록의 주소와 연락처를 변경하는 방법을 알려 주세요.,hr,department-인사-023,synthetic-ko:ieum-department-v2
+department-총무-019-v1,회사 사무실 출입 시간과 야간 이용 규칙을 알려 주세요.,general_affairs,department-총무-019,synthetic-ko:ieum-department-v2
+department-인사-021-v1,사내 교육비 복지 지원 대상은 어떻게 정해지나요?,hr,department-인사-021,synthetic-ko:ieum-department-v2
+department-총무-023-v2,사용하지 않는 회사 가구와 문구의 회수 절차가 궁금해요.,general_affairs,department-총무-023,synthetic-ko:ieum-department-v2
+department-None-020-v2,개인 취미로 기르기 쉬운 식물이 궁금해요.,other,department-None-020,synthetic-ko:ieum-department-v2
+department-인사-021-v2,직원 역량 개발 교육 지원 조건을 확인하고 싶어요.,hr,department-인사-021,synthetic-ko:ieum-department-v2

@@ -24,6 +24,8 @@ token.json
 *.key
 
 # Local databases, logs, and model weights
+employees.jsonl
+documents.jsonl
 *.db
 *.sqlite
 *.sqlite3
@@ -35,6 +37,12 @@ logs/
 *.safetensors
 *.onnx
 *.gguf
+
+# Generated evaluation reports
+/classification/result/
+
+# Generated models and tokenizers
+/classification/model/
 
 # Operating system files
 .DS_Store

@@ -1,0 +1,31 @@
+id,text,label,group_id,source
+department-인사-001-v1,연차를 신청하는 절차를 알려 주세요.,hr,department-인사-001,synthetic-ko:ieum-department-v2
+department-IT-001-v1,회사 계정 비밀번호를 잊었는데 재설정 방법을 알려 주세요.,it,department-IT-001,synthetic-ko:ieum-department-v2
+department-재무-001-v6,출장비 정산 안내를 간단히 정리해 줘.,finance,department-재무-001,synthetic-ko:ieum-department-v2
+department-IT-001-v2,사내 계정 암호를 바꾸는 절차가 어떻게 되나요?,it,department-IT-001,synthetic-ko:ieum-department-v2
+department-총무-001-v1,회의실을 예약하는 방법과 이용 규칙을 알려 주세요.,general_affairs,department-총무-001,synthetic-ko:ieum-department-v2
+department-재무-001-v4,출장비 청구할 때 영수증 말고 뭐가 필요한가요?,finance,department-재무-001,synthetic-ko:ieum-department-v2
+department-인사-001-v6,반차도 연차랑 같은 방식으로 신청하나요?,hr,department-인사-001,synthetic-ko:ieum-department-v2
+department-인사-001-v3,다음 주에 연차 쓰려는데 어디서 신청해요?,hr,department-인사-001,synthetic-ko:ieum-department-v2
+department-IT-001-v4,사내 계정 비밀번호 초기화는 누구한테 요청하면 돼요?,it,department-IT-001,synthetic-ko:ieum-department-v2
+department-None-001-v3,"안녕, 처음 왔어.",other,department-None-001,synthetic-ko:ieum-department-v2
+department-None-001-v5,좋은 아침이에요.,other,department-None-001,synthetic-ko:ieum-department-v2
+department-None-001-v6,안녕하세요. 잠깐 이야기해도 돼요?,other,department-None-001,synthetic-ko:ieum-department-v2
+department-IT-001-v5,비밀번호 재설정 페이지가 어디에 있어요?,it,department-IT-001,synthetic-ko:ieum-department-v2
+department-총무-001-v2,사내 회의 공간 예약 절차를 확인하고 싶어요.,general_affairs,department-총무-001,synthetic-ko:ieum-department-v2
+department-인사-001-v5,휴가 승인받는 순서가 어떻게 돼요?,hr,department-인사-001,synthetic-ko:ieum-department-v2
+department-총무-001-v4,회의실 예약 전에 확인해야 할 규칙이 있나요?,general_affairs,department-총무-001,synthetic-ko:ieum-department-v2
+department-IT-001-v6,회사 계정 암호 변경 안내 좀 찾아줘.,it,department-IT-001,synthetic-ko:ieum-department-v2
+department-None-001-v1,"안녕하세요, 만나서 반가워요.",other,department-None-001,synthetic-ko:ieum-department-v2
+department-총무-001-v6,회의실 예약 취소는 어떻게 해요?,general_affairs,department-총무-001,synthetic-ko:ieum-department-v2
+department-총무-001-v3,내일 회의실 쓰려는데 어디서 예약하나요?,general_affairs,department-총무-001,synthetic-ko:ieum-department-v2
+department-재무-001-v5,출장 경비를 언제까지 제출해야 하나요?,finance,department-재무-001,synthetic-ko:ieum-department-v2
+department-인사-001-v2,우리 회사 휴가 신청 규정을 요약해 주세요.,hr,department-인사-001,synthetic-ko:ieum-department-v2
+department-재무-001-v2,업무 출장 비용을 청구하는 회계 절차를 설명해 주세요.,finance,department-재무-001,synthetic-ko:ieum-department-v2
+department-재무-001-v3,출장 다녀왔는데 비용 정산은 어디서 해요?,finance,department-재무-001,synthetic-ko:ieum-department-v2
+department-None-001-v2,안녕! 오늘도 반가워.,other,department-None-001,synthetic-ko:ieum-department-v2
+department-총무-001-v5,회사 회의실 이용 시간 제한이 있나요?,general_affairs,department-총무-001,synthetic-ko:ieum-department-v2
+department-재무-001-v1,출장비 정산에 필요한 증빙 서류를 알려 주세요.,finance,department-재무-001,synthetic-ko:ieum-department-v2
+department-IT-001-v3,회사 로그인 비번 까먹었어요. 어디서 다시 설정하죠?,it,department-IT-001,synthetic-ko:ieum-department-v2
+department-인사-001-v4,연차 신청은 며칠 전에 해야 하나요?,hr,department-인사-001,synthetic-ko:ieum-department-v2
+department-None-001-v4,반가워! 오늘도 잘 부탁해.,other,department-None-001,synthetic-ko:ieum-department-v2
