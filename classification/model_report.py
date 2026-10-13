@@ -26,7 +26,7 @@ CPU_THREADS = 4
 
 
 def report_dir(kind):
-    return RESULT_DIR / ("bert" if kind == "bert" else "tf-idf")
+    return RESULT_DIR / ("tf-idf" if kind == "tfidf_lr" else kind)
 
 
 def memory_mib():
@@ -79,6 +79,17 @@ def table(headers, rows):
 
 
 def page(title, subtitle, body, root_prefix=""):
+    # 비교 페이지에는 모든 모델 메뉴, 상세 페이지에는 비교 메뉴만 표시
+    links = [("comparison.html", "모델 비교")]
+    if not root_prefix:
+        for metrics in sorted(RESULT_DIR.glob("*/metrics.json")):
+            folder = metrics.parent.name
+            name = "TF-IDF + 로지스틱 회귀" if folder == "tf-idf" else folder.upper()
+            links.append((f"{folder}/report.html", name))
+    navigation = "".join(
+        f'<a href="{escape(root_prefix + href, quote=True)}">{escape(name)}</a>'
+        for href, name in links
+    )
     return f"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,8 +115,7 @@ footer{{color:#657389;font-size:13px;margin-top:24px}}
 @media print{{body{{background:white}}nav{{display:none}}section,.card{{break-inside:avoid}}main{{max-width:none;padding:0}}}}
 </style></head><body><main><header><div class="eyebrow">SANAEBI · MODEL EVALUATION</div>
 <h1>{escape(title)}</h1><p class="muted">{escape(subtitle)}</p>
-<nav><a href="{root_prefix}comparison.html">모델 비교</a><a href="{root_prefix}bert/report.html">BERT</a>
-<a href="{root_prefix}tf-idf/report.html">TF-IDF + 로지스틱 회귀</a></nav></header>
+<nav>{navigation}</nav></header>
 {body}<footer>학습 손실 대신 검증 결과로 모델을 선택하고, 테스트 결과는 최종 성능 확인에 사용합니다.</footer>
 </main></body></html>"""
 
@@ -296,10 +306,8 @@ def write_report(kind, report):
 
 def write_comparison():
     reports = []
-    for kind in ["tfidf_lr", "bert"]:
-        path = report_dir(kind) / "metrics.json"
-        if path.is_file():
-            reports.append(json.loads(path.read_text(encoding="utf-8")))
+    for path in sorted(RESULT_DIR.glob("*/metrics.json")):
+        reports.append(json.loads(path.read_text(encoding="utf-8")))
     rows = [
         [
             r["title"],
@@ -330,9 +338,9 @@ def write_comparison():
         )
         + "</section>"
     )
-    if len(reports) == 2 and reports[0]["data_hashes"] != reports[1]["data_hashes"]:
-        body += '<p class="note">두 보고서의 평가 데이터가 다릅니다. 동일한 CSV로 보고서를 다시 생성한 후 비교하세요.</p>'
-    body += "<section><h2>비교할 때 확인할 점</h2><p>모델·설정 선택에는 검증 F1을 사용하고 테스트 점수는 최종 평가로 남깁니다. 비슷한 점수라면 오답 유형, 응답 시간과 자원 사용량을 함께 확인하세요.</p><p>두 모델 모두 CPU·스레드 제한 4·질문 1개 단위로 측정합니다. 각 측정은 별도 프로세스이며 RAM에는 라이브러리 메모리도 포함됩니다.</p></section>"
+    if reports and any(r["data_hashes"] != reports[0]["data_hashes"] for r in reports):
+        body += '<p class="note">보고서의 평가 데이터가 서로 다릅니다. 동일한 CSV로 보고서를 다시 생성한 후 비교하세요.</p>'
+    body += "<section><h2>비교할 때 확인할 점</h2><p>모델·설정 선택에는 검증 F1을 사용하고 테스트 점수는 최종 평가로 남깁니다. 비슷한 점수라면 오답 유형, 응답 시간과 자원 사용량을 함께 확인하세요.</p><p>모든 모델은 CPU·스레드 제한 4·질문 1개 단위로 측정합니다. 각 측정은 별도 프로세스이며 RAM에는 라이브러리 메모리도 포함됩니다.</p></section>"
     (RESULT_DIR / "comparison.html").write_text(
         page(
             "질문 분류 모델 비교",
@@ -345,21 +353,29 @@ def write_comparison():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("kind", choices=["bert", "tfidf_lr"])
+    parser.add_argument(
+        "kind", help="저장 폴더 이름 (bert, koelectra 등) 또는 tfidf_lr"
+    )
     args = parser.parse_args()
+    if Path(args.kind).name != args.kind or args.kind in {".", ".."}:
+        parser.error("모델 폴더 이름만 입력하세요.")
     rows = {split: read_rows(split) for split in ["train", "validation", "test"]}
     if not rows["test"] or not rows["validation"]:
         raise ValueError("검증·테스트 CSV는 비어 있을 수 없습니다.")
     model_path = (
         ROOT
         / "model"
-        / ("bert" if args.kind == "bert" else "tf-idf/tfidf_logistic_regression.joblib")
+        / (
+            "tf-idf/tfidf_logistic_regression.joblib"
+            if args.kind == "tfidf_lr"
+            else args.kind
+        )
     )
     if not model_path.exists():
         raise FileNotFoundError(f"저장된 모델이 없습니다: {model_path}")
     summary_path = (
         model_path / "training_summary.json"
-        if args.kind == "bert"
+        if args.kind != "tfidf_lr"
         else model_path.with_suffix(".json")
     )
     settings = (
@@ -368,7 +384,7 @@ def main():
         else {}
     )
     started = perf_counter()
-    if args.kind == "bert":
+    if args.kind != "tfidf_lr":
         import torch
         from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
@@ -394,7 +410,7 @@ def main():
                 )
             return model.config.id2label[output.logits.argmax(dim=1).item()]
 
-        title = "BERT · 질문 분류"
+        title = f"{args.kind.upper()} · 질문 분류"
     else:
         import joblib
 
