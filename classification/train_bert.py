@@ -17,6 +17,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "questions"
 LABELS = ["it", "hr", "finance", "general_affairs", "other"]
 MODEL_NAME = "klue/bert-base"  # 사용할 한국어 사전학습 BERT
+MODEL_FOLDER = "bert"  # 모델·결과 저장 폴더 이름 (예: bert, koelectra)
 MAX_LENGTH = 192  # 특수 토큰을 포함한 최대 토큰 수
 BATCH_SIZE = 4  # 한 번에 꺼낼 문장 수
 LEARNING_RATES = [2e-5, 5e-5]  # 비교할 학습률: 0.00002, 0.00005
@@ -300,7 +301,7 @@ for label, row in zip(LABELS, test_matrix):
 
 ##### 선택한 모델과 토크나이저 저장 #####
 
-model_dir = Path(__file__).resolve().parent / "model" / "bert"
+model_dir = Path(__file__).resolve().parent / "model" / MODEL_FOLDER
 model_dir.mkdir(parents=True, exist_ok=True)  # 저장 폴더가 없으면 생성
 
 # 최고 검증 점수 시점의 가중치와 모델 설정 저장
@@ -309,6 +310,7 @@ tokenizer.save_pretrained(model_dir)  # 예측할 때 사용할 토크나이저�
 
 training_summary = {
     "model_name": MODEL_NAME,
+    "model_folder": MODEL_FOLDER,
     "labels": LABELS,
     "batch_size": BATCH_SIZE,
     "learning_rate": best_learning_rate,
@@ -332,6 +334,6 @@ print("모델 저장 위치:", model_dir)
 
 # BERT도 별도 CPU 프로세스에서 평가해 TF-IDF와 같은 조건으로 측정
 subprocess.run(
-    [sys.executable, str(Path(__file__).with_name("model_report.py")), "bert"],
+    [sys.executable, str(Path(__file__).with_name("model_report.py")), MODEL_FOLDER],
     check=True,
 )
