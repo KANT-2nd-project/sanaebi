@@ -37,6 +37,12 @@ logs/
 *.onnx
 *.gguf
 
+# Generated evaluation reports
+/classification/result/
+
+# Generated models and tokenizers
+/classification/model/
+
 # Operating system files
 .DS_Store
 Thumbs.db
