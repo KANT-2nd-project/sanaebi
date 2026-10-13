@@ -2,7 +2,10 @@
 
 import csv
 import json
+import subprocess
+import sys
 from pathlib import Path
+from time import perf_counter
 
 import torch
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
@@ -20,6 +23,7 @@ LEARNING_RATES = [2e-5, 5e-5]  # 비교할 학습률: 0.00002, 0.00005
 EPOCHS = 10  # 실험할 전체 학습 데이터 반복 횟수 (최적 횟수는 검증으로 판단)
 SEED = 42  # 새 분류층의 초기 가중치를 재현하기 위한 난수값
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"  # 사용할 장치
+selection_started = perf_counter()  # 데이터 준비부터 후보 학습·선택까지의 시간
 
 ##### 학습·검증·테스트 데이터 읽기 #####
 
@@ -143,6 +147,7 @@ best_score = -1.0  # 첫 번째 검증 결과부터 선택할 수 있도록 초�
 best_learning_rate = None
 best_epoch = None
 best_state = None  # 가장 좋은 시점의 가중치 보관
+trials = []  # 학습률·epoch별 결과를 HTML 표에 표시
 
 # 학습률마다 모델과 optimizer를 새로 준비해 독립적으로 비교
 for learning_rate in LEARNING_RATES:
@@ -231,6 +236,15 @@ for learning_rate in LEARNING_RATES:
         )
         print("검증 정확도:", round(validation_accuracy, 4))
         print("검증 Macro F1:", round(validation_macro_f1, 4))
+        trials.append(
+            {
+                "learning_rate": learning_rate,
+                "epoch": epoch,
+                "train_loss": total_loss / train_count,
+                "validation_accuracy": validation_accuracy,
+                "validation_macro_f1": validation_macro_f1,
+            }
+        )
 
         # 최고 점수가 갱신되면 해당 시점의 가중치를 별도로 복사
         # 동점이면 먼저 선택한 결과 유지
@@ -252,6 +266,7 @@ model.eval()
 print("선택한 학습률:", best_learning_rate)
 print("선택한 epoch:", best_epoch)
 print("최고 검증 Macro F1:", round(best_score, 4))
+selection_seconds = perf_counter() - selection_started
 
 ##### 선택한 모델의 테스트 평가 #####
 
@@ -304,8 +319,19 @@ training_summary = {
     "test_confusion_matrix": test_matrix.tolist(),
     "max_length": MAX_LENGTH,
     "seed": SEED,
+    "training_device": DEVICE,
+    "selection_seconds": selection_seconds,
+    "trials": trials,
 }
 with (model_dir / "training_summary.json").open("w", encoding="utf-8") as file:
     json.dump(training_summary, file, ensure_ascii=False, indent=2)
 
 print("모델 저장 위치:", model_dir)
+
+##### HTML 보고서 생성 #####
+
+# BERT도 별도 CPU 프로세스에서 평가해 TF-IDF와 같은 조건으로 측정
+subprocess.run(
+    [sys.executable, str(Path(__file__).with_name("model_report.py")), "bert"],
+    check=True,
+)

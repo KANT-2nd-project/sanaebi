@@ -1,7 +1,11 @@
 # TF-IDF + 로지스틱 회귀 모델 학습
 
 import csv
+import json
+import subprocess
+import sys
 from pathlib import Path
+from time import perf_counter
 
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -14,7 +18,8 @@ from sklearn.pipeline import make_pipeline
 # 실행하는 위치와 관계없이 프로젝트의 data/questions 폴더를 찾기
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "questions"
 
-LABELS = ["it","hr","finance","general_affairs","other"]
+LABELS = ["it", "hr", "finance", "general_affairs", "other"]
+selection_started = perf_counter()  # 데이터 준비부터 후보 학습·선택까지의 시간
 
 ##### CSV 읽기 #####
 
@@ -79,6 +84,7 @@ c_candidates = [0.1, 0.5, 1.0, 10.0]
 best_classifier = None
 best_c = None
 best_score = -1.0  # F1은 0~1이므로 첫 후보부터 비교 가능
+trials = []  # 각 C 후보의 검증 결과를 HTML 표에 표시
 
 # C는 모델이 학습 데이터에 얼마나 강하게 맞추도록 할지 조절하는 설정
 for c in c_candidates:
@@ -100,6 +106,9 @@ for c in c_candidates:
         zero_division=0,
     )
     print(f"\nC={c}: 검증 정확도={accuracy:.4f}, Macro F1={score:.4f}")
+    trials.append(
+        {"C": c, "validation_accuracy": accuracy, "validation_macro_f1": score}
+    )
 
     # 각 C 후보의 혼동행렬: 행은 실제 정답, 열은 예측
     matrix = confusion_matrix(validation_labels, candidate_predictions, labels=LABELS)
@@ -116,6 +125,7 @@ for c in c_candidates:
 
 print("선택한 C:", best_c)
 print("선택한 모델의 검증 Macro F1:", round(best_score, 4))
+selection_seconds = perf_counter() - selection_started
 
 ##### 테스트 데이터 읽기 #####
 
@@ -163,8 +173,8 @@ for text, actual, predicted in zip(test_texts, test_labels, test_predictions):
 
 ##### 선택한 모델 저장 #####
 
-# classification/model 폴더에 저장하고 파일 이름으로 모델 종류를 구분
-output_dir = Path(__file__).resolve().parent / "model"
+# TF-IDF 모델은 classification/model/tf-idf 폴더에 저장
+output_dir = Path(__file__).resolve().parent / "model" / "tf-idf"
 output_dir.mkdir(parents=True, exist_ok=True)  # 저장 폴더가 없으면 생성
 
 # 학습한 TF-IDF 변환기와 선택한 분류기를 하나로 묶기 (다시 학습하지 않음)
@@ -174,3 +184,28 @@ model = make_pipeline(vectorizer, best_classifier)
 model_file = output_dir / "tfidf_logistic_regression.joblib"
 joblib.dump(model, model_file)  # 재실행하면 같은 경로의 모델을 갱신
 print("모델 저장 위치:", model_file)
+
+##### 학습 설정 기록 및 HTML 보고서 생성 #####
+
+training_summary = {
+    "model_name": "TF-IDF + LogisticRegression",
+    "labels": LABELS,
+    "C": best_c,
+    "analyzer": "char",
+    "ngram_range": [2, 5],
+    "min_df": 1,
+    "class_weight": "balanced",
+    "max_iter": 1000,
+    "seed": 42,
+    "validation_macro_f1": best_score,
+    "selection_seconds": selection_seconds,
+    "trials": trials,
+}
+with model_file.with_suffix(".json").open("w", encoding="utf-8") as file:
+    json.dump(training_summary, file, ensure_ascii=False, indent=2)
+
+# 별도 CPU 프로세스에서 저장 모델을 평가해 두 모델의 비교 조건을 맞추기
+subprocess.run(
+    [sys.executable, str(Path(__file__).with_name("model_report.py")), "tfidf_lr"],
+    check=True,
+)
