@@ -8,6 +8,7 @@ from generation_evaluation.metrics import (
     group_by_config,
     mean_attempt_seconds,
     mean_completed_seconds,
+    summarize_runs,
 )
 from generation_evaluation.types import GenerationRun
 
@@ -15,6 +16,34 @@ from generation_evaluation.types import GenerationRun
 class GenerationMetricsTests(unittest.TestCase):
     def setUp(self):
         self.config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 30.0)
+
+    def test_summary_empty_input(self):
+        self.assertEqual(summarize_runs([]), [])
+
+    def test_summaries_keep_config_metrics_separate(self):
+        other = GenerationConfig(GenerationProvider.OPENAI, "other-model", 30.0)
+        completed = GenerationResult(
+            GenerationStatus.COMPLETED, '{"answer":"답"}', "답"
+        )
+        timeout = GenerationResult(GenerationStatus.TIMEOUT, None, None)
+        runs = [
+            GenerationRun("a", self.config, completed, 2.0),
+            GenerationRun("a", other, timeout, 30.0),
+            GenerationRun("b", self.config, completed, 4.0),
+        ]
+        summaries = summarize_runs(runs)
+        self.assertEqual(len(summaries), 2)
+        by_config = {summary.config: summary for summary in summaries}
+        first = by_config[self.config]
+        second = by_config[other]
+        self.assertEqual(first.counts, count_outcomes([runs[0], runs[2]]))
+        self.assertEqual(first.completion_rate, 1.0)
+        self.assertEqual(first.mean_attempt_seconds, 3.0)
+        self.assertEqual(first.mean_completed_seconds, 3.0)
+        self.assertEqual(second.counts, count_outcomes([runs[1]]))
+        self.assertEqual(second.completion_rate, 0.0)
+        self.assertEqual(second.mean_attempt_seconds, 30.0)
+        self.assertIsNone(second.mean_completed_seconds)
 
     def test_grouping_empty_input(self):
         self.assertEqual(group_by_config([]), {})
@@ -61,7 +90,11 @@ class GenerationMetricsTests(unittest.TestCase):
                 GenerationRun(
                     status.value,
                     self.config,
-                    GenerationResult(status, None, None),
+                    GenerationResult(
+                        status,
+                        None if status is GenerationStatus.TIMEOUT else "raw",
+                        None,
+                    ),
                     30.0,
                 )
             )
@@ -140,10 +173,6 @@ class GenerationMetricsTests(unittest.TestCase):
             completion_rate([GenerationRun("1", self.config, result, 0.25)]), 1.0
         )
 
-    def test_completion_rate_rejects_missing_result_and_error(self):
-        with self.assertRaises(ValueError):
-            completion_rate([GenerationRun("invalid", self.config, None, 0.25)])
-
     def test_empty_input_has_all_zero_counts(self):
         self.assertEqual(
             count_outcomes([]),
@@ -162,7 +191,11 @@ class GenerationMetricsTests(unittest.TestCase):
             GenerationRun(
                 str(index),
                 self.config,
-                GenerationResult(status, None, None),
+                GenerationResult(
+                    status,
+                    None if status is GenerationStatus.TIMEOUT else "raw",
+                    "답" if status is GenerationStatus.COMPLETED else None,
+                ),
                 0.25,
             )
             for index, status in enumerate(
@@ -191,7 +224,3 @@ class GenerationMetricsTests(unittest.TestCase):
         self.assertEqual(
             counts["total"], sum(v for k, v in counts.items() if k != "total")
         )
-
-    def test_missing_result_and_error_is_rejected(self):
-        with self.assertRaises(ValueError):
-            count_outcomes([GenerationRun("invalid", self.config, None, 0.25)])

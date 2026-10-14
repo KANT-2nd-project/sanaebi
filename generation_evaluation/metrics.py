@@ -1,6 +1,6 @@
 from generation.config import GenerationConfig
 from generation.types import GenerationStatus
-from generation_evaluation.types import GenerationRun
+from generation_evaluation.types import GenerationRun, GenerationSummary
 
 
 def count_outcomes(runs: list[GenerationRun]) -> dict[str, int]:
@@ -68,3 +68,22 @@ def group_by_config(
         groups[run.config].append(run)
 
     return groups
+
+
+def summarize_runs(
+    runs: list[GenerationRun],
+) -> list[GenerationSummary]:
+    groups = group_by_config(runs)
+    summaries = []
+
+    for config, config_runs in groups.items():
+        summary = GenerationSummary(
+            config=config,
+            counts=count_outcomes(config_runs),
+            completion_rate=completion_rate(config_runs),
+            mean_attempt_seconds=mean_attempt_seconds(config_runs),
+            mean_completed_seconds=mean_completed_seconds(config_runs),
+        )
+        summaries.append(summary)
+
+    return summaries
