@@ -1,9 +1,12 @@
-"""실행 기록을 자동 점검한다: 프롬프트 점검 P1~P5, 응답 점검 A1~A6, 모델별 실측값.
+"""실행 기록을 코드로 점검한다: 코드가 판정하는 지침 4개, 실행 점검 P1~P5, 모델별 실측값.
 
 LLM을 다시 부르지 않고 기록만 읽으므로 비용이 없고, 같은 기록이면 결과도 항상 같다.
-점검 결과 ok: True = 통과, False = 실패(또는 경고), None = 해당 없음
-기준은 docs/generation-evaluation.md B-5다. SEARCH_KNOWLEDGE는 회사 문서 전체로 LLM 답변을 하고,
-CLARIFY·UNSUPPORTED는 LLM 없는 고정 안내로 본다 (P1, 기준 문서의 [결정 필요] 항목).
+판정 값 ok: True = 통과, False = 실패, None = 판정하지 않음
+지침과 판정 주체는 docs/generation-evaluation.md 1장, 추가 비교는 2장을 따른다.
+심판 LLM이 판정하는 지침은 judge.py, 사람 확인과 지침별 최종 판정은 scoring.py가 맡는다.
+지침은 문서 답변 경로(SEARCH_KNOWLEDGE)에서 오류 없이 끝난 호출만 판정한다.
+실행 점검 P1~P5는 평가가 의도대로 실행됐는지 본다: 호출 경로, 문서·질문이 프롬프트에 들어갔는지,
+채점 정보가 새지 않았는지, 프롬프트가 num_ctx를 넘지 않았는지.
 모델별 집계는 모델 설정의 비교 이름(model_name)으로 묶는다.
 """
 
@@ -15,21 +18,39 @@ from pydantic import BaseModel, ConfigDict, ValidationError, field_validator
 
 from .run import ANSWER_ROUTE, GRADING_FIELDS
 
-FAIL, WARN = "fail", "warn"
+CODE, JUDGE = "code", "judge"
+# 1장 지침: 키 → (지침, 판정 주체). 보고서도 이 순서로 쓴다
+GUIDELINES = {
+    "json_format": ("출력 형식을 JSON으로 준다", CODE),
+    "company_data_only": ("답은 회사 데이터 안에서 알 수 있는 정보로만 준다", JUDGE),
+    "tone_template": ("응대 말투와 상황별 안내 템플릿 가이드라인을 따른다", JUDGE),
+    "answers_question": ("질문에 답한다", JUDGE),
+    "document_titles": ("근거 문서의 제목을 밝힌다", CODE),
+    "no_false_completion": ("신청·변경·조회를 처리한 것처럼 말하지 않는다", JUDGE),
+    "korean_only": ("한국어로만 답한다", CODE),
+    "no_long_copy": ("문서를 길게 베끼지 않고 질문에 맞게 요약한다", CODE),
+}
+CODE_GUIDELINES = tuple(k for k, (_, by) in GUIDELINES.items() if by == CODE)
+JUDGE_GUIDELINES = tuple(k for k, (_, by) in GUIDELINES.items() if by == JUDGE)
 PROMPT_CODES = ("P1", "P2", "P3", "P4", "P5")
-ANSWER_CODES = ("A1", "A2", "A3", "A4", "A5", "A6")
-WARN_CODES = ("A4", "A5", "A6")
-# 사용 가능 답변의 자동 점검 조건 (B-4)
-USABLE_AUTO_CODES = ("A1", "A2", "A3")
 HANDLING_LABELS = {"llm": "LLM 문서 답변", "fixed": "LLM 없는 안내"}
 
-NUMBER_PATTERN = re.compile(r"\d+")
-# A5: 근거 표기 번호 [문서 N]은 숫자 주장이 아니므로 숫자를 찾기 전에 지운다
-CITATION_PATTERN = re.compile(r"\[문서\s*\d+\]")
-# A6: 실제로 처리한 것처럼 말하는 표현 (생성 모델은 신청·승인을 실행하지 않는다)
-CLAIM_PATTERN = re.compile(
-    r"(처리|접수|신청|완료|승인|등록|발급|변경|재설정)(했|하였|되었|됐)(습니다|어요)"
+# 호출 결과 (2장 호출 실패율). 시간 초과는 예외 이름으로 가린다 (ReadTimeout, APITimeoutError 등)
+FAILURE_STATUSES = ("error", "timeout", "empty")
+TIMEOUT_PATTERN = re.compile(r"time\s*out", re.IGNORECASE)
+
+# 베끼기 기준 길이 (공백을 하나로 줄인 글자 수). 1장대로 테스트하면서 정하고 --copy-limit으로 바꾼다
+COPY_LIMIT_CHARS = 100
+# 영어 문장: 라틴 문자 단어가 이만큼 이어지면 문장으로 본다 (메뉴·제품 이름은 보통 이보다 짧다)
+ENGLISH_RUN_WORDS = 5
+URL_PATTERN = re.compile(
+    r"(?:https?://|www\.)\S+|\S+\.(?:com|co\.kr|kr|net|org|io)(?:/\S*)?", re.IGNORECASE
 )
+FOREIGN_SCRIPT = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]+")
+ENGLISH_RUN = re.compile(
+    rf"[A-Za-z][A-Za-z'-]*(?:[\s,.:;!?()]+[A-Za-z][A-Za-z'-]*){{{ENGLISH_RUN_WORDS - 1},}}"
+)
+DETAIL_CHARS = 60
 
 
 class AnswerPayload(BaseModel):
@@ -90,15 +111,12 @@ def answer_text(record):
     return payload.text
 
 
-def check(code, ok, detail="", level=FAIL):
-    return {"code": code, "ok": ok, "level": level, "detail": detail}
+def check(code, ok, detail=""):
+    return {"code": code, "ok": ok, "detail": detail}
 
 
 def not_applicable(codes, reason):
-    return [
-        check(code, None, reason, WARN if code in WARN_CODES else FAIL)
-        for code in codes
-    ]
+    return [check(code, None, reason) for code in codes]
 
 
 def expected_handling(record):
@@ -151,7 +169,7 @@ def prompt_checks(record):
     if wanted is None:
         p1 = check("P1", None, "expected_route 없음")
     elif handling is None:
-        p1 = check("P1", None, "모델 호출 전에 실행기 오류 (A1에서 판정)")
+        p1 = check("P1", None, "모델 호출 전에 실행기 오류 (호출 실패로 집계)")
     elif handling == wanted:
         p1 = check("P1", True)
     else:
@@ -212,85 +230,161 @@ def prompt_checks(record):
     return [p1, p2, p3, p4, p5]
 
 
-def answer_checks(record):
-    """A1~A6: LLM 응답을 본다. LLM을 부르지 않은 기록은 P1(호출 경로)로만 판정한다."""
-    if not record.get("llm_called") and not record.get("error"):
-        return not_applicable(ANSWER_CODES, "LLM 미호출")
+def squash(text):
+    return re.sub(r"\s+", " ", text or "").strip()
 
-    if record.get("error"):
-        a1 = check("A1", False, f"호출 오류: {record['error']}")
-        return [a1, *not_applicable(ANSWER_CODES[1:], "A1 실패로 점검 안 함")]
-    a1 = check("A1", True)
 
-    complete = bool(record.get("generation_complete"))
-    reason = record.get("finish_reason")
-    a2 = check(
-        "A2",
-        complete,
-        "" if complete else f"생성이 끝나지 않음 (finish_reason={reason})",
-    )
+def short(text, limit=DETAIL_CHARS):
+    return text if len(text) <= limit else text[:limit] + "…"
 
-    valid = record_payload(record) is not None
-    a3 = check("A3", valid, "" if valid else "text JSON 형식이 아님")
 
-    content = answer_text(record)
-
-    # A4 핵심 정보 (경고): required_points가 응답에 모두 있어야 한다 (글자 그대로 찾는다)
-    required = record.get("required_points", [])
-    if not required:
-        a4 = check("A4", None, "required_points 없음", WARN)
-    else:
-        missing = [point for point in required if point not in content]
-        a4 = check(
-            "A4",
-            not missing,
-            f"빠진 핵심 정보: {', '.join(missing)}" if missing else "",
-            WARN,
+def structured_payload(record):
+    """현재 생성기의 구조화 응답(answer·referenced_documents·note). 없거나 깨졌으면 None."""
+    structured = record.get("structured_response")
+    try:
+        if structured is not None:
+            return StructuredAnswerPayload.model_validate(structured)
+        return StructuredAnswerPayload.model_validate_json(
+            record.get("response_text") or ""
         )
+    except ValidationError:
+        return None
 
-    # A5 근거 없는 숫자 (경고): 근거 문서와 질문 어디에도 없는 숫자 (근거 표기 번호 제외)
-    reference = " ".join(
-        [*(doc["text"] for doc in record.get("evidence") or []), record["question"]]
+
+def call_status(record):
+    """호출 결과: "answered"(답변 있음), "empty"(빈 답변), "timeout", "error".
+
+    구조화 응답이면 answer가 비었는지 보고, 아니면 응답 원문이 비었는지 본다.
+    """
+    error = record.get("error")
+    if error:
+        return "timeout" if TIMEOUT_PATTERN.search(error) else "error"
+    payload = structured_payload(record)
+    text = payload.answer if payload else answer_text(record)
+    return "answered" if text.strip() else "empty"
+
+
+def guideline_target(record):
+    """지침 판정 대상: 문서 답변 경로에서 오류·시간 초과 없이 끝난 호출 (빈 답변 포함)."""
+    return record.get("expected_route") == ANSWER_ROUTE and call_status(record) in (
+        "answered",
+        "empty",
     )
-    allowed = set(NUMBER_PATTERN.findall(reference))
-    numbers = NUMBER_PATTERN.findall(CITATION_PATTERN.sub(" ", content))
-    unsupported = sorted(set(numbers) - allowed, key=int)
-    detail = f"근거·질문에 없는 숫자: {', '.join(unsupported)}" if unsupported else ""
-    a5 = check("A5", not unsupported, detail, WARN)
-
-    # A6 처리 완료 주장 (경고)
-    claims = sorted({match.group(0) for match in CLAIM_PATTERN.finditer(content)})
-    a6 = check(
-        "A6", not claims, f"처리 완료 표현: {', '.join(claims)}" if claims else "", WARN
-    )
-    return [a1, a2, a3, a4, a5, a6]
 
 
-def evaluate_record(record):
-    checks = prompt_checks(record) + answer_checks(record)
-    failed = [c["code"] for c in checks if c["ok"] is False and c["level"] == FAIL]
-    warnings = [c["code"] for c in checks if c["ok"] is False and c["level"] == WARN]
+def verdict(ok, detail=""):
+    return {"ok": ok, "detail": detail}
+
+
+def named_titles(record, text):
+    """답변이 밝힌 문서 제목: 구조화 응답의 referenced_documents와 답변 본문에 나온 회사 문서 제목."""
+    payload = structured_payload(record)
+    named = {squash(t) for t in payload.referenced_documents} if payload else set()
+    named |= {
+        doc["title"]
+        for doc in record.get("evidence") or []
+        if doc.get("title") and doc["title"] in text
+    }
+    return named - {""}
+
+
+def title_check(record, text):
+    """밝힌 문서 제목이 정답 근거 문서와 맞는가: 정답 문서 제목이 있고, 없는 문서 제목은 없어야 한다."""
+    expected = record.get("expected_document_ids")
+    if not expected:
+        reason = "정답 문서 미지정" if expected is None else "근거 문서가 없는 질문"
+        return verdict(None, reason)
+    titles = {doc["document_id"]: doc["title"] for doc in record.get("evidence") or []}
+    wanted = {titles[i] for i in expected if i in titles}
+    named = named_titles(record, text)
+    if not named:
+        return verdict(False, "밝힌 문서 제목 없음")
+    unknown = sorted(named - set(titles.values()))
+    if unknown:
+        return verdict(False, f"회사 문서에 없는 제목: {', '.join(unknown)}")
+    if not named & wanted:
+        return verdict(
+            False, f"정답 문서 제목이 없음 (밝힌 제목: {', '.join(sorted(named))})"
+        )
+    return verdict(True)
+
+
+def korean_check(record, text):
+    """중국어·일본어 문자나 영어 문장이 섞였는가. 주소와 회사 문서 제목은 빼고 본다."""
+    rest = URL_PATTERN.sub(" ", text)
+    for doc in record.get("evidence") or []:
+        if doc.get("title"):
+            rest = rest.replace(doc["title"], " ")
+    found = FOREIGN_SCRIPT.findall(rest)
+    found += [match.group(0) for match in ENGLISH_RUN.finditer(rest)]
+    if not found:
+        return verdict(True)
+    return verdict(False, f"다른 언어: {short(' / '.join(found))}")
+
+
+def longest_copy(text, sources):
+    """답변과 문서가 그대로 겹치는 가장 긴 부분 (글자 수, 그 부분). 주소는 빼고, 공백은 하나로 본다.
+
+    문서 경계를 넘는 겹침은 세지 않는다. 시작 위치마다 지금까지 찾은 길이보다 긴 겹침만 찾는다.
+    """
+    answer = squash(URL_PATTERN.sub(" ", text))
+    corpus = "\0".join(squash(source) for source in sources)
+    best, start = 0, 0
+    for i in range(len(answer)):
+        while i + best < len(answer) and answer[i : i + best + 1] in corpus:
+            best += 1
+            start = i
+    return best, answer[start : start + best]
+
+
+def copy_check(record, text, limit):
+    sources = [doc["text"] for doc in record.get("evidence") or []]
+    length, part = longest_copy(text, sources)
+    if length < limit:
+        return verdict(True, f"가장 긴 겹침 {length}자"), length
+    return verdict(False, f"문서와 {length}자 그대로 겹침: {short(part)}"), length
+
+
+def code_checks(record, copy_limit=COPY_LIMIT_CHARS):
+    """코드가 판정하는 지침 4개와 가장 긴 겹침 길이. 판정 대상이 아니면 ({}, None).
+
+    빈 답변은 JSON 형식만 판정한다 (빈 answer는 형식 실패).
+    """
+    if not guideline_target(record):
+        return {}, None
+    valid = record_payload(record) is not None
+    results = {"json_format": verdict(valid, "" if valid else "JSON 형식이 아님")}
+    if call_status(record) == "empty":
+        empty = verdict(None, "빈 답변")
+        return {**results, **{k: empty for k in CODE_GUIDELINES[1:]}}, None
+    text = answer_text(record)
+    results["document_titles"] = title_check(record, text)
+    results["korean_only"] = korean_check(record, text)
+    results["no_long_copy"], overlap = copy_check(record, text, copy_limit)
+    return {key: results[key] for key in CODE_GUIDELINES}, overlap
+
+
+def evaluate_record(record, copy_limit=COPY_LIMIT_CHARS):
+    run_checks = prompt_checks(record)
+    guidelines, overlap = code_checks(record, copy_limit)
     return {
         "case_id": record["case_id"],
         "model_name": record["model_name"],
         "repeat": record["repeat"],
-        "checks": checks,
-        "failed": failed,
-        "warnings": warnings,
-        # 자동 점검 실패(P1~P5, A1~A3)가 1개 이상이면 이상한 답변. 사람 점수는 debug에서 더한다
-        "auto_flagged": bool(failed),
-        # 사용 가능 답변의 자동 조건(A1~A3 통과). 나머지 조건은 사람 채점으로 본다
-        "auto_usable": bool(record.get("llm_called"))
-        and not any(code in failed for code in USABLE_AUTO_CODES),
+        "status": call_status(record),
+        "run_checks": run_checks,
+        "run_failed": [c["code"] for c in run_checks if c["ok"] is False],
+        "guidelines": guidelines,
+        "copy_overlap": overlap,
     }
 
 
-def evaluate_records(records):
-    return [evaluate_record(record) for record in records]
+def evaluate_records(records, copy_limit=COPY_LIMIT_CHARS):
+    return [evaluate_record(record, copy_limit) for record in records]
 
 
 def measure(records):
-    """모델 비교용 실측값. 오류 없는 호출만 세고, 지연 평균·중앙값은 첫 호출(cold start)을 뺀다."""
+    """응답 시간·토큰 실측값. 오류 없는 호출만 세고, 지연 평균·중앙값·최대는 첫 호출(cold start)을 뺀다."""
     ok = [r for r in records if not r.get("error")]
     warm = [r["latency_seconds"] for r in ok if not r.get("cold_start")]
     cold = [r["latency_seconds"] for r in ok if r.get("cold_start")]
@@ -314,7 +408,7 @@ def measure(records):
 
 
 def summarize(records, evaluations):
-    """보고용 집계. P는 질문 단위, A와 실측값은 모델별 호출 단위로 센다."""
+    """보고용 집계. 실행 점검은 질문 단위, 2장 추가 비교는 모델별 문서 답변 경로 호출 단위로 센다."""
     cases = sorted({r["case_id"] for r in records})
 
     prompt_summary = {}
@@ -325,7 +419,7 @@ def summarize(records, evaluations):
                 c["ok"]
                 for e in evaluations
                 if e["case_id"] == case_id
-                for c in e["checks"]
+                for c in e["run_checks"]
                 if c["code"] == code and c["ok"] is not None
             ]
             key = "n/a" if not values else ("pass" if all(values) else "fail")
@@ -333,32 +427,39 @@ def summarize(records, evaluations):
         prompt_summary[code] = counts
 
     models = {}
-    for name in sorted({e["model_name"] for e in evaluations}):
-        subset = [e for e in evaluations if e["model_name"] == name]
-        model_records = [r for r in records if r["model_name"] == name]
-
-        def count(code, value, rows=subset):
-            return sum(
-                c["ok"] is value for e in rows for c in e["checks"] if c["code"] == code
-            )
-
+    for name in sorted({r["model_name"] for r in records}):
+        pairs = [
+            (r, e)
+            for r, e in zip(records, evaluations)
+            if r["model_name"] == name and r.get("expected_route") == ANSWER_ROUTE
+        ]
+        if not pairs:
+            continue
+        subset = [r for r, _ in pairs]
+        statuses = {
+            s: sum(e["status"] == s for _, e in pairs) for s in FAILURE_STATUSES
+        }
+        lengths = [len(answer_text(r)) for r, e in pairs if e["status"] == "answered"]
+        overlaps = [
+            e["copy_overlap"] for _, e in pairs if e["copy_overlap"] is not None
+        ]
         models[name] = {
-            "provider": model_records[0]["provider"],
-            "model": model_records[0].get("model"),
+            "provider": subset[0]["provider"],
+            "model": subset[0].get("model"),
             "served_models": sorted(
-                {r["served_model"] for r in model_records if r.get("served_model")}
+                {r["served_model"] for r in subset if r.get("served_model")}
             ),
             "calls": len(subset),
-            "failures": {
-                code: count(code, False)
-                for code in ANSWER_CODES
-                if code not in WARN_CODES
-            },
-            "warnings": {code: count(code, False) for code in WARN_CODES},
-            "checked": {code: len(subset) - count(code, None) for code in ANSWER_CODES},
-            "flagged": sum(e["auto_flagged"] for e in subset),
-            "auto_usable": sum(e["auto_usable"] for e in subset),
-            "measured": measure(model_records),
+            "failures": statuses,
+            "failure_rate": sum(statuses.values()) / len(subset),
+            # 오류 없이 끝났지만 출력 토큰 한도에 걸려 잘린 호출
+            "truncated": sum(
+                not r.get("error") and r.get("finish_reason") == "length"
+                for r in subset
+            ),
+            "answer_length_mean": statistics.fmean(lengths) if lengths else None,
+            "copy_overlap_max": max(overlaps) if overlaps else None,
+            "measured": measure(subset),
         }
 
     return {
@@ -368,7 +469,7 @@ def summarize(records, evaluations):
         "models": models,
         "no_llm_records": sum(not r.get("llm_called") for r in records),
         "wrong_route_cases": sorted(
-            {e["case_id"] for e in evaluations if "P1" in e["failed"]}
+            {e["case_id"] for e in evaluations if "P1" in e["run_failed"]}
         ),
         "document_problem_cases": sorted(
             {r["case_id"] for r in records if document_problems(r)}

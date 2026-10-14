@@ -46,6 +46,11 @@ def answer(text):
     return json.dumps({"text": text}, ensure_ascii=False)
 
 
+def structured(text, titles=(), note="테스트 근거"):
+    """현재 실행기의 구조화 응답(도구 호출 인자) 모양."""
+    return {"answer": text, "referenced_documents": list(titles), "note": note}
+
+
 def case(
     case_id="dev-hr-01",
     question="연차는 어디서 신청해요?",
@@ -143,20 +148,3 @@ def no_llm_record(test_case, provider="openai"):
 def good():
     """모든 단계가 정상인 openai 기록."""
     return llm_record()
-
-
-def human(
-    grounded=2, citation=2, relevance=2, handling=2, points=2, clarity=2, *critical
-):
-    """scoring.load_human_scores가 돌려주는 모양의 채점 1건."""
-    return {
-        "scores": {
-            "grounded": grounded,
-            "citation": citation,
-            "relevance": relevance,
-            "handling": handling,
-            "required_points": points,
-            "clarity": clarity,
-        },
-        "critical": list(critical),
-    }

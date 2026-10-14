@@ -15,7 +15,7 @@ from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
 from langchain_core.messages import AIMessage
 
 import sanaebi_assistant as assistant
-from answer_pipeline.checks import answer_checks
+from answer_pipeline.checks import JUDGE_GUIDELINES, call_status, code_checks
 from answer_pipeline.cli import DEFAULT_EVAL_SET_PATH, build_parser, main
 from answer_pipeline.run import (
     ModelConfig,
@@ -157,14 +157,10 @@ class RunCaseTests(ExecutorPatch):
             "response_text": "",
             "structured_response": capture.structured_response,
         }
-        self.assertTrue(
-            next(c["ok"] for c in answer_checks(record) if c["code"] == "A3")
-        )
+        self.assertTrue(code_checks(record)[0]["json_format"]["ok"])
         self.assertEqual(answer_text(record), payload["answer"])
         record["structured_response"] = {"answer": "불완전"}
-        self.assertFalse(
-            next(c["ok"] for c in answer_checks(record) if c["code"] == "A3")
-        )
+        self.assertFalse(code_checks(record)[0]["json_format"]["ok"])
 
     def test_length_stop_is_incomplete(self):
         self.use_model('{"text": "그룹웨어에서', finish_reason="length")
@@ -172,16 +168,16 @@ class RunCaseTests(ExecutorPatch):
         self.assertFalse(result["generation_complete"])
 
     def test_unparsable_reply_is_format_failure_not_call_error(self):
-        # 모델은 답했는데 실행기가 평문을 풀지 못하면 A1(호출)은 통과하고 A3(형식)에서 실패한다
+        # 모델은 답했는데 실행기가 평문을 풀지 못하면 호출 실패가 아니라 JSON 형식 지침 실패다
         self.use_model("그룹웨어에서 신청하세요.")
         result = run_case(case(), LOCAL)
         self.assertIsNone(result["error"])
         self.assertEqual(result["output_error"], "ValidationError")
         self.assertEqual(result["response_text"], "그룹웨어에서 신청하세요.")
         self.assertTrue(result["generation_complete"])
-        checks = {c["code"]: c["ok"] for c in answer_checks({**case(), **result})}
-        self.assertTrue(checks["A1"])
-        self.assertFalse(checks["A3"])
+        record = {**case(), **result}
+        self.assertEqual(call_status(record), "answered")
+        self.assertFalse(code_checks(record)[0]["json_format"]["ok"])
 
     def test_non_answer_route_uses_no_documents(self):
         self.use_model(answer("지원 범위가 아닙니다."))
@@ -350,7 +346,7 @@ class CommandLineTests(ExecutorPatch):
         self.assertIn("[dry-run]", output)
         self.assertFalse((self.dir / "run").exists())
 
-    def test_run_then_report_writes_outputs(self):
+    def test_run_judge_report_writes_outputs(self):
         self.use_model(answer("그룹웨어에서 신청하세요."))
         self.write_models({"name": "local", "provider": "ollama", "num_ctx": 2048})
         run_dir = self.dir / "run"
@@ -368,7 +364,22 @@ class CommandLineTests(ExecutorPatch):
             "1",
         )
         output = self.run_cli("report", "--run-dir", str(run_dir))
-        self.assertIn("사용 가능 답변: 채점 대기 1건", output)
+        self.assertIn("local: 지킨 판정 3/3, 심판 판정 전 4", output)
+
+        def judge(prompt):
+            return {key: {"passed": True, "reason": "확인"} for key in JUDGE_GUIDELINES}
+
+        with (
+            patch("answer_pipeline.cli.openai_judge", lambda model: judge),
+            patch("answer_pipeline.cli.ask_openai_key", lambda: None),
+        ):
+            output = self.run_cli("judge", "--run-dir", str(run_dir), "--dry-run")
+            self.assertIn("이번 호출 1건", output)
+            self.assertFalse((run_dir / "judge.jsonl").exists())
+            output = self.run_cli("judge", "--run-dir", str(run_dir))
+        self.assertIn("사람 확인표 1행", output)
+        output = self.run_cli("report", "--run-dir", str(run_dir))
+        self.assertIn("local: 지킨 판정 7/7", output)
         meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
         self.assertEqual(meta["models"][0]["num_ctx"], 2048)
         self.assertEqual(len(meta["executor"]["sha256"]), 64)
@@ -376,11 +387,16 @@ class CommandLineTests(ExecutorPatch):
         result = read_jsonl(run_dir / "results.jsonl")[0]
         self.assertIn("테스트 정책 본문", result["prompt"])
         report = (run_dir / "report.md").read_text(encoding="utf-8")
-        self.assertIn("## 2. 요약 비교표", report)
+        self.assertIn("## 1. 지침 준수", report)
         # 가짜 모델의 입력 1200토큰 + 출력 512 ≤ 2048 → P5 통과, q2는 LLM이 답해 P1 실패
         checks = read_jsonl(run_dir / "checks.jsonl")
-        self.assertEqual([c["failed"] for c in checks], [[], ["P1"]])
-        for name in ("results.jsonl", "human_scores_blind.csv", "comparison.json"):
+        self.assertEqual([c["run_failed"] for c in checks], [[], ["P1"]])
+        for name in (
+            "results.jsonl",
+            "judge.jsonl",
+            "human_check.csv",
+            "evaluation_summary.json",
+        ):
             self.assertTrue((run_dir / name).exists(), name)
 
     def test_run_requires_explicit_documents_for_nondefault_eval_set(self):
@@ -619,7 +635,7 @@ class CheckEvalSetTests(unittest.TestCase):
             ],
             DOCUMENTS,
         )
-        self.assertEqual(len(warnings), 3)
+        self.assertEqual(len(warnings), 2)
 
 
 class RecordKeyTests(unittest.TestCase):

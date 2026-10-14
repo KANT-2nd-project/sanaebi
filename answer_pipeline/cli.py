@@ -2,13 +2,16 @@
 
   uv run python -m answer_pipeline.cli run    --eval-set EVAL.jsonl --documents DOCS.jsonl --models MODELS.json --run-dir RUN
                                               [--split dev] [--repeats 2] [--dry-run]
-  (RUN\\human_scores_blind.csv 채점)
-  uv run python -m answer_pipeline.cli report --run-dir RUN [--prices PRICES.json]
+  uv run python -m answer_pipeline.cli judge  --run-dir RUN [--judge-model gpt-5.6-luna] [--dry-run]
+  (RUN\\human_check.csv의 human_ 칸에 통과·실패 기록)
+  uv run python -m answer_pipeline.cli report --run-dir RUN [--prices PRICES.json] [--copy-limit 100]
 
 run은 평가 세트를 회사 문서와 대조한 뒤 질문을 main의 LangChain 실행기(sanaebi_assistant.py)로
-모델마다 실행하고, 모델 이름을 가린 채점표를 만든다. --dry-run은 대조와 호출 수 확인만 한다.
-report는 자동 점검, 사람 채점 반영, 역순 디버깅, 비교 보고서를 만든다. 채점표를 채울 때마다 다시 실행한다.
-openai는 요금이 발생한다. OPENAI_API_KEY가 없으면 실행할 때 입력받는다 (화면에 표시하지 않음).
+모델마다 실행한다. --dry-run은 대조와 호출 수 확인만 한다.
+judge는 심판 LLM이 지침 4개를 판정하고, 다 끝나면 모델 이름을 가린 사람 확인표를 만든다.
+report는 지침별 지킨 비율과 추가 비교(docs/generation-evaluation.md 1·2장) 보고서를 만든다.
+심판 판정이나 사람 확인이 바뀔 때마다 다시 실행한다.
+openai 모델과 심판은 요금이 발생한다. OPENAI_API_KEY가 없으면 실행할 때 입력받는다 (화면에 표시하지 않음).
 """
 
 import argparse
@@ -24,8 +27,15 @@ from pathlib import Path
 import sanaebi_assistant as assistant
 from app.company_knowledge import PROJECT_ROOT
 
-from .checks import evaluate_records, summarize
-from .report import debug_records, estimate_costs, load_prices, render_report
+from .checks import COPY_LIMIT_CHARS, evaluate_records, summarize
+from .judge import (
+    DEFAULT_JUDGE_MODEL,
+    judge_targets,
+    load_judgments,
+    openai_judge,
+    run_judge,
+)
+from .report import estimate_costs, load_prices, render_report
 from .run import (
     ANSWER_ROUTE,
     SPLITS,
@@ -35,12 +45,20 @@ from .run import (
     load_eval_set,
     load_model_configs,
     read_jsonl,
+    record_key,
     run_comparison,
     write_jsonl,
 )
-from .scoring import load_human_scores, usable_summary, write_blind_sheet
+from .scoring import (
+    CHECK_SHEET,
+    agreement,
+    guideline_summary,
+    load_human_checks,
+    verdicts_by_key,
+    write_check_sheet,
+)
 
-# docs/generation-evaluation.md C-4의 OpenAI 호출 상한 (제안값)
+# 실수로 큰 요금이 나가지 않게 막는 OpenAI 호출 상한 (모델 실행, 심판 판정 각각)
 DEFAULT_MAX_OPENAI_CALLS = 120
 DEFAULT_EVALUATION_DOCUMENTS_PATH = (
     PROJECT_ROOT / "data/archive/company-knowledge-v0/ieum_works.jsonl"
@@ -184,15 +202,50 @@ def cmd_run(args):
         documents,
         documents_path=documents_path,
     )
-    sheet_rows = write_blind_sheet(records, run_dir)
     for config in configs:
         subset = [r for r in records if r["model_name"] == config.name]
         failed = sum(r["error"] is not None for r in subset)
         print(f"  {config.name}: 호출 {len(subset)}, 오류 {failed}")
+    print(f"기록: {show(run_dir / 'results.jsonl')} · 다음: judge, report")
+
+
+def load_records(run_dir):
+    results_path = Path(run_dir) / "results.jsonl"
+    if not results_path.exists():
+        raise SystemExit(f"실행 기록이 없습니다: {show(results_path)}")
+    return read_jsonl(results_path)
+
+
+def cmd_judge(args):
+    run_dir = Path(args.run_dir)
+    records = load_records(run_dir)
+    targets = judge_targets(records)
+    done = load_judgments(run_dir)
+    todo = sum(record_key(r) not in done for r in targets)
     print(
-        f"기록: {show(run_dir / 'results.jsonl')} · 채점표 {sheet_rows}행: "
-        f"{show(run_dir / 'human_scores_blind.csv')}"
+        f"심판 판정 대상 {len(targets)}건 · 판정 있음 {len(targets) - todo}건 · "
+        f"이번 호출 {todo}건 (심판 {args.judge_model}, 요금 발생, 상한 {args.max_calls}회)"
     )
+    if todo > args.max_calls:
+        raise SystemExit(
+            f"심판 호출 {todo}회가 상한 {args.max_calls}회를 넘어 실행하지 않습니다."
+        )
+    if args.dry_run:
+        print("[dry-run] 심판을 부르지 않았습니다.")
+        return
+    if todo:
+        ask_openai_key()
+        result = run_judge(
+            records, run_dir, openai_judge(args.judge_model), args.judge_model
+        )
+        print(f"  판정 {result['judged']}건, 실패 {result['failed']}건")
+        if result["failed"]:
+            raise SystemExit("판정하지 못한 기록이 있습니다. judge를 다시 실행하세요.")
+    if (run_dir / CHECK_SHEET).exists():
+        print(f"사람 확인표가 이미 있어 그대로 둡니다: {show(run_dir / CHECK_SHEET)}")
+        return
+    rows = write_check_sheet(records, load_judgments(run_dir), run_dir)
+    print(f"사람 확인표 {rows}행: {show(run_dir / CHECK_SHEET)} · 다음: report")
 
 
 def write_json(path, value):
@@ -202,46 +255,53 @@ def write_json(path, value):
 
 
 def cmd_report(args):
+    if args.copy_limit < 1:
+        raise SystemExit("--copy-limit는 1 이상이어야 합니다.")
     run_dir = Path(args.run_dir)
-    results_path = run_dir / "results.jsonl"
-    if not results_path.exists():
-        raise SystemExit(f"실행 기록이 없습니다: {show(results_path)}")
+    records = load_records(run_dir)
     meta_path = run_dir / "meta.json"
     meta = (
         json.loads(meta_path.read_text(encoding="utf-8")) if meta_path.exists() else {}
     )
-    records = read_jsonl(results_path)
 
-    evaluations = evaluate_records(records)
+    evaluations = evaluate_records(records, args.copy_limit)
     summary = summarize(records, evaluations)
     if args.prices:
         summary["costs"] = estimate_costs(summary, records, load_prices(args.prices))
-    human = load_human_scores(run_dir)
-    usable = usable_summary(records, evaluations, human)
-    traces = debug_records(records, evaluations, human)
-    comparison = {
-        name: {k: v for k, v in stats.items() if k != "verdicts"}
-        for name, stats in usable.items()
-    }
+    judgments = load_judgments(run_dir)
+    human = load_human_checks(run_dir)
+    verdicts = verdicts_by_key(evaluations, judgments, human)
+    agree = agreement(judgments, human)
+    guidelines = guideline_summary(verdicts)
+    summary["guidelines"] = guidelines
+    summary["agreement"] = agree
+    summary["copy_limit"] = args.copy_limit
     write_jsonl(run_dir / "checks.jsonl", evaluations)
-    write_jsonl(run_dir / "debug_trace.jsonl", traces)
     write_json(run_dir / "evaluation_summary.json", summary)
-    write_json(run_dir / "comparison.json", comparison)
-    report = render_report(run_dir.name, records, summary, traces, human, usable, meta)
+    report = render_report(
+        run_dir.name,
+        records,
+        summary,
+        verdicts,
+        judgments,
+        agree,
+        meta,
+        args.copy_limit,
+    )
     (run_dir / "report.md").write_text(report, encoding="utf-8")
 
-    flagged = sum(t["flagged"] for t in traces)
+    checked = sum(a["checked"] for a in agree.values())
     print(
-        f"[보고] 기록 {len(records)}개 · 이상한 답변 {flagged}개 · 사람 채점 {len(human)}행 반영"
+        f"[보고] 기록 {len(records)}개 · 심판 판정 {len(judgments)}건 · 사람 확인 {checked}개 판정 반영"
     )
-    for name, stats in comparison.items():
-        ratio = stats["usable_ratio"]
-        status = (
-            f"채점 대기 {stats['pending']}건"
-            if ratio is None
-            else f"{stats['usable']}/{stats['calls']} ({ratio:.1%})"
-        )
-        print(f"  {name} 사용 가능 답변: {status}")
+    for name, stats in guidelines.items():
+        pending = sum(g["pending"] for g in stats["guidelines"].values())
+        kept = sum(g["passed"] for g in stats["guidelines"].values())
+        judged = sum(g["judged"] for g in stats["guidelines"].values())
+        status = f"지킨 판정 {kept}/{judged}"
+        if pending:
+            status += f", 심판 판정 전 {pending}"
+        print(f"  {name}: {status}")
     print(f"보고서: {show(run_dir / 'report.md')}")
 
 
@@ -281,17 +341,38 @@ def build_parser():
         help="평가 세트 대조와 호출 수 확인만 하고 모델은 부르지 않음",
     )
 
-    p = sub.add_parser(
-        "report", help="자동 점검, 사용 가능 답변 비율, 역순 디버깅, 보고서"
+    p = sub.add_parser("judge", help="심판 LLM 판정, 사람 확인표 만들기")
+    p.add_argument("--run-dir", required=True, help="results.jsonl이 있는 폴더")
+    p.add_argument(
+        "--judge-model",
+        default=DEFAULT_JUDGE_MODEL,
+        help=f"심판 OpenAI 모델 (기본 {DEFAULT_JUDGE_MODEL})",
     )
+    p.add_argument(
+        "--max-calls",
+        type=int,
+        default=DEFAULT_MAX_OPENAI_CALLS,
+        help=f"심판 호출 상한 (기본 {DEFAULT_MAX_OPENAI_CALLS})",
+    )
+    p.add_argument(
+        "--dry-run", action="store_true", help="판정할 수만 확인하고 심판은 부르지 않음"
+    )
+
+    p = sub.add_parser("report", help="지침별 지킨 비율과 추가 비교 보고서")
     p.add_argument("--run-dir", required=True, help="results.jsonl이 있는 폴더")
     p.add_argument("--prices", help="단가 JSON (주면 추정 비용 계산)")
+    p.add_argument(
+        "--copy-limit",
+        type=int,
+        default=COPY_LIMIT_CHARS,
+        help=f"베끼기 기준 길이, 글자 (기본 {COPY_LIMIT_CHARS})",
+    )
     return parser
 
 
 def main(argv=None):
     args = build_parser().parse_args(argv)
-    {"run": cmd_run, "report": cmd_report}[args.command](args)
+    {"run": cmd_run, "judge": cmd_judge, "report": cmd_report}[args.command](args)
 
 
 if __name__ == "__main__":

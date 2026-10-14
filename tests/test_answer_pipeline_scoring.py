@@ -1,172 +1,185 @@
-"""모델 이름을 가린 채점표, 채점 읽기, 사용 가능 답변 판정(B-4)을 본다."""
+"""사람 확인표, 지침별 최종 판정, 사람·심판 일치율, 반복 일관성이 기준대로 나오는지 본다."""
 
 import csv
 import tempfile
 import unittest
 from pathlib import Path
 
-from answer_pipeline.checks import evaluate_record
+from answer_pipeline.checks import JUDGE_GUIDELINES, evaluate_record
 from answer_pipeline.run import record_key
 from answer_pipeline.scoring import (
-    KEY_NAME,
-    SHEET_NAME,
-    is_usable,
-    load_human_scores,
-    usable_by_tag,
-    usable_summary,
-    write_blind_sheet,
+    CHECK_KEY,
+    CHECK_SHEET,
+    agreement,
+    final_verdicts,
+    guideline_summary,
+    load_human_checks,
+    verdicts_by_key,
+    write_check_sheet,
 )
 from tests.answer_pipeline_support import (
     GOOD_ANSWER_TEXT,
+    LEAVE_DOC,
     case,
-    human,
     llm_record,
-    unsupported_case,
+    structured,
 )
 
 
-def read_rows(path):
-    with path.open(encoding="utf-8-sig", newline="") as stream:
-        return list(csv.DictReader(stream))
+def compliant(provider="openai", repeat=1, test_case=None):
+    return llm_record(
+        test_case,
+        provider=provider,
+        repeat=repeat,
+        text="",
+        structured_response=structured(GOOD_ANSWER_TEXT, [LEAVE_DOC["title"]]),
+    )
 
 
-def write_rows(path, rows):
-    with path.open("w", encoding="utf-8-sig", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
-        writer.writeheader()
-        writer.writerows(rows)
+def judgment(record, *failed):
+    verdicts = {
+        key: {"ok": key not in failed, "reason": f"{key} 이유"}
+        for key in JUDGE_GUIDELINES
+    }
+    return {
+        "case_id": record["case_id"],
+        "model_name": record["model_name"],
+        "repeat": record["repeat"],
+        "judge_model": "judge-test",
+        "verdicts": verdicts,
+    }
 
 
-class BlindSheetTests(unittest.TestCase):
+def judgments_for(records, failed=None):
+    failed = failed or {}
+    return {record_key(r): judgment(r, *failed.get(record_key(r), ())) for r in records}
+
+
+class CheckSheetTests(unittest.TestCase):
     def setUp(self):
         temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(temp_dir.cleanup)
-        self.run_dir = Path(temp_dir.name)
+        self.dir = Path(temp_dir.name)
 
-    def test_sheet_hides_model_and_scores_round_trip(self):
-        records = [
-            llm_record(provider="ollama"),
-            llm_record(provider="openai"),
-            llm_record(provider="openai", repeat=2, error="ReadTimeout", text=""),
-            llm_record(unsupported_case("out-1")),
-        ]
-        # 호출 오류(A1 실패)와 SEARCH_KNOWLEDGE가 아닌 경로는 뺀다
-        self.assertEqual(write_blind_sheet(records, self.run_dir), 2)
+    def read(self, name):
+        with (self.dir / name).open(encoding="utf-8-sig", newline="") as stream:
+            return list(csv.DictReader(stream))
 
-        sheet_path = self.run_dir / SHEET_NAME
-        rows = read_rows(sheet_path)
-        for hidden in ("model_name", "model", "provider", "error"):
-            self.assertNotIn(hidden, rows[0])
-        self.assertEqual(rows[0]["text"], GOOD_ANSWER_TEXT)  # JSON에서 text만 보여 준다
-        self.assertEqual(rows[0]["question_type"], "answerable")
-        self.assertEqual(
-            rows[0]["evidence"], "[문서 1] [예시] 연차 신청"
-        )  # 정답 문서만
-        self.assertEqual(
-            sorted(
-                (r["model_name"], r["repeat"])
-                for r in read_rows(self.run_dir / KEY_NAME)
-            ),
-            [("cloud", "1"), ("local", "1")],
+    def write(self, rows):
+        with (self.dir / CHECK_SHEET).open("w", encoding="utf-8-sig", newline="") as s:
+            writer = csv.DictWriter(s, fieldnames=list(rows[0]))
+            writer.writeheader()
+            writer.writerows(rows)
+
+    def test_sheet_has_all_failures_and_some_passes_without_model_names(self):
+        records = [compliant(repeat=i) for i in range(1, 11)]
+        failing = records[0]
+        judgments = judgments_for(
+            records, {record_key(failing): ("company_data_only",)}
         )
-        self.assertEqual(load_human_scores(self.run_dir), {})  # 아직 빈 채점표
+        rows = write_check_sheet(records, judgments, self.dir, sample_rate=0.2)
+        # 실패 1건 전부 + 통과 9건의 20%(올림 2건)
+        self.assertEqual(rows, 3)
+        sheet = self.read(CHECK_SHEET)
+        self.assertNotIn("model_name", sheet[0])
+        self.assertNotIn("cloud", " ".join(" ".join(r.values()) for r in sheet))
+        self.assertEqual(sheet[0]["human_company_data_only"], "")
+        keys = {r["check_id"]: r for r in self.read(CHECK_KEY)}
+        failed_rows = [r for r in sheet if r["judge_company_data_only"] == "실패"]
+        self.assertEqual(len(failed_rows), 1)
+        self.assertEqual(keys[failed_rows[0]["check_id"]]["repeat"], "1")
 
-        rows[0].update(
-            grounded="2",
-            citation="NA",
-            relevance="2",
-            handling="1",
-            required_points="2",
-            clarity="0",
-            critical_defects="c1, C3",
-        )
-        write_rows(sheet_path, rows)
-        key = next(
-            r
-            for r in read_rows(self.run_dir / KEY_NAME)
-            if r["sheet_id"] == rows[0]["sheet_id"]
-        )
-        scores = load_human_scores(self.run_dir)
-        self.assertEqual(
-            scores,
-            {
-                (key["case_id"], key["model_name"], 1): human(
-                    2, None, 2, 1, 2, 0, "C1", "C3"
-                )
-            },
-        )
-
-    def test_partial_or_invalid_rows_are_rejected(self):
-        write_blind_sheet([llm_record()], self.run_dir)
-        sheet_path = self.run_dir / SHEET_NAME
-        rows = read_rows(sheet_path)
-        for values in (
-            {"grounded": "2"},  # 나머지 항목이 비었다
-            {
-                "grounded": "NA",  # grounded는 해당 없음이 될 수 없다
-                "citation": "2",
-                "relevance": "2",
-                "handling": "2",
-                "required_points": "2",
-                "clarity": "2",
-            },
-        ):
-            with self.subTest(values=values):
-                write_rows(sheet_path, [{**rows[0], **values}])
-                with self.assertRaises(ValueError):
-                    load_human_scores(self.run_dir)
-
-    def test_does_not_overwrite_existing_sheet(self):
-        write_blind_sheet([llm_record()], self.run_dir)
         with self.assertRaises(FileExistsError):
-            write_blind_sheet([llm_record()], self.run_dir)
+            write_check_sheet(records, judgments, self.dir)
+
+    def test_human_checks_round_trip_and_reject_unknown_values(self):
+        records = [compliant()]
+        write_check_sheet(records, judgments_for(records), self.dir, sample_rate=1)
+        sheet = self.read(CHECK_SHEET)
+        sheet[0]["human_tone_template"] = "실패"
+        self.write(sheet)
+        self.assertEqual(
+            load_human_checks(self.dir),
+            {record_key(records[0]): {"tone_template": False}},
+        )
+
+        sheet[0]["human_tone_template"] = "보류"
+        self.write(sheet)
+        with self.assertRaises(ValueError):
+            load_human_checks(self.dir)
+
+    def test_no_sheet_means_no_human_checks(self):
+        self.assertEqual(load_human_checks(self.dir), {})
 
 
-class UsableTests(unittest.TestCase):
-    def test_usable_rule(self):
-        evaluation = evaluate_record(llm_record())
-        self.assertIsNone(is_usable(evaluation, None))  # 채점 전
-        self.assertTrue(is_usable(evaluation, human()))
-        self.assertTrue(is_usable(evaluation, human(citation=None, clarity=1)))
-        self.assertFalse(is_usable(evaluation, human(grounded=1)))
-        self.assertFalse(is_usable(evaluation, human(relevance=0)))
-        self.assertFalse(is_usable(evaluation, human(2, 2, 2, 2, 2, 2, "C1")))
-        # A3 실패면 채점과 관계없이 사용 불가
-        broken = evaluate_record(llm_record(text="그루에서 신청하세요."))
-        self.assertFalse(is_usable(broken, None))
-        self.assertFalse(is_usable(broken, human()))
+class VerdictTests(unittest.TestCase):
+    def test_code_judge_and_human_sources(self):
+        record = compliant()
+        evaluation = evaluate_record(record)
+        pending = final_verdicts(evaluation)
+        self.assertEqual(pending["json_format"]["by"], "code")
+        self.assertEqual(pending["tone_template"]["by"], "pending")
 
-    def test_usable_ratio_and_repeat_consistency(self):
+        verdicts = final_verdicts(
+            evaluation,
+            judgment(record, "tone_template"),
+            {"company_data_only": False},
+        )
+        self.assertEqual(
+            (verdicts["tone_template"]["ok"], verdicts["tone_template"]["by"]),
+            (False, "judge"),
+        )
+        # 사람 판정이 있으면 사람 판정을 쓴다
+        self.assertEqual(
+            (verdicts["company_data_only"]["ok"], verdicts["company_data_only"]["by"]),
+            (False, "human"),
+        )
+
+    def test_empty_answer_is_not_judged(self):
+        record = llm_record(text="", structured_response=structured(""))
+        verdicts = final_verdicts(evaluate_record(record))
+        self.assertIs(verdicts["json_format"]["ok"], False)
+        self.assertEqual(verdicts["answers_question"]["by"], "n/a")
+
+    def test_summary_counts_and_repeat_consistency(self):
         records = [
-            llm_record(provider="ollama", repeat=1),
-            llm_record(provider="ollama", repeat=2),
-            llm_record(case("q2", question_type="partial"), provider="ollama"),
-            llm_record(provider="openai", repeat=1),
-            llm_record(provider="openai", repeat=2),
-            llm_record(unsupported_case(), provider="openai"),  # 비율에 넣지 않는다
+            compliant(repeat=1),
+            compliant(repeat=2),
+            compliant(test_case=case("dev-hr-02"), repeat=1),
+            compliant(test_case=case("dev-hr-02"), repeat=2),
+            compliant(provider="ollama"),
         ]
+        judgments = judgments_for(
+            records[:4], {record_key(records[1]): ("answers_question",)}
+        )
         evaluations = [evaluate_record(r) for r in records]
-        scores = {
-            record_key(records[0]): human(),
-            record_key(records[1]): human(grounded=1),
-            record_key(records[2]): human(),
-            record_key(records[3]): human(),
+        summary = guideline_summary(verdicts_by_key(evaluations, judgments, {}))
+
+        cloud = summary["cloud"]
+        self.assertEqual(cloud["targets"], 4)
+        self.assertEqual(
+            cloud["guidelines"]["answers_question"],
+            {"passed": 3, "judged": 4, "pending": 0},
+        )
+        self.assertEqual(
+            cloud["guidelines"]["json_format"], {"passed": 4, "judged": 4, "pending": 0}
+        )
+        # dev-hr-01만 반복 사이에 '지침을 모두 지켰는가'가 갈렸다
+        self.assertEqual((cloud["repeat_split_cases"], cloud["repeat_cases"]), (1, 2))
+        local = summary["local"]["guidelines"]["tone_template"]
+        self.assertEqual(local, {"passed": 0, "judged": 0, "pending": 1})
+
+    def test_agreement_counts_checked_judgments(self):
+        records = [compliant(repeat=1), compliant(repeat=2)]
+        judgments = judgments_for(records, {record_key(records[0]): ("tone_template",)})
+        human = {
+            record_key(records[0]): {"tone_template": True},
+            record_key(records[1]): {"tone_template": True, "answers_question": True},
         }
-        usable = usable_summary(records, evaluations, scores)
-
-        local = usable["local"]
-        self.assertEqual((local["calls"], local["usable"], local["pending"]), (3, 2, 0))
-        self.assertAlmostEqual(local["usable_ratio"], 2 / 3)
-        self.assertEqual((local["repeat_cases"], local["repeat_split_cases"]), (1, 1))
-        self.assertEqual(local["auto_failures"], 0)
-
-        cloud = usable["cloud"]
-        self.assertEqual((cloud["calls"], cloud["pending"]), (2, 1))
-        self.assertIsNone(cloud["usable_ratio"])  # 채점이 끝나지 않았다
-
-        by_type = usable_by_tag(records, usable, "question_type")
-        self.assertEqual(by_type["local"], {"answerable": [1, 2], "partial": [1, 1]})
-        self.assertEqual(by_type["cloud"], {"answerable": [1, 1]})
+        result = agreement(judgments, human)
+        self.assertEqual(result["tone_template"], {"checked": 2, "same": 1})
+        self.assertEqual(result["answers_question"], {"checked": 1, "same": 1})
+        self.assertEqual(result["company_data_only"], {"checked": 0, "same": 0})
 
 
 if __name__ == "__main__":

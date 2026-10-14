@@ -3,8 +3,7 @@
 실행기의 체인(sanaebi_assistant.create_chain)을 그대로 부른다. 프롬프트·문서·출력 처리는
 실행기가 정하고, 여기서는 LangChain 콜백으로 실제 프롬프트, 모델 원문 응답, 토큰 수,
 종료 사유, 응답 모델 이름을 받아 기록만 한다. 답변을 고치거나 재시도하지 않는다.
-답변 평가(docs/generation-evaluation.md A장 2번)이므로 분류 라벨은 평가 세트의 정답 경로
-(expected_route)를 고정 입력으로 넘긴다.
+생성 답변을 평가하므로 분류 라벨은 평가 세트의 정답 경로(expected_route)를 고정 입력으로 넘긴다.
 
 모델 설정 파일 (JSON 목록, 한 항목 = 비교할 모델 1개, 예시는 examples/models.example.json):
   name, provider(ollama|openai), model, base_url, temperature, num_ctx, max_output_tokens,
@@ -39,10 +38,10 @@ GRADING_FIELDS = (
     "required_points",
     "forbidden_claims",
 )
-# 결과를 나눠 보는 태그 (C-2). 평가 축이 아니다
+# 평가 세트에 적어 두는 태그. 평가 축이 아니다
 TAG_FIELDS = ("topic", "question_type", "evidence_position")
 EVAL_FIELDS = ("id", "question", "split", "note", *GRADING_FIELDS, *TAG_FIELDS)
-# B-2 질문 형식
+# 질문 형식 태그
 QUESTION_TYPES = (
     "answerable",
     "partial",
@@ -315,7 +314,7 @@ def check_eval_set(rows, documents):
 
     오류: 실행하거나 채점할 수 없게 되는 문제 (정답 경로 없음, 없는 문서, 문서에 없는 핵심 표현,
          모순된 정답)
-    경고: 판정을 건너뛰게 되는 빈 칸 (해당 점검은 "해당 없음"이 된다)
+    경고: 판정이 빠지거나 약해지는 빈 칸
     """
     errors, warnings = [], []
     for row in rows:
@@ -347,15 +346,11 @@ def check_eval_set(rows, documents):
         if route == ANSWER_ROUTE:
             if expected_ids is None:
                 warnings.append(
-                    f"{case_id}: expected_document_ids가 없어 ③근거 문서 제공을 판정하지 않음"
+                    f"{case_id}: expected_document_ids가 없어 근거 문서 제목 지침을 판정하지 않음"
                 )
             if not row["required_points"]:
                 warnings.append(
-                    f"{case_id}: required_points가 없어 A4 핵심 정보를 판정하지 않음"
-                )
-            if row.get("question_type") is None:
-                warnings.append(
-                    f"{case_id}: question_type이 없어 질문 형식별 결과에서 빠짐"
+                    f"{case_id}: required_points가 없어 심판이 핵심 정보 목록 없이 판정함"
                 )
     return errors, warnings
 
