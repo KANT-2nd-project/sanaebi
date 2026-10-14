@@ -8,12 +8,12 @@ from pathlib import Path
 from time import perf_counter
 
 import joblib
-from document_split import (
+from question_split import (
     LABELS,
     RANDOM_SEED,
-    document_input,
     make_split_record,
-    split_documents,
+    question_input,
+    split_questions,
 )
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -22,23 +22,17 @@ from sklearn.pipeline import make_pipeline
 
 ##### 데이터 경로 #####
 
-# BERT와 같은 문서 CSV를 사용
-DATASET_PATH = (
-    Path(__file__).resolve().parent.parent
-    / "data"
-    / "archive"
-    / "document-topics-v0.2"
-    / "dataset.csv"
-)
+# 기준 예제와 같은 질문 CSV를 사용
+DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
 
 selection_started = perf_counter()  # 데이터 준비부터 후보 학습·선택까지의 시간
 
 ##### CSV 읽기 #####
 
-# 공통 함수가 문서 ID를 정렬하고 그룹·라벨을 고려해 분할
+# 공통 함수가 질문 ID를 정렬하고 같은 그룹끼리 학습·검증·테스트로 분할
 with DATASET_PATH.open("r", encoding="utf-8-sig", newline="") as file:
-    document_rows = list(csv.DictReader(file))
-splits = split_documents(document_rows, seed=RANDOM_SEED)
+    question_rows = list(csv.DictReader(file))
+splits = split_questions(question_rows, seed=RANDOM_SEED)
 train_rows = splits["train"]
 validation_rows = splits["validation"]
 test_rows = splits["test"]
@@ -47,29 +41,29 @@ split_record = make_split_record(splits, DATASET_PATH, seed=RANDOM_SEED)
 
 ##### 학습 문장과 정답 준비 #####
 
-train_texts = []  # 모델에 입력할 문서의 제목 + 본문
+train_texts = []  # 모델에 입력할 질문 (question 열만 사용)
 train_labels = []  # 각 문장의 정답 카테고리
 
 for row in train_rows:
-    train_texts.append(document_input(row))
+    train_texts.append(question_input(row))
     train_labels.append(row["label"])
 
-validation_texts = []  # 검증할 문서의 제목 + 본문
-validation_labels = []  # 검증 문서의 실제 정답
+validation_texts = []  # 검증할 질문
+validation_labels = []  # 검증 질문의 실제 정답
 
 for row in validation_rows:
-    validation_texts.append(document_input(row))
+    validation_texts.append(question_input(row))
     validation_labels.append(row["label"])
 
 # 문장과 정답은 같은 순서로 담기므로 같은 위치의 항목끼리 한 쌍
 print("학습 데이터:", len(train_rows), "개")
 print("검증 데이터:", len(validation_rows), "개")
 print("테스트 데이터:", len(test_rows), "개 / 분할 시드:", RANDOM_SEED)
-print("첫 번째 문서 입력:", train_texts[0])
+print("첫 번째 질문:", train_texts[0])
 print("첫 번째 정답:", train_labels[0])
 
 # 분할·입력만 확인할 때는 TF-IDF 학습도 실행하지 않음
-if "--preview-documents" in sys.argv:
+if "--preview-questions" in sys.argv or "--preview-documents" in sys.argv:
     for name, data in split_record["splits"].items():
         print(name, data["label_counts"])
     raise SystemExit(0)
@@ -151,11 +145,11 @@ selection_seconds = perf_counter() - selection_started
 
 ##### 선택 완료 후 테스트 입력 준비 #####
 
-test_texts = []  # 최종 평가용 문서
+test_texts = []  # 최종 평가용 질문
 test_labels = []  # 최종 평가용 정답
 
 for row in test_rows:
-    test_texts.append(document_input(row))
+    test_texts.append(question_input(row))
     test_labels.append(row["label"])
 
 ##### 선택한 모델의 테스트 평가 #####
@@ -183,10 +177,10 @@ print("카테고리 순서:", LABELS)
 for label, row in zip(LABELS, test_matrix):
     print(label, row.tolist())
 
-print("테스트에서 틀린 문서:")
+print("테스트에서 틀린 질문:")
 for text, actual, predicted in zip(test_texts, test_labels, test_predictions):
     if actual != predicted:
-        print("문서 입력:", text)
+        print("질문:", text)
         print("정답:", actual, "/ 예측:", predicted)
 
 ##### 선택한 모델 저장 #####
@@ -216,6 +210,7 @@ training_summary = {
     "max_iter": 1000,
     "seed": RANDOM_SEED,
     "data_split": split_record,
+    "input_condition": "question 열만 입력, 전체 질문 사용",
     "validation_macro_f1": best_score,
     "selection_seconds": selection_seconds,
     "trials": trials,
