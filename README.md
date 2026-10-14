@@ -41,7 +41,7 @@ POST /ask   -> {"ok":true,"text":"휴가 신청 방법 알려줘","reason":""}
 모델과 토크나이저, `training_summary.json`의 최대 토큰 수를 사용하며 재학습하지 않습니다.
 첫 요청에서 모델을 로드해 재사용하고, 가중치 파일이 없으면 HTTP 503과
 `분류 모델이 없습니다.` 안내를 반환합니다. 모델 생성 명령은
-`uv run --locked sanaebi train koelectra_base`입니다. 모델은 `artifacts/models/`, 별도 `sanaebi eval 모델명`의 결과는 `artifacts/results/`에 저장합니다. 동일 조건의 정상 모델은 재학습을 생략하며 서버의 기존 모델 경로에 자동 배치하지 않습니다. 실험 실행·저장 경로는 [분류 안내](classification/README.md)를 확인하세요.
+`uv run --locked sanaebi train koelectra_base`입니다. 모델은 `artifacts/models/`, 별도 `sanaebi eval 모델명`은 validation만 평가하고 `--split test`로 test를 명시합니다. 결과는 `artifacts/results/<모델명>/<분할>/`에 저장합니다. 동일 조건의 정상 모델은 재학습을 생략하며 서버의 기존 모델 경로에 자동 배치하지 않습니다. 실험 실행·저장 경로는 [분류 안내](classification/README.md)를 확인하세요.
 
 질문만으로 분류와 답변 생성을 이어서 실행하려면 `POST /ask/langchain`에
 `{"question":"출장비 정산 절차 알려줘"}`를 전달합니다. 분류된 카테고리와 질문을
