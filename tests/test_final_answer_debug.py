@@ -419,7 +419,7 @@ class FinalAnswerTests(DocumentsMixin, unittest.TestCase):
 
 @unittest.skipUnless(os.getenv("RUN_LIVE_LLM") == "1", "RUN_LIVE_LLM=1일 때만 실행")
 class LiveOllamaTests(unittest.TestCase):
-    """로컬 Ollama와 실제 문서 파일(ieum_works.jsonl)로 라벨별 응답의 단계를 출력한다.
+    """로컬 Ollama와 설정된 정책 문서 파일로 라벨별 응답의 단계를 출력한다.
 
     Ollama가 꺼져 있으면 실행기가 `ollama serve`를 시작한다. OpenAI는 부르지 않는다.
     """

@@ -222,19 +222,37 @@ def applied_conditions(config):
 def load_documents(path=None):
     """실행기가 읽는 회사 문서 JSONL({"title", "document"})을 {document_id: {"title", "text"}}로 읽는다.
 
-    문서 파일에는 id 필드가 없으므로 파일 안 순번(빈 줄 제외, 1부터)을 document_id로 쓴다.
+    명시 ID가 전혀 없는 구형 파일은 파일 안 순번(빈 줄 제외, 1부터)을 사용한다.
+    명시 ID가 있으면 모든 ID가 비어 있지 않고 고유한 문자열이어야 한다.
     본문은 실행기와 같은 normalize_text로 정리해 프롬프트에 들어간 글자와 맞춘다.
     """
     path = Path(path or assistant.DOCUMENTS_PATH)
+    rows = read_jsonl(path)
     documents = {}
-    for number, row in enumerate(read_jsonl(path), start=1):
+    has_explicit_ids = [isinstance(row, dict) and "document_id" in row for row in rows]
+    if any(has_explicit_ids) and not all(has_explicit_ids):
+        raise ValueError(
+            f"{path}: document_id가 있는 문서와 없는 문서를 섞을 수 없습니다."
+        )
+    for number, row in enumerate(rows, start=1):
         if (
             not isinstance(row, dict)
             or not is_text(row.get("title"))
             or not is_text(row.get("document"))
         ):
             raise ValueError(f"{path} {number}번째 문서에 title·document가 없습니다.")
-        documents[str(number)] = {
+        has_id = "document_id" in row
+        if has_id:
+            document_id = row["document_id"]
+            if not is_text(document_id):
+                raise ValueError(
+                    f"{path} {number}번째 문서의 document_id는 비어 있지 않은 문자열이어야 합니다."
+                )
+        else:
+            document_id = str(number)
+        if document_id in documents:
+            raise ValueError(f"{path} {number}번째 문서의 document_id가 중복됩니다.")
+        documents[document_id] = {
             "title": assistant.normalize_text(row["title"]),
             "text": assistant.normalize_text(row["document"]),
         }
@@ -388,19 +406,31 @@ def executor_request(case):
     }
 
 
-def invoke_executor(config, request, capture):
+def invoke_executor(config, request, capture, documents_path=None):
     with executor_settings(config):
-        chain = assistant.create_chain(config.provider)
+        chain = (
+            assistant.create_chain(config.provider)
+            if documents_path is None
+            else assistant.create_chain(config.provider, documents_path=documents_path)
+        )
         return chain.invoke(request, config={"callbacks": [capture]})
 
 
-def run_case(case, config, invoke=invoke_executor):
+def run_case(case, config, invoke=invoke_executor, documents_path=None):
     """질문 1건 × 모델 1개 × 1회. 실패도 기록으로 남기고 예외를 밖으로 던지지 않는다."""
     capture = CallCapture()
     output, error = None, None
     started = time.perf_counter()
     try:
-        output = invoke(config, executor_request(case), capture)
+        if documents_path is None:
+            output = invoke(config, executor_request(case), capture)
+        else:
+            output = invoke(
+                config,
+                executor_request(case),
+                capture,
+                documents_path=documents_path,
+            )
     except Exception as exc:  # noqa: BLE001 - 실패도 기록으로 남기고 다음 호출을 계속한다
         # 예외 원문에는 비밀값이 섞일 수 있어 종류만 남긴다
         error = type(exc).__name__
@@ -455,7 +485,14 @@ def make_record(case, config, conditions, repeat, result, documents, cold_start)
 
 
 def run_comparison(
-    cases, run_dir, configs, repeats, documents, run_fn=run_case, log=print
+    cases,
+    run_dir,
+    configs,
+    repeats,
+    documents,
+    run_fn=run_case,
+    log=print,
+    documents_path=None,
 ):
     """질문 × 반복 × 모델을 실행해 run_dir/results.jsonl에 한 줄씩 기록한다.
 
@@ -477,7 +514,10 @@ def run_comparison(
         for index, case in enumerate(cases, start=1):
             for repeat in range(1, repeats + 1):
                 for config in configs:
-                    result = run_fn(case, config)
+                    if documents_path is None:
+                        result = run_fn(case, config)
+                    else:
+                        result = run_fn(case, config, documents_path=documents_path)
                     record = make_record(
                         case,
                         config,

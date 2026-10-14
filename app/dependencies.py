@@ -1,14 +1,14 @@
 from collections.abc import Callable
 from functools import partial
-from pathlib import Path
 
+from app.company_knowledge import get_documents_path
 from app.document_store import read_documents
 from app.koelectra_classifier import classify_question
 from app.services.question_service import QuestionResult, handle_question
 
 QuestionHandler = Callable[[str], QuestionResult]
 
-DOCUMENTS_PATH = Path(__file__).resolve().parent.parent / "ieum_works.jsonl"
+DOCUMENTS_PATH = get_documents_path()
 
 
 def answer_not_configured(question: str, documents: list[str]) -> str:

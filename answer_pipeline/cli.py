@@ -1,6 +1,6 @@
 """명령줄 실행. 저장소 루트에서 실행한다 (PowerShell 예시).
 
-  uv run python -m answer_pipeline.cli run    --eval-set EVAL.jsonl --models MODELS.json --run-dir RUN
+  uv run python -m answer_pipeline.cli run    --eval-set EVAL.jsonl --documents DOCS.jsonl --models MODELS.json --run-dir RUN
                                               [--split dev] [--repeats 2] [--dry-run]
   (RUN\\human_scores_blind.csv 채점)
   uv run python -m answer_pipeline.cli report --run-dir RUN [--prices PRICES.json]
@@ -22,6 +22,7 @@ from datetime import datetime
 from pathlib import Path
 
 import sanaebi_assistant as assistant
+from app.company_knowledge import DEFAULT_DOCUMENTS_PATH
 
 from .checks import evaluate_records, summarize
 from .report import debug_records, estimate_costs, load_prices, render_report
@@ -41,6 +42,7 @@ from .scoring import load_human_scores, usable_summary, write_blind_sheet
 
 # docs/generation-evaluation.md C-4의 OpenAI 호출 상한 (제안값)
 DEFAULT_MAX_OPENAI_CALLS = 120
+DEFAULT_EVAL_SET_PATH = DEFAULT_DOCUMENTS_PATH.parent / "evaluations" / "eval_set.jsonl"
 
 
 def show(path):
@@ -69,8 +71,9 @@ def git_commit():
     return result.stdout.strip() or None
 
 
-def executor_info(documents):
+def executor_info(documents, documents_path=None):
     """실행기 파일·프롬프트·문서가 바뀌었는지 나중에 확인할 수 있게 지문을 남긴다."""
+    documents_path = Path(documents_path or assistant.DOCUMENTS_PATH)
     prompt = assistant.ANSWER_PROMPT.template + json.dumps(
         assistant.CLASSIFICATION_INSTRUCTIONS, ensure_ascii=False, sort_keys=True
     )
@@ -79,8 +82,8 @@ def executor_info(documents):
         "sha256": sha256(assistant.__file__),
         "git_commit": git_commit(),
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
-        "documents_path": show(assistant.DOCUMENTS_PATH),
-        "documents_sha256": sha256(assistant.DOCUMENTS_PATH),
+        "documents_path": show(documents_path),
+        "documents_sha256": sha256(documents_path),
         "documents": len(documents),
     }
 
@@ -97,13 +100,22 @@ def ask_openai_key():
 def cmd_run(args):
     if args.repeats < 1:
         raise SystemExit("--repeats는 1 이상이어야 합니다.")
-    # 실행기는 DOCUMENTS_PATH의 문서를 프롬프트에 넣으므로 같은 파일로 대조한다
-    rows = load_eval_set(args.eval_set)
-    documents = load_documents()
+    eval_set_path = Path(args.eval_set)
+    if (
+        args.documents is None
+        and eval_set_path.resolve() != DEFAULT_EVAL_SET_PATH.resolve()
+    ):
+        raise SystemExit(
+            "기본 평가 세트가 아니면 같은 버전의 회사 문서를 --documents로 지정하세요."
+        )
+    documents_path = Path(args.documents or assistant.DOCUMENTS_PATH)
+    # 대조와 실행 프롬프트가 같은 문서 JSONL을 사용한다.
+    rows = load_eval_set(eval_set_path)
+    documents = load_documents(documents_path)
     errors, warnings = check_eval_set(rows, documents)
     print(
         f"평가 세트 {show(args.eval_set)} {len(rows)}건 · 회사 문서 "
-        f"{show(assistant.DOCUMENTS_PATH)} {len(documents)}건 · "
+        f"{show(documents_path)} {len(documents)}건 · "
         f"오류 {len(errors)}건, 경고 {len(warnings)}건"
     )
     for line in errors:
@@ -148,19 +160,26 @@ def cmd_run(args):
     run_dir.mkdir(parents=True, exist_ok=True)
     meta = {
         "created": datetime.now().astimezone().isoformat(timespec="seconds"),
-        "eval_set_path": show(args.eval_set),
-        "eval_set_sha256": sha256(args.eval_set),
+        "eval_set_path": show(eval_set_path),
+        "eval_set_sha256": sha256(eval_set_path),
         "splits": sorted({case["split"] for case in cases}),
         "cases": len(cases),
         "repeats": args.repeats,
         "models": [applied_conditions(config) for config in configs],
-        "executor": executor_info(documents),
+        "executor": executor_info(documents, documents_path),
         "input": "평가 세트의 expected_route를 classification_label로 고정 입력",
     }
     (run_dir / "meta.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    records = run_comparison(cases, run_dir, configs, args.repeats, documents)
+    records = run_comparison(
+        cases,
+        run_dir,
+        configs,
+        args.repeats,
+        documents,
+        documents_path=documents_path,
+    )
     sheet_rows = write_blind_sheet(records, run_dir)
     for config in configs:
         subset = [r for r in records if r["model_name"] == config.name]
@@ -230,7 +249,16 @@ def build_parser():
     sub = parser.add_subparsers(dest="command", required=True)
 
     p = sub.add_parser("run", help="실행기로 모델별 실행, 채점표 만들기")
-    p.add_argument("--eval-set", required=True, help="평가 세트 JSONL")
+    p.add_argument(
+        "--eval-set",
+        default=DEFAULT_EVAL_SET_PATH,
+        help="평가 세트 JSONL (기본: 현재 정책 데이터 평가 세트)",
+    )
+    p.add_argument(
+        "--documents",
+        type=Path,
+        help="평가 세트와 같은 버전의 회사 정책 JSONL (과거 평가 재현 시 필수)",
+    )
     p.add_argument("--models", required=True, help="비교할 모델 설정 JSON")
     p.add_argument(
         "--split", choices=SPLITS, help="평가 세트에서 이 구분의 질문만 쓴다"

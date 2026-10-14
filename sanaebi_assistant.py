@@ -12,9 +12,11 @@ class AssistantRequest(BaseModel):
     classification_label: ClassificationLabel  # contracts.classification
 
 
-2) 문서 스키마(ieum_works.jsonl):
+2) 기본 문서 파일(data/company-knowledge/documents.jsonl):
 
-{"title": "문서 제목", "document": "문서 내용"}
+{"document_id": "고정 문서 ID", "title": "문서 제목", "document": "문서 내용"}
+
+실행기는 문서 ID를 근거 추적에 사용하지 않고 제목과 본문을 답변 문맥에 넣습니다.
 
 
 3) 출력 규약('초안'):
@@ -65,6 +67,7 @@ from langchain_core.runnables import (
 from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 
+from app.company_knowledge import get_documents_path
 from contracts.classification import (
     CLARIFY,
     LABELS,
@@ -87,11 +90,7 @@ TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "600"))
 OPENAI_MAX_RETRIES = 0
 OPENAI_MAX_TOKENS = 512
 MAX_INPUT_CHARS = int(os.getenv("MAX_INPUT_CHARS", "4000"))
-DOCUMENTS_PATH = Path(
-    os.getenv(
-        "IEUM_WORKS_PATH", str(Path(__file__).resolve().parent / "ieum_works.jsonl")
-    )
-)
+DOCUMENTS_PATH = get_documents_path()
 _OLLAMA_LOCK = threading.Lock()
 _OLLAMA_PROCESS = None
 
@@ -239,8 +238,9 @@ def prepare_input(value):
     }
 
 
-def load_document_context(path=DOCUMENTS_PATH):
+def load_document_context(path=None):
     """JSONL 문서 전체를 프롬프트 문맥으로 읽습니다. 검색은 수행하지 않습니다."""
+    path = Path(path or DOCUMENTS_PATH)
     if not path.is_file():
         raise FileNotFoundError(f"문서 데이터 파일이 없습니다: {path}")
 
@@ -342,13 +342,16 @@ def ensure_ollama_server():
         )
 
 
-def add_prompt_context(value, provider=PROVIDER):
+def add_prompt_context(value, provider=PROVIDER, documents_path=None):
     """분류 라벨에 맞는 지침과 프롬프트 문맥을 추가합니다."""
-    document_context = (
-        load_document_context()
-        if value["classification_label"] == SEARCH_KNOWLEDGE
-        else "사용하지 않음"
-    )
+    if value["classification_label"] == SEARCH_KNOWLEDGE:
+        document_context = (
+            load_document_context()
+            if documents_path is None
+            else load_document_context(documents_path)
+        )
+    else:
+        document_context = "사용하지 않음"
     if provider == "ollama":
         ensure_ollama_server()
     return {
@@ -378,13 +381,15 @@ def create_chat_model(provider=PROVIDER):
     raise ValueError("PROVIDER는 ollama 또는 openai여야 합니다.")
 
 
-def create_chain(provider=PROVIDER):
+def create_chain(provider=PROVIDER, documents_path=None):
     """두 입력값을 하나의 LangChain 문자열 프롬프트로 처리합니다."""
     model = create_chat_model(provider)
     output_parser = StrOutputParser() | RunnableLambda(parse_answer)
 
     answer_chain = (
-        RunnableLambda(lambda value: add_prompt_context(value, provider))
+        RunnableLambda(
+            lambda value: add_prompt_context(value, provider, documents_path)
+        )
         | RunnablePassthrough.assign(answer=ANSWER_PROMPT | model | output_parser)
         | RunnableLambda(
             lambda value: {

@@ -15,7 +15,7 @@ from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
 from langchain_core.messages import AIMessage
 
 import sanaebi_assistant as assistant
-from answer_pipeline.cli import main
+from answer_pipeline.cli import DEFAULT_EVAL_SET_PATH, build_parser, main
 from answer_pipeline.run import (
     ModelConfig,
     applied_conditions,
@@ -82,16 +82,26 @@ class RunCaseTests(ExecutorPatch):
         seen = []
         self.use_model(answer("그룹웨어에서 신청하세요."), seen=seen)
         default_model = assistant.OLLAMA_MODEL
+        documents_path = (
+            Path(self.enterContext(tempfile.TemporaryDirectory())) / "docs.jsonl"
+        )
+        document = {"title": "실행 테스트 문서", "document": "실행 테스트 근거"}
+        documents_path.write_text(
+            json.dumps(document, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
 
-        result = run_case(case(question="연차 신청은 어떻게 하나요?"), LOCAL)
+        result = run_case(
+            case(question="연차 신청은 어떻게 하나요?"),
+            LOCAL,
+            documents_path=documents_path,
+        )
 
         self.assertIsNone(result["error"])
         self.assertTrue(result["llm_called"])
         self.assertEqual(seen, [("ollama", "test-local", 8192)])  # 설정이 적용됐다
         self.assertEqual(assistant.OLLAMA_MODEL, default_model)  # 끝나면 되돌린다
         self.assertIn("연차 신청은 어떻게 하나요?", result["prompt"])
-        first_document = read_jsonl(assistant.DOCUMENTS_PATH)[0]["document"]
-        self.assertIn(assistant.normalize_text(first_document), result["prompt"])
+        self.assertIn("실행 테스트 근거", result["prompt"])
         self.assertEqual(result["response_text"], answer("그룹웨어에서 신청하세요."))
         self.assertEqual(
             result["executor_output"]["reason"], "SEARCH_KNOWLEDGE"
@@ -205,6 +215,15 @@ class CommandLineTests(ExecutorPatch):
             + "\n",
             encoding="utf-8",
         )
+        self.documents = self.dir / "documents.jsonl"
+        self.documents.write_text(
+            json.dumps(
+                {"title": "테스트 문서", "document": "테스트 정책 본문"},
+                ensure_ascii=False,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
         self.models = self.dir / "models.json"
 
     def write_models(self, *configs):
@@ -224,6 +243,8 @@ class CommandLineTests(ExecutorPatch):
                     "run",
                     "--eval-set",
                     str(self.eval_set),
+                    "--documents",
+                    str(self.documents),
                     "--models",
                     str(self.models),
                     "--run-dir",
@@ -240,6 +261,8 @@ class CommandLineTests(ExecutorPatch):
             "run",
             "--eval-set",
             str(self.eval_set),
+            "--documents",
+            str(self.documents),
             "--models",
             str(self.models),
             "--run-dir",
@@ -258,6 +281,8 @@ class CommandLineTests(ExecutorPatch):
             "run",
             "--eval-set",
             str(self.eval_set),
+            "--documents",
+            str(self.documents),
             "--models",
             str(self.models),
             "--run-dir",
@@ -270,6 +295,9 @@ class CommandLineTests(ExecutorPatch):
         meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
         self.assertEqual(meta["models"][0]["num_ctx"], 2048)
         self.assertEqual(len(meta["executor"]["sha256"]), 64)
+        self.assertEqual(meta["executor"]["documents_path"], str(self.documents))
+        result = read_jsonl(run_dir / "results.jsonl")[0]
+        self.assertIn("테스트 정책 본문", result["prompt"])
         report = (run_dir / "report.md").read_text(encoding="utf-8")
         self.assertIn("## 2. 요약 비교표", report)
         # 가짜 모델의 입력 1200토큰 + 출력 512 ≤ 2048 → P5 통과, q2는 LLM이 답해 P1 실패
@@ -277,6 +305,48 @@ class CommandLineTests(ExecutorPatch):
         self.assertEqual([c["failed"] for c in checks], [[], ["P1"]])
         for name in ("results.jsonl", "human_scores_blind.csv", "comparison.json"):
             self.assertTrue((run_dir / name).exists(), name)
+
+    def test_run_requires_explicit_documents_for_nondefault_eval_set(self):
+        self.write_models({"name": "local", "provider": "ollama"})
+        with self.assertRaisesRegex(SystemExit, "--documents"):
+            main(
+                [
+                    "run",
+                    "--eval-set",
+                    str(self.eval_set),
+                    "--models",
+                    str(self.models),
+                    "--run-dir",
+                    str(self.dir / "run"),
+                    "--dry-run",
+                ]
+            )
+
+    def test_default_eval_set_is_current_company_knowledge_set(self):
+        args = build_parser().parse_args(
+            ["run", "--models", "models.json", "--run-dir", "run"]
+        )
+
+        self.assertEqual(Path(args.eval_set), DEFAULT_EVAL_SET_PATH)
+        self.assertIsNone(args.documents)
+
+    def test_default_eval_and_document_pair_runs_without_overrides(self):
+        self.write_models({"name": "local", "provider": "ollama"})
+        with (
+            patch("answer_pipeline.cli.DEFAULT_EVAL_SET_PATH", self.eval_set),
+            patch.object(assistant, "DOCUMENTS_PATH", self.documents),
+        ):
+            output = self.run_cli(
+                "run",
+                "--models",
+                str(self.models),
+                "--run-dir",
+                str(self.dir / "run"),
+                "--dry-run",
+            )
+
+        self.assertIn("오류 0건", output)
+        self.assertIn("[dry-run]", output)
 
 
 def eval_row(**overrides):
@@ -340,15 +410,117 @@ class EvalSetFileTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             load_documents(bad)
 
+    def test_load_documents_preserves_explicit_stable_ids(self):
+        path = self.write_jsonl(
+            "stable.jsonl",
+            {
+                "document_id": "leave-policy-v1",
+                "title": LEAVE_DOC["title"],
+                "document": LEAVE_DOC["text"],
+            },
+            {
+                "document_id": "room-policy-v1",
+                "title": ROOM_DOC["title"],
+                "document": ROOM_DOC["text"],
+            },
+        )
+
+        self.assertEqual(
+            load_documents(path),
+            {
+                "leave-policy-v1": DOCUMENTS["1"],
+                "room-policy-v1": DOCUMENTS["2"],
+            },
+        )
+
+    def test_load_documents_keeps_legacy_row_ids_and_skips_blank_lines(self):
+        path = self.dir / "legacy.jsonl"
+        path.write_text(
+            "\n"
+            + json.dumps(
+                {"title": LEAVE_DOC["title"], "document": LEAVE_DOC["text"]},
+                ensure_ascii=False,
+            )
+            + "\n  \n"
+            + json.dumps(
+                {"title": ROOM_DOC["title"], "document": ROOM_DOC["text"]},
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        self.assertEqual(load_documents(path), DOCUMENTS)
+
+    def test_load_documents_rejects_mixed_blank_and_duplicate_ids(self):
+        legacy = {"title": "제목", "document": "본문"}
+        stable = {"document_id": "policy-a", **legacy}
+        invalid_rows = (
+            ("mixed.jsonl", (stable, legacy)),
+            ("blank.jsonl", ({"document_id": "  ", **legacy},)),
+            ("wrong-type.jsonl", ({"document_id": None, **legacy},)),
+            (
+                "duplicate.jsonl",
+                (
+                    stable,
+                    {
+                        "document_id": "policy-a",
+                        "title": "다른 제목",
+                        "document": "다른 본문",
+                    },
+                ),
+            ),
+        )
+        for name, rows in invalid_rows:
+            with self.subTest(name=name):
+                path = self.write_jsonl(name, *rows)
+                with self.assertRaises(ValueError):
+                    load_documents(path)
+
     def test_repository_documents_and_example_eval_set_load(self):
         root = Path(__file__).resolve().parents[1]
-        documents = load_documents(root / "ieum_works.jsonl")
+        documents = load_documents(
+            root / "data" / "company-knowledge" / "documents.jsonl"
+        )
         self.assertGreater(len(documents), 0)
         rows = load_eval_set(
-            root / "answer_pipeline" / "examples" / "eval_set_dev.jsonl"
+            root / "data" / "company-knowledge" / "evaluations" / "eval_set.jsonl"
         )
         errors, _ = check_eval_set(rows, documents)
         self.assertEqual(errors, [])
+
+    def test_historical_eval_set_loads_with_its_archived_documents(self):
+        root = Path(__file__).resolve().parents[1]
+        archive = root / "data" / "archive" / "company-knowledge-v0"
+        documents = load_documents(archive / "ieum_works.jsonl")
+        rows = load_eval_set(archive / "eval_set_dev.jsonl")
+
+        errors, _ = check_eval_set(rows, documents)
+        self.assertEqual(errors, [])
+
+        with tempfile.TemporaryDirectory() as directory:
+            models = Path(directory) / "models.json"
+            models.write_text(
+                json.dumps([{"name": "local", "provider": "ollama"}]),
+                encoding="utf-8",
+            )
+            output = io.StringIO()
+            with redirect_stdout(output):
+                main(
+                    [
+                        "run",
+                        "--eval-set",
+                        str(archive / "eval_set_dev.jsonl"),
+                        "--documents",
+                        str(archive / "ieum_works.jsonl"),
+                        "--models",
+                        str(models),
+                        "--run-dir",
+                        str(Path(directory) / "run"),
+                        "--dry-run",
+                    ]
+                )
+            self.assertIn("오류 0건", output.getvalue())
+            self.assertIn("[dry-run]", output.getvalue())
 
 
 class CheckEvalSetTests(unittest.TestCase):
