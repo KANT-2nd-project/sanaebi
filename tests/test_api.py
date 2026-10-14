@@ -9,7 +9,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
-from app.routers import documents
+from app.routers import classification, documents
 
 
 class ApiTests(unittest.TestCase):
@@ -110,7 +110,10 @@ class ApiTests(unittest.TestCase):
         response = self.client.get("/openapi.json")
         self.assertEqual(response.status_code, 200)
         schema = response.json()
-        self.assertEqual(set(schema["paths"]), {"/", "/ask", "/regist-docs"})
+        self.assertEqual(
+            set(schema["paths"]),
+            {"/", "/ask", "/regist-docs", "/classify/koelectra-base"},
+        )
         for route in ("/ask", "/regist-docs"):
             for status in ("200", "422"):
                 with self.subTest(route=route, status=status):
@@ -123,6 +126,46 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(
             set(schema["components"]["schemas"]["AnswerResponse"]["properties"]),
             {"ok", "text", "reason"},
+        )
+
+    def test_classification_returns_category_without_answer_generation(self):
+        for label in ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"):
+            with self.subTest(label=label):
+                with patch.object(
+                    classification, "classify_question", return_value=label
+                ) as predict:
+                    response = self.client.post(
+                        "/classify/koelectra-base", json={"question": "  휴가 안내  "}
+                    )
+                predict.assert_called_once_with("휴가 안내")
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.json(), {"category": label})
+
+    def test_invalid_classification_input_does_not_call_model(self):
+        with patch.object(classification, "classify_question") as predict:
+            for payload in (
+                {},
+                {"question": ""},
+                {"question": " \n "},
+                {"question": 7},
+            ):
+                with self.subTest(payload=payload):
+                    self.assert_validation_error(
+                        self.client.post("/classify/koelectra-base", json=payload)
+                    )
+            predict.assert_not_called()
+
+    def test_missing_classification_model_returns_503(self):
+        with patch.object(
+            classification, "classify_question", side_effect=FileNotFoundError
+        ):
+            response = self.client.post(
+                "/classify/koelectra-base", json={"question": "휴가 안내"}
+            )
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(
+            response.json(),
+            {"ok": False, "text": "", "reason": "분류 모델이 없습니다."},
         )
 
 
