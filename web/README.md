@@ -37,7 +37,7 @@ npm run build
 
 `out/` 전체를 정적 웹 서버에 전달합니다. 운영에 `next dev`나 `next start`를 사용하지 않으며 start 스크립트는 제공하지 않습니다. 프로젝트 nginx 설정은 `/chat`을 `chat.html`에 연결하고 존재하지 않는 경로는 404로 처리합니다. 설치·실행·종료·장애 확인은 [로컬 nginx 안내](../deployment/README.md)를 따릅니다.
 
-개발·시연 단계이므로 두 화면 모두 noindex를 유지합니다. noindex는 인증이나 접근 권한 검사를 대신하지 않습니다. 자세한 방향은 [프런트엔드 설계](../docs/frontend-architecture.md)를 참고하세요.
+개발·시연 단계이므로 소개·채팅·문서 관리 화면 모두 noindex를 유지합니다. noindex는 인증이나 접근 권한 검사를 대신하지 않습니다. 자세한 방향은 [프런트엔드 설계](../docs/frontend-architecture.md)를 참고하세요.
 
 ## 질문 요청과 테스트
 
@@ -58,3 +58,9 @@ npm run build
 개발 시 오래된 CSS 복원을 막기 위해 Turbopack 개발 파일시스템 캐시를 비활성화합니다. HMR과 정적 빌드 캐시는 유지합니다. Tailwind 로더 앞의 `scripts/tailwind-loader.cjs`는 실제 CSS 입력의 해시를 컴파일 캐시 키에 포함해, 같은 파일에서 수정한 CSS를 이전 결과로 바꾸는 문제를 방지합니다. 설치된 Tailwind 로더와 버전은 그대로 사용합니다. CSS가 갱신되지 않으면 실행 경로와 제공 CSS를 먼저 확인하고, 서버 종료 후 `.next/dev`를 `tmp`로 백업 이동해 재시작합니다. 설정이나 실행기 파일 변경은 개발 서버를 재시작하고, 화면·CSS 변경은 HMR로 확인합니다. `npx next dev`로 실행기를 우회하면 API 응답 캐시 정책이 보장되지 않으므로 `npm run dev`를 사용하세요.
 
 각 실행 터미널에서 Ctrl+C로 개발 서버와 FastAPI를 종료합니다. 정적 nginx 화면은 `npm run build`로 갱신합니다. 8080번 배포 절차는 기존 nginx 안내를 따르며 nginx의 개발 서버/HMR 중계는 추가하지 않습니다.
+
+## 문서 관리
+
+`/admin/documents`에서 문서 초안·개정·게시·사용 중단을 관리합니다. 채팅의 ‘문서로 등록’은 작성 중 질문을 복사한 편집기를 열며 대화 기록을 보존합니다. 등록 문서는 아직 실제 채팅 답변에 사용하지 않습니다. [계약과 제한](../docs/document-management.md)을 확인하세요.
+
+이 기능은 로컬 시연용입니다. 개발 서버는 `npm run dev -- --hostname 127.0.0.1`로 실행하고 FastAPI도 loopback에 바인딩합니다. 정적 빌드에는 `out/admin/documents.html`이 포함되지만 실제 본문은 포함하지 않습니다. 문서 API는 `/api/documents`이며 정상·오류 응답은 no-store입니다. 미저장 내용은 새로고침 시 사라집니다.

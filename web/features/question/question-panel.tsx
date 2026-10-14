@@ -6,6 +6,7 @@ import { ChatSession } from "./chat-session";
 import { MessageList } from "./message-list";
 import { QuestionForm } from "./question-form";
 import { useChatScroll } from "./use-chat-scroll";
+import { DocumentRegistrationDialog } from "../documents/document-registration-dialog";
 
 const touchQuery = "(hover: none) and (pointer: coarse)";
 const subscribeTouch = (notify: () => void) => {
@@ -19,7 +20,10 @@ export function QuestionPanel() {
   const state = useSyncExternalStore(session.subscribe, session.getSnapshot, session.getServerSnapshot);
   const touchEnter = useSyncExternalStore(subscribeTouch, () => window.matchMedia(touchQuery).matches, () => false);
   const [showGuide, setShowGuide] = useState(false);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [registrationAnnouncement, setRegistrationAnnouncement] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const registrationButtonRef = useRef<HTMLButtonElement>(null);
   const guideRef = useRef<HTMLElement>(null);
   const { viewportRef, dockRef, onScroll, showLatest, toLatest } = useChatScroll(state.turns);
   const pending = state.activeTurnId !== null;
@@ -39,6 +43,7 @@ export function QuestionPanel() {
       <header className="chat-header">
         <Link href="/" className="chat-brand">사내<span>비</span></Link>
         <nav aria-label="대화 메뉴">
+          <Link href="/admin/documents" className="chat-button header-button">문서 관리</Link>
           <button type="button" className="chat-button header-button" disabled={empty && !state.draft}
             onClick={() => { session.reset(); inputRef.current?.focus(); }}>새 대화</button>
           <button type="button" className="chat-button header-button" aria-expanded={showGuide} aria-controls="usage"
@@ -63,12 +68,19 @@ export function QuestionPanel() {
         <div className="chat-dock-inner">
           {showLatest && <button type="button" className="chat-button latest-button" onClick={toLatest}>최신 메시지로 이동 ↓</button>}
           <QuestionForm question={state.draft} error={state.inputError} pending={pending} empty={empty}
-            touchEnter={touchEnter} inputRef={inputRef} onChange={value => session.changeDraft(value)}
+            touchEnter={touchEnter} inputRef={inputRef} registerButtonRef={registrationButtonRef} onChange={value => session.changeDraft(value)}
+            onRegister={() => { setRegistrationAnnouncement(""); setRegistrationOpen(true); }}
             onExample={value => { session.changeDraft(value); inputRef.current?.focus(); }} onSubmit={submit} />
           <p id="chat-disclosure" className="chat-disclosure">현재는 질문을 그대로 반환합니다. 이전 메시지는 답변에 반영되지 않으며 새로고침하면 대화가 초기화됩니다.</p>
+          {registrationAnnouncement && <p className="chat-registration-status" role="status" aria-live="polite">
+            {registrationAnnouncement} <Link href="/admin/documents">문서 관리에서 검토하고 게시하세요.</Link>
+          </p>}
           <p role="status" className="sr-only">{state.announcement}</p>
         </div>
       </div>
+      {registrationOpen && <DocumentRegistrationDialog initialBody={state.draft}
+        onClose={() => { setRegistrationOpen(false); requestAnimationFrame(() => registrationButtonRef.current?.focus()); }}
+        onSaved={title => setRegistrationAnnouncement(`“${title}” 초안을 저장했습니다. 채팅 답변에는 추가하지 않았습니다.`)} />}
     </div>
   );
 }
