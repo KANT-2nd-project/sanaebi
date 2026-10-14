@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: #f7f9f8;
+  --foreground: #172b26;
+  --muted: #50645d;
+  --action: #146b50;
+  --surface: #ffffff;
+  --boundary: #647c71;
+  --focus: #0b7254;
+  --danger: #a52a2a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-action: var(--action);
+  --color-surface: var(--surface);
+  --color-boundary: var(--boundary);
+  --color-danger: var(--danger);
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+a:focus-visible,
+button:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
