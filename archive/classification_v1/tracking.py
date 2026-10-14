@@ -136,7 +136,7 @@ def start_run(root, name, kind, data, *, split="none", model_id="", training_run
             )
         )
         commit = subprocess.run(
-            ["git", "-C", str(ROOT.parent), "rev-parse", "HEAD"],
+            ["git", "-C", str(ROOT.parents[1]), "rev-parse", "HEAD"],
             capture_output=True,
             text=True,
             check=False,

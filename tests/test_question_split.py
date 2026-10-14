@@ -9,8 +9,8 @@ from unittest.mock import patch
 import joblib
 from sklearn.dummy import DummyClassifier
 
-from classification import dataset as question_split
-from classification.cli.evaluate import evaluate_saved_model
+from archive.classification_v1 import dataset as question_split
+from archive.classification_v1.cli.evaluate import evaluate_saved_model
 
 
 # 모델의 test 점수를 구하는 코드가 아니라 분할·보고서 코드의 동작 검사

@@ -4,15 +4,12 @@ import sys
 from pathlib import Path
 
 if not __package__:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from classification.cli.train import run_training
-from classification.models.transformer import TransformerConfig
+from archive.classification_v1.cli.train import run_training
+from archive.classification_v1.models.presets import CONFIGS
 
-CONFIG = TransformerConfig(
-    model_name="모델명 입력",
-    model_folder="결과 저장 폴더 명 입력",
-)
+CONFIG = CONFIGS["roberta_small"]
 
 
 def main(argv=None):

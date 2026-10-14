@@ -4,10 +4,10 @@ import sys
 from pathlib import Path
 
 if not __package__:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from classification.cli.jev import jev_main
-from classification.models.jev import JevRequestError
+from archive.classification_v1.cli.jev import jev_main
+from archive.classification_v1.models.jev import JevRequestError
 
 if __name__ == "__main__":
     try:

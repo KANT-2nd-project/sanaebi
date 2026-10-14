@@ -4,12 +4,12 @@ import sys
 from pathlib import Path
 
 if not __package__:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from classification.cli.train import run_training
-from classification.models.presets import CONFIGS
+from archive.classification_v1.cli.train import run_training
+from archive.classification_v1.models.presets import CONFIGS
 
-CONFIG = CONFIGS["koelectra_small"]
+CONFIG = CONFIGS["roberta_base"]
 
 
 def main(argv=None):

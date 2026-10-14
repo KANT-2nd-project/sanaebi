@@ -11,11 +11,11 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-from classification.cli import evaluate as jev_evaluation
-from classification.dataset import LABELS, question_input, split_input_hashes
-from classification.experiments import evaluate_jev as jev_cli
-from classification.models import jev as jev_client
-from classification.models import jev_prompt
+from archive.classification_v1.cli import evaluate as jev_evaluation
+from archive.classification_v1.dataset import LABELS, question_input, split_input_hashes
+from archive.classification_v1.experiments import evaluate_jev as jev_cli
+from archive.classification_v1.models import jev as jev_client
+from archive.classification_v1.models import jev_prompt
 
 
 class JevQuestionTests(unittest.TestCase):

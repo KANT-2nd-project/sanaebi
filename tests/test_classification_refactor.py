@@ -19,20 +19,22 @@ from urllib.error import HTTPError, URLError
 import torch
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from classification import artifacts, dataset
-from classification.cli.evaluate import evaluate_saved_model
-from classification.cli.train import run_training
-from classification.dataset import LABELS, read_recorded_splits
-from classification.evaluation import reporting
-from classification.evaluation.metrics import evaluate
-from classification.models import jev as jev_client
-from classification.models import tfidf
-from classification.models import transformer as inference
-from classification.models import transformer as training
-from classification.models.tfidf import TfidfConfig, select_tfidf
+from archive.classification_v1 import artifacts, dataset
+from archive.classification_v1.cli.evaluate import evaluate_saved_model
+from archive.classification_v1.cli.train import run_training
+from archive.classification_v1.dataset import LABELS, read_recorded_splits
+from archive.classification_v1.evaluation import reporting
+from archive.classification_v1.evaluation.metrics import evaluate
+from archive.classification_v1.models import jev as jev_client
+from archive.classification_v1.models import tfidf
+from archive.classification_v1.models import transformer as inference
+from archive.classification_v1.models import transformer as training
+from archive.classification_v1.models.tfidf import TfidfConfig, select_tfidf
 
 ROOT = Path(__file__).resolve().parents[1]
-ENTRYPOINTS = [p.stem for p in (ROOT / "classification/experiments").glob("train_*.py")]
+ENTRYPOINTS = [
+    p.stem for p in (ROOT / "archive/classification_v1/experiments").glob("train_*.py")
+]
 
 
 class TrainingTests(unittest.TestCase):
@@ -222,7 +224,7 @@ class TrainingTests(unittest.TestCase):
         self.assertEqual(len(fitted_texts), 1)
 
     def test_small_tfidf_training_saves_and_evaluates_in_custom_paths(self):
-        from classification.cli.train import run_training as train_tfidf
+        from archive.classification_v1.cli.train import run_training as train_tfidf
 
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -260,7 +262,7 @@ class TrainingTests(unittest.TestCase):
                         str(root / "artifacts"),
                     ],
                 )
-            from classification.cli.evaluate import evaluate_current
+            from archive.classification_v1.cli.evaluate import evaluate_current
 
             evaluate_current(
                 "tfidf", artifact_root=root / "artifacts", dataset_path=dataset
@@ -280,7 +282,7 @@ class TrainingTests(unittest.TestCase):
             self.assertFalse((root / "artifacts/results/comparison.html").exists())
 
     def test_example_configuration_fails_before_data_or_download(self):
-        from classification.experiments.train_example import CONFIG
+        from archive.classification_v1.experiments.train_example import CONFIG
 
         with (
             patch.object(
@@ -358,7 +360,9 @@ class ReportAndClientTests(unittest.TestCase):
     def test_recorded_metrics_and_html_survive_extraction(self):
         with tempfile.TemporaryDirectory() as temp:
             result_dir = Path(temp)
-            for path in sorted((ROOT / "classification/result").glob("*/metrics.json")):
+            for path in sorted(
+                (ROOT / "archive/classification_v1/result").glob("*/metrics.json")
+            ):
                 original_metrics = path.read_bytes()
                 original_html = path.with_name("report.html").read_bytes()
                 report = json.loads(original_metrics)
@@ -386,21 +390,21 @@ class ReportAndClientTests(unittest.TestCase):
             self.assertNotIn("테스트 F1", comparison)
             with (
                 patch(
-                    "classification.models.transformer.load",
+                    "archive.classification_v1.models.transformer.load",
                     side_effect=AssertionError("모델 호출 금지"),
                 ),
                 patch(
-                    "classification.models.jev.urlopen",
+                    "archive.classification_v1.models.jev.urlopen",
                     side_effect=AssertionError("API 호출 금지"),
                 ),
             ):
                 evaluate_saved_model("jev", result_dir=result_dir)
 
     def test_jev_prompt_matches_new_run_and_updates_archived_examples(self):
-        from classification.models import jev_prompt
+        from archive.classification_v1.models import jev_prompt
 
         saved = json.loads(
-            (ROOT / "classification/result/jev/metrics.json").read_text()
+            (ROOT / "archive/classification_v1/result/jev/metrics.json").read_text()
         )["settings"]
         self.assertEqual(jev_prompt.INSTRUCTIONS, saved["instructions"])
         for label, criteria in jev_prompt.CATEGORIES.items():
@@ -417,7 +421,7 @@ class ReportAndClientTests(unittest.TestCase):
         archived = json.loads(
             (
                 ROOT
-                / "classification/archive/results/before-stratified-2026-10-14/jev/metrics.json"
+                / "archive/classification_v1/archive/results/before-stratified-2026-10-14/jev/metrics.json"
             ).read_text()
         )["settings"]
         self.assertNotEqual(
@@ -480,7 +484,7 @@ class EntrypointTests(unittest.TestCase):
         auto_model = transformers.AutoModelForSequenceClassification
         modules = [
             ".".join(p.relative_to(ROOT).with_suffix("").parts)
-            for p in (ROOT / "classification").rglob("*.py")
+            for p in (ROOT / "archive/classification_v1").rglob("*.py")
             if p.stem not in {"__init__", "document_split"}
         ]
         for name in modules:
@@ -526,8 +530,14 @@ class EntrypointTests(unittest.TestCase):
             )
             for name in [*ENTRYPOINTS, "evaluate_jev"]:
                 for invocation in (
-                    [str(ROOT / "classification/experiments" / f"{name}.py")],
-                    ["-m", f"classification.experiments.{name}"],
+                    [
+                        str(
+                            ROOT
+                            / "archive/classification_v1/experiments"
+                            / f"{name}.py"
+                        )
+                    ],
+                    ["-m", f"archive.classification_v1.experiments.{name}"],
                 ):
                     with self.subTest(command=invocation):
                         run = subprocess.run(
@@ -547,7 +557,7 @@ class EntrypointTests(unittest.TestCase):
                     [
                         sys.executable,
                         "-m",
-                        f"classification.experiments.{name}",
+                        f"archive.classification_v1.experiments.{name}",
                         "--preview-documents",
                     ],
                     cwd=temp,
