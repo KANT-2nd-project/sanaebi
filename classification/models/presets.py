@@ -8,7 +8,9 @@ CONFIGS = {
         "monologg/koelectra-base-v3-discriminator", "koelectra_base"
     ),
     "koelectra_small": transformer.TransformerConfig(
-        "monologg/koelectra-small-v3-discriminator", "koelectra_small"
+        "monologg/koelectra-small-v3-discriminator",
+        "koelectra_small",
+        max_lengths=(256,),
     ),
     "roberta_base": transformer.TransformerConfig("klue/roberta-base", "roberta_base"),
     "roberta_small": transformer.TransformerConfig(
