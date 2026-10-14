@@ -1,0 +1,9 @@
+{
+  "qwen3-4b-q4km": {
+    "provider": "ollama",
+    "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+    "timeout_seconds": 120,
+    "context_window": 40960,
+    "max_output_tokens": 512
+  }
+}

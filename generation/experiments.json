@@ -1,0 +1,10 @@
+{
+  "company-baseline-v1": {
+    "documents": "tmp/generation-cli-documents.jsonl",
+    "models": ["qwen3-4b-q4km"]
+  },
+  "company-smoke-v1": {
+    "documents": "tmp/generation-smoke-documents.jsonl",
+    "models": ["qwen3-4b-q4km"]
+  }
+}

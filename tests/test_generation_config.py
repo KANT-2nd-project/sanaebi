@@ -4,6 +4,38 @@ from generation.config import GenerationConfig, GenerationProvider
 
 
 class GenerationConfigTests(unittest.TestCase):
+    def test_token_limits_reject_wrong_types_and_nonpositive_values(self):
+        for field in ("context_window", "max_output_tokens"):
+            for value in (True, False, 1.5, "512", [], {}):
+                with (
+                    self.subTest(field=field, value=value),
+                    self.assertRaises(TypeError),
+                ):
+                    GenerationConfig(
+                        GenerationProvider.OLLAMA, "model", 30, **{field: value}
+                    )
+            for value in (0, -1):
+                with (
+                    self.subTest(field=field, value=value),
+                    self.assertRaises(ValueError),
+                ):
+                    GenerationConfig(
+                        GenerationProvider.OLLAMA, "model", 30, **{field: value}
+                    )
+
+    def test_output_must_leave_room_for_input(self):
+        for output in (512, 513):
+            with self.subTest(output=output), self.assertRaises(ValueError):
+                GenerationConfig(GenerationProvider.OLLAMA, "model", 30, 512, output)
+        for context, output in ((None, None), (512, None), (None, 1), (512, 511)):
+            with self.subTest(context=context, output=output):
+                config = GenerationConfig(
+                    GenerationProvider.OLLAMA, "model", 30, context, output
+                )
+                self.assertEqual(
+                    (config.context_window, config.max_output_tokens), (context, output)
+                )
+
     def test_nonfinite_timeouts_are_rejected(self):
         for timeout in (float("inf"), float("-inf"), float("nan")):
             with self.subTest(timeout=timeout), self.assertRaises(ValueError):
