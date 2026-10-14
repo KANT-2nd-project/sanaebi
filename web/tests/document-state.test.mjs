@@ -63,4 +63,3 @@ test("선택 메타데이터 빈 값은 null로 보내고 원문 개행은 보�
 test("새 멱등성 키는 표준 UUID 형식이다", () => {
   assert.match(newIdempotencyKey(), /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
 });
-

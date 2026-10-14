@@ -7,7 +7,7 @@
     "build": "next build",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "tsc lib/api/questions.ts lib/api/documents.ts features/question/chat-session.ts features/documents/document-state.ts --outDir ../tmp/frontend-unit-tests --rootDir . --target ES2022 --module commonjs --moduleResolution node --strict --skipLibCheck && node --test tests/*.test.mjs"
+    "test": "tsc lib/api/questions.ts lib/api/documents.ts features/question/chat-session.ts features/documents/document-state.ts features/documents/document-route-state.ts --outDir ../tmp/frontend-unit-tests --rootDir . --target ES2022 --module commonjs --moduleResolution node --strict --skipLibCheck && node --test tests/*.test.mjs"
   },
   "dependencies": {
     "next": "16.4.0",

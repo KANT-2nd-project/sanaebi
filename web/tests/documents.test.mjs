@@ -96,4 +96,3 @@ test("응답 body를 읽는 중 timeout은 성공으로 처리하지 않는다",
   }));
   await assert.rejects(listDocuments({}, { timeoutMs: 10 }), { kind: "timeout" });
 });
-

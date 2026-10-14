@@ -14,12 +14,13 @@ import {
   newIdempotencyKey, nextWriteAttempt, validateDocumentForm,
   type DocumentForm, type DocumentFormErrors, type DocumentWriteAttempt,
 } from "./document-state";
+import { DocumentRouteState } from "./document-route-state";
 import { DocumentActionDialog, type DocumentAction } from "./document-action-dialog";
 import { DocumentEditor } from "./document-editor";
 
 const PAGE_SIZE = 20;
 type WriteKind = "save" | "publish" | "withdraw";
-type PendingWrite = { kind: WriteKind; attempt: DocumentWriteAttempt; documentId: string | null };
+type PendingWrite = { kind: WriteKind; attempt: DocumentWriteAttempt; documentId: string | null; originRoute: string };
 type ListFilters = { q: string; status: "all" | DocumentStatus; offset: number };
 
 function errorMessage(error: unknown, fallback: string): { message: string; kind: DocumentApiError["kind"] | "" } {
@@ -57,6 +58,7 @@ export function DocumentPanel() {
   const isNew = searchParams?.get("new") === "1";
   const editorOpen = Boolean(selectedId || isNew);
   const routeUrl = `${pathname ?? "/admin/documents"}${search ? `?${search}` : ""}`;
+  const [routeState] = useState(() => new DocumentRouteState(routeUrl));
 
   const [capabilities, setCapabilities] = useState<DocumentCapabilities | null>(null);
   const [capabilityError, setCapabilityError] = useState("");
@@ -85,9 +87,9 @@ export function DocumentPanel() {
   const editorFormRef = useRef<HTMLFormElement>(null);
   const requestInFlight = useRef(false);
   const pendingWriteRef = useRef<PendingWrite | null>(null);
-  const routeRef = useRef<string | null>(null);
-  const allowedRouteRef = useRef<string | null>(null);
+  const loadedResourceKey = useRef<string | null>(null);
   const dirtyRef = useRef(false);
+  const resourceKey = selectedId ? `document:${selectedId}` : isNew ? "new-document" : "document-list";
   const editorDirty = editorOpen && isDocumentFormDirty(form, baselineForm);
   useEffect(() => { dirtyRef.current = editorDirty; }, [editorDirty]);
 
@@ -97,36 +99,39 @@ export function DocumentPanel() {
   }, []);
 
   function mayDiscard() {
+    if (requestInFlight.current) {
+      setWriteFailure("저장 작업이 진행 중입니다. 완료 결과를 확인한 뒤 이동해주세요.");
+      return false;
+    }
     if (!dirtyRef.current && !pendingWriteRef.current) return true;
     return window.confirm("저장하지 않은 문서 내용이나 확인이 필요한 요청이 있습니다. 이동하면 내용이 사라질 수 있습니다. 계속할까요?");
   }
 
   function navigate(path: string, replace = false) {
     if (!mayDiscard()) return;
-    allowedRouteRef.current = path;
+    routeState.approve(path);
     if (replace) router.replace(path);
     else router.push(path);
   }
 
+  const handleRouteChange = useCallback((url: string) => {
+    const transition = routeState.observe(url, {
+      dirty: dirtyRef.current,
+      pendingWrite: requestInFlight.current,
+      confirmDiscard: () => window.confirm("저장하지 않은 문서 내용이 사라질 수 있습니다. 이동할까요?"),
+    });
+    if (transition.kind === "blocked") router.replace(transition.restoreUrl);
+  }, [routeState, router]);
+
   useEffect(() => {
-    if (routeRef.current === null) {
-      routeRef.current = routeUrl;
-      return;
-    }
-    if (routeRef.current === routeUrl) return;
-    if (allowedRouteRef.current === routeUrl) {
-      allowedRouteRef.current = null;
-      routeRef.current = routeUrl;
-      return;
-    }
-    if (dirtyRef.current && !window.confirm("저장하지 않은 문서 내용이 사라질 수 있습니다. 이동할까요?")) {
-      const previous = routeRef.current;
-      allowedRouteRef.current = previous;
-      router.replace(previous);
-      return;
-    }
-    routeRef.current = routeUrl;
-  }, [routeUrl, router]);
+    handleRouteChange(routeUrl);
+  }, [handleRouteChange, routeUrl]);
+
+  useEffect(() => {
+    const onPopState = () => handleRouteChange(`${window.location.pathname}${window.location.search}`);
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [handleRouteChange]);
 
   useEffect(() => {
     if (!editorDirty && !pendingWrite) return;
@@ -162,7 +167,9 @@ export function DocumentPanel() {
   // Keep the editor draft aligned with the static route's client-side query state.
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
+    if (!routeState.canLoad(routeUrl) || loadedResourceKey.current === resourceKey) return;
     if (isNew) {
+      loadedResourceKey.current = resourceKey;
       const empty = emptyDocumentForm();
       setDetail(null);
       setDetailBusy(false);
@@ -177,7 +184,9 @@ export function DocumentPanel() {
       return;
     }
     if (!selectedId) {
+      loadedResourceKey.current = resourceKey;
       setDetail(null);
+      setDetailBusy(false);
       return;
     }
     const controller = new AbortController();
@@ -192,6 +201,7 @@ export function DocumentPanel() {
       setFormErrors({});
       setLatestConflict(null);
       setCurrentWrite(null);
+      loadedResourceKey.current = resourceKey;
       setDetailBusy(false);
     }).catch(error => {
       if (error instanceof DocumentApiError && error.kind === "aborted") return;
@@ -202,7 +212,7 @@ export function DocumentPanel() {
       setDetailBusy(false);
     });
     return () => controller.abort();
-  }, [selectedId, isNew, setCurrentWrite]);
+  }, [selectedId, isNew, resourceKey, routeState, routeUrl, setCurrentWrite]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
   async function refreshList() {
@@ -254,6 +264,11 @@ export function DocumentPanel() {
       } else {
         result = await withdrawDocument(pending.documentId!, Number(body.expected_version), pending.attempt.key);
       }
+      if (!routeState.canLoad(pending.originRoute)) {
+        setCurrentWrite(null);
+        void refreshList();
+        return;
+      }
       const nextForm = formFromRevision(result.draft);
       setDetail(result);
       setForm(nextForm);
@@ -266,11 +281,16 @@ export function DocumentPanel() {
       setActionDialog(null);
       if (pending.kind === "save" && pending.attempt.method === "POST") {
         const path = `/admin/documents?id=${encodeURIComponent(result.id)}`;
-        allowedRouteRef.current = path;
+        routeState.approve(path);
         router.replace(path);
       }
       void refreshList();
     } catch (error) {
+      if (!routeState.canLoad(pending.originRoute)) {
+        setCurrentWrite(null);
+        void refreshList();
+        return;
+      }
       const issue = errorMessage(error, "문서 변경을 완료하지 못했습니다. 입력은 보존했습니다.");
       setWriteFailure(issue.message);
       setWriteFailureKind(issue.kind);
@@ -287,7 +307,7 @@ export function DocumentPanel() {
     if (requestInFlight.current) return;
     const previous = pendingWriteRef.current?.attempt ?? null;
     const attempt = nextWriteAttempt(previous, method, path, body, newIdempotencyKey);
-    const pending: PendingWrite = { kind, attempt, documentId: detail?.id ?? null };
+    const pending: PendingWrite = { kind, attempt, documentId: detail?.id ?? null, originRoute: routeUrl };
     setCurrentWrite(pending);
     void executeWrite(pending);
   }
@@ -374,7 +394,7 @@ export function DocumentPanel() {
             if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
             event.preventDefault(); navigate("/chat");
           }}>채팅으로 돌아가기</Link>
-          <button type="button" className="documents-button documents-button-primary" onClick={openNewDocument}>새 문서 초안</button>
+          <button type="button" className="documents-button documents-button-primary" disabled={writePending} onClick={openNewDocument}>새 문서 초안</button>
         </nav>
       </header>
 
@@ -394,7 +414,7 @@ export function DocumentPanel() {
       {editorOpen ? (
         <section className="documents-editor-panel" aria-labelledby="document-editor-title">
           <div className="documents-editor-toolbar">
-            <button type="button" className="documents-text-button" onClick={() => navigate("/admin/documents")}>← 목록</button>
+            <button type="button" className="documents-text-button" disabled={writePending} onClick={() => navigate("/admin/documents")}>← 목록</button>
             <span>{detail ? `문서 ID ${detail.id}` : isNew ? "새 문서" : "문서"}</span>
           </div>
           {detailBusy ? <p className="documents-loading" role="status">문서를 불러오는 중…</p> : detail || isNew ? <>

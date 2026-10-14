@@ -341,4 +341,3 @@ export async function withdrawDocument(
     body: JSON.stringify({ expected_version: expectedVersion }),
   }, 200, parseDocumentDetail, options);
 }
-
