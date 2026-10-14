@@ -55,7 +55,7 @@ Validation Macro-F1 내림차순이다. 정확도는 정답 비율이며 Macro-F
 - 보고서 최초 작성 시에는 선정을 보류했으나, 이후 사용자 결정으로 **KoELECTRA base를 현 단계 서버 분류기로 채택**했다. 개발 test에서 BERT base와 공동 최고(133/135, Macro-F1 0.985098)이며 동일 CPU 측정에서 BERT base보다 빨랐다(17.91ms 대 20.20ms). validation 최고는 RoBERTa base이므로 전 지표 단독 최고라는 주장은 하지 않는다.
 - 선택한 저장본의 model_id는 `9f51682d82d4455d8296077c339afd58`이며 경로는 `artifacts/experiments/learning-comparison-2026-10-15/koelectra_base/model/`이다. 모델 종류뿐 아니라 이 checkpoint를 연결 대상으로 지정한다.
 - 개발 test 결과를 참고한 모델 선정이다. 작은 단일 합성 분할이며 미열람 최종 평가·통계적 우열·실서비스 성능을 입증하지 않는다.
-- **선정 결정 완료, 이번 checkpoint의 서버 연결은 미완료**다. [서버 연결 절차와 선정 기록](../../../docs/worklogs/2026-10-15-classifier-selection.md)을 따라 연결·예측 일치·API 오류 처리를 확인한다. 이후 실제 질문·경계 질문을 별도 수집·검수한다.
+- **선정과 서버 연결 검증 완료**다. 저장 validation 133건과 서버 예측이 모두 일치하고 실제 분류기·모의 생성기를 사용한 HTTP 6건을 확인했다. 실제 LLM 종단 품질은 별도다. [서버 연결 절차와 선정 기록](../../../docs/worklogs/2026-10-15-classifier-selection.md)을 참고한다. 연결 검증은 [서버 작업 기록](../../../docs/worklogs/2026-10-15-server-classifier-integration.md)에 남긴다. 이후 실제 질문·경계 질문을 별도 수집·검수한다.
 
 ## 원자료 접근·검증
 

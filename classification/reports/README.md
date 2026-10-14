@@ -8,6 +8,6 @@
 | 2026-10-15 | [새 학습 구현의 로컬 6종 상세](2026-10-15-learning-model-comparison/README.md) | 학습·저장·평가·CPU 속도 측정 완료 |
 | 2026-10-15 | [Jev API 상세](2026-10-15-jev-evaluation/README.md) | 실제 API 268회 완료·예측 재검증 |
 
-이번 탐색의 validation 최고는 RoBERTa base다. 작은 단일 합성 분할의 결과이며 test는 이미 열람한 개발 자료다. 사용자 결정으로 개발 test 공동 최고 성능과 CPU 추론 시간을 고려해 KoELECTRA base를 현 단계 서버 분류기로 채택했다. 선정 checkpoint의 서버 연결은 아직 미완료이며 근거는 [통합 보고서](2026-10-15-seven-model-comparison/README.md#해석결정)를 따른다. 과거 아카이브와 이번 실행은 학습 조건이 다르므로 새 실행의 결과를 과거 보고서에 덮어쓰지 않는다.
+이번 탐색의 validation 최고는 RoBERTa base다. 작은 단일 합성 분할의 결과이며 test는 이미 열람한 개발 자료다. 사용자 결정으로 개발 test 공동 최고 성능과 CPU 추론 시간을 고려해 KoELECTRA base를 현 단계 서버 분류기로 채택했다. 선정 checkpoint의 서버 연결과 저장 validation 예측 133건 일치를 확인했으며 근거는 [통합 보고서](2026-10-15-seven-model-comparison/README.md#해석결정)를 따른다. 과거 아카이브와 이번 실행은 학습 조건이 다르므로 새 실행의 결과를 과거 보고서에 덮어쓰지 않는다.
 
 보고서에는 목적 → 실행 조건 → 결과 → 라벨별 지표·오분류 → 해석·결정 → 원자료 접근 방법을 기록한다. 실제 실행, 과거 기록, 가설을 구분하고 이미 열람한 합성 개발 test의 한계를 명시한다. 실행별 예측·가중치·전체 trial은 Git 보고서에 중복 수록하지 않는다.
