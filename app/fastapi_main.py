@@ -1,45 +1,17 @@
-import json
-from pathlib import Path
-
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from app.schemas import AnswerResponse, DocumentRequest, QuestionRequest
+from app.routers import documents, questions
+from app.schemas import AnswerResponse
 
 app = FastAPI()
-
-# 실행 위치와 관계없이 이 Python 파일 옆에 문서를 저장합니다.
-DOCUMENT_FILE = Path(__file__).resolve().parent / "documents.jsonl"
-
+app.include_router(questions.router)
+app.include_router(documents.router)
 
 @app.get("/")
 def home():
     return {"message": "FastAPI 서버가 실행 중입니다."}
-
-
-#### 엔드포인트 ####
-
-
-@app.post(
-    "/ask",
-    response_model=AnswerResponse,
-    responses={422: {"model": AnswerResponse, "description": "입력 오류"}},
-)
-def ask(request: QuestionRequest) -> AnswerResponse:
-    return AnswerResponse(ok=True, text=request.question.strip())
-
-
-@app.post(
-    "/regist-docs",
-    response_model=AnswerResponse,
-    responses={422: {"model": AnswerResponse, "description": "입력 오류"}},
-)
-def register_document(request: DocumentRequest) -> AnswerResponse:
-    document = {"doc": request.doc.strip()}
-    with DOCUMENT_FILE.open("a", encoding="utf-8") as file:
-        file.write(json.dumps(document, ensure_ascii=False) + "\n")
-    return AnswerResponse(ok=True, text="문서가 등록되었습니다.")
 
 
 # 오류가 나면 handler가 오류를 찾고 오류 내용을 말해줌

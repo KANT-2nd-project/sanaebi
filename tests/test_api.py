@@ -9,15 +9,14 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
+from app.routers import documents
 
 
 class ApiTests(unittest.TestCase):
     def setUp(self):
         directory = self.enterContext(tempfile.TemporaryDirectory())
         self.document_file = Path(directory) / "documents.jsonl"
-        self.enterContext(
-            patch.object(fastapi_main, "DOCUMENT_FILE", self.document_file)
-        )
+        self.enterContext(patch.object(documents, "DOCUMENT_FILE", self.document_file))
         self.client = self.enterContext(
             TestClient(fastapi_main.app, raise_server_exceptions=False)
         )
@@ -91,7 +90,7 @@ class ApiTests(unittest.TestCase):
 
     def test_document_write_failure_is_not_reported_as_success(self):
         missing_parent = self.document_file.parent / "missing" / "documents.jsonl"
-        with patch.object(fastapi_main, "DOCUMENT_FILE", missing_parent):
+        with patch.object(documents, "DOCUMENT_FILE", missing_parent):
             response = self.client.post("/regist-docs", json={"doc": "가상 문서"})
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.text, "Internal Server Error")
