@@ -39,6 +39,7 @@ POST /ask   -> {"ok":true,"text":"휴가 신청 방법 알려줘","reason":""}
 ## 프로젝트 문서
 
 - [서비스 아키텍처](docs/service-architecture.md): 현재 API 동작과 목표 질문 처리 흐름
+- [프런트엔드 설계](docs/frontend-architecture.md): Next.js 정적 내보내기·nginx·FastAPI 구성, SEO와 단계별 구현 기준. web 기본 프로젝트 생성, 질문 기능·배포는 미검증
 - [서버 구성 규약](docs/server-conventions.md): 현재 모듈 구성, 책임 분리와 API 회귀 검증 기준
 - [요청 처리 분류·라벨링 기준 v1.0](docs/label-taxonomy.md): 질문 처리 라벨의 정의와 경계 사례
 - [요청 처리 데이터 안내](data/README.md): 데이터 구조, 작성·검수 기록, 분할과 검증 범위
