@@ -111,6 +111,8 @@ TF-IDF와 BERT 등 비교 모델은 동일한 분할을 사용하고 실제 문�
 
 사람의 정답 검수, 모델 학습, 회사 근거 문서 작성, 실제 서비스 성능 평가는 각각 별도 근거로 판단한다. 런타임 분할은 현재 구현되어 있으며 학습·평가 실행은 [분류 안내](../classification/README.md)를 따른다. train은 train/validation만 사용하고 기본 eval은 validation, `--split test`는 test만 평가한다. 현재 test는 이미 열람한 개발 평가 자료다.
 
+확정한 비교 결과와 해석은 [분류 실험 보고서](../classification/reports/README.md)에서 관리한다. 개별 실행 원자료는 해당 보고서가 연결한 MLflow·artifact-root를 따른다.
+
 ## 이전 질문 주제 분류 자료
 
 기존 다섯 업무 영역 질문 분류 데이터는 [질문 주제 분류 아카이브](archive/question-topics/README.md)에 보관한다. 현재 요청 처리 라벨 데이터와 다른 실험이므로 서로 바꾸어 사용하지 않는다.

@@ -66,6 +66,7 @@ API 호출 비용이 발생합니다. 답변 생성 실패는 HTTP 502와 오류
 - [서버 구성 규약](docs/server-conventions.md): 현재 모듈 구성, 책임 분리와 API 회귀 검증 기준
 - [요청 처리 분류·라벨링 기준 v1.0](docs/label-taxonomy.md): 질문 처리 라벨의 정의와 경계 사례
 - [분류 실험 코드 안내](classification/README.md): 코드 읽는 순서, 공통 학습·평가 구조와 실행 방법
+- [분류 실험 보고서](classification/reports/README.md): 모델 비교 결과·오분류·선정 판단과 실행 근거
 - [요청 처리 데이터 안내](data/README.md): 데이터 구조, 작성·검수 기록, 분할과 검증 범위
 - [문서 주제 분류 아카이브 v0.2](data/archive/document-topics-v0.2/README.md): 이전 문서 분류 실험 데이터
 - [질문 주제 분류 아카이브](data/archive/question-topics/README.md): 이전 질문 분류 실험 데이터

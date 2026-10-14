@@ -1,6 +1,6 @@
 # 질문 분류 실험
 
-질문 하나를 `SEARCH_KNOWLEDGE`, `CLARIFY`, `UNSUPPORTED`로 분류하는 모델을 학습·평가한다. [라벨 기준](../docs/label-taxonomy.md), [데이터 안내](../data/README.md)가 각각 판정·검수·분할의 기준이다. 실행 기록은 로컬 MLflow에서 확인한다.
+질문 하나를 `SEARCH_KNOWLEDGE`, `CLARIFY`, `UNSUPPORTED`로 분류하는 모델을 학습·평가한다. [라벨 기준](../docs/label-taxonomy.md), [데이터 안내](../data/README.md)가 각각 판정·검수·분할의 기준이다. 실행 기록은 로컬 MLflow에서 확인한다. 모델 비교의 결과·해석·결정은 [분류 실험 보고서](reports/README.md)에서 관리한다.
 
 ## 먼저 실행하기
 
