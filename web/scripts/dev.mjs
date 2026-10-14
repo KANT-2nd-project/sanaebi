@@ -1,7 +1,6 @@
 import { createServer } from "node:http";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
-import { proxyChat } from "./chat-proxy.mjs";
 import { applyApiNoStore } from "./dev-response.mjs";
 
 // This launcher is development-only; deployment still uses static export + nginx.
@@ -17,7 +16,6 @@ const app = next({ dev: true, dir: fileURLToPath(new URL("..", import.meta.url))
 await app.prepare();
 const handle = app.getRequestHandler();
 const server = createServer((request, response) => {
-  if (proxyChat(request, response)) return;
   const pathname = (request.url || "/").split("?")[0];
   if (pathname === "/api" || pathname.startsWith("/api/")) applyApiNoStore(response);
   handle(request, response).catch(() => {

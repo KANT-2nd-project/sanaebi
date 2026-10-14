@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-12 sm:px-8 sm:py-20">
@@ -18,12 +20,12 @@ export default function Home() {
           지원하지 않습니다. 현재 질문 기능은 입력한 내용을 그대로 돌려주는 연결 확인 단계이며, 실제 규정 답변은 준비 중입니다.
         </p>
       </section>
-      <a
-        href="/chat/"
+      <Link
+        href="/chat"
         className="mt-8 inline-flex min-h-12 items-center rounded-lg bg-action px-5 py-3 font-medium text-white"
       >
         질문 화면으로 이동
-      </a>
+      </Link>
     </main>
   );
 }
