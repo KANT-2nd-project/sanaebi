@@ -4,11 +4,10 @@ import argparse
 import json
 from pathlib import Path
 
-from generation.config import GenerationConfig, GenerationProvider
 from generation.documents import load_documents
 from generation.providers import build_model_call
 from generation.types import GenerationStatus
-from generation_evaluation.reporting import run_to_dict
+from generation_evaluation.reporting import config_from_dict, run_to_dict
 from generation_evaluation.runner import run_case
 
 
@@ -42,17 +41,10 @@ def main() -> int:
         parser.error(f"{args.experiment} 실험에 등록되지 않은 모델입니다: {args.model}")
     model_settings = models[args.model]
 
-    config = GenerationConfig(
-        provider=GenerationProvider(model_settings["provider"]),
-        model_name=model_settings["model_name"],
-        timeout_seconds=model_settings["timeout_seconds"],
-        context_window=model_settings.get("context_window"),
-        max_output_tokens=model_settings.get("max_output_tokens"),
-    )
+    config = config_from_dict(model_settings)
 
     documents_path = project_root / experiment["documents"]
     documents = load_documents(documents_path)
-
     model_call = build_model_call(config)
     run = run_case(
         case_id="manual",

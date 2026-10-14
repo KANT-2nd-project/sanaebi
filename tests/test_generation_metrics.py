@@ -1,4 +1,5 @@
 import unittest
+from dataclasses import replace
 
 from generation.config import GenerationConfig, GenerationProvider
 from generation.types import GenerationResult, GenerationStatus
@@ -14,6 +15,61 @@ from generation_evaluation.types import GenerationRun
 
 
 class GenerationMetricsTests(unittest.TestCase):
+    def comparison_runs(self):
+        other = GenerationConfig(GenerationProvider.OLLAMA, "other", 30)
+        return [
+            GenerationRun(
+                case,
+                config,
+                None,
+                0.2,
+                "ConnectError",
+                documents_sha256="a" * 64,
+                document_count=2,
+                prompt_sha256=prompt * 64,
+            )
+            for config in (self.config, other)
+            for case, prompt in (("case-a", "b"), ("case-b", "c"))
+        ]
+
+    def test_comparable_summary_accepts_multiple_questions_and_keeps_failures(self):
+        from generation_evaluation import metrics
+
+        runs = self.comparison_runs()
+        summaries = metrics.summarize_comparable_runs(runs)
+        self.assertEqual(summaries, summarize_runs(runs))
+        self.assertEqual([s.counts["execution_error"] for s in summaries], [2, 2])
+        self.assertEqual(metrics.summarize_comparable_runs([]), [])
+
+    def test_comparable_summary_rejects_mixed_or_unknown_identity(self):
+        from generation_evaluation import metrics
+
+        for updates in (
+            {"documents_sha256": "d" * 64},
+            {"document_count": 3},
+            {"prompt_sha256": "d" * 64},
+            {"documents_sha256": None},
+            {"document_count": None},
+            {"prompt_sha256": None},
+            {"case_id": " "},
+        ):
+            runs = self.comparison_runs()
+            runs[-1] = replace(runs[-1], **updates)
+            with self.subTest(updates=updates), self.assertRaises(ValueError):
+                metrics.summarize_comparable_runs(runs)
+
+    def test_comparable_summary_rejects_missing_cases_and_unbalanced_attempts(self):
+        from generation_evaluation import metrics
+
+        runs = self.comparison_runs()
+        for mismatched in (runs[:-1], runs + [runs[0]]):
+            with self.subTest(runs=mismatched), self.assertRaises(ValueError):
+                metrics.summarize_comparable_runs(mismatched)
+        repeated = runs + runs
+        self.assertEqual(
+            metrics.summarize_comparable_runs(repeated), summarize_runs(repeated)
+        )
+
     def test_truncated_is_counted_as_attempt_but_not_completion(self):
         runs = [
             GenerationRun(

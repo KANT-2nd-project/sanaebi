@@ -27,10 +27,15 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
             "timeout_seconds": run.config.timeout_seconds,
             "context_window": run.config.context_window,
             "max_output_tokens": run.config.max_output_tokens,
+            "reasoning_effort": run.config.reasoning_effort,
+            "temperature": run.config.temperature,
         },
         "result": result_data,
         "elapsed_seconds": run.elapsed_seconds,
         "error_type": run.error_type,
+        "documents_sha256": run.documents_sha256,
+        "document_count": run.document_count,
+        "prompt_sha256": run.prompt_sha256,
     }
 
 
@@ -92,6 +97,8 @@ def config_from_dict(data: dict[str, object]) -> GenerationConfig:
         timeout_seconds=timeout_seconds,
         context_window=data.get("context_window"),
         max_output_tokens=data.get("max_output_tokens"),
+        reasoning_effort=data.get("reasoning_effort"),
+        temperature=data.get("temperature"),
     )
 
 
@@ -177,4 +184,7 @@ def run_from_dict(data: dict[str, object]) -> GenerationRun:
         result=result_from_dict(result_data),
         elapsed_seconds=elapsed_seconds,
         error_type=error_type,
+        documents_sha256=data.get("documents_sha256"),
+        document_count=data.get("document_count"),
+        prompt_sha256=data.get("prompt_sha256"),
     )

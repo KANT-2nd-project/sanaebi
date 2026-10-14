@@ -58,18 +58,68 @@ class GenerationProviderTests(unittest.TestCase):
             )
             constructor.return_value.invoke.assert_not_called()
 
-    def test_openai_rejects_unconnected_limits_before_client_creation(self):
-        for context, output in ((40960, None), (None, 512), (40960, 512)):
+    def test_openai_rejects_context_window_before_client_creation(self):
+        config = GenerationConfig(GenerationProvider.OPENAI, "model", 30, 40960, 512)
+        with patch("generation.providers.ChatOpenAI") as constructor:
+            with self.assertRaisesRegex(ValueError, "context_window"):
+                build_openai_model(config)
+            constructor.assert_not_called()
+
+    def test_openai_maps_optional_generation_settings(self):
+        config = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "model",
+            30,
+            max_output_tokens=512,
+            reasoning_effort="low",
+        )
+        with patch("generation.providers.ChatOpenAI") as constructor:
+            build_openai_model(config)
+            constructor.assert_called_once_with(
+                model="model",
+                timeout=30,
+                max_retries=0,
+                max_completion_tokens=512,
+                reasoning_effort="low",
+            )
+
+    def test_openai_passes_temperature_only_when_configured(self):
+        for temperature, expected in ((None, {}), (0.3, {"temperature": 0.3})):
             with (
-                self.subTest(context=context, output=output),
+                self.subTest(temperature=temperature),
                 patch("generation.providers.ChatOpenAI") as constructor,
             ):
                 config = GenerationConfig(
-                    GenerationProvider.OPENAI, "model", 30, context, output
+                    GenerationProvider.OPENAI,
+                    "model",
+                    30,
+                    temperature=temperature,
                 )
-                with self.assertRaises(ValueError):
-                    build_openai_model(config)
-                constructor.assert_not_called()
+                build_openai_model(config)
+                constructor.assert_called_once_with(
+                    model="model", timeout=30, max_retries=0, **expected
+                )
+
+    def test_ollama_passes_temperature_only_when_configured(self):
+        for temperature, expected in ((None, {}), (0.3, {"temperature": 0.3})):
+            with (
+                self.subTest(temperature=temperature),
+                patch("generation.providers.ChatOllama") as constructor,
+            ):
+                config = GenerationConfig(
+                    GenerationProvider.OLLAMA,
+                    "model",
+                    30,
+                    temperature=temperature,
+                )
+                build_ollama_model(config)
+                constructor.assert_called_once_with(
+                    model="model",
+                    num_ctx=None,
+                    num_predict=None,
+                    client_kwargs={"timeout": 30},
+                    **expected,
+                )
 
     def test_openai_timeout_preserves_cause_and_reaches_timeout_status(self):
         error = APITimeoutError(

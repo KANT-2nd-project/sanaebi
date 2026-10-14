@@ -1,3 +1,5 @@
+from collections import Counter
+
 from generation.config import GenerationConfig
 from generation.types import GenerationStatus
 from generation_evaluation.types import GenerationRun, GenerationSummary
@@ -88,3 +90,37 @@ def summarize_runs(
         summaries.append(summary)
 
     return summaries
+
+
+def summarize_comparable_runs(runs: list[GenerationRun]) -> list[GenerationSummary]:
+    """Summarize observed runs only after common-input comparison checks."""
+    if not runs:
+        return []
+
+    corpus = (runs[0].documents_sha256, runs[0].document_count)
+    prompts_by_case = {}
+    for run in runs:
+        if not isinstance(run.case_id, str) or not run.case_id.strip():
+            raise ValueError("비교에는 비어 있지 않은 case_id가 필요합니다.")
+        if any(
+            value is None
+            for value in (run.documents_sha256, run.document_count, run.prompt_sha256)
+        ):
+            raise ValueError("입력 식별 정보가 없는 기록은 비교할 수 없습니다.")
+        if (run.documents_sha256, run.document_count) != corpus:
+            raise ValueError("서로 다른 문서 입력을 비교 집계할 수 없습니다.")
+        if run.case_id in prompts_by_case:
+            if prompts_by_case[run.case_id] != run.prompt_sha256:
+                raise ValueError(f"동일 문항의 프롬프트가 다릅니다: {run.case_id}")
+        else:
+            prompts_by_case[run.case_id] = run.prompt_sha256
+
+    expected_counts = None
+    for config_runs in group_by_config(runs).values():
+        counts = Counter(run.case_id for run in config_runs)
+        if expected_counts is None:
+            expected_counts = counts
+        elif counts != expected_counts:
+            raise ValueError("설정별 문항 목록 또는 문항별 시도 수가 다릅니다.")
+
+    return summarize_runs(runs)

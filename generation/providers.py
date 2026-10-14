@@ -58,12 +58,16 @@ def build_ollama_model(config: GenerationConfig) -> ChatOllama:
     if config.provider != "ollama":
         raise ValueError("provider가 ollama가 아닙니다.")
 
-    return ChatOllama(
-        model=config.model_name,
-        num_ctx=config.context_window,
-        num_predict=config.max_output_tokens,
-        client_kwargs={"timeout": config.timeout_seconds},
-    )
+    options = {
+        "model": config.model_name,
+        "num_ctx": config.context_window,
+        "num_predict": config.max_output_tokens,
+        "client_kwargs": {"timeout": config.timeout_seconds},
+    }
+    if config.temperature is not None:
+        options["temperature"] = config.temperature
+
+    return ChatOllama(**options)
 
 
 def build_ollama_call(
@@ -77,12 +81,22 @@ def build_openai_model(config: GenerationConfig) -> ChatOpenAI:
     if config.provider != "openai":
         raise ValueError("provider가 openai가 아닙니다.")
 
-    if config.context_window is not None or config.max_output_tokens is not None:
-        raise ValueError("OpenAI의 문맥, 출력 한도 설정은 아직 연결하지 않았습니다.")
+    if config.context_window is not None:
+        raise ValueError("OpenAI의 context_window 설정은 아직 연결하지 않았습니다.")
 
-    return ChatOpenAI(
-        model=config.model_name, timeout=config.timeout_seconds, max_retries=0
-    )
+    options = {
+        "model": config.model_name,
+        "timeout": config.timeout_seconds,
+        "max_retries": 0,
+    }
+    if config.max_output_tokens is not None:
+        options["max_completion_tokens"] = config.max_output_tokens
+    if config.reasoning_effort is not None:
+        options["reasoning_effort"] = config.reasoning_effort
+    if config.temperature is not None:
+        options["temperature"] = config.temperature
+
+    return ChatOpenAI(**options)
 
 
 def build_openai_call(

@@ -1,4 +1,6 @@
 import unittest
+from contextlib import redirect_stderr
+from io import StringIO
 from unittest.mock import Mock, patch
 
 from generation.config import GenerationConfig, GenerationProvider
@@ -8,6 +10,20 @@ from generation_evaluation.runner import run_case
 
 
 class GenerationRunnerTests(unittest.TestCase):
+    def test_execution_error_message_is_not_exposed(self):
+        stderr = StringIO()
+        with redirect_stderr(stderr):
+            run = run_case(
+                "diagnostic",
+                self.config,
+                self.question,
+                self.documents,
+                Mock(side_effect=RuntimeError("credential=secret-test-value")),
+            )
+        self.assertEqual(run.error_type, "RuntimeError")
+        self.assertIsNone(run.result)
+        self.assertEqual(stderr.getvalue(), "[diagnostic] RuntimeError\n")
+
     def test_prompt_build_failure_is_recorded_without_model_call(self):
         model_call = Mock()
         with (
@@ -24,6 +40,9 @@ class GenerationRunnerTests(unittest.TestCase):
         self.assertEqual(run.error_type, "ValueError")
         self.assertEqual(run.elapsed_seconds, 0.25)
         model_call.assert_not_called()
+        self.assertIsNone(run.prompt_sha256)
+        self.assertRegex(run.documents_sha256, r"^[0-9a-f]{64}$")
+        self.assertEqual(run.document_count, 1)
 
     def setUp(self):
         self.config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 30.0)
@@ -78,6 +97,7 @@ class GenerationRunnerTests(unittest.TestCase):
                 "case-timeout", self.config, self.question, self.documents, model_call
             )
         model_call.assert_called_once_with(self.prompt)
+        self.assertRegex(run.prompt_sha256, r"^[0-9a-f]{64}$")
         self.assertEqual(run.elapsed_seconds, 2.5)
         self.assertIsNone(run.error_type)
         self.assertEqual(

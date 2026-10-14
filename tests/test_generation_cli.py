@@ -12,6 +12,75 @@ from generation.types import GenerationPrompt, ModelResponse
 
 
 class GenerationCliTests(unittest.TestCase):
+    def test_document_identity_tracks_loaded_content_and_order(self):
+        path = self.root / "documents.jsonl"
+        self.write_documents(path)
+        first = json.loads(path.read_text(encoding="utf-8"))
+        second = {**first, "document_id": "policy-2", "document": "다른 안내"}
+
+        def record_for(rows, filename="documents.jsonl", compact=False):
+            target = self.root / filename
+            target.write_text(
+                "\n".join(
+                    json.dumps(
+                        row,
+                        ensure_ascii=compact,
+                        separators=(",", ":") if compact else None,
+                    )
+                    for row in rows
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            _, output = self.run_cli(self.argv(target))
+            return json.loads(output)
+
+        with patch("generation.__main__.build_model_call") as factory:
+            factory.return_value = lambda prompt: ModelResponse('{"answer":"안내"}')
+            baseline = record_for([first, second])
+            equivalent = record_for([first, second], "copy.jsonl", compact=True)
+            reversed_record = record_for([second, first])
+            changed = record_for([{**first, "document": "수정된 안내"}, second])
+            single = record_for([first])
+
+        digest = baseline["documents_sha256"]
+        self.assertRegex(digest, r"^[0-9a-f]{64}$")
+        self.assertEqual(digest, equivalent["documents_sha256"])
+        for record in (reversed_record, changed, single):
+            self.assertNotEqual(digest, record["documents_sha256"])
+        self.assertEqual(baseline["document_count"], 2)
+        self.assertEqual(single["document_count"], 1)
+
+    def test_prompt_identity_uses_actual_messages_and_survives_call_failure(self):
+        path = self.root / "documents.jsonl"
+        self.write_documents(path)
+        seen = []
+
+        def model_call(prompt):
+            seen.append(prompt)
+            raise RuntimeError("provider failed")
+
+        prompts = [
+            GenerationPrompt("규칙 A", "문서 A와 질문 A"),
+            GenerationPrompt("규칙 A", "문서 A와 질문 A"),
+            GenerationPrompt("규칙 B", "문서 A와 질문 A"),
+            GenerationPrompt("규칙 A", "문서 B와 질문 A"),
+            GenerationPrompt("규칙 A", "문서 A와 질문 B"),
+        ]
+        records = []
+        with patch("generation.__main__.build_model_call", return_value=model_call):
+            for prompt in prompts:
+                with patch("generation.service.build_prompt", return_value=prompt):
+                    code, output = self.run_cli(self.argv(path))
+                self.assertEqual(code, 1)
+                records.append(json.loads(output))
+        self.assertEqual(seen, prompts)
+        digest = records[0]["prompt_sha256"]
+        self.assertRegex(digest, r"^[0-9a-f]{64}$")
+        self.assertEqual(digest, records[1]["prompt_sha256"])
+        for record in records[2:]:
+            self.assertNotEqual(digest, record["prompt_sha256"])
+
     def test_client_creation_failure_precedes_run_record(self):
         path = self.root / "documents.jsonl"
         self.write_documents(path)
@@ -131,7 +200,16 @@ class GenerationCliTests(unittest.TestCase):
         settings = json.loads((self.config_dir / "models.json").read_text())[
             "test-alias"
         ]
-        self.assertEqual(record["config"], settings)
+        self.assertEqual(
+            record["config"],
+            {
+                **settings,
+                "context_window": settings.get("context_window"),
+                "max_output_tokens": settings.get("max_output_tokens"),
+                "reasoning_effort": settings.get("reasoning_effort"),
+                "temperature": settings.get("temperature"),
+            },
+        )
         if record["result"] is not None:
             self.assertIsNone(record["error_type"])
         return exit_code, output.getvalue()
@@ -259,6 +337,36 @@ class GenerationCliTests(unittest.TestCase):
                 main()
 
         model_factory.assert_not_called()
+
+    def test_openai_options_are_loaded_from_model_alias(self):
+        path = self.root / "documents.jsonl"
+        self.write_documents(path)
+        argv = self.argv(path)
+        model_config_path = self.config_dir / "models.json"
+        model_settings = {
+            "provider": "openai",
+            "model_name": "gpt-6-luna",
+            "timeout_seconds": 30,
+            "max_output_tokens": 1024,
+            "reasoning_effort": "low",
+        }
+        model_config_path.write_text(json.dumps({"test-alias": model_settings}))
+
+        with patch("generation.__main__.build_model_call") as model_factory:
+            model_factory.return_value = lambda _prompt: ModelResponse(
+                '{"answer":"안내"}'
+            )
+            self.run_cli(argv)
+
+        model_factory.assert_called_once_with(
+            GenerationConfig(
+                GenerationProvider.OPENAI,
+                "gpt-6-luna",
+                30,
+                max_output_tokens=1024,
+                reasoning_effort="low",
+            )
+        )
 
     def test_model_execution_error_is_recorded_and_exits_one(self):
         with TemporaryDirectory() as directory:

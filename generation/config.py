@@ -15,6 +15,8 @@ class GenerationConfig:
     timeout_seconds: float
     context_window: int | None = None
     max_output_tokens: int | None = None
+    reasoning_effort: str | None = None
+    temperature: float | None = None
 
     def __post_init__(self) -> None:
         if not self.model_name.strip():
@@ -25,6 +27,33 @@ class GenerationConfig:
 
         if not isinstance(self.provider, GenerationProvider):
             raise TypeError("provider는 GenerationProvider 값이어야 합니다.")
+
+        valid_reasoning_efforts = {"none", "low", "medium", "high", "xhigh", "max"}
+        if self.reasoning_effort is not None:
+            if not isinstance(self.reasoning_effort, str):
+                raise TypeError("reasoning_effort는 문자열 또는 None이어야 합니다.")
+            if self.reasoning_effort not in valid_reasoning_efforts:
+                raise ValueError(
+                    "reasoning_effort는 none, low, medium, high, xhigh, max 중 하나여야 합니다."
+                )
+            if self.provider is GenerationProvider.OLLAMA:
+                raise ValueError(
+                    "reasoning_effort는 OpenAI provider에서만 사용할 수 있습니다."
+                )
+
+        if self.temperature is not None:
+            if isinstance(self.temperature, bool) or not isinstance(
+                self.temperature, (int, float)
+            ):
+                raise TypeError("temperature는 유한한 숫자 또는 None이어야 합니다.")
+            if not isfinite(self.temperature) or not 0 <= self.temperature <= 2:
+                raise ValueError(
+                    "temperature는 0 이상 2 이하의 유한한 숫자여야 합니다."
+                )
+            if self.reasoning_effort not in (None, "none"):
+                raise ValueError(
+                    "reasoning_effort를 명시한 경우 none이 아니면 temperature를 함께 지정할 수 없습니다."
+                )
 
         for name, value in (
             ("context_window", self.context_window),
