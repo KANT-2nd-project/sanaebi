@@ -9,7 +9,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
-from app.routers import classification, documents
+from app.routers import assistant, classification, documents
 
 
 class ApiTests(unittest.TestCase):
@@ -112,7 +112,14 @@ class ApiTests(unittest.TestCase):
         schema = response.json()
         self.assertEqual(
             set(schema["paths"]),
-            {"/", "/ask", "/regist-docs", "/classify/koelectra-base"},
+            {
+                "/",
+                "/ask",
+                "/regist-docs",
+                "/classify/koelectra-base",
+                "/assistant",
+                "/ask/langchain",
+            },
         )
         for route in ("/ask", "/regist-docs"):
             for status in ("200", "422"):
@@ -127,6 +134,100 @@ class ApiTests(unittest.TestCase):
             set(schema["components"]["schemas"]["AnswerResponse"]["properties"]),
             {"ok", "text", "reason"},
         )
+
+    def test_assistant_preserves_langchain_input_and_output(self):
+        payload = {
+            "response": {"ok": True, "text": "출장비 절차 알려줘", "reason": ""},
+            "classification_label": "SEARCH_KNOWLEDGE",
+        }
+        result = {
+            "ollama": {"output": {"ok": True, "text": "가상 답변", "reason": ""}},
+            "openai": {"output": None, "success": False, "error": "가상 호출 오류"},
+        }
+        with patch.object(
+            assistant, "generate_assistant_response", return_value=result
+        ) as generate:
+            response = self.client.post("/assistant", json=payload)
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.json(), result)
+            generate.assert_called_once_with(
+                response=payload["response"], category=payload["classification_label"]
+            )
+
+    def test_assistant_rejects_invalid_category_without_llm_call(self):
+        with patch.object(assistant, "generate_assistant_response") as generate:
+            self.assert_validation_error(
+                self.client.post(
+                    "/assistant",
+                    json={
+                        "response": {"ok": True, "text": "질문", "reason": ""},
+                        "classification_label": "HR",
+                    },
+                )
+            )
+            generate.assert_not_called()
+
+    def test_question_is_classified_then_forwarded_to_langchain(self):
+        for label in ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"):
+            with self.subTest(label=label):
+                events = []
+
+                def classify(question, events=events, label=label):
+                    events.append(("classify", question))
+                    return label
+
+                def generate(response, category, events=events):
+                    events.append(("generate", response, category))
+                    return {"ollama": {"output": {"text": "가상 답변"}}}
+
+                with (
+                    patch.object(assistant, "classify_question", side_effect=classify),
+                    patch.object(
+                        assistant, "generate_assistant_response", side_effect=generate
+                    ),
+                ):
+                    response = self.client.post(
+                        "/ask/langchain", json={"question": "  출장비 안내  "}
+                    )
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(
+                    response.json(), {"ollama": {"output": {"text": "가상 답변"}}}
+                )
+                self.assertEqual(
+                    events,
+                    [
+                        ("classify", "출장비 안내"),
+                        (
+                            "generate",
+                            {"ok": True, "text": "출장비 안내", "reason": ""},
+                            label,
+                        ),
+                    ],
+                )
+
+    def test_automatic_answer_stops_before_llm_if_model_is_missing(self):
+        with (
+            patch.object(assistant, "classify_question", side_effect=FileNotFoundError),
+            patch.object(assistant, "generate_assistant_response") as generate,
+        ):
+            response = self.client.post("/ask/langchain", json={"question": "질문"})
+            generate.assert_not_called()
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(
+            response.json(),
+            {"ok": False, "text": "", "reason": "분류 모델이 없습니다."},
+        )
+
+    def test_automatic_answer_rejects_blank_before_model_calls(self):
+        with (
+            patch.object(assistant, "classify_question") as classify,
+            patch.object(assistant, "generate_assistant_response") as generate,
+        ):
+            self.assert_validation_error(
+                self.client.post("/ask/langchain", json={"question": " \n "})
+            )
+            classify.assert_not_called()
+            generate.assert_not_called()
 
     def test_classification_returns_category_without_answer_generation(self):
         for label in ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"):

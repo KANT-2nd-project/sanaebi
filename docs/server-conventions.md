@@ -2,12 +2,19 @@
 
 이 문서는 Sanaebi 서버 코드를 수정하거나 확장할 때의 책임 분리와 검증 기준을 정한다. 서비스가 무엇을 처리하는지는 [서비스 설계](service-architecture.md), 라벨 의미는 [라벨 기준](label-taxonomy.md)을 따른다.
 
-현재 서버는 [앱 진입점](../app/fastapi_main.py), [요청·응답 스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [문서 라우터](../app/routers/documents.py), [JSONL 저장 함수](../app/document_store.py)로 분리되어 있다. [질문 서비스](../app/services/question_service.py)는 의존 함수를 전달받아 분기하는 형태로 구현했고 [단위 테스트](../tests/test_question_service.py)로 검증했다. `/ask`는 아직 이 서비스를 사용하지 않는다. `dependencies.py`에는 KoELECTRA 후보와 개발용 문서 reader를 조립한 초안이 있지만 답변기는 미구현이다. 서버 연결은 분류 성능 평가·모델 선정 확인까지 중단한 상태다. 모델 수명주기·추론 동시성과 공개 배포·권한·운영 구성은 후속 작업으로 남긴다. 이 규약 작성만으로 해당 기능을 구현하거나 운영 준비를 완료한 것으로 처리하지 않는다.
+현재 서버는 [앱 진입점](../app/fastapi_main.py), [요청·응답 스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [문서 라우터](../app/routers/documents.py), [JSONL 저장 함수](../app/document_store.py)로 분리되어 있다. [질문 서비스](../app/services/question_service.py)는 의존 함수를 전달받아 분기하는 형태로 구현했고 [단위 테스트](../tests/test_question_service.py)로 검증했다. `/ask`는 아직 이 서비스를 사용하지 않는다. `dependencies.py`에는 KoELECTRA 후보와 개발용 문서 reader를 조립한 초안이 있지만 답변기는 미구현이다. 이 로컬 서비스의 `/ask` 연결은 분류 성능 평가·모델 선정 확인까지 중단한 상태다. 별도로 원격에서 추가한 `answer_question`은 `/ask/langchain`의 분류 후 실행기 전달을 담당한다. 두 함수는 서로 다른 호출 계약이며 아직 통합하지 않았다. 모델 수명주기·추론 동시성과 공개 배포·권한·운영 구성은 후속 작업으로 남긴다. 이 규약 작성만으로 해당 기능을 구현하거나 운영 준비를 완료한 것으로 처리하지 않는다.
 
 분류 확인용 `POST /classify/koelectra-base`는 [분류 라우터](../app/routers/classification.py)에서
 요청을 전달하고, [KoELECTRA 연동 함수](../app/koelectra_classifier.py)에서 로컬 저장 모델로 예측한다.
 첫 요청에서 모델을 불러와 캐시하며, 재학습 없이 카테고리만 반환한다.
 분류 결과는 아직 `/ask`의 답변 흐름에 연결하지 않았다.
+
+`POST /ask/langchain`은 [답변 라우터](../app/routers/assistant.py)에서
+[질문 서비스](../app/services/question_service.py)에 분류기와 답변 함수를 전달한다.
+서비스는 질문 분류 후 고정 입력을 만들고, [LangChain 연결 함수](../app/langchain_adapter.py)는
+기존 실행기의 입력·출력을 유지한다. 이 별도 API는 `dependencies.py`의 로컬 조립 초안을 사용하지 않으며,
+현재는 라우터에서 함수를 직접 전달해 테스트에서 대체한다.
+`POST /assistant`는 입력으로 받은 카테고리를 사용해 같은 연결 함수를 호출한다.
 
 ## 책임과 의존 방향
 
@@ -35,16 +42,18 @@ app/
 ├── schemas.py                # 공개 HTTP 요청·응답 모델
 ├── dependencies.py           # 조립 초안: HTTP 미연결, 답변기 미구현
 ├── answer_text.py            # 생성 결과의 본문 검증·추출
+├── langchain_adapter.py      # 별도 API용 실행기 입력 전달·실행 기록 반환
 ├── koelectra_classifier.py   # 기존 분류 확인용 로컬 추론, 최종 선정과 별개
 ├── document_store.py         # doc append와 개발용 title/document reader
 ├── routers/
 │   ├── __init__.py
+│   ├── assistant.py          # /assistant·/ask/langchain 실행기 연결
 │   ├── classification.py     # /classify/koelectra-base 분류 확인
 │   ├── questions.py          # /ask 요청 전달·HTTP 응답 변환
 │   └── documents.py          # /regist-docs 입력·저장 호출·응답
 ├── services/
 │   ├── __init__.py
-│   └── question_service.py   # 구현됨, HTTP 미연결: 분류 후 처리 흐름
+│   └── question_service.py   # handle_question: 미연결 / answer_question: 별도 API 연결
 └── infrastructure/           # 예정: 실제 모델 연결 단계에서 추가
     ├── __init__.py
     ├── classifier.py         # 저장 모델 또는 선택한 외부 API로 분류
@@ -53,7 +62,7 @@ app/
 
 `GET /`와 공통 검증 오류 핸들러는 진입점에 유지한다. `classification/`은 학습·평가 영역으로 유지하며 서버가 `train_*`를 import하지 않는다. `infrastructure/classifier.py`는 전달된 아티팩트로 추론하거나 선택한 외부 API를 호출한다. 모델이 없을 때 자동 학습·대체 모델 다운로드를 실행하지 않는다.
 
-`answer_text.py`의 현재 `generate_answer`는 echo 임시 구현이다. 실제 연결 시 답변 생성은 `infrastructure/answerer.py`가 담당하고, 본문 추출 도우미는 필요한 경우 재사용한다. 별도 실험 실행기의 provider별 결과 포장을 공개 응답으로 전달하지 않는다.
+`answer_text.py`의 현재 `generate_answer`는 echo 임시 구현이다. 실제 연결 시 답변 생성은 `infrastructure/answerer.py`가 담당하고, 본문 추출 도우미는 필요한 경우 재사용한다. 목표 `/ask` 응답에는 별도 실험 실행기의 provider별 결과 포장을 전달하지 않는다. 현재 `/assistant`·`/ask/langchain`은 이 실행 기록을 반환하는 별도 계약이며 `AnswerResponse`를 반환하는 `/ask`와 구분한다.
 
 ### 내부 계약과 연결 책임
 
@@ -86,6 +95,8 @@ app/
 `document_store.append_document(path, text)`는 전달받은 본문을 JSONL 한 줄로 추가한다. 앞뒤 공백 제거와 성공 응답은 문서 라우터가 담당하고, DOCUMENT_FILE도 문서 라우터에서 기존 `app/documents.jsonl`로 지정한다. 파일을 옮길 때 `__file__`의 위치가 바뀌어 실제 데이터 경로까지 바뀌지 않도록 확인한다. 저장 위치 이전은 별도 요구와 데이터 보존 절차가 있을 때만 수행한다.
 
 ## 질문 서비스와 대체 가능한 의존성
+
+`handle_question`은 비검색 라벨에서 고정 안내로 종료하고 검색 경로에서만 reader·answer를 호출한다. `answer_question`은 모든 분류 결과를 `generate(response, category)`로 전달하며 분류 모델 파일 부재만 `ClassificationModelUnavailable`로 변환한다. 후자는 원격의 별도 실행기 연결 동작을 보존한 것이며 전자의 분기 정책·문서 reader·의존성 조립을 사용하지 않는다. 둘을 통합할 때는 라벨별 LLM 호출 정책과 응답 계약을 먼저 결정한다.
 
 분류기는 현재 질문을 받아 처리 라벨을 반환하고, 질문 서비스가 [서비스 설계](service-architecture.md)에 따라 다음 동작을 선택한다. 라벨의 정의와 경계 사례는 이 문서에 복제하지 않는다. 분류 결과만으로 문서 근거가 충분하다고 판단하지 않는다.
 
