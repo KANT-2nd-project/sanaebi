@@ -10,27 +10,27 @@
 
 ## 현재 구현 상태
 
-현재 `/ask`는 분류 후 LangChain을 호출하고, 문서 관리는 별도 `/documents` API로 제공한다. `POST /regist-docs`는 기존 JSONL append 계약으로 호환 유지한다. 실제 모델 답변 품질과 문서 관리 게시본 연결은 후속 검증 대상이다.
+현재 `/ask`는 분류 후 LangChain을 호출한다. `/documents`와 `/regist-docs`는 같은 SQLite 저장소에 초안을 생성하고, 검색 답변은 현재 유효한 게시본만 읽는다. 게시와 사람 검수 승인은 별개다.
 
 | 구성 | 저장소에서 확인한 동작 |
 |---|---|
 | `GET /` | FastAPI 서버 실행 메시지를 반환한다. |
 | `POST /ask` | 현재 질문을 KoELECTRA Base로 분류하고 LangChain에 전달해 선택한 모델의 답변을 AnswerResponse로 반환한다. |
 | `POST /assistant` | 이미 분류한 response·classification_label을 LangChain 실행기에 전달하고 기존 출력 형식을 그대로 반환한다. |
-| `POST /regist-docs` | doc 문자열을 검증한 뒤 `app/documents.jsonl`에 JSON Lines 한 줄로 덧붙이고 등록 응답을 반환한다. |
+| `POST /regist-docs` | doc 문자열을 검증해 SQLite 초안을 생성한다. 성공 응답은 유지하며 중복은 409다. |
 | 기존 질문·레거시 HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
 | `/documents` | SQLite 초안·개정·게시·중단을 관리하며 문서 전용 오류 계약을 사용한다. [상세 계약](document-management.md)을 따른다. |
 | 질문 처리 분류 | `/classify/koelectra-base`에서 분류만 확인하거나 `/ask`에서 분류 후 답변 생성을 실행한다. |
 | 질문 서비스 | `handle_question`은 세 라벨 분기·reader 조립 초안으로 보존한다. 현재 `/ask`는 이 초안 대신 라우터에서 분류기와 LangChain을 직접 호출한다. `/ask/langchain`은 제거했다. |
 | 문서 답변 | 별도 API는 LangChain 실행기를 호출하도록 연결했다. 실제 모델 실행·답변 품질과 목표 분기 정책 정합성은 별도 검증 대상이다. |
 
-앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문 분류 후 LangChain을 호출한다. questions.py의 PROVIDER로 Ollama 또는 OpenAI 하나를 선택하고, 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
+앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), SQLite 저장은 [문서 저장소](../app/document_repository.py)에서 확인한다. 현재 `POST /ask`는 질문 분류 후 LangChain을 호출한다. questions.py의 PROVIDER로 Ollama 또는 OpenAI 하나를 선택하고, 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
 
-등록 문서 한 줄의 형식은 `{"doc":"본문"}`이다. 등록 자료는 사전 준비한 정책 자료와 별개이며 자동으로 병합하지 않는다.
+등록 요청은 기존 `{"doc":"본문"}` 형식을 유지하며 50,000자·512KiB 제한을 적용한다. 게시 전에는 답변에 사용하지 않는다. 원본 JSONL은 최초 이관·과거 평가를 위해 보존한다.
 
-개발 중인 의존성 조립은 `data/company-knowledge/documents.jsonl`의 `title/document` 정책을 기본으로 사용한다. reader는 제목과 본문을 보존한 문자열 목록을 반환하며 [임시 파일 테스트](../tests/test_document_reader.py)로 형식·오류·원본 보존을 확인한다. 이 자료는 공개 자료를 참고해 새로 작성한 가상 회사 정책이며 실제 회사 규정이나 등록 API의 저장 자료가 아니다. 두 저장 형식의 통합은 수행하지 않았다. 로컬 서비스 초안의 /ask 연결은 보류 상태로 남기고, 별도 LangChain 경로를 /ask에 연결했다. KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
+[LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`·`/ask`·독립 실행에서 공통 SQLite provider를 사용한다. 검색 질문마다 snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 모델을 호출한다. `/assistant`의 provider별 기록에는 `model_called`가 포함된다. 빈 게시 목록은 모델 호출 없이 자료 없음 안내를 반환한다. DB 오류는 HTTP 503, 모델 호출 실패는 기존 502다. 명시적인 평가용 `documents_path`만 JSONL을 읽는다.
 
-별도 [LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`와 `/ask`에 연결되어 있다. 실행기는 기본으로 `data/company-knowledge/documents.jsonl`의 title·document 형식을 읽으며, 등록 API의 doc 형식과 다르다. `/assistant`의 출력은 Ollama·OpenAI별 답변과 실행 기록이다. `/ask`는 PROVIDER로 선택한 한 모델만 호출하고 답변 text를 AnswerResponse로 변환한다. 실행기의 기본 실행은 두 모델을 호출하며 모델별 실패도 기록 안에 반환한다. API 연결 테스트에는 외부 모델 실행이나 답변 품질 평가가 포함되지 않는다. 현재 실행기의 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업이 남아 있다.
+`/ask`는 PROVIDER로 선택한 한 모델의 답변을 AnswerResponse로 변환한다. 실행기의 기본 실행은 두 모델을 비교한다. 현재 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업은 별도 범위다. KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
 
 ## 목표 질문 처리 흐름
 
@@ -42,7 +42,7 @@
 | `CLARIFY` | 대상이나 원하는 도움을 알 수 있도록 구체적으로 되묻는다. |
 | `UNSUPPORTED` | 현재 지원하지 않는 조회·실행·요청임을 안내한다. |
 
-SEARCH_KNOWLEDGE로 분류된 질문에는 JSON Lines로 준비한 회사 문서 전체, 공통 답변 지침, 원래 질문을 LangChain 흐름에 전달해 LLM 답변을 만든다. CLARIFY와 UNSUPPORTED는 각각 되묻기와 지원 범위 안내로 처리한다.
+SEARCH_KNOWLEDGE로 분류된 질문에는 SQLite의 유효 게시 문서 전체, 공통 답변 지침, 원래 질문을 LangChain 흐름에 전달해 LLM 답변을 만든다. CLARIFY와 UNSUPPORTED는 각각 되묻기와 지원 범위 안내로 처리한다.
 
 ```mermaid
 flowchart TD
@@ -54,7 +54,7 @@ flowchart TD
     C -->|"UNSUPPORTED"| U["지원 범위 안내"]
 ```
 
-초기 문서 답변은 사전 준비한 `data/company-knowledge/documents.jsonl`의 전체 지식 본문을 사용한다. JSONL 하나를 현재 지식의 기준으로 관리하고 집필·검수 보조 자료는 Git 제외 로컬 폴더에 보관한다. 출처·회사 결정·검수와 이전 평가의 보관 경로는 [회사 정책 데이터 안내](../data/README.md#답변용-회사-지식)에서 관리한다. `IEUM_WORKS_PATH`로 명시적 경로를 선택할 수 있다. 문서가 늘어나 전체 입력 방식이 품질·비용·속도·입력 한도에 적합하지 않다고 확인되면 관련 문서를 선택하는 RAG를 후속 단계에서 평가한다. RAG는 현재 서비스 구현이 아니다.
+문서 답변은 SQLite의 현재 유효한 게시본 전체를 사용한다. 기존 71건 JSONL은 최초 이관 원본으로 보존하며 서비스는 파일과 DB를 합치지 않는다. 관리 화면의 게시·사용 중단은 다음 검색 질문에 적용된다. 요청 단위 snapshot을 모델 호출 전에 확보하며 두 provider도 같은 문서를 사용한다. 명시적 평가 JSONL은 재현용으로 유지한다. 저장·이관 기준은 [문서 관리](document-management.md), 원본 이력은 [회사 정책 데이터](../data/README.md#답변용-회사-지식)를 따른다. RAG는 후속 검토 범위다.
 
 ## 답변 규칙과 경계
 
@@ -96,4 +96,4 @@ flowchart TD
 
 ## 등록 자료의 관리와 답변 연결 단계
 
-로컬 `/admin/documents`에서 초안 저장·개정·게시·사용 중단을 관리합니다. 새 `/documents` API는 SQLite에 저장하고 기존 `/regist-docs`의 JSONL 계약은 유지합니다. 문서 공급 계층은 적용 가능한 게시본과 baseline을 제공하지만 현재 LangChain `/ask`는 이 공급 계층을 사용하지 않습니다. 저장·게시가 실제 모델 답변 연결을 뜻하지 않습니다. 자세한 범위는 [문서 관리 안내](document-management.md)에 둡니다.
+로컬 `/admin/documents`에서 초안·개정·게시·중단을 관리하고 `/ask`·`/assistant`는 같은 SQLite의 유효 게시본을 사용한다. `/regist-docs`도 동일 DB에 초안을 저장한다. 게시본 0건은 모델 호출 없이 안내하고 저장소 장애는 503으로 구분한다. [문서 관리 안내](document-management.md)를 따른다.

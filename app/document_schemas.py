@@ -110,7 +110,24 @@ class WithdrawDocumentRequest(StrictRequest):
     expected_version: int = Field(ge=1, strict=True)
 
 
+class RevisionMetadata(BaseModel):
+    category: str | None = None
+    policy_decision_ids: list[str] = Field(default_factory=list)
+    source_ids: list[str] = Field(default_factory=list)
+    source_version: str | None = None
+    review_status: str = "unreviewed"
+
+
+class DocumentProvenance(BaseModel):
+    source_namespace: str
+    source_document_id: str
+    source_file_sha256: str
+    row_sha256: str
+    imported_at: str
+
+
 class RevisionResponse(BaseModel):
+    metadata: RevisionMetadata = Field(default_factory=RevisionMetadata)
     id: str
     revision_number: int
     title: str
@@ -136,6 +153,7 @@ class RevisionSummaryResponse(BaseModel):
 
 
 class DocumentDetailResponse(BaseModel):
+    provenance: DocumentProvenance | None = None
     id: str
     record_version: int
     withdrawn: bool
@@ -166,7 +184,7 @@ class DocumentListResponse(BaseModel):
 
 class DocumentCapabilitiesResponse(BaseModel):
     management_mode: Literal["local-demo"] = "local-demo"
-    answer_integration: Literal["echo"] = "echo"
+    answer_integration: Literal["connected"] = "connected"
 
 
 class DocumentErrorDetail(BaseModel):

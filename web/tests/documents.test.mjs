@@ -96,3 +96,16 @@ test("응답 body를 읽는 중 timeout은 성공으로 처리하지 않는다",
   }));
   await assert.rejects(listDocuments({}, { timeoutMs: 10 }), { kind: "timeout" });
 });
+
+
+test("원본 출처와 검수 메타데이터를 보존하고 잘못된 배열을 거부한다", async (t) => {
+  const metadata = { category: "people_leave", source_version: "2.0.0", review_status: "ai_reviewed", source_ids: ["H01"], policy_decision_ids: ["D01"] };
+  const provenance = { source_namespace: "company-knowledge-v2", source_document_id: "ieum-001", source_file_sha256: "a".repeat(64), row_sha256: "b".repeat(64), imported_at: "2026-10-14T00:00:00Z" };
+  let payload = { ...detail, draft: { ...revision, metadata }, provenance };
+  t.mock.method(globalThis, "fetch", async () => Response.json(payload, { status: 201 }));
+  const result = await createDocument({ title: "x", body: "y", source_label: "x" }, "key");
+  assert.deepEqual(result.draft.metadata, metadata);
+  assert.deepEqual(result.provenance, provenance);
+  payload = { ...payload, draft: { ...revision, metadata: { ...metadata, source_ids: [1] } } };
+  await assert.rejects(createDocument({ title: "x", body: "y", source_label: "x" }, "key"), { kind: "invalid-response" });
+});

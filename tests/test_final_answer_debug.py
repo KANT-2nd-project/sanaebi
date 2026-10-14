@@ -236,7 +236,7 @@ def trace_final_answer(
         # 연결 시나리오의 테스트 어댑터만 공개 text 계약으로 변환한다.
         return {"text": result["answer"]}
 
-    def generate_response(response, category, *, provider):
+    def generate_response(response, category, *, provider, document_provider=None):
         try:
             output = generate_answer(response["text"])
         except (ValueError, TypeError, OSError, RuntimeError) as error:
@@ -385,6 +385,7 @@ class StageOriginTests(DocumentsMixin, unittest.TestCase):
         self.assertIn("모델 출력 원문", detail)
 
     def test_process_response_records_model_error(self):
+        from types import SimpleNamespace
         from unittest.mock import Mock
 
         trace_model = Mock()
@@ -397,7 +398,12 @@ class StageOriginTests(DocumentsMixin, unittest.TestCase):
             patch.object(assistant, "create_chat_model", lambda provider: trace_model),
         ):
             result = assistant.process_response(
-                {"ok": True, "text": QUESTION, "reason": ""}, SEARCH, provider="ollama"
+                {"ok": True, "text": QUESTION, "reason": ""},
+                SEARCH,
+                provider="ollama",
+                document_snapshot=SimpleNamespace(
+                    documents=(SimpleNamespace(title="문서", body="본문"),)
+                ),
             )["ollama"]
         self.assertFalse(result["success"])
         self.assertEqual(result["answer"], "")

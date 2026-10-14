@@ -14,7 +14,9 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
-SCHEMA_VERSION = 1
+from app.document_metadata import SCHEMA, execute_schema, insert_metadata, read_metadata
+
+SCHEMA_VERSION = 2
 IDEMPOTENCY_TTL = timedelta(hours=24)
 
 
@@ -38,10 +40,15 @@ class DocumentRepository:
     def __init__(self, path: str | Path):
         self.path = Path(path)
 
-    def connect(self) -> sqlite3.Connection:
-        if str(self.path) != ":memory:":
+    def connect(self, *, readonly: bool = False) -> sqlite3.Connection:
+        if not readonly and str(self.path) != ":memory:":
             self.path.parent.mkdir(parents=True, exist_ok=True)
-        connection = sqlite3.connect(str(self.path), timeout=5, isolation_level=None)
+        connection = sqlite3.connect(
+            f"{self.path.resolve().as_uri()}?mode=ro" if readonly else str(self.path),
+            uri=readonly,
+            timeout=5,
+            isolation_level=None,
+        )
         connection.row_factory = sqlite3.Row
         connection.execute("PRAGMA foreign_keys = ON")
         connection.execute("PRAGMA busy_timeout = 5000")
@@ -49,7 +56,7 @@ class DocumentRepository:
 
     @contextmanager
     def transaction(self, immediate: bool = True) -> Iterator[sqlite3.Connection]:
-        connection = self.connect()
+        connection = self.connect(readonly=not immediate)
         try:
             connection.execute("BEGIN IMMEDIATE" if immediate else "BEGIN")
             yield connection
@@ -60,101 +67,110 @@ class DocumentRepository:
         finally:
             connection.close()
 
-    def initialize(self) -> None:
-        with self.transaction() as connection:
-            version = connection.execute("PRAGMA user_version").fetchone()[0]
-            if version > SCHEMA_VERSION:
-                raise RuntimeError(
-                    f"Unsupported document database schema version: {version}"
-                )
-            if version == SCHEMA_VERSION:
-                return
+    def initialize(self, connection=None) -> None:
+        if connection is None:
+            with self.transaction() as owned:
+                self.initialize(owned)
+            return
+        self._initialize(connection)
 
-            schema = """
-                CREATE TABLE documents (
-                    id TEXT PRIMARY KEY,
-                    draft_revision_id TEXT NOT NULL,
-                    published_revision_id TEXT,
-                    withdrawn INTEGER NOT NULL DEFAULT 0 CHECK (withdrawn IN (0, 1)),
-                    record_version INTEGER NOT NULL CHECK (record_version >= 1),
-                    dedupe_hash TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL,
-                    FOREIGN KEY (draft_revision_id)
-                        REFERENCES document_revisions(id)
-                        DEFERRABLE INITIALLY DEFERRED,
-                    FOREIGN KEY (published_revision_id)
-                        REFERENCES document_revisions(id)
-                        DEFERRABLE INITIALLY DEFERRED
-                );
+    def _initialize(self, connection) -> None:
+        version = connection.execute("PRAGMA user_version").fetchone()[0]
+        if version > SCHEMA_VERSION:
+            raise RuntimeError(
+                f"Unsupported document database schema version: {version}"
+            )
+        if version == SCHEMA_VERSION:
+            return
 
-                CREATE TABLE document_revisions (
-                    id TEXT PRIMARY KEY,
-                    document_id TEXT NOT NULL REFERENCES documents(id),
-                    revision_number INTEGER NOT NULL CHECK (revision_number >= 1),
-                    title TEXT NOT NULL,
-                    body TEXT NOT NULL,
-                    source_label TEXT NOT NULL,
-                    source_url TEXT,
-                    owner_department TEXT,
-                    effective_from TEXT,
-                    content_hash TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    UNIQUE (document_id, revision_number)
-                );
+        schema = """
+            CREATE TABLE documents (
+                id TEXT PRIMARY KEY,
+                draft_revision_id TEXT NOT NULL,
+                published_revision_id TEXT,
+                withdrawn INTEGER NOT NULL DEFAULT 0 CHECK (withdrawn IN (0, 1)),
+                record_version INTEGER NOT NULL CHECK (record_version >= 1),
+                dedupe_hash TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL,
+                FOREIGN KEY (draft_revision_id)
+                    REFERENCES document_revisions(id)
+                    DEFERRABLE INITIALLY DEFERRED,
+                FOREIGN KEY (published_revision_id)
+                    REFERENCES document_revisions(id)
+                    DEFERRABLE INITIALLY DEFERRED
+            );
 
-                CREATE INDEX document_revisions_document_id
-                    ON document_revisions(document_id, revision_number);
-                CREATE INDEX documents_updated_at
-                    ON documents(updated_at DESC, id ASC);
-                CREATE INDEX documents_dedupe_hash ON documents(dedupe_hash);
+            CREATE TABLE document_revisions (
+                id TEXT PRIMARY KEY,
+                document_id TEXT NOT NULL REFERENCES documents(id),
+                revision_number INTEGER NOT NULL CHECK (revision_number >= 1),
+                title TEXT NOT NULL,
+                body TEXT NOT NULL,
+                source_label TEXT NOT NULL,
+                source_url TEXT,
+                owner_department TEXT,
+                effective_from TEXT,
+                content_hash TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                UNIQUE (document_id, revision_number)
+            );
 
-                CREATE TABLE document_events (
-                    id TEXT PRIMARY KEY,
-                    document_id TEXT NOT NULL REFERENCES documents(id),
-                    revision_id TEXT REFERENCES document_revisions(id),
-                    action TEXT NOT NULL CHECK (action IN ('create', 'edit', 'publish', 'withdraw')),
-                    actor TEXT NOT NULL,
-                    occurred_at TEXT NOT NULL
-                );
+            CREATE INDEX document_revisions_document_id
+                ON document_revisions(document_id, revision_number);
+            CREATE INDEX documents_updated_at
+                ON documents(updated_at DESC, id ASC);
+            CREATE INDEX documents_dedupe_hash ON documents(dedupe_hash);
 
-                CREATE TABLE idempotency_keys (
-                    key TEXT PRIMARY KEY,
-                    method_path TEXT NOT NULL,
-                    request_hash TEXT NOT NULL,
-                    response_status INTEGER NOT NULL,
-                    response_body TEXT NOT NULL,
-                    created_at TEXT NOT NULL
-                );
+            CREATE TABLE document_events (
+                id TEXT PRIMARY KEY,
+                document_id TEXT NOT NULL REFERENCES documents(id),
+                revision_id TEXT REFERENCES document_revisions(id),
+                action TEXT NOT NULL CHECK (action IN ('create', 'edit', 'publish', 'withdraw')),
+                actor TEXT NOT NULL,
+                occurred_at TEXT NOT NULL
+            );
 
-                CREATE TRIGGER document_revisions_are_immutable_update
-                BEFORE UPDATE ON document_revisions
-                BEGIN
-                    SELECT RAISE(ABORT, 'document revisions are immutable');
-                END;
+            CREATE TABLE idempotency_keys (
+                key TEXT PRIMARY KEY,
+                method_path TEXT NOT NULL,
+                request_hash TEXT NOT NULL,
+                response_status INTEGER NOT NULL,
+                response_body TEXT NOT NULL,
+                created_at TEXT NOT NULL
+            );
 
-                CREATE TRIGGER document_revisions_are_immutable_delete
-                BEFORE DELETE ON document_revisions
-                BEGIN
-                    SELECT RAISE(ABORT, 'document revisions are immutable');
-                END;
-                """
-            statement = ""
-            for line in schema.splitlines(keepends=True):
-                statement += line
-                if sqlite3.complete_statement(statement):
-                    connection.execute(statement)
-                    statement = ""
-            if statement.strip():
-                raise RuntimeError("Incomplete document database schema statement")
-            connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
+            CREATE TRIGGER document_revisions_are_immutable_update
+            BEFORE UPDATE ON document_revisions
+            BEGIN
+                SELECT RAISE(ABORT, 'document revisions are immutable');
+            END;
+
+            CREATE TRIGGER document_revisions_are_immutable_delete
+            BEFORE DELETE ON document_revisions
+            BEGIN
+                SELECT RAISE(ABORT, 'document revisions are immutable');
+            END;
+            """
+        if version == 0:
+            execute_schema(connection, schema)
+        execute_schema(connection, SCHEMA)
+        for row in connection.execute("SELECT id FROM document_revisions").fetchall():
+            insert_metadata(connection, row["id"])
+        connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
 
     def create_in_transaction(
-        self, connection: sqlite3.Connection, fields: dict[str, Any]
+        self,
+        connection: sqlite3.Connection,
+        fields: dict[str, Any],
+        *,
+        document_id: str | None = None,
+        metadata=None,
+        actor="local-demo",
     ) -> dict[str, Any]:
         normalized = _normalize_fields(fields)
         now = _utc_now()
-        document_id = str(uuid.uuid4())
+        document_id = document_id or str(uuid.uuid4())
         revision_id = str(uuid.uuid4())
         dedupe_hash = _duplicate_hash(normalized["title"], normalized["body"])
         duplicate = connection.execute(
@@ -190,7 +206,10 @@ class DocumentRepository:
                 now,
             ),
         )
-        self._record_event(connection, document_id, revision_id, "create", now)
+        insert_metadata(connection, revision_id, metadata)
+        self._record_event(
+            connection, document_id, revision_id, "create", now, actor=actor
+        )
         return _get_detail(connection, document_id, _seoul_today())
 
     def get_in_transaction(
@@ -226,6 +245,12 @@ class DocumentRepository:
         self._insert_revision(
             connection, document_id, revision_id, revision_number, normalized, now
         )
+        previous = connection.execute(
+            "SELECT draft_revision_id FROM documents WHERE id = ?", (document_id,)
+        ).fetchone()[0]
+        metadata = read_metadata(connection, previous)
+        metadata["review_status"] = "unreviewed"
+        insert_metadata(connection, revision_id, metadata)
         cursor = connection.execute(
             """UPDATE documents
                SET draft_revision_id = ?, dedupe_hash = ?, record_version = record_version + 1,
@@ -250,6 +275,8 @@ class DocumentRepository:
         document_id: str,
         expected_version: int,
         revision_id: str,
+        *,
+        actor="local-demo",
     ) -> dict[str, Any]:
         current_version = self._current_version(connection, document_id)
         if current_version != expected_version:
@@ -264,7 +291,9 @@ class DocumentRepository:
         )
         if cursor.rowcount != 1:
             raise RevisionConflictError(self._current_version(connection, document_id))
-        self._record_event(connection, document_id, revision_id, "publish", now)
+        self._record_event(
+            connection, document_id, revision_id, "publish", now, actor=actor
+        )
         return _get_detail(connection, document_id, _seoul_today())
 
     def withdraw_in_transaction(
@@ -339,13 +368,20 @@ class DocumentRepository:
     def published_snapshot(self, today: date | None = None) -> list[dict[str, Any]]:
         effective_today = today or _seoul_today()
         with self.transaction(immediate=False) as connection:
+            if (
+                connection.execute("PRAGMA user_version").fetchone()[0]
+                != SCHEMA_VERSION
+            ):
+                raise sqlite3.DatabaseError("Unsupported document schema")
             rows = connection.execute(
                 """SELECT d.id
                    FROM documents d
                    JOIN document_revisions p ON p.id = d.published_revision_id
+                   LEFT JOIN document_imports i ON i.document_id = d.id
                    WHERE d.withdrawn = 0
                      AND (p.effective_from IS NULL OR p.effective_from <= ?)
-                   ORDER BY d.id ASC""",
+                   ORDER BY CASE WHEN i.document_id IS NULL THEN 1 ELSE 0 END,
+                            i.source_ordinal, d.created_at, d.id ASC""",
                 (effective_today.isoformat(),),
             ).fetchall()
             return [_get_detail(connection, row["id"], effective_today) for row in rows]
@@ -403,12 +439,14 @@ class DocumentRepository:
         revision_id: str | None,
         action: str,
         occurred_at: str,
+        *,
+        actor="local-demo",
     ) -> None:
         connection.execute(
             """INSERT INTO document_events
                (id, document_id, revision_id, action, actor, occurred_at)
-               VALUES (?, ?, ?, ?, 'local-demo', ?)""",
-            (str(uuid.uuid4()), document_id, revision_id, action, occurred_at),
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (str(uuid.uuid4()), document_id, revision_id, action, actor, occurred_at),
         )
 
     def _insert_revision(
@@ -518,6 +556,13 @@ def _get_detail(
 
     draft = _revision_from_row(row, "draft")
     published = _revision_from_row(row, "published") if row["published_id"] else None
+    draft["metadata"] = read_metadata(connection, draft["id"])
+    if published:
+        published["metadata"] = read_metadata(connection, published["id"])
+    origin = connection.execute(
+        "SELECT source_namespace, source_document_id, source_file_sha256, row_sha256, imported_at FROM document_imports WHERE document_id = ?",
+        (document_id,),
+    ).fetchone()
     withdrawn = bool(row["withdrawn"])
     if withdrawn:
         status = "withdrawn"
@@ -541,6 +586,7 @@ def _get_detail(
         "updated_at": row["updated_at"],
         "status": status,
         "eligibility": eligibility,
+        "provenance": dict(origin) if origin else None,
         "draft": draft,
         "published": published,
     }

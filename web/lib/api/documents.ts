@@ -13,7 +13,21 @@ export type DocumentRevisionSummary = {
   created_at: string;
 };
 
-export type DocumentRevision = DocumentRevisionSummary & { body: string };
+export type RevisionMetadata = {
+  category: string | null;
+  source_version: string | null;
+  review_status: string;
+  source_ids: string[];
+  policy_decision_ids: string[];
+};
+export type DocumentProvenance = {
+  source_namespace: string;
+  source_document_id: string;
+  source_file_sha256: string;
+  row_sha256: string;
+  imported_at: string;
+};
+export type DocumentRevision = DocumentRevisionSummary & { body: string; metadata?: RevisionMetadata };
 
 export type DocumentSummary = {
   id: string;
@@ -28,6 +42,7 @@ export type DocumentSummary = {
 };
 
 export type DocumentDetail = Omit<DocumentSummary, "draft" | "published"> & {
+  provenance?: DocumentProvenance | null;
   draft: DocumentRevision;
   published: DocumentRevision | null;
 };
@@ -88,6 +103,23 @@ const isNullableString = (value: unknown): value is string | null => value === n
 const isPositiveInteger = (value: unknown): value is number => Number.isInteger(value) && Number(value) > 0;
 const isNonNegativeInteger = (value: unknown): value is number => Number.isInteger(value) && Number(value) >= 0;
 
+function parseMetadata(value: unknown): RevisionMetadata | undefined {
+  if (value === undefined) return undefined;
+  if (!isRecord(value) || !isNullableString(value.category) || !isNullableString(value.source_version)
+    || !isString(value.review_status) || !Array.isArray(value.source_ids) || !value.source_ids.every(isString)
+    || !Array.isArray(value.policy_decision_ids) || !value.policy_decision_ids.every(isString)) throw invalidResponse();
+  return { category: value.category, source_version: value.source_version, review_status: value.review_status,
+    source_ids: value.source_ids, policy_decision_ids: value.policy_decision_ids };
+}
+
+function parseProvenance(value: unknown): DocumentProvenance | null {
+  if (value === undefined || value === null) return null;
+  if (!isRecord(value) || !isString(value.source_namespace) || !isString(value.source_document_id)
+    || !isString(value.source_file_sha256) || !isString(value.row_sha256) || !isString(value.imported_at)) throw invalidResponse();
+  return {source_namespace: value.source_namespace, source_document_id: value.source_document_id,
+    source_file_sha256: value.source_file_sha256, row_sha256: value.row_sha256, imported_at: value.imported_at};
+}
+
 function parseRevision(value: unknown, includesBody: boolean): DocumentRevisionSummary | DocumentRevision {
   if (!isRecord(value)
     || !isString(value.id)
@@ -113,7 +145,7 @@ function parseRevision(value: unknown, includesBody: boolean): DocumentRevisionS
     content_hash: value.content_hash,
     created_at: value.created_at,
   };
-  return includesBody ? { ...summary, body: value.body as string } : summary;
+  return includesBody ? { ...summary, body: value.body as string, metadata: parseMetadata(value.metadata) } : summary;
 }
 
 function parseDocumentSummary(value: unknown): DocumentSummary {
@@ -163,6 +195,7 @@ export function parseDocumentDetail(value: unknown): DocumentDetail {
     updated_at: value.updated_at,
     status: value.status as DocumentStatus,
     eligibility: value.eligibility as DocumentEligibility,
+    provenance: parseProvenance(value.provenance),
     draft,
     published,
   };

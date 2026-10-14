@@ -51,7 +51,9 @@ class ManagedDocumentHttpMiddleware:
         self.app = app
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        if scope["type"] != "http" or not is_managed_document_path(scope["path"]):
+        if scope["type"] != "http" or not (
+            is_managed_document_path(scope["path"]) or scope["path"] == "/regist-docs"
+        ):
             await self.app(scope, receive, send)
             return
 
@@ -88,9 +90,21 @@ class ManagedDocumentHttpMiddleware:
                 break
 
         if oversized:
-            await document_error_response(
-                413, "body_too_large", "요청 본문이 허용 크기를 초과했습니다."
-            )(scope, receive, send_no_store)
+            response = (
+                JSONResponse(
+                    status_code=413,
+                    content={
+                        "ok": False,
+                        "text": "",
+                        "reason": "요청 본문이 허용 크기를 초과했습니다.",
+                    },
+                )
+                if scope["path"] == "/regist-docs"
+                else document_error_response(
+                    413, "body_too_large", "요청 본문이 허용 크기를 초과했습니다."
+                )
+            )
+            await response(scope, receive, send_no_store)
             return
 
         body = b"".join(chunks)

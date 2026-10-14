@@ -17,6 +17,8 @@ npm ci
 npm --prefix web ci
 ```
 
+새 환경에서 기존 회사 지식 71건을 사용하려면 [문서 이관 안내](docs/document-management.md#회사-지식-이관내보내기)의 dry-run 후 `--apply --publish-imported`를 실행합니다. 이후 문서는 관리 화면에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 현재 로컬 분류 모델 부재와 Ollama 전체 문맥 초과로 실제 답변 생성은 실패합니다. 준비 상태와 후속 항목은 [전환 기록](docs/worklogs/2026-10-14-sqlite-documents.md)을 참고하세요.
+
 이후 다음 명령 하나로 API와 웹 개발 서버를 함께 실행합니다.
 
 ```bash
@@ -84,4 +86,4 @@ uv run --locked python -m unittest discover -s tests -v
 
 데이터 검증 명령은 현재 요청 처리 데이터와 검수 기록을 확인합니다. 모델 성능이나 실제 서비스의 답변 품질을 측정하지는 않습니다.
 
-문서 등록·관리는 `/admin/documents`에서 로컬 가상 자료로 시연합니다. 저장·게시·사용 중단을 지원하며 현재 LangChain 답변에는 등록 문서를 사용하지 않습니다. [문서 관리 안내](docs/document-management.md)를 참고하세요.
+문서 등록·관리는 `/admin/documents`에서 로컬 가상 자료로 시연합니다. 저장·게시·사용 중단을 지원하며 현재 유효한 SQLite 게시본을 LangChain 답변에 전달합니다. [문서 관리 안내](docs/document-management.md)를 참고하세요.

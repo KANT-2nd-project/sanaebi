@@ -35,3 +35,9 @@
 - 답변 길이: 평균 글자 수
 
 모두 평가 코드가 실행 기록으로 잰다.
+
+## 문서 snapshot 고정
+
+서비스의 기본 문서 저장소는 SQLite다. 평가 실행은 라이브 DB를 질문마다 읽지 않으며 명시적 `--documents` JSONL과 대응 평가 세트를 사용한다. 현재 게시본 평가에는 `scripts/export_company_knowledge.py --output tmp/evaluation-documents.jsonl`로 고정 문서와 manifest를 생성한다. 원본 ID·개정·본문 hash·snapshot fingerprint를 함께 보관한다. 과거 기본 평가 세트와 문서 파일 쌍은 유지하며 현재 지식의 품질로 해석하지 않는다. 이관·내보내기 상세는 [문서 관리](document-management.md)를 따른다.
+
+2026-10-14 SQLite 전환 smoke에서 71건 전체 입력은 Ollama 기준 66,652토큰으로 현재 문맥 설정 40,960을 초과해 실패했다. 기존 약 31,000토큰 기록은 현재 입력의 적합성을 보장하지 않는다. 본문 절단·모델 설정 변경 없이 실패를 보존했으며 답변 품질 측정으로 취급하지 않는다. [실행 기록](worklogs/2026-10-14-sqlite-documents.md)을 따른다.

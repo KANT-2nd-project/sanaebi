@@ -11,3 +11,13 @@ def get_documents_path() -> Path:
     """IEUM_WORKS_PATH가 있으면 사용하고, 없으면 정책 데이터 경로를 반환한다."""
     configured_path = os.getenv("IEUM_WORKS_PATH")
     return Path(configured_path) if configured_path else DEFAULT_DOCUMENTS_PATH
+
+
+def get_document_database_path() -> Path:
+    """One runtime database path shared by HTTP, CLI and migration tools."""
+    value = os.getenv("SANAEBI_DOCUMENT_DB")
+    return (
+        Path(value).expanduser().resolve()
+        if value
+        else PROJECT_ROOT / "var" / "documents.sqlite3"
+    )

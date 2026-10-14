@@ -8,7 +8,7 @@ class QuestionRequest(BaseModel):
 
 
 class DocumentRequest(BaseModel):
-    doc: str = Field(min_length=1, pattern=r"\S")
+    doc: str = Field(min_length=1, max_length=50_000, pattern=r"\S")
 
 
 class AnswerResponse(BaseModel):

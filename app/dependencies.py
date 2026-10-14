@@ -1,14 +1,18 @@
 from collections.abc import Callable
 from functools import partial
 
-from app.company_knowledge import get_documents_path
-from app.document_store import read_documents
 from app.koelectra_classifier import classify_question
+from app.services.document_context import DocumentContextProvider
 from app.services.question_service import QuestionResult, handle_question
 
 QuestionHandler = Callable[[str], QuestionResult]
 
-DOCUMENTS_PATH = get_documents_path()
+
+def read_runtime_documents():
+    return [
+        f"제목: {d.title.strip()}\n내용: {d.body.strip()}"
+        for d in DocumentContextProvider().snapshot().documents
+    ]
 
 
 def answer_not_configured(question: str, documents: list[str]) -> str:
@@ -16,7 +20,7 @@ def answer_not_configured(question: str, documents: list[str]) -> str:
 
 
 def get_question_handler() -> QuestionHandler:
-    document_reader = partial(read_documents, DOCUMENTS_PATH)
+    document_reader = read_runtime_documents
 
     return partial(
         handle_question,

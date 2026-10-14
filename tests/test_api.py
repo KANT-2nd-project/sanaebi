@@ -1,7 +1,7 @@
 """실제 데이터를 사용하지 않고 현재 API 계약을 검증한다."""
 
-import json
 import os
+import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,7 +10,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
-from app.routers import assistant, classification, documents, questions
+from app.routers import assistant, classification, questions
 
 
 class ApiTests(unittest.TestCase):
@@ -23,7 +23,6 @@ class ApiTests(unittest.TestCase):
             )
         )
         self.document_file = Path(directory) / "documents.jsonl"
-        self.enterContext(patch.object(documents, "DOCUMENT_FILE", self.document_file))
         self.question_classifier = self.enterContext(
             patch.object(
                 questions, "classify_question", return_value="SEARCH_KNOWLEDGE"
@@ -73,6 +72,7 @@ class ApiTests(unittest.TestCase):
             {"ok": True, "text": "휴가 안내", "reason": ""},
             "SEARCH_KNOWLEDGE",
             provider=questions.PROVIDER,
+            document_provider=fastapi_main.app.state.document_provider,
         )
         self.assertFalse(self.document_file.exists())
 
@@ -99,9 +99,9 @@ class ApiTests(unittest.TestCase):
                 self.assert_validation_error(response)
         self.assertFalse(self.document_file.exists())
 
-    def test_documents_append_and_preserve_existing_rows(self):
+    def test_legacy_registration_creates_sqlite_draft_and_preserves_jsonl(self):
         original = '{"doc": "기존 가상 문서"}\n'
-        self.document_file.write_text(original, encoding="utf-8")
+        self.document_file.write_text(original)
         response = self.client.post(
             "/regist-docs", json={"doc": " 가상 안내\n둘째 줄 "}
         )
@@ -110,24 +110,34 @@ class ApiTests(unittest.TestCase):
             response.json(),
             {"ok": True, "text": "문서가 등록되었습니다.", "reason": ""},
         )
-        content = self.document_file.read_text(encoding="utf-8")
-        self.assertTrue(content.startswith(original))
+        repo = fastapi_main.app.state.document_repository
+        item = repo.list()["items"][0]
+        self.assertEqual(item["status"], "draft")
+        self.assertEqual(repo.get(item["id"])["draft"]["body"], "가상 안내\n둘째 줄")
+        self.assertEqual(self.document_file.read_text(), original)
+        duplicate = self.client.post(
+            "/regist-docs", json={"doc": " 가상 안내\n둘째 줄 "}
+        )
+        self.assertEqual(duplicate.status_code, 409)
+        self.assertEqual(duplicate.headers["cache-control"], "no-store")
+        self.assertEqual(repo.list()["total"], 1)
         self.assertEqual(
-            [json.loads(line) for line in content.splitlines()],
-            [{"doc": "기존 가상 문서"}, {"doc": "가상 안내\n둘째 줄"}],
+            self.client.post("/regist-docs", json={"doc": "a" * 50001}).status_code, 422
         )
-        self.assert_validation_error(
-            self.client.post("/regist-docs", json={"doc": " "})
+        self.assertEqual(
+            self.client.post("/regist-docs", content=b" " * 524289).status_code, 413
         )
-        self.assertEqual(self.document_file.read_text(encoding="utf-8"), content)
 
     def test_document_write_failure_is_not_reported_as_success(self):
-        missing_parent = self.document_file.parent / "missing" / "documents.jsonl"
-        with patch.object(documents, "DOCUMENT_FILE", missing_parent):
+        repo = fastapi_main.app.state.document_repository
+        with patch.object(
+            repo,
+            "create_in_transaction",
+            side_effect=sqlite3.OperationalError("locked"),
+        ):
             response = self.client.post("/regist-docs", json={"doc": "가상 문서"})
-        self.assertEqual(response.status_code, 500)
-        self.assertEqual(response.text, "Internal Server Error")
-        self.assertFalse(missing_parent.exists())
+        self.assertEqual(response.status_code, 503)
+        self.assertFalse(response.json()["ok"])
 
     def test_routing_errors_keep_http_status(self):
         for path, status, detail in (
@@ -190,6 +200,7 @@ class ApiTests(unittest.TestCase):
             generate.assert_called_once_with(
                 response=payload["response"],
                 category=payload["classification_label"],
+                document_provider=fastapi_main.app.state.document_provider,
             )
 
     def test_assistant_rejects_invalid_category_without_llm_call(self):

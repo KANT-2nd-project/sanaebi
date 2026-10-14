@@ -10,10 +10,18 @@ class LangChainAdapterTests(unittest.TestCase):
         with patch("sanaebi_assistant.process_response", return_value={}) as run:
             generate_assistant_response(response, "CLARIFY", provider="ollama")
         run.assert_called_once_with(
-            response, classification_label="CLARIFY", provider="ollama"
+            response,
+            classification_label="CLARIFY",
+            provider="ollama",
+            document_snapshot=None,
         )
 
     def test_legacy_assistant_keeps_default_provider_contract(self):
         with patch("sanaebi_assistant.process_response", return_value={}) as run:
             generate_assistant_response({"text": "질문"}, "CLARIFY")
-        run.assert_called_once_with({"text": "질문"}, classification_label="CLARIFY")
+        run.assert_called_once_with(
+            {"text": "질문"},
+            classification_label="CLARIFY",
+            provider=None,
+            document_snapshot=None,
+        )

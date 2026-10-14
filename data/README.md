@@ -128,9 +128,9 @@ uv run --locked python -m unittest discover -s tests -v
 
 [documents.jsonl](company-knowledge/documents.jsonl) 하나에 이음웍스의 정책·업무 안내·직무 지식 71개를 모았다. 대한민국 소재 320명 규모 SaaS 회사의 가상 설정이며 실제 회사 규정이나 직원 정보가 아니다. 공개 자료를 참고해 독립적으로 작성했고, 사람의 법률 검토·정책 승인 및 모델 답변 품질 검증을 받은 자료는 아니다.
 
-한 줄이 한 문서다. `document_id`는 고정 식별자, `title`과 `document`는 제목·본문, `version`은 개정 버전이다. 본문의 `문서 ID: ieum-...`는 같은 JSONL 안의 다른 문서를 가리킨다. 나머지 출처·회사 결정 ID와 AI 검수 상태는 제작 이력이며 모델 입력이나 사람 승인으로 해석하지 않는다. 새 작업은 이 JSONL을 직접 수정하고 버전과 검수 상태를 함께 갱신한다.
+한 줄이 한 문서다. `document_id`는 고정 식별자, `title`과 `document`는 제목·본문, `version`은 개정 버전이다. 본문의 `문서 ID: ieum-...`는 같은 JSONL 안의 다른 문서를 가리킨다. 나머지 출처·회사 결정 ID와 AI 검수 상태는 제작 이력이며 모델 입력이나 사람 승인으로 해석하지 않는다. 이 JSONL은 고정 이관 원본이다. 서비스 문서의 수정·게시는 SQLite 관리 화면에서 수행하고 원본을 자동 갱신하지 않는다.
 
-서버·디버그·독립 답변 실행기의 기본 경로는 그대로이며 `IEUM_WORKS_PATH`로 바꿀 수 있다. 등록 API의 `app/documents.jsonl`과 자동 병합하지 않는다. 전체 문서 입력의 모델 적합성은 별도 확인해야 한다.
+서버·디버그·독립 답변 실행기는 SQLite 게시본을 사용하며 `SANAEBI_DOCUMENT_DB`로 경로를 지정한다. `IEUM_WORKS_PATH`는 런타임에서 사용하지 않는다. 전체 문서 입력의 모델 적합성은 별도 확인해야 한다.
 
 ```bash
 uv run --locked python scripts/validate_company_knowledge.py
@@ -142,6 +142,6 @@ uv run --locked python scripts/validate_company_knowledge.py
 
 평가 질문은 이번에 추가하지 않았다. 평가 CLI의 기본값은 저장소에 이미 보관된 [v0 문서와 당시 평가](archive/company-knowledge-v0/README.md) 쌍이며 현재 지식의 품질 측정이 아니다. 별도 평가에는 같은 버전의 `--eval-set`과 `--documents`를 지정한다. v1의 52개 정책·208개 평가도 위 로컬 보관 폴더에 함께 남겼다. 기존 900개 분류 질문과 과거 실험 결과는 별도 자료다.
 
-## 웹 등록 자료와 baseline의 구분
+## 서비스 문서와 평가 원본
 
-웹 문서 관리는 별도 SQLite에 런타임 자료를 저장하며 이 디렉터리의 baseline·평가 자료를 수정하지 않습니다. 기존 `app/documents.jsonl`도 자동 병합하지 않습니다. [문서 관리 안내](../docs/document-management.md)의 선택적 이관·게시·문서 공급 경계를 따릅니다. 현재 `/ask`는 등록 자료를 사용하지 않는 echo입니다.
+서비스는 SQLite의 유효 게시본을 단일 기준으로 사용한다. 기존 JSONL 71건은 출처·원본 ID·검수 상태를 보존해 명시적으로 이관하고 관리 화면에서 개정한다. JSONL과 DB를 자동 병합하거나 양방향 동기화하지 않는다. [문서 관리 안내](../docs/document-management.md)의 이관·내보내기 절차를 따른다. 평가용 파일은 게시 snapshot을 export하여 고정하고 대응하는 평가 세트와 함께 사용한다.

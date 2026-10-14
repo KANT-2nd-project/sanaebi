@@ -1,7 +1,5 @@
-import os
 import sqlite3
 from contextlib import asynccontextmanager
-from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -9,6 +7,7 @@ from fastapi.responses import JSONResponse, PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.answer_text import LLM_RESPONSE_ERROR, LLMResponseError
+from app.company_knowledge import get_document_database_path
 from app.document_http import (
     ManagedDocumentHttpMiddleware,
     document_error_response,
@@ -24,22 +23,17 @@ from app.routers import (
     questions,
 )
 from app.schemas import AnswerResponse
+from app.services.document_context import DocumentContextProvider, DocumentStorageError
 from app.services.document_service import DocumentServiceError
 from app.trace import TraceMiddleware
 
 
-def _document_database_path() -> Path:
-    configured_path = os.environ.get("SANAEBI_DOCUMENT_DB")
-    if configured_path:
-        return Path(configured_path).expanduser()
-    return Path(__file__).resolve().parent.parent / "var" / "documents.sqlite3"
-
-
 @asynccontextmanager
 async def lifespan(application: FastAPI):
-    repository = DocumentRepository(_document_database_path())
+    repository = DocumentRepository(get_document_database_path())
     repository.initialize()
     application.state.document_repository = repository
+    application.state.document_provider = DocumentContextProvider(repository=repository)
     yield
 
 
@@ -127,3 +121,14 @@ async def handle_unexpected_error(request: Request, exc: Exception):
             500, "internal_error", "문서 요청을 처리하지 못했습니다."
         )
     return PlainTextResponse("Internal Server Error", status_code=500)
+
+
+@app.exception_handler(DocumentStorageError)
+async def handle_knowledge_storage_error(request: Request, exc: DocumentStorageError):
+    return JSONResponse(
+        status_code=503,
+        content=AnswerResponse(
+            ok=False, text="", reason="문서 저장소를 사용할 수 없습니다."
+        ).model_dump(),
+        headers={"Cache-Control": "no-store"},
+    )

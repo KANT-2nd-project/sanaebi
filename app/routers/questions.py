@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 
 from app.answer_text import LLMResponseError, extract_answer_text
@@ -21,7 +21,7 @@ router = APIRouter()
         503: {"model": AnswerResponse, "description": "분류 모델 없음"},
     },
 )
-def ask(request: QuestionRequest):
+def ask(request: QuestionRequest, http_request: Request):
     question = request.question.strip()
 
     # 1. 질문을 분류해 카테고리 가져오기
@@ -33,13 +33,19 @@ def ask(request: QuestionRequest):
 
     # 2. 질문과 카테고리를 선택한 LangChain 모델에 전달
     response = {"ok": True, "text": question, "reason": ""}
-    results = generate_assistant_response(response, category, provider=PROVIDER)
+    results = generate_assistant_response(
+        response,
+        category,
+        provider=PROVIDER,
+        document_provider=http_request.app.state.document_provider,
+    )
 
     # 3. 선택한 모델의 실제 답변만 반환 (호출 실패는 기존 502 핸들러로 전달)
     result = results[PROVIDER]
-    if not result["success"] or result["output"] is None:
+    output = result.get("output", {"text": result.get("answer")})
+    if not result["success"] or output is None:
         raise LLMResponseError("LangChain 모델 호출에 실패했습니다.")
-    text = extract_answer_text(result["output"])
+    text = extract_answer_text(output)
     # 모델이 JSON 문자열로 답했다면 그 안의 text만 한 번 더 꺼내기
     if text.startswith("{"):
         text = extract_answer_text(text)

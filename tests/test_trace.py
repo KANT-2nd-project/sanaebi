@@ -30,7 +30,7 @@ LABEL = "SEARCH_KNOWLEDGE"
 DOCUMENTS = "연차 문서 " * 400  # 기본 2000자 제한을 넘는 문서 문맥
 
 
-def fake_generate(response, category, provider=None):
+def fake_generate(response, category, provider=None, document_provider=None):
     """실행기 대신 같은 모양의 작은 체인을 실제 LangChain으로 돌린다."""
     chain = (
         RunnableLambda(
@@ -149,7 +149,7 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(model["output"], "가상 답변")
 
     def test_two_model_calls_share_trace_id_and_split_by_root_run(self):
-        def generate_twice(response, category, provider=None):
+        def generate_twice(response, category, provider=None, document_provider=None):
             # 실행기처럼 한 요청에서 두 모델을 차례로 부른다
             return {
                 "ollama": fake_generate(response, category)["ollama"],
@@ -193,7 +193,9 @@ class TraceTests(unittest.TestCase):
             def _call(self, *args, **kwargs):
                 raise ConnectionError("모델 서버 없음")
 
-        def generate_with_broken_model(response, category, provider=None):
+        def generate_with_broken_model(
+            response, category, provider=None, document_provider=None
+        ):
             chain = PromptTemplate.from_template("질문: {text}") | BrokenModel(
                 responses=["사용 안 함"]
             )
@@ -222,7 +224,9 @@ class TraceTests(unittest.TestCase):
     def test_concurrent_requests_do_not_mix_steps(self):
         barrier = threading.Barrier(2)
 
-        def generate_after_both_started(response, category, provider=None):
+        def generate_after_both_started(
+            response, category, provider=None, document_provider=None
+        ):
             barrier.wait(timeout=5)  # 두 요청이 동시에 실행기 안에 있게 한다
             return fake_generate(response, category)
 
@@ -258,7 +262,7 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(len(model["input"]), model["prompt_chars"])
 
     def test_ask_with_classification_is_recorded(self):
-        def generate_for_ask(response, category, provider=None):
+        def generate_for_ask(response, category, provider=None, document_provider=None):
             answer = fake_generate(response, category)["ollama"]["answer"]
             return {provider: {"success": True, "output": {"text": answer}}}
 

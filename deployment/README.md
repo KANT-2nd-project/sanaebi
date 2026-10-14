@@ -83,4 +83,4 @@ curl -i http://127.0.0.1:8080/api/ask \
 
 빌드에 `out/admin/documents.html`이 필요합니다. `/admin/documents/`는 query를 유지해 `/admin/documents`로 이동합니다. 새 `/api/documents`도 기존 API 중계를 사용하며 FastAPI가 해당 문서 요청에512KiB 제한을 적용합니다. 기존 nginx 본문 제한은 유지하며 HTML 형태의 nginx 오류는 프런트가 안전한 안내로 처리합니다.
 
-기본 SQLite는 `var/documents.sqlite3`, 경로 변경은 `SANAEBI_DOCUMENT_DB`를 사용합니다. [문서 관리·백업·이관 안내](../docs/document-management.md)를 따르세요. 인증 없는 로컬 가상 자료 범위이며 실제 사내 공유 배포는 지원하지 않습니다.
+기본 SQLite는 `var/documents.sqlite3`, 경로 변경은 `SANAEBI_DOCUMENT_DB`를 사용합니다. [문서 관리·백업·이관 안내](../docs/document-management.md)를 따르세요. 인증 없는 로컬 가상 자료 범위이며 실제 사내 공유 배포는 지원하지 않습니다. 새 장비에서는 문서 관리 안내의 회사 지식 이관을 먼저 수행합니다. 서비스는 SQLite 게시본을 사용하며 DB 파일·WAL을 Git이나 정적 웹 빌드에 포함하지 않습니다.

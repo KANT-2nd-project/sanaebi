@@ -85,8 +85,8 @@ OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct-2507-q4_K_M")
 OLLAMA_STARTUP_TIMEOUT = float(os.getenv("OLLAMA_STARTUP_TIMEOUT_SECONDS", "30"))
 
-# 회사 문서 전체를 넣은 프롬프트가 약 31,000토큰이라(2026-10-14 실측) 가장 긴 질문과
-# 최대 출력까지 들어가는 값입니다. 입력이 num_ctx를 넘으면 Ollama가 400 오류를 냅니다.
+# 전체 문서 입력은 모델 tokenizer와 본문에 따라 이 한도를 넘을 수 있습니다.
+# 2026-10-14 SQLite 71건 smoke는 66,652토큰으로 400을 반환했습니다. 본문을 자르지 않습니다.
 OLLAMA_NUM_CTX = int(os.getenv("OLLAMA_NUM_CTX", "40960"))
 OLLAMA_TEMPERATURE = 0.2
 OLLAMA_NUM_PREDICT = 512
@@ -242,9 +242,20 @@ def prepare_input(value):
     }
 
 
+def snapshot_context(snapshot):
+    return "\n\n".join(
+        f"제목: {normalize_text(doc.title)}\n내용: {normalize_text(doc.body)}"
+        for doc in snapshot.documents
+    )
+
+
 def load_document_context(path=None):
-    """JSONL 문서 전체를 프롬프트 문맥으로 읽습니다. 검색은 수행하지 않습니다."""
-    path = Path(path or DOCUMENTS_PATH)
+    """기본 SQLite 게시본 또는 명시적인 평가 JSONL을 읽습니다."""
+    if path is None:
+        from app.services.document_context import DocumentContextProvider
+
+        return snapshot_context(DocumentContextProvider().snapshot())
+    path = Path(path)
     if not path.is_file():
         raise FileNotFoundError(f"문서 데이터 파일이 없습니다: {path}")
 
@@ -346,13 +357,17 @@ def ensure_ollama_server():
         )
 
 
-def add_prompt_context(value, provider=PROVIDER, documents_path=None):
+def add_prompt_context(
+    value, provider=PROVIDER, documents_path=None, document_snapshot=None
+):
     """분류 라벨에 맞는 지침과 프롬프트 문맥을 추가합니다."""
     if value["classification_label"] == SEARCH_KNOWLEDGE:
         document_context = (
-            load_document_context()
-            if documents_path is None
+            snapshot_context(document_snapshot)
+            if document_snapshot is not None
             else load_document_context(documents_path)
+            if documents_path is not None
+            else load_document_context()
         )
     else:
         document_context = "사용하지 않음"
@@ -386,9 +401,17 @@ def create_chat_model(provider=PROVIDER):
     raise ValueError("PROVIDER는 ollama 또는 openai여야 합니다.")
 
 
-def create_chain(provider=PROVIDER, documents_path=None):
+def create_chain(
+    provider=PROVIDER,
+    documents_path=None,
+    *,
+    document_snapshot=None,
+):
     """질문과 문서 문맥을 구조화된 LangChain 답변으로 변환합니다."""
+    if documents_path is not None and document_snapshot is not None:
+        raise ValueError("Use either documents_path or document_snapshot")
     model = create_chat_model(provider)
+
     structured_chain = ANSWER_PROMPT | model.with_structured_output(AssistantResponse)
 
     def format_answer(value):
@@ -411,7 +434,9 @@ def create_chain(provider=PROVIDER, documents_path=None):
 
     answer_chain = (
         RunnableLambda(
-            lambda value: add_prompt_context(value, provider, documents_path)
+            lambda value: add_prompt_context(
+                value, provider, documents_path, document_snapshot
+            )
         )
         | RunnablePassthrough.assign(structured_response=structured_chain)
         | RunnableLambda(format_answer)
@@ -433,7 +458,9 @@ def get_execution_conditions(provider):
     }
 
 
-def process_response(response, classification_label, provider=None):
+def process_response(
+    response, classification_label, provider=None, *, document_snapshot=None
+):
     """두 모델의 비교 기록을 반환합니다."""
     request = {
         "response": payload_dict(response),
@@ -447,13 +474,52 @@ def process_response(response, classification_label, provider=None):
     if any(name not in models for name in providers):
         raise ValueError("provider는 ollama 또는 openai여야 합니다.")
 
+    from app.services.document_context import (
+        NO_DOCUMENTS_MESSAGE,
+        DocumentContextProvider,
+    )
+
+    if (
+        prepared_request.get("ok")
+        and classification_label == SEARCH_KNOWLEDGE
+        and document_snapshot is None
+    ):
+        document_snapshot = DocumentContextProvider().snapshot()
+    no_documents = (
+        classification_label == SEARCH_KNOWLEDGE
+        and document_snapshot is not None
+        and not document_snapshot.documents
+    )
+    from langchain_core.callbacks import BaseCallbackHandler
+
+    class InvocationTracker(BaseCallbackHandler):
+        called = False
+
+        def on_chat_model_start(self, *args, **kwargs):
+            self.called = True
+
+        def on_llm_start(self, *args, **kwargs):
+            self.called = True
+
     results = {}
     for name in providers:
         started_at = time.perf_counter()
         answer = None
         error_message = None
+        tracker = InvocationTracker()
+
         try:
-            answer = create_chain(name).invoke(request)
+            if not prepared_request.get("ok") or no_documents:
+                answer = {
+                    "inquiry": input_text,
+                    "answer": NO_DOCUMENTS_MESSAGE if no_documents else "",
+                    "document": "",
+                    "note(LLM)": "",
+                }
+            else:
+                answer = create_chain(name, document_snapshot=document_snapshot).invoke(
+                    request, config={"callbacks": [tracker]}
+                )
         # 한 모델의 실패가 다른 모델의 결과를 막지 않도록 각각 기록합니다.
         except Exception as error:  # noqa: BLE001
             error_message = f"{type(error).__name__}: {error}"
@@ -468,6 +534,7 @@ def process_response(response, classification_label, provider=None):
             **answer,
             **get_execution_conditions(name),
             "elapsed_seconds": round(time.perf_counter() - started_at, 3),
+            "model_called": tracker.called,
             "success": error_message is None and prepared_request.get("ok", False),
             "error": error_message,
         }

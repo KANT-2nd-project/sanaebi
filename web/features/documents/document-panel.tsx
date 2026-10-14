@@ -450,6 +450,14 @@ export function DocumentPanel() {
               {detail.withdrawn && <p>사용 중단 상태입니다. 다시 게시하기 전까지 답변에서 제외됩니다.</p>}
             </div>}
 
+            {detail?.draft.metadata && <div className="documents-version-info" aria-label="문서 출처 정보">
+              {detail.provenance && <p>원본 ID: {detail.provenance.source_document_id}</p>}
+              <p>원본 버전: {detail.draft.metadata.source_version ?? "없음"} · 분류: {detail.draft.metadata.category ?? "없음"}</p>
+              <p>검수 상태: {detail.draft.metadata.review_status === "ai_reviewed" ? "AI 검수" : detail.draft.metadata.review_status === "unreviewed" ? "미검수" : detail.draft.metadata.review_status} · 게시는 사람 검수 승인을 뜻하지 않습니다.</p>
+              <p>출처 ID: {detail.draft.metadata.source_ids.join(", ") || "없음"}</p>
+              <p>정책 결정 ID: {detail.draft.metadata.policy_decision_ids.join(", ") || "없음"}</p>
+            </div>}
+
             {latestConflict && <div className="documents-conflict" role="alert">
               <div>
                 <strong>다른 변경이 먼저 저장됐습니다. 작성 중인 내용은 그대로 보존했습니다.</strong>
@@ -539,7 +547,7 @@ export function DocumentPanel() {
           </nav>
         </> : <div className="documents-empty-state">
           <h3>{filters.q || filters.status !== "all" ? "검색 결과가 없습니다." : "등록된 문서가 없습니다."}</h3>
-          <p>기존 `/regist-docs`에 등록한 자료는 이 관리 목록에 자동으로 포함되지 않습니다.</p>
+          <p>문서를 등록하면 초안으로 저장됩니다. 게시한 문서만 답변에 사용합니다.</p>
           <button type="button" className="documents-button documents-button-primary" onClick={openNewDocument}>첫 문서 초안 만들기</button>
         </div>}
       </section>}
