@@ -207,12 +207,18 @@ def trace_final_answer(
         return RunnableLambda(call)
 
     def generate_answer(text):
-        result = assistant.create_chain("ollama").invoke(
-            {
-                "response": {"ok": True, "text": text, "reason": ""},
-                "classification_label": label,
-            }
-        )
+        try:
+            result = assistant.create_chain("ollama").invoke(
+                {
+                    "response": {"ok": True, "text": text, "reason": ""},
+                    "classification_label": label,
+                }
+            )
+        except Exception as error:
+            # 모델은 응답했는데 체인이 그 출력을 풀다 멈췄으면 ⑤출력 정리가 원인이다
+            if trace.raw_output is not None and trace.steps["output"][0] == NOT_REACHED:
+                trace.mark("output", FAIL, describe(error))
+            raise
         status, detail, trace.answer = check_output(trace.raw_output, result)
         trace.mark("output", status, detail)
         return result
@@ -375,9 +381,7 @@ class FinalAnswerTests(DocumentsMixin, unittest.TestCase):
     어긋남이 고쳐지면 "unexpected success"로 알려 주므로 그때 표시를 지운다.
     """
 
-    @unittest.expectedFailure
     def test_valid_answer_reaches_employee_as_sentence(self):
-        # M1: 체인이 모델 JSON을 풀지 않고 원문을 text에 넣어 /ask가 JSON 문자열을 보여 준다
         trace = self.trace(output=answer_json())
         self.assertIsNone(trace.origin, trace.report())
         self.assertEqual(trace.response.status_code, 200)
@@ -385,7 +389,7 @@ class FinalAnswerTests(DocumentsMixin, unittest.TestCase):
 
     @unittest.expectedFailure
     def test_unusable_model_output_returns_502(self):
-        # M2: 평문·잘린 JSON이 그대로 200으로 나간다
+        # M2: 체인이 평문·잘린 JSON을 예외로 거르지만, /ask가 그 예외를 502로 바꾸지 않아 500이 된다
         for output in (ANSWER, '{"text": "인사 시스템에서 신'):
             with self.subTest(output=output):
                 trace = self.trace(output=output)

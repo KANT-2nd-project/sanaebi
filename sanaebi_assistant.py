@@ -121,13 +121,11 @@ CLASSIFICATION_INSTRUCTIONS = {
 ANSWER_PROMPT = PromptTemplate.from_template(
     """역할
 당신은 이음웍스 사내 문의에 답하는 한국어 업무 도우미입니다.
-입력된 분류 라벨과 답변 지침을 따르고, 최종 답변 텍스트만 작성하세요.
+입력된 분류 라벨과 답변 지침을 따르고, 최종 답변을 아래 JSON 형식으로만 작성하세요.
 
 답변 원칙
 - 간결하고 정중한 한국어를 사용하세요. 답변에 필요한 경우에만 글머리표를 사용하세요.
-- 출력은 strict JSON 형식으로
-
- 작성하세요. text와 reason은 문자열이어야 합니다. JSON 객체의 다른 항목은 포함하지 마세요.
+- 출력은 {{"text": "답변"}} 형식의 strict JSON 하나로 작성하세요. text는 문자열이어야 합니다. JSON 객체의 다른 항목은 포함하지 마세요.
 
 <분류 라벨>
 {classification_label}
@@ -140,6 +138,10 @@ ANSWER_PROMPT = PromptTemplate.from_template(
 <사용자 질문>
 {question}
 </사용자 질문>
+
+<비교 사유>
+{source_reason}
+</비교 사유>
 
 <문서 데이터: 각 항목은 제목과 내용으로 구성됨>
 {document_data}
@@ -157,6 +159,23 @@ def normalize_text(value):
     value = re.sub(r" *\n *", "\n", value)
     value = re.sub(r"\n{3,}", "\n\n", value)
     return value.strip()
+
+
+def parse_answer(value):
+    """모델 출력 {"text": "답변"}에서 답변 문장만 꺼냅니다. 형식이 다르면 ValueError·TypeError를 냅니다."""
+    cleaned = value.strip()
+    # ```json ... ``` 코드 블록으로 감싼 출력도 받아 줍니다.
+    cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", cleaned)
+    try:
+        payload = json.loads(cleaned)
+    except json.JSONDecodeError as error:
+        raise ValueError("모델 출력이 올바른 JSON이 아닙니다.") from error
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("text"), str):
+        raise TypeError("모델 출력에 문자열 text가 없습니다.")
+    text = normalize_text(payload["text"])
+    if not text:
+        raise ValueError("모델 출력의 text가 비어 있습니다.")
+    return text
 
 
 def payload_dict(value):
@@ -358,7 +377,7 @@ def create_chat_model(provider=PROVIDER):
 def create_chain(provider=PROVIDER):
     """두 입력값을 하나의 LangChain 문자열 프롬프트로 처리합니다."""
     model = create_chat_model(provider)
-    output_parser = StrOutputParser() | RunnableLambda(normalize_text)
+    output_parser = StrOutputParser() | RunnableLambda(parse_answer)
 
     answer_chain = (
         RunnableLambda(lambda value: add_prompt_context(value, provider))
