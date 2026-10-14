@@ -12,6 +12,12 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
+# 파일 경로로 실행하는 기존 검증 명령을 유지한다.
+if not __package__:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from contracts.classification import LABELS
+
 COLUMNS = (
     "question_id",
     "question",
@@ -41,7 +47,6 @@ REVIEW_COLUMNS = (
     "mixed",
     "revision_history",
 )
-LABELS = ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED")
 EXPECTED_ROWS = 900
 EXPECTED_ROWS_PER_LABEL = 300
 MIN_GROUPS = 180

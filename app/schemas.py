@@ -1,6 +1,6 @@
-from typing import Literal
-
 from pydantic import BaseModel, Field
+
+from contracts.classification import ClassificationLabel
 
 
 class QuestionRequest(BaseModel):
@@ -19,10 +19,10 @@ class AnswerResponse(BaseModel):
 
 # 분류 API가 반환하는 세 가지 카테고리
 class ClassificationResponse(BaseModel):
-    category: Literal["SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"]
+    category: ClassificationLabel
 
 
 # 분류를 마친 질문과 카테고리를 답변 생성 단계로 전달하는 입력
 class AssistantRequest(BaseModel):
     response: AnswerResponse  # text에 질문, ok에 앞 단계의 성공 여부
-    classification_label: Literal["SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"]
+    classification_label: ClassificationLabel

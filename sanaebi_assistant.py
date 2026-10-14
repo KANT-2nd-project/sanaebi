@@ -9,7 +9,7 @@ class AnswerResponse(BaseModel):
 
 class AssistantRequest(BaseModel):
     response: AnswerResponse
-    classification_label: Literal["SEARCH_KNOWLEDGE", "UNSUPPORTED", "CLARIFY"]
+    classification_label: ClassificationLabel  # contracts.classification
 
 
 2) 문서 스키마(ieum_works.jsonl):
@@ -65,6 +65,13 @@ from langchain_core.runnables import (
 from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 
+from contracts.classification import (
+    CLARIFY,
+    LABELS,
+    SEARCH_KNOWLEDGE,
+    UNSUPPORTED,
+)
+
 PROVIDER = os.getenv("PROVIDER", "ollama").casefold()
 
 OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
@@ -88,10 +95,7 @@ DOCUMENTS_PATH = Path(
 _OLLAMA_LOCK = threading.Lock()
 _OLLAMA_PROCESS = None
 
-SEARCH_KNOWLEDGE = "SEARCH_KNOWLEDGE"
-UNSUPPORTED = "UNSUPPORTED"
-CLARIFY = "CLARIFY"
-CLASSIFICATION_LABELS = {SEARCH_KNOWLEDGE, UNSUPPORTED, CLARIFY}
+CLASSIFICATION_LABELS = frozenset(LABELS)
 
 # SAMPLE_INPUT = {
 #     "response": {

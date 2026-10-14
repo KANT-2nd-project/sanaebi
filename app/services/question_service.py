@@ -2,9 +2,9 @@
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Literal
 
-ClassificationLabel = Literal["SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"]
+from contracts.classification import ClassificationLabel
+
 Classifier = Callable[[str], ClassificationLabel]
 DocumentReader = Callable[[], list[str]]
 Answerer = Callable[[str, list[str]], str]

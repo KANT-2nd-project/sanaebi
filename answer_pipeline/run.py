@@ -23,11 +23,12 @@ from pathlib import Path
 from langchain_core.callbacks import BaseCallbackHandler
 
 import sanaebi_assistant as assistant
+from contracts.classification import LABELS, SEARCH_KNOWLEDGE
 
 # 요청 처리 분류기의 세 경로 (docs/service-architecture.md "질문 처리 라벨 세 가지")
-ROUTES = ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED")
+ROUTES = LABELS
 # 회사 문서로 LLM 답변을 시도하는 경로. 나머지는 되묻기·지원 범위 안내다
-ANSWER_ROUTE = "SEARCH_KNOWLEDGE"
+ANSWER_ROUTE = SEARCH_KNOWLEDGE
 # 평가 세트 구분: 개발용(프롬프트·코드 조정)과 최종 비교용(조정 금지)
 SPLITS = ("dev", "final")
 # 채점에만 쓰고 실행기에는 넘기지 않는 필드 (P4 누출 점검 대상)
