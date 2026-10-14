@@ -17,7 +17,7 @@
     field.style.height = Math.min(200, Math.max(60, field.scrollHeight)) + "px";
     field.style.overflowY = field.scrollHeight > 200 ? "auto" : "hidden";
     field.setAttribute("aria-describedby", "input-help question-error connection-error");
-    field.setAttribute("aria-invalid", status()?.dataset.error === "true" ? "true" : "false");
+    field.setAttribute("aria-invalid", $("#question-error")?.textContent === "질문을 입력해주세요" ? "true" : "false");
     field.readOnly = locked;
   }
   function unlock() {
@@ -83,7 +83,11 @@
     e.preventDefault();
     $("#send-question")?.click();
   }, { capture: true, signal: listeners.signal });
-  document.addEventListener("input", e => { if (e.target === input()) size(); }, { signal: listeners.signal });
+  document.addEventListener("input", e => {
+    if (e.target !== input()) return;
+    if (e.target.value.trim() && $("#question-error")?.textContent === "질문을 입력해주세요") $("#question-error").textContent = "";
+    size();
+  }, { signal: listeners.signal });
   document.addEventListener("click", e => {
     if (e.target.closest("#send-question")) start(e);
     if (e.target.closest("#retry-question")) start(e, true);

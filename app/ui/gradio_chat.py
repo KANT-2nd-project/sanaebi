@@ -26,9 +26,10 @@ class ChatController:
 
     async def execute(self, state, token):
         """A cancelled coroutine never releases a still-running worker's slot."""
-        if not state.matches(token) or state.pending is None:
-            return False
-        question = state.pending.question
+        with state.lock:
+            if not state.matches(token) or state.pending is None:
+                return False
+            question = state.pending.question
         try:
             async with asyncio.timeout(max(0, state.deadline - monotonic())):
                 while not self.slot.acquire(blocking=False):
