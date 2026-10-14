@@ -31,4 +31,3 @@ test("저장 중에는 확인 없이 route 변경을 막고 수동 이동은 사
   }), { kind: "accepted" });
   assert.equal(route.canLoad("/admin/documents"), true);
 });
-
