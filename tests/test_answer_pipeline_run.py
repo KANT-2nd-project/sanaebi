@@ -322,7 +322,7 @@ class CommandLineTests(ExecutorPatch):
                 ]
             )
 
-    def test_default_eval_set_is_current_company_knowledge_set(self):
+    def test_default_eval_set_is_archived_company_knowledge_set(self):
         args = build_parser().parse_args(
             ["run", "--models", "models.json", "--run-dir", "run"]
         )
@@ -334,7 +334,9 @@ class CommandLineTests(ExecutorPatch):
         self.write_models({"name": "local", "provider": "ollama"})
         with (
             patch("answer_pipeline.cli.DEFAULT_EVAL_SET_PATH", self.eval_set),
-            patch.object(assistant, "DOCUMENTS_PATH", self.documents),
+            patch(
+                "answer_pipeline.cli.DEFAULT_EVALUATION_DOCUMENTS_PATH", self.documents
+            ),
         ):
             output = self.run_cli(
                 "run",
@@ -475,18 +477,6 @@ class EvalSetFileTests(unittest.TestCase):
                 path = self.write_jsonl(name, *rows)
                 with self.assertRaises(ValueError):
                     load_documents(path)
-
-    def test_repository_documents_and_example_eval_set_load(self):
-        root = Path(__file__).resolve().parents[1]
-        documents = load_documents(
-            root / "data" / "company-knowledge" / "documents.jsonl"
-        )
-        self.assertGreater(len(documents), 0)
-        rows = load_eval_set(
-            root / "data" / "company-knowledge" / "evaluations" / "eval_set.jsonl"
-        )
-        errors, _ = check_eval_set(rows, documents)
-        self.assertEqual(errors, [])
 
     def test_historical_eval_set_loads_with_its_archived_documents(self):
         root = Path(__file__).resolve().parents[1]

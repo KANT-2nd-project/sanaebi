@@ -22,7 +22,7 @@ from datetime import datetime
 from pathlib import Path
 
 import sanaebi_assistant as assistant
-from app.company_knowledge import DEFAULT_DOCUMENTS_PATH
+from app.company_knowledge import PROJECT_ROOT
 
 from .checks import evaluate_records, summarize
 from .report import debug_records, estimate_costs, load_prices, render_report
@@ -42,7 +42,10 @@ from .scoring import load_human_scores, usable_summary, write_blind_sheet
 
 # docs/generation-evaluation.md C-4의 OpenAI 호출 상한 (제안값)
 DEFAULT_MAX_OPENAI_CALLS = 120
-DEFAULT_EVAL_SET_PATH = DEFAULT_DOCUMENTS_PATH.parent / "evaluations" / "eval_set.jsonl"
+DEFAULT_EVALUATION_DOCUMENTS_PATH = (
+    PROJECT_ROOT / "data/archive/company-knowledge-v0/ieum_works.jsonl"
+)
+DEFAULT_EVAL_SET_PATH = DEFAULT_EVALUATION_DOCUMENTS_PATH.parent / "eval_set_dev.jsonl"
 
 
 def show(path):
@@ -108,7 +111,8 @@ def cmd_run(args):
         raise SystemExit(
             "기본 평가 세트가 아니면 같은 버전의 회사 문서를 --documents로 지정하세요."
         )
-    documents_path = Path(args.documents or assistant.DOCUMENTS_PATH)
+    # 보관 평가를 새 정책이나 IEUM_WORKS_PATH의 다른 문서와 자동 연결하지 않는다.
+    documents_path = Path(args.documents or DEFAULT_EVALUATION_DOCUMENTS_PATH)
     # 대조와 실행 프롬프트가 같은 문서 JSONL을 사용한다.
     rows = load_eval_set(eval_set_path)
     documents = load_documents(documents_path)
@@ -252,12 +256,12 @@ def build_parser():
     p.add_argument(
         "--eval-set",
         default=DEFAULT_EVAL_SET_PATH,
-        help="평가 세트 JSONL (기본: 현재 정책 데이터 평가 세트)",
+        help="평가 세트 JSONL (기본: 보관된 v0 문서의 개발 평가 세트)",
     )
     p.add_argument(
         "--documents",
         type=Path,
-        help="평가 세트와 같은 버전의 회사 정책 JSONL (과거 평가 재현 시 필수)",
+        help="평가와 같은 버전의 문서 (기본: v0 보관본; 별도 평가 세트는 필수)",
     )
     p.add_argument("--models", required=True, help="비교할 모델 설정 JSON")
     p.add_argument(
