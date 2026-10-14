@@ -4,6 +4,7 @@ import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from app.document_repository import DocumentRepository
 from scripts.import_registered_documents import (
@@ -149,8 +150,71 @@ class RegisteredDocumentImportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "제목과 본문 조합"):
             self.run_import(apply=True)
 
-        self.assertFalse(self.database_path.exists())
+        self.assertTrue(self.database_path.exists())
+        with sqlite3.connect(self.database_path) as connection:
+            self.assertEqual(
+                connection.execute("SELECT COUNT(*) FROM documents").fetchone()[0],
+                0,
+            )
+            self.assertEqual(
+                connection.execute(
+                    """SELECT COUNT(*) FROM sqlite_master
+                       WHERE type = 'table' AND name LIKE 'legacy_document_import%'"""
+                ).fetchone()[0],
+                0,
+            )
         self.assertEqual(self.source_path.read_bytes(), original)
+
+    def test_failed_import_does_not_delete_another_connection_commit(self):
+        self.write_rows(
+            [
+                {"title": "중복 제목", "doc": "중복 본문"},
+                {"title": "중복 제목", "doc": "중복 본문"},
+            ]
+        )
+        original_transaction = DocumentRepository.transaction
+        transaction_calls = 0
+
+        def add_concurrent_document_before_import_transaction(
+            repository, immediate=True
+        ):
+            nonlocal transaction_calls
+            transaction_calls += 1
+            if transaction_calls == 2:
+                with original_transaction(repository) as connection:
+                    repository.create_in_transaction(
+                        connection,
+                        {
+                            "title": "다른 요청 문서",
+                            "body": "다른 요청 본문",
+                            "source_label": "동시 요청",
+                        },
+                    )
+            return original_transaction(repository, immediate=immediate)
+
+        with (
+            patch.object(
+                DocumentRepository,
+                "transaction",
+                add_concurrent_document_before_import_transaction,
+            ),
+            self.assertRaisesRegex(ValueError, "제목과 본문 조합"),
+        ):
+            self.run_import(apply=True)
+
+        self.assertEqual(transaction_calls, 2)
+        self.assertTrue(self.database_path.exists())
+        with sqlite3.connect(self.database_path) as connection:
+            documents = connection.execute(
+                """SELECT r.title, r.body FROM documents d
+                   JOIN document_revisions r ON r.id = d.draft_revision_id"""
+            ).fetchall()
+            import_tables = connection.execute(
+                """SELECT name FROM sqlite_master
+                   WHERE type = 'table' AND name LIKE 'legacy_document_import%'"""
+            ).fetchall()
+        self.assertEqual(documents, [("다른 요청 문서", "다른 요청 본문")])
+        self.assertEqual(import_tables, [])
 
     def test_invalid_later_row_fails_before_creating_database_or_backup(self):
         self.write_rows([{"doc": "유효한 첫 본문"}])

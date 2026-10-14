@@ -293,7 +293,6 @@ def import_registered_documents(
     from app.document_repository import DocumentRepository, DuplicateDocumentError
 
     repository = DocumentRepository(database_path)
-    database_existed = database_path.exists()
     imported_at = datetime.now(UTC).isoformat(timespec="microseconds")
     imported_count = 0
     try:
@@ -354,15 +353,10 @@ def import_registered_documents(
                     imported_at,
                 ),
             )
-    except BaseException as error:
-        if not database_existed:
-            for suffix in ("", "-wal", "-shm"):
-                Path(f"{database_path}{suffix}").unlink(missing_ok=True)
-        if isinstance(error, DuplicateDocumentError):
-            raise ImportConflictError(
-                "이관 대상에 이미 등록된 제목과 본문 조합이 있습니다."
-            ) from error
-        raise
+    except DuplicateDocumentError as error:
+        raise ImportConflictError(
+            "이관 대상에 이미 등록된 제목과 본문 조합이 있습니다."
+        ) from error
 
     return ImportReport(
         source_id,
