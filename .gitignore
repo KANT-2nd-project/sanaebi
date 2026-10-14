@@ -48,6 +48,6 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Preparation originals, intermediate data, and archived tools stay local.
-# Share data/dataset.csv, its README, and ATTRIBUTION through Git.
+# Local preparation originals, intermediate data, and preparation tools.
+# Current dataset, review records, documentation, and data/archive/ are tracked.
 /data/local/

@@ -21,7 +21,13 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 ##### 설정 #####
 
-DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
+DATASET_PATH = (
+    Path(__file__).resolve().parent.parent
+    / "data"
+    / "archive"
+    / "document-topics-v0.2"
+    / "dataset.csv"
+)
 
 
 ##### 새 문서 CSV 읽기·정렬 확인 #####

@@ -26,7 +26,13 @@ class DocumentReportTests(unittest.TestCase):
         self.assertEqual(score["errors"][0][0], "Q1")
 
     def test_document_report_uses_saved_ids_input_and_six_labels(self):
-        dataset_path = Path(__file__).resolve().parents[1] / "data" / "dataset.csv"
+        dataset_path = (
+            Path(__file__).resolve().parents[1]
+            / "data"
+            / "archive"
+            / "document-topics-v0.2"
+            / "dataset.csv"
+        )
         with dataset_path.open(encoding="utf-8-sig", newline="") as file:
             splits = split_documents(list(csv.DictReader(file)))
         record = make_split_record(splits, dataset_path)

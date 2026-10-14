@@ -23,7 +23,13 @@ from sklearn.pipeline import make_pipeline
 ##### 데이터 경로 #####
 
 # BERT와 같은 문서 CSV를 사용
-DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
+DATASET_PATH = (
+    Path(__file__).resolve().parent.parent
+    / "data"
+    / "archive"
+    / "document-topics-v0.2"
+    / "dataset.csv"
+)
 
 selection_started = perf_counter()  # 데이터 준비부터 후보 학습·선택까지의 시간
 

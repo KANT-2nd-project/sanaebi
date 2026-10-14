@@ -23,7 +23,7 @@ else:
     from document_split import document_input, read_recorded_splits
 
 ROOT = Path(__file__).resolve().parent
-DATA_DIR = ROOT.parent / "data" / "questions"
+DATA_DIR = ROOT.parent / "data" / "archive" / "question-topics"
 RESULT_DIR = ROOT / "result"
 LABELS = ["it", "hr", "finance", "general_affairs", "other"]
 LABEL_NAMES = ["IT", "인사", "재무", "총무", "기타"]

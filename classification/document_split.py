@@ -71,7 +71,7 @@ def split_documents(document_rows, seed=RANDOM_SEED):
 def make_split_record(splits, dataset_path, seed=RANDOM_SEED):
     # 원본 CSV 식별자와 설정을 남겨 어떤 데이터로 분할했는지 확인
     record = {
-        "dataset": "data/dataset.csv",
+        "dataset": "data/archive/document-topics-v0.2/dataset.csv",
         "dataset_sha256": hashlib.sha256(dataset_path.read_bytes()).hexdigest(),
         "seed": seed,
         "labels": LABELS,
@@ -95,7 +95,13 @@ def make_split_record(splits, dataset_path, seed=RANDOM_SEED):
 def read_recorded_splits(record, dataset_path=None):
     # 새로 랜덤 분할하지 않고, 모델에 기록된 문서 ID로 원래 분할 복원
     if dataset_path is None:
-        dataset_path = Path(__file__).resolve().parents[1] / "data" / "dataset.csv"
+        dataset_path = (
+            Path(__file__).resolve().parents[1]
+            / "data"
+            / "archive"
+            / "document-topics-v0.2"
+            / "dataset.csv"
+        )
     digest = hashlib.sha256(dataset_path.read_bytes()).hexdigest()
     if digest != record["dataset_sha256"]:
         raise ValueError(
@@ -113,7 +119,11 @@ def read_recorded_splits(record, dataset_path=None):
     ids = [row["document_id"] for split in splits.values() for row in split]
     if len(ids) != len(set(ids)) or set(ids) != set(by_id):
         raise ValueError("분할 기록에 중복되거나 빠진 문서가 있습니다.")
-    if make_split_record(splits, dataset_path, record["seed"]) != record:
+    expected_record = make_split_record(splits, dataset_path, record["seed"])
+    if record.get("dataset") == "data/dataset.csv":
+        # 이전 모델 기록의 데이터 식별자는 보존하면서 나머지 필드는 그대로 검증
+        expected_record["dataset"] = "data/dataset.csv"
+    if expected_record != record:
         raise ValueError("분할 수량·라벨·설정이 저장된 기록과 맞지 않습니다.")
     groups = [{row["source_group_id"] for row in split} for split in splits.values()]
     if any(groups[i] & groups[j] for i in range(3) for j in range(i + 1, 3)):

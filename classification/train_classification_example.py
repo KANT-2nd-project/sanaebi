@@ -21,7 +21,13 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 ##### 설정 #####
 
-DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
+DATASET_PATH = (
+    Path(__file__).resolve().parent.parent
+    / "data"
+    / "archive"
+    / "document-topics-v0.2"
+    / "dataset.csv"
+)
 
 
 ##### 새 문서 CSV 읽기·정렬 확인 #####
@@ -39,7 +45,9 @@ def read_document_rows():
 ##### 문서 분류 모델 설정 #####
 
 MODEL_NAME = "모델명 입력"  # 사용할 한국어 사전학습 BERT
-MODEL_FOLDER = "결과 저장 폴더 명 입력"  # 모델·결과 저장 폴더 이름 (예: bert, koelectra)
+MODEL_FOLDER = (
+    "결과 저장 폴더 명 입력"  # 모델·결과 저장 폴더 이름 (예: bert, koelectra)
+)
 
 
 MAX_LENGTH = 192  # 특수 토큰을 포함한 최대 토큰 수

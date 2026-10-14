@@ -1,3 +1,5 @@
 * text=auto eol=lf
 *.bat text eol=crlf
 *.cmd text eol=crlf
+# Preserve CSV bytes, including embedded newlines and UTF-8 BOM.
+data/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
