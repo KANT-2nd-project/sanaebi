@@ -3,10 +3,11 @@
 TRACE_DIR 환경변수가 있을 때만 /ask·/assistant 요청 1건을 JSONL 1줄로 기록한다.
 기록 파일은 TRACE_DIR/YYYY-MM-DD.jsonl이고, 한 줄에 요청 본문, 단계별 행(steps), 최종 응답을 담는다.
 
-steps는 단계 1개 = 1행이다. 각 행은 model(ollama/openai), stage(입력 정리, 경로 선택,
-문서 문맥 추가, 프롬프트 만들기, 모델 호출, 출력 해석, 출력 정리, 실행기 전체),
-status(ok/error), seconds(걸린 시간), input, output, error를 갖는다. 모델 호출 행에는 실제 모델명,
-종료 사유, 입력·출력 토큰이 더 붙는다. LangChain 내부에서 다른 단계를 감싸기만 하는 실행은 뺀다.
+steps는 단계 1개 = 1행이다. 맨 앞은 분류 행(라벨, 출처: /ask는 분류기, /assistant는 요청 값)이고,
+이어서 LangChain 단계가 모델마다 실행기 전체, 입력 정리, 경로 선택, 문서 문맥 추가, 프롬프트 만들기,
+모델 호출, 출력 해석, 출력 정리 순으로 붙는다. 각 행은 model(ollama/openai), stage, status(ok/error),
+seconds(걸린 시간), input, output, error를 갖는다. 모델 호출 행에는 실제 모델명, 종료 사유,
+입력·출력 토큰이 더 붙는다. LangChain 내부에서 다른 단계를 감싸기만 하는 실행은 뺀다.
 한 요청의 모든 행은 같은 trace_id를 갖고, 두 모델을 차례로 부르면 root_run_id가 둘로 나뉜다.
 
 기록만 하고 요청·응답 본문과 실행기 동작은 바꾸지 않는다. 기록할 때는 응답 헤더 X-Trace-Id로
@@ -281,6 +282,46 @@ class TraceCallback(BaseCallbackHandler):
             )
         return rows
 
+    def record_rows(self, path: str, request: Any, status: int | None) -> list[dict]:
+        """기록할 steps: 맨 앞 분류 행 + LangChain 단계 행."""
+        rows = self.stage_rows()
+        roots = [row for row in rows if row["parent_run_id"] is None]
+        label = None
+        if roots and isinstance(roots[0]["input"], dict):
+            label = roots[0]["input"].get("classification_label")
+        stopped = not roots and (status or 0) >= 400
+        classification = {
+            "trace_id": self.trace_id,
+            "seq": None,
+            "model": None,
+            "stage": "분류",
+            "status": "error" if stopped else "ok",
+            "at_seconds": 0.0,
+            # 분류기는 LangChain 밖이라 첫 체인 실행이 시작될 때까지를 분류 시간으로 본다
+            "seconds": roots[0]["at_seconds"] if roots else None,
+            "input": _question_text(request),
+            "output": label,
+            "error": f"LangChain 전에 멈춤 (HTTP {status})" if stopped else None,
+            "source": "분류기" if path == "/ask" else "요청 값",
+        }
+        return _numbered([classification, *rows])
+
+
+def _numbered(rows: list[dict]) -> list[dict]:
+    for seq, row in enumerate(rows, start=1):
+        row["seq"] = seq
+    return rows
+
+
+def _question_text(request: Any) -> Any:
+    """/ask는 question, /assistant는 response.text에 질문이 있다."""
+    if not isinstance(request, dict):
+        return None
+    if "question" in request:
+        return request["question"]
+    response = request.get("response")
+    return response.get("text") if isinstance(response, dict) else None
+
 
 _current_trace: ContextVar[TraceCallback | None] = ContextVar(
     "sanaebi_trace", default=None
@@ -359,18 +400,20 @@ class TraceMiddleware:
             raise
         finally:
             _current_trace.reset(token)
+            request = _body_record(request_chunks)
+            # 처리되지 않은 예외는 바깥의 ServerErrorMiddleware가 500으로 응답한다
+            status_code = status[0] if status else (500 if error else None)
             record = {
                 "trace_id": callback.trace_id,
                 "started_at": started_at,
                 "elapsed_seconds": round(time.perf_counter() - callback.started, 3),
                 "method": scope.get("method"),
                 "path": scope["path"],
-                "request": _body_record(request_chunks),
-                # 처리되지 않은 예외는 바깥의 ServerErrorMiddleware가 500으로 응답한다
-                "status": status[0] if status else (500 if error else None),
+                "request": request,
+                "status": status_code,
                 "response": _body_record(response_chunks),
                 "error": error,
-                "steps": callback.stage_rows(),
+                "steps": callback.record_rows(scope["path"], request, status_code),
             }
             try:
                 write_trace(directory, record)
