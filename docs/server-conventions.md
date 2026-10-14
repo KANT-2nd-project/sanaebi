@@ -36,6 +36,9 @@
 다음은 분류·문서 답변 연결 시 따를 목표 구조다. `예정` 표시가 있는 파일·기능은 아직 구현하지 않았으며, 구조를 문서화했다는 이유로 빈 파일이나 구현을 미리 추가하지 않는다. 기존 실행 명령과 공개 API 계약은 유지한다.
 
 ```text
+contracts/
+├── __init__.py
+└── classification.py        # 서버·학습·평가 공통 라벨 타입·순서
 app/
 ├── __init__.py
 ├── fastapi_main.py           # 앱 생성·라우터 등록·공통 HTTP 오류 처리
@@ -60,7 +63,11 @@ app/
     └── answerer.py           # 단일 생성 제공자 호출·출력 검증
 ```
 
+`contracts/classification.py`는 `ClassificationLabel`과 불변 `LABELS` 튜플의 기준 위치다. 서버 스키마·서비스, 학습 분할, 데이터 검증과 답변 실행·평가가 이를 공유한다. 프레임워크와 모델 라이브러리에 의존하지 않으며, 학습 코드의 기존 리스트 형식은 공통 튜플에서 변환한다. 과거 문서 주제 라벨은 별도 계약으로 유지한다. 모델 출력 번호는 저장된 `id2label` 또는 `classes_`로 해석한다.
+
 `GET /`와 공통 검증 오류 핸들러는 진입점에 유지한다. `classification/`은 학습·평가 영역으로 유지하며 서버가 `train_*`를 import하지 않는다. `infrastructure/classifier.py`는 전달된 아티팩트로 추론하거나 선택한 외부 API를 호출한다. 모델이 없을 때 자동 학습·대체 모델 다운로드를 실행하지 않는다.
+
+분류 실험은 [분류 코드 안내](../classification/README.md)의 `cli → workflows → 전달받은 모델 기능`으로 구성한다. CLI가 구체 모델·데이터·저장·후속 평가 프로세스를 조립하고, workflow는 모델 선택 결과·평가 결과를 반환한다. 모델 구현은 `classification/models/`에 있으며 저장된 가중치의 `classification/model/`과 구분한다. 서버의 기존 `koelectra_classifier.py`는 아직 이 구현에 연결하지 않았다. 서버는 실험 CLI나 학습 진입점을 import하지 않으며, 이 정리를 서버 연결이나 모델 선정 완료로 취급하지 않는다.
 
 `answer_text.py`의 현재 `generate_answer`는 echo 임시 구현이다. 실제 연결 시 답변 생성은 `infrastructure/answerer.py`가 담당하고, 본문 추출 도우미는 필요한 경우 재사용한다. 목표 `/ask` 응답에는 별도 실험 실행기의 provider별 결과 포장을 전달하지 않는다. 현재 `/assistant`·`/ask/langchain`은 이 실행 기록을 반환하는 별도 계약이며 `AnswerResponse`를 반환하는 `/ask`와 구분한다.
 
