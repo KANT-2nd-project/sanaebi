@@ -74,7 +74,7 @@ labels = [row["label"] for row in rows]
 
 CSV에 `split`은 없다. 학습 코드에서 `question_id` 순으로 정렬한 후 **시드 `20261013`과 `group_id`**로 약 70:15:15를 분할한다. 같은 그룹은 반드시 같은 분할에 배치한다. 행 단위 무작위 분할은 표현 변형·대조 문항이 평가에 섞일 수 있다.
 
-이번 비파괴 시험은 기존 환경의 scikit-learn `GroupShuffleSplit`로 전체 그룹의 15%를 test로 분리한 후, 나머지에서 `0.15 / 0.85`를 dev로 분리했다. 두 단계 모두 시드 `20261013`을 사용했다. 그룹 수를 기준으로 나누므로 행 수와 라벨 비율이 정확히 70:15:15가 되지는 않는다. 당시 dry-run에서는 분할 파일을 저장하지 않았다. 현재는 `classification/dataset.py`가 같은 그룹 분할을 구현하며 실제 ID·해시를 학습 요약에 기록한다.
+이번 비파괴 시험은 기존 환경의 scikit-learn `GroupShuffleSplit`로 전체 그룹의 15%를 test로 분리한 후, 나머지에서 `0.15 / 0.85`를 dev로 분리했다. 두 단계 모두 시드 `20261013`을 사용했다. 그룹 수를 기준으로 나누므로 행 수와 라벨 비율이 정확히 70:15:15가 되지는 않는다. 당시 dry-run에서는 분할 파일을 저장하지 않았다. 이는 과거 GroupShuffleSplit 결과다. 현재 `classification/dataset.py`는 StratifiedGroupKFold 20개 fold를 14/3/3개로 합쳐 그룹을 유지하며 라벨 비율을 맞춘다. 시드 20261013에서 train/validation/test는 632/133/135건이다. 새 학습은 실제 ID·해시를 기록하고 기존 모델 평가는 당시 저장된 ID로 복원하므로 아래 과거 수치를 덮어쓰지 않는다.
 
 | 분할 | 전체 | SEARCH_KNOWLEDGE | CLARIFY | UNSUPPORTED | 그룹 |
 |---|---:|---:|---:|---:|---:|

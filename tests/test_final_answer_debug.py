@@ -1,7 +1,7 @@
 """LangChain 실행기를 /ask에 끼웠을 때 이상한 최종 응답의 원인 단계를 찾는다.
 
-실행기(sanaebi_assistant.py)는 아직 /ask에 연결되지 않았다. 여기서는 generate_answer를
-"실행기 체인 + 가짜 모델"로 바꿔 연결 뒤의 흐름을 재현하고, 단계마다 고장을 넣어 어느
+실행기(sanaebi_assistant.py)는 /ask에 연결되어 있다. 여기서는 연결 함수를
+"실행기 체인 + 가짜 모델"로 바꿔 흐름을 재현하고, 단계마다 고장을 넣어 어느
 단계에서 멈추는지 확인한다. 모델·네트워크·실제 문서 파일은 쓰지 않는다.
 
 단계: ①입력 → ②문서 문맥 → ③프롬프트 → ④모델 호출 → ⑤출력 정리 → ⑥/ask 응답
@@ -236,12 +236,20 @@ def trace_final_answer(
         # 연결 시나리오의 테스트 어댑터만 공개 text 계약으로 변환한다.
         return {"text": result["answer"]}
 
+    def generate_response(response, category, *, provider):
+        try:
+            output = generate_answer(response["text"])
+        except (ValueError, TypeError, OSError, RuntimeError) as error:
+            return {provider: {"success": False, "output": None, "error": str(error)}}
+        return {provider: {"success": True, "output": output}}
+
     with (
         patch.object(assistant, "prepare_input", prepare_input),
         patch.object(assistant, "load_document_context", load_document_context),
         patch.object(assistant, "ensure_ollama_server", ensure_ollama_server),
         patch.object(assistant, "create_chat_model", create_chat_model),
-        patch.object(questions, "generate_answer", generate_answer),
+        patch.object(questions, "classify_question", return_value=label),
+        patch.object(questions, "generate_assistant_response", generate_response),
         TestClient(app, raise_server_exceptions=False) as client,
     ):
         trace.response = client.post("/ask", json={"question": question})
@@ -397,10 +405,7 @@ class StageOriginTests(DocumentsMixin, unittest.TestCase):
 
 
 class FinalAnswerTests(DocumentsMixin, unittest.TestCase):
-    """직원이 받는 /ask 응답. 지금 main에서 실패하는 어긋남은 expectedFailure로 표시한다.
-
-    어긋남이 고쳐지면 "unexpected success"로 알려 주므로 그때 표시를 지운다.
-    """
+    """직원이 받는 /ask 응답과 실행 실패의 502 변환을 검사한다."""
 
     def test_valid_answer_reaches_employee_as_sentence(self):
         trace = self.trace(output=answer_json())
@@ -408,18 +413,16 @@ class FinalAnswerTests(DocumentsMixin, unittest.TestCase):
         self.assertEqual(trace.response.status_code, 200)
         self.assertEqual(trace.response.json()["text"], ANSWER)
 
-    @unittest.expectedFailure
     def test_unusable_model_output_returns_502(self):
-        # M2: 체인이 평문·잘린 JSON을 예외로 거르지만, /ask가 그 예외를 502로 바꾸지 않아 500이 된다
+        # 체인의 출력 오류를 실행 실패 결과로 전달하면 /ask는 502로 변환한다.
         for output in (ANSWER, '{"text": "인사 시스템에서 신'):
             with self.subTest(output=output):
                 trace = self.trace(output=output)
                 self.assertEqual(trace.response.status_code, 502)
                 self.assertEqual(trace.response.json(), FAILURE_BODY)
 
-    @unittest.expectedFailure
     def test_chain_errors_return_502(self):
-        # M3: 체인의 예외는 LLMResponseError가 아니라서 안내 문구 없는 500이 된다
+        # 실행 단계 오류도 실패 결과를 통해 공개 502 계약으로 변환한다.
         cases = {
             "모델 호출 오류": {"model": model_raises(ConnectionError("연결 거부"))},
             "4000자 초과": {

@@ -396,15 +396,25 @@ class ReportAndClientTests(unittest.TestCase):
             ):
                 evaluate_saved_model("jev", result_dir=result_dir)
 
-    def test_jev_prompt_matches_recorded_experiment(self):
+    def test_jev_prompt_preserves_rules_but_updates_train_examples(self):
         from classification.models import jev_prompt
 
         saved = json.loads(
             (ROOT / "classification/result/jev/metrics.json").read_text()
         )["settings"]
         self.assertEqual(jev_prompt.INSTRUCTIONS, saved["instructions"])
-        self.assertEqual(jev_prompt.CATEGORIES, saved["criteria"])
-        self.assertEqual(jev_prompt.EXAMPLE_QUESTION_IDS, saved["prompt_example_ids"])
+        for label, criteria in jev_prompt.CATEGORIES.items():
+            self.assertEqual(
+                {key: value for key, value in criteria.items() if key != "examples"},
+                {
+                    key: value
+                    for key, value in saved["criteria"][label].items()
+                    if key != "examples"
+                },
+            )
+        self.assertNotEqual(
+            jev_prompt.EXAMPLE_QUESTION_IDS, saved["prompt_example_ids"]
+        )
         self.assertEqual(jev_prompt.PROMPT_REVIEW_SCOPE, saved["prompt_review_scope"])
         self.assertEqual(jev_prompt.MODEL_NAME, saved["requested_model"])
 
@@ -522,7 +532,7 @@ class EntrypointTests(unittest.TestCase):
                             check=False,
                         )
                         self.assertEqual(run.returncode, 0, run.stderr)
-                        for count in ("637", "129", "134"):
+                        for count in ("632", "133", "135"):
                             self.assertIn(count, run.stdout)
             for name in ("train_koelectra_base", "train_tfidf", "evaluate_jev"):
                 run = subprocess.run(

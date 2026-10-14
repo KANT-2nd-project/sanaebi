@@ -23,7 +23,7 @@ class JevQuestionTests(unittest.TestCase):
         script = Path(jev_cli.__file__)
         splits = jev_evaluation.prepare_jev_data().rows
         expected_calls = len(splits["validation"]) + len(splits["test"])
-        self.assertEqual(expected_calls, 263)
+        self.assertEqual(expected_calls, 268)
         with (
             patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}),
             patch(

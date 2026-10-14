@@ -4,34 +4,33 @@
 - 상태: 현재 API 동작과 아직 연결되지 않은 목표 설계를 구분한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
 - 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
-- 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 내보내기 + nginx + FastAPI를 채택한다. 정적 내보내기·로컬 nginx→FastAPI echo 연결과 메모리 기반 대화형 화면을 구현했다. 이전 메시지는 서버 답변에 반영되지 않으며 실제 모델·외부 배포는 후속 범위다. 운영에서 nginx가 정적 파일과 API 중계를 담당하고 FastAPI가 질문 처리·인증·권한을 맡는 설계다.
+- 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 내보내기 + nginx + FastAPI를 채택한다. 정적 내보내기·로컬 nginx→FastAPI echo 연결과 메모리 기반 대화형 화면을 구현했다. 이전 메시지는 서버 답변에 반영되지 않으며 새 모델 경로의 브라우저 종단 검증·외부 배포는 후속 범위다. 운영에서 nginx가 정적 파일과 API 중계를 담당하고 FastAPI가 질문 처리·인증·권한을 맡는 설계다.
 - 질문 데이터와 데이터 상태: [요청 처리 데이터 안내](../data/README.md)
 - 프로젝트 설계 참고: [Notion 서비스 처리 기준](https://app.notion.com/p/3f805a3cdadc81d7b909fc71ed78381b)
 
 ## 현재 구현 상태
 
-현재 `/ask`는 echo를 유지하고, 문서 관리는 별도 `/documents` API로 제공한다. `POST /regist-docs`는 기존 JSONL append 계약으로 호환 유지한다. 실제 모델 답변 연결은 후속 작업이다.
+현재 `/ask`는 분류 후 LangChain을 호출하고, 문서 관리는 별도 `/documents` API로 제공한다. `POST /regist-docs`는 기존 JSONL append 계약으로 호환 유지한다. 실제 모델 답변 품질과 문서 관리 게시본 연결은 후속 검증 대상이다.
 
 | 구성 | 저장소에서 확인한 동작 |
 |---|---|
 | `GET /` | FastAPI 서버 실행 메시지를 반환한다. |
-| `POST /ask` | question 문자열의 빈 값·공백만 있는 값을 거부하고, 유효한 질문의 앞뒤 공백을 제거해 AnswerResponse의 text에 담아 반환한다. |
-| `POST /ask/langchain` | 현재 질문을 KoELECTRA Base로 분류한 뒤 질문과 카테고리를 LangChain 실행기에 전달하고 모델별 답변·실행 기록을 반환한다. |
+| `POST /ask` | 현재 질문을 KoELECTRA Base로 분류하고 LangChain에 전달해 선택한 모델의 답변을 AnswerResponse로 반환한다. |
 | `POST /assistant` | 이미 분류한 response·classification_label을 LangChain 실행기에 전달하고 기존 출력 형식을 그대로 반환한다. |
 | `POST /regist-docs` | doc 문자열을 검증한 뒤 `app/documents.jsonl`에 JSON Lines 한 줄로 덧붙이고 등록 응답을 반환한다. |
 | 기존 질문·레거시 HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
 | `/documents` | SQLite 초안·개정·게시·중단을 관리하며 문서 전용 오류 계약을 사용한다. [상세 계약](document-management.md)을 따른다. |
-| 질문 처리 분류 | `/classify/koelectra-base`에서 분류만 확인하거나 `/ask/langchain`에서 분류 후 답변 생성을 실행한다. `/ask`는 여전히 echo다. |
-| 질문 서비스 | `handle_question`은 세 라벨 분기·개발용 reader 조립 초안으로 /ask 미연결이다. 별도 `answer_question`은 /ask/langchain에서 분류 후 실행기 전달을 담당한다. |
+| 질문 처리 분류 | `/classify/koelectra-base`에서 분류만 확인하거나 `/ask`에서 분류 후 답변 생성을 실행한다. |
+| 질문 서비스 | `handle_question`은 세 라벨 분기·reader 조립 초안으로 보존한다. 현재 `/ask`는 이 초안 대신 라우터에서 분류기와 LangChain을 직접 호출한다. `/ask/langchain`은 제거했다. |
 | 문서 답변 | 별도 API는 LangChain 실행기를 호출하도록 연결했다. 실제 모델 실행·답변 품질과 목표 분기 정책 정합성은 별도 검증 대상이다. |
 
-앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문을 그대로 반환하는 echo 동작이며 회사 문서를 읽거나 답변을 생성하지 않는다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
+앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문 분류 후 LangChain을 호출한다. questions.py의 PROVIDER로 Ollama 또는 OpenAI 하나를 선택하고, 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
 
 등록 문서 한 줄의 형식은 `{"doc":"본문"}`이다. 등록 자료는 사전 준비한 정책 자료와 별개이며 자동으로 병합하지 않는다.
 
-개발 중인 의존성 조립은 `data/company-knowledge/documents.jsonl`의 `title/document` 정책을 기본으로 사용한다. reader는 제목과 본문을 보존한 문자열 목록을 반환하며 [임시 파일 테스트](../tests/test_document_reader.py)로 형식·오류·원본 보존을 확인한다. 이 자료는 공개 자료를 참고해 새로 작성한 가상 회사 정책이며 실제 회사 규정이나 등록 API의 저장 자료가 아니다. 두 저장 형식의 통합과 /ask 연결은 아직 수행하지 않았다. 분류 성능 평가와 모델 선정 확인을 위해 로컬 서비스의 /ask 연결을 중단했으며, KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
+개발 중인 의존성 조립은 `data/company-knowledge/documents.jsonl`의 `title/document` 정책을 기본으로 사용한다. reader는 제목과 본문을 보존한 문자열 목록을 반환하며 [임시 파일 테스트](../tests/test_document_reader.py)로 형식·오류·원본 보존을 확인한다. 이 자료는 공개 자료를 참고해 새로 작성한 가상 회사 정책이며 실제 회사 규정이나 등록 API의 저장 자료가 아니다. 두 저장 형식의 통합은 수행하지 않았다. 로컬 서비스 초안의 /ask 연결은 보류 상태로 남기고, 별도 LangChain 경로를 /ask에 연결했다. KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
 
-별도 [LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`와 `/ask/langchain`에 연결되어 있다. 실행기는 기본으로 `data/company-knowledge/documents.jsonl`의 title·document 형식을 읽으며, 등록 API의 doc 형식과 다르다. 출력은 Ollama·OpenAI별 답변과 실행 기록으로, 기존 `/ask`의 AnswerResponse와 구분한다. 기본 실행은 두 모델을 모두 호출하며 모델별 실패도 기록 안에 반환한다. API 연결 테스트에는 외부 모델 실행이나 답변 품질 평가가 포함되지 않는다. 현재 실행기의 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업이 남아 있다.
+별도 [LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`와 `/ask`에 연결되어 있다. 실행기는 기본으로 `data/company-knowledge/documents.jsonl`의 title·document 형식을 읽으며, 등록 API의 doc 형식과 다르다. `/assistant`의 출력은 Ollama·OpenAI별 답변과 실행 기록이다. `/ask`는 PROVIDER로 선택한 한 모델만 호출하고 답변 text를 AnswerResponse로 변환한다. 실행기의 기본 실행은 두 모델을 호출하며 모델별 실패도 기록 안에 반환한다. API 연결 테스트에는 외부 모델 실행이나 답변 품질 평가가 포함되지 않는다. 현재 실행기의 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업이 남아 있다.
 
 ## 목표 질문 처리 흐름
 
@@ -97,4 +96,4 @@ flowchart TD
 
 ## 등록 자료의 관리와 답변 연결 단계
 
-로컬 `/admin/documents`에서 초안 저장·개정·게시·사용 중단을 관리합니다. 새 `/documents` API는 SQLite에 저장하고 기존 `/regist-docs`의 JSONL 계약은 유지합니다. 문서 공급 계층은 적용 가능한 게시본과 baseline을 제공하지만 현재 echo `/ask`는 사용하지 않습니다. 저장·게시가 실제 모델 답변 연결을 뜻하지 않습니다. 자세한 범위는 [문서 관리 안내](document-management.md)에 둡니다.
+로컬 `/admin/documents`에서 초안 저장·개정·게시·사용 중단을 관리합니다. 새 `/documents` API는 SQLite에 저장하고 기존 `/regist-docs`의 JSONL 계약은 유지합니다. 문서 공급 계층은 적용 가능한 게시본과 baseline을 제공하지만 현재 LangChain `/ask`는 이 공급 계층을 사용하지 않습니다. 저장·게시가 실제 모델 답변 연결을 뜻하지 않습니다. 자세한 범위는 [문서 관리 안내](document-management.md)에 둡니다.

@@ -2,19 +2,11 @@
 
 이 문서는 Sanaebi 서버 코드를 수정하거나 확장할 때의 책임 분리와 검증 기준을 정한다. 서비스가 무엇을 처리하는지는 [서비스 설계](service-architecture.md), 라벨 의미는 [라벨 기준](label-taxonomy.md)을 따른다.
 
-현재 서버는 [앱 진입점](../app/fastapi_main.py), [요청·응답 스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [문서 라우터](../app/routers/documents.py), [JSONL 저장 함수](../app/document_store.py)로 분리되어 있다. [질문 서비스](../app/services/question_service.py)는 의존 함수를 전달받아 분기하는 형태로 구현했고 [단위 테스트](../tests/test_question_service.py)로 검증했다. `/ask`는 아직 이 서비스를 사용하지 않는다. `dependencies.py`에는 KoELECTRA 후보와 개발용 문서 reader를 조립한 초안이 있지만 답변기는 미구현이다. 이 로컬 서비스의 `/ask` 연결은 분류 성능 평가·모델 선정 확인까지 중단한 상태다. 별도로 원격에서 추가한 `answer_question`은 `/ask/langchain`의 분류 후 실행기 전달을 담당한다. 두 함수는 서로 다른 호출 계약이며 아직 통합하지 않았다. 모델 수명주기·추론 동시성과 공개 배포·권한·운영 구성은 후속 작업으로 남긴다. 이 규약 작성만으로 해당 기능을 구현하거나 운영 준비를 완료한 것으로 처리하지 않는다.
+현재 서버는 앱 진입점, 스키마, 라우터와 저장 함수로 분리되어 있다. `POST /ask`는 [질문 라우터](../app/routers/questions.py)에서 KoELECTRA Base 분류 후 LangChain을 호출하고, `PROVIDER`로 선택한 모델(기본 Ollama)의 답변 text를 AnswerResponse로 반환한다. 분류 모델 파일 부재는 503, 모델 호출 실패·사용 불가 답변은 502로 반환한다. `/ask/langchain`은 제거했으며 `/assistant`는 이미 분류한 입력을 받는 경로로 유지한다.
 
-분류 확인용 `POST /classify/koelectra-base`는 [분류 라우터](../app/routers/classification.py)에서
-요청을 전달하고, [KoELECTRA 연동 함수](../app/koelectra_classifier.py)에서 로컬 저장 모델로 예측한다.
-첫 요청에서 모델을 불러와 캐시하며, 재학습 없이 카테고리만 반환한다.
-분류 결과는 아직 `/ask`의 답변 흐름에 연결하지 않았다.
+[질문 서비스](../app/services/question_service.py)의 `handle_question`과 [dependencies.py](../app/dependencies.py)는 기존 분기 정책·미완성 답변기 조립 초안으로 보존한다. 현재 `/ask`가 이 초안을 사용하지는 않는다. 새 라우터는 분류기와 LangChain 연결 함수를 직접 호출한다. 모델 수명주기·추론 동시성·권한·운영 구성 및 목표 분기 정책 정합성은 후속 과제다. 실제 모델 품질이나 최종 모델 선정 완료를 뜻하지 않는다.
 
-`POST /ask/langchain`은 [답변 라우터](../app/routers/assistant.py)에서
-[질문 서비스](../app/services/question_service.py)에 분류기와 답변 함수를 전달한다.
-서비스는 질문 분류 후 고정 입력을 만들고, [LangChain 연결 함수](../app/langchain_adapter.py)는
-기존 실행기의 입력·출력을 유지한다. 이 별도 API는 `dependencies.py`의 로컬 조립 초안을 사용하지 않으며,
-현재는 라우터에서 함수를 직접 전달해 테스트에서 대체한다.
-`POST /assistant`는 입력으로 받은 카테고리를 사용해 같은 연결 함수를 호출한다.
+분류 확인용 `POST /classify/koelectra-base`는 [분류 라우터](../app/routers/classification.py)에서 [KoELECTRA 연동 함수](../app/koelectra_classifier.py)를 호출한다. 첫 요청에서 로컬 저장 모델을 캐시하며 재학습 없이 카테고리를 반환한다.
 
 ## 책임과 의존 방향
 
@@ -27,7 +19,7 @@
 | 외부 연동 | JSONL 접근, 분류기와 LLM 호출 | 저장 형식이나 외부 도구의 세부 사항을 내부에 둔다. |
 | 의존성 연결 | 사용할 구현을 생성·선택하여 전달 | 서비스 내부에서 실제 모델·클라이언트를 고정 생성하지 않도록 한다. |
 
-질문 서비스를 도입할 때 실행 흐름은 `라우터 → 질문 서비스 → 필요한 외부 연동`으로 구성한다. 현재 질문 라우터는 echo 응답을 반환하고, 문서 라우터는 저장 함수를 직접 호출한다. HTTP 오류 변환은 라우터 또는 공통 핸들러가 담당한다. 서비스는 처리 결과나 HTTP에 종속되지 않는 오류를 전달한다.
+질문 서비스를 도입할 때 실행 흐름은 `라우터 → 질문 서비스 → 필요한 외부 연동`으로 구성한다. 현재 질문 라우터는 분류기와 LangChain 연결 함수를 직접 호출하고, 문서 라우터는 저장 함수를 직접 호출한다. HTTP 오류 변환은 라우터 또는 공통 핸들러가 담당한다. 서비스는 처리 결과나 HTTP에 종속되지 않는 오류를 전달한다.
 
 작은 기능은 함수로 시작한다. 저장소 인터페이스, Protocol, 앱 팩토리는 실제 교체·테스트 요구가 생길 때 도입한다. 폴더 이름만 나누고 다른 모듈의 내부 구현을 직접 조작하는 구조는 책임 분리로 보지 않는다.
 
@@ -52,7 +44,7 @@ app/
 ├── document_store.py         # doc append와 개발용 title/document reader
 ├── routers/
 │   ├── __init__.py
-│   ├── assistant.py          # /assistant·/ask/langchain 실행기 연결
+│   ├── assistant.py          # /assistant 실행기 연결
 │   ├── classification.py     # /classify/koelectra-base 분류 확인
 │   ├── questions.py          # /ask 요청 전달·HTTP 응답 변환
 │   └── documents.py          # /regist-docs 입력·저장 호출·응답
@@ -71,7 +63,7 @@ app/
 
 분류 실험은 [분류 코드 안내](../classification/README.md)의 `cli → workflows → 전달받은 모델 기능`으로 구성한다. CLI가 구체 모델·데이터·저장과 명시적인 train·eval 실행을 조립하고, workflow는 모델 선택 결과·평가 결과를 반환한다. 실험 실행 진입점은 `classification/experiments/`, 지표·보고서 코드는 `classification/evaluation/`, 과거 문서 분할 코드는 `classification/legacy/`에 둔다. 모델 구현은 `classification/models/`에 있으며 새 가중치의 `artifacts/models/`, 평가 결과의 `artifacts/results/`와 구분한다. `sanaebi train`은 동일 조건 모델을 재사용하며 `sanaebi eval`은 validation CPU 평가, `--split test`는 test만 담당한다. 학습 workflow는 train/validation만 받고 신규 결과는 `artifacts/results/<모델명>/<분할>/`에 나누어 보관한다. 채택한 small 모델은 실험 저장소에만 있으며 서버의 base 선택·`classification/model/koelectra_base` 경로는 유지한다. 서버의 기존 `koelectra_classifier.py`는 아직 이 구현에 연결하지 않았다. 서버는 실험 CLI나 학습 진입점을 import하지 않으며, 이 정리를 서버 연결이나 모델 선정 완료로 취급하지 않는다.
 
-`answer_text.py`의 현재 `generate_answer`는 echo 임시 구현이다. 실제 연결 시 답변 생성은 `infrastructure/answerer.py`가 담당하고, 본문 추출 도우미는 필요한 경우 재사용한다. 목표 `/ask` 응답에는 별도 실험 실행기의 provider별 결과 포장을 전달하지 않는다. 현재 `/assistant`·`/ask/langchain`은 이 실행 기록을 반환하는 별도 계약이며 `AnswerResponse`를 반환하는 `/ask`와 구분한다.
+`answer_text.py`의 `generate_answer`는 사용하지 않는 echo 도우미로 남아 있다. 현재 `/ask`는 LangChain 연결 함수를 호출한다. 실제 연결 시 답변 생성은 `infrastructure/answerer.py`가 담당하고, 본문 추출 도우미는 필요한 경우 재사용한다. 목표 `/ask` 응답에는 별도 실험 실행기의 provider별 결과 포장을 전달하지 않는다. 현재 `/assistant`는 이 실행 기록을 반환하는 별도 계약이며 `AnswerResponse`를 반환하는 `/ask`와 구분한다.
 
 ### 내부 계약과 연결 책임
 

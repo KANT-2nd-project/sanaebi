@@ -48,7 +48,7 @@ class TrainingCommandTests(unittest.TestCase):
                 output,
             )
             self.assertEqual(preview.returncode, 0, preview.stderr)
-            self.assertIn("637", preview.stdout)
+            self.assertIn("632", preview.stdout)
             self.assertFalse(output.exists())
             invalid = self.invoke(
                 directory, "train", "unknown", "--artifact-root", output
