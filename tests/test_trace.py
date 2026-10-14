@@ -41,7 +41,8 @@ def fake_generate(response, category, provider=None):
         )
         | FakeListChatModel(responses=["가상 답변"])
     )
-    message = chain.invoke(response)
+    # 실행기처럼 분류 라벨을 체인 입력에 함께 넣는다
+    message = chain.invoke({**response, "classification_label": category})
     return {"ollama": {"answer": message.content}}
 
 
@@ -132,8 +133,13 @@ class TraceTests(unittest.TestCase):
         self.assertTrue(all(s["seconds"] is not None for s in steps))
 
         # 분류 라벨과 질문은 첫 단계(실행기 전체) 입력에 그대로 남는다
-        self.assertEqual(steps[0]["stage"], trace.ROOT_STAGE)
-        self.assertEqual(steps[0]["input"]["text"], "연차는 어디서 신청해?")
+        # 맨 앞은 분류 행: /assistant는 요청에 들어온 라벨을 쓴다
+        self.assertEqual(steps[0]["stage"], "분류")
+        self.assertEqual(steps[0]["output"], LABEL)
+        self.assertEqual(steps[0]["source"], "요청 값")
+        self.assertEqual(steps[0]["input"], "연차는 어디서 신청해?")
+        self.assertEqual(steps[1]["stage"], trace.ROOT_STAGE)
+        self.assertEqual(steps[1]["input"]["text"], "연차는 어디서 신청해?")
 
         # 모델 호출은 시작·끝이 한 행: 입력은 프롬프트, 출력은 원문 응답
         [model] = model_rows(record)
@@ -169,7 +175,7 @@ class TraceTests(unittest.TestCase):
             tops = [
                 s
                 for s in steps
-                if s["root_run_id"] == root and s["parent_run_id"] is None
+                if s.get("root_run_id") == root and s.get("parent_run_id") is None
             ]
             self.assertEqual(len(tops), 1)
             self.assertEqual(tops[0]["run_id"], root)
@@ -211,7 +217,7 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(model["status"], "error")
         self.assertEqual(model["error"], "ConnectionError: 모델 서버 없음")
         # 같은 오류를 이어받은 바깥 단계(실행기 전체)도 error로 남는다
-        self.assertEqual(record["steps"][0]["status"], "error")
+        self.assertEqual(record["steps"][1]["status"], "error")
 
     def test_concurrent_requests_do_not_mix_steps(self):
         barrier = threading.Barrier(2)
@@ -270,6 +276,8 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(record["request"], {"question": "연차 신청"})
         [model] = model_rows(record)
         self.assertIn("질문: 연차 신청", model["input"]["head"])
+        self.assertEqual(record["steps"][0]["source"], "분류기")
+        self.assertEqual(record["steps"][0]["output"], LABEL)
 
     def test_untraced_path_is_not_recorded(self):
         with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):
@@ -290,6 +298,9 @@ class TraceTests(unittest.TestCase):
         [record] = self.records()
         self.assertEqual(record["error"], "RuntimeError: 실행기 실패")
         self.assertEqual(record["status"], 500)
+        [classification] = record["steps"]
+        self.assertEqual(classification["stage"], "분류")
+        self.assertEqual(classification["status"], "error")
 
     def test_write_failure_does_not_break_request(self):
         blocked = self.trace_dir.parent / "not-a-directory"
@@ -382,6 +393,33 @@ class RunnerStageTests(unittest.TestCase):
                 (trace.MODEL_STAGE, "error"),
             ],
         )
+
+    def test_record_rows_start_with_classification(self):
+        callback = trace.TraceCallback()
+        with (
+            patch.object(
+                sanaebi_assistant,
+                "create_chat_model",
+                return_value=ToolAnswerModel(responses=[tool_answer()]),
+            ),
+            patch.object(
+                sanaebi_assistant, "load_document_context", return_value="연차 문서"
+            ),
+        ):
+            sanaebi_assistant.create_chain("openai").invoke(
+                {
+                    "response": {"ok": True, "text": "연차는 어디서 신청해?"},
+                    "classification_label": LABEL,
+                },
+                config={"callbacks": [callback]},
+            )
+        rows = callback.record_rows("/ask", {"question": "연차는 어디서 신청해?"}, 200)
+        self.assertEqual([row["seq"] for row in rows], list(range(1, 10)))
+        self.assertEqual(
+            (rows[0]["stage"], rows[0]["output"], rows[0]["source"]),
+            ("분류", LABEL, "분류기"),
+        )
+        self.assertEqual(rows[1]["stage"], trace.ROOT_STAGE)
 
     def test_failed_input_path_has_its_own_stage(self):
         rows = self.run_chain(
