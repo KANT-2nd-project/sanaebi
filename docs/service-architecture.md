@@ -26,11 +26,11 @@
 
 앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문을 그대로 반환하는 echo 동작이며 회사 문서를 읽거나 답변을 생성하지 않는다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
 
-등록 문서 한 줄의 형식은 `{"doc":"본문"}`이다. 질문 처리 설계는 이 JSON Lines 파일의 회사 문서 전체를 답변 입력으로 사용한다.
+등록 문서 한 줄의 형식은 `{"doc":"본문"}`이다. 등록 자료는 사전 준비한 정책 자료와 별개이며 자동으로 병합하지 않는다.
 
-개발 중인 의존성 조립은 루트 `ieum_works.jsonl`의 `title/document` 더미를 명시적으로 사용한다. reader는 제목과 본문을 보존한 문자열 목록을 반환하며 [임시 파일 테스트](../tests/test_document_reader.py)로 형식·오류·원본 보존을 확인한다. 이 더미는 실제 회사 규정이나 등록 API의 저장 자료가 아니다. 두 저장 형식의 통합과 /ask 연결은 아직 수행하지 않았다. 분류 성능 평가와 모델 선정 확인을 위해 로컬 서비스의 /ask 연결을 중단했으며, KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
+개발 중인 의존성 조립은 `data/company-knowledge/documents.jsonl`의 `title/document` 정책을 기본으로 사용한다. reader는 제목과 본문을 보존한 문자열 목록을 반환하며 [임시 파일 테스트](../tests/test_document_reader.py)로 형식·오류·원본 보존을 확인한다. 이 자료는 공개 자료를 참고해 새로 작성한 가상 회사 정책이며 실제 회사 규정이나 등록 API의 저장 자료가 아니다. 두 저장 형식의 통합과 /ask 연결은 아직 수행하지 않았다. 분류 성능 평가와 모델 선정 확인을 위해 로컬 서비스의 /ask 연결을 중단했으며, KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
 
-별도 [LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`와 `/ask/langchain`에 연결되어 있다. 실행기는 기본으로 `ieum_works.jsonl`의 title·document 형식을 읽으며, 등록 API의 doc 형식과 다르다. 출력은 Ollama·OpenAI별 답변과 실행 기록으로, 기존 `/ask`의 AnswerResponse와 구분한다. 기본 실행은 두 모델을 모두 호출하며 모델별 실패도 기록 안에 반환한다. API 연결 테스트에는 외부 모델 실행이나 답변 품질 평가가 포함되지 않는다. 현재 실행기의 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업이 남아 있다.
+별도 [LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`와 `/ask/langchain`에 연결되어 있다. 실행기는 기본으로 `data/company-knowledge/documents.jsonl`의 title·document 형식을 읽으며, 등록 API의 doc 형식과 다르다. 출력은 Ollama·OpenAI별 답변과 실행 기록으로, 기존 `/ask`의 AnswerResponse와 구분한다. 기본 실행은 두 모델을 모두 호출하며 모델별 실패도 기록 안에 반환한다. API 연결 테스트에는 외부 모델 실행이나 답변 품질 평가가 포함되지 않는다. 현재 실행기의 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업이 남아 있다.
 
 ## 목표 질문 처리 흐름
 
@@ -54,7 +54,7 @@ flowchart TD
     C -->|"UNSUPPORTED"| U["지원 범위 안내"]
 ```
 
-초기 문서 답변은 app/documents.jsonl의 전체 문서 본문을 사용한다. 문서가 늘어나 전체 입력 방식이 품질·비용·속도·입력 한도에 적합하지 않다고 확인되면 관련 문서를 선택하는 RAG를 후속 단계에서 평가한다. RAG는 현재 서비스 구현이 아니다.
+초기 문서 답변은 사전 준비한 `data/company-knowledge/documents.jsonl`의 전체 정책 본문을 사용한다. 출처·회사 결정·검수·평가는 [회사 정책 데이터 안내](../data/company-knowledge/README.md)에서 관리한다. `IEUM_WORKS_PATH`로 명시적 경로를 선택할 수 있다. 문서가 늘어나 전체 입력 방식이 품질·비용·속도·입력 한도에 적합하지 않다고 확인되면 관련 문서를 선택하는 RAG를 후속 단계에서 평가한다. RAG는 현재 서비스 구현이 아니다.
 
 ## 답변 규칙과 경계
 

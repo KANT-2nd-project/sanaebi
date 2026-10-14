@@ -44,6 +44,8 @@ app/
 ├── fastapi_main.py           # 앱 생성·라우터 등록·공통 HTTP 오류 처리
 ├── schemas.py                # 공개 HTTP 요청·응답 모델
 ├── dependencies.py           # 조립 초안: HTTP 미연결, 답변기 미구현
+├── company_knowledge.py      # 기본 정책 경로·환경변수 재정의
+├── debug.py                  # 문서 reader 단독 확인
 ├── answer_text.py            # 생성 결과의 본문 검증·추출
 ├── langchain_adapter.py      # 별도 API용 실행기 입력 전달·실행 기록 반환
 ├── koelectra_classifier.py   # 기존 분류 확인용 로컬 추론, 최종 선정과 별개
@@ -76,6 +78,7 @@ app/
 | 경계 | 입력 → 출력 | 담당 위치 |
 |---|---|---|
 | 분류 | 질문 문자열 → 허용된 라벨 | `infrastructure/classifier.py` |
+| 문서 경로 | 환경변수 또는 기본 정책 → Path | `company_knowledge.py` |
 | 문서 읽기 | 지정 경로 → 문서 본문 목록 | `document_store.py`; 경로는 연결 계층에서 전달 |
 | 답변 생성 | 질문·문서 목록 → 검증된 답변 문자열 | `infrastructure/answerer.py` |
 | 질문 처리 | 질문·의존 함수 → `QuestionResult(text)` | `services/question_service.py` |
@@ -85,7 +88,7 @@ app/
 
 `dependencies.py`는 분류기·문서 reader·답변기를 선택하여 질문 서비스에 전달하고, 라우터가 `Depends`로 받을 질문 처리 함수를 제공한다. 서비스 내부에는 FastAPI 의존성 선언을 넣지 않는다. 함수와 `functools.partial`로 시작할 수 있으며, 테스트에서는 제공 함수를 override한다. Depends의 사용 자체가 프로세스 전체의 모델 단일 로딩을 보장하지 않으므로 실제 모델 연결 때 로딩 시점도 정한다.
 
-현재 조립 초안은 `ieum_works.jsonl`을 개발용 문서 경로로 명시한다. KoELECTRA 참조는 최종 모델 선정의 근거가 아니다. 반환 타입 `str`과 서비스의 `ClassificationLabel` 사이 검증·타입 경계는 아직 해결하지 않았다. 재개 시 허용 라벨 검증을 마련하고 실제 모델 아티팩트·답변기·HTTP 예외 변환을 확인한다. 미구현 답변 함수는 `NotImplementedError`를 발생시키므로 현재 조립을 운영 경로에 연결하지 않는다.
+현재 조립 초안은 `data/company-knowledge/documents.jsonl`을 기본 정책 경로로 사용하며 `IEUM_WORKS_PATH`로 바꿀 수 있다. KoELECTRA 참조는 최종 모델 선정의 근거가 아니다. 반환 타입 `str`과 서비스의 `ClassificationLabel` 사이 검증·타입 경계는 아직 해결하지 않았다. 재개 시 허용 라벨 검증을 마련하고 실제 모델 아티팩트·답변기·HTTP 예외 변환을 확인한다. 미구현 답변 함수는 `NotImplementedError`를 발생시키므로 현재 조립을 운영 경로에 연결하지 않는다.
 
 ### 단계별 연결과 완료 기준
 
@@ -139,3 +142,7 @@ git diff --check
 규약을 바꿀 때는 구현·채택된 기준·향후 제안을 구분하고 [문서 관리 가이드](documentation-guide.md)를 따른다. 작업별 검사 로그와 적용 결과는 작업 기록에 두고 이 문서에 누적하지 않는다.
 
 참고: [FastAPI 여러 파일 구성](https://fastapi.tiangolo.com/tutorial/bigger-applications/), [의존성 주입](https://fastapi.tiangolo.com/tutorial/dependencies/), [테스트 의존성 대체](https://fastapi.tiangolo.com/advanced/testing-dependencies/). 위 폴더 구성은 이 프로젝트의 적용 기준이며 FastAPI가 강제하는 유일한 구조가 아니다.
+
+## 회사 정책 데이터 연결
+
+기본 경로 선택은 `app/company_knowledge.py`에서 관리한다. 서버 조립·디버그·독립 실행기가 같은 기본 경로를 사용하고, 공개 API 계약이나 등록 API의 doc 저장 형식은 바꾸지 않는다. 정책의 출처·검수·고정 ID와 과거 문서 재현 방법은 [회사 정책 안내](../data/company-knowledge/README.md)를 따른다. 평가 실행기는 고정 ID를 사용하며 ID가 전혀 없는 보관본만 행 번호를 사용한다. 혼합·중복·빈 ID는 실패시킨다.
