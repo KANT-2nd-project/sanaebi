@@ -1,4 +1,4 @@
-from app.services.document_context import DocumentContextProvider
+from app.documents.context import DocumentContextProvider
 
 
 def main():

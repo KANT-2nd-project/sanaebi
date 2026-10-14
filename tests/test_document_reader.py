@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from app.document_store import read_documents
+from archive.server_legacy.document_store import read_documents
 
 
 class DocumentReaderTests(unittest.TestCase):
