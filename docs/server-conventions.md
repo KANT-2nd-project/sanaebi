@@ -2,12 +2,19 @@
 
 이 문서는 Sanaebi 서버 코드를 수정하거나 확장할 때의 책임 분리와 검증 기준을 정한다. 서비스가 무엇을 처리하는지는 [서비스 설계](service-architecture.md), 라벨 의미는 [라벨 기준](label-taxonomy.md)을 따른다.
 
-현재 서버는 [앱 진입점](../app/fastapi_main.py), [요청·응답 스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [문서 라우터](../app/routers/documents.py), [JSONL 저장 함수](../app/document_store.py)로 분리되어 있다. 질문 서비스와 의존성 연결 계층은 아직 구현하지 않았다. 모델 수명주기·추론 동시성과 공개 배포·권한·운영 구성은 후속 작업으로 남긴다. 이 규약 작성만으로 해당 기능을 구현하거나 운영 준비를 완료한 것으로 처리하지 않는다.
+현재 서버는 [앱 진입점](../app/fastapi_main.py), [요청·응답 스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [문서 라우터](../app/routers/documents.py), [JSONL 저장 함수](../app/document_store.py)로 분리되어 있다. 질문 서비스는 분류 후 LangChain 전달 순서를 담당하며, 별도 의존성 연결 계층은 아직 도입하지 않았다. 모델 수명주기·추론 동시성과 공개 배포·권한·운영 구성은 후속 작업으로 남긴다. 이 규약 작성만으로 해당 기능을 구현하거나 운영 준비를 완료한 것으로 처리하지 않는다.
 
 분류 확인용 `POST /classify/koelectra-base`는 [분류 라우터](../app/routers/classification.py)에서
 요청을 전달하고, [KoELECTRA 연동 함수](../app/koelectra_classifier.py)에서 로컬 저장 모델로 예측한다.
 첫 요청에서 모델을 불러와 캐시하며, 재학습 없이 카테고리만 반환한다.
 분류 결과는 아직 `/ask`의 답변 흐름에 연결하지 않았다.
+
+`POST /ask/langchain`은 [답변 라우터](../app/routers/assistant.py)에서
+[질문 서비스](../app/services/question_service.py)에 분류기와 답변 함수를 전달한다.
+서비스는 질문 분류 후 고정 입력을 만들고, [LangChain 연결 함수](../app/langchain_adapter.py)는
+기존 실행기의 입력·출력을 유지한다. 별도 `dependencies.py`는 아직 도입하지 않았으며,
+현재는 라우터에서 함수를 직접 전달해 테스트에서 대체한다.
+`POST /assistant`는 입력으로 받은 카테고리를 사용해 같은 연결 함수를 호출한다.
 
 ## 책임과 의존 방향
 

@@ -15,16 +15,18 @@
 |---|---|
 | `GET /` | FastAPI 서버 실행 메시지를 반환한다. |
 | `POST /ask` | question 문자열의 빈 값·공백만 있는 값을 거부하고, 유효한 질문의 앞뒤 공백을 제거해 AnswerResponse의 text에 담아 반환한다. |
+| `POST /ask/langchain` | 현재 질문을 KoELECTRA Base로 분류한 뒤 질문과 카테고리를 LangChain 실행기에 전달하고 모델별 답변·실행 기록을 반환한다. |
+| `POST /assistant` | 이미 분류한 response·classification_label을 LangChain 실행기에 전달하고 기존 출력 형식을 그대로 반환한다. |
 | `POST /regist-docs` | doc 문자열을 검증한 뒤 `app/documents.jsonl`에 JSON Lines 한 줄로 덧붙이고 등록 응답을 반환한다. |
 | HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
-| 질문 처리 분류 | 세 경로의 기준과 데이터가 준비되어 있다. FastAPI 요청 흐름에는 분류기가 연결되어 있지 않다. |
-| 문서 답변 | LangChain, LLM, 문서 근거 확인이 API 흐름에 연결되어 있지 않다. |
+| 질문 처리 분류 | `/classify/koelectra-base`에서 분류만 확인하거나 `/ask/langchain`에서 분류 후 답변 생성을 실행한다. |
+| 문서 답변 | LangChain 실행기를 호출하도록 연결했다. 실제 모델 실행과 답변 품질은 별도 검증 대상이다. |
 
 앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문을 그대로 반환하는 echo 동작이며 회사 문서를 읽거나 답변을 생성하지 않는다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
 
 등록 문서 한 줄의 형식은 `{"doc":"본문"}`이다. 질문 처리 설계는 이 JSON Lines 파일의 회사 문서 전체를 답변 입력으로 사용한다.
 
-별도 [LangChain 실행기](../sanaebi_assistant.py)와 예시 문서 `ieum_works.jsonl`도 저장소에 있지만 FastAPI 라우터와 연결되지 않았다. 이 실행기의 입력·문서 형식을 현재 HTTP API·JSONL 계약과 동일하게 취급하지 않는다. 이번 서버 리팩터링 검증은 외부 모델 실행이나 답변 품질 평가를 포함하지 않는다.
+별도 [LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`와 `/ask/langchain`에 연결되어 있다. 실행기는 기본으로 `ieum_works.jsonl`의 title·document 형식을 읽으며, 등록 API의 doc 형식과 다르다. 출력은 Ollama·OpenAI별 답변과 실행 기록으로, 기존 `/ask`의 AnswerResponse와 구분한다. 기본 실행은 두 모델을 모두 호출하며 모델별 실패도 기록 안에 반환한다. API 연결 테스트에는 외부 모델 실행이나 답변 품질 평가가 포함되지 않는다. 현재 실행기의 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업이 남아 있다.
 
 ## 목표 질문 처리 흐름
 

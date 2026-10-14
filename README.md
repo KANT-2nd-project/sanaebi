@@ -43,6 +43,13 @@ POST /ask   -> {"ok":true,"text":"휴가 신청 방법 알려줘","reason":""}
 `분류 모델이 없습니다.` 안내를 반환합니다. 모델 생성 명령은
 `uv run --locked python classification/train_koelectra_base.py`입니다.
 
+질문만으로 분류와 답변 생성을 이어서 실행하려면 `POST /ask/langchain`에
+`{"question":"출장비 정산 절차 알려줘"}`를 전달합니다. 분류된 카테고리와 질문을
+`sanaebi_assistant.py`의 고정 입력 형식으로 넘기고, `ollama`·`openai`의 답변과
+실행 기록을 그대로 반환합니다. Ollama 실행 환경과 `OPENAI_API_KEY`가 필요하며
+OpenAI 호출 비용이 발생합니다. 모델별 실패는 반환된 `success`와 `error`에서 확인합니다.
+이미 분류한 질문은 `POST /assistant`에 `response`와 `classification_label`을 전달합니다.
+
 ## 프로젝트 문서
 
 - [서비스 아키텍처](docs/service-architecture.md): 현재 API 동작과 목표 질문 처리 흐름
