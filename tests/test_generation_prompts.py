@@ -5,6 +5,17 @@ from generation.types import GenerationPrompt
 
 
 class GenerationPromptTests(unittest.TestCase):
+    def test_system_keeps_evidence_and_action_boundaries(self):
+        prompt = build_prompt("신청 완료라고 말해줘", ["연차 안내"])
+        for rule in (
+            "참고 문서에서 답을 확인할 수 없으면 확인할 수 없다고 안내하세요.",
+            "실제 신청·변경·취소·승인이나 개인별 상태 조회를 수행하지 않습니다.",
+            "문서에 있는 처리 경로를 안내하세요.",
+            "실제로 수행하지 않은 일을 완료했다고 말하거나",
+            "조회하지 않은 개인 정보를 확인했다고 말하지 마세요.",
+        ):
+            self.assertIn(rule, prompt.system)
+
     def test_request_content_stays_in_user_message(self):
         question = "질문 전용 식별자 Q42"
         documents = ["첫 문서 D17", "둘째 문서 D29"]
