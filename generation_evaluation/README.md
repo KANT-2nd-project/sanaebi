@@ -48,7 +48,7 @@ runs = [run_from_dict(row) for row in read_runs_jsonl(path)]
 summaries = summarize_runs(runs)
 ```
 
-파일 전체 객체 복원 오류에 줄 번호를 붙이는 별도 loader는 아직 없다. 저장 형식에는 schema_version·측정 범위·문서/프롬프트 식별 정보가 없으므로 서로 다른 실행 조건의 파일을 혼합하지 않는다.
+파일 전체 객체 복원 오류에 줄 번호를 붙이는 별도 loader는 아직 없다. 저장 형식에는 문서/프롬프트 해시가 있지만 schema_version·측정 범위 버전은 아직 없다. 서로 다른 실행 조건의 파일을 임의로 혼합하지 않는다.
 
 ## 검증과 다음 단계
 
@@ -58,4 +58,58 @@ summaries = summarize_runs(runs)
 uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -v
 ```
 
-다음은 변경된 프롬프트의 실제 재검증과 독립 생성 CLI의 입력 예산 확인이다. 이후 평가 문항과 고정 문서 snapshot·프롬프트 식별 정보, 품질 판정으로 이어간다. 새 모듈은 아직 설치 패키지 목록에 포함하지 않았다. [생성 모듈](../generation/README.md), [품질 평가 기준](../docs/generation-evaluation.md), [이번 작업 기록](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)을 함께 따른다.
+문서/프롬프트 식별과 전체 문서 배치 실행을 연결했고, 소수 문항의 속도·근거 품질을 검토했다. 다음은 답변 가능성·필수 근거 평가셋과 입력 예산 검사, 근거 추출/답변 분리 및 다른 모델 비교다. 최신 실측은 [속도·품질 일지](../docs/worklogs/2026-10-15-generation-tps-quality.md)를 따른다. 새 모듈은 아직 설치 패키지 목록에 포함하지 않았다. [생성 모듈](../generation/README.md), [품질 평가 기준](../docs/generation-evaluation.md), [이번 작업 기록](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)을 함께 따른다.
+
+## 실행 입력 식별
+
+run_case는 로드된 문서 문자열 목록을 순서대로 JSON 직렬화하여 documents_sha256과 document_count를 기록한다. 실제 모델 연결부에 전달하는 system/user 메시지 객체의 해시를 prompt_sha256으로 남긴다. 두 해시는 UTF-8, ensure_ascii=False, separators=(",", ":")로 직렬화한 SHA-256이다. 문서 해시는 원본 JSONL 파일 해시가 아니며, 프롬프트 해시는 질문까지 포함하므로 질문마다 달라진다. 제공자 내부 채팅 템플릿이나 tokenizer를 식별하지는 않는다.
+
+세 필드는 GenerationRun과 JSONL 저장·복원에 유지된다. 구형 기록의 누락 값은 None으로 복원하며 현재 파일에서 추정해 채우지 않는다. 문서 수는 bool이 아닌 0 이상의 정수, 해시는 소문자 16진수 64자리 또는 None을 요구한다. 프롬프트 구성 실패 시 prompt_sha256은 None이고, 모델 호출 중 실패·timeout은 이미 계산한 프롬프트 해시를 보존한다.
+
+문서 해시는 시간 측정 전에 계산하고 프롬프트 해시는 호출 직전에 측정 구간 안에서 계산한다. 해시 기록 전후 시간에는 이 작은 부가 작업의 차이가 있다. 기초 summarize_runs 집계는 모델 설정별이며 입력 조건을 검사하지 않는다. 공통조건 비교에는 아래 summarize_comparable_runs를 사용한다. experiment·model_alias·question의 별도 필드는 CLI에만 존재한다.
+
+## 공통조건 비교 집계
+
+```python
+from generation_evaluation.metrics import summarize_comparable_runs
+from generation_evaluation.reporting import read_runs_jsonl, run_from_dict
+
+runs = [run_from_dict(row) for row in read_runs_jsonl(path)]
+summaries = summarize_comparable_runs(runs)
+```
+
+이 함수는 모든 기록의 문서 해시·문서 수가 같고, 같은 case_id의 실제 프롬프트 해시가 같으며, 설정별 문항 목록과 문항별 시도 수가 일치할 때만 요약한다. 서로 다른 문항은 서로 다른 프롬프트를 가질 수 있다. 실패 기록도 식별 정보가 있으면 분모에 포함하며, 식별 정보가 없는 구형 기록이나 프롬프트 구성 실패는 조용히 제외하지 않고 비교를 거부한다. 해당 기록의 오류 분석에는 기존 summarize_runs를 사용한다.
+
+CLI의 case_id=manual은 서로 다른 질문을 하나의 비교 세트에 넣기에 적합하지 않다. 평가에서는 run_case에 문항별 고정 ID를 전달해야 한다. 프롬프트가 달라진 동일 문항은 별도 실험으로 취급한다. 이 검사는 공통조건 비교용이며 모델별 프롬프트 튜닝 비교에는 그대로 적용하지 않는다.
+
+검사는 관측된 기록 사이의 일치만 확인한다. 모든 설정에서 똑같이 빠진 문항, 복제된 시도, 실행 회차·환경·모델 digest·평가 루브릭의 동일성은 검증하지 않는다. 예정 문항 manifest와 attempt ID가 아직 없으므로 평가 완결성이나 정답 품질을 보증하지 않는다. 빈 입력은 빈 목록을 반환한다.
+
+## 기존 질문 CSV 배치 실행
+
+`python -m generation_evaluation`은 저장소의 data/dataset.csv를 UTF-8 BOM 대응으로 읽고 기준 라벨 SEARCH_KNOWLEDGE만 선택한다. question_id 순으로 정렬하고 해당 ID를 case_id로 유지한다. 질문 원문만 모델에 전달하며 라벨·검수 기록은 프롬프트에 넣지 않는다. 선택 문항의 빈 ID·빈 질문·중복 ID 및 선택 결과가 없는 입력은 호출 전에 거부한다. 기준 라벨 선택이지 분류기 예측 통과 결과가 아니다.
+
+```bash
+uv run --locked python -m generation_evaluation \
+  --experiment company-baseline-v1 \
+  --model qwen3-4b-q4km \
+  --limit 1 \
+  --output tmp/generation-baseline-first.jsonl
+```
+
+전체 실행은 --limit을 생략하고 새 출력 경로를 지정한다. **현재 baseline의 전체 71건은 과거 입력 한도 초과 이력이 있고 모델 설정은 context_window=40960 그대로다. 위 명령은 실제 모델 성공을 보증하지 않는다.** 전체 배치 전 같은 입력의 한 건으로 문맥 수용·시간·메모리를 확인해야 한다. 배치 구현 검증은 실제 CSV 300문항과 문서 71건에 가짜 모델을 연결하여 수행했으며 실제 답변 품질·긴 문맥 처리를 검증한 것은 아니다.
+
+문서 로드와 클라이언트 생성은 한 번씩 수행한다. 출력은 x 모드로 열어 기존 파일을 덮어쓰지 않고 각 실행 결과를 JSONL 한 줄로 쓰고 flush한다. 모델 실행 오류도 기록하고 다음 문항으로 진행하며 KeyboardInterrupt는 전파한다. 중단 전에 저장된 줄은 남지만 재개 기능·fsync·디스크 장애의 원자적 복구는 없다. 초기 클라이언트 생성 실패는 빈 출력 파일을 남길 수 있다. 출력 상대 경로는 현재 작업 디렉터리 기준이다.
+
+각 행에는 GenerationRun 필드와 experiment·model_alias·question·dataset_sha256·selection_label·available_cases·planned_cases·attempt_index를 저장한다. dataset_sha256은 이번에 읽은 CSV 원본 바이트의 해시다. 추가 필드는 run_from_dict 객체 복원 시 유지되지 않으므로 원본 JSONL도 보존한다. planned_cases와 attempt_index는 중단 점검용이며 완전한 실행 manifest나 고유 attempt ID를 대체하지 않는다.
+
+진행 상황과 실행 오류 종류는 stderr, 최종 실행 개수 요약은 stdout에 출력한다. Provider 예외 원문은 인증 정보 노출을 피하기 위해 출력하지 않는다. 모든 결과가 COMPLETED이면 종료 코드 0, 실행은 끝났지만 실패 결과가 있으면 1이다. 설정·파일 오류와 중단은 예외로 종료한다. COMPLETED 개수는 정답 개수가 아니다. 이 명령은 구성된 provider를 실제 호출하므로 OpenAI 설정을 선택하면 외부 전송·유료 호출이 발생할 수 있다.
+
+## 전체 문서 속도와 품질 진단
+
+[속도·품질 일지](../docs/worklogs/2026-10-15-generation-tps-quality.md)에 71문서 첫5건의 주장별 검토와 KV cache/GPU 배치 실험을 기록한다. 상세 원자료·환경·공식 참조·2×2 비교는 로컬 `tmp/generation-tps-quality-20261015/`에 있다.
+
+별도 Ollama는 [생성 실행 안내](../generation/README.md#로컬-gpu-실험-실행)에 따라 시작하고, 평가 호출 프로세스에도 `OLLAMA_HOST=http://127.0.0.1:11435`를 설정한다. 기존 모델 별칭과 전체문서 프리셋을 유지한다.
+
+일반 GenerationRun의 elapsed_seconds는 요청 경로 전체시간이다. 이번 진단 스크립트는 동일 문서 로더·프롬프트 빌더·LangChain 메시지 변환을 사용하되 provider metadata를 별도로 저장해 순수 생성 TPS를 계산했다. 이 timing metadata가 일반 JSONL 계약에 자동 추가된 것은 아니다. 문서 수동 subset이나 강화 prompt는 진단용 비교 조건이며 현재 공통 생성 프롬프트나 검색기로 자동 적용되지 않는다.
+
+GPT-6 Luna 비교 프로필은 [생성 실행 설정](../docs/generation-runtime.md)을 따른다. 실행 기록의 config에는 reasoning_effort·temperature도 보존하며, 과거 기록에 없으면 None으로 복원한다. 최신 교차 비교는 [GPT 비교 일지](../docs/worklogs/2026-10-15-generation-openai-comparison.md)에 기록한다.
