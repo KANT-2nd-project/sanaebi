@@ -1,0 +1,28 @@
+# 서버 기능별 구조 정리 — 2026-10-15
+
+## 요청과 범위
+
+사용자가 서버 호출·분류 코드를 읽기 쉽도록 기능별 구성 정리와 불필요한 코드 정리를 결정하고 AI에 구현·검증·게시를 위임했다. LangChain 이후 구성은 사용자 후속 작업으로 남겼다. 기능·정책 변경 없이 기존 API, 모델·문서 경로, 환경변수와 SQLite 데이터를 보존했다.
+
+## 변경
+
+- `afdca23`: 질문·분류·문서·답변 연동·진단을 각각 기능 폴더로 묶었다. 루트에는 앱 조립·설정·의존성·공통 오류·공통 스키마만 남겼다. 설정과 답변 어댑터를 통합하고 import·mock 참조를 갱신했다. 사용되지 않는 단독 KoELECTRA 래퍼와 echo 답변 함수를 제거했다.
+- `94d0192`: snapshot 진단을 scripts로 이동하고 과거 JSONL 처리는 archive/server_legacy에 바이트 동일하게 보관했다. JSONL reader 테스트는 보관본을 계속 검증한다.
+- trace는 선택적 활성화·LangChain 콜백·기록 형식을 유지했다. 기존 실행기와 새 generation 모듈은 이동하거나 교체하지 않았다.
+
+현재 구조·코드 읽는 순서는 [서버 규약](../server-conventions.md)에 둔다. `app.fastapi_main:app`와 HTTP 계약은 유지하지만 내부 Python import 경로는 바뀌었다. 기존 과거 작업 기록은 당시 경로·상태를 보존한다.
+
+## 검증
+
+- 변경 전후 OpenAPI 전체 JSON이 동일하다. 경로·operation ID·요청·응답 스키마가 유지됐다.
+- 전체 Python 테스트는 변경 전후 각각 462개 실행 성공(실제 LLM 1개 skip). 질문·분류·문서·추적 집중 검사 71개도 통과했다.
+- 선정 model_id `9f51682d82d4455d8296077c339afd58`의 validation 133건이 저장 예측과 전부 일치했다. 실제 분류기·모의 생성기 HTTP 6건 통과, snapshot·모의 생성은 검색 라벨에서만 각각 1회, 실제 LLM 요청 0회다.
+- `uv run --locked python -m scripts.inspect_document_context`를 임시 SQLite에서 확인했고 전후 DB 파일이 동일했다.
+- Ruff check·format check, diff 공백 검사, 현재 문서의 상대 링크를 확인했다. 기존 모듈 경로의 활성 Python 참조는 남지 않았다.
+- 로컬 실행 근거는 `tmp/server-layout-2026-10-15/`의 OpenAPI·테스트·예측 로그다. 공개 다운로드 경로가 아니다.
+
+## 보존과 한계
+
+재학습·test 재평가·실제 LLM 호출·DB 스키마 변경·데이터 이관은 하지 않았다. 현재 연결 검증은 새로운 성능 평가나 사용자 독립 구현·숙달을 뜻하지 않는다. 별도 작업 중인 생성 코드·문서 수정은 보존하고 이번 게시에서는 제외한다.
+
+별도 체크아웃에서는 438개 중 기존 문서 저장소 의존 테스트 1개 실패(1개 skip)가 남았다. `test_unparsable_reply_is_format_failure_not_call_error`의 DocumentStorageError는 변경 전 cf343f2에서도 재현했다. 현재 작업 폴더 성공과 깨끗한 체크아웃의 기존 환경 의존 실패를 구분한다.

@@ -3,7 +3,7 @@
 - 기준일: 2026-10-14
 - 상태: 정적 내보내기·FastAPI 중계·메모리 기반 대화형 화면·SQLite 문서 관리 UI를 구현했다. 초기 echo 검증은 과거 기록이며 현재 /ask는 분류 후 답변 경로를 호출한다. 서버 문맥 처리·새 모델 경로의 브라우저 종단 검증·외부 운영 배포는 후속 범위다.
 - 서비스 정책: [서비스 아키텍처](service-architecture.md)
-- 실제 API 계약: [스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [오류 처리](../app/fastapi_main.py), [API 테스트](../tests/test_api.py), [답변 응답 테스트](../tests/test_ask_response.py)
+- 실제 API 계약: [스키마](../app/schemas.py), [질문 라우터](../app/questions/router.py), [오류 처리](../app/fastapi_main.py), [API 테스트](../tests/test_api.py), [답변 응답 테스트](../tests/test_ask_response.py)
 - 현재 시연 범위: [프로젝트 허브](https://www.notion.so/2bb05a3cdadc82bb813381e3fab45047)
 
 ## 목적과 범위
