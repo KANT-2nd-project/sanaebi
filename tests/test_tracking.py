@@ -5,8 +5,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from classification.cli.train import execute
-from classification.models.tfidf import TfidfConfig
+from archive.classification_v1.cli.train import execute
+from archive.classification_v1.models.tfidf import TfidfConfig
 
 
 class ExplicitTrainingTests(unittest.TestCase):
@@ -15,7 +15,7 @@ class ExplicitTrainingTests(unittest.TestCase):
             root = Path(directory)
             (root / "models/tfidf").mkdir(parents=True)
             with patch(
-                "classification.cli.train.dataset.prepare_data",
+                "archive.classification_v1.cli.train.dataset.prepare_data",
                 side_effect=AssertionError("기존 모델이면 데이터 준비도 불필요"),
             ):
                 self.assertIsNone(execute("tfidf", TfidfConfig(), artifact_root=root))
@@ -24,12 +24,12 @@ class ExplicitTrainingTests(unittest.TestCase):
 
 class TrackingTests(unittest.TestCase):
     def data(self):
-        from classification.types import DatasetSplits
+        from archive.classification_v1.types import DatasetSplits
 
         return DatasetSplits({}, {"dataset_sha256": "fixture", "seed": 42}, {})
 
     def test_sqlite_runs_metrics_artifacts_and_candidate_curves(self):
-        from classification import tracking
+        from archive.classification_v1 import tracking
 
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -121,14 +121,14 @@ class TrackingTests(unittest.TestCase):
         with (
             tempfile.TemporaryDirectory() as directory,
             patch(
-                "classification.cli.train.dataset.prepare_data",
+                "archive.classification_v1.cli.train.dataset.prepare_data",
                 return_value=self.data(),
             ),
             patch(
-                "classification.tracking.client_for",
+                "archive.classification_v1.tracking.client_for",
                 side_effect=OSError("db unavailable"),
             ),
-            patch("classification.cli.train.train") as train,
+            patch("archive.classification_v1.cli.train.train") as train,
         ):
             with self.assertRaisesRegex(RuntimeError, "db unavailable"):
                 execute("tfidf", TfidfConfig(), artifact_root=Path(directory))
@@ -136,7 +136,7 @@ class TrackingTests(unittest.TestCase):
             self.assertFalse((Path(directory) / "models/tfidf").exists())
 
     def test_tracking_failure_preserves_published_file_and_marks_failed(self):
-        from classification import tracking
+        from archive.classification_v1 import tracking
 
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

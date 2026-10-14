@@ -81,7 +81,7 @@ Jev 로컬 artifact-root: `artifacts/experiments/jev-comparison-2026-10-14/`. Gi
 아래 명령은 새 API 요청 268회를 발생시킨다. `.env`에 TYPESAFE_API_KEY가 설정된 로컬 환경에서만 사용하고, 다른 artifact-root로 새 실행을 구분한다. 키는 문서·Git·MLflow에 기록하지 않는다. 기존 CLI는 .env를 자동으로 읽지 않으므로 uv의 --env-file 옵션으로 전달한다.
 
 ```bash
-uv run --locked --env-file .env python -m classification.experiments.evaluate_jev \
+uv run --locked --env-file .env python -m archive.classification_v1.experiments.evaluate_jev \
   --evaluate --artifact-root artifacts/experiments/jev-new-run
 ```
 

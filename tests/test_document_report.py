@@ -1,8 +1,8 @@
 import unittest
 
-from classification import artifacts
-from classification.evaluation import metrics as evaluation
-from classification.evaluation import reporting
+from archive.classification_v1 import artifacts
+from archive.classification_v1.evaluation import metrics as evaluation
+from archive.classification_v1.evaluation import reporting
 from contracts.classification import LABELS
 
 

@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from classification import storage
+from archive.classification_v1 import storage
 
 
 class ModelStorageTests(unittest.TestCase):
@@ -82,9 +82,9 @@ class ModelStorageTests(unittest.TestCase):
     def test_failed_force_save_keeps_model_and_results(self):
         from unittest.mock import Mock, patch
 
-        from classification.cli.train import execute
-        from classification.models.tfidf import TfidfConfig
-        from classification.types import DatasetSplits
+        from archive.classification_v1.cli.train import execute
+        from archive.classification_v1.models.tfidf import TfidfConfig
+        from archive.classification_v1.types import DatasetSplits
 
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -101,20 +101,20 @@ class ModelStorageTests(unittest.TestCase):
             before = (bundle / "manifest.json").read_bytes()
             with (
                 patch(
-                    "classification.cli.train.dataset.prepare_data",
+                    "archive.classification_v1.cli.train.dataset.prepare_data",
                     return_value=DatasetSplits(
                         {"train": [], "validation": []},
                         {"dataset_sha256": "fixture"},
                         {},
                     ),
                 ),
-                patch("classification.cli.train.train", return_value=Mock()),
+                patch("archive.classification_v1.cli.train.train", return_value=Mock()),
                 patch(
-                    "classification.cli.train.artifacts.training_summary",
+                    "archive.classification_v1.cli.train.artifacts.training_summary",
                     return_value={},
                 ),
                 patch(
-                    "classification.cli.train.artifacts.save_training",
+                    "archive.classification_v1.cli.train.artifacts.save_training",
                     side_effect=OSError("disk full"),
                 ),
                 self.assertRaisesRegex(RuntimeError, "disk full"),
@@ -127,8 +127,8 @@ class ModelStorageTests(unittest.TestCase):
     def test_evaluation_prediction_failure_preserves_prior_result(self):
         from unittest.mock import Mock, patch
 
-        from classification.cli.evaluate import evaluate_current
-        from classification.types import DatasetSplits
+        from archive.classification_v1.cli.evaluate import evaluate_current
+        from archive.classification_v1.types import DatasetSplits
         from contracts.classification import LABELS
 
         with tempfile.TemporaryDirectory() as temp:
@@ -152,11 +152,11 @@ class ModelStorageTests(unittest.TestCase):
                     storage, "validate_bundle", return_value={"model_id": "id"}
                 ),
                 patch(
-                    "classification.cli.evaluate.dataset.restore_data",
+                    "archive.classification_v1.cli.evaluate.dataset.restore_data",
                     return_value=data,
                 ),
                 patch(
-                    "classification.models.presets.load_bundle",
+                    "archive.classification_v1.models.presets.load_bundle",
                     return_value=Mock(side_effect=RuntimeError("prediction failed")),
                 ),
                 self.assertRaisesRegex(RuntimeError, "prediction failed"),

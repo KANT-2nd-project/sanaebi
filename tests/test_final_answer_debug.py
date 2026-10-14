@@ -24,7 +24,8 @@ from langchain_core.runnables import RunnableLambda
 import sanaebi_assistant as assistant
 from app.answer_text import LLM_RESPONSE_ERROR
 from app.fastapi_main import app
-from app.routers import questions
+from app.infrastructure import answerer
+from app.services.document_context import DocumentContextSnapshot
 
 SEARCH = assistant.SEARCH_KNOWLEDGE
 CLARIFY = assistant.CLARIFY
@@ -236,7 +237,7 @@ def trace_final_answer(
         # 연결 시나리오의 테스트 어댑터만 공개 text 계약으로 변환한다.
         return {"text": result["answer"]}
 
-    def generate_response(response, category, *, provider, document_provider=None):
+    def generate_response(response, category, *, provider, document_snapshot=None):
         try:
             output = generate_answer(response["text"])
         except (ValueError, TypeError, OSError, RuntimeError) as error:
@@ -248,11 +249,28 @@ def trace_final_answer(
         patch.object(assistant, "load_document_context", load_document_context),
         patch.object(assistant, "ensure_ollama_server", ensure_ollama_server),
         patch.object(assistant, "create_chat_model", create_chat_model),
-        patch.object(questions, "classify_question", return_value=label),
-        patch.object(questions, "generate_assistant_response", generate_response),
+        patch.object(answerer, "execute", generate_response),
         TestClient(app, raise_server_exceptions=False) as client,
     ):
-        trace.response = client.post("/ask", json={"question": question})
+
+        def classify(text):
+            if label not in (SEARCH, CLARIFY, UNSUPPORTED):
+                trace.mark("input", FAIL, "허용되지 않은 라벨")
+            return label
+
+        with (
+            patch.object(app.state.classifier, "predict", side_effect=classify),
+            patch.object(
+                app.state.document_provider,
+                "snapshot",
+                return_value=DocumentContextSnapshot((object(),)),
+            ),
+        ):
+            trace.response = client.post("/ask", json={"question": question})
+        if label in (CLARIFY, UNSUPPORTED) and trace.response.status_code == 200:
+            trace.mark("input", PASS)
+            trace.mark("documents", SKIP, "문서를 쓰지 않는 라벨")
+            trace.answer = trace.response.json()["text"]
     mark_ask(trace)
     return trace
 
@@ -344,14 +362,14 @@ class StageOriginTests(DocumentsMixin, unittest.TestCase):
             self.assertIn(doc["document"], trace.prompt)
 
     def test_non_search_labels_skip_documents(self):
-        # 현재 실행기는 CLARIFY·UNSUPPORTED에도 LLM을 부른다. 고정 안내로 바꿀지는 결정 전이라 판정하지 않는다
+        # /ask 서비스는 비검색 라벨에서 고정 안내로 종료한다.
         for label in (CLARIFY, UNSUPPORTED):
             with self.subTest(label):
                 trace = self.trace(output=answer_json(), label=label)
                 self.assertEqual(trace.steps["documents"][0], SKIP)
-                self.assertEqual(trace.steps["prompt"], (PASS, ""))
-                self.assertIn("사용하지 않음", trace.prompt)
-                self.assertEqual(trace.model_calls, 1)
+                self.assertEqual(trace.steps["prompt"][0], NOT_REACHED)
+                self.assertEqual(trace.model_calls, 0)
+                self.assertEqual(trace.response.status_code, 200)
 
     def test_model_or_server_error_stops_at_model(self):
         cases = {

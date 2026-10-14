@@ -12,7 +12,7 @@ from uuid import uuid4
 
 from .artifacts import ROOT, read_json
 
-DEFAULT_ROOT = ROOT.parent / "artifacts"
+DEFAULT_ROOT = ROOT.parents[1] / "artifacts"
 
 
 def digest(value):

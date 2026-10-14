@@ -10,7 +10,7 @@ from contracts.classification import LABELS
 from .types import DatasetSplits, EvaluationResult, SelectionResult
 
 ROOT = Path(__file__).resolve().parent
-MODEL_DIR = ROOT / "model"
+MODEL_DIR = ROOT.parents[1] / "classification" / "model"
 RESULT_DIR = ROOT / "result"
 
 

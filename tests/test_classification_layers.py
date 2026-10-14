@@ -10,18 +10,18 @@ from functools import partial
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from classification import artifacts
-from classification.cli import train as train_cli
-from classification.evaluation import reporting
-from classification.models import tfidf, transformer
-from classification.types import (
+from archive.classification_v1 import artifacts
+from archive.classification_v1.cli import train as train_cli
+from archive.classification_v1.evaluation import reporting
+from archive.classification_v1.models import tfidf, transformer
+from archive.classification_v1.types import (
     DatasetSplits,
     FittedModel,
     MeasurementPolicy,
     Prediction,
 )
-from classification.workflows.evaluate import evaluate_questions
-from classification.workflows.train import train
+from archive.classification_v1.workflows.evaluate import evaluate_questions
+from archive.classification_v1.workflows.train import train
 from contracts.classification import LABELS
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,7 +48,7 @@ def example_splits():
 
 class DependencyTests(unittest.TestCase):
     def test_lower_layers_do_not_import_execution_or_other_model_implementations(self):
-        root = ROOT / "classification"
+        root = ROOT / "archive/classification_v1"
         forbidden_commands = {"subprocess", "argparse"}
         for path in root.rglob("*.py"):
             relative = path.relative_to(root)
@@ -59,7 +59,9 @@ class DependencyTests(unittest.TestCase):
                 "presets",
             }:
                 continue
-            module = ".".join(("classification", *relative.with_suffix("").parts))
+            module = ".".join(
+                ("archive.classification_v1", *relative.with_suffix("").parts)
+            )
             package = module if path.stem == "__init__" else module.rsplit(".", 1)[0]
             for node in ast.walk(ast.parse(path.read_text())):
                 if isinstance(node, ast.Import):
@@ -78,29 +80,35 @@ class DependencyTests(unittest.TestCase):
                 for target in targets:
                     with self.subTest(file=str(relative), dependency=target):
                         self.assertNotIn(target.split(".")[0], forbidden_commands)
-                        self.assertFalse(target.startswith("classification.cli"))
                         self.assertFalse(
-                            target.startswith("classification.experiments")
+                            target.startswith("archive.classification_v1.cli")
                         )
-                        self.assertFalse(target.startswith("classification.legacy"))
+                        self.assertFalse(
+                            target.startswith("archive.classification_v1.experiments")
+                        )
+                        self.assertFalse(
+                            target.startswith("archive.classification_v1.legacy")
+                        )
                         if parts[0] == "workflows":
                             for prefix in (
-                                "classification.models",
-                                "classification.artifacts",
-                                "classification.evaluation.reporting",
-                                "classification.dataset",
+                                "archive.classification_v1.models",
+                                "archive.classification_v1.artifacts",
+                                "archive.classification_v1.evaluation.reporting",
+                                "archive.classification_v1.dataset",
                             ):
                                 self.assertFalse(target.startswith(prefix))
                         if parts[0] == "models":
                             for prefix in (
-                                "classification.workflows",
-                                "classification.evaluation.reporting",
-                                "classification.artifacts",
-                                "classification.dataset",
+                                "archive.classification_v1.workflows",
+                                "archive.classification_v1.evaluation.reporting",
+                                "archive.classification_v1.artifacts",
+                                "archive.classification_v1.dataset",
                             ):
                                 self.assertFalse(target.startswith(prefix))
-                            if target.startswith("classification.models."):
-                                owner = target.split(".")[2]
+                            if target.startswith("archive.classification_v1.models."):
+                                owner = target.removeprefix(
+                                    "archive.classification_v1.models."
+                                ).split(".")[0]
                                 self.assertIn(
                                     owner,
                                     {path.stem, "jev_prompt"}
@@ -109,9 +117,9 @@ class DependencyTests(unittest.TestCase):
                                 )
                         if parts[0] == "evaluation" or path.stem == "types":
                             for prefix in (
-                                "classification.models",
-                                "classification.workflows",
-                                "classification.dataset",
+                                "archive.classification_v1.models",
+                                "archive.classification_v1.workflows",
+                                "archive.classification_v1.dataset",
                             ):
                                 self.assertFalse(target.startswith(prefix))
 
@@ -141,7 +149,9 @@ class DependencyTests(unittest.TestCase):
             "jev_evaluation",
             "jev_prompt",
         ):
-            self.assertFalse((ROOT / "classification" / f"{name}.py").exists())
+            self.assertFalse(
+                (ROOT / "archive/classification_v1" / f"{name}.py").exists()
+            )
 
 
 class WorkflowTests(unittest.TestCase):
@@ -249,7 +259,7 @@ class WorkflowTests(unittest.TestCase):
                 return_value=Mock(fitted=fitted, selection_seconds=1),
             ),
             patch.object(artifacts, "save_json") as save_json,
-            patch("classification.cli.evaluate.evaluate_current") as report,
+            patch("archive.classification_v1.cli.evaluate.evaluate_current") as report,
             self.assertRaisesRegex(RuntimeError, "disk full"),
         ):
             train_cli.run_training(tfidf.TfidfConfig(), ["--artifact-root", temp])
@@ -257,7 +267,7 @@ class WorkflowTests(unittest.TestCase):
         report.assert_not_called()
 
     def test_evaluation_failure_preserves_saved_model_and_summary(self):
-        from classification.cli.evaluate import evaluate_current
+        from archive.classification_v1.cli.evaluate import evaluate_current
 
         data = example_splits()
         with (
@@ -273,7 +283,7 @@ class WorkflowTests(unittest.TestCase):
             before = model.read_bytes()
             with (
                 patch(
-                    "classification.cli.evaluate.dataset.restore_data",
+                    "archive.classification_v1.cli.evaluate.dataset.restore_data",
                     side_effect=ValueError("evaluation failed"),
                 ),
                 self.assertRaisesRegex(ValueError, "evaluation failed"),

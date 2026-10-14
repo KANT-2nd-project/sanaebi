@@ -46,4 +46,4 @@
 
 GPU 재학습·유료 API 평가·실제 Ollama 품질 평가·외부 운영 배포는 이번 게시 검증에 포함하지 않았다. 예상 실패 두 개는 기존 질문 API 오류 변환이며 live LLM 테스트는 실행 조건에 따라 생략했다. Windows 잠금·실기기 한국어 IME·운영 권한과 모델 시간 예산은 별도 확인 대상이다.
 
-사용법과 상세 계약은 [분류 안내](../../classification/README.md), [문서 관리](../document-management.md), [생성 평가](../generation-evaluation.md), [서버 규약](../server-conventions.md)을 따른다.
+사용법과 상세 계약은 [분류 안내](../../archive/classification_v1/README.md), [문서 관리](../document-management.md), [생성 평가](../generation-evaluation.md), [서버 규약](../server-conventions.md)을 따른다.

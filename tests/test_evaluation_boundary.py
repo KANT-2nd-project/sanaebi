@@ -3,9 +3,9 @@
 import unittest
 from unittest.mock import Mock
 
-from classification.types import FittedModel, MeasurementPolicy, Prediction
-from classification.workflows.evaluate import evaluate_questions
-from classification.workflows.train import train
+from archive.classification_v1.types import FittedModel, MeasurementPolicy, Prediction
+from archive.classification_v1.workflows.evaluate import evaluate_questions
+from archive.classification_v1.workflows.train import train
 
 
 class EvaluationBoundaryTests(unittest.TestCase):

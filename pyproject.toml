@@ -18,15 +18,15 @@ dependencies = [
 ]
 
 [project.scripts]
-sanaebi = "classification.cli.main:main"
-sanaebi-train = "classification.cli.train:main"
+sanaebi = "archive.classification_v1.cli.main:main"
+sanaebi-train = "archive.classification_v1.cli.train:main"
 
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["classification*", "contracts*"]
+include = ["classification*", "contracts*", "archive", "archive.classification_v1*"]
 namespaces = false
 
 [tool.setuptools]

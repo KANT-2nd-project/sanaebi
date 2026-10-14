@@ -12,7 +12,7 @@
 
 현행 로컬 평가, 구형 형식, Jev 조립, 비교 수집과 HTML 렌더링을 구분했다. 기존 실험 진입점과 Jev 프롬프트·호출 계약을 유지했다. 보고서는 모델·데이터·분할·용도와 한계를 앞에, 상세 trial은 접힌 영역에 표시한다. preview는 모델 다운로드·학습·결과 저장 없이 실행 조건을 보여준다.
 
-사용법과 읽는 순서는 [분류 코드 안내](../../classification/README.md), 개선 전후 비교와 전달용 요약은 [작성자 피드백](2026-10-14-classification-feedback.md)에서 관리한다.
+사용법과 읽는 순서는 [분류 코드 안내](../../archive/classification_v1/README.md), 개선 전후 비교와 전달용 요약은 [작성자 피드백](2026-10-14-classification-feedback.md)에서 관리한다.
 
 ## 실행한 검증
 

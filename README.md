@@ -17,7 +17,7 @@ npm ci
 npm --prefix web ci
 ```
 
-새 환경에서 기존 회사 지식 71건을 사용하려면 [문서 이관 안내](docs/document-management.md#회사-지식-이관내보내기)의 dry-run 후 `--apply --publish-imported`를 실행합니다. 이후 문서는 관리 화면에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 현재 로컬 분류 모델 부재와 Ollama 전체 문맥 초과로 실제 답변 생성은 실패합니다. 준비 상태와 후속 항목은 [전환 기록](docs/worklogs/2026-10-14-sqlite-documents.md)을 참고하세요.
+새 환경에서 기존 회사 지식 71건을 사용하려면 [문서 이관 안내](docs/document-management.md#회사-지식-이관내보내기)의 dry-run 후 `--apply --publish-imported`를 실행합니다. 이후 문서는 관리 화면에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 선정한 로컬 분류 모델 연결은 검증했으며 실제 생성 모델의 입력 한도·문서 준비는 별도 확인이 필요합니다. 과거 전환 당시 상태는 [전환 기록](docs/worklogs/2026-10-14-sqlite-documents.md)을 참고하세요.
 
 이후 다음 명령 하나로 API와 웹 개발 서버를 함께 실행합니다.
 
@@ -45,18 +45,22 @@ GET /       -> {"message":"FastAPI 서버가 실행 중입니다."}
 POST /ask   -> {"ok":true,"text":"생성된 답변","reason":""}
 ```
 
-`/ask`는 질문을 KoELECTRA Base로 분류한 뒤 질문과 카테고리를 LangChain에 전달합니다.
-`app/routers/questions.py`의 `PROVIDER = "ollama"` 또는 `"openai"`로 답변 모델을
-선택합니다. 입력은 question 하나이며 선택한 모델의 답변을 ok·text·reason으로 반환합니다.
+`/ask`는 질문 서비스의 분류 정책에 따라 안내하거나 답변을 생성합니다.
+`SANAEBI_ANSWER_PROVIDER=ollama` 또는 `openai`로 답변 모델을 선택합니다. 입력은 question 하나이며 선택한 모델의 답변을 ok·text·reason으로 반환합니다.
 Ollama 선택 시 해당 서버와 모델이 필요하고, OpenAI 선택 시 `OPENAI_API_KEY`가 필요하며
 API 호출 비용이 발생합니다. 답변 생성 실패는 HTTP 502와 오류 안내로 반환합니다.
 
-질문 분류는 `POST /classify/koelectra-base`에 `{"question":"출장비 정산 절차 알려줘"}`를
-전달하면 `{"category":"SEARCH_KNOWLEDGE"}` 형태로 반환합니다. 저장된 KoELECTRA Base
-모델과 토크나이저, `training_summary.json`의 최대 토큰 수를 사용하며 재학습하지 않습니다.
-첫 요청에서 모델을 로드해 재사용하고, 가중치 파일이 없으면 HTTP 503과
-`분류 모델이 없습니다.` 안내를 반환합니다. 모델 생성 명령은
-`uv run --locked sanaebi train koelectra_base`입니다. 모델은 `artifacts/models/`, 별도 `sanaebi eval 모델명`은 validation만 평가하고 `--split test`로 test를 명시합니다. 결과는 `artifacts/results/<모델명>/<분할>/`에 저장합니다. 기존 모델 폴더가 있으면 검사 없이 안내하고 종료하며 재학습은 `--force`로 명시합니다. 새 실험은 로컬 MLflow에 기록하고 자체 HTML은 생성하지 않습니다. 모델은 서버의 기존 모델 경로에 자동 배치하지 않습니다. 실험 실행·저장 경로는 [분류 안내](classification/README.md)를 확인하세요.
+질문 분류는 `POST /classify/koelectra-base`에 `{"question":"출장비 정산 절차 알려줘"}`를 전달해 확인합니다. `/ask`는 같은 분류기를 사용하며 CLARIFY·UNSUPPORTED에는 고정 안내를 반환합니다. SEARCH_KNOWLEDGE만 유효 게시 문서를 읽고, 문서가 있을 때 답변을 생성합니다.
+
+서버는 선정한 KoELECTRA base의 새 저장본을 사용합니다. 기본 경로는 `artifacts/experiments/learning-comparison-2026-10-15/koelectra_base/model/`이며 가중치는 Git에 포함되지 않습니다. 다른 환경에서는 가중치·config·토크나이저·metadata.json을 함께 준비하고 경로를 지정하세요.
+
+```bash
+SANAEBI_CLASSIFIER_PATH=/absolute/path/to/model uv run --locked uvicorn app.fastapi_main:app --reload
+```
+
+상대 경로는 저장소 루트 기준입니다. 첫 분류 요청에서 CPU로 로딩하고 재사용하므로 모델 변경 후 서버를 재시작합니다. 최대 길이와 라벨은 저장본에서 읽으며 파일 부재·잘못된 저장본·추론 실패는 503과 `분류 모델을 사용할 수 없습니다.`를 반환합니다. 자동 다운로드·학습은 하지 않습니다.
+
+`SANAEBI_ANSWER_PROVIDER=ollama`(기본) 또는 `openai`로 답변 제공자를 선택합니다. 상세 책임·설정·오류 계약은 [서버 규약](docs/server-conventions.md), 선정 근거는 [7종 보고서](classification/reports/2026-10-15-seven-model-comparison/README.md)를 따릅니다. [새 학습 명령](classification/README.md)과 [아카이브 CLI](archive/classification_v1/README.md)는 저장 형식이 다르며 아카이브 모델을 새 서버 경로에 그대로 지정하지 않습니다.
 
 ## 프로젝트 문서
 
@@ -66,8 +70,9 @@ API 호출 비용이 발생합니다. 답변 생성 실패는 HTTP 502와 오류
 - [프런트엔드 설계](docs/frontend-architecture.md): Next.js 정적 내보내기·대화형 UI·개발 API 중계·SEO 기준. 기존 로컬 echo 연결을 검증했으며 새 실제 모델 답변의 브라우저 종단 검증·외부 배포는 후속 범위
 - [서버 구성 규약](docs/server-conventions.md): 현재 모듈 구성, 책임 분리와 API 회귀 검증 기준
 - [요청 처리 분류·라벨링 기준 v1.0](docs/label-taxonomy.md): 질문 처리 라벨의 정의와 경계 사례
-- [분류 실험 코드 안내](classification/README.md): 코드 읽는 순서, 공통 학습·평가 구조와 실행 방법
-- [분류 실험 보고서](classification/reports/README.md): 모델 비교 결과·오분류·선정 판단과 실행 근거
+- [분류 학습 코드](classification/README.md): CSV·그룹 분할·TF-IDF·Transformer 학습·명시적 평가; 직접 작성과 AI 위임 범위 구분
+- [기존 분류 실험 코드 안내](archive/classification_v1/README.md): 코드 읽는 순서, 공통 학습·평가 구조와 실행 방법
+- [분류 실험 보고서](classification/reports/README.md): 새 코드의 7종 비교·오분류·선정 판단과 실행 근거. [과거 보고서](archive/classification_v1/reports/README.md)는 당시 조건으로 보존
 - [요청 처리 데이터 안내](data/README.md): 데이터 구조, 작성·검수 기록, 분할과 검증 범위
 - [문서 주제 분류 아카이브 v0.2](data/archive/document-topics-v0.2/README.md): 이전 문서 분류 실험 데이터
 - [질문 주제 분류 아카이브](data/archive/question-topics/README.md): 이전 질문 분류 실험 데이터

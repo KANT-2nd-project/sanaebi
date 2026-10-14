@@ -24,7 +24,9 @@ from langchain_core.runnables import RunnableLambda
 
 import sanaebi_assistant
 from app import fastapi_main, trace
-from app.routers import assistant, questions
+from app.infrastructure import answerer
+from app.routers import assistant
+from app.services.document_context import DocumentContextSnapshot
 
 LABEL = "SEARCH_KNOWLEDGE"
 DOCUMENTS = "연차 문서 " * 400  # 기본 2000자 제한을 넘는 문서 문맥
@@ -262,16 +264,21 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(len(model["input"]), model["prompt_chars"])
 
     def test_ask_with_classification_is_recorded(self):
-        def generate_for_ask(response, category, provider=None, document_provider=None):
+        def generate_for_ask(response, category, provider=None, document_snapshot=None):
             answer = fake_generate(response, category)["ollama"]["answer"]
             return {provider: {"success": True, "output": {"text": answer}}}
 
         with (
             patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}),
-            patch.object(questions, "classify_question", return_value=LABEL),
             patch.object(
-                questions, "generate_assistant_response", side_effect=generate_for_ask
+                fastapi_main.app.state.classifier, "predict", return_value=LABEL
             ),
+            patch.object(
+                fastapi_main.app.state.document_provider,
+                "snapshot",
+                return_value=DocumentContextSnapshot((object(),)),
+            ),
+            patch.object(answerer, "execute", side_effect=generate_for_ask),
         ):
             response = self.client.post("/ask", json={"question": "연차 신청"})
         self.assertEqual(response.json()["text"], "가상 답변")

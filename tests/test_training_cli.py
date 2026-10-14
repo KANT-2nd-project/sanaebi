@@ -132,7 +132,7 @@ class TrainingCommandTests(unittest.TestCase):
                 (output / ".backup/models/tfidf/model.joblib").read_bytes(), before
             )
 
-            from classification.tracking import client_for
+            from archive.classification_v1.tracking import client_for
 
             client = client_for(output)
             experiment = client.get_experiment_by_name("classification")
