@@ -42,3 +42,19 @@
 준비된 로컬 `qwen3:4b-instruct-2507-q4_K_M`에 같은 SQLite 전체 snapshot과 “연차는 어떻게 신청하나요?” 질문을 독립 실행기로 전달했다. model_called=true, 약34.81초 후 입력66,652토큰이 설정40,960을 초과하여 Ollama400으로 실패했다. 본문 절단·자동 다운로드·유료 OpenAI 호출·모델 파라미터 변경은 없었다. 현재 실제 답변 생성 성공·품질은 검증하지 못했다. 모델 준비·전체 문맥 처리 방식은 후속 결정이 필요하다. Windows 실행·인증·운영 배포도 검증 범위 밖이다.
 
 로컬 증거는 `tmp/sqlite-document-plan/evidence/`의 actual-import.json, check-71.json, python-final.log, web-*.log, browser-*.txt, actual-ask.json, ollama-smoke.json에 보관한다. 미추적 generation/와 관련 테스트는 다른 작업으로 보존한다.
+
+## 게시·외부 문서 확인
+
+구현은 [163feae](https://github.com/KANT-2nd-project/sanaebi/commit/163feae3aec4aa4b2d7481e60fa11313a28e4a76)로 main에 푸시했고 원격 커밋 일치를 확인했다.
+
+다음 Notion 대상은 영향받는 현재 안내를 갱신하고 구현 링크·71건 이관·검사 결과·분류 모델 부재·문맥 한도 초과를 재조회했다. 과거 제작·검증 기록은 유지했다.
+
+- [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7)
+- [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b)
+- [운영·개발 규칙](https://www.notion.so/3f805a3cdadc81aa9f48d8445d372b80)
+- [데이터 작성·검수·실험 절차](https://www.notion.so/3f805a3cdadc81d59dc9fec6e4fcca1d)
+- [최재선 개인 일지](https://www.notion.so/3f905a3cdadc81e4b662eb4ba4a8a56c): 중복 검색 후 생성, 총괄·통합·수행일·사용자 결정과 AI 수행·제한·커밋 링크를 재확인했다.
+
+데이터 절차 페이지의 첫 수정은 mention을 포함한 일치 검색 오류로 실패했다. 재조회해 미저장을 확인하고 해당 부분을 짧은 일반 텍스트로 바꿔 재시도한 후 전체 반영을 확인했다.
+
+최종 검증 시점 이후 동시에 추가된 README·classification/README·data/README·docs/documentation-guide의 분류 보고서 안내, classification/reports/, generation/와 관련 테스트는 다른 작업으로 보존했다. 이번 기록 커밋에도 포함하지 않는다. 개발 서버는 127.0.0.1:3000·8000에서 실제 이관 DB를 연결한 상태로 유지했다.
