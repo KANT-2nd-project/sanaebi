@@ -19,6 +19,7 @@
 | `POST /regist-docs` | doc 문자열을 검증한 뒤 `app/documents.jsonl`에 JSON Lines 한 줄로 덧붙이고 등록 응답을 반환한다. |
 | HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
 | 질문 처리 분류 | 세 경로의 기준과 데이터가 준비되어 있다. FastAPI 요청 흐름에는 분류기가 연결되어 있지 않다. |
+| 질문 서비스 | 의존 함수를 전달받는 세 라벨 분기와 단위 테스트를 구현했다. 내부 결과는 text이며 /ask 및 실제 분류기·문서 reader·LLM과는 아직 연결하지 않았다. |
 | 문서 답변 | LangChain, LLM, 문서 근거 확인이 API 흐름에 연결되어 있지 않다. |
 
 앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문을 그대로 반환하는 echo 동작이며 회사 문서를 읽거나 답변을 생성하지 않는다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
