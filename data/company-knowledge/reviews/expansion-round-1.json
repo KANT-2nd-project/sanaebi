@@ -1,0 +1,74 @@
+{
+  "reviewer": "independent AI reviewer /root/policy_review",
+  "date": "2026-10-14",
+  "scope": "extension 20 policies / 80 questions, before full 52-policy integration",
+  "status": "changes_requested",
+  "human_approved": false,
+  "findings": [
+    {
+      "id": "E01",
+      "documents": [
+        "ieum-007"
+      ],
+      "issue": "유예 기준 없음이 본문에 명시되어 missing 질문이 실제 미기재가 아님",
+      "resolution_required": "실제 미기재 정책 질문으로 교체"
+    },
+    {
+      "id": "E02",
+      "documents": [
+        "ieum-049"
+      ],
+      "content_sha256": "572b34e0b7c966ee6bbc8d07d96a90ce87558cc002cfa60bc7187f4404ca5783",
+      "issue": "교육 결제 10영업일 내 수료 증빙은 교육 종료 전 제출을 요구할 수 있음",
+      "resolution_required": "결제 영수증과 종료 후 이수 증빙 기한 분리"
+    },
+    {
+      "id": "E03",
+      "documents": [
+        "ieum-005"
+      ],
+      "content_sha256": "03376a665eb255365c714acd8533e313be97441328d46051505244f8cc8f9fde",
+      "issue": "8시간 근무 후 휴게로 읽히며 공통 협업시간과 점심 휴게 중첩",
+      "resolution_required": "근무 중 휴게와 공통 협업시간의 휴게 제외 명시"
+    },
+    {
+      "id": "E04",
+      "documents": [
+        "ieum-009",
+        "ieum-016",
+        "ieum-020",
+        "ieum-021",
+        "ieum-023"
+      ],
+      "issue": "평가 필수 표현과 본문 인용 문자열 불일치",
+      "resolution_required": "본문 일치와 실제 절 내부 인용 확인"
+    },
+    {
+      "id": "E05",
+      "documents": [
+        "ieum-002",
+        "ieum-006",
+        "ieum-020"
+      ],
+      "issue": "긴급진료 연락 불가 예외 또는 발견 시점과 영업일 전제가 평가 질문과 불일치",
+      "resolution_required": "질문 상황과 정답의 시점 및 예외 일치"
+    },
+    {
+      "id": "E06",
+      "documents": [
+        "ieum-018"
+      ],
+      "issue": "제공받은 식사 외 다른 실제 식비를 한도 내 청구할 수 있는 조건 누락",
+      "resolution_required": "중복 불가와 실제 지출 한도를 함께 요구"
+    },
+    {
+      "id": "E07",
+      "documents": [
+        "ieum-021"
+      ],
+      "issue": "금액별 승인자 질문의 중간 구간 필수 답 누락",
+      "resolution_required": "세 구간 승인자와 견적 조건 포함"
+    }
+  ],
+  "remaining": "52개 통합 후 전량 재독 및 미기재 질문, 승인, 보관, 자산 반납 교차 대조"
+}

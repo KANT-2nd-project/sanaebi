@@ -1,0 +1,67 @@
+{
+  "stage": "pilot_round_2",
+  "review_date": "2026-10-14",
+  "reviewer": "independent_agent:policy_review",
+  "verdict": "pass_for_expansion",
+  "human_approved": false,
+  "scope": "12 policies and 48 eval rows reread; evidence section quotes checked; K01 50/54/60,K12 6,K13 29,Slack2FA,GitLaboffboarding opened independently; other sources compared with sources.csv records",
+  "resolved": [
+    "질문 라벨 경계",
+    "지급 기준월",
+    "MFA 초기 등록과 장애 접수",
+    "근거 절 위치",
+    "출처 ID와 회사 결정 연결",
+    "K12 제5–7조 요지 수정"
+  ],
+  "remaining": "52개 확장 후 미기재 질문과 상호충돌 전량 재대조",
+  "documents": [
+    {
+      "document_id": "ieum-001",
+      "content_sha256": "9b1003ebcaf357d778b37af25c30973a322fe9c005678e4d41b16c6f869a5f9c"
+    },
+    {
+      "document_id": "ieum-004",
+      "content_sha256": "ea1fe23fdbb0ffb0d6e7063844c7cc04840bdada1caa0f829a066571f712d9c4"
+    },
+    {
+      "document_id": "ieum-010",
+      "content_sha256": "eb5480d01328f0b4c5128f5af7e383474551835cb762486acd8569b34a55ac49"
+    },
+    {
+      "document_id": "ieum-015",
+      "content_sha256": "e8e070cc219f29d25b623033f04549675f08db3551e6d7838980e2a7372c4a01"
+    },
+    {
+      "document_id": "ieum-019",
+      "content_sha256": "79c7d18476711bea36668fa5e52308e75668caf44426aa41321d7c5453906bf1"
+    },
+    {
+      "document_id": "ieum-026",
+      "content_sha256": "d5e05c4cd4d7b0dd1d4cf010830d263fa9f2c2d8c5b68e35d2652d039a5f7191"
+    },
+    {
+      "document_id": "ieum-027",
+      "content_sha256": "979a20778d677fe6316427c1c663751a688043b10828340f8de3c7641880b677"
+    },
+    {
+      "document_id": "ieum-031",
+      "content_sha256": "5e653ae4767c2609422a05fee7f5fb374de640bca0eb225f6213c1db4c3d8e05"
+    },
+    {
+      "document_id": "ieum-033",
+      "content_sha256": "4641ac6c56beac128289b1d524258152fff4a0b7dad69266706e5c07e02d1853"
+    },
+    {
+      "document_id": "ieum-035",
+      "content_sha256": "e619428b9a4f3b8750a6f694f1b0cba74a1f4f474a42525cfbd25c261e414d0d"
+    },
+    {
+      "document_id": "ieum-050",
+      "content_sha256": "ac7f23f69cc9e589bd246ff546c5b88a4e8ba7c528f19e391ad934bfe8dd97b3"
+    },
+    {
+      "document_id": "ieum-052",
+      "content_sha256": "8d303812238da9945d2defe6645167f9b5d53c68c65dbad36987854558451740"
+    }
+  ]
+}

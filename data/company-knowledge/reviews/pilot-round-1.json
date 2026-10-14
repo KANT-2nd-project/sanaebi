@@ -1,0 +1,106 @@
+{
+  "stage": "pilot_round_1",
+  "reviewer": "independent_agent:policy_review",
+  "review_date": "2026-10-14",
+  "verdict": "changes_requested",
+  "scope": "12 policies,48 evaluation questions,48 evidence rows,company decisions; sources.csv pending at this round",
+  "human_approved": false,
+  "documents": [
+    {
+      "document_id": "ieum-001",
+      "content_sha256": "9b1003ebcaf357d778b37af25c30973a322fe9c005678e4d41b16c6f869a5f9c",
+      "findings": [
+        "개인 기록 조회 missing 및 순수실행 action 라벨 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-004",
+      "content_sha256": "ea1fe23fdbb0ffb0d6e7063844c7cc04840bdada1caa0f829a066571f712d9c4",
+      "findings": [
+        "미기재 질문 개인조회 수정",
+        "법정기준과 동일인 근로시간 출처표현 수정",
+        "action 근거구역 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-010",
+      "content_sha256": "b28eac4788b3143c69a367c00e3069529f054f3bd136f32035e1c69965227dc5",
+      "findings": [
+        "missing/action 라벨 기준 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-015",
+      "content_sha256": "28c12ee137f09d53306635cbdec80a262cb1d1de9e0e33c02a9a96ef0fb3c4cc",
+      "findings": [
+        "출장 예산 초과 승인자 결정·본문 일치",
+        "조건 근거구역 및 action 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-019",
+      "content_sha256": "11c1ac6ae165e4ef59a44b739e1dceded0810b1a0862d56bf823df3e0110c6c0",
+      "findings": [
+        "지급 기준월 명시",
+        "missing/action 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-026",
+      "content_sha256": "3bd3908b85251f6cc89a4c679e713ebb8f23726cb7301b2647c04973b5edc86d",
+      "findings": [
+        "최초로그인 과정 MFA 등록",
+        "잠김 복구의 대체접수",
+        "결정 참조 및 근거구역 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-027",
+      "content_sha256": "ade9c48f6535c1c9227d6290d2f66ffa85d1a21b72a2f9c11bb70f8ef220812e",
+      "findings": [
+        "K12 출처구역 연결",
+        "missing/action 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-031",
+      "content_sha256": "3e61d6a73cf2009de50cdabf6afc307495fe325d5410d7204168093a53407c07",
+      "findings": [
+        "근거구역 수정",
+        "missing/action 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-033",
+      "content_sha256": "4641ac6c56beac128289b1d524258152fff4a0b7dad69266706e5c07e02d1853",
+      "findings": [
+        "개인정보법 출처 K05 의미충돌 해소",
+        "action 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-035",
+      "content_sha256": "913ef1bd6cc70814dcd715291c47c04e222315bb1b82e09b39e9cc35d212924a",
+      "findings": [
+        "missing/action 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-050",
+      "content_sha256": "d7588981a1215a88cef5349e98da2ac68ece59d9b6494a6a8ef59d02f04d972b",
+      "findings": [
+        "MFA 초기등록 순서",
+        "회사결정 참조 누락",
+        "missing/action 수정"
+      ]
+    },
+    {
+      "document_id": "ieum-052",
+      "content_sha256": "8d303812238da9945d2defe6645167f9b5d53c68c65dbad36987854558451740",
+      "findings": [
+        "H01 퇴사 출처구역 연결",
+        "missing/action 수정"
+      ]
+    }
+  ]
+}

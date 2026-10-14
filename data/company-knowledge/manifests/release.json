@@ -1,0 +1,921 @@
+{
+  "schema_version": "1",
+  "release_id": "ieum-company-knowledge-2026-10-14",
+  "status": "ai_reviewed",
+  "created_at": "2026-10-14",
+  "scope": "기존 52개 주제 대응 가상 정책 및 개발 평가 208개; 독립 AI 내용 검수 완료, 사람 승인·법률 검토·실제 모델 평가는 미수행",
+  "document_count": 52,
+  "evaluation_count": 208,
+  "documents": [
+    {
+      "order": 1,
+      "document_id": "ieum-001",
+      "version": "1.0.0",
+      "title": "연차 사용 신청",
+      "category": "people_leave",
+      "content_sha256": "9b1003ebcaf357d778b37af25c30973a322fe9c005678e4d41b16c6f869a5f9c",
+      "source_ids": [
+        "H01",
+        "K01"
+      ],
+      "policy_decision_ids": [
+        "D-LEAVE-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 2,
+      "document_id": "ieum-002",
+      "version": "1.0.0",
+      "title": "병가 신청과 복귀 안내",
+      "category": "people_leave",
+      "content_sha256": "6ea28156dad95012a9c89385cd5581f716580dea0d32c5bee2ac2c18758718f2",
+      "source_ids": [
+        "H01",
+        "K01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-SICK-001"
+      ]
+    },
+    {
+      "order": 3,
+      "document_id": "ieum-003",
+      "version": "1.0.0",
+      "title": "가족 경조사 휴가",
+      "category": "people_leave",
+      "content_sha256": "34a7d07d6842dba28f68bdec2dc03dd5d6b5303d078c2f1625a4f1789de1ca62",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-FAMILY-001"
+      ]
+    },
+    {
+      "order": 4,
+      "document_id": "ieum-004",
+      "version": "1.0.0",
+      "title": "기본 근무 시간과 휴게",
+      "category": "working_conditions",
+      "content_sha256": "ea1fe23fdbb0ffb0d6e7063844c7cc04840bdada1caa0f829a066571f712d9c4",
+      "source_ids": [
+        "K01"
+      ],
+      "policy_decision_ids": [
+        "D-WORK-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 5,
+      "document_id": "ieum-005",
+      "version": "1.0.0",
+      "title": "시차 출퇴근형 근무 시간",
+      "category": "working_conditions",
+      "content_sha256": "3f5da8510ec63857dd369efa4694107f60aeb01cd7f6265338268d958d810992",
+      "source_ids": [
+        "K01",
+        "K03"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-WORK-001",
+        "D-FLEX-001"
+      ]
+    },
+    {
+      "order": 6,
+      "document_id": "ieum-006",
+      "version": "1.0.0",
+      "title": "출퇴근 기록 정정",
+      "category": "attendance",
+      "content_sha256": "8d34934af0d1fa0aeeb7884f4b0f15df2f64f7eaba8cf89fe41f4284591993c3",
+      "source_ids": [
+        "K01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-ATTENDANCE-001"
+      ]
+    },
+    {
+      "order": 7,
+      "document_id": "ieum-007",
+      "version": "1.0.0",
+      "title": "지각 알림과 근무 시작",
+      "category": "attendance",
+      "content_sha256": "f177f0610c2c2dbd46d26b9e1cced1a978b8258182bbd8d22358d2a52cb9044c",
+      "source_ids": [
+        "H01",
+        "K01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-ATTENDANCE-001"
+      ]
+    },
+    {
+      "order": 8,
+      "document_id": "ieum-008",
+      "version": "1.0.0",
+      "title": "조퇴 신청과 긴급 변경",
+      "category": "attendance",
+      "content_sha256": "5b995c36e93b50cde895bb977b9bcc17907ae11b45b7713efce924e1a92c0aa8",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-ATTENDANCE-001"
+      ]
+    },
+    {
+      "order": 9,
+      "document_id": "ieum-009",
+      "version": "1.0.0",
+      "title": "연장 근무 사전 승인과 기록",
+      "category": "working_conditions",
+      "content_sha256": "57bf1c023b59103bb6e147b850164dd4bc9c30a9808dd69dfd85fe7996c28415",
+      "source_ids": [
+        "H01",
+        "K01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-OVERTIME-001"
+      ]
+    },
+    {
+      "order": 10,
+      "document_id": "ieum-010",
+      "version": "1.0.0",
+      "title": "재택근무 신청과 변경",
+      "category": "flexible_work",
+      "content_sha256": "eb5480d01328f0b4c5128f5af7e383474551835cb762486acd8569b34a55ac49",
+      "source_ids": [
+        "K03"
+      ],
+      "policy_decision_ids": [
+        "D-REMOTE-001",
+        "D-WORK-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 11,
+      "document_id": "ieum-011",
+      "version": "1.0.0",
+      "title": "재택근무 중 정보보호",
+      "category": "remote_work_security",
+      "content_sha256": "f1757083245393311fd097b4d0999e1fea72f40da69560810caa211c9e6e3270",
+      "source_ids": [
+        "K03",
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-REMOTE-001",
+        "D-REMOTE-SECURITY-001",
+        "D-INCIDENT-001"
+      ]
+    },
+    {
+      "order": 12,
+      "document_id": "ieum-012",
+      "version": "1.0.0",
+      "title": "근무 장소 변경 신청",
+      "category": "remote_work",
+      "content_sha256": "7d251bc6dfdee44c55d8e48375a2899ddd48bc11728dfeda4d379f126e8669c7",
+      "source_ids": [
+        "K03"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-REMOTE-001",
+        "D-WORKLOCATION-001"
+      ]
+    },
+    {
+      "order": 13,
+      "document_id": "ieum-013",
+      "version": "1.0.0",
+      "title": "사무실 출입 카드 관리",
+      "category": "physical_security",
+      "content_sha256": "5ad6796082a6480a5272dac5c9e747c329b26846114c5cf9b80172a1e4230398",
+      "source_ids": [
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-PHYSICAL-001"
+      ]
+    },
+    {
+      "order": 14,
+      "document_id": "ieum-014",
+      "version": "1.0.0",
+      "title": "방문객 등록과 동행",
+      "category": "physical_security",
+      "content_sha256": "87758ce1c25b667a51c857a64439d627e9705f38ceee51c2616c2d5fcc784748",
+      "source_ids": [
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-VISITOR-001",
+        "D-PHYSICAL-001"
+      ]
+    },
+    {
+      "order": 15,
+      "document_id": "ieum-015",
+      "version": "1.0.0",
+      "title": "국내 출장 사전 승인",
+      "category": "travel",
+      "content_sha256": "e8e070cc219f29d25b623033f04549675f08db3551e6d7838980e2a7372c4a01",
+      "source_ids": [
+        "H01",
+        "K10"
+      ],
+      "policy_decision_ids": [
+        "D-TRAVEL-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 16,
+      "document_id": "ieum-016",
+      "version": "1.0.0",
+      "title": "출장 교통편 예약",
+      "category": "travel",
+      "content_sha256": "0fe0542d346fa93dd36b5adfbabf3b725f5808046ef7a46c85da9eee517ab5eb",
+      "source_ids": [
+        "H01",
+        "K10"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-TRAVEL-001",
+        "D-TRAVEL-BOOKING-001"
+      ]
+    },
+    {
+      "order": 17,
+      "document_id": "ieum-017",
+      "version": "1.0.0",
+      "title": "출장 숙박 예약",
+      "category": "travel",
+      "content_sha256": "94c5405bac2c42dd40adcd6eb57cc7058ffb62dd278c8ecd5d137354c90bd8e6",
+      "source_ids": [
+        "H01",
+        "K10"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-TRAVEL-001",
+        "D-HOTEL-001"
+      ]
+    },
+    {
+      "order": 18,
+      "document_id": "ieum-018",
+      "version": "1.0.0",
+      "title": "출장 중 식비 정산",
+      "category": "travel",
+      "content_sha256": "08199f551455a36c3e8263c12ba5599638d7408e417c586075c55cd12f48ab25",
+      "source_ids": [
+        "H01",
+        "K10"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-TRAVEL-001",
+        "D-TRAVEL-MEALS-001"
+      ]
+    },
+    {
+      "order": 19,
+      "document_id": "ieum-019",
+      "version": "1.0.0",
+      "title": "경비 정산 제출과 지급",
+      "category": "expense",
+      "content_sha256": "79c7d18476711bea36668fa5e52308e75668caf44426aa41321d7c5453906bf1",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-EXPENSE-001",
+        "D-TRAVEL-001",
+        "D-TOOLS-001",
+        "D-ORG-001"
+      ]
+    },
+    {
+      "order": 20,
+      "document_id": "ieum-020",
+      "version": "1.0.0",
+      "title": "법인카드 사용과 정산",
+      "category": "expense",
+      "content_sha256": "1b352603e9601b4af1d02b509e5911f81dc2e7e62ed89a531bdc15c5e038e87d",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-CARD-001"
+      ]
+    },
+    {
+      "order": 21,
+      "document_id": "ieum-021",
+      "version": "1.0.0",
+      "title": "업무용 구매와 공급업체 선택",
+      "category": "procurement",
+      "content_sha256": "bd874f5a285f03c7506158cced27ae5db35faeda469ce03855211188558320fc",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-PURCHASE-001"
+      ]
+    },
+    {
+      "order": 22,
+      "document_id": "ieum-022",
+      "version": "1.0.0",
+      "title": "회사 자산 대여와 반납",
+      "category": "assets",
+      "content_sha256": "9bc1dea5951590ba89feaae30da171f7e32c84447b0447fd04f660d938a4e8bd",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-ASSET-001",
+        "D-INCIDENT-001"
+      ]
+    },
+    {
+      "order": 23,
+      "document_id": "ieum-023",
+      "version": "1.0.0",
+      "title": "퇴사 시 회사 자산 반납",
+      "category": "offboarding",
+      "content_sha256": "07779a1ac41e01854544de0c88169b5aecbd9d188399983740d5d4232bc38ab4",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-OFFBOARD-001",
+        "D-ASSET-001"
+      ]
+    },
+    {
+      "order": 24,
+      "document_id": "ieum-024",
+      "version": "1.0.0",
+      "title": "회사 노트북 잠금과 보관",
+      "category": "device_security",
+      "content_sha256": "a360426471f9497a0693acc57fb5c206e1233b45b1a9065530558c6a0db2cf3d",
+      "source_ids": [
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-024",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 25,
+      "document_id": "ieum-025",
+      "version": "1.0.0",
+      "title": "회사 계정 비밀번호 관리",
+      "category": "account_security",
+      "content_sha256": "44e12943770b8eaf485084c61ccfa12d4bb24f969c3c1f0c91bbfc706b56fc7d",
+      "source_ids": [
+        "K12",
+        "T03"
+      ],
+      "policy_decision_ids": [
+        "D-POL-025",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 26,
+      "document_id": "ieum-026",
+      "version": "1.0.0",
+      "title": "다중 인증과 계정 복구",
+      "category": "identity_security",
+      "content_sha256": "823bd98bc2c5fc4742181cf24664621148f5c58b9cdf22b126e10f62ae159433",
+      "source_ids": [
+        "T03"
+      ],
+      "policy_decision_ids": [
+        "D-MFA-001",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 27,
+      "document_id": "ieum-027",
+      "version": "1.0.0",
+      "title": "시스템 접근 권한 신청과 회수",
+      "category": "identity_access",
+      "content_sha256": "9358241b0a0565a8c2f7339ce9018a27d69bf0e8386d390f0c6d99341222362e",
+      "source_ids": [
+        "K12"
+      ],
+      "policy_decision_ids": [
+        "D-ACCESS-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 28,
+      "document_id": "ieum-028",
+      "version": "1.0.0",
+      "title": "업무 정보 등급 표시",
+      "category": "information_classification",
+      "content_sha256": "39df4200a3ccba93888962c8abc3e5c565e7d75bae4e6c9310718fe19a30012f",
+      "source_ids": [
+        "T01",
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-028",
+        "D-SHARE-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 29,
+      "document_id": "ieum-029",
+      "version": "1.0.0",
+      "title": "기밀 정보의 열람과 전달",
+      "category": "confidential_information",
+      "content_sha256": "bc74b7dd664d208c44eb3858b6df9d1de204d90028ed348dc516d897d62ae007",
+      "source_ids": [
+        "K12",
+        "T01"
+      ],
+      "policy_decision_ids": [
+        "D-POL-029",
+        "D-SHARE-001",
+        "D-ACCESS-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 30,
+      "document_id": "ieum-030",
+      "version": "1.0.0",
+      "title": "개인정보의 업무상 처리",
+      "category": "personal_information",
+      "content_sha256": "09c17ee25ce8bca88ca3ea3f132c1e2306d98ada8b0a4873cc21ee39ac03575f",
+      "source_ids": [
+        "K12",
+        "K13"
+      ],
+      "policy_decision_ids": [
+        "D-POL-030",
+        "D-ACCESS-001",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 31,
+      "document_id": "ieum-031",
+      "version": "1.0.0",
+      "title": "업무 파일 공유와 외부 제공",
+      "category": "information_sharing",
+      "content_sha256": "ef383ffca536817e2907876b3dabea3547c3067a90096422c255ae4251e211aa",
+      "source_ids": [
+        "T01"
+      ],
+      "policy_decision_ids": [
+        "D-SHARE-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 32,
+      "document_id": "ieum-032",
+      "version": "1.0.0",
+      "title": "클라우드 서비스와 회사 자료 사용",
+      "category": "cloud_services",
+      "content_sha256": "8b049db9018f6aa320794fbbeaa0f45934818cab752a71f1960c63f07268df18",
+      "source_ids": [
+        "T01",
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-032",
+        "D-SHARE-001",
+        "D-ACCESS-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 33,
+      "document_id": "ieum-033",
+      "version": "1.0.0",
+      "title": "생성형 AI 업무 사용",
+      "category": "ai_usage",
+      "content_sha256": "4641ac6c56beac128289b1d524258152fff4a0b7dad69266706e5c07e02d1853",
+      "source_ids": [
+        "H02",
+        "K06",
+        "K12",
+        "K13"
+      ],
+      "policy_decision_ids": [
+        "D-AI-001",
+        "D-SHARE-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 34,
+      "document_id": "ieum-034",
+      "version": "1.0.0",
+      "title": "피싱 의심 메일과 메시지 대응",
+      "category": "phishing_response",
+      "content_sha256": "10752c7b6d31205f0c8c2556a25650983c0295da037f6d999a8d8a16912618fb",
+      "source_ids": [
+        "T03",
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-034",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 35,
+      "document_id": "ieum-035",
+      "version": "1.0.0",
+      "title": "보안 사고 신고와 초동 대응",
+      "category": "security_incident",
+      "content_sha256": "775c885d07b1f12e02b79bb02830f79db4668a44649b2fbc7c2bf68b3f51a9c7",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 36,
+      "document_id": "ieum-036",
+      "version": "1.0.0",
+      "title": "이동식 저장장치 사용",
+      "category": "removable_media",
+      "content_sha256": "a602a54933aab60b371f42ff98de8e6c8aefcac44f94659187650f9b30ca8a10",
+      "source_ids": [
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-036",
+        "D-SHARE-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 37,
+      "document_id": "ieum-037",
+      "version": "1.0.0",
+      "title": "회사 기기 소프트웨어 설치",
+      "category": "software_installation",
+      "content_sha256": "71ffbec4d9da6a409e383bb8627717c9ede4dbe54d5138fba8ef8bb59f31aa8f",
+      "source_ids": [
+        "T03",
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-037",
+        "D-ACCESS-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 38,
+      "document_id": "ieum-038",
+      "version": "1.0.0",
+      "title": "업무 자료 보관과 백업",
+      "category": "business_data_backup",
+      "content_sha256": "4aebf2c1619a94ebba247fdbd17949b9f859ba2d49be6950a3b26cce21abf1cc",
+      "source_ids": [
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-038",
+        "D-ACCESS-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 39,
+      "document_id": "ieum-039",
+      "version": "1.0.0",
+      "title": "업무 기록 보관과 삭제",
+      "category": "records_management",
+      "content_sha256": "3db53b7c71e4f322a06a1d1a0bc95f1df95d19238c9890c9d5094bda2ff85433",
+      "source_ids": [
+        "K13",
+        "T04"
+      ],
+      "policy_decision_ids": [
+        "D-POL-039",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 40,
+      "document_id": "ieum-040",
+      "version": "1.0.0",
+      "title": "업무 이메일과 메신저 사용",
+      "category": "business_communications",
+      "content_sha256": "04e693127480f312eba1cb791c1b6bfed281822da6798dae0e3b7a4bda944040",
+      "source_ids": [
+        "H01",
+        "T03"
+      ],
+      "policy_decision_ids": [
+        "D-POL-040",
+        "D-SHARE-001",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 41,
+      "document_id": "ieum-041",
+      "version": "1.0.0",
+      "title": "회의 일정과 안건 공유",
+      "category": "meeting_planning",
+      "content_sha256": "ce65a2586311f7528284ce4e2a962d776054f378574426d6e5c4568944a88891",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-POL-041",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 42,
+      "document_id": "ieum-042",
+      "version": "1.0.0",
+      "title": "회의 녹음과 녹화",
+      "category": "meeting_recording",
+      "content_sha256": "cea780dfcca7b5876ea91ed04de5f27d3854ff00f26389fba5fab5f0ed4cb8ca",
+      "source_ids": [
+        "K13",
+        "T01"
+      ],
+      "policy_decision_ids": [
+        "D-POL-042",
+        "D-SHARE-001",
+        "D-ACCESS-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 43,
+      "document_id": "ieum-043",
+      "version": "1.0.0",
+      "title": "내부 문서의 외부 공개",
+      "category": "external_publication",
+      "content_sha256": "8baf5904c6d045aa4b6bfcdb79a04aa9bb7c01f511e699fe874e98522183b114",
+      "source_ids": [
+        "H01",
+        "T01"
+      ],
+      "policy_decision_ids": [
+        "D-POL-043",
+        "D-SHARE-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 44,
+      "document_id": "ieum-044",
+      "version": "1.0.0",
+      "title": "이해 상충과 외부 활동 사전 공개",
+      "category": "conflict_of_interest",
+      "content_sha256": "34e039f35faca5c7cb99ecd2ce6b424a3706c7290c964a64745a88f57a47ca97",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-POL-044",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 45,
+      "document_id": "ieum-045",
+      "version": "1.0.0",
+      "title": "외부 선물과 접대 제안 처리",
+      "category": "gifts_and_hospitality",
+      "content_sha256": "47744787074bfd3f1e52e8491b01cdb4fc208b6581f2c8c7a97478ee4d8aa5e1",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-POL-045",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 46,
+      "document_id": "ieum-046",
+      "version": "1.0.0",
+      "title": "존중과 괴롭힘 없는 업무 환경",
+      "category": "respectful_workplace",
+      "content_sha256": "355cf60793a8d9c9ff1d0f8488d1d92e0671d2246b0018119a9914911caa3af3",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-POL-046",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 47,
+      "document_id": "ieum-047",
+      "version": "1.0.0",
+      "title": "사무실 안전 위험과 사고 보고",
+      "category": "workplace_safety",
+      "content_sha256": "c60d98d940849b5322d3c701dbe391c64801553130f191175c8002f83181532d",
+      "source_ids": [
+        "H01",
+        "K14"
+      ],
+      "policy_decision_ids": [
+        "D-POL-047",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 48,
+      "document_id": "ieum-048",
+      "version": "1.0.0",
+      "title": "화재 경보와 비상 대피",
+      "category": "emergency_evacuation",
+      "content_sha256": "fc777040935724d3e2febc5b1c30f262356d3e74293230e4c7a16a8168fbb133",
+      "source_ids": [
+        "H01",
+        "K14"
+      ],
+      "policy_decision_ids": [
+        "D-POL-048",
+        "D-INCIDENT-001",
+        "D-ORG-001",
+        "D-TOOLS-001"
+      ]
+    },
+    {
+      "order": 49,
+      "document_id": "ieum-049",
+      "version": "1.0.0",
+      "title": "직무 교육 신청과 비용 지원",
+      "category": "learning_development",
+      "content_sha256": "0a570c8dccecb775ec7d7e41688dfef81cc68b7d46c23d23a7829cefdbd72104",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-POL-049",
+        "D-PURCHASE-001",
+        "D-EXPENSE-001"
+      ]
+    },
+    {
+      "order": 50,
+      "document_id": "ieum-050",
+      "version": "1.0.0",
+      "title": "신규 입사자 온보딩",
+      "category": "onboarding",
+      "content_sha256": "954c5c72dfad838e6c6e26cada3e2c9cc44647e30a337310b4c06deb735333fc",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ONBOARD-001",
+        "D-TOOLS-001",
+        "D-ACCESS-001",
+        "D-MFA-001",
+        "D-ORG-001"
+      ]
+    },
+    {
+      "order": 51,
+      "document_id": "ieum-051",
+      "version": "1.0.0",
+      "title": "분기별 성장 면담",
+      "category": "performance_development",
+      "content_sha256": "eef4e84de6f554db0a6a3dc876fae126085a24d10b507058d8a39903d644f623",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-ORG-001",
+        "D-TOOLS-001",
+        "D-POL-051"
+      ]
+    },
+    {
+      "order": 52,
+      "document_id": "ieum-052",
+      "version": "1.0.0",
+      "title": "퇴사와 업무 인계",
+      "category": "offboarding",
+      "content_sha256": "6e88754e2c3b3999b32f0b9b16596e775674ebba46ce78aaac334d5094fe9cba",
+      "source_ids": [
+        "H01"
+      ],
+      "policy_decision_ids": [
+        "D-OFFBOARD-001",
+        "D-ACCESS-001",
+        "D-TOOLS-001",
+        "D-ORG-001"
+      ]
+    }
+  ],
+  "artifact_sha256": {
+    "documents.jsonl": "bf472f9228bb325e91ec73cac4dfefe5e9421be6cee0b35089fcdaf075016ccb",
+    "sources.csv": "b380e56abff466ae888ebfed85a645259c68e82221c470b8c9396f496ceddcc0",
+    "policy-decisions.csv": "0adbb6c1dc4ed3516f81cf1e26aa8571bd32ed4263f8d3098a17cebeef0a6ee9",
+    "topic-map.csv": "8062bf619631186c4d0dee98b092e5e33531ca129b2a4891efb38eb87e3ceb09",
+    "document-review.csv": "b5df8c09da48c79c27a81b8afba1d58eff62ba173ebae3e76a37ca7470d25791",
+    "evaluations/eval_set.jsonl": "f5d64c959186b7cf9afb665194d11f730715668d1ca6025dabcfc48aed931045",
+    "evaluations/evidence.jsonl": "d66eeaf7a33b9a8d75b1815609a2768da2d691275ca50843082712152d2d45fc"
+  },
+  "source_count": 12,
+  "decision_count": 51,
+  "review_record": "reviews/full-round-2.json",
+  "human_approved": false
+}

@@ -1,0 +1,267 @@
+{
+  "date": "2026-10-14",
+  "reviewer": "independent AI reviewer /root/policy_review",
+  "status": "changes_requested",
+  "human_approved": false,
+  "scope": "52 policies, 208 questions and evidence, topic map, decision/source consistency",
+  "findings": [
+    {
+      "id": "F01",
+      "documents": [
+        "ieum-028",
+        "ieum-029",
+        "ieum-031"
+      ],
+      "issue": "사내 전용의 승인된 외부 제공 예외와 모든 기밀 자료 보안 승인 조건 불일치",
+      "correction": "028 기본 내부 범위/외부 승인 예외 구분, 029 모든 기밀 추가 승인 및 7일 접근 만료 명시"
+    },
+    {
+      "id": "F02",
+      "documents": [
+        "ieum-028",
+        "ieum-031",
+        "ieum-043"
+      ],
+      "issue": "지정 수신자 7일 공유와 승인된 공개 최종본 게시 범위가 불명확",
+      "correction": "제한 전달과 공개 승인 범위 구분; 공개본은 게시 범위·기간·회수 조건 적용"
+    },
+    {
+      "id": "F03",
+      "documents": [
+        "ieum-022",
+        "ieum-023",
+        "ieum-052"
+      ],
+      "issue": "마지막 근무일 반납과 원격 발송 완료 기준 충돌",
+      "correction": "대면 반납/원격 회사 부담 발송 기한 및 실제 수령·상태 확인 후 완료를 구분; 회사 결정 동시 수정"
+    },
+    {
+      "id": "F04",
+      "documents": [
+        "ieum-037",
+        "ieum-044"
+      ],
+      "issue": "사전 검토 의무로 부정 답을 할 수 있는 질문을 미기재로 분류",
+      "correction": "실제 미기재인 검토 회신 최대 처리 기한으로 교체"
+    },
+    {
+      "id": "F05",
+      "documents": [
+        "ieum-010"
+      ],
+      "issue": "장비 구매 절차가 다른 정책에 일부 기재됨",
+      "correction": "별도 재택 장비 개인 구입 연간 지원 한도로 질문을 한정"
+    }
+  ],
+  "reviewed_documents": [
+    {
+      "document_id": "ieum-001",
+      "content_sha256": "9b1003ebcaf357d778b37af25c30973a322fe9c005678e4d41b16c6f869a5f9c"
+    },
+    {
+      "document_id": "ieum-002",
+      "content_sha256": "6ea28156dad95012a9c89385cd5581f716580dea0d32c5bee2ac2c18758718f2"
+    },
+    {
+      "document_id": "ieum-003",
+      "content_sha256": "34a7d07d6842dba28f68bdec2dc03dd5d6b5303d078c2f1625a4f1789de1ca62"
+    },
+    {
+      "document_id": "ieum-004",
+      "content_sha256": "ea1fe23fdbb0ffb0d6e7063844c7cc04840bdada1caa0f829a066571f712d9c4"
+    },
+    {
+      "document_id": "ieum-005",
+      "content_sha256": "3f5da8510ec63857dd369efa4694107f60aeb01cd7f6265338268d958d810992"
+    },
+    {
+      "document_id": "ieum-006",
+      "content_sha256": "8d34934af0d1fa0aeeb7884f4b0f15df2f64f7eaba8cf89fe41f4284591993c3"
+    },
+    {
+      "document_id": "ieum-007",
+      "content_sha256": "f177f0610c2c2dbd46d26b9e1cced1a978b8258182bbd8d22358d2a52cb9044c"
+    },
+    {
+      "document_id": "ieum-008",
+      "content_sha256": "5b995c36e93b50cde895bb977b9bcc17907ae11b45b7713efce924e1a92c0aa8"
+    },
+    {
+      "document_id": "ieum-009",
+      "content_sha256": "57bf1c023b59103bb6e147b850164dd4bc9c30a9808dd69dfd85fe7996c28415"
+    },
+    {
+      "document_id": "ieum-010",
+      "content_sha256": "eb5480d01328f0b4c5128f5af7e383474551835cb762486acd8569b34a55ac49"
+    },
+    {
+      "document_id": "ieum-011",
+      "content_sha256": "f1757083245393311fd097b4d0999e1fea72f40da69560810caa211c9e6e3270"
+    },
+    {
+      "document_id": "ieum-012",
+      "content_sha256": "7d251bc6dfdee44c55d8e48375a2899ddd48bc11728dfeda4d379f126e8669c7"
+    },
+    {
+      "document_id": "ieum-013",
+      "content_sha256": "5ad6796082a6480a5272dac5c9e747c329b26846114c5cf9b80172a1e4230398"
+    },
+    {
+      "document_id": "ieum-014",
+      "content_sha256": "87758ce1c25b667a51c857a64439d627e9705f38ceee51c2616c2d5fcc784748"
+    },
+    {
+      "document_id": "ieum-015",
+      "content_sha256": "e8e070cc219f29d25b623033f04549675f08db3551e6d7838980e2a7372c4a01"
+    },
+    {
+      "document_id": "ieum-016",
+      "content_sha256": "0fe0542d346fa93dd36b5adfbabf3b725f5808046ef7a46c85da9eee517ab5eb"
+    },
+    {
+      "document_id": "ieum-017",
+      "content_sha256": "94c5405bac2c42dd40adcd6eb57cc7058ffb62dd278c8ecd5d137354c90bd8e6"
+    },
+    {
+      "document_id": "ieum-018",
+      "content_sha256": "08199f551455a36c3e8263c12ba5599638d7408e417c586075c55cd12f48ab25"
+    },
+    {
+      "document_id": "ieum-019",
+      "content_sha256": "79c7d18476711bea36668fa5e52308e75668caf44426aa41321d7c5453906bf1"
+    },
+    {
+      "document_id": "ieum-020",
+      "content_sha256": "1b352603e9601b4af1d02b509e5911f81dc2e7e62ed89a531bdc15c5e038e87d"
+    },
+    {
+      "document_id": "ieum-021",
+      "content_sha256": "bd874f5a285f03c7506158cced27ae5db35faeda469ce03855211188558320fc"
+    },
+    {
+      "document_id": "ieum-022",
+      "content_sha256": "6c0e3d1dc922ef416c3d69d5b93f81592c733171e0ed5e6c0f4f565584727921"
+    },
+    {
+      "document_id": "ieum-023",
+      "content_sha256": "98234739c568b0f9ee06cca138424f0a8da6501081ba302fadeff5d818fa717b"
+    },
+    {
+      "document_id": "ieum-024",
+      "content_sha256": "a360426471f9497a0693acc57fb5c206e1233b45b1a9065530558c6a0db2cf3d"
+    },
+    {
+      "document_id": "ieum-025",
+      "content_sha256": "44e12943770b8eaf485084c61ccfa12d4bb24f969c3c1f0c91bbfc706b56fc7d"
+    },
+    {
+      "document_id": "ieum-026",
+      "content_sha256": "823bd98bc2c5fc4742181cf24664621148f5c58b9cdf22b126e10f62ae159433"
+    },
+    {
+      "document_id": "ieum-027",
+      "content_sha256": "9358241b0a0565a8c2f7339ce9018a27d69bf0e8386d390f0c6d99341222362e"
+    },
+    {
+      "document_id": "ieum-028",
+      "content_sha256": "f458935ce26d9563022bec1cf8ad88eb0c8037592bf28a822299edc1b58d6726"
+    },
+    {
+      "document_id": "ieum-029",
+      "content_sha256": "00b5544cc89ac4181bb55daa46e07623467e9898042b05977bb3d11cd846f028"
+    },
+    {
+      "document_id": "ieum-030",
+      "content_sha256": "09c17ee25ce8bca88ca3ea3f132c1e2306d98ada8b0a4873cc21ee39ac03575f"
+    },
+    {
+      "document_id": "ieum-031",
+      "content_sha256": "2532501b5e867f85d13acc84d2b5a29f82df560b3f8f0c1591a4aee22a64fc5d"
+    },
+    {
+      "document_id": "ieum-032",
+      "content_sha256": "8b049db9018f6aa320794fbbeaa0f45934818cab752a71f1960c63f07268df18"
+    },
+    {
+      "document_id": "ieum-033",
+      "content_sha256": "4641ac6c56beac128289b1d524258152fff4a0b7dad69266706e5c07e02d1853"
+    },
+    {
+      "document_id": "ieum-034",
+      "content_sha256": "10752c7b6d31205f0c8c2556a25650983c0295da037f6d999a8d8a16912618fb"
+    },
+    {
+      "document_id": "ieum-035",
+      "content_sha256": "775c885d07b1f12e02b79bb02830f79db4668a44649b2fbc7c2bf68b3f51a9c7"
+    },
+    {
+      "document_id": "ieum-036",
+      "content_sha256": "a602a54933aab60b371f42ff98de8e6c8aefcac44f94659187650f9b30ca8a10"
+    },
+    {
+      "document_id": "ieum-037",
+      "content_sha256": "71ffbec4d9da6a409e383bb8627717c9ede4dbe54d5138fba8ef8bb59f31aa8f"
+    },
+    {
+      "document_id": "ieum-038",
+      "content_sha256": "4aebf2c1619a94ebba247fdbd17949b9f859ba2d49be6950a3b26cce21abf1cc"
+    },
+    {
+      "document_id": "ieum-039",
+      "content_sha256": "3db53b7c71e4f322a06a1d1a0bc95f1df95d19238c9890c9d5094bda2ff85433"
+    },
+    {
+      "document_id": "ieum-040",
+      "content_sha256": "04e693127480f312eba1cb791c1b6bfed281822da6798dae0e3b7a4bda944040"
+    },
+    {
+      "document_id": "ieum-041",
+      "content_sha256": "ce65a2586311f7528284ce4e2a962d776054f378574426d6e5c4568944a88891"
+    },
+    {
+      "document_id": "ieum-042",
+      "content_sha256": "cea780dfcca7b5876ea91ed04de5f27d3854ff00f26389fba5fab5f0ed4cb8ca"
+    },
+    {
+      "document_id": "ieum-043",
+      "content_sha256": "67bad116e8d2cb59e252a94eaebb726dd76239b33848a77fa5a30e37f2e11457"
+    },
+    {
+      "document_id": "ieum-044",
+      "content_sha256": "34e039f35faca5c7cb99ecd2ce6b424a3706c7290c964a64745a88f57a47ca97"
+    },
+    {
+      "document_id": "ieum-045",
+      "content_sha256": "47744787074bfd3f1e52e8491b01cdb4fc208b6581f2c8c7a97478ee4d8aa5e1"
+    },
+    {
+      "document_id": "ieum-046",
+      "content_sha256": "355cf60793a8d9c9ff1d0f8488d1d92e0671d2246b0018119a9914911caa3af3"
+    },
+    {
+      "document_id": "ieum-047",
+      "content_sha256": "c60d98d940849b5322d3c701dbe391c64801553130f191175c8002f83181532d"
+    },
+    {
+      "document_id": "ieum-048",
+      "content_sha256": "fc777040935724d3e2febc5b1c30f262356d3e74293230e4c7a16a8168fbb133"
+    },
+    {
+      "document_id": "ieum-049",
+      "content_sha256": "0a570c8dccecb775ec7d7e41688dfef81cc68b7d46c23d23a7829cefdbd72104"
+    },
+    {
+      "document_id": "ieum-050",
+      "content_sha256": "954c5c72dfad838e6c6e26cada3e2c9cc44647e30a337310b4c06deb735333fc"
+    },
+    {
+      "document_id": "ieum-051",
+      "content_sha256": "eef4e84de6f554db0a6a3dc876fae126085a24d10b507058d8a39903d644f623"
+    },
+    {
+      "document_id": "ieum-052",
+      "content_sha256": "19e18fbe4ccfe27b34b98a2be4763395f151c023627298be532322cfedc8a002"
+    }
+  ],
+  "limits": "K14 및 파일럿에서 명시한 원문은 독립 확인. 모든 출처 첨부의 독립 재독이나 사람 법률 검토를 주장하지 않음. 수정본 재확인 전에는 완료 아님."
+}
