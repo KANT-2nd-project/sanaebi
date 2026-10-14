@@ -1,5 +1,8 @@
 # BERT 요청 처리 질문 분류 모델 학습
 
+# 실행 순서: 공통 분할 → 질문을 토큰으로 변환 → 후보별 학습·검증
+# → 최고 검증 점수의 가중치 복원 → 테스트 평가 → 모델·보고서 저장
+
 import csv
 import json
 import subprocess
@@ -42,6 +45,9 @@ def read_question_rows():
 
 ##### 요청 처리 분류 모델 설정 #####
 
+# MODEL_NAME은 불러올 사전학습 모델 ID, MODEL_FOLDER는 내 모델·결과의 저장 폴더
+# 여러 모델을 비교할 때 저장 폴더가 다르면 결과를 구분할 수 있음
+
 MODEL_NAME = "klue/bert-base"  # 사용할 한국어 사전학습 BERT
 MODEL_FOLDER = "bert_base"  # 모델·결과 저장 폴더 이름 (예: bert, koelectra)
 
@@ -57,6 +63,7 @@ selection_started = perf_counter()  # 데이터 준비부터 후보 학습·선�
 ##### 학습·검증·테스트 데이터 나누기 #####
 
 question_rows = read_question_rows()
+# 모든 로컬 모델이 같은 시드·그룹 분할을 사용해 같은 질문으로 비교
 splits = split_questions(question_rows, seed=RANDOM_SEED)
 train_rows = splits["train"]
 validation_rows = splits["validation"]
@@ -116,12 +123,16 @@ padding_collator = DataCollatorWithPadding(tokenizer=tokenizer, padding=True)
 
 
 def collate_batch(questions):
+    # DataLoader가 꺼낸 질문 여러 개를 길이가 같은 텐서 배치로 묶음
+    # 짧은 질문의 빈 칸은 패딩으로 채우고 attention_mask에는 0으로 표시
     batch = padding_collator(questions)
     # 기존 학습 반복문에서 사용하던 토큰 번호·마스크·정답 순서로 반환
     return batch["input_ids"], batch["attention_mask"], batch["labels"]
 
 
 def make_loader(texts, label_ids, max_length, shuffle=False):
+    # 아직 질문마다 길이가 다르므로 토큰 번호를 리스트로 준비
+    # 실제 배치를 꺼낼 때 collate_batch가 패딩하고 텐서로 변환
     encoded = tokenizer(
         texts,
         padding=False,  # 여기서는 패딩하지 않고 각 질문의 길이를 유지
@@ -130,10 +141,12 @@ def make_loader(texts, label_ids, max_length, shuffle=False):
         return_token_type_ids=False,
     )
     questions = []
+    # 같은 index의 질문과 정답을 묶어 섞인 뒤에도 짝이 유지되도록 함
     for index, label_id in enumerate(label_ids):
         questions.append(
             {
-                "input_ids": encoded["input_ids"][index],
+                "input_ids": encoded["input_ids"][index],  # 질문을 바꾼 토큰 번호
+                # 1은 실제 토큰, 0은 패딩: 모델이 패딩을 무시할 때 사용
                 "attention_mask": encoded["attention_mask"][index],
                 "label": label_id,
             }
@@ -150,6 +163,8 @@ def make_loader(texts, label_ids, max_length, shuffle=False):
 
 id2label = {}  # 번호 → 카테고리 이름
 label2id = {}  # 카테고리 이름 → 번호
+# LABELS의 순서가 정답 번호와 모델 출력 점수 칸의 순서를 결정
+# 저장할 때 이 대응표도 모델 설정에 포함해 예측 번호를 라벨로 복원
 for index, label in enumerate(LABELS):
     id2label[index] = label
     label2id[label] = index
@@ -163,7 +178,9 @@ best_epoch = None
 best_state = None  # 가장 좋은 시점의 가중치 보관
 trials = []  # 입력 길이·학습률·epoch별 결과를 HTML 표에 표시
 
-# 입력 길이는 검증 점수로 선택하고 테스트는 선택 완료 후 한 번만 평가
+# 입력 길이·학습률·epoch를 검증 점수로 선택한 뒤 테스트 평가
+# 길이 2개 × 학습률 2개 = 독립적인 학습 후보 4개
+# epoch는 각 후보 안에서 train 전체를 몇 번 반복했는지 나타냄
 for max_length in MAX_LENGTHS:
     train_loader = make_loader(train_texts, train_label_ids, max_length, shuffle=True)
     validation_loader = make_loader(validation_texts, validation_label_ids, max_length)
@@ -217,10 +234,13 @@ for max_length in MAX_LENGTHS:
                     attention_mask=attention_mask,
                     labels=targets,  # 정답과 비교해 손실 계산
                 )
+                # logits는 3개 라벨의 점수, loss는 그 점수와 정답의 차이로 계산
                 loss = output.loss
                 loss.backward()  # 가중치를 어떻게 변경할지 기울기 계산
                 optimizer.step()  # 실제 가중치 변경
 
+                # 배치 평균 손실에 실제 배치 크기를 곱해 질문 수 기준 평균 계산
+                # 마지막 배치가 작아도 같은 비중의 배치로 계산하지 않도록 함
                 total_loss += loss.item() * len(targets)
                 train_count += len(targets)
                 if step % 10 == 0 or step == len(train_loader):
@@ -235,6 +255,8 @@ for max_length in MAX_LENGTHS:
             model.eval()  # 평가 모드로 설정
             validation_predictions = []
 
+            # 검증에서는 정답을 모델에 넣지 않고 예측 결과와 바깥에서 비교
+            # backward와 optimizer.step을 호출하지 않아 가중치는 바뀌지 않음
             with torch.inference_mode():  # 기울기 계산 없이 예측만 수행
                 for input_ids, attention_mask, _ in validation_loader:
                     output = model(
@@ -242,6 +264,8 @@ for max_length in MAX_LENGTHS:
                         attention_mask=attention_mask.to(DEVICE),
                     )
                     # 각 질문에서 점수가 가장 높은 카테고리 번호 선택
+                    # dim=1은 질문마다 있는 3개 점수 중 최고 점수의 번호를 선택
+                    # cpu().tolist()는 결과를 GPU 텐서에서 Python 리스트로 변환
                     predicted_ids = output.logits.argmax(dim=1).cpu().tolist()
                     validation_predictions.extend(predicted_ids)
 
@@ -270,11 +294,15 @@ for max_length in MAX_LENGTHS:
 
             # 최고 점수가 갱신되면 해당 시점의 가중치를 별도로 복사
             # 동점이면 먼저 선택한 결과 유지
+            # 세 라벨별 F1을 같은 비중으로 평균한 검증 Macro F1으로 선택
+            # 테스트 점수나 학습 손실로 후보를 선택하지 않음
             if validation_macro_f1 > best_score:
                 best_score = validation_macro_f1
                 best_max_length = max_length
                 best_learning_rate = learning_rate
                 best_epoch = epoch
+                # detach는 기울기 연결 해제, cpu는 GPU 메모리 대신 RAM에 보관
+                # clone은 이후 학습이 이 저장 가중치를 바꾸지 않도록 독립 복사
                 best_state = {
                     name: value.detach().cpu().clone()
                     for name, value in model.state_dict().items()
@@ -294,6 +322,8 @@ selection_seconds = perf_counter() - selection_started
 
 ##### 선택한 모델의 테스트 평가 #####
 
+# 검증으로 선택한 최대 토큰 수로 테스트 데이터 로더를 준비
+# 테스트 정답은 정확도·F1 계산에만 사용하고 추가 학습은 하지 않음
 test_loader = make_loader(test_texts, test_label_ids, best_max_length)
 test_predictions = []
 with torch.inference_mode():  # 선택한 가중치를 변경하지 않고 예측
@@ -332,6 +362,8 @@ model_dir.mkdir(parents=True, exist_ok=True)  # 저장 폴더가 없으면 생�
 model.save_pretrained(model_dir, safe_serialization=True)
 tokenizer.save_pretrained(model_dir)  # 예측할 때 사용할 토크나이저도 함께 저장
 
+# 가중치 파일과 별도로 선택한 설정·점수·분할을 JSON으로 남김
+# 보고서는 이 기록의 질문 ID로 분할을 복원해 같은 질문을 재평가
 training_summary = {
     "model_name": MODEL_NAME,
     "model_folder": MODEL_FOLDER,
@@ -361,6 +393,8 @@ print("모델 저장 위치:", model_dir)
 ##### HTML 보고서 생성 #####
 
 # BERT도 별도 CPU 프로세스에서 평가해 TF-IDF와 같은 조건으로 측정
+# 현재 Python 환경으로 보고서 코드를 별도 실행 (check=True: 실패 시 오류)
+# 보고서의 재예측·속도 측정에서도 모델을 다시 학습하지 않음
 subprocess.run(
     [sys.executable, str(Path(__file__).with_name("model_report.py")), MODEL_FOLDER],
     check=True,

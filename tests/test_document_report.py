@@ -3,6 +3,7 @@ import unittest
 from classification import model_report
 
 
+# 예전 라벨은 거부하고 현재 질문 3분류 결과만 보고서에 포함하는지 검사
 class ReportLabelTests(unittest.TestCase):
     def test_old_labels_are_not_evaluated(self):
         row = {"question_id": "Q1", "text": "VPN 질문", "label": "it"}

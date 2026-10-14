@@ -12,7 +12,9 @@ from sklearn.dummy import DummyClassifier
 from classification import model_report, question_split
 
 
+# 모델의 test 점수를 구하는 코드가 아니라 분할·보고서 코드의 동작 검사
 class QuestionSplitTests(unittest.TestCase):
+    # 테스트 전체에서 사용할 실제 데이터와 공통 분할을 한 번 준비
     @classmethod
     def setUpClass(cls):
         with question_split.DATASET_PATH.open(encoding="utf-8-sig", newline="") as file:
@@ -63,6 +65,7 @@ class QuestionSplitTests(unittest.TestCase):
 
     def test_question_report_restores_new_input_and_three_labels(self):
         record = question_split.make_split_record(self.splits)
+        # 검사 결과는 임시 폴더에만 저장해 실제 모델·실험 결과에 영향을 주지 않음
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             model_path = root / "model" / "tf-idf" / "tfidf_logistic_regression.joblib"
@@ -78,6 +81,7 @@ class QuestionSplitTests(unittest.TestCase):
                 json.dumps({"labels": question_split.LABELS, "data_split": record}),
                 encoding="utf-8",
             )
+            # patch는 검사 중에만 저장 경로·명령 인수를 임시 값으로 바꿈
             with (
                 patch.object(model_report, "ROOT", root),
                 patch.object(model_report, "RESULT_DIR", root / "result"),

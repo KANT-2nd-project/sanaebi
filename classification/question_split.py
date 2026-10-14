@@ -9,7 +9,9 @@ from pathlib import Path
 from sklearn.model_selection import GroupShuffleSplit
 
 DATASET_PATH = Path(__file__).resolve().parents[1] / "data" / "dataset.csv"
+# 입력 순서·데이터·알고리즘도 같을 때 고정 시드로 같은 분할을 재현
 RANDOM_SEED = 20261013
+# 모든 학습 코드가 같은 라벨 순서를 가져오도록 한 곳에서 관리
 LABELS = ["SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"]
 
 
@@ -18,6 +20,7 @@ def question_input(row):
     return row["question"]
 
 
+# 학습 전에 중복 ID·빈 질문·빈 그룹·잘못된 라벨을 확인
 def validate_rows(rows):
     ids = [row["question_id"] for row in rows]
     if len(ids) != len(set(ids)):
@@ -33,10 +36,14 @@ def validate_rows(rows):
 def split_questions(question_rows, seed=RANDOM_SEED):
     rows = sorted(question_rows, key=lambda row: row["question_id"])
     validate_rows(rows)
+    # groups의 같은 위치는 rows의 같은 위치 질문이 속한 그룹
+    # 비슷한 상황의 변형 질문이 train과 평가에 동시에 들어가는 것을 방지
     groups = [row["group_id"] for row in rows]
 
     # 전체 그룹의 약 15%를 테스트로 분리
     test_splitter = GroupShuffleSplit(n_splits=1, test_size=0.15, random_state=seed)
+    # split은 행 자체가 아닌 행의 위치 번호(indices)를 반환
+    # n_splits=1이므로 next로 첫 분할을 꺼내고 위치 번호로 원래 행을 선택
     remaining_indices, test_indices = next(test_splitter.split(rows, groups=groups))
     remaining_rows = [rows[index] for index in remaining_indices]
     remaining_groups = [row["group_id"] for row in remaining_rows]
@@ -48,6 +55,8 @@ def split_questions(question_rows, seed=RANDOM_SEED):
     train_indices, validation_indices = next(
         validation_splitter.split(remaining_rows, groups=remaining_groups)
     )
+    # train·validation의 위치 번호는 remaining_rows 기준, test는 전체 rows 기준
+    # 그룹 수를 기준으로 나누므로 실제 행 수는 정확히 70:15:15가 아닐 수 있음
     splits = {
         "train": [remaining_rows[index] for index in train_indices],
         "validation": [remaining_rows[index] for index in validation_indices],
@@ -60,6 +69,8 @@ def split_questions(question_rows, seed=RANDOM_SEED):
     return splits
 
 
+# 각 분할의 ID·입력·정답을 SHA-256 식별값으로 바꿔 모델 간 평가 데이터 비교
+# 가중치나 분류 점수가 아니라 사용한 데이터가 같은지 확인하는 용도
 def split_input_hashes(splits):
     return {
         name: hashlib.sha256(
@@ -87,6 +98,7 @@ def make_split_record(splits, dataset_path=DATASET_PATH, seed=RANDOM_SEED):
         "splits": {},
     }
     for name, rows in splits.items():
+        # Counter는 각 라벨이 몇 번 등장했는지 세어 주는 도구
         counts = Counter(row["label"] for row in rows)
         record["splits"][name] = {
             "count": len(rows),
@@ -110,6 +122,7 @@ def read_recorded_splits(record, dataset_path=DATASET_PATH):
     with dataset_path.open(encoding="utf-8-sig", newline="") as file:
         rows = list(csv.DictReader(file))
     validate_rows(rows)
+    # ID를 키로 삼아 저장 기록의 질문을 바로 찾아오기 위한 사전
     by_id = {row["question_id"]: row for row in rows}
     splits = {}
     for name in ["train", "validation", "test"]:
@@ -117,10 +130,12 @@ def read_recorded_splits(record, dataset_path=DATASET_PATH):
         if not ids or any(question_id not in by_id for question_id in ids):
             raise ValueError(f"{name}에 기록된 질문 ID가 CSV와 맞지 않습니다.")
         splits[name] = [by_id[question_id] for question_id in ids]
+    # 복원한 세 분할을 합쳐 중복·누락이 없는지 확인
     all_ids = [row["question_id"] for data in splits.values() for row in data]
     if len(all_ids) != len(set(all_ids)) or set(all_ids) != set(by_id):
         raise ValueError("분할 기록에 중복되거나 빠진 질문이 있습니다.")
     groups = [{row["group_id"] for row in data} for data in splits.values()]
+    # 집합의 &는 공통 원소: train/검증, train/test, 검증/test의 그룹 겹침 확인
     if any(groups[i] & groups[j] for i in range(3) for j in range(i + 1, 3)):
         raise ValueError("같은 group_id가 여러 분할에 들어 있습니다.")
     if make_split_record(splits, dataset_path, record["seed"]) != record:
