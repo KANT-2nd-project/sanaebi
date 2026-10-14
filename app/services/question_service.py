@@ -11,7 +11,6 @@ Answerer = Callable[[str, list[str]], str]
 @dataclass(frozen=True)
 class QuestionResult:
     text: str
-    reason: str = ""
 
 
 def handle_question(
