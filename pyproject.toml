@@ -13,6 +13,7 @@ dependencies = [
     "langchain-core>=1.6.9",
     "langchain-openai>=1.7.1",
     "langchain-ollama>=1.1.0",
+    "gradio==6.30.0",
 ]
 
 [tool.uv]

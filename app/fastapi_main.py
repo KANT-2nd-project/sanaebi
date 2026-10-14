@@ -5,6 +5,8 @@ from fastapi.responses import JSONResponse
 from app.answer_text import LLM_RESPONSE_ERROR, LLMResponseError
 from app.routers import assistant, classification, documents, questions
 from app.schemas import AnswerResponse
+from app.ui.gradio_chat import mount_chat
+from app.ui.headers import ChatHeaders
 
 app = FastAPI()
 app.include_router(questions.router)
@@ -40,3 +42,8 @@ async def handle_llm_response_error(
 ) -> JSONResponse:
     response = AnswerResponse(ok=False, text="", reason=LLM_RESPONSE_ERROR)
     return JSONResponse(status_code=502, content=response.model_dump())
+
+
+# UI composition stays separate from the existing REST contracts.
+app = mount_chat(app)
+app.add_middleware(ChatHeaders)
