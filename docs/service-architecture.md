@@ -3,6 +3,7 @@
 - 기준일: 2026-10-14
 - 상태: 현재 API 동작과 아직 연결되지 않은 목표 설계를 구분한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
+- 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
 - 질문 데이터와 데이터 상태: [요청 처리 데이터 안내](../data/README.md)
 - 프로젝트 설계 참고: [Notion 서비스 처리 기준](https://app.notion.com/p/3f805a3cdadc81d7b909fc71ed78381b)
 
