@@ -19,12 +19,14 @@
 | `POST /regist-docs` | doc 문자열을 검증한 뒤 `app/documents.jsonl`에 JSON Lines 한 줄로 덧붙이고 등록 응답을 반환한다. |
 | HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
 | 질문 처리 분류 | 세 경로의 기준과 데이터가 준비되어 있다. FastAPI 요청 흐름에는 분류기가 연결되어 있지 않다. |
-| 질문 서비스 | 의존 함수를 전달받는 세 라벨 분기와 단위 테스트를 구현했다. 내부 결과는 text이며 /ask 및 실제 분류기·문서 reader·LLM과는 아직 연결하지 않았다. |
+| 질문 서비스 | 세 라벨 분기와 단위 테스트를 구현했다. 내부 결과는 text다. 개발용 reader와 KoELECTRA 후보를 조립한 초안은 있으나 /ask는 미연결이며 답변기는 미구현이다. |
 | 문서 답변 | LangChain, LLM, 문서 근거 확인이 API 흐름에 연결되어 있지 않다. |
 
 앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문을 그대로 반환하는 echo 동작이며 회사 문서를 읽거나 답변을 생성하지 않는다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
 
 등록 문서 한 줄의 형식은 `{"doc":"본문"}`이다. 질문 처리 설계는 이 JSON Lines 파일의 회사 문서 전체를 답변 입력으로 사용한다.
+
+개발 중인 의존성 조립은 루트 `ieum_works.jsonl`의 `title/document` 더미를 명시적으로 사용한다. reader는 제목과 본문을 보존한 문자열 목록을 반환하며 [임시 파일 테스트](../tests/test_document_reader.py)로 형식·오류·원본 보존을 확인한다. 이 더미는 실제 회사 규정이나 등록 API의 저장 자료가 아니다. 두 저장 형식의 통합과 /ask 연결은 아직 수행하지 않았다. 분류 성능 평가와 모델 선정 확인을 위해 서버 연결을 중단했으며, KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
 
 별도 [LangChain 실행기](../sanaebi_assistant.py)와 예시 문서 `ieum_works.jsonl`도 저장소에 있지만 FastAPI 라우터와 연결되지 않았다. 이 실행기의 입력·문서 형식을 현재 HTTP API·JSONL 계약과 동일하게 취급하지 않는다. 이번 서버 리팩터링 검증은 외부 모델 실행이나 답변 품질 평가를 포함하지 않는다.
 

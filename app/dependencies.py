@@ -1,17 +1,26 @@
 from collections.abc import Callable
 from functools import partial
+from pathlib import Path
 
-from app.services.question_service import QuestionResult
+from app.document_store import read_documents
+from app.koelectra_classifier import classify_question
+from app.services.question_service import QuestionResult, handle_question
 
 QuestionHandler = Callable[[str], QuestionResult]
 
+DOCUMENTS_PATH = Path(__file__).resolve().parent.parent / "ieum_works.jsonl"
+
+
+def answer_not_configured(question: str, documents: list[str]) -> str:
+    raise NotImplementedError("답변 생성기를 아직 연결안함")
+
 
 def get_question_handler() -> QuestionHandler:
-    raise NotImplementedError("분류기·문서 reader·답변기를 아직 연결하지 않았습니다.")
+    document_reader = partial(read_documents, DOCUMENTS_PATH)
 
     return partial(
         handle_question,
-        classify=classifier,
+        classify=classify_question,
         read_documents=document_reader,
-        answer=answerer,
+        answer=answer_not_configured,
     )

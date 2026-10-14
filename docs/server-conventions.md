@@ -2,7 +2,7 @@
 
 이 문서는 Sanaebi 서버 코드를 수정하거나 확장할 때의 책임 분리와 검증 기준을 정한다. 서비스가 무엇을 처리하는지는 [서비스 설계](service-architecture.md), 라벨 의미는 [라벨 기준](label-taxonomy.md)을 따른다.
 
-현재 서버는 [앱 진입점](../app/fastapi_main.py), [요청·응답 스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [문서 라우터](../app/routers/documents.py), [JSONL 저장 함수](../app/document_store.py)로 분리되어 있다. [질문 서비스](../app/services/question_service.py)는 의존 함수를 전달받아 분기하는 형태로 구현했고 [단위 테스트](../tests/test_question_service.py)로 검증했다. `/ask`는 아직 이 서비스를 사용하지 않으며 의존성 연결과 실제 분류기·LLM 연동은 미구현이다. 모델 수명주기·추론 동시성과 공개 배포·권한·운영 구성은 후속 작업으로 남긴다. 이 규약 작성만으로 해당 기능을 구현하거나 운영 준비를 완료한 것으로 처리하지 않는다.
+현재 서버는 [앱 진입점](../app/fastapi_main.py), [요청·응답 스키마](../app/schemas.py), [질문 라우터](../app/routers/questions.py), [문서 라우터](../app/routers/documents.py), [JSONL 저장 함수](../app/document_store.py)로 분리되어 있다. [질문 서비스](../app/services/question_service.py)는 의존 함수를 전달받아 분기하는 형태로 구현했고 [단위 테스트](../tests/test_question_service.py)로 검증했다. `/ask`는 아직 이 서비스를 사용하지 않는다. `dependencies.py`에는 KoELECTRA 후보와 개발용 문서 reader를 조립한 초안이 있지만 답변기는 미구현이다. 서버 연결은 분류 성능 평가·모델 선정 확인까지 중단한 상태다. 모델 수명주기·추론 동시성과 공개 배포·권한·운영 구성은 후속 작업으로 남긴다. 이 규약 작성만으로 해당 기능을 구현하거나 운영 준비를 완료한 것으로 처리하지 않는다.
 
 분류 확인용 `POST /classify/koelectra-base`는 [분류 라우터](../app/routers/classification.py)에서
 요청을 전달하고, [KoELECTRA 연동 함수](../app/koelectra_classifier.py)에서 로컬 저장 모델로 예측한다.
@@ -33,11 +33,13 @@ app/
 ├── __init__.py
 ├── fastapi_main.py           # 앱 생성·라우터 등록·공통 HTTP 오류 처리
 ├── schemas.py                # 공개 HTTP 요청·응답 모델
-├── dependencies.py           # 예정: 구현 선택·의존성 조립·서비스 제공
+├── dependencies.py           # 조립 초안: HTTP 미연결, 답변기 미구현
 ├── answer_text.py            # 생성 결과의 본문 검증·추출
-├── document_store.py         # JSONL append; reader 추가 예정
+├── koelectra_classifier.py   # 기존 분류 확인용 로컬 추론, 최종 선정과 별개
+├── document_store.py         # doc append와 개발용 title/document reader
 ├── routers/
 │   ├── __init__.py
+│   ├── classification.py     # /classify/koelectra-base 분류 확인
 │   ├── questions.py          # /ask 요청 전달·HTTP 응답 변환
 │   └── documents.py          # /regist-docs 입력·저장 호출·응답
 ├── services/
@@ -67,6 +69,8 @@ app/
 
 `dependencies.py`는 분류기·문서 reader·답변기를 선택하여 질문 서비스에 전달하고, 라우터가 `Depends`로 받을 질문 처리 함수를 제공한다. 서비스 내부에는 FastAPI 의존성 선언을 넣지 않는다. 함수와 `functools.partial`로 시작할 수 있으며, 테스트에서는 제공 함수를 override한다. Depends의 사용 자체가 프로세스 전체의 모델 단일 로딩을 보장하지 않으므로 실제 모델 연결 때 로딩 시점도 정한다.
 
+현재 조립 초안은 `ieum_works.jsonl`을 개발용 문서 경로로 명시한다. KoELECTRA 참조는 최종 모델 선정의 근거가 아니다. 반환 타입 `str`과 서비스의 `ClassificationLabel` 사이 검증·타입 경계는 아직 해결하지 않았다. 재개 시 허용 라벨 검증을 마련하고 실제 모델 아티팩트·답변기·HTTP 예외 변환을 확인한다. 미구현 답변 함수는 `NotImplementedError`를 발생시키므로 현재 조립을 운영 경로에 연결하지 않는다.
+
 ### 단계별 연결과 완료 기준
 
 | 단계 | 구현 범위 | 확인할 결과 |
@@ -77,7 +81,7 @@ app/
 | 4. 문서·생성 연결 | JSONL reader와 답변 어댑터 | 기존 데이터 보존, 문서·생성 형식 정합성, 자료 부족·입력 한도·실패 처리 |
 | 5. 종단 검증 | 실제 예측 라벨부터 최종 답변까지 | 분류 오류와 생성 오류 분리, 정답 라벨 고정 평가와 구분 |
 
-각 단계의 미구현 부분은 완료로 표시하지 않는다. 구조만 옮기는 변경과 echo를 실제 질문 처리로 바꾸는 기능 변경을 구분하고, 해당 단계에서 회귀 테스트를 갱신한다. 문서 reader는 기존 `{"doc":"본문"}` 형식을 읽으며 루트 예시 문서로 자동 대체하지 않는다. 빈 문서와 읽기 실패를 구분한다.
+각 단계의 미구현 부분은 완료로 표시하지 않는다. 구조만 옮기는 변경과 echo를 실제 질문 처리로 바꾸는 기능 변경을 구분하고, 해당 단계에서 회귀 테스트를 갱신한다. 현재 `read_documents(path)`는 개발용 `{"title":"제목","document":"본문"}` JSONL을 읽고 제목·본문 문자열 목록을 반환한다. 빈 줄은 건너뛰고 빈 파일은 빈 목록으로 반환하지만 파일 부재·잘못된 JSON·필드 타입·공백 필드는 오류로 처리한다. 등록 API의 `{"doc":"본문"}` 저장 형식과는 별개이며, 등록 문서까지 답변에 사용하는 통합 reader는 후속 작업이다. 설정된 경로가 없을 때 더미로 자동 대체하지 않는다.
 
 `document_store.append_document(path, text)`는 전달받은 본문을 JSONL 한 줄로 추가한다. 앞뒤 공백 제거와 성공 응답은 문서 라우터가 담당하고, DOCUMENT_FILE도 문서 라우터에서 기존 `app/documents.jsonl`로 지정한다. 파일을 옮길 때 `__file__`의 위치가 바뀌어 실제 데이터 경로까지 바뀌지 않도록 확인한다. 저장 위치 이전은 별도 요구와 데이터 보존 절차가 있을 때만 수행한다.
 
