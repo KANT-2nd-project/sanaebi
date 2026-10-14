@@ -18,9 +18,9 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from threadpoolctl import threadpool_limits
 
 if __package__:
-    from .document_split import document_input, read_recorded_splits
+    from .document_split import document_input, read_recorded_splits, split_input_hashes
 else:
-    from document_split import document_input, read_recorded_splits
+    from document_split import document_input, read_recorded_splits, split_input_hashes
 
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT.parent / "data" / "questions"
@@ -233,6 +233,11 @@ def write_report(kind, report):
         body += (
             "<section><h2>문서 분할 기록</h2>"
             + f"<p>시드: {split_record['seed']} · 입력: 제목 + 줄바꿈 + 본문</p>"
+            + (
+                "<p>아래는 비교용 공통 분할 수량입니다. Jev는 train 문서를 학습하거나 API에 전달하지 않습니다.</p>"
+                if is_api
+                else ""
+            )
             + table(
                 ["라벨", "학습", "검증", "테스트"],
                 [
@@ -500,18 +505,10 @@ def main():
     if split_record:
         # 모델이 학습할 때 기록한 ID로 분할을 복원해 동일한 문서로 평가
         rows = read_recorded_splits(split_record)
+        data_hashes = split_input_hashes(rows)
         for data in rows.values():
             for row in data:
                 row["text"] = document_input(row)
-        data_hashes = {
-            name: hashlib.sha256(
-                json.dumps(
-                    [(row["document_id"], row["text"], row["label"]) for row in data],
-                    ensure_ascii=False,
-                ).encode("utf-8")
-            ).hexdigest()
-            for name, data in rows.items()
-        }
     else:
         # 이전 질문 분류 모델의 보고서도 계속 확인 가능
         rows = {split: read_rows(split) for split in ["train", "validation", "test"]}

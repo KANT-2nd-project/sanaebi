@@ -2,6 +2,7 @@
 
 import csv
 import hashlib
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -14,6 +15,22 @@ LABELS = ["HR", "IT", "FINANCE_PROCUREMENT", "WORKPLACE", "SECURITY_LEGAL", "COM
 def document_input(row):
     # 학습과 보고서 평가에서 제목·본문을 항상 같은 방식으로 연결
     return f"{row['title'].strip()}\n{row['text'].strip()}"
+
+
+def split_input_hashes(splits):
+    # 문서 ID·실제 모델 입력·정답이 같으면 모든 모델에서 같은 식별값 생성
+    return {
+        name: hashlib.sha256(
+            json.dumps(
+                [
+                    (row["document_id"], document_input(row), row["label"])
+                    for row in rows
+                ],
+                ensure_ascii=False,
+            ).encode("utf-8")
+        ).hexdigest()
+        for name, rows in splits.items()
+    }
 
 
 def split_documents(document_rows, seed=RANDOM_SEED):
