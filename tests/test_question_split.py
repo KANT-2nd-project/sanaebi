@@ -1,6 +1,5 @@
 import csv
 import json
-import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -9,7 +8,8 @@ from unittest.mock import patch
 import joblib
 from sklearn.dummy import DummyClassifier
 
-from classification import model_report, question_split
+from classification import dataset as question_split
+from classification.cli.evaluate import evaluate_saved_model
 
 
 # 모델의 test 점수를 구하는 코드가 아니라 분할·보고서 코드의 동작 검사
@@ -81,18 +81,14 @@ class QuestionSplitTests(unittest.TestCase):
                 json.dumps({"labels": question_split.LABELS, "data_split": record}),
                 encoding="utf-8",
             )
-            # patch는 검사 중에만 저장 경로·명령 인수를 임시 값으로 바꿈
-            with (
-                patch.object(model_report, "ROOT", root),
-                patch.object(model_report, "RESULT_DIR", root / "result"),
-                patch.object(sys, "argv", ["model_report.py", "tfidf_lr"]),
-                patch.object(
-                    question_split,
-                    "split_questions",
-                    side_effect=AssertionError("보고서 평가 시 재분할하면 안 됩니다."),
-                ),
+            with patch.object(
+                question_split,
+                "split_questions",
+                side_effect=AssertionError("보고서 평가 시 재분할하면 안 됩니다."),
             ):
-                model_report.main()
+                evaluate_saved_model(
+                    "tfidf_lr", model_dir=root / "model", result_dir=root / "result"
+                )
             directory = root / "result" / "tf-idf"
             metrics = json.loads(
                 (directory / "metrics.json").read_text(encoding="utf-8")

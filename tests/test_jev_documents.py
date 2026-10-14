@@ -11,14 +11,17 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-from classification import model_report, test_jev
-from classification.question_split import LABELS, question_input, split_input_hashes
+from classification import test_jev as jev_cli
+from classification.cli import evaluate as jev_evaluation
+from classification.dataset import LABELS, question_input, split_input_hashes
+from classification.models import jev as jev_client
+from classification.models import jev_prompt
 
 
 class JevQuestionTests(unittest.TestCase):
     def test_preview_needs_no_api_key_or_requests(self):
-        script = Path(test_jev.__file__)
-        splits, _ = test_jev.prepare_question_data()
+        script = Path(jev_cli.__file__)
+        splits = jev_evaluation.prepare_jev_data().rows
         expected_calls = len(splits["validation"]) + len(splits["test"])
         self.assertEqual(expected_calls, 263)
         with (
@@ -41,21 +44,22 @@ class JevQuestionTests(unittest.TestCase):
         with (
             patch.dict(os.environ, {"TYPESAFE_API_KEY": "mock-key"}),
             patch.object(
-                test_jev,
+                jev_client,
                 "urlopen",
                 return_value=io.BytesIO(json.dumps(answer).encode()),
             ) as request,
         ):
-            test_jev.request_classification(text)
+            jev_client.request_classification(text)
         payload = json.loads(request.call_args.args[0].data)
         self.assertEqual(payload["state"], text)
         self.assertNotIn("label", payload)
         self.assertEqual(
-            payload["questions"]["category"]["instructions"], test_jev.INSTRUCTIONS
+            payload["questions"]["category"]["instructions"],
+            jev_prompt.INSTRUCTIONS,
         )
         self.assertEqual(list(payload["questions"]["category"]["criteria"]), LABELS)
         self.assertEqual(
-            payload["questions"]["category"]["criteria"], test_jev.CATEGORIES
+            payload["questions"]["category"]["criteria"], jev_prompt.CATEGORIES
         )
         for criteria in payload["questions"]["category"]["criteria"].values():
             self.assertEqual(
@@ -64,27 +68,28 @@ class JevQuestionTests(unittest.TestCase):
             self.assertEqual(len(criteria["examples"]), 4)
 
     def test_prompt_examples_are_train_only_and_reject_validation_ids(self):
-        splits, _ = test_jev.prepare_question_data()
+        splits = jev_evaluation.prepare_jev_data().rows
         train_ids = {row["question_id"] for row in splits["train"]}
         example_ids = {
             question_id
-            for ids in test_jev.EXAMPLE_QUESTION_IDS.values()
+            for ids in jev_prompt.EXAMPLE_QUESTION_IDS.values()
             for question_id in ids
         }
         self.assertEqual(len(example_ids), 12)
         self.assertTrue(example_ids <= train_ids)
-        changed = copy.deepcopy(test_jev.EXAMPLE_QUESTION_IDS)
+        changed = copy.deepcopy(jev_prompt.EXAMPLE_QUESTION_IDS)
         changed["SEARCH_KNOWLEDGE"][0] = splits["validation"][0]["question_id"]
         with (
-            patch.object(test_jev, "EXAMPLE_QUESTION_IDS", changed),
+            patch.object(jev_prompt, "EXAMPLE_QUESTION_IDS", changed),
             self.assertRaisesRegex(ValueError, "train"),
         ):
-            test_jev.prepare_question_data()
+            jev_evaluation.prepare_jev_data()
 
     def test_evaluation_only_sends_validation_and_test_and_saves_three_probabilities(
         self,
     ):
-        splits, record = test_jev.prepare_question_data()
+        data = jev_evaluation.prepare_jev_data()
+        splits, record = data.rows, data.record
         expected_rows = splits["validation"] + splits["test"]
         expected_inputs = [question_input(row) for row in expected_rows]
         labels_by_input = {question_input(row): row["label"] for row in expected_rows}
@@ -110,13 +115,12 @@ class JevQuestionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             with (
                 patch.dict(os.environ, {"TYPESAFE_API_KEY": "mock-key"}),
-                patch.object(model_report, "RESULT_DIR", Path(temp)),
                 patch.object(
-                    test_jev, "request_classification", side_effect=fake_request
+                    jev_client, "request_classification", side_effect=fake_request
                 ),
                 redirect_stdout(io.StringIO()),
             ):
-                test_jev.evaluate_csv()
+                jev_evaluation.evaluate_jev(result_dir=Path(temp))
             self.assertEqual(calls, expected_inputs)
             self.assertFalse(
                 set(calls) & {question_input(row) for row in splits["train"]}
@@ -148,7 +152,8 @@ class JevQuestionTests(unittest.TestCase):
             self.assertEqual(metrics["settings"]["prompt_examples_count"], 12)
             self.assertEqual(metrics["settings"]["prompt_example_source"], "train")
             self.assertEqual(
-                metrics["settings"]["prompt_example_ids"], test_jev.EXAMPLE_QUESTION_IDS
+                metrics["settings"]["prompt_example_ids"],
+                jev_prompt.EXAMPLE_QUESTION_IDS,
             )
             self.assertEqual(len(metrics["test"]["confusion_matrix"]), 3)
             self.assertEqual(len(predictions), len(expected_rows))

@@ -8,11 +8,15 @@ from pathlib import Path
 
 from sklearn.model_selection import GroupShuffleSplit
 
+from contracts.classification import LABELS as CLASSIFICATION_LABELS
+
+from .types import DEFAULT_SEED, DatasetSplits
+
 DATASET_PATH = Path(__file__).resolve().parents[1] / "data" / "dataset.csv"
 # 입력 순서·데이터·알고리즘도 같을 때 고정 시드로 같은 분할을 재현
-RANDOM_SEED = 20261013
-# 모든 학습 코드가 같은 라벨 순서를 가져오도록 한 곳에서 관리
-LABELS = ["SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"]
+RANDOM_SEED = DEFAULT_SEED
+# 기존 학습·보고서의 리스트 계약을 유지하고 값·순서는 공통 계약에서 가져온다.
+LABELS = list(CLASSIFICATION_LABELS)
 
 
 def question_input(row):
@@ -141,3 +145,28 @@ def read_recorded_splits(record, dataset_path=DATASET_PATH):
     if make_split_record(splits, dataset_path, record["seed"]) != record:
         raise ValueError("분할 수량·라벨·설정이 저장된 기록과 맞지 않습니다.")
     return splits
+
+
+def prepare_data(dataset_path=DATASET_PATH, seed=RANDOM_SEED):
+    with dataset_path.open(encoding="utf-8-sig", newline="") as file:
+        rows = sorted(csv.DictReader(file), key=lambda row: row["question_id"])
+    splits = split_questions(rows, seed=seed)
+    return DatasetSplits(
+        splits,
+        make_split_record(splits, dataset_path, seed=seed),
+        split_input_hashes(splits),
+    )
+
+
+def texts_and_labels(rows):
+    return [question_input(row) for row in rows], [row["label"] for row in rows]
+
+
+def texts_and_ids(rows):
+    texts, labels = texts_and_labels(rows)
+    return texts, [LABELS.index(label) for label in labels]
+
+
+def restore_data(record, dataset_path=DATASET_PATH):
+    rows = read_recorded_splits(record, dataset_path)
+    return DatasetSplits(rows, record, split_input_hashes(rows))
