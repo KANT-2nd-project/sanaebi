@@ -6,6 +6,7 @@ export type RouteTransition =
 /** Decides whether a URL change may load or reset the active document editor. */
 export class DocumentRouteState {
   private currentUrl: string;
+  private routeGeneration = 0;
   private approvedUrl: string | null = null;
   private blockedUrl: string | null = null;
 
@@ -17,6 +18,10 @@ export class DocumentRouteState {
     return this.currentUrl;
   }
 
+  get generation() {
+    return this.routeGeneration;
+  }
+
   approve(url: string) {
     this.approvedUrl = url;
   }
@@ -26,6 +31,7 @@ export class DocumentRouteState {
     state: { dirty: boolean; pendingWrite: boolean; confirmDiscard: () => boolean },
   ): RouteTransition {
     if (this.approvedUrl === url) {
+      if (this.currentUrl !== url) this.routeGeneration += 1;
       this.currentUrl = url;
       this.approvedUrl = null;
       this.blockedUrl = null;
@@ -46,6 +52,7 @@ export class DocumentRouteState {
       this.blockedUrl = url;
       return { kind: "blocked", reason: "unsaved-changes", restoreUrl: this.currentUrl };
     }
+    this.routeGeneration += 1;
     this.currentUrl = url;
     this.blockedUrl = null;
     return { kind: "accepted" };

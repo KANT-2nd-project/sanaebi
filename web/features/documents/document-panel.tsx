@@ -91,7 +91,9 @@ export function DocumentPanel() {
   const dirtyRef = useRef(false);
   const resourceKey = selectedId ? `document:${selectedId}` : isNew ? "new-document" : "document-list";
   const editorDirty = editorOpen && isDocumentFormDirty(form, baselineForm);
-  useEffect(() => { dirtyRef.current = editorDirty; }, [editorDirty]);
+  useEffect(() => {
+    if (routeState.canLoad(routeUrl)) dirtyRef.current = editorDirty;
+  }, [editorDirty, routeState, routeUrl]);
 
   const setCurrentWrite = useCallback((value: PendingWrite | null) => {
     pendingWriteRef.current = value;
@@ -115,13 +117,19 @@ export function DocumentPanel() {
   }
 
   const handleRouteChange = useCallback((url: string) => {
+    const previousUrl = routeState.acceptedUrl;
     const transition = routeState.observe(url, {
-      dirty: dirtyRef.current,
+      dirty: dirtyRef.current || Boolean(pendingWriteRef.current),
       pendingWrite: requestInFlight.current,
       confirmDiscard: () => window.confirm("저장하지 않은 문서 내용이 사라질 수 있습니다. 이동할까요?"),
     });
+    if (transition.kind === "accepted" && previousUrl !== url) {
+      dirtyRef.current = false;
+      setCurrentWrite(null);
+      setLatestConflict(null);
+    }
     if (transition.kind === "blocked") router.replace(transition.restoreUrl);
-  }, [routeState, router]);
+  }, [routeState, router, setCurrentWrite]);
 
   useEffect(() => {
     handleRouteChange(routeUrl);
@@ -167,7 +175,11 @@ export function DocumentPanel() {
   // Keep the editor draft aligned with the static route's client-side query state.
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    if (!routeState.canLoad(routeUrl) || loadedResourceKey.current === resourceKey) return;
+    if (!routeState.canLoad(routeUrl)) return;
+    if (loadedResourceKey.current === resourceKey) {
+      setDetailBusy(false);
+      return;
+    }
     if (isNew) {
       loadedResourceKey.current = resourceKey;
       const empty = emptyDocumentForm();
@@ -231,10 +243,14 @@ export function DocumentPanel() {
   }
 
   async function fetchLatestConflict(documentId: string) {
+    const generation = routeState.generation;
+    const originRoute = routeUrl;
     try {
       const current = await getDocument(documentId);
+      if (generation !== routeState.generation || !routeState.canLoad(originRoute) || current.id !== documentId) return;
       setLatestConflict(current);
     } catch {
+      if (generation !== routeState.generation || !routeState.canLoad(originRoute)) return;
       setWriteFailure(current => `${current} 최신 문서도 확인하지 못했습니다. 다시 불러오기를 눌러주세요.`);
     }
   }
@@ -352,7 +368,7 @@ export function DocumentPanel() {
   }
 
   function acceptLatest() {
-    if (!latestConflict) return;
+    if (!latestConflict || !detail || latestConflict.id !== detail.id || !routeState.canLoad(routeUrl)) return;
     if (editorDirty && !window.confirm("최신 문서로 바꾸면 지금 작성 중인 내용이 사라집니다. 계속할까요?")) return;
     const nextForm = formFromRevision(latestConflict.draft);
     setDetail(latestConflict);

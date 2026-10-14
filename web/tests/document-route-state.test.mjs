@@ -31,3 +31,18 @@ test("저장 중에는 확인 없이 route 변경을 막고 수동 이동은 사
   }), { kind: "accepted" });
   assert.equal(route.canLoad("/admin/documents"), true);
 });
+
+test("승인된 route가 바뀌면 이전 문서의 지연 응답은 세대 검사를 통과하지 못한다", () => {
+  const route = new DocumentRouteState("/admin/documents?id=A");
+  const requestGeneration = route.generation;
+
+  assert.deepEqual(route.observe("/admin/documents?id=B", {
+    dirty: false, pendingWrite: false, confirmDiscard: () => { throw new Error("no discard prompt expected"); },
+  }), { kind: "accepted" });
+  assert.notEqual(route.generation, requestGeneration);
+
+  assert.deepEqual(route.observe("/admin/documents?id=A", {
+    dirty: false, pendingWrite: false, confirmDiscard: () => { throw new Error("no discard prompt expected"); },
+  }), { kind: "accepted" });
+  assert.notEqual(route.generation, requestGeneration);
+});
