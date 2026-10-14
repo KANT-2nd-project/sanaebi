@@ -39,7 +39,11 @@ def example_splits():
         ]
         for split in ("train", "validation", "test")
     }
-    return DatasetSplits(rows, {"seed": 42, "input_fields": ["question"]}, {})
+    return DatasetSplits(
+        rows,
+        {"seed": 42, "input_fields": ["question"], "dataset_sha256": "fixture"},
+        {},
+    )
 
 
 class DependencyTests(unittest.TestCase):
@@ -51,6 +55,7 @@ class DependencyTests(unittest.TestCase):
             parts = relative.parts
             if parts[0] in {"cli", "experiments", "legacy"} or path.stem in {
                 "storage",
+                "tracking",
                 "presets",
             }:
                 continue
@@ -245,7 +250,7 @@ class WorkflowTests(unittest.TestCase):
             ),
             patch.object(artifacts, "save_json") as save_json,
             patch("classification.cli.evaluate.evaluate_current") as report,
-            self.assertRaisesRegex(OSError, "disk full"),
+            self.assertRaisesRegex(RuntimeError, "disk full"),
         ):
             train_cli.run_training(tfidf.TfidfConfig(), ["--artifact-root", temp])
         save_json.assert_not_called()

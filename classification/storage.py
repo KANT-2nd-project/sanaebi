@@ -1,19 +1,13 @@
-"""로컬 모델 묶음의 무결성·재사용 조건·잠금·복구 가능한 교체.
-
-학습이나 모델 로딩은 하지 않는다. 완료 manifest는 호출자가 재로딩 검증 후 쓴다.
-"""
+"""로컬 실험 저장: 최소 메타데이터, 잠금, 검증 후 교체와 예외 복원."""
 
 import hashlib
 import json
 import os
 import platform
 import shutil
-import subprocess
 from contextlib import contextmanager
-from dataclasses import asdict
 from datetime import UTC, datetime
 from importlib.metadata import version
-from pathlib import Path
 from uuid import uuid4
 
 from .artifacts import ROOT, read_json
@@ -25,14 +19,6 @@ def digest(value):
     return hashlib.sha256(
         json.dumps(value, sort_keys=True, ensure_ascii=False).encode()
     ).hexdigest()
-
-
-def file_hash(path):
-    h = hashlib.sha256()
-    with path.open("rb") as file:
-        for chunk in iter(lambda: file.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
 
 
 def atomic_text(path, content):
@@ -54,196 +40,71 @@ def atomic_json(path, value):
 
 
 def environment():
-    import torch
-
-    cpu_model = platform.processor()
-    if not cpu_model:
-        try:
-            cpu_model = next(
-                line.split(":", 1)[1].strip()
-                for line in Path("/proc/cpuinfo").read_text().splitlines()
-                if line.startswith("model name")
-            )
-        except (OSError, StopIteration):
-            cpu_model = None
-    driver = None
-    if torch.cuda.is_available():
-        try:
-            result = subprocess.run(
-                ["nvidia-smi", "--query-gpu=driver_version", "--format=csv,noheader"],
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            driver = result.stdout.strip() if result.returncode == 0 else None
-        except OSError:
-            pass  # 드라이버 CLI가 없는 환경은 미확인으로 기록한다.
+    """실험 해석용 기록이며 재사용 여부를 결정하지 않는다."""
     return {
         "python": platform.python_version(),
         "platform": platform.platform(),
-        "machine": platform.machine(),
-        "processor": cpu_model,
-        "logical_cpus": os.cpu_count(),
-        "thread_environment": {
-            key: os.environ.get(key)
-            for key in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "CUBLAS_WORKSPACE_CONFIG")
-        },
-        "matmul_precision": torch.get_float32_matmul_precision(),
-        "cuda_matmul_tf32": torch.backends.cuda.matmul.allow_tf32,
         "libraries": {
             name: version(name)
-            for name in (
-                "torch",
-                "transformers",
-                "scikit-learn",
-                "numpy",
-                "joblib",
-                "scipy",
-                "tokenizers",
-                "safetensors",
-                "huggingface-hub",
-            )
+            for name in ("torch", "transformers", "scikit-learn", "numpy", "mlflow")
         },
-        "device": "cuda" if torch.cuda.is_available() else "cpu",
-        "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
-        "cuda": torch.version.cuda,
-        "cudnn": torch.backends.cudnn.version(),
-        "driver": driver,
-        "deterministic": torch.are_deterministic_algorithms_enabled(),
-        "cudnn_deterministic": torch.backends.cudnn.deterministic,
-        "cudnn_benchmark": torch.backends.cudnn.benchmark,
     }
 
 
-def request_conditions(config, data):
-    # 출처 commit/lock은 별도 기록한다. UI/HTML 변경은 학습 조건이 아니다.
-    sources = [
-        "dataset.py",
-        "types.py",
-        "workflows/train.py",
-        "evaluation/metrics.py",
-        "models/transformer.py" if hasattr(config, "model_name") else "models/tfidf.py",
-    ]
-    runtime = environment()
-    if not hasattr(config, "model_name"):
-        runtime["device"] = "cpu"
-    return json.loads(
-        json.dumps(
-            {
-                "config": asdict(config),
-                "data_split": data.record,
-                "source_hashes": {name: file_hash(ROOT / name) for name in sources},
-                "labels_hash": file_hash(ROOT.parent / "contracts/classification.py"),
-                "environment": runtime,
-            }
-        )
-    )
-
-
-def provenance(kind, **extra):
-    result = subprocess.run(
-        ["git", "-C", str(ROOT.parent), "rev-parse", "HEAD"],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    return {
-        "kind": kind,
-        "recorded_at": datetime.now(UTC).isoformat(),
-        "commit_at_recording": result.stdout.strip() or None,
-        "lock_hash_at_recording": file_hash(ROOT.parent / "uv.lock"),
-        **extra,
-    }
-
-
-def complete_manifest(bundle, name, conditions, origin):
-    files = {
-        str(p.relative_to(bundle)): file_hash(p)
-        for p in sorted(bundle.rglob("*"))
-        if p.is_file() and p.name != "manifest.json"
-    }
+def complete_manifest(bundle, name, *, model_id, training_run_id):
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
         "status": "complete",
         "name": name,
-        "files": files,
-        "model_id": digest(files),
-        "conditions": conditions,
-        "fingerprint": digest(conditions),
-        "provenance": origin,
+        "created_at": datetime.now(UTC).isoformat(),
+        "model_id": model_id,
+        "training_run_id": training_run_id,
     }
     atomic_json(bundle / "manifest.json", manifest)
     return manifest
 
 
 def validate_bundle(bundle, name):
+    """v1도 변경 없이 읽는다. 파일 존재·메타데이터만 검사하며 가중치를 해싱하지 않는다."""
     try:
         manifest = read_json(bundle / "manifest.json")
-        if not isinstance(manifest, dict):
-            raise TypeError("manifest는 JSON 객체여야 합니다.")
         if (
-            manifest.get("schema_version") != 1
+            not isinstance(manifest, dict)
+            or manifest.get("schema_version") not in (1, 2)
             or manifest.get("status") != "complete"
             or manifest.get("name") != name
+            or not isinstance(manifest.get("model_id"), str)
+            or not manifest["model_id"]
         ):
-            raise ValueError("완료 manifest가 아닙니다.")
-        if manifest.get("provenance", {}).get("kind") not in {"trained", "adopted"}:
-            raise ValueError("학습·채택 출처가 누락됐습니다.")
-        files = manifest["files"]
-        if not isinstance(files, dict) or not isinstance(
-            manifest.get("conditions"), dict
+            raise ValueError("완료된 모델 메타데이터가 아닙니다.")
+        if manifest["schema_version"] == 2 and (
+            not isinstance(manifest.get("training_run_id"), str)
+            or not manifest["training_run_id"]
+            or not isinstance(manifest.get("created_at"), str)
         ):
-            raise TypeError("파일 목록 또는 재사용 조건 형식이 잘못됐습니다.")
-        actual = {
-            str(p.relative_to(bundle))
-            for p in bundle.rglob("*")
-            if p.is_file() and p != bundle / "manifest.json"
-        }
-        if actual != set(files):
-            raise ValueError("manifest와 실제 파일 목록이 다릅니다.")
-        required = (
-            {"training_summary.json", "model.joblib"}
-            if name == "tfidf"
-            else {"training_summary.json", "config.json", "tokenizer_config.json"}
-        )
-        if not required <= files.keys():
-            raise ValueError("필수 파일 목록이 누락됐습니다.")
-        if name != "tfidf" and (
-            not any(k.endswith(".safetensors") for k in files)
-            or not any(
-                k in files
-                for k in (
+            raise ValueError("학습 run 또는 생성 시각이 누락됐습니다.")
+        required = {"training_summary.json"}
+        if name == "tfidf":
+            required.add("model.joblib")
+        else:
+            required.update(("config.json", "tokenizer_config.json"))
+            if not any(bundle.glob("*.safetensors")) or not any(
+                (bundle / filename).is_file()
+                for filename in (
                     "tokenizer.json",
                     "vocab.txt",
                     "spiece.model",
                     "tokenizer.model",
                 )
-            )
-        ):
-            raise ValueError("가중치 또는 토크나이저가 누락됐습니다.")
-        for relative, expected in files.items():
-            path = Path(relative)
-            if (
-                path.is_absolute()
-                or ".." in path.parts
-                or not (bundle / path).is_file()
-                or file_hash(bundle / path) != expected
             ):
-                raise ValueError(f"파일 누락 또는 해시 불일치: {relative}")
-        if (
-            digest(files) != manifest["model_id"]
-            or digest(manifest["conditions"]) != manifest["fingerprint"]
-        ):
-            raise ValueError("manifest 해시 불일치")
+                raise ValueError("가중치 또는 토크나이저가 누락됐습니다.")
+        if any(not (bundle / filename).is_file() for filename in required):
+            raise ValueError("필수 모델 파일이 누락됐습니다.")
+        if not isinstance(read_json(bundle / "training_summary.json"), dict):
+            raise TypeError("학습 요약은 JSON 객체여야 합니다.")
         return manifest
-    except (
-        OSError,
-        KeyError,
-        TypeError,
-        AttributeError,
-        json.JSONDecodeError,
-    ) as error:
-        raise ValueError(f"모델 묶음이 불완전합니다: {bundle}: {error}") from error
+    except (OSError, TypeError, json.JSONDecodeError) as error:
+        raise ValueError(f"모델을 읽을 수 없습니다: {bundle}: {error}") from error
 
 
 @contextmanager
@@ -282,62 +143,62 @@ def lock(root, name):
                     fcntl.flock(file.fileno(), fcntl.LOCK_UN)
 
 
+def check_pending(root, name):
+    """중단 흔적은 자동 수정하지 않는다. 파일을 보존하고 수동 확인을 요구한다."""
+    staging = root / ".staging"
+    candidates = []
+    if staging.exists():
+        for path in staging.iterdir():
+            if path.name.startswith(
+                (name + "-", "eval-" + name + "-", "previous-")
+            ) or path.name in {
+                f"models-{name}.json",
+                f"results-{name}.json",
+                f"results-{name}",
+            }:
+                candidates.append(path)
+    if candidates:
+        raise ValueError(
+            "중단된 저장 흔적이 있습니다: "
+            + ", ".join(str(p) for p in candidates)
+            + ". 실행 중인 작업이 없는지 확인하고, 기존 모델과 .backup을 확인한 뒤 "
+            "보존할 폴더를 별도 위치로 옮기세요. 자동 복구·삭제하지 않습니다."
+        )
+
+
 def stage(root, name):
     path = root / ".staging" / (name + "-" + uuid4().hex)
     path.mkdir(parents=True)
     return path
 
 
-def recover(root, category, name):
-    """호출자는 모델 잠금을 보유한다. journal이 있으면 완료하거나 구형 묶음을 복원한다."""
-    journal = root / ".staging" / f"{category}-{name}.json"
-    if not journal.exists():
-        return
-    record = read_json(journal)
-    target, temporary, old = (
-        root / record[key] for key in ("target", "temporary", "old")
-    )
-    if any(
-        not path.resolve().is_relative_to(root.resolve())
-        for path in (target, temporary, old)
-    ):
-        raise ValueError("교체 기록의 경로가 저장소 밖을 가리킵니다.")
-    backup = root / ".backup" / category / name
-    if target.exists() and not temporary.exists():  # 새 묶음 게시 완료
-        if old.exists() and record.get("backup_old", True):
-            backup.parent.mkdir(parents=True, exist_ok=True)
-            if backup.exists():
-                shutil.rmtree(backup)
-            os.replace(old, backup)
-    elif old.exists():  # 구형 묶음 이동 후 중단
-        os.replace(old, target)
-    journal.unlink()
-
-
-def publish(root, category, name, temporary, *, backup_old=True):
-    """검증된 임시 묶음을 교체. 실패 시 journal로 이전 상태 복구."""
+def publish(root, category, name, temporary):
+    """검증된 묶음을 교체한다. 프로세스 내 실패는 복원하며 강제 종료는 수동 복구한다."""
     target = root / category / name
     target.parent.mkdir(parents=True, exist_ok=True)
-    old = root / ".staging" / ("previous-" + uuid4().hex)
-    journal = root / ".staging" / f"{category}-{name}.json"
-    atomic_json(
-        journal,
-        {
-            "backup_old": backup_old,
-            **{
-                key: str(path.relative_to(root))
-                for key, path in [
-                    ("target", target),
-                    ("temporary", temporary),
-                    ("old", old),
-                ]
-            },
-        },
+    old = (
+        root
+        / ".staging"
+        / ("previous-" + category + "-" + name.replace("/", "-") + "-" + uuid4().hex)
     )
     try:
         if target.exists():
             os.replace(target, old)
         os.replace(temporary, target)
-    finally:
-        recover(root, category, name)
+    except OSError:
+        if old.exists():
+            os.replace(old, target)
+        raise
+    if old.exists():
+        backup = root / ".backup" / category / name
+        try:
+            backup.parent.mkdir(parents=True, exist_ok=True)
+            if backup.exists():
+                shutil.rmtree(backup)
+            os.replace(old, backup)
+        except OSError as error:
+            raise RuntimeError(
+                f"새 묶음 저장 완료: {target}. 직전 백업 정리 실패: {old}. "
+                "자동 재실행하지 말고 두 폴더를 확인하세요."
+            ) from error
     return target

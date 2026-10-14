@@ -1,12 +1,13 @@
 """Jev 단일 질문·preview·API 평가 조립. 기존 호출 계약을 보존한다."""
 
 import argparse
+import shutil
 from pathlib import Path
+from uuid import uuid4
 
 from contracts.classification import LABELS
 
-from .. import artifacts, dataset
-from ..legacy.evaluate import render_reports
+from .. import artifacts, dataset, storage, tracking
 from ..models import jev, jev_prompt
 from ..types import MeasurementPolicy
 from ..workflows.evaluate import evaluate_legacy_questions as evaluate_questions
@@ -37,44 +38,86 @@ def prepare_jev_data(dataset_path=dataset.DATASET_PATH):
 
 
 def evaluate_jev(
-    *, dataset_path=dataset.DATASET_PATH, result_dir=artifacts.RESULT_DIR, predict=None
+    *,
+    dataset_path=dataset.DATASET_PATH,
+    result_dir=None,
+    artifact_root=storage.DEFAULT_ROOT,
+    predict=None,
 ):
     jev.require_credentials()
     data = prepare_jev_data(dataset_path)
     count = sum(len(ids) for ids in jev_prompt.EXAMPLE_QUESTION_IDS.values())
-    result = evaluate_questions(
-        data.rows, jev.predict if predict is None else predict, REQUEST_MEASUREMENT
+    output = (
+        (Path(result_dir) / jev_prompt.MODEL_FOLDER)
+        if result_dir is not None
+        else (artifact_root / "results" / "jev")
     )
-    settings = {
-        "requested_model": jev_prompt.MODEL_NAME,
-        "training_mode": "가중치 학습 없이 train 대표 예시를 프롬프트에 제공",
-        "prompt_examples_count": count,
-        "prompt_example_ids": jev_prompt.EXAMPLE_QUESTION_IDS,
-        "prompt_example_source": "train",
-        "prompt_review_scope": jev_prompt.PROMPT_REVIEW_SCOPE,
-        "test_interpretation": "프롬프트 설계 때 읽은 평가셋이며, 미열람 최종 평가셋이 아님",
-        "labels": list(LABELS),
-        "seed": dataset.RANDOM_SEED,
-        "data_split": data.record,
-        "input_condition": "question 열만 입력, 전체 질문 사용 (이전 대화 없음)",
-        "resolved_models": result.resolved_models,
-        "evaluation_calls": len(result.predictions),
-        "input_tokens": result.input_tokens,
-        "instructions": jev_prompt.INSTRUCTIONS,
-        "criteria": jev_prompt.CATEGORIES,
-    }
-    report = artifacts.evaluation_report(
-        result,
-        data,
-        title="JEV · API 요청 처리 분류",
-        settings=settings,
-        api=True,
-        train_count=count,
-    )
-    artifacts.save_evaluation(
-        jev_prompt.MODEL_FOLDER, report, result, result_dir, save_predictions=True
-    )
-    render_reports(jev_prompt.MODEL_FOLDER, report, result_dir)
+    model_id = uuid4().hex
+    publish_root = output.parent.parent
+    with storage.lock(publish_root, "jev"):
+        storage.check_pending(publish_root, "jev")
+        with tracking.start_run(
+            artifact_root, "jev", "eval", data, split="both", model_id=model_id
+        ) as run:
+            result = evaluate_questions(
+                data.rows,
+                jev.predict if predict is None else predict,
+                REQUEST_MEASUREMENT,
+            )
+            settings = {
+                "requested_model": jev_prompt.MODEL_NAME,
+                "training_mode": "가중치 학습 없이 train 대표 예시를 프롬프트에 제공",
+                "prompt_examples_count": count,
+                "prompt_example_ids": jev_prompt.EXAMPLE_QUESTION_IDS,
+                "prompt_example_source": "train",
+                "prompt_review_scope": jev_prompt.PROMPT_REVIEW_SCOPE,
+                "test_interpretation": "프롬프트 설계 때 읽은 평가셋이며, 미열람 최종 평가셋이 아님",
+                "labels": list(LABELS),
+                "seed": dataset.RANDOM_SEED,
+                "data_split": data.record,
+                "input_condition": "question 열만 입력, 전체 질문 사용 (이전 대화 없음)",
+                "resolved_models": result.resolved_models,
+                "evaluation_calls": len(result.predictions),
+                "input_tokens": result.input_tokens,
+                "instructions": jev_prompt.INSTRUCTIONS,
+                "criteria": jev_prompt.CATEGORIES,
+            }
+            report = artifacts.evaluation_report(
+                result,
+                data,
+                title="JEV · API 요청 처리 분류",
+                settings=settings,
+                api=True,
+                train_count=count,
+            )
+            report.update(
+                model_id=model_id,
+                tracking_run_id=run.run_id,
+                evaluated_split="both",
+                test_exposure="이미 열람한 개발 평가 자료",
+                data_review="미기록",
+            )
+            # result-dir 호환 옵션도 같은 파일시스템의 임시 폴더에서 완성한 뒤 교체한다.
+            category = output.parent.name
+            temporary = storage.stage(publish_root, "jev")
+            try:
+                artifacts.save_json(temporary / "metrics.json", report)
+                artifacts.save_json(temporary / "predictions.json", result.predictions)
+                artifacts.save_probability_csv(temporary, result.predictions)
+                storage.publish(publish_root, category, output.name, temporary)
+                run.saved_path = output
+            finally:
+                if temporary.exists():
+                    shutil.rmtree(temporary)
+            run.params(
+                {
+                    "requested_model": jev_prompt.MODEL_NAME,
+                    "prompt_examples_count": count,
+                }
+            )
+            run.evaluation(report, result.predictions)
+            print("Jev 평가 결과:", output)
+            print("MLflow 평가 run:", run.run_id)
     return report
 
 
@@ -88,7 +131,8 @@ def jev_main(argv=None):
         action="store_true",
     )
     parser.add_argument("--dataset", type=Path, default=dataset.DATASET_PATH)
-    parser.add_argument("--result-dir", type=Path, default=artifacts.RESULT_DIR)
+    parser.add_argument("--result-dir", type=Path, default=None)
+    parser.add_argument("--artifact-root", type=Path, default=storage.DEFAULT_ROOT)
     args = parser.parse_args(argv)
     if args.preview_questions:
         data = prepare_jev_data(args.dataset)
@@ -105,7 +149,11 @@ def jev_main(argv=None):
             for example in criteria["examples"]:
                 print(example["question"], example["reason"])
     elif args.evaluate:
-        evaluate_jev(dataset_path=args.dataset, result_dir=args.result_dir)
+        evaluate_jev(
+            dataset_path=args.dataset,
+            result_dir=args.result_dir,
+            artifact_root=args.artifact_root.resolve(),
+        )
     else:
         prediction = jev.predict(jev_prompt.QUESTION)
         content = {
@@ -116,7 +164,10 @@ def jev_main(argv=None):
             "model": prediction.model,
         }
         output = (
-            artifacts.report_dir(jev_prompt.MODEL_FOLDER, args.result_dir)
+            artifacts.report_dir(
+                jev_prompt.MODEL_FOLDER,
+                args.result_dir or args.artifact_root / "results",
+            )
             / "single_prediction.json"
         )
         artifacts.save_json(output, content)

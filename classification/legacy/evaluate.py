@@ -1,9 +1,10 @@
 """구형 저장 형식 평가. 현행 CLI와 분리된 호환 경계."""
 
+import shutil
 from pathlib import Path
 from time import perf_counter
 
-from .. import artifacts, dataset
+from .. import artifacts, dataset, storage, tracking
 from ..evaluation import reporting
 from ..evaluation.metrics import memory_mib
 from ..models import tfidf, transformer
@@ -58,19 +59,34 @@ def evaluate_saved_model(
     if not artifacts.is_current_report({"settings": settings}):
         raise ValueError("현재 질문 3분류 모델로 다시 학습한 결과가 필요합니다.")
     data = dataset.restore_data(settings["data_split"], dataset_path)
-    started = perf_counter()
-    predict = load(model_path, settings)
-    load_seconds = perf_counter() - started
-    result = evaluate_questions(data.rows, predict, LOCAL_MEASUREMENT)
-    report = artifacts.evaluation_report(
-        result,
-        data,
-        title=title,
-        settings=settings,
-        model_size=artifacts.model_size_mib(model_path),
-        load_seconds=load_seconds,
-        rss=memory_mib(),
-    )
-    artifacts.save_evaluation(kind, report, result, result_dir)
-    render_reports(kind, report, result_dir, cpu_threads=result.cpu_threads)
+    root = result_dir.resolve().parent
+    with storage.lock(root, kind):
+        storage.check_pending(root, kind)
+        with tracking.start_run(root, kind, "eval_legacy", data, split="both") as run:
+            started = perf_counter()
+            predict = load(model_path, settings)
+            load_seconds = perf_counter() - started
+            result = evaluate_questions(data.rows, predict, LOCAL_MEASUREMENT)
+            report = artifacts.evaluation_report(
+                result,
+                data,
+                title=title,
+                settings=settings,
+                model_size=artifacts.model_size_mib(model_path),
+                load_seconds=load_seconds,
+                rss=memory_mib(),
+            )
+            report.update(tracking_run_id=run.run_id, evaluated_split="both")
+            temporary = storage.stage(root, kind)
+            folder = "tf-idf" if kind == "tfidf_lr" else kind
+            try:
+                artifacts.save_json(temporary / "metrics.json", report)
+                artifacts.save_json(temporary / "predictions.json", result.predictions)
+                storage.publish(root, result_dir.name, folder, temporary)
+                run.saved_path = result_dir / folder
+            finally:
+                if temporary.exists():
+                    shutil.rmtree(temporary)
+            run.evaluation(report, result.predictions)
+            print("구형 모델 평가 결과:", run.saved_path)
     return report

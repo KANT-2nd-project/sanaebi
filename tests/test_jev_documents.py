@@ -120,12 +120,14 @@ class JevQuestionTests(unittest.TestCase):
                 ),
                 redirect_stdout(io.StringIO()),
             ):
-                jev_evaluation.evaluate_jev(result_dir=Path(temp))
+                jev_evaluation.evaluate_jev(
+                    result_dir=Path(temp) / "results", artifact_root=Path(temp)
+                )
             self.assertEqual(calls, expected_inputs)
             self.assertFalse(
                 set(calls) & {question_input(row) for row in splits["train"]}
             )
-            directory = Path(temp) / "jev"
+            directory = Path(temp) / "results/jev"
             metrics = json.loads(
                 (directory / "metrics.json").read_text(encoding="utf-8")
             )
@@ -165,11 +167,7 @@ class JevQuestionTests(unittest.TestCase):
                 self.assertEqual(prediction["input_text"], question_input(row))
                 self.assertEqual(set(prediction["probabilities"]), set(LABELS))
                 self.assertEqual(float(percentages[row["label"] + "_percent"]), 80.0)
-            html = (directory / "report.html").read_text(encoding="utf-8")
-            self.assertIn("JEV · API 요청 처리 분류", html)
-            self.assertIn("train 중 12개 질문을 대표 예시로 제공", html)
-            self.assertIn("추가 확인 필요", html)
-            self.assertNotIn("<summary>train 문서 ID", html)
+            self.assertFalse((directory / "report.html").exists())
             self.assertFalse((directory / "split_manifest.json").exists())
             self.assertNotIn("mock-key", (directory / "metrics.json").read_text())
 

@@ -272,12 +272,12 @@ class TrainingTests(unittest.TestCase):
             self.assertEqual(report["settings"], summary)
             self.assertEqual(sum(report["counts"].values()), 60)
             self.assertEqual(
-                report["benchmark"]["samples"], report["counts"]["test"] * 3
+                report["benchmark"]["samples"], report["counts"]["validation"] * 3
             )
-            self.assertTrue(
-                (root / "artifacts/results/tfidf/validation/report.html").is_file()
+            self.assertFalse(
+                (root / "artifacts/results/tfidf/validation/report.html").exists()
             )
-            self.assertTrue((root / "artifacts/results/comparison.html").is_file())
+            self.assertFalse((root / "artifacts/results/comparison.html").exists())
 
     def test_example_configuration_fails_before_data_or_download(self):
         from classification.experiments.train_example import CONFIG

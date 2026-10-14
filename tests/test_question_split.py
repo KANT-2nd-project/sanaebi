@@ -103,7 +103,7 @@ class QuestionSplitTests(unittest.TestCase):
             metrics = json.loads(
                 (directory / "metrics.json").read_text(encoding="utf-8")
             )
-            html = (directory / "report.html").read_text(encoding="utf-8")
+            self.assertFalse((directory / "report.html").exists())
             self.assertEqual(
                 metrics["counts"], {"train": 632, "validation": 133, "test": 135}
             )
@@ -111,9 +111,6 @@ class QuestionSplitTests(unittest.TestCase):
             self.assertEqual(
                 metrics["data_hashes"], question_split.split_input_hashes(self.splits)
             )
-            self.assertIn("질문 분할 기록", html)
-            self.assertIn("추가 확인 필요", html)
-            self.assertNotIn("제목 + 줄바꿈 + 본문", html)
             by_id = {row["question_id"]: row for row in self.rows}
             for question_id, text, _, _ in metrics["test"]["errors"]:
                 self.assertEqual(text, by_id[question_id]["question"])

@@ -4,9 +4,7 @@ import argparse
 from pathlib import Path
 from time import perf_counter
 
-from .. import artifacts, dataset
-from ..evaluation import reporting
-from ..evaluation.comparison import refresh_comparison
+from .. import artifacts, dataset, tracking
 from ..evaluation.metrics import memory_mib
 from ..legacy.evaluate import evaluate_saved_model
 from ..types import MeasurementPolicy
@@ -19,7 +17,6 @@ __all__ = [
     "evaluate_saved_model",
     "jev_main",
     "prepare_jev_data",
-    "refresh_comparison",
 ]
 
 LOCAL_MEASUREMENT = MeasurementPolicy("repeated", warmup=3, repeats=3, cpu_threads=4)
@@ -92,9 +89,7 @@ def evaluate_current(
     from .main import command_hint
 
     with storage.lock(artifact_root, name):
-        storage.recover(artifact_root, "models", name)
-        storage.recover(artifact_root, "results", name)
-        storage.recover(artifact_root, "results", f"{name}/{split}")
+        storage.check_pending(artifact_root, name)
         bundle = artifact_root / "models" / name
         try:
             manifest = storage.validate_bundle(bundle, name)
@@ -109,58 +104,79 @@ def evaluate_current(
         if not artifacts.is_current_report({"settings": settings}):
             raise ValueError("저장 모델의 라벨·입력 계약이 현재 질문 3분류와 다릅니다.")
         data = dataset.restore_data(settings["data_split"], dataset_path)
-        started = perf_counter()
-        predict = load_bundle(name, bundle, settings)
-        load_seconds = perf_counter() - started
-        result = evaluate_questions(data.rows, predict, LOCAL_MEASUREMENT, split=split)
-        report = artifacts.evaluation_report(
-            result,
+        with tracking.start_run(
+            artifact_root,
+            name,
+            "eval",
             data,
-            title=f"{name.upper()} · 요청 처리 분류",
-            settings={
-                key: value
-                for key, value in settings.items()
-                if not key.startswith("test_")
-            },
-            model_size=artifacts.model_size_mib(bundle),
-            load_seconds=load_seconds,
-            rss=memory_mib(),
-        )
-        report.update(
+            split=split,
             model_id=manifest["model_id"],
-            schema_version=2,
-            evaluated_split=split,
-            evaluation_purpose="개발 비교"
-            if split == "validation"
-            else "명시적 test 평가 (미열람 최종 평가 보증 없음)",
-            data_review="미기록",
-            test_exposure="미기록",
-            evaluation_environment={
-                **storage.environment(),
-                "device": "cpu",
-                "cpu_threads": 4,
-            },
-            measurement_policy=asdict(LOCAL_MEASUREMENT),
-        )
-        if (
-            data.record["dataset_sha256"]
-            == "a7d65d3556899a529278f69d5e4d177722fc73fa71c23bbfc006149b0c551c98"
-        ):
+            training_run_id=manifest.get("training_run_id", ""),
+        ) as run:
+            run.params(
+                {
+                    key: value
+                    for key, value in settings.items()
+                    if key not in {"trials", "data_split"}
+                    and not key.startswith(("test_", "validation_"))
+                    and isinstance(value, (str, int, float, bool, list))
+                }
+            )
+            started = perf_counter()
+            predict = load_bundle(name, bundle, settings)
+            load_seconds = perf_counter() - started
+            result = evaluate_questions(
+                data.rows, predict, LOCAL_MEASUREMENT, split=split
+            )
+            report = artifacts.evaluation_report(
+                result,
+                data,
+                title=f"{name.upper()} · 요청 처리 분류",
+                settings={
+                    key: value
+                    for key, value in settings.items()
+                    if not key.startswith("test_")
+                },
+                model_size=artifacts.model_size_mib(bundle),
+                load_seconds=load_seconds,
+                rss=memory_mib(),
+            )
             report.update(
-                data_review="합성 질문 · AI 검수 · 사람 승인 0건",
-                test_exposure="이미 열람한 개발 평가 자료",
+                model_id=manifest["model_id"],
+                training_run_id=manifest.get("training_run_id"),
+                tracking_run_id=run.run_id,
+                schema_version=2,
+                evaluated_split=split,
+                evaluation_purpose="개발 비교"
+                if split == "validation"
+                else "명시적 test 평가 (미열람 최종 평가 보증 없음)",
+                data_review="미기록",
+                test_exposure="미기록",
+                evaluation_environment={
+                    **storage.environment(),
+                    "device": "cpu",
+                    "cpu_threads": 4,
+                },
+                measurement_policy=asdict(LOCAL_MEASUREMENT),
             )
-        temporary = storage.stage(artifact_root, "eval-" + name + "-" + split)
-        try:
-            artifacts.save_json(temporary / "metrics.json", report)
-            artifacts.save_json(temporary / "predictions.json", result.predictions)
-            artifacts.save_html(
-                temporary / "report.html", reporting.render_report(report)
-            )
-            storage.publish(artifact_root, "results", f"{name}/{split}", temporary)
-        finally:
-            if temporary.exists():
-                shutil.rmtree(temporary)
-    refresh_comparison(artifact_root)
-    print("HTML 보고서:", artifact_root / "results" / name / split / "report.html")
+            if (
+                data.record["dataset_sha256"]
+                == "a7d65d3556899a529278f69d5e4d177722fc73fa71c23bbfc006149b0c551c98"
+            ):
+                report.update(
+                    data_review="합성 질문 · AI 검수 · 사람 승인 0건",
+                    test_exposure="이미 열람한 개발 평가 자료",
+                )
+            temporary = storage.stage(artifact_root, "eval-" + name + "-" + split)
+            try:
+                artifacts.save_json(temporary / "metrics.json", report)
+                artifacts.save_json(temporary / "predictions.json", result.predictions)
+                storage.publish(artifact_root, "results", f"{name}/{split}", temporary)
+                run.saved_path = artifact_root / "results" / name / split
+            finally:
+                if temporary.exists():
+                    shutil.rmtree(temporary)
+            run.evaluation(report, result.predictions)
+            print("평가 결과:", run.saved_path)
+            print("MLflow 평가 run:", run.run_id)
     return report

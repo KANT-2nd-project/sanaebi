@@ -82,7 +82,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser(prog="sanaebi", description="분류 모델 학습·평가")
     commands = parser.add_subparsers(dest="command", required=True)
     options(
-        commands.add_parser("train", help="학습 또는 동일 조건 모델 재사용"),
+        commands.add_parser(
+            "train", help="학습; 기존 모델이 있으면 안내 후 종료, 재학습은 --force"
+        ),
         training=True,
     )
     evaluation = options(

@@ -71,3 +71,9 @@ Thumbs.db
 
 # Local browser inspection snapshots
 /.playwright-cli/
+
+# Local MLflow metadata and artifacts (also for custom experiment roots).
+**/tracking/mlflow.db*
+**/tracking/artifacts/
+/mlruns/
+/mlartifacts/

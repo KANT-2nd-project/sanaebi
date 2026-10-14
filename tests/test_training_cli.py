@@ -132,6 +132,31 @@ class TrainingCommandTests(unittest.TestCase):
                 (output / ".backup/models/tfidf/model.joblib").read_bytes(), before
             )
 
+            from classification.tracking import client_for
+
+            client = client_for(output)
+            experiment = client.get_experiment_by_name("classification")
+            runs = client.search_runs([experiment.experiment_id])
+            self.assertEqual(
+                len(runs), 4
+            )  # initial train, validation, test, forced train
+            self.assertTrue(all(r.info.status == "FINISHED" for r in runs))
+            self.assertFalse(any(output.rglob("*.html")))
+            current = json.loads((output / "models/tfidf/manifest.json").read_text())
+            self.assertNotEqual(current["model_id"], validation["model_id"])
+            # A v1 bundle remains readable without rewriting it or changing its model ID.
+            current["schema_version"] = 1
+            current["files"] = {"model.joblib": "legacy-hash-not-recomputed"}
+            manifest_path = output / "models/tfidf/manifest.json"
+            manifest_path.write_text(json.dumps(current))
+            before_manifest = manifest_path.read_bytes()
+            old_eval = self.invoke(directory, "eval", *args)
+            self.assertEqual(old_eval.returncode, 0, old_eval.stderr)
+            self.assertEqual(manifest_path.read_bytes(), before_manifest)
+            self.assertEqual(
+                json.loads(validation_path.read_text())["model_id"], current["model_id"]
+            )
+
     def test_missing_model_guides_training(self):
         with tempfile.TemporaryDirectory() as temp:
             result = self.invoke(
