@@ -15,6 +15,12 @@ from app.document_http import (
     is_managed_document_path,
 )
 from app.document_repository import DocumentRepository
+from app.infrastructure.classifier import (
+    ClassificationInferenceError,
+    ClassificationUnavailable,
+    TransformerClassifier,
+)
+from app.model_settings import get_answer_provider, get_classifier_path
 from app.routers import (
     assistant,
     classification,
@@ -34,6 +40,8 @@ async def lifespan(application: FastAPI):
     repository.initialize()
     application.state.document_repository = repository
     application.state.document_provider = DocumentContextProvider(repository=repository)
+    application.state.classifier = TransformerClassifier(get_classifier_path())
+    application.state.answer_provider = get_answer_provider()
     yield
 
 
@@ -131,4 +139,15 @@ async def handle_knowledge_storage_error(request: Request, exc: DocumentStorageE
             ok=False, text="", reason="문서 저장소를 사용할 수 없습니다."
         ).model_dump(),
         headers={"Cache-Control": "no-store"},
+    )
+
+
+@app.exception_handler(ClassificationUnavailable)
+@app.exception_handler(ClassificationInferenceError)
+async def handle_classification_error(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=503,
+        content=AnswerResponse(
+            ok=False, text="", reason="분류 모델을 사용할 수 없습니다."
+        ).model_dump(),
     )

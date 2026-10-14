@@ -1,13 +1,14 @@
 import unittest
 from unittest.mock import Mock
 
+from app.services.document_context import DocumentContextSnapshot
 from app.services.question_service import QuestionResult, handle_question
 
 
 class QuestionServiceTests(unittest.TestCase):
     def setUp(self):
         self.question = "연차 신청 방법을 알려주세요."
-        self.documents = ["가상 문서: 연차 신청은 사내 시스템을 사용합니다."]
+        self.documents = DocumentContextSnapshot((Mock(),))
         self.classify = Mock(return_value="SEARCH_KNOWLEDGE")
         self.read_documents = Mock(return_value=self.documents)
         self.answer = Mock(return_value="사내 시스템에서 신청하세요.")
@@ -50,7 +51,7 @@ class QuestionServiceTests(unittest.TestCase):
         self.answer.assert_called_once_with(self.question, self.documents)
 
     def test_missing_documents_returns_notice_without_llm(self):
-        self.read_documents.return_value = []
+        self.read_documents.return_value = DocumentContextSnapshot(())
 
         result = self.handle()
 

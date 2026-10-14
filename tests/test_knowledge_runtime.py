@@ -10,7 +10,6 @@ from langchain_core.runnables import RunnableLambda
 
 import sanaebi_assistant as runner
 from app.fastapi_main import app
-from app.routers import questions
 from app.services.document_context import DocumentContextProvider, DocumentStorageError
 
 
@@ -41,7 +40,7 @@ class KnowledgeRuntimeTests(unittest.TestCase):
         self.ready = self.enterContext(patch.object(runner, "ensure_ollama_server"))
         self.classify = self.enterContext(
             patch.object(
-                questions, "classify_question", return_value="SEARCH_KNOWLEDGE"
+                app.state.classifier, "predict", return_value="SEARCH_KNOWLEDGE"
             )
         )
 

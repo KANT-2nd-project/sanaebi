@@ -1,13 +1,14 @@
-"""미연결 분기 정책 서비스. dependencies의 조립 초안과 단위 테스트에서 사용한다."""
+"""HTTP·모델 구현과 독립적인 라벨별 질문 처리 정책."""
 
 from collections.abc import Callable
 from dataclasses import dataclass
 
+from app.services.document_context import DocumentContextSnapshot
 from contracts.classification import ClassificationLabel
 
 Classifier = Callable[[str], ClassificationLabel]
-DocumentReader = Callable[[], list[str]]
-Answerer = Callable[[str, list[str]], str]
+DocumentReader = Callable[[], DocumentContextSnapshot]
+Answerer = Callable[[str, DocumentContextSnapshot], str]
 
 
 @dataclass(frozen=True)
@@ -35,7 +36,7 @@ def handle_question(
             raise ValueError("분류기가 허용되지 않은 라벨을 반환했습니다.")
 
         documents = read_documents()
-        if not documents:
+        if not documents.documents:
             return QuestionResult(
                 text="현재 확인 가능한 회사 문서가 없어 답변하기 어렵습니다."
             )
