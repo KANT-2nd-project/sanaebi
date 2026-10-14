@@ -31,10 +31,14 @@ curl -X POST http://127.0.0.1:8000/ask \
 
 ```text
 GET /       -> {"message":"FastAPI 서버가 실행 중입니다."}
-POST /ask   -> {"ok":true,"text":"휴가 신청 방법 알려줘","reason":""}
+POST /ask   -> {"ok":true,"text":"생성된 답변","reason":""}
 ```
 
-현재 `/ask`는 앞뒤 공백을 제거한 질문을 반환하는 echo 단계입니다.
+`/ask`는 질문을 KoELECTRA Base로 분류한 뒤 질문과 카테고리를 LangChain에 전달합니다.
+`app/routers/questions.py`의 `PROVIDER = "ollama"` 또는 `"openai"`로 답변 모델을
+선택합니다. 입력은 question 하나이며 선택한 모델의 답변을 ok·text·reason으로 반환합니다.
+Ollama 선택 시 해당 서버와 모델이 필요하고, OpenAI 선택 시 `OPENAI_API_KEY`가 필요하며
+API 호출 비용이 발생합니다. 답변 생성 실패는 HTTP 502와 오류 안내로 반환합니다.
 
 질문 분류는 `POST /classify/koelectra-base`에 `{"question":"출장비 정산 절차 알려줘"}`를
 전달하면 `{"category":"SEARCH_KNOWLEDGE"}` 형태로 반환합니다. 저장된 KoELECTRA Base
@@ -42,13 +46,6 @@ POST /ask   -> {"ok":true,"text":"휴가 신청 방법 알려줘","reason":""}
 첫 요청에서 모델을 로드해 재사용하고, 가중치 파일이 없으면 HTTP 503과
 `분류 모델이 없습니다.` 안내를 반환합니다. 모델 생성 명령은
 `uv run --locked python classification/train_koelectra_base.py`입니다.
-
-질문만으로 분류와 답변 생성을 이어서 실행하려면 `POST /ask/langchain`에
-`{"question":"출장비 정산 절차 알려줘"}`를 전달합니다. 분류된 카테고리와 질문을
-`sanaebi_assistant.py`의 고정 입력 형식으로 넘기고, `ollama`·`openai`의 답변과
-실행 기록을 그대로 반환합니다. Ollama 실행 환경과 `OPENAI_API_KEY`가 필요하며
-OpenAI 호출 비용이 발생합니다. 모델별 실패는 반환된 `success`와 `error`에서 확인합니다.
-이미 분류한 질문은 `POST /assistant`에 `response`와 `classification_label`을 전달합니다.
 
 ## 프로젝트 문서
 
