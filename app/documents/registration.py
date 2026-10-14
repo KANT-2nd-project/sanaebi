@@ -5,7 +5,7 @@ import sqlite3
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 
-from app.document_repository import DuplicateDocumentError
+from app.documents.repository import DuplicateDocumentError
 from app.schemas import AnswerResponse, DocumentRequest
 
 router = APIRouter()

@@ -22,10 +22,10 @@ from fastapi.testclient import TestClient
 from langchain_core.runnables import RunnableLambda
 
 import sanaebi_assistant as assistant
-from app.answer_text import LLM_RESPONSE_ERROR
+from app.answering import adapter as answerer
+from app.answering.output import LLM_RESPONSE_ERROR
+from app.documents.context import DocumentContextSnapshot
 from app.fastapi_main import app
-from app.infrastructure import answerer
-from app.services.document_context import DocumentContextSnapshot
 
 SEARCH = assistant.SEARCH_KNOWLEDGE
 CLARIFY = assistant.CLARIFY

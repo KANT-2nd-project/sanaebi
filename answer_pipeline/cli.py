@@ -25,7 +25,7 @@ from datetime import datetime
 from pathlib import Path
 
 import sanaebi_assistant as assistant
-from app.company_knowledge import PROJECT_ROOT
+from app.settings import PROJECT_ROOT
 
 from .checks import COPY_LIMIT_CHARS, evaluate_records, summarize
 from .judge import (

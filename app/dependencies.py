@@ -6,9 +6,9 @@ from typing import Annotated
 
 from fastapi import Depends, Request
 
-from app.infrastructure.answerer import generate_answer
-from app.infrastructure.classifier import TransformerClassifier
-from app.services.question_service import QuestionResult, handle_question
+from app.answering.adapter import generate_answer
+from app.classification.predictor import TransformerClassifier
+from app.questions.service import QuestionResult, handle_question
 
 QuestionHandler = Callable[[str], QuestionResult]
 

@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from app.document_repository import DocumentRepository
+from app.documents.repository import DocumentRepository
 
 
 class DocumentRepositoryTests(unittest.TestCase):

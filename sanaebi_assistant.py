@@ -71,7 +71,7 @@ from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
-from app.company_knowledge import get_documents_path
+from app.settings import get_documents_path
 from contracts.classification import (
     CLARIFY,
     LABELS,
@@ -252,7 +252,7 @@ def snapshot_context(snapshot):
 def load_document_context(path=None):
     """기본 SQLite 게시본 또는 명시적인 평가 JSONL을 읽습니다."""
     if path is None:
-        from app.services.document_context import DocumentContextProvider
+        from app.documents.context import DocumentContextProvider
 
         return snapshot_context(DocumentContextProvider().snapshot())
     path = Path(path)
@@ -474,7 +474,7 @@ def process_response(
     if any(name not in models for name in providers):
         raise ValueError("provider는 ollama 또는 openai여야 합니다.")
 
-    from app.services.document_context import (
+    from app.documents.context import (
         NO_DOCUMENTS_MESSAGE,
         DocumentContextProvider,
     )

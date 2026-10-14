@@ -14,7 +14,12 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
-from app.document_metadata import SCHEMA, execute_schema, insert_metadata, read_metadata
+from app.documents.metadata import (
+    SCHEMA,
+    execute_schema,
+    insert_metadata,
+    read_metadata,
+)
 
 SCHEMA_VERSION = 2
 IDEMPOTENCY_TTL = timedelta(hours=24)

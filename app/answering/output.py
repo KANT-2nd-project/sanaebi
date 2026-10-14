@@ -11,14 +11,6 @@ class LLMResponseError(Exception):
 
 # 작성일: 2026-10-14
 # 작성자: yu
-# 기능: 질문을 받아 LLM 답변 결과를 {"text": ...} 형태로 생성
-def generate_answer(question: str) -> Mapping | str:
-    # 체인 연결 전 임시 단계: 질문을 LLM 결과와 같은 {"text": ...} 형태로 돌려줍니다.
-    return {"text": question}
-
-
-# 작성일: 2026-10-14
-# 작성자: yu
 # 기능: LLM 응답(JSON 객체·문자열)에서 답변 text만 검증해 꺼냄
 def extract_answer_text(result: Mapping | str) -> str:
     # 문자열로 받은 결과는 JSON 객체로 해석합니다.

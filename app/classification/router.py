@@ -2,8 +2,8 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends
 
+from app.classification.predictor import TransformerClassifier
 from app.dependencies import get_classifier
-from app.infrastructure.classifier import TransformerClassifier
 from app.schemas import AnswerResponse, ClassificationResponse, QuestionRequest
 
 router = APIRouter()

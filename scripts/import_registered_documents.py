@@ -290,7 +290,7 @@ def import_registered_documents(
     if _sha256(source_path.read_bytes()) != source_sha256:
         raise RuntimeError("이관 중 원본 파일이 변경되어 적용을 중단했습니다.")
 
-    from app.document_repository import DocumentRepository, DuplicateDocumentError
+    from app.documents.repository import DocumentRepository, DuplicateDocumentError
 
     repository = DocumentRepository(database_path)
     imported_at = datetime.now(UTC).isoformat(timespec="microseconds")

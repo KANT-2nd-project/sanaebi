@@ -3,7 +3,7 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from app.services.document_context import DocumentContextSnapshot
+from app.documents.context import DocumentContextSnapshot
 from contracts.classification import ClassificationLabel
 
 Classifier = Callable[[str], ClassificationLabel]

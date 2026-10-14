@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from app.document_repository import DocumentRepository
+from app.documents.repository import DocumentRepository
 
 
 class SqliteKnowledgeTests(unittest.TestCase):
@@ -45,8 +45,8 @@ class SqliteKnowledgeTests(unittest.TestCase):
         return source
 
     def test_import_is_dry_by_default_and_repeat_does_not_republish(self):
-        from app.services.document_context import DocumentContextProvider
-        from app.services.knowledge_transfer import export_knowledge, import_knowledge
+        from app.documents.context import DocumentContextProvider
+        from app.documents.transfer import export_knowledge, import_knowledge
 
         source = self.source()
         self.assertEqual(import_knowledge(source, self.db)["imported_count"], 1)
@@ -70,7 +70,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
         self.assertEqual(len(snap.documents), 1)
 
     def test_modified_source_rejects_entire_import_and_preserves_original(self):
-        from app.services.knowledge_transfer import import_knowledge
+        from app.documents.transfer import import_knowledge
 
         source = self.source()
         result = import_knowledge(source, self.db, apply=True, publish=True)
@@ -98,7 +98,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
         self.assertEqual(detail["published"]["metadata"]["review_status"], "unreviewed")
 
     def test_edit_invalidates_review_without_changing_published_metadata(self):
-        from app.services.knowledge_transfer import import_knowledge
+        from app.documents.transfer import import_knowledge
 
         result = import_knowledge(self.source(), self.db, apply=True, publish=True)
         key = result["mapping"][0]["document_id"]
@@ -115,7 +115,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
     def test_apply_failure_rolls_back_schema_and_rows(self):
         from unittest.mock import patch
 
-        from app.services.knowledge_transfer import import_knowledge
+        from app.documents.transfer import import_knowledge
 
         original = DocumentRepository.publish_in_transaction
         count = [0]
@@ -141,7 +141,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
             )
 
     def test_backup_can_restore_previous_documents(self):
-        from app.services.knowledge_transfer import import_knowledge
+        from app.documents.transfer import import_knowledge
 
         self.repo.initialize()
         with self.repo.transaction() as con:
@@ -155,7 +155,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
         self.assertEqual(self.repo.list()["total"], 2)
 
     def test_export_is_byte_reproducible_and_does_not_overwrite(self):
-        from app.services.knowledge_transfer import export_knowledge, import_knowledge
+        from app.documents.transfer import export_knowledge, import_knowledge
 
         import_knowledge(self.source(), self.db, apply=True, publish=True)
         first, second = self.directory / "a.jsonl", self.directory / "b.jsonl"
@@ -167,8 +167,8 @@ class SqliteKnowledgeTests(unittest.TestCase):
             export_knowledge(self.db, first)
 
     def test_existing_user_document_conflict_is_not_overwritten(self):
-        from app.document_repository import DuplicateDocumentError
-        from app.services.knowledge_transfer import import_knowledge
+        from app.documents.repository import DuplicateDocumentError
+        from app.documents.transfer import import_knowledge
 
         self.repo.initialize()
         with self.repo.transaction() as con:

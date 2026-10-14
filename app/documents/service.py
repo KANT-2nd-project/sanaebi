@@ -10,7 +10,7 @@ from datetime import date, datetime
 from typing import Any
 from zoneinfo import ZoneInfo
 
-from app.document_repository import (
+from app.documents.repository import (
     DocumentRepository,
     DuplicateDocumentError,
     IdempotencyConflictError,

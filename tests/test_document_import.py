@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from app.document_repository import DocumentRepository
+from app.documents.repository import DocumentRepository
 from scripts.import_registered_documents import (
     import_registered_documents,
 )
