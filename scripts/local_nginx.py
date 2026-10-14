@@ -66,7 +66,7 @@ def ensure_port_available(port):
 
 def render_config(port, upstream_port):
     out = ROOT / "web" / "out"
-    for name in ("index.html", "chat.html", "404.html", "_next"):
+    for name in ("index.html", "404.html", "_next"):
         if not (out / name).exists():
             raise RuntimeError(
                 "정적 산출물이 없습니다. web에서 npm run build를 실행하세요."

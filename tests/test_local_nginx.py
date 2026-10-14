@@ -72,3 +72,28 @@ class ProcessOwnershipTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "종료를 거부"):
                 local_nginx.stop()
             send_signal.assert_not_called()
+
+    def test_static_build_no_longer_requires_chat_html(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        from unittest.mock import patch
+
+        from scripts import local_nginx
+
+        if not Path("/etc/nginx/mime.types").exists():
+            self.skipTest("nginx MIME registry unavailable")
+        template = (local_nginx.ROOT / "deployment/nginx.conf").read_text()
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            out = root / "web/out"
+            out.mkdir(parents=True)
+            (out / "index.html").touch()
+            (out / "404.html").touch()
+            (out / "_next").mkdir()
+            (root / "deployment").mkdir()
+            (root / "deployment/nginx.conf").write_text(template)
+            with patch.object(local_nginx, "ROOT", root):
+                config = local_nginx.render_config(8080, 8000)
+            self.assertIn("location ^~ /chat/", config)
+            self.assertIn("proxy_pass http://127.0.0.1:8000;", config)
+            self.assertNotIn("chat.html", config)
