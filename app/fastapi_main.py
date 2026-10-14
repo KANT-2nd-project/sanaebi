@@ -25,6 +25,7 @@ from app.routers import (
 )
 from app.schemas import AnswerResponse
 from app.services.document_service import DocumentServiceError
+from app.trace import TraceMiddleware
 
 
 def _document_database_path() -> Path:
@@ -44,6 +45,7 @@ async def lifespan(application: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(ManagedDocumentHttpMiddleware)
+app.add_middleware(TraceMiddleware)
 app.include_router(questions.router)
 app.include_router(documents.router)
 app.include_router(managed_documents.router)
