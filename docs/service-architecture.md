@@ -32,7 +32,7 @@
 
 [LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`·`/ask`·독립 실행에서 공통 SQLite provider를 사용한다. 검색 질문마다 snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 모델을 호출한다. `/assistant`의 provider별 기록에는 `model_called`가 포함된다. 빈 게시 목록은 모델 호출 없이 자료 없음 안내를 반환한다. DB 오류는 HTTP 503, 모델 호출 실패는 기존 502다. 명시적인 평가용 `documents_path`만 JSONL을 읽는다.
 
-`/ask`는 PROVIDER로 선택한 한 모델의 답변을 AnswerResponse로 변환한다. 실행기의 기본 실행은 두 모델을 비교한다. 현재 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업은 별도 범위다. KoELECTRA 연동 코드의 존재를 최종 모델 선정으로 취급하지 않는다.
+`/ask`는 PROVIDER로 선택한 한 모델의 답변을 AnswerResponse로 변환한다. 실행기의 기본 실행은 두 모델을 비교한다. 현재 UNSUPPORTED 지침은 일반 답변을 허용하므로 목표 설계의 지원 범위 안내와 일치시키는 작업은 별도 범위다. 2026-10-15 사용자 결정으로 KoELECTRA base를 현 단계 서버 분류기로 채택했다. [선정 근거와 연결 절차](worklogs/2026-10-15-classifier-selection.md)를 따른다. 기존 연동 코드의 존재와 이번에 선정한 checkpoint의 연결 완료는 구분하며, 이번 저장본 연결·서버 예측 일치는 아직 미검증이다.
 
 ## 목표 질문 처리 흐름
 
