@@ -233,6 +233,49 @@ def _validate_judgment(judgment: dict[str, Any], index: int) -> dict[str, Any]:
     return judgment
 
 
+def _validate_record_judgment_consistency(
+    record: dict[str, Any], judgment: dict[str, Any], key: tuple[str, int, str]
+) -> None:
+    verdict = judgment["verdict"]
+    result = record["result"]
+    result_status = result.get("status") if isinstance(result, dict) else None
+    format_status = judgment["dimensions"]["format"]["status"]
+
+    record_format_pass = record.get("format_pass")
+    judgment_format_pass = judgment.get("format_pass")
+    for location, value in (
+        ("record.format_pass", record_format_pass),
+        ("judgment.format_pass", judgment_format_pass),
+    ):
+        if value is not None and not isinstance(value, bool):
+            raise TypeError(f"{location}는 bool 또는 None이어야 합니다: {key}")
+    if (
+        record_format_pass is not None
+        and judgment_format_pass is not None
+        and record_format_pass != judgment_format_pass
+    ):
+        raise ValueError(f"record와 judgment의 format_pass가 다릅니다: {key}")
+    format_pass = (
+        record_format_pass if record_format_pass is not None else judgment_format_pass
+    )
+
+    if verdict in ("pass", "partial"):
+        if result is None or result_status != "completed":
+            raise ValueError(
+                f"실패 또는 완료되지 않은 실행을 {verdict}로 판정할 수 없습니다: {key}"
+            )
+        if format_pass is False:
+            raise ValueError(
+                f"format_pass=false인 실행을 {verdict}로 판정할 수 없습니다: {key}"
+            )
+        if format_status == "fail":
+            raise ValueError(
+                f"format 차원이 fail인 실행을 {verdict}로 판정할 수 없습니다: {key}"
+            )
+    if format_pass is False and format_status == "pass":
+        raise ValueError(f"format_pass=false와 format 차원 pass가 충돌합니다: {key}")
+
+
 def summarize(
     records: list[dict[str, Any]], judgments: list[dict[str, Any]], final: bool = False
 ) -> dict[str, Any]:
@@ -271,6 +314,8 @@ def summarize(
         )
     if not record_map:
         raise ValueError("집계할 실행 기록이 없습니다.")
+    for key, (record, _) in record_map.items():
+        _validate_record_judgment_consistency(record, judgment_map[key], key)
 
     candidate_ids = sorted({key[2] for key in record_map})
     case_sets: dict[str, set[str]] = {}
@@ -351,7 +396,9 @@ def summarize(
                 dimensions[dimension_id][value["status"]] += 1
 
         stable_both_pass_cases = sum(
-            verdicts.get(1) == "pass" and verdicts.get(2) == "pass"
+            set(verdicts) == {1, 2}
+            and verdicts.get(1) == "pass"
+            and verdicts.get(2) == "pass"
             for verdicts in verdicts_by_case.values()
         )
         disagreement_cases = sum(
@@ -416,7 +463,9 @@ def summarize(
                 "generation_failure_count": generation_failure_count,
                 "timeout_count": timeout_count,
                 "result_status_counts": dict(sorted(result_status_counts.items())),
-                "default_promotable": stable_both_pass_cases >= 18
+                "default_promotable": final
+                and len(candidate_ids) >= 2
+                and stable_both_pass_cases >= 18
                 and not critical_cases,
                 "rank_key": rank_key,
             }

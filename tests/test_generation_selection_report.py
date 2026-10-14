@@ -211,7 +211,23 @@ class GenerationSelectionReportTests(unittest.TestCase):
         self.assertTrue(summary["final_evaluation"])
         self.assertEqual(summary["denominator"]["case_count"], 20)
         self.assertEqual(summary["candidates"][0]["stable_both_pass_case_count"], 20)
-        self.assertTrue(summary["candidates"][0]["default_promotable"])
+        self.assertFalse(summary["candidates"][0]["default_promotable"])
+
+        second_model_records = [{**record, "candidate_id": "b"} for record in records]
+        second_model_judgments = [
+            {**judgment, "candidate_id": "b"} for judgment in judgments
+        ]
+        two_candidate_summary = summarize(
+            records + second_model_records,
+            judgments + second_model_judgments,
+            final=True,
+        )
+        self.assertTrue(
+            all(
+                candidate["default_promotable"]
+                for candidate in two_candidate_summary["candidates"]
+            )
+        )
 
         with self.assertRaisesRegex(ValueError, "repeat 1, 2"):
             summarize(records[:-1], judgments[:-1], final=True)
@@ -257,6 +273,45 @@ class GenerationSelectionReportTests(unittest.TestCase):
         self.assertEqual(candidate["timeout_count"], 1)
         self.assertEqual(candidate["repeat_disagreement_case_count"], 1)
         self.assertFalse(candidate["default_promotable"])
+
+    def test_semantic_pass_rejects_missing_failed_or_unformatted_result(self):
+        judgment = _judgment("c1", 1, "a", "pass")
+        completed = _record("c1", 1, "a")
+        for record in (
+            {**completed, "result": None},
+            {**completed, "result": {"status": "timeout"}},
+            {**completed, "format_pass": False},
+        ):
+            with self.subTest(record=record), self.assertRaises(ValueError):
+                summarize([record], [judgment])
+
+        with self.assertRaisesRegex(ValueError, "format 차원이 fail"):
+            failed_format = _judgment("c1", 1, "a", "partial", dimension_status="pass")
+            format_dimensions = {
+                **failed_format["dimensions"],
+                "format": {"status": "fail", "evidence": "", "reason": ""},
+            }
+            summarize([completed], [{**failed_format, "dimensions": format_dimensions}])
+
+    def test_format_pass_false_cannot_conflict_with_format_dimension_pass(self):
+        record = {**_record("c1", 1, "a"), "format_pass": False}
+        failed_judgment = _judgment("c1", 1, "a", "fail")
+        with self.assertRaisesRegex(ValueError, "format 차원 pass"):
+            summarize([record], [failed_judgment])
+
+    def test_stability_requires_exactly_repeats_one_and_two(self):
+        records = [_record("c1", repeat, "a") for repeat in (1, 2, 3)]
+        judgments = [
+            _judgment("c1", 1, "a", "pass"),
+            _judgment("c1", 2, "a", "pass"),
+            _judgment("c1", 3, "a", "pass"),
+        ]
+        self.assertEqual(
+            summarize(records, judgments)["candidates"][0][
+                "stable_both_pass_case_count"
+            ],
+            0,
+        )
 
 
 if __name__ == "__main__":
