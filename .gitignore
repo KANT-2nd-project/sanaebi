@@ -39,8 +39,6 @@ logs/
 *.onnx
 *.gguf
 
-# Generated evaluation reports
-/classification/result/
 
 # Generated models and tokenizers
 /classification/model/
