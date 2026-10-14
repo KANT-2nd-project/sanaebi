@@ -4,7 +4,8 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field
+
+from app.schemas import AnswerResponse, DocumentRequest, QuestionRequest
 
 app = FastAPI()
 
@@ -12,26 +13,9 @@ app = FastAPI()
 DOCUMENT_FILE = Path(__file__).resolve().parent / "documents.jsonl"
 
 
-#### 스키마 ####
-
-
 @app.get("/")
 def home():
     return {"message": "FastAPI 서버가 실행 중입니다."}
-
-
-class QuestionRequest(BaseModel):
-    question: str = Field(min_length=1, pattern=r"\S")
-
-
-class DocumentRequest(BaseModel):
-    doc: str = Field(min_length=1, pattern=r"\S")
-
-
-class AnswerResponse(BaseModel):
-    ok: bool
-    text: str
-    reason: str = ""
 
 
 #### 엔드포인트 ####
