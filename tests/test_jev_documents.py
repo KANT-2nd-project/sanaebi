@@ -10,14 +10,14 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-from classification import model_report, train_jev
+from classification import model_report, test_jev
 from classification.document_split import LABELS, document_input, split_input_hashes
 
 
 class JevDocumentTests(unittest.TestCase):
     def test_preview_needs_no_api_key_or_requests(self):
-        script = Path(train_jev.__file__)
-        splits, _ = train_jev.prepare_document_data()
+        script = Path(test_jev.__file__)
+        splits, _ = test_jev.prepare_document_data()
         expected_calls = len(splits["validation"]) + len(splits["test"])
         with (
             patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}),
@@ -39,12 +39,12 @@ class JevDocumentTests(unittest.TestCase):
         with (
             patch.dict(os.environ, {"TYPESAFE_API_KEY": "mock-key"}),
             patch.object(
-                train_jev,
+                test_jev,
                 "urlopen",
                 return_value=io.BytesIO(json.dumps(answer).encode()),
             ) as request,
         ):
-            train_jev.request_classification(text)
+            test_jev.request_classification(text)
         payload = json.loads(request.call_args.args[0].data)
         self.assertEqual(payload["state"], text)
         self.assertEqual(list(payload["questions"]["category"]["criteria"]), LABELS)
@@ -52,7 +52,7 @@ class JevDocumentTests(unittest.TestCase):
     def test_evaluation_only_sends_validation_and_test_and_saves_six_probabilities(
         self,
     ):
-        splits, record = train_jev.prepare_document_data()
+        splits, record = test_jev.prepare_document_data()
         expected_rows = splits["validation"] + splits["test"]
         expected_inputs = [document_input(row) for row in expected_rows]
         labels_by_input = {document_input(row): row["label"] for row in expected_rows}
@@ -80,11 +80,11 @@ class JevDocumentTests(unittest.TestCase):
                 patch.dict(os.environ, {"TYPESAFE_API_KEY": "mock-key"}),
                 patch.object(model_report, "RESULT_DIR", Path(temp)),
                 patch.object(
-                    train_jev, "request_classification", side_effect=fake_request
+                    test_jev, "request_classification", side_effect=fake_request
                 ),
                 redirect_stdout(io.StringIO()),
             ):
-                train_jev.evaluate_csv()
+                test_jev.evaluate_csv()
             self.assertEqual(calls, expected_inputs)
             self.assertFalse(
                 set(calls) & {document_input(row) for row in splits["train"]}

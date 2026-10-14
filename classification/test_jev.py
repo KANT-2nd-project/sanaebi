@@ -49,7 +49,13 @@ else:
 MODEL_NAME = "jev-latest"
 MODEL_FOLDER = "jev"
 API_URL = "https://api.typesafe.ai/v1/systemone"
-DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
+DATASET_PATH = (
+    Path(__file__).resolve().parent.parent
+    / "data"
+    / "archive"
+    / "document-topics-v0.2"
+    / "dataset.csv"
+)
 DOCUMENT_TITLE = "VPN 연결 절차"  # 문서 하나를 분류할 때 사용하는 예시
 DOCUMENT_TEXT = "업무용 VPN에 접속하려면 승인된 클라이언트를 설치하고 회사 계정으로 로그인한다. 접속 오류가 발생하면 오류 메시지를 IT 지원 담당자에게 전달한다."
 INSTRUCTIONS = "문서의 제목과 본문을 읽고 대표 업무 주제를 하나 선택하세요. 작성 부서나 단순 언급보다 문서의 주요 목적과 핵심 행동을 기준으로 판단하세요."
