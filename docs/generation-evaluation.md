@@ -7,6 +7,12 @@
 
 [generation 모듈](../generation/README.md)의 상태·원문·답변 계약과 역할별 프롬프트를 별도로 구현 중이다. 현재 단위 테스트는 가짜 모델 호출을 통한 구조·실패 처리를 확인하며 모델 품질 평가가 아니다. COMPLETED는 비어 있지 않은 문자열 답변을 얻었다는 뜻으로, 근거 충분성이나 정답 여부를 보장하지 않는다. 기존 `answer_pipeline/`는 아직 이 모듈을 사용하지 않는다. 새 평가기는 생성 실행 상태와 품질 판정을 분리하고 서비스와 같은 생성 경로·고정 snapshot을 사용하는 방향으로 구현한다. 현재 최소 answer 출력에는 근거 ID가 없으므로 아래 인용 평가 기준까지 구현된 상태가 아니다.
 
+## 새 평가 실행·집계 구현
+
+[generation_evaluation 안내](../generation_evaluation/README.md)를 기준으로 GenerationRun과 run_case를 구현했다. 시간은 generate 호출·파싱 구간이며 프롬프트 구성과 클라이언트 초기화는 제외한다. 처리된 TIMEOUT은 결과로, 그 밖에 전파된 Exception은 result=None과 오류 클래스 이름으로 기록한다. 사용자 중단은 전파한다.
+
+상태별 개수, 전체 시도를 분모로 한 완료 비율, 전체/완료 실행의 평균 시간, 제공자·모델·timeout 설정별 그룹화를 구현했다. 빈 집계의 비율·평균은 None이며 0과 구분한다. COMPLETED 비율은 정답률이 아니다. 설정별 그룹화만으로 같은 데이터·문서·프롬프트 비교가 보장되지는 않는다. 요약표·기록 저장·snapshot 식별·품질 판정은 후속이다. [학습·검증 기록](worklogs/2026-10-14-generation-adapters-metrics.md)을 따른다.
+
 ## 평가 목표
 
 로컬 모델(Ollama `qwen3:4b-instruct-2507-q4_K_M`)과 상용 모델(OpenAI `gpt-6-luna`)에 같은 질문과 같은 회사 지식을 주고, 아래 기준으로 서비스에 쓸 모델을 고른다.
