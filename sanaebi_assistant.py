@@ -19,17 +19,19 @@ class AssistantRequest(BaseModel):
 실행기는 문서 ID를 근거 추적에 사용하지 않고 제목과 본문을 답변 문맥에 넣습니다.
 
 
-3) 출력 규약('초안'):
+3) provider별 결과 규약:
 
     반환 스키마 (provider 미지정 시 두 항목)::
 
         {
             "<provider>": {
                 "model": str,
-                "input": dict,
-                "output": {"ok": bool, "text": str, "reason": str} | None,
-                "timeout_seconds": float | None,
-                "max_retries": int | None,
+                "inquiry": str,
+                "answer": str,
+                "document": str,
+                "note(LLM)": str,
+                "timeout_seconds": float,
+                "max_retries": int,
                 "max_tokens": int,
                 "max_input_chars": int,
                 "elapsed_seconds": float,
@@ -38,8 +40,10 @@ class AssistantRequest(BaseModel):
             }
         }
 
-    ``max_tokens``는 Ollama의 ``num_predict`` 값입니다. Ollama에서 별도로
-    설정하지 않은 타임아웃과 재시도 횟수는 ``None``입니다.
+    ``max_tokens``는 Ollama의 ``num_predict`` 값입니다. 두 모델을 같은 조건으로
+    비교하도록 타임아웃, 재시도 횟수, 최대 출력은 같은 값을 씁니다. Ollama
+    클라이언트는 재시도하지 않으므로 재시도 횟수는 0입니다. OpenAI 모델은
+    temperature 기본값만 받으므로 OpenAI의 ``temperature``는 ``None``입니다.
 """
 
 import argparse
@@ -57,7 +61,6 @@ from pathlib import Path
 from urllib.parse import urlparse
 from urllib.request import urlopen
 
-from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import (
     RunnableBranch,
@@ -66,6 +69,7 @@ from langchain_core.runnables import (
 )
 from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
+from pydantic import BaseModel, Field
 
 from app.company_knowledge import get_documents_path
 from contracts.classification import (
@@ -81,20 +85,34 @@ OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct-2507-q4_K_M")
 OLLAMA_STARTUP_TIMEOUT = float(os.getenv("OLLAMA_STARTUP_TIMEOUT_SECONDS", "30"))
 
-OLLAMA_NUM_CTX = int(os.getenv("OLLAMA_NUM_CTX", "16384"))
-OLLAMA_TEMPERATURE = 0.1
+# 회사 문서 전체를 넣은 프롬프트가 약 31,000토큰이라(2026-10-14 실측) 가장 긴 질문과
+# 최대 출력까지 들어가는 값입니다. 입력이 num_ctx를 넘으면 Ollama가 400 오류를 냅니다.
+OLLAMA_NUM_CTX = int(os.getenv("OLLAMA_NUM_CTX", "40960"))
+OLLAMA_TEMPERATURE = 0.2
 OLLAMA_NUM_PREDICT = 512
 
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-6-luna")
-TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "600"))
-OPENAI_MAX_RETRIES = 0
 OPENAI_MAX_TOKENS = 512
+
+# 로컬·상용 모델을 같은 조건으로 비교하도록 두 모델에 같은 값을 씁니다.
+# OpenAI 모델(gpt-6-luna)은 temperature 기본값(1)만 받아 temperature는 Ollama에만 줍니다.
+TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "600"))
+MAX_RETRIES = 0
 MAX_INPUT_CHARS = int(os.getenv("MAX_INPUT_CHARS", "4000"))
 DOCUMENTS_PATH = get_documents_path()
 _OLLAMA_LOCK = threading.Lock()
 _OLLAMA_PROCESS = None
 
 CLASSIFICATION_LABELS = frozenset(LABELS)
+
+
+class AssistantResponse(BaseModel):
+    answer: str = Field(description="최종 답변 텍스트")
+    referenced_documents: list[str] = Field(
+        description="참고한 문서 제목 목록. 참고한 문서가 없으면 빈 리스트"
+    )
+    note: str = Field(description="답변을 뒷받침하는 근거 요약")
+
 
 # SAMPLE_INPUT = {
 #     "response": {
@@ -124,11 +142,14 @@ CLASSIFICATION_INSTRUCTIONS = {
 ANSWER_PROMPT = PromptTemplate.from_template(
     """역할
 당신은 이음웍스 사내 문의에 답하는 한국어 업무 도우미입니다.
-입력된 분류 라벨과 답변 지침을 따르고, 최종 답변을 아래 JSON 형식으로만 작성하세요.
+입력된 분류 라벨과 답변 지침을 따르고, 제공된 AssistantResponse 구조에 맞춰 답변하세요.
 
 답변 원칙
 - 간결하고 정중한 한국어를 사용하세요. 답변에 필요한 경우에만 글머리표를 사용하세요.
-- 출력은 {{"text": "답변"}} 형식의 strict JSON 하나로 작성하세요. text는 문자열이어야 합니다. JSON 객체의 다른 항목은 포함하지 마세요.
+- answer에는 사용자에게 보여 줄 답변만 작성하세요.
+- referenced_documents에는 참고한 문서 제목을 정확히 기록하세요. 참고한 문서가 없으면 빈 리스트를 반환하세요.
+- note에는 답변을 뒷받침하는 확인 가능한 문서 근거를 짧게 요약하세요.
+- 단계별 내부 추론은 쓰지 말고, 확인 가능한 근거만 요약하세요.
 
 <분류 라벨>
 {classification_label}
@@ -162,23 +183,6 @@ def normalize_text(value):
     value = re.sub(r" *\n *", "\n", value)
     value = re.sub(r"\n{3,}", "\n\n", value)
     return value.strip()
-
-
-def parse_answer(value):
-    """모델 출력 {"text": "답변"}에서 답변 문장만 꺼냅니다. 형식이 다르면 ValueError·TypeError를 냅니다."""
-    cleaned = value.strip()
-    # ```json ... ``` 코드 블록으로 감싼 출력도 받아 줍니다.
-    cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", cleaned)
-    try:
-        payload = json.loads(cleaned)
-    except json.JSONDecodeError as error:
-        raise ValueError("모델 출력이 올바른 JSON이 아닙니다.") from error
-    if not isinstance(payload, Mapping) or not isinstance(payload.get("text"), str):
-        raise TypeError("모델 출력에 문자열 text가 없습니다.")
-    text = normalize_text(payload["text"])
-    if not text:
-        raise ValueError("모델 출력의 text가 비어 있습니다.")
-    return text
 
 
 def payload_dict(value):
@@ -370,55 +374,61 @@ def create_chat_model(provider=PROVIDER):
             temperature=OLLAMA_TEMPERATURE,
             num_ctx=OLLAMA_NUM_CTX,
             num_predict=OLLAMA_NUM_PREDICT,
+            client_kwargs={"timeout": TIMEOUT},
         )
     if provider == "openai":
         return ChatOpenAI(
             model=OPENAI_MODEL,
             timeout=TIMEOUT,
-            max_retries=OPENAI_MAX_RETRIES,
+            max_retries=MAX_RETRIES,
             max_tokens=OPENAI_MAX_TOKENS,
         )
     raise ValueError("PROVIDER는 ollama 또는 openai여야 합니다.")
 
 
 def create_chain(provider=PROVIDER, documents_path=None):
-    """두 입력값을 하나의 LangChain 문자열 프롬프트로 처리합니다."""
+    """질문과 문서 문맥을 구조화된 LangChain 답변으로 변환합니다."""
     model = create_chat_model(provider)
-    output_parser = StrOutputParser() | RunnableLambda(parse_answer)
+    structured_chain = ANSWER_PROMPT | model.with_structured_output(AssistantResponse)
+
+    def format_answer(value):
+        response = value["structured_response"]
+        document_titles = "\n".join(response.referenced_documents)
+        return {
+            "inquiry": value["question"],
+            "answer": normalize_text(response.answer),
+            "document": normalize_text(document_titles),
+            "note(LLM)": normalize_text(response.note),
+        }
+
+    def format_failed_input(value):
+        return {
+            "inquiry": value["text"],
+            "answer": "",
+            "document": "",
+            "note(LLM)": "",
+        }
 
     answer_chain = (
         RunnableLambda(
             lambda value: add_prompt_context(value, provider, documents_path)
         )
-        | RunnablePassthrough.assign(answer=ANSWER_PROMPT | model | output_parser)
-        | RunnableLambda(
-            lambda value: {
-                "ok": True,
-                "text": value["answer"],
-                "reason": value["classification_label"],
-            }
-        )
+        | RunnablePassthrough.assign(structured_response=structured_chain)
+        | RunnableLambda(format_answer)
     )
 
     return RunnableLambda(prepare_input) | RunnableBranch(
-        (lambda value: not value["ok"], RunnableLambda(lambda value: value)),
+        (lambda value: not value["ok"], RunnableLambda(format_failed_input)),
         answer_chain,
     )
 
 
 def get_execution_conditions(provider):
     """비교 출력에 표시할 공통 실행 설정만 반환합니다."""
-    if provider == "ollama":
-        return {
-            "timeout_seconds": None,
-            "max_retries": None,
-            "max_tokens": OLLAMA_NUM_PREDICT,
-            "max_input_chars": MAX_INPUT_CHARS,
-        }
     return {
         "timeout_seconds": TIMEOUT,
-        "max_retries": OPENAI_MAX_RETRIES,
-        "max_tokens": OPENAI_MAX_TOKENS,
+        "max_retries": MAX_RETRIES,
+        "max_tokens": OLLAMA_NUM_PREDICT if provider == "ollama" else OPENAI_MAX_TOKENS,
         "max_input_chars": MAX_INPUT_CHARS,
     }
 
@@ -429,7 +439,8 @@ def process_response(response, classification_label, provider=None):
         "response": payload_dict(response),
         "classification_label": classification_label,
     }
-    prepare_input(request)
+    prepared_request = prepare_input(request)
+    input_text = prepared_request.get("question", prepared_request.get("text", ""))
 
     models = {"ollama": OLLAMA_MODEL, "openai": OPENAI_MODEL}
     providers = tuple(models) if provider is None else (provider,)
@@ -446,13 +457,18 @@ def process_response(response, classification_label, provider=None):
         # 한 모델의 실패가 다른 모델의 결과를 막지 않도록 각각 기록합니다.
         except Exception as error:  # noqa: BLE001
             error_message = f"{type(error).__name__}: {error}"
+            answer = {
+                "inquiry": input_text,
+                "answer": "",
+                "document": "",
+                "note(LLM)": "",
+            }
         results[name] = {
             "model": models[name],
-            "input": request,
-            "output": answer,
+            **answer,
             **get_execution_conditions(name),
             "elapsed_seconds": round(time.perf_counter() - started_at, 3),
-            "success": error_message is None,
+            "success": error_message is None and prepared_request.get("ok", False),
             "error": error_message,
         }
     return results

@@ -10,7 +10,8 @@
   name, provider(ollama|openai), model, base_url, temperature, num_ctx, max_output_tokens,
   timeout_seconds. 값을 비우면 실행기 기본값을 쓴다. API 키는 이 파일에 넣지 않는다.
 실행기는 아직 모델 설정을 인자로 받지 않아, 호출하는 동안만 실행기의 모듈 상수를 바꿔 둔다
-(executor_settings). 실행기가 받지 않는 설정(OpenAI temperature, Ollama 시간 제한)은 막는다.
+(executor_settings). 시간 제한은 두 모델이 같은 상수를 쓴다. 실행기가 받지 않는 설정
+(OpenAI temperature·num_ctx·base_url)은 막는다. OpenAI 모델은 temperature 기본값만 받는다.
 """
 
 import contextlib
@@ -63,6 +64,7 @@ EXECUTOR_CONSTANTS = {
         "temperature": "OLLAMA_TEMPERATURE",
         "num_ctx": "OLLAMA_NUM_CTX",
         "max_output_tokens": "OLLAMA_NUM_PREDICT",
+        "timeout_seconds": "TIMEOUT",
     },
     "openai": {
         "model": "OPENAI_MODEL",
@@ -72,11 +74,8 @@ EXECUTOR_CONSTANTS = {
 }
 # 실행 조건에 함께 남길 고정값 (설정으로 바꿀 수 없음)
 EXECUTOR_FIXED = {
-    "ollama": {"api": "langchain_ollama.ChatOllama"},
-    "openai": {
-        "api": "langchain_openai.ChatOpenAI",
-        "max_retries": "OPENAI_MAX_RETRIES",
-    },
+    "ollama": {"api": "langchain_ollama.ChatOllama", "max_retries": "MAX_RETRIES"},
+    "openai": {"api": "langchain_openai.ChatOpenAI", "max_retries": "MAX_RETRIES"},
 }
 
 
@@ -211,7 +210,6 @@ def applied_conditions(config):
     # 실행기가 정하지 않는 값은 모델·라이브러리 기본값이다
     values.setdefault("temperature", None)
     values.setdefault("num_ctx", None)
-    values.setdefault("timeout_seconds", None)
     values["max_input_chars"] = assistant.MAX_INPUT_CHARS
     return {"name": config.name, "provider": config.provider, **values, **fixed}
 
@@ -435,6 +433,11 @@ def run_case(case, config, invoke=invoke_executor, documents_path=None):
         # 예외 원문에는 비밀값이 섞일 수 있어 종류만 남긴다
         error = type(exc).__name__
     latency = time.perf_counter() - started
+    # 모델은 답했는데 체인이 그 출력을 풀다 멈춘 예외는 호출 오류(A1)가 아니라 출력 정리 오류로 따로 남긴다.
+    # 잘림(A2)과 형식(A3)은 모델 원문으로 판정한다
+    output_error = None
+    if error is not None and capture.raw_text is not None:
+        error, output_error = None, error
     finish_reason = capture.finish_reason or ("error" if error else None)
     return {
         "llm_called": capture.llm_calls > 0,
@@ -449,6 +452,7 @@ def run_case(case, config, invoke=invoke_executor, documents_path=None):
         "served_model": capture.served_model,
         "latency_seconds": latency,
         "error": error,
+        "output_error": output_error,
     }
 
 

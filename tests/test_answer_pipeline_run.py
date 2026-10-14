@@ -15,6 +15,7 @@ from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
 from langchain_core.messages import AIMessage
 
 import sanaebi_assistant as assistant
+from answer_pipeline.checks import answer_checks
 from answer_pipeline.cli import DEFAULT_EVAL_SET_PATH, build_parser, main
 from answer_pipeline.run import (
     ModelConfig,
@@ -116,6 +117,18 @@ class RunCaseTests(ExecutorPatch):
         result = run_case(case(), LOCAL)
         self.assertFalse(result["generation_complete"])
 
+    def test_unparsable_reply_is_format_failure_not_call_error(self):
+        # 모델은 답했는데 실행기가 평문을 풀지 못하면 A1(호출)은 통과하고 A3(형식)에서 실패한다
+        self.use_model("그룹웨어에서 신청하세요.")
+        result = run_case(case(), LOCAL)
+        self.assertIsNone(result["error"])
+        self.assertEqual(result["output_error"], "ValueError")
+        self.assertEqual(result["response_text"], "그룹웨어에서 신청하세요.")
+        self.assertTrue(result["generation_complete"])
+        checks = {c["code"]: c["ok"] for c in answer_checks({**case(), **result})}
+        self.assertTrue(checks["A1"])
+        self.assertFalse(checks["A3"])
+
     def test_non_answer_route_uses_no_documents(self):
         self.use_model(answer("지원 범위가 아닙니다."))
         result = run_case(unsupported_case(), LOCAL)
@@ -128,6 +141,7 @@ class RunCaseTests(ExecutorPatch):
         with patch.object(assistant, "create_chat_model", broken):
             result = run_case(case(), LOCAL)
         self.assertEqual(result["error"], "RuntimeError")
+        self.assertIsNone(result["output_error"])
         self.assertFalse(result["llm_called"])
         self.assertFalse(result["generation_complete"])
         self.assertNotIn("secret", json.dumps(result))
@@ -176,7 +190,8 @@ class ModelConfigTests(unittest.TestCase):
     def test_rejects_settings_the_executor_does_not_apply(self):
         for rows in (
             [{"name": "c", "provider": "openai", "temperature": 0.2}],
-            [{"name": "l", "provider": "ollama", "timeout_seconds": 120}],
+            [{"name": "c", "provider": "openai", "num_ctx": 4096}],
+            [{"name": "c", "provider": "openai", "base_url": "http://x"}],
             [{"name": "l", "provider": "ollama", "api_key": "x"}],
             [{"name": "x", "provider": "anthropic"}],
             [{"name": "a b", "provider": "ollama"}],
@@ -190,8 +205,16 @@ class ModelConfigTests(unittest.TestCase):
         conditions = applied_conditions(CLOUD)
         self.assertEqual(conditions["model"], "test-cloud")
         self.assertEqual(conditions["max_output_tokens"], assistant.OPENAI_MAX_TOKENS)
-        self.assertEqual(conditions["max_retries"], assistant.OPENAI_MAX_RETRIES)
-        self.assertIsNone(conditions["temperature"])  # 실행기가 정하지 않는다
+        self.assertEqual(conditions["max_retries"], assistant.MAX_RETRIES)
+        self.assertIsNone(conditions["temperature"])  # OpenAI 모델 기본값을 쓴다
+        self.assertEqual(
+            applied_conditions(LOCAL)["temperature"], assistant.OLLAMA_TEMPERATURE
+        )
+        # 시간 제한은 두 모델이 같은 실행기 값을 쓴다
+        for config in (CLOUD, LOCAL):
+            self.assertEqual(
+                applied_conditions(config)["timeout_seconds"], assistant.TIMEOUT
+            )
         self.assertEqual(applied_conditions(LOCAL)["num_ctx"], 8192)
         self.assertNotEqual(assistant.OPENAI_MODEL, "test-cloud")
 
