@@ -1,12 +1,12 @@
-# Jev API로 질문 분류 및 CSV 평가 (별도 학습 없음)
+# Jev API로 문서 분류 및 공통 분할 평가 (별도 학습 없음)
 
 import argparse
 import csv
-import hashlib
 import json
 import os
 import statistics
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from time import perf_counter
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -14,19 +14,31 @@ from urllib.request import Request, urlopen
 import numpy as np
 
 if __package__:
+    from .document_split import (
+        LABELS,
+        RANDOM_SEED,
+        document_input,
+        make_split_record,
+        split_documents,
+        split_input_hashes,
+    )
     from .model_report import (
-        DATA_DIR,
         evaluate,
-        read_rows,
         report_dir,
         write_comparison,
         write_report,
     )
 else:
+    from document_split import (
+        LABELS,
+        RANDOM_SEED,
+        document_input,
+        make_split_record,
+        split_documents,
+        split_input_hashes,
+    )
     from model_report import (
-        DATA_DIR,
         evaluate,
-        read_rows,
         report_dir,
         write_comparison,
         write_report,
@@ -37,30 +49,46 @@ else:
 MODEL_NAME = "jev-latest"
 MODEL_FOLDER = "jev"
 API_URL = "https://api.typesafe.ai/v1/systemone"
-QUESTION = "VPN 접속 방법을 알려줘"  # 테스트할 질문
-INSTRUCTIONS = "이 회사 질문의 담당 영역을 하나 선택하세요."
+DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
+DOCUMENT_TITLE = "VPN 연결 절차"  # 문서 하나를 분류할 때 사용하는 예시
+DOCUMENT_TEXT = "업무용 VPN에 접속하려면 승인된 클라이언트를 설치하고 회사 계정으로 로그인한다. 접속 오류가 발생하면 오류 메시지를 IT 지원 담당자에게 전달한다."
+INSTRUCTIONS = "문서의 제목과 본문을 읽고 대표 업무 주제를 하나 선택하세요. 작성 부서나 단순 언급보다 문서의 주요 목적과 핵심 행동을 기준으로 판단하세요."
 
 # 반환할 카테고리와 각 카테고리의 의미
 CATEGORIES = {
-    "it": "IT: 계정, VPN, 소프트웨어, 시스템 장애, 정보 보안",
-    "hr": "인사: 연차, 근태, 채용, 인사 기록, 직원 복지",
-    "finance": "재무: 경비 정산, 급여 지급, 세금, 매출과 입금",
-    "general_affairs": "총무: 비품, 회의실, 사무실 시설, 회사 자산 관리",
-    "other": "기타: 위 네 영역에 해당하지 않거나 회사와 무관한 질문",
+    "HR": "인사·근무·복지: 휴가, 근태, 근무 제도, 복지, 직원 급여, 입사·퇴사 절차, 인사 서류. 계정 설정과 직원 경비 정산은 제외.",
+    "IT": "계정·업무도구·IT 지원: 계정 생성·로그인·권한 요청, 협업 도구, VPN, 업무 기기 설정·장애 해결. 구매 승인과 정보 취급·외부 공유 규칙은 제외.",
+    "FINANCE_PROCUREMENT": "비용·구매·정산: 직원 경비, 출장비, 법인카드, 구매 요청·승인, 세금계산서, 협력사 대금 지급. 직원 급여·복지는 HR, 기술 설정은 IT.",
+    "WORKPLACE": "총무·시설·사무환경: 사무실 출입, 출입증 이용, 좌석, 회의실, 주차, 사무용품 비치, 우편물, 시설 이용. 구매 예산·승인은 재무·구매, 보안 사고 대응은 보안·법무.",
+    "SECURITY_LEGAL": "보안·개인정보·법무: 정보 취급·보관·외부 공유, 개인정보 보호, 접근 통제 원칙, 보안 사고 대응, 계약 검토, 윤리·준법. 일반 계정 사용법이나 사무실 운영은 제외.",
+    "COMPANY": "회사·조직 안내: 회사 소개, 조직도, 부서·팀의 역할과 업무 분장, 전사 목표·조직 운영 안내. 구체적인 인사·IT·정산·시설·보안 절차가 핵심이면 해당 주제로 분류.",
 }
 
-##### 질문 분류 #####
+##### 문서 데이터 준비 #####
 
 
-def request_classification(question: str) -> dict:
+def prepare_document_data():
+    with DATASET_PATH.open("r", encoding="utf-8-sig", newline="") as file:
+        document_rows = list(csv.DictReader(file))
+    splits = split_documents(document_rows, seed=RANDOM_SEED)
+    record = make_split_record(splits, DATASET_PATH, seed=RANDOM_SEED)
+    if list(CATEGORIES) != LABELS:
+        raise ValueError("Jev 카테고리 순서가 공통 문서 라벨과 다릅니다.")
+    return splits, record
+
+
+##### 문서 분류 #####
+
+
+def request_classification(document: str) -> dict:
     api_key = os.environ.get("TYPESAFE_API_KEY")  # 키는 환경변수에서 읽기
     if not api_key:
         raise SystemExit("TYPESAFE_API_KEY 환경변수에 API 키를 설정해 주세요.")
 
-    # Jev에게 질문 내용과 선택할 카테고리를 전달
+    # 제목+본문과 6개 문서 카테고리의 의미를 전달
     payload = {
         "model": MODEL_NAME,
-        "state": question,
+        "state": document,
         "questions": {
             "category": {
                 "type": "choice",
@@ -97,13 +125,22 @@ def request_classification(question: str) -> dict:
     return result  # 평가에서는 실제 모델 버전과 토큰 사용량도 기록
 
 
-def classify_question(question: str) -> str:
-    return request_classification(question)["answers"]["category"]["choice"]
+def classify_document(document: str) -> str:
+    return request_classification(document)["answers"]["category"]["choice"]
 
 
 def save_probability_csv(output_dir, predictions):
     # 원본 확률은 JSON에 유지하고, CSV에서는 퍼센트로 표시
-    fields = ["split", "id", "question", "actual", "predicted", "confidence"]
+    fields = [
+        "split",
+        "document_id",
+        "title",
+        "input_text",
+        "actual",
+        "predicted",
+        "confidence",
+    ]
+    base_fields = fields.copy()
     fields += [f"{label}_percent" for label in CATEGORIES]
     with (output_dir / "prediction_probabilities.csv").open(
         "w", encoding="utf-8-sig", newline=""
@@ -111,7 +148,7 @@ def save_probability_csv(output_dir, predictions):
         writer = csv.DictWriter(file, fieldnames=fields)
         writer.writeheader()
         for prediction in predictions:
-            row = {field: prediction.get(field, "") for field in fields[:6]}
+            row = {field: prediction.get(field, "") for field in base_fields}
             probabilities = prediction.get("probabilities") or {}
             for label in CATEGORIES:
                 probability = probabilities.get(label)
@@ -129,7 +166,8 @@ def evaluate_csv():
     if not os.environ.get("TYPESAFE_API_KEY"):
         raise SystemExit("TYPESAFE_API_KEY 환경변수에 API 키를 설정해 주세요.")
 
-    rows = {split: read_rows(split) for split in ["validation", "test"]}
+    splits, split_record = prepare_document_data()
+    rows = {split: splits[split] for split in ["validation", "test"]}
     if any(not data for data in rows.values()):
         raise ValueError("검증·테스트 CSV는 비어 있을 수 없습니다.")
     print("Jev 평가 요청 수:", sum(len(data) for data in rows.values()))
@@ -143,8 +181,9 @@ def evaluate_csv():
     for split, data in rows.items():
         predictions = []
         for step, row in enumerate(data, start=1):
+            input_text = document_input(row)
             started = perf_counter()
-            result = request_classification(row["text"])
+            result = request_classification(input_text)
             elapsed_ms = (perf_counter() - started) * 1000
             answer = result["answers"]["category"]
             predictions.append(answer["choice"])
@@ -156,8 +195,9 @@ def evaluate_csv():
             predictions_log.append(
                 {
                     "split": split,
-                    "id": row["id"],
-                    "question": row["text"],
+                    "document_id": row["document_id"],
+                    "title": row["title"],
+                    "input_text": input_text,
                     "actual": row["label"],
                     "predicted": answer["choice"],
                     "confidence": answer.get("confidence"),
@@ -170,7 +210,8 @@ def evaluate_csv():
             )
             print(f"{split}: {step}/{len(data)}")
 
-        scores[split] = evaluate(data, predictions)
+        evaluation_rows = [dict(row, text=document_input(row)) for row in data]
+        scores[split] = evaluate(evaluation_rows, predictions, labels=LABELS)
         print(f"{split} 정확도: {scores[split]['accuracy']:.4f}")
         print(f"{split} Macro F1: {scores[split]['macro_f1']:.4f}")
         print("혼동행렬: 행은 정답, 열은 예측 / 순서:", list(CATEGORIES))
@@ -178,18 +219,17 @@ def evaluate_csv():
             print(label, matrix_row)
 
     report = {
-        "title": "JEV · API 질문 분류",
+        "title": "JEV · API 문서 분류",
         "created_at": datetime.now(timezone(timedelta(hours=9))).strftime(
             "%Y-%m-%d %H:%M KST"
         ),
         "counts": {"train": 0, **{split: len(data) for split, data in rows.items()}},
-        # 같은 CSV를 사용하는 로컬 모델 보고서와 데이터 식별자를 맞추기
-        "data_hashes": {
-            split: hashlib.sha256((DATA_DIR / f"{split}.csv").read_bytes()).hexdigest()
-            for split in ["train", "validation", "test"]
-        },
+        "data_hashes": split_input_hashes(splits),
         "settings": {
             "requested_model": MODEL_NAME,
+            "labels": LABELS,
+            "seed": RANDOM_SEED,
+            "data_split": split_record,
             "resolved_models": sorted(resolved_models),
             "evaluation_calls": len(predictions_log),
             "input_tokens": sum(input_tokens)
@@ -229,19 +269,36 @@ def evaluate_csv():
 ##### 실행 #####
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Jev 질문 분류 및 평가")
+    parser = argparse.ArgumentParser(description="Jev 문서 분류 및 평가")
     parser.add_argument(
-        "--evaluate", action="store_true", help="검증·테스트 CSV 전체를 API로 평가"
+        "--evaluate",
+        action="store_true",
+        help="공통 분할의 검증·테스트 문서를 API로 평가",
+    )
+    parser.add_argument(
+        "--preview-documents",
+        action="store_true",
+        help="API 호출 없이 공통 분할과 입력 확인",
     )
     args = parser.parse_args()
-    if args.evaluate:
+    if args.preview_documents:
+        splits, record = prepare_document_data()
+        print("분할 시드:", RANDOM_SEED)
+        for name, data in record["splits"].items():
+            print(name, data["count"], "개", data["label_counts"])
+        print("Jev 평가 요청 수:", len(splits["validation"]) + len(splits["test"]))
+        print("첫 번째 검증 입력:\n", document_input(splits["validation"][0]), sep="")
+        print("첫 번째 정답:", splits["validation"][0]["label"])
+    elif args.evaluate:
         evaluate_csv()
     else:
-        result = request_classification(QUESTION)
+        document = document_input({"title": DOCUMENT_TITLE, "text": DOCUMENT_TEXT})
+        result = request_classification(document)
         answer = result["answers"]["category"]
-        # 질문 하나만 실행해도 원본 확률을 저장
+        # 문서 하나만 실행해도 원본 확률을 저장
         prediction = {
-            "question": QUESTION,
+            "title": DOCUMENT_TITLE,
+            "input_text": document,
             "predicted": answer["choice"],
             "confidence": answer.get("confidence"),
             "probabilities": answer.get("probabilities"),
@@ -252,7 +309,7 @@ if __name__ == "__main__":
         (output_dir / "single_prediction.json").write_text(
             json.dumps(prediction, ensure_ascii=False, indent=2), encoding="utf-8"
         )
-        print("질문:", QUESTION)
+        print("문서 입력:", document)
         print("분류:", answer["choice"])
         for label, probability in (answer.get("probabilities") or {}).items():
             print(f"{label}: {probability:.2%}")
