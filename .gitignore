@@ -54,3 +54,20 @@ Thumbs.db
 # Local preparation originals, intermediate data, and preparation tools.
 # Current dataset, review records, documentation, and data/archive/ are tracked.
 /data/local/
+
+# Local classification runs and packaging metadata
+/runs/
+*.egg-info/
+/build/
+/dist/
+
+# Managed local classification artifacts
+/artifacts/
+
+# Runtime document store, WAL, backups (never commit document bodies).
+/var/
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Local browser inspection snapshots
+/.playwright-cli/

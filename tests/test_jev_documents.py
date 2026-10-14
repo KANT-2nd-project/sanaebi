@@ -11,9 +11,9 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-from classification import test_jev as jev_cli
 from classification.cli import evaluate as jev_evaluation
 from classification.dataset import LABELS, question_input, split_input_hashes
+from classification.experiments import evaluate_jev as jev_cli
 from classification.models import jev as jev_client
 from classification.models import jev_prompt
 

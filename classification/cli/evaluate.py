@@ -6,8 +6,9 @@ from time import perf_counter
 
 from contracts.classification import LABELS
 
-from .. import artifacts, dataset, reporting
-from ..evaluation import memory_mib
+from .. import artifacts, dataset
+from ..evaluation import reporting
+from ..evaluation.metrics import memory_mib
 from ..models import jev, jev_prompt, tfidf, transformer
 from ..types import MeasurementPolicy
 from ..workflows.evaluate import evaluate_questions
@@ -144,18 +145,47 @@ def evaluate_jev(
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="저장 모델 평가")
-    parser.add_argument("kind", help="저장 폴더 이름 또는 tfidf_lr")
-    parser.add_argument("--dataset", type=Path, default=dataset.DATASET_PATH)
-    parser.add_argument("--model-dir", type=Path, default=artifacts.MODEL_DIR)
-    parser.add_argument("--result-dir", type=Path, default=artifacts.RESULT_DIR)
-    args = parser.parse_args(argv)
-    evaluate_saved_model(
-        args.kind,
-        dataset_path=args.dataset,
-        model_dir=args.model_dir,
-        result_dir=args.result_dir,
+    from ..models.presets import CONFIGS
+    from ..storage import DEFAULT_ROOT
+    from .main import boundary
+
+    parser = argparse.ArgumentParser(
+        description="저장 모델 평가. 권장: sanaebi eval MODEL"
     )
+    parser.add_argument("kind", help="모델 이름 (과거 tfidf_lr 별칭 지원)")
+    parser.add_argument("--dataset", type=Path, default=dataset.DATASET_PATH)
+    parser.add_argument("--artifact-root", type=Path)
+    parser.add_argument(
+        "--model-dir", type=Path, help="과거 저장 형식을 읽을 때만 사용"
+    )
+    parser.add_argument(
+        "--result-dir", type=Path, help="과거 결과/저장된 API 보고서 경로"
+    )
+    args = parser.parse_args(argv)
+    if args.artifact_root is not None and (
+        args.model_dir is not None or args.result_dir is not None
+    ):
+        parser.error("--artifact-root와 과거 경로 옵션은 함께 사용할 수 없습니다.")
+    name = "tfidf" if args.kind == "tfidf_lr" else args.kind
+    if name in CONFIGS and args.model_dir is None and args.result_dir is None:
+        boundary(
+            lambda: evaluate_current(
+                name,
+                artifact_root=(args.artifact_root or DEFAULT_ROOT).resolve(),
+                dataset_path=args.dataset,
+            )
+        )
+    else:
+        if args.artifact_root is not None:
+            parser.error("새 저장소에는 등록된 로컬 모델 이름을 사용하세요.")
+        boundary(
+            lambda: evaluate_saved_model(
+                args.kind,
+                dataset_path=args.dataset,
+                model_dir=args.model_dir or artifacts.MODEL_DIR,
+                result_dir=args.result_dir or artifacts.RESULT_DIR,
+            )
+        )
 
 
 def jev_main(argv=None):
@@ -205,3 +235,130 @@ def jev_main(argv=None):
         for label, probability in (prediction.probabilities or {}).items():
             print(f"{label}: {probability:.2%}")
         print("저장 위치:", output)
+
+
+def refresh_comparison(artifact_root):
+    """유효 모델에 연결된 결과만 같은 평가 조건끼리 비교한다."""
+    from .. import storage
+
+    with storage.lock(artifact_root, "comparison"):
+        groups = {}
+        for path in sorted((artifact_root / "results").glob("*/metrics.json")):
+            try:
+                report = artifacts.read_json(path)
+                manifest = storage.validate_bundle(
+                    artifact_root / "models" / path.parent.name, path.parent.name
+                )
+                if report.get("model_id") != manifest["model_id"]:
+                    continue
+                if not artifacts.is_current_report(report):
+                    continue
+                key = storage.digest(
+                    {
+                        "labels": report["settings"]["labels"],
+                        "split": report["settings"]["data_split"],
+                        **{
+                            key: report.get(key)
+                            for key in (
+                                "data_hashes",
+                                "counts",
+                                "measurement_policy",
+                                "evaluation_environment",
+                            )
+                        },
+                    }
+                )
+                groups.setdefault(key, {})[path.parent.name] = report
+            except (ValueError, OSError, KeyError):
+                continue
+        output = artifact_root / "results/comparison.html"
+        # 각 그룹별 완전한 보고서를 별도 페이지로 만들고 인덱스에서 연결한다.
+        from html import escape
+
+        links = []
+        active_pages = set()
+        for key, reports in groups.items():
+            name = f"comparison-{key}.html"
+            active_pages.add(name)
+            storage.atomic_text(
+                output.parent / name, reporting.render_comparison(reports)
+            )
+            links.append(f'<li><a href="{name}">{escape(", ".join(reports))}</a></li>')
+        storage.atomic_text(
+            output,
+            '<!doctype html><meta charset="utf-8"><h1>동일 조건 모델 비교</h1><p>모델과 불일치하거나 손상된 결과는 제외됩니다.</p><ul>'
+            + "".join(links)
+            + "</ul>",
+        )
+
+        # 이전 그룹 링크를 직접 열어도 현재 모델의 점수로 오해하지 않게 표시한다.
+        for old in output.parent.glob("comparison-*.html"):
+            if old.name not in active_pages:
+                storage.atomic_text(
+                    old,
+                    '<!doctype html><meta charset="utf-8"><p>이 비교는 현재 모델·평가 조건과 달라 만료되었습니다. <a href="comparison.html">현재 비교</a></p>',
+                )
+
+
+def evaluate_current(name, *, artifact_root, dataset_path=dataset.DATASET_PATH):
+    """고정 모델 저장소를 검증하고 매번 CPU에서 평가한다. 학습을 호출하지 않는다."""
+    import shutil
+    from dataclasses import asdict
+
+    from .. import storage
+    from ..models.presets import load_bundle
+    from .main import command_hint
+
+    with storage.lock(artifact_root, name):
+        storage.recover(artifact_root, "models", name)
+        storage.recover(artifact_root, "results", name)
+        bundle = artifact_root / "models" / name
+        try:
+            manifest = storage.validate_bundle(bundle, name)
+        except ValueError as error:
+            raise ValueError(
+                f"{error}\n학습 안내: "
+                + command_hint(
+                    "train", name, artifact_root, dataset_path, force=bundle.exists()
+                )
+            ) from error
+        settings = artifacts.read_json(bundle / "training_summary.json")
+        if not artifacts.is_current_report({"settings": settings}):
+            raise ValueError("저장 모델의 라벨·입력 계약이 현재 질문 3분류와 다릅니다.")
+        data = dataset.restore_data(settings["data_split"], dataset_path)
+        started = perf_counter()
+        predict = load_bundle(name, bundle, settings)
+        load_seconds = perf_counter() - started
+        result = evaluate_questions(data.rows, predict, LOCAL_MEASUREMENT)
+        report = artifacts.evaluation_report(
+            result,
+            data,
+            title=f"{name.upper()} · 요청 처리 분류",
+            settings=settings,
+            model_size=artifacts.model_size_mib(bundle),
+            load_seconds=load_seconds,
+            rss=memory_mib(),
+        )
+        report.update(
+            model_id=manifest["model_id"],
+            evaluation_environment={
+                **storage.environment(),
+                "device": "cpu",
+                "cpu_threads": 4,
+            },
+            measurement_policy=asdict(LOCAL_MEASUREMENT),
+        )
+        temporary = storage.stage(artifact_root, "eval-" + name)
+        try:
+            artifacts.save_json(temporary / "metrics.json", report)
+            artifacts.save_json(temporary / "predictions.json", result.predictions)
+            artifacts.save_html(
+                temporary / "report.html", reporting.render_report(report)
+            )
+            storage.publish(artifact_root, "results", name, temporary)
+        finally:
+            if temporary.exists():
+                shutil.rmtree(temporary)
+    refresh_comparison(artifact_root)
+    print("HTML 보고서:", artifact_root / "results" / name / "report.html")
+    return report

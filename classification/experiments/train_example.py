@@ -4,19 +4,19 @@ import sys
 from pathlib import Path
 
 if not __package__:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from classification.cli.train import transformer_main
+from classification.cli.train import run_training
 from classification.models.transformer import TransformerConfig
 
 CONFIG = TransformerConfig(
-    model_name="klue/bert-base",
-    model_folder="bert_base",
+    model_name="모델명 입력",
+    model_folder="결과 저장 폴더 명 입력",
 )
 
 
 def main(argv=None):
-    transformer_main(CONFIG, argv)
+    run_training(CONFIG, argv)
 
 
 if __name__ == "__main__":

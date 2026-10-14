@@ -113,7 +113,7 @@ def read_recorded_splits(record, dataset_path=None):
     # 새로 랜덤 분할하지 않고, 모델에 기록된 문서 ID로 원래 분할 복원
     if dataset_path is None:
         dataset_path = (
-            Path(__file__).resolve().parents[1]
+            Path(__file__).resolve().parents[2]
             / "data"
             / "archive"
             / "document-topics-v0.2"

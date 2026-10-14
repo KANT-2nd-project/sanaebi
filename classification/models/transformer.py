@@ -24,6 +24,7 @@ class TransformerConfig:
     batch_size: int = 4
     epochs: int = 10
     seed: int = DEFAULT_SEED
+    revision: str | None = None
 
 
 @dataclass
@@ -154,6 +155,7 @@ def select_transformer(config, tokenizer, splits, device):
             torch.manual_seed(config.seed)
             model = AutoModelForSequenceClassification.from_pretrained(
                 config.model_name,
+                **({"revision": config.revision} if config.revision else {}),
                 num_labels=len(LABELS),
                 id2label=id2label,
                 label2id=label2id,
@@ -240,13 +242,16 @@ def fit(train_rows, validation_rows, config, *, device=None):
     from transformers import AutoTokenizer
 
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
-    tokenizer = AutoTokenizer.from_pretrained(config.model_name)
+    tokenizer = AutoTokenizer.from_pretrained(
+        config.model_name, **({"revision": config.revision} if config.revision else {})
+    )
     model, best, trials = select_transformer(
         config, tokenizer, {"train": train_rows, "validation": validation_rows}, device
     )
     settings = {
         "model_name": config.model_name,
         "model_folder": config.model_folder,
+        "revision": config.revision,
         "labels": LABELS,
         "batch_size": config.batch_size,
         "learning_rate": best.learning_rate,

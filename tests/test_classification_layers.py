@@ -10,8 +10,9 @@ from functools import partial
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from classification import artifacts, reporting
+from classification import artifacts
 from classification.cli import train as train_cli
+from classification.evaluation import reporting
 from classification.models import tfidf, transformer
 from classification.types import (
     DatasetSplits,
@@ -38,7 +39,7 @@ def example_splits():
         ]
         for split in ("train", "validation", "test")
     }
-    return DatasetSplits(rows, {"seed": 42}, {})
+    return DatasetSplits(rows, {"seed": 42, "input_fields": ["question"]}, {})
 
 
 class DependencyTests(unittest.TestCase):
@@ -48,14 +49,10 @@ class DependencyTests(unittest.TestCase):
         for path in root.rglob("*.py"):
             relative = path.relative_to(root)
             parts = relative.parts
-            if (
-                parts[0] == "cli"
-                or len(parts) == 1
-                and (
-                    path.stem.startswith("train_")
-                    or path.stem in {"test_jev", "model_report", "document_split"}
-                )
-            ):
+            if parts[0] in {"cli", "experiments", "legacy"} or path.stem in {
+                "storage",
+                "presets",
+            }:
                 continue
             module = ".".join(("classification", *relative.with_suffix("").parts))
             package = module if path.stem == "__init__" else module.rsplit(".", 1)[0]
@@ -77,23 +74,22 @@ class DependencyTests(unittest.TestCase):
                     with self.subTest(file=str(relative), dependency=target):
                         self.assertNotIn(target.split(".")[0], forbidden_commands)
                         self.assertFalse(target.startswith("classification.cli"))
-                        self.assertNotIn(
-                            target,
-                            {"classification.model_report", "classification.test_jev"},
+                        self.assertFalse(
+                            target.startswith("classification.experiments")
                         )
-                        self.assertFalse(target.startswith("classification.train_"))
+                        self.assertFalse(target.startswith("classification.legacy"))
                         if parts[0] == "workflows":
                             for prefix in (
                                 "classification.models",
                                 "classification.artifacts",
-                                "classification.reporting",
+                                "classification.evaluation.reporting",
                                 "classification.dataset",
                             ):
                                 self.assertFalse(target.startswith(prefix))
                         if parts[0] == "models":
                             for prefix in (
                                 "classification.workflows",
-                                "classification.reporting",
+                                "classification.evaluation.reporting",
                                 "classification.artifacts",
                                 "classification.dataset",
                             ):
@@ -106,10 +102,7 @@ class DependencyTests(unittest.TestCase):
                                     if path.stem == "jev"
                                     else {path.stem},
                                 )
-                        if (
-                            path.stem in {"evaluation", "reporting", "types"}
-                            and len(parts) == 1
-                        ):
+                        if parts[0] == "evaluation" or path.stem == "types":
                             for prefix in (
                                 "classification.models",
                                 "classification.workflows",
@@ -119,6 +112,18 @@ class DependencyTests(unittest.TestCase):
 
     def test_superseded_internal_modules_are_removed(self):
         for name in (
+            "evaluation",
+            "reporting",
+            "document_split",
+            "model_report",
+            "test_jev",
+            "train_bert_base",
+            "train_koelectra_base",
+            "train_koelectra_small",
+            "train_roberta_base",
+            "train_roberta_small",
+            "train_tfidf",
+            "train_classification_example",
             "training",
             "tfidf_training",
             "inference",
@@ -232,6 +237,7 @@ class WorkflowTests(unittest.TestCase):
         data = example_splits()
         fitted = FittedModel(Mock(), Mock(side_effect=OSError("disk full")), {}, Mock())
         with (
+            tempfile.TemporaryDirectory() as temp,
             patch.object(train_cli.dataset, "prepare_data", return_value=data),
             patch.object(train_cli, "print_preview"),
             patch.object(
@@ -240,51 +246,49 @@ class WorkflowTests(unittest.TestCase):
                 return_value=Mock(fitted=fitted, selection_seconds=1),
             ),
             patch.object(artifacts, "save_json") as save_json,
-            patch.object(train_cli, "run_report") as report,
+            patch("classification.cli.evaluate.evaluate_current") as report,
             self.assertRaisesRegex(OSError, "disk full"),
         ):
-            train_cli.run_tfidf(tfidf.TfidfConfig())
+            train_cli.run_training(tfidf.TfidfConfig(), ["--artifact-root", temp])
         save_json.assert_not_called()
         report.assert_not_called()
 
-    def test_followup_failure_preserves_saved_model_and_summary(self):
+    def test_evaluation_failure_preserves_saved_model_and_summary(self):
+        from classification.cli.evaluate import evaluate_current
+
         data = example_splits()
         with (
             tempfile.TemporaryDirectory() as temp,
             contextlib.redirect_stdout(io.StringIO()),
         ):
             root = Path(temp)
-            with (
-                patch.object(train_cli.dataset, "prepare_data", return_value=data),
-                patch.object(train_cli, "print_preview"),
-                patch.object(
-                    train_cli,
-                    "run_report",
-                    side_effect=RuntimeError("evaluation failed"),
-                ) as followup,
-                self.assertRaisesRegex(RuntimeError, "evaluation failed"),
-            ):
-                train_cli.run_tfidf(
-                    tfidf.TfidfConfig((0.1,)),
-                    model_dir=root / "models",
-                    result_dir=root / "reports",
+            with patch.object(train_cli.dataset, "prepare_data", return_value=data):
+                train_cli.run_training(
+                    tfidf.TfidfConfig((0.1,)), ["--artifact-root", temp]
                 )
-            self.assertEqual(followup.call_count, 1)
-            self.assertTrue(
-                (root / "models/tf-idf/tfidf_logistic_regression.joblib").exists()
-            )
-            self.assertTrue(
-                (root / "models/tf-idf/tfidf_logistic_regression.json").exists()
-            )
+            model = root / "models/tfidf/model.joblib"
+            before = model.read_bytes()
+            with (
+                patch(
+                    "classification.cli.evaluate.dataset.restore_data",
+                    side_effect=ValueError("evaluation failed"),
+                ),
+                self.assertRaisesRegex(ValueError, "evaluation failed"),
+            ):
+                evaluate_current("tfidf", artifact_root=root)
+            self.assertEqual(model.read_bytes(), before)
+            self.assertTrue((root / "models/tfidf/training_summary.json").exists())
 
     def test_transformer_fit_exposes_batch_prediction_and_explicit_save(self):
         data = example_splits()
         model, tokenizer = Mock(), Mock()
         model.config.id2label = {0: "CLARIFY", 1: "SEARCH_KNOWLEDGE", 2: "UNSUPPORTED"}
         best = transformer.BestCheckpoint(0.9, 256, 2e-5, 2, {})
-        config = transformer.TransformerConfig("fake", "fake")
+        config = transformer.TransformerConfig("fake", "fake", revision="fixed-sha")
         with (
-            patch("transformers.AutoTokenizer.from_pretrained", return_value=tokenizer),
+            patch(
+                "transformers.AutoTokenizer.from_pretrained", return_value=tokenizer
+            ) as tokenizer_load,
             patch.object(
                 transformer, "select_transformer", return_value=(model, best, [])
             ),
@@ -294,6 +298,8 @@ class WorkflowTests(unittest.TestCase):
             fitted = transformer.fit(
                 data.rows["train"], data.rows["validation"], config, device="cpu"
             )
+            tokenizer_load.assert_called_once_with("fake", revision="fixed-sha")
+            self.assertEqual(fitted.settings["revision"], "fixed-sha")
             model.save_pretrained.assert_not_called()
             tokenizer.save_pretrained.assert_not_called()
             self.assertEqual(

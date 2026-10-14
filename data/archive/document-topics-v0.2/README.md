@@ -45,7 +45,7 @@ v0.2는 v0.1 CSV에서 `split` 열만 제거한 7개 열 형식입니다. 600건
 
 초기 v0.2 작업 문서에는 `document_id` 순서와 시드 `20261013`을 사용하고, 합성 240건을 학습에만 두며 공개 발췌·번역 360건을 50:25:25로 나누는 계획이 기록되어 있습니다. 전체 70:15:15, 총 420/90/90건, 라벨별 70/15/15건은 목표였으며 정확한 행 수를 강제하지 않았습니다. 아래 코드의 현재 분할 설정과는 구분되는 과거 계획입니다.
 
-현재 공통 구현은 [classification/document_split.py](../../../classification/document_split.py)입니다. 기본 시드는 `42`이며 `document_id`로 입력 순서를 고정하고 `source_group_id`를 보존합니다. 합성 자료가 속한 그룹의 모든 행은 train에 두고, 나머지 공개 자료를 셔플된 `StratifiedGroupKFold(n_splits=4)`로 나눕니다. fold 2·3은 train, fold 0은 validation, fold 1은 test에 배치합니다. 따라서 실제 분할 크기는 이 구현과 데이터에 따라 정해지며 과거 계획의 목표 수량과 같다고 가정하지 않습니다. TF-IDF와 BERT 학습 스크립트는 이 공통 로직을 호출하고 분할 기록에 데이터 지문, 시드, 문서 ID를 저장합니다.
+보관된 문서 분할 구현은 [classification/legacy/document_split.py](../../../classification/legacy/document_split.py)입니다. 기본 시드는 `42`이며 `document_id`로 입력 순서를 고정하고 `source_group_id`를 보존합니다. 합성 자료가 속한 그룹의 모든 행은 train에 두고, 나머지 공개 자료를 셔플된 `StratifiedGroupKFold(n_splits=4)`로 나눕니다. fold 2·3은 train, fold 0은 validation, fold 1은 test에 배치합니다. 따라서 실제 분할 크기는 이 구현과 데이터에 따라 정해지며 과거 계획의 목표 수량과 같다고 가정하지 않습니다. 이 구현은 분할 기록에 데이터 지문, 시드, 문서 ID를 저장합니다. 현재 활성 TF-IDF·Transformer 학습은 별도의 요청 처리 질문 분할을 사용하며, 이 보관 모듈을 호출하지 않습니다.
 
 모델 선택은 validation, 최종 평가는 test에서 수행합니다. 학습에 맞추는 전처리는 train에만 적용합니다. 같은 `source_group_id`는 여러 분할에 나뉘지 않습니다.
 

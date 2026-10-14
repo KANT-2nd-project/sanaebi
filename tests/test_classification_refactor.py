@@ -19,11 +19,12 @@ from urllib.error import HTTPError, URLError
 import torch
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from classification import artifacts, dataset, reporting
+from classification import artifacts, dataset
 from classification.cli.evaluate import evaluate_saved_model
-from classification.cli.train import run_transformer
+from classification.cli.train import run_training
 from classification.dataset import LABELS, read_recorded_splits
-from classification.evaluation import evaluate
+from classification.evaluation import reporting
+from classification.evaluation.metrics import evaluate
 from classification.models import jev as jev_client
 from classification.models import tfidf
 from classification.models import transformer as inference
@@ -31,7 +32,7 @@ from classification.models import transformer as training
 from classification.models.tfidf import TfidfConfig, select_tfidf
 
 ROOT = Path(__file__).resolve().parents[1]
-ENTRYPOINTS = [p.stem for p in (ROOT / "classification").glob("train_*.py")]
+ENTRYPOINTS = [p.stem for p in (ROOT / "classification/experiments").glob("train_*.py")]
 
 
 class TrainingTests(unittest.TestCase):
@@ -54,7 +55,7 @@ class TrainingTests(unittest.TestCase):
 
     def test_selection_uses_validation_and_preserves_candidate_seed_order(self):
         config = training.TransformerConfig(
-            "fake", "fake", (8, 16), (0.01, 0.02), epochs=2
+            "fake", "fake", (8, 16), (0.01, 0.02), epochs=2, revision="fixed-sha"
         )
         rows = [{"question": label, "label": label} for label in LABELS]
         # test를 제공하지 않아도 선택 가능해야 한다.
@@ -63,6 +64,7 @@ class TrainingTests(unittest.TestCase):
         steps = 0
 
         def load_model(*args, **kwargs):
+            self.assertEqual(kwargs["revision"], "fixed-sha")
             model = torch.nn.Linear(1, 1, bias=False)
             models.append(model)
             return model
@@ -220,7 +222,7 @@ class TrainingTests(unittest.TestCase):
         self.assertEqual(len(fitted_texts), 1)
 
     def test_small_tfidf_training_saves_and_evaluates_in_custom_paths(self):
-        from classification.cli.train import run_tfidf as train_tfidf
+        from classification.cli.train import run_training as train_tfidf
 
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -251,24 +253,32 @@ class TrainingTests(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 summary = train_tfidf(
                     TfidfConfig((0.1,)),
-                    dataset_path=dataset,
-                    model_dir=root / "models",
-                    result_dir=root / "reports",
+                    [
+                        "--dataset",
+                        str(dataset),
+                        "--artifact-root",
+                        str(root / "artifacts"),
+                    ],
                 )
-            self.assertTrue(
-                (root / "models/tf-idf/tfidf_logistic_regression.joblib").is_file()
+            from classification.cli.evaluate import evaluate_current
+
+            evaluate_current(
+                "tfidf", artifact_root=root / "artifacts", dataset_path=dataset
             )
-            report = json.loads((root / "reports/tf-idf/metrics.json").read_text())
+            self.assertTrue((root / "artifacts/models/tfidf/model.joblib").is_file())
+            report = json.loads(
+                (root / "artifacts/results/tfidf/metrics.json").read_text()
+            )
             self.assertEqual(report["settings"], summary)
             self.assertEqual(sum(report["counts"].values()), 60)
             self.assertEqual(
                 report["benchmark"]["samples"], report["counts"]["test"] * 3
             )
-            self.assertTrue((root / "reports/tf-idf/report.html").is_file())
-            self.assertTrue((root / "reports/comparison.html").is_file())
+            self.assertTrue((root / "artifacts/results/tfidf/report.html").is_file())
+            self.assertTrue((root / "artifacts/results/comparison.html").is_file())
 
     def test_example_configuration_fails_before_data_or_download(self):
-        from classification.train_classification_example import CONFIG
+        from classification.experiments.train_example import CONFIG
 
         with (
             patch.object(
@@ -276,7 +286,7 @@ class TrainingTests(unittest.TestCase):
             ),
             self.assertRaisesRegex(ValueError, "실제 값"),
         ):
-            run_transformer(CONFIG)
+            run_training(CONFIG, [])
 
 
 class InferenceTests(unittest.TestCase):
@@ -413,6 +423,28 @@ class ReportAndClientTests(unittest.TestCase):
 
 class EntrypointTests(unittest.TestCase):
     def test_import_has_no_experiment_side_effects(self):
+        # reload는 클래스 identity를 바꾸므로 다른 테스트와 프로세스를 분리한다.
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                (
+                    "from test_classification_refactor import EntrypointTests; "
+                    "EntrypointTests()._check_import_side_effects()"
+                ),
+            ],
+            cwd=ROOT,
+            env=dict(
+                os.environ, PYTHONPATH=os.pathsep.join([str(ROOT / "tests"), str(ROOT)])
+            ),
+            capture_output=True,
+            text=True,
+            timeout=60,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def _check_import_side_effects(self):
         # 의존 라이브러리 초기화와 실험 모듈 import를 분리해 검사한다.
         import joblib
         import transformers
@@ -466,10 +498,10 @@ class EntrypointTests(unittest.TestCase):
                 HF_HUB_OFFLINE="1",
                 TRANSFORMERS_OFFLINE="1",
             )
-            for name in [*ENTRYPOINTS, "test_jev"]:
+            for name in [*ENTRYPOINTS, "evaluate_jev"]:
                 for invocation in (
-                    [str(ROOT / "classification" / f"{name}.py")],
-                    ["-m", f"classification.{name}"],
+                    [str(ROOT / "classification/experiments" / f"{name}.py")],
+                    ["-m", f"classification.experiments.{name}"],
                 ):
                     with self.subTest(command=invocation):
                         run = subprocess.run(
@@ -484,12 +516,12 @@ class EntrypointTests(unittest.TestCase):
                         self.assertEqual(run.returncode, 0, run.stderr)
                         for count in ("637", "129", "134"):
                             self.assertIn(count, run.stdout)
-            for name in ("train_koelectra_base", "train_tfidf", "test_jev"):
+            for name in ("train_koelectra_base", "train_tfidf", "evaluate_jev"):
                 run = subprocess.run(
                     [
                         sys.executable,
                         "-m",
-                        f"classification.{name}",
+                        f"classification.experiments.{name}",
                         "--preview-documents",
                     ],
                     cwd=temp,

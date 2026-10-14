@@ -4,7 +4,7 @@ from time import perf_counter
 
 from threadpoolctl import threadpool_limits
 
-from ..evaluation import evaluate, summarize_durations
+from ..evaluation.metrics import evaluate, summarize_durations
 from ..types import EvaluationResult, MeasurementPolicy, Predictor
 
 

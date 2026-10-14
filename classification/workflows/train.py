@@ -2,7 +2,7 @@
 
 from time import perf_counter
 
-from ..evaluation import evaluate
+from ..evaluation.metrics import evaluate
 from ..types import DatasetSplits, FitFunction, TrainingResult
 
 

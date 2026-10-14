@@ -3,7 +3,7 @@ import csv
 import unittest
 from pathlib import Path
 
-from classification.document_split import (
+from classification.legacy.document_split import (
     make_split_record,
     read_recorded_splits,
     split_documents,

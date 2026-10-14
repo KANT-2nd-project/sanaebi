@@ -150,6 +150,7 @@ def read_recorded_splits(record, dataset_path=DATASET_PATH):
 def prepare_data(dataset_path=DATASET_PATH, seed=RANDOM_SEED):
     with dataset_path.open(encoding="utf-8-sig", newline="") as file:
         rows = sorted(csv.DictReader(file), key=lambda row: row["question_id"])
+
     splits = split_questions(rows, seed=seed)
     return DatasetSplits(
         splits,

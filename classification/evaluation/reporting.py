@@ -5,7 +5,7 @@ from html import escape
 
 from contracts.classification import LABELS
 
-from .artifacts import is_current_report
+from ..artifacts import is_current_report
 
 LABEL_NAMES = {
     "SEARCH_KNOWLEDGE": "회사 지식 안내",
