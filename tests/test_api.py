@@ -1,6 +1,7 @@
 """실제 데이터를 사용하지 않고 현재 API 계약을 검증한다."""
 
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -15,6 +16,12 @@ from app.routers import assistant, classification, documents
 class ApiTests(unittest.TestCase):
     def setUp(self):
         directory = self.enterContext(tempfile.TemporaryDirectory())
+        self.enterContext(
+            patch.dict(
+                os.environ,
+                {"SANAEBI_DOCUMENT_DB": str(Path(directory) / "managed.sqlite3")},
+            )
+        )
         self.document_file = Path(directory) / "documents.jsonl"
         self.enterContext(patch.object(documents, "DOCUMENT_FILE", self.document_file))
         self.client = self.enterContext(
@@ -119,6 +126,11 @@ class ApiTests(unittest.TestCase):
                 "/classify/koelectra-base",
                 "/assistant",
                 "/ask/langchain",
+                "/documents",
+                "/documents/capabilities",
+                "/documents/{document_id}",
+                "/documents/{document_id}/publish",
+                "/documents/{document_id}/withdraw",
             },
         )
         for route in ("/ask", "/regist-docs"):
