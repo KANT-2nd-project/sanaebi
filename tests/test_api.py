@@ -9,7 +9,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
-from app.routers import assistant, classification, documents
+from app.routers import assistant, classification, documents, questions
 
 
 class ApiTests(unittest.TestCase):
@@ -17,6 +17,24 @@ class ApiTests(unittest.TestCase):
         directory = self.enterContext(tempfile.TemporaryDirectory())
         self.document_file = Path(directory) / "documents.jsonl"
         self.enterContext(patch.object(documents, "DOCUMENT_FILE", self.document_file))
+        self.question_classifier = self.enterContext(
+            patch.object(
+                questions, "classify_question", return_value="SEARCH_KNOWLEDGE"
+            )
+        )
+        self.question_generator = self.enterContext(
+            patch.object(
+                questions,
+                "generate_assistant_response",
+                return_value={
+                    name: {
+                        "success": True,
+                        "output": {"ok": True, "text": "가상 답변", "reason": ""},
+                    }
+                    for name in ("ollama", "openai")
+                },
+            )
+        )
         self.client = self.enterContext(
             TestClient(fastapi_main.app, raise_server_exceptions=False)
         )
@@ -37,18 +55,26 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"message": "FastAPI 서버가 실행 중입니다."})
 
-    def test_ask_returns_trimmed_question(self):
+    def test_ask_forwards_trimmed_question_and_returns_generated_answer(self):
         response = self.client.post("/ask", json={"question": " 휴가 안내\n "})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            response.json(), {"ok": True, "text": "휴가 안내", "reason": ""}
+            response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
+        )
+        self.question_classifier.assert_called_once_with("휴가 안내")
+        self.question_generator.assert_called_once_with(
+            {"ok": True, "text": "휴가 안내", "reason": ""},
+            "SEARCH_KNOWLEDGE",
+            provider=questions.PROVIDER,
         )
         self.assertFalse(self.document_file.exists())
 
     def test_ask_ignores_extra_fields(self):
         response = self.client.post("/ask", json={"question": "안내", "unused": True})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"ok": True, "text": "안내", "reason": ""})
+        self.assertEqual(
+            response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
+        )
 
     def test_invalid_inputs_do_not_write_documents(self):
         for route, field in (("/ask", "question"), ("/regist-docs", "doc")):
@@ -118,7 +144,6 @@ class ApiTests(unittest.TestCase):
                 "/regist-docs",
                 "/classify/koelectra-base",
                 "/assistant",
-                "/ask/langchain",
             },
         )
         for route in ("/ask", "/regist-docs"):
@@ -151,7 +176,8 @@ class ApiTests(unittest.TestCase):
             self.assertEqual(response.status_code, 200)
             self.assertEqual(response.json(), result)
             generate.assert_called_once_with(
-                response=payload["response"], category=payload["classification_label"]
+                response=payload["response"],
+                category=payload["classification_label"],
             )
 
     def test_assistant_rejects_invalid_category_without_llm_call(self):
@@ -165,68 +191,6 @@ class ApiTests(unittest.TestCase):
                     },
                 )
             )
-            generate.assert_not_called()
-
-    def test_question_is_classified_then_forwarded_to_langchain(self):
-        for label in ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"):
-            with self.subTest(label=label):
-                events = []
-
-                def classify(question, events=events, label=label):
-                    events.append(("classify", question))
-                    return label
-
-                def generate(response, category, events=events):
-                    events.append(("generate", response, category))
-                    return {"ollama": {"output": {"text": "가상 답변"}}}
-
-                with (
-                    patch.object(assistant, "classify_question", side_effect=classify),
-                    patch.object(
-                        assistant, "generate_assistant_response", side_effect=generate
-                    ),
-                ):
-                    response = self.client.post(
-                        "/ask/langchain", json={"question": "  출장비 안내  "}
-                    )
-                self.assertEqual(response.status_code, 200)
-                self.assertEqual(
-                    response.json(), {"ollama": {"output": {"text": "가상 답변"}}}
-                )
-                self.assertEqual(
-                    events,
-                    [
-                        ("classify", "출장비 안내"),
-                        (
-                            "generate",
-                            {"ok": True, "text": "출장비 안내", "reason": ""},
-                            label,
-                        ),
-                    ],
-                )
-
-    def test_automatic_answer_stops_before_llm_if_model_is_missing(self):
-        with (
-            patch.object(assistant, "classify_question", side_effect=FileNotFoundError),
-            patch.object(assistant, "generate_assistant_response") as generate,
-        ):
-            response = self.client.post("/ask/langchain", json={"question": "질문"})
-            generate.assert_not_called()
-        self.assertEqual(response.status_code, 503)
-        self.assertEqual(
-            response.json(),
-            {"ok": False, "text": "", "reason": "분류 모델이 없습니다."},
-        )
-
-    def test_automatic_answer_rejects_blank_before_model_calls(self):
-        with (
-            patch.object(assistant, "classify_question") as classify,
-            patch.object(assistant, "generate_assistant_response") as generate,
-        ):
-            self.assert_validation_error(
-                self.client.post("/ask/langchain", json={"question": " \n "})
-            )
-            classify.assert_not_called()
             generate.assert_not_called()
 
     def test_classification_returns_category_without_answer_generation(self):
