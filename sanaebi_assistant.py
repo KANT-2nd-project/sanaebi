@@ -28,8 +28,9 @@ class AssistantRequest(BaseModel):
                 "model": str,
                 "input": dict,
                 "output": {"ok": bool, "text": str, "reason": str} | None,
-                "timeout_seconds": float | None,
-                "max_retries": int | None,
+                "temperature": float | None,
+                "timeout_seconds": float,
+                "max_retries": int,
                 "max_tokens": int,
                 "max_input_chars": int,
                 "elapsed_seconds": float,
@@ -38,8 +39,10 @@ class AssistantRequest(BaseModel):
             }
         }
 
-    ``max_tokens``는 Ollama의 ``num_predict`` 값입니다. Ollama에서 별도로
-    설정하지 않은 타임아웃과 재시도 횟수는 ``None``입니다.
+    ``max_tokens``는 Ollama의 ``num_predict`` 값입니다. 두 모델을 같은 조건으로
+    비교하도록 타임아웃, 재시도 횟수, 최대 출력은 같은 값을 씁니다. Ollama
+    클라이언트는 재시도하지 않으므로 재시도 횟수는 0입니다. OpenAI 모델은
+    temperature 기본값만 받으므로 OpenAI의 ``temperature``는 ``None``입니다.
 """
 
 import argparse
@@ -82,13 +85,16 @@ OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct-2507-q4_K_M")
 OLLAMA_STARTUP_TIMEOUT = float(os.getenv("OLLAMA_STARTUP_TIMEOUT_SECONDS", "30"))
 
 OLLAMA_NUM_CTX = int(os.getenv("OLLAMA_NUM_CTX", "16384"))
-OLLAMA_TEMPERATURE = 0.1
+OLLAMA_TEMPERATURE = 0.2
 OLLAMA_NUM_PREDICT = 512
 
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-6-luna")
-TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "600"))
-OPENAI_MAX_RETRIES = 0
 OPENAI_MAX_TOKENS = 512
+
+# 로컬·상용 모델을 같은 조건으로 비교하도록 두 모델에 같은 값을 씁니다.
+# OpenAI 모델(gpt-6-luna)은 temperature 기본값(1)만 받아 temperature는 Ollama에만 줍니다.
+TIMEOUT = float(os.getenv("GENERATION_TIMEOUT_SECONDS", "120"))
+MAX_RETRIES = 0
 MAX_INPUT_CHARS = int(os.getenv("MAX_INPUT_CHARS", "4000"))
 DOCUMENTS_PATH = get_documents_path()
 _OLLAMA_LOCK = threading.Lock()
@@ -370,12 +376,13 @@ def create_chat_model(provider=PROVIDER):
             temperature=OLLAMA_TEMPERATURE,
             num_ctx=OLLAMA_NUM_CTX,
             num_predict=OLLAMA_NUM_PREDICT,
+            client_kwargs={"timeout": TIMEOUT},
         )
     if provider == "openai":
         return ChatOpenAI(
             model=OPENAI_MODEL,
             timeout=TIMEOUT,
-            max_retries=OPENAI_MAX_RETRIES,
+            max_retries=MAX_RETRIES,
             max_tokens=OPENAI_MAX_TOKENS,
         )
     raise ValueError("PROVIDER는 ollama 또는 openai여야 합니다.")
@@ -408,17 +415,11 @@ def create_chain(provider=PROVIDER, documents_path=None):
 
 def get_execution_conditions(provider):
     """비교 출력에 표시할 공통 실행 설정만 반환합니다."""
-    if provider == "ollama":
-        return {
-            "timeout_seconds": None,
-            "max_retries": None,
-            "max_tokens": OLLAMA_NUM_PREDICT,
-            "max_input_chars": MAX_INPUT_CHARS,
-        }
     return {
+        "temperature": OLLAMA_TEMPERATURE if provider == "ollama" else None,
         "timeout_seconds": TIMEOUT,
-        "max_retries": OPENAI_MAX_RETRIES,
-        "max_tokens": OPENAI_MAX_TOKENS,
+        "max_retries": MAX_RETRIES,
+        "max_tokens": OLLAMA_NUM_PREDICT if provider == "ollama" else OPENAI_MAX_TOKENS,
         "max_input_chars": MAX_INPUT_CHARS,
     }
 
