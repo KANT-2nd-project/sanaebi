@@ -104,10 +104,10 @@ MLflow 기록 실패를 숨기지 않는다. 초기화 실패는 학습·외부 
 
 ```bash
 uv run --locked python -m classification.experiments.evaluate_jev --preview-questions
-uv run --locked python -m classification.experiments.evaluate_jev --evaluate --artifact-root tmp/my-classification-lab
+uv run --locked --env-file .env python -m classification.experiments.evaluate_jev --evaluate --artifact-root tmp/my-classification-lab
 ```
 
-Jev 실제 평가는 `TYPESAFE_API_KEY`가 필요하다. 기존대로 train 대표 예시 12개를 사용하고 validation/test 합계 268회 요청한다. test 요청 시간만 측정하며 준비·반복 요청을 추가하지 않는다. MLflow에서 `split=both`로 표시해 로컬 validation 전용 run과 구분한다. preview·단건 확인은 MLflow run을 만들지 않는다. 신규 Jev 결과는 기본 `<artifact-root>/results/jev/`이며 `--result-dir`도 호환 지원한다.
+Jev 실제 평가는 `TYPESAFE_API_KEY`가 필요하다. 위 예시는 Git 제외 로컬 `.env`의 값을 uv로 전달한다. 이미 환경변수로 설정했다면 `--env-file .env`를 생략할 수 있다. 기존대로 train 대표 예시 12개를 사용하고 validation/test 합계 268회 요청한다. test 요청 시간만 측정하며 준비·반복 요청을 추가하지 않는다. MLflow에서 `split=both`로 표시해 로컬 validation 전용 run과 구분한다. preview·단건 확인은 MLflow run을 만들지 않는다. 신규 Jev 결과는 기본 `<artifact-root>/results/jev/`이며 `--result-dir`도 호환 지원한다.
 
 `evaluate_saved`의 기본 로컬 평가는 현행 저장소의 validation이다. 과거 `--model-dir`·`--result-dir` 방식은 구형 두 분할 평가 계약을 유지한다. 새로 실행한 구형 로컬 평가는 `kind=eval_legacy`, `split=both`로 결과 디렉터리의 부모 아래 tracking에 기록하고 HTML을 생성하지 않는다. 저장된 과거 API 결과의 HTML 재출력도 유지한다. 구형 명령에는 현행 `--split`을 혼용하지 않는다.
 
