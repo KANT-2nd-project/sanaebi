@@ -4,22 +4,31 @@ Next.js App Router·TypeScript·Tailwind CSS 4를 사용합니다. 서비스 소
 
 ## 개발
 
-이 디렉터리(`web/`)에서 npm을 사용합니다. 최초 설치 또는 잠금 파일 기준 재설치가 필요할 때 실행합니다.
+저장소 루트에서 Python·루트 실행 도구·웹 의존성을 각각 설치합니다. 루트와 `web/`의 npm 잠금 파일은 독립적으로 관리합니다. Turbopack의 root는 `web/`으로 명시해 루트 잠금 파일 추가가 웹의 모듈 탐색 범위를 바꾸지 않게 합니다.
 
 ```bash
+uv sync --locked
 npm ci
+npm --prefix web ci
 npm run dev
 ```
 
-질문 응답을 사용하려면 저장소 루트의 별도 터미널에서 FastAPI를 시작합니다.
+http://127.0.0.1:3000/chat 에 접속합니다. 통합 명령은 FastAPI(8000, app 변경 시 재시작)와 기존 Next 개발 실행기(3000, HMR)를 각각 실행하고 로그에 `[api]`·`[web]`을 표시합니다. Ctrl+C 또는 한쪽 프로세스 종료 시 나머지도 종료합니다. 둘 다 loopback에 바인딩합니다.
 
-```bash
-uv run --locked uvicorn app.fastapi_main:app --host 127.0.0.1 --port 8000
-```
+개별 개발은 저장소 루트에서 `npm run dev:api` 또는 `npm run dev:web`으로 실행합니다. 기존 `web/`의 `npm run dev -- --hostname 127.0.0.1 --port 3000`도 유지합니다. 웹 실행기는 API 캐시 처리를 포함하므로 `npx next dev`로 우회하지 않습니다.
 
-http://localhost:3000/chat 에서 확인합니다. 개발 서버가 `/api/ask`를 FastAPI `/ask`로 중계하므로 nginx 없이 화면 수정과 실제 응답을 함께 확인할 수 있습니다. 화면과 정적 빌드는 FastAPI 없이 실행할 수 있습니다. 폰트는 시스템 한국어 글꼴을 사용하며 Google 폰트를 다운로드하지 않습니다.
+웹의 `/api/*` 요청은 FastAPI로 중계하므로 개발에는 nginx가 필요하지 않습니다. 화면과 정적 빌드는 FastAPI 없이 사용할 수 있습니다. 실제 질문 답변에는 저장된 분류 모델과 선택한 답변 모델이 필요합니다. 현재 기본값인 Ollama는 별도로 준비·실행해야 하며, 통합 명령은 의존성 설치·학습·모델 다운로드·Ollama 기동을 수행하지 않습니다. 모델 준비 기준은 [루트 안내](../README.md#요청-예시)를 확인합니다. 폰트는 시스템 한국어 글꼴을 사용합니다.
+
+### 실행 문제 확인
+
+- 3000·8000 포트가 사용 중이면 해당 서버를 실행한 터미널에서 종료한 뒤 다시 실행합니다. 통합 명령은 기존 프로세스를 임의로 종료하거나 포트를 자동 변경하지 않습니다.
+- 웹은 열리지만 초기 API 요청이 실패하면 `[api]` 시작 완료를 확인합니다. 동시 실행이 두 서버의 준비 완료를 보장하지는 않습니다.
+- `uv`·`npm`을 찾지 못하거나 의존성이 없으면 도구 설치와 위 최초 설치 명령을 확인합니다.
+- API 503은 분류 모델 누락, 502는 답변 모델 호출 실패일 수 있습니다. 포트가 열렸다는 사실과 실제 모델 답변 성공을 구분합니다.
 
 ## 검증과 빌드
+
+아래 명령은 `web/` 디렉터리에서 실행합니다.
 
 ```bash
 npm run lint
@@ -53,7 +62,7 @@ npm run build
 
 `npm test`는 기존 TypeScript 컴파일러로 API 경계와 대화 상태 코드를 저장소의 `tmp/frontend-unit-tests/`에 컴파일한 뒤 Node 내장 테스트 러너를 실행합니다. 별도 패키지를 추가하지 않으며 Node 22 이상을 사용합니다. 테스트는 fetch/전송 함수를 대체하여 오류·timeout·취소·메시지 누적·재시도·늦은 응답 무시를 검증합니다. 실제 통합은 빌드 후 nginx→FastAPI에서 별도로 확인합니다.
 
-`npm run dev`는 개발 전용 실행기 `scripts/dev.mjs`를 사용합니다. Next의 외부 rewrite에서는 설정의 headers가 누락되는 설치 버전 동작 때문에 실행기가 `/api/` 응답의 `Cache-Control: no-store`를 보장합니다. FastAPI의 상태·본문을 유지하고 upstream 캐시 헤더는 덮어씁니다. 운영용 Node 서버로 사용하지 않습니다. `npm run dev -- --hostname 127.0.0.1 --port 3000`으로 바인딩을 지정할 수 있습니다. 기본값은 기존 Next dev와 같은 전체 인터페이스·3000번입니다.
+`web/`의 `npm run dev`는 개발 전용 실행기 `scripts/dev.mjs`를 사용합니다. Next의 외부 rewrite에서는 설정의 headers가 누락되는 설치 버전 동작 때문에 실행기가 `/api/` 응답의 `Cache-Control: no-store`를 보장합니다. FastAPI의 상태·본문을 유지하고 upstream 캐시 헤더는 덮어씁니다. 운영용 Node 서버로 사용하지 않습니다. `npm run dev -- --hostname 127.0.0.1 --port 3000`으로 바인딩을 지정할 수 있습니다. 기본값은 기존 Next dev와 같은 전체 인터페이스·3000번입니다.
 
 개발 시 오래된 CSS 복원을 막기 위해 Turbopack 개발 파일시스템 캐시를 비활성화합니다. HMR과 정적 빌드 캐시는 유지합니다. Tailwind 로더 앞의 `scripts/tailwind-loader.cjs`는 실제 CSS 입력의 해시를 컴파일 캐시 키에 포함해, 같은 파일에서 수정한 CSS를 이전 결과로 바꾸는 문제를 방지합니다. 설치된 Tailwind 로더와 버전은 그대로 사용합니다. CSS가 갱신되지 않으면 실행 경로와 제공 CSS를 먼저 확인하고, 서버 종료 후 `.next/dev`를 `tmp`로 백업 이동해 재시작합니다. 설정이나 실행기 파일 변경은 개발 서버를 재시작하고, 화면·CSS 변경은 HMR로 확인합니다. `npx next dev`로 실행기를 우회하면 API 응답 캐시 정책이 보장되지 않으므로 `npm run dev`를 사용하세요.
 
@@ -63,4 +72,4 @@ npm run build
 
 `/admin/documents`에서 문서 초안·개정·게시·사용 중단을 관리합니다. 채팅의 ‘문서로 등록’은 작성 중 질문을 복사한 편집기를 열며 대화 기록을 보존합니다. 등록 문서는 아직 실제 채팅 답변에 사용하지 않습니다. [계약과 제한](../docs/document-management.md)을 확인하세요.
 
-이 기능은 로컬 시연용입니다. 개발 서버는 `npm run dev -- --hostname 127.0.0.1`로 실행하고 FastAPI도 loopback에 바인딩합니다. 정적 빌드에는 `out/admin/documents.html`이 포함되지만 실제 본문은 포함하지 않습니다. 문서 API는 `/api/documents`이며 정상·오류 응답은 no-store입니다. 미저장 내용은 새로고침 시 사라집니다.
+이 기능은 로컬 시연용입니다. 저장소 루트의 `npm run dev`는 개발 서버와 FastAPI를 모두 loopback에 바인딩합니다. 정적 빌드에는 `out/admin/documents.html`이 포함되지만 실제 본문은 포함하지 않습니다. 문서 API는 `/api/documents`이며 정상·오류 응답은 no-store입니다. 미저장 내용은 새로고침 시 사라집니다.

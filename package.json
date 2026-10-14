@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "concurrently": "10.0.6"
+  },
+  "name": "sanaebi-dev",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others --names api,web \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "uv run --locked uvicorn app.fastapi_main:app --reload --reload-dir app --host 127.0.0.1 --port 8000",
+    "dev:web": "npm --prefix web run dev -- --hostname 127.0.0.1 --port 3000"
+  }
+}

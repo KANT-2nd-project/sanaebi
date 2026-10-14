@@ -3,6 +3,7 @@ import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 
 const sharedConfig: NextConfig = {
   turbopack: {
+    root: __dirname,
     rules: {
       "*.css": {
         loaders: ["./scripts/tailwind-loader.cjs"],

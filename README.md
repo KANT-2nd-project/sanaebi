@@ -9,14 +9,23 @@
 
 ## 빠른 시작
 
-Python 3.12.14와 uv를 사용합니다. 저장소 루트에서 의존성을 설치하고 개발 서버를 실행합니다.
+Python 3.12.14·uv와 Node.js 22 이상·npm을 사용합니다. 저장소 루트에서 최초 설치합니다.
 
 ```bash
 uv sync --locked
-uv run --locked fastapi dev app/fastapi_main.py
+npm ci
+npm --prefix web ci
 ```
 
-서버 주소는 http://127.0.0.1:8000이며, 인터랙티브 API 문서는 http://127.0.0.1:8000/docs 에서 확인할 수 있습니다.
+이후 다음 명령 하나로 API와 웹 개발 서버를 함께 실행합니다.
+
+```bash
+npm run dev
+```
+
+웹은 http://127.0.0.1:3000/chat, API는 http://127.0.0.1:8000, API 문서는 http://127.0.0.1:8000/docs 입니다. Ctrl+C로 둘 다 종료하며 한쪽이 종료되면 다른 쪽도 종료합니다. 실제 답변에는 아래의 분류 모델과 Ollama 또는 OpenAI 준비가 별도로 필요합니다. 이 명령은 모델을 학습하거나 Ollama를 시작하지 않습니다.
+
+API만 실행하려면 `npm run dev:api`, 웹만 실행하려면 `npm run dev:web`을 사용합니다. 상세 실행·문제 해결은 [웹 개발 안내](web/README.md#개발), 정적 빌드·nginx 시연은 [배포 안내](deployment/README.md)를 따릅니다.
 
 ## 요청 예시
 

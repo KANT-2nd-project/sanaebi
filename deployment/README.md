@@ -34,7 +34,7 @@ uv run --locked uvicorn app.fastapi_main:app --host 127.0.0.1 --port 8000
 uv run --locked python scripts/local_nginx.py start
 ```
 
-브라우저로 http://127.0.0.1:8080 에 접속합니다. Next dev/start 프로세스는 필요하지 않습니다. 현재 `/api/ask`는 FastAPI `/ask`로 중계하고 서버는 앞뒤 공백을 제거한 질문을 그대로 반환합니다. 실제 규정 답변은 아직 연결되지 않았습니다.
+브라우저로 http://127.0.0.1:8080 에 접속합니다. Next dev/start 프로세스는 필요하지 않습니다. 현재 `/api/ask`는 FastAPI `/ask`로 중계하고 서버는 질문을 분류한 뒤 선택한 LangChain 모델의 답변을 반환합니다. 분류 모델과 답변 모델을 별도로 준비해야 하며, 새 모델 경로의 브라우저 종단 검증과 답변 품질 검증은 별도입니다.
 
 ```bash
 uv run --locked python scripts/local_nginx.py stop
@@ -77,7 +77,7 @@ curl -i http://127.0.0.1:8080/api/ask \
   --data '{"question":"휴가 신청 절차를 알려주세요."}'
 ```
 
-이 nginx는 개발 서버/HMR을 중계하지 않습니다. 기능 수정 중에는 `web`에서 `npm run dev`를 실행하고 FastAPI(8000)를 함께 띄우면 3000번에서 화면·HMR·실제 API 중계를 사용할 수 있습니다. 정적 배포 통합은 위 빌드·nginx(8080) 경로에서 별도로 확인합니다. 개발 실행기와 캐시 정책은 [프런트 안내](../web/README.md)를 따릅니다.
+이 nginx는 개발 서버/HMR을 중계하지 않습니다. 기능 수정 중에는 저장소 루트에서 `npm run dev`로 Next와 FastAPI(8000)를 함께 띄우면 3000번에서 화면·HMR·실제 API 중계를 사용할 수 있습니다. 정적 배포 통합은 위 빌드·nginx(8080) 경로에서 별도로 확인합니다. 개발 실행기와 캐시 정책은 [프런트 안내](../web/README.md)를 따릅니다.
 
 ## 문서 관리 배포
 

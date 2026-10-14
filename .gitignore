@@ -77,3 +77,6 @@ Thumbs.db
 **/tracking/artifacts/
 /mlruns/
 /mlartifacts/
+
+# Root development process runner
+/node_modules/
