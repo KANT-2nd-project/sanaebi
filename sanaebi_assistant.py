@@ -84,7 +84,9 @@ OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct-2507-q4_K_M")
 OLLAMA_STARTUP_TIMEOUT = float(os.getenv("OLLAMA_STARTUP_TIMEOUT_SECONDS", "30"))
 
-OLLAMA_NUM_CTX = int(os.getenv("OLLAMA_NUM_CTX", "16384"))
+# 회사 문서 전체를 넣은 프롬프트가 약 31,000토큰이라(2026-10-14 실측) 가장 긴 질문과
+# 최대 출력까지 들어가는 값입니다. 입력이 num_ctx를 넘으면 Ollama가 400 오류를 냅니다.
+OLLAMA_NUM_CTX = int(os.getenv("OLLAMA_NUM_CTX", "40960"))
 OLLAMA_TEMPERATURE = 0.2
 OLLAMA_NUM_PREDICT = 512
 
