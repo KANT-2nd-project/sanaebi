@@ -43,6 +43,9 @@ logs/
 # Generated models and tokenizers
 /classification/model/
 
+# Generation evaluation runs (questions and model responses)
+/answer_pipeline/runs/
+
 # Operating system files
 .DS_Store
 Thumbs.db
