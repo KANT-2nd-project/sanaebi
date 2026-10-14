@@ -3,12 +3,13 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app.answer_text import LLM_RESPONSE_ERROR, LLMResponseError
-from app.routers import documents, questions
+from app.routers import classification, documents, questions
 from app.schemas import AnswerResponse
 
 app = FastAPI()
 app.include_router(questions.router)
 app.include_router(documents.router)
+app.include_router(classification.router)
 
 
 @app.get("/")
