@@ -34,7 +34,6 @@ from tests.answer_pipeline_support import (
     DOCUMENTS,
     LEAVE_DOC,
     ROOM_DOC,
-    answer,
     case,
     unsupported_case,
 )
@@ -43,6 +42,22 @@ LOCAL = ModelConfig(
     name="local-test", provider="ollama", model="test-local", num_ctx=8192
 )
 CLOUD = ModelConfig(name="cloud-test", provider="openai", model="test-cloud")
+
+
+def answer(text):
+    return json.dumps(
+        {"answer": text, "referenced_documents": [], "note": "테스트 근거"},
+        ensure_ascii=False,
+    )
+
+
+class StructuredFakeChatModel(GenericFakeChatModel):
+    def with_structured_output(self, schema, **kwargs):
+        from langchain_core.runnables import RunnableLambda
+
+        return self | RunnableLambda(
+            lambda message: schema.model_validate_json(message.content)
+        )
 
 
 def fake_model(text, finish_reason="stop", seen=None):
@@ -60,7 +75,7 @@ def fake_model(text, finish_reason="stop", seen=None):
             },
             response_metadata={"done_reason": finish_reason, "model": "served-model"},
         )
-        return GenericFakeChatModel(messages=iter([message]))
+        return StructuredFakeChatModel(messages=iter([message]))
 
     return create
 
@@ -105,12 +120,51 @@ class RunCaseTests(ExecutorPatch):
         self.assertIn("실행 테스트 근거", result["prompt"])
         self.assertEqual(result["response_text"], answer("그룹웨어에서 신청하세요."))
         self.assertEqual(
-            result["executor_output"]["reason"], "SEARCH_KNOWLEDGE"
+            result["executor_output"]["answer"], "그룹웨어에서 신청하세요."
         )  # 실행기 출력도 남긴다
         self.assertEqual(result["usage"], {"input_tokens": 1200, "output_tokens": 30})
         self.assertEqual(result["finish_reason"], "stop")
         self.assertTrue(result["generation_complete"])
         self.assertEqual(result["served_model"], "served-model")
+
+    def test_structured_tool_call_preserves_raw_text_and_payload(self):
+        from langchain_core.outputs import ChatGeneration, LLMResult
+
+        from answer_pipeline.checks import answer_text
+        from answer_pipeline.run import CallCapture
+
+        payload = {
+            "answer": "그룹웨어에서 신청하세요.",
+            "referenced_documents": ["연차"],
+            "note": "정책 근거",
+        }
+        message = AIMessage(
+            content="",
+            tool_calls=[
+                {"id": "call-test", "name": "AssistantResponse", "args": payload}
+            ],
+            response_metadata={"finish_reason": "tool_calls"},
+        )
+        capture = CallCapture()
+        capture.on_llm_end(LLMResult(generations=[[ChatGeneration(message=message)]]))
+        self.assertEqual(capture.raw_text, "")
+        self.assertEqual(capture.structured_response, payload)
+        record = {
+            **case(),
+            "llm_called": True,
+            "error": None,
+            "generation_complete": True,
+            "response_text": "",
+            "structured_response": capture.structured_response,
+        }
+        self.assertTrue(
+            next(c["ok"] for c in answer_checks(record) if c["code"] == "A3")
+        )
+        self.assertEqual(answer_text(record), payload["answer"])
+        record["structured_response"] = {"answer": "불완전"}
+        self.assertFalse(
+            next(c["ok"] for c in answer_checks(record) if c["code"] == "A3")
+        )
 
     def test_length_stop_is_incomplete(self):
         self.use_model('{"text": "그룹웨어에서', finish_reason="length")
@@ -122,7 +176,7 @@ class RunCaseTests(ExecutorPatch):
         self.use_model("그룹웨어에서 신청하세요.")
         result = run_case(case(), LOCAL)
         self.assertIsNone(result["error"])
-        self.assertEqual(result["output_error"], "ValueError")
+        self.assertEqual(result["output_error"], "ValidationError")
         self.assertEqual(result["response_text"], "그룹웨어에서 신청하세요.")
         self.assertTrue(result["generation_complete"])
         checks = {c["code"]: c["ok"] for c in answer_checks({**case(), **result})}

@@ -47,6 +47,15 @@ class AnswerPayload(BaseModel):
         return value
 
 
+class StructuredAnswerPayload(BaseModel):
+    """현재 생성기의 구조화 응답. 과거 text 기록과 별도로 검증한다."""
+
+    model_config = ConfigDict(extra="forbid")
+    answer: str
+    referenced_documents: list[str]
+    note: str
+
+
 def parse_answer(text):
     """형식이 맞으면 AnswerPayload를, 아니면 None을 돌려준다."""
     if not isinstance(text, str):
@@ -54,12 +63,28 @@ def parse_answer(text):
     try:
         return AnswerPayload.model_validate_json(text)
     except ValidationError:
-        return None
+        try:
+            structured = StructuredAnswerPayload.model_validate_json(text)
+            return AnswerPayload(text=structured.answer)
+        except ValidationError:
+            return None
+
+
+def record_payload(record):
+    """원문은 보존하고 도구 호출로 전달된 현재 구조화 응답도 검사한다."""
+    structured = record.get("structured_response")
+    if structured is not None:
+        try:
+            payload = StructuredAnswerPayload.model_validate(structured)
+            return AnswerPayload(text=payload.answer)
+        except ValidationError:
+            return None
+    return parse_answer(record.get("response_text"))
 
 
 def answer_text(record):
     """내용 점검용 문자열. JSON이면 text, 형식이 깨졌으면 응답 원문 전체."""
-    payload = parse_answer(record.get("response_text"))
+    payload = record_payload(record)
     if payload is None:
         return record.get("response_text") or ""
     return payload.text
@@ -205,7 +230,7 @@ def answer_checks(record):
         "" if complete else f"생성이 끝나지 않음 (finish_reason={reason})",
     )
 
-    valid = parse_answer(record.get("response_text")) is not None
+    valid = record_payload(record) is not None
     a3 = check("A3", valid, "" if valid else "text JSON 형식이 아님")
 
     content = answer_text(record)

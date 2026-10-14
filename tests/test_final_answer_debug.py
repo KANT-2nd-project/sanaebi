@@ -99,11 +99,15 @@ def check_output(raw, result):
             "모델 출력이 JSON이 아님 (형식 지시 위반 또는 출력 한도로 잘림)",
             None,
         )
-    text = payload.get("text") if isinstance(payload, dict) else None
+    text = (
+        payload.get("answer", payload.get("text"))
+        if isinstance(payload, dict)
+        else None
+    )
     if not isinstance(text, str) or not text.strip():
         return FAIL, "모델 출력 JSON에 답변 text가 없음", None
     answer = assistant.normalize_text(text)
-    if result.get("text") != answer:
+    if result.get("answer", result.get("text")) != answer:
         return FAIL, "체인 결과 text가 안쪽 답변이 아니라 모델 출력 원문임", answer
     return PASS, "", answer
 
@@ -204,7 +208,15 @@ def trace_final_answer(
             trace.raw_output = getattr(message, "content", message)
             return message
 
-        return RunnableLambda(call)
+        class TracedModel:
+            def with_structured_output(self, schema):
+                return RunnableLambda(call) | RunnableLambda(
+                    lambda value: schema.model_validate_json(
+                        getattr(value, "content", value)
+                    )
+                )
+
+        return TracedModel()
 
     def generate_answer(text):
         try:
@@ -221,7 +233,8 @@ def trace_final_answer(
             raise
         status, detail, trace.answer = check_output(trace.raw_output, result)
         trace.mark("output", status, detail)
-        return result
+        # 연결 시나리오의 테스트 어댑터만 공개 text 계약으로 변환한다.
+        return {"text": result["answer"]}
 
     with (
         patch.object(assistant, "prepare_input", prepare_input),
@@ -277,7 +290,10 @@ class DocumentsMixin:
 
 
 def answer_json(text=ANSWER):
-    return json.dumps({"text": text}, ensure_ascii=False)
+    return json.dumps(
+        {"answer": text, "referenced_documents": [], "note": "테스트 근거"},
+        ensure_ascii=False,
+    )
 
 
 class StageOriginTests(DocumentsMixin, unittest.TestCase):
@@ -361,7 +377,12 @@ class StageOriginTests(DocumentsMixin, unittest.TestCase):
         self.assertIn("모델 출력 원문", detail)
 
     def test_process_response_records_model_error(self):
-        trace_model = RunnableLambda(model_raises(ConnectionError("연결 거부")))
+        from unittest.mock import Mock
+
+        trace_model = Mock()
+        trace_model.with_structured_output.return_value = RunnableLambda(
+            model_raises(ConnectionError("연결 거부"))
+        )
         with (
             patch.object(assistant, "load_document_context", lambda: "제목: 문서"),
             patch.object(assistant, "ensure_ollama_server", lambda: None),
@@ -371,7 +392,7 @@ class StageOriginTests(DocumentsMixin, unittest.TestCase):
                 {"ok": True, "text": QUESTION, "reason": ""}, SEARCH, provider="ollama"
             )["ollama"]
         self.assertFalse(result["success"])
-        self.assertIsNone(result["output"])
+        self.assertEqual(result["answer"], "")
         self.assertEqual(result["error"], "ConnectionError: 연결 거부")
 
 

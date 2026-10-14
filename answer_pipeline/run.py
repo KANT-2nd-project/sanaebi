@@ -369,6 +369,7 @@ class CallCapture(BaseCallbackHandler):
     def __init__(self):
         self.prompt = None
         self.raw_text = None
+        self.structured_response = None
         self.usage = {"input_tokens": None, "output_tokens": None}
         self.finish_reason = None
         self.served_model = None
@@ -382,6 +383,9 @@ class CallCapture(BaseCallbackHandler):
         generation = response.generations[0][0]
         self.raw_text = generation.text
         message = getattr(generation, "message", None)
+        tool_calls = getattr(message, "tool_calls", None) or []
+        if len(tool_calls) == 1 and tool_calls[0].get("name") == "AssistantResponse":
+            self.structured_response = tool_calls[0].get("args")
         usage = getattr(message, "usage_metadata", None) or {}
         metadata = getattr(message, "response_metadata", None) or {}
         # 사용량이 없으면 0이 아니라 알 수 없음(None)으로 남긴다
@@ -443,6 +447,7 @@ def run_case(case, config, invoke=invoke_executor, documents_path=None):
         "llm_called": capture.llm_calls > 0,
         "prompt": capture.prompt,
         "response_text": capture.raw_text or "",
+        "structured_response": capture.structured_response,
         "executor_output": output,
         "usage": capture.usage,
         "generation_complete": error is None
