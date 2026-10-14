@@ -1,0 +1,17 @@
+[
+  {
+    "name": "local-qwen3-4b",
+    "provider": "ollama",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "temperature": 0.1,
+    "num_ctx": 16384,
+    "max_output_tokens": 512
+  },
+  {
+    "name": "cloud-gpt",
+    "provider": "openai",
+    "model": "gpt-6-luna",
+    "max_output_tokens": 512,
+    "timeout_seconds": 600
+  }
+]

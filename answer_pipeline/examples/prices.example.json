@@ -1,0 +1,10 @@
+{
+  "cloud-gpt": {
+    "model": "gpt-6-luna",
+    "input_per_1m_tokens": "확인 필요",
+    "output_per_1m_tokens": "확인 필요",
+    "currency": "USD",
+    "checked_on": "YYYY-MM-DD",
+    "source": "단가를 확인한 공식 페이지 URL"
+  }
+}
