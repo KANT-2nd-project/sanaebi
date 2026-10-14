@@ -1,6 +1,6 @@
 """명령줄 실행. 저장소 루트에서 실행한다 (PowerShell 예시).
 
-  uv run python -m answer_pipeline.cli run    --eval-set EVAL.jsonl --documents DOCS.jsonl --models MODELS.json --run-dir RUN
+  uv run python -m answer_pipeline.cli run    --eval-set EVAL.jsonl|EVAL.csv --documents DOCS.jsonl --models MODELS.json --run-dir RUN
                                               [--split dev] [--repeats 2] [--dry-run]
   uv run python -m answer_pipeline.cli judge  --run-dir RUN [--judge-model gpt-5.6-luna] [--dry-run]
   (RUN\\human_check.csv의 human_ 칸에 통과·실패 기록)
@@ -316,7 +316,7 @@ def build_parser():
     p.add_argument(
         "--eval-set",
         default=DEFAULT_EVAL_SET_PATH,
-        help="평가 세트 JSONL (기본: 보관된 v0 문서의 개발 평가 세트)",
+        help="평가 세트 JSONL 또는 CSV (기본: 보관된 v0 문서의 개발 평가 세트)",
     )
     p.add_argument(
         "--documents",

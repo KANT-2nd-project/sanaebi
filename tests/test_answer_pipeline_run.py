@@ -346,6 +346,34 @@ class CommandLineTests(ExecutorPatch):
         self.assertIn("[dry-run]", output)
         self.assertFalse((self.dir / "run").exists())
 
+    def test_csv_eval_set_runs_every_question(self):
+        self.use_model(answer("그룹웨어에서 신청하세요."))
+        self.write_models({"name": "local", "provider": "ollama"})
+        eval_csv = self.dir / "questions.csv"
+        eval_csv.write_text(
+            "id,text\nc1,연차는 어디서 신청해요?\nc2,회의실은 어떻게 예약해요?\n",
+            encoding="utf-8-sig",
+        )
+        run_dir = self.dir / "run"
+        output = self.run_cli(
+            "run",
+            "--eval-set",
+            str(eval_csv),
+            "--documents",
+            str(self.documents),
+            "--models",
+            str(self.models),
+            "--run-dir",
+            str(run_dir),
+            "--repeats",
+            "1",
+        )
+        self.assertIn("2건 · 회사 문서", output)
+        results = read_jsonl(run_dir / "results.jsonl")
+        self.assertEqual([r["case_id"] for r in results], ["c1", "c2"])
+        self.assertEqual({r["expected_route"] for r in results}, {"SEARCH_KNOWLEDGE"})
+        self.assertIn("회의실은 어떻게 예약해요?", results[1]["prompt"])
+
     def test_run_judge_report_writes_outputs(self):
         self.use_model(answer("그룹웨어에서 신청하세요."))
         self.write_models({"name": "local", "provider": "ollama", "num_ctx": 2048})
@@ -485,12 +513,75 @@ class EvalSetFileTests(unittest.TestCase):
 
     def test_load_eval_set_rejects_unknown_field_route_or_tag(self):
         for name, row in (
-            ("typo.jsonl", {**eval_row(), "expected_documents": []}),
+            ("typo.jsonl", {**eval_row(), "expected_docs": []}),
             ("old.jsonl", eval_row(expected_route="IN_SCOPE")),
             ("type.jsonl", eval_row(question_type="unknown")),
             ("position.jsonl", eval_row(evidence_position="앞")),
         ):
             path = self.write_jsonl(name, row)
+            with self.subTest(name=name), self.assertRaises(ValueError):
+                load_eval_set(path)
+
+    def write_csv(self, name, text, encoding="utf-8"):
+        path = self.dir / name
+        path.write_bytes(text.encode(encoding))
+        return path
+
+    def test_load_eval_set_reads_csv_with_jsonl_columns(self):
+        path = self.write_csv(
+            "eval.csv",
+            "id,question,split,expected_route,expected_document_ids,required_points,"
+            "forbidden_claims,topic,question_type,evidence_position,note\r\n"
+            "q1,연차는 어디서 신청해요?,final,SEARCH_KNOWLEDGE,1,그루,,people,"
+            "answerable,front,\r\n",
+            encoding="utf-8-sig",
+        )
+        self.assertEqual(load_eval_set(path), [eval_row()])
+
+    def test_load_eval_set_reads_generation_csv(self):
+        text = (
+            "id,text,question_type,expected_document_ids,expected_documents,"
+            "required_points,forbidden_claims\n"
+            'g1,"연차와 회의실, 둘 다 알려 주세요.",multi_doc,1 | 2,'
+            f"{LEAVE_DOC['title']} | {ROOM_DOC['title']},그루 | 온오피스,"
+            "승인 없이 사용 가능하다고 안내\n"
+            "\n"
+            "g2,주차 등록은 어디서 하나요?,no_answer,,,문서에 없음을 밝힘,"
+            "주차 절차를 만들어 안내\n"
+        )
+        for encoding in ("utf-8", "cp949"):
+            with self.subTest(encoding=encoding):
+                path = self.write_csv(f"gen-{encoding}.csv", text, encoding)
+                rows = load_eval_set(path)
+                self.assertEqual([r["id"] for r in rows], ["g1", "g2"])
+                first, second = rows
+                self.assertEqual(first["question"], "연차와 회의실, 둘 다 알려 주세요.")
+                self.assertEqual(first["split"], "dev")
+                self.assertEqual(first["expected_route"], "SEARCH_KNOWLEDGE")
+                self.assertEqual(first["expected_document_ids"], ["1", "2"])
+                self.assertEqual(
+                    first["expected_documents"], [LEAVE_DOC["title"], ROOM_DOC["title"]]
+                )
+                self.assertEqual(first["required_points"], ["그루", "온오피스"])
+                self.assertEqual(first["question_type"], "multi_doc")
+                self.assertEqual(second["expected_document_ids"], [])
+                self.assertNotIn("expected_documents", second)
+                self.assertEqual(check_eval_set(rows, DOCUMENTS)[0], [])
+
+    def test_load_eval_set_csv_with_only_questions_numbers_rows(self):
+        path = self.write_csv("questions.csv", "question\n연차 신청?\n회의실 예약?\n")
+        rows = load_eval_set(path)
+        self.assertEqual([r["id"] for r in rows], ["q001", "q002"])
+        self.assertIsNone(rows[0]["expected_document_ids"])
+        self.assertEqual(rows[0]["required_points"], [])
+
+    def test_load_eval_set_csv_rejects_unknown_column_or_extra_cell(self):
+        for name, text in (
+            ("unknown.csv", "id,question,answer\nq1,연차?,x\n"),
+            ("extra.csv", "id,question\nq1,연차?,x\n"),
+            ("blank.csv", "id,\nq1,연차?\n"),
+        ):
+            path = self.write_csv(name, text)
             with self.subTest(name=name), self.assertRaises(ValueError):
                 load_eval_set(path)
 
@@ -618,9 +709,20 @@ class CheckEvalSetTests(unittest.TestCase):
         errors, _ = check_eval_set([eval_row(expected_document_ids=["9"])], DOCUMENTS)
         self.assertEqual(len(errors), 1)
 
-    def test_required_point_missing_from_expected_document_is_an_error(self):
-        errors, _ = check_eval_set([eval_row(required_points=["인사 포털"])], DOCUMENTS)
-        self.assertIn("인사 포털", errors[0])
+    def test_required_point_missing_from_expected_document_is_a_warning(self):
+        errors, warnings = check_eval_set(
+            [eval_row(required_points=["인사 포털"])], DOCUMENTS
+        )
+        self.assertEqual(errors, [])
+        self.assertIn("질문 1건 (심판이 뜻으로 판정): q1", warnings[0])
+
+    def test_expected_document_titles_must_match_ids(self):
+        row = eval_row(expected_documents=[LEAVE_DOC["title"]])
+        self.assertEqual(check_eval_set([row], DOCUMENTS), ([], []))
+        errors, _ = check_eval_set(
+            [eval_row(expected_documents=[ROOM_DOC["title"]])], DOCUMENTS
+        )
+        self.assertIn(ROOM_DOC["title"], errors[0])
 
     def test_non_answer_route_with_expected_documents_is_an_error(self):
         errors, _ = check_eval_set([eval_row(expected_route="UNSUPPORTED")], DOCUMENTS)

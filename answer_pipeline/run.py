@@ -5,6 +5,12 @@
 종료 사유, 응답 모델 이름을 받아 기록만 한다. 답변을 고치거나 재시도하지 않는다.
 생성 답변을 평가하므로 분류 라벨은 평가 세트의 정답 경로(expected_route)를 고정 입력으로 넘긴다.
 
+평가 세트는 JSONL 또는 CSV(.csv)로 둔다. CSV는 한 행 = 질문 1개이고 열 이름은 JSONL 필드와 같다.
+질문 열은 question 또는 text, 목록 칸(expected_document_ids, expected_documents, required_points,
+forbidden_claims)은 " | "로 나눈다. 빈 칸은 값 없음이며, expected_document_ids 열의 빈 칸은
+근거 문서가 없는 질문([])이다. id 열이 없으면 행 번호(q001…), split이 없으면 dev,
+expected_route가 없으면 SEARCH_KNOWLEDGE를 쓴다. 엑셀의 CSV UTF-8과 일반 CSV(CP949)를 모두 읽는다.
+
 모델 설정 파일 (JSON 목록, 한 항목 = 비교할 모델 1개, 예시는 examples/models.example.json):
   name, provider(ollama|openai), model, base_url, temperature, num_ctx, max_output_tokens,
   timeout_seconds. 값을 비우면 실행기 기본값을 쓴다. API 키는 이 파일에 넣지 않는다.
@@ -14,6 +20,8 @@
 """
 
 import contextlib
+import csv
+import io
 import json
 import re
 import time
@@ -40,8 +48,18 @@ GRADING_FIELDS = (
 )
 # 평가 세트에 적어 두는 태그. 평가 축이 아니다
 TAG_FIELDS = ("topic", "question_type", "evidence_position")
-EVAL_FIELDS = ("id", "question", "split", "note", *GRADING_FIELDS, *TAG_FIELDS)
-# 질문 형식 태그
+# 사람이 읽기 위한 정답 근거 문서 제목. 적으면 expected_document_ids의 제목과 맞는지 대조한다
+REFERENCE_FIELDS = ("expected_documents",)
+EVAL_FIELDS = (
+    "id",
+    "question",
+    "split",
+    "note",
+    *GRADING_FIELDS,
+    *TAG_FIELDS,
+    *REFERENCE_FIELDS,
+)
+# 질문 형식 태그 (뒤의 다섯 개는 생성 평가 CSV에서 쓰는 이름)
 QUESTION_TYPES = (
     "answerable",
     "partial",
@@ -50,7 +68,20 @@ QUESTION_TYPES = (
     "situational",
     "conflict",
     "injection",
+    "single_doc",
+    "multi_doc",
+    "partial_info",
+    "false_premise",
+    "no_answer",
 )
+# CSV에서 " | "로 나눠 목록으로 읽는 열
+CSV_LIST_FIELDS = (
+    "expected_document_ids",
+    "expected_documents",
+    "required_points",
+    "forbidden_claims",
+)
+CSV_LIST_SEPARATOR = "|"
 EVIDENCE_POSITIONS = ("front", "middle", "back")
 
 PROVIDERS = ("ollama", "openai")
@@ -93,6 +124,60 @@ def read_jsonl(path):
             raise ValueError(
                 f"{path} {number}번째 줄이 JSON이 아닙니다: {exc.msg}"
             ) from exc
+    return rows
+
+
+def read_csv_text(path):
+    # 엑셀의 "CSV UTF-8"은 BOM이 붙고, 일반 "CSV"는 한국어 Windows에서 CP949로 저장된다
+    data = Path(path).read_bytes()
+    for encoding in ("utf-8-sig", "cp949"):
+        try:
+            return data.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    raise ValueError(f"{path}: CSV를 UTF-8 또는 CP949로 저장해 주세요.")
+
+
+def read_eval_csv(path):
+    """평가 세트 CSV를 JSONL 행과 같은 모양의 사전 목록으로 읽는다. 완전히 빈 행은 건너뛴다."""
+    reader = csv.reader(io.StringIO(read_csv_text(path), newline=""))
+    try:
+        header = [name.strip() for name in next(reader, [])]
+        if not header or "" in header or len(set(header)) != len(header):
+            raise ValueError(f"{path}: 첫 줄의 열 이름이 없거나 비었거나 겹칩니다.")
+        if "question" not in header and "text" in header:
+            header[header.index("text")] = "question"
+        rows = []
+        for values in reader:
+            if not any(value.strip() for value in values):
+                continue
+            if len(values) > len(header):
+                raise ValueError(
+                    f"{path} {reader.line_num}번째 줄의 칸 수가 열 이름보다 많습니다."
+                )
+            values += [""] * (len(header) - len(values))
+            raw = {}
+            for field, value in zip(header, values, strict=True):
+                value = value.strip()
+                if field in CSV_LIST_FIELDS:
+                    raw[field] = [
+                        item.strip()
+                        for item in value.split(CSV_LIST_SEPARATOR)
+                        if item.strip()
+                    ]
+                else:
+                    raw[field] = value or None
+            raw.setdefault("id", f"q{len(rows) + 1:03d}")
+            for field, default in (("split", "dev"), ("expected_route", ANSWER_ROUTE)):
+                if raw.get(field) is None:
+                    raw[field] = default
+            if not raw.get("expected_documents"):
+                raw.pop("expected_documents", None)
+            rows.append(raw)
+    except csv.Error as exc:
+        raise ValueError(
+            f"{path} {reader.line_num}번째 줄 CSV 형식 오류: {exc}"
+        ) from exc
     return rows
 
 
@@ -259,10 +344,11 @@ def load_documents(path=None):
 
 
 def load_eval_set(path, max_input_chars=None):
-    """평가 세트 JSONL을 읽고 형식을 검사한다. 모르는 필드는 오타로 보고 막는다."""
+    """평가 세트 JSONL 또는 CSV를 읽고 형식을 검사한다. 모르는 필드는 오타로 보고 막는다."""
     max_input_chars = max_input_chars or assistant.MAX_INPUT_CHARS
     rows, seen = [], set()
-    for raw in read_jsonl(path):
+    is_csv = Path(path).suffix.casefold() == ".csv"
+    for raw in read_eval_csv(path) if is_csv else read_jsonl(path):
         case_id = str(raw.get("id", "")).strip()
         if not case_id or case_id in seen:
             raise ValueError(f"id가 비었거나 겹칩니다: {case_id!r}")
@@ -304,6 +390,10 @@ def load_eval_set(path, max_input_chars=None):
                 "note": raw.get("note") or "",
             }
         )
+        if raw.get("expected_documents") is not None:
+            rows[-1]["expected_documents"] = text_list(
+                raw, "expected_documents", case_id
+            )
     if not rows:
         raise ValueError(f"평가 질문이 없습니다: {path}")
     return rows
@@ -312,11 +402,12 @@ def load_eval_set(path, max_input_chars=None):
 def check_eval_set(rows, documents):
     """정답 정보를 회사 문서와 대조한다. (오류 목록, 경고 목록)을 돌려준다.
 
-    오류: 실행하거나 채점할 수 없게 되는 문제 (정답 경로 없음, 없는 문서, 문서에 없는 핵심 표현,
+    오류: 실행하거나 채점할 수 없게 되는 문제 (정답 경로 없음, 없는 문서, 문서 제목 불일치,
          모순된 정답)
-    경고: 판정이 빠지거나 약해지는 빈 칸
+    경고: 판정이 빠지거나 약해지는 빈 칸, 근거 문서에 글자 그대로 없는 핵심 표현
+         (핵심 정보는 심판이 뜻으로 판정하므로 풀어 쓴 표현도 실행한다)
     """
-    errors, warnings = [], []
+    errors, warnings, paraphrased = [], [], []
     for row in rows:
         case_id = row["id"]
         expected_ids = row["expected_document_ids"]
@@ -335,8 +426,14 @@ def check_eval_set(rows, documents):
                 if not any(p in text for text in known)
             ]
             if absent:
+                paraphrased.append(case_id)
+        titles = row.get("expected_documents")
+        if titles is not None and not unknown:
+            actual = [documents[i]["title"] for i in expected_ids or []]
+            if [assistant.normalize_text(t) for t in titles] != actual:
                 errors.append(
-                    f"{case_id}: required_points {absent}가 정답 근거 문서에 없음"
+                    f"{case_id}: expected_documents {titles}가 "
+                    f"expected_document_ids의 문서 제목 {actual}과 다름"
                 )
         if route is not None and route != ANSWER_ROUTE and expected_ids:
             errors.append(
@@ -352,6 +449,13 @@ def check_eval_set(rows, documents):
                 warnings.append(
                     f"{case_id}: required_points가 없어 심판이 핵심 정보 목록 없이 판정함"
                 )
+    if paraphrased:
+        shown = ", ".join(paraphrased[:5])
+        more = f" 외 {len(paraphrased) - 5}건" if len(paraphrased) > 5 else ""
+        warnings.append(
+            f"required_points가 정답 근거 문서에 글자 그대로 없는 질문 {len(paraphrased)}건 "
+            f"(심판이 뜻으로 판정): {shown}{more}"
+        )
     return errors, warnings
 
 
