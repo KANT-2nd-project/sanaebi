@@ -2,11 +2,51 @@ import unittest
 from unittest.mock import Mock
 
 from generation.prompts import build_prompt
-from generation.service import generate
+from generation.service import generate, generate_from_documents
 from generation.types import GenerationPrompt, GenerationResult, GenerationStatus
 
 
 class GenerationServiceTests(unittest.TestCase):
+    def test_document_entrypoint_builds_prompt_and_preserves_result(self):
+        documents = ["예약은 사내 포털에서 합니다.", "승인자는 팀장입니다."]
+        original = documents.copy()
+        raw = ' {"answer": " 포털에서 예약하세요. "}\n'
+        model_call = Mock(return_value=raw)
+
+        result = generate_from_documents("어디서 예약하나요?", documents, model_call)
+
+        model_call.assert_called_once()
+        prompt = model_call.call_args.args[0]
+        self.assertIsInstance(prompt, GenerationPrompt)
+        self.assertIn("사내비", prompt.system)
+        self.assertIn("어디서 예약하나요?", prompt.user)
+        for document in documents:
+            self.assertIn(document, prompt.user)
+        self.assertEqual(documents, original)
+        self.assertEqual(
+            result,
+            GenerationResult(GenerationStatus.COMPLETED, raw, "포털에서 예약하세요."),
+        )
+
+    def test_document_entrypoint_preserves_failure_contract(self):
+        for raw, status in (
+            ("bad JSON", GenerationStatus.PARSE_ERROR),
+            ('{"answer":" "}', GenerationStatus.EMPTY_ANSWER),
+        ):
+            with self.subTest(status=status):
+                result = generate_from_documents(
+                    "질문", ["문서"], Mock(return_value=raw)
+                )
+                self.assertEqual(result, GenerationResult(status, raw, None))
+        self.assertEqual(
+            generate_from_documents("질문", ["문서"], Mock(side_effect=TimeoutError)),
+            GenerationResult(GenerationStatus.TIMEOUT, None, None),
+        )
+        error = RuntimeError("provider failed")
+        with self.assertRaises(RuntimeError) as caught:
+            generate_from_documents("질문", ["문서"], Mock(side_effect=error))
+        self.assertIs(caught.exception, error)
+
     def setUp(self):
         self.prompt = GenerationPrompt(system="고정 규칙", user="테스트 질문")
 

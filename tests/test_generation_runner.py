@@ -2,14 +2,34 @@ import unittest
 from unittest.mock import Mock, patch
 
 from generation.config import GenerationConfig, GenerationProvider
-from generation.types import GenerationPrompt, GenerationResult, GenerationStatus
+from generation.prompts import build_prompt
+from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.runner import run_case
 
 
 class GenerationRunnerTests(unittest.TestCase):
+    def test_prompt_build_failure_is_recorded_without_model_call(self):
+        model_call = Mock()
+        with (
+            patch(
+                "generation.service.build_prompt",
+                side_effect=ValueError("invalid input"),
+            ),
+            patch("generation_evaluation.runner.perf_counter", side_effect=(1.0, 1.25)),
+        ):
+            run = run_case(
+                "case-build", self.config, self.question, self.documents, model_call
+            )
+        self.assertIsNone(run.result)
+        self.assertEqual(run.error_type, "ValueError")
+        self.assertEqual(run.elapsed_seconds, 0.25)
+        model_call.assert_not_called()
+
     def setUp(self):
         self.config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 30.0)
-        self.prompt = GenerationPrompt(system="규칙", user="질문")
+        self.question = "예약은 어디에서 하나요?"
+        self.documents = ["예약은 사내 포털에서 합니다."]
+        self.prompt = build_prompt(self.question, self.documents)
 
     def test_records_case_config_response_and_elapsed_time(self):
         events = []
@@ -23,13 +43,24 @@ class GenerationRunnerTests(unittest.TestCase):
 
         def model_call(prompt):
             events.append("model")
-            self.assertIs(prompt, self.prompt)
+            self.assertEqual(prompt, self.prompt)
             return raw
 
-        with patch("generation_evaluation.runner.perf_counter", side_effect=clock):
-            run = run_case("case-001", self.config, self.prompt, model_call)
+        def record_build(question, documents):
+            events.append("prompt")
+            self.assertEqual(question, self.question)
+            self.assertIs(documents, self.documents)
+            return build_prompt(question, documents)
 
-        self.assertEqual(events, ["clock", "model", "clock"])
+        with (
+            patch("generation_evaluation.runner.perf_counter", side_effect=clock),
+            patch("generation.service.build_prompt", side_effect=record_build),
+        ):
+            run = run_case(
+                "case-001", self.config, self.question, self.documents, model_call
+            )
+
+        self.assertEqual(events, ["clock", "prompt", "model", "clock"])
         self.assertEqual(run.case_id, "case-001")
         self.assertIs(run.config, self.config)
         self.assertEqual(run.elapsed_seconds, 0.25)
@@ -43,7 +74,9 @@ class GenerationRunnerTests(unittest.TestCase):
         with patch(
             "generation_evaluation.runner.perf_counter", side_effect=(10.0, 12.5)
         ):
-            run = run_case("case-timeout", self.config, self.prompt, model_call)
+            run = run_case(
+                "case-timeout", self.config, self.question, self.documents, model_call
+            )
         model_call.assert_called_once_with(self.prompt)
         self.assertEqual(run.elapsed_seconds, 2.5)
         self.assertIsNone(run.error_type)
@@ -57,7 +90,9 @@ class GenerationRunnerTests(unittest.TestCase):
         with patch(
             "generation_evaluation.runner.perf_counter", side_effect=(20.0, 20.75)
         ):
-            run = run_case("case-error", self.config, self.prompt, model_call)
+            run = run_case(
+                "case-error", self.config, self.question, self.documents, model_call
+            )
         self.assertEqual(run.case_id, "case-error")
         self.assertIs(run.config, self.config)
         self.assertIsNone(run.result)
@@ -68,7 +103,11 @@ class GenerationRunnerTests(unittest.TestCase):
     def test_parse_failure_is_a_result_not_an_execution_error(self):
         with patch("generation_evaluation.runner.perf_counter", side_effect=(1.0, 1.5)):
             run = run_case(
-                "case-parse", self.config, self.prompt, Mock(return_value="bad")
+                "case-parse",
+                self.config,
+                self.question,
+                self.documents,
+                Mock(return_value="bad"),
             )
         self.assertEqual(
             run.result, GenerationResult(GenerationStatus.PARSE_ERROR, "bad", None)
@@ -78,5 +117,11 @@ class GenerationRunnerTests(unittest.TestCase):
     def test_user_interrupt_propagates(self):
         error = KeyboardInterrupt()
         with self.assertRaises(KeyboardInterrupt) as caught:
-            run_case("case-stop", self.config, self.prompt, Mock(side_effect=error))
+            run_case(
+                "case-stop",
+                self.config,
+                self.question,
+                self.documents,
+                Mock(side_effect=error),
+            )
         self.assertIs(caught.exception, error)
