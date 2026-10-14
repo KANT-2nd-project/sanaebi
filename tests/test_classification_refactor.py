@@ -396,7 +396,7 @@ class ReportAndClientTests(unittest.TestCase):
             ):
                 evaluate_saved_model("jev", result_dir=result_dir)
 
-    def test_jev_prompt_preserves_rules_but_updates_train_examples(self):
+    def test_jev_prompt_matches_new_run_and_updates_archived_examples(self):
         from classification.models import jev_prompt
 
         saved = json.loads(
@@ -412,8 +412,16 @@ class ReportAndClientTests(unittest.TestCase):
                     if key != "examples"
                 },
             )
+        self.assertEqual(jev_prompt.CATEGORIES, saved["criteria"])
+        self.assertEqual(jev_prompt.EXAMPLE_QUESTION_IDS, saved["prompt_example_ids"])
+        archived = json.loads(
+            (
+                ROOT
+                / "classification/archive/results/before-stratified-2026-10-14/jev/metrics.json"
+            ).read_text()
+        )["settings"]
         self.assertNotEqual(
-            jev_prompt.EXAMPLE_QUESTION_IDS, saved["prompt_example_ids"]
+            jev_prompt.EXAMPLE_QUESTION_IDS, archived["prompt_example_ids"]
         )
         self.assertEqual(jev_prompt.PROMPT_REVIEW_SCOPE, saved["prompt_review_scope"])
         self.assertEqual(jev_prompt.MODEL_NAME, saved["requested_model"])
