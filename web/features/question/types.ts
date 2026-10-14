@@ -13,9 +13,3 @@ export type QuestionErrorKind =
   | "network"
   | "timeout"
   | "aborted";
-
-export type QuestionState =
-  | { status: "idle" }
-  | { status: "submitting"; submittedQuestion: string }
-  | { status: "success"; submittedQuestion: string; answer: string }
-  | { status: "error"; kind: QuestionErrorKind; message: string };

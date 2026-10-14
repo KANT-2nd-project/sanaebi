@@ -1,95 +1,74 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
-import { askQuestion, QuestionError } from "@/lib/api/questions";
-import { AnswerCard } from "./answer-card";
+import Link from "next/link";
+import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { ChatSession } from "./chat-session";
+import { MessageList } from "./message-list";
 import { QuestionForm } from "./question-form";
-import type { QuestionState } from "./types";
+import { useChatScroll } from "./use-chat-scroll";
+
+const touchQuery = "(hover: none) and (pointer: coarse)";
+const subscribeTouch = (notify: () => void) => {
+  const query = window.matchMedia(touchQuery);
+  query.addEventListener("change", notify);
+  return () => query.removeEventListener("change", notify);
+};
 
 export function QuestionPanel() {
-  const [question, setQuestion] = useState("");
-  const [inputError, setInputError] = useState("");
-  const [state, setState] = useState<QuestionState>({ status: "idle" });
+  const [session] = useState(() => new ChatSession());
+  const state = useSyncExternalStore(session.subscribe, session.getSnapshot, session.getServerSnapshot);
+  const touchEnter = useSyncExternalStore(subscribeTouch, () => window.matchMedia(touchQuery).matches, () => false);
+  const [showGuide, setShowGuide] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const activeRequest = useRef<AbortController | null>(null);
+  const guideRef = useRef<HTMLElement>(null);
+  const { viewportRef, dockRef, onScroll, showLatest, toLatest } = useChatScroll(state.turns);
+  const pending = state.activeTurnId !== null;
+  const empty = state.turns.length === 0;
 
-  useEffect(() => () => {
-    activeRequest.current?.abort();
-    activeRequest.current = null;
-  }, []);
+  useEffect(() => () => session.dispose(), [session]);
+  useEffect(() => { if (state.inputError) inputRef.current?.focus(); }, [state.inputError]);
+  useEffect(() => { if (showGuide) guideRef.current?.scrollIntoView({ block: "nearest" }); }, [showGuide]);
 
-  function changeQuestion(value: string) {
-    if (activeRequest.current) return;
-    setQuestion(value);
-    setInputError("");
-    setState({ status: "idle" });
-  }
-
-  async function submitQuestion(event: FormEvent<HTMLFormElement>) {
+  function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (activeRequest.current) return;
-    const submittedQuestion = question.trim();
-    if (!submittedQuestion) {
-      setState({ status: "idle" });
-      setInputError("질문을 입력해주세요");
-      inputRef.current?.focus();
-      return;
-    }
-    const controller = new AbortController();
-    activeRequest.current = controller;
-    setInputError("");
-    setState({ status: "submitting", submittedQuestion });
-    try {
-      const answer = await askQuestion(submittedQuestion, controller.signal);
-      if (activeRequest.current !== controller) return;
-      setState({ status: "success", submittedQuestion, answer });
-    } catch (error) {
-      if (activeRequest.current !== controller || controller.signal.aborted) return;
-      const failure = error instanceof QuestionError
-        ? error
-        : new QuestionError("request", "요청을 처리하지 못했어요. 다시 시도해주세요.");
-      setState({ status: "error", kind: failure.kind, message: failure.message });
-      if (failure.kind === "validation") {
-        setInputError(failure.message);
-        inputRef.current?.focus();
-      }
-    } finally {
-      if (activeRequest.current === controller) activeRequest.current = null;
-    }
+    void session.submit();
   }
-
-  const pending = state.status === "submitting";
-  const statusMessage = pending ? "답변을 준비하고 있어요"
-    : state.status === "success" ? "답변이 도착했습니다."
-    : state.status === "error" ? "요청을 완료하지 못했습니다. 오류 안내를 확인해주세요." : "";
 
   return (
-    <div className="mt-8">
-      <div aria-busy={pending}>
-        <QuestionForm
-          question={question}
-          error={inputError}
-          pending={pending}
-          inputRef={inputRef}
-          onChange={changeQuestion}
-          onExample={(value) => {
-            changeQuestion(value);
-            inputRef.current?.focus();
-          }}
-          onSubmit={submitQuestion}
-        />
-        {state.status === "success" && (
-          <AnswerCard text={state.answer} question={state.submittedQuestion} />
-        )}
-        {state.status === "error" && state.kind !== "validation" && (
-          <section aria-labelledby="error-title" className="mt-8 border-t border-boundary pt-6">
-            <h2 id="error-title" className="text-xl font-semibold text-danger">답변을 받지 못했어요</h2>
-            <p className="mt-3 whitespace-pre-wrap [overflow-wrap:anywhere]">{state.message}</p>
-            <p className="mt-2 text-sm text-muted">입력한 질문을 확인한 후 질문하기를 눌러 다시 시도해주세요.</p>
-          </section>
-        )}
+    <div className={`chat-shell${empty ? " is-empty" : ""}`}>
+      <header className="chat-header">
+        <Link href="/" className="chat-brand">사내<span>비</span></Link>
+        <nav aria-label="대화 메뉴">
+          <button type="button" className="chat-button header-button" disabled={empty && !state.draft}
+            onClick={() => { session.reset(); inputRef.current?.focus(); }}>새 대화</button>
+          <button type="button" className="chat-button header-button" aria-expanded={showGuide} aria-controls="usage"
+            onClick={() => setShowGuide(value => !value)}>사용 안내</button>
+        </nav>
+      </header>
+      <main ref={viewportRef} onScroll={onScroll} className="chat-viewport" aria-label="대화 내용" tabIndex={0}>
+        {empty ? <section className="chat-welcome">
+          <p className="chat-eyebrow">회사 생활의 작은 길잡이</p>
+          <h1>무엇을 도와드릴까요?</h1>
+          <p>회사 규정과 업무 절차에 대해 질문해보세요.</p>
+        </section> : <h1 className="sr-only">사내비와 대화</h1>}
+        <section ref={guideRef} id="usage" className="chat-guide" hidden={!showGuide} aria-labelledby="usage-title">
+          <h2 id="usage-title">사용 안내</h2>
+          <p>현재는 입력한 질문을 그대로 반환하는 연결 확인 단계입니다. 실제 규정 답변은 아직 제공하지 않습니다.</p>
+          <p>화면의 이전 메시지는 답변에 반영되지 않습니다. 대상과 상황을 함께 적어주세요.</p>
+          <p>대화는 현재 화면에서만 유지되며 새로고침·새 대화 시 초기화됩니다. 실제 신청·승인·개인 기록 조회는 지원하지 않습니다.</p>
+        </section>
+        <MessageList turns={state.turns} pending={pending} onRetry={id => { void session.retry(id); }} />
+      </main>
+      <div className="chat-dock" ref={dockRef}>
+        <div className="chat-dock-inner">
+          {showLatest && <button type="button" className="chat-button latest-button" onClick={toLatest}>최신 메시지로 이동 ↓</button>}
+          <QuestionForm question={state.draft} error={state.inputError} pending={pending} empty={empty}
+            touchEnter={touchEnter} inputRef={inputRef} onChange={value => session.changeDraft(value)}
+            onExample={value => { session.changeDraft(value); inputRef.current?.focus(); }} onSubmit={submit} />
+          <p id="chat-disclosure" className="chat-disclosure">현재는 질문을 그대로 반환합니다. 이전 메시지는 답변에 반영되지 않으며 새로고침하면 대화가 초기화됩니다.</p>
+          <p role="status" className="sr-only">{state.announcement}</p>
+        </div>
       </div>
-      <p role="status" className={pending ? "mt-4 text-muted" : "sr-only"}>{statusMessage}</p>
     </div>
   );
 }
