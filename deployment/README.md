@@ -34,7 +34,7 @@ uv run --locked uvicorn app.fastapi_main:app --host 127.0.0.1 --port 8000
 uv run --locked python scripts/local_nginx.py start
 ```
 
-브라우저로 http://127.0.0.1:8080 에 접속합니다. Next dev/start 프로세스는 필요하지 않습니다. 현재 `/api/ask`는 FastAPI `/ask`로 중계하고 서버는 앞뒤 공백을 제거한 질문을 그대로 반환합니다. 실제 규정 답변은 아직 연결되지 않았습니다.
+브라우저로 http://127.0.0.1:8080 에 접속합니다. Next dev/start 프로세스는 필요하지 않습니다. `/chat/`은 FastAPI에 마운트한 Gradio로 중계합니다. 기존 `/api/ask`는 FastAPI `/ask`로 중계하며 두 경로는 같은 echo 함수를 사용합니다. 실제 규정 답변은 아직 연결되지 않았습니다.
 
 ```bash
 uv run --locked python scripts/local_nginx.py stop
@@ -55,11 +55,11 @@ nginx 종료 후 FastAPI를 실행한 터미널에서 Ctrl+C로 해당 프로세
 
 ## 경로·캐시·오류
 
-`/chat`은 chat.html로, `/chat/`은 `/chat`으로 연결합니다. Next의 `/chat/...txt` 데이터도 그대로 제공합니다. 없는 UI/자산 경로는 404이며 홈으로 대체하지 않습니다. `/api/` 요청에는 정적 fallback을 적용하지 않습니다.
+`/chat`은 `/chat/`으로 308 이동하고, `/chat/`과 하위 자산·이벤트는 prefix를 보존해 FastAPI로 전달합니다. Gradio는 별도 서버 없이 FastAPI 8000 안에서 실행됩니다. 정적 산출물은 소개·404·Next 자산이며 chat.html은 없습니다. 없는 정적 페이지·자산은 404이고 홈으로 대체하지 않습니다. `/api/`와 `/chat/`에는 정적 fallback을 적용하지 않습니다.
 
-HTML·라우트 데이터에는 no-cache, 존재하는 `/_next/static/` 해시 자산에는 1년 immutable, 정상·오류 API에는 no-store를 적용합니다. upstream의 Cache-Control/Expires를 API 캐시 정책으로 교체합니다. FastAPI의 오류 상태·본문은 유지하고 nginx 자체 502/504는 HTML일 수 있습니다. 프런트가 이를 안전한 안내로 표시합니다.
+HTML·라우트 데이터에는 no-cache, 존재하는 `/_next/static/` 해시 자산에는 1년 immutable, 정상·오류 API와 모든 `/chat/` 응답에는 no-store를 적용합니다. 채팅에는 X-Robots-Tag: noindex도 적용합니다. upstream의 Cache-Control/Expires를 API 캐시 정책으로 교체합니다. FastAPI의 오류 상태·본문은 유지하고 nginx 자체 502/504는 HTML일 수 있습니다. Gradio 이벤트 오류는 REST 상태·JSON과 별도 계약이며 화면에서 안전한 안내로 처리합니다.
 
-연결 제한은 5초, upstream 읽기 사이의 대기 제한은 30초입니다. 브라우저의 총 요청 제한은 35초이며 자동 재호출하지 않습니다. 읽기 제한은 요청 전체의 절대 실행시간 제한이 아닙니다. 실제 모델 연결 시 예산을 다시 측정해야 합니다.
+연결 제한은 5초, 읽기 유휴 제한은 `/api/` 30초·`/chat/` 60초입니다. Gradio SSE는 버퍼링하지 않습니다. 브라우저의 제출부터 큐 대기·실행을 포함한 제한은 35초이며 자동 재호출하지 않습니다. 읽기 제한은 요청 전체의 절대 실행시간 제한이 아닙니다. 실제 모델 연결 시 예산을 다시 측정해야 합니다.
 
 ## 문제 확인
 

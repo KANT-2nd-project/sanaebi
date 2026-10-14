@@ -4,7 +4,7 @@
 - 상태: 현재 API 동작과 아직 연결되지 않은 목표 설계를 구분한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
 - 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
-- 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 내보내기 + nginx + FastAPI를 채택한다. 정적 내보내기·로컬 nginx→FastAPI echo 연결과 메모리 기반 대화형 화면을 구현했다. 이전 메시지는 서버 답변에 반영되지 않으며 실제 모델·외부 배포는 후속 범위다. 운영에서 nginx가 정적 파일과 API 중계를 담당하고 FastAPI가 질문 처리·인증·권한을 맡는 설계다.
+- 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 소개와 FastAPI에 마운트한 Gradio 채팅을 사용한다. 개발 3000·nginx 8080에서 `/chat/`을 FastAPI 8000으로 중계한다. Gradio는 기존 `/ask`와 echo 함수를 공유하며 REST 계약은 유지한다. 임시 세션 기록은 이전 메시지 문맥 처리와 구분하고 실제 모델·인증·외부 공개는 후속 범위다.
 - 질문 데이터와 데이터 상태: [요청 처리 데이터 안내](../data/README.md)
 - 프로젝트 설계 참고: [Notion 서비스 처리 기준](https://app.notion.com/p/3f805a3cdadc81d7b909fc71ed78381b)
 

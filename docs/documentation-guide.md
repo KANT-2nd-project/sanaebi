@@ -38,7 +38,7 @@ README의 주 독자는 프로젝트를 처음 보고 실행하려는 사람이�
 |---|---|---|
 | 프로젝트 진입점 | [프로젝트 허브](https://www.notion.so/2bb05a3cdadc82bb813381e3fab45047) | 프로젝트 소개·작업·기록 연결. 필요한 링크만 확인 |
 | 문서 탐색 | [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7) | 각 문서의 역할, Git 기준 링크 |
-| 프런트엔드 설계 | [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7)의 프런트엔드 설계 구역 | 정적 내보내기·nginx API 중계·SEO 방향과 기본 프로젝트 생성/기능·배포 검증 상태 요약. 새 Git 문서 링크는 원격 게시 후 연결 |
+| 프런트엔드 설계 | [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7)의 프런트엔드 설계 구역 | Next 정적 소개·FastAPI 마운트 Gradio·개발/nginx 중계·SEO 방향과 기능·배포 검증 상태 요약. 새 Git 문서 링크는 원격 게시 후 연결 |
 | 서비스 설계 | [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b) | 흐름·핵심 경계 요약, 설계 기준 링크 |
 | 라벨 | [요청 처리 분류·라벨링 기준](https://www.notion.so/3f805a3cdadc813485e4d94773974acc) | 라벨 목적·요약, 상세 경계의 Git 링크 |
 | 데이터 | [데이터 작성·검수·실험 절차](https://www.notion.so/3f805a3cdadc81d59dc9fec6e4fcca1d) | 자료별 용도, 작업·평가 연결, 데이터 기준 링크 |
