@@ -3,6 +3,7 @@ import json
 import sys
 import tempfile
 import unittest
+from collections import Counter
 from pathlib import Path
 from unittest.mock import patch
 
@@ -32,13 +33,22 @@ class QuestionSplitTests(unittest.TestCase):
                 self.assertFalse(groups[i] & groups[j])
 
     def test_documented_counts_labels_and_order_are_reproduced(self):
-        expected = {"train": 637, "validation": 129, "test": 134}
+        expected = {"train": 632, "validation": 133, "test": 135}
         self.assertEqual(self.splits, question_split.split_questions(self.rows[::-1]))
         for name, rows in self.splits.items():
             self.assertEqual(len(rows), expected[name])
             self.assertEqual({row["label"] for row in rows}, set(question_split.LABELS))
             ids = [row["question_id"] for row in rows]
             self.assertEqual(ids, sorted(ids))
+
+    def test_label_ratios_stay_close_to_the_overall_dataset(self):
+        overall = Counter(row["label"] for row in self.rows)
+        for name, rows in self.splits.items():
+            counts = Counter(row["label"] for row in rows)
+            for label in question_split.LABELS:
+                with self.subTest(split=name, label=label):
+                    target = len(rows) * overall[label] / len(self.rows)
+                    self.assertLessEqual(abs(counts[label] - target), 2)
 
     def test_input_contains_only_question(self):
         row = self.rows[0]
@@ -99,7 +109,7 @@ class QuestionSplitTests(unittest.TestCase):
             )
             html = (directory / "report.html").read_text(encoding="utf-8")
             self.assertEqual(
-                metrics["counts"], {"train": 637, "validation": 129, "test": 134}
+                metrics["counts"], {"train": 632, "validation": 133, "test": 135}
             )
             self.assertEqual(len(metrics["test"]["confusion_matrix"]), 3)
             self.assertEqual(
