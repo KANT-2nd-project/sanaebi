@@ -9,6 +9,7 @@ app = FastAPI()
 app.include_router(questions.router)
 app.include_router(documents.router)
 
+
 @app.get("/")
 def home():
     return {"message": "FastAPI 서버가 실행 중입니다."}
