@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   createDocument, DocumentApiError, getDocument, getDocumentCapabilities, listDocuments,
   publishDocument, updateDocument, withdrawDocument,
   type DocumentCapabilities, type DocumentDetail, type DocumentListResponse, type DocumentPayload,
-  type DocumentStatus, type DocumentSummary,
+  type DocumentStatus,
 } from "../../lib/api/documents";
 import {
   documentPayload, emptyDocumentForm, formFromRevision, isDocumentFormDirty,
@@ -17,32 +17,18 @@ import {
 import { DocumentRouteState } from "./document-route-state";
 import { DocumentActionDialog, type DocumentAction } from "./document-action-dialog";
 import { DocumentEditor } from "./document-editor";
+import { DocumentReadView } from "./document-read-view";
+import { DocumentListView } from "./document-list-view";
+import { parseDocumentView, documentViewUrl, type DocumentView } from "./document-view-state";
 
 const PAGE_SIZE = 20;
 type WriteKind = "save" | "publish" | "withdraw";
 type PendingWrite = { kind: WriteKind; attempt: DocumentWriteAttempt; documentId: string | null; originRoute: string };
-type ListFilters = { q: string; status: "all" | DocumentStatus; offset: number };
-
 function errorMessage(error: unknown, fallback: string): { message: string; kind: DocumentApiError["kind"] | "" } {
   if (!(error instanceof DocumentApiError)) return { message: fallback, kind: "" };
   if (error.kind === "permission") return { message: "이 문서 관리 화면을 볼 권한이 없습니다.", kind: error.kind };
   if (error.kind === "not-found") return { message: "문서를 찾을 수 없습니다. 목록을 새로고침해주세요.", kind: error.kind };
   return { message: error.message, kind: error.kind };
-}
-
-function statusLabel(status: DocumentStatus): string {
-  return status === "published" ? "게시됨" : status === "withdrawn" ? "사용 중단" : "초안";
-}
-
-function eligibilityLabel(value: DocumentSummary["eligibility"]): string {
-  return value === "eligible" ? "현재 답변 대상" : value === "scheduled" ? "시행일 대기"
-    : value === "withdrawn" ? "답변 제외" : "초안 · 답변 제외";
-}
-
-function dateLabel(value: string | null | undefined): string {
-  if (!value) return "미지정";
-  const date = value.slice(0, 10);
-  return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : value;
 }
 
 function isTransient(kind: string) {
@@ -54,17 +40,22 @@ export function DocumentPanel() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const search = searchParams?.toString() ?? "";
-  const selectedId = searchParams?.get("id") ?? null;
-  const isNew = searchParams?.get("new") === "1";
-  const editorOpen = Boolean(selectedId || isNew);
+  const view = useMemo(() => parseDocumentView(search), [search]);
+  const selectedId = view.id;
+  const isNew = view.isNew;
+  const editorOpen = view.editing;
+  const detailOpen = Boolean(selectedId || isNew);
+  const listUrl = documentViewUrl({ ...view, id: null, isNew: false, editing: false, revision: null });
+  const filters = { q: view.q, status: view.status, offset: (view.page - 1) * PAGE_SIZE };
   const routeUrl = `${pathname ?? "/admin/documents"}${search ? `?${search}` : ""}`;
   const [routeState] = useState(() => new DocumentRouteState(routeUrl));
 
   const [capabilities, setCapabilities] = useState<DocumentCapabilities | null>(null);
   const [capabilityError, setCapabilityError] = useState("");
-  const [filters, setFilters] = useState<ListFilters>({ q: "", status: "all", offset: 0 });
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState(view.q);
   const [list, setList] = useState<DocumentListResponse | null>(null);
+  const [listQueryKey, setListQueryKey] = useState("");
+  const queryKey = JSON.stringify([view.q, view.status, view.page]);
   const [listBusy, setListBusy] = useState(true);
   const [listError, setListError] = useState("");
   const [listErrorKind, setListErrorKind] = useState("");
@@ -75,6 +66,10 @@ export function DocumentPanel() {
   const [form, setForm] = useState<DocumentForm>(() => emptyDocumentForm());
   const [baselineForm, setBaselineForm] = useState<DocumentForm>(() => emptyDocumentForm());
   const [formErrors, setFormErrors] = useState<DocumentFormErrors>({});
+  const [conflictDocumentId, setConflictDocumentId] = useState<string | null>(null);
+  const [conflictBusy, setConflictBusy] = useState(false);
+  const [conflictError, setConflictError] = useState("");
+  const conflictRequest = useRef<AbortController | null>(null);
   const [latestConflict, setLatestConflict] = useState<DocumentDetail | null>(null);
   const [writeFailure, setWriteFailure] = useState("");
   const [writeFailureKind, setWriteFailureKind] = useState("");
@@ -85,11 +80,15 @@ export function DocumentPanel() {
   const [actionBusy, setActionBusy] = useState(false);
 
   const editorFormRef = useRef<HTMLFormElement>(null);
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
+  const returnPosition = useRef<{ id: string; y: number } | null>(null);
+  const focusedResource = useRef<string | null>(null);
+  const [focusReady, setFocusReady] = useState(0);
   const requestInFlight = useRef(false);
   const pendingWriteRef = useRef<PendingWrite | null>(null);
   const loadedResourceKey = useRef<string | null>(null);
   const dirtyRef = useRef(false);
-  const resourceKey = selectedId ? `document:${selectedId}` : isNew ? "new-document" : "document-list";
+  const resourceKey = selectedId ? `document:${selectedId}:${editorOpen ? "edit" : "read"}` : isNew ? "new-document" : "document-list";
   const editorDirty = editorOpen && isDocumentFormDirty(form, baselineForm);
   useEffect(() => {
     if (routeState.canLoad(routeUrl)) dirtyRef.current = editorDirty;
@@ -125,6 +124,11 @@ export function DocumentPanel() {
     });
     if (transition.kind === "accepted" && previousUrl !== url) {
       dirtyRef.current = false;
+      conflictRequest.current?.abort();
+      conflictRequest.current = null;
+      setConflictDocumentId(null);
+      setConflictBusy(false);
+      setConflictError("");
       setCurrentWrite(null);
       setLatestConflict(null);
     }
@@ -157,10 +161,28 @@ export function DocumentPanel() {
     return () => controller.abort();
   }, []);
 
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    setSearchInput(view.q);
+  }, [view.q]);
+
+  useEffect(() => {
+    const canonical = documentViewUrl(view);
+    if (canonical !== routeUrl && routeState.canLoad(routeUrl) && !dirtyRef.current && !requestInFlight.current) {
+      routeState.approve(canonical);
+      router.replace(canonical, { scroll: false });
+    }
+  }, [view, routeUrl, routeState, router]);
+
   useEffect(() => {
     const controller = new AbortController();
-    listDocuments({ q: filters.q, status: filters.status, limit: PAGE_SIZE, offset: filters.offset }, { signal: controller.signal })
-      .then(result => { setList(result); setListBusy(false); })
+    setListBusy(true);
+    setListError("");
+    listDocuments({ q: view.q, status: view.status, limit: PAGE_SIZE, offset: (view.page - 1) * PAGE_SIZE }, { signal: controller.signal })
+      .then(result => {
+        if (controller.signal.aborted) return;
+        setList(result); setListQueryKey(JSON.stringify([view.q, view.status, view.page])); setListBusy(false);
+      })
       .catch(error => {
         if (error instanceof DocumentApiError && error.kind === "aborted") return;
         const issue = errorMessage(error, "문서 목록을 불러오지 못했습니다.");
@@ -170,7 +192,40 @@ export function DocumentPanel() {
         setListBusy(false);
       });
     return () => controller.abort();
-  }, [filters, listRefresh]);
+  }, [view.q, view.status, view.page, listRefresh]);
+
+  useEffect(() => {
+    if (detailOpen || listBusy || !list || listError || listQueryKey !== queryKey) return;
+    const maxPage = Math.max(1, Math.ceil(list.total / PAGE_SIZE));
+    if (view.page > maxPage) {
+      const url = documentViewUrl({ ...view, page: maxPage });
+      routeState.approve(url);
+      router.replace(url, { scroll: false });
+    }
+  }, [detailOpen, listBusy, list, listError, listQueryKey, queryKey, view, router, routeState]);
+
+  useEffect(() => {
+    if (detailOpen) {
+      if (detailBusy || loadedResourceKey.current !== resourceKey || (!detail && !isNew) || focusedResource.current === resourceKey) return;
+      focusedResource.current = resourceKey;
+      document.getElementById("document-editor-title")?.focus({ preventScroll: true });
+    } else if (!listBusy && list && listQueryKey === queryKey) {
+      focusedResource.current = null;
+      const position = returnPosition.current;
+      if (position) {
+        const link = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-document-id]")).find(node => node.dataset.documentId === position.id);
+        link?.focus({ preventScroll: true });
+        window.scrollTo(0, position.y);
+        returnPosition.current = null;
+      }
+    }
+  }, [detailOpen, detailBusy, detail, isNew, resourceKey, listBusy, list, listQueryKey, queryKey, focusReady]);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  useEffect(() => () => {
+    conflictRequest.current?.abort();
+    conflictRequest.current = null;
+  }, []);
 
   // Keep the editor draft aligned with the static route's client-side query state.
   /* eslint-disable react-hooks/set-state-in-effect */
@@ -182,6 +237,7 @@ export function DocumentPanel() {
     }
     if (isNew) {
       loadedResourceKey.current = resourceKey;
+      setFocusReady(value => value + 1);
       const empty = emptyDocumentForm();
       setDetail(null);
       setDetailBusy(false);
@@ -243,15 +299,28 @@ export function DocumentPanel() {
   }
 
   async function fetchLatestConflict(documentId: string) {
+    if (conflictRequest.current) return;
+    const controller = new AbortController();
+    conflictRequest.current = controller;
     const generation = routeState.generation;
     const originRoute = routeUrl;
+    setConflictDocumentId(documentId);
+    setConflictBusy(true);
+    setConflictError("");
+    setLatestConflict(null);
+    const isCurrent = () => !controller.signal.aborted && generation === routeState.generation
+      && routeState.canLoad(originRoute) && conflictRequest.current === controller;
     try {
-      const current = await getDocument(documentId);
-      if (generation !== routeState.generation || !routeState.canLoad(originRoute) || current.id !== documentId) return;
+      const current = await getDocument(documentId, { signal: controller.signal });
+      if (!isCurrent() || current.id !== documentId) return;
       setLatestConflict(current);
     } catch {
-      if (generation !== routeState.generation || !routeState.canLoad(originRoute)) return;
-      setWriteFailure(current => `${current} 최신 문서도 확인하지 못했습니다. 다시 불러오기를 눌러주세요.`);
+      if (isCurrent()) setConflictError("서버 최신본을 확인하지 못했습니다. 내 입력은 유지했습니다. 다시 확인해주세요.");
+    } finally {
+      if (conflictRequest.current === controller) {
+        conflictRequest.current = null;
+        setConflictBusy(false);
+      }
     }
   }
 
@@ -291,12 +360,19 @@ export function DocumentPanel() {
       setBaselineForm(nextForm);
       setCurrentWrite(null);
       setLatestConflict(null);
+      setConflictDocumentId(null);
+      conflictRequest.current?.abort();
+      conflictRequest.current = null;
+      setConflictBusy(false);
+      setConflictError("");
       setFormErrors({});
-      setNotice(pending.kind === "publish" ? "문서를 답변 대상으로 지정했습니다."
-        : pending.kind === "withdraw" ? "문서를 사용 중단했습니다." : "초안을 저장했습니다.");
+      setNotice(pending.kind === "publish" ? `개정 v${result.published?.revision_number}을 게시했습니다. 시행일 조건에 따라 다음 질문에 적용됩니다.`
+        : pending.kind === "withdraw" ? "문서를 사용 중단했습니다. 기록은 보존되며 다음 질문의 답변 근거에서 제외됩니다." : `초안 v${result.draft.revision_number}을 저장했습니다. 게시 전에는 답변에 반영되지 않습니다.`);
       setActionDialog(null);
-      if (pending.kind === "save" && pending.attempt.method === "POST") {
-        const path = `/admin/documents?id=${encodeURIComponent(result.id)}`;
+      if (pending.kind === "save") {
+        const path = documentViewUrl({ ...view, id: result.id, isNew: false, editing: false, revision: "draft" });
+        dirtyRef.current = false;
+        loadedResourceKey.current = `document:${result.id}:read`;
         routeState.approve(path);
         router.replace(path);
       }
@@ -334,7 +410,7 @@ export function DocumentPanel() {
     const nextErrors = validateDocumentForm(form);
     setFormErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
-      queueMicrotask(() => editorFormRef.current?.querySelector<HTMLElement>("[aria-invalid='true']")?.focus());
+      queueMicrotask(() => errorSummaryRef.current?.focus());
       return;
     }
     const payload = documentPayload(form);
@@ -375,6 +451,8 @@ export function DocumentPanel() {
     setForm(nextForm);
     setBaselineForm(nextForm);
     setLatestConflict(null);
+    setConflictDocumentId(null);
+    setConflictError("");
     setCurrentWrite(null);
     setWriteFailure("");
     setWriteFailureKind("");
@@ -383,20 +461,40 @@ export function DocumentPanel() {
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setListBusy(true);
-    setListError("");
-    setFilters(current => ({ ...current, q: searchInput, offset: 0 }));
+    navigate(documentViewUrl({ ...view, q: searchInput, page: 1 }));
   }
 
   function openNewDocument() {
-    navigate("/admin/documents?new=1");
+    navigate(documentViewUrl({ ...view, id: null, isNew: true, editing: true, revision: null }));
   }
 
   const pageNumber = Math.floor(filters.offset / PAGE_SIZE) + 1;
   const totalPages = Math.max(1, Math.ceil((list?.total ?? 0) / PAGE_SIZE));
-  const answerIntegration = capabilities?.answer_integration ?? "echo";
+  const answerIntegration = capabilities?.answer_integration ?? null;
   const effectiveFrom = detail?.draft.effective_from ?? null;
   const retryableWrite = pendingWrite && isTransient(writeFailureKind) ? pendingWrite : null;
+
+  function detailUrl(id: string, patch: Partial<DocumentView> = {}) {
+    return documentViewUrl({ ...view, id, isNew: false, editing: false, revision: null, ...patch });
+  }
+
+  async function copyInput() {
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(documentPayload(form), null, 2));
+      setNotice("작성 중인 제목·본문·추가 정보를 클립보드에 복사했습니다.");
+    } catch {
+      setNotice("복사하지 못했습니다. 아래 편집 입력은 그대로 유지됩니다. 직접 선택해 복사해주세요.");
+    }
+  }
+
+  const pagination = list && <nav className="documents-pagination" aria-label="문서 목록 페이지">
+    <span>{list.total === 0 ? "0건" : `전체 ${list.total}건 중 ${filters.offset + 1}–${Math.min(filters.offset + PAGE_SIZE, list.total)}`}</span>
+    <div><button type="button" className="documents-button documents-button-secondary" disabled={pageNumber <= 1 || listBusy}
+      onClick={() => navigate(documentViewUrl({ ...view, page: pageNumber - 1 }))}>이전</button>
+      <span> {pageNumber} / {totalPages} 페이지 </span>
+      <button type="button" className="documents-button documents-button-secondary" disabled={pageNumber >= totalPages || listBusy}
+      onClick={() => navigate(documentViewUrl({ ...view, page: pageNumber + 1 }))}>다음</button></div>
+  </nav>;
 
   return (
     <main className="documents-page">
@@ -405,164 +503,65 @@ export function DocumentPanel() {
           if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
           event.preventDefault(); navigate("/");
         }}>사내<span>비</span></Link>
-        <nav aria-label="문서 관리 메뉴">
-          <Link href="/chat" className="documents-nav-link" onClick={event => {
-            if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-            event.preventDefault(); navigate("/chat");
-          }}>채팅으로 돌아가기</Link>
-          <button type="button" className="documents-button documents-button-primary" disabled={writePending} onClick={openNewDocument}>새 문서 초안</button>
-        </nav>
-      </header>
-
-      <section className="documents-intro" aria-labelledby="documents-title">
-        <p className="documents-eyebrow">문서 관리 · {capabilities?.management_mode ?? "local-demo"}</p>
-        <h1 id="documents-title">문서를 검토하고 답변 대상을 관리합니다.</h1>
-        <p>초안 저장과 게시를 구분합니다. 원문과 메타데이터를 확인한 뒤 게시하세요.</p>
-      </section>
-
-      {capabilities?.answer_integration === "echo" && <p className="documents-callout" role="status">
-        문서는 저장·관리할 수 있습니다. 현재 채팅은 연결 확인용이며 등록 문서를 사용하지 않습니다.
-      </p>}
-      {capabilityError && <p className="documents-callout documents-callout-warning" role="status">
-        {capabilityError} 채팅의 문서 연결 상태를 확인할 수 없습니다.
-      </p>}
-
-      {editorOpen ? (
-        <section className="documents-editor-panel" aria-labelledby="document-editor-title">
-          <div className="documents-editor-toolbar">
-            <button type="button" className="documents-text-button" disabled={writePending} onClick={() => navigate("/admin/documents")}>← 목록</button>
-            <span>{detail ? `문서 ID ${detail.id}` : isNew ? "새 문서" : "문서"}</span>
-          </div>
-          {detailBusy ? <p className="documents-loading" role="status">문서를 불러오는 중…</p> : detail || isNew ? <>
-            <div className="documents-editor-heading">
-              <div>
-                <p className="documents-eyebrow">{detail ? `문서 상태 · ${statusLabel(detail.status)}` : "새 초안"}</p>
-                <h2 id="document-editor-title">{detail ? detail.draft.title : "문서 원문 등록"}</h2>
-              </div>
-              {detail && <span className={`documents-status documents-status-${detail.status}`}>{statusLabel(detail.status)}</span>}
-            </div>
-
-            {detail && <div className="documents-version-info" aria-label="문서 버전 정보">
-              {detail.published ? <p>현재 게시본 revision {detail.published.revision_number} · 시행일 {dateLabel(detail.published.effective_from)}</p>
-                : <p>게시된 revision 없음 · 현재 초안은 답변 대상이 아닙니다.</p>}
-              {detail.published && detail.published.id !== detail.draft.id && <p>수정 초안 revision {detail.draft.revision_number}을 저장해도 기존 게시본은 유지됩니다.</p>}
-              {detail.status === "published" && <p>게시본 상태: {eligibilityLabel(detail.eligibility)}</p>}
-              {detail.withdrawn && <p>사용 중단 상태입니다. 다시 게시하기 전까지 답변에서 제외됩니다.</p>}
-            </div>}
-
-            {detail?.draft.metadata && <div className="documents-version-info" aria-label="문서 출처 정보">
-              {detail.provenance && <p>원본 ID: {detail.provenance.source_document_id}</p>}
-              <p>원본 버전: {detail.draft.metadata.source_version ?? "없음"} · 분류: {detail.draft.metadata.category ?? "없음"}</p>
-              <p>검수 상태: {detail.draft.metadata.review_status === "ai_reviewed" ? "AI 검수" : detail.draft.metadata.review_status === "unreviewed" ? "미검수" : detail.draft.metadata.review_status} · 게시는 사람 검수 승인을 뜻하지 않습니다.</p>
-              <p>출처 ID: {detail.draft.metadata.source_ids.join(", ") || "없음"}</p>
-              <p>정책 결정 ID: {detail.draft.metadata.policy_decision_ids.join(", ") || "없음"}</p>
-            </div>}
-
-            {latestConflict && <div className="documents-conflict" role="alert">
-              <div>
-                <strong>다른 변경이 먼저 저장됐습니다. 작성 중인 내용은 그대로 보존했습니다.</strong>
-                <p>서버 최신 초안: revision {latestConflict.draft.revision_number} · {latestConflict.draft.title} · record version {latestConflict.record_version}</p>
-              </div>
-              <button type="button" className="documents-button documents-button-secondary" onClick={acceptLatest}>최신 초안 불러오기</button>
-            </div>}
-
-            <form ref={editorFormRef} onSubmit={saveDraft} noValidate>
-              <DocumentEditor form={form} errors={formErrors} onChange={editField} disabled={writePending} idPrefix="managed-document" />
-              {writeFailure && <p className="documents-error" role="alert">{writeFailure}</p>}
-              {notice && <p className="documents-success" role="status" aria-live="polite">{notice}</p>}
-              {retryableWrite && <button type="button" className="documents-button documents-button-secondary documents-retry"
-                disabled={writePending} onClick={() => void executeWrite(retryableWrite)}>
-                같은 요청 수동 재시도
-              </button>}
-              <div className="documents-editor-actions">
-                <button type="button" className="documents-button documents-button-secondary" disabled={writePending}
-                  onClick={() => navigate("/admin/documents")}>취소</button>
-                <button type="submit" className="documents-button documents-button-primary" disabled={writePending}>
-                  {writePending && pendingWrite?.kind === "save" ? "초안 저장 중…" : "초안 저장"}
-                </button>
-                {detail && <button type="button" className="documents-button documents-button-publish"
-                  disabled={writePending || editorDirty} onClick={() => openAction("publish")}>
-                  {detail.withdrawn ? "다시 게시" : "답변 대상으로 게시"}
-                </button>}
-                {detail?.published && !detail.withdrawn && <button type="button" className="documents-button documents-button-danger"
-                  disabled={writePending || editorDirty} onClick={() => openAction("withdraw")}>사용 중단</button>}
-              </div>
-              {editorDirty && <p className="documents-help">저장하지 않은 변경이 있습니다. 게시나 사용 중단 전에 초안을 저장해주세요.</p>}
-              <p className="documents-local-note">미저장 내용은 자동 저장되지 않으며 새로고침하면 사라집니다. 브라우저에 원문을 저장하지 않습니다.</p>
-            </form>
-          </> : <div className="documents-state-card" role="alert">
-            <p>{writeFailure || "문서를 불러오지 못했습니다."}</p>
-            <button type="button" className="documents-button documents-button-secondary" onClick={() => navigate("/admin/documents", true)}>목록으로 돌아가기</button>
-          </div>}
-        </section>
-      ) : <section className="documents-list-panel" aria-labelledby="documents-list-title">
-        <div className="documents-list-heading">
-          <div>
-            <p className="documents-eyebrow">공통 자료</p>
-            <h2 id="documents-list-title">등록 문서</h2>
-          </div>
-          <p>{list ? `${list.total.toLocaleString("ko-KR")}개 문서` : "문서 목록"}</p>
-        </div>
-        <form className="documents-search" onSubmit={submitSearch} role="search">
-          <label htmlFor="documents-search-input">제목 검색</label>
-          <input id="documents-search-input" type="search" value={searchInput} maxLength={200}
-            onChange={event => setSearchInput(event.target.value)} placeholder="문서 제목을 검색하세요" />
-          <label htmlFor="documents-status-filter">상태</label>
-          <select id="documents-status-filter" value={filters.status}
-            onChange={event => { setListBusy(true); setListError(""); setFilters(current => ({ ...current, status: event.target.value as ListFilters["status"], offset: 0 })); }}>
-            <option value="all">전체</option><option value="draft">초안</option>
-            <option value="published">게시됨</option><option value="withdrawn">사용 중단</option>
-          </select>
-          <button type="submit" className="documents-button documents-button-primary">검색</button>
-        </form>
-
-        {listBusy ? <p className="documents-loading" role="status">문서 목록을 불러오는 중…</p> : listError ? <div className="documents-state-card" role="alert">
-          <p>{listError}</p>
-          <button type="button" className="documents-button documents-button-secondary" onClick={() => { setListBusy(true); setListError(""); setListRefresh(value => value + 1); }}>다시 불러오기</button>
-          {listErrorKind === "permission" && <p>관리자 인증과 권한 확인은 아직 구성되지 않았습니다.</p>}
-        </div> : list?.items.length ? <>
-          <ul className="documents-list" aria-label="문서 목록">
-            {list.items.map(item => <li key={item.id}>
-              <article className="documents-list-card">
-                <div className="documents-list-main">
-                  <h3><button type="button" className="documents-title-link" onClick={() => navigate(`/admin/documents?id=${encodeURIComponent(item.id)}`)}>{item.draft.title}</button></h3>
-                  <p className="documents-list-meta">{item.draft.owner_department || "담당 부서 미지정"} · 수정 {dateLabel(item.updated_at)} · 시행 {dateLabel(item.draft.effective_from)}</p>
-                  <p className="documents-list-version">게시본 {item.published ? `v${item.published.revision_number}` : "없음"} · 초안 v{item.draft.revision_number}</p>
-                </div>
-                <div className="documents-list-side">
-                  <span className={`documents-status documents-status-${item.status}`}>{statusLabel(item.status)}</span>
-                  <span className="documents-eligibility">{eligibilityLabel(item.eligibility)}</span>
-                  <button type="button" className="documents-button documents-button-secondary"
-                    onClick={() => navigate(`/admin/documents?id=${encodeURIComponent(item.id)}`)}>편집</button>
-                </div>
-              </article>
-            </li>)}
-          </ul>
-          <nav className="documents-pagination" aria-label="문서 목록 페이지">
-            <button type="button" className="documents-button documents-button-secondary" disabled={filters.offset === 0 || listBusy}
-              onClick={() => { setListBusy(true); setFilters(current => ({ ...current, offset: Math.max(0, current.offset - PAGE_SIZE) })); }}>이전</button>
-            <span>{pageNumber} / {totalPages} 페이지</span>
-            <button type="button" className="documents-button documents-button-secondary" disabled={pageNumber >= totalPages || listBusy}
-              onClick={() => { setListBusy(true); setFilters(current => ({ ...current, offset: current.offset + PAGE_SIZE })); }}>다음</button>
-          </nav>
-        </> : <div className="documents-empty-state">
-          <h3>{filters.q || filters.status !== "all" ? "검색 결과가 없습니다." : "등록된 문서가 없습니다."}</h3>
-          <p>문서를 등록하면 초안으로 저장됩니다. 게시한 문서만 답변에 사용합니다.</p>
-          <button type="button" className="documents-button documents-button-primary" onClick={openNewDocument}>첫 문서 초안 만들기</button>
-        </div>}
-      </section>}
-
-      <footer className="documents-footer">
-        <p>로컬 시연 관리 화면입니다. 관리자 인증·권한 검증이 아직 연결되지 않아 사내 네트워크나 외부에 공개하면 안 됩니다.</p>
-        <Link href="/chat" onClick={event => {
+        <nav aria-label="문서 관리 메뉴"><Link href="/chat" className="documents-nav-link" onClick={event => {
           if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
           event.preventDefault(); navigate("/chat");
-        }}>채팅 화면으로 이동</Link>
-      </footer>
-
-      {detail && actionDialog && <DocumentActionDialog action={actionDialog} title={detail.draft.title}
-        revision={detail.draft.revision_number} effectiveFrom={effectiveFrom} answerIntegration={answerIntegration}
-        busy={actionBusy} onCancel={() => setActionDialog(null)} onConfirm={confirmAction} />}
+        }}>채팅으로 돌아가기</Link><button type="button" className="documents-button documents-button-primary" disabled={writePending} onClick={openNewDocument}>새 문서 초안</button></nav>
+      </header>
+      <section className="documents-intro documents-intro-compact" aria-labelledby="documents-title">
+        <h1 id="documents-title">문서 관리</h1><p>답변에 사용할 자료를 확인하고 게시합니다.</p>
+        <p className="documents-connection" role="status">{capabilityError ? "문서 연결 상태를 확인할 수 없습니다." : !capabilities ? "문서 연결 상태 확인 중…" : answerIntegration === "connected" ? "게시본 공급 연결됨 · 실제 답변 생성 가능 여부와는 별개입니다." : "문서 공급이 답변에 연결되지 않았습니다."}</p>
+      </section>
+      {detailOpen ? <section className="documents-editor-panel" aria-labelledby="document-editor-title">
+        <div className="documents-editor-toolbar"><button type="button" className="documents-text-button" disabled={writePending} onClick={() => navigate(listUrl)}>← 검색 결과로</button>
+          <span>{isNew ? "새 초안" : editorOpen ? "초안 편집" : "문서 읽기"}</span></div>
+        {detailBusy ? <p role="status">문서를 불러오는 중…</p> : detail || isNew ? <>
+          {conflictDocumentId === detail?.id && <div className="documents-conflict" role="alert"><strong>다른 변경이 먼저 저장됐습니다. 내 입력은 유지했습니다.</strong>
+            {conflictBusy && <p role="status">서버 최신본 확인 중…</p>}
+            {conflictError && <p role="alert">{conflictError}</p>}
+            {latestConflict && <details><summary>서버 최신 초안 v{latestConflict.draft.revision_number} 확인</summary><h3>{latestConflict.draft.title}</h3><div className="documents-plain-text">{latestConflict.draft.body}</div></details>}
+            {editorOpen && <button type="button" className="documents-button documents-button-secondary" onClick={() => void copyInput()}>내 입력 복사</button>}
+            {!latestConflict && <button type="button" className="documents-button documents-button-secondary" disabled={conflictBusy || writePending} onClick={() => void fetchLatestConflict(conflictDocumentId!)}>서버 최신본 다시 확인</button>}
+            {latestConflict && <button type="button" className="documents-button documents-button-secondary" disabled={writePending || conflictBusy} onClick={acceptLatest}>최신 초안 불러오기</button>}</div>}
+          {editorOpen ? <>
+            <h2 id="document-editor-title" tabIndex={-1}>{isNew ? "새 문서 초안" : "초안 편집"}</h2>
+            <p className="documents-help">{detail?.published && !detail.withdrawn ? `현재 답변 대상은 게시본 v${detail.published.revision_number}입니다. 초안 저장만으로 바뀌지 않습니다.` : "초안은 게시하기 전까지 답변에 사용되지 않습니다."} 수정한 개정은 미검수로 저장됩니다.</p>
+            <form ref={editorFormRef} onSubmit={saveDraft} noValidate>
+              <DocumentEditor form={form} errors={formErrors} onChange={editField} disabled={writePending} idPrefix="managed-document" errorSummaryRef={errorSummaryRef} />
+              <div className="documents-editor-actions"><button type="button" className="documents-button documents-button-secondary" disabled={writePending} onClick={() => navigate(detail ? detailUrl(detail.id) : listUrl)}>취소</button>
+                <button type="submit" className="documents-button documents-button-primary" disabled={writePending}>{writePending ? "초안 저장 중…" : "초안 저장"}</button></div>
+              {editorDirty && <p className="documents-help">저장하지 않은 변경이 있습니다.</p>}
+              <p className="documents-local-note">자동 저장하지 않습니다. 새로고침하면 미저장 내용이 사라질 수 있습니다.</p>
+            </form>
+          </> : detail && <DocumentReadView detail={detail} revision={view.revision} busy={writePending}
+            onRevision={revision => navigate(detailUrl(detail.id, { revision }))} onEdit={() => navigate(detailUrl(detail.id, { editing: true }))}
+            onPublish={() => openAction("publish")} onWithdraw={() => openAction("withdraw")} />}
+        </> : <div role="alert"><h2 id="document-editor-title">문서를 불러올 수 없습니다.</h2><p>{writeFailure}</p>
+          <button type="button" className="documents-button documents-button-secondary" onClick={() => navigate(listUrl)}>목록으로 돌아가기</button></div>}
+        {writeFailure && (detail || isNew) && <p className="documents-error" role="alert">{writeFailure}</p>}
+        {notice && <p className="documents-success" role="status">{notice}</p>}
+        {retryableWrite && <button type="button" className="documents-button documents-button-secondary" disabled={writePending} onClick={() => void executeWrite(retryableWrite)}>같은 요청 수동 재시도</button>}
+      </section> : <section className="documents-list-panel" aria-labelledby="documents-list-title">
+        <div className="documents-list-heading"><h2 id="documents-list-title">등록 문서</h2><p className="documents-help">최근 수정순 · 20건씩 표시</p></div>
+        <form className="documents-search" onSubmit={submitSearch} role="search"><label htmlFor="documents-search-input">제목 검색</label>
+          <input id="documents-search-input" type="search" value={searchInput} maxLength={200} onChange={event => setSearchInput(event.target.value)} placeholder="문서 제목을 검색하세요" />
+          <label htmlFor="documents-status-filter">상태</label><select id="documents-status-filter" value={view.status} onChange={event => navigate(documentViewUrl({ ...view, status: event.target.value as DocumentStatus | "all", page: 1 }))}>
+            <option value="all">전체</option><option value="draft">초안</option><option value="published">게시됨</option><option value="withdrawn">사용 중단</option></select>
+          <button type="submit" className="documents-button documents-button-primary">검색</button>
+          {(view.q || view.status !== "all") && <button type="button" className="documents-button documents-button-secondary" onClick={() => navigate(documentViewUrl({ ...view, q: "", status: "all", page: 1 }))}>조건 초기화</button>}
+        </form>
+        {listBusy ? <p role="status">문서 목록을 불러오는 중…</p> : listError ? <div role="alert"><p>{listError}</p><button type="button" className="documents-button documents-button-secondary" onClick={() => void refreshList()}>다시 불러오기</button>
+          {listErrorKind === "permission" && <p>관리자 인증과 권한 확인은 아직 구성되지 않았습니다.</p>}</div> : list?.items.length ? <>
+          {pagination}<DocumentListView items={list.items} hrefFor={id => detailUrl(id)} onOpen={id => { returnPosition.current = { id, y: window.scrollY }; navigate(detailUrl(id)); }} />{pagination}
+        </> : <div className="documents-empty-state"><h3>{view.q || view.status !== "all" ? "조건에 맞는 문서가 없습니다." : "등록된 문서가 없습니다."}</h3>
+          <p>{view.q || view.status !== "all" ? "검색어나 상태 조건을 바꿔보세요." : "첫 문서를 초안으로 등록하고 검토한 뒤 게시하세요."}</p>
+          {view.q || view.status !== "all" ? <button type="button" className="documents-button documents-button-secondary" onClick={() => navigate(documentViewUrl({ ...view, q: "", status: "all", page: 1 }))}>조건 초기화</button>
+            : <button type="button" className="documents-button documents-button-primary" onClick={openNewDocument}>첫 문서 초안 만들기</button>}</div>}
+      </section>}
+      <footer className="documents-footer"><p>로컬 시연용 공통 자료입니다. 관리자 인증·권한 검증은 아직 제공하지 않습니다.</p></footer>
+      {detail && actionDialog && <DocumentActionDialog action={actionDialog} title={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).title} revision={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).revision_number}
+        previousRevision={detail.published?.revision_number ?? null} reviewStatus={detail.draft.metadata?.review_status}
+        effectiveFrom={effectiveFrom} answerIntegration={answerIntegration} busy={actionBusy} onCancel={() => setActionDialog(null)} onConfirm={confirmAction} />}
     </main>
   );
 }

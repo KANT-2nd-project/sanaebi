@@ -24,15 +24,20 @@ export function DocumentRegistrationDialog({ initialBody, onClose, onSaved }: Do
   const [attempt, setAttempt] = useState<DocumentWriteAttempt | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
   const pendingRef = useRef(false);
   const dirty = isDocumentFormDirty(form, baselineForm);
 
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     dialog.showModal();
     dialog.querySelector<HTMLElement>("input, textarea")?.focus();
-    return () => { if (dialog.open) dialog.close(); };
+    return () => {
+      if (dialog.open) dialog.close();
+      queueMicrotask(() => { if (trigger?.isConnected) trigger.focus(); });
+    };
   }, []);
 
   useEffect(() => {
@@ -60,7 +65,7 @@ export function DocumentRegistrationDialog({ initialBody, onClose, onSaved }: Do
     const fieldErrors = validateDocumentForm(form);
     setErrors(fieldErrors);
     if (Object.keys(fieldErrors).length) {
-      queueMicrotask(() => formRef.current?.querySelector<HTMLElement>("[aria-invalid='true']")?.focus());
+      requestAnimationFrame(() => errorSummaryRef.current?.focus());
       return;
     }
 
@@ -102,7 +107,8 @@ export function DocumentRegistrationDialog({ initialBody, onClose, onSaved }: Do
         </div>
         <p className="documents-callout">입력한 내용을 질문으로 보내지 않습니다. 저장한 초안은 검토 후 별도로 게시해야 합니다.</p>
         <form ref={formRef} onSubmit={event => { event.preventDefault(); void save(); }} noValidate>
-          <DocumentEditor form={form} errors={errors} onChange={updateField} disabled={busy} idPrefix="chat-registration" />
+          <DocumentEditor form={form} errors={errors} onChange={updateField} disabled={busy} idPrefix="chat-registration"
+            errorSummaryRef={errorSummaryRef} />
           {failure && <p className="documents-error" role="alert">{failure}</p>}
           <div className="documents-dialog-actions">
             {attempt && ["timeout", "network", "gateway"].includes(failureKind)

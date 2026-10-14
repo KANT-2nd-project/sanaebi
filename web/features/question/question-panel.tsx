@@ -58,7 +58,7 @@ export function QuestionPanel() {
         </section> : <h1 className="sr-only">사내비와 대화</h1>}
         <section ref={guideRef} id="usage" className="chat-guide" hidden={!showGuide} aria-labelledby="usage-title">
           <h2 id="usage-title">사용 안내</h2>
-          <p>현재는 입력한 질문을 그대로 반환하는 연결 확인 단계입니다. 실제 규정 답변은 아직 제공하지 않습니다.</p>
+          <p>질문을 분류해 처리하며, 문서 기반 답변에는 유효한 게시본을 사용합니다. 실제 답변 생성에는 분류·답변 모델 준비가 필요합니다.</p>
           <p>화면의 이전 메시지는 답변에 반영되지 않습니다. 대상과 상황을 함께 적어주세요.</p>
           <p>대화는 현재 화면에서만 유지되며 새로고침·새 대화 시 초기화됩니다. 실제 신청·승인·개인 기록 조회는 지원하지 않습니다.</p>
         </section>
@@ -71,7 +71,7 @@ export function QuestionPanel() {
             touchEnter={touchEnter} inputRef={inputRef} registerButtonRef={registrationButtonRef} onChange={value => session.changeDraft(value)}
             onRegister={() => { setRegistrationAnnouncement(""); setRegistrationOpen(true); }}
             onExample={value => { session.changeDraft(value); inputRef.current?.focus(); }} onSubmit={submit} />
-          <p id="chat-disclosure" className="chat-disclosure">현재는 질문을 그대로 반환합니다. 이전 메시지는 답변에 반영되지 않으며 새로고침하면 대화가 초기화됩니다.</p>
+          <p id="chat-disclosure" className="chat-disclosure">이전 메시지는 답변에 반영되지 않으며 새로고침하면 대화가 초기화됩니다.</p>
           {registrationAnnouncement && <p className="chat-registration-status" role="status" aria-live="polite">
             {registrationAnnouncement} <Link href="/admin/documents">문서 관리에서 검토하고 게시하세요.</Link>
           </p>}
