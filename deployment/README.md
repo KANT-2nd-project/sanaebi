@@ -78,3 +78,9 @@ curl -i http://127.0.0.1:8080/api/ask \
 ```
 
 이 nginx는 개발 서버/HMR을 중계하지 않습니다. 기능 수정 중에는 `web`에서 `npm run dev`를 실행하고 FastAPI(8000)를 함께 띄우면 3000번에서 화면·HMR·실제 API 중계를 사용할 수 있습니다. 정적 배포 통합은 위 빌드·nginx(8080) 경로에서 별도로 확인합니다. 개발 실행기와 캐시 정책은 [프런트 안내](../web/README.md)를 따릅니다.
+
+## 문서 관리 배포
+
+빌드에 `out/admin/documents.html`이 필요합니다. `/admin/documents/`는 query를 유지해 `/admin/documents`로 이동합니다. 새 `/api/documents`도 기존 API 중계를 사용하고 요청 본문 제한은512KiB입니다. FastAPI에도 같은 문서 요청 제한이 있으며 HTML 형태의 nginx 오류는 프런트가 안전한 안내로 처리합니다.
+
+기본 SQLite는 `var/documents.sqlite3`, 경로 변경은 `SANAEBI_DOCUMENT_DB`를 사용합니다. [문서 관리·백업·이관 안내](../docs/document-management.md)를 따르세요. 인증 없는 로컬 가상 자료 범위이며 실제 사내 공유 배포는 지원하지 않습니다.
