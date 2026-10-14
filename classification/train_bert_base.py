@@ -1,4 +1,4 @@
-# BERT 질문 분류 모델 학습
+# BERT 문서 분류 모델 학습
 
 import csv
 import json
@@ -8,58 +8,93 @@ from pathlib import Path
 from time import perf_counter
 
 import torch
+from document_split import (
+    LABELS,
+    RANDOM_SEED,
+    document_input,
+    make_split_record,
+    split_documents,
+)
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
 from torch.utils.data import DataLoader, TensorDataset
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 ##### 설정 #####
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "questions"
-LABELS = ["it", "hr", "finance", "general_affairs", "other"]
+DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
+
+
+##### 새 문서 CSV 읽기·정렬 확인 #####
+
+
+def read_document_rows():
+    with DATASET_PATH.open("r", encoding="utf-8-sig", newline="") as file:
+        document_rows = list(csv.DictReader(file))
+
+    # CSV의 행 순서가 바뀌어도 같은 순서로 데이터를 준비
+    document_rows.sort(key=lambda row: row["document_id"])
+    return document_rows
+
+
+##### 문서 분류 모델 설정 #####
+
 MODEL_NAME = "klue/bert-base"  # 사용할 한국어 사전학습 BERT
-MODEL_FOLDER = "bert"  # 모델·결과 저장 폴더 이름 (예: bert, koelectra)
+MODEL_FOLDER = "bert_base"  # 모델·결과 저장 폴더 이름 (예: bert, koelectra)
+
+
 MAX_LENGTH = 192  # 특수 토큰을 포함한 최대 토큰 수
 BATCH_SIZE = 4  # 한 번에 꺼낼 문장 수
 LEARNING_RATES = [2e-5, 5e-5]  # 비교할 학습률: 0.00002, 0.00005
 EPOCHS = 10  # 실험할 전체 학습 데이터 반복 횟수 (최적 횟수는 검증으로 판단)
-SEED = 42  # 새 분류층의 초기 가중치를 재현하기 위한 난수값
+SEED = RANDOM_SEED  # 데이터 분할과 모델 초기화에 사용하는 고정 난수값
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"  # 사용할 장치
 selection_started = perf_counter()  # 데이터 준비부터 후보 학습·선택까지의 시간
 
-##### 학습·검증·테스트 데이터 읽기 #####
+##### 학습·검증·테스트 데이터 나누기 #####
 
-with (DATA_DIR / "train.csv").open("r", encoding="utf-8-sig", newline="") as file:
-    train_rows = list(csv.DictReader(file))
+document_rows = read_document_rows()
+splits = split_documents(document_rows, seed=RANDOM_SEED)
+train_rows = splits["train"]
+validation_rows = splits["validation"]
+test_rows = splits["test"]
 
-with (DATA_DIR / "validation.csv").open("r", encoding="utf-8-sig", newline="") as file:
-    validation_rows = list(csv.DictReader(file))
-
-with (DATA_DIR / "test.csv").open("r", encoding="utf-8-sig", newline="") as file:
-    test_rows = list(csv.DictReader(file))
-
+print("전체 문서:", len(document_rows), "개 / 분할 시드:", RANDOM_SEED)
 print("학습 데이터:", len(train_rows), "개")
 print("검증 데이터:", len(validation_rows), "개")
 print("테스트 데이터:", len(test_rows), "개")
 
-##### 질문 문장과 정답 번호 준비 #####
+##### 문서 입력과 정답 번호 준비 #####
 
-train_texts = []  # 학습 질문 목록
+train_texts = []  # 제목과 본문을 합친 학습 문서 목록
 train_label_ids = []  # 학습 정답 번호 목록
 for row in train_rows:
-    train_texts.append(row["text"])
+    # 제목 다음 줄에 본문을 붙여 하나의 입력으로 준비
+    train_texts.append(document_input(row))
     train_label_ids.append(LABELS.index(row["label"]))
 
-validation_texts = []  # 검증 질문 목록
+validation_texts = []  # 제목과 본문을 합친 검증 문서 목록
 validation_label_ids = []  # 검증 정답 번호 목록
 for row in validation_rows:
-    validation_texts.append(row["text"])
+    validation_texts.append(document_input(row))
     validation_label_ids.append(LABELS.index(row["label"]))
 
-test_texts = []  # 테스트 질문 목록
+test_texts = []  # 제목과 본문을 합친 테스트 문서 목록
 test_label_ids = []  # 테스트 정답 번호 목록
 for row in test_rows:
-    test_texts.append(row["text"])
+    test_texts.append(document_input(row))
     test_label_ids.append(LABELS.index(row["label"]))
+
+# 분할과 입력 준비만 확인하고 종료 (모델 학습 없음)
+if "--preview-documents" in sys.argv:
+    for name, rows in splits.items():
+        print(
+            name,
+            {label: sum(row["label"] == label for row in rows) for label in LABELS},
+        )
+    print("첫 번째 학습 입력:\n", train_texts[0], sep="")
+    print("첫 번째 정답 번호:", train_label_ids[0])
+    print("첫 번째 정답 라벨:", LABELS[train_label_ids[0]])
+    raise SystemExit(0)
 
 ##### 토크나이저 불러오기 #####
 
@@ -159,7 +194,7 @@ for learning_rate in LEARNING_RATES:
     torch.manual_seed(SEED)  # 학습률마다 같은 초기 조건에서 시작
     model = AutoModelForSequenceClassification.from_pretrained(
         MODEL_NAME,
-        num_labels=len(LABELS),  # 카테고리 5개의 점수를 출력하는 분류층
+        num_labels=len(LABELS),  # 문서 카테고리 6개의 점수를 출력하는 분류층
         id2label=id2label,
         label2id=label2id,
     )
@@ -308,6 +343,7 @@ model_dir.mkdir(parents=True, exist_ok=True)  # 저장 폴더가 없으면 생�
 model.save_pretrained(model_dir, safe_serialization=True)
 tokenizer.save_pretrained(model_dir)  # 예측할 때 사용할 토크나이저도 함께 저장
 
+split_record = make_split_record(splits, DATASET_PATH, seed=RANDOM_SEED)
 training_summary = {
     "model_name": MODEL_NAME,
     "model_folder": MODEL_FOLDER,
@@ -321,6 +357,7 @@ training_summary = {
     "test_confusion_matrix": test_matrix.tolist(),
     "max_length": MAX_LENGTH,
     "seed": SEED,
+    "data_split": split_record,  # 저장 모델에도 동일한 문서 ID·수량·시드 기록
     "training_device": DEVICE,
     "selection_seconds": selection_seconds,
     "trials": trials,

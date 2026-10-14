@@ -8,6 +8,13 @@ from pathlib import Path
 from time import perf_counter
 
 import joblib
+from document_split import (
+    LABELS,
+    RANDOM_SEED,
+    document_input,
+    make_split_record,
+    split_documents,
+)
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
@@ -15,42 +22,51 @@ from sklearn.pipeline import make_pipeline
 
 ##### 데이터 경로 #####
 
-# 실행하는 위치와 관계없이 프로젝트의 data/questions 폴더를 찾기
-DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "questions"
+# BERT와 같은 문서 CSV를 사용
+DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset.csv"
 
-LABELS = ["it", "hr", "finance", "general_affairs", "other"]
 selection_started = perf_counter()  # 데이터 준비부터 후보 학습·선택까지의 시간
 
 ##### CSV 읽기 #####
 
-# DictReader는 각 행을 {"text": "질문 문장", "label": "lookup", ...} 형태로 읽기
-with (DATA_DIR / "train.csv").open("r", encoding="utf-8-sig", newline="") as file:
-    train_rows = list(csv.DictReader(file))
+# 공통 함수가 문서 ID를 정렬하고 그룹·라벨을 고려해 분할
+with DATASET_PATH.open("r", encoding="utf-8-sig", newline="") as file:
+    document_rows = list(csv.DictReader(file))
+splits = split_documents(document_rows, seed=RANDOM_SEED)
+train_rows = splits["train"]
+validation_rows = splits["validation"]
+test_rows = splits["test"]
 
-with (DATA_DIR / "validation.csv").open("r", encoding="utf-8-sig", newline="") as file:
-    validation_rows = list(csv.DictReader(file))
+split_record = make_split_record(splits, DATASET_PATH, seed=RANDOM_SEED)
 
 ##### 학습 문장과 정답 준비 #####
 
-train_texts = []  # 모델에 입력할 질문 문장
+train_texts = []  # 모델에 입력할 문서의 제목 + 본문
 train_labels = []  # 각 문장의 정답 카테고리
 
 for row in train_rows:
-    train_texts.append(row["text"])
+    train_texts.append(document_input(row))
     train_labels.append(row["label"])
 
-validation_texts = []  # 학습에 사용하지 않고 검증할 질문 문장
-validation_labels = []  # 검증 질문의 실제 정답
+validation_texts = []  # 검증할 문서의 제목 + 본문
+validation_labels = []  # 검증 문서의 실제 정답
 
 for row in validation_rows:
-    validation_texts.append(row["text"])
+    validation_texts.append(document_input(row))
     validation_labels.append(row["label"])
 
 # 문장과 정답은 같은 순서로 담기므로 같은 위치의 항목끼리 한 쌍
 print("학습 데이터:", len(train_rows), "개")
 print("검증 데이터:", len(validation_rows), "개")
-print("첫 번째 질문:", train_texts[0])
+print("테스트 데이터:", len(test_rows), "개 / 분할 시드:", RANDOM_SEED)
+print("첫 번째 문서 입력:", train_texts[0])
 print("첫 번째 정답:", train_labels[0])
+
+# 분할·입력만 확인할 때는 TF-IDF 학습도 실행하지 않음
+if "--preview-documents" in sys.argv:
+    for name, data in split_record["splits"].items():
+        print(name, data["label_counts"])
+    raise SystemExit(0)
 
 ##### TF-IDF 변환 #####
 
@@ -89,7 +105,7 @@ trials = []  # 각 C 후보의 검증 결과를 HTML 표에 표시
 # C는 모델이 학습 데이터에 얼마나 강하게 맞추도록 할지 조절하는 설정
 for c in c_candidates:
     candidate = LogisticRegression(
-        C=c, max_iter=1000, class_weight="balanced", random_state=42
+        C=c, max_iter=1000, class_weight="balanced", random_state=RANDOM_SEED
     )
 
     # 새 모델의 가중치는 train으로만 학습
@@ -127,17 +143,13 @@ print("선택한 C:", best_c)
 print("선택한 모델의 검증 Macro F1:", round(best_score, 4))
 selection_seconds = perf_counter() - selection_started
 
-##### 테스트 데이터 읽기 #####
+##### 선택 완료 후 테스트 입력 준비 #####
 
-# 검증 점수로 모델을 선택한 뒤에 테스트 데이터를 읽기
-with (DATA_DIR / "test.csv").open("r", encoding="utf-8-sig", newline="") as file:
-    test_rows = list(csv.DictReader(file))
-
-test_texts = []  # 최종 평가용 질문
+test_texts = []  # 최종 평가용 문서
 test_labels = []  # 최종 평가용 정답
 
 for row in test_rows:
-    test_texts.append(row["text"])
+    test_texts.append(document_input(row))
     test_labels.append(row["label"])
 
 ##### 선택한 모델의 테스트 평가 #####
@@ -165,10 +177,10 @@ print("카테고리 순서:", LABELS)
 for label, row in zip(LABELS, test_matrix):
     print(label, row.tolist())
 
-print("테스트에서 틀린 질문:")
+print("테스트에서 틀린 문서:")
 for text, actual, predicted in zip(test_texts, test_labels, test_predictions):
     if actual != predicted:
-        print("질문:", text)
+        print("문서 입력:", text)
         print("정답:", actual, "/ 예측:", predicted)
 
 ##### 선택한 모델 저장 #####
@@ -196,7 +208,8 @@ training_summary = {
     "min_df": 1,
     "class_weight": "balanced",
     "max_iter": 1000,
-    "seed": 42,
+    "seed": RANDOM_SEED,
+    "data_split": split_record,
     "validation_macro_f1": best_score,
     "selection_seconds": selection_seconds,
     "trials": trials,
