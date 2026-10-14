@@ -18,8 +18,6 @@ uv run --locked fastapi dev app/fastapi_main.py
 
 서버 주소는 http://127.0.0.1:8000이며, 인터랙티브 API 문서는 http://127.0.0.1:8000/docs 에서 확인할 수 있습니다.
 
-Gradio 질문 화면은 http://127.0.0.1:8000/chat/ 에서 확인할 수 있습니다. 소개 페이지와 같은 출처의 개발 화면(3000) 및 nginx 배포(8080)는 [프런트 실행 안내](web/README.md)를 따릅니다. 현재 채팅은 echo 연결 확인 단계입니다.
-
 ## 요청 예시
 
 ```bash
@@ -56,7 +54,7 @@ OpenAI 호출 비용이 발생합니다. 모델별 실패는 반환된 `success`
 
 - [이음웍스 회사 정책 데이터](data/company-knowledge/README.md)
 - [서비스 아키텍처](docs/service-architecture.md): 현재 API 동작과 목표 질문 처리 흐름
-- [프런트엔드 설계](docs/frontend-architecture.md): Next.js 정적 소개·Gradio 대화형 UI·개발 및 nginx 중계·SEO 기준. 로컬 echo 연결을 검증했으며 실제 모델·외부 배포는 후속 범위
+- [프런트엔드 설계](docs/frontend-architecture.md): Next.js 정적 내보내기·대화형 UI·개발 API 중계·SEO 기준. 로컬 echo 연결을 검증했으며 실제 모델·외부 배포는 후속 범위
 - [서버 구성 규약](docs/server-conventions.md): 현재 모듈 구성, 책임 분리와 API 회귀 검증 기준
 - [요청 처리 분류·라벨링 기준 v1.0](docs/label-taxonomy.md): 질문 처리 라벨의 정의와 경계 사례
 - [분류 실험 코드 안내](classification/README.md): 코드 읽는 순서, 공통 학습·평가 구조와 실행 방법

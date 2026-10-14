@@ -16,12 +16,6 @@
 현재는 라우터에서 함수를 직접 전달해 테스트에서 대체한다.
 `POST /assistant`는 입력으로 받은 카테고리를 사용해 같은 연결 함수를 호출한다.
 
-## Gradio UI 연결
-
-FastAPI `/chat`에 `app/ui/gradio_chat.py`의 Gradio Blocks를 마운트한다. `question_adapter.py`는 기존 QuestionRequest와 echo·본문 검증 함수를 공유하고 HTTP 라우터를 직접 호출하지 않는다. `chat_state.py`는 프레임워크 독립 상태 전이, `headers.py`는 스트리밍 캐시·색인 제외 정책을 담당한다. UI CSS/JS는 입력·포커스·스크롤·35초 UI 마감을 맡는다. 별도 Gradio 서버나 Node SSR은 사용하지 않는다.
-
-Gradio 이벤트 오류는 기존 REST 오류 계약과 별개다. `/ask` 및 별도 모델 경로는 유지하고, UI가 학습 진입점이나 미완성 서비스 조립을 호출하지 않는다. 세션은 임시·개별 상태이며 이전 대화는 echo 함수에 전달하지 않는다. 상세 화면·실행 정책은 [프런트 설계](frontend-architecture.md)를 따른다.
-
 ## 책임과 의존 방향
 
 | 구성 | 책임 | 경계 |
@@ -56,7 +50,6 @@ app/
 ├── langchain_adapter.py      # 별도 API용 실행기 입력 전달·실행 기록 반환
 ├── koelectra_classifier.py   # 기존 분류 확인용 로컬 추론, 최종 선정과 별개
 ├── document_store.py         # doc append와 개발용 title/document reader
-├── ui/                      # 현재: Gradio 화면·세션 상태·echo 어댑터·헤더·CSS/JS
 ├── routers/
 │   ├── __init__.py
 │   ├── assistant.py          # /assistant·/ask/langchain 실행기 연결
