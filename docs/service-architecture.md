@@ -24,7 +24,7 @@
 | `/documents` | SQLite 초안·개정·게시·중단을 관리하며 문서 전용 오류 계약을 사용한다. [상세 계약](document-management.md)을 따른다. |
 | 질문 처리 분류 | `/classify/koelectra-base`에서 분류만 확인하거나 `/ask`에서 분류 후 답변 생성을 실행한다. |
 | 질문 서비스 | `handle_question`은 활성 /ask 처리 서비스다. dependencies가 앱별 분류기·snapshot reader·답변 어댑터를 조립한다. `/ask/langchain`은 제거했다. |
-| 문서 답변 | 별도 API는 LangChain 실행기를 호출하도록 연결했다. 실제 모델 실행·답변 품질과 목표 분기 정책 정합성은 별도 검증 대상이다. |
+| 문서 답변 | /ask의 라벨별 정책과 snapshot 전달을 검증했다. 기존 LangChain 실행기는 유지하며 실제 LLM 답변 품질은 별도 검증 대상이다. |
 
 앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/questions/router.py)와 [문서 라우터](../app/documents/registration.py), SQLite 저장은 [문서 저장소](../app/documents/repository.py)에서 확인한다. 현재 `POST /ask`는 질문 서비스를 거쳐 검색 라벨·유효 문서가 있는 경우에만 LangChain을 호출한다. SANAEBI_ANSWER_PROVIDER로 Ollama 또는 OpenAI 하나를 선택하고, 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
 
