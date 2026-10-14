@@ -1,5 +1,6 @@
 """Managed document API contracts use an isolated SQLite database."""
 
+import sqlite3
 import tempfile
 import unittest
 import uuid
@@ -132,6 +133,47 @@ class ManagedDocumentsApiTests(unittest.TestCase):
         self.assertEqual(current["draft"]["title"], "휴가 안내 개정")
         self.assertEqual(current["draft"]["revision_number"], 2)
 
+    def test_concurrent_edits_with_same_expected_version_only_apply_one(self):
+        created = self.create().json()
+        document_id = created["id"]
+        edits = (
+            {"expected_version": 1, "title": "첫 번째 개정"},
+            {"expected_version": 1, "body": "두 번째 개정"},
+        )
+
+        def patch_document(payload):
+            return self.client.patch(
+                f"/documents/{document_id}",
+                headers={"Idempotency-Key": str(uuid.uuid4())},
+                json=payload,
+            )
+
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            futures = [executor.submit(patch_document, payload) for payload in edits]
+            responses = [future.result(timeout=10) for future in futures]
+
+        self.assertCountEqual(
+            [response.status_code for response in responses], [200, 409]
+        )
+        self.assertEqual(
+            [
+                response.json().get("error", {}).get("code")
+                for response in responses
+                if response.status_code == 409
+            ],
+            ["revision_conflict"],
+        )
+        current = self.client.get(f"/documents/{document_id}").json()
+        self.assertEqual(current["record_version"], 2)
+        self.assertEqual(current["draft"]["revision_number"], 2)
+        self.assertIn(
+            (current["draft"]["title"], current["draft"]["body"]),
+            [
+                ("첫 번째 개정", "휴가 신청 절차"),
+                ("휴가 안내", "두 번째 개정"),
+            ],
+        )
+
     def test_noop_edit_does_not_create_revision_or_advance_version(self):
         created = self.create().json()
         response = self.client.patch(
@@ -143,6 +185,52 @@ class ManagedDocumentsApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200, response.text)
         self.assertEqual(response.json()["record_version"], 1)
         self.assertEqual(response.json()["draft"]["revision_number"], 1)
+
+    def test_metadata_only_and_whitespace_changes_each_create_a_revision(self):
+        created = self.create().json()
+        document_id = created["id"]
+        metadata_edit = self.client.patch(
+            f"/documents/{document_id}",
+            headers={"Idempotency-Key": str(uuid.uuid4())},
+            json={"expected_version": 1, "owner_department": "인사"},
+        )
+        self.assertEqual(metadata_edit.status_code, 200, metadata_edit.text)
+        self.assertEqual(metadata_edit.json()["record_version"], 2)
+        self.assertEqual(metadata_edit.json()["draft"]["revision_number"], 2)
+        self.assertEqual(metadata_edit.json()["draft"]["body"], "휴가 신청 절차")
+
+        whitespace_edit = self.client.patch(
+            f"/documents/{document_id}",
+            headers={"Idempotency-Key": str(uuid.uuid4())},
+            json={"expected_version": 2, "body": "휴가 신청 절차 \n"},
+        )
+        self.assertEqual(whitespace_edit.status_code, 200, whitespace_edit.text)
+        self.assertEqual(whitespace_edit.json()["record_version"], 3)
+        self.assertEqual(whitespace_edit.json()["draft"]["revision_number"], 3)
+        self.assertEqual(whitespace_edit.json()["draft"]["body"], "휴가 신청 절차 \n")
+
+    def test_patch_can_clear_nullable_metadata(self):
+        created = self.create(
+            source_url="https://example.com/policy",
+            owner_department="인사",
+            effective_from="2026-01-01",
+        ).json()
+        response = self.client.patch(
+            f"/documents/{created['id']}",
+            headers={"Idempotency-Key": str(uuid.uuid4())},
+            json={
+                "expected_version": 1,
+                "source_url": None,
+                "owner_department": None,
+                "effective_from": None,
+            },
+        )
+
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertEqual(response.json()["draft"]["revision_number"], 2)
+        self.assertIsNone(response.json()["draft"]["source_url"])
+        self.assertIsNone(response.json()["draft"]["owner_department"])
+        self.assertIsNone(response.json()["draft"]["effective_from"])
 
     def test_edit_keeps_published_revision_and_withdraw_removes_snapshot(self):
         created = self.create().json()
@@ -178,6 +266,74 @@ class ManagedDocumentsApiTests(unittest.TestCase):
         self.assertEqual(withdrawn.status_code, 200, withdrawn.text)
         self.assertEqual(withdrawn.json()["status"], "withdrawn")
         self.assertEqual(repository.published_snapshot(), [])
+
+    def test_update_publish_and_withdraw_replay_original_success_by_key(self):
+        created = self.create().json()
+        document_id = created["id"]
+
+        update_headers = {"Idempotency-Key": str(uuid.uuid4())}
+        update_payload = {"expected_version": 1, "title": "멱등성 개정"}
+        updated = self.client.patch(
+            f"/documents/{document_id}",
+            headers=update_headers,
+            json=update_payload,
+        )
+        update_replay = self.client.patch(
+            f"/documents/{document_id}",
+            headers=update_headers,
+            json=update_payload,
+        )
+        self.assertEqual(updated.status_code, 200, updated.text)
+        self.assertEqual(update_replay.status_code, 200, update_replay.text)
+        self.assertEqual(update_replay.json(), updated.json())
+
+        publish_headers = {"Idempotency-Key": str(uuid.uuid4())}
+        publish_payload = {
+            "expected_version": 2,
+            "revision_id": updated.json()["draft"]["id"],
+        }
+        published = self.client.post(
+            f"/documents/{document_id}/publish",
+            headers=publish_headers,
+            json=publish_payload,
+        )
+        publish_replay = self.client.post(
+            f"/documents/{document_id}/publish",
+            headers=publish_headers,
+            json=publish_payload,
+        )
+        self.assertEqual(published.status_code, 200, published.text)
+        self.assertEqual(publish_replay.status_code, 200, publish_replay.text)
+        self.assertEqual(publish_replay.json(), published.json())
+
+        withdraw_headers = {"Idempotency-Key": str(uuid.uuid4())}
+        withdraw_payload = {"expected_version": 3}
+        withdrawn = self.client.post(
+            f"/documents/{document_id}/withdraw",
+            headers=withdraw_headers,
+            json=withdraw_payload,
+        )
+        withdraw_replay = self.client.post(
+            f"/documents/{document_id}/withdraw",
+            headers=withdraw_headers,
+            json=withdraw_payload,
+        )
+        self.assertEqual(withdrawn.status_code, 200, withdrawn.text)
+        self.assertEqual(withdraw_replay.status_code, 200, withdraw_replay.text)
+        self.assertEqual(withdraw_replay.json(), withdrawn.json())
+
+    def test_database_failure_is_sanitized_to_storage_error(self):
+        with patch.object(
+            DocumentRepository,
+            "get",
+            side_effect=sqlite3.OperationalError("private database detail"),
+        ):
+            response = self.client.get(f"/documents/{uuid.uuid4()}")
+
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.json()["error"]["code"], "storage_unavailable")
+        self.assertNotIn("private database detail", response.text)
+        self.assertEqual(response.headers["cache-control"], "no-store")
 
     def test_future_document_is_scheduled_until_its_seoul_effective_date(self):
         effective = datetime.now(ZoneInfo("Asia/Seoul")).date() + timedelta(days=1)
