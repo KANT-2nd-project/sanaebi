@@ -18,6 +18,64 @@ from generation_evaluation.types import GenerationRun
 
 
 class GenerationReportingTests(unittest.TestCase):
+    def test_truncated_record_survives_jsonl_round_trip(self):
+        run = GenerationRun(
+            "cut",
+            self.config,
+            GenerationResult(
+                GenerationStatus.TRUNCATED, "partial", None, 100, 512, "length"
+            ),
+            2,
+        )
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "runs.jsonl"
+            save_runs_jsonl(path, [run])
+            restored = run_from_dict(read_runs_jsonl(path)[0])
+        self.assertEqual(restored, run)
+
+    def test_response_metadata_round_trip_and_legacy_defaults(self):
+        result = GenerationResult(
+            GenerationStatus.PARSE_ERROR, "bad", None, 20, 0, "length"
+        )
+        run = GenerationRun("case", self.config, result, 0.5)
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "runs.jsonl"
+            save_runs_jsonl(path, [run])
+            data = read_runs_jsonl(path)[0]
+        self.assertEqual(run_from_dict(data), run)
+        for field in ("input_tokens", "output_tokens", "finish_reason"):
+            del data["result"][field]
+        restored = run_from_dict(data).result
+        self.assertEqual(
+            (restored.input_tokens, restored.output_tokens, restored.finish_reason),
+            (None, None, None),
+        )
+
+    def test_result_restore_rejects_invalid_metadata(self):
+        valid = {"status": "parse_error", "raw_text": "bad", "answer": None}
+        for field in ("input_tokens", "output_tokens"):
+            for value in (True, "1", 1.5):
+                with (
+                    self.subTest(field=field, value=value),
+                    self.assertRaises(TypeError),
+                ):
+                    result_from_dict({**valid, field: value})
+            with self.assertRaises(ValueError):
+                result_from_dict({**valid, field: -1})
+        with self.assertRaises(TypeError):
+            result_from_dict({**valid, "finish_reason": 1})
+
+    def test_token_settings_survive_round_trip_and_old_records_load(self):
+        config = GenerationConfig(GenerationProvider.OLLAMA, "model", 30, 40960, 512)
+        run = GenerationRun("case", config, None, 0.25, "Error")
+        data = run_to_dict(run)
+        self.assertEqual(run_from_dict(data), run)
+        del data["config"]["context_window"]
+        del data["config"]["max_output_tokens"]
+        restored = run_from_dict(data)
+        self.assertIsNone(restored.config.context_window)
+        self.assertIsNone(restored.config.max_output_tokens)
+
     def test_runs_restore_through_jsonl(self):
         runs = [
             GenerationRun(
@@ -315,11 +373,16 @@ class GenerationReportingTests(unittest.TestCase):
                     "provider": "ollama",
                     "model_name": "test-model",
                     "timeout_seconds": 30.0,
+                    "context_window": None,
+                    "max_output_tokens": None,
                 },
                 "result": {
                     "status": "completed",
                     "raw_text": raw,
                     "answer": "안내입니다.",
+                    "input_tokens": None,
+                    "output_tokens": None,
+                    "finish_reason": None,
                 },
                 "elapsed_seconds": 0.25,
                 "error_type": None,
@@ -341,6 +404,9 @@ class GenerationReportingTests(unittest.TestCase):
                 "status": "timeout",
                 "raw_text": None,
                 "answer": None,
+                "input_tokens": None,
+                "output_tokens": None,
+                "finish_reason": None,
             },
         )
         error_data = run_to_dict(error)

@@ -14,6 +14,9 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
             "status": run.result.status.value,
             "raw_text": run.result.raw_text,
             "answer": run.result.answer,
+            "input_tokens": run.result.input_tokens,
+            "output_tokens": run.result.output_tokens,
+            "finish_reason": run.result.finish_reason,
         }
 
     return {
@@ -22,6 +25,8 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
             "provider": run.config.provider.value,
             "model_name": run.config.model_name,
             "timeout_seconds": run.config.timeout_seconds,
+            "context_window": run.config.context_window,
+            "max_output_tokens": run.config.max_output_tokens,
         },
         "result": result_data,
         "elapsed_seconds": run.elapsed_seconds,
@@ -85,6 +90,8 @@ def config_from_dict(data: dict[str, object]) -> GenerationConfig:
         provider=GenerationProvider(provider_value),
         model_name=model_name,
         timeout_seconds=timeout_seconds,
+        context_window=data.get("context_window"),
+        max_output_tokens=data.get("max_output_tokens"),
     )
 
 
@@ -112,8 +119,25 @@ def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
     if answer is not None and not isinstance(answer, str):
         raise TypeError("answer는 문자열 또는 None이어야 합니다.")
 
+    for field in ("input_tokens", "output_tokens"):
+        value = data.get(field)
+        if value is not None:
+            if isinstance(value, bool) or not isinstance(value, int):
+                raise TypeError(f"{field}는 정수 또는 None이어야 합니다.")
+            if value < 0:
+                raise ValueError(f"{field}는 0 이상이어야 합니다.")
+    if data.get("finish_reason") is not None and not isinstance(
+        data["finish_reason"], str
+    ):
+        raise TypeError("finish_reason은 문자열 또는 None이어야 합니다.")
+
     return GenerationResult(
-        status=GenerationStatus(status), raw_text=raw_text, answer=answer
+        status=GenerationStatus(status),
+        raw_text=raw_text,
+        answer=answer,
+        input_tokens=data.get("input_tokens"),
+        output_tokens=data.get("output_tokens"),
+        finish_reason=data.get("finish_reason"),
     )
 
 

@@ -7,6 +7,7 @@ class GenerationStatus(StrEnum):
     TIMEOUT = "timeout"
     PARSE_ERROR = "parse_error"
     EMPTY_ANSWER = "empty_answer"
+    TRUNCATED = "truncated"
 
 
 @dataclass(frozen=True)
@@ -14,6 +15,10 @@ class GenerationResult:
     status: GenerationStatus
     raw_text: str | None
     answer: str | None
+
+    input_tokens: int | None = None
+    output_tokens: int | None = None
+    finish_reason: str | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.status, GenerationStatus):
@@ -48,3 +53,11 @@ class GenerationResult:
 class GenerationPrompt:
     system: str
     user: str
+
+
+@dataclass(frozen=True)
+class ModelResponse:
+    raw_text: str
+    input_tokens: int | None = None
+    output_tokens: int | None = None
+    finish_reason: str | None = None

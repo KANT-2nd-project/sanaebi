@@ -3,7 +3,7 @@ from unittest.mock import Mock, patch
 
 from generation.config import GenerationConfig, GenerationProvider
 from generation.prompts import build_prompt
-from generation.types import GenerationResult, GenerationStatus
+from generation.types import GenerationResult, GenerationStatus, ModelResponse
 from generation_evaluation.runner import run_case
 
 
@@ -44,7 +44,7 @@ class GenerationRunnerTests(unittest.TestCase):
         def model_call(prompt):
             events.append("model")
             self.assertEqual(prompt, self.prompt)
-            return raw
+            return ModelResponse(raw)
 
         def record_build(question, documents):
             events.append("prompt")
@@ -107,7 +107,7 @@ class GenerationRunnerTests(unittest.TestCase):
                 self.config,
                 self.question,
                 self.documents,
-                Mock(return_value="bad"),
+                Mock(return_value=ModelResponse("bad")),
             )
         self.assertEqual(
             run.result, GenerationResult(GenerationStatus.PARSE_ERROR, "bad", None)

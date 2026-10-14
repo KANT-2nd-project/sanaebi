@@ -3,7 +3,7 @@ from time import perf_counter
 
 from generation.config import GenerationConfig
 from generation.service import generate_from_documents
-from generation.types import GenerationPrompt
+from generation.types import GenerationPrompt, ModelResponse
 from generation_evaluation.types import GenerationRun
 
 
@@ -12,7 +12,7 @@ def run_case(
     config: GenerationConfig,
     question: str,
     documents: list[str],
-    model_call: Callable[[GenerationPrompt], str],
+    model_call: Callable[[GenerationPrompt], ModelResponse],
 ) -> GenerationRun:
     start_time = perf_counter()
 

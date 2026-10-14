@@ -17,10 +17,60 @@ from generation.providers import (
     to_messages,
 )
 from generation.service import generate
-from generation.types import GenerationPrompt, GenerationResult, GenerationStatus
+from generation.types import (
+    GenerationPrompt,
+    GenerationResult,
+    GenerationStatus,
+    ModelResponse,
+)
 
 
 class GenerationProviderTests(unittest.TestCase):
+    def test_usage_and_provider_finish_reason_are_preserved(self):
+        prompt = GenerationPrompt("규칙", "질문")
+        for metadata in ({"done_reason": "stop"}, {"finish_reason": "length"}, {}):
+            for usage in (
+                None,
+                {"input_tokens": 12, "output_tokens": 0, "total_tokens": 12},
+            ):
+                with self.subTest(metadata=metadata, usage=usage):
+                    message = AIMessage(
+                        content="raw", usage_metadata=usage, response_metadata=metadata
+                    )
+                    result = invoke_model(prompt, Mock(return_value=message))
+                    self.assertEqual(result.raw_text, "raw")
+                    self.assertEqual(result.input_tokens, 12 if usage else None)
+                    self.assertEqual(result.output_tokens, 0 if usage else None)
+                    self.assertEqual(
+                        result.finish_reason,
+                        metadata.get("done_reason") or metadata.get("finish_reason"),
+                    )
+
+    def test_ollama_receives_explicit_token_limits(self):
+        config = GenerationConfig(GenerationProvider.OLLAMA, "model", 30, 40960, 512)
+        with patch("generation.providers.ChatOllama") as constructor:
+            build_ollama_model(config)
+            constructor.assert_called_once_with(
+                model="model",
+                num_ctx=40960,
+                num_predict=512,
+                client_kwargs={"timeout": 30},
+            )
+            constructor.return_value.invoke.assert_not_called()
+
+    def test_openai_rejects_unconnected_limits_before_client_creation(self):
+        for context, output in ((40960, None), (None, 512), (40960, 512)):
+            with (
+                self.subTest(context=context, output=output),
+                patch("generation.providers.ChatOpenAI") as constructor,
+            ):
+                config = GenerationConfig(
+                    GenerationProvider.OPENAI, "model", 30, context, output
+                )
+                with self.assertRaises(ValueError):
+                    build_openai_model(config)
+                constructor.assert_not_called()
+
     def test_openai_timeout_preserves_cause_and_reaches_timeout_status(self):
         error = APITimeoutError(
             request=httpx.Request("POST", "https://example.invalid")
@@ -132,7 +182,10 @@ class GenerationProviderTests(unittest.TestCase):
             model.invoke.return_value = AIMessage(content=raw)
             model_call = build_ollama_call(config)
             constructor.assert_called_once_with(
-                model="test-model", client_kwargs={"timeout": 12.5}
+                model="test-model",
+                num_ctx=None,
+                num_predict=None,
+                client_kwargs={"timeout": 12.5},
             )
             model.invoke.assert_not_called()
 
@@ -151,7 +204,10 @@ class GenerationProviderTests(unittest.TestCase):
         with patch("generation.providers.ChatOllama") as constructor:
             model = build_ollama_model(config)
             constructor.assert_called_once_with(
-                model="test-model", client_kwargs={"timeout": 12.5}
+                model="test-model",
+                num_ctx=None,
+                num_predict=None,
+                client_kwargs={"timeout": 12.5},
             )
             self.assertIs(model, constructor.return_value)
             model.invoke.assert_not_called()
@@ -172,8 +228,8 @@ class GenerationProviderTests(unittest.TestCase):
         second.assert_not_called()
 
         prompt = GenerationPrompt(system="규칙", user="질문")
-        self.assertEqual(first_call(prompt), "first")
-        self.assertEqual(second_call(prompt), "second")
+        self.assertEqual(first_call(prompt), ModelResponse("first"))
+        self.assertEqual(second_call(prompt), ModelResponse("second"))
         first.assert_called_once_with(to_messages(prompt))
         second.assert_called_once_with(to_messages(prompt))
 
@@ -204,7 +260,7 @@ class GenerationProviderTests(unittest.TestCase):
         raw_text = ' {"answer": " 안내 "}\n'
         invoke = Mock(return_value=AIMessage(content=raw_text))
 
-        self.assertEqual(invoke_model(prompt, invoke), raw_text)
+        self.assertEqual(invoke_model(prompt, invoke), ModelResponse(raw_text))
         invoke.assert_called_once()
         self.assertEqual(
             invoke.call_args.args[0],

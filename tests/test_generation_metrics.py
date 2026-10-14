@@ -14,6 +14,31 @@ from generation_evaluation.types import GenerationRun
 
 
 class GenerationMetricsTests(unittest.TestCase):
+    def test_truncated_is_counted_as_attempt_but_not_completion(self):
+        runs = [
+            GenerationRun(
+                "ok",
+                self.config,
+                GenerationResult(GenerationStatus.COMPLETED, '{"answer":"답"}', "답"),
+                2,
+            ),
+            GenerationRun(
+                "cut",
+                self.config,
+                GenerationResult(
+                    GenerationStatus.TRUNCATED, '{"answer":', None, 10, 512, "length"
+                ),
+                4,
+            ),
+        ]
+        counts = count_outcomes(runs)
+        self.assertEqual(counts["total"], 2)
+        self.assertEqual(counts["truncated"], 1)
+        self.assertEqual(counts["completed"], 1)
+        self.assertEqual(completion_rate(runs), 0.5)
+        self.assertEqual(mean_attempt_seconds(runs), 3)
+        self.assertEqual(mean_completed_seconds(runs), 2)
+
     def setUp(self):
         self.config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 30.0)
 
@@ -183,6 +208,7 @@ class GenerationMetricsTests(unittest.TestCase):
                 "empty_answer": 0,
                 "timeout": 0,
                 "execution_error": 0,
+                "truncated": 0,
             },
         )
 
@@ -219,6 +245,7 @@ class GenerationMetricsTests(unittest.TestCase):
                 "empty_answer": 1,
                 "timeout": 1,
                 "execution_error": 1,
+                "truncated": 0,
             },
         )
         self.assertEqual(
