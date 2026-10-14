@@ -12,6 +12,8 @@ app = FastAPI()
 DOCUMENT_FILE = Path(__file__).resolve().parent / "documents.jsonl"
 
 
+#### 스키마 ####
+
 @app.get("/")
 def home():
     return {"message": "FastAPI 서버가 실행 중입니다."}
