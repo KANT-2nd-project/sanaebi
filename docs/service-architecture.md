@@ -19,7 +19,8 @@
 | `POST /ask/langchain` | 현재 질문을 KoELECTRA Base로 분류한 뒤 질문과 카테고리를 LangChain 실행기에 전달하고 모델별 답변·실행 기록을 반환한다. |
 | `POST /assistant` | 이미 분류한 response·classification_label을 LangChain 실행기에 전달하고 기존 출력 형식을 그대로 반환한다. |
 | `POST /regist-docs` | doc 문자열을 검증한 뒤 `app/documents.jsonl`에 JSON Lines 한 줄로 덧붙이고 등록 응답을 반환한다. |
-| HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
+| 기존 질문·레거시 HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
+| `/documents` | SQLite 초안·개정·게시·중단을 관리하며 문서 전용 오류 계약을 사용한다. [상세 계약](document-management.md)을 따른다. |
 | 질문 처리 분류 | `/classify/koelectra-base`에서 분류만 확인하거나 `/ask/langchain`에서 분류 후 답변 생성을 실행한다. `/ask`는 여전히 echo다. |
 | 질문 서비스 | `handle_question`은 세 라벨 분기·개발용 reader 조립 초안으로 /ask 미연결이다. 별도 `answer_question`은 /ask/langchain에서 분류 후 실행기 전달을 담당한다. |
 | 문서 답변 | 별도 API는 LangChain 실행기를 호출하도록 연결했다. 실제 모델 실행·답변 품질과 목표 분기 정책 정합성은 별도 검증 대상이다. |
@@ -66,7 +67,7 @@ flowchart TD
 - 개인·조직의 실시간 기록 조회나 신청·변경 실행을 완료했다고 표현하지 않는다. 정보 요청과 실행 요청이 섞인 질문은 안내 가능한 정보만 답하고 실행할 수 없는 부분을 밝힌다.
 - 응답은 현재 AnswerResponse 필드 안에서 표현한다. 이 문서는 공개 요청·응답 스키마 변경을 정하지 않는다.
 
-현재 API에는 문서별 접근 권한과 개정본을 판단하는 정보가 없다. 전체 문서 답변을 연결할 때에는 열람이 허용된 공통 회사 자료만 입력에 제공한다. 접근 권한이 다른 자료를 다루려면 LLM 호출 전에 서버에서 권한을 검사하는 설계를 별도로 마련해야 한다.
+신규 문서 관리 API는 불변 개정본과 게시본을 구분하지만 문서별 접근 권한은 아직 제공하지 않는다. 전체 문서 답변을 연결할 때에는 열람이 허용된 공통 회사 자료만 입력에 제공한다. 접근 권한이 다른 자료를 다루려면 LLM 호출 전에 서버에서 권한을 검사하는 설계를 별도로 마련해야 한다.
 
 ## 질문 데이터와 평가 설계
 
