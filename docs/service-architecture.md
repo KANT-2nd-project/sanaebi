@@ -3,6 +3,7 @@
 - 기준일: 2026-10-14
 - 상태: 현재 API 동작과 아직 연결되지 않은 목표 설계를 구분한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
+- 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
 - 질문 데이터와 데이터 상태: [요청 처리 데이터 안내](../data/README.md)
 - 프로젝트 설계 참고: [Notion 서비스 처리 기준](https://app.notion.com/p/3f805a3cdadc81d7b909fc71ed78381b)
 
@@ -19,9 +20,11 @@
 | 질문 처리 분류 | 세 경로의 기준과 데이터가 준비되어 있다. FastAPI 요청 흐름에는 분류기가 연결되어 있지 않다. |
 | 문서 답변 | LangChain, LLM, 문서 근거 확인이 API 흐름에 연결되어 있지 않다. |
 
-구현 확인 파일은 [app/fastapi_main.py](../app/fastapi_main.py)다. 현재 `POST /ask`는 질문을 그대로 반환하는 echo 동작이며 회사 문서를 읽거나 답변을 생성하지 않는다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
+앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/routers/questions.py)와 [문서 라우터](../app/routers/documents.py), JSONL append는 [저장 함수](../app/document_store.py)에서 확인한다. 현재 `POST /ask`는 질문을 그대로 반환하는 echo 동작이며 회사 문서를 읽거나 답변을 생성하지 않는다. `POST /regist-docs`가 기록하는 JSON 객체는 doc 본문 하나로 구성된다.
 
 등록 문서 한 줄의 형식은 `{"doc":"본문"}`이다. 질문 처리 설계는 이 JSON Lines 파일의 회사 문서 전체를 답변 입력으로 사용한다.
+
+별도 [LangChain 실행기](../sanaebi_assistant.py)와 예시 문서 `ieum_works.jsonl`도 저장소에 있지만 FastAPI 라우터와 연결되지 않았다. 이 실행기의 입력·문서 형식을 현재 HTTP API·JSONL 계약과 동일하게 취급하지 않는다. 이번 서버 리팩터링 검증은 외부 모델 실행이나 답변 품질 평가를 포함하지 않는다.
 
 ## 목표 질문 처리 흐름
 

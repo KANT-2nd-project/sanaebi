@@ -7,8 +7,9 @@
 | 정보 | 기준 위치 | 다른 문서에서 다룰 내용 |
 |---|---|---|
 | 프로젝트 목적과 첫 사용 | [README](../README.md) | 짧은 소개와 실행 안내 링크 |
-| 실제 API 입력·응답·오류 | [API 코드](../app/fastapi_main.py), 관련 테스트와 실행 결과 | README의 최소 예시, 설계 문서의 현재 API 설명 |
+| 실제 API 입력·응답·오류 | [스키마](../app/schemas.py), [질문](../app/routers/questions.py)·[문서 라우터](../app/routers/documents.py), [API 테스트](../tests/test_api.py)와 실행 결과 | README의 최소 예시, 설계 문서의 현재 API 설명 |
 | 채택된 서비스 설계 | [서비스 아키텍처](service-architecture.md) | Notion의 흐름 요약과 결정 배경 |
+| 서버 코드 구성·변경 규약 | [서버 구성 규약](server-conventions.md) | README·작업 지침의 링크, Notion 문서 안내·서비스 처리 기준·운영 규칙의 요약 |
 | 요청 라벨 의미·판정 경계 | [라벨 기준](label-taxonomy.md) | 라벨 목록과 목적에 필요한 요약 |
 | 질문 데이터의 실제 내용 | [질문 CSV](../data/dataset.csv) | 데이터 안내의 구성 요약 |
 | 데이터 스키마·사용·검수 방법·분할 | [데이터 안내](../data/README.md), 관련 검증 코드 | 링크와 작업에 필요한 주의점 |
