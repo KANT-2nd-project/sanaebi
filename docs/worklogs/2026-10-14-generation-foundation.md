@@ -35,3 +35,7 @@
 다음 학습은 GenerationPrompt를 LangChain SystemMessage/HumanMessage로 변환하는 어댑터다. 이후 모델 설정·응답 문자열 경계·공급자 오류·입력 예산·문서 snapshot 메타데이터를 연결한다. 현재 모듈은 패키지 배포 설정에 포함되지 않았다. 서버·평가기 공통 경로와 회귀 검증을 확보한 뒤 기존 구현을 아카이브로 이동한다.
 
 현재 사용법과 계약은 [생성 모듈 안내](../../generation/README.md), 모델 평가 기준은 [생성 평가](../generation-evaluation.md)를 따른다. Notion에는 프로젝트 문서 안내·서비스 처리 기준의 요약과 기존 개인 일지 DB의 새 기록을 연결한다.
+
+## 게시와 외부 반영 확인
+
+구현·테스트·기준 문서는 [c3ee838](https://github.com/KANT-2nd-project/sanaebi/commit/c3ee83880a855c3537aab014f982a7dffd2ac0d8)로 main에 게시하고 원격 참조 일치를 확인했다. [Notion 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7)와 [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b)에 이번 모듈의 요약·미연결 범위·Git 링크를 추가하고 저장 후 재조회했다. [개인 일지](https://www.notion.so/3f905a3cdadc8146a9bbedb690ab5ecf)는 기존 일지 DB에 생성하고 기여·막힌 점·검증·다음 단계와 게시 커밋을 확인했다. 전체 생성 모듈 재구성은 진행 중으로 기록했다.
