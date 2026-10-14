@@ -160,10 +160,10 @@ class WorkflowTests(unittest.TestCase):
                 reporting, "render_report", side_effect=AssertionError("표현 금지")
             ),
         ):
-            result = train(data, fit)
+            result = train(data.rows["train"], data.rows["validation"], fit)
         fit.assert_called_once_with(data.rows["train"], data.rows["validation"])
         save.assert_not_called()
-        self.assertEqual(result.test_scores["macro_f1"], 1.0)
+        self.assertEqual(result.validation_scores["macro_f1"], 1.0)
 
     def test_real_small_tfidf_fit_has_no_output_files_until_save_is_called(self):
         data = example_splits()
@@ -178,7 +178,9 @@ class WorkflowTests(unittest.TestCase):
                 patch("joblib.dump", side_effect=AssertionError("저장 금지")),
             ):
                 result = train(
-                    data, partial(tfidf.fit, config=tfidf.TfidfConfig((0.1,)))
+                    data.rows["train"],
+                    data.rows["validation"],
+                    partial(tfidf.fit, config=tfidf.TfidfConfig((0.1,))),
                 )
             self.assertFalse(list(Path(temp).iterdir()))
             output = Path(temp) / "model.joblib"
@@ -205,20 +207,16 @@ class WorkflowTests(unittest.TestCase):
                 data.rows, api, MeasurementPolicy("request")
             )
         self.assertEqual(local_result.scores, api_result.scores)
-        self.assertEqual(local.call_count, 6 + 3 + 3 * 3)
-        self.assertEqual(api.call_count, 6)
+        self.assertEqual(local.call_count, 3 + 3 + 3 * 3)
+        self.assertEqual(api.call_count, 3)
         self.assertEqual(local_result.timing["samples"], 9)
         self.assertEqual(api_result.timing["samples"], 3)
-        self.assertEqual(api_result.input_tokens, 60)
+        self.assertEqual(api_result.input_tokens, 30)
         self.assertEqual(api_result.resolved_models, ["fake-jev"])
-        self.assertEqual(len(api_result.predictions), 6)
+        self.assertEqual(len(api_result.predictions), 3)
         self.assertEqual(
             [c.args[0] for c in api.call_args_list],
-            [
-                r["question"]
-                for split in ("validation", "test")
-                for r in data.rows[split]
-            ],
+            [r["question"] for split in ("validation",) for r in data.rows[split]],
         )
 
     def test_request_timing_rejects_repeated_calls(self):

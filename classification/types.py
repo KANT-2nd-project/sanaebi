@@ -47,7 +47,7 @@ class FittedModel:
     predict: Predictor
     save: Callable[[Path], None]
     settings: dict
-    # 학습 직후 test의 기존 배치 추론 방식을 보존한다.
+    # 선택된 모델의 배치 추론. validation 평가와 명시적 평가에서 사용한다.
     predict_batch: Callable[[list[str]], list[Prediction]]
 
 
@@ -55,9 +55,9 @@ FitFunction = Callable[[list[Question], list[Question]], FittedModel]
 
 
 @dataclass(frozen=True)
-class TrainingResult:
+class SelectionResult:
     fitted: FittedModel
-    test_scores: dict
+    validation_scores: dict
     selection_seconds: float
 
 

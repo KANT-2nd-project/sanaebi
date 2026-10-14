@@ -66,7 +66,9 @@ def invoke(args):
         )
     from .evaluate import evaluate_current
 
-    return evaluate_current(args.model, artifact_root=root, dataset_path=args.dataset)
+    return evaluate_current(
+        args.model, artifact_root=root, dataset_path=args.dataset, split=args.split
+    )
 
 
 def boundary(call):
@@ -83,7 +85,17 @@ def main(argv=None):
         commands.add_parser("train", help="학습 또는 동일 조건 모델 재사용"),
         training=True,
     )
-    options(commands.add_parser("eval", help="저장 모델 평가"))
+    evaluation = options(
+        commands.add_parser(
+            "eval", help="저장 모델 validation 평가; test는 --split test로 명시"
+        )
+    )
+    evaluation.add_argument(
+        "--split",
+        choices=("validation", "test"),
+        default="validation",
+        help="평가할 분할 (기본: validation)",
+    )
     args = parser.parse_args(argv)
     boundary(lambda: invoke(args))
 

@@ -1,6 +1,7 @@
 """설치된 학습 명령의 모델 선택·출력 격리·종료 상태를 검사한다."""
 
 import csv
+import json
 import os
 import subprocess
 import sys
@@ -87,16 +88,44 @@ class TrainingCommandTests(unittest.TestCase):
             args = ["tfidf", "--dataset", dataset, "--artifact-root", output]
             first = self.invoke(directory, "train", *args)
             self.assertEqual(first.returncode, 0, first.stderr)
+            summary = json.loads(
+                (output / "models/tfidf/training_summary.json").read_text()
+            )
+            self.assertIn("validation_scores", summary)
+            self.assertFalse(any(k.startswith("test_") for k in summary))
             model = output / "models/tfidf/model.joblib"
             before = model.read_bytes()
-            self.assertFalse((output / "results/tfidf/metrics.json").exists())
+            self.assertFalse(
+                (output / "results/tfidf/validation/metrics.json").exists()
+            )
             second = self.invoke(directory, "train", *args)
             self.assertEqual(second.returncode, 0, second.stderr)
             self.assertIn("생략", second.stdout)
             self.assertEqual(model.read_bytes(), before)
+            legacy = output / "results/tfidf/metrics.json"
+            legacy.parent.mkdir(parents=True, exist_ok=True)
+            legacy.write_text('{"historical": true}')
             evaluation = self.invoke(directory, "eval", *args)
             self.assertEqual(evaluation.returncode, 0, evaluation.stderr)
-            self.assertTrue((output / "results/tfidf/metrics.json").exists())
+            self.assertTrue((output / "results/tfidf/validation/metrics.json").exists())
+            validation_path = output / "results/tfidf/validation/metrics.json"
+            validation_bytes = validation_path.read_bytes()
+            validation = json.loads(validation_bytes)
+            self.assertEqual(validation["evaluated_split"], "validation")
+            self.assertNotIn("test", validation)
+            self.assertFalse((output / "results/tfidf/test").exists())
+            explicit_test = self.invoke(directory, "eval", *args, "--split", "test")
+            self.assertEqual(explicit_test.returncode, 0, explicit_test.stderr)
+            test_report = json.loads(
+                (output / "results/tfidf/test/metrics.json").read_text()
+            )
+            self.assertEqual(test_report["model_id"], validation["model_id"])
+            self.assertNotIn("validation", test_report)
+            self.assertEqual(validation_bytes, validation_path.read_bytes())
+            self.assertEqual(legacy.read_text(), '{"historical": true}')
+            self.assertEqual(model.read_bytes(), before)
+            invalid = self.invoke(directory, "eval", *args, "--split", "both")
+            self.assertEqual(invalid.returncode, 2)
             forced = self.invoke(directory, "train", *args, "--force")
             self.assertEqual(forced.returncode, 0, forced.stderr)
             self.assertEqual(

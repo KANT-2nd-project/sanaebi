@@ -13,10 +13,27 @@ from ..models.presets import load_bundle
 from ..workflows.train import train
 
 
-def print_preview(data):
+def print_preview(data, config, artifact_root, name):
+    print("입력: question / 라벨:", ", ".join(LABELS))
+    print("선택 기준: validation Macro F1 / test 예측·점수 공개: 없음")
+    groups = [{r["group_id"] for r in rows} for rows in data.rows.values()]
+    print(
+        "분할 간 그룹 중복:",
+        any(a & b for i, a in enumerate(groups) for b in groups[i + 1 :]),
+    )
+    if isinstance(config, transformer.TransformerConfig):
+        print(
+            "후보 초기화 수:",
+            len(config.max_lengths) * len(config.learning_rates),
+            "후보별 epoch:",
+            config.epochs,
+        )
+    else:
+        print("C 후보 수:", len(config.c_candidates), "epoch: 해당 없음")
+    print("모델 저장 위치:", artifact_root / "models" / name)
     print("분할 시드:", data.record["seed"])
-    for name, split in data.record["splits"].items():
-        print(name, split["count"], "개", split["label_counts"])
+    for split_name, split in data.record["splits"].items():
+        print(split_name, split["count"], "개", split["label_counts"])
     texts, ids = dataset.texts_and_ids(data.rows["train"])
     print("첫 번째 학습 입력:\n", texts[0], sep="")
     print("첫 번째 정답 번호:", ids[0])
@@ -45,7 +62,7 @@ def execute(
     eval_hint = command_hint("eval", name, artifact_root, dataset_path)
     data = dataset.prepare_data(dataset_path, config.seed)
     if preview:
-        print_preview(data)
+        print_preview(data, config, artifact_root, name)
         print("예정 모델 위치:", artifact_root / "models" / name)
         return None
     conditions = storage.request_conditions(config, data)
@@ -53,6 +70,8 @@ def execute(
     with storage.lock(artifact_root, name):
         storage.recover(artifact_root, "models", name)
         storage.recover(artifact_root, "results", name)
+        for split in ("validation", "test"):
+            storage.recover(artifact_root, "results", f"{name}/{split}")
         if bundle.exists() and not force:
             try:
                 manifest = storage.validate_bundle(bundle, name)
@@ -75,7 +94,7 @@ def execute(
             print("모델 ID:", manifest["model_id"])
             try:
                 report = artifacts.read_json(
-                    artifact_root / "results" / name / "metrics.json"
+                    artifact_root / "results" / name / "validation" / "metrics.json"
                 )
                 result_status = (
                     "현재 모델과 연결됨"
@@ -108,10 +127,10 @@ def execute(
         else:
             revision = None
             fit = partial(tfidf.fit, config=config)
-        result = train(data, fit, started_at=started)
-        summary = artifacts.training_summary(
-            result, data, include_test=isinstance(config, transformer.TransformerConfig)
+        result = train(
+            data.rows["train"], data.rows["validation"], fit, started_at=started
         )
+        summary = artifacts.training_summary(result, data)
         temporary = storage.stage(artifact_root, name)
         try:
             model_path = temporary / "model.joblib" if name == "tfidf" else temporary
@@ -134,14 +153,14 @@ def execute(
         finally:
             if temporary.exists():
                 shutil.rmtree(temporary)
-        if (artifact_root / "results" / name / "metrics.json").exists():
+        if (artifact_root / "results" / name / "validation" / "metrics.json").exists():
             print(
                 "기존 평가 결과는 이전 모델의 결과입니다. eval로 새 모델을 평가하세요."
             )
         print("모델 저장 위치:", bundle)
         print(f"저장 모델 평가: {eval_hint}")
     # 비교 페이지가 구형 모델의 점수를 현재 값으로 표시하지 않도록 갱신한다.
-    from .evaluate import refresh_comparison
+    from ..evaluation.comparison import refresh_comparison
 
     refresh_comparison(artifact_root)
     return summary

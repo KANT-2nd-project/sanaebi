@@ -7,7 +7,7 @@ from pathlib import Path
 
 from contracts.classification import LABELS
 
-from .types import DatasetSplits, EvaluationResult, TrainingResult
+from .types import DatasetSplits, EvaluationResult, SelectionResult
 
 ROOT = Path(__file__).resolve().parent
 MODEL_DIR = ROOT / "model"
@@ -39,21 +39,13 @@ def model_size_mib(path):
     )
 
 
-def training_summary(
-    result: TrainingResult, dataset: DatasetSplits, *, include_test=False
-):
-    summary = dict(
+def training_summary(result: SelectionResult, dataset: DatasetSplits):
+    return dict(
         result.fitted.settings,
         data_split=dataset.record,
+        validation_scores=result.validation_scores,
         selection_seconds=result.selection_seconds,
     )
-    if include_test:
-        summary.update(
-            test_accuracy=result.test_scores["accuracy"],
-            test_macro_f1=result.test_scores["macro_f1"],
-            test_confusion_matrix=result.test_scores["confusion_matrix"],
-        )
-    return summary
 
 
 def save_training(result, summary, model_path, summary_path):
@@ -88,8 +80,7 @@ def evaluation_report(
         "counts": counts,
         "data_hashes": dataset.hashes,
         "settings": settings,
-        "validation": result.scores["validation"],
-        "test": result.scores["test"],
+        **result.scores,
         "model_size_mib": model_size,
         "benchmark": benchmark,
     }

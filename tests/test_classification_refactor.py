@@ -267,14 +267,16 @@ class TrainingTests(unittest.TestCase):
             )
             self.assertTrue((root / "artifacts/models/tfidf/model.joblib").is_file())
             report = json.loads(
-                (root / "artifacts/results/tfidf/metrics.json").read_text()
+                (root / "artifacts/results/tfidf/validation/metrics.json").read_text()
             )
             self.assertEqual(report["settings"], summary)
             self.assertEqual(sum(report["counts"].values()), 60)
             self.assertEqual(
                 report["benchmark"]["samples"], report["counts"]["test"] * 3
             )
-            self.assertTrue((root / "artifacts/results/tfidf/report.html").is_file())
+            self.assertTrue(
+                (root / "artifacts/results/tfidf/validation/report.html").is_file()
+            )
             self.assertTrue((root / "artifacts/results/comparison.html").is_file())
 
     def test_example_configuration_fails_before_data_or_download(self):
@@ -357,7 +359,9 @@ class ReportAndClientTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             result_dir = Path(temp)
             for path in sorted((ROOT / "classification/result").glob("*/metrics.json")):
-                report = json.loads(path.read_text())
+                original_metrics = path.read_bytes()
+                original_html = path.with_name("report.html").read_bytes()
+                report = json.loads(original_metrics)
                 splits = read_recorded_splits(report["settings"]["data_split"])
                 for split in ("validation", "test"):
                     # 저장된 정답과 오답 목록에서 예측을 복원하여 지표를 재계산한다.
@@ -371,11 +375,15 @@ class ReportAndClientTests(unittest.TestCase):
                 target.mkdir()
                 shutil.copyfile(path, target / "metrics.json")
                 output = reporting.render_report(report)
-                self.assertEqual(output, path.with_name("report.html").read_text())
-            self.assertEqual(
-                reporting.render_comparison(artifacts.read_reports(result_dir)),
-                (ROOT / "classification/result/comparison.html").read_text(),
-            )
+                self.assertIn("모델과 평가의 정체", output)
+                self.assertIn("미기록", output)
+                self.assertEqual(path.read_bytes(), original_metrics)
+                self.assertEqual(
+                    path.with_name("report.html").read_bytes(), original_html
+                )
+            comparison = reporting.render_comparison(artifacts.read_reports(result_dir))
+            self.assertIn("검증 F1", comparison)
+            self.assertNotIn("테스트 F1", comparison)
             with (
                 patch(
                     "classification.models.transformer.load",

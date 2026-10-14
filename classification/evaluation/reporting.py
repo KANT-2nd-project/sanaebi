@@ -31,7 +31,7 @@ def page(title, subtitle, body, root_prefix="", reports=None):
             if not is_current_report(report):
                 continue
             name = "TF-IDF + 로지스틱 회귀" if folder == "tf-idf" else folder.upper()
-            links.append((f"{folder}/report.html", name))
+            links.append((report.get("report_href", f"{folder}/report.html"), name))
     navigation = "".join(
         f'<a href="{escape(root_prefix + href, quote=True)}">{escape(name)}</a>'
         for href, name in links
@@ -62,11 +62,11 @@ footer{{color:#657389;font-size:13px;margin-top:24px}}
 </style></head><body><main><header><div class="eyebrow">SANAEBI · MODEL EVALUATION</div>
 <h1>{escape(title)}</h1><p class="muted">{escape(subtitle)}</p>
 <nav>{navigation}</nav></header>
-{body}<footer>학습 손실 대신 검증 결과로 모델을 선택하고, 테스트 결과는 최종 성능 확인에 사용합니다.</footer>
+{body}<footer>모델 선택에는 validation을 사용합니다. test 실행만으로 미열람 최종 평가가 보장되지는 않습니다.</footer>
 </main></body></html>"""
 
 
-def render_report(report, *, cpu_threads=4):
+def _render_legacy_report(report, *, cpu_threads=4):
     if not is_current_report(report):
         raise ValueError("현재 질문 3분류 모델로 학습·평가한 결과가 필요합니다.")
     labels = LABELS
@@ -275,7 +275,7 @@ def render_report(report, *, cpu_threads=4):
     if trials:
         columns = list(trials[0])
         body += (
-            "<section><h2>후보별 학습·검증 기록</h2>"
+            "<section><details><summary>후보별 학습·검증 기록</summary>"
             + table(
                 columns,
                 [
@@ -288,7 +288,7 @@ def render_report(report, *, cpu_threads=4):
                     for trial in trials
                 ],
             )
-            + "</section>"
+            + "</details></section>"
         )
     elif not is_api:
         body += "<section><h2>후보별 학습·검증 기록</h2><p>이 저장 모델에는 전체 후보 기록이 없습니다. 변경된 학습 스크립트로 다음 학습을 완료하면 함께 기록됩니다.</p></section>"
@@ -322,53 +322,181 @@ def render_report(report, *, cpu_threads=4):
 
 
 def render_comparison(reports_by_folder):
-    reports = [
-        report
-        for _, report in sorted(reports_by_folder.items())
+    """기본 모델 비교에는 validation만 표시한다. 과거 test는 숨긴다."""
+    reports = {
+        name: report
+        for name, report in reports_by_folder.items()
         if is_current_report(report)
-    ]
+        and "validation" in report
+        and report.get("evaluated_split", "validation") == "validation"
+    }
     rows = [
         [
             r["title"],
-            "API · 네트워크 포함"
-            if r["benchmark"].get("mode") == "api"
-            else "로컬 CPU",
+            r.get("model_id", "미기록"),
             f"{r['validation']['macro_f1']:.4f}",
-            f"{r['test']['macro_f1']:.4f}",
-            f"{r['test']['accuracy']:.2%}",
-            f"{r['benchmark']['mean_ms']:.2f}",
-            f"{r['benchmark']['process_rss_mib']:.1f}"
-            if r["benchmark"]["process_rss_mib"] is not None
-            else "미측정",
-            f"{r['model_size_mib']:.2f}"
-            if r["model_size_mib"] is not None
-            else "미공개",
+            f"{r['validation']['accuracy']:.2%}",
+            r.get("data_review", "미기록"),
+            "validation 단일 평가"
+            if r.get("schema_version") == 2
+            else "과거 형식 (속도는 test 측정)",
         ]
-        for r in reports
+        for r in reports.values()
     ]
     body = (
-        "<section><h2>저장된 모델 비교</h2>"
+        "<section><h2>Validation 기준 모델 비교</h2>"
         + table(
-            [
-                "모델",
-                "측정 방식",
-                "검증 F1",
-                "테스트 F1",
-                "정확도",
-                "평균 ms",
-                "프로세스 RAM MiB",
-                "모델 MiB",
-            ],
+            ["모델", "model_id", "검증 F1", "검증 정확도", "자료 한계", "측정 범위"],
             rows,
         )
         + "</section>"
     )
-    if reports and any(r["data_hashes"] != reports[0]["data_hashes"] for r in reports):
-        body += '<p class="note">보고서의 평가 데이터가 서로 다릅니다. 동일한 CSV로 보고서를 다시 생성한 후 비교하세요.</p>'
-    body += "<section><h2>비교할 때 확인할 점</h2><p>모델·설정 선택에는 검증 F1을 사용하고 테스트 점수는 최종 평가로 남깁니다. 비슷한 점수라면 오답 유형, 응답 시간과 자원 사용량을 함께 확인하세요.</p><p>로컬 모델은 CPU·스레드 제한 4·질문 1개 단위로 측정하며, RAM에는 라이브러리 메모리도 포함됩니다. API 모델의 응답 시간은 네트워크를 포함하고 서버 RAM·모델 크기는 측정할 수 없어 같은 장치의 속도 비교로 해석하면 안 됩니다.</p></section>"
+    if reports:
+        first = next(iter(reports.values()))
+        if any(r["data_hashes"] != first["data_hashes"] for r in reports.values()):
+            body += '<p class="note">평가 데이터가 서로 다릅니다. 동일 조건끼리 비교하세요.</p>'
+    body += '<p class="note">기본 비교는 validation 기준입니다. test는 명시적으로 평가하며 이미 열람한 자료는 최종 미열람 평가로 취급하지 않습니다. API 시간과 로컬 CPU 시간은 직접 비교하지 않습니다.</p>'
     return page(
         "질문 분류 모델 비교",
-        "같은 질문 · 같은 카테고리 · 로컬 CPU와 원격 API 구분",
+        "Validation 기준 · 모델과 데이터 식별값 확인",
         body,
-        reports=reports_by_folder,
+        reports=reports,
+    )
+
+
+def report_identity(report):
+    record = report["settings"].get("data_split", {})
+    split = report.get("evaluated_split", "validation/test (과거 형식)")
+    return (
+        "<section><h2>모델과 평가의 정체</h2>"
+        + table(
+            ["항목", "값"],
+            [
+                ["모델", report["title"]],
+                ["model_id", report.get("model_id", "미기록")],
+                ["데이터 SHA", record.get("dataset_sha256", "미기록")],
+                [
+                    "분할 식별값",
+                    json.dumps(report.get("data_hashes", {}), ensure_ascii=False),
+                ],
+                ["입력", ", ".join(record.get("input_fields", [])) or "미기록"],
+                ["평가 분할", split],
+                ["용도", report.get("evaluation_purpose", "과거 평가 기록")],
+                ["데이터 검수", report.get("data_review", "미기록")],
+                [
+                    "test 열람 상태",
+                    report.get(
+                        "test_exposure",
+                        report["settings"].get("test_interpretation", "미기록"),
+                    ),
+                ],
+            ],
+        )
+        + '<p class="note">manifest는 파일 무결성 확인이며 성능 승인이나 미열람 평가의 증명이 아닙니다.</p></section>'
+    )
+
+
+def render_report(report, *, cpu_threads=4):
+    if not is_current_report(report):
+        raise ValueError("현재 질문 3분류 모델로 학습·평가한 결과가 필요합니다.")
+    if "evaluated_split" not in report:
+        html = _render_legacy_report(report, cpu_threads=cpu_threads)
+        return html.replace("</header>", "</header>" + report_identity(report), 1)
+    split = report["evaluated_split"]
+    scores = report[split]
+    body = report_identity(report)
+    body += (
+        "<section><h2>선택 기준과 평가 점수</h2><p>모델 선택: validation Macro F1 최대, 동점은 먼저 선택한 후보 유지.</p>"
+        + table(
+            ["분할", "Macro F1", "정확도", "문항 수"],
+            [
+                [
+                    split,
+                    f"{scores['macro_f1']:.4f}",
+                    f"{scores['accuracy']:.2%}",
+                    report["counts"][split],
+                ]
+            ],
+        )
+        + "</section>"
+    )
+    body += (
+        "<section><h2>라벨별 성능</h2>"
+        + table(
+            ["라벨", "Precision", "Recall", "F1", "문항 수"],
+            [
+                [
+                    label,
+                    *[
+                        f"{scores['per_class'][label][k]:.4f}"
+                        for k in ("precision", "recall", "f1-score")
+                    ],
+                    int(scores["per_class"][label]["support"]),
+                ]
+                for label in LABELS
+            ],
+        )
+        + "</section>"
+    )
+    matrix = scores["confusion_matrix"]
+    body += (
+        "<section><h2>혼동행렬</h2><p>행: 정답, 열: 예측</p>"
+        + table(
+            ["정답 / 예측", *LABELS],
+            [[label, *row] for label, row in zip(LABELS, matrix)],
+        )
+        + "</section>"
+    )
+    body += (
+        "<section><h2>오류 방향</h2>"
+        + table(
+            ["정답", "예측", "건수"],
+            [
+                [a, b, matrix[i][j]]
+                for i, a in enumerate(LABELS)
+                for j, b in enumerate(LABELS)
+                if i != j and matrix[i][j]
+            ],
+        )
+        + "</section>"
+    )
+    body += (
+        "<section><h2>오분류 질문</h2>"
+        + table(["ID", "질문", "정답", "예측"], scores["errors"])
+        + "</section>"
+    )
+    body += "<section><h2>속도·측정 조건</h2>" + table(
+        ["항목", "값"],
+        [
+            [k, json.dumps(v, ensure_ascii=False)]
+            for k, v in report["benchmark"].items()
+        ],
+    )
+    body += "<p>선택한 분할에서 측정합니다. 로딩·HTTP 시간은 추론 시간에 포함하지 않으며 RSS는 프로세스 전체 메모리입니다.</p>"
+    body += (
+        table(
+            ["측정 정책", "값"],
+            [[k, v] for k, v in report.get("measurement_policy", {}).items()],
+        )
+        + "</section>"
+    )
+    details = {
+        k: v
+        for k, v in report["settings"].items()
+        if k not in {"data_split", "trials"} and not k.startswith("test_")
+    }
+    body += "<section><details><summary>선택 설정·후보별 학습 기록</summary>" + table(
+        ["설정", "값"],
+        [[k, json.dumps(v, ensure_ascii=False)] for k, v in details.items()],
+    )
+    trials = report["settings"].get("trials", [])
+    if trials:
+        columns = list(trials[0])
+        body += table(columns, [[trial.get(k) for k in columns] for trial in trials])
+    body += "</details></section>"
+    return page(
+        report["title"],
+        report["created_at"] + " · " + split,
+        body,
+        root_prefix="../../",
     )

@@ -6,6 +6,86 @@ from classification import storage
 
 
 class ModelStorageTests(unittest.TestCase):
+    def test_split_publish_failure_preserves_sibling_and_legacy(self):
+        from unittest.mock import patch
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            for name in ("validation", "test"):
+                storage.atomic_json(
+                    root / "results/tfidf" / name / "metrics.json", {"old": name}
+                )
+            storage.atomic_json(root / "results/tfidf/metrics.json", {"legacy": True})
+            before = {
+                str(p.relative_to(root)): p.read_bytes()
+                for p in (root / "results").rglob("*.json")
+            }
+            staged = storage.stage(root, "test-result")
+            storage.atomic_json(staged / "metrics.json", {"new": True})
+            replace = storage.os.replace
+
+            def fail_new(source, target):
+                if source == staged:
+                    raise OSError("disk failure")
+                return replace(source, target)
+
+            with (
+                patch.object(storage.os, "replace", side_effect=fail_new),
+                self.assertRaises(OSError),
+            ):
+                storage.publish(root, "results", "tfidf/test", staged)
+            self.assertEqual(
+                before,
+                {
+                    str(p.relative_to(root)): p.read_bytes()
+                    for p in (root / "results").rglob("*.json")
+                },
+            )
+
+    def test_comparison_prefers_new_validation_and_never_includes_test(self):
+        from unittest.mock import patch
+
+        from classification.evaluation.comparison import refresh_comparison
+        from contracts.classification import LABELS
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            report = {
+                "model_id": "current",
+                "validation": {},
+                "settings": {
+                    "labels": list(LABELS),
+                    "data_split": {"input_fields": ["question"]},
+                },
+            }
+            storage.atomic_json(
+                root / "results/tfidf/metrics.json", dict(report, marker="legacy")
+            )
+            storage.atomic_json(
+                root / "results/tfidf/validation/metrics.json",
+                dict(report, marker="new", evaluated_split="validation"),
+            )
+            storage.atomic_json(
+                root / "results/tfidf/test/metrics.json",
+                dict(report, marker="test", evaluated_split="test"),
+            )
+            with (
+                patch.object(
+                    storage, "validate_bundle", return_value={"model_id": "current"}
+                ),
+                patch(
+                    "classification.evaluation.comparison.reporting.render_comparison",
+                    return_value="html",
+                ) as render,
+            ):
+                refresh_comparison(root)
+            self.assertEqual(render.call_count, 1)
+            self.assertEqual(render.call_args.args[0]["tfidf"]["marker"], "new")
+            self.assertEqual(
+                render.call_args.args[0]["tfidf"]["report_href"],
+                "tfidf/validation/report.html",
+            )
+
     def test_complete_manifest_detects_corruption(self):
         with tempfile.TemporaryDirectory() as temp:
             bundle = Path(temp)
@@ -127,7 +207,7 @@ class ModelStorageTests(unittest.TestCase):
             with (
                 patch(
                     "classification.cli.train.dataset.prepare_data",
-                    return_value=DatasetSplits({}, {}, {}),
+                    return_value=DatasetSplits({"train": [], "validation": []}, {}, {}),
                 ),
                 patch.object(
                     storage, "request_conditions", return_value={"seed": 42}
@@ -178,7 +258,7 @@ class ModelStorageTests(unittest.TestCase):
             with (
                 patch(
                     "classification.cli.train.dataset.prepare_data",
-                    return_value=DatasetSplits({}, {}, {}),
+                    return_value=DatasetSplits({"train": [], "validation": []}, {}, {}),
                 ),
                 patch.object(storage, "request_conditions", return_value={}),
                 patch("classification.cli.train.train", return_value=Mock()),
@@ -242,6 +322,7 @@ class ModelStorageTests(unittest.TestCase):
                         "evaluation_environment": {},
                         "data_hashes": {"test": "same"},
                         "counts": {},
+                        "validation": {},
                     },
                 )
             with (
