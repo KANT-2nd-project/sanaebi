@@ -1,3 +1,4 @@
+import copy
 import csv
 import io
 import json
@@ -11,31 +12,32 @@ from pathlib import Path
 from unittest.mock import patch
 
 from classification import model_report, test_jev
-from classification.document_split import LABELS, document_input, split_input_hashes
+from classification.question_split import LABELS, question_input, split_input_hashes
 
 
-class JevDocumentTests(unittest.TestCase):
+class JevQuestionTests(unittest.TestCase):
     def test_preview_needs_no_api_key_or_requests(self):
         script = Path(test_jev.__file__)
-        splits, _ = test_jev.prepare_document_data()
+        splits, _ = test_jev.prepare_question_data()
         expected_calls = len(splits["validation"]) + len(splits["test"])
+        self.assertEqual(expected_calls, 263)
         with (
             patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}),
             patch(
                 "urllib.request.urlopen", side_effect=AssertionError("API 호출 금지")
             ),
-            patch.object(sys, "argv", [str(script), "--preview-documents"]),
+            patch.object(sys, "argv", [str(script), "--preview-questions"]),
             patch.object(sys, "path", [str(script.parent), *sys.path]),
             redirect_stdout(io.StringIO()) as output,
         ):
             runpy.run_path(str(script), run_name="__main__")
         self.assertIn(f"Jev 평가 요청 수: {expected_calls}", output.getvalue())
 
-    def test_request_sends_document_and_six_categories(self):
-        text = document_input(
-            {"title": "VPN 안내", "text": "VPN 접속 오류는 IT에 문의한다."}
+    def test_request_sends_only_question_and_three_categories(self):
+        text = question_input(
+            {"question": "출장비 정산 절차 알려줘", "label": "SEARCH_KNOWLEDGE"}
         )
-        answer = {"answers": {"category": {"choice": "IT"}}}
+        answer = {"answers": {"category": {"choice": "SEARCH_KNOWLEDGE"}}}
         with (
             patch.dict(os.environ, {"TYPESAFE_API_KEY": "mock-key"}),
             patch.object(
@@ -47,22 +49,52 @@ class JevDocumentTests(unittest.TestCase):
             test_jev.request_classification(text)
         payload = json.loads(request.call_args.args[0].data)
         self.assertEqual(payload["state"], text)
+        self.assertNotIn("label", payload)
+        self.assertEqual(
+            payload["questions"]["category"]["instructions"], test_jev.INSTRUCTIONS
+        )
         self.assertEqual(list(payload["questions"]["category"]["criteria"]), LABELS)
+        self.assertEqual(
+            payload["questions"]["category"]["criteria"], test_jev.CATEGORIES
+        )
+        for criteria in payload["questions"]["category"]["criteria"].values():
+            self.assertEqual(
+                set(criteria), {"description", "includes", "not_for", "examples"}
+            )
+            self.assertEqual(len(criteria["examples"]), 4)
 
-    def test_evaluation_only_sends_validation_and_test_and_saves_six_probabilities(
+    def test_prompt_examples_are_train_only_and_reject_validation_ids(self):
+        splits, _ = test_jev.prepare_question_data()
+        train_ids = {row["question_id"] for row in splits["train"]}
+        example_ids = {
+            question_id
+            for ids in test_jev.EXAMPLE_QUESTION_IDS.values()
+            for question_id in ids
+        }
+        self.assertEqual(len(example_ids), 12)
+        self.assertTrue(example_ids <= train_ids)
+        changed = copy.deepcopy(test_jev.EXAMPLE_QUESTION_IDS)
+        changed["SEARCH_KNOWLEDGE"][0] = splits["validation"][0]["question_id"]
+        with (
+            patch.object(test_jev, "EXAMPLE_QUESTION_IDS", changed),
+            self.assertRaisesRegex(ValueError, "train"),
+        ):
+            test_jev.prepare_question_data()
+
+    def test_evaluation_only_sends_validation_and_test_and_saves_three_probabilities(
         self,
     ):
-        splits, record = test_jev.prepare_document_data()
+        splits, record = test_jev.prepare_question_data()
         expected_rows = splits["validation"] + splits["test"]
-        expected_inputs = [document_input(row) for row in expected_rows]
-        labels_by_input = {document_input(row): row["label"] for row in expected_rows}
+        expected_inputs = [question_input(row) for row in expected_rows]
+        labels_by_input = {question_input(row): row["label"] for row in expected_rows}
         calls = []
 
         def fake_request(text):
             calls.append(text)
             category = labels_by_input[text]
-            probabilities = {label: 0.05 for label in LABELS}
-            probabilities[category] = 0.75
+            probabilities = {label: 0.1 for label in LABELS}
+            probabilities[category] = 0.8
             return {
                 "model": "mock-jev",
                 "answers": {
@@ -87,7 +119,7 @@ class JevDocumentTests(unittest.TestCase):
                 test_jev.evaluate_csv()
             self.assertEqual(calls, expected_inputs)
             self.assertFalse(
-                set(calls) & {document_input(row) for row in splits["train"]}
+                set(calls) & {question_input(row) for row in splits["train"]}
             )
             directory = Path(temp) / "jev"
             metrics = json.loads(
@@ -105,7 +137,7 @@ class JevDocumentTests(unittest.TestCase):
             self.assertEqual(
                 metrics["counts"],
                 {
-                    "train": 0,
+                    "train": 12,
                     "validation": len(splits["validation"]),
                     "test": len(splits["test"]),
                 },
@@ -113,20 +145,25 @@ class JevDocumentTests(unittest.TestCase):
             self.assertEqual(
                 metrics["settings"]["evaluation_calls"], len(expected_rows)
             )
-            self.assertEqual(len(metrics["test"]["confusion_matrix"]), 6)
+            self.assertEqual(metrics["settings"]["prompt_examples_count"], 12)
+            self.assertEqual(metrics["settings"]["prompt_example_source"], "train")
+            self.assertEqual(
+                metrics["settings"]["prompt_example_ids"], test_jev.EXAMPLE_QUESTION_IDS
+            )
+            self.assertEqual(len(metrics["test"]["confusion_matrix"]), 3)
             self.assertEqual(len(predictions), len(expected_rows))
             self.assertEqual(len(probability_rows), len(predictions))
             for row, prediction, percentages in zip(
                 expected_rows, predictions, probability_rows
             ):
-                self.assertEqual(prediction["document_id"], row["document_id"])
-                self.assertEqual(prediction["input_text"], document_input(row))
+                self.assertEqual(prediction["question_id"], row["question_id"])
+                self.assertEqual(prediction["input_text"], question_input(row))
                 self.assertEqual(set(prediction["probabilities"]), set(LABELS))
-                self.assertEqual(float(percentages[row["label"] + "_percent"]), 75.0)
+                self.assertEqual(float(percentages[row["label"] + "_percent"]), 80.0)
             html = (directory / "report.html").read_text(encoding="utf-8")
-            self.assertIn("JEV · API 문서 분류", html)
-            self.assertIn("train 문서를 학습하거나 API에 전달하지 않습니다", html)
-            self.assertIn("보안·법무", html)
+            self.assertIn("JEV · API 요청 처리 분류", html)
+            self.assertIn("train 중 12개 질문을 대표 예시로 제공", html)
+            self.assertIn("추가 확인 필요", html)
             self.assertNotIn("<summary>train 문서 ID", html)
             self.assertFalse((directory / "split_manifest.json").exists())
             self.assertNotIn("mock-key", (directory / "metrics.json").read_text())

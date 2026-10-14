@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>질문 분류 모델 비교 · 사내비</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:#18263a;
+font:15px/1.65 'Segoe UI','Malgun Gothic',sans-serif}main{max-width:1100px;margin:auto;padding:40px 24px}
+header{margin-bottom:28px}.eyebrow{color:#3263ca;font-weight:700;letter-spacing:.12em;font-size:12px}
+h1{font-size:32px;margin:8px 0}h2{font-size:20px;margin:0 0 12px}p{margin:6px 0 16px}
+.muted{color:#657389}nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+a{color:#2455b8}nav a{background:white;padding:7px 14px;border:1px solid #dae3f1;border-radius:8px;text-decoration:none}
+section{background:white;border:1px solid #e0e7f1;border-radius:14px;padding:24px;margin:18px 0}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:white;border:1px solid #e0e7f1;border-radius:12px;padding:20px}
+.card span{display:block;color:#657389;font-size:13px}.card strong{font-size:27px;display:block;margin-top:5px}
+.scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:11px 14px;border-bottom:1px solid #e7edf5;text-align:left;vertical-align:top}
+th{background:#f5f8fd;font-weight:600;white-space:nowrap}td:first-child{min-width:90px}
+.matrix td{text-align:center}.correct{background:#edf7f1;color:#236143;font-weight:700}
+.mistake{background:#fff0ed;color:#ad4531;font-weight:700}details summary{cursor:pointer;font-weight:600}
+.note{padding:14px 18px;border-left:3px solid #5680d5;background:#edf3ff;border-radius:4px}
+footer{color:#657389;font-size:13px;margin-top:24px}
+@media(max-width:700px){main{padding:24px 14px}.cards{grid-template-columns:repeat(2,1fr)}h1{font-size:25px}section{padding:18px}}
+@media print{body{background:white}nav{display:none}section,.card{break-inside:avoid}main{max-width:none;padding:0}}
+</style></head><body><main><header><div class="eyebrow">SANAEBI · MODEL EVALUATION</div>
+<h1>질문 분류 모델 비교</h1><p class="muted">같은 질문 · 같은 카테고리 · 로컬 CPU와 원격 API 구분</p>
+<nav><a href="comparison.html">모델 비교</a><a href="bert_base/report.html">BERT_BASE</a><a href="jev/report.html">JEV</a><a href="koelectra_base/report.html">KOELECTRA_BASE</a><a href="koelectra_small/report.html">KOELECTRA_SMALL</a><a href="roberta_base/report.html">ROBERTA_BASE</a><a href="roberta_small/report.html">ROBERTA_SMALL</a><a href="tf-idf/report.html">TF-IDF + 로지스틱 회귀</a></nav></header>
+<section><h2>저장된 모델 비교</h2><div class="scroll"><table><thead><tr><th>모델</th><th>측정 방식</th><th>검증 F1</th><th>테스트 F1</th><th>정확도</th><th>평균 ms</th><th>프로세스 RAM MiB</th><th>모델 MiB</th></tr></thead><tbody><tr><td>BERT_BASE · 요청 처리 분류</td><td>로컬 CPU</td><td>0.9839</td><td>0.9480</td><td>94.78%</td><td>16.08</td><td>1176.3</td><td>422.72</td></tr><tr><td>JEV · API 요청 처리 분류</td><td>API · 네트워크 포함</td><td>0.9843</td><td>0.9542</td><td>95.52%</td><td>218.65</td><td>미측정</td><td>미공개</td></tr><tr><td>KOELECTRA_BASE · 요청 처리 분류</td><td>로컬 CPU</td><td>0.9921</td><td>0.9706</td><td>97.01%</td><td>16.38</td><td>1184.8</td><td>431.57</td></tr><tr><td>KOELECTRA_SMALL · 요청 처리 분류</td><td>로컬 CPU</td><td>0.9848</td><td>0.9331</td><td>93.28%</td><td>5.19</td><td>807.1</td><td>54.68</td></tr><tr><td>ROBERTA_BASE · 요청 처리 분류</td><td>로컬 CPU</td><td>0.9916</td><td>0.9701</td><td>97.01%</td><td>19.65</td><td>1176.6</td><td>422.73</td></tr><tr><td>ROBERTA_SMALL · 요청 처리 분류</td><td>로컬 CPU</td><td>1.0000</td><td>0.9626</td><td>96.27%</td><td>9.62</td><td>1014.0</td><td>260.49</td></tr><tr><td>TF-IDF + 로지스틱 회귀 · 요청 처리 분류</td><td>로컬 CPU</td><td>0.9680</td><td>0.9255</td><td>92.54%</td><td>0.32</td><td>132.3</td><td>2.05</td></tr></tbody></table></div></section><section><h2>비교할 때 확인할 점</h2><p>모델·설정 선택에는 검증 F1을 사용하고 테스트 점수는 최종 평가로 남깁니다. 비슷한 점수라면 오답 유형, 응답 시간과 자원 사용량을 함께 확인하세요.</p><p>로컬 모델은 CPU·스레드 제한 4·질문 1개 단위로 측정하며, RAM에는 라이브러리 메모리도 포함됩니다. API 모델의 응답 시간은 네트워크를 포함하고 서버 RAM·모델 크기는 측정할 수 없어 같은 장치의 속도 비교로 해석하면 안 됩니다.</p></section><footer>학습 손실 대신 검증 결과로 모델을 선택하고, 테스트 결과는 최종 성능 확인에 사용합니다.</footer>
+</main></body></html>

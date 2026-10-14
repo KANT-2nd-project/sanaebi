@@ -1,0 +1,15 @@
+{
+  "title": "VPN 연결 절차",
+  "input_text": "VPN 연결 절차\n업무용 VPN에 접속하려면 승인된 클라이언트를 설치하고 회사 계정으로 로그인한다. 접속 오류가 발생하면 오류 메시지를 IT 지원 담당자에게 전달한다.",
+  "predicted": "IT",
+  "confidence": 1.0,
+  "probabilities": {
+    "HR": 0.0,
+    "IT": 1.0,
+    "FINANCE_PROCUREMENT": 0.0,
+    "WORKPLACE": 0.0,
+    "SECURITY_LEGAL": 0.0,
+    "COMPANY": 0.0
+  },
+  "model": "jev-1.13.0"
+}

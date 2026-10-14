@@ -1,9 +1,10 @@
 """저장된 분류 모델을 재학습하지 않고 평가해 HTML 보고서 만들기."""
 
+# 실행 순서: 저장 설정·모델 읽기 → 저장된 질문 ID로 분할 복원
+# → 가중치를 고정한 채 성능·속도 측정 → 모델별 HTML과 비교 HTML 저장
+
 import argparse
-import csv
 import ctypes
-import hashlib
 import json
 import os
 import statistics
@@ -18,26 +19,22 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from threadpoolctl import threadpool_limits
 
 if __package__:
-    from .document_split import document_input, read_recorded_splits, split_input_hashes
+    from . import question_split
 else:
-    from document_split import document_input, read_recorded_splits, split_input_hashes
+    import question_split
 
 ROOT = Path(__file__).resolve().parent
-DATA_DIR = ROOT.parent / "data" / "archive" / "question-topics"
 RESULT_DIR = ROOT / "result"
-LABELS = ["it", "hr", "finance", "general_affairs", "other"]
-LABEL_NAMES = ["IT", "인사", "재무", "총무", "기타"]
-DOCUMENT_LABEL_NAMES = {
-    "HR": "인사",
-    "IT": "IT",
-    "FINANCE_PROCUREMENT": "재무·구매",
-    "WORKPLACE": "업무 공간·총무",
-    "SECURITY_LEGAL": "보안·법무",
-    "COMPANY": "회사·조직",
+LABELS = question_split.LABELS
+LABEL_NAMES = {
+    "SEARCH_KNOWLEDGE": "회사 지식 안내",
+    "CLARIFY": "추가 확인 필요",
+    "UNSUPPORTED": "지원 범위 밖",
 }
 CPU_THREADS = 4
 
 
+# 실행 인수 tfidf_lr는 실제 결과 폴더 tf-idf로 연결
 def report_dir(kind):
     return RESULT_DIR / ("tf-idf" if kind == "tfidf_lr" else kind)
 
@@ -75,13 +72,16 @@ def memory_mib():
     return None
 
 
-def read_rows(split):
-    with (DATA_DIR / f"{split}.csv").open(
-        "r", encoding="utf-8-sig", newline=""
-    ) as file:
-        return list(csv.DictReader(file))
+# 새 3개 라벨과 question 입력을 사용하는 결과만 비교 메뉴에 포함
+def is_current_report(report):
+    settings = report.get("settings", {})
+    record = settings.get("data_split") or {}
+    return settings.get("labels") == LABELS and record.get("input_fields") == [
+        "question"
+    ]
 
 
+# 표의 모든 값을 escape해 질문에 HTML 문자가 있어도 텍스트로 표시
 def table(headers, rows):
     head = "".join(f"<th>{escape(str(value))}</th>" for value in headers)
     body = "".join(
@@ -96,6 +96,9 @@ def page(title, subtitle, body, root_prefix=""):
     links = [("comparison.html", "모델 비교")]
     if not root_prefix:
         for metrics in sorted(RESULT_DIR.glob("*/metrics.json")):
+            report = json.loads(metrics.read_text(encoding="utf-8"))
+            if not is_current_report(report):
+                continue
             folder = metrics.parent.name
             name = "TF-IDF + 로지스틱 회귀" if folder == "tf-idf" else folder.upper()
             links.append((f"{folder}/report.html", name))
@@ -133,8 +136,11 @@ footer{{color:#657389;font-size:13px;margin-top:24px}}
 </main></body></html>"""
 
 
+# 실제 정답과 예측 라벨을 비교해 점수를 계산하는 함수 (학습은 하지 않음)
 def evaluate(rows, predictions, labels=None):
     labels = LABELS if labels is None else labels
+    if labels != LABELS:
+        raise ValueError("현재 요청 처리 3개 라벨만 평가할 수 있습니다.")
     actual = [row["label"] for row in rows]
     if (
         len(predictions) != len(rows)
@@ -142,11 +148,18 @@ def evaluate(rows, predictions, labels=None):
         or set(actual) - set(labels)
     ):
         raise ValueError("예측 개수 또는 라벨이 현재 데이터와 맞지 않습니다.")
+    # 카테고리별 precision·recall·F1·정답 수와 전체 평균을 계산
     scores = classification_report(
         actual, predictions, labels=labels, output_dict=True, zero_division=0
     )
+    # zip은 각 질문과 같은 위치의 예측을 묶고, 틀린 질문만 오답 표에 보관
     errors = [
-        [row.get("document_id", row.get("id")), row["text"], row["label"], prediction]
+        [
+            row["question_id"],
+            row["text"],
+            row["label"],
+            prediction,
+        ]
         for row, prediction in zip(rows, predictions)
         if row["label"] != prediction
     ]
@@ -161,17 +174,18 @@ def evaluate(rows, predictions, labels=None):
     }
 
 
+# 계산된 점수·설정·오답을 읽기 쉬운 HTML로 표현하는 단계
 def write_report(kind, report):
-    labels = report["settings"].get("labels", LABELS)
-    old_names = dict(zip(LABELS, LABEL_NAMES))
-    label_names = [
-        DOCUMENT_LABEL_NAMES.get(label, old_names.get(label, label)) for label in labels
-    ]
-    split_record = report["settings"].get("data_split")
+    if not is_current_report(report):
+        raise ValueError("현재 질문 3분류 모델로 학습·평가한 결과가 필요합니다.")
+    labels = LABELS
+    label_names = [LABEL_NAMES[label] for label in labels]
+    split_record = report["settings"]["data_split"]
     test = report["test"]
     timing = report["benchmark"]
     memory = timing["process_rss_mib"]
     is_api = timing.get("mode") == "api"
+    example_count = report["settings"].get("prompt_examples_count", 0)
     model_size = report["model_size_mib"]
     cards = [
         ("테스트 Macro F1", f"{test['macro_f1']:.4f}"),
@@ -231,10 +245,14 @@ def write_report(kind, report):
     per_class = test["per_class"]
     if split_record:
         body += (
-            "<section><h2>문서 분할 기록</h2>"
-            + f"<p>시드: {split_record['seed']} · 입력: 제목 + 줄바꿈 + 본문</p>"
+            "<section><h2>질문 분할 기록</h2>"
+            + f"<p>시드: {split_record['seed']} · 입력: question 열만 사용</p>"
             + (
-                "<p>아래는 비교용 공통 분할 수량입니다. Jev는 train 문서를 학습하거나 API에 전달하지 않습니다.</p>"
+                (
+                    f"<p>아래는 비교용 공통 분할 수량입니다. API 모델에는 train 중 {example_count}개 질문을 대표 예시로 제공했으며, 가중치를 학습하지 않습니다.</p>"
+                    if example_count
+                    else "<p>아래는 비교용 공통 분할 수량입니다. API 모델은 train 질문을 학습하거나 API에 전달하지 않습니다.</p>"
+                )
                 if is_api
                 else ""
             )
@@ -252,12 +270,15 @@ def write_report(kind, report):
                 ],
             )
             + table(
-                ["분할", "문서 수", "kind별 수량"],
+                ["분할", "질문 수", "source별 수량"],
                 [
                     [
                         name,
                         data["count"],
-                        json.dumps(data["kind_counts"], ensure_ascii=False),
+                        json.dumps(
+                            data["source_counts"],
+                            ensure_ascii=False,
+                        ),
                     ]
                     for name, data in split_record["splits"].items()
                 ],
@@ -384,7 +405,13 @@ def write_report(kind, report):
     body += f"<section><h2>테스트 오답 · {len(errors)}개</h2>"
     body += (
         table(
-            ["ID", "문서 입력" if split_record else "질문", "실제 정답", "예측"], errors
+            [
+                "ID",
+                "질문",
+                "실제 정답",
+                "예측",
+            ],
+            errors,
         )
         if errors
         else "<p>현재 테스트 데이터에서 오답이 없습니다.</p>"
@@ -409,10 +436,13 @@ def write_report(kind, report):
     return output
 
 
+# 모델별 metrics.json을 모아 현재 3분류 결과끼리 비교하는 페이지 생성
 def write_comparison():
     reports = []
     for path in sorted(RESULT_DIR.glob("*/metrics.json")):
-        reports.append(json.loads(path.read_text(encoding="utf-8")))
+        report = json.loads(path.read_text(encoding="utf-8"))
+        if is_current_report(report):
+            reports.append(report)
     rows = [
         [
             r["title"],
@@ -500,22 +530,17 @@ def main():
         if summary_path.is_file()
         else {}
     )
-    split_record = settings.get("data_split")
-    labels = settings.get("labels", LABELS)
-    if split_record:
-        # 모델이 학습할 때 기록한 ID로 분할을 복원해 동일한 문서로 평가
-        rows = read_recorded_splits(split_record)
-        data_hashes = split_input_hashes(rows)
-        for data in rows.values():
-            for row in data:
-                row["text"] = document_input(row)
-    else:
-        # 이전 질문 분류 모델의 보고서도 계속 확인 가능
-        rows = {split: read_rows(split) for split in ["train", "validation", "test"]}
-        data_hashes = {
-            split: hashlib.sha256((DATA_DIR / f"{split}.csv").read_bytes()).hexdigest()
-            for split in rows
-        }
+    if not is_current_report({"settings": settings}):
+        raise ValueError("현재 질문 3분류 모델로 다시 학습한 결과가 필요합니다.")
+    split_record = settings["data_split"]
+    labels = LABELS
+    # 다시 랜덤 분할하지 않고 학습 시 저장했던 질문 ID로 정확히 복원
+    rows = question_split.read_recorded_splits(split_record)
+    data_hashes = question_split.split_input_hashes(rows)
+    for data in rows.values():
+        for row in data:
+            # 보고서의 공통 평가 함수가 사용하는 text에는 실제 question만 넣음
+            row["text"] = question_split.question_input(row)
     if not rows["test"] or not rows["validation"]:
         raise ValueError("검증·테스트 데이터는 비어 있을 수 없습니다.")
     started = perf_counter()
@@ -528,12 +553,15 @@ def main():
         model = AutoModelForSequenceClassification.from_pretrained(
             model_path, local_files_only=True
         ).to("cpu")
+        # eval은 dropout 등의 평가 동작 설정, inference_mode는 기울기 계산 중지
         model.eval()
 
         def predict(text):
             encoded = tokenizer(
                 text,
-                padding="max_length",
+                padding=False
+                if settings.get("padding") == "longest_in_batch"
+                else "max_length",
                 truncation=True,
                 max_length=settings.get("max_length", 192),
                 return_tensors="pt",
@@ -543,11 +571,10 @@ def main():
                     input_ids=encoded["input_ids"],
                     attention_mask=encoded["attention_mask"],
                 )
+            # 최고 점수의 번호를 저장된 id2label로 실제 라벨 이름에 대응
             return model.config.id2label[output.logits.argmax(dim=1).item()]
 
-        title = f"{args.kind.upper()} · " + (
-            "문서 분류" if split_record else "질문 분류"
-        )
+        title = f"{args.kind.upper()} · 요청 처리 분류"
     else:
         import joblib
 
@@ -556,21 +583,23 @@ def main():
         def predict(text):
             return str(model.predict([text])[0])
 
-        title = "TF-IDF + 로지스틱 회귀 · " + (
-            "문서 분류" if split_record else "질문 분류"
-        )
+        title = "TF-IDF + 로지스틱 회귀 · 요청 처리 분류"
     load_seconds = perf_counter() - started
     with threadpool_limits(limits=CPU_THREADS):
+        # 보고서는 저장 모델의 재평가: 후보를 다시 선택하거나 가중치를 바꾸지 않음
         validation_predictions = [predict(row["text"]) for row in rows["validation"]]
         test_predictions = [predict(row["text"]) for row in rows["test"]]
+        # 첫 실행의 준비 비용을 줄이기 위해 같은 질문으로 3회 준비 실행
         for _ in range(3):
             predict(rows["test"][0]["text"])
+        # 테스트 질문별 예측 시간을 3회 측정 (추가 학습이나 모델 선택 아님)
         durations = []
         for _ in range(3):
             for row in rows["test"]:
                 started = perf_counter()
                 predict(row["text"])
                 durations.append((perf_counter() - started) * 1000)
+    # 가중치·토크나이저 파일의 합계 크기를 계산; 학습 설정 JSON은 아래에서 제외
     files = list(model_path.rglob("*")) if model_path.is_dir() else [model_path]
     report = {
         "title": title,
