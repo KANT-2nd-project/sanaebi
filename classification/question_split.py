@@ -6,7 +6,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from sklearn.model_selection import GroupShuffleSplit
+from sklearn.model_selection import StratifiedGroupKFold
 
 DATASET_PATH = Path(__file__).resolve().parents[1] / "data" / "dataset.csv"
 # 입력 순서·데이터·알고리즘도 같을 때 고정 시드로 같은 분할을 재현
@@ -33,35 +33,50 @@ def validate_rows(rows):
         raise ValueError("질문 라벨이 현재 요청 처리 3개 카테고리와 맞지 않습니다.")
 
 
+# 같은 그룹은 함께 두고, 라벨 비율이 최대한 비슷한 20개 묶음 준비
+def make_stratified_folds(rows, labels, groups, seed=RANDOM_SEED):
+    splitter = StratifiedGroupKFold(n_splits=20, shuffle=True, random_state=seed)
+
+    folds = []
+    for _, indices in splitter.split(rows, labels, groups=groups):
+        # indices는 이번 묶음에 들어갈 질문의 위치 번호 목록
+        fold = []
+        for index in indices:
+            fold.append(rows[index])
+        folds.append(fold)
+
+    return folds
+
+
+# 20개 묶음을 학습·검증·테스트로 합치기 (약 70:15:15)
+def combine_stratified_folds(folds):
+    splits = {"train": [], "validation": [], "test": []}
+
+    for fold in folds[:14]:  # 0~13번: 학습
+        splits["train"].extend(fold)
+
+    for fold in folds[14:17]:  # 14~16번: 검증
+        splits["validation"].extend(fold)
+
+    for fold in folds[17:]:  # 17~19번: 테스트
+        splits["test"].extend(fold)
+
+    return splits
+
+
 def split_questions(question_rows, seed=RANDOM_SEED):
     rows = sorted(question_rows, key=lambda row: row["question_id"])
     validate_rows(rows)
+    # 각 질문과 같은 순서로 정답 라벨 준비
+    labels = [row["label"] for row in rows]
+
     # groups의 같은 위치는 rows의 같은 위치 질문이 속한 그룹
     # 비슷한 상황의 변형 질문이 train과 평가에 동시에 들어가는 것을 방지
     groups = [row["group_id"] for row in rows]
 
-    # 전체 그룹의 약 15%를 테스트로 분리
-    test_splitter = GroupShuffleSplit(n_splits=1, test_size=0.15, random_state=seed)
-    # split은 행 자체가 아닌 행의 위치 번호(indices)를 반환
-    # n_splits=1이므로 next로 첫 분할을 꺼내고 위치 번호로 원래 행을 선택
-    remaining_indices, test_indices = next(test_splitter.split(rows, groups=groups))
-    remaining_rows = [rows[index] for index in remaining_indices]
-    remaining_groups = [row["group_id"] for row in remaining_rows]
-
-    # 남은 85%에서 약 15/85를 검증으로 분리 (전체 기준 약 15%)
-    validation_splitter = GroupShuffleSplit(
-        n_splits=1, test_size=0.15 / 0.85, random_state=seed
-    )
-    train_indices, validation_indices = next(
-        validation_splitter.split(remaining_rows, groups=remaining_groups)
-    )
-    # train·validation의 위치 번호는 remaining_rows 기준, test는 전체 rows 기준
-    # 그룹 수를 기준으로 나누므로 실제 행 수는 정확히 70:15:15가 아닐 수 있음
-    splits = {
-        "train": [remaining_rows[index] for index in train_indices],
-        "validation": [remaining_rows[index] for index in validation_indices],
-        "test": [rows[index] for index in test_indices],
-    }
+    # 라벨 비율을 고려한 20개 묶음을 만들고 14·3·3묶음으로 합치기
+    folds = make_stratified_folds(rows, labels, groups, seed=seed)
+    splits = combine_stratified_folds(folds)
     for name, data in splits.items():
         data.sort(key=lambda row: row["question_id"])
         if {row["label"] for row in data} != set(LABELS):
@@ -94,7 +109,7 @@ def make_split_record(splits, dataset_path=DATASET_PATH, seed=RANDOM_SEED):
         "seed": seed,
         "labels": LABELS,
         "input_fields": ["question"],
-        "splitter": "GroupShuffleSplit(test=0.15, validation=0.15/0.85)",
+        "splitter": "StratifiedGroupKFold(n_splits=20, shuffle=True, train=14, validation=3, test=3)",
         "splits": {},
     }
     for name, rows in splits.items():
@@ -138,6 +153,9 @@ def read_recorded_splits(record, dataset_path=DATASET_PATH):
     # 집합의 &는 공통 원소: train/검증, train/test, 검증/test의 그룹 겹침 확인
     if any(groups[i] & groups[j] for i in range(3) for j in range(i + 1, 3)):
         raise ValueError("같은 group_id가 여러 분할에 들어 있습니다.")
-    if make_split_record(splits, dataset_path, record["seed"]) != record:
+    restored_record = make_split_record(splits, dataset_path, record["seed"])
+    # ID로 복원하므로 예전 모델에는 당시 기록된 분할 방법을 유지
+    restored_record["splitter"] = record["splitter"]
+    if restored_record != record:
         raise ValueError("분할 수량·라벨·설정이 저장된 기록과 맞지 않습니다.")
     return splits
