@@ -52,7 +52,7 @@ OpenAI 호출 비용이 발생합니다. 모델별 실패는 반환된 `success`
 
 ## 프로젝트 문서
 
-- [이음웍스 회사 정책 데이터](data/company-knowledge/README.md)
+- [이음웍스 회사 정책 데이터](data/README.md#답변용-회사-지식)
 - [서비스 아키텍처](docs/service-architecture.md): 현재 API 동작과 목표 질문 처리 흐름
 - [프런트엔드 설계](docs/frontend-architecture.md): Next.js 정적 내보내기·대화형 UI·개발 API 중계·SEO 기준. 로컬 echo 연결을 검증했으며 실제 모델·외부 배포는 후속 범위
 - [서버 구성 규약](docs/server-conventions.md): 현재 모듈 구성, 책임 분리와 API 회귀 검증 기준
