@@ -5,8 +5,8 @@
 ## 해결
 
 - `data/README.md`의 현재 분할 설명을 통합했다. 현재 코드 경로는 `classification/dataset.py`이며 새 수량 632/133/135건과 과거 모델의 ID 기반 복원, 기본 validation·명시적 test 평가 설명을 유지했다.
-- 교체 전 `classification/result/` 추적 파일 18개를 [보관 폴더](../../classification/archive/results/before-stratified-2026-10-14/README.md)에 바이트 그대로 보존했다. 과거 비교 HTML과 개별 보고서의 내부 링크도 유지했다.
-- 담당자가 제출한 새 개별 지표·보고서·Jev 예측은 유지했다. [결과 안내](../../classification/result/README.md)에 출처와 한계를 기록했다.
+- 교체 전 `classification/result/` 추적 파일 18개를 [보관 폴더](../../archive/classification_v1/archive/results/before-stratified-2026-10-14/README.md)에 바이트 그대로 보존했다. 과거 비교 HTML과 개별 보고서의 내부 링크도 유지했다.
+- 담당자가 제출한 새 개별 지표·보고서·Jev 예측은 유지했다. [결과 안내](../../archive/classification_v1/result/README.md)에 출처와 한계를 기록했다.
 - 비교 화면은 현재 renderer로 validation 기준 재생성했다. 새 분할 6개 결과와 과거 분할의 roberta_base를 같은 표에서 비교하지 않고 과거 결과를 별도 링크로 제공한다.
 - Jev 테스트는 새 보고서의 현재 프롬프트 일치와 보관된 과거 예시와의 차이를 각각 검사하도록 변경했다.
 

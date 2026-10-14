@@ -15,11 +15,12 @@
 | 질문 데이터의 실제 내용 | [질문 CSV](../data/dataset.csv) | 데이터 안내의 구성 요약 |
 | 데이터 스키마·사용·검수 방법·분할 | [데이터 안내](../data/README.md), 관련 검증 코드 | 링크와 작업에 필요한 주의점 |
 | 문항별 작성·검수·조정 | [검수 기록](../data/dataset-review.csv) | 방법과 한계 요약 |
-| 분류 실험 계층·내부 계약·CLI·모델/결과 저장·MLflow 기록·명시적 재학습 정책 | [분류 코드 안내](../classification/README.md) | README·서버 규약의 링크. 성능 결과와 서버 연결 상태는 구분 |
+| 분류 직접 구현 학습 순서·현재 실습 | [학습 안내](../classification/README.md) | 기존 실험·보고서와 구분. 구현·실행 증거로 단계 완료 판단 |
+| 보존된 분류 실험 계층·내부 계약·CLI·모델/결과 저장·MLflow 기록·명시적 재학습 정책 | [분류 코드 안내](../archive/classification_v1/README.md) | README·서버 규약의 링크. 성능 결과와 서버 연결 상태는 구분 |
 | 답변 근거 지식·출처·회사 결정·문서 검수 | [회사 정책 안내](../data/README.md#답변용-회사-지식)와 연결 자료 | Notion 데이터 절차의 요약과 기준 링크 |
 | 생성 평가 기준·응답 검사 | [생성 평가 안내](generation-evaluation.md)와 평가 코드 | 과거 text 기록과 현재 구조화 응답을 구분하고 실모델 평가 여부를 표시 |
 | 새 생성 모듈 계약·학습 구현 범위 | [생성 모듈 안내](../generation/README.md)와 코드 | 서비스 설계·Notion 문서 안내에는 연결 여부와 요약 링크, 개인 일지에는 기여·검증·다음 단계 |
-| 분류 실험 결과·해석·선정 판단 | [분류 실험 보고서](../classification/reports/README.md). 실행 원자료는 각 보고서의 artifact-root·MLflow run·model_id로 연결 | Notion에는 짧은 결론과 게시된 보고서 링크. 과거 결과는 당시 출처로 보존 |
+| 분류 실험 결과·해석·선정 판단 | [새 분류 실험 보고서](../classification/reports/README.md)와 [과거 보고서](../archive/classification_v1/reports/README.md). 실행 원자료는 각 보고서의 artifact-root·model_id로 연결하며 MLflow를 사용한 실행은 run도 연결 | Notion에는 짧은 결론과 게시된 보고서 링크. 과거 결과는 당시 출처로 보존 |
 | 담당자·기한·작업 상태 | 기존 Notion 작업 항목 | 관련 작업 링크 |
 | 회의·개인 일지·결정 배경 | 기존 Notion 기록 | 채택된 기술 문서의 결정 근거 링크 |
 | 보관 자료의 사용법 | 각 `data/archive/` 안내 문서 | 현재 자료와 구별되는 용도와 버전 |

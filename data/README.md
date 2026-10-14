@@ -74,7 +74,7 @@ labels = [row["label"] for row in rows]
 
 CSV에 `split`은 없다. 학습 코드에서 `question_id` 순으로 정렬한 후 **시드 `20261013`과 `group_id`**로 약 70:15:15를 분할한다. 같은 그룹은 반드시 같은 분할에 배치한다. 행 단위 무작위 분할은 표현 변형·대조 문항이 평가에 섞일 수 있다.
 
-공통 분할 코드는 `classification/dataset.py`의 `StratifiedGroupKFold`를 사용한다.
+새 학습 구현은 `classification/dataset.py`, 보존된 기존 구현은 `archive/classification_v1/dataset.py`에서 `StratifiedGroupKFold`를 사용한다. 두 구현의 분할별 문항 집합은 같지만 반환 순서와 분할 ID 형식은 다르므로 비교 시 실제 문항 ID도 확인한다.
 같은 그룹을 유지하고 라벨 비율이 전체 데이터와 최대한 비슷하도록 20개 fold를 만든다.
 shuffle=True와 시드 `20261013`을 사용하며, 0~13번 fold는 train, 14~16번은 validation,
 17~19번은 test로 합친다. 그룹 크기 때문에 행 수와 라벨 수가 정확히 같지는 않을 수 있다.
@@ -92,7 +92,7 @@ shuffle=True와 시드 `20261013`을 사용하며, 0~13번 fold는 train, 14~16�
 비교 대상들을 같은 새 분할로 다시 학습·평가한다. Jev 대표 예시도 새 train에 속한
 질문만 사용하며, 평가셋으로 이동한 기존 예시 4개는 같은 유형의 학습 질문으로 교체했다.
 
-과거 GroupShuffleSplit의 637/129/134건 분할과 결과는 [보관 자료](../classification/archive/results/before-stratified-2026-10-14/README.md)에 보존했다.
+과거 GroupShuffleSplit의 637/129/134건 분할과 결과는 [보관 자료](../archive/classification_v1/archive/results/before-stratified-2026-10-14/README.md)에 보존했다.
 
 환경: scikit-learn 1.9.1. 실제 학습 시 같은 데이터 버전·입력 순서·분할 알고리즘을 함께 고정한다.
 
@@ -109,9 +109,9 @@ TF-IDF와 BERT 등 비교 모델은 동일한 분할을 사용하고 실제 문�
 
 라벨별 균형은 비교 실험을 위한 구성으로 실제 직원 질문의 발생 비율이 아니다. 작성·검수 모델이 공유하는 편향, 합성 문체, 실제 사내 용어·오타·대화 맥락의 부족이 남아 있다. 그룹 점검은 의미 중복을 완전히 제거했다는 보증이 아니다. 본 데이터의 평가 결과는 **합성 질문에 대한 성능**이며 실제 직원 질문에 대한 서비스 성능과 구분해야 한다.
 
-사람의 정답 검수, 모델 학습, 회사 근거 문서 작성, 실제 서비스 성능 평가는 각각 별도 근거로 판단한다. 런타임 분할은 현재 구현되어 있으며 학습·평가 실행은 [분류 안내](../classification/README.md)를 따른다. train은 train/validation만 사용하고 기본 eval은 validation, `--split test`는 test만 평가한다. 현재 test는 이미 열람한 개발 평가 자료다.
+사람의 정답 검수, 모델 학습, 회사 근거 문서 작성, 실제 서비스 성능 평가는 각각 별도 근거로 판단한다. 런타임 분할은 현재 구현되어 있으며 새 학습·평가 실행은 [학습 코드 안내](../classification/README.md), 기존 `sanaebi` 명령은 [보존된 분류 안내](../archive/classification_v1/README.md)를 따른다. train은 train/validation만 사용하고 기본 eval은 validation, `--split test`는 test만 평가한다. 현재 test는 이미 열람한 개발 평가 자료다.
 
-확정한 비교 결과와 해석은 [분류 실험 보고서](../classification/reports/README.md)에서 관리한다. 개별 실행 원자료는 해당 보고서가 연결한 MLflow·artifact-root를 따른다.
+새 비교 결과와 해석은 [분류 실험 보고서](../classification/reports/README.md), 과거 결과는 [아카이브 보고서](../archive/classification_v1/reports/README.md)에서 관리한다. 원자료는 각 보고서의 artifact-root·model_id로 연결한다. MLflow를 사용한 기존 구현·Jev 실행은 run ID도 연결하며 새 로컬 학습 구현에는 아직 MLflow가 없다.
 
 ## 이전 질문 주제 분류 자료
 

@@ -56,7 +56,7 @@ API 호출 비용이 발생합니다. 답변 생성 실패는 HTTP 502와 오류
 모델과 토크나이저, `training_summary.json`의 최대 토큰 수를 사용하며 재학습하지 않습니다.
 첫 요청에서 모델을 로드해 재사용하고, 가중치 파일이 없으면 HTTP 503과
 `분류 모델이 없습니다.` 안내를 반환합니다. 모델 생성 명령은
-`uv run --locked sanaebi train koelectra_base`입니다. 모델은 `artifacts/models/`, 별도 `sanaebi eval 모델명`은 validation만 평가하고 `--split test`로 test를 명시합니다. 결과는 `artifacts/results/<모델명>/<분할>/`에 저장합니다. 기존 모델 폴더가 있으면 검사 없이 안내하고 종료하며 재학습은 `--force`로 명시합니다. 새 실험은 로컬 MLflow에 기록하고 자체 HTML은 생성하지 않습니다. 모델은 서버의 기존 모델 경로에 자동 배치하지 않습니다. 실험 실행·저장 경로는 [분류 안내](classification/README.md)를 확인하세요.
+`uv run --locked sanaebi train koelectra_base`입니다. 이 명령은 `archive/classification_v1/`의 기존 구현을 실행합니다. 모델은 `artifacts/models/`, 별도 `sanaebi eval 모델명`은 validation만 평가하고 `--split test`로 test를 명시합니다. 결과는 `artifacts/results/<모델명>/<분할>/`에 저장합니다. 기존 모델 폴더가 있으면 검사 없이 안내하고 종료하며 재학습은 `--force`로 명시합니다. 새 실험은 로컬 MLflow에 기록하고 자체 HTML은 생성하지 않습니다. 모델은 서버의 기존 모델 경로에 자동 배치하지 않습니다. 실험 실행·저장 경로는 [분류 안내](archive/classification_v1/README.md)를 확인하세요.
 
 ## 프로젝트 문서
 
@@ -66,8 +66,9 @@ API 호출 비용이 발생합니다. 답변 생성 실패는 HTTP 502와 오류
 - [프런트엔드 설계](docs/frontend-architecture.md): Next.js 정적 내보내기·대화형 UI·개발 API 중계·SEO 기준. 기존 로컬 echo 연결을 검증했으며 새 실제 모델 답변의 브라우저 종단 검증·외부 배포는 후속 범위
 - [서버 구성 규약](docs/server-conventions.md): 현재 모듈 구성, 책임 분리와 API 회귀 검증 기준
 - [요청 처리 분류·라벨링 기준 v1.0](docs/label-taxonomy.md): 질문 처리 라벨의 정의와 경계 사례
-- [분류 실험 코드 안내](classification/README.md): 코드 읽는 순서, 공통 학습·평가 구조와 실행 방법
-- [분류 실험 보고서](classification/reports/README.md): 모델 비교 결과·오분류·선정 판단과 실행 근거
+- [분류 학습 코드](classification/README.md): CSV·그룹 분할·TF-IDF·Transformer 학습·명시적 평가; 직접 작성과 AI 위임 범위 구분
+- [기존 분류 실험 코드 안내](archive/classification_v1/README.md): 코드 읽는 순서, 공통 학습·평가 구조와 실행 방법
+- [분류 실험 보고서](classification/reports/README.md): 새 코드의 7종 비교·오분류·선정 판단과 실행 근거. [과거 보고서](archive/classification_v1/reports/README.md)는 당시 조건으로 보존
 - [요청 처리 데이터 안내](data/README.md): 데이터 구조, 작성·검수 기록, 분할과 검증 범위
 - [문서 주제 분류 아카이브 v0.2](data/archive/document-topics-v0.2/README.md): 이전 문서 분류 실험 데이터
 - [질문 주제 분류 아카이브](data/archive/question-topics/README.md): 이전 질문 분류 실험 데이터
