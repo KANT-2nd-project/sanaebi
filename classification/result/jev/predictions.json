@@ -5,14 +5,14 @@
     "input_text": "제가 올린 코드의 버그를 직접 찾아서 수정본까지 만들어 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.76,
+    "confidence": 0.98,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.0,
-      "CLARIFY": 0.16,
-      "UNSUPPORTED": 0.84
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 256.9776999298483
+    "elapsed_ms": 201.79899991489947
   },
   {
     "split": "validation",
@@ -20,14 +20,14 @@
     "input_text": "거래처 계좌 정정과 재지급 절차를 알려주시고, 제가 등록한 지급 계좌도 바꿔 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.77,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.85,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.13
+      "SEARCH_KNOWLEDGE": 0.93,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.07
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 236.6665001027286
+    "elapsed_ms": 207.68960006535053
   },
   {
     "split": "validation",
@@ -35,14 +35,14 @@
     "input_text": "개발 도구 라이선스를 신청한 뒤 좌석 배정 여부를 직원이 확인하는 방법이 있나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.92,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.95,
+      "SEARCH_KNOWLEDGE": 0.99,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.05
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 206.43549994565547
+    "elapsed_ms": 205.79859986901283
   },
   {
     "split": "validation",
@@ -57,7 +57,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.61749995313585
+    "elapsed_ms": 182.4467999394983
   },
   {
     "split": "validation",
@@ -65,14 +65,14 @@
     "input_text": "제 계정에 프로덕션 저장소 관리자 권한을 지금 부여해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
+      "SEARCH_KNOWLEDGE": 0.0,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.98
+      "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 210.79870010726154
+    "elapsed_ms": 214.3427999690175
   },
   {
     "split": "validation",
@@ -87,7 +87,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 198.80670006386936
+    "elapsed_ms": 199.65009996667504
   },
   {
     "split": "validation",
@@ -95,19 +95,34 @@
     "input_text": "증명서 발급 건 좀 같이 봐주실래요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.77,
+    "confidence": 0.92,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.85,
-      "UNSUPPORTED": 0.1
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.95,
+      "UNSUPPORTED": 0.04
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 212.11720001883805
+    "elapsed_ms": 190.4225000180304
   },
   {
     "split": "validation",
     "question_id": "RQ0050",
     "input_text": "제 노트북 키보드 장애에 대한 IT 지원 티켓을 지금 대신 등록해 주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 1.0,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 1.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 187.39149998873472
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0053",
+    "input_text": "제가 요청한 증명서 발급 건이 완료됐는지 포털에서 확인해 줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
     "confidence": 0.98,
@@ -117,22 +132,7 @@
       "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 228.10650011524558
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0053",
-    "input_text": "제가 요청한 증명서 발급 건이 완료됐는지 포털에서 확인해 줘.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.91,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.94
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 207.52779999747872
+    "elapsed_ms": 201.29700005054474
   },
   {
     "split": "validation",
@@ -147,7 +147,7 @@
       "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 230.15960003249347
+    "elapsed_ms": 199.51639999635518
   },
   {
     "split": "validation",
@@ -162,7 +162,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 198.33549996837974
+    "elapsed_ms": 211.73020009882748
   },
   {
     "split": "validation",
@@ -170,14 +170,14 @@
     "input_text": "서명 완료된 계약서가 어디에 보관되고 직원이 어떻게 찾아보는지 안내해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.99,
-      "CLARIFY": 0.01,
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 199.6192999649793
+    "elapsed_ms": 245.157599914819
   },
   {
     "split": "validation",
@@ -185,14 +185,14 @@
     "input_text": "외부 공유 링크 9f31의 현재 접근 가능 상태를 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.79,
+    "confidence": 0.92,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.09,
-      "UNSUPPORTED": 0.86
+      "SEARCH_KNOWLEDGE": 0.04,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.95
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 215.30949999578297
+    "elapsed_ms": 220.24279995821416
   },
   {
     "split": "validation",
@@ -202,12 +202,12 @@
     "predicted": "CLARIFY",
     "confidence": 0.94,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
+      "SEARCH_KNOWLEDGE": 0.03,
       "CLARIFY": 0.96,
-      "UNSUPPORTED": 0.0
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 216.6414000093937
+    "elapsed_ms": 210.40720003657043
   },
   {
     "split": "validation",
@@ -215,14 +215,14 @@
     "input_text": "허리 통증으로 높낮이 책상이 필요해요. 어떻게 요청하나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.94,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.96,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.03
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 225.33350018784404
+    "elapsed_ms": 210.85160016082227
   },
   {
     "split": "validation",
@@ -237,7 +237,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 225.60500004328787
+    "elapsed_ms": 198.53690010495484
   },
   {
     "split": "validation",
@@ -245,14 +245,14 @@
     "input_text": "회의실 예약에 화상 카메라 장비를 추가해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.86,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.07,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.91
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 218.58950005844235
+    "elapsed_ms": 202.5003000162542
   },
   {
     "split": "validation",
@@ -260,14 +260,14 @@
     "input_text": "브라우저 추가 기능 검토표에 붙은 이 표시는 사용 가능이라는 뜻인가요, 검토 중이라는 뜻인가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.91,
+    "confidence": 0.48,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.94,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.33,
+      "CLARIFY": 0.65,
+      "UNSUPPORTED": 0.02
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.18019986897707
+    "elapsed_ms": 200.69139986298978
   },
   {
     "split": "validation",
@@ -275,14 +275,14 @@
     "input_text": "계약이 종료된 외부 인력의 사원증 출입 권한을 회수해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.82,
+    "confidence": 0.94,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.1,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.88
+      "SEARCH_KNOWLEDGE": 0.04,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.96
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 234.71780004911125
+    "elapsed_ms": 206.60799997858703
   },
   {
     "split": "validation",
@@ -290,14 +290,14 @@
     "input_text": "다음 주 협력사 방문자를 등록하려는데 출입 관련해서 질문이 있습니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.89,
+    "confidence": 0.77,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.07,
-      "CLARIFY": 0.93,
+      "SEARCH_KNOWLEDGE": 0.15,
+      "CLARIFY": 0.85,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.1801002174616
+    "elapsed_ms": 212.16540015302598
   },
   {
     "split": "validation",
@@ -305,14 +305,14 @@
     "input_text": "팀 드라이브의 예산 폴더 접근 권한을 지금 수정해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.96
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 231.03280016221106
+    "elapsed_ms": 202.01079989783466
   },
   {
     "split": "validation",
@@ -320,14 +320,14 @@
     "input_text": "폴더 접근 권한 변경은 누가 승인하나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.02,
+      "SEARCH_KNOWLEDGE": 0.97,
+      "CLARIFY": 0.03,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 225.7723999209702
+    "elapsed_ms": 205.84390009753406
   },
   {
     "split": "validation",
@@ -335,14 +335,14 @@
     "input_text": "외부 협력자 메일 주소로 프로젝트 공간 초대를 지금 보내 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.92,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.95
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 200.64419996924698
+    "elapsed_ms": 210.95199999399483
   },
   {
     "split": "validation",
@@ -350,14 +350,14 @@
     "input_text": "인쇄 대기열에 오래된 작업을 지우라는 연락을 받았는데 목록에 제 문서가 여러 개 보입니다. 어떤 작업을 삭제하라는 건가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.77,
+    "confidence": 0.71,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.07,
-      "CLARIFY": 0.85,
-      "UNSUPPORTED": 0.08
+      "SEARCH_KNOWLEDGE": 0.04,
+      "CLARIFY": 0.8099999999999999,
+      "UNSUPPORTED": 0.15
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 230.12740002013743
+    "elapsed_ms": 207.59469992481172
   },
   {
     "split": "validation",
@@ -365,14 +365,14 @@
     "input_text": "퇴사자 계정 종료와 자료 인계 절차를 알려주시고, 대상 직원의 회사 계정도 지금 비활성화해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.7,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.8,
-      "CLARIFY": 0.06,
-      "UNSUPPORTED": 0.14
+      "SEARCH_KNOWLEDGE": 0.93,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.06
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 244.39899995923042
+    "elapsed_ms": 199.7087001800537
   },
   {
     "split": "validation",
@@ -387,7 +387,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 213.33970013074577
+    "elapsed_ms": 203.83349992334843
   },
   {
     "split": "validation",
@@ -395,14 +395,14 @@
     "input_text": "임신 중 근무 지원 안내를 읽었는데, 제가 표시한 부분은 기간 전체에 적용돼요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.92,
+    "confidence": 0.55,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.95,
+      "SEARCH_KNOWLEDGE": 0.3,
+      "CLARIFY": 0.7,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.15560000017285
+    "elapsed_ms": 208.15499988384545
   },
   {
     "split": "validation",
@@ -410,14 +410,14 @@
     "input_text": "회의실 문 수리를 접수하려는데 하나만 확인하고 싶어요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 0.92,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.98,
+      "SEARCH_KNOWLEDGE": 0.04,
+      "CLARIFY": 0.95,
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 221.7536000534892
+    "elapsed_ms": 220.4007999971509
   },
   {
     "split": "validation",
@@ -432,7 +432,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 200.33330004662275
+    "elapsed_ms": 197.18390004709363
   },
   {
     "split": "validation",
@@ -440,14 +440,14 @@
     "input_text": "분실한 제 회사 노트북을 지금 원격 초기화해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.86,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.09,
+      "SEARCH_KNOWLEDGE": 0.02,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.91
+      "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 206.8384001031518
+    "elapsed_ms": 199.06040001660585
   },
   {
     "split": "validation",
@@ -455,14 +455,14 @@
     "input_text": "개인정보 노출 의심 신고를 올린 뒤 담당 부서 배정을 확인하는 절차를 안내해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 236.13309999927878
+    "elapsed_ms": 211.76570001989603
   },
   {
     "split": "validation",
@@ -470,14 +470,14 @@
     "input_text": "회의실 화면 장비를 요청하는 절차를 알려주시고, 해당 예약에 카메라도 추가해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.83,
+    "confidence": 0.94,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.89,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.08
+      "SEARCH_KNOWLEDGE": 0.96,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.04
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 213.7615999672562
+    "elapsed_ms": 201.9587999675423
   },
   {
     "split": "validation",
@@ -485,14 +485,14 @@
     "input_text": "이번에는 카메라 말고 말씀하신 장비를 넣으면 될까요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.91,
+    "confidence": 0.85,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.94,
-      "UNSUPPORTED": 0.03
+      "SEARCH_KNOWLEDGE": 0.05,
+      "CLARIFY": 0.9,
+      "UNSUPPORTED": 0.05
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 207.13870017789304
+    "elapsed_ms": 206.94610010832548
   },
   {
     "split": "validation",
@@ -500,14 +500,14 @@
     "input_text": "개인 프로젝트용 홈페이지 디자인을 만들어 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 1.0,
+    "confidence": 0.98,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.0,
-      "CLARIFY": 0.0,
-      "UNSUPPORTED": 1.0
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.4361999295652
+    "elapsed_ms": 219.83560011722147
   },
   {
     "split": "validation",
@@ -515,29 +515,29 @@
     "input_text": "출장 정산하다 막혔어요. 좀 봐주실래요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.86,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.91,
-      "UNSUPPORTED": 0.04
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.98,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.49729992449284
+    "elapsed_ms": 202.0057998597622
   },
   {
     "split": "validation",
     "question_id": "RQ0201",
     "input_text": "협력자에게 공간을 열어준다는 말은 들었는데 계정 발급인지 프로젝트 초대인지 구분이 안 됩니다. 어느 쪽을 부탁해야 하나요?",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.34,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.38,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.44,
-      "CLARIFY": 0.56,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.59,
+      "CLARIFY": 0.4,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 218.8054001890123
+    "elapsed_ms": 206.52040001004934
   },
   {
     "split": "validation",
@@ -545,14 +545,14 @@
     "input_text": "교육비 지원 건을 좀 봐주시면 좋겠어요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.8,
+    "confidence": 0.69,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.87,
-      "UNSUPPORTED": 0.1
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.79,
+      "UNSUPPORTED": 0.2
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 199.81729984283447
+    "elapsed_ms": 214.98099993914366
   },
   {
     "split": "validation",
@@ -560,14 +560,14 @@
     "input_text": "은행에 내라고 했던 그 증명서, 지난번에 말한 걸로 발급하면 될까요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.91,
+    "confidence": 0.73,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.94,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 0.12,
+      "CLARIFY": 0.82,
+      "UNSUPPORTED": 0.06
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.89090005867183
+    "elapsed_ms": 198.07719998061657
   },
   {
     "split": "validation",
@@ -575,14 +575,14 @@
     "input_text": "제 분실 법인카드 사용을 지금 정지해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
+      "SEARCH_KNOWLEDGE": 0.02,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.96
+      "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 214.21209978871047
+    "elapsed_ms": 316.2039997987449
   },
   {
     "split": "validation",
@@ -597,7 +597,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 249.17860003188252
+    "elapsed_ms": 206.89030014909804
   },
   {
     "split": "validation",
@@ -605,14 +605,14 @@
     "input_text": "고객 화면이 팀 위키에 노출된 일을 신고한 뒤 자동 회신과 추가 자료 요청을 받았습니다. 제가 상황을 설명해야 하는 건지 담당 배정을 확인해야 하는 건지 헷갈립니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.48,
+    "confidence": 0.85,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.34,
-      "CLARIFY": 0.65,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.1,
+      "CLARIFY": 0.9,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 222.13570005260408
+    "elapsed_ms": 206.70600002631545
   },
   {
     "split": "validation",
@@ -627,7 +627,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 223.1177999638021
+    "elapsed_ms": 207.72449998185039
   },
   {
     "split": "validation",
@@ -637,12 +637,12 @@
     "predicted": "CLARIFY",
     "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.9299999999999999,
-      "UNSUPPORTED": 0.06
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 0.93,
+      "UNSUPPORTED": 0.07
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 220.9671000018716
+    "elapsed_ms": 217.7893000189215
   },
   {
     "split": "validation",
@@ -650,14 +650,14 @@
     "input_text": "공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로가 있나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.89,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.9299999999999999,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.05
+      "SEARCH_KNOWLEDGE": 0.98,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.34269995614886
+    "elapsed_ms": 277.17890008352697
   },
   {
     "split": "validation",
@@ -665,14 +665,14 @@
     "input_text": "팀 소개 좀 부탁드려요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.28,
+    "confidence": 0.46,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.47,
-      "CLARIFY": 0.52,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.2,
+      "CLARIFY": 0.64,
+      "UNSUPPORTED": 0.16
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 221.0964998230338
+    "elapsed_ms": 194.97620011679828
   },
   {
     "split": "validation",
@@ -680,14 +680,14 @@
     "input_text": "새 팀원 소개 문안을 사내 게시판에 올려 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.72,
+    "confidence": 0.7,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.1,
-      "CLARIFY": 0.09,
-      "UNSUPPORTED": 0.81
+      "SEARCH_KNOWLEDGE": 0.13,
+      "CLARIFY": 0.07,
+      "UNSUPPORTED": 0.8
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 216.06199978850782
+    "elapsed_ms": 230.45519995503128
   },
   {
     "split": "validation",
@@ -702,7 +702,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 222.08659979514778
+    "elapsed_ms": 212.2234997805208
   },
   {
     "split": "validation",
@@ -710,14 +710,14 @@
     "input_text": "백업 복구를 요청한 뒤 승인 알림과 완료 안내를 모두 받았습니다. 이 건에서 제가 답해야 할 부분이 어느 단계인지 모르겠어요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.67,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.21,
-      "CLARIFY": 0.78,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.98,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 231.2776001635939
+    "elapsed_ms": 195.97889995202422
   },
   {
     "split": "validation",
@@ -725,14 +725,14 @@
     "input_text": "연차 건 좀 봐주세요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.82,
+    "confidence": 0.72,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.88,
-      "UNSUPPORTED": 0.09
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.81,
+      "UNSUPPORTED": 0.17
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 215.27529996819794
+    "elapsed_ms": 207.37920003011823
   },
   {
     "split": "validation",
@@ -740,14 +740,14 @@
     "input_text": "서명 완료 이메일을 보니 원본 저장과 법무 종료가 따로 표시됩니다. 지금 어느 기록을 확인해 달라는 뜻인지 혼란스럽습니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.8,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.08,
-      "CLARIFY": 0.87,
-      "UNSUPPORTED": 0.05
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.97,
+      "UNSUPPORTED": 0.02
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.50819993577898
+    "elapsed_ms": 211.35519980452955
   },
   {
     "split": "validation",
@@ -757,27 +757,27 @@
     "predicted": "UNSUPPORTED",
     "confidence": 0.69,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.13,
-      "CLARIFY": 0.08,
+      "SEARCH_KNOWLEDGE": 0.14,
+      "CLARIFY": 0.07,
       "UNSUPPORTED": 0.79
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 212.32029981911182
+    "elapsed_ms": 218.9736000727862
   },
   {
     "split": "validation",
     "question_id": "RQ0331",
     "input_text": "연차 기록에 뭔가 떠 있는데 어떤 내용인지 몰라서요. 이거 좀 봐주실 수 있나요?",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.67,
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.37,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.78,
-      "UNSUPPORTED": 0.21
+      "CLARIFY": 0.41,
+      "UNSUPPORTED": 0.58
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 209.12290015257895
+    "elapsed_ms": 214.4759998191148
   },
   {
     "split": "validation",
@@ -785,14 +785,14 @@
     "input_text": "그 권한은 계약 종료일에 맞춰서 끄면 되는 거였나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.52,
+    "confidence": 0.38,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.31,
-      "CLARIFY": 0.68,
+      "SEARCH_KNOWLEDGE": 0.4,
+      "CLARIFY": 0.59,
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 222.75250009261072
+    "elapsed_ms": 183.24650009162724
   },
   {
     "split": "validation",
@@ -800,14 +800,14 @@
     "input_text": "제 회사 계정에 등록된 협업 앱 SSO 권한을 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.74,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.13,
-      "CLARIFY": 0.04,
-      "UNSUPPORTED": 0.83
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.97
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 206.31839986890554
+    "elapsed_ms": 184.82639989815652
   },
   {
     "split": "validation",
@@ -815,14 +815,14 @@
     "input_text": "법무 검토를 마친 계약서에 서명하기 전에 필요한 결재와 서명 권한 절차가 궁금합니다.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.99,
-      "CLARIFY": 0.01,
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 190.47340005636215
+    "elapsed_ms": 221.8798000831157
   },
   {
     "split": "validation",
@@ -837,7 +837,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 236.2542999908328
+    "elapsed_ms": 201.4398998580873
   },
   {
     "split": "validation",
@@ -845,14 +845,14 @@
     "input_text": "검토 완료된 협력사 계약서에 지금 회사 서명을 진행해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.95,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.97
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 247.2455999813974
+    "elapsed_ms": 210.34059999510646
   },
   {
     "split": "validation",
@@ -860,29 +860,29 @@
     "input_text": "부서 공용 메일 주소를 만들 때 명칭과 사용자를 정해 어디에 신청하나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.02,
+      "SEARCH_KNOWLEDGE": 0.99,
+      "CLARIFY": 0.01,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.34249995462596
+    "elapsed_ms": 206.72690006904304
   },
   {
     "split": "validation",
     "question_id": "RQ0390",
     "input_text": "교육비 지원 신청서에서 제가 밑줄 친 금액은 수강료 전체를 뜻하나요?",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.82,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.31,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.12,
-      "CLARIFY": 0.88,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.54,
+      "CLARIFY": 0.45,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.599400119856
+    "elapsed_ms": 199.6583000291139
   },
   {
     "split": "validation",
@@ -890,14 +890,14 @@
     "input_text": "이번 주 제품 운영 당번표에 제 계정으로 배정된 담당 서비스가 무엇인지 조회해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.91,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.94
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 202.42709992453456
+    "elapsed_ms": 208.99240020662546
   },
   {
     "split": "validation",
@@ -905,14 +905,14 @@
     "input_text": "법인카드 분실 신고와 재발급 경로를 설명해 주시고, 제 카드 사용 정지도 처리해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.76,
+    "confidence": 0.94,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.84,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.14
+      "SEARCH_KNOWLEDGE": 0.96,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.04
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 196.9802000094205
+    "elapsed_ms": 200.96529996953905
   },
   {
     "split": "validation",
@@ -920,14 +920,14 @@
     "input_text": "아이 병원 때문에 몇 시간 비울 건데, 아까 그 선택지 중에 뭘 고르면 되죠?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.92,
+    "confidence": 0.95,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.95,
-      "UNSUPPORTED": 0.02
+      "CLARIFY": 0.97,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 213.66479992866516
+    "elapsed_ms": 208.02189991809428
   },
   {
     "split": "validation",
@@ -942,7 +942,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 234.73699996247888
+    "elapsed_ms": 230.85559997707605
   },
   {
     "split": "validation",
@@ -950,14 +950,14 @@
     "input_text": "카탈로그 밖 부품으로 올린 구매 요청이 승인됐는지 조회해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.91,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.94
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 209.37520009465516
+    "elapsed_ms": 198.75260000117123
   },
   {
     "split": "validation",
@@ -965,14 +965,14 @@
     "input_text": "라이선스 담당팀에 서류를 보낼 건데 제가 고른 양식이 맞는 건가요? 비슷한 이름의 서식이 둘이라 헷갈려요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.67,
+    "confidence": 0.51,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.22,
-      "CLARIFY": 0.78,
+      "SEARCH_KNOWLEDGE": 0.33,
+      "CLARIFY": 0.67,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 199.12769994698465
+    "elapsed_ms": 199.34460008516908
   },
   {
     "split": "validation",
@@ -987,7 +987,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 196.94880000315607
+    "elapsed_ms": 204.4790000654757
   },
   {
     "split": "validation",
@@ -995,14 +995,14 @@
     "input_text": "우리 팀에서 지금 육아휴직 중인 사람이 누구인지 알려줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.95,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.97
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 191.18169997818768
+    "elapsed_ms": 215.54150013253093
   },
   {
     "split": "validation",
@@ -1010,14 +1010,14 @@
     "input_text": "반전이 있고 너무 무겁지 않은 영화도 몇 편 더 골라줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.95,
+    "confidence": 0.89,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.0,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.97
+      "CLARIFY": 0.07,
+      "UNSUPPORTED": 0.93
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 222.8252999484539
+    "elapsed_ms": 211.42569999210536
   },
   {
     "split": "validation",
@@ -1027,12 +1027,12 @@
     "predicted": "CLARIFY",
     "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.0,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.99,
-      "UNSUPPORTED": 0.01
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 218.52000011131167
+    "elapsed_ms": 198.19279992952943
   },
   {
     "split": "validation",
@@ -1040,14 +1040,14 @@
     "input_text": "예약 발송해 둔 제 회사 메일이 오늘 정해 둔 시각에 실제로 전송됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.96
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 214.09640018828213
+    "elapsed_ms": 203.40240001678467
   },
   {
     "split": "validation",
@@ -1062,7 +1062,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.17960007116199
+    "elapsed_ms": 197.87739985622466
   },
   {
     "split": "validation",
@@ -1077,7 +1077,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 219.6269000414759
+    "elapsed_ms": 217.52009983174503
   },
   {
     "split": "validation",
@@ -1085,14 +1085,14 @@
     "input_text": "관리자 역할로 가능한가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.38,
+    "confidence": 0.31,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.38,
-      "CLARIFY": 0.59,
-      "UNSUPPORTED": 0.03
+      "SEARCH_KNOWLEDGE": 0.32,
+      "CLARIFY": 0.54,
+      "UNSUPPORTED": 0.14
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.04589984193444
+    "elapsed_ms": 234.17899990454316
   },
   {
     "split": "validation",
@@ -1107,7 +1107,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 223.31089992076159
+    "elapsed_ms": 207.29999989271164
   },
   {
     "split": "validation",
@@ -1122,7 +1122,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 206.17030002176762
+    "elapsed_ms": 201.28389983437955
   },
   {
     "split": "validation",
@@ -1130,14 +1130,14 @@
     "input_text": "남은 연차 관련해서 말씀하신 그 기준이 그대로 되는 거죠?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.94,
+    "confidence": 0.74,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.96,
+      "SEARCH_KNOWLEDGE": 0.17,
+      "CLARIFY": 0.83,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 200.48150001093745
+    "elapsed_ms": 210.71859984658659
   },
   {
     "split": "validation",
@@ -1145,14 +1145,14 @@
     "input_text": "강의 승인 후 제출하라는 건 그 수료증 얘기였나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.98,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.06,
+      "CLARIFY": 0.93,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 189.20819996856153
+    "elapsed_ms": 220.81349999643862
   },
   {
     "split": "validation",
@@ -1160,214 +1160,19 @@
     "input_text": "그 소개 메일은 팀 전체한테 보낸다고 했던 거 맞죠?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.86,
+    "confidence": 0.41,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.91,
-      "UNSUPPORTED": 0.08
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.61,
+      "UNSUPPORTED": 0.37
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 210.18139994703233
+    "elapsed_ms": 219.92850000970066
   },
   {
     "split": "validation",
     "question_id": "RQ0503",
     "input_text": "화상회의 진행 중 발표자를 다른 참석자로 넘기거나 화면 공유 권한을 전달하는 방법을 알려주세요.",
-    "actual": "SEARCH_KNOWLEDGE",
-    "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.95,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.97,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.0
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 228.8369000889361
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0507",
-    "input_text": "김도윤 님의 회사 계정이 비활성화됐는지 확인해 주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.95,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.97
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 253.79989994689822
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0517",
-    "input_text": "우편실에서 서류 찾으라고 받은 안내에 이걸 가져오라는데, 뭘 챙겨가라는 뜻인가요?",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.69,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.79,
-      "UNSUPPORTED": 0.15
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 210.01319983042777
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0529",
-    "input_text": "새 팀원이 합류해 폴더 접근을 정리하려는데 멤버 초대와 권한 수준 변경을 모두 이야기합니다. 어느 조치가 필요한지 모르겠어요.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.3,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.47,
-      "CLARIFY": 0.53,
-      "UNSUPPORTED": 0.0
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 210.53619985468686
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0535",
-    "input_text": "고객 정보가 보이는 게시물을 위키에서 지금 내려 주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.8,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.07,
-      "UNSUPPORTED": 0.87
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 208.41869991272688
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0576",
-    "input_text": "공유한 외부 링크를 회수해야 할 때 링크 만료와 권한 제거를 어떻게 요청하나요?",
-    "actual": "SEARCH_KNOWLEDGE",
-    "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.86,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.91,
-      "CLARIFY": 0.04,
-      "UNSUPPORTED": 0.05
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 235.374900046736
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0579",
-    "input_text": "구매 요청 초안이 있는데 어디까지 손봐야 할지 모르겠어요. 좀 도와주세요.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.89,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.9299999999999999,
-      "UNSUPPORTED": 0.03
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 207.97229977324605
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0584",
-    "input_text": "새 팀 주소를 준비하라고만 들었고 별칭 생성과 메일함 개설 중 어느 쪽인지 안내를 못 받았어요.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.61,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.25,
-      "CLARIFY": 0.74,
-      "UNSUPPORTED": 0.01
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 206.01560012437403
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0588",
-    "input_text": "동료가 노트북 키보드가 불편하다고만 전했습니다. 키 배열을 바꾸고 싶은 건지 실제 고장 수리를 원하는 건지 증상이 없어 어떤 지원을 연결해야 할지 모르겠습니다.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.94,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.96,
-      "UNSUPPORTED": 0.01
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 201.1133001651615
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0604",
-    "input_text": "제 계정에 개발 도구 라이선스 좌석이 배정됐는지 알려주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.8,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.12,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.87
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 214.06499994918704
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0606",
-    "input_text": "노트북 분실 접수에는 사용자의 이름만 있고 회사 장비 자산번호가 없습니다. 그 사람에게 지급된 노트북과 출장용 예비 노트북 중 무엇을 잃어버렸는지 몰라 대상 장비를 특정할 수 없어요.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.89,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.93,
-      "UNSUPPORTED": 0.03
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 206.26550004817545
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0612",
-    "input_text": "지난달부터 외부 파트너와 회의자료를 주고받고 있습니다. 제가 보낸 링크에는 만료 날짜가 표시되고 상대는 접근 승인 메일을 전달해 왔는데, 이 건에서 어느 상태를 확인해 달라는 뜻인지 모르겠어요.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.86,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.91,
-      "UNSUPPORTED": 0.04
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 243.4634999372065
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0620",
-    "input_text": "수리 접수 뒤 교체 장비와 부품 점검 안내가 따로 왔어요. 어느 안내를 따라야 할지 판단이 안 됩니다.",
-    "actual": "CLARIFY",
-    "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.38,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.59,
-      "CLARIFY": 0.41,
-      "UNSUPPORTED": 0.0
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 223.10120007023215
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0627",
-    "input_text": "문서 편집 화면에서 변경 전후 내용을 나란히 비교하는 기능은 어디서 열 수 있나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
     "confidence": 0.92,
@@ -1377,7 +1182,202 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 243.91469988040626
+    "elapsed_ms": 205.8174000121653
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0507",
+    "input_text": "김도윤 님의 회사 계정이 비활성화됐는지 확인해 주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.98,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 194.52070002444088
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0517",
+    "input_text": "우편실에서 서류 찾으라고 받은 안내에 이걸 가져오라는데, 뭘 챙겨가라는 뜻인가요?",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.83,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.11,
+      "CLARIFY": 0.89,
+      "UNSUPPORTED": 0.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 220.33929987810552
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0529",
+    "input_text": "새 팀원이 합류해 폴더 접근을 정리하려는데 멤버 초대와 권한 수준 변경을 모두 이야기합니다. 어느 조치가 필요한지 모르겠어요.",
+    "actual": "CLARIFY",
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.55,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.7,
+      "CLARIFY": 0.29,
+      "UNSUPPORTED": 0.01
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 201.46839995868504
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0535",
+    "input_text": "고객 정보가 보이는 게시물을 위키에서 지금 내려 주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.92,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.02,
+      "UNSUPPORTED": 0.95
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 208.47590011544526
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0576",
+    "input_text": "공유한 외부 링크를 회수해야 할 때 링크 만료와 권한 제거를 어떻게 요청하나요?",
+    "actual": "SEARCH_KNOWLEDGE",
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.95,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.97,
+      "CLARIFY": 0.02,
+      "UNSUPPORTED": 0.01
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 207.6791999861598
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0579",
+    "input_text": "구매 요청 초안이 있는데 어디까지 손봐야 할지 모르겠어요. 좀 도와주세요.",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.83,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.89,
+      "UNSUPPORTED": 0.09
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 193.26790003105998
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0584",
+    "input_text": "새 팀 주소를 준비하라고만 들었고 별칭 생성과 메일함 개설 중 어느 쪽인지 안내를 못 받았어요.",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.73,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.18,
+      "CLARIFY": 0.82,
+      "UNSUPPORTED": 0.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 185.28810003772378
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0588",
+    "input_text": "동료가 노트북 키보드가 불편하다고만 전했습니다. 키 배열을 바꾸고 싶은 건지 실제 고장 수리를 원하는 건지 증상이 없어 어떤 지원을 연결해야 할지 모르겠습니다.",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.97,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.98,
+      "UNSUPPORTED": 0.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 221.12259990535676
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0604",
+    "input_text": "제 계정에 개발 도구 라이선스 좌석이 배정됐는지 알려주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.97,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.98
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 187.24439991638064
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0606",
+    "input_text": "노트북 분실 접수에는 사용자의 이름만 있고 회사 장비 자산번호가 없습니다. 그 사람에게 지급된 노트북과 출장용 예비 노트북 중 무엇을 잃어버렸는지 몰라 대상 장비를 특정할 수 없어요.",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.86,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.91,
+      "UNSUPPORTED": 0.07
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 212.82549994066358
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0612",
+    "input_text": "지난달부터 외부 파트너와 회의자료를 주고받고 있습니다. 제가 보낸 링크에는 만료 날짜가 표시되고 상대는 접근 승인 메일을 전달해 왔는데, 이 건에서 어느 상태를 확인해 달라는 뜻인지 모르겠어요.",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.91,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.94,
+      "UNSUPPORTED": 0.04
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 182.47310002334416
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0620",
+    "input_text": "수리 접수 뒤 교체 장비와 부품 점검 안내가 따로 왔어요. 어느 안내를 따라야 할지 판단이 안 됩니다.",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.98,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.99,
+      "UNSUPPORTED": 0.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 228.44510013237596
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0627",
+    "input_text": "문서 편집 화면에서 변경 전후 내용을 나란히 비교하는 기능은 어디서 열 수 있나요?",
+    "actual": "SEARCH_KNOWLEDGE",
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.94,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.96,
+      "CLARIFY": 0.04,
+      "UNSUPPORTED": 0.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 181.77810008637607
   },
   {
     "split": "validation",
@@ -1392,7 +1392,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 206.2532000709325
+    "elapsed_ms": 209.5578999724239
   },
   {
     "split": "validation",
@@ -1400,14 +1400,14 @@
     "input_text": "퇴사 처리 알림을 받은 뒤 계정 종료와 메일 전달 관련 문구가 함께 보입니다. 제게 어떤 상태를 확인해 달라고 하는 건지 파악하기 어렵습니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.92,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.95,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.98,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.18049988523126
+    "elapsed_ms": 226.22600011527538
   },
   {
     "split": "validation",
@@ -1415,14 +1415,14 @@
     "input_text": "외부 협력자를 협업 공간에 초대한 뒤 발송 기록을 확인할 수 있는 방법을 알려주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.85,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.9,
+      "SEARCH_KNOWLEDGE": 0.98,
       "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.08
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 245.1327999588102
+    "elapsed_ms": 220.32369999215007
   },
   {
     "split": "validation",
@@ -1437,7 +1437,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.51240008696914
+    "elapsed_ms": 208.5270001552999
   },
   {
     "split": "validation",
@@ -1445,14 +1445,14 @@
     "input_text": "파트너에게 보낸 팀 드라이브 공유 링크를 지금 비활성화해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.89,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.93
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.97
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.9802000373602
+    "elapsed_ms": 218.11660006642342
   },
   {
     "split": "validation",
@@ -1460,14 +1460,14 @@
     "input_text": "오늘 도착하는 방문객 한 명의 임시 출입증을 발급해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.96
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.4844000376761
+    "elapsed_ms": 199.53770004212856
   },
   {
     "split": "validation",
@@ -1475,14 +1475,14 @@
     "input_text": "아이 병원 때문에 올린 제 외출 신청이 승인됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.96
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 230.1974999718368
+    "elapsed_ms": 187.62489990331233
   },
   {
     "split": "validation",
@@ -1497,7 +1497,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 192.46000004932284
+    "elapsed_ms": 198.04439996369183
   },
   {
     "split": "validation",
@@ -1505,14 +1505,14 @@
     "input_text": "근무 시간 조정이라고 했던 게 지난번 말한 휴가 신청을 뜻하는 건가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.98,
+    "confidence": 0.92,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.99,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.95,
+      "UNSUPPORTED": 0.03
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 229.88269990310073
+    "elapsed_ms": 207.45350001379848
   },
   {
     "split": "validation",
@@ -1520,14 +1520,14 @@
     "input_text": "항공편 취소 수수료는 어떤 증빙으로 정산하는지 알려주시고, 제가 올린 해당 정산서도 취소해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.59,
+    "confidence": 0.83,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.73,
-      "CLARIFY": 0.1,
-      "UNSUPPORTED": 0.17
+      "SEARCH_KNOWLEDGE": 0.89,
+      "CLARIFY": 0.03,
+      "UNSUPPORTED": 0.08
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 214.2096001189202
+    "elapsed_ms": 197.89419998414814
   },
   {
     "split": "validation",
@@ -1542,22 +1542,22 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.93109985627234
+    "elapsed_ms": 215.19789984449744
   },
   {
     "split": "validation",
     "question_id": "RQ0702",
     "input_text": "검토가 끝났다는 연락을 받았는데 결재 완료와 서명 요청이 함께 표시돼요. 지금 어떤 절차를 확인해야 하는지 모르겠습니다.",
     "actual": "CLARIFY",
-    "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.64,
+    "predicted": "CLARIFY",
+    "confidence": 0.83,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.76,
-      "CLARIFY": 0.24,
+      "SEARCH_KNOWLEDGE": 0.11,
+      "CLARIFY": 0.89,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 218.2351998053491
+    "elapsed_ms": 213.70900003239512
   },
   {
     "split": "validation",
@@ -1565,14 +1565,14 @@
     "input_text": "외부 작업자를 프로젝트 공간에 초대할 때 확인할 기준을 알려주세요. 담당자 메일을 보내면 지금 초대해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.72,
+    "confidence": 0.88,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.81,
-      "CLARIFY": 0.05,
-      "UNSUPPORTED": 0.14
+      "SEARCH_KNOWLEDGE": 0.92,
+      "CLARIFY": 0.02,
+      "UNSUPPORTED": 0.06
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 227.6522999163717
+    "elapsed_ms": 274.0019999910146
   },
   {
     "split": "validation",
@@ -1580,14 +1580,14 @@
     "input_text": "제품운영팀 공용 메일 별칭을 지금 생성해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.89,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.93
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.97
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 220.96660011447966
+    "elapsed_ms": 202.94380001723766
   },
   {
     "split": "validation",
@@ -1602,7 +1602,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 198.45020002685487
+    "elapsed_ms": 217.6783001050353
   },
   {
     "split": "validation",
@@ -1610,19 +1610,64 @@
     "input_text": "내 연차 잔여일수 지금 조회해 줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
+      "SEARCH_KNOWLEDGE": 0.0,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.99
+      "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.8997999932617
+    "elapsed_ms": 204.81880009174347
   },
   {
     "split": "validation",
     "question_id": "RQ0739",
     "input_text": "신입 팀 소개 자료를 만들고 있어요. 그 양식을 쓰라고 하셨는데 둘 중 어느 걸 말하는 건가요?",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.95,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.97,
+      "UNSUPPORTED": 0.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 200.50420006737113
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0744",
+    "input_text": "현재 발생한 결제 API 지연 내용을 고객용 서비스 상태 페이지에 장애 공지로 게시해 주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.95,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.97
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 208.29820004291832
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0750",
+    "input_text": "파이썬으로 사진 파일 이름을 날짜순으로 바꾸는 스크립트를 짜주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 1.0,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 1.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 211.3359000068158
+  },
+  {
+    "split": "validation",
+    "question_id": "RQ0756",
+    "input_text": "서명 완료 알림은 받았고 별도로 계약 원본 보관 안내도 왔습니다. 지금 제가 확인해야 할 기록이 무엇인지 분명하지 않습니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
     "confidence": 0.98,
@@ -1632,52 +1677,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.58330000191927
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0744",
-    "input_text": "현재 발생한 결제 API 지연 내용을 고객용 서비스 상태 페이지에 장애 공지로 게시해 주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.96
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 211.29849995486438
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0750",
-    "input_text": "파이썬으로 사진 파일 이름을 날짜순으로 바꾸는 스크립트를 짜주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.98,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.99
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 217.22230012528598
-  },
-  {
-    "split": "validation",
-    "question_id": "RQ0756",
-    "input_text": "서명 완료 알림은 받았고 별도로 계약 원본 보관 안내도 왔습니다. 지금 제가 확인해야 할 기록이 무엇인지 분명하지 않습니다.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.82,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.11,
-      "CLARIFY": 0.88,
-      "UNSUPPORTED": 0.01
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 221.13950015045702
+    "elapsed_ms": 232.4660001322627
   },
   {
     "split": "validation",
@@ -1685,14 +1685,14 @@
     "input_text": "퇴사 처리 메일은 받았지만 계정 종료와 자료 인계 얘기가 한꺼번에 나옵니다. 어떤 요청을 확인해 달라는 뜻인지 모르겠어요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.98,
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 1.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 220.28040001168847
+    "elapsed_ms": 193.60790005885065
   },
   {
     "split": "validation",
@@ -1707,7 +1707,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 220.99280008114874
+    "elapsed_ms": 200.27780020609498
   },
   {
     "split": "validation",
@@ -1715,14 +1715,14 @@
     "input_text": "정은서 님에게 협업 공간 초대 메일이 발송됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.96
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 223.37609995156527
+    "elapsed_ms": 201.85830001719296
   },
   {
     "split": "validation",
@@ -1730,14 +1730,14 @@
     "input_text": "이 한국어 자기소개를 자연스러운 영어로 번역해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.89,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.96
+      "CLARIFY": 0.06,
+      "UNSUPPORTED": 0.9299999999999999
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 212.91690017096698
+    "elapsed_ms": 219.14289984852076
   },
   {
     "split": "validation",
@@ -1745,14 +1745,14 @@
     "input_text": "팀 업무 보드에서 카드 마감일을 매주 반복하도록 설정하는 기능은 어디서 쓰나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.95,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.97,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.99,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 274.063799995929
+    "elapsed_ms": 204.12520016543567
   },
   {
     "split": "validation",
@@ -1760,14 +1760,14 @@
     "input_text": "제 수리 노트북의 현재 작업 단계와 완료 예정일을 조회해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.91,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.94
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 200.5033998284489
+    "elapsed_ms": 201.87949994578958
   },
   {
     "split": "validation",
@@ -1782,7 +1782,7 @@
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 207.53789995796978
+    "elapsed_ms": 204.82930005528033
   },
   {
     "split": "validation",
@@ -1790,14 +1790,14 @@
     "input_text": "개인정보 노출 신고의 담당자가 배정됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.86,
+    "confidence": 0.91,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.07,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.91
+      "SEARCH_KNOWLEDGE": 0.06,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.94
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 217.46210008859634
+    "elapsed_ms": 196.44080009311438
   },
   {
     "split": "validation",
@@ -1812,7 +1812,7 @@
       "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 217.1616000123322
+    "elapsed_ms": 206.47590002045035
   },
   {
     "split": "validation",
@@ -1820,14 +1820,14 @@
     "input_text": "회사 메일에서 특정 발신자의 메시지를 자동으로 별도 폴더에 분류하는 규칙을 만드는 방법이 궁금합니다.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.02,
+      "SEARCH_KNOWLEDGE": 0.99,
+      "CLARIFY": 0.01,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.33700010553002
+    "elapsed_ms": 206.78489981219172
   },
   {
     "split": "validation",
@@ -1842,7 +1842,7 @@
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 193.08939995244145
+    "elapsed_ms": 187.4605999328196
   },
   {
     "split": "validation",
@@ -1857,7 +1857,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 222.4091999232769
+    "elapsed_ms": 200.48010000027716
   },
   {
     "split": "validation",
@@ -1872,7 +1872,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 207.4104999192059
+    "elapsed_ms": 218.45549996942282
   },
   {
     "split": "validation",
@@ -1880,14 +1880,14 @@
     "input_text": "제품기획팀 메일 별칭 신청이 지금 처리됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.91,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.94
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.61559992469847
+    "elapsed_ms": 203.01130018197
   },
   {
     "split": "validation",
@@ -1895,14 +1895,14 @@
     "input_text": "공용 비품이 고장 나 교체를 알아보는 중인데 문의가 있습니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.95,
+    "confidence": 0.91,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.97,
+      "SEARCH_KNOWLEDGE": 0.06,
+      "CLARIFY": 0.9400000000000001,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 189.42690012045205
+    "elapsed_ms": 203.05549982003868
   },
   {
     "split": "validation",
@@ -1910,14 +1910,14 @@
     "input_text": "회사로 온 우편물을 정리하다가 확인할 게 하나 생겼어요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.0,
-      "CLARIFY": 0.99,
-      "UNSUPPORTED": 0.01
+      "CLARIFY": 1.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 215.50430008210242
+    "elapsed_ms": 200.19480003975332
   },
   {
     "split": "validation",
@@ -1932,7 +1932,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 222.2890998236835
+    "elapsed_ms": 202.8721000533551
   },
   {
     "split": "test",
@@ -1940,14 +1940,14 @@
     "input_text": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.95,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.97,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.99,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 200.8686000481248
+    "elapsed_ms": 213.58099998906255
   },
   {
     "split": "test",
@@ -1955,14 +1955,14 @@
     "input_text": "출장 대체휴무 신청이 제 근태 기록에 반영됐는지 조회해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
+      "SEARCH_KNOWLEDGE": 0.0,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.99
+      "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 201.5541000291705
+    "elapsed_ms": 202.50599994324148
   },
   {
     "split": "test",
@@ -1970,44 +1970,44 @@
     "input_text": "분실 신고한 제 법인카드 재발급이 어디까지 진행됐는지 알려주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.83,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.1,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.89
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.97
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.97239993326366
+    "elapsed_ms": 196.49030012078583
   },
   {
     "split": "test",
     "question_id": "RQ0029",
     "input_text": "등기가 반송돼서 다시 보내려는데, 봉투에 적힌 이 표시를 그대로 둬도 되나요?",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.73,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.25,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.1,
-      "CLARIFY": 0.82,
-      "UNSUPPORTED": 0.08
+      "SEARCH_KNOWLEDGE": 0.5,
+      "CLARIFY": 0.43,
+      "UNSUPPORTED": 0.07
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 252.07599997520447
+    "elapsed_ms": 218.0938997771591
   },
   {
     "split": "test",
     "question_id": "RQ0031",
     "input_text": "복도 소화전 앞에 상자가 있어요. 신고처를 알려주시고 접수도 해주세요.",
     "actual": "SEARCH_KNOWLEDGE",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.59,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.25,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.21,
-      "CLARIFY": 0.06,
-      "UNSUPPORTED": 0.73
+      "SEARCH_KNOWLEDGE": 0.5,
+      "CLARIFY": 0.02,
+      "UNSUPPORTED": 0.48
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 189.89549996331334
+    "elapsed_ms": 200.82629984244704
   },
   {
     "split": "test",
@@ -2015,14 +2015,14 @@
     "input_text": "업무 보안 절차는 필요 없고, 이 데이터로 매출 예측 모델을 학습해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.96
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 870.8375999704003
+    "elapsed_ms": 196.4847999624908
   },
   {
     "split": "test",
@@ -2037,7 +2037,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 212.01399993151426
+    "elapsed_ms": 209.8036000970751
   },
   {
     "split": "test",
@@ -2045,14 +2045,14 @@
     "input_text": "재택근무 신청은 몇 단계인지 알려주시고 다음 주 월요일 일정으로 제 대신 등록해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.83,
+    "confidence": 0.92,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.89,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.09
+      "SEARCH_KNOWLEDGE": 0.95,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.05
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 207.45959994383156
+    "elapsed_ms": 198.45409994013608
   },
   {
     "split": "test",
@@ -2067,7 +2067,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 188.78700002096593
+    "elapsed_ms": 212.16410002671182
   },
   {
     "split": "test",
@@ -2075,14 +2075,14 @@
     "input_text": "IT 지원 티켓을 접수한 뒤 담당자 답변과 진행 상태를 확인하는 방법이 있나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.95,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.97,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 202.78559997677803
+    "elapsed_ms": 200.6745000835508
   },
   {
     "split": "test",
@@ -2090,14 +2090,14 @@
     "input_text": "지난주 자리를 옮겨 달라고 낸 요청이 처리됐는지 확인 부탁드려요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.79,
+    "confidence": 0.91,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.11,
-      "UNSUPPORTED": 0.86
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.04,
+      "UNSUPPORTED": 0.94
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 248.7384001724422
+    "elapsed_ms": 203.2480000052601
   },
   {
     "split": "test",
@@ -2105,14 +2105,14 @@
     "input_text": "보고서 인쇄본에서 제가 동그라미 친 부분은 제출 양식에 맞는 건가요? 이대로 내도 될지 모르겠어요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 0.58,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.98,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.23,
+      "CLARIFY": 0.72,
+      "UNSUPPORTED": 0.05
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 243.63230005837977
+    "elapsed_ms": 215.12500010430813
   },
   {
     "split": "test",
@@ -2120,14 +2120,14 @@
     "input_text": "강릉역에 도착해서 주문진까지 대중교통으로 이동하는 법 알려줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 1.0,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.0,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 1.0
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 198.58519989065826
+    "elapsed_ms": 202.08680001087487
   },
   {
     "split": "test",
@@ -2142,7 +2142,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 197.95050006359816
+    "elapsed_ms": 182.1603002026677
   },
   {
     "split": "test",
@@ -2150,14 +2150,14 @@
     "input_text": "연차 촉진 안내를 받으면 직원은 어떤 단계까지 진행해야 하는지 설명해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.95,
+    "confidence": 0.91,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.97,
-      "CLARIFY": 0.03,
+      "SEARCH_KNOWLEDGE": 0.94,
+      "CLARIFY": 0.06,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 220.66939994692802
+    "elapsed_ms": 208.674400113523
   },
   {
     "split": "test",
@@ -2165,14 +2165,14 @@
     "input_text": "공용 사물함 신청 중이에요. 제가 선택한 항목이면 그 위치에 배정되는 건가요?",
     "actual": "CLARIFY",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.33,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.55,
-      "CLARIFY": 0.44,
+      "SEARCH_KNOWLEDGE": 0.93,
+      "CLARIFY": 0.05,
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 184.20949997380376
+    "elapsed_ms": 181.22819997370243
   },
   {
     "split": "test",
@@ -2187,7 +2187,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 213.31300004385412
+    "elapsed_ms": 223.5814998857677
   },
   {
     "split": "test",
@@ -2195,14 +2195,14 @@
     "input_text": "회의실 3층 프로젝터 화면이 안 나와요. 사내 포털에서 시설 장애를 접수할 위치와 적을 내용을 알려주시고, 접수도 대신해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.94,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.96,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.03
+      "SEARCH_KNOWLEDGE": 0.98,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.02
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.47969988547266
+    "elapsed_ms": 199.69110004603863
   },
   {
     "split": "test",
@@ -2217,7 +2217,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 217.16030011884868
+    "elapsed_ms": 183.46440000459552
   },
   {
     "split": "test",
@@ -2225,14 +2225,14 @@
     "input_text": "온보딩 화면에서 막혔는데 좀 봐주세요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.91,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.94,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.98,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 196.90750003792346
+    "elapsed_ms": 204.1159998625517
   },
   {
     "split": "test",
@@ -2240,14 +2240,14 @@
     "input_text": "사무실이 너무 추워요. 냉난방 문제는 어느 시설 접수 항목으로 남기면 되나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.02,
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 235.22339994087815
+    "elapsed_ms": 218.412300106138
   },
   {
     "split": "test",
@@ -2255,14 +2255,14 @@
     "input_text": "사무실 좌석과 개인 사물함 배정 안내는 어디에서 찾을 수 있나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.99,
-      "CLARIFY": 0.01,
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 231.72749998047948
+    "elapsed_ms": 204.61409981362522
   },
   {
     "split": "test",
@@ -2270,14 +2270,14 @@
     "input_text": "퇴사한 직원 앞으로 도착한 우편물을 문서 보관 담당자에게 전달해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.72,
+    "confidence": 0.76,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.15,
-      "CLARIFY": 0.04,
-      "UNSUPPORTED": 0.81
+      "SEARCH_KNOWLEDGE": 0.14,
+      "CLARIFY": 0.02,
+      "UNSUPPORTED": 0.84
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 215.61169996857643
+    "elapsed_ms": 205.45330015011132
   },
   {
     "split": "test",
@@ -2292,7 +2292,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 244.22600003890693
+    "elapsed_ms": 189.1320999711752
   },
   {
     "split": "test",
@@ -2300,14 +2300,14 @@
     "input_text": "모니터 장애 티켓을 낸 뒤 지원 담당자 배정을 확인하는 방법을 알려주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.91,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.94,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.05
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 210.36759996786714
+    "elapsed_ms": 211.82970004156232
   },
   {
     "split": "test",
@@ -2315,14 +2315,14 @@
     "input_text": "인사 쪽 그거 지금 해야 하나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.85,
+    "confidence": 0.82,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.9,
-      "UNSUPPORTED": 0.04
+      "CLARIFY": 0.88,
+      "UNSUPPORTED": 0.06
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 195.8078001625836
+    "elapsed_ms": 198.34759994409978
   },
   {
     "split": "test",
@@ -2337,7 +2337,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 232.16860019601882
+    "elapsed_ms": 214.18279991485178
   },
   {
     "split": "test",
@@ -2345,14 +2345,14 @@
     "input_text": "회의실 점검 접수 화면에서 제가 표시한 항목이 필수인지 모르겠어요. 빼도 될까요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.95,
+    "confidence": 0.72,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.97,
+      "SEARCH_KNOWLEDGE": 0.19,
+      "CLARIFY": 0.81,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 214.22980003990233
+    "elapsed_ms": 212.0848000049591
   },
   {
     "split": "test",
@@ -2360,44 +2360,44 @@
     "input_text": "다음 주 월요일 재택근무 일정을 포털에 등록해 줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
+      "SEARCH_KNOWLEDGE": 0.0,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.99
+      "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 262.232500128448
+    "elapsed_ms": 199.85549990087748
   },
   {
     "split": "test",
     "question_id": "RQ0248",
     "input_text": "그 등기 서류는 앞에서 정한 주소로 보내면 되죠?",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.69,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.28,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.19,
-      "CLARIFY": 0.79,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 0.52,
+      "CLARIFY": 0.47,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 206.80419984273612
+    "elapsed_ms": 210.01900010742247
   },
   {
     "split": "test",
     "question_id": "RQ0251",
     "input_text": "제가 수리를 맡긴 회사 노트북에 보증 안내와 수리 진행 안내가 각각 왔습니다. 어느 쪽을 확인해야 다음 단계로 갈 수 있는지 모르겠어요.",
     "actual": "CLARIFY",
-    "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.41,
+    "predicted": "CLARIFY",
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.61,
-      "CLARIFY": 0.38,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.99,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.20500014349818
+    "elapsed_ms": 211.7873001843691
   },
   {
     "split": "test",
@@ -2412,7 +2412,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 239.81300019659102
+    "elapsed_ms": 202.2508999798447
   },
   {
     "split": "test",
@@ -2427,7 +2427,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.29579981788993
+    "elapsed_ms": 204.68500000424683
   },
   {
     "split": "test",
@@ -2435,14 +2435,14 @@
     "input_text": "담당 업무를 넘기는 거였나 팀장에게 먼저 말하는 거였나, 전에 들은 내용이 헷갈려요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.92,
+    "confidence": 0.82,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.95,
+      "SEARCH_KNOWLEDGE": 0.11,
+      "CLARIFY": 0.88,
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 219.13770004175603
+    "elapsed_ms": 214.5742999855429
   },
   {
     "split": "test",
@@ -2457,7 +2457,7 @@
       "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 238.68359997868538
+    "elapsed_ms": 203.48550006747246
   },
   {
     "split": "test",
@@ -2465,29 +2465,29 @@
     "input_text": "설정이 뭔가 안 맞는 것 같은데 어떻게 하면 좋을까요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.98,
-      "UNSUPPORTED": 0.01
+      "CLARIFY": 0.99,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.03660002537072
+    "elapsed_ms": 186.66200013831258
   },
   {
     "split": "test",
     "question_id": "RQ0294",
     "input_text": "시설 장애 사진은 제가 첨부하면 되는지, 신고 접수까지 도와주시는 건지 모르겠어요.",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.33,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.8,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.43,
-      "CLARIFY": 0.55,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 0.87,
+      "CLARIFY": 0.07,
+      "UNSUPPORTED": 0.06
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 217.84389996901155
+    "elapsed_ms": 213.2830999325961
   },
   {
     "split": "test",
@@ -2495,14 +2495,14 @@
     "input_text": "회의실 문 잠금 장치 수리 요청에 담당자가 지정됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.86,
+    "confidence": 0.94,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.91
+      "SEARCH_KNOWLEDGE": 0.04,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.96
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 244.341199984774
+    "elapsed_ms": 202.60720001533628
   },
   {
     "split": "test",
@@ -2510,14 +2510,14 @@
     "input_text": "VPN 안내문을 보며 접수 중인데 제가 표시한 항목은 두 신청 유형 중 어느 쪽에 해당하나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.95,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.97,
+      "SEARCH_KNOWLEDGE": 0.07,
+      "CLARIFY": 0.93,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 218.21480011567473
+    "elapsed_ms": 216.7692999355495
   },
   {
     "split": "test",
@@ -2525,14 +2525,14 @@
     "input_text": "입사 서류를 올리니 확인란이 두 개 떴어요. 지금 제가 체크해야 하는 건 어느 쪽인가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.96,
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.99,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.7633998338133
+    "elapsed_ms": 188.0165000911802
   },
   {
     "split": "test",
@@ -2540,14 +2540,14 @@
     "input_text": "복지비를 먼저 결제한 뒤 환급받는 항목은 신청 기한과 영수증 제출 방식이 어떻게 되나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.91,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.9400000000000001,
-      "CLARIFY": 0.06,
+      "SEARCH_KNOWLEDGE": 0.97,
+      "CLARIFY": 0.03,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 200.9296000469476
+    "elapsed_ms": 205.50239994190633
   },
   {
     "split": "test",
@@ -2555,14 +2555,14 @@
     "input_text": "냉난방 접수는 전에 말씀하신 항목을 선택하면 되나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 0.91,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.98,
+      "SEARCH_KNOWLEDGE": 0.06,
+      "CLARIFY": 0.94,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 197.33699993230402
+    "elapsed_ms": 201.58580015413463
   },
   {
     "split": "test",
@@ -2577,7 +2577,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 228.67710003629327
+    "elapsed_ms": 207.44399982504547
   },
   {
     "split": "test",
@@ -2585,14 +2585,14 @@
     "input_text": "공용카드 내역 정리 중인데, 화면에 뜬 이 항목은 무슨 뜻인가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.95,
+    "confidence": 0.79,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.97,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.13,
+      "CLARIFY": 0.86,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 379.37600002624094
+    "elapsed_ms": 208.29320000484586
   },
   {
     "split": "test",
@@ -2600,14 +2600,14 @@
     "input_text": "회사에서 보낼 거래처 서류를 등기로 접수해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.91,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.94
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.2350000012666
+    "elapsed_ms": 230.97450006753206
   },
   {
     "split": "test",
@@ -2615,14 +2615,14 @@
     "input_text": "출장 뒤 대체휴무를 검토할 때 필요한 기준을 알려주시고, 제 근태에 대체휴무도 추가해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.77,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.85,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.12
+      "SEARCH_KNOWLEDGE": 0.93,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.07
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.85599989257753
+    "elapsed_ms": 225.2576001919806
   },
   {
     "split": "test",
@@ -2637,7 +2637,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 207.6454998459667
+    "elapsed_ms": 206.45009982399642
   },
   {
     "split": "test",
@@ -2645,14 +2645,14 @@
     "input_text": "긴급 연락처 변경은 그룹웨어에서 직접 바꾸면 되나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.95,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.97,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 201.5034998767078
+    "elapsed_ms": 200.67509985528886
   },
   {
     "split": "test",
@@ -2660,14 +2660,14 @@
     "input_text": "해외 체류 중 근무 신고서를 쓰고 있어요. 안내에서 말하는 그 국가는 체류지를 뜻해요, 출국지를 뜻해요?",
     "actual": "CLARIFY",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.73,
+    "confidence": 0.77,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.8200000000000001,
-      "CLARIFY": 0.18,
+      "SEARCH_KNOWLEDGE": 0.85,
+      "CLARIFY": 0.15,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 201.32980006746948
+    "elapsed_ms": 202.70080002956092
   },
   {
     "split": "test",
@@ -2675,14 +2675,14 @@
     "input_text": "청구서 회사명이 예전 명칭이에요. 정정은 어떻게 하나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.74,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.83,
-      "CLARIFY": 0.14,
-      "UNSUPPORTED": 0.03
+      "SEARCH_KNOWLEDGE": 0.97,
+      "CLARIFY": 0.02,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 199.70070011913776
+    "elapsed_ms": 198.16339993849397
   },
   {
     "split": "test",
@@ -2690,14 +2690,14 @@
     "input_text": "공사하는 동안은 그 자리로 옮겨 앉으면 되는 거였나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.51,
+    "confidence": 0.49,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.3,
-      "CLARIFY": 0.67,
-      "UNSUPPORTED": 0.03
+      "SEARCH_KNOWLEDGE": 0.33,
+      "CLARIFY": 0.66,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 216.11459995619953
+    "elapsed_ms": 216.45570010878146
   },
   {
     "split": "test",
@@ -2705,14 +2705,14 @@
     "input_text": "다음 주 재택근무 일정이 제 캘린더에 어떤 날짜로 등록돼 있는지 확인해 줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.98
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.46220012754202
+    "elapsed_ms": 208.8699999731034
   },
   {
     "split": "test",
@@ -2727,7 +2727,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 197.70279992371798
+    "elapsed_ms": 224.85650004819036
   },
   {
     "split": "test",
@@ -2735,14 +2735,14 @@
     "input_text": "회의실 문 잠금 장치가 고장 났으니 수리 작업을 예약해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.89,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.93
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.7953000292182
+    "elapsed_ms": 212.78390008956194
   },
   {
     "split": "test",
@@ -2757,7 +2757,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.67660017311573
+    "elapsed_ms": 362.8420999739319
   },
   {
     "split": "test",
@@ -2765,14 +2765,14 @@
     "input_text": "반복 회의로 등록한 다음 주 예약이 저장됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.96
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.17080004699528
+    "elapsed_ms": 208.82120006717741
   },
   {
     "split": "test",
@@ -2787,7 +2787,7 @@
       "UNSUPPORTED": 0.94
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.93540003150702
+    "elapsed_ms": 183.995199855417
   },
   {
     "split": "test",
@@ -2795,14 +2795,14 @@
     "input_text": "퇴사자 앞으로 온 사내 우편은 반송하나요, 전달하나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.9042999278754
+    "elapsed_ms": 186.22299982234836
   },
   {
     "split": "test",
@@ -2810,14 +2810,14 @@
     "input_text": "부서 이동이 있으면 팀별 업무 책임을 어디에 기록하고 공유하는지 안내를 부탁해요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.94,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.96,
-      "CLARIFY": 0.04,
+      "SEARCH_KNOWLEDGE": 0.98,
+      "CLARIFY": 0.02,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.67760011181235
+    "elapsed_ms": 207.4224001262337
   },
   {
     "split": "test",
@@ -2832,7 +2832,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 196.40049990266562
+    "elapsed_ms": 211.17649995721877
   },
   {
     "split": "test",
@@ -2840,14 +2840,14 @@
     "input_text": "제 노트북 수리가 보증으로 접수됐는지 조회해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.98
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 190.86820003576577
+    "elapsed_ms": 195.54190011695027
   },
   {
     "split": "test",
@@ -2855,14 +2855,14 @@
     "input_text": "제 자리를 창가 쪽 좌석으로 옮기고 근무 위치 정보도 수정해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.92,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.95
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 246.75310007296503
+    "elapsed_ms": 209.18150013312697
   },
   {
     "split": "test",
@@ -2877,7 +2877,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 210.4138000868261
+    "elapsed_ms": 204.72240005619824
   },
   {
     "split": "test",
@@ -2885,14 +2885,14 @@
     "input_text": "외부 협력자 한 명의 이음웍스 업무 계정을 지금 발급해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.92,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.95
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.0230999700725
+    "elapsed_ms": 201.56229985877872
   },
   {
     "split": "test",
@@ -2900,49 +2900,19 @@
     "input_text": "방문객이 올 예정이라 출입 절차를 준비하고 있습니다. 문의 하나 드릴게요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.98,
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.97,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.25480005703866
+    "elapsed_ms": 208.69289990514517
   },
   {
     "split": "test",
     "question_id": "RQ0515",
     "input_text": "청구서와 세금계산서 금액이 달라요. 어디에 정정 요청하나요?",
-    "actual": "SEARCH_KNOWLEDGE",
-    "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.0
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 196.17579993791878
-  },
-  {
-    "split": "test",
-    "question_id": "RQ0519",
-    "input_text": "제가 맡긴 거래처 서류가 우편실에서 발송됐는지 조회해 주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.96
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 193.57700017280877
-  },
-  {
-    "split": "test",
-    "question_id": "RQ0521",
-    "input_text": "출근 요일이 바뀌어 제 지정 좌석이 필요해졌어요. 좌석 배정 기준을 어디서 확인하나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
     "confidence": 0.98,
@@ -2952,7 +2922,37 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 220.78890004195273
+    "elapsed_ms": 185.88269990868866
+  },
+  {
+    "split": "test",
+    "question_id": "RQ0519",
+    "input_text": "제가 맡긴 거래처 서류가 우편실에서 발송됐는지 조회해 주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.98,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 210.97399992868304
+  },
+  {
+    "split": "test",
+    "question_id": "RQ0521",
+    "input_text": "출근 요일이 바뀌어 제 지정 좌석이 필요해졌어요. 좌석 배정 기준을 어디서 확인하나요?",
+    "actual": "SEARCH_KNOWLEDGE",
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 1.0,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 192.95380008406937
   },
   {
     "split": "test",
@@ -2960,14 +2960,14 @@
     "input_text": "휴직 처리 메모에 “업무 계정 정리”라고만 적혀 있습니다. 이메일 접속인지 소스 저장소 권한인지 범위와 적용일이 없어 어떤 내용을 검토하라는지 확인이 필요합니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.91,
+    "confidence": 0.92,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.94,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.95,
+      "UNSUPPORTED": 0.02
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 217.33959997072816
+    "elapsed_ms": 187.44380003772676
   },
   {
     "split": "test",
@@ -2982,7 +2982,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 200.90599986724555
+    "elapsed_ms": 214.24550004303455
   },
   {
     "split": "test",
@@ -2990,14 +2990,14 @@
     "input_text": "그 신고서는 표시해 둔 칸을 빼고 제출해도 되나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.82,
+    "confidence": 0.59,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.12,
-      "CLARIFY": 0.88,
+      "SEARCH_KNOWLEDGE": 0.27,
+      "CLARIFY": 0.73,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 186.86360004357994
+    "elapsed_ms": 181.30429997108877
   },
   {
     "split": "test",
@@ -3005,14 +3005,14 @@
     "input_text": "제 집 IP 주소를 회사 VPN 허용 목록에 지금 추가해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.92,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.95
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.60469993203878
+    "elapsed_ms": 214.93320004083216
   },
   {
     "split": "test",
@@ -3027,7 +3027,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 188.79680009558797
+    "elapsed_ms": 203.56400008313358
   },
   {
     "split": "test",
@@ -3042,7 +3042,7 @@
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 202.07510003820062
+    "elapsed_ms": 211.852400097996
   },
   {
     "split": "test",
@@ -3050,14 +3050,14 @@
     "input_text": "좌석 이동 신청 절차를 알려주시고, 제 근무 위치도 새 자리로 바꿔 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.91,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.94,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.04
+      "SEARCH_KNOWLEDGE": 0.98,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.02
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 220.8179000299424
+    "elapsed_ms": 204.47360002435744
   },
   {
     "split": "test",
@@ -3072,7 +3072,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 219.38870009034872
+    "elapsed_ms": 189.24409989267588
   },
   {
     "split": "test",
@@ -3087,7 +3087,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 194.74419998005033
+    "elapsed_ms": 206.3058998901397
   },
   {
     "split": "test",
@@ -3095,14 +3095,14 @@
     "input_text": "입사 준비 메일에 해야 할 일이 여러 개 적혀 왔는데요. 이 건은 좀 봐주실래요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.94,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.96,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.98,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 192.00469995848835
+    "elapsed_ms": 199.50009998865426
   },
   {
     "split": "test",
@@ -3117,12 +3117,27 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.15189997665584
+    "elapsed_ms": 220.5837001092732
   },
   {
     "split": "test",
     "question_id": "RQ0592",
     "input_text": "모니터 문제를 해결하려고 제 노트북에 원격 접속해 드라이버를 재설정해 주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 1.0,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 1.0
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 203.4014998935163
+  },
+  {
+    "split": "test",
+    "question_id": "RQ0595",
+    "input_text": "검진비 영수증을 올려서 복지 환급 신청해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
     "confidence": 0.97,
@@ -3132,27 +3147,27 @@
       "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.3760000485927
-  },
-  {
-    "split": "test",
-    "question_id": "RQ0595",
-    "input_text": "검진비 영수증을 올려서 복지 환급 신청해 주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.86,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.91
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 208.4709000773728
+    "elapsed_ms": 202.24149990826845
   },
   {
     "split": "test",
     "question_id": "RQ0598",
     "input_text": "고양이 진료 예약 전에 병원에 물어볼 질문을 적어 줄래?",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.95,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.97
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 207.28070009499788
+  },
+  {
+    "split": "test",
+    "question_id": "RQ0599",
+    "input_text": "제 새 주소를 인사 정보에 저장해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
     "confidence": 0.98,
@@ -3162,22 +3177,7 @@
       "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 199.89469996653497
-  },
-  {
-    "split": "test",
-    "question_id": "RQ0599",
-    "input_text": "제 새 주소를 인사 정보에 저장해 주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.97,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.98
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 196.04599988088012
+    "elapsed_ms": 200.85149980150163
   },
   {
     "split": "test",
@@ -3185,14 +3185,14 @@
     "input_text": "업무 장비 수리 중 보증 접수 여부를 확인하는 경로와 문의 절차를 알려주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.98,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 203.49269988946617
+    "elapsed_ms": 214.70870007760823
   },
   {
     "split": "test",
@@ -3200,14 +3200,14 @@
     "input_text": "회사 인증 앱이 든 폰을 잃어버렸어요. 제 계정의 인증서와 접근 권한을 지금 차단해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.86,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.09,
+      "SEARCH_KNOWLEDGE": 0.07,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.91
+      "UNSUPPORTED": 0.93
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 210.25480004027486
+    "elapsed_ms": 208.9269000571221
   },
   {
     "split": "test",
@@ -3215,14 +3215,14 @@
     "input_text": "같은 작업 청구서가 두 번 왔어요. 어떻게 처리해야 하나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.86,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.91,
-      "CLARIFY": 0.07,
-      "UNSUPPORTED": 0.02
+      "SEARCH_KNOWLEDGE": 0.93,
+      "CLARIFY": 0.06,
+      "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.9389999564737
+    "elapsed_ms": 205.40780015289783
   },
   {
     "split": "test",
@@ -3230,14 +3230,14 @@
     "input_text": "제가 신청한 좌석 이동이 승인돼 새 배치에 반영됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.92,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.95
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 238.74410009011626
+    "elapsed_ms": 206.35839994065464
   },
   {
     "split": "test",
@@ -3252,7 +3252,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.80350002273917
+    "elapsed_ms": 204.05009994283319
   },
   {
     "split": "test",
@@ -3267,7 +3267,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 191.33649999275804
+    "elapsed_ms": 202.96390005387366
   },
   {
     "split": "test",
@@ -3275,29 +3275,29 @@
     "input_text": "사내 공모 지원서를 쓰는데 이 항목은 지금 소속을 쓰는 건가요, 지원할 팀을 쓰는 건가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.67,
+    "confidence": 0.33,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.22,
-      "CLARIFY": 0.78,
+      "SEARCH_KNOWLEDGE": 0.45,
+      "CLARIFY": 0.55,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 210.13950021006167
+    "elapsed_ms": 200.75879991054535
   },
   {
     "split": "test",
     "question_id": "RQ0655",
     "input_text": "겸직 신고 안내에 예외가 적혀 있는데, 제가 하려는 일도 이쪽에 해당하나요?",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.76,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.38,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.16,
-      "CLARIFY": 0.84,
+      "SEARCH_KNOWLEDGE": 0.59,
+      "CLARIFY": 0.41,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.67779993265867
+    "elapsed_ms": 187.59030010551214
   },
   {
     "split": "test",
@@ -3305,14 +3305,14 @@
     "input_text": "출장 대체휴무를 내 근태에 1일 추가해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.96
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 202.38889986649156
+    "elapsed_ms": 204.95259994640946
   },
   {
     "split": "test",
@@ -3320,14 +3320,14 @@
     "input_text": "증명서 문제 문의요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.98,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.99,
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.98,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 197.0645000692457
+    "elapsed_ms": 194.31909988634288
   },
   {
     "split": "test",
@@ -3335,14 +3335,14 @@
     "input_text": "협력자 계정 발급은 어떤 확인을 거치나요? 이번 프로젝트 담당자 계정도 지금 만들어 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.59,
+    "confidence": 0.88,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.73,
-      "CLARIFY": 0.05,
-      "UNSUPPORTED": 0.22
+      "SEARCH_KNOWLEDGE": 0.92,
+      "CLARIFY": 0.01,
+      "UNSUPPORTED": 0.07
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 238.7204000260681
+    "elapsed_ms": 385.97659999504685
   },
   {
     "split": "test",
@@ -3350,14 +3350,14 @@
     "input_text": "협력자 등록 안내에 계정 생성과 공간 초대가 따로 적혀 있는데, 제가 어느 쪽을 요청해야 할지 모르겠어요.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.28,
+    "confidence": 0.79,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.48,
-      "CLARIFY": 0.52,
+      "SEARCH_KNOWLEDGE": 0.14,
+      "CLARIFY": 0.86,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 229.06140005216002
+    "elapsed_ms": 201.81590015999973
   },
   {
     "split": "test",
@@ -3365,14 +3365,14 @@
     "input_text": "그룹웨어에서 매주 반복되는 회의를 예약하는 방법을 알려주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.99,
-      "CLARIFY": 0.01,
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 226.42069985158741
+    "elapsed_ms": 300.2487998455763
   },
   {
     "split": "test",
@@ -3387,7 +3387,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 228.35229989141226
+    "elapsed_ms": 196.86480006203055
   },
   {
     "split": "test",
@@ -3395,14 +3395,14 @@
     "input_text": "사내 추천 채용 안내의 여기 적힌 기간은 추천한 날부터인가요, 입사한 날부터인가요?",
     "actual": "CLARIFY",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.31,
+    "confidence": 0.82,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.54,
-      "CLARIFY": 0.46,
+      "SEARCH_KNOWLEDGE": 0.88,
+      "CLARIFY": 0.12,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 210.82050004042685
+    "elapsed_ms": 194.21540014445782
   },
   {
     "split": "test",
@@ -3410,29 +3410,29 @@
     "input_text": "헬프데스크에서 답장이 왔는데 장비 점검과 사용자 확인이 함께 적혀 있어요. 어느 쪽을 말하는 건가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.92,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.95,
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.99,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 216.76900004968047
+    "elapsed_ms": 204.00290004909039
   },
   {
     "split": "test",
     "question_id": "RQ0716",
     "input_text": "회의 자료 PDF에서 제가 표시해 둔 부분은 외부 전달 전에 지워야 하는 항목인가요?",
     "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.86,
+    "predicted": "SEARCH_KNOWLEDGE",
+    "confidence": 0.35,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.09,
-      "CLARIFY": 0.91,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.57,
+      "CLARIFY": 0.41,
+      "UNSUPPORTED": 0.02
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 225.04790010862052
+    "elapsed_ms": 240.25160004384816
   },
   {
     "split": "test",
@@ -3440,14 +3440,14 @@
     "input_text": "회의 녹화본에 검토 요청이 달렸는데 참석자 동의 확인인지 자막 내용 확인인지 따로 설명이 없어요. 어느 검토를 말한 건가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.98,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 1.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 197.68520002253354
+    "elapsed_ms": 205.9448000509292
   },
   {
     "split": "test",
@@ -3455,14 +3455,14 @@
     "input_text": "신입 등록 건에서 제가 낸 개인정보 항목의 승인 결과를 알려주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.85,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.05,
-      "UNSUPPORTED": 0.9
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 202.70169991999865
+    "elapsed_ms": 197.89409986697137
   },
   {
     "split": "test",
@@ -3477,7 +3477,7 @@
       "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 239.33410015888512
+    "elapsed_ms": 206.12280000932515
   },
   {
     "split": "test",
@@ -3485,14 +3485,14 @@
     "input_text": "수리 센터에 맡긴 장비 때문에 보증 안내와 수리 일정이 동시에 왔습니다. 제가 지금 문의해야 할 쪽을 잘 모르겠습니다.",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.89,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.93,
-      "UNSUPPORTED": 0.04
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 1.0,
+      "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.07900002971292
+    "elapsed_ms": 247.63130000792444
   },
   {
     "split": "test",
@@ -3500,14 +3500,14 @@
     "input_text": "월급날마다 적립식으로 살 만한 펀드와 비중을 골라줘.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 1.0,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.0,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 1.0
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 199.67340002767742
+    "elapsed_ms": 195.70229994133115
   },
   {
     "split": "test",
@@ -3515,14 +3515,14 @@
     "input_text": "회의실 프로젝터 고장 내용을 시설 포털에 접수해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.82,
+    "confidence": 0.92,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.1,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.88
+      "SEARCH_KNOWLEDGE": 0.05,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.95
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 209.33829993009567
+    "elapsed_ms": 199.70540003851056
   },
   {
     "split": "test",
@@ -3530,14 +3530,14 @@
     "input_text": "주소 변경 신청이 인사 시스템에 반영됐는지 확인해 줄래요?",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.04,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.96
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 212.7025001682341
+    "elapsed_ms": 243.32849984057248
   },
   {
     "split": "test",
@@ -3545,14 +3545,14 @@
     "input_text": "그 회사명 정정 건은 지난번 방식대로 처리하면 되나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.86,
+    "confidence": 0.49,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.08,
-      "CLARIFY": 0.91,
+      "SEARCH_KNOWLEDGE": 0.33,
+      "CLARIFY": 0.66,
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 242.82369995489717
+    "elapsed_ms": 199.3664000183344
   },
   {
     "split": "test",
@@ -3560,14 +3560,14 @@
     "input_text": "금액이 다른 청구서와 세금계산서의 정정 요청이 처리됐는지 알려주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.77,
+    "confidence": 0.91,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.09,
-      "UNSUPPORTED": 0.85
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.03,
+      "UNSUPPORTED": 0.94
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 252.8277998790145
+    "elapsed_ms": 203.9236999116838
   },
   {
     "split": "test",
@@ -3582,7 +3582,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 217.97360014170408
+    "elapsed_ms": 204.25780001096427
   },
   {
     "split": "test",
@@ -3590,29 +3590,29 @@
     "input_text": "팀을 옮기면서 맡던 온보딩 업무를 넘겨야 해요. 인계 기준을 알려주고 담당자도 시스템에서 바꿔 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.27,
+    "confidence": 0.46,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.51,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.46
+      "SEARCH_KNOWLEDGE": 0.64,
+      "CLARIFY": 0.02,
+      "UNSUPPORTED": 0.34
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 212.64469996094704
+    "elapsed_ms": 211.79610001854599
   },
   {
     "split": "test",
     "question_id": "RQ0773",
     "input_text": "업체 지급 서류를 봐주셨으면 하는데 어떤 단계까지 맡기면 되는지 잘 모르겠습니다.",
     "actual": "CLARIFY",
-    "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.35,
+    "predicted": "CLARIFY",
+    "confidence": 0.28,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.57,
-      "CLARIFY": 0.42,
-      "UNSUPPORTED": 0.01
+      "SEARCH_KNOWLEDGE": 0.43,
+      "CLARIFY": 0.52,
+      "UNSUPPORTED": 0.05
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 196.15279999561608
+    "elapsed_ms": 220.64159996807575
   },
   {
     "split": "test",
@@ -3627,7 +3627,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 224.45019986480474
+    "elapsed_ms": 218.62049982883036
   },
   {
     "split": "test",
@@ -3635,14 +3635,14 @@
     "input_text": "시설 장애 신고서에 사진, 위치, 발생 시간 중 어떤 항목을 적어야 하는지 안내해 주세요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.99,
-      "CLARIFY": 0.01,
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 225.85829999297857
+    "elapsed_ms": 220.6699000671506
   },
   {
     "split": "test",
@@ -3650,14 +3650,14 @@
     "input_text": "거래처에서 청구서를 또 보냈는데, 여기 적힌 게 전에 받은 것과 다르네요. 이 부분은 뭘 뜻하죠?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.98,
+    "confidence": 0.88,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.99,
-      "UNSUPPORTED": 0.0
+      "SEARCH_KNOWLEDGE": 0.05,
+      "CLARIFY": 0.92,
+      "UNSUPPORTED": 0.03
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 233.254199847579
+    "elapsed_ms": 225.9974000044167
   },
   {
     "split": "test",
@@ -3665,14 +3665,14 @@
     "input_text": "제 계정에 등록된 VPN 허용 IP 주소를 알려주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.83,
+    "confidence": 0.95,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.1,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.89
+      "SEARCH_KNOWLEDGE": 0.03,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.97
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 190.26730000041425
+    "elapsed_ms": 209.20750009827316
   },
   {
     "split": "test",
@@ -3680,14 +3680,14 @@
     "input_text": "제 자리 이동 건은 그걸로 하면 되나요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.92,
+    "confidence": 0.83,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.95,
-      "UNSUPPORTED": 0.03
+      "SEARCH_KNOWLEDGE": 0.05,
+      "CLARIFY": 0.89,
+      "UNSUPPORTED": 0.06
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 184.53470012173057
+    "elapsed_ms": 209.26359994336963
   },
   {
     "split": "test",
@@ -3695,14 +3695,14 @@
     "input_text": "외부 거래처에 등기 서류를 보내야 합니다. 우편실에 맡길 때 봉투에 적을 내용이 궁금해요.",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.88,
+    "confidence": 0.89,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.92,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.06
+      "SEARCH_KNOWLEDGE": 0.9299999999999999,
+      "CLARIFY": 0.03,
+      "UNSUPPORTED": 0.04
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 218.88720011338592
+    "elapsed_ms": 193.91259993426502
   },
   {
     "split": "test",
@@ -3710,14 +3710,14 @@
     "input_text": "이거 다음 주로 미뤄도 될까요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.88,
+    "confidence": 0.61,
     "probabilities": {
       "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.92,
-      "UNSUPPORTED": 0.06
+      "CLARIFY": 0.74,
+      "UNSUPPORTED": 0.24
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 228.49300014786422
+    "elapsed_ms": 216.13289997912943
   },
   {
     "split": "test",
@@ -3725,14 +3725,14 @@
     "input_text": "새로 발급하는 거 그걸로 바꾸려는데, 어디서 하면 되죠?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.67,
+    "confidence": 0.48,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.21,
-      "CLARIFY": 0.78,
+      "SEARCH_KNOWLEDGE": 0.34,
+      "CLARIFY": 0.65,
       "UNSUPPORTED": 0.01
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 208.59059994108975
+    "elapsed_ms": 195.1242999639362
   },
   {
     "split": "test",
@@ -3740,14 +3740,14 @@
     "input_text": "내일 하루 연차를 포털에 올려 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.98
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 202.34590000472963
+    "elapsed_ms": 207.133200019598
   },
   {
     "split": "test",
@@ -3755,14 +3755,14 @@
     "input_text": "시설 포털에 올린 프로젝터 장애 접수의 담당 배정 상태를 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.86,
+    "confidence": 0.94,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.03,
-      "UNSUPPORTED": 0.91
+      "SEARCH_KNOWLEDGE": 0.04,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.96
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 190.65189990215003
+    "elapsed_ms": 203.65409995429218
   },
   {
     "split": "test",
@@ -3770,14 +3770,14 @@
     "input_text": "등록된 VPN 허용 주소를 직원이 확인하거나 변경 신청하는 절차가 있나요?",
     "actual": "SEARCH_KNOWLEDGE",
     "predicted": "SEARCH_KNOWLEDGE",
-    "confidence": 0.98,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.99,
-      "CLARIFY": 0.01,
+      "SEARCH_KNOWLEDGE": 1.0,
+      "CLARIFY": 0.0,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 206.1346999835223
+    "elapsed_ms": 229.51259999535978
   },
   {
     "split": "test",
@@ -3787,12 +3787,12 @@
     "predicted": "CLARIFY",
     "confidence": 0.88,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
+      "SEARCH_KNOWLEDGE": 0.02,
       "CLARIFY": 0.92,
-      "UNSUPPORTED": 0.03
+      "UNSUPPORTED": 0.06
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 211.2521999515593
+    "elapsed_ms": 186.71219982206821
   },
   {
     "split": "test",
@@ -3800,14 +3800,14 @@
     "input_text": "회사 정책과 무관하게 제 게임 서버 성능 문제를 실시간으로 진단하고 고쳐 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.97,
+    "confidence": 1.0,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.98
+      "SEARCH_KNOWLEDGE": 0.0,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 1.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 205.35970013588667
+    "elapsed_ms": 209.19899991713464
   },
   {
     "split": "test",
@@ -3815,14 +3815,14 @@
     "input_text": "해외 파견 안내에서 이 항목은 동반 가족도 해당된다는 뜻인가요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.92,
+    "confidence": 0.52,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.05,
-      "CLARIFY": 0.95,
+      "SEARCH_KNOWLEDGE": 0.32,
+      "CLARIFY": 0.68,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 241.27990007400513
+    "elapsed_ms": 211.32260002195835
   },
   {
     "split": "test",
@@ -3830,19 +3830,64 @@
     "input_text": "사무실 냉난방 조정 요청이 접수됐는지 조회해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
+      "SEARCH_KNOWLEDGE": 0.01,
       "CLARIFY": 0.0,
-      "UNSUPPORTED": 0.98
+      "UNSUPPORTED": 0.99
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 202.44670007377863
+    "elapsed_ms": 197.51450000330806
   },
   {
     "split": "test",
     "question_id": "RQ0876",
     "input_text": "집에서 쓸 공유기를 사려고 하는데 모델을 골라 주세요.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.94,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.03,
+      "UNSUPPORTED": 0.96
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 209.5456998795271
+  },
+  {
+    "split": "test",
+    "question_id": "RQ0879",
+    "input_text": "지난주 제출한 복지비 환급 건이 승인됐는지 확인해 줘.",
+    "actual": "UNSUPPORTED",
+    "predicted": "UNSUPPORTED",
+    "confidence": 0.98,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.01,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.99
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 216.79869992658496
+  },
+  {
+    "split": "test",
+    "question_id": "RQ0880",
+    "input_text": "팀이 바뀌면 이건 누가 맡는 건가요? 제가 계속 하는 건지 다른 분께 넘기는 건지요.",
+    "actual": "CLARIFY",
+    "predicted": "CLARIFY",
+    "confidence": 0.56,
+    "probabilities": {
+      "SEARCH_KNOWLEDGE": 0.16,
+      "CLARIFY": 0.71,
+      "UNSUPPORTED": 0.13
+    },
+    "model": "jev-1.13.0",
+    "elapsed_ms": 215.57580004446208
+  },
+  {
+    "split": "test",
+    "question_id": "RQ0883",
+    "input_text": "세금계산서에 맞춰 공급업체 청구 금액을 수정해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
     "confidence": 0.97,
@@ -3852,52 +3897,7 @@
       "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 228.22479996830225
-  },
-  {
-    "split": "test",
-    "question_id": "RQ0879",
-    "input_text": "지난주 제출한 복지비 환급 건이 승인됐는지 확인해 줘.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.92,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.95
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 221.39029996469617
-  },
-  {
-    "split": "test",
-    "question_id": "RQ0880",
-    "input_text": "팀이 바뀌면 이건 누가 맡는 건가요? 제가 계속 하는 건지 다른 분께 넘기는 건지요.",
-    "actual": "CLARIFY",
-    "predicted": "CLARIFY",
-    "confidence": 0.88,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.06,
-      "CLARIFY": 0.92,
-      "UNSUPPORTED": 0.02
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 214.5746999885887
-  },
-  {
-    "split": "test",
-    "question_id": "RQ0883",
-    "input_text": "세금계산서에 맞춰 공급업체 청구 금액을 수정해 주세요.",
-    "actual": "UNSUPPORTED",
-    "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
-    "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.02,
-      "CLARIFY": 0.02,
-      "UNSUPPORTED": 0.96
-    },
-    "model": "jev-1.13.0",
-    "elapsed_ms": 216.05470008216798
+    "elapsed_ms": 206.18600002489984
   },
   {
     "split": "test",
@@ -3905,14 +3905,14 @@
     "input_text": "세금계산서를 포털에 올리다 문의할 점이 생겼습니다. 잠시 확인 부탁드려도 될까요?",
     "actual": "CLARIFY",
     "predicted": "CLARIFY",
-    "confidence": 0.98,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.01,
-      "CLARIFY": 0.99,
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.98,
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 240.90579990297556
+    "elapsed_ms": 195.20019995979965
   },
   {
     "split": "test",
@@ -3927,7 +3927,7 @@
       "UNSUPPORTED": 0.0
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 223.14140014350414
+    "elapsed_ms": 212.69900002516806
   },
   {
     "split": "test",
@@ -3935,13 +3935,13 @@
     "input_text": "제 모니터 연결 장애 티켓이 현재 누구에게 배정됐는지 확인해 주세요.",
     "actual": "UNSUPPORTED",
     "predicted": "UNSUPPORTED",
-    "confidence": 0.94,
+    "confidence": 0.97,
     "probabilities": {
-      "SEARCH_KNOWLEDGE": 0.03,
-      "CLARIFY": 0.01,
-      "UNSUPPORTED": 0.96
+      "SEARCH_KNOWLEDGE": 0.02,
+      "CLARIFY": 0.0,
+      "UNSUPPORTED": 0.98
     },
     "model": "jev-1.13.0",
-    "elapsed_ms": 204.2125000152737
+    "elapsed_ms": 187.7628001384437
   }
 ]

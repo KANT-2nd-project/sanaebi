@@ -36,6 +36,13 @@ POST /ask   -> {"ok":true,"text":"휴가 신청 방법 알려줘","reason":""}
 
 현재 `/ask`는 앞뒤 공백을 제거한 질문을 반환하는 echo 단계입니다.
 
+질문 분류는 `POST /classify/koelectra-base`에 `{"question":"출장비 정산 절차 알려줘"}`를
+전달하면 `{"category":"SEARCH_KNOWLEDGE"}` 형태로 반환합니다. 저장된 KoELECTRA Base
+모델과 토크나이저, `training_summary.json`의 최대 토큰 수를 사용하며 재학습하지 않습니다.
+첫 요청에서 모델을 로드해 재사용하고, 가중치 파일이 없으면 HTTP 503과
+`분류 모델이 없습니다.` 안내를 반환합니다. 모델 생성 명령은
+`uv run --locked python classification/train_koelectra_base.py`입니다.
+
 ## 프로젝트 문서
 
 - [서비스 아키텍처](docs/service-architecture.md): 현재 API 동작과 목표 질문 처리 흐름
