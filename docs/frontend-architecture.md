@@ -33,7 +33,7 @@ Next.js를 선택해도 검색 노출이나 순위가 보장되지는 않는다.
 | 공개 서비스 소개 | `/` | 공개 단계 | 비민감 콘텐츠를 정적 생성하고 검색 허용 |
 | 공개 사용 안내 | `/guide` | 공개 단계 | 정적 생성, 검색 허용 |
 | 로그인 | `/login` | 인증 도입 단계 | noindex |
-| 문서 관리 | `/admin/documents` | 후속 확장 | 관리자 권한 필요, noindex. 현재 구현 대상 아님 |
+| 문서 관리 | `/admin/documents` | 로컬 가상 자료 시연 | 정적 화면·런타임 API, noindex. 조직 인증·권한은 후속 |
 
 공개 페이지는 본문·제목·링크가 첫 HTML에 포함되도록 한다. 변경이 드문 소개·안내에 요청마다 SSR을 강제하지 않는다. Server Component라는 사실만으로 빌드 시 정적 생성되는 것은 아니므로 실제 빌드 결과를 확인한다. 입력창과 전송 버튼 등 상호작용이 필요한 부분만 Client Component로 둔다.
 
@@ -164,3 +164,7 @@ nginx 자체 오류는 HTML일 수 있으므로 Content-Type과 상태를 확인
 - [Google JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics): HTML 사전 제공과 크롤링
 - [Google noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing): 색인 제외와 크롤링의 차이
 - [Vite 안내](https://vite.dev/guide/), [Astro 설계 방향](https://docs.astro.build/en/concepts/why-astro/): 대안 선택 근거
+
+## 로컬 문서 관리 화면
+
+`/admin/documents`는 정적 화면과 클라이언트 API 조회로 문서 목록·초안·게시·사용 중단을 제공합니다. 채팅의 명시적 등록 동작은 같은 편집기를 열고 대화 상태를 유지합니다. 상세 상태·계약·운영 경계는 [문서 관리 안내](document-management.md)를 기준으로 합니다. 실제 모델 연결은 별도 작업이며 `/ask`는 echo를 유지합니다.

@@ -129,3 +129,7 @@ uv run --locked python scripts/validate_company_knowledge.py
 집필 Markdown, 출처·결정·검수표, 생성 도구와 이전 v1 정책·평가는 Git 제외 경로 `data/local/company-knowledge-support-2026-10-14/`에 보존했다. 해당 폴더의 README가 보관 목록과 이력의 기준이다. 로컬 자료는 새 clone에 포함되지 않으며 실행·테스트의 필수 의존성이 아니다. 과거 스크립트는 당시 생성 과정을 보존한 자료로 현재 JSONL을 자동 갱신하지 않는다.
 
 평가 질문은 이번에 추가하지 않았다. 평가 CLI의 기본값은 저장소에 이미 보관된 [v0 문서와 당시 평가](archive/company-knowledge-v0/README.md) 쌍이며 현재 지식의 품질 측정이 아니다. 별도 평가에는 같은 버전의 `--eval-set`과 `--documents`를 지정한다. v1의 52개 정책·208개 평가도 위 로컬 보관 폴더에 함께 남겼다. 기존 900개 분류 질문과 과거 실험 결과는 별도 자료다.
+
+## 웹 등록 자료와 baseline의 구분
+
+웹 문서 관리는 별도 SQLite에 런타임 자료를 저장하며 이 디렉터리의 baseline·평가 자료를 수정하지 않습니다. 기존 `app/documents.jsonl`도 자동 병합하지 않습니다. [문서 관리 안내](../docs/document-management.md)의 선택적 이관·게시·문서 공급 경계를 따릅니다. 현재 `/ask`는 등록 자료를 사용하지 않는 echo입니다.

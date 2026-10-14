@@ -10,7 +10,7 @@
 
 ## 현재 구현 상태
 
-현재 개발 범위는 `POST /ask`의 질문 처리·답변 연결이다. `POST /regist-docs`는 코드에 구현되어 있지만 현재 개발 범위 밖의 후속 기능이다.
+현재 `/ask`는 echo를 유지하고, 문서 관리는 별도 `/documents` API로 제공한다. `POST /regist-docs`는 기존 JSONL append 계약으로 호환 유지한다. 실제 모델 답변 연결은 후속 작업이다.
 
 | 구성 | 저장소에서 확인한 동작 |
 |---|---|
@@ -93,3 +93,7 @@ flowchart TD
 | [Anthropic, Mitigating the risk of prompt injections in browser use](https://www.anthropic.com/research/prompt-injection-defenses) | 외부 문서에 모델 지시를 바꾸려는 문구가 포함될 수 있다는 위험 | 문서 본문을 데이터로 다루는 지침의 실제 효과와 별도 방어 필요성 |
 
 세 라벨의 의미·경계, JSON Lines 문서 전체 제공, 단계별 평가 구분은 이 프로젝트의 설계 결정이다. 사용할 모델, 입력 예산, 분류 점수, 근거 인용 정확성, 응답 시간과 비용은 아직 확인되지 않았다.
+
+## 등록 자료의 관리와 답변 연결 단계
+
+로컬 `/admin/documents`에서 초안 저장·개정·게시·사용 중단을 관리합니다. 새 `/documents` API는 SQLite에 저장하고 기존 `/regist-docs`의 JSONL 계약은 유지합니다. 문서 공급 계층은 적용 가능한 게시본과 baseline을 제공하지만 현재 echo `/ask`는 사용하지 않습니다. 저장·게시가 실제 모델 답변 연결을 뜻하지 않습니다. 자세한 범위는 [문서 관리 안내](document-management.md)에 둡니다.
