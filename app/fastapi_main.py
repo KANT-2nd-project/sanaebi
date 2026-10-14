@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
+from app.answer_text import LLM_RESPONSE_ERROR, LLMResponseError
 from app.routers import documents, questions
 from app.schemas import AnswerResponse
 
@@ -26,3 +27,14 @@ async def handle_validation_error(
         reason="요청 형식이 올바르지 않습니다. 필수 항목과 입력값을 확인해주세요.",
     )
     return JSONResponse(status_code=422, content=response.model_dump())
+
+
+# 작성일: 2026-10-14
+# 작성자: yu
+# 기능: LLM 응답에 쓸 text가 없으면 원문 대신 안내 문구로 502 반환
+@app.exception_handler(LLMResponseError)
+async def handle_llm_response_error(
+    request: Request, exc: LLMResponseError
+) -> JSONResponse:
+    response = AnswerResponse(ok=False, text="", reason=LLM_RESPONSE_ERROR)
+    return JSONResponse(status_code=502, content=response.model_dump())
