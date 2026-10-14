@@ -14,7 +14,7 @@
 
 ## 데이터와 구현 현황
 
-학습·평가 질문은 [data/dataset.csv](data/dataset.csv), 문항별 작성·검수 이력은 [data/dataset-review.csv](data/dataset-review.csv)에 있습니다. 데이터셋 v0.1은 모두 합성한 한국어 질문 900건이며, `ANSWER_FROM_DOCS`, `CLARIFY`, `UNSUPPORTED`가 각각 300건입니다. 데이터 작성과 두 AI 검수는 완료됐고 전체 `review_status`가 `ai_reviewed`입니다. 사람의 정답 승인은 0건입니다.
+학습·평가 질문은 [data/dataset.csv](data/dataset.csv), 문항별 작성·검수 이력은 [data/dataset-review.csv](data/dataset-review.csv)에 있습니다. 데이터셋 v0.1은 모두 합성한 한국어 질문 900건이며, `SEARCH_KNOWLEDGE`, `CLARIFY`, `UNSUPPORTED`가 각각 300건입니다. 데이터 작성과 두 AI 검수는 완료됐고 전체 `review_status`가 `ai_reviewed`입니다. 사람의 정답 승인은 0건입니다.
 
 CSV는 `question_id`, `question`, `label`, `group_id`, `source`, `review_status`의 여섯 열이며 모델 입력은 `question` 하나뿐입니다. 데이터 사용법·검수·그룹 분할 기록은 [데이터 안내](data/README.md), 라벨 판정의 단일 기준은 [요청 처리 분류·라벨링 기준 v1.0](docs/label-taxonomy.md)에서 확인할 수 있습니다.
 

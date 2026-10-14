@@ -151,7 +151,7 @@ class DatasetValidatorTests(unittest.TestCase):
         self.assert_invalid("duplicate normalized question")
 
     def test_rejects_unknown_or_multilabel_values(self) -> None:
-        for label in ("UNKNOWN", "ANSWER_FROM_DOCS;CLARIFY"):
+        for label in ("UNKNOWN", "ANSWER_FROM_DOCS", "SEARCH_KNOWLEDGE;CLARIFY"):
             with self.subTest(label=label):
                 rows = [row.copy() for row in self.rows]
                 rows[0]["label"] = label

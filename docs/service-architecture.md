@@ -29,16 +29,16 @@
 
 | 라벨 | 목표 처리 |
 |---|---|
-| `ANSWER_FROM_DOCS` | 회사 문서를 근거로 답변을 시도한다. 답변 단계에서 실제 근거와 한계를 확인한다. |
+| `SEARCH_KNOWLEDGE` | 회사 문서를 근거로 답변을 시도한다. 답변 단계에서 실제 근거와 한계를 확인한다. |
 | `CLARIFY` | 대상이나 원하는 도움을 알 수 있도록 구체적으로 되묻는다. |
 | `UNSUPPORTED` | 현재 지원하지 않는 조회·실행·요청임을 안내한다. |
 
-ANSWER_FROM_DOCS로 분류된 질문에는 JSON Lines로 준비한 회사 문서 전체, 공통 답변 지침, 원래 질문을 LangChain 흐름에 전달해 LLM 답변을 만든다. CLARIFY와 UNSUPPORTED는 각각 되묻기와 지원 범위 안내로 처리한다.
+SEARCH_KNOWLEDGE로 분류된 질문에는 JSON Lines로 준비한 회사 문서 전체, 공통 답변 지침, 원래 질문을 LangChain 흐름에 전달해 LLM 답변을 만든다. CLARIFY와 UNSUPPORTED는 각각 되묻기와 지원 범위 안내로 처리한다.
 
 ```mermaid
 flowchart TD
     Q["현재 질문"] --> C{"요청 처리 분류"}
-    C -->|"ANSWER_FROM_DOCS"| D["회사 문서 전체 + 공통 지침 + 원래 질문"]
+    C -->|"SEARCH_KNOWLEDGE"| D["회사 문서 전체 + 공통 지침 + 원래 질문"]
     D --> LC["LangChain"] --> LLM["LLM 답변 생성"]
     LLM --> E["근거·충돌·자료 부족 확인"]
     C -->|"CLARIFY"| CL["필요한 정보 되묻기"]
@@ -66,7 +66,7 @@ flowchart TD
 | 학습·평가 데이터 | data/dataset.csv, 데이터셋 v0.1, 질문 900건 |
 | 열 | question_id, question, label, group_id, source, review_status |
 | 모델 입력 | question 하나. 나머지 열은 학습 정답, 그룹 분할, 출처와 검수 상태 관리에 사용한다. |
-| 라벨 수량 | ANSWER_FROM_DOCS 300건, CLARIFY 300건, UNSUPPORTED 300건 |
+| 라벨 수량 | SEARCH_KNOWLEDGE 300건, CLARIFY 300건, UNSUPPORTED 300건 |
 | 데이터 유형 | 전량 합성 질문. 실제 이음웍스 규정이나 답변 근거 문서가 아니다. |
 | 검수 | GPT-6 Luna와 GPT-6 Astra의 독립 AI 검수 완료, 사람 정답 승인 0건. 문항별 기록은 data/dataset-review.csv에 있다. |
 | 그룹 구성 | 원형 상황 392개, 한 그룹 최대 5건 |
