@@ -15,7 +15,7 @@
 | 질문 데이터의 실제 내용 | [질문 CSV](../data/dataset.csv) | 데이터 안내의 구성 요약 |
 | 데이터 스키마·사용·검수 방법·분할 | [데이터 안내](../data/README.md), 관련 검증 코드 | 링크와 작업에 필요한 주의점 |
 | 문항별 작성·검수·조정 | [검수 기록](../data/dataset-review.csv) | 방법과 한계 요약 |
-| 분류 실험 계층·내부 계약·CLI·모델/결과 저장·재사용 정책 | [분류 코드 안내](../classification/README.md) | README·서버 규약의 링크. 성능 결과와 서버 연결 상태는 구분 |
+| 분류 실험 계층·내부 계약·CLI·모델/결과 저장·MLflow 기록·명시적 재학습 정책 | [분류 코드 안내](../classification/README.md) | README·서버 규약의 링크. 성능 결과와 서버 연결 상태는 구분 |
 | 답변 근거 지식·출처·회사 결정·문서 검수 | [회사 정책 안내](../data/README.md#답변용-회사-지식)와 연결 자료 | Notion 데이터 절차의 요약과 기준 링크 |
 | 생성 평가 기준·응답 검사 | [생성 평가 안내](generation-evaluation.md)와 평가 코드 | 과거 text 기록과 현재 구조화 응답을 구분하고 실모델 평가 여부를 표시 |
 | 모델 성능 | 현재 `artifacts/models/`의 manifest와 `artifacts/results/`의 연결된 평가 결과. 과거 결과는 원 실행 자료 | 결과를 확인할 수 있는 링크와 해석 |

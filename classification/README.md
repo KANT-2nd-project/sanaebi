@@ -1,209 +1,123 @@
 # 질문 분류 실험
 
-질문 분류 모델의 학습과 평가를 실행한다. [라벨 기준](../docs/label-taxonomy.md)과 [데이터 안내](../data/README.md)는 각 정보의 기준 문서다. 공통 라벨은 [contracts/classification.py](../contracts/classification.py)에서 가져온다.
+질문 하나를 `SEARCH_KNOWLEDGE`, `CLARIFY`, `UNSUPPORTED`로 분류하는 모델을 학습·평가한다. [라벨 기준](../docs/label-taxonomy.md), [데이터 안내](../data/README.md)가 각각 판정·검수·분할의 기준이다. 실행 기록은 로컬 MLflow에서 확인한다.
 
-## 먼저 읽을 코드
+## 먼저 실행하기
 
-학습은 `sanaebi train 모델명`으로 실행한다. `experiments/train_*.py`는 같은 공통 설정과 CLI를 호출하는 기존 실행 진입점이다. 실제 학습 구현은 `models/`에서 읽는다.
-
-먼저 `dataset.prepare_data()`로 질문·분할을 확인하고, 아래 세 곳에서 설정 → 실행 조립 → 학습 계산을 읽는다.
-
-1. [models/presets.py](models/presets.py)의 `CONFIGS`: 선택한 모델 이름에 연결된 설정을 확인한다.
-2. [cli/train.py](cli/train.py)의 `execute()`: 데이터 준비 → preview 또는 재사용 검사 → 학습 → 임시 저장·검증 → 모델 교체 순서가 한곳에 있다. 옵션은 [cli/main.py](cli/main.py)에서 한 번 읽는다.
-3. [workflows/train.py](workflows/train.py)의 `train()`: 전달된 `fit(train, validation)`으로 모델을 선택하고 validation 예측·점수를 반환한다. train과 validation 행만 받으며 test에는 접근하지 않는다. 이 함수는 저장 없이 계산만 재사용할 때도 쓴다.
-
-```text
-sanaebi train → execute
-               ├─ 데이터 준비 → preview면 종료
-               ├─ train → 모델 fit → 선택 checkpoint의 validation 평가
-               └─ 모델·요약 임시 저장 → 로컬 재로딩 검증 → 게시
-sanaebi eval  → validation CPU 평가 → 분할별 결과·보고서 게시
-             → --split test를 명시하면 test만 평가
-```
-
-첫 실행은 `uv run --locked sanaebi train koelectra_small --preview-questions`로 입력과 분할만 확인한다. 각 함수에서는 입력·반환값·부작용을 메모한다. 같은 조건의 정상 모델은 재사용하며, 명시적인 `--force`만 재학습한다.
-
-전체 흐름을 이해한 뒤 [dataset.py](dataset.py)의 `prepare_data()`로 데이터 분할을, [models/tfidf.py](models/tfidf.py)의 `fit()`·`select_tfidf()`로 후보 선택을 읽는다. 이후 [models/transformer.py](models/transformer.py)의 `fit()` → `select_transformer()` → `train_epoch()`·`predict_ids()` → `BestCheckpoint`로 신경망 학습을 살펴본다. 평가·저장·HTML 구현은 필요할 때 각각 `workflows/evaluate.py`·`artifacts.py`·`evaluation/reporting.py`에서 확인한다.
-
-[types.py](types.py)는 단계 사이에 오가는 자료를 설명한다. `DatasetSplits`는 질문 분할·분할 기록·해시, `FittedModel`은 선택된 모델의 예측 함수·선택 기록·명시적 저장 함수, `SelectionResult`는 선택 결과·validation 지표·선택 시간이다. `Prediction`에는 라벨과 선택적인 확률·모델 버전·토큰 사용량이 들어간다. `EvaluationResult`에는 지표·문항별 예측·측정 기록이 들어간다.
-
-## 구조와 책임
-
-```text
-classification/
-├── experiments/         # 사용자 실행 진입점: 모델 설정·학습·평가 명령
-│   ├── train_*.py       # 6개 모델 학습 명령과 train_example.py
-│   ├── evaluate_saved.py
-│   └── evaluate_jev.py
-├── cli/                 # 옵션·구체 구현·저장 조립
-│   ├── main.py           # sanaebi 하위 명령의 인자 처리
-│   ├── train.py
-│   ├── evaluate.py      # 현행 로컬 단일 분할 평가
-│   └── jev.py           # 기존 Jev 실행 조립
-├── workflows/           # 저장 없는 학습·평가 계산 흐름
-│   ├── train.py
-│   └── evaluate.py
-├── models/              # 모델별 학습·로딩·예측·직렬화
-│   ├── presets.py        # CLI가 공유하는 설정·로더 조립
-│   ├── transformer.py
-│   ├── tfidf.py
-│   ├── jev.py
-│   └── jev_prompt.py
-├── evaluation/          # 평가 결과 계산·표현
-│   ├── metrics.py
-│   ├── reporting.py     # HTML 렌더링
-│   └── comparison.py    # 유효 validation 결과 수집·게시
-├── legacy/              # 과거 형식의 호환 경계
-│   ├── evaluate.py      # 구형 로컬 모델·저장 API 결과
-│   └── document_split.py
-├── dataset.py           # 질문 읽기·그룹 분할·기록 복원
-├── artifacts.py         # 기존 경로·파일 읽기/쓰기·직렬화
-├── storage.py           # manifest·재사용 조건·잠금·복구 가능한 교체
-├── types.py             # 단계 간 내부 계약
-└── result/              # 기존 평가 산출물
-```
-
-`models/`는 구현 코드이며 `model/`은 학습된 가중치의 기존 저장 위치다. `result/`는 기존 평가 산출물이다. 과거 문서 주제 분류 코드는 [legacy 안내](legacy/README.md)의 별도 계약으로 유지한다.
-
-의존 방향은 다음 규칙으로 제한하며 [계층 검사](../tests/test_classification_layers.py)에서 확인한다.
-
-- CLI가 구체 모델, 데이터, workflow, 아티팩트, 보고서를 조립한다. 아래 계층은 CLI나 `experiments/`의 실행 진입점을 import하지 않는다.
-- Workflow는 내부 계약과 평가 계산을 사용한다. 모델 구현·데이터 로더·아티팩트 저장·HTML·argparse·subprocess에 의존하지 않는다.
-- 모델 구현끼리는 서로 import하지 않는다. Jev의 고정 프롬프트는 Jev 구현의 일부다. 공통 상속 구조는 사용하지 않는다.
-- 지표·보고서는 데이터 분할이나 모델 구현을 알지 않는다. 보고서는 측정 모듈의 실행 상수 대신 전달된 표시 조건을 사용한다.
-
-## 학습 한 번의 흐름
-
-```text
-기존 모델별 명령
-  → CLI: 설정·경로 준비, CSV 분할
-  → workflow: 전달받은 fit(train, validation) 호출
-      → 모델 구현: 후보 학습, validation으로 선택, 최고 가중치 복원
-      ← FittedModel(예측 함수, 선택 기록, 저장 함수)
-  → workflow: 선택한 모델로 validation 평가
-  ← SelectionResult
-  → CLI: 임시 저장 → 재로딩·단건 예측·해시 검증 → 모델 교체
-  → 종료 (저장 모델 CPU 평가는 별도 sanaebi eval 명령)
-```
-
-학습 함수가 반환한 저장 함수는 명시적으로 호출할 때만 모델을 저장한다. 사전학습 모델을 새로 학습하는 Transformer `fit()`은 필요한 기반 모델을 다운로드할 수 있지만, 선택한 모델이나 보고서를 자동으로 저장하지 않는다. 저장 실패는 호출자에게 전달하며 기존 정상 모델을 보존한다. 별도 평가가 실패해도 모델과 직전 평가 결과를 보존하고 자동 재학습하지 않는다.
-
-코드에서 학습 계산만 사용하려면 다음처럼 호출한다. 이 예시는 실제 TF-IDF 학습을 수행한다.
-
-```python
-from functools import partial
-from classification.dataset import prepare_data
-from classification.models.tfidf import TfidfConfig, fit
-from classification.workflows.train import train
-
-data = prepare_data()
-result = train(
-    data.rows["train"], data.rows["validation"], partial(fit, config=TfidfConfig())
-)
-print(result.validation_scores["macro_f1"])
-# result.fitted.save(path)는 따로 호출하기 전에는 실행되지 않는다.
-```
-
-Transformer의 입력·마스크는 `[B, L]`, 정답은 `[B]`, 출력 점수는 `[B, 3]`이다. train에서만 가중치를 수정하고 validation Macro F1으로 후보를 고른다. 동점이면 먼저 선택한 후보를 유지한다. 최고 가중치는 독립 CPU 복사본으로 보관한다. 선택 checkpoint의 validation을 배치로 채점한다. 저장 모델 CPU 평가는 지정 분할의 질문 한 건 단위로 실행한다. 신규 학습 요약에 test 점수를 생성하지 않으며 과거 요약의 test 필드는 읽기 호환만 유지한다.
-
-## 평가 한 번의 흐름
-
-```text
-CLI: 저장 요약 읽기 → 기록된 질문 ID로 분할 복원 → 모델 로딩
-  → evaluate_questions(질문 분할, 예측 함수, 측정 정책, split="validation" 또는 "test")
-  ← EvaluationResult
-  → 아티팩트 저장 → 보고서 HTML 생성·저장
-```
-
-현행 로컬 모델은 지정한 분할을 한 번 채점하고 준비 실행 3회 후 같은 분할 전체를 3회 반복 측정하고 CPU 스레드 4개를 사용한다. Jev는 validation·test에 실제 요청을 한 번씩 보내고 test 요청 시간을 기록한다. Jev에 준비 실행이나 반복 측정을 추가하지 않는다. 가중치 없는 모델을 자동 학습하거나 다운로드하는 동작은 저장 모델 평가에 없다.
-
-Jev의 프롬프트·예시는 [models/jev_prompt.py](models/jev_prompt.py), HTTP 요청·응답 변환은 [models/jev.py](models/jev.py)에 있다. train 대표 예시의 정합성 확인과 인증·경로 준비는 실행 조립 단계에서 수행한다. 평가셋을 프롬프트 설계 때 읽었다는 기존 제한도 산출물에 유지한다.
-
-## 결과를 해석할 때
-
-보고서 첫 화면은 model_id, 데이터 SHA·분할 해시, 입력, 평가 분할·용도, 데이터 검수·test 열람 상태를 표시한다. 기록이 없는 항목은 미기록이다. 현재 900건 자료는 알려진 CSV 해시와 일치할 때만 합성·AI 검수·사람 승인 0건, 이미 열람한 개발 평가 자료로 표시한다. 새 CSV에 이 설명을 자동 적용하지 않는다.
-
-`--split test`를 실행했다고 미열람 최종 평가가 되는 것은 아니다. 기존 test는 이미 열람한 개발 자료이며 최종 선정용 새 평가가 필요하다. 구조 변경은 정확도 개선이나 모델 선정 완료를 뜻하지 않는다.
-
-## 실행 명령과 저장
-
-`uv sync --locked`로 프로젝트 가상환경에 `sanaebi` 명령을 설치한다. 가상환경이 활성화되어 있으면 아래처럼 실행한다. 활성화하지 않았다면 명령 앞에 `uv run --locked`를 붙인다.
+저장소 루트에서 `uv sync --locked` 후 실행한다. 처음에는 별도 실험 폴더를 권한다.
 
 ```bash
-sanaebi train koelectra_small --preview-questions
-sanaebi train koelectra_small
-sanaebi eval koelectra_small                 # validation만
-sanaebi eval koelectra_small --split test    # test 명시
-sanaebi train koelectra_small --force
+uv run --locked sanaebi train tfidf --artifact-root tmp/my-classification-lab --preview-questions
+uv run --locked sanaebi train tfidf --artifact-root tmp/my-classification-lab
+uv run --locked sanaebi eval tfidf --artifact-root tmp/my-classification-lab
+uv run --locked sanaebi eval tfidf --artifact-root tmp/my-classification-lab --split test
 ```
 
-preview는 입력·라벨·분할 수량·그룹 교집합·후보 수·epoch·선택 기준·저장 위치·test 미평가를 보여주며 다운로드와 저장을 하지 않는다.
+preview는 입력·라벨·분할 수량·그룹 중복·후보 수·선택 기준·저장 위치를 보여준다. 모델 다운로드·학습·결과 저장·MLflow 초기화를 하지 않는다.
 
-KoELECTRA small은 현재 자료의 최대 65토큰 진단을 근거로 길이 후보를 `(256,)`으로 줄였다. 다른 모델 설정은 유지한다. 설정과 학습 코드가 바뀌었으므로 기존 모델의 train 재사용은 조건 불일치가 날 수 있다. 자동 재학습하지 않으며 기존 가중치의 eval은 가능하다. 새 학습은 별도 `--artifact-root`로 격리하는 것을 권한다.
+모델 폴더가 이미 있으면 train은 **조건·무결성을 검사하지 않고** 안내 후 종료한다. 재학습은 `--force` 또는 새로운 `--artifact-root`로 명시한다. 이전 결과가 없다고 재학습하지 않는다. 명령 완료·기존 폴더 안내는 종료 코드 0, 실행 실패는 1, 잘못된 인자는 2다.
 
-모델 이름은 `bert_base`, `koelectra_base`, `koelectra_small`, `roberta_base`, `roberta_small`, `tfidf`다. `--dataset CSV`와 `--artifact-root DIR`는 train·eval에서 공통으로 사용한다. 기본 경로는 저장소 기준 절대 경로이므로 외부 작업 폴더에서도 동일한 자료를 찾는다. 상대 옵션 경로는 호출한 작업 폴더 기준이다. 예를 들어 작은 별도 데이터는 `sanaebi train tfidf --dataset tmp/questions.csv --artifact-root tmp/experiment`로 격리한다.
+모델 이름은 `tfidf`, `bert_base`, `koelectra_base`, `koelectra_small`, `roberta_base`, `roberta_small`이다. `--dataset CSV`와 `--artifact-root DIR`를 공통 지원한다. 기본 데이터·저장 경로는 저장소 기준이며 상대 옵션 경로는 실행한 디렉터리 기준이다.
+
+## 코드 읽는 순서
+
+1. `pyproject.toml`의 명령 등록 → [cli/main.py](cli/main.py): 옵션을 해석하고 학습·평가를 선택한다.
+2. [cli/train.py](cli/train.py)의 `execute()`: 기존 폴더 안내 또는 데이터 준비 → 학습 → 임시 저장·재로딩 검증 → 교체 → 실험 기록.
+3. [dataset.py](dataset.py)의 `prepare_data()`: CSV를 읽고 그룹을 유지하며 분할한다.
+4. [models/presets.py](models/presets.py) → [workflows/train.py](workflows/train.py) → [models/tfidf.py](models/tfidf.py): 설정·학습 계약·후보 선택.
+5. [models/transformer.py](models/transformer.py): `fit()` → `select_transformer()` → `train_epoch()`·`predict_ids()` → `BestCheckpoint`.
+6. [cli/evaluate.py](cli/evaluate.py) → [workflows/evaluate.py](workflows/evaluate.py): 저장된 분할 복원·예측·지표·시간 측정.
+7. 필요할 때 [storage.py](storage.py)의 저장 보호와 [tracking.py](tracking.py)의 MLflow 기록을 읽는다.
 
 ```text
-artifacts/                       # Git 제외, 모델별 현재 묶음
-├── models/<모델명>/              # 가중치·토크나이저 또는 model.joblib
-│                                # training_summary.json + manifest.json
-├── results/<모델명>/validation/  # metrics.json·predictions.json·report.html
-├── results/<모델명>/test/        # 명시적 test 평가 결과 (별도 보존)
-├── results/comparison.html       # 같은 조건의 유효 결과끼리 비교
-├── .staging/                    # 저장 중 자료·교체 복구 기록
-├── .backup/models/<모델명>/       # 직전 정상 모델
-├── .backup/results/<모델명>/<분할>/ # 분할별 직전 평가 결과
-└── .locks/                      # OS 배타 잠금 파일
+CLI → 데이터·설정 준비 → workflow → 모델별 계산
+                      ↓
+             모델/결과 저장 → MLflow 기록
 ```
 
-- **train**: 모델이 없으면 학습한다. 파일 해시와 요청 조건이 일치하면 학습을 생략한다. 평가 결과가 없다는 이유로 재학습하지 않는다. 조건 불일치·불완전 저장은 오류와 `--force` 안내를 반환한다.
-- **force**: 새 학습·저장·로컬 로딩·단건 예측 검증이 성공해야 교체한다. 실패하면 기존 모델을 보존한다. 손상된 구형 묶음은 `.staging/previous-*`에 남기고 정상 백업을 덮어쓰지 않는다.
-- **eval**: 기본 validation만 평가한다. `--split test`는 test만 평가하며 `both`는 지원하지 않는다. 두 분할은 별도 경로에 저장해 서로 덮지 않는다. 없거나 손상되면 train 명령을 안내하며 자동 학습하지 않는다. train은 별도 CPU 평가를 자동 실행하지 않는다.
-- **종료 코드**: 완료·스킵 0, 실행 실패 1, 잘못된 명령·인자 2다. 교체 직후 비교 페이지 생성 등이 실패하면 모델 저장은 유지되며 명령은 실패를 반환한다.
+`models/`와 `workflows/`는 MLflow·HTML·CLI를 참조하지 않는다. `FittedModel`은 예측·저장 함수와 설정, `SelectionResult`는 선택 모델·validation 점수·선택 시간을 담는다. `DatasetSplits`는 문항·분할 기록·분할 해시를 담는다. 상세 계약은 [types.py](types.py)에 있다.
 
-manifest는 완료 상태, 파일 해시, 묶음 식별값, 데이터·분할·라벨·전처리와 전체 후보 설정·시드·학습 관련 코드·라이브러리·장치를 기록한다. 경로·실행 시각·UI·HTML은 재사용 판단에서 제외한다. 새 Transformer 학습은 기반 모델과 토크나이저에 같은 revision SHA를 전달하고 기록한다. help·preview·정상 스킵에는 원격 조회나 다운로드가 없다. preview 별칭 `--preview-documents`도 유지한다.
+`experiments/`는 기존 실행 진입점, `legacy/`는 과거 형식의 호환 경계다. `evaluation/metrics.py`는 지표 계산, `evaluation/reporting.py`는 과거 HTML 재출력용이다. 신규 실행은 자체 HTML·비교 페이지를 생성하지 않는다.
 
-모델과 평가 결과는 `model_id`로 연결한다. 모델 교체 후 이전 결과 파일은 보존하지만 현재 모델의 비교 대상에서 제외한다. 기본 비교는 validation만 표시하고 데이터·분할·라벨·측정 정책·평가 환경·결과 형식이 같은 결과끼리 묶는다. 새 validation 결과가 있으면 이를 우선하고, 없을 때만 과거 분할 미구분 metrics의 validation을 읽는다. 과거 파일은 이동하거나 삭제하지 않는다. 평가 시간과 환경이 다른 과거 결과는 현재 비교에 섞지 않는다. 같은 시드만으로 컴퓨터 간 동일한 학습 결과를 보장하지 않는다.
+## 학습과 평가의 경계
 
-원 실행 `runs/koelectra_small/20261014T074121Z-abcd0686`의 small 모델을 해시·분할·예측 대조 후 채택했다. 과거에 기록하지 않은 환경·코드·기반 revision은 미확인으로 남기고, 이전 시점의 조건을 별도 재사용 기준으로 기록한다. 따라서 스킵은 과거 학습 환경의 인증이 아니다. 원본 `runs/`, 재현성 확인 실행, `classification/result/`의 역사 결과는 보존한다. 이 small 채택은 서버 모델 선정·연결을 의미하지 않는다.
+TF-IDF 어휘·IDF는 train에만 맞추고 validation으로 C 후보를 선택한다. Transformer 입력·마스크는 `[B, L]`, 정답은 `[B]`, 출력은 `[B, 3]`이다. train에서만 가중치를 갱신하고 validation Macro-F1으로 후보·epoch를 선택한다. 동점은 먼저 선택한 후보를 유지하고 최고 가중치는 독립 복사·복원한다. 저장 모델의 출력 번호는 해당 모델의 `id2label`·`classes_`로 해석한다.
 
-### 공유할 실험 결과
+학습 workflow는 train/validation만 받으며 선택 모델의 validation 지표를 반환한다. 신규 학습 요약에 test 점수를 생성하지 않는다. eval 기본값은 validation만이며 `--split test`는 test만 평가한다. `both`는 현행 로컬 평가에서 지원하지 않는다. 속도 측정도 선택 분할에서 준비 3회·반복 3회, CPU 스레드 4개로 수행한다.
 
-`artifacts/results/`는 eval마다 갱신되는 로컬 산출물이므로 모델과 함께 Git에서 제외한다. 팀이 검토할 확정 결과는 별도 실험 기록으로 선별해 보관한다. 데이터 해시·분할·설정·환경·model_id·지표·모델 보관 위치를 함께 남기고, 현재 실행 폴더 전체를 커밋하지 않는다. 기존 `classification/result/`는 역사 기록으로 유지한다. Gitignore와 직전 백업 하나는 장기 보관을 대신하지 않는다.
+현재 test는 이미 열람한 개발 자료다. `--split test`가 미열람 최종 평가를 뜻하지 않는다. 합성·AI 검수 데이터의 결과를 실제 직원 질문 성능이나 사람 승인으로 해석하지 않는다.
 
-### 기존 명령에서 전환
+현재 층화 그룹 분할은 20개 fold를 14/3/3으로 합치며 632/133/135건이다. 기존 모델은 저장된 문항 ID로 당시 분할을 복원한다. 서로 다른 분할의 지표를 같은 실험으로 비교하지 않는다.
 
-`sanaebi-train MODEL`과 `experiments/train_*.py`의 파일·모듈 명령도 새 저장·재사용 정책을 호출한다. 예제 `train_example.py`만 사용자 정의 설정을 작성한다. 이전 `--runs-dir`, 학습의 `--model-dir`·`--result-dir` 대신 `--artifact-root`를 사용한다. 기본 실행마다 새 runs 폴더를 만들지 않는다.
+KoELECTRA small의 길이 후보는 `(256,)`이다. 현재 900건의 해당 tokenizer 최대 65토큰 관측에 따른 설정이며 미래 질문에 대한 보장은 아니다. 다른 모델 설정은 유지한다. 기존 모델을 자동 재학습하지 않는다.
+
+## MLflow에서 확인하기
+
+실행 시 `<artifact-root>/tracking/mlflow.db`에 직접 기록하므로 학습할 때 서버를 켤 필요가 없다. 위 예제 폴더를 보려면 저장소 루트에서 실행한다.
 
 ```bash
-uv run --locked python -m classification.experiments.train_koelectra_small --preview-questions
-uv run --locked python -m classification.experiments.evaluate_saved koelectra_small
+MLFLOW_DISABLE_TELEMETRY=true uv run --locked mlflow server \
+  --backend-store-uri sqlite:///tmp/my-classification-lab/tracking/mlflow.db \
+  --host 127.0.0.1 --port 5050 --workers 1 --no-serve-artifacts
+```
+
+브라우저에서 http://127.0.0.1:5050 을 열고 `Model training` → `classification` 실험을 선택한다. 기본 저장소를 사용했다면 DB 경로는 `sqlite:///artifacts/tracking/mlflow.db`다. 다른 디렉터리에서 UI를 실행할 때는 DB 절대 경로를 사용한다. 산출물의 로컬 절대 경로를 기록하므로 폴더를 이동하면 원래 위치의 링크가 자동 수정되지 않는다. DB와 tracking 산출물 폴더를 함께 보관한다. Windows에서는 환경변수 설정 문법을 셸에 맞게 적용한다.
+
+- validation 비교 필터: `tags.kind = 'eval' AND tags.split = 'validation'`. 성공한 run끼리 비교한다.
+- 같은 `dataset_sha256`, `split_id`, `measurement_policy`를 선택하고 `environment.json`도 확인한다. UI가 다른 조건의 비교를 자동 차단하지는 않는다.
+- `model_name`은 모델 이름, `model_id`는 저장 모델 묶음 식별자, `training_run_id`는 해당 학습 실행이다. 구형 모델은 학습 run ID가 없을 수 있다.
+- 학습은 설정·선택 validation 지표·시간, 후보별 epoch 곡선과 `trials.csv`를 기록한다. 기록은 완료 후 일괄 생성하며 실시간 곡선이 아니다.
+- 평가는 선택 분할 지표·라벨별 지표·측정 시간, `metrics.json`의 혼동행렬·오분류, `predictions.json`을 기록한다.
+- 과거 모델 평가의 기록도 앞으로 실제 실행한 평가 run부터 생성한다. 과거 학습 이력을 추정하거나 일괄 이관하지 않는다.
+
+새 재학습은 새 model_id를 만든다. MLflow에는 이전 run도 남으므로 모델 위치가 같다는 이유로 과거 run의 모델이라고 생각하지 않는다. **가중치는 MLflow에 중복 업로드하지 않으며 현재 모델과 직전 백업만 유지한다.** 모든 과거 run의 가중치를 영구 보존하려면 실험별 `--artifact-root`를 사용한다.
+
+MLflow 기록 실패를 숨기지 않는다. 초기화 실패는 학습·외부 요청 전에 중단한다. 로컬 저장 후 추적 기록이 실패하면 저장 경로와 미완료 상태를 알리고 종료 코드 1을 반환한다. 이미 저장된 모델을 자동 재학습하지 않으며 결과 파일을 먼저 확인한다. 다음 eval은 새 평가 run이다. 실패한 과거 run 자동 복구나 중복 실행은 하지 않는다.
+
+공식 참고: [로컬 SQLite Tracking](https://www.mlflow.org/docs/latest/ml/tracking/tutorials/local-database/), [Tracking Quickstart](https://www.mlflow.org/docs/latest/ml/getting-started/quickstart/). autolog·레지스트리·원격 배포는 사용하지 않는다.
+
+## 저장과 기존 모델 호환
+
+```text
+<artifact-root>/
+├── models/<모델명>/              # 가중치 + training_summary.json + manifest.json
+├── results/<모델명>/validation/  # metrics.json + predictions.json
+├── results/<모델명>/test/        # 명시적 test 결과
+├── tracking/mlflow.db            # 실행·설정·지표
+├── tracking/artifacts/           # run별 JSON·CSV 등, 가중치 제외
+├── .staging/                     # 임시 저장, 중단 흔적은 수동 확인
+├── .backup/                      # 직전 모델·평가 결과
+└── .locks/                       # 모델별 OS 잠금
+```
+
+버전 2 manifest는 모델명·완료 상태·생성 시각·model_id·학습 run ID만 기록한다. model_id는 무결성 인증이 아닌 식별자다. 소스 파일별 해시·자동 재사용 fingerprint·전체 파일 해시 검사는 제거했다. 데이터 SHA와 분할 ID는 평가 자료 일치를 위해 유지한다. 설정·분할·선택 기록은 `training_summary.json`, 환경·코드 버전은 MLflow에 남긴다.
+
+버전 1 manifest는 원본을 바꾸지 않고 기존 model_id로 읽는다. 평가에서는 필수 파일·메타데이터·라벨·데이터 SHA와 실제 모델 로딩을 검사한다. 잠재적인 모든 파일 손상을 사전에 검출하는 방식은 아니다. Transformer는 저장 후 재로딩을 확인하며 새 학습의 기반 모델·tokenizer revision SHA를 함께 고정한다.
+
+저장 시 임시 폴더에서 완성·재로딩 검증 후 교체한다. 교체 예외는 기존 폴더를 복원한다. 강제 종료 후에는 자동 복구하지 않는다. `.staging`의 해당 작업 흔적·구형 journal이 발견되면 파일을 보존하고 중단한다. 실행 중인 작업이 없는지 확인하고, 최종 모델·임시 폴더·`.backup` 중 사용할 묶음을 확인한 뒤 나머지는 별도 위치로 옮긴다. 불확실한 폴더를 삭제하거나 가중치를 재학습으로 대체하지 않는다.
+
+`runs/`와 기존 결과·HTML은 보존한다. 이전 small 채택은 서버 최종 모델 선정이 아니다. 현재 서버 연결은 [서버 규약](../docs/server-conventions.md)을 따른다. 산출물·SQLite·모델을 통째로 Git에 넣지 않는다.
+
+## Jev와 과거 진입점
+
+`sanaebi-train MODEL`과 `experiments/train_*.py`도 같은 명시적 재학습 정책을 사용한다. 사용자 정의 모델 설정은 `train_example.py`를 참고한다.
+
+```bash
 uv run --locked python -m classification.experiments.evaluate_jev --preview-questions
+uv run --locked python -m classification.experiments.evaluate_jev --evaluate --artifact-root tmp/my-classification-lab
 ```
 
-`evaluate_saved`의 기본 로컬 평가는 새 저장소의 validation을 사용하며 `--split test`를 지원한다. 구형 형식 명령에는 `--split`을 지원하지 않고 기존 두 분할 평가 의미를 유지한다. 과거 저장 형식을 읽어야 할 때만 `--model-dir`·`--result-dir`를 명시한다. 기존 API 결과의 HTML 재생성도 이 명령에서 지원한다. Jev 실제 평가는 기존 `--evaluate`와 `TYPESAFE_API_KEY`가 필요하며 외부 요청을 수행한다. Jev는 로컬 학습 모델 목록에 넣지 않는다.
+Jev 실제 평가는 `TYPESAFE_API_KEY`가 필요하다. 기존대로 train 대표 예시 12개를 사용하고 validation/test 합계 268회 요청한다. test 요청 시간만 측정하며 준비·반복 요청을 추가하지 않는다. MLflow에서 `split=both`로 표시해 로컬 validation 전용 run과 구분한다. preview·단건 확인은 MLflow run을 만들지 않는다. 신규 Jev 결과는 기본 `<artifact-root>/results/jev/`이며 `--result-dir`도 호환 지원한다.
 
-## 모델을 추가할 때
+`evaluate_saved`의 기본 로컬 평가는 현행 저장소의 validation이다. 과거 `--model-dir`·`--result-dir` 방식은 구형 두 분할 평가 계약을 유지한다. 새로 실행한 구형 로컬 평가는 `kind=eval_legacy`, `split=both`로 결과 디렉터리의 부모 아래 tracking에 기록하고 HTML을 생성하지 않는다. 저장된 과거 API 결과의 HTML 재출력도 유지한다. 구형 명령에는 현행 `--split`을 혼용하지 않는다.
 
-- 새로운 Transformer 모델 ID라면 `CONFIGS`에 이름과 설정을 추가한다. 공통 학습·workflow·평가 지표는 바꾸지 않는다.
-- 새로운 로컬 알고리즘이라면 `models/`에 `fit()`·`load()`를 구현하고 CLI에서 선택·저장 경로를 연결한다. `fit()`은 `FittedModel`, 예측은 `Prediction`을 반환한다.
-- 원격 API 모델은 예측 계약과 요청 단위 측정 정책을 사용한다. 로컬 학습 인터페이스를 억지로 구현하지 않는다.
-- 저장 모델의 출력 번호는 해당 모델의 `id2label` 또는 `classes_`로 해석한다. 전역 라벨 순서로 덮어쓰지 않는다.
-
-새 구현이 기존 결과 계약을 따르면 workflow·공통 지표·보고서를 수정할 필요가 없다. 기존 진입점에서 재노출한 함수를 내부 코드가 import하는 우회 경로도 만들지 않는다.
-
-## 확인 범위
+## 검증
 
 ```bash
 uv run --locked python -m unittest discover -s tests -v
 uv run --locked ruff check .
 uv run --locked ruff format --check .
+uv run --locked python scripts/validate_dataset.py
 ```
 
-테스트는 import·preview 부작용, 분할 복원, train 전용 fit, 후보 선택·동점·최고 가중치, 전처리·라벨 매핑, 기존 결과 파일 보존·새 HTML 의미을 확인한다. 별도 계층 검사에서는 금지 import, 저장 없는 workflow, 로컬/Jev 공통 평가, API 추가 요청 금지, 저장·평가 실패를 검사한다. 작은 임시 TF-IDF 데이터로 설치된 train → 스킵 → validation → test → force 명령과 백업을 확인한다. 모델 무결성·동시 실행 차단·교체 복구도 임시 저장소에서 검사한다.
-
-테스트 통과는 실제 사전학습 모델의 GPU 재학습이나 성능 재현을 의미하지 않는다. 서버 코드와 연결 방식도 변경하지 않았으며, 서버 연결은 [서버 구성 규약](../docs/server-conventions.md)을 따른다.
-
-### 층화 그룹 분할 변경
-
-새 학습은 StratifiedGroupKFold 20개 fold를 14/3/3으로 합치며 현재 CSV에서 632/133/135건이다. 이전 모델은 저장된 문항 ID로 당시 분할을 복원해 평가한다. 새 분할과 과거 결과를 같은 실험으로 비교하지 않는다. Jev 대표 예시 12개 중 4개를 새 train에 맞춰 교체했으며 평가 요청은 268회다. 과거 결과 파일은 유지한다.
+분할 복원·학습/test 경계·checkpoint 선택·라벨 매핑·preview 무부작용·저장 실패 보호·구형 모델 읽기와 실제 임시 SQLite 기록을 검사한다. TF-IDF 명령 전체 흐름은 작은 임시 데이터로, Transformer 계약은 대체 모델로 확인한다. 테스트 통과는 실제 Transformer 재학습·성능 재현·서버 모델 변경을 뜻하지 않는다.
