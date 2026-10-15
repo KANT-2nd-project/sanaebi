@@ -41,6 +41,13 @@ class GenerationValidationTests(unittest.TestCase):
             GenerationResult(GenerationStatus.COMPLETED, raw_text, "안내입니다."),
         )
 
+    def test_extra_json_keys_are_parse_errors(self):
+        raw_text = '{"answer":"안내", "extra":true}'
+        self.assertEqual(
+            parse_generation(raw_text),
+            GenerationResult(GenerationStatus.PARSE_ERROR, raw_text, None),
+        )
+
     def test_insufficient_evidence_message_is_a_completed_answer(self):
         raw_text = '{"answer": "문서에서 기준을 확인할 수 없습니다."}'
         self.assertEqual(parse_generation(raw_text).status, GenerationStatus.COMPLETED)

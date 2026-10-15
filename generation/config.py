@@ -8,6 +8,11 @@ class GenerationProvider(StrEnum):
     OLLAMA = "ollama"
 
 
+class GenerationOutputMode(StrEnum):
+    PROMPT_JSON = "prompt_json"
+    STRICT_JSON_SCHEMA = "strict_json_schema"
+
+
 @dataclass(frozen=True)
 class GenerationConfig:
     provider: GenerationProvider
@@ -17,6 +22,7 @@ class GenerationConfig:
     max_output_tokens: int | None = None
     reasoning_effort: str | None = None
     temperature: float | None = None
+    output_mode: GenerationOutputMode = GenerationOutputMode.PROMPT_JSON
 
     def __post_init__(self) -> None:
         if not self.model_name.strip():
@@ -27,6 +33,17 @@ class GenerationConfig:
 
         if not isinstance(self.provider, GenerationProvider):
             raise TypeError("provider는 GenerationProvider 값이어야 합니다.")
+
+        if not isinstance(self.output_mode, GenerationOutputMode):
+            raise TypeError("output_mode는 GenerationOutputMode 값이어야 합니다.")
+
+        if (
+            self.output_mode is GenerationOutputMode.STRICT_JSON_SCHEMA
+            and self.provider is not GenerationProvider.OPENAI
+        ):
+            raise ValueError(
+                "strict_json_schema는 OpenAI provider에서만 사용할 수 있습니다."
+            )
 
         valid_reasoning_efforts = {"none", "low", "medium", "high", "xhigh", "max"}
         if self.reasoning_effort is not None:

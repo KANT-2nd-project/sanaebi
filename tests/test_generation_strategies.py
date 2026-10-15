@@ -118,6 +118,45 @@ class GenerationStrategyTests(unittest.TestCase):
             ],
         )
 
+    def test_evidence_extraction_refusal_stops_without_fallback(self):
+        response = ModelResponse(
+            None,
+            30,
+            5,
+            "stop",
+            refusal="근거 추출 요청을 처리할 수 없습니다.",
+        )
+        model_call = Mock(return_value=response)
+
+        outcome = execute_strategy(
+            "질문", self.documents, model_call, strategy="evidence_first"
+        )
+
+        model_call.assert_called_once()
+        self.assertEqual(outcome["result"].status, GenerationStatus.REFUSAL)
+        self.assertEqual(outcome["result"].refusal, response.refusal)
+        self.assertIsNone(outcome["result"].raw_text)
+        self.assertEqual(outcome["stages"][0]["status"], "refusal")
+        self.assertEqual(outcome["stages"][0]["refusal"], response.refusal)
+
+    def test_final_answer_refusal_survives_usage_aggregation(self):
+        extraction = self.evidence_response()
+        final = ModelResponse(
+            None, 40, 7, "stop", refusal="답변 요청을 처리할 수 없습니다."
+        )
+        model_call = Mock(side_effect=[extraction, final])
+
+        outcome = execute_strategy(
+            "질문", self.documents, model_call, strategy="evidence_first"
+        )
+
+        self.assertEqual(model_call.call_count, 2)
+        result = outcome["result"]
+        self.assertEqual(result.status, GenerationStatus.REFUSAL)
+        self.assertEqual(result.refusal, final.refusal)
+        self.assertEqual((result.input_tokens, result.output_tokens), (140, 27))
+        self.assertEqual(outcome["stages"][-1]["status"], "refusal")
+
     def test_evidence_first_passes_only_verified_quotes_to_final_call(self):
         extraction = self.evidence_response()
         final = ModelResponse('{"answer":"포털에서 확인하세요."}', 40, 10, "stop")

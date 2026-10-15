@@ -17,6 +17,13 @@ class GenerationResultTests(unittest.TestCase):
             cases.extend(
                 [(status, None, None), (status, "raw", "답"), (status, "raw", "")]
             )
+        cases.extend(
+            [
+                (GenerationStatus.REFUSAL, "raw", "답"),
+                (GenerationStatus.REFUSAL, "raw", None),
+                (GenerationStatus.REFUSAL, None, None),
+            ]
+        )
         for status, raw, answer in cases:
             with (
                 self.subTest(status=status, raw=raw, answer=answer),
@@ -43,3 +50,17 @@ class GenerationResultTests(unittest.TestCase):
         )
         for status in (GenerationStatus.PARSE_ERROR, GenerationStatus.EMPTY_ANSWER):
             self.assertEqual(GenerationResult(status, "", None).raw_text, "")
+
+    def test_refusal_requires_text_and_may_preserve_absent_raw_text(self):
+        result = GenerationResult(
+            GenerationStatus.REFUSAL,
+            None,
+            None,
+            refusal="요청을 처리할 수 없습니다.",
+        )
+        self.assertIsNone(result.raw_text)
+        self.assertEqual(result.refusal, "요청을 처리할 수 없습니다.")
+
+        for value in (None, "", "  "):
+            with self.subTest(refusal=value), self.assertRaises(ValueError):
+                GenerationResult(GenerationStatus.REFUSAL, "raw", None, refusal=value)

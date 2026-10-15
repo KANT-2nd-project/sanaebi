@@ -4,7 +4,11 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.reporting import (
     config_from_dict,
@@ -132,6 +136,40 @@ class GenerationReportingTests(unittest.TestCase):
         restored = run_from_dict(data)
         self.assertIsNone(restored.config.reasoning_effort)
         self.assertIsNone(restored.config.temperature)
+
+    def test_output_mode_and_refusal_survive_round_trip_and_legacy_records_load(self):
+        config = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "gpt-6-luna",
+            30,
+            output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
+        )
+        result = GenerationResult(
+            GenerationStatus.REFUSAL,
+            None,
+            None,
+            10,
+            2,
+            "stop",
+            refusal="요청을 처리할 수 없습니다.",
+        )
+        run = GenerationRun("refusal", config, result, 0.25)
+        data = run_to_dict(run)
+        self.assertEqual(data["config"]["output_mode"], "strict_json_schema")
+        self.assertEqual(data["result"]["refusal"], "요청을 처리할 수 없습니다.")
+        self.assertEqual(run_from_dict(data), run)
+
+        del data["config"]["output_mode"]
+        del data["result"]["refusal"]
+        data["result"].update(
+            status="completed",
+            raw_text='{"answer":"기존 답변"}',
+            answer="기존 답변",
+        )
+        legacy = run_from_dict(data)
+        self.assertIs(legacy.config.output_mode, GenerationOutputMode.PROMPT_JSON)
+        self.assertEqual(legacy.result.status, GenerationStatus.COMPLETED)
+        self.assertIsNone(legacy.result.refusal)
 
     def test_config_restore_validates_optional_openai_settings(self):
         base = {"provider": "openai", "model_name": "gpt-6-luna", "timeout_seconds": 30}
@@ -447,6 +485,7 @@ class GenerationReportingTests(unittest.TestCase):
                     "max_output_tokens": None,
                     "reasoning_effort": None,
                     "temperature": None,
+                    "output_mode": "prompt_json",
                 },
                 "result": {
                     "status": "completed",
@@ -455,6 +494,7 @@ class GenerationReportingTests(unittest.TestCase):
                     "input_tokens": None,
                     "output_tokens": None,
                     "finish_reason": None,
+                    "refusal": None,
                 },
                 "elapsed_seconds": 0.25,
                 "error_type": None,
@@ -482,6 +522,7 @@ class GenerationReportingTests(unittest.TestCase):
                 "input_tokens": None,
                 "output_tokens": None,
                 "finish_reason": None,
+                "refusal": None,
             },
         )
         error_data = run_to_dict(error)

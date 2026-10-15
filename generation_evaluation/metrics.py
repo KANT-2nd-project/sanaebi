@@ -14,6 +14,7 @@ def count_outcomes(runs: list[GenerationRun]) -> dict[str, int]:
         "timeout": 0,
         "execution_error": 0,
         "truncated": 0,
+        "refusal": 0,
     }
 
     for run in runs:

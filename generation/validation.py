@@ -16,6 +16,11 @@ def parse_generation(raw_text: str) -> GenerationResult:
             status=GenerationStatus.PARSE_ERROR, raw_text=raw_text, answer=None
         )
 
+    if set(value) != {"answer"}:
+        return GenerationResult(
+            status=GenerationStatus.PARSE_ERROR, raw_text=raw_text, answer=None
+        )
+
     answer = value.get("answer")
 
     if answer is None or type(answer) != str:

@@ -7,7 +7,11 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from generation.__main__ import main
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 from generation.types import GenerationPrompt, ModelResponse
 
 
@@ -116,6 +120,7 @@ class GenerationCliTests(unittest.TestCase):
                 "input_tokens": 100,
                 "output_tokens": 512,
                 "finish_reason": "length",
+                "refusal": None,
             },
         )
 
@@ -208,6 +213,7 @@ class GenerationCliTests(unittest.TestCase):
                 "max_output_tokens": settings.get("max_output_tokens"),
                 "reasoning_effort": settings.get("reasoning_effort"),
                 "temperature": settings.get("temperature"),
+                "output_mode": settings.get("output_mode", "prompt_json"),
             },
         )
         if record["result"] is not None:
@@ -240,6 +246,7 @@ class GenerationCliTests(unittest.TestCase):
                 "input_tokens": 100,
                 "output_tokens": 20,
                 "finish_reason": "stop",
+                "refusal": None,
             },
         )
         self.assertEqual(len(seen_prompts), 1)
@@ -286,6 +293,7 @@ class GenerationCliTests(unittest.TestCase):
                         "input_tokens": None,
                         "output_tokens": None,
                         "finish_reason": None,
+                        "refusal": None,
                     },
                 )
                 model_factory.assert_called_once()
@@ -349,6 +357,7 @@ class GenerationCliTests(unittest.TestCase):
             "timeout_seconds": 30,
             "max_output_tokens": 1024,
             "reasoning_effort": "low",
+            "output_mode": "strict_json_schema",
         }
         model_config_path.write_text(json.dumps({"test-alias": model_settings}))
 
@@ -365,8 +374,27 @@ class GenerationCliTests(unittest.TestCase):
                 30,
                 max_output_tokens=1024,
                 reasoning_effort="low",
+                output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
             )
         )
+
+    def test_refusal_result_is_printed_and_exits_one(self):
+        path = self.root / "documents.jsonl"
+        self.write_documents(path)
+
+        with patch("generation.__main__.build_model_call") as factory:
+            factory.return_value = lambda _prompt: ModelResponse(
+                raw_text="",
+                refusal="요청을 처리할 수 없습니다.",
+            )
+            exit_code, output = self.run_cli(self.argv(path))
+
+        self.assertEqual(exit_code, 1)
+        result = json.loads(output)["result"]
+        self.assertEqual(result["status"], "refusal")
+        self.assertEqual(result["raw_text"], "")
+        self.assertIsNone(result["answer"])
+        self.assertEqual(result["refusal"], "요청을 처리할 수 없습니다.")
 
     def test_model_execution_error_is_recorded_and_exits_one(self):
         with TemporaryDirectory() as directory:

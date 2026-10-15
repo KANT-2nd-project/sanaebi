@@ -1,7 +1,11 @@
 import json
 from pathlib import Path
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.types import GenerationRun
 
@@ -17,6 +21,7 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
             "input_tokens": run.result.input_tokens,
             "output_tokens": run.result.output_tokens,
             "finish_reason": run.result.finish_reason,
+            "refusal": run.result.refusal,
         }
 
     return {
@@ -29,6 +34,7 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
             "max_output_tokens": run.config.max_output_tokens,
             "reasoning_effort": run.config.reasoning_effort,
             "temperature": run.config.temperature,
+            "output_mode": run.config.output_mode.value,
         },
         "result": result_data,
         "elapsed_seconds": run.elapsed_seconds,
@@ -99,6 +105,7 @@ def config_from_dict(data: dict[str, object]) -> GenerationConfig:
         max_output_tokens=data.get("max_output_tokens"),
         reasoning_effort=data.get("reasoning_effort"),
         temperature=data.get("temperature"),
+        output_mode=GenerationOutputMode(data.get("output_mode", "prompt_json")),
     )
 
 
@@ -116,6 +123,7 @@ def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
     status = data["status"]
     raw_text = data["raw_text"]
     answer = data["answer"]
+    refusal = data.get("refusal")
 
     if not isinstance(status, str):
         raise TypeError("status는 문자열이어야 합니다.")
@@ -125,6 +133,8 @@ def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
 
     if answer is not None and not isinstance(answer, str):
         raise TypeError("answer는 문자열 또는 None이어야 합니다.")
+    if refusal is not None and not isinstance(refusal, str):
+        raise TypeError("refusal은 문자열 또는 None이어야 합니다.")
 
     for field in ("input_tokens", "output_tokens"):
         value = data.get(field)
@@ -145,6 +155,7 @@ def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
         input_tokens=data.get("input_tokens"),
         output_tokens=data.get("output_tokens"),
         finish_reason=data.get("finish_reason"),
+        refusal=refusal,
     )
 
 

@@ -66,6 +66,19 @@ def execute_strategy(
         stages.append(_stage("evidence_extraction", result))
         return {"result": result, "stages": stages}
 
+    if evidence_response.refusal is not None and evidence_response.refusal.strip():
+        result = GenerationResult(
+            GenerationStatus.REFUSAL,
+            evidence_response.raw_text,
+            None,
+            evidence_response.input_tokens,
+            evidence_response.output_tokens,
+            evidence_response.finish_reason,
+            evidence_response.refusal,
+        )
+        stages.append(_stage("evidence_extraction", result))
+        return {"result": result, "stages": stages}
+
     if evidence_response.finish_reason == "length":
         result = GenerationResult(
             GenerationStatus.TRUNCATED,
@@ -77,6 +90,9 @@ def execute_strategy(
         )
         stages.append(_stage("evidence_extraction", result))
         return {"result": result, "stages": stages}
+
+    if evidence_response.raw_text is None:
+        raise ValueError("거절 정보가 없는 근거 응답에는 raw_text가 필요합니다.")
 
     verified, evidence_error = _validate_evidence(evidence_response.raw_text, documents)
     if evidence_error is not None:
@@ -216,6 +232,8 @@ def _stage(
         "status": result.status.value,
         "raw_text": result.raw_text,
     }
+    if result.refusal is not None:
+        stage["refusal"] = result.refusal
     if validation_error is not None:
         stage["validation_error"] = validation_error
     return stage
@@ -233,6 +251,7 @@ def _sum_usage(
         input_tokens,
         output_tokens,
         result.finish_reason,
+        result.refusal,
     )
 
 

@@ -1,7 +1,11 @@
 import unittest
 from dataclasses import replace
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.metrics import (
     completion_rate,
@@ -86,12 +90,24 @@ class GenerationMetricsTests(unittest.TestCase):
                 ),
                 4,
             ),
+            GenerationRun(
+                "refusal",
+                self.config,
+                GenerationResult(
+                    GenerationStatus.REFUSAL,
+                    None,
+                    None,
+                    refusal="요청을 처리할 수 없습니다.",
+                ),
+                3,
+            ),
         ]
         counts = count_outcomes(runs)
-        self.assertEqual(counts["total"], 2)
+        self.assertEqual(counts["total"], 3)
         self.assertEqual(counts["truncated"], 1)
+        self.assertEqual(counts["refusal"], 1)
         self.assertEqual(counts["completed"], 1)
-        self.assertEqual(completion_rate(runs), 0.5)
+        self.assertAlmostEqual(completion_rate(runs), 1 / 3)
         self.assertEqual(mean_attempt_seconds(runs), 3)
         self.assertEqual(mean_completed_seconds(runs), 2)
 
@@ -152,6 +168,25 @@ class GenerationMetricsTests(unittest.TestCase):
         self.assertEqual(len(groups), 4)
         for run in runs:
             self.assertEqual(groups[run.config], [run])
+
+    def test_grouping_separates_output_modes(self):
+        prompt_json = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "test-model",
+            30.0,
+            output_mode=GenerationOutputMode.PROMPT_JSON,
+        )
+        strict = replace(
+            prompt_json, output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA
+        )
+        runs = [
+            GenerationRun("prompt", prompt_json, None, 0.1, "ConnectError"),
+            GenerationRun("strict", strict, None, 0.1, "ConnectError"),
+        ]
+        groups = group_by_config(runs)
+        self.assertEqual(len(groups), 2)
+        self.assertEqual(groups[prompt_json], [runs[0]])
+        self.assertEqual(groups[strict], [runs[1]])
 
     def test_completed_mean_excludes_failed_runs(self):
         completed = GenerationResult(
@@ -265,6 +300,7 @@ class GenerationMetricsTests(unittest.TestCase):
                 "timeout": 0,
                 "execution_error": 0,
                 "truncated": 0,
+                "refusal": 0,
             },
         )
 
@@ -277,6 +313,11 @@ class GenerationMetricsTests(unittest.TestCase):
                     status,
                     None if status is GenerationStatus.TIMEOUT else "raw",
                     "답" if status is GenerationStatus.COMPLETED else None,
+                    refusal=(
+                        "요청을 처리할 수 없습니다."
+                        if status is GenerationStatus.REFUSAL
+                        else None
+                    ),
                 ),
                 0.25,
             )
@@ -287,6 +328,7 @@ class GenerationMetricsTests(unittest.TestCase):
                     GenerationStatus.PARSE_ERROR,
                     GenerationStatus.EMPTY_ANSWER,
                     GenerationStatus.TIMEOUT,
+                    GenerationStatus.REFUSAL,
                 ]
             )
         ]
@@ -295,13 +337,14 @@ class GenerationMetricsTests(unittest.TestCase):
         self.assertEqual(
             counts,
             {
-                "total": 6,
+                "total": 7,
                 "completed": 2,
                 "parse_error": 1,
                 "empty_answer": 1,
                 "timeout": 1,
                 "execution_error": 1,
                 "truncated": 0,
+                "refusal": 1,
             },
         )
         self.assertEqual(

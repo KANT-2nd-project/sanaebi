@@ -1,6 +1,10 @@
 import unittest
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 
 
 class GenerationConfigTests(unittest.TestCase):
@@ -83,6 +87,37 @@ class GenerationConfigTests(unittest.TestCase):
             with self.subTest(provider=provider):
                 config = GenerationConfig(provider, "example", 30.0)
                 self.assertIs(config.provider, provider)
+
+    def test_output_mode_defaults_to_prompt_json_and_strict_is_openai_only(self):
+        for provider in GenerationProvider:
+            config = GenerationConfig(provider, "example", 30.0)
+            self.assertIs(config.output_mode, GenerationOutputMode.PROMPT_JSON)
+
+        strict = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "example",
+            30.0,
+            output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
+        )
+        self.assertIs(strict.output_mode, GenerationOutputMode.STRICT_JSON_SCHEMA)
+
+        with self.assertRaisesRegex(ValueError, "OpenAI"):
+            GenerationConfig(
+                GenerationProvider.OLLAMA,
+                "example",
+                30.0,
+                output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
+            )
+
+    def test_output_mode_rejects_strings_and_unknown_values(self):
+        for value in ("prompt_json", "strict_json_schema", "unknown", None, 1):
+            with self.subTest(value=value), self.assertRaises(TypeError):
+                GenerationConfig(
+                    GenerationProvider.OPENAI,
+                    "example",
+                    30.0,
+                    output_mode=value,
+                )
 
     def test_reasoning_effort_is_openai_only_and_uses_supported_values(self):
         for effort in ("none", "low", "medium", "high", "xhigh", "max"):
