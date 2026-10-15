@@ -66,6 +66,24 @@ CREATE INDEX baseline_chunks_input_key ON baseline_chunks(input_key);
 """
 
 
+def baseline_path(
+    source_path: str | Path, output_root: str | Path, *, spec=DEFAULT_SPEC
+) -> Path:
+    """Resolve the exact source/spec bundle without creating any files."""
+    raw, _ = _read_source(Path(source_path))
+    return _baseline_path_for_sha(output_root, hashlib.sha256(raw).hexdigest(), spec)
+
+
+def _baseline_path_for_sha(output_root, source_sha, spec):
+    return (
+        Path(output_root)
+        / "schema-v1"
+        / retrieval_spec_id(spec)
+        / source_sha
+        / "baseline.sqlite3"
+    )
+
+
 def prepare_baseline(
     source_path: str | Path,
     output_root: str | Path,
@@ -85,8 +103,8 @@ def prepare_baseline(
     source_sha = hashlib.sha256(source_raw).hexdigest()
     spec_id = retrieval_spec_id(spec)
     canonical_spec = canonical_retrieval_spec(spec)
-    target_dir = Path(output_root) / "schema-v1" / spec_id / source_sha
-    target = target_dir / "baseline.sqlite3"
+    target = _baseline_path_for_sha(output_root, source_sha, spec)
+    target_dir = target.parent
     target_dir.mkdir(parents=True, exist_ok=True)
     if target.exists():
         validate_baseline(target, source_path, spec=spec)
