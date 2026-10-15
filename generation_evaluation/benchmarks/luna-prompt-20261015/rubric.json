@@ -1,0 +1,146 @@
+{
+  "version": "1.1.0",
+  "applies_to": [
+    "generation_evaluation/benchmarks/luna-prompt-20261015/dev.json",
+    "generation_evaluation/benchmarks/luna-prompt-20261015/final.json"
+  ],
+  "judgment": {
+    "blind_review": true,
+    "hide_model_and_prompt_variant": true,
+    "allowed_statuses": [
+      "pass",
+      "fail",
+      "na",
+      "uncertain"
+    ],
+    "required_per_dimension": [
+      "status",
+      "evidence",
+      "reason"
+    ],
+    "severity_values": [
+      "critical",
+      "material",
+      "omission",
+      "style",
+      "none"
+    ],
+    "severity_required": true,
+    "severity_policy": "Critical is reserved for fabricated policy/menu/permission/action-completion/payment-guarantee claims or a material reversal of a required condition. Other substantive unsupported claims are material. A format failure has material severity but still makes the overall case fail.",
+    "evidence_rule": "Quote the relevant response text and cite the supporting or contradicting benchmark evidence by document_id and exact quote. For format, record the parsed JSON validation result. If no evidence supports a policy claim, state that explicitly."
+  },
+  "response_contract": {
+    "top_level": "JSON object",
+    "required_keys": [
+      "answer"
+    ],
+    "additional_keys": false,
+    "answer_type": "string",
+    "answer_nonempty_after_trim": true,
+    "surrounding_prose_or_markdown_fence": false,
+    "validation": "Automate structural validation before human semantic review; malformed output remains an evaluation failure."
+  },
+  "dimensions": [
+    {
+      "id": "format",
+      "criterion": "The whole response is exactly one valid JSON object containing only a non-empty string field named answer.",
+      "applies_when": "always",
+      "failure_severity": "material"
+    },
+    {
+      "id": "grounding",
+      "criterion": "Every company-policy, workflow, interface, role, timing, permission, and completion claim is supported by the frozen document evidence; no unsupported details are introduced.",
+      "applies_when": "always",
+      "failure_severity": "material",
+      "critical_conditions": [
+        "Fabricated company policy, menu, permission, completed action, or payment guarantee"
+      ]
+    },
+    {
+      "id": "scope_conditions",
+      "criterion": "Preserve the applicable people/work type, responsible actor, sequence, time origin, goal versus obligation, and stated exception conditions. Do not transfer a procedure to another work type.",
+      "applies_when": "always",
+      "failure_severity": "material",
+      "critical_conditions": [
+        "Material reversal of an applicable person/work type, actor, sequence, time condition, target-versus-obligation, or exception"
+      ]
+    },
+    {
+      "id": "completeness",
+      "criterion": "Include every required_claim for the case. Omitting optional background is acceptable.",
+      "applies_when": "always",
+      "failure_severity": "omission"
+    },
+    {
+      "id": "abstention",
+      "criterion": "For insufficient or partial evidence, separate supported guidance from unknown details and avoid filling gaps by inference. For sufficient cases, answer the supported question instead of refusing unnecessarily.",
+      "applies_when": "always",
+      "failure_severity": "material",
+      "omission_condition": "Unnecessary refusal when the evidence is sufficient"
+    },
+    {
+      "id": "action_boundary",
+      "criterion": "Do not claim to have looked up private state, changed records, submitted or approved requests, granted access, or completed work unless that action actually occurred and is evidenced. State the boundary when the question requests an unavailable action.",
+      "applies_when": "always; use na only if neither the question nor answer implies access or action",
+      "failure_severity": "critical for fabricated lookup, permission, or completion"
+    },
+    {
+      "id": "style",
+      "criterion": "Use clear Korean 존댓말. Do not use 반말, blame, ridicule, or unnecessarily alarming language. Standard technical terms and product names are allowed.",
+      "applies_when": "always",
+      "failure_severity": "style"
+    },
+    {
+      "id": "relevance",
+      "criterion": "Answer the asked question, avoid repeating the question, and do not add unrelated policies, steps, warnings, or speculative options.",
+      "applies_when": "always",
+      "failure_severity": "style",
+      "material_condition": "Irrelevant content that changes the advice is material"
+    }
+  ],
+  "critical_error_examples": [
+    "Inventing a menu, approval path, status screen, or employee access right",
+    "Claiming a request was submitted, approved, changed, paid, or completed without evidence",
+    "Guaranteeing payment, service recovery, or an outcome that the source describes only as a target",
+    "Reversing a material condition, deadline, actor, or required process step"
+  ],
+  "overall_verdict": {
+    "pass": "Every applicable dimension passes and all required claims are present.",
+    "partial": "No material grounding, scope, format, or action-boundary error is present, but at least one required claim is omitted or style/relevance is below standard.",
+    "fail": "Format fails, or any critical/material unsupported claim, material scope distortion, fabricated action/permission, or other substantive policy error is present.",
+    "uncertain": "A material judgment cannot be resolved from the frozen evidence. Do not count uncertain as pass.",
+    "priority": "fail takes priority over uncertain; uncertain takes priority over partial; partial takes priority over pass. A case cannot pass while a required dimension is uncertain."
+  },
+  "case_level_reporting": {
+    "verdicts": [
+      "pass",
+      "partial",
+      "fail",
+      "uncertain"
+    ],
+    "report_separately": [
+      "critical_errors",
+      "other_material_errors",
+      "required_claim_omissions",
+      "over_abstention",
+      "format_errors",
+      "style_or_relevance_issues",
+      "repeat_disagreement"
+    ],
+    "repeat_disagreement": "Compare two independently run answers to the same case; record disagreement even if one answer is later judged better."
+  },
+  "required_claim_type_definitions": {
+    "direct_request": "Directly answers a requested fact, route, deadline, status, or requested action boundary, including a bounded statement that the supplied evidence does not specify it.",
+    "decision_condition": "Preserves a scope, prerequisite, exception, actor, timing condition, or other distinction needed to decide which rule applies.",
+    "action_guidance": "Gives a supported next step or states what the assistant can or cannot do for the requested action."
+  },
+  "interpretation_clarifications": {
+    "semantic_equivalence": "Judge the meaning, not phrase matching. A response satisfies a required_claim when it communicates the same supported meaning; exact wording, document wording, or a quotation is not required unless the case explicitly asks for it.",
+    "required_claims": "Treat each required_claim as an essential answer element and use its parallel required_claim_types entry to understand its role. Evaluate compound claims by their meaningful components; do not require the exact sentence structure.",
+    "optional_background": "Do not mark a response incomplete for omitting context or background that is not needed to answer safely and is not stated in required_claims. Conversely, do not silently discard a listed required_claim as optional; flag a questionable benchmark requirement for adjudication against the frozen source and question.",
+    "absence_vs_prohibition": "“Not stated or confirmed in the supplied documents” means unknown from this evidence set; it does not establish that a feature, process, or permission does not exist. State that something is prohibited or impossible only when the frozen evidence supports that stronger claim.",
+    "unknown_vs_unavailable_action": "Do not conflate missing policy information with an unavailable private lookup or action. Explain only the relevant boundary: the source may not document a procedure, and the assistant may not be able to inspect or change the user’s individual state.",
+    "conditions_and_exceptions": "Preserve explicit qualifiers, conditions, actors, time origins, and exceptions. A concise paraphrase is acceptable if it retains them; omitting a condition that changes the advice remains a substantive omission or distortion.",
+    "style_and_relevance": "Accept clear, professional Korean 존댓말 across reasonable tone variations. Do not grade personal preference for warmth or verbosity. Penalize unrelated detail only when it distracts from the request or changes the practical advice."
+  }
+}
