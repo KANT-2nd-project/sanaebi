@@ -503,6 +503,7 @@ export function DocumentPanel() {
         }}>채팅으로 돌아가기</Link><button type="button" className="documents-button documents-button-primary" disabled={writePending} onClick={openNewDocument}>새 문서 초안</button></nav>
       </header>
       <section className="documents-intro documents-intro-compact" aria-labelledby="documents-title">
+        <p className="documents-callout">등록한 문서는 매일 자정(한국 시간)에 초기화됩니다.</p>
         <h1 id="documents-title">문서 관리</h1><p>답변에 사용할 자료를 확인하고 게시합니다.</p>
       </section>
       {detailOpen ? <section className="documents-editor-panel" aria-labelledby="document-editor-title">
