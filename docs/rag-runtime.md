@@ -56,11 +56,15 @@ uv run --locked python -m scripts.prepare_retrieval_baseline \
 
 자정에는 host helper가 묶음 확인 → worker 정지 → 기존 문서 reset → 새 revision에 기본 벡터 연결 → 현재 준비 확인 → worker 재개를 수행한다. 이 경로에는 모델 계산이 없다. 두 DB 사이 잠깐503은 가능하므로 무중단으로 설명하지 않는다.
 
+일반 초기화 CLI의 rag `--apply`와 RAG 전용 CLI는 `app.retrieval.reset.reset_with_retrieval`을 공유한다. 원본·묶음 검증 → writer lock → 잠금 안 재검증 → 백업·문서 초기화 → 현재 revision에 벡터 연결 → ready 확인 순서이며 모델 다운로드·추론을 하지 않는다. 명시적 `--source`는 기본 묶음 경로 계산에도 사용한다. 명시된 묶음이 그 원본과 다르면 쓰기 전에 실패한다. 하위 `app.documents.reset`은 저장소 작업만 담당한다.
+
 연결만 실패했을 때 **문서를 다시 reset하지 않는다.** 운영에서는 다음 복구 helper를 사용한다.
 
 ```bash
 sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.py restore-retrieval
 ```
+
+문서 변경 이후 색인 실패는 `documents_reset=true`, `retrieval_ready=false`와 비정상 종료로 보고한다. CLI의 `recovery_environment`에 담긴 실제 원본·DB·검색 루트·묶음 경로를 복구 환경에 적용한다.
 
 로컬에서 worker를 중지한 경우 `uv run --locked python -m scripts.index_documents --restore-baseline`을 사용할 수 있다. 원본 쓰기·모델 추론 없이 현재 내용과 같은 기본 벡터를 연결한다. 수정된 다른 문서가 남으면 worker의 정상 갱신이 필요하다. 운영 helper의 설치·릴리스·복구는 [배포 안내](../deployment/README.md)를 따른다.
 

@@ -82,7 +82,7 @@ RAG 모드의 자정 초기화는 사전 점검 후 indexer를 멈추고 문서 
 sudo python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.py restore-retrieval
 ```
 
-전체 자정 초기화는 기존 systemd timer가 실행하는 `production_maintenance.py reset` 경로를 따른다. 릴리스 준비·복구 절차는 해당 helper가 담당하며, 실제 운영 전환은 배포 검증 후 별도로 진행한다.
+전체 자정 초기화는 기존 systemd timer가 실행하는 `production_maintenance.py reset` 경로를 따른다. 일반·RAG 전용 CLI의 공통 처리와 QA 판정 정정, 후속 배포 검증은 [초기화 통합 기록](../docs/worklogs/2026-10-16-reset-unification.md)을 따른다. 릴리스 준비·복구 절차는 해당 helper가 담당하며, 실제 운영 전환은 배포 검증 후 별도로 진행한다.
 
 첫 정상 release 후 workflow가 root 소유 `sanaebi-activate-nginx`를 호출한다. 이 helper는 readiness와 정적 파일을 확인하고 기존 vhost를 백업한 뒤 준비된 설정을 설치한다. `nginx -t`·reload 실패 시 기존 설정으로 복구하며 이후 임의 vhost 변경은 덮어쓰지 않는다. 성공하면 `sanaebi-production-reset.timer`·`sanaebi-production-backup.timer`를 활성화한다. 이후 같은 vhost에서 release 포인터를 교체한다.
 

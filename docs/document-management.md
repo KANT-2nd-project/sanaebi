@@ -157,7 +157,7 @@ uv run --locked python scripts/reset_demo_documents.py --database /absolute/demo
 uv run --locked python scripts/reset_demo_documents.py --database /absolute/demo/documents.sqlite3 --apply
 ```
 
-기본 실행은 원본과 DB를 메모리에서 검증하는 dry-run이다. `--apply`에서만 변경한다. `--source` 기본은 저장소 원본 JSONL, `--database` 기본은 `SANAEBI_DOCUMENT_DB` 또는 기존 로컬 DB 경로다. **예약 서비스에는 전용 시연 DB의 절대 경로를 반드시 명시한다.** 없는 DB를 자동 생성하지 않는다. 최초 준비는 기존 이관 명령을 사용한다.
+기본 실행은 원본과 DB를 메모리에서 검증하는 dry-run이다. `--apply`에서만 변경한다. 원본은 명시한 `--source`가 우선하고, 생략하면 `SANAEBI_RETRIEVAL_SOURCE` 또는 저장소 기본 JSONL을 사용한다. `--database` 기본은 `SANAEBI_DOCUMENT_DB` 또는 기존 로컬 DB 경로다. **예약 서비스에는 전용 시연 DB의 절대 경로를 반드시 명시한다.** 없는 DB를 자동 생성하지 않는다. 최초 준비는 기존 이관 명령을 사용한다.
 
 복원은 기준 자료 전체를 게시하고 추가 문서·수정 초안·중단 상태·기존 개정 및 이관 기록을 제거한다. 해당 기록은 초기화 전 DB 백업에 남는다. 원본 JSONL 파일은 변경하지 않는다. 배포 시 원본 자료가 변경되면 다음 초기화부터 새 자료가 적용되므로 배포 전에 dry-run으로 검증한다. 기준 문서의 관리 ID는 유지하고 `record_version`은 증가시킨다. 오래된 편집 요청은 409, 제거된 문서 조회는 404다. 이전 일반 쓰기 멱등 키도 남은 24시간 유효기간 동안 409로 거부하며 만료 시각을 연장하지 않는다. 충돌 시 입력을 보관한 뒤 최신 화면에서 새 요청으로 작성한다.
 
@@ -201,3 +201,7 @@ with closing(
 자정 복원 역시 모델 추론 없이 기본 벡터를 연결한다. API·worker·관리 명령은 공통 작업 잠금을 사용하며 worker는 실패·누락·시행일 도래를 복구한다. 준비 절차와 오류 계약은 [RAG 실행 안내](rag-runtime.md#문서-변경-응답과-검색-반영), 구현·검증 근거는 [작업 기록](worklogs/2026-10-16-document-rag-sync.md)을 따른다. 운영 배포 여부는 코드 변경과 구분한다.
 
 과거 [v3 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)에서는 C를 유지했고, 이후 사용자 결정으로 [KURE를 채택](../retrieval/reports/2026-10-16-kure-adoption/README.md)했다. 문서 DB는 보존하고 KURE spec의 별도 색인·기본 벡터를 준비한다. Tiny 묶음을 KURE에 혼용하지 않는다. 전체 삭제·기본 복원과 자정 mapping 복구 계약은 유지한다.
+
+### 초기화 CLI의 공통 처리와 점검
+
+일반 CLI의 `--apply` 생략은 기존 문서 dry-run이며 RAG 묶음 준비 완료를 뜻하지 않는다. 묶음 사전 점검에는 `scripts.reset_demo_retrieval --check --source … --database … --bundle …`를 사용한다. RAG 실제 초기화는 두 CLI 모두 같은 잠금·재검증·벡터 연결을 수행한다. 실패 출력의 `documents_reset=true`이면 문서는 이미 바뀌었으므로 `recovery_environment`의 유효 경로로 색인만 복원한다. [실행·복구 기준](rag-runtime.md#자정-초기화용-벡터), [로컬 예약 설치](../deployment/local-nginx.md#시연-문서-자정-초기화-systemd), [QA 정정과 검증 기록](worklogs/2026-10-16-reset-unification.md)을 따른다.
