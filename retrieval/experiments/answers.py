@@ -35,7 +35,6 @@ from app.documents.transfer import import_knowledge, read_source
 from app.retrieval.config import DEFAULT_SPEC, MODEL_ID, MODEL_REVISION
 from app.retrieval.embedding import MODEL_MANIFEST, TinyEmbedder
 from app.retrieval.repository import IndexRepository
-from app.retrieval.service import RetrievalService
 from app.retrieval.types import Evidence, RetrievedContext, SourceSpan
 from generation.documents import render_document
 from generation.presets import load_runtime_settings
@@ -51,6 +50,9 @@ from generation_evaluation.budget import (
     BudgetLedger,
     actual_cost,
     reserve_cost,
+)
+from retrieval.experiments.legacy_service import (
+    LegacyRetrievalService as RetrievalService,
 )
 
 ROOT = Path(__file__).resolve().parents[2]

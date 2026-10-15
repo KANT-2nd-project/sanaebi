@@ -60,6 +60,23 @@ class QuestionServiceTests(unittest.TestCase):
         self.read_documents.assert_called_once_with()
         self.answer.assert_not_called()
 
+    def test_empty_retrieval_returns_notice_without_answer_or_reservation(self):
+        context = Mock(evidence=())
+        retrieve = Mock(return_value=context)
+        result = handle_question(
+            self.question,
+            classify=self.classify,
+            read_documents=self.read_documents,
+            answer=self.answer,
+            retrieve=retrieve,
+        )
+        self.assertEqual(
+            result.text, "관련 문서에서 답변에 필요한 근거를 찾지 못했습니다."
+        )
+        self.read_documents.assert_called_once_with()
+        retrieve.assert_called_once_with(self.question, self.documents)
+        self.answer.assert_not_called()
+
     def test_unknown_label_fails_before_reading_documents(self):
         self.classify.return_value = "UNKNOWN"
 

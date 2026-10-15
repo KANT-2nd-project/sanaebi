@@ -15,9 +15,9 @@ import numpy as np
 
 from app.documents.context import DocumentContextProvider
 from app.documents.transfer import read_source
-from app.retrieval import service as runtime
 from app.retrieval.embedding import TinyEmbedder
 from app.retrieval.repository import IndexRepository
+from retrieval.experiments import legacy_service as runtime
 from retrieval.experiments.quality import (
     complete,
     validate_freeze,
@@ -87,7 +87,7 @@ def main():
         index.parent.mkdir(parents=True)
         shutil.copyfile(original_index, index)
         repository = IndexRepository(temporary)
-        actual = runtime.RetrievalService(repository, embedder)
+        actual = runtime.LegacyRetrievalService(repository, embedder)
         assert actual.status(snapshot)["ready"]
         current = repository.current_chunks(snapshot)
         matrix = np.stack([v for _, v in current])

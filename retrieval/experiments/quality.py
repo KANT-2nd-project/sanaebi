@@ -24,8 +24,10 @@ from app.retrieval.config import (
 )
 from app.retrieval.embedding import TinyEmbedder
 from app.retrieval.repository import IndexRepository
-from app.retrieval.search import SearchConfig
-from app.retrieval.service import RetrievalService
+from retrieval.experiments.legacy_search import SearchConfig
+from retrieval.experiments.legacy_service import (
+    LegacyRetrievalService as RetrievalService,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CASES = ROOT / "retrieval/reports/2026-10-15-rag-quality-improvement/cases.json"

@@ -111,7 +111,7 @@ class ContextBudgetTests(unittest.TestCase):
         for e in bounded:
             body = next(d.body for d in documents if d.document_id == e.document_id)
             self.assertEqual(e.text, "\n".join(body[s.start : s.end] for s in e.spans))
-        from app.retrieval import service
+        from retrieval.experiments import legacy_service as service
 
         self.assertEqual(service.MAX_EVIDENCE_CHARS, 2000)
         self.assertEqual(service.MAX_TOTAL_EVIDENCE_CHARS, 8000)

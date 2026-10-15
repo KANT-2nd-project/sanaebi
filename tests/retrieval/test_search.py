@@ -1,6 +1,13 @@
 from typing import ClassVar
 
 from app.retrieval.search import (
+    C_SEARCH_POLICY,
+    MINIMUM_SIMILARITY_SCORE,
+)
+from app.retrieval.search import (
+    search_config_id as c_search_config_id,
+)
+from retrieval.experiments.legacy_search import (
     SearchConfig,
     bm25_rank,
     reciprocal_rank_fusion,
@@ -20,6 +27,16 @@ class TinyLikeTokenizer:
 
 
 class SearchTests(RetrievalTestCase):
+    def test_server_search_policy_is_fixed_to_unbounded_score_threshold_c(self):
+        self.assertEqual(MINIMUM_SIMILARITY_SCORE, 0.35)
+        self.assertEqual(C_SEARCH_POLICY["selection"], "vector_score_threshold")
+        self.assertIsNone(C_SEARCH_POLICY["max_candidates"])
+        self.assertIsNone(C_SEARCH_POLICY["max_evidence_count"])
+        self.assertIsNone(C_SEARCH_POLICY["max_evidence_chars"])
+        self.assertIsNone(C_SEARCH_POLICY["max_total_evidence_chars"])
+        self.assertIsNone(C_SEARCH_POLICY["context_token_budget"])
+        self.assertEqual(c_search_config_id(), c_search_config_id())
+
     def test_bm25_uses_tiny_tokens_without_special_tokens_and_is_deterministic(self):
         tokenizer = TinyLikeTokenizer()
         query = tokenize_terms(tokenizer, "[CLS] 토큰 회전 [SEP]")

@@ -15,11 +15,11 @@ from unittest.mock import patch
 import numpy as np
 
 from app.documents.context import DocumentContextProvider
-from app.retrieval import service as runtime
 from app.retrieval.chunking import token_count
 from app.retrieval.embedding import TinyEmbedder
 from app.retrieval.repository import IndexRepository
 from generation.documents import render_document
+from retrieval.experiments import legacy_service as runtime
 from retrieval.experiments.calibration_metrics import claim_metrics
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -168,7 +168,7 @@ def evaluate(args):
         target.parent.mkdir(parents=True)
         shutil.copyfile(original, target)
         repository = IndexRepository(temp)
-        actual = runtime.RetrievalService(repository, embedder)
+        actual = runtime.LegacyRetrievalService(repository, embedder)
         assert actual.status(snapshot)["ready"]
         current = repository.current_chunks(snapshot)
         matrix = np.stack([v for _, v in current])
