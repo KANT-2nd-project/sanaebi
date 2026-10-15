@@ -6,11 +6,15 @@ from unittest.mock import Mock, patch
 
 from fastapi.testclient import TestClient
 
-from app.answer_text import LLM_RESPONSE_ERROR, LLMResponseError, extract_answer_text
+from app.answering.output import (
+    LLM_RESPONSE_ERROR,
+    LLMResponseError,
+    extract_answer_text,
+)
+from app.classification.predictor import ClassificationUnavailable
 from app.dependencies import get_classifier
+from app.documents.context import DocumentContextSnapshot
 from app.fastapi_main import app
-from app.infrastructure.classifier import ClassificationUnavailable
-from app.services.document_context import DocumentContextSnapshot
 
 FAILURE_BODY = {"ok": False, "text": "", "reason": LLM_RESPONSE_ERROR}
 
@@ -52,7 +56,7 @@ class AskEndpointTests(unittest.TestCase):
         self.classify = classifier.predict
         app.dependency_overrides[get_classifier] = lambda: classifier
         self.addCleanup(app.dependency_overrides.clear)
-        self.generate = self.enterContext(patch("app.infrastructure.answerer.execute"))
+        self.generate = self.enterContext(patch("app.answering.adapter.execute"))
         self.client = self.enterContext(TestClient(app))
         self.snapshot = DocumentContextSnapshot((Mock(),))
         self.reader = self.enterContext(

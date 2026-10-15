@@ -79,6 +79,12 @@ SANAEBI_CLASSIFIER_PATH=/absolute/path/to/model uv run --locked uvicorn app.fast
 - [문서 관리 가이드](docs/documentation-guide.md): 문서별 기준 위치와 Notion 갱신 절차
 - [팀 문서](https://www.notion.so/2bb05a3cdadc82bb813381e3fab45047): 결정·작업·회의 기록
 
+## 서버 코드 읽기
+
+`app/fastapi_main.py`에서 앱 구성을 확인하고, `dependencies.py` → `questions/router.py` → `questions/service.py` → `classification/predictor.py` 순서로 읽습니다. 문서 기능은 `app/documents/`, 기존 LangChain 연동은 `app/answering/`, 추적은 `app/diagnostics/`에 모았습니다. [서버 규약](docs/server-conventions.md)에 책임과 전체 구조를 정리했습니다.
+
+문서 공급 상태만 확인하려면 `uv run --locked python -m scripts.inspect_document_context`를 실행합니다. 기존 SQLite 게시본의 문서 수와 snapshot 식별값을 출력하며 데이터를 생성·변경하지 않습니다.
+
 ## 개발 확인
 
 저장소의 주요 형식·데이터·테스트 확인 명령은 다음과 같습니다.

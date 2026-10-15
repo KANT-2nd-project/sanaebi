@@ -10,13 +10,13 @@ from unittest.mock import Mock, patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
-from app.dependencies import get_classifier
-from app.infrastructure.classifier import (
+from app.answering import router as assistant
+from app.classification.predictor import (
     ClassificationInferenceError,
     ClassificationUnavailable,
 )
-from app.routers import assistant
-from app.services.document_context import DocumentContextSnapshot, DocumentStorageError
+from app.dependencies import get_classifier
+from app.documents.context import DocumentContextSnapshot, DocumentStorageError
 
 
 class ApiTests(unittest.TestCase):

@@ -9,8 +9,8 @@ from contextlib import closing
 from datetime import UTC, datetime
 from pathlib import Path
 
-from app.document_repository import SCHEMA_VERSION, DocumentRepository
-from app.document_schemas import CreateDocumentRequest
+from app.documents.repository import SCHEMA_VERSION, DocumentRepository
+from app.documents.schemas import CreateDocumentRequest
 
 NAMESPACE = "company-knowledge-v2"
 
@@ -183,7 +183,7 @@ def import_knowledge(source, database, *, apply=False, publish=False):
 
 
 def export_knowledge(database, output):
-    from app.services.document_context import DocumentContextProvider
+    from app.documents.context import DocumentContextProvider
 
     output = Path(output)
     manifest_path = output.with_suffix(output.suffix + ".manifest.json")

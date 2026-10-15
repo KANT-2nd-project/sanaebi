@@ -11,12 +11,12 @@ from unittest.mock import Mock, patch
 
 import torch
 
-from app.infrastructure.classifier import (
+from app.classification.predictor import (
     ClassificationInferenceError,
     ClassificationUnavailable,
     TransformerClassifier,
 )
-from app.model_settings import PROJECT_ROOT, get_classifier_path
+from app.settings import PROJECT_ROOT, get_classifier_path
 from contracts.classification import LABELS
 
 
@@ -47,13 +47,13 @@ class RuntimeClassifierTests(unittest.TestCase):
         self.tokenizer = Mock(return_value={"input_ids": torch.tensor([[1, 2]])})
         self.load_model = self.enterContext(
             patch(
-                "app.infrastructure.classifier.AutoModelForSequenceClassification.from_pretrained",
+                "app.classification.predictor.AutoModelForSequenceClassification.from_pretrained",
                 return_value=self.model,
             )
         )
         self.load_tokenizer = self.enterContext(
             patch(
-                "app.infrastructure.classifier.AutoTokenizer.from_pretrained",
+                "app.classification.predictor.AutoTokenizer.from_pretrained",
                 return_value=self.tokenizer,
             )
         )

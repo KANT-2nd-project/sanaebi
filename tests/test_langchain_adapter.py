@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from app.langchain_adapter import generate_assistant_response
+from app.answering.adapter import generate_assistant_response
 
 
 class LangChainAdapterTests(unittest.TestCase):

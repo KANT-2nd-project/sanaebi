@@ -8,8 +8,9 @@ from uuid import UUID
 from fastapi import APIRouter, Header, Query, Request
 from fastapi.responses import JSONResponse
 
-from app.document_repository import DocumentRepository
-from app.document_schemas import (
+from app.documents import service as document_service
+from app.documents.repository import DocumentRepository
+from app.documents.schemas import (
     CreateDocumentRequest,
     DocumentCapabilitiesResponse,
     DocumentDetailResponse,
@@ -18,7 +19,6 @@ from app.document_schemas import (
     UpdateDocumentRequest,
     WithdrawDocumentRequest,
 )
-from app.services import document_service
 
 router = APIRouter()
 

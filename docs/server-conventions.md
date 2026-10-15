@@ -20,32 +20,42 @@
 ## 현재 구조
 
 ```text
-contracts/classification.py       # 공통 라벨 타입·순서
 app/
-├── fastapi_main.py               # lifespan·라우터·HTTP 오류 처리
-├── schemas.py                    # 공개 HTTP 계약
-├── model_settings.py             # 모델 경로·생성 provider 설정
-├── dependencies.py               # 앱별 분류기·snapshot reader·답변기 조립
-├── koelectra_classifier.py        # 과거 단독 호출용 얇은 호환 함수
-├── langchain_adapter.py          # /assistant용 기존 snapshot 주입
-├── answer_text.py                # 답변 본문 검증·추출, 과거 echo 도우미
-├── company_knowledge.py          # DB 경로·명시적 평가 JSONL 경로
-├── document_repository.py        # SQLite 영속화
-├── document_store.py             # 명시적 JSONL 호환·과거 append
-├── routers/
-│   ├── questions.py              # /ask → 질문 서비스
-│   ├── classification.py         # 분류만 확인
-│   ├── assistant.py              # 기존 실행기 API
-│   ├── documents.py              # /regist-docs → SQLite 초안
-│   └── managed_documents.py      # 문서 관리 API
-├── services/
-│   ├── question_service.py       # 라벨 정책·QuestionResult
-│   ├── document_context.py       # 유효 게시 snapshot과 출처
-│   └── document_service.py       # 문서 개정·게시 정책
-└── infrastructure/
-    ├── classifier.py             # Transformer 저장본 검증·CPU 추론
-    └── answerer.py               # 단일 LangChain 제공자·본문 검증
+├── fastapi_main.py           # 기존 실행 진입점·lifespan·등록
+├── settings.py              # 모델·문서 경로·답변 provider
+├── dependencies.py          # 의존성 조립
+├── errors.py                # 공통 HTTP 예외 핸들러
+├── schemas.py               # 여러 API가 공유하는 요청·응답
+├── questions/
+│   ├── router.py            # /ask
+│   └── service.py           # 라벨 정책·QuestionResult
+├── classification/
+│   ├── router.py            # 분류 전용 API
+│   └── predictor.py         # 저장 모델 검증·CPU 추론
+├── documents/
+│   ├── router.py            # 문서 관리 API
+│   ├── registration.py      # 기존 /regist-docs 계약
+│   ├── schemas.py           # 문서 전용 HTTP 계약
+│   ├── service.py           # 개정·게시 정책
+│   ├── repository.py        # SQLite 영속화
+│   ├── metadata.py          # 메타데이터 저장
+│   ├── context.py           # 게시 snapshot·출처
+│   ├── http.py              # 문서 HTTP 오류·입력 제한
+│   └── transfer.py          # 이관·내보내기
+├── answering/
+│   ├── router.py            # 기존 /assistant
+│   ├── adapter.py           # 기존 LangChain 연동 함수
+│   └── output.py            # 답변 본문 검증
+└── diagnostics/
+    └── trace.py             # 선택적 요청·LangChain 추적
 ```
+
+코드를 읽을 때는 `fastapi_main.py` → `dependencies.py` → `questions/router.py` → `questions/service.py` → `classification/predictor.py` 순서로 확인한다. 문서 기능은 documents, 이후 답변 연결은 answering에서 읽는다. 루트 classification/은 학습 공간이며 app/classification/은 서버 추론 기능이다.
+
+기존 routers/services/infrastructure 폴더와 재수출 래퍼는 제거했다. 내부 Python import 경로는 변경했으며 외부에 배포된 Python 라이브러리 호환을 보장하지 않는다. HTTP API와 `app.fastapi_main:app` 실행 진입점은 유지한다. 과거 단독 KoELECTRA 래퍼·echo 답변 함수는 제거하고, JSONL 처리는 archive/server_legacy에 보존한다.
+
+문서 snapshot 진단은 `uv run --locked python -m scripts.inspect_document_context`로 실행한다. 읽기 전용이며 DB가 없으면 오류를 숨기지 않는다. trace는 기존 TRACE_DIR·TRACE_FULL_PROMPT·TRACE_MAX_CHARS 설정과 기록 형식을 유지한다.
+
 
 작은 기능은 함수로 시작한다. 실제 필요가 없는 Protocol·앱 팩토리·빈 폴더는 추가하지 않는다. 구조를 옮길 때 공개 API 동작 변경은 별도로 명시한다. 현재 동기 라우트를 일괄 async로 바꾸지 않는다.
 

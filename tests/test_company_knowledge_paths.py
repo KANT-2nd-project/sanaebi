@@ -4,8 +4,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from app.company_knowledge import get_document_database_path
-from app.services.document_context import DocumentContextProvider
+from app.documents.context import DocumentContextProvider
+from app.settings import get_document_database_path
 
 
 class CompanyKnowledgePathTests(unittest.TestCase):
@@ -19,7 +19,7 @@ class CompanyKnowledgePathTests(unittest.TestCase):
 
     def test_legacy_jsonl_override_cannot_change_runtime_source(self):
         with patch.dict(os.environ, {"IEUM_WORKS_PATH": "/missing/legacy.jsonl"}):
-            with patch("app.services.document_context.warnings.warn") as warning:
+            with patch("app.documents.context.warnings.warn") as warning:
                 provider = DocumentContextProvider()
                 warning.assert_called_once()
             self.assertEqual(provider.repository.path, get_document_database_path())

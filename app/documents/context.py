@@ -13,8 +13,8 @@ from datetime import date
 from pathlib import Path
 from types import MappingProxyType
 
-from app.company_knowledge import get_document_database_path
-from app.document_repository import DocumentRepository
+from app.documents.repository import DocumentRepository
+from app.settings import get_document_database_path
 
 NO_DOCUMENTS_MESSAGE = "현재 확인 가능한 회사 문서가 없어 답변하기 어렵습니다."
 

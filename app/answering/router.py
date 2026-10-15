@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 
-from app.langchain_adapter import generate_assistant_response
+from app.answering.adapter import generate_assistant_response
 from app.schemas import AnswerResponse, AssistantRequest
 
 router = APIRouter()

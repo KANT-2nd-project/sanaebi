@@ -9,8 +9,8 @@ from fastapi.testclient import TestClient
 from langchain_core.runnables import RunnableLambda
 
 import sanaebi_assistant as runner
+from app.documents.context import DocumentContextProvider, DocumentStorageError
 from app.fastapi_main import app
-from app.services.document_context import DocumentContextProvider, DocumentStorageError
 
 
 class KnowledgeRuntimeTests(unittest.TestCase):

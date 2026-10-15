@@ -23,10 +23,11 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
 
 import sanaebi_assistant
-from app import fastapi_main, trace
-from app.infrastructure import answerer
-from app.routers import assistant
-from app.services.document_context import DocumentContextSnapshot
+from app import fastapi_main
+from app.answering import adapter as answerer
+from app.answering import router as assistant
+from app.diagnostics import trace
+from app.documents.context import DocumentContextSnapshot
 
 LABEL = "SEARCH_KNOWLEDGE"
 DOCUMENTS = "연차 문서 " * 400  # 기본 2000자 제한을 넘는 문서 문맥

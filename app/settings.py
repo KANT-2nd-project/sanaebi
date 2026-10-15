@@ -1,4 +1,4 @@
-"""이음웍스 정책 문서의 기본 경로."""
+"""서버 모델·문서 경로 설정. 기존 환경변수와 경로 해석을 유지한다."""
 
 import os
 from pathlib import Path
@@ -21,3 +21,22 @@ def get_document_database_path() -> Path:
         if value
         else PROJECT_ROOT / "var" / "documents.sqlite3"
     )
+
+
+DEFAULT_CLASSIFIER_PATH = (
+    PROJECT_ROOT
+    / "artifacts/experiments/learning-comparison-2026-10-15/koelectra_base/model"
+)
+
+
+def get_classifier_path() -> Path:
+    value = os.getenv("SANAEBI_CLASSIFIER_PATH")
+    path = Path(value).expanduser() if value else DEFAULT_CLASSIFIER_PATH
+    return path if path.is_absolute() else PROJECT_ROOT / path
+
+
+def get_answer_provider() -> str:
+    provider = os.getenv("SANAEBI_ANSWER_PROVIDER", "ollama")
+    if provider not in ("ollama", "openai"):
+        raise ValueError("SANAEBI_ANSWER_PROVIDER must be ollama or openai")
+    return provider

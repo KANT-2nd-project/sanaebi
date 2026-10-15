@@ -3,8 +3,8 @@ import unittest
 from datetime import date
 from pathlib import Path
 
-from app.document_repository import DocumentRepository
-from app.services.document_context import DocumentContextProvider, DocumentStorageError
+from app.documents.context import DocumentContextProvider, DocumentStorageError
+from app.documents.repository import DocumentRepository
 
 
 class DocumentContextTests(unittest.TestCase):

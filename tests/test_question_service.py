@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import Mock
 
-from app.services.document_context import DocumentContextSnapshot
-from app.services.question_service import QuestionResult, handle_question
+from app.documents.context import DocumentContextSnapshot
+from app.questions.service import QuestionResult, handle_question
 
 
 class QuestionServiceTests(unittest.TestCase):

@@ -7,7 +7,7 @@
 | 정보 | 기준 위치 | 다른 문서에서 다룰 내용 |
 |---|---|---|
 | 프로젝트 목적과 첫 사용 | [README](../README.md) | 짧은 소개와 실행 안내 링크 |
-| 실제 API 입력·응답·오류 | [스키마](../app/schemas.py), [질문](../app/routers/questions.py)·[문서 라우터](../app/routers/documents.py), [API 테스트](../tests/test_api.py)와 실행 결과 | README의 최소 예시, 설계 문서의 현재 API 설명 |
+| 실제 API 입력·응답·오류 | [스키마](../app/schemas.py), [질문](../app/questions/router.py)·[문서 라우터](../app/documents/registration.py), [API 테스트](../tests/test_api.py)와 실행 결과 | README의 최소 예시, 설계 문서의 현재 API 설명 |
 | 채택된 서비스 설계 | [서비스 아키텍처](service-architecture.md) | Notion의 흐름 요약과 결정 배경 |
 | 프런트엔드 화면·API 연결·SEO 설계 | [프런트엔드 설계](frontend-architecture.md) | README·서비스 설계의 링크, Notion 문서 안내의 요약. 구현·공개 단계 구분 |
 | 서버 코드 구성·변경 규약 | [서버 구성 규약](server-conventions.md) | README·작업 지침의 링크, Notion 문서 안내·서비스 처리 기준·운영 규칙의 요약 |

@@ -12,8 +12,8 @@ from zoneinfo import ZoneInfo
 
 from fastapi.testclient import TestClient
 
-from app.document_http import ManagedDocumentHttpMiddleware
-from app.document_repository import DocumentRepository
+from app.documents.http import ManagedDocumentHttpMiddleware
+from app.documents.repository import DocumentRepository
 from app.fastapi_main import app
 
 
