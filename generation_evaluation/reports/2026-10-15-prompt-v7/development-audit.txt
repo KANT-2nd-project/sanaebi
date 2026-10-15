@@ -1,0 +1,1 @@
+{"responses": 36, "judgments": 36, "exact_coverage": true}

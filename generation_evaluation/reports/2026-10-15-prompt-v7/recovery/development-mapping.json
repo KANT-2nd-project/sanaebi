@@ -1,0 +1,254 @@
+{
+  "development-A001": {
+    "case_id": "R05",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R05:examples_answer_scope_v5"
+  },
+  "development-A002": {
+    "case_id": "D09",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D09:examples_answer_scope_v5"
+  },
+  "development-A003": {
+    "case_id": "D10",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D10:examples_answer_scope_v7_completeness"
+  },
+  "development-A004": {
+    "case_id": "R04",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R04:examples_answer_scope_v5"
+  },
+  "development-A005": {
+    "case_id": "R06",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R06:examples_answer_scope_v7_readability"
+  },
+  "development-A006": {
+    "case_id": "R04",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R04:examples_answer_scope_v7_completeness"
+  },
+  "development-A007": {
+    "case_id": "R08",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R08:examples_answer_scope_v5"
+  },
+  "development-A008": {
+    "case_id": "R02",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R02:examples_answer_scope_v7_readability"
+  },
+  "development-A009": {
+    "case_id": "R02",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R02:examples_answer_scope_v5"
+  },
+  "development-A010": {
+    "case_id": "D09",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D09:examples_answer_scope_v7_completeness"
+  },
+  "development-A011": {
+    "case_id": "R02",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R02:examples_answer_scope_v7_completeness"
+  },
+  "development-A012": {
+    "case_id": "R04",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R04:examples_answer_scope_v7_readability"
+  },
+  "development-A013": {
+    "case_id": "D10",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D10:examples_answer_scope_v5"
+  },
+  "development-A014": {
+    "case_id": "R01",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R01:examples_answer_scope_v7_completeness"
+  },
+  "development-A015": {
+    "case_id": "R03",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R03:examples_answer_scope_v7_readability"
+  },
+  "development-A016": {
+    "case_id": "R08",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R08:examples_answer_scope_v7_readability"
+  },
+  "development-A017": {
+    "case_id": "D12",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D12:examples_answer_scope_v7_completeness"
+  },
+  "development-A018": {
+    "case_id": "R06",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R06:examples_answer_scope_v7_completeness"
+  },
+  "development-A019": {
+    "case_id": "R03",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R03:examples_answer_scope_v5"
+  },
+  "development-A020": {
+    "case_id": "R08",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R08:examples_answer_scope_v7_completeness"
+  },
+  "development-A021": {
+    "case_id": "R07",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R07:examples_answer_scope_v7_completeness"
+  },
+  "development-A022": {
+    "case_id": "R07",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R07:examples_answer_scope_v5"
+  },
+  "development-A023": {
+    "case_id": "D12",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D12:examples_answer_scope_v5"
+  },
+  "development-A024": {
+    "case_id": "D12",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D12:examples_answer_scope_v7_readability"
+  },
+  "development-A025": {
+    "case_id": "R06",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R06:examples_answer_scope_v5"
+  },
+  "development-A026": {
+    "case_id": "R03",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R03:examples_answer_scope_v7_completeness"
+  },
+  "development-A027": {
+    "case_id": "R07",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R07:examples_answer_scope_v7_readability"
+  },
+  "development-A028": {
+    "case_id": "D11",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D11:examples_answer_scope_v7_completeness"
+  },
+  "development-A029": {
+    "case_id": "R01",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R01:examples_answer_scope_v7_readability"
+  },
+  "development-A030": {
+    "case_id": "D11",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D11:examples_answer_scope_v5"
+  },
+  "development-A031": {
+    "case_id": "D09",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D09:examples_answer_scope_v7_readability"
+  },
+  "development-A032": {
+    "case_id": "R01",
+    "profile": "examples_answer_scope_v5",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R01:examples_answer_scope_v5"
+  },
+  "development-A033": {
+    "case_id": "D11",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D11:examples_answer_scope_v7_readability"
+  },
+  "development-A034": {
+    "case_id": "D10",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:D10:examples_answer_scope_v7_readability"
+  },
+  "development-A035": {
+    "case_id": "R05",
+    "profile": "examples_answer_scope_v7_readability",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R05:examples_answer_scope_v7_readability"
+  },
+  "development-A036": {
+    "case_id": "R05",
+    "profile": "examples_answer_scope_v7_completeness",
+    "repetition": 1,
+    "stage": "development",
+    "slot": "development:1:R05:examples_answer_scope_v7_completeness"
+  }
+}

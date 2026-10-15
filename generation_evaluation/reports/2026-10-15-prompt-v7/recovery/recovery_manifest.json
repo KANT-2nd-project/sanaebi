@@ -1,0 +1,75 @@
+{
+  "task": "Recover v7 blind-packet answer bodies from captured custom_tool_call_output records only.",
+  "created_from": [
+    "rollout-2026-10-15T18-14-27-01a13ed7-6bf3-7030-9653-c8c7128ca096.jsonl",
+    "rollout-2026-10-15T18-18-59-01a13edb-90ea-7842-b182-ad0140c37093.jsonl",
+    "rollout-2026-10-15T18-23-34-01a13edf-c3cc-7072-aac8-0fe3762d66e4.jsonl",
+    "rollout-2026-10-15T17-57-18-01a13ec7-b81a-7963-a490-47f24a677cd9.jsonl"
+  ],
+  "requested_ranges": {
+    "final-1": "A001-A024",
+    "final-2": "A001-A024",
+    "final-3": "A001-A024",
+    "development": "A001-A036"
+  },
+  "counts": {
+    "total": 108,
+    "full": 108,
+    "partial": 0,
+    "missing": 0
+  },
+  "source_lines_by_group": {
+    "final-1": {
+      "A001-A009": 37,
+      "A010-A015": 44,
+      "A016-A024": 37
+    },
+    "final-2": {
+      "A001-A012": 278,
+      "A013-A017": 55,
+      "A018-A024": 32
+    },
+    "final-3": {
+      "A001-A024": 44
+    },
+    "development": {
+      "A001-A009": 50,
+      "A010-A018": 70,
+      "A019-A027": 79,
+      "A028-A036": 92
+    }
+  },
+  "limitations": [
+    "No answer text was reconstructed from memory or inferred from the question or rubric.",
+    "Where the terminal output was clipped elsewhere, only answer segments with a visible next-header or completion marker were treated as full.",
+    "The case_id check uses a reconstructed mapping whose own provenance explicitly says it is not the original mapping file.",
+    "The separate raw_text JSON wrapper is not available for every row; recovered values are the captured answer-body text.",
+    "Full source outputs and external database contents were not revalidated; this is a recovery from session log output only."
+  ],
+  "files": {
+    "answers": "recovered_answers.jsonl"
+  },
+  "case_id_cross_check": {
+    "result": "108/108 match",
+    "source": "../reconstructed-mapping.json",
+    "scope_note": "This compares case_id only against the recorded reconstructed mapping. That mapping states it was reconstructed from committed run.py slot order and helper seeds; it is not the original mapping file."
+  },
+  "answer_body_cross_checks": [
+    {
+      "source": "rollout-2026-10-15T18-14-27-01a13ed7-6bf3-7030-9653-c8c7128ca096.jsonl:30,179",
+      "result": "16 serialized answer fields matched recovered bodies exactly"
+    },
+    {
+      "source": "rollout-2026-10-15T18-18-59-01a13edb-90ea-7842-b182-ad0140c37093.jsonl:25,301",
+      "result": "5 serialized answer fields matched recovered bodies exactly"
+    },
+    {
+      "source": "rollout-2026-10-15T17-57-18-01a13ec7-b81a-7963-a490-47f24a677cd9.jsonl:18",
+      "result": "3 serialized answer fields matched recovered bodies exactly"
+    },
+    {
+      "source": "rollout-2026-10-15T18-23-34-01a13edf-c3cc-7072-aac8-0fe3762d66e4.jsonl:207",
+      "result": "All 24 final-3 bodies matched after reproducing the captured diagnostic newline-to-slash transform; recovered bodies retain the line breaks from line 44."
+    }
+  ]
+}

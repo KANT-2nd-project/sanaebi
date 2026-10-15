@@ -1,0 +1,136 @@
+{
+  "development": {
+    "examples_answer_scope_v5": {
+      "responses": 12,
+      "content": {
+        "pass": 8,
+        "partial": 3,
+        "fail": 1
+      },
+      "all_repetitions_pass_cases": [
+        "D12",
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "missing_required_groups": 6,
+      "uncertain_required_groups": 1,
+      "common_readability_pass": 12,
+      "structure_pass": 10,
+      "major_error_responses": 0,
+      "unnecessary_guidance": 0,
+      "conditional_sequence_error": 0,
+      "unnecessary_formatting": 0,
+      "per_response_latency_and_usage": null
+    },
+    "examples_answer_scope_v7_completeness": {
+      "responses": 12,
+      "content": {
+        "partial": 4,
+        "pass": 8
+      },
+      "all_repetitions_pass_cases": [
+        "D12",
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "missing_required_groups": 5,
+      "uncertain_required_groups": 1,
+      "common_readability_pass": 12,
+      "structure_pass": 10,
+      "major_error_responses": 0,
+      "unnecessary_guidance": 0,
+      "conditional_sequence_error": 0,
+      "unnecessary_formatting": 0,
+      "per_response_latency_and_usage": null
+    },
+    "examples_answer_scope_v7_readability": {
+      "responses": 12,
+      "content": {
+        "pass": 8,
+        "partial": 3,
+        "fail": 1
+      },
+      "all_repetitions_pass_cases": [
+        "D12",
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "missing_required_groups": 7,
+      "uncertain_required_groups": 1,
+      "common_readability_pass": 12,
+      "structure_pass": 11,
+      "major_error_responses": 0,
+      "unnecessary_guidance": 0,
+      "conditional_sequence_error": 0,
+      "unnecessary_formatting": 0,
+      "per_response_latency_and_usage": null
+    }
+  },
+  "final": {
+    "examples_answer_scope_v5": {
+      "responses": 36,
+      "content": {
+        "pass": 19,
+        "fail": 4,
+        "partial": 13
+      },
+      "all_repetitions_pass_cases": [
+        "H03",
+        "H05",
+        "H06",
+        "H07",
+        "H09",
+        "H10"
+      ],
+      "missing_required_groups": 25,
+      "uncertain_required_groups": 3,
+      "common_readability_pass": 33,
+      "structure_pass": 24,
+      "major_error_responses": 0,
+      "unnecessary_guidance": 3,
+      "conditional_sequence_error": 0,
+      "unnecessary_formatting": 0,
+      "per_response_latency_and_usage": null
+    },
+    "examples_answer_scope_v7_completeness": {
+      "responses": 36,
+      "content": {
+        "pass": 19,
+        "partial": 13,
+        "fail": 4
+      },
+      "all_repetitions_pass_cases": [
+        "H03",
+        "H05",
+        "H06",
+        "H07",
+        "H09",
+        "H10"
+      ],
+      "missing_required_groups": 27,
+      "uncertain_required_groups": 2,
+      "common_readability_pass": 33,
+      "structure_pass": 24,
+      "major_error_responses": 0,
+      "unnecessary_guidance": 3,
+      "conditional_sequence_error": 0,
+      "unnecessary_formatting": 0,
+      "per_response_latency_and_usage": null
+    }
+  }
+}

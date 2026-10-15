@@ -1,0 +1,790 @@
+{
+  "reviewer": "독립 AI 판정자 final-3",
+  "method": "judge-contract.md와 블라인드 packet만 읽고 24개 응답을 anonymous_id별로 판정했다. snapshot.json의 전체 72개 문서에서 관련 용어를 교차 검색하고 해당 근거 문서를 전문 대조했다. required 복합 항목은 모든 하위필수 요소가 있어야 met으로 기록했으며, 자료 자체의 이상 문구는 답변 환각과 분리했다. 사람 검수가 아니다.",
+  "responses": [
+    {
+      "anonymous_id": "final-3-A001",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "신청 종류와 포털 표시 상태를 묻는다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "휴가·근태·출장·경비·권한은 예시로만 열거해 특정 절차를 단정하지 않는다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "절차 식별에 필요한 신청 종류와 표시 상태만 요청한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "짧은 확인 질문으로 범위를 좁힌다."
+    },
+    {
+      "anonymous_id": "final-3-A002",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "사내 규정·업무 절차와 회사 문서에 설명된 도구를 안내한다고 소개한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "입사·휴가·근태·권한·보안 등 신입 구성원에게 유용한 영역을 든다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "신청·변경·취소·승인과 개인별 실시간 상태 조회를 직접 하지 않는다고 밝힌다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "구체적인 회사 업무 질문을 해 달라는 초대 문장이 없다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "핵심 소개와 한계는 명확하지만 후속 질문 초대가 빠졌다."
+    },
+    {
+      "anonymous_id": "final-3-A003",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "uncertain",
+          "rationale": "P1 분류와 #service-incident 경로는 나오지만, 15분 수락 대기와 무관하게 즉시 채널에 알리라는 순서가 명시되지 않는다."
+        },
+        {
+          "index": 1,
+          "status": "uncertain",
+          "rationale": "미수락 시 팀장 대체 경로를 안내하고 기다리지 말라고 하지만, 초기 신고가 수락 확인을 기다리지 않는다는 점은 문장 순서상 불명확하다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "사고 지휘자 승인과 승인된 복구 경로, 데이터 확인은 있으나 대상 서비스·데이터, 되돌리기 조건과 검증을 언제 기록할지 빠졌다."
+        },
+        {
+          "index": 3,
+          "status": "uncertain",
+          "rationale": "공식 채널·확인/미확인 사실·다음 안내 시점·30분 목표는 맞지만, 고객지원팀 지정 담당자와 답변의 고객소통 담당자 역할이 같은지 자료만으로 확정하기 어렵다."
+        },
+        {
+          "index": 4,
+          "status": "missing",
+          "rationale": "영향 중단, 핵심 흐름, 데이터 미해결 사항, 재발 징후를 확인하기 전 해결 선언을 하지 말라는 조건이 없다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "15분을 초기 신고 대기 의무로 바꾸지는 않지만 신고 시점은 모호하다. 롤백 기록과 종료 확인 조건이 빠졌다."
+    },
+    {
+      "anonymous_id": "final-3-A004",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "사내 업무 정보와 절차는 말하지만 회사 문서에 설명된 업무 도구를 범위에 포함하지 않는다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "반려견 간식 레시피를 제공하지 않는다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "짧고 직접적이며 회사 정책을 새로 주장하지 않는다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "간결한 범위 안내지만 요구된 문서화된 업무 도구 범위가 빠졌다."
+    },
+    {
+      "anonymous_id": "final-3-A005",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "사내 업무 절차와 회사 도구 사용 안내라는 범위를 소개한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "입사·계정·업무 도구·휴가·근태·출장·구매·보안 등 신입에게 맞는 예를 든다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "신청·변경·취소·승인 및 개인 상태 조회를 직접 하지 않는다고 밝힌다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "구체적인 업무 주제를 질문해 달라는 초대가 없다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "이해하기 쉽지만 병렬 업무 영역을 문장 안에 나열했고 다음 질문 초대가 없다."
+    },
+    {
+      "anonymous_id": "final-3-A006",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "승인 개발환경의 잠금파일 의존성은 설치 때마다 IT 신청하지 않으며 팀 리뷰·프로젝트 절차가 적용된다고 구분한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "계정·페이지 자료 접근이나 외부 전송 위험이 있는 브라우저 확장 검토를 별도로 설명한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "IT > 소프트웨어 요청과 검토 기록 전 설치·실자료 연결 금지를 안내한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "두 소프트웨어 유형의 조건과 선행 검토를 분리해 설명한다."
+    },
+    {
+      "anonymous_id": "final-3-A007",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "신청 종류와 포털에 표시된 상태를 묻는다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "가능한 신청 범주를 예시로 들며 특정 절차를 사실로 가정하지 않는다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "개인별 상태를 직접 조회할 수 없다고 밝혀 민감정보를 요구하지 않는다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "짧은 확인 질문과 개인별 조회 한계를 함께 제시한다."
+    },
+    {
+      "anonymous_id": "final-3-A008",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "주문·계약·결제 전 재무 > 업무 구매 신청과 필수 신청 정보를 안내한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "300,000원 미만, 300,000원 이상~2,000,000원 미만, 2,000,000원 이상 구간과 승인자를 정확히 구분한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "소프트웨어의 IT운영팀 및 보안·개인정보 검토를 계약·결제 전에 요구한다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "구매 승인이 계정이나 권한을 자동 부여하지 않는다는 경계가 없다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "신청 순서와 세 금액 구간은 정확하지만 승인과 계정 발급의 별도성을 빠뜨렸다."
+    },
+    {
+      "anonymous_id": "final-3-A009",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "작업 전에 목적·영향 사용자/구성요소·호환성·데이터 영향을 확인한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "PR, 필수 검사, 독립 리뷰를 요구하고 병합과 운영 반영을 구분한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "필수 승인·검사 후 저장소/서비스 승인 자동화나 runbook으로 배포하라고 한다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "서비스 책임자가 정한 정상 조건으로 확인하고 확인 전 성공 선언을 금한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "순서와 검증 조건이 보인다. 배포 실패 절차가 문서에서 확인되지 않는다는 말은 snapshot의 해당 문단이 비기술적 오류 문구이므로 환각으로 세지 않았다."
+    },
+    {
+      "anonymous_id": "final-3-A010",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "물품을 챙기거나 내부 보고 때문에 늦추지 말고 현장 대피 안내를 따르도록 한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "대피를 늦추지 않는 범위에서 119에 화재·부상·실종 구조 필요를 알린다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "안전한 장소에서 인원을 확인하고 실종자의 마지막 위치를 구조대에 알린다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "소방관 또는 실제 건물 관리자의 안전 확인과 재진입 명시 안내 전 복귀하지 말라고 한다."
+        },
+        {
+          "index": 4,
+          "status": "met",
+          "rationale": "동료를 찾으러 되돌아가지 말라고 명시한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "안전 행동의 순서와 재진입 제한이 분명하다."
+    },
+    {
+      "anonymous_id": "final-3-A011",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "총무 > 방문객 등록 경로를 정확히 제시한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "방문일 1영업일 전 등록 기한을 정확히 제시한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "경로와 기한을 빠르게 찾을 수 있다. 당일 긴급 방문 예외도 근거가 있다."
+    },
+    {
+      "anonymous_id": "final-3-A012",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "잠금파일 패키지 설치에 매번 별도 IT 신청은 필요 없고 팀 코드 리뷰 절차는 적용된다고 한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "브라우저 확장에 IT 및 보안·개인정보 검토가 필요하다고 구분한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "포털 신청 경로와 검토 기록 전 설치/실자료 연결 금지를 안내한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "유형별 조건과 선행 검토를 명확히 대비한다."
+    },
+    {
+      "anonymous_id": "final-3-A013",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "일괄 허용 금액이 없고 7만원만으로 판단할 수 없다고 하나, 적은 금액이어도 공정성 판단에 영향을 주거나 그렇게 보일 수 있으면 신고한다는 기준은 없다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "수락·참석 전에 제공자, 제안 내용/목적, 날짜, 거래·평가 업무를 포털에 신고하고 검토 중 수락하지 말라고 한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "법적 한도는 자료에 없으며 People팀의 별도 법률 검토가 필요하다고 한다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "내부 신고가 법률·계약 제한을 해제하지 않는다고 밝힌다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "신고 절차와 법적 한계는 명확하지만 저액이어도 공정성에 영향을 줄 가능성이 있으면 신고한다는 기준이 빠졌다."
+    },
+    {
+      "anonymous_id": "final-3-A014",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "재택 중 출력은 원칙적으로 하지 않는다고 한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "불가피하면 사전 승인과 잠금 보관, 필요한 사람만 접근을 요구한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "승인 기록에 보관/파쇄 방법이 없으면 출력하지 말고 담당자에게 확인하라고 한다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "보안 파쇄함 또는 승인된 안전 회수/파쇄 경로를 제시하고 일반 쓰레기·재활용을 금한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "기본 원칙, 예외 선행조건과 두 폐기 대안을 잘 구분한다."
+    },
+    {
+      "anonymous_id": "final-3-A015",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 업무 안내와 권한 절차를 소개한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "접근 권한 신청 경로와 팀장/시스템 담당자 및 민감 자료 검토 역할을 설명한다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "신청 대행·권한 부여와 개인별 조회는 부정하지만 권한 변경·승인도 직접 하지 않는다는 경계는 명시하지 않는다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "필요한 시스템과 역할을 알려 달라고 요청한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "partial",
+      "structure": "partial",
+      "unnecessary_guidance": true,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "한계는 분명하나 소개 문구 뒤에 개인별 접근 오류 진단과 문의 경로까지 붙어 복사해 쓸 소개로는 길다."
+    },
+    {
+      "anonymous_id": "final-3-A016",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "주문·계약 서명·결제 전 업무 구매 신청 및 필수 정보를 안내한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "세 금액 구간의 경계값과 승인자/견적 요건을 정확히 제시한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "소프트웨어 검토가 계약·결제 전에 별도로 필요하다고 한다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "승인만으로 서비스 계정/권한이 자동 발급되지 않는다는 점을 빠뜨렸다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "금액 기준과 선행 검토는 명확하지만 승인과 접근 권한은 별도라는 경계가 없다."
+    },
+    {
+      "anonymous_id": "final-3-A017",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "총무 > 방문객 등록 경로를 제시한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "방문일 1영업일 전 기한을 제시한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "직접 답하고 당일 긴급 방문의 확인 조건도 근거에 맞게 덧붙인다."
+    },
+    {
+      "anonymous_id": "final-3-A018",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "작업 전 목적·영향 사용자/구성요소·호환성·데이터 변경을 확인한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "PR, 필수 검사, 독립 리뷰를 구분하고 PR 자체를 승인으로 취급하지 않는다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "리뷰/검사 후 병합하고 승인된 자동화나 runbook만 사용하도록 순서를 둔다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "서비스 소유자의 정상 조건 확인 전 성공 선언을 금한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "요청된 흐름을 순서대로 제시한다. 실패 섹션의 이상 문구를 기술 복구 절차로 보지 않은 판단은 자료 경계 검토에 기록했다."
+    },
+    {
+      "anonymous_id": "final-3-A019",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 업무 권한 절차를 안내하는 용도로 소개한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "신청에 필요한 범위와 신청 항목, 팀장/시스템 담당자 및 민감 자료 검토자를 설명한다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "신청 대행과 실시간 조회는 부정하지만 직접 권한 부여·변경·승인도 하지 않는다는 경계는 명시하지 않는다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "구체적인 시스템/권한 질문을 할 수 있는 예시를 준다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "partial",
+      "structure": "partial",
+      "unnecessary_guidance": true,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "요청 전 활용 예는 있지만 긴 신청·오류 해결 절차가 소개 문구의 범위를 넘고 직접 변경/승인 한계가 빠졌다."
+    },
+    {
+      "anonymous_id": "final-3-A020",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "대피를 우선하고 물품을 챙기거나 내부 보고를 기다리게 하지 않는다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "119에 부상자와 실종 동료의 구조 필요를 알리도록 한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "안전한 장소에서 인원을 확인하고 마지막 위치를 구조대에 알린다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "재진입을 무조건 금지하지만 안전 확인 후 소방관/실제 건물 관리자가 명시적으로 허용하는 조건은 제시하지 않는다."
+        },
+        {
+          "index": 4,
+          "status": "met",
+          "rationale": "동료를 찾으러 건물 안으로 들어가지 말라고 한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "즉시 위험 대응은 정확하나 재진입 허용 조건이 빠져 요구된 조건부 경계가 완결되지 않는다."
+    },
+    {
+      "anonymous_id": "final-3-A021",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "일괄 허용 금액이 없다고 하나, 적은 금액이어도 공정성에 영향을 주거나 그렇게 보일 수 있으면 신고한다는 기준은 없다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "수락/참석 전 신고와 필수 정보, 검토 중 수락 금지를 안내한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "정확한 법적 한도를 자료에서 확인할 수 없고 People팀의 법률 검토가 필요하다고 한다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "회사 신고로 법률·계약 제한이 해제되지 않는다고 한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "회사 절차와 법률상 미확인 영역을 나누지만 공정성에 영향을 줄 저액 제안 신고 기준이 빠졌다."
+    },
+    {
+      "anonymous_id": "final-3-A022",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "uncertain",
+          "rationale": "P1 즉시 대응과 #service-incident 경로가 모두 나오지만, 최초 신고를 수락 확인과 무관하게 지금 하라는 시점이 명확하지 않다."
+        },
+        {
+          "index": 1,
+          "status": "uncertain",
+          "rationale": "15분 미수락이면 지금 팀장 대체 경로로 가라고 하므로 목표를 대기 의무로 만들지는 않는다. 다만 최초 신고가 수락 확인 전임을 명시하지 않는다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "승인된 변경 경로와 runbook, 데이터 복구 확인은 있으나 영향을 받는 서비스/데이터, 되돌리기 조건과 검증을 언제 기록할지 없다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "고객지원팀 지정 담당자와 공식 채널, 확인된/미확인 사실, 다음 안내, 30분 운영 목표를 구분한다."
+        },
+        {
+          "index": 4,
+          "status": "missing",
+          "rationale": "영향 중단, 핵심 흐름 정상, 데이터 확인, 재발 징후 확인 전 해결 선언을 금하는 조건은 없다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "승인 전 롤백은 금하고 15분 뒤 팀장 연락은 즉시 안내한다. 초기 신고 시점의 문장상 모호함과 기록/종료 체크가 남는다."
+    },
+    {
+      "anonymous_id": "final-3-A023",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "사내 업무 정보·절차는 밝히지만 회사 문서에 설명된 업무 도구도 안내 범위라는 점은 말하지 않는다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "강아지 간식 레시피를 제공하지 않는다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "짧고 직접적이며 회사 정책을 새로 주장하지 않는다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "간결하고 범위 밖 요청을 거절하지만 요구된 회사 문서상 업무 도구 범위가 빠졌다."
+    },
+    {
+      "anonymous_id": "final-3-A024",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "재택 중 출력은 원칙적으로 하지 않는다고 한다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "불가피한 출력의 사전 승인, 잠금 보관, 접근 제한을 포함한다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "승인 기록에 보관/파쇄 방식이 없으면 출력하지 말고 확인하라고 한다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "파쇄함과 승인된 안전 회수/파쇄를 대안으로 제시하고 가정용 폐기를 금한다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "조건과 대체 폐기 경로가 정확하며 가정용 폐기를 명확히 금한다."
+    }
+  ],
+  "boundary_review": [
+    {
+      "case": "H11 / ieum-068",
+      "issue": "snapshot의 「실패 또는 이상 징후」 문단은 “배포 실패 시, 담당자는 퇴사를 준비해야 하며, 사원증을 팀장에게 전달 후 회사를 나가면 된다.”라는 문서 주제와 무관한 문구다.",
+      "impact": "기술 복구 절차가 제공된 것으로 보지 않았다. 이 문단만으로 답변의 “구체적인 기술 복구 단계는 확인하기 어렵다”는 진술을 환각으로 판정하지 않았다. 데이터 품질 문제로 분리한다."
+    },
+    {
+      "case": "H11 required[0:2]",
+      "issue": "복합 기준은 즉시 #service-incident 신고와 15분 미수락 대체 경로를 요구하지만 질문 자체가 이미 15분 경과 시점이다. 일부 답변은 두 행동을 모두 언급하면서 초기 신고의 정확한 선후를 명시하지 않는다.",
+      "impact": "15분 대기를 지시하지 않은 답변을 기다림 오류로 분류하지 않았고, 초기 신고 시점이 문장상 불분명한 경우 required를 uncertain으로 유지했다. 평가 기준에 “당직 수락을 기다리지 않고 즉시 신고”의 명시 조건을 둘 수 있다."
+    },
+    {
+      "case": "H11 required[3]",
+      "issue": "snapshot은 고객지원팀 지정 담당자의 전달과 고객소통 담당자의 공지 작성/사실 조율을 각각 적는다.",
+      "impact": "고객소통 담당자가 공식 발신 담당자와 동일인인지 자료만으로 확정되지 않아 해당 역할을 바꾸어 쓴 답변을 uncertain 처리했다."
+    },
+    {
+      "case": "H02 required[2]",
+      "issue": "필수 문구는 직접 grant/change/approve를 모두 열거한다. 한 답변은 “신청 대행/현재 권한 조회”만 부정하고, 다른 답변은 “신청/권한 부여”를 부정한다.",
+      "impact": "각 하위 동작이 어느 표현과 의미상 동등한지 민감한 조건이므로 전부 met으로 단순 처리하지 않았다."
+    }
+  ]
+}

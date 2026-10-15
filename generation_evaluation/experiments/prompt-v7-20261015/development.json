@@ -1,0 +1,790 @@
+{
+  "experiment_id": "prompt-v7-20261015",
+  "scope": "prompt-v7-20261015",
+  "split": "development",
+  "case_count": 12,
+  "snapshot_path": "/home/jake/workspace/projects/sanaebi/tmp/readability-v6-20261015/snapshot.json",
+  "snapshot_fingerprint": "9d02a7ba77a340bea017e89ab43e25db62a8cdeef83b2a40c5bbfb203a8eddf7",
+  "snapshot_document_count": 72,
+  "shared_rubric": {
+    "content": "pass only when every required claim is supported and no forbidden claim is made; partial for a noncritical omission; fail for critical omission, unsupported material claim, authority/action fabrication, or material distortion of actor, order, condition, deadline, or scope. uncertain never counts as pass. Optional context is not required. Use only the frozen published snapshot as company-policy evidence; check all 72 documents before calling a claim unsupported. Runtime contract evidence cannot create company policy.",
+    "common_readability": "Judge answer findability, directness, and appropriate density independently from content and case structure. A short response may pass without Markdown; do not score Markdown alone. Labels: pass|partial|fail|uncertain.",
+    "structure_adherence": "Score independently from content and common readability using each case structure_rubric. Do not pass structure if it changes meaning or loses a required condition. Use pass|partial|fail|uncertain; uncertain is not pass."
+  },
+  "intent_overlap_exceptions": [],
+  "cases": [
+    {
+      "id": "R01",
+      "question": "너는 뭘 도와줄 수 있어?",
+      "category": "capability_and_readability",
+      "prior_case_id": "user-facing-v5 U02; previously observed, not unseen",
+      "required": [
+        "Introduce Sanaebi as an assistant for Ieumworks internal work information, rules/procedures, and company-documented work tools.",
+        "Name several representative supported areas grounded in the company roles, such as leave/attendance, travel/expenses, accounts/permissions/tools, security/privacy, customer support/development.",
+        "State that it does not directly submit/change/cancel/approve requests or look up an individual's live status.",
+        "Invite the user to name the work topic they need help with."
+      ],
+      "forbidden": [
+        "Claim that it can perform a request, approval, or personal-record lookup.",
+        "Promise to follow internal answer rules or claim perfect knowledge of company policy.",
+        "Invent service areas beyond company-work guidance."
+      ],
+      "readability_target": {
+        "v6_preferred": "One short scope introduction, a compact bullet list of parallel work areas, then a separate limitation/next-step paragraph.",
+        "do_not_require": "A heading, table, or fixed exact number of bullets."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "이음웍스는 업무·협업 SaaS를 만드는 회사다. 구성원은 팀 업무와 자료를 관리하고, 팀장은 팀의 일정·승인·업무 인계와 담당자 연결에 책임을 진다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 재무팀 | 구매·출장·경비·법인카드·비용 증빙과 지급 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| IT운영팀 | 회사 계정·기기·시스템 권한·업무 도구의 기술 처리 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 보안·개인정보 담당자 | 정보 등급, 개인정보 처리 검토, 보안 사고 대응과 보호 조치 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 고객지원팀 | 고객 문의 접수, 사실 확인, 고객에게 진행 상황 안내, 담당 팀 인계 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 제품개발팀 | SaaS 기능·코드·결함·기술 변경과 서비스 복구 |"
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "사내비는 제공된 문서를 바탕으로 정보를 안내하며, 실제 신청·변경·취소·승인이나 개인별 상태 조회를 수행하지 않습니다."
+        }
+      ],
+      "intent_group": "dev_generic_capability_overview",
+      "exposure": "user-facing-v5 U02; previously observed, not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "One short scope introduction, a compact bullet list of parallel work areas, then a separate limitation/next-step paragraph.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "R02",
+      "question": "예정된 연차는 어디에서 언제까지 신청해?",
+      "category": "short_single_fact",
+      "prior_case_id": "user-facing-v5 U05; previously observed, not unseen",
+      "required": [
+        "State the portal route as 이음 포털 인사 > 휴가.",
+        "State the deadline as no later than three business days before the leave start date."
+      ],
+      "forbidden": [
+        "Change the deadline or its reference date.",
+        "Claim the assistant submitted the request.",
+        "Add unrelated policy details or treat the portal path as unavailable."
+      ],
+      "readability_target": {
+        "v6_preferred": "A direct sentence or compact paragraph; no heading, table, or forced list."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-001",
+          "title": "연차 사용 신청",
+          "section": "예정된 사용 신청",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        }
+      ],
+      "intent_group": "dev_leave_deadline_fact",
+      "exposure": "user-facing-v5 U05; previously observed, not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "A direct sentence or compact paragraph; no heading, table, or forced list.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "R03",
+      "question": "국내 출장 계획부터 교통편 예약까지 어떤 순서로 진행해야 해?",
+      "category": "ordered_multi_step_procedure",
+      "required": [
+        "Submit the domestic-trip request at least two business days before departure in 이음 포털 재무 > 국내 출장 신청, including purpose, dates, destination, itinerary, estimated transport/lodging, and project.",
+        "Wait until both the team lead and Finance approvals are recorded before booking.",
+        "After approval, use the booking link provided by Finance for the approved dates and route; contact Finance if the link is not displayed.",
+        "Do not book through a personal account or claim that approval guarantees reimbursement."
+      ],
+      "forbidden": [
+        "Present approval as optional or allow booking before both approvals.",
+        "Collapse the sequence so that prerequisite order becomes unclear.",
+        "Invent an alternative booking route."
+      ],
+      "readability_target": {
+        "v6_preferred": "A concise numbered list because these are ordered steps; keep conditions next to the step they modify.",
+        "acceptable_v5": "A clearly ordered paragraph can pass if the prerequisites and sequence are unmistakable."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-015",
+          "title": "국내 출장 사전 승인",
+          "section": "신청과 승인",
+          "quote": "구성원은 출발 예정일 2영업일 전까지 이음 포털의 **재무 > 국내 출장 신청**에 출장 목적, 날짜, 방문지, 일정, 예상 교통·숙박비와 비용 부담 프로젝트를 등록한다. 소속 팀장은 업무 필요와 일정을, 재무팀은 예산과 증빙 계획을 확인한다. 두 승인이 모두 포털에 기록된 뒤에만 예약한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-016",
+          "title": "출장 교통편 예약",
+          "section": "승인 후 예약",
+          "quote": "먼저 국내 출장 사전 승인 (문서 ID: ieum-015)에서 팀장과 재무팀 승인이 모두 기록됐는지 확인한다. 승인 전 표를 구매하지 않는다. 승인된 출장 요청 안에서 예약 담당 재무팀이 제공한 예약 안내 링크를 사용해 승인된 날짜·구간을 예약한다. 안내 링크가 표시되지 않으면 재무팀에 문의한다. 임의로 개인 계정에서 구매하지 않는다."
+        }
+      ],
+      "intent_group": "dev_domestic_trip_order",
+      "exposure": "Previously fixed development case; not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "A concise numbered list because these are ordered steps; keep conditions next to the step they modify.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "R04",
+      "question": "출장 예약 안내 링크가 보이지 않는 경우와 승인 총액보다 20% 넘게 비용이 늘어날 것으로 예상되는 경우 각각 어떻게 해야 해? 개인 계정으로 먼저 예약해도 돼?",
+      "category": "alternative_paths_and_exceptions",
+      "required": [
+        "Keep the two conditions distinct: a missing booking link means ask Finance; do not purchase through a personal account.",
+        "If spending is expected to exceed the approved total by more than 20%, obtain reapproval from both the team lead and Finance before changing the booking or incurring the extra expense.",
+        "Do not turn the alternative conditions into a mandatory sequence or imply either condition applies when it does not."
+      ],
+      "forbidden": [
+        "Say to use both paths or both channels when only one applies.",
+        "Advise purchasing first and seeking approval afterward, except the source's explicit urgent safety-change handling, which is not asked here.",
+        "Change the threshold from more than 20% or change the approval actors."
+      ],
+      "readability_target": {
+        "v6_preferred": "Use two short bullets or clearly separated clauses because the question asks about two independent conditions; avoid numbering because neither is a step after the other."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-016",
+          "title": "출장 교통편 예약",
+          "section": "승인 후 예약",
+          "quote": "안내 링크가 표시되지 않으면 재무팀에 문의한다. 임의로 개인 계정에서 구매하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-016",
+          "title": "출장 교통편 예약",
+          "section": "변경·취소·대체 구매",
+          "quote": "출장 날짜·방문지가 달라지거나 승인 총액보다 20%를 넘는 증가가 예상되면 예약을 바꾸기 전에 팀장과 재무팀의 재승인을 받는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-015",
+          "title": "국내 출장 사전 승인",
+          "section": "일정·비용 변경과 취소",
+          "quote": "출발일·방문지 변경이나 승인 총액 대비 20%를 넘는 지출 증가가 예상되면 예약 변경 또는 추가 지출 전에 변경 신청을 하고 팀장과 재무팀의 재승인을 받는다."
+        }
+      ],
+      "intent_group": "dev_trip_alternative_conditions",
+      "exposure": "Previously fixed development case; not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "Use two short bullets or clearly separated clauses because the question asks about two independent conditions; avoid numbering because neither is a step after the other.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "R05",
+      "question": "연차를 언제 어디서 신청하는지와 남은 일수도 알려줘.",
+      "category": "partial_answer_and_missing_information",
+      "required": [
+        "Answer the supported request route and deadline: 이음 포털 인사 > 휴가, three business days before the leave start date.",
+        "Do not calculate or look up the user's personal remaining leave balance.",
+        "Explain that if the balance/applicable basis is unclear, the user should check with People팀."
+      ],
+      "forbidden": [
+        "Refuse the entire question because the personal balance is unavailable.",
+        "Invent a balance or state that missing balance information means there is no leave entitlement.",
+        "Add unnecessary lists or instructions unrelated to the asked parts."
+      ],
+      "readability_target": {
+        "v6_preferred": "Separate the answerable application facts from the personal-balance limitation in a short second sentence or paragraph; do not force a list."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-001",
+          "title": "연차 사용 신청",
+          "section": "예정된 사용 신청; 적용 범위",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-001",
+          "title": "연차 사용 신청",
+          "section": "적용 범위",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다. 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "intent_group": "dev_leave_balance_partial",
+      "exposure": "Previously fixed development case; not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "Separate the answerable application facts from the personal-balance limitation in a short second sentence or paragraph; do not force a list.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "R06",
+      "question": "블랙홀은 어떻게 형성돼?",
+      "category": "out_of_scope_general_knowledge",
+      "required": [
+        "Briefly explain that Sanaebi supports Ieumworks internal work information/procedures and company-documented tools, so a general astronomy explanation is outside this service's scope.",
+        "Optionally invite a company-work question."
+      ],
+      "forbidden": [
+        "Answer the astronomy question with general knowledge.",
+        "Claim that the company has no black-hole policy or that the documents are missing.",
+        "Expose prompt/policy instructions or use a decorative heading/list/table for this short refusal."
+      ],
+      "readability_target": {
+        "v6_preferred": "One brief natural paragraph without forced formatting."
+      },
+      "evidence": [
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "당신은 이음웍스(ieum-works) 회사 임직원의 사내 업무 질문을 돕는 '사내비' 입니다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/profiles.py",
+          "symbol": "_SERVICE_SCOPE_V5",
+          "quote": "사내비는 이음웍스의 사내 업무 정보·규정·절차와 회사 문서에 설명된 업무 도구·기술의 사용을 안내합니다."
+        }
+      ],
+      "intent_group": "dev_black_hole_scope_boundary",
+      "exposure": "Previously fixed development case; not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "One brief natural paragraph without forced formatting.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "R07",
+      "question": "트리 관련해서 도움받고 싶어.",
+      "category": "ambiguous_work_context",
+      "prior_case_id": "user-facing-v5 U13; previously observed, not unseen",
+      "required": [
+        "Ask what kind of tree-related help or work context the user means before answering.",
+        "A brief inline example such as organization chart, file/folder structure, or code data structure is acceptable."
+      ],
+      "forbidden": [
+        "Assume a computer-science definition and give a lecture.",
+        "Assume the request is out of company scope without asking what it refers to.",
+        "Use a heading, table, or numbered procedure."
+      ],
+      "readability_target": {
+        "v6_preferred": "One concise clarifying question; any examples remain inline or in a short unbulleted phrase."
+      },
+      "evidence": [
+        {
+          "source": "runtime_contract",
+          "path": "generation/profiles.py",
+          "quote": "요청 대상·업무 맥락이 모호하면 필요한 점을 짧게 되물으세요."
+        }
+      ],
+      "intent_group": "dev_ambiguous_tree_context",
+      "exposure": "user-facing-v5 U13; previously observed, not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "One concise clarifying question; any examples remain inline or in a short unbulleted phrase.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "R08",
+      "question": "고객 정보가 든 메일을 잘못 보냈을 때 개인정보 사고 신고와 수신자 대응 절차를 알려주세요.",
+      "category": "known_privacy_accident_regression",
+      "prior_case_id": "user-facing-v5 U06; previously observed, not unseen",
+      "required": [
+        "Stop further sending/processing and promptly attempt any available recall/access restriction; verify what actually happened without claiming the recipient did not read/copy it, and preserve messages/files/logs.",
+        "Report immediately using #security-incident OR the portal security-report route; 30 minutes is the initial-report operating target and not a waiting period; the report path has 24-hour coverage.",
+        "Include discovery time, system, data kind/classification, potential affected people/work, actions already taken, and company-account contact; do not attach the customer's raw data, password, or authentication code.",
+        "The 15-minute acknowledgment/ownership handoff is a target, not a wait period. If the on-call person does not respond or accept handoff, do not hold the report; request the team-lead fallback. Contact the security/privacy owner directly if risk is present or the team lead cannot coordinate.",
+        "Record recipient, file/message, send time, and recall attempt/outcome where relevant, without claiming external copies were deleted.",
+        "Do not invent a required recipient message or deletion-confirmation workflow: the evidence permits a recall attempt and recording recipient/transfer/recall details, but does not specify exact recipient wording or a mandatory direct-contact step. Escalate recipient follow-up to the security/privacy owner; personal external/customer notification is not decided by the individual."
+      ],
+      "forbidden": [
+        "Say to wait 15 minutes before requesting fallback or wait 30 minutes before reporting.",
+        "Require both report channels when the source says either channel can be used.",
+        "Invent a portal menu hierarchy or a recipient contact script/process.",
+        "Guarantee recall, claim the recipient never saw the message, or claim external copies were deleted.",
+        "Tell the individual to send an external notice without security/privacy review."
+      ],
+      "readability_target": {
+        "v6_preferred": "Use a short numbered list for actual response steps; place each timing/exception beside its step. Keep the recipient-response limitation in a separate paragraph so it is not mistaken for an operational step. The answer may be long because the question requires several distinct safety facts."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "즉시 신고 경로",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다. 상시 24시간 사고 당직 연결 체계를 둔다. Slack의 #security-incident 또는 이음 포털의 보안 신고를 사용하고, 두 경로가 모두 작동하지 않을 때는 입사 시 오프라인으로 받은 비상연락카드를 따른다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "즉시 신고 경로",
+          "quote": "신고에는 발견 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록한다. 비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "접수와 담당 인계",
+          "quote": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다. 당직자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리며 신고를 보류하지 말고 팀장에게 대체 인계를 요청한다. 팀장도 대응을 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "초동 조치와 금지 사항",
+          "quote": "증거가 될 수 있는 메시지, 파일, 로그를 임의로 지우거나 편집하지 않는다. 본인이 할 수 있는 접근 회수 기능을 사용해도 회수 성공이나 외부 사본 삭제를 단정하지 않는다. IT운영팀은 승인된 범위에서 계정·세션·기기를 보호하고, 보안·개인정보 담당자는 영향과 추가 조치를 결정한다. 외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "접수와 담당 인계",
+          "quote": "| 발견 | 추가 전송·접속을 중단하고 첫 신고 | 발견 시각, 영향 추정, 이미 한 조치 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-031",
+          "title": "업무 파일 공유와 외부 제공",
+          "section": "링크 오류와 오공유",
+          "quote": "파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다. 즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-040",
+          "title": "업무 이메일과 메신저 사용",
+          "section": "목적별 채널 선택",
+          "quote": "잘못 보낸 메시지나 링크를 발견하면 가능한 회수 조치를 시도하고 실제 회수 여부를 확인한다. 상대가 이미 열람·복사하지 않았다고 추정하지 말고 민감 정보면 즉시 보안 신고한다."
+        }
+      ],
+      "intent_group": "dev_privacy_misdelivery_incident",
+      "exposure": "user-facing-v5 U06; previously observed, not unseen",
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "case_specific",
+        "target": "Use a short numbered list for actual response steps; place each timing/exception beside its step. Keep the recipient-response limitation in a separate paragraph so it is not mistaken for an operational step. The answer may be long because the question requires several distinct safety facts.",
+        "pass": "The response uses a structure appropriate to this case and preserves the full content and conditional relationships.",
+        "partial": "The response is understandable but the requested information structure is not clearly reflected.",
+        "fail": "The structure obscures order/alternatives or changes meaning; content loss is also scored separately."
+      },
+      "optional": [],
+      "critical_required": []
+    },
+    {
+      "id": "D09",
+      "question": "회의에서 결정된 내용과 후속 일을 어떤 방식으로 기록해야 해?",
+      "category": "ordered_multi_step_procedure",
+      "intent_group": "dev_meeting_decision_record",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Record what was decided, why, owner, deadline, and remaining risks, then confirm the record with attendees.",
+        "After the meeting, save outcomes and follow-up tasks in the team/project source document and share its link in Slack.",
+        "Assign an owner and next check time to unresolved questions; do not treat unrecorded or unassigned discussion as a completed decision.",
+        "Do not treat silence as approval; items requiring legal/security/privacy review are not complete before that review."
+      ],
+      "critical_required": [
+        "Record decision, rationale, owner, deadline, and risk; do not infer approval from silence.",
+        "Store final meeting decisions in the designated project/team document rather than Slack alone."
+      ],
+      "optional": [
+        "Developing a brief agenda and limiting attendees to decision contributors."
+      ],
+      "forbidden": [
+        "Treat silence as consent or an unrecorded discussion as a final decision.",
+        "Store the authoritative decision only in Slack."
+      ],
+      "major_forbidden": [
+        "Claim a legal, security, or privacy review is complete without its review."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "ordered_steps",
+        "target": "Use a short numbered sequence for recording/confirming the decision and publishing follow-up; distinguish unresolved questions as a separate follow-up.",
+        "pass": "Ordered actions are visibly sequential and retain the owner/deadline distinction.",
+        "partial": "Steps are mostly clear but one handoff or record location is hard to find.",
+        "fail": "A required prerequisite/order is reversed or unresolved discussion is presented as final."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-041",
+          "title": "회의 일정과 안건 공유",
+          "section": "진행과 결정 기록",
+          "quote": "결정이 나면 무엇을 결정했는지, 선택 이유, 담당자, 기한, 남은 위험을 읽어 참석자와 확인한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-041",
+          "title": "회의 일정과 안건 공유",
+          "section": "진행과 결정 기록",
+          "quote": "참석자에게 동의 여부를 묻지 않은 채 침묵을 승인으로 기록하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-041",
+          "title": "회의 일정과 안건 공유",
+          "section": "진행과 결정 기록",
+          "quote": "회의 뒤 주최자는 핵심 결과와 후속 작업을 Google Workspace의 프로젝트·팀 기준 문서에 기록하고 Slack에 링크를 공유한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-041",
+          "title": "회의 일정과 안건 공유",
+          "section": "비동기 후속과 일정 변경",
+          "quote": "미해결 질문은 담당자와 다음 확인 시점을 지정한다. 기록이 없거나 담당자가 정해지지 않은 논의를 완료된 결정으로 취급하지 않는다."
+        }
+      ]
+    },
+    {
+      "id": "D10",
+      "question": "공유드라이브 파일이 덮어써진 걸 발견했어. 복구하려면 무엇부터 해야 해?",
+      "category": "ordered_multi_step_procedure",
+      "intent_group": "dev_shared_file_recovery",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Stop further editing, moving, or deleting the affected file.",
+        "Record the name/link, last known normal time, storage location, discovery time, affected users, and actions already attempted.",
+        "Do not restore alone or change sharing scope; notify the file owner and IT operations promptly because recovery windows/ranges may be limited.",
+        "Have the owner verify recovered content and permissions; record missing parts before saying recovery is complete."
+      ],
+      "critical_required": [
+        "Stop further changes and do not self-restore/change sharing.",
+        "Ask the owner and IT promptly and verify result before declaring recovery complete."
+      ],
+      "optional": [
+        "If the loss may involve account compromise, use the security-incident path."
+      ],
+      "forbidden": [
+        "Promise recovery or a backup exists.",
+        "Tell the user to restore it alone or change sharing permissions before owner/IT review."
+      ],
+      "major_forbidden": [
+        "Declare recovery complete without owner verification or claim guaranteed recovery."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "ordered_steps",
+        "target": "Number the immediate stop/record/report actions in order; recovery verification is a later stage.",
+        "pass": "The immediate preservation/reporting actions precede recovery and validation.",
+        "partial": "Main order is present but one record or verification item is hard to locate.",
+        "fail": "Advises additional changes or self-restoration before reporting, or claims guaranteed recovery."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-038",
+          "title": "업무 자료 보관과 복구",
+          "section": "손실·삭제·손상 발견 시",
+          "quote": "문서가 사라지거나 덮어써졌다면 추가 편집·이동·삭제를 멈춘다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-038",
+          "title": "업무 자료 보관과 복구",
+          "section": "손실·삭제·손상 발견 시",
+          "quote": "문서 이름이나 링크, 마지막으로 정상 확인한 시각, 저장 위치, 발견 시각, 영향받은 사용자, 이미 시도한 조치를 적는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-038",
+          "title": "업무 자료 보관과 복구",
+          "section": "손실·삭제·손상 발견 시",
+          "quote": "파일이 Google Drive 휴지통이나 버전 기록에 보이면 혼자 복원해 공유 범위를 바꾸지 말고 자료 소유자와 IT운영팀에 먼저 알린다. 관리 복구는 가능한 기간과 날짜 범위가 제한될 수 있고 공유드라이브 자료는 별도 절차를 따르므로 즉시 요청한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-038",
+          "title": "업무 자료 보관과 복구",
+          "section": "손실·삭제·손상 발견 시",
+          "quote": "시스템이 확인한 복구 가능 범위와 대상 버전을 받은 뒤 자료 소유자가 내용·권한을 확인한다. 복원 결과와 빠진 부분을 기록하기 전에는 복구 완료로 알리지 않는다."
+        }
+      ]
+    },
+    {
+      "id": "D11",
+      "question": "고객이 버그를 신고했어. 개발팀에 넘길 정보와 인계 완료 기준은 뭐야?",
+      "category": "ordered_multi_step_procedure",
+      "intent_group": "dev_customer_bug_handoff",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Record customer goal, observed impact, occurrence time/timezone, expected versus actual behavior, and a minimal reproduction when available.",
+        "Include only information needed for investigation; never put passwords, tokens, session cookies, or raw customer data in GitHub.",
+        "A GitHub issue/message alone does not complete handoff; the receiving person must explicitly accept it and current customer owner remains responsible until acceptance.",
+        "Do not promise a fix or release date; give the customer the confirmed facts and next update target."
+      ],
+      "critical_required": [
+        "Separate expected and actual behavior and do not send credentials/customer raw data to GitHub.",
+        "Handoff completes only after explicit recipient acceptance; current customer owner retains responsibility until then."
+      ],
+      "optional": [
+        "Capture relevant environment such as browser or product version only when needed to reproduce."
+      ],
+      "forbidden": [
+        "Treat an unaccepted Slack/GitHub message as completed handoff.",
+        "Promise a fix date before product development decides."
+      ],
+      "major_forbidden": [
+        "Copy customer credentials/raw data into a development issue or claim a bug is confirmed without evidence."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "ordered_steps",
+        "target": "Use an ordered checklist for intake and safe technical handoff, then state acceptance as the completion gate.",
+        "pass": "Evidence gathering precedes transfer and acceptance is clearly the handoff boundary.",
+        "partial": "The sequence is understandable but a safety or ownership condition is not easy to find.",
+        "fail": "A message/issue is presented as completed handoff without acceptance, or sensitive data is directed to GitHub."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-065",
+          "title": "고객 문의 접수와 인계",
+          "section": "접수와 기록",
+          "quote": "오류라면 발생 시각과 시간대, 영향을 받는 기능, 예상 동작과 실제 동작, 재현 여부를 묻는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-066",
+          "title": "버그·기능 요청 전달",
+          "section": "전달 전에 준비할 정보",
+          "quote": "암호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 개인의 실제 이메일 주소나 전화번호를 GitHub 이슈에 넣지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-065",
+          "title": "고객 문의 접수와 인계",
+          "section": "담당 인계와 교대",
+          "quote": "수신자가 명시적으로 수락할 때까지 기존 담당자가 고객 문의를 맡는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-066",
+          "title": "버그·기능 요청 전달",
+          "section": "우선순위와 결정",
+          "quote": "이슈가 생성되거나 개발팀에 전달됐다는 사실은 수정 약속이 아니다."
+        }
+      ]
+    },
+    {
+      "id": "D12",
+      "question": "회사 업무에 생성형 AI를 쓰려면 어떤 자료를 넣을 수 있고 결과를 어떻게 확인해야 해?",
+      "category": "conditional_alternatives",
+      "intent_group": "dev_generative_ai_public_data",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Use only the company-managed ChatGPT Business workspace for company work.",
+        "Input only information that is publicly accessible and whose use conditions/licence are confirmed; internal documents, customer data, personal data, code, credentials, and secrets are prohibited.",
+        "If publicness or licence is uncertain, do not input the material; do not bypass with a personal account or another AI service.",
+        "Check output facts, calculations, citations, and code against source material; check source/IP/confidentiality classification and required review before using it in company work."
+      ],
+      "critical_required": [
+        "Do not enter nonpublic company/customer/personal/code/secret material; if uncertain, do not enter.",
+        "Verify generated claims against source before sharing/using."
+      ],
+      "optional": [
+        "Retain source and rights attribution when using public materials."
+      ],
+      "forbidden": [
+        "Claim that a business plan permits internal/private data or deidentified customer information.",
+        "Treat AI output as accurate or rights-cleared without review."
+      ],
+      "major_forbidden": [
+        "Recommend entering nonpublic or uncertain data, or using personal accounts to bypass controls."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "conditional_branches",
+        "target": "Separate allowed-public-input conditions from prohibited/uncertain-data conditions; present the verification steps as a real sequence after generation.",
+        "pass": "Allowed vs prohibited alternatives are clearly separated and the output review remains sequential.",
+        "partial": "The branches are present but one condition or review step is hard to locate.",
+        "fail": "The conditions are turned into a false universal sequence or prohibited input is presented as allowed."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-033",
+          "title": "생성형 AI 업무 사용",
+          "section": "사용 가능한 서비스와 자료 범위",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-033",
+          "title": "생성형 AI 업무 사용",
+          "section": "사용 가능한 서비스와 자료 범위",
+          "quote": "공개 정보인지 확실하지 않거나 공개 조건·라이선스를 확인할 수 없으면 입력하지 않는다. 개인 계정, 다른 AI 사이트, 브라우저 확장으로 우회하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-033",
+          "title": "생성형 AI 업무 사용",
+          "section": "안전한 작업 흐름",
+          "quote": "결과의 사실·계산·인용·코드를 사람이 원자료와 비교한다. 근거를 찾을 수 없는 내용은 사실로 전달하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-033",
+          "title": "생성형 AI 업무 사용",
+          "section": "안전한 작업 흐름",
+          "quote": "결과를 회사 산출물에 반영할 때 출처·저작권·기밀 분류를 다시 확인하고, 해당 문서의 검토·승인 절차를 따른다."
+        }
+      ]
+    }
+  ]
+}

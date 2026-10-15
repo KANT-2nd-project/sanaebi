@@ -1,0 +1,798 @@
+{
+  "reviewer": "independent_blind_ai_reviewer_1",
+  "method": "후보 이름·매핑·다른 결과·코드를 보지 않고 지정된 packet을 먼저 읽고, 지정된 frozen snapshot의 72개 문서 본문을 검색해 정책 근거를 확인했다. 각 required 복합 항목은 하위 필수 요소까지 확인했으며, 의미상 동등한 표현은 인정했다. API 호출이나 사람 검수는 없었다.",
+  "responses": [
+    {
+      "anonymous_id": "final-1-A001",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "일괄 허용 금액이 없고 7만 원만으로 판단할 수 없다고 설명했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "수락 전 신고 경로와 필수 기록 항목, 검토 중 수락 금지를 제시했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "구체적인 법적 한도는 확인하기 어렵고 People팀의 별도 법률 검토가 필요하다고 했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "회사 신고가 법률·계약상 제한을 해제하지 않는다고 명시했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "절차와 법률상 미확인 사항을 분리했고, 검토 중 수락 금지와 법률·계약 제한을 보존했다."
+    },
+    {
+      "anonymous_id": "final-1-A002",
+      "content": "fail",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "핵심 기능 중단·데이터 손실 가능성을 P1로 두고 즉시 #service-incident 신고를 지시했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "15분을 대기 사유가 아닌 인계 목표로 설명하고 미수락 시 팀장 대체 경로를 안내했다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "사고 지휘자 승인과 승인된 복구 경로는 언급했지만, 자동화/runbook 사용 및 영향 서비스·데이터, 되돌리기 조건, 검증 기록 기준은 빠졌다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "지정 고객지원 담당자·공식 채널, 확인 사실·조사 중인 점·다음 목표와 30분 갱신 목표를 제시했다."
+        },
+        {
+          "index": 4,
+          "status": "missing",
+          "rationale": "고객 영향, 핵심 흐름, 데이터 미해결 여부, 재발 징후라는 종료 확인 조건을 제시하지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "초동 대응과 권한 경계는 분명하다. 다만 필수 복구 기록·검증 및 종료 조건을 빠뜨려 복합 필수사항이 충족되지 않았다. 무단 롤백이나 복구 완료를 주장하지는 않았다."
+    },
+    {
+      "anonymous_id": "final-1-A003",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "회사 업무 정보·절차 범위는 밝혔지만 회사 문서에 설명된 업무 도구 사용도 범위라는 점은 밝히지 않았다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "레시피를 제공하지 않고 요청을 정중히 거절했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "짧은 문단으로 답했고 반려동물 관련 회사 규정을 만들지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "간결한 범위 안내와 거절은 적절하지만 업무 도구 사용이라는 범위 요소가 명시되지 않았다."
+    },
+    {
+      "anonymous_id": "final-1-A004",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "작업 전에 목적, 영향 사용자·구성요소, 호환성, 데이터 변경을 확인·기록하도록 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "PR, 독립 리뷰, 필수 자동 검사와 병합 전 승인 조건을 구분했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "병합·승인·검사 후 승인된 자동화/runbook만 사용하도록 했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "배포 후 서비스 소유자의 정상 조건을 확인하고 확인 전 성공 선언을 금했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "요청한 변경 시작부터 운영 확인까지 단계가 순서대로 보이며 필수 선행 조건과 성공 판정 경계가 유지됐다."
+    },
+    {
+      "anonymous_id": "final-1-A005",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "재택 중 출력은 원칙적으로 하지 않는다고 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "불가피한 경우 출력 전 보안·개인정보 승인을 받고 잠금 보관·접근 제한을 안내했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "승인 기록에 보관·파쇄 방법이 없으면 출력하지 말고 담당자에게 확인하라고 했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "보안 파쇄함 또는 승인된 회수를 대안으로 제시하고 일반 폐기를 금했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "기본 금지, 사전 승인 예외, 폐기 대안을 각각 구분했고 대안 두 가지를 연속 단계로 만들지 않았다."
+    },
+    {
+      "anonymous_id": "final-1-A006",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "승인된 환경의 잠금파일 의존성은 설치 때마다 IT 신청하지 않되 팀 검토·프로젝트 절차를 따른다고 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "브라우저 확장을 별도 검토 대상으로 두고 IT운영팀과 보안·개인정보 검토를 요구했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "IT > 소프트웨어 요청 경로와 검토 기록 전 설치 금지를 제시했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "두 소프트웨어 유형을 별도 문단으로 비교해 의존성 설치 절차를 확장 설치에 적용하지 않도록 했다."
+    },
+    {
+      "anonymous_id": "final-1-A007",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "사내 절차와 업무 도구 사용을 안내한다고 소개했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "입사·계정·근태·휴가·비용·보안 등 신입 구성원에게 쓸 수 있는 업무 영역을 들었다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "신청·변경·취소·승인 및 개인별 상태 조회를 직접 하지 않는다고 했다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "신입에게 구체적인 업무 질문을 해 보라고 초대하지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "짧고 명확하지만 다음 질문을 권하는 문장이 없고, 영역 목록도 요구된 병렬 목록 구조가 아니다."
+    },
+    {
+      "anonymous_id": "final-1-A008",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "주문·계약·결제 전에 재무 > 업무 구매에서 신청하고 필수 신청 항목을 기록하도록 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "세 금액 구간과 승인자·견적 요건을 정확히 제시했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "소프트웨어에 IT운영팀 및 보안·개인정보 검토가 계약·결제 전에 필요하다고 했다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "구매 승인이 서비스 계정이나 접근 권한을 자동으로 주지 않는다는 경계를 말하지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "신청·금액별 승인·기술 검토 순서가 명확하고 구간도 읽기 쉽지만 계정·권한 경계가 누락됐다."
+    },
+    {
+      "anonymous_id": "final-1-A009",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "현장 대피 안내에 따라 먼저 대피하라고 했고 보고를 우선하라는 안내는 없다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "119에 연락하되 대피를 늦추지 말라고 했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "안전한 장소에서 인원을 확인하고 실종자의 마지막 위치를 구조대에 전달하도록 했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "소방관 또는 건물 관리자가 안전 확인 후 명시적으로 안내하기 전 재입장하지 말라고 했다."
+        },
+        {
+          "index": 4,
+          "status": "met",
+          "rationale": "동료를 찾으러 건물로 돌아가지 말라고 명시했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "대피, 긴급 연락, 안전 지점의 인원 확인·위치 공유, 재입장 금지가 순서대로 제시됐다."
+    },
+    {
+      "anonymous_id": "final-1-A010",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 업무 절차와 업무 도구 사용 안내를 소개했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "입사, 계정·권한, 휴가·근태, 출장·경비, 보안을 업무 영역으로 들었다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "신청·변경·취소·승인, 권한 처리, 개인 상태·잔여 일수 조회를 직접 하지 않는다고 했다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "신입에게 구체적인 업무 질문을 요청하거나 초대하지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "범위와 처리 한계는 명확하지만 후속 질문 초대가 없고 병렬 영역이 문장 안에 나열됐다."
+    },
+    {
+      "anonymous_id": "final-1-A011",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "회사 업무 정보·절차와 회사 문서 질문은 안내했지만 문서화된 업무 도구 사용 범위를 명시하지 않았다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "반려견 간식 레시피를 제공하지 않았다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "짧고 직접적인 범위 안내이며 반려동물 정책을 만들어내지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "요청을 적절히 거절했지만 고정 기준의 업무 도구 범위가 빠졌다."
+    },
+    {
+      "anonymous_id": "final-1-A012",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "잠금파일 고정 의존성의 설치와 신규·변경 의존성의 팀 검토를 구분했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "브라우저 확장에 IT 및 보안·개인정보 검토가 필요하다고 했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "IT > 소프트웨어 요청 경로와 검토 기록 전 설치 금지를 제시했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "두 경우를 분리했고 검토 전에 설치하거나 실제 자료를 연결하라고 안내하지 않았다."
+    },
+    {
+      "anonymous_id": "final-1-A013",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "어떤 신청인지와 포털에 표시된 상태를 물었다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "예시를 선택지로 제시했으며 특정 절차라고 단정하지 않았다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "절차 식별에 필요한 종류와 상태만 요청했고 민감한 세부사항을 요구하지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "간단한 확인 질문으로 흐름을 특정하지 않고 필요한 최소 정보만 요청했다."
+    },
+    {
+      "anonymous_id": "final-1-A014",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "총무 > 방문객 등록 경로를 정확히 제시했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "방문일 1영업일 전이라는 마감도 정확하다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "요청한 경로와 기한이 바로 보이며, 추가한 당일 긴급 방문 조건도 snapshot에 있다."
+    },
+    {
+      "anonymous_id": "final-1-A015",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "작업 전에 변경 목적·영향·호환성·데이터 변경을 확인하도록 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "PR, 독립 리뷰, 필수 검사, 병합 기준을 순서대로 구분했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "필수 승인·검사 후 승인된 자동화/runbook 사용을 명시했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "배포 뒤 정상 조건을 확인하고 그 전에는 성공을 선언하지 말라고 했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "요청한 단계가 순서대로 구분된다. 실패 처리에 관한 짧은 한계 설명은 비정상적으로 작성된 snapshot 문구를 정책으로 확장하지 않았다."
+    },
+    {
+      "anonymous_id": "final-1-A016",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "금액으로 신고 절차를 생략할 수 없고 회사는 일괄 허용 금액을 정하지 않는다고 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "수락·참석 전 신고 경로와 필수 항목, 검토 중 수락 금지를 설명했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "구체적인 법적 금액은 확인할 수 없고 People팀의 별도 법률 검토가 필요하다고 했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "회사 신고가 법률·계약 제한을 해제하지 않는다고 했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "7만 원에 대한 법률상 허용 여부를 꾸며내지 않고 회사 절차와 법률 검토 경계를 모두 전달했다."
+    },
+    {
+      "anonymous_id": "final-1-A017",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "주문·계약·결제 전 신청과 필수 항목을 안내했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "모든 금액 구간, 승인자, 3개 견적 및 단일 공급 예외를 정확히 설명했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "계약·결제 전 IT와 보안·개인정보 검토를 요구했다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "구매 승인이 계정·권한을 자동 부여하지 않는다는 제한이 빠졌다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "구매 승인 단계와 기준은 모두 맞지만 필수 권한 경계가 누락됐다."
+    },
+    {
+      "anonymous_id": "final-1-A018",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "총무 > 방문객 등록 경로를 제시했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "방문일 1영업일 전까지라고 정확히 답했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "짧은 문장 안에서 경로와 마감이 모두 쉽게 확인된다."
+    },
+    {
+      "anonymous_id": "final-1-A019",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "주변에 알리되 소지품 때문에 지체하지 않고 현장 대피 안내에 따르도록 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "대피를 늦추지 않는 범위에서 119 연락을 안내했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "안전한 장소에서 팀장에게 마지막 위치를 알려 구조자에게 전달하도록 했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "소방관 또는 실제 건물 관리자의 안전 확인·명시적 안내 전 재입장을 금했다."
+        },
+        {
+          "index": 4,
+          "status": "met",
+          "rationale": "동료를 찾으러 건물 안에 돌아가지 말라고 했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "안전한 대피와 구조 연락을 먼저 두고, 인원 확인과 재입장 금지까지 순서가 분명하다."
+    },
+    {
+      "anonymous_id": "final-1-A020",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 문서에 근거한 권한 신청 안내를 권한·계정 예시로 들었다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "신청 정보와 팀장·시스템 담당자 및 민감 자료 검토자를 안내했다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "개별 상태 조회는 부인했으나 직접 권한 부여·변경·승인을 할 수 없다는 한계를 모두 밝히지 않았다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "팀원에게 구체적인 시스템이나 권한 질문을 알려 달라는 후속 요청이 없다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "partial",
+      "structure": "partial",
+      "unnecessary_guidance": true,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "소개 문구보다 신청 상세·처리 기한·오류 대응까지 길게 설명해 핵심 소개와 후속 질문이 흐려진다. 근거 없는 상태 조회나 권한 조작 주장은 없다."
+    },
+    {
+      "anonymous_id": "final-1-A021",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "재택 중 문서 출력은 원칙적으로 하지 않는다고 했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "불가피하면 사전 승인과 잠금 보관·필요 인원만 접근을 안내했다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "방법이 승인 기록에 없으면 출력하지 않고 담당자에게 확인하라고 했다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "보안 파쇄함 또는 승인된 회수·파쇄를 대안으로 제시하고 일반 폐기를 막았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "기본 원칙과 조건부 예외, 서로 대안인 두 폐기 경로가 명료하다."
+    },
+    {
+      "anonymous_id": "final-1-A022",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 문서에 근거한 권한 신청 안내를 소개했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "신청 정보와 검토 주체를 제시했고 필요한 시스템·업무를 설명하라는 사용 방법도 안내했다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "조회·신청·부여는 부인했지만 권한 변경·승인도 직접 할 수 없다는 범위가 빠졌다."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "사내비에 필요한 시스템과 업무를 설명하면 안내받을 수 있다고 사용자가 제공할 내용을 제시했다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "partial",
+      "structure": "partial",
+      "unnecessary_guidance": true,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "질문에서 벗어나지는 않지만 상세 신청 절차·처리 기한·오류 대응이 소개 문구에 비해 길다. 권한 작업이나 조회를 실제로 수행한다고 주장하지는 않았다."
+    },
+    {
+      "anonymous_id": "final-1-A023",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "어떤 신청인지와 현재 포털 상태를 물었다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "몇 가지 업무 유형을 예로 들었지만 하나라고 가정하지 않았다."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "절차 식별에 필요한 유형과 상태만 요청했고 민감한 정보는 요구하지 않았다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "짧은 확인 질문으로 절차를 특정하지 않고 개인별 상태를 조회한다고도 주장하지 않았다."
+    },
+    {
+      "anonymous_id": "final-1-A024",
+      "content": "fail",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "핵심 기능 중단·데이터 손실 가능성을 P1로 분류하고 #service-incident 신고를 안내했다."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "15분 미수락 시 기다리지 말고 팀장 대체 경로를 요청하도록 했다."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "사고 지휘자 승인과 안전 경로는 언급했지만 승인된 자동화/runbook 및 영향·되돌리기·검증 기록 조건은 빠졌다."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "확인 사실과 다음 갱신 목표는 제시했지만 미확인 사항을 함께 알리라는 조건과 운영 목표가 SLA가 아님을 분명히 하지 않았다."
+        },
+        {
+          "index": 4,
+          "status": "missing",
+          "rationale": "고객 영향·핵심 흐름·데이터 미해결 여부·재발 징후의 종료 확인 조건이 빠졌다."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "즉시 신고, 팀장 대체 경로, 롤백 승인 경계는 지켰다. 그러나 필수 복구 절차·기록과 고객 공지·종료 확인 조건이 누락되어 복합 필수사항을 충족하지 못했다."
+    }
+  ],
+  "boundary_review": [
+    {
+      "type": "snapshot_coverage",
+      "finding": "snapshot.json의 72개 문서 본문을 대상으로 메뉴·채널 표현을 검색했다. IT > 소프트웨어 요청은 ieum-032/037/054, 고객지원 > 장애 기록은 ieum-035/053/058/069, 총무 > 방문객 등록은 ieum-014, #it-helpdesk는 여러 문서에서 확인된다. 이 표현들은 부재 주장으로 판정하지 않았다."
+    },
+    {
+      "type": "source_data_quality",
+      "document_id": "ieum-068",
+      "affected_anonymous_ids": [
+        "final-1-A015"
+      ],
+      "finding": "‘실패 또는 이상 징후’ 절에 장애 대응과 무관하게 퇴사를 준비하고 사원증을 팀장에게 전달하라는 문구가 있다. 비정상적인 원문 데이터로 분리했으며, A015가 실패 세부 절차를 확인하기 어렵다고 한 문장을 허구 정책 주장으로 보지 않았다."
+    },
+    {
+      "type": "rubric_boundary",
+      "affected_anonymous_ids": [
+        "final-1-A003",
+        "final-1-A011"
+      ],
+      "finding": "짧은 범위 거절에서 ‘회사 업무 정보·절차’가 회사 문서에 설명된 업무 도구까지 의미상 포함하는지는 다소 모호하다. 고정 required를 완화하지 않고 도구 범위 문구가 없음을 비중대 누락으로 판정했다."
+    },
+    {
+      "type": "rubric_boundary",
+      "affected_anonymous_ids": [
+        "final-1-A002",
+        "final-1-A024"
+      ],
+      "finding": "종료를 선언하지 않은 답변에도 모든 종료 확인 조건을 말해야 하는지에는 해석 여지가 있다. 계약의 복합 필수 기준에 따라 각 조건을 요구했고, 누락과 중대한 허구·권한 오류는 분리했다."
+    }
+  ]
+}
