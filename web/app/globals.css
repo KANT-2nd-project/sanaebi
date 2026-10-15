@@ -438,3 +438,8 @@ button.send-button:enabled:active { background: var(--action-pressed); }
 
   .document-markdown-preview { min-height: 0; max-height: none; }
 }
+
+.documents-maintenance { margin-top: 28px; border-top: 1px solid var(--divider); padding-top: 24px; }
+.documents-maintenance h2 { font-weight: 650; font-size: 20px; }
+.documents-maintenance-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.documents-dialog-content > .documents-field { margin-top: 20px; }
