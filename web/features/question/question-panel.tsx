@@ -61,7 +61,7 @@ export function QuestionPanel() {
         </section> : <h1 className="sr-only">사내비와 대화</h1>}
         <section ref={guideRef} id="usage" className="chat-guide" hidden={!showGuide} aria-labelledby="usage-title">
           <h2 id="usage-title">사용 안내</h2>
-          <p>질문을 분류해 처리하며, 문서 기반 답변에는 유효한 게시본을 사용합니다. 실제 답변 생성에는 분류·답변 모델 준비가 필요합니다.</p>
+          <p>게시된 회사 문서를 바탕으로 질문에 답합니다.</p>
           <p>화면의 이전 메시지는 답변에 반영되지 않습니다. 대상과 상황을 함께 적어주세요.</p>
           <p>이전 대화는 페이지를 벗어나거나 새로고침하면 사라집니다. 작성 중인 질문은 앱 안에서 이동하는 동안 유지됩니다. 답변을 기다리는 중 페이지를 벗어나면 요청이 취소됩니다. 실제 신청·승인·개인 기록 조회는 지원하지 않습니다.</p>
         </section>
