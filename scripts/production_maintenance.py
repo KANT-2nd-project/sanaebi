@@ -442,6 +442,8 @@ def reset_demo_documents(
         f"type=bind,src={paths.baseline},dst=/app/data/company-knowledge/documents.jsonl,readonly",
         "--env",
         "SANAEBI_DOCUMENT_DB=/data/documents.sqlite3",
+        "--env",
+        "SANAEBI_RETRIEVAL_MODE=full",
         image,
         "python",
         "scripts/reset_demo_documents.py",

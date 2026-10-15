@@ -219,26 +219,17 @@ class RagFollowupReadinessTests(unittest.TestCase):
         with patch.object(
             self.retriever, "retrieve", wraps=self.retriever.retrieve
         ) as retrieve:
-            pending = self._ask()
+            final_answer = self._ask()
             retrieve.assert_called_once()
-        self.assertEqual(pending.status_code, 503, pending.text)
-        self.assertEqual(self.reserve.call_count, 1)
-        self.assertEqual(len(self.provider.prompts), 1)
-
-        self.embedder.document_batches.clear()
-        ready = self.worker.reconcile(new_snapshot)
-        self.assertTrue(ready["ready"], ready)
+        self.assertEqual(final_answer.status_code, 200, final_answer.text)
+        self.assertEqual(self.reserve.call_count, 2)
+        self.assertEqual(len(self.provider.prompts), 2)
         self.assertEqual(self.embedder.document_batches, [])
         current = self.retriever.retrieve("출근 기록은 어디에 남기나요?", new_snapshot)
         self.assertTrue(current.evidence)
         self.assertEqual(
             {item.revision_id for item in current.evidence}, {new_revision}
         )
-
-        final_answer = self._ask()
-        self.assertEqual(final_answer.status_code, 200, final_answer.text)
-        self.assertEqual(self.reserve.call_count, 2)
-        self.assertEqual(len(self.provider.prompts), 2)
 
     def test_request_keeps_old_snapshot_while_worker_indexes_new_revision(self):
         old_snapshot = self._restore_and_index()
@@ -308,40 +299,24 @@ class RagFollowupReadinessTests(unittest.TestCase):
             all("BASELINE-CONTENT" not in item.text for item in current.evidence)
         )
 
-    def test_restore_source_mismatch_reindexes_new_body_without_stale_baseline(self):
+    def test_restore_source_mismatch_fails_before_mutating_documents(self):
         new_text = "## 출근 정책\n\nRESTORED-CURRENT-CONTENT: 변경된 안내는 운영 포털에서 확인한다.\n"
         _write_source(self.source, new_text)
+        before = fastapi_main.app.state.document_provider.snapshot()
 
-        restored = self._maintain("restore")
-        self.assertEqual(restored.status_code, 200, restored.text)
-        snapshot = fastapi_main.app.state.document_provider.snapshot()
-        pending = self._ask("변경된 안내는 어디에서 확인하나요?")
-        self.assertEqual(pending.status_code, 503, pending.text)
+        preview = self.client.get(
+            "/documents/maintenance-preview", params={"action": "restore"}
+        )
+        self.assertEqual(preview.status_code, 503, preview.text)
+        self.assertEqual(preview.json()["error"]["code"], "retrieval_sync_failed")
+        self.assertEqual(
+            preview.json()["error"]["details"],
+            {"document_saved": False, "retryable": True},
+        )
+        self.assertEqual(fastapi_main.app.state.document_provider.snapshot(), before)
         self.assertEqual(self.reserve.call_count, 0)
         self.assertEqual(len(self.provider.prompts), 0)
-
-        status = self.worker.reconcile(snapshot)
-        self.assertTrue(status["ready"], status)
-        encoded = [text for batch in self.embedder.document_batches for text in batch]
-        self.assertTrue(encoded, "mismatched baseline should encode changed content")
-        self.assertTrue(any("RESTORED-CURRENT-CONTENT" in text for text in encoded))
-        self.assertFalse(any("BASELINE-CONTENT" in text for text in encoded))
-
-        result = self.retriever.retrieve("변경된 안내는 어디에서 확인하나요?", snapshot)
-        self.assertTrue(result.evidence)
-        self.assertEqual(
-            {item.revision_id for item in result.evidence},
-            {snapshot.documents[0].revision_id},
-        )
-        self.assertTrue(
-            all("BASELINE-CONTENT" not in item.text for item in result.evidence)
-        )
-
-        response = self._ask("변경된 안내는 어디에서 확인하나요?")
-        self.assertEqual(response.status_code, 200, response.text)
-        self.assertEqual(self.reserve.call_count, 1)
-        self.assertIn("RESTORED-CURRENT-CONTENT", self.provider.prompts[-1].user)
-        self.assertNotIn("BASELINE-CONTENT", self.provider.prompts[-1].user)
+        self.assertEqual(self.embedder.document_batches, [])
 
     def test_mock_generation_overlaps_at_one_two_and_four_requests(self):
         self._restore_and_index()

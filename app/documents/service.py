@@ -6,6 +6,7 @@ import hashlib
 import json
 import uuid
 from collections.abc import Callable
+from contextlib import nullcontext
 from datetime import date, datetime
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -16,6 +17,7 @@ from app.documents.repository import (
     IdempotencyConflictError,
     RevisionConflictError,
 )
+from app.retrieval.sync import RetrievalWriterBusy, RetrievalWriterUnavailable
 
 
 class DocumentServiceError(Exception):
@@ -129,6 +131,7 @@ def publish_document(
     expected_version: int,
     revision_id: str,
     idempotency_key: str | None,
+    retrieval_sync=None,
 ) -> tuple[int, dict[str, Any]]:
     payload = {"expected_version": expected_version, "revision_id": revision_id}
 
@@ -172,6 +175,7 @@ def publish_document(
         payload,
         200,
         publish,
+        retrieval_sync=retrieval_sync,
     )
 
 
@@ -180,6 +184,7 @@ def withdraw_document(
     document_id: str,
     expected_version: int,
     idempotency_key: str | None,
+    retrieval_sync=None,
 ) -> tuple[int, dict[str, Any]]:
     payload = {"expected_version": expected_version}
 
@@ -204,6 +209,7 @@ def withdraw_document(
         payload,
         200,
         withdraw,
+        retrieval_sync=retrieval_sync,
     )
 
 
@@ -214,6 +220,7 @@ def _idempotent_write(
     payload: dict[str, Any],
     success_status: int,
     operation: Callable[[Any], dict[str, Any]],
+    retrieval_sync=None,
 ) -> tuple[int, dict[str, Any]]:
     key = _validated_idempotency_key(raw_key)
     request_hash = hashlib.sha256(
@@ -222,37 +229,56 @@ def _idempotent_write(
         ).encode("utf-8")
     ).hexdigest()
     try:
-        with repository.transaction() as connection:
-            replay = repository.lookup_idempotency(
-                connection, key, method_path, request_hash
-            )
-            if replay is not None:
-                return replay
-            result = operation(connection)
-            repository.store_idempotency(
-                connection,
-                key,
-                method_path,
-                request_hash,
-                success_status,
-                result,
-            )
-            return success_status, result
-    except DuplicateDocumentError as exc:
-        raise DocumentServiceError(
-            409,
-            "duplicate_document",
-            "같은 제목과 본문을 가진 문서가 이미 있습니다.",
-            {"id": exc.existing_id},
-        ) from exc
-    except IdempotencyConflictError as exc:
-        raise DocumentServiceError(
-            409,
-            "idempotency_conflict",
-            "이 Idempotency-Key는 다른 요청에 사용되었거나 시연 초기화로 무효화되었습니다. 최신 문서를 확인해주세요.",
-        ) from exc
-    except RevisionConflictError as exc:
-        raise _revision_conflict(exc.current_version) from exc
+        lock = (
+            retrieval_sync.writer_lock()
+            if retrieval_sync is not None
+            else nullcontext()
+        )
+        with lock:
+            try:
+                with repository.transaction() as connection:
+                    replay = repository.lookup_idempotency(
+                        connection, key, method_path, request_hash
+                    )
+                    if replay is not None:
+                        result = replay
+                    else:
+                        response = operation(connection)
+                        repository.store_idempotency(
+                            connection,
+                            key,
+                            method_path,
+                            request_hash,
+                            success_status,
+                            response,
+                        )
+                        result = success_status, response
+            except DuplicateDocumentError as exc:
+                raise DocumentServiceError(
+                    409,
+                    "duplicate_document",
+                    "같은 제목과 본문을 가진 문서가 이미 있습니다.",
+                    {"id": exc.existing_id},
+                ) from exc
+            except IdempotencyConflictError as exc:
+                raise DocumentServiceError(
+                    409,
+                    "idempotency_conflict",
+                    "이 Idempotency-Key는 다른 요청에 사용되었거나 시연 초기화로 무효화되었습니다. 최신 문서를 확인해주세요.",
+                ) from exc
+            except RevisionConflictError as exc:
+                raise _revision_conflict(exc.current_version) from exc
+
+            try:
+                if retrieval_sync is not None:
+                    retrieval_sync.reconcile_current()
+            except Exception as exc:
+                raise _retrieval_sync_error(document_saved=True) from exc
+            return result
+    except RetrievalWriterBusy as exc:
+        raise _retrieval_sync_error(document_saved=False, busy=True) from exc
+    except RetrievalWriterUnavailable as exc:
+        raise _retrieval_sync_error(document_saved=False) from exc
 
 
 def _normalize_request_fields(fields: dict[str, Any]) -> dict[str, Any]:
@@ -302,24 +328,55 @@ def _revision_conflict(current_version: int | None) -> DocumentServiceError:
     )
 
 
-def preview_maintenance(repository, action, source):
+def _retrieval_sync_error(*, document_saved: bool, busy: bool = False):
+    code = "retrieval_sync_busy" if busy else "retrieval_sync_failed"
+    if busy:
+        message = "검색 색인 작업이 진행 중이라 이번 요청을 처리하지 못했습니다. 잠시 후 같은 요청으로 다시 시도해주세요."
+    elif document_saved:
+        message = "문서 변경은 저장됐지만 검색 반영이 완료되지 않았습니다. 같은 요청을 다시 시도해주세요."
+    else:
+        message = "검색 반영 준비를 확인하지 못해 이번 요청의 문서 변경을 시작하지 않았습니다. 설정을 확인한 뒤 다시 시도해주세요."
+    return DocumentServiceError(
+        503,
+        code,
+        message,
+        {"document_saved": document_saved, "retryable": True},
+    )
+
+
+def preview_maintenance(repository, action, source, retrieval_sync=None):
     import sqlite3
 
     from app.documents.maintenance import prepared_baseline, state_token
 
     try:
-        with (
-            prepared_baseline(repository, action, source) as (_, raw, count),
-            repository.transaction(immediate=False) as connection,
-        ):
-            return {
-                "action": action,
-                "total_count": connection.execute(
-                    "SELECT COUNT(*) FROM documents"
-                ).fetchone()[0],
-                "restored_count": count,
-                "expected_state": state_token(connection, action, raw),
-            }
+        lock = (
+            retrieval_sync.writer_lock()
+            if retrieval_sync is not None and action == "restore"
+            else nullcontext()
+        )
+        with lock:
+            if retrieval_sync is not None and action == "restore":
+                try:
+                    retrieval_sync.preflight_restore()
+                except Exception as exc:
+                    raise _retrieval_sync_error(document_saved=False) from exc
+            with (
+                prepared_baseline(repository, action, source) as (_, raw, count),
+                repository.transaction(immediate=False) as connection,
+            ):
+                return {
+                    "action": action,
+                    "total_count": connection.execute(
+                        "SELECT COUNT(*) FROM documents"
+                    ).fetchone()[0],
+                    "restored_count": count,
+                    "expected_state": state_token(connection, action, raw),
+                }
+    except RetrievalWriterBusy as exc:
+        raise _retrieval_sync_error(document_saved=False, busy=True) from exc
+    except RetrievalWriterUnavailable as exc:
+        raise _retrieval_sync_error(document_saved=False) from exc
     except (OSError, ValueError, sqlite3.Error) as exc:
         raise DocumentServiceError(
             503,
@@ -328,7 +385,9 @@ def preview_maintenance(repository, action, source):
         ) from exc
 
 
-def maintain_documents(repository, action, expected_state, key, source):
+def maintain_documents(
+    repository, action, expected_state, key, source, retrieval_sync=None
+):
     import sqlite3
     from datetime import UTC
 
@@ -349,44 +408,74 @@ def maintain_documents(repository, action, expected_state, key, source):
         json.dumps([action, expected_state]).encode()
     ).hexdigest()
     try:
-        with reset_lock(repository.path), repository.transaction() as connection:
-            replay = repository.lookup_idempotency(
-                connection, key, "POST /documents/maintenance", payload_hash
-            )
-            if replay:
-                return replay[1]
-            with prepared_baseline(repository, action, source) as (
-                seed,
-                raw,
-                count,
-            ):
-                if state_token(connection, action, raw) != expected_state:
-                    raise DocumentServiceError(
-                        409,
-                        "maintenance_state_changed",
-                        "문서 또는 기본 자료가 변경되었습니다. 현재 상태를 다시 확인해주세요.",
-                    )
-                deleted = connection.execute(
-                    "SELECT COUNT(*) FROM documents"
-                ).fetchone()[0]
-                with replacement_backup(repository, action, raw):
-                    _replace(connection, seed)
-                    result = {
-                        "action": action,
-                        "deleted_count": deleted,
-                        "restored_count": count,
-                        "completed_at": datetime.now(UTC).isoformat(),
-                    }
-                    repository.store_idempotency(
-                        connection,
-                        key,
-                        "POST /documents/maintenance",
-                        payload_hash,
-                        200,
-                        result,
-                    )
-                    connection.commit()
-                return result
+        lock = (
+            retrieval_sync.writer_lock()
+            if retrieval_sync is not None
+            else nullcontext()
+        )
+        with lock, reset_lock(repository.path):
+            with repository.transaction() as connection:
+                replay = repository.lookup_idempotency(
+                    connection,
+                    key,
+                    "POST /documents/maintenance",
+                    payload_hash,
+                )
+            if replay is not None:
+                result = replay[1]
+                operation_replayed = True
+            else:
+                operation_replayed = False
+                if retrieval_sync is not None and action == "restore":
+                    try:
+                        retrieval_sync.preflight_restore()
+                    except Exception as exc:
+                        raise _retrieval_sync_error(document_saved=False) from exc
+                with (
+                    prepared_baseline(repository, action, source) as (
+                        seed,
+                        raw,
+                        count,
+                    ),
+                    repository.transaction() as connection,
+                ):
+                    if state_token(connection, action, raw) != expected_state:
+                        raise DocumentServiceError(
+                            409,
+                            "maintenance_state_changed",
+                            "문서 또는 기본 자료가 변경되었습니다. 현재 상태를 다시 확인해주세요.",
+                        )
+                    deleted = connection.execute(
+                        "SELECT COUNT(*) FROM documents"
+                    ).fetchone()[0]
+                    with replacement_backup(repository, action, raw):
+                        _replace(connection, seed)
+                        result = {
+                            "action": action,
+                            "deleted_count": deleted,
+                            "restored_count": count,
+                            "completed_at": datetime.now(UTC).isoformat(),
+                        }
+                        repository.store_idempotency(
+                            connection,
+                            key,
+                            "POST /documents/maintenance",
+                            payload_hash,
+                            200,
+                            result,
+                        )
+                        connection.commit()
+            if retrieval_sync is not None:
+                try:
+                    if action == "restore":
+                        if operation_replayed:
+                            retrieval_sync.preflight_restore()
+                        retrieval_sync.restore_current()
+                    else:
+                        retrieval_sync.reconcile_current()
+                except Exception as exc:
+                    raise _retrieval_sync_error(document_saved=True) from exc
+            return result
     except IdempotencyConflictError as exc:
         raise DocumentServiceError(
             409,
@@ -399,6 +488,10 @@ def maintain_documents(repository, action, expected_state, key, source):
             "maintenance_busy",
             "다른 문서 전체 관리 작업이 진행 중입니다. 잠시 후 다시 확인해주세요.",
         ) from exc
+    except RetrievalWriterBusy as exc:
+        raise _retrieval_sync_error(document_saved=False, busy=True) from exc
+    except RetrievalWriterUnavailable as exc:
+        raise _retrieval_sync_error(document_saved=False) from exc
     except (OSError, ValueError, sqlite3.Error) as exc:
         raise DocumentServiceError(
             503,

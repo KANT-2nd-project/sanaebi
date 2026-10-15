@@ -34,8 +34,10 @@ from app.settings import (
     get_classifier_path,
     get_document_database_path,
     get_embedding_path,
+    get_retrieval_baseline,
     get_retrieval_mode,
     get_retrieval_root,
+    get_retrieval_source,
     get_routing_mode,
 )
 from generation.presets import load_runtime_settings
@@ -49,15 +51,18 @@ async def lifespan(application: FastAPI):
     retrieval_mode = get_retrieval_mode()
     application.state.retrieval_mode = retrieval_mode
     application.state.retriever = None
+    application.state.retrieval_sync = None
     if retrieval_mode == "rag":
         from app.retrieval.embedding import TinyEmbedder
         from app.retrieval.repository import IndexRepository
         from app.retrieval.service import RetrievalService
+        from app.retrieval.sync import DocumentIndexSynchronizer
 
         embedder = TinyEmbedder(get_embedding_path())
         embedder.warmup()
+        index_repository = IndexRepository(get_retrieval_root())
         application.state.retriever = RetrievalService(
-            IndexRepository(get_retrieval_root()), embedder
+            index_repository, embedder, baseline_path=get_retrieval_baseline()
         )
     public_demo = is_public_demo_enabled()
     generation_budget = None
@@ -70,6 +75,14 @@ async def lifespan(application: FastAPI):
     repository.initialize()
     application.state.document_repository = repository
     application.state.document_provider = DocumentContextProvider(repository=repository)
+    if retrieval_mode == "rag":
+        application.state.retrieval_sync = DocumentIndexSynchronizer(
+            repository=index_repository,
+            retrieval_service=application.state.retriever,
+            document_provider=application.state.document_provider,
+            baseline_path=get_retrieval_baseline(),
+            source_path=get_retrieval_source(),
+        )
     application.state.classifier = TransformerClassifier(get_classifier_path())
     application.state.classifier_warm_lock = Lock()
     application.state.classifier_warmed = False

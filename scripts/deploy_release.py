@@ -1484,6 +1484,15 @@ class DeploymentEngine:
             raise DeploymentError("runtime database directory is not a safe directory")
         os.chown(self.paths.data, 10001, 10001)
         os.chmod(self.paths.data, 0o750)
+        retrieval_baselines = self.paths.retrieval_baselines
+        retrieval_baselines.mkdir(parents=True, exist_ok=True, mode=0o750)
+        baseline_info = retrieval_baselines.lstat()
+        if not stat.S_ISDIR(baseline_info.st_mode):
+            raise DeploymentError(
+                "retrieval baseline directory is not a safe directory"
+            )
+        os.chown(retrieval_baselines, 10001, 10001)
+        os.chmod(retrieval_baselines, 0o750)
         self._copy_baseline_from_image(image)
         database = self.paths.database
         if database.exists() or database.is_symlink():
@@ -1609,10 +1618,19 @@ class DeploymentEngine:
             ]
             if retrieval_binding is not None:
                 embedding_path = Path(retrieval_binding["embedding_path"])
+                bundle_path = Path(retrieval_binding["bundle_path"])
                 command.extend(
                     [
                         "--env",
+                        "SANAEBI_RETRIEVAL_BASELINE=/retrieval-baseline/baseline.sqlite3",
+                        "--env",
+                        "SANAEBI_RETRIEVAL_SOURCE=/retrieval-source/documents.jsonl",
+                        "--env",
                         "SANAEBI_EMBEDDING_PATH=/models/embedding",
+                        "--mount",
+                        f"type=bind,src={self.paths.baseline},dst=/retrieval-source/documents.jsonl,readonly",
+                        "--mount",
+                        f"type=bind,src={bundle_path},dst=/retrieval-baseline/baseline.sqlite3,readonly",
                         "--mount",
                         f"type=bind,src={embedding_path},dst=/models/embedding,readonly",
                     ]
@@ -1928,17 +1946,35 @@ class DeploymentEngine:
             raise DeploymentError("rag mode requires a prepared release binding")
         model_path = "/models/embeddings/not-ready"
         bundle_path = "/srv/sanaebi/retrieval-baselines/not-ready.sqlite3"
+        bundle_container_path = "/retrieval-baselines/not-ready.sqlite3"
         if retrieval is not None:
             model = retrieval.model
             model_path = f"/models/embeddings/{model.model_id.replace('/', '--')}/{model.revision}"
         if binding is not None:
             bundle_path = str(binding["bundle_path"])
+            try:
+                bundle_relative = (
+                    Path(bundle_path)
+                    .resolve()
+                    .relative_to(self.paths.retrieval_baselines.resolve())
+                )
+            except ValueError as error:
+                raise DeploymentError(
+                    "release retrieval bundle escaped its root"
+                ) from error
+            bundle_container_path = str(
+                PurePosixPath("/retrieval-baselines")
+                / PurePosixPath(bundle_relative.as_posix())
+            )
         overrides = {
             "SANAEBI_RETRIEVAL_MODE": requested_mode,
             "SANAEBI_RETRIEVAL_ROOT": "/data/retrieval",
             "SANAEBI_EMBEDDING_PATH": model_path,
             "SANAEBI_RETRIEVAL_BUNDLE_HOST_PATH": bundle_path,
             "SANAEBI_RETRIEVAL_SOURCE_HOST_PATH": str(self.paths.baseline),
+            "SANAEBI_RETRIEVAL_BUNDLE_CONTAINER_PATH": bundle_container_path,
+            "SANAEBI_RETRIEVAL_BASELINES_HOST_DIR": str(self.paths.retrieval_baselines),
+            "SANAEBI_RETRIEVAL_SOURCE_HOST_DIR": str(self.paths.baseline.parent),
         }
         return requested_mode, overrides, binding
 

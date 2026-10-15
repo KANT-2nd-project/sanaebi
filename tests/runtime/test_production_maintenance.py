@@ -10,6 +10,7 @@ from scripts.production_maintenance import (
     HostPaths,
     MaintenanceError,
     _active_retrieval_runtime,
+    reset_demo_documents,
     reset_demo_documents_with_backup,
     restore_retrieval,
 )
@@ -114,6 +115,24 @@ class RagHostMaintenanceTests(unittest.TestCase):
         runtime = _active_retrieval_runtime(self.paths)
 
         self.assertEqual(runtime["mode"], "full")
+
+    def test_legacy_full_reset_container_explicitly_disables_rag(self):
+        (self.paths.config / "api.env").write_text(
+            "SANAEBI_RETRIEVAL_MODE=full\n", encoding="utf-8"
+        )
+        calls = []
+
+        def runner(command, **_kwargs):
+            calls.append(command)
+            return SimpleNamespace(returncode=0, stdout="", stderr="")
+
+        reset_demo_documents(self.paths, runner=runner)
+
+        docker_run = next(
+            command for command in calls if command[:2] == ["docker", "run"]
+        )
+        mode_index = docker_run.index("SANAEBI_RETRIEVAL_MODE=full")
+        self.assertEqual(docker_run[mode_index - 1], "--env")
 
     def test_legacy_full_descriptor_remains_full_without_env_override(self):
         release_dir = self.paths.root / "releases" / RELEASE_ID

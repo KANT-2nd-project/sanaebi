@@ -22,13 +22,27 @@ from app.documents.schemas import (
     UpdateDocumentRequest,
     WithdrawDocumentRequest,
 )
-from app.settings import DEFAULT_DOCUMENTS_PATH
+from app.settings import DEFAULT_DOCUMENTS_PATH, get_retrieval_source
 
 router = APIRouter()
 
 
 def _repository(request: Request) -> DocumentRepository:
     return request.app.state.document_repository
+
+
+def _retrieval_sync(request: Request):
+    if request.app.state.retrieval_mode != "rag":
+        return None
+    return request.app.state.retrieval_sync
+
+
+def _maintenance_source(request: Request):
+    return (
+        get_retrieval_source()
+        if request.app.state.retrieval_mode == "rag"
+        else DEFAULT_DOCUMENTS_PATH
+    )
 
 
 def _json_response(status_code: int, model, data: dict) -> JSONResponse:
@@ -60,7 +74,10 @@ def list_documents(
 @router.get("/documents/maintenance-preview", response_model=MaintenancePreviewResponse)
 def preview_maintenance(request: Request, action: Literal["clear", "restore"]):
     return document_service.preview_maintenance(
-        _repository(request), action, DEFAULT_DOCUMENTS_PATH
+        _repository(request),
+        action,
+        _maintenance_source(request),
+        _retrieval_sync(request),
     )
 
 
@@ -75,7 +92,8 @@ def maintain_documents(
         payload.action,
         payload.expected_state,
         idempotency_key,
-        DEFAULT_DOCUMENTS_PATH,
+        _maintenance_source(request),
+        _retrieval_sync(request),
     )
 
 
@@ -130,6 +148,7 @@ def publish_document(
         payload.expected_version,
         str(payload.revision_id),
         idempotency_key,
+        _retrieval_sync(request),
     )
     return _json_response(status_code, DocumentDetailResponse, detail)
 
@@ -146,5 +165,6 @@ def withdraw_document(
         str(document_id),
         payload.expected_version,
         idempotency_key,
+        _retrieval_sync(request),
     )
     return _json_response(status_code, DocumentDetailResponse, detail)
