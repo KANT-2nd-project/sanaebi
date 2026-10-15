@@ -13,3 +13,5 @@ RAG의 검색 모델 선정과 실험 근거를 관리한다. 서버 검색 코�
 [선택적 RAG 실행](../docs/rag-runtime.md)은 기존 full 기본값을 보존하면서 로컬 Tiny·SQLite exact 검색과 자정 기본 벡터 복원을 연결한다. 모델 선정 결과와 실제 운영 품질은 구분한다. 런타임 코드는 app/retrieval, 과거 실험 기록은 이 폴더의 reports에 둔다.
 
 [로컬 RAG 검증](reports/2026-10-15-rag-local-validation/README.md)은 검색 순위·최종 근거와 자정 복원을 구분해 기록한다.
+
+[단계별 검색 개선 비교](reports/2026-10-15-rag-quality-improvement/README.md): 세 후보 구현·평가, 인접 확장 회귀 개선과 사전 채택 기준 미충족에 따른 기존 검색 유지.

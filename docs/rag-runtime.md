@@ -51,3 +51,7 @@ sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.
 로컬에서 worker를 중지한 경우 `uv run --locked python -m scripts.index_documents --restore-baseline`을 사용할 수 있다. 원본 쓰기·모델 추론 없이 현재 내용과 같은 기본 벡터를 연결한다. 수정된 다른 문서가 남으면 worker의 정상 갱신이 필요하다. 운영 helper의 설치·릴리스·복구는 [배포 안내](../deployment/README.md)를 따른다.
 
 원본·예산 DB는 계속 백업한다. 파생 색인은 재생성 가능하지만 이전 schema/spec와 기본 묶음은 rollback 기간 동안 보존한다. 임의로 운영 색인 파일을 과거 파일로 덮어쓰지 않는다. 명시적 원본 trace 외에는 검색 로그에 질문·원문을 추가하지 않는다.
+
+## 검색 개선 후보와 현재 구성
+
+[단계별 비교](../retrieval/reports/2026-10-15-rag-quality-improvement/README.md)에서 제목 경계 문맥·인접 근거 확장·BM25 결합을 검증했다. 인접 확장은 기존18문항15→17건을 회복했지만 신규개발20문항은19건 동률로 사전 기준에 미달해 자동 채택하지 않았다. 서버·worker·자정 기본 묶음은 기존 vector spec과 벡터 검색을 유지한다. 후보는 명시적인 실험 옵션으로만 사용하며 새로운 런타임 환경변수를 추가하지 않았다.

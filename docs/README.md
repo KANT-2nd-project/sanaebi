@@ -89,3 +89,5 @@ RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklog
 ## 분류 라벨 보조 전달 평가
 
 기존 프롬프트·지침만 추가·실제 라벨 전달·대체 라벨 비교의 원응답, 판정과 미채택 근거. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
+
+- [RAG 단계별 검색 품질 비교](../retrieval/reports/2026-10-15-rag-quality-improvement/README.md): 기존 검색 유지 결정과 인접 확장의 관측 개선·미채택 근거. [구현·게시 기록](worklogs/2026-10-15-rag-quality-improvement.md).
