@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "repo_id": "js2923/sanaebi-koelectra-base",
+  "revision": "4a1d0c7964072535a52a66efe29389a6470dd6f4",
+  "model_id": "9f51682d82d4455d8296077c339afd58",
+  "labels": [
+    "SEARCH_KNOWLEDGE",
+    "CLARIFY",
+    "UNSUPPORTED"
+  ],
+  "files": [
+    {
+      "name": "config.json",
+      "bytes": 1068,
+      "sha256": "b23f485afaad4f041305c43df45e42f0276b97d04647235504591d09e4cc83fd"
+    },
+    {
+      "name": "metadata.json",
+      "bytes": 16598,
+      "sha256": "c9ddaecc03ff1a74fbbb1b2875169ad37438c04ab75873ef6db3d7c613479e32"
+    },
+    {
+      "name": "model.safetensors",
+      "bytes": 451718748,
+      "sha256": "61b5d59f227af7727ea4f6d8a43d809c4f84417a8f6cd0089c07120e5d4f3d2c"
+    },
+    {
+      "name": "tokenizer.json",
+      "bytes": 815103,
+      "sha256": "482e96afde0f8e350fe0131bbc340f99fe3f62ff2b0bb643a0f7faf5ba796b71"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "bytes": 352,
+      "sha256": "9cd988573a9588a6085cd353eeefa09b803dba75b03f58d0c1d302aad3078193"
+    }
+  ]
+}

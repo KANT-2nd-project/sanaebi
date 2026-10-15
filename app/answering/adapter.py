@@ -2,6 +2,8 @@
 
 import hashlib
 import json
+import logging
+from collections.abc import Callable
 from dataclasses import asdict
 from threading import Lock
 from time import perf_counter
@@ -12,6 +14,10 @@ from openai import OpenAIError
 from app.answering.output import LLMResponseError
 from app.diagnostics.trace import record_generation
 from app.documents.context import DocumentContextSnapshot
+from app.public_limits import (
+    GenerationBudgetExceeded,
+    GenerationBudgetUnavailable,
+)
 from generation.documents import render_document
 from generation.presets import RuntimeSettings
 from generation.providers import (
@@ -21,10 +27,17 @@ from generation.providers import (
 from generation.service import generate_from_documents
 from generation.types import GenerationPrompt, GenerationStatus
 
+logger = logging.getLogger("uvicorn.error")
+
 
 class GenerationAnswerer:
-    def __init__(self, settings: RuntimeSettings):
+    def __init__(
+        self,
+        settings: RuntimeSettings,
+        reserve_generation: Callable[[], None] | None = None,
+    ):
         self.settings = settings
+        self.reserve_generation = reserve_generation
         self._client = None
         self._lock = Lock()
         self._closed = False
@@ -59,8 +72,10 @@ class GenerationAnswerer:
             "config": asdict(self.settings.config),
             "snapshot_fingerprint": snapshot.fingerprint,
         }
+        provider_attempted = False
 
         def call(prompt: GenerationPrompt):
+            nonlocal provider_attempted
             metadata["prompt_roles_sha256"] = hashlib.sha256(
                 json.dumps(
                     {"system": prompt.system, "user": prompt.user},
@@ -68,7 +83,11 @@ class GenerationAnswerer:
                     separators=(",", ":"),
                 ).encode()
             ).hexdigest()
-            return self._get_client()(prompt)
+            provider = self._get_client()
+            if self.reserve_generation is not None:
+                self.reserve_generation()
+            provider_attempted = True
+            return provider(prompt)
 
         try:
             result = generate_from_documents(
@@ -80,6 +99,12 @@ class GenerationAnswerer:
         except (OpenAIError, HTTPError, GenerationProviderResponseError) as exc:
             metadata.update(status="execution_error", error_type=type(exc).__name__)
             raise LLMResponseError("Generation provider failed") from exc
+        except GenerationBudgetExceeded:
+            metadata.update(status="budget_exhausted")
+            raise
+        except GenerationBudgetUnavailable:
+            metadata.update(status="budget_unavailable")
+            raise
         except Exception as exc:
             # Preserve unexpected programming errors as 500, with safe metadata.
             metadata.update(status="internal_error", error_type=type(exc).__name__)
@@ -97,3 +122,18 @@ class GenerationAnswerer:
         finally:
             metadata["seconds"] = perf_counter() - started
             record_generation(metadata)
+            safe_log = {
+                "event": "generation_result",
+                "status": metadata.get("status", "internal_error"),
+                "provider_attempted": provider_attempted,
+                "input_tokens": metadata.get("input_tokens"),
+                "output_tokens": metadata.get("output_tokens"),
+                "seconds": metadata["seconds"],
+            }
+            try:
+                logger.info(
+                    "%s",
+                    json.dumps(safe_log, ensure_ascii=False, separators=(",", ":")),
+                )
+            except Exception:  # noqa: BLE001 - observability must not alter answers
+                logger.warning("generation_result_log_failed")

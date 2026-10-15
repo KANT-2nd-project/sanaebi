@@ -1,0 +1,53 @@
+name: sanaebi
+
+services:
+  api:
+    image: ${SANAEBI_IMAGE:?SANAEBI_IMAGE must be set to a digest-pinned image}
+    container_name: sanaebi-api
+    user: "10001:10001"
+    init: true
+    network_mode: host
+    restart: unless-stopped
+    stop_grace_period: 240s
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m,mode=1777
+    env_file:
+      - /etc/sanaebi/api.env
+    environment:
+      SANAEBI_PUBLIC_DEMO: "1"
+      SANAEBI_GENERATION_BUDGET_DB: /data/generation-budget.sqlite3
+      SANAEBI_DAILY_GENERATION_LIMIT: "1000"
+      SANAEBI_DOCUMENT_DB: /data/documents.sqlite3
+      SANAEBI_CLASSIFIER_PATH: /models/classifier
+      TRACE_DIR: ""
+      TRACE_FULL_PROMPT: "0"
+    volumes:
+      - type: bind
+        source: /var/lib/sanaebi/runtime
+        target: /data
+      - type: bind
+        source: /srv/sanaebi/models/current
+        target: /models/classifier
+        read_only: true
+    command:
+      - python
+      - -m
+      - uvicorn
+      - app.fastapi_main:app
+      - --host
+      - 127.0.0.1
+      - --port
+      - "18000"
+      - --workers
+      - "1"
+      - --proxy-headers
+      - --forwarded-allow-ips
+      - 127.0.0.1
+      - --no-access-log
+      - --timeout-graceful-shutdown
+      - "240"

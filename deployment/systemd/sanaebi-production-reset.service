@@ -1,0 +1,19 @@
+[Unit]
+Description=Reset Sanaebi disposable demo documents from the active release baseline
+Requires=docker.service
+After=docker.service
+ConditionFileNotEmpty=/var/lib/sanaebi/runtime/documents.sqlite3
+ConditionFileNotEmpty=/var/lib/sanaebi/baseline/documents.jsonl
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.py reset
+UMask=0077
+TimeoutStartSec=5min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/sanaebi/runtime /var/lib/sanaebi/backups /run/lock /run/docker.sock

@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from threading import BoundedSemaphore, Lock
 
 from fastapi import FastAPI
 
@@ -17,6 +18,15 @@ from app.documents.http import (
 )
 from app.documents.repository import DocumentRepository
 from app.errors import register_error_handlers
+from app.health import router as health
+from app.public_limits import (
+    DailyGenerationBudget,
+    PublicDemoRateLimitMiddleware,
+    get_daily_generation_limit,
+    get_generation_budget_path,
+    get_max_inflight_asks,
+    is_public_demo_enabled,
+)
 from app.questions import router as questions
 from app.settings import (
     PROJECT_ROOT,
@@ -31,12 +41,31 @@ from generation.presets import load_runtime_settings
 async def lifespan(application: FastAPI):
     get_answer_provider()
     settings = load_runtime_settings(PROJECT_ROOT)
+    public_demo = is_public_demo_enabled()
+    generation_budget = None
+    if public_demo:
+        generation_budget = DailyGenerationBudget(
+            get_generation_budget_path(), get_daily_generation_limit()
+        )
+        generation_budget.initialize()
     repository = DocumentRepository(get_document_database_path())
     repository.initialize()
     application.state.document_repository = repository
     application.state.document_provider = DocumentContextProvider(repository=repository)
     application.state.classifier = TransformerClassifier(get_classifier_path())
-    application.state.answerer = GenerationAnswerer(settings)
+    application.state.classifier_warm_lock = Lock()
+    application.state.classifier_warmed = False
+    application.state.public_demo = public_demo
+    application.state.ask_slots = BoundedSemaphore(
+        get_max_inflight_asks() if public_demo else 2
+    )
+    application.state.generation_budget = generation_budget
+    application.state.answerer = GenerationAnswerer(
+        settings,
+        reserve_generation=(
+            generation_budget.reserve if generation_budget is not None else None
+        ),
+    )
     try:
         yield
     finally:
@@ -47,11 +76,13 @@ app = FastAPI(lifespan=lifespan)
 register_error_handlers(app)
 app.add_middleware(ManagedDocumentHttpMiddleware)
 app.add_middleware(TraceMiddleware)
+app.add_middleware(PublicDemoRateLimitMiddleware)
 app.include_router(questions.router)
 app.include_router(documents.router)
 app.include_router(managed_documents.router)
 app.include_router(classification.router)
 app.include_router(assistant.router)
+app.include_router(health)
 
 
 @app.get("/")

@@ -1,0 +1,16 @@
+[Unit]
+Description=Create a consistent Sanaebi SQLite backup
+ConditionFileNotEmpty=/var/lib/sanaebi/runtime/documents.sqlite3
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.py backup
+UMask=0077
+TimeoutStartSec=10min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/sanaebi /run/lock

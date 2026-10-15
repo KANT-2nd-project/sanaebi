@@ -1,6 +1,21 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { ChatSession } from "../../tmp/frontend-unit-tests/features/question/chat-session.js";
+import { QuestionError } from "../../tmp/frontend-unit-tests/lib/api/questions.js";
+
+test("429 안내와 입력을 보존하고 자동 재호출하지 않는다", async () => {
+  let calls = 0;
+  const message = "오늘 생성 한도에 도달했습니다. 자정 이후 다시 시도해주세요.";
+  const chat = new ChatSession(async () => {
+    calls++;
+    throw new QuestionError("rate-limit", message);
+  });
+  chat.changeDraft("휴가 절차");
+  await chat.submit();
+  assert.equal(calls, 1);
+  assert.equal(chat.state.draft, "휴가 절차");
+  assert.equal(chat.state.turns[0].error.message, message);
+});
 
 function deferred() {
   let resolve, reject;

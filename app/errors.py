@@ -17,6 +17,10 @@ from app.documents.http import (
     is_managed_document_path,
 )
 from app.documents.service import DocumentServiceError
+from app.public_limits import (
+    GenerationBudgetExceeded,
+    GenerationBudgetUnavailable,
+)
 from app.schemas import AnswerResponse
 
 
@@ -104,6 +108,37 @@ async def handle_classification_error(request: Request, exc: Exception):
     )
 
 
+async def handle_generation_budget_exceeded(
+    request: Request, exc: GenerationBudgetExceeded
+):
+    return JSONResponse(
+        status_code=429,
+        content=AnswerResponse(
+            ok=False,
+            text="",
+            reason="오늘의 답변 생성 한도에 도달했습니다. 내일 다시 이용해주세요.",
+        ).model_dump(),
+        headers={
+            "Retry-After": str(exc.retry_after),
+            "Cache-Control": "no-store",
+        },
+    )
+
+
+async def handle_generation_budget_unavailable(
+    request: Request, exc: GenerationBudgetUnavailable
+):
+    return JSONResponse(
+        status_code=503,
+        content=AnswerResponse(
+            ok=False,
+            text="",
+            reason="답변 생성 한도를 확인할 수 없습니다. 잠시 후 다시 시도해주세요.",
+        ).model_dump(),
+        headers={"Cache-Control": "no-store"},
+    )
+
+
 def register_error_handlers(app: FastAPI) -> None:
     app.add_exception_handler(RequestValidationError, handle_validation_error)
     app.add_exception_handler(LLMResponseError, handle_llm_response_error)
@@ -114,3 +149,9 @@ def register_error_handlers(app: FastAPI) -> None:
     app.add_exception_handler(DocumentStorageError, handle_knowledge_storage_error)
     app.add_exception_handler(ClassificationUnavailable, handle_classification_error)
     app.add_exception_handler(ClassificationInferenceError, handle_classification_error)
+    app.add_exception_handler(
+        GenerationBudgetExceeded, handle_generation_budget_exceeded
+    )
+    app.add_exception_handler(
+        GenerationBudgetUnavailable, handle_generation_budget_unavailable
+    )
