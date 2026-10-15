@@ -98,12 +98,15 @@ class KnowledgeRuntimeTests(unittest.TestCase):
         self.factory.assert_not_called()
         self.assertEqual(self.model_client.prompts, [])
 
-    def test_non_search_label_does_not_read_documents_or_initialize_model(self):
+    def test_gate_non_search_label_does_not_read_documents_or_initialize_model(self):
         self.classify.return_value = "CLARIFY"
-        with patch.object(
-            app.state.document_provider,
-            "snapshot",
-            side_effect=AssertionError("non-search label read the store"),
+        with (
+            patch.object(app.state, "routing_mode", "gate"),
+            patch.object(
+                app.state.document_provider,
+                "snapshot",
+                side_effect=AssertionError("non-search label read the store"),
+            ),
         ):
             response = self.ask()
 
