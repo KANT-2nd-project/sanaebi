@@ -76,9 +76,16 @@ def get_retrieval_root() -> Path:
 
 
 def get_retrieval_baseline() -> Path | None:
-    if not os.getenv("SANAEBI_RETRIEVAL_BASELINE"):
-        return None
-    return _root_path("SANAEBI_RETRIEVAL_BASELINE", "")
+    if os.getenv("SANAEBI_RETRIEVAL_BASELINE"):
+        return _root_path("SANAEBI_RETRIEVAL_BASELINE", "")
+    from app.retrieval.baseline import baseline_path
+    from app.retrieval.config import SERVER_SPEC
+
+    return baseline_path(
+        get_retrieval_source(),
+        PROJECT_ROOT / "artifacts/retrieval-baselines",
+        spec=SERVER_SPEC,
+    )
 
 
 def get_retrieval_source() -> Path:

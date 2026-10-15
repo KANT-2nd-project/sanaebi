@@ -1,5 +1,7 @@
 # 서버 구성과 변경 규약
 
+로컬 통합 준비는 `npm run setup:local -- --init-documents`, 실행은 `npm run dev`를 사용한다. 기존 DB·전체 삭제 상태는 보존하며 검색 색인과 기본 복원 묶음을 함께 준비한다. [준비·진단 상세](rag-runtime.md#준비와-실행).
+
 서버 책임 분리와 회귀 검증의 기준이다. 서비스 정책은 [서비스 설계](service-architecture.md), 라벨 의미는 [라벨 기준](label-taxonomy.md), 문서 저장 계약은 [문서 관리](document-management.md)를 따른다.
 
 처음 읽는 경우 [서버 요청 흐름](../app/README.md) → [분류기 추론](../app/classification/README.md)을 따른다. 이 문서는 구현을 변경할 때 지켜야 할 책임·설정·검증 기준을 관리한다.

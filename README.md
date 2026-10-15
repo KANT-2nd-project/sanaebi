@@ -49,20 +49,14 @@ npm ci
 npm --prefix web ci
 ```
 
-최초 1회 DB를 구성하고 기본 문서를 게시합니다. [상세 절차](docs/document-management.md#새-환경의-db-최초-구성)
+[분류 저장본](app/README.md#실행-준비와-api-확인)과 `.env`의 `OPENAI_API_KEY`를 준비한 뒤 실행합니다. 실제 답변 생성에는 API 사용 요금이 발생합니다.
 
 ```bash
-uv run --locked python scripts/import_company_knowledge.py \
-  --source data/company-knowledge/documents.jsonl --apply --publish-imported
-```
-
-로컬에서 실제 답변을 생성하려면 `OPENAI_API_KEY`가 필요하며 API 사용 요금이 발생합니다. [키 설정·답변 준비](app/README.md#문서-기반-답변-확인)
-
-[분류 저장본과 답변 제공자](app/README.md#실행-준비와-api-확인), [RAG 모델·색인·worker](docs/rag-runtime.md#준비와-실행)를 준비한 뒤 웹과 API를 실행합니다. [상세 절차](web/README.md#개발)
-
-```bash
+npm run setup:local -- --init-documents
 npm run dev
 ```
+
+준비 명령이 검색 모델·색인·기본 복원 벡터를 준비하며, DB가 없는 새 환경에만 기본 문서를 등록합니다. 기존 DB와 전체 삭제 상태는 보존합니다. `dev`는 API·웹·색인 worker를 함께 실행합니다. [상세 절차](docs/rag-runtime.md#준비와-실행)
 
 브라우저에서 http://127.0.0.1:3000/chat 을 엽니다.
 
