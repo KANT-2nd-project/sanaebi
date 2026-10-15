@@ -539,6 +539,53 @@ class HostPathTests(unittest.TestCase):
             journal = json.loads((root / "deployment-journal.json").read_text())
             self.assertEqual(journal["phase"], "rolled_back")
 
+    def test_candidate_index_upgrades_only_the_copied_legacy_database(self):
+        from app.documents.context import DocumentContextProvider
+        from app.documents.repository import SCHEMA_VERSION, DocumentRepository
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            live = root / "live.sqlite3"
+            DocumentRepository(live).initialize()
+            with sqlite3.connect(live) as connection:
+                connection.execute("DROP TABLE document_maintenance_state")
+                connection.execute("PRAGMA user_version = 2")
+            original = live.read_bytes()
+            data = root / "candidate"
+            data.mkdir()
+            candidate = data / "documents.sqlite3"
+            snapshot_sqlite_database(live, candidate)
+            phases = []
+
+            def runner(command, **_kwargs):
+                if "-c" in command:
+                    phases.append("initialize")
+                    with patch.dict(
+                        os.environ, {"SANAEBI_DOCUMENT_DB": str(candidate)}
+                    ):
+                        exec(command[command.index("-c") + 1], {})  # noqa: S102 - execute our emitted migration command
+                else:
+                    phases.append("index")
+                    # The real reader rejects a legacy schema before indexing.
+                    DocumentContextProvider(database_path=candidate).snapshot()
+                return SimpleNamespace(
+                    returncode=0, stdout='{"ready": true, "missing": 0}', stderr=""
+                )
+
+            engine = DeploymentEngine(HostPaths(root=root), runner=runner)
+            engine._preflight_candidate_index(
+                "candidate-image",
+                data,
+                {"bundle_path": root / "baseline", "embedding_path": root / "model"},
+            )
+            self.assertEqual(phases, ["initialize", "index"])
+            self.assertEqual(live.read_bytes(), original)
+            with sqlite3.connect(candidate) as connection:
+                self.assertEqual(
+                    connection.execute("PRAGMA user_version").fetchone()[0],
+                    SCHEMA_VERSION,
+                )
+
     def test_candidate_index_failure_removes_preflight_directory_for_retry(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "srv" / "sanaebi"

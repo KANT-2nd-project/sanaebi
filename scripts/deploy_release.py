@@ -1697,6 +1697,17 @@ class DeploymentEngine:
             "scripts.index_documents",
             "--once",
         ]
+        # Read-only index access requires the candidate schema. Migrate only the
+        # isolated DB copy, just as API startup will do after the live backup.
+        initialize = command[:-3] + [
+            "-c",
+            (
+                "from app.documents.repository import DocumentRepository; "
+                "from app.settings import get_document_database_path; "
+                "DocumentRepository(get_document_database_path()).initialize()"
+            ),
+        ]
+        self._run("candidate document schema preparation", initialize, timeout=600)
         result = self._run("candidate retrieval index", command, timeout=1800)
         try:
             status = json.loads(result.stdout)
