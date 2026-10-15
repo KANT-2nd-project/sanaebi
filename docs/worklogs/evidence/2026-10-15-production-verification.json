@@ -1,0 +1,102 @@
+{
+  "manual_run": "https://github.com/KANT-2nd-project/sanaebi/actions/runs/38698120187",
+  "sha": "4d4c0f4b350cca9a0e7f98796424197145829890",
+  "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:3ca9096f4807eb89c23d32c8a994a9d665af7bc5c21d5f26007a4b72e2a08649",
+  "hf_revision": "4a1d0c7964072535a52a66efe29389a6470dd6f4",
+  "runtime": {
+    "machine": "aarch64",
+    "torch": "2.14.1+cpu",
+    "threads": 2,
+    "peak_rss_bytes": 912433152,
+    "prediction_matches": 133,
+    "prediction_count": 133,
+    "cold_ms": 550.701,
+    "warm_mean_ms": 105.799,
+    "warm_p95_ms": 155.111,
+    "mock_overload_ms": {
+      "one_slot": 2.143,
+      "two_slots": 1.808
+    }
+  },
+  "https": {
+    "/": 200,
+    "/chat": 200,
+    "/admin/documents": 200,
+    "/api/documents": 200,
+    "/api/docs": 404,
+    "/api/openapi.json": 404,
+    "/api/health/ready": 404,
+    "/api/assistant": 404,
+    "/api/regist-docs": 404,
+    "/api/classify": 404,
+    "18000": "unreachable",
+    "18001": "unreachable",
+    "8000": "unreachable"
+  },
+  "live_rate_limit": [
+    {
+      "status": 422,
+      "retry_after": null,
+      "keys": [
+        "ok",
+        "reason",
+        "text"
+      ]
+    },
+    {
+      "status": 422,
+      "retry_after": null,
+      "keys": [
+        "ok",
+        "reason",
+        "text"
+      ]
+    },
+    {
+      "status": 422,
+      "retry_after": null,
+      "keys": [
+        "ok",
+        "reason",
+        "text"
+      ]
+    },
+    {
+      "status": 429,
+      "retry_after": "10",
+      "keys": [
+        "ok",
+        "reason",
+        "text"
+      ]
+    }
+  ],
+  "browser": {
+    "create_edit_publish_reload": true,
+    "mock_429_preserves_input": true,
+    "paid_validation_questions": 1,
+    "additional_public_traffic_observed": true
+  },
+  "maintenance": {
+    "reset_budget_before": 13,
+    "reset_budget_after": 13,
+    "post_reboot_budget": 14,
+    "backup_restore_files_verified": 4,
+    "reset_service_started_successfully": true,
+    "backup_service_started_successfully": true,
+    "reset_next_observed_utc": "2026-10-15T15:00:00Z",
+    "actual_midnight_trigger_observed": false
+  },
+  "reboot": {
+    "before_boot_id": "f948e8d8-03c9-47e0-997c-2e795913a4be",
+    "after_boot_id": "a87c37b5-a9b7-4c80-b1ec-c93dde6df674",
+    "ready": true,
+    "docker_nginx_timers_active": true,
+    "api_bind": "127.0.0.1:18000"
+  },
+  "limitations": [
+    "Midnight schedule verified and service executed manually; wall-clock midnight not observed.",
+    "Failure injection and interrupted deployment recovery verified in automated tests; production was not deliberately killed mid-swap.",
+    "Mock concurrency tests do not constitute sustained paid generation load testing."
+  ]
+}
