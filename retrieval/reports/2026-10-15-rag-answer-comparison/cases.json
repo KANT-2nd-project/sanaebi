@@ -1,0 +1,638 @@
+{
+  "schema_version": 1,
+  "dataset_id": "rag-answer-comparison-2026-10-15-v1",
+  "created_on": "2026-10-15",
+  "status": "frozen_independent_ai_reviewed",
+  "evaluation_status": "not_run",
+  "freeze_policy": "Do not run answer model calls until an independent reviewer approves case semantics, criteria, and rubric. After review, freeze this file and record its SHA-256 before any model call. If changed afterward, invalidate and rerun neither arm until a new preregistered set is approved.",
+  "provenance": {
+    "authoring": "AI-authored by selecting and summarizing already frozen retrieval qrels and their full source documents.",
+    "review": "Independently AI-reviewed before model calls. D05 domestic lodging and D11 rights caveats made optional; all20 questions and source spans rechecked. No human review.",
+    "source_qrels_path": "retrieval/reports/2026-10-15-rag-quality-improvement/cases.json",
+    "source_qrels_sha256": "d7b26c63df2fce658982770ec5c48c5dfd587447ce5d7ade4931e1ce866c4c3d",
+    "source_corpus_path": "data/company-knowledge/documents.jsonl",
+    "source_corpus_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+    "source_qrel_status": "frozen_independent_ai_reviewed",
+    "selection": "Deterministic 8/8 balance across regression_original_18 and development_20, plus four existing unanswerable qrels U01-U04. No new user question or source interval was authored."
+  },
+  "source": {
+    "path": "data/company-knowledge/documents.jsonl",
+    "sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+    "document_body_field": "document",
+    "offset_unit": "Python Unicode code points; start inclusive and end exclusive; offsets are relative to document body only, excluding title and metadata."
+  },
+  "selection_contract": {
+    "answerable_count": 16,
+    "answerable_split_counts": {
+      "regression": 8,
+      "development": 8
+    },
+    "unanswerable_count": 4,
+    "selected_source_case_ids": [
+      "R04",
+      "R06",
+      "R08",
+      "R09",
+      "R10",
+      "R14",
+      "R16",
+      "R18",
+      "D02",
+      "D05",
+      "D07",
+      "D11",
+      "D14",
+      "D16",
+      "D18",
+      "D20",
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ],
+    "required_span_policy": "For answerable cases, required_spans are copied unchanged from the frozen source qrel, including offsets and text. expected_answer_criteria are additional reviewer guidance derived by reading the full frozen source document; they do not modify qrels.",
+    "answerability_policy": "Unanswerable cases request facts not present as current or individual records in the source corpus. A response may give only a procedure explicitly supported by a relevant source document, without claiming the requested live or personal value."
+  },
+  "cases": [
+    {
+      "case_id": "R04",
+      "split": "regression",
+      "answerable": true,
+      "question": "근태 오류를 발견한 지 일주일 지났는데 수정 못 해?",
+      "document_id": "ieum-006",
+      "title": "출퇴근 기록 정정",
+      "required_spans": [
+        {
+          "text": "3영업일이 지난 오류는 지연 사유를 적어 People팀에 제출한다.",
+          "start": 689,
+          "end": 726
+        },
+        {
+          "text": "People팀은 원본 근태와 승인 이력을 대조한다.",
+          "start": 727,
+          "end": 755
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "기준선의 고정 회귀 질문에서 지연 근태 정정의 제출 담당과 대조 절차를 함께 평가한다. 날짜 경과 조건과 복수 필수 구간을 포함한다.",
+      "expected_answer_criteria": [
+        "오류 발견 후 3영업일이 지난 건은 지연 사유를 적어 People팀에 제출한다.",
+        "People팀은 원본 근태와 승인 이력을 대조한다."
+      ]
+    },
+    {
+      "case_id": "R06",
+      "split": "regression",
+      "answerable": true,
+      "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+      "document_id": "ieum-010",
+      "title": "재택근무 신청과 변경",
+      "required_spans": [
+        {
+          "text": "해외에서 일하는 계획은 일반 재택 승인에 포함되지 않는다.",
+          "start": 526,
+          "end": 558
+        },
+        {
+          "text": "예정일 10영업일 전까지 신청하고 People팀과 보안·개인정보 담당자의 각각의 검토, 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작한다.",
+          "start": 559,
+          "end": 639
+        },
+        {
+          "text": "검토 중이거나 필요한 승인이 없으면 해외 장소에서 업무를 시작하지 않는다.",
+          "start": 640,
+          "end": 681
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "기준선 회귀 묶음의 해외 근무 사례로 일반 재택과 별도 승인의 경계, 신청 기한, 복수 승인 조건을 평가한다.",
+      "expected_answer_criteria": [
+        "해외 근무는 일반 재택 승인에 포함되지 않는다.",
+        "예정일 10영업일 전까지 신청하고 People팀과 보안·개인정보 담당자의 각각 검토 및 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작한다.",
+        "검토 중이거나 필요한 승인이 없으면 해외 장소에서 업무를 시작하지 않는다."
+      ]
+    },
+    {
+      "case_id": "R08",
+      "split": "regression",
+      "answerable": true,
+      "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "document_id": "ieum-019",
+      "title": "경비 정산 제출과 지급",
+      "required_spans": [
+        {
+          "text": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다.",
+          "start": 577,
+          "end": 611
+        },
+        {
+          "text": "보완 요청이 있으면 보완 자료가 제출된 뒤 재무팀이 최종 검토를 완료한 달을 기준으로 지급일을 정한다.",
+          "start": 643,
+          "end": 700
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "기준선에서 놓친 지급일 사례다. 재무 최종 검토 시점에 따른 지급월 계산과 보완 요청 예외를 포함한다.",
+      "expected_answer_criteria": [
+        "지급일은 재무팀 최종 검토가 끝난 달의 다음 달 15일이다.",
+        "보완 요청이 있으면 보완 자료 제출 후 재무팀이 최종 검토를 완료한 달을 기준으로 지급일을 정한다."
+      ]
+    },
+    {
+      "case_id": "R09",
+      "split": "regression",
+      "answerable": true,
+      "question": "영수증 제출 기한이 이미 지났으면 어떻게 해?",
+      "document_id": "ieum-019",
+      "title": "경비 정산 제출과 지급",
+      "required_spans": [
+        {
+          "text": "이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다.",
+          "start": 269,
+          "end": 314
+        },
+        {
+          "text": "승인 전까지 지급이 확정된 것으로 안내하지 않는다.",
+          "start": 315,
+          "end": 343
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "기준선 회귀 묶음의 기한 초과 예외다. 제출 자료, 복수 승인, 승인 전 확정 안내 금지를 평가한다.",
+      "expected_answer_criteria": [
+        "기한이 지난 경우 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다.",
+        "승인 전에는 지급이 확정됐다고 안내하지 않는다."
+      ]
+    },
+    {
+      "case_id": "R10",
+      "split": "regression",
+      "answerable": true,
+      "question": "인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?",
+      "document_id": "ieum-026",
+      "title": "다중 인증과 계정 복구",
+      "required_spans": [
+        {
+          "text": "이음 포털의 IT > 계정 복구를 이용하고, 포털에 접근할 수 없으면 #it-helpdesk에 민감한 인증 정보를 빼고 접수한다.",
+          "start": 462,
+          "end": 534
+        },
+        {
+          "text": "타인의 기기나 계정으로 우회 로그인하지 않는다.",
+          "start": 585,
+          "end": 611
+        },
+        {
+          "text": "IT운영팀은 회사의 본인 확인 절차를 안내하고 기존 인증 수단의 회수와 새 수단 등록을 조정한다.",
+          "start": 612,
+          "end": 666
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "기준선 회귀 묶음에서 인증 수단 분실 후 복구 경로와 계정 우회 금지를 함께 평가한다.",
+      "expected_answer_criteria": [
+        "인증 수단을 잃어버리면 포털의 IT > 계정 복구를 이용하고, 포털에 접근할 수 없으면 민감한 인증 정보를 빼고 #it-helpdesk에 접수한다.",
+        "타인의 기기나 계정으로 우회 로그인하지 않는다.",
+        "IT운영팀은 본인 확인 절차를 안내하고 기존 인증 수단 회수와 새 수단 등록을 조정한다."
+      ]
+    },
+    {
+      "case_id": "R14",
+      "split": "regression",
+      "answerable": true,
+      "question": "내 PR은 내가 승인해서 머지해도 돼?",
+      "document_id": "ieum-067",
+      "title": "개발 변경과 코드 리뷰",
+      "required_spans": [
+        {
+          "text": "PR 작성자와 다른 사람이 최소 1명 독립적으로 검토한다.",
+          "start": 821,
+          "end": 853
+        },
+        {
+          "text": "저장소의 필수 자동 검사도 모두 통과해야 한다.",
+          "start": 854,
+          "end": 880
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "기준선에서 놓친 코드 리뷰 사례다. 독립 검토와 필수 자동 검사라는 두 병합 조건을 평가한다.",
+      "expected_answer_criteria": [
+        "PR 작성자와 다른 사람이 최소 1명 독립적으로 검토한다.",
+        "저장소의 필수 자동 검사가 모두 통과해야 한다."
+      ]
+    },
+    {
+      "case_id": "R16",
+      "split": "regression",
+      "answerable": true,
+      "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+      "document_id": "ieum-071",
+      "title": "개발 도구와 비밀정보 관리",
+      "required_spans": [
+        {
+          "text": "해당 자격정보를 소유한 서비스 담당자 또는 권한이 있는 운영자가 즉시 폐기·회전한다.",
+          "start": 1794,
+          "end": 1841
+        },
+        {
+          "text": "비밀값을 현재 파일에서 지우거나 커밋을 새로 올리는 것만으로 과거 Git 기록, 다른 사람의 복제본, 캐시와 로그에서 제거됐다고 보장할 수 없다.",
+          "start": 2194,
+          "end": 2275
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "기준선에서 놓친 보안 사례다. 즉시 자격정보 회전과 Git 이력 삭제의 한계를 평가한다.",
+      "expected_answer_criteria": [
+        "자격정보 소유 서비스 담당자 또는 권한 있는 운영자가 해당 자격정보를 즉시 폐기·회전해야 한다.",
+        "현재 파일에서 값을 지우거나 새 커밋을 올리는 것만으로 과거 Git 기록·복제본·캐시·로그에서 제거됐다고 보장할 수 없다."
+      ]
+    },
+    {
+      "case_id": "R18",
+      "split": "regression",
+      "answerable": true,
+      "question": "제출한 경비의 지급일인 15일이 은행 쉬는 날이면?",
+      "document_id": "ieum-019",
+      "title": "경비 정산 제출과 지급",
+      "required_spans": [
+        {
+          "text": "15일이 은행 휴무일이면 다음 은행 영업일에 지급한다.",
+          "start": 612,
+          "end": 642
+        }
+      ],
+      "challenge_tags": [
+        "legacy_qrel",
+        "full_question_qrel"
+      ],
+      "selection_reason": "날짜 예외 회귀 질문이다. 은행 휴무일의 지급일 이동 규칙을 단일 사실로 확인한다.",
+      "expected_answer_criteria": [
+        "지급일인 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+      ]
+    },
+    {
+      "case_id": "D02",
+      "split": "development",
+      "answerable": true,
+      "question": "개인 결제 경비는 언제까지 제출해야 하고, 보통 언제 입금돼? 지급일이 휴일이면 어떻게 돼?",
+      "document_id": "ieum-019",
+      "title": "경비 정산 제출과 지급",
+      "required_spans": [
+        {
+          "text": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다.",
+          "start": 83,
+          "end": 159
+        },
+        {
+          "text": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다.",
+          "start": 577,
+          "end": 611
+        },
+        {
+          "text": "15일이 은행 휴무일이면 다음 은행 영업일에 지급한다.",
+          "start": 612,
+          "end": 642
+        }
+      ],
+      "challenge_tags": [
+        "heading_boundary",
+        "multi_condition",
+        "paraphrase"
+      ],
+      "selection_reason": "개발 묶음의 복수 조건 사례다. 제출기한·필수 항목·지급시점·은행 휴무일을 하나의 질문에서 평가한다.",
+      "expected_answer_criteria": [
+        "개인 선결제 경비는 결제일로부터 10영업일 안에 포털의 재무 > 경비 정산에 거래별 금액·업무 목적·비용 부담 프로젝트·영수증을 제출한다.",
+        "지급일은 재무팀 최종 검토가 끝난 달의 다음 달 15일이다.",
+        "15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+      ]
+    },
+    {
+      "case_id": "D05",
+      "split": "development",
+      "answerable": true,
+      "question": "출장 호텔이 회사 한도보다 비싸. 일단 결제하고 영수증에 사유를 적으면 괜찮아?",
+      "document_id": "ieum-017",
+      "title": "출장 숙박 예약",
+      "required_spans": [
+        {
+          "text": "지역 행사나 예약 가능 객실 부족으로 1박 한도를 넘겨야 하면 결제 전에 팀장과 재무팀의 추가 승인을 모두 포털에 기록한다.",
+          "start": 335,
+          "end": 404
+        },
+        {
+          "text": "승인이 되지 않으면 더 비싼 방을 먼저 예약해 두지 않는다.",
+          "start": 454,
+          "end": 487
+        }
+      ],
+      "challenge_tags": [
+        "exception",
+        "approval",
+        "paraphrase"
+      ],
+      "selection_reason": "승인 예외 사례다. 숙박 금액 한도와 초과 승인 시점·승인자·선결제 금지를 평가한다.",
+      "expected_answer_criteria": [
+        "한도 초과가 필요하면 결제 전에 팀장과 재무팀의 추가 승인을 모두 포털에 기록해야 한다.",
+        "승인이 되지 않으면 더 비싼 방을 먼저 예약하지 않는다."
+      ],
+      "optional_correctness_checks": [
+        "응답이 160,000원 한도를 언급할 때만 적용: 이는 국내 출장 숙박비 기준이며 1인 1실, 세금 포함 1박 기준으로 범위를 한정한다. 이 금액을 모든 출장 유형에 적용되는 규칙처럼 말하지 않는다."
+      ]
+    },
+    {
+      "case_id": "D07",
+      "split": "development",
+      "answerable": true,
+      "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+      "document_id": "ieum-021",
+      "title": "업무용 구매와 공급업체 선택",
+      "required_spans": [
+        {
+          "text": "소프트웨어, 클라우드 서비스, 네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받는다.",
+          "start": 418,
+          "end": 499
+        },
+        {
+          "text": "구매 검토가 끝났다는 사실만으로 서비스 계정·권한이 자동 발급되지는 않는다.",
+          "start": 605,
+          "end": 647
+        }
+      ],
+      "challenge_tags": [
+        "multi_condition",
+        "exact_term",
+        "paraphrase"
+      ],
+      "selection_reason": "기준선에서 놓친 신규 개발 질문이다. SaaS 구매 승인과 계정 권한 부여를 구분하고 사전 검토 조건을 평가한다.",
+      "expected_answer_criteria": [
+        "소프트웨어·클라우드 서비스·네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀 및 보안·개인정보 담당자의 검토를 받는다.",
+        "구매 검토 완료만으로 서비스 계정이나 권한이 자동 발급되지는 않는다."
+      ]
+    },
+    {
+      "case_id": "D11",
+      "split": "development",
+      "answerable": true,
+      "question": "형제자매나 조부모 상을 당한 경우 회사 경조 휴가 일수와 주말 처리 기준은?",
+      "document_id": "ieum-003",
+      "title": "가족 경조사 휴가",
+      "required_spans": [
+        {
+          "text": "| 형제자매·조부모의 사망 | 3근무일 |",
+          "start": 164,
+          "end": 187
+        },
+        {
+          "text": "이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다.",
+          "start": 16,
+          "end": 68
+        }
+      ],
+      "challenge_tags": [
+        "table",
+        "multi_condition",
+        "paraphrase"
+      ],
+      "selection_reason": "표를 포함한 개발 사례다. 친족 범위별 일수와 예정 근무일 계산의 주말·공휴일 처리를 평가한다.",
+      "expected_answer_criteria": [
+        "형제자매 또는 조부모 사망의 회사 제공 유급 경조휴가는 3근무일이다.",
+        "경조휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다."
+      ],
+      "optional_correctness_checks": [
+        "법령 또는 개인별 계약에 따른 별도 권리를 언급할 때만 적용: 회사 제공 일수가 별도 권리를 계산하거나 대체한다고 단정하지 않는다. 이 caveat 자체는 질문의 필수 답변으로 요구하지 않는다."
+      ]
+    },
+    {
+      "case_id": "D14",
+      "split": "development",
+      "answerable": true,
+      "question": "사고 당직에 연락한 지 15분이 지났는데 답이 없으면 기다리면 되는지, 15분은 해결 목표인지 궁금해.",
+      "document_id": "ieum-035",
+      "title": "보안 사고 신고와 초동 대응",
+      "required_spans": [
+        {
+          "text": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다.",
+          "start": 795,
+          "end": 848
+        },
+        {
+          "text": "이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다.",
+          "start": 849,
+          "end": 892
+        },
+        {
+          "text": "당직자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리며 신고를 보류하지 말고 팀장에게 대체 인계를 요청한다.",
+          "start": 893,
+          "end": 957
+        }
+      ],
+      "challenge_tags": [
+        "multi_condition",
+        "exact_term",
+        "paraphrase"
+      ],
+      "selection_reason": "날짜·조건·예외를 함께 묻는 개발 사례다. 15분 인계 목표와 해결 목표의 차이 및 무응답 대체 경로를 평가한다.",
+      "expected_answer_criteria": [
+        "당직 담당자는 신고 접수 후 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다.",
+        "15분은 인계 목표이며 사고 해결 시간이나 법정 통지 기한이 아니다.",
+        "당직자 응답이나 연결이 없으면 기다리거나 신고를 보류하지 말고 팀장에게 대체 인계를 요청한다."
+      ]
+    },
+    {
+      "case_id": "D16",
+      "split": "development",
+      "answerable": true,
+      "question": "회의에서 합의된 결정으로 기록하려면 무엇을 남겨야 해? 참석자가 조용하면 동의로 봐도 돼?",
+      "document_id": "ieum-041",
+      "title": "회의 일정과 안건 공유",
+      "required_spans": [
+        {
+          "text": "결정이 나면 무엇을 결정했는지, 선택 이유, 담당자, 기한, 남은 위험을 읽어 참석자와 확인한다.",
+          "start": 462,
+          "end": 516
+        },
+        {
+          "text": "참석자에게 동의 여부를 묻지 않은 채 침묵을 승인으로 기록하지 않는다.",
+          "start": 517,
+          "end": 556
+        }
+      ],
+      "challenge_tags": [
+        "multi_condition",
+        "paraphrase"
+      ],
+      "selection_reason": "회의 결정 기록 사례다. 필요한 기록 항목과 침묵을 동의로 볼 수 없는 조건을 평가한다.",
+      "expected_answer_criteria": [
+        "결정 내용·선택 이유·담당자·기한·남은 위험을 참석자에게 읽어 확인한다.",
+        "참석자에게 동의 여부를 묻지 않은 침묵을 승인으로 기록하지 않는다."
+      ]
+    },
+    {
+      "case_id": "D18",
+      "split": "development",
+      "answerable": true,
+      "question": "핵심 기능이 멈춘 장애라면 P1 기준과 고객에게 상태를 알리는 간격은 어떻게 돼?",
+      "document_id": "ieum-069",
+      "title": "서비스 장애와 고객 공지",
+      "required_spans": [
+        {
+          "text": "서비스 전체 또는 핵심 기능이 중단됐거나, 데이터 손실 가능성이 있다.",
+          "start": 213,
+          "end": 252
+        },
+        {
+          "text": "30분 간격 갱신 목표",
+          "start": 368,
+          "end": 380
+        }
+      ],
+      "challenge_tags": [
+        "table",
+        "multi_condition",
+        "paraphrase"
+      ],
+      "selection_reason": "표 기반 서비스 장애 사례다. P1의 핵심 기능 기준과 고객 상태 갱신 간격·목표의 한계를 평가한다.",
+      "expected_answer_criteria": [
+        "서비스 전체 또는 핵심 기능 중단, 또는 데이터 손실 가능성은 P1 판단 기준이다.",
+        "고객지원팀은 최초 공지와 후속 상태를 포함해 30분 간격 갱신을 목표로 안내한다.",
+        "30분은 운영 목표이지 계약상 SLA 보증이 아니다."
+      ]
+    },
+    {
+      "case_id": "D20",
+      "split": "development",
+      "answerable": true,
+      "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+      "document_id": "ieum-031",
+      "title": "업무 파일 공유와 외부 제공",
+      "required_spans": [
+        {
+          "text": "외부 제공은 특정 수신자에게 파일을 주는 일이다. 공개 웹 게시와 구분한다.",
+          "start": 518,
+          "end": 560
+        },
+        {
+          "text": "접근이 승인된 경우 지정된 수신자에게 최소 권한을 부여하고 외부 공유는 원칙적으로 최대 7일 안에 종료한다.",
+          "start": 724,
+          "end": 784
+        },
+        {
+          "text": "자동 만료 설정이 없거나 지원되지 않으면 공유자가 만료일에 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 남긴다.",
+          "start": 785,
+          "end": 852
+        },
+        {
+          "text": "누구나 열 수 있는 링크를 만들어 문제를 우회하지 않는다.",
+          "start": 986,
+          "end": 1018
+        }
+      ],
+      "challenge_tags": [
+        "heading_boundary",
+        "multi_condition",
+        "paraphrase"
+      ],
+      "selection_reason": "제목 경계와 복수 조건을 가진 파일 외부 공유 사례다. 지정 수신자, 공개 링크 금지, 만료·회수 확인을 평가한다.",
+      "expected_answer_criteria": [
+        "특정 수신자에게 제한 제공하는 것은 공개 웹 게시와 구분한다.",
+        "승인 후 지정 수신자에게 최소 권한을 주고 외부 공유는 원칙적으로 최대 7일 안에 종료한다.",
+        "자동 만료가 없거나 지원되지 않으면 공유자가 만료일에 권한을 직접 회수하고 실제 회수 여부를 확인해 기록한다.",
+        "누구나 열 수 있는 링크로 접근 문제를 우회하지 않는다."
+      ]
+    },
+    {
+      "case_id": "U01",
+      "split": "unanswerable",
+      "answerable": false,
+      "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+      "document_id": null,
+      "title": null,
+      "required_spans": [],
+      "challenge_tags": [
+        "legacy_unanswerable"
+      ],
+      "selection_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "answerability_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "expected_answer_criteria": [
+        "현재 주간 구내식당 메뉴는 제공 문서에서 확인할 수 없다고 말한다.",
+        "실제 메뉴를 추측하거나 날짜별 메뉴를 사실처럼 제시하지 않는다."
+      ]
+    },
+    {
+      "case_id": "U02",
+      "split": "unanswerable",
+      "answerable": false,
+      "question": "우리 회사 올해 성과급 지급률은 몇 퍼센트야?",
+      "document_id": null,
+      "title": null,
+      "required_spans": [],
+      "challenge_tags": [
+        "legacy_unanswerable"
+      ],
+      "selection_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "answerability_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "expected_answer_criteria": [
+        "올해 성과급 지급률은 제공 문서에서 확인할 수 없다고 말한다.",
+        "퍼센트나 지급 여부를 추측해 사실처럼 제시하지 않는다."
+      ]
+    },
+    {
+      "case_id": "U03",
+      "split": "unanswerable",
+      "answerable": false,
+      "question": "대표님의 개인 휴대전화 번호 알려줘.",
+      "document_id": null,
+      "title": null,
+      "required_spans": [],
+      "challenge_tags": [
+        "legacy_unanswerable"
+      ],
+      "selection_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "answerability_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "expected_answer_criteria": [
+        "대표자의 개인 휴대전화 번호는 제공하지 않으며, 번호를 추측하거나 지어내지 않는다.",
+        "필요한 연락 방법을 안내하더라도 공개된 공식 회사 연락 경로로 한정하고 임의의 개인 번호를 만들지 않는다."
+      ]
+    },
+    {
+      "case_id": "U04",
+      "split": "unanswerable",
+      "answerable": false,
+      "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+      "document_id": null,
+      "title": null,
+      "required_spans": [],
+      "challenge_tags": [
+        "legacy_unanswerable"
+      ],
+      "selection_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "answerability_reason": "기존 회귀 묶음의 원문에 유지된 미답변 문항이며 현재 문서 원문에 요청한 개인·시점별 사실이 없다.",
+      "expected_answer_criteria": [
+        "개인별 잔여 연차 일수를 조회할 수 없다고 밝히고 실제 일수를 추측하지 않는다.",
+        "문서에 있는 절차 범위에서는 개인 일수와 적용 기준이 포털 표시와 다르거나 불분명할 때 People팀에 확인하라고 안내할 수 있다."
+      ]
+    }
+  ]
+}

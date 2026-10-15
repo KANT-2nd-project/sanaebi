@@ -1,0 +1,12 @@
+{
+  "status": "approved_before_calls",
+  "reviewer": "independent AI reviewer",
+  "human_review": false,
+  "cases_sha256": "91a33e3128beeb00c81dcddac7c97a9285e172d087fa9a0ba5b1b0e694372574",
+  "rubric_sha256": "a8801f9d50ca795308e8fd4101072f02387ce3196ffa54b7e9ec594bbc77f8e5",
+  "corrections": [
+    "D05 domestic lodging numeric limit optional if stated",
+    "D11 statutory/contract rights caveat optional if stated"
+  ],
+  "verified": "16 answerable + 4 unanswerable; exact original questions and required source spans; D18 SLA target caveat retained"
+}

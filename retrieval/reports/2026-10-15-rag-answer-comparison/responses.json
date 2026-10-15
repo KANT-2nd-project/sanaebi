@@ -1,0 +1,432 @@
+[
+  {
+    "case_id": "R04",
+    "question": "근태 오류를 발견한 지 일주일 지났는데 수정 못 해?",
+    "mode": "rag",
+    "variant": "A",
+    "actual_cost_usd": 0.00105125,
+    "answer": "3영업일이 지났다고 해서 정정이 불가능한 것은 아닙니다. 오류 발견 후 3영업일이 지난 경우에는 지연 사유를 적어 People팀에 제출하시면 됩니다. 일주일이 달력 기준이라면 실제로 3영업일이 지났는지 확인해 주세요.",
+    "blind_variant": "A",
+    "cost_status": "estimated_from_usage",
+    "elapsed_seconds": 5.314309761000004,
+    "finish_reason": "stop",
+    "prompt_sha256": "bf0b3a0e90ab63104fce779012eca3f43aaa4820f2d6a044e8f809a47617980a",
+    "provider_attempted": true,
+    "provider_response": {
+      "finish_reason": "stop",
+      "input_tokens": 3146,
+      "output_tokens": 353,
+      "raw_text": "{\"answer\":\"3영업일이 지났다고 해서 정정이 불가능한 것은 아닙니다. 오류 발견 후 3영업일이 지난 경우에는 지연 사유를 적어 People팀에 제출하시면 됩니다. 일주일이 달력 기준이라면 실제로 3영업일이 지났는지 확인해 주세요.\"}",
+      "refusal": null
+    },
+    "refusal": null,
+    "request_id": "answer-R04-A",
+    "reserved_cost_usd": 0.01572975,
+    "status": "completed",
+    "usage": {
+      "input_tokens": 3146,
+      "output_tokens": 353
+    }
+  },
+  {
+    "case_id": "R04",
+    "question": "근태 오류를 발견한 지 일주일 지났는데 수정 못 해?",
+    "mode": "full",
+    "variant": "B",
+    "actual_cost_usd": 0.01503225,
+    "answer": "정정이 불가능한 것은 아닙니다. 오류를 발견한 뒤 3영업일이 지났다면 지연 사유를 적어 People팀에 제출하세요. 실제 시작·종료 시각과 휴게 시간, 정정 사유를 함께 준비하시면 됩니다. 팀장이 실제 근무 사실을 확인하고, People팀은 승인된 수정만 반영합니다.",
+    "blind_variant": "B",
+    "cost_status": "estimated_from_usage",
+    "elapsed_seconds": 7.777557974000047,
+    "finish_reason": "stop",
+    "prompt_sha256": "86bea18235eb997e0ae570ee69811099cfc0355c80ed7dae12a42b62fd0f4653",
+    "provider_attempted": true,
+    "provider_response": {
+      "finish_reason": "stop",
+      "input_tokens": 58308,
+      "output_tokens": 607,
+      "raw_text": "{\"answer\":\"정정이 불가능한 것은 아닙니다. 오류를 발견한 뒤 3영업일이 지났다면 지연 사유를 적어 People팀에 제출하세요. 실제 시작·종료 시각과 휴게 시간, 정정 사유를 함께 준비하시면 됩니다. 팀장이 실제 근무 사실을 확인하고, People팀은 승인된 수정만 반영합니다.\"}",
+      "refusal": null
+    },
+    "refusal": null,
+    "request_id": "answer-R04-B",
+    "reserved_cost_usd": 0.0729535,
+    "status": "completed",
+    "usage": {
+      "input_tokens": 58308,
+      "output_tokens": 607
+    }
+  },
+  {
+    "case_id": "R06",
+    "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+    "mode": "full",
+    "variant": "A",
+    "actual_cost_usd": 0.014877,
+    "answer": "아니요. 해외 근무는 일반 재택 승인에 포함되지 않습니다. 예정일 10영업일 전까지 신청하고, People팀과 보안·개인정보 담당자의 각각의 검토 및 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작할 수 있습니다. 검토 중이거나 필요한 승인이 기록되지 않았다면 해외에서 업무를 시작하지 마세요.",
+    "blind_variant": "A",
+    "cost_status": "estimated_from_usage",
+    "elapsed_seconds": 5.43640963200005,
+    "finish_reason": "stop",
+    "prompt_sha256": "c3f28480fc55d65a8c0d7cb5d9868bf452dbc839986912c4d67d4332cb77ecfa",
+    "provider_attempted": true,
+    "provider_response": {
+      "finish_reason": "stop",
+      "input_tokens": 58311,
+      "output_tokens": 399,
+      "raw_text": "{\"answer\":\"아니요. 해외 근무는 일반 재택 승인에 포함되지 않습니다. 예정일 10영업일 전까지 신청하고, People팀과 보안·개인정보 담당자의 각각의 검토 및 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작할 수 있습니다. 검토 중이거나 필요한 승인이 기록되지 않았다면 해외에서 업무를 시작하지 마세요.\"}",
+      "refusal": null
+    },
+    "refusal": null,
+    "request_id": "answer-R06-A",
+    "reserved_cost_usd": 0.0729555,
+    "status": "completed",
+    "usage": {
+      "input_tokens": 58311,
+      "output_tokens": 399
+    }
+  },
+  {
+    "case_id": "R06",
+    "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+    "mode": "rag",
+    "variant": "B",
+    "actual_cost_usd": 0.00092775,
+    "answer": "아니요. 해외 근무는 일반 재택 승인에 포함되지 않습니다. 예정일 10영업일 전까지 신청하고, People팀과 보안·개인정보 담당자의 각각의 검토 및 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작할 수 있습니다. 검토 중이거나 필요한 승인이 없으면 해외에서 업무를 시작하지 마세요.",
+    "blind_variant": "B",
+    "cost_status": "estimated_from_usage",
+    "elapsed_seconds": 3.174638719000086,
+    "finish_reason": "stop",
+    "prompt_sha256": "7ed5972aeb75e01467ab00f99fa8d5521f33fb1a3ad0de41d544c5488cb15349",
+    "provider_attempted": true,
+    "provider_response": {
+      "finish_reason": "stop",
+      "input_tokens": 3153,
+      "output_tokens": 186,
+      "raw_text": "{\"answer\":\"아니요. 해외 근무는 일반 재택 승인에 포함되지 않습니다. 예정일 10영업일 전까지 신청하고, People팀과 보안·개인정보 담당자의 각각의 검토 및 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작할 수 있습니다. 검토 중이거나 필요한 승인이 없으면 해외에서 업무를 시작하지 마세요.\"}",
+      "refusal": null
+    },
+    "refusal": null,
+    "request_id": "answer-R06-B",
+    "reserved_cost_usd": 0.01570975,
+    "status": "completed",
+    "usage": {
+      "input_tokens": 3153,
+      "output_tokens": 186
+    }
+  },
+  {
+    "case_id": "R08",
+    "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+    "mode": "rag",
+    "variant": "A",
+    "actual_cost_usd": 0.00132425,
+    "blind_variant": "A",
+    "cost_status": "estimated_from_usage",
+    "elapsed_seconds": 7.495446296999944,
+    "finish_reason": "stop",
+    "generation_error_type": "LLMResponseError",
+    "generation_status": "failed_after_response",
+    "prompt_sha256": "7591b0637761c11195b042fcc3195b849cc89ff85bbae490f433b0bca7958c1a",
+    "provider_attempted": true,
+    "provider_response": {
+      "finish_reason": "stop",
+      "input_tokens": 3239,
+      "output_tokens": 686,
+      "raw_text": "정산 대상으로 제출된 경비라면, 재무팀의 최종 검토가 끝난 달의 **다음 달 15일**에 지급됩니다. 은행 휴무일이면 다음 은행 영업일에 입금됩니다. 팀장은 제출 후 2영업일 안에 검토하고, 승인 후 재무팀은 영업일 3일 안에 증빙을 검토합니다.\n\n다만 직무 교육비는 회사 직접 결제가 원칙이며, 개인 결제는 결제 전에 팀장과 재무팀의 예외 승인을 받은 경우에만 가능합니다. 실제 입금일은 재무팀 최종 검토가 끝난 시점을 확인해야 알 수 있어, 현재 사내비에서는 개인별 지급 상태를 확인하기 어렵습니다.",
+      "refusal": null
+    },
+    "refusal": null,
+    "request_id": "answer-R08-A",
+    "reserved_cost_usd": 0.01576,
+    "status": "generation_error",
+    "usage": {
+      "input_tokens": 3239,
+      "output_tokens": 686
+    }
+  },
+  {
+    "case_id": "R08",
+    "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+    "mode": "full",
+    "variant": "B",
+    "actual_cost_usd": 0,
+    "blind_variant": "B",
+    "provider_attempted": false,
+    "request_id": "answer-R08-B",
+    "reserved_cost_usd": 0.0729515,
+    "status": "not_called_peer_error"
+  },
+  {
+    "case_id": "R09",
+    "question": "영수증 제출 기한이 이미 지났으면 어떻게 해?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R09",
+    "question": "영수증 제출 기한이 이미 지났으면 어떻게 해?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R10",
+    "question": "인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R10",
+    "question": "인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R14",
+    "question": "내 PR은 내가 승인해서 머지해도 돼?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R14",
+    "question": "내 PR은 내가 승인해서 머지해도 돼?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R16",
+    "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R16",
+    "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R18",
+    "question": "제출한 경비의 지급일인 15일이 은행 쉬는 날이면?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "R18",
+    "question": "제출한 경비의 지급일인 15일이 은행 쉬는 날이면?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D02",
+    "question": "개인 결제 경비는 언제까지 제출해야 하고, 보통 언제 입금돼? 지급일이 휴일이면 어떻게 돼?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D02",
+    "question": "개인 결제 경비는 언제까지 제출해야 하고, 보통 언제 입금돼? 지급일이 휴일이면 어떻게 돼?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D05",
+    "question": "출장 호텔이 회사 한도보다 비싸. 일단 결제하고 영수증에 사유를 적으면 괜찮아?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D05",
+    "question": "출장 호텔이 회사 한도보다 비싸. 일단 결제하고 영수증에 사유를 적으면 괜찮아?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D07",
+    "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+    "mode": "full",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D07",
+    "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+    "mode": "rag",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D11",
+    "question": "형제자매나 조부모 상을 당한 경우 회사 경조 휴가 일수와 주말 처리 기준은?",
+    "mode": "full",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D11",
+    "question": "형제자매나 조부모 상을 당한 경우 회사 경조 휴가 일수와 주말 처리 기준은?",
+    "mode": "rag",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D14",
+    "question": "사고 당직에 연락한 지 15분이 지났는데 답이 없으면 기다리면 되는지, 15분은 해결 목표인지 궁금해.",
+    "mode": "full",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D14",
+    "question": "사고 당직에 연락한 지 15분이 지났는데 답이 없으면 기다리면 되는지, 15분은 해결 목표인지 궁금해.",
+    "mode": "rag",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D16",
+    "question": "회의에서 합의된 결정으로 기록하려면 무엇을 남겨야 해? 참석자가 조용하면 동의로 봐도 돼?",
+    "mode": "full",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D16",
+    "question": "회의에서 합의된 결정으로 기록하려면 무엇을 남겨야 해? 참석자가 조용하면 동의로 봐도 돼?",
+    "mode": "rag",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D18",
+    "question": "핵심 기능이 멈춘 장애라면 P1 기준과 고객에게 상태를 알리는 간격은 어떻게 돼?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D18",
+    "question": "핵심 기능이 멈춘 장애라면 P1 기준과 고객에게 상태를 알리는 간격은 어떻게 돼?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D20",
+    "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+    "mode": "full",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "D20",
+    "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+    "mode": "rag",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U01",
+    "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U01",
+    "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U02",
+    "question": "우리 회사 올해 성과급 지급률은 몇 퍼센트야?",
+    "mode": "full",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U02",
+    "question": "우리 회사 올해 성과급 지급률은 몇 퍼센트야?",
+    "mode": "rag",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U03",
+    "question": "대표님의 개인 휴대전화 번호 알려줘.",
+    "mode": "rag",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U03",
+    "question": "대표님의 개인 휴대전화 번호 알려줘.",
+    "mode": "full",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U04",
+    "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+    "mode": "full",
+    "variant": "A",
+    "status": "not_started",
+    "provider_attempted": false
+  },
+  {
+    "case_id": "U04",
+    "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+    "mode": "rag",
+    "variant": "B",
+    "status": "not_started",
+    "provider_attempted": false
+  }
+]

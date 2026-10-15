@@ -1,0 +1,2702 @@
+[
+  {
+    "case_id": "R04",
+    "context": {
+      "candidate_chunk_ids": [
+        "48beedee7553a19eece014b66ae60e913205c3c50431339371060a66e2596de5",
+        "0e4e1ac51b1c8133020c587553e9356da9d168272f44485464a4baac9481b198",
+        "4d4c11c39d53a0098d4cf11038233fd37f969ece9269627818b154a8840fca17",
+        "5fd51c2d0335d316944fbcf1216d686136f03f35b9ed5cad15f029efa120bdfa",
+        "504cd64ba2fcf26ea95f0b721eb1d7170136d529205cbfbf4cb6c412970573b7",
+        "666d33de09e972bfd4dc1558089f75553f60b2d37b29283ddf23165100e93122",
+        "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+        "5af755f55f054439bd082b0861aa95d2dff755aa53d364cb4cc03e279bbe8786",
+        "7a7c1b95dcd3d32c35b2034abad45fc2f8c233280805727c865e91c6c6de3b77",
+        "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "48beedee7553a19eece014b66ae60e913205c3c50431339371060a66e2596de5"
+          ],
+          "document_id": "b3027f7b-c927-5cb5-82ae-223ae53c7384",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-002",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "7675ddc7-9e04-4f99-8d7b-aab204a99afc",
+          "score": 0.5568662881851196,
+          "source_reference": "document:ieum-002",
+          "spans": [
+            {
+              "end": 1024,
+              "kind": "body",
+              "start": 659
+            }
+          ],
+          "text": "## 기간이 달라지거나 돌아올 때\n\n예상 복귀일이 달라지면 가능하면 근무를 재개하기 전에 팀장에게 알리고 포털 일정을 수정한다. 긴급 진료 등으로 사전 연락이 불가능했다면 복귀 후 첫 근무일까지 날짜와 필요한 일정 변경을 기록한다. 실제 복귀 시각과 일정에 따라 근태 기록을 확인하고 오류는 근태 변경 안내 (문서 ID: ieum-059)의 정정 절차로 처리한다.\n\n신청이 보완 요청 또는 반려 상태라면 부족한 항목과 검토자를 확인한다. 업무 인수인계 정보만 보완하고 불필요한 의료 정보는 추가하지 않는다. 회사 병가 한도 초과, 장기간 부재, 다른 제도와의 적용 관계는 People팀 확인이 끝날 때까지 구성원이 선택하지 않은 휴가로 바꾸지 않는다.\n",
+          "title": "병가 신청과 복귀 안내"
+        },
+        {
+          "chunk_ids": [
+            "0e4e1ac51b1c8133020c587553e9356da9d168272f44485464a4baac9481b198"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.5401331782341003,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 992,
+              "kind": "body",
+              "start": 802
+            }
+          ],
+          "text": "기존 신청을 취소했더라도 휴가 잔액이나 팀 일정이 자동으로 원래대로 돌아갔다고 가정하지 않는다. 포털에서 취소·수정 상태와 반영 날짜를 확인한다. 처리가 반려되면 이유와 부족한 정보를 확인해 새 요청을 제출한다. 이미 시작된 부재나 안전·건강 문제는 업무 절차를 위해 무리하게 출근하지 말고, 가능한 시점에 팀장과 People팀에 알린다.\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        },
+        {
+          "chunk_ids": [
+            "4d4c11c39d53a0098d4cf11038233fd37f969ece9269627818b154a8840fca17"
+          ],
+          "document_id": "d6801934-8d4a-5a9c-9562-0b8a632b2699",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-006",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "87d769c4-f35b-48ee-99d1-816325f969cd",
+          "score": 0.5068470239639282,
+          "source_reference": "document:ieum-006",
+          "spans": [
+            {
+              "end": 992,
+              "kind": "body",
+              "start": 337
+            }
+          ],
+          "text": "## 확인·반영과 보완\n\n팀장은 요청 후 2영업일 안에 업무 일정과 실제 근무 사실을 확인해 승인 또는 구체적인 보완 요청을 남긴다. 본인의 기록이나 본인이 입력한 정정은 단독으로 승인하지 않는다. People팀은 승인된 수정만 다음 근무일까지 반영하고 처리자를 기록한다. 신청자는 처리 결과가 포털 기록과 일치하는지 확인한다.\n\n보완 요청을 받으면 부족한 날짜·시각·근거만 추가하고 기존 요청 번호를 유지한다. 반려된 경우 사유와 재신청 방법을 확인해 사실을 바로잡은 새 자료로 다시 요청한다. 처리 상태가 장기간 바뀌지 않거나 같은 내용이 두 차례 이상 보완되는 경우 포털에 경과를 남기고 People팀에 검토를 요청한다.\n\n3영업일이 지난 오류는 지연 사유를 적어 People팀에 제출한다. People팀은 원본 근태와 승인 이력을 대조한다. 일정 자체가 바뀐 문제는 기본 근무 시간과 휴게 (문서 ID: ieum-004), 시차 출퇴근형 근무 시간 (문서 ID: ieum-005)에서 먼저 승인 여부를 확인한다.\n\n구성원은 실제 시간과 사유를 제출하고, 팀장은 업무 사실을 확인하며, People팀은 승인된 기록을 반영하고 변경 이력을 관리한다. 관련: 회사 역할과 문의 길잡이 (문서 ID: ieum-053), 근태 변경 안내 (문서 ID: ieum-059).\n",
+          "title": "출퇴근 기록 정정"
+        },
+        {
+          "chunk_ids": [
+            "5fd51c2d0335d316944fbcf1216d686136f03f35b9ed5cad15f029efa120bdfa"
+          ],
+          "document_id": "d6801934-8d4a-5a9c-9562-0b8a632b2699",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-006",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "87d769c4-f35b-48ee-99d1-816325f969cd",
+          "score": 0.4994158148765564,
+          "source_reference": "document:ieum-006",
+          "spans": [
+            {
+              "end": 336,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 정정이 필요한 경우\n\n누락, 기기 오류, 잘못된 입력으로 실제 출퇴근 기록과 시스템 기록이 다르면 구성원이 정정을 요청한다. 정정은 실제 일한 시간을 확인하기 위한 절차다. 일하지 않은 시간을 추가하거나 휴게를 숨기거나 다른 사람에게 대신 출근을 기록하게 해서는 안 된다.\n\n오류를 발견한 뒤 3영업일 안에 이음 포털의 **인사 > 근태 정정**에 날짜, 실제 시작·종료 시각, 휴게 시간과 정정 사유를 적는다. 출입 카드·업무 일정 등 사실 확인에 도움이 되는 자료가 있으면 자료 위치나 관련 부분만 첨부한다. 동료의 기록, 메시지 전체, 건강·가족 정보 등 불필요한 정보는 첨부하지 않는다.\n",
+          "title": "출퇴근 기록 정정"
+        },
+        {
+          "chunk_ids": [
+            "504cd64ba2fcf26ea95f0b721eb1d7170136d529205cbfbf4cb6c412970573b7"
+          ],
+          "document_id": "90000a84-5369-5adc-8ea0-821bdafc5207",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-004",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "53514cbd-c3cf-460f-b39a-742de7e05dc6",
+          "score": 0.4954775869846344,
+          "source_reference": "document:ieum-004",
+          "spans": [
+            {
+              "end": 681,
+              "kind": "body",
+              "start": 343
+            }
+          ],
+          "text": "## 기록과 일정 조정\n\n구성원은 실제 시작·종료 시각과 휴게를 회사 근태 기록에 사실대로 입력한다. 누락·오입력이 있으면 근태 변경 안내 (문서 ID: ieum-059)에 따라 정정 요청을 한다. 팀장은 회의·업무 배치를 조정할 때 승인된 근무제와 휴게를 확인한다. 휴게를 근무한 것으로 입력하거나 실제 일하지 않은 시간을 추가해서는 안 된다.\n\n시작 시각을 바꾸려면 시차 출퇴근형 근무 시간 (문서 ID: ieum-005)의 월별 신청을 이용한다. 늦은 도착·조퇴·긴급 변경은 각각 해당 절차에 따라 알리고 실제 시간을 기록한다. 포털이 승인되기 전에는 예정 변경을 적용된 일정으로 취급하지 않는다.\n",
+          "title": "기본 근무 시간과 휴게"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:02.678280+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "R06",
+    "context": {
+      "candidate_chunk_ids": [
+        "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb",
+        "15f4b4b412fb938eeba677a2849e59164a725825af28f9a9660cab903370b900",
+        "29de43522091520450d25de7b319e5613727a41487b1dbea1da0b2a8ebe18232",
+        "1f67b422692d7a3581f3c2772de2b8b7536d89ec4e91513f38a9f2865e035b94",
+        "73e71d4a9a25dc96ffee9cf4353ef6ac8df780ae14a79ab3818ab44701e6611f",
+        "735a29ce43ca1bf4a2289f739511a361c88394c7130ce22b6a30f140fd9d02d9",
+        "79265936324936d06c663cb529c4671584c2c938287437e95527968911b5057b",
+        "ba4edf25045118eb3c58e6732e550250b59f532621a4efcd7650c8bd206bc875",
+        "9de8f374a5cb53feefd2d69d6aab746324a454fefa33d52652733d1e404b2013",
+        "fe9ede057bd3d171662bd156d4bfac3b4b7e75e70f60e1e1a7d2058dbe3cdd4e"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb"
+          ],
+          "document_id": "a4d17e09-fed4-57d4-8758-1e4e05d7ac9a",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-010",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "5d48aaa2-1e10-47b1-863e-6f819271273d",
+          "score": 0.6105961203575134,
+          "source_reference": "document:ieum-010",
+          "spans": [
+            {
+              "end": 1017,
+              "kind": "body",
+              "start": 509
+            }
+          ],
+          "text": "## 해외 근무와 장소 변경\n\n해외에서 일하는 계획은 일반 재택 승인에 포함되지 않는다. 예정일 10영업일 전까지 신청하고 People팀과 보안·개인정보 담당자의 각각의 검토, 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작한다. 검토 중이거나 필요한 승인이 없으면 해외 장소에서 업무를 시작하지 않는다.\n\n사무실·자택·고객 방문 장소 등 일회성 국내 장소 변경은 근무 장소 변경 신청 (문서 ID: ieum-012)을 따른다. 출장과 재택 승인을 혼합하지 않는다. 승인된 장소에서도 기본 근무 시간과 회사 계정·기기 보호 규칙을 지킨다.\n\n구성원은 장소와 연락 상태를 정확히 등록하고, 팀장은 대면 일정과 승인 결과를 관리한다. 해외 근무 검토에는 People팀과 보안·개인정보 담당자가 각각 참여한다. 일반 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 재택근무 중 정보보호 (문서 ID: ieum-011), 회사 역할과 문의 길잡이 (문서 ID: ieum-053).\n",
+          "title": "재택근무 신청과 변경"
+        },
+        {
+          "chunk_ids": [
+            "15f4b4b412fb938eeba677a2849e59164a725825af28f9a9660cab903370b900"
+          ],
+          "document_id": "a4d17e09-fed4-57d4-8758-1e4e05d7ac9a",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-010",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "5d48aaa2-1e10-47b1-863e-6f819271273d",
+          "score": 0.5998517870903015,
+          "source_reference": "document:ieum-010",
+          "spans": [
+            {
+              "end": 263,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 정기 국내 재택 신청\n\n승인된 국내 재택근무는 주 최대 2일이다. 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다. 승인에 필요하지 않은 상세 주거 주소는 Slack이나 팀 문서에 공유하지 않는다. 팀장은 같은 날 18:00까지 팀 일정과 대면 업무 필요를 확인해 승인 또는 조정안을 회신한다. 승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다.\n",
+          "title": "재택근무 신청과 변경"
+        },
+        {
+          "chunk_ids": [
+            "29de43522091520450d25de7b319e5613727a41487b1dbea1da0b2a8ebe18232"
+          ],
+          "document_id": "d33ea51e-44a0-5140-a82d-6dfbd2e100b0",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-012",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "59c92dc8-7aa4-44b5-8945-a404d9d74f78",
+          "score": 0.5667810440063477,
+          "source_reference": "document:ieum-012",
+          "spans": [
+            {
+              "end": 185,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 정기 재택과 구별하기\n\n이 문서는 사무실, 자택, 고객 방문 장소처럼 평소 승인된 장소와 다른 **일회성 국내 장소 변경**에 적용한다. 정기 재택은 재택근무 신청과 변경 (문서 ID: ieum-010), 출장과 해외 근무는 각각 별도 승인 절차를 따른다. 장소 변경은 근무 시간이나 정보보호 의무를 자동으로 바꾸지 않는다.\n",
+          "title": "근무 장소 변경 신청"
+        },
+        {
+          "chunk_ids": [
+            "1f67b422692d7a3581f3c2772de2b8b7536d89ec4e91513f38a9f2865e035b94"
+          ],
+          "document_id": "a4d17e09-fed4-57d4-8758-1e4e05d7ac9a",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-010",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "5d48aaa2-1e10-47b1-863e-6f819271273d",
+          "score": 0.5232495665550232,
+          "source_reference": "document:ieum-010",
+          "spans": [
+            {
+              "end": 508,
+              "kind": "body",
+              "start": 264
+            }
+          ],
+          "text": "## 당일 변경·취소\n\n질병, 교통 중단, 사무실 이용 불가 등 전날 신청할 수 없었던 사정은 업무 시작 전에 팀장에게 Slack으로 알리고, 당일 업무 종료 전까지 포털 기록을 보완한다. 팀장은 채널 메시지만으로 장소 승인을 대체하지 않고 포털 상태를 갱신한다. 재택이 취소되거나 날짜가 바뀌면 기존 신청을 수정하고 팀에 공유한 대면 일정도 함께 고친다. 포털 수정이 되지 않으면 신청 번호를 보관해 People팀에 정정을 요청한다.\n",
+          "title": "재택근무 신청과 변경"
+        },
+        {
+          "chunk_ids": [
+            "73e71d4a9a25dc96ffee9cf4353ef6ac8df780ae14a79ab3818ab44701e6611f"
+          ],
+          "document_id": "7c2109ad-3207-508c-9521-b2478f07b58b",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-011",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "5d89a538-74a7-4812-b8b0-a7f689ee2411",
+          "score": 0.5091652274131775,
+          "source_reference": "document:ieum-011",
+          "spans": [
+            {
+              "end": 1402,
+              "kind": "body",
+              "start": 712
+            }
+          ],
+          "text": "## 공간·기기 문제와 사고\n\n안전하게 자료를 다룰 장소나 회사 기기가 없으면 민감 자료 업무를 중단하고 팀장에게 대체 장소나 일정을 요청한다. 출장과 해외 근무는 일반 재택 승인으로 처리하지 않는다.\n\n기기 분실, 잘못된 공유, 화면·자료 노출, 피싱 또는 비밀정보 유출이 의심되면 즉시, 늦어도 30분 안에 사용할 수 있는 신고 경로로 알린다. Slack을 사용할 수 있으면 **#security-incident**에 신고하고, 포털의 보안 사고 신고 기능을 사용할 수 있으면 접수 기록도 남긴다. Slack과 포털을 모두 사용할 수 없으면 입사 때 배부된 오프라인 비상연락카드의 보안 연락 안내를 따른다. 긴급 보안 대응은 24시간 체계이며 신고 후 15분 안에 담당자가 신고를 인수하는 것을 목표로 한다. 응답이 없으면 팀장에게 대체 인계를 요청하고, 팀장도 연결되지 않으면 비상연락카드의 대체 연락 안내를 따른다. 공개 안내에 실제 전화번호를 기록하지 않는다. 추가 확산을 막기 위한 안전한 조치만 하고 로그·파일을 삭제하거나 기기를 초기화하지 않는다.\n\n구성원은 장소·화면·자료를 보호한다. 팀장은 대체 근무를 조정한다. IT운영팀은 기기·계정 대응, 보안·개인정보 담당자는 노출 대응을 맡는다. 관련: 보안 사고 신고와 초동 대응 (문서 ID: ieum-035), 재택근무 신청과 변경 (문서 ID: ieum-010).\n",
+          "title": "재택근무 중 정보보호"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:02.724632+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "R08",
+    "context": {
+      "candidate_chunk_ids": [
+        "594916f1d81f3e8a591fd9663ebae31af3bafc3de1289f3cff87f4db6e4e0956",
+        "71d6ca0cd064bfdb8c7f6104bc5521d875d7dd7ac5a69f4ee857ce53e6b82b07",
+        "bdd47498c6a54bdae06486107e2f1d66883c3f1efb6b5a2d8f828bc227f8fe62",
+        "3f9d6b4471ff119494f731cd531b356f66714c08b4fba64426f70bb2089143ae",
+        "dcaa92d4acb408e4d75a538166c358435e77725e14f118861dd378a8726e2e2c",
+        "450db2aa73965e1ba49ca7ecb2ec46692e03a4a78b6f0ddd9f39564f1bf65271",
+        "6f4a7377a9f19cab0dcbff79f8087c801d494db5b84b3cb9de2ff202f8393f9f",
+        "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "a6557bebcac9bd0929d4e5f16012d60f4d1dc40a0310e846d99f260f1eed9300",
+        "e7771931736a47bd6deee76d77858a62cd8afbd2e872683bb85c3dd07f0d96af"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "594916f1d81f3e8a591fd9663ebae31af3bafc3de1289f3cff87f4db6e4e0956"
+          ],
+          "document_id": "e80cd27e-6c9e-5841-bdac-45cfcc1c3c47",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-049",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "215ed0f7-5df0-49de-a1c2-519543741bae",
+          "score": 0.4904739260673523,
+          "source_reference": "document:ieum-049",
+          "spans": [
+            {
+              "end": 666,
+              "kind": "body",
+              "start": 402
+            }
+          ],
+          "text": "## 한도와 결제·정산\n\n외부 직무 교육 지원은 구성원 1명당 회계연도별 최대 **500,000원**이다. 승인된 교육에 실제 사용한 금액만 한도에서 차감하며 남은 금액은 다음 회계연도로 이월하지 않는다. 회사가 직접 결제하는 것이 원칙이다. 개인 결제는 결제 전에 팀장과 재무팀의 예외 승인을 받은 경우에만 가능하다. 개인 결제 영수증은 결제 후 10영업일 안에 경비 정산에 제출한다. 이수 자료와 업무 적용 기록은 교육 종료 후 5영업일 안에 포털에 별도로 등록한다.\n",
+          "title": "직무 교육 신청과 비용 지원"
+        },
+        {
+          "chunk_ids": [
+            "71d6ca0cd064bfdb8c7f6104bc5521d875d7dd7ac5a69f4ee857ce53e6b82b07"
+          ],
+          "document_id": "7229f41c-e7b8-5ccc-b484-1760966efd6e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-018",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "35ada92f-5663-4de1-9e76-98b176519b9e",
+          "score": 0.4679829478263855,
+          "source_reference": "document:ieum-018",
+          "spans": [
+            {
+              "end": 333,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 대상 비용과 한도\n\n승인된 국내 출장 중 출장자가 본인 식사에 실제 지출한 비용을 정산한다. 출장일마다 1인 기준 하루 최대 **35,000원**이다. 출장 일정에 포함된 식사나 주최자가 제공한 식사는 별도로 다시 청구하지 않는다. 제공되지 않은 식사는 실제 지출 합계를 이 하루 한도 안에서 청구할 수 있다.\n\n거래처 접대나 여러 사람을 위한 업무 식사는 개인 출장 식비에 합치지 않고 별도 업무 지출로 신청한다. 하루 한도를 넘어야 할 고객 일정은 지출 전에 팀장과 재무팀 승인을 받고 업무 접대 항목으로 분리한다. 주류·미니바·개인 간식·출장 동반자 식비는 회사 정산 대상이 아니다.\n",
+          "title": "출장 중 식비 정산"
+        },
+        {
+          "chunk_ids": [
+            "bdd47498c6a54bdae06486107e2f1d66883c3f1efb6b5a2d8f828bc227f8fe62"
+          ],
+          "document_id": "e80cd27e-6c9e-5841-bdac-45cfcc1c3c47",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-049",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "215ed0f7-5df0-49de-a1c2-519543741bae",
+          "score": 0.45781368017196655,
+          "source_reference": "document:ieum-049",
+          "spans": [
+            {
+              "end": 401,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 신청 대상과 준비\n\n현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육을 신청할 때 사용한다. 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 이 제도의 지원 대상이 아니다. 법령·계약상 별도 교육 의무나 자격 기준은 여기서 만들지 않는다.\n\n교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록한다. 팀장은 직무 관련성과 일정 대체 가능성을 검토하고 People팀은 연간 잔액과 교육 기록 항목을 확인한다. 등록 전에 두 승인 모두 완료되어야 한다. 비용이 드는 구매는 업무용 구매와 공급업체 선택 (문서 ID: ieum-021)의 금액별 승인·견적·기술 검토도 함께 받아야 한다.\n",
+          "title": "직무 교육 신청과 비용 지원"
+        },
+        {
+          "chunk_ids": [
+            "3f9d6b4471ff119494f731cd531b356f66714c08b4fba64426f70bb2089143ae"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.4471224844455719,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 1007,
+              "kind": "body",
+              "start": 572
+            }
+          ],
+          "text": "## 업무 구매\n\n구매 전에 이음 포털의 재무 > 업무 구매에 목적, 수량, 세금 포함 예상 총액, 예산 코드, 공급업체, 유지 비용을 작성한다.\n\n| 총액 | 승인·검토 |\n|---|---|\n| 300,000원 미만 | 팀장 승인 |\n| 300,000원 이상 2,000,000원 미만 | 팀장과 재무팀 승인 |\n| 2,000,000원 이상 | 비교 견적 3곳과 팀장·재무팀의 서면 승인 |\n\n비교 견적 세 곳을 받을 수 없는 공급처는 이유와 대안을 적고 재무팀의 별도 승인을 받는다. 새 SaaS, 소프트웨어, 클라우드, 네트워크 장비, 고객정보 처리 서비스는 결제·계약 전에 IT운영팀과 보안·개인정보 담당자의 기술·자료 검토도 마친다. 자동 갱신, 사용 인원, 데이터 반환·삭제, 전체 비용을 기록한다. 주문을 나누거나 개인 계정으로 먼저 결제해 승인을 우회하지 않는다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        },
+        {
+          "chunk_ids": [
+            "dcaa92d4acb408e4d75a538166c358435e77725e14f118861dd378a8726e2e2c"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.4433410167694092,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 1527,
+              "kind": "body",
+              "start": 1008
+            }
+          ],
+          "text": "## 법인카드와 비용 반려\n\n법인카드는 업무 승인에 연결된 지출만 사용한다. 현재 기본 월 한도는 카드당 1,000,000원이며 건당 500,000원을 넘으면 결제 전에 재무팀의 별도 승인을 받는다. 사용자는 결제 후 3영업일 안에 영수증, 업무 목적, 프로젝트를 포털에 연결한다. 개인 비용·현금성 거래·한도 회피용 분할 결제는 금지한다. 카드 분실 또는 이상 거래는 30분 안에 포털의 재무 > 법인카드 신고로 알리고 카드사 차단을 요청한다. 포털을 사용할 수 없으면 재무팀과 팀장에게 가용 회사 채널로 알린다.\n\n팀장 검토, 재무 검토, 지급은 각각 다른 단계다. 경비 제출 후 팀장은 2영업일 안에 승인·보완 요청, 재무팀은 승인 후 영업일 3일 안에 증빙을 검토한다. 재무팀 최종 검토가 끝난 달의 다음 달 15일에 지급하며 은행 휴무일이면 다음 은행 영업일을 사용한다. 반려되면 누락된 영수증·출장 번호·업무 목적을 확인해 보완 요청을 다시 제출한다. 제출이 늦을 것 같으면 기한 전에 재무팀에 연장 요청을 남긴다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:02.772648+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "R09",
+    "context": {
+      "candidate_chunk_ids": [
+        "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f",
+        "89d04d93e1e6ecff3df3e947a34b9c68841b6ff939682f31f8de0c157005c7ad",
+        "0e4e1ac51b1c8133020c587553e9356da9d168272f44485464a4baac9481b198",
+        "9ae56cc0027ef4be111374a4090b373f9ebe4dcdb3083874885bb0b21a56be94",
+        "4d4c11c39d53a0098d4cf11038233fd37f969ece9269627818b154a8840fca17",
+        "1ab8335e35e4becd3e4e9ed45b6f473534e24a91bdd0c97c8d9196297c9f49b5",
+        "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13",
+        "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f",
+        "3ca002120d1706af69dab8c20a8de501b225cd6b9890f8efe7fab0b0cd6487a0"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73"
+          ],
+          "document_id": "57c0b9b8-90ce-501d-857c-47552b283ad8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-019",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "92a9266c-cb55-4fff-92c1-24dbed68ceef",
+          "score": 0.5517978072166443,
+          "source_reference": "document:ieum-019",
+          "spans": [
+            {
+              "end": 389,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 제출 준비와 기한\n\n업무를 위해 개인이 먼저 결제한 비용을 정산할 때 적용한다. 출장 예약과 사전 한도는 해당 출장 안내에서 먼저 승인받는다. 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다. 함께한 업무 식사라면 참석자와 목적도 기록한다. 개인 용도 지출이나 같은 영수증을 두 번 청구하지 않는다.\n\n기한을 넘길 가능성이 있으면 기한 전에 재무팀에 포털 문의를 남겨 연장을 승인받는다. 이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다. 승인 전까지 지급이 확정된 것으로 안내하지 않는다. 영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다.\n",
+          "title": "경비 정산 제출과 지급"
+        },
+        {
+          "chunk_ids": [
+            "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f"
+          ],
+          "document_id": "7229f41c-e7b8-5ccc-b484-1760966efd6e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-018",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "35ada92f-5663-4de1-9e76-98b176519b9e",
+          "score": 0.483603835105896,
+          "source_reference": "document:ieum-018",
+          "spans": [
+            {
+              "end": 890,
+              "kind": "body",
+              "start": 334
+            }
+          ],
+          "text": "## 제출·누락·정정\n\n결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 날짜, 출장 기록 번호, 참석자 수, 업무상 식사 여부와 영수증을 등록한다. 동료와 함께 먹은 경우 실제 참석자와 각자 부담 금액을 기록해 같은 영수증의 중복 청구를 막는다. 영수증을 잃어버리면 사실대로 표시하고 재무팀에 대체 증빙 가능 여부를 묻는다. 증빙이 자동 면제되는 것은 아니다.\n\n한도나 참석 정보를 잘못 입력했다면 지급 전에 기존 경비 건을 수정한다. 이미 검토가 끝난 뒤 차이를 발견하면 신청 번호와 수정 사유를 재무팀에 보내고, 기존 기록을 지우거나 새 건으로 중복 신청하지 않는다. 일반 지급 일정과 보완 흐름은 경비 정산 제출과 지급 (문서 ID: ieum-019)을 따른다.\n\n출장자는 실제 지출만 제출하고, 팀장은 업무 목적을 확인하며, 재무팀은 영수증·한도·중복 여부를 검토한다. 일반 재무 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 국내 출장 사전 승인 (문서 ID: ieum-015), 출장·정산 안내 (문서 ID: ieum-060).\n",
+          "title": "출장 중 식비 정산"
+        },
+        {
+          "chunk_ids": [
+            "89d04d93e1e6ecff3df3e947a34b9c68841b6ff939682f31f8de0c157005c7ad"
+          ],
+          "document_id": "23dfcc99-35a2-5519-a05c-eb8789ac3563",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-020",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "29fbbc1d-330a-4af7-b49b-fa179909a858",
+          "score": 0.44206732511520386,
+          "source_reference": "document:ieum-020",
+          "spans": [
+            {
+              "end": 665,
+              "kind": "body",
+              "start": 425
+            }
+          ],
+          "text": "## 결제 후 정산·오류\n\n결제 후 3영업일 안에 이음 포털의 **재무 > 법인카드 정산**에 영수증, 업무 목적과 프로젝트를 연결한다. 가맹점명이나 금액이 잘못 입력됐으면 지급·마감 전에 기존 거래를 수정하고 변경 사유를 남긴다. 영수증을 분실했거나 비용이 개인 결제와 섞였으면 임의로 다른 거래로 상계하지 말고 재무팀에 대체 증빙·분리 방법을 문의한다. 팀장은 업무 목적을 확인하고 재무팀은 한도·증빙·중복 여부를 검토한다.\n",
+          "title": "법인카드 사용과 정산"
+        },
+        {
+          "chunk_ids": [
+            "0e4e1ac51b1c8133020c587553e9356da9d168272f44485464a4baac9481b198"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.4309014081954956,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 992,
+              "kind": "body",
+              "start": 802
+            }
+          ],
+          "text": "기존 신청을 취소했더라도 휴가 잔액이나 팀 일정이 자동으로 원래대로 돌아갔다고 가정하지 않는다. 포털에서 취소·수정 상태와 반영 날짜를 확인한다. 처리가 반려되면 이유와 부족한 정보를 확인해 새 요청을 제출한다. 이미 시작된 부재나 안전·건강 문제는 업무 절차를 위해 무리하게 출근하지 말고, 가능한 시점에 팀장과 People팀에 알린다.\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        },
+        {
+          "chunk_ids": [
+            "9ae56cc0027ef4be111374a4090b373f9ebe4dcdb3083874885bb0b21a56be94"
+          ],
+          "document_id": "b17ea1a3-bc54-525f-b0a8-264251858179",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-015",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "d7bbd6e5-8c0b-4be3-9a64-398f0b7c7373",
+          "score": 0.41414564847946167,
+          "source_reference": "document:ieum-015",
+          "spans": [
+            {
+              "end": 1055,
+              "kind": "body",
+              "start": 839
+            }
+          ],
+          "text": "## 역할과 문의\n\n출장자는 목적·일정·예상 비용을 사실대로 제출하고 영수증을 보관한다. 팀장은 업무 필요를, 재무팀은 예산과 증빙을 확인한다. 승인 상태가 불분명하거나 증빙 대체가 필요하면 결제 전에 포털로 재무팀에 확인한다. 일반 재무 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 전체 흐름은 출장·정산 안내 (문서 ID: ieum-060)에서 확인한다.\n",
+          "title": "국내 출장 사전 승인"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:02.818531+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "R10",
+    "context": {
+      "candidate_chunk_ids": [
+        "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+        "e80428383a1b153e2d6777376de8b918261bf18287f6916da6961b836ab7c1b3",
+        "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b",
+        "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+        "ce0d54cd85f28e1af34dc2a8c2b5ed6b4f27c11e2a5f0fc83e0bf91a58b40772",
+        "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+        "0e06ddeb02b7c9a394c64d63235c50536aee41dbcff6251eccf4f2f470d65b0f",
+        "8db98629874cba2dff5fcc4d166f6cb3b0f883dc16c83d2857069dc6f3fa7d99",
+        "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f",
+        "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab"
+          ],
+          "document_id": "f61c74b5-8ca7-5ae5-8201-20274fd8d9f8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-026",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "52cd78b2-507d-4210-8532-dcd9a2d108b8",
+          "score": 0.5669691562652588,
+          "source_reference": "document:ieum-026",
+          "spans": [
+            {
+              "end": 694,
+              "kind": "body",
+              "start": 412
+            }
+          ],
+          "text": "## 기기 분실·인증 실패\n\n휴대전화나 인증 수단을 분실하면 계정 복구를 즉시 요청한다. 이음 포털의 IT > 계정 복구를 이용하고, 포털에 접근할 수 없으면 #it-helpdesk에 민감한 인증 정보를 빼고 접수한다. Slack과 포털이 모두 불가능하면 입사 때 오프라인으로 배부된 비상연락카드를 사용한다. 타인의 기기나 계정으로 우회 로그인하지 않는다. IT운영팀은 회사의 본인 확인 절차를 안내하고 기존 인증 수단의 회수와 새 수단 등록을 조정한다. 팀장은 코드를 전달받거나 대신 인증하지 않는다.\n",
+          "title": "다중 인증과 계정 복구"
+        },
+        {
+          "chunk_ids": [
+            "e80428383a1b153e2d6777376de8b918261bf18287f6916da6961b836ab7c1b3"
+          ],
+          "document_id": "f61c74b5-8ca7-5ae5-8201-20274fd8d9f8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-026",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "52cd78b2-507d-4210-8532-dcd9a2d108b8",
+          "score": 0.5020661354064941,
+          "source_reference": "document:ieum-026",
+          "spans": [
+            {
+              "end": 189,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 적용 범위\n\n회사 계정으로 Google Workspace, Slack, GitHub, 이음 포털에 로그인하는 구성원에게 적용한다. 서비스별로 제공되는 다중 인증 방법과 복구 흐름이 다를 수 있으므로 화면에 표시된 공식 안내와 IT운영팀의 최신 지침을 따른다. 인증을 우회하거나 다른 사람의 계정을 빌리는 방법은 복구 수단이 아니다.\n",
+          "title": "다중 인증과 계정 복구"
+        },
+        {
+          "chunk_ids": [
+            "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b"
+          ],
+          "document_id": "451b8992-b1bf-5944-b853-9451cef6d2dc",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-058",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "3a658d4d-6176-4b0c-b70d-247642161169",
+          "score": 0.48370954394340515,
+          "source_reference": "document:ieum-058",
+          "spans": [
+            {
+              "end": 215,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 긴급도 구분\n\n계정 비밀번호 재설정, 새 접근권한, 정상 기기 오류는 일반 지원이다. 계정 탈취 의심, 본인이 승인하지 않은 MFA 요청, 기기 분실·도난, 고객·개인정보 오발송, 잘못된 외부 공유, 비밀정보 노출은 보안 사고로 즉시 신고한다. 고객이 이용하는 SaaS 서비스 자체가 중단된 경우는 서비스 장애로 분류한다. 보안과 서비스 장애가 겹치면 두 경로를 모두 사용한다.\n",
+          "title": "계정·기기·오공유 긴급 문제 안내"
+        },
+        {
+          "chunk_ids": [
+            "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f"
+          ],
+          "document_id": "59e69d2e-86c0-5dff-a702-fb8ae312d86c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-024",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "76f0579e-431a-4a46-95f3-c56715b5c745",
+          "score": 0.48110663890838623,
+          "source_reference": "document:ieum-024",
+          "spans": [
+            {
+              "end": 835,
+              "kind": "body",
+              "start": 588
+            }
+          ],
+          "text": "## 분실·도난·잠금 고장\n\n분실이나 도난을 알게 되면 주변에서 기기를 찾느라 신고를 늦추지 말고 즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)의 긴급 경로로 알린다. 기기 이름이나 자산 표기, 마지막으로 확인한 시각과 장소, 당시 열려 있었을 수 있는 업무 계정·자료를 알려 준다. 비밀번호나 인증 코드는 신고에 적지 않는다. 본인이 원격 삭제나 계정 차단을 시도할 수 있다고 단정하지 말고 IT운영팀의 지시를 따른다.\n",
+          "title": "회사 노트북 잠금과 보관"
+        },
+        {
+          "chunk_ids": [
+            "ce0d54cd85f28e1af34dc2a8c2b5ed6b4f27c11e2a5f0fc83e0bf91a58b40772"
+          ],
+          "document_id": "451b8992-b1bf-5944-b853-9451cef6d2dc",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-058",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "3a658d4d-6176-4b0c-b70d-247642161169",
+          "score": 0.4776059091091156,
+          "source_reference": "document:ieum-058",
+          "spans": [
+            {
+              "end": 1778,
+              "kind": "body",
+              "start": 1628
+            }
+          ],
+          "text": "## 연결 문서\n\n상세한 보안 신고는 보안 사고 신고와 초동 대응 (문서 ID: ieum-035), 자료의 잘못된 공개는 업무 파일 공유와 외부 제공 (문서 ID: ieum-031), 일반 계정 복구는 다중 인증과 계정 복구 (문서 ID: ieum-026)를 따른다.\n",
+          "title": "계정·기기·오공유 긴급 문제 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:02.865779+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "R14",
+    "context": {
+      "candidate_chunk_ids": [
+        "f2795c45e5bb167c6d643aeb47738228b6f336d1dff9dfc6b0b75887509983e5",
+        "fda97f7e6fbd794ab5341b567d89e9e29d6bd1ac1428ecff2cdd7729d052f6ae",
+        "114c352ebd4ad9ceffaaf4a1bff7b0d26aa000f7b1d2f22be5834305d6e48e31",
+        "6611cb5765d7bba010af0a37b8e47706dd40c93dbed47fd1d8429401ed09af88",
+        "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f",
+        "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f",
+        "7884bc53a8dc3efc6b8c28c8eec5a3c6f1465ac50d3bbfc3d863e299121109be",
+        "9438e3ebaad299edeed84b07eb5295201e6c8b9bb42480a501960a90bc1abe23",
+        "6aeca7c94f9033509c867fa52db4abc6a60426e71c7809ec933c706d47f141e1",
+        "e5ae52fb2ead45cc7a04d81d458b37e37d18e03d7f237b28ad70c0972c481fe1"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "f2795c45e5bb167c6d643aeb47738228b6f336d1dff9dfc6b0b75887509983e5"
+          ],
+          "document_id": "c2140c61-fc0d-5dcb-ba1c-ae7e29c2440b",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-043",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "56dbfc36-1b73-456f-ac06-c419ab6fe9da",
+          "score": 0.4561654031276703,
+          "source_reference": "document:ieum-043",
+          "spans": [
+            {
+              "end": 1116,
+              "kind": "body",
+              "start": 924
+            }
+          ],
+          "text": "## 급한 요청과 역할\n\n언론·고객·기관의 급한 요청도 권리·사실·보안 검토를 건너뛰지 않는다. 승인 담당자를 찾지 못하면 공개를 보류하고 팀장에게 요청 상태를 알린다. 작성자는 버전과 출처를 준비하고, 자료 소유자는 공개 범위, 팀장은 업무 목적, 보안·개인정보 담당자는 민감 정보 경계를 검토한다. 지정된 대외 발신자만 승인본을 게시한다.\n",
+          "title": "내부 문서의 외부 공개"
+        },
+        {
+          "chunk_ids": [
+            "fda97f7e6fbd794ab5341b567d89e9e29d6bd1ac1428ecff2cdd7729d052f6ae"
+          ],
+          "document_id": "8f79eb38-6172-59d8-83c5-185b50e388e7",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-016",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "b1ea622e-ba31-4e2d-ae9f-bdcfcd61b4e3",
+          "score": 0.45581454038619995,
+          "source_reference": "document:ieum-016",
+          "spans": [
+            {
+              "end": 452,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 승인 후 예약\n\n이 문서는 국내 출장 승인이 끝난 구성원이 교통편을 예약하고 변경·취소 내역을 남기는 절차다. 먼저 국내 출장 사전 승인 (문서 ID: ieum-015)에서 팀장과 재무팀 승인이 모두 기록됐는지 확인한다. 승인 전 표를 구매하지 않는다. 승인된 출장 요청 안에서 예약 담당 재무팀이 제공한 예약 안내 링크를 사용해 승인된 날짜·구간을 예약한다. 안내 링크가 표시되지 않으면 재무팀에 문의한다. 임의로 개인 계정에서 구매하지 않는다. 승인된 경로를 사용할 수 없어 대체 구매가 필요한 경우에는 결제 전에 팀장과 재무팀의 서면 승인을 모두 받는다.\n\n기차는 일반실, 항공은 이코노미석으로 예약한다. 개인 일정 연장, 동반자 좌석, 임의 업그레이드는 회사 경비에 넣지 않는다. 예약 뒤 확인서와 결제 증빙을 출장 기록에 연결하고 방문 일정·비용 부담 프로젝트와 실제 예약이 같은지 확인한다.\n",
+          "title": "출장 교통편 예약"
+        },
+        {
+          "chunk_ids": [
+            "114c352ebd4ad9ceffaaf4a1bff7b0d26aa000f7b1d2f22be5834305d6e48e31"
+          ],
+          "document_id": "32fd5ace-9acb-57d6-8d2d-b76dd546ebfa",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-067",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "78ba6b93-612c-4b65-8667-3ed56c2abf9c",
+          "score": 0.43386489152908325,
+          "source_reference": "document:ieum-067",
+          "spans": [
+            {
+              "end": 809,
+              "kind": "body",
+              "start": 476
+            }
+          ],
+          "text": "## PR을 작성할 때\n\nGitHub PR에는 다음을 적는다.\n\n- 연결된 이슈와 바꾸는 이유\n- 사용자에게 보이는 전후 동작과 범위\n- 변경한 주요 파일·데이터·설정\n- 실행한 검사와 결과, 실행하지 못한 검사와 사유\n- 실패 시 동작, 되돌리기 가능성, 데이터 마이그레이션 영향\n- 인증·권한·개인정보·외부 전송·의존성 위험 검토\n- 배포 후 확인할 정상 조건과 담당 역할\n\n검사 결과를 실제 실행하지 않았다면 통과했다고 표시하지 않는다. 큰 생성 파일이나 넓은 변경은 리뷰어가 핵심 차이를 찾을 수 있도록 이유와 검증 범위를 설명한다. PR 설명에 고객 정보나 비밀정보를 복사하지 않는다.\n",
+          "title": "개발 변경과 코드 리뷰"
+        },
+        {
+          "chunk_ids": [
+            "6611cb5765d7bba010af0a37b8e47706dd40c93dbed47fd1d8429401ed09af88"
+          ],
+          "document_id": "32fd5ace-9acb-57d6-8d2d-b76dd546ebfa",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-067",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "78ba6b93-612c-4b65-8667-3ed56c2abf9c",
+          "score": 0.4293067455291748,
+          "source_reference": "document:ieum-067",
+          "spans": [
+            {
+              "end": 146,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "제품 코드와 개발 문서는 GitHub의 해당 저장소에서 변경 이력을 관리한다. 기본 흐름은 작업 범위 확인, 별도 변경 제출, 자동 검사, 독립 리뷰, 보완, 병합, 배포 확인이다. Pull request(PR)를 열었다는 사실은 승인이나 병합 허가가 아니다.\n",
+          "title": "개발 변경과 코드 리뷰"
+        },
+        {
+          "chunk_ids": [
+            "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f"
+          ],
+          "document_id": "f61c74b5-8ca7-5ae5-8201-20274fd8d9f8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-026",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "52cd78b2-507d-4210-8532-dcd9a2d108b8",
+          "score": 0.42590147256851196,
+          "source_reference": "document:ieum-026",
+          "spans": [
+            {
+              "end": 411,
+              "kind": "body",
+              "start": 190
+            }
+          ],
+          "text": "## 최초 등록과 평상시 사용\n\n계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다. 서비스가 허용하는 회사 승인 인증 방법을 사용하고, 일회용 코드·복구 코드·패스키 등 본인 확인 자료를 다른 사람에게 보내지 않는다. 복구 정보를 Slack, 일반 이메일, 공개되거나 넓게 공유된 문서에 저장하지 않는다. 반복되는 승인 알림 중 본인이 시작하지 않은 요청은 승인하지 않는다.\n",
+          "title": "다중 인증과 계정 복구"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:02.909849+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "R16",
+    "context": {
+      "candidate_chunk_ids": [
+        "6f2336b62b7eacc2588aa0cad209a2da0f824ac94a76d8e9af632f2174f01140",
+        "ba146da8855cb2e87fde22dbd13539aa41a9e7d91bb8353caf283935f04f50cc",
+        "46ebdeb51e7764e62b8af52a252f0def5816f541ef0567e1a456bd596aa8e82b",
+        "421baac98fb00f00fa8d7c309600ab5d7ac0c3df32315fc89a292a23989f6669",
+        "ef41dfc97a2efc12a2ee4819256c9c41daf4e2d6e91c241519b4c8773d9016ad",
+        "ac71222c98cd7e93991b25f203cb8a10c28c576e8f86711d27f234753e3417f9",
+        "352e426adaab7113798d49ee31a02e0d82900ed5af7db7d0770d25052be2d07f",
+        "7f2134e566e3b4025ada30ab64ec93e1938f954d60c07c794960ce3bfbd71e1c",
+        "1252caaec75ace55a966676f033e0996318d915687d80b7e131a200cf8a617dd",
+        "f4d450d566877a586e3df6cd7870e7f40bdc49cfdaaf151abdb699daffaf5dce"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "6f2336b62b7eacc2588aa0cad209a2da0f824ac94a76d8e9af632f2174f01140"
+          ],
+          "document_id": "d05135ce-a532-50a0-be87-31e41e195eb3",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-037",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "a27e2aed-3158-4745-b1be-fe70f8501a53",
+          "score": 0.5157950520515442,
+          "source_reference": "document:ieum-037",
+          "spans": [
+            {
+              "end": 1179,
+              "kind": "body",
+              "start": 878
+            }
+          ],
+          "text": "## 의심 패키지와 비밀정보 노출\n\n새 의존성이 예상하지 않은 설치 스크립트, 외부 전송, 권한 요구를 하거나 출처를 확인할 수 없으면 설치를 멈추고 코드 리뷰에서 문제를 알린다. 토큰·비밀번호가 코드나 Git 기록에 들어갔으면 즉시 #security-incident에 신고하고 저장소 접근과 추가 노출을 막는다. 권한 있는 담당자가 영향을 받은 자격정보를 폐기·교체한 뒤 저장소 담당자와 함께 Git 기록 정리 범위와 협업 영향을 조정한다. 파일에서 문자열을 지우거나 기록을 재작성하는 것만으로 비밀정보가 안전해졌다고 간주하지 않는다.\n",
+          "title": "회사 기기 소프트웨어 설치"
+        },
+        {
+          "chunk_ids": [
+            "ba146da8855cb2e87fde22dbd13539aa41a9e7d91bb8353caf283935f04f50cc"
+          ],
+          "document_id": "4fdb2076-aeb0-53d7-bc66-2ea366e124fb",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-071",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "6827524c-5396-40e6-8a1d-6c4f793a2b25",
+          "score": 0.47466737031936646,
+          "source_reference": "document:ieum-071",
+          "spans": [
+            {
+              "end": 2422,
+              "kind": "body",
+              "start": 2194
+            }
+          ],
+          "text": "비밀값을 현재 파일에서 지우거나 커밋을 새로 올리는 것만으로 과거 Git 기록, 다른 사람의 복제본, 캐시와 로그에서 제거됐다고 보장할 수 없다. Git 기록 삭제·재작성이나 강제 푸시는 저장소 소유자와 보안 담당자가 협의하고, 협업자 복제본·브랜치·자동화에 미칠 영향을 조율한 뒤 승인된 절차로 진행한다. 개발자가 단독으로 `filter-repo`, 강제 푸시 또는 저장소 재작성 명령을 실행하지 않는다.\n",
+          "title": "개발 도구와 비밀정보 관리"
+        },
+        {
+          "chunk_ids": [
+            "46ebdeb51e7764e62b8af52a252f0def5816f541ef0567e1a456bd596aa8e82b"
+          ],
+          "document_id": "4fdb2076-aeb0-53d7-bc66-2ea366e124fb",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-071",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "6827524c-5396-40e6-8a1d-6c4f793a2b25",
+          "score": 0.4105711579322815,
+          "source_reference": "document:ieum-071",
+          "spans": [
+            {
+              "end": 1600,
+              "kind": "body",
+              "start": 1120
+            }
+          ],
+          "text": "## 비밀정보의 저장·사용\n\n비밀정보에는 비밀번호, API 토큰, 개인·서비스 키, 인증서 개인키, 세션 쿠키, 복구 코드, 운영 연결 문자열과 이를 통해 접근할 수 있는 정보가 포함된다.\n\n- 업무용 비밀은 회사가 승인한 자격정보 저장소와 해당 서비스가 제공하는 비밀 저장 기능에 둔다. 회사 제품이나 정확한 메뉴가 확인되지 않으면 IT운영팀에 저장 위치를 문의한다.\n- 소스 코드, Git 이력, `.env.example`, 테스트 데이터, GitHub 이슈·PR, Slack, Google Drive 문서, 고객지원 응답에 비밀값을 직접 적지 않는다.\n- 로컬 개발은 승인된 환경의 로컬 비밀 주입 방식을 사용하고, 샘플 파일에는 실제로 인증되지 않는 자리표시자만 둔다.\n- 필요 최소 권한으로 사용하고, 개인 계정이나 공유 계정으로 자격정보를 돌려 쓰지 않는다.\n- 로그와 오류 메시지에 요청 헤더·환경변수·토큰이 출력되지 않는지 PR에서 확인한다.\n",
+          "title": "개발 도구와 비밀정보 관리"
+        },
+        {
+          "chunk_ids": [
+            "421baac98fb00f00fa8d7c309600ab5d7ac0c3df32315fc89a292a23989f6669"
+          ],
+          "document_id": "32fd5ace-9acb-57d6-8d2d-b76dd546ebfa",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-067",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "78ba6b93-612c-4b65-8667-3ed56c2abf9c",
+          "score": 0.4026912748813629,
+          "source_reference": "document:ieum-067",
+          "spans": [
+            {
+              "end": 475,
+              "kind": "body",
+              "start": 147
+            }
+          ],
+          "text": "## 변경을 시작하기 전\n\n먼저 연결된 GitHub 이슈 또는 변경 목적을 기록한다. 어떤 동작이 바뀌는지, 영향을 받는 사용자와 구성 요소, 기존 호환성, 데이터 변경 여부를 확인한다. 작업 범위가 커서 한 번에 안전하게 리뷰하기 어렵다면 독립적으로 확인 가능한 단위로 나눈다.\n\n고객 자료, 실제 접근 토큰, 비밀번호, 개인 식별정보를 코드·테스트 fixture·커밋 메시지·이슈·PR에 넣지 않는다. 테스트는 합성 자료를 우선 사용하고, 운영자료 접근이 필요하면 승인된 접근 절차와 최소 권한을 따른다. 새 패키지·외부 서비스·관리자 권한이 필요한 경우 개발 도구 기준을 따른다.\n",
+          "title": "개발 변경과 코드 리뷰"
+        },
+        {
+          "chunk_ids": [
+            "ef41dfc97a2efc12a2ee4819256c9c41daf4e2d6e91c241519b4c8773d9016ad"
+          ],
+          "document_id": "2f47a990-c073-5735-bbeb-e55eed0218ee",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-062",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "beeac03d-8220-448b-86e9-72a544e5167d",
+          "score": 0.4020419120788574,
+          "source_reference": "document:ieum-062",
+          "spans": [
+            {
+              "end": 2289,
+              "kind": "body",
+              "start": 1913
+            }
+          ],
+          "text": "## 복구 요청\n\n파일이 사라지거나 손상되면 덮어쓰기·추가 편집·폴더 이동을 멈추고 파일명·링크·저장 위치·마지막 정상 시각·발견 시각·영향 범위·이미 한 조치를 기록한다. Google Drive에서는 회사 계정과 공유드라이브를 확인한 뒤 휴지통이나 최근 활동을 살펴본다. 사용자 휴지통과 관리자 복구는 서로 다른 흐름이며 기간과 복구 범위가 제한될 수 있다. 관리자 복구가 필요한 경우 삭제 날짜 범위와 대상 계정을 IT운영팀에 즉시 전달하고, 공유드라이브 자료는 별도 절차로 확인한다. GitHub에서는 저장소와 변경 이력을 확인하되 기록 재작성이나 강제 푸시는 담당 팀과 조율한다. 침해·랜섬웨어·오공유가 의심되면 #security-incident로 즉시 신고한다.\n",
+          "title": "업무 기록 보존표와 복구 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:02.955774+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "R18",
+    "context": {
+      "candidate_chunk_ids": [
+        "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+        "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f",
+        "dcaa92d4acb408e4d75a538166c358435e77725e14f118861dd378a8726e2e2c",
+        "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13",
+        "98cd2d71552a6969579ed9dfd33122f65136e51f0a10727700bc0aa02ac57cdb",
+        "f05be4f1ebd758680faf5d94d4f70512778ff32fabde0b4e1a7e4cca138d23b6",
+        "fda1a0a59123ef438264f71ddfde6553645b8c6ac676a580aab319c7688cfd5c",
+        "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8",
+        "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6"
+          ],
+          "document_id": "57c0b9b8-90ce-501d-857c-47552b283ad8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-019",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "92a9266c-cb55-4fff-92c1-24dbed68ceef",
+          "score": 0.6406278610229492,
+          "source_reference": "document:ieum-019",
+          "spans": [
+            {
+              "end": 993,
+              "kind": "body",
+              "start": 390
+            }
+          ],
+          "text": "## 검토·보완·지급\n\n팀장은 업무 관련성과 프로젝트 배정을 확인해 접수 후 2영업일 안에 승인하거나 보완을 요청한다. 팀장이 반려 또는 보완을 선택하면 부족한 항목과 사유를 확인해 같은 신청 건에 보완한다. 승인 건은 재무팀이 영업일 3일 안에 증빙과 중복 여부를 검토한다. 승인 완료 후에도 재무팀의 최종 검토 상태를 확인한다.\n\n지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다. 보완 요청이 있으면 보완 자료가 제출된 뒤 재무팀이 최종 검토를 완료한 달을 기준으로 지급일을 정한다. 포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다.\n\n출장 승인 한도를 넘긴 미승인 금액, 개인 비용, 중복 청구는 일반 경비로 처리하지 않는다. 구성원은 결제 증빙을, 팀장은 업무 필요를, 재무팀은 증빙·예외·지급 일정을 확인한다. 일반 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 업무용 구매와 공급업체 선택 (문서 ID: ieum-021), 출장·정산 안내 (문서 ID: ieum-060), 회사 역할과 문의 길잡이 (문서 ID: ieum-053).\n",
+          "title": "경비 정산 제출과 지급"
+        },
+        {
+          "chunk_ids": [
+            "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73"
+          ],
+          "document_id": "57c0b9b8-90ce-501d-857c-47552b283ad8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-019",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "92a9266c-cb55-4fff-92c1-24dbed68ceef",
+          "score": 0.5196012258529663,
+          "source_reference": "document:ieum-019",
+          "spans": [
+            {
+              "end": 389,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 제출 준비와 기한\n\n업무를 위해 개인이 먼저 결제한 비용을 정산할 때 적용한다. 출장 예약과 사전 한도는 해당 출장 안내에서 먼저 승인받는다. 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다. 함께한 업무 식사라면 참석자와 목적도 기록한다. 개인 용도 지출이나 같은 영수증을 두 번 청구하지 않는다.\n\n기한을 넘길 가능성이 있으면 기한 전에 재무팀에 포털 문의를 남겨 연장을 승인받는다. 이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다. 승인 전까지 지급이 확정된 것으로 안내하지 않는다. 영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다.\n",
+          "title": "경비 정산 제출과 지급"
+        },
+        {
+          "chunk_ids": [
+            "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f"
+          ],
+          "document_id": "7229f41c-e7b8-5ccc-b484-1760966efd6e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-018",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "35ada92f-5663-4de1-9e76-98b176519b9e",
+          "score": 0.48807352781295776,
+          "source_reference": "document:ieum-018",
+          "spans": [
+            {
+              "end": 890,
+              "kind": "body",
+              "start": 334
+            }
+          ],
+          "text": "## 제출·누락·정정\n\n결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 날짜, 출장 기록 번호, 참석자 수, 업무상 식사 여부와 영수증을 등록한다. 동료와 함께 먹은 경우 실제 참석자와 각자 부담 금액을 기록해 같은 영수증의 중복 청구를 막는다. 영수증을 잃어버리면 사실대로 표시하고 재무팀에 대체 증빙 가능 여부를 묻는다. 증빙이 자동 면제되는 것은 아니다.\n\n한도나 참석 정보를 잘못 입력했다면 지급 전에 기존 경비 건을 수정한다. 이미 검토가 끝난 뒤 차이를 발견하면 신청 번호와 수정 사유를 재무팀에 보내고, 기존 기록을 지우거나 새 건으로 중복 신청하지 않는다. 일반 지급 일정과 보완 흐름은 경비 정산 제출과 지급 (문서 ID: ieum-019)을 따른다.\n\n출장자는 실제 지출만 제출하고, 팀장은 업무 목적을 확인하며, 재무팀은 영수증·한도·중복 여부를 검토한다. 일반 재무 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 국내 출장 사전 승인 (문서 ID: ieum-015), 출장·정산 안내 (문서 ID: ieum-060).\n",
+          "title": "출장 중 식비 정산"
+        },
+        {
+          "chunk_ids": [
+            "dcaa92d4acb408e4d75a538166c358435e77725e14f118861dd378a8726e2e2c"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.45346885919570923,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 1527,
+              "kind": "body",
+              "start": 1008
+            }
+          ],
+          "text": "## 법인카드와 비용 반려\n\n법인카드는 업무 승인에 연결된 지출만 사용한다. 현재 기본 월 한도는 카드당 1,000,000원이며 건당 500,000원을 넘으면 결제 전에 재무팀의 별도 승인을 받는다. 사용자는 결제 후 3영업일 안에 영수증, 업무 목적, 프로젝트를 포털에 연결한다. 개인 비용·현금성 거래·한도 회피용 분할 결제는 금지한다. 카드 분실 또는 이상 거래는 30분 안에 포털의 재무 > 법인카드 신고로 알리고 카드사 차단을 요청한다. 포털을 사용할 수 없으면 재무팀과 팀장에게 가용 회사 채널로 알린다.\n\n팀장 검토, 재무 검토, 지급은 각각 다른 단계다. 경비 제출 후 팀장은 2영업일 안에 승인·보완 요청, 재무팀은 승인 후 영업일 3일 안에 증빙을 검토한다. 재무팀 최종 검토가 끝난 달의 다음 달 15일에 지급하며 은행 휴무일이면 다음 은행 영업일을 사용한다. 반려되면 누락된 영수증·출장 번호·업무 목적을 확인해 보완 요청을 다시 제출한다. 제출이 늦을 것 같으면 기한 전에 재무팀에 연장 요청을 남긴다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        },
+        {
+          "chunk_ids": [
+            "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.4098893105983734,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 571,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 출장 전부터 정산까지\n\n출장 목적, 장소, 일정, 비용 부담 프로젝트를 확정한 뒤 출발 2영업일 전까지 이음 포털의 재무 > 국내 출장 신청에 올린다. 팀장과 재무팀 승인이 모두 기록된 뒤 재무팀이 승인된 출장 요청에 제공한 예약 안내 링크를 사용한다. 링크가 보이지 않으면 재무팀에 문의하고 임의 구매하지 않는다. 기차는 일반실, 항공은 이코노미석, 숙박은 세금 포함 1박 160,000원까지가 현재 회사 기준이다. 초과가 불가피하면 결제 전에 팀장과 재무팀의 추가 승인을 받는다. 승인 총액이 20% 넘게 늘거나 날짜·방문지가 바뀌면 예약 변경 전에 재승인을 받는다.\n\n출장 중에는 실제 지출 영수증과 변경 기록을 보관한다. 출장 식비는 1인당 하루 최대 35,000원이며 일정에 포함되거나 주최자가 제공한 식사는 중복 청구하지 않는다. 각 거래의 결제일로부터 10영업일 안에 거래별 업무 목적과 출장 번호를 연결해 경비 정산을 제출한다. 출장 기간이 길어도 귀환일까지 제출을 미루지 않는다. 영수증을 잃어버렸다면 사실대로 알리고 재무팀에 대체 증빙을 요청한다. 승인이나 증빙이 없으면 지급을 보장하지 않는다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.002584+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D02",
+    "context": {
+      "candidate_chunk_ids": [
+        "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+        "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "594916f1d81f3e8a591fd9663ebae31af3bafc3de1289f3cff87f4db6e4e0956",
+        "dcaa92d4acb408e4d75a538166c358435e77725e14f118861dd378a8726e2e2c",
+        "6f4a7377a9f19cab0dcbff79f8087c801d494db5b84b3cb9de2ff202f8393f9f",
+        "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f",
+        "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13",
+        "757e7a614fdfb6ccb13eb063a4fa52ed3fbdd9d0d66340794f1ace7e88836d19",
+        "9ae56cc0027ef4be111374a4090b373f9ebe4dcdb3083874885bb0b21a56be94",
+        "71d6ca0cd064bfdb8c7f6104bc5521d875d7dd7ac5a69f4ee857ce53e6b82b07"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6"
+          ],
+          "document_id": "57c0b9b8-90ce-501d-857c-47552b283ad8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-019",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "92a9266c-cb55-4fff-92c1-24dbed68ceef",
+          "score": 0.5470561981201172,
+          "source_reference": "document:ieum-019",
+          "spans": [
+            {
+              "end": 993,
+              "kind": "body",
+              "start": 390
+            }
+          ],
+          "text": "## 검토·보완·지급\n\n팀장은 업무 관련성과 프로젝트 배정을 확인해 접수 후 2영업일 안에 승인하거나 보완을 요청한다. 팀장이 반려 또는 보완을 선택하면 부족한 항목과 사유를 확인해 같은 신청 건에 보완한다. 승인 건은 재무팀이 영업일 3일 안에 증빙과 중복 여부를 검토한다. 승인 완료 후에도 재무팀의 최종 검토 상태를 확인한다.\n\n지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다. 보완 요청이 있으면 보완 자료가 제출된 뒤 재무팀이 최종 검토를 완료한 달을 기준으로 지급일을 정한다. 포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다.\n\n출장 승인 한도를 넘긴 미승인 금액, 개인 비용, 중복 청구는 일반 경비로 처리하지 않는다. 구성원은 결제 증빙을, 팀장은 업무 필요를, 재무팀은 증빙·예외·지급 일정을 확인한다. 일반 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 업무용 구매와 공급업체 선택 (문서 ID: ieum-021), 출장·정산 안내 (문서 ID: ieum-060), 회사 역할과 문의 길잡이 (문서 ID: ieum-053).\n",
+          "title": "경비 정산 제출과 지급"
+        },
+        {
+          "chunk_ids": [
+            "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73"
+          ],
+          "document_id": "57c0b9b8-90ce-501d-857c-47552b283ad8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-019",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "92a9266c-cb55-4fff-92c1-24dbed68ceef",
+          "score": 0.542148232460022,
+          "source_reference": "document:ieum-019",
+          "spans": [
+            {
+              "end": 389,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 제출 준비와 기한\n\n업무를 위해 개인이 먼저 결제한 비용을 정산할 때 적용한다. 출장 예약과 사전 한도는 해당 출장 안내에서 먼저 승인받는다. 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다. 함께한 업무 식사라면 참석자와 목적도 기록한다. 개인 용도 지출이나 같은 영수증을 두 번 청구하지 않는다.\n\n기한을 넘길 가능성이 있으면 기한 전에 재무팀에 포털 문의를 남겨 연장을 승인받는다. 이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다. 승인 전까지 지급이 확정된 것으로 안내하지 않는다. 영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다.\n",
+          "title": "경비 정산 제출과 지급"
+        },
+        {
+          "chunk_ids": [
+            "594916f1d81f3e8a591fd9663ebae31af3bafc3de1289f3cff87f4db6e4e0956"
+          ],
+          "document_id": "e80cd27e-6c9e-5841-bdac-45cfcc1c3c47",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-049",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "215ed0f7-5df0-49de-a1c2-519543741bae",
+          "score": 0.5147450566291809,
+          "source_reference": "document:ieum-049",
+          "spans": [
+            {
+              "end": 666,
+              "kind": "body",
+              "start": 402
+            }
+          ],
+          "text": "## 한도와 결제·정산\n\n외부 직무 교육 지원은 구성원 1명당 회계연도별 최대 **500,000원**이다. 승인된 교육에 실제 사용한 금액만 한도에서 차감하며 남은 금액은 다음 회계연도로 이월하지 않는다. 회사가 직접 결제하는 것이 원칙이다. 개인 결제는 결제 전에 팀장과 재무팀의 예외 승인을 받은 경우에만 가능하다. 개인 결제 영수증은 결제 후 10영업일 안에 경비 정산에 제출한다. 이수 자료와 업무 적용 기록은 교육 종료 후 5영업일 안에 포털에 별도로 등록한다.\n",
+          "title": "직무 교육 신청과 비용 지원"
+        },
+        {
+          "chunk_ids": [
+            "dcaa92d4acb408e4d75a538166c358435e77725e14f118861dd378a8726e2e2c"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.5142416954040527,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 1527,
+              "kind": "body",
+              "start": 1008
+            }
+          ],
+          "text": "## 법인카드와 비용 반려\n\n법인카드는 업무 승인에 연결된 지출만 사용한다. 현재 기본 월 한도는 카드당 1,000,000원이며 건당 500,000원을 넘으면 결제 전에 재무팀의 별도 승인을 받는다. 사용자는 결제 후 3영업일 안에 영수증, 업무 목적, 프로젝트를 포털에 연결한다. 개인 비용·현금성 거래·한도 회피용 분할 결제는 금지한다. 카드 분실 또는 이상 거래는 30분 안에 포털의 재무 > 법인카드 신고로 알리고 카드사 차단을 요청한다. 포털을 사용할 수 없으면 재무팀과 팀장에게 가용 회사 채널로 알린다.\n\n팀장 검토, 재무 검토, 지급은 각각 다른 단계다. 경비 제출 후 팀장은 2영업일 안에 승인·보완 요청, 재무팀은 승인 후 영업일 3일 안에 증빙을 검토한다. 재무팀 최종 검토가 끝난 달의 다음 달 15일에 지급하며 은행 휴무일이면 다음 은행 영업일을 사용한다. 반려되면 누락된 영수증·출장 번호·업무 목적을 확인해 보완 요청을 다시 제출한다. 제출이 늦을 것 같으면 기한 전에 재무팀에 연장 요청을 남긴다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        },
+        {
+          "chunk_ids": [
+            "6f4a7377a9f19cab0dcbff79f8087c801d494db5b84b3cb9de2ff202f8393f9f"
+          ],
+          "document_id": "23dfcc99-35a2-5519-a05c-eb8789ac3563",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-020",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "29fbbc1d-330a-4af7-b49b-fa179909a858",
+          "score": 0.47721928358078003,
+          "source_reference": "document:ieum-020",
+          "spans": [
+            {
+              "end": 424,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 결제 전 확인\n\n법인카드는 승인된 출장, 업무 구매, 업무 회의 비용만 결제한다. 카드 한도나 카드 보유 자체가 구매 승인을 뜻하지 않는다. 출장에는 국내 출장 사전 승인 (문서 ID: ieum-015), 물품·소프트웨어에는 업무용 구매와 공급업체 선택 (문서 ID: ieum-021)의 승인을 먼저 받는다.\n\n카드 1장당 기본 월 한도는 **1,000,000원**이며, 한 건이 **500,000원 초과**인 결제는 결제 전에 재무팀의 별도 승인을 받는다. 월 한도를 변경할 때는 사용 전에 팀장과 재무팀이 사유와 종료일을 포털에 기록한다. 개인 식비·가족 지출·현금 인출·상품권 등 현금성 거래를 결제하지 않는다. 승인 구간을 피하려고 거래를 나누지 않는다. 개인 비용과 회사 비용이 한 영수증에 섞였으면 결제 전에 나누거나 재무팀 안내를 받는다.\n",
+          "title": "법인카드 사용과 정산"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.050039+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D05",
+    "context": {
+      "candidate_chunk_ids": [
+        "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8",
+        "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13",
+        "fe9ede057bd3d171662bd156d4bfac3b4b7e75e70f60e1e1a7d2058dbe3cdd4e",
+        "9de8f374a5cb53feefd2d69d6aab746324a454fefa33d52652733d1e404b2013",
+        "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "757e7a614fdfb6ccb13eb063a4fa52ed3fbdd9d0d66340794f1ace7e88836d19",
+        "71d6ca0cd064bfdb8c7f6104bc5521d875d7dd7ac5a69f4ee857ce53e6b82b07",
+        "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f",
+        "6f4a7377a9f19cab0dcbff79f8087c801d494db5b84b3cb9de2ff202f8393f9f",
+        "2459749c6b429e956717e3812559654897f27fc3eac2b50cf811295ce75ceb63"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8"
+          ],
+          "document_id": "08193bd2-4311-506f-acd2-ca530db1c6ae",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-017",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "b3d2b526-af72-4eb3-a48c-c85a800d2274",
+          "score": 0.5757529735565186,
+          "source_reference": "document:ieum-017",
+          "spans": [
+            {
+              "end": 873,
+              "kind": "body",
+              "start": 319
+            }
+          ],
+          "text": "## 한도 초과·변경·취소\n\n지역 행사나 예약 가능 객실 부족으로 1박 한도를 넘겨야 하면 결제 전에 팀장과 재무팀의 추가 승인을 모두 포털에 기록한다. 출장 일정·숙박일 변경으로 승인 총액보다 20% 넘게 늘어나는 경우도 재승인 대상이다. 승인이 되지 않으면 더 비싼 방을 먼저 예약해 두지 않는다.\n\n출장이 취소되거나 숙박일이 줄면 예약을 변경·취소하고 환불 확인서를 정산 자료에 남긴다. 환불액과 취소 수수료는 실제 청구액에 반영한다. 동반자 비용, 객실 등급 업그레이드, 개인 일정의 추가 숙박은 회사 비용에 포함하지 않는다. 변경이 먼저 처리된 긴급 상황은 팀장과 재무팀에 가능한 즉시 알리고 사유와 증빙을 보완한다.\n\n출장자는 숙박 필요와 증빙을 제출한다. 팀장은 일정상 필요를 확인하고 재무팀은 한도·승인·환불 자료를 검토한다. 일반 재무 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 국내 출장 사전 승인 (문서 ID: ieum-015), 출장 중 식비 정산 (문서 ID: ieum-018), 출장·정산 안내 (문서 ID: ieum-060).\n",
+          "title": "출장 숙박 예약"
+        },
+        {
+          "chunk_ids": [
+            "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.5596510171890259,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 571,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 출장 전부터 정산까지\n\n출장 목적, 장소, 일정, 비용 부담 프로젝트를 확정한 뒤 출발 2영업일 전까지 이음 포털의 재무 > 국내 출장 신청에 올린다. 팀장과 재무팀 승인이 모두 기록된 뒤 재무팀이 승인된 출장 요청에 제공한 예약 안내 링크를 사용한다. 링크가 보이지 않으면 재무팀에 문의하고 임의 구매하지 않는다. 기차는 일반실, 항공은 이코노미석, 숙박은 세금 포함 1박 160,000원까지가 현재 회사 기준이다. 초과가 불가피하면 결제 전에 팀장과 재무팀의 추가 승인을 받는다. 승인 총액이 20% 넘게 늘거나 날짜·방문지가 바뀌면 예약 변경 전에 재승인을 받는다.\n\n출장 중에는 실제 지출 영수증과 변경 기록을 보관한다. 출장 식비는 1인당 하루 최대 35,000원이며 일정에 포함되거나 주최자가 제공한 식사는 중복 청구하지 않는다. 각 거래의 결제일로부터 10영업일 안에 거래별 업무 목적과 출장 번호를 연결해 경비 정산을 제출한다. 출장 기간이 길어도 귀환일까지 제출을 미루지 않는다. 영수증을 잃어버렸다면 사실대로 알리고 재무팀에 대체 증빙을 요청한다. 승인이나 증빙이 없으면 지급을 보장하지 않는다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        },
+        {
+          "chunk_ids": [
+            "fe9ede057bd3d171662bd156d4bfac3b4b7e75e70f60e1e1a7d2058dbe3cdd4e"
+          ],
+          "document_id": "b17ea1a3-bc54-525f-b0a8-264251858179",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-015",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "d7bbd6e5-8c0b-4be3-9a64-398f0b7c7373",
+          "score": 0.5536525249481201,
+          "source_reference": "document:ieum-015",
+          "spans": [
+            {
+              "end": 409,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 신청과 승인\n\n이 안내는 국내 업무 출장의 신청과 회사가 정한 예약 한도를 다룬다. 해외 출장의 예산·세금·승인 기준은 여기서 정하지 않는다. 구성원은 출발 예정일 2영업일 전까지 이음 포털의 **재무 > 국내 출장 신청**에 출장 목적, 날짜, 방문지, 일정, 예상 교통·숙박비와 비용 부담 프로젝트를 등록한다. 소속 팀장은 업무 필요와 일정을, 재무팀은 예산과 증빙 계획을 확인한다. 두 승인이 모두 포털에 기록된 뒤에만 예약한다.\n\n기차는 일반실, 항공은 이코노미석을 사용한다. 숙박비 한도는 세금 포함 1박 160,000원이다. 지역 행사 등으로 한도를 넘겨야 하면 결제 전에 팀장과 재무팀의 추가 승인을 모두 기록한다. 이 금액은 이음웍스가 정한 회사 기준이며 공무원 여비 기준을 회사 기준으로 적용한 것이 아니다.\n",
+          "title": "국내 출장 사전 승인"
+        },
+        {
+          "chunk_ids": [
+            "9de8f374a5cb53feefd2d69d6aab746324a454fefa33d52652733d1e404b2013"
+          ],
+          "document_id": "08193bd2-4311-506f-acd2-ca530db1c6ae",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-017",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "b3d2b526-af72-4eb3-a48c-c85a800d2274",
+          "score": 0.5505638122558594,
+          "source_reference": "document:ieum-017",
+          "spans": [
+            {
+              "end": 318,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 숙박 필요와 기준\n\n국내 출장 신청에 숙박 필요와 숙박일이 승인된 경우에만 예약한다. 당일 이동이 가능한 일정이라고 해서 숙박이 자동 승인되는 것은 아니다. 1인 1실 기준으로 회사 부담 숙박비는 **세금 포함 1박 160,000원**까지다. 조식이 객실 요금에 포함되어 있으면 같은 식사를 출장 식비로 다시 청구하지 않는다.\n\n재무 > 국내 출장 신청에 안내된 회사 예약 경로를 우선 사용한다. 승인된 구간·날짜·인원에 맞는 예약 확인서와 결제 증빙을 출장 기록에 붙인다. 경로에서 예약 가능한 방이 없으면 결제 전 팀장과 재무팀에 대체 예약 방법을 확인한다.\n",
+          "title": "출장 숙박 예약"
+        },
+        {
+          "chunk_ids": [
+            "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73"
+          ],
+          "document_id": "57c0b9b8-90ce-501d-857c-47552b283ad8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-019",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "92a9266c-cb55-4fff-92c1-24dbed68ceef",
+          "score": 0.5398712158203125,
+          "source_reference": "document:ieum-019",
+          "spans": [
+            {
+              "end": 389,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 제출 준비와 기한\n\n업무를 위해 개인이 먼저 결제한 비용을 정산할 때 적용한다. 출장 예약과 사전 한도는 해당 출장 안내에서 먼저 승인받는다. 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다. 함께한 업무 식사라면 참석자와 목적도 기록한다. 개인 용도 지출이나 같은 영수증을 두 번 청구하지 않는다.\n\n기한을 넘길 가능성이 있으면 기한 전에 재무팀에 포털 문의를 남겨 연장을 승인받는다. 이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다. 승인 전까지 지급이 확정된 것으로 안내하지 않는다. 영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다.\n",
+          "title": "경비 정산 제출과 지급"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.098557+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D07",
+    "context": {
+      "candidate_chunk_ids": [
+        "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b",
+        "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f",
+        "3f9d6b4471ff119494f731cd531b356f66714c08b4fba64426f70bb2089143ae",
+        "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+        "750b68efb2c65607b74449fdb3094ba583bff80db9c84a843eebaa8d4b86ab8a",
+        "4b71542495b8c177215f5f80897b4e6e6b57b04e8c05fa6346850a564e747e21",
+        "035aef72d16ad9d706845e40b9472812ed8c5b7d4622092fe7da60d874248af3",
+        "a8cdc6bf42c1a0198b7f0a4cc0343429126b3d995875fe2234ee5062b851a31c",
+        "e80428383a1b153e2d6777376de8b918261bf18287f6916da6961b836ab7c1b3",
+        "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b"
+          ],
+          "document_id": "451b8992-b1bf-5944-b853-9451cef6d2dc",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-058",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "3a658d4d-6176-4b0c-b70d-247642161169",
+          "score": 0.4697118103504181,
+          "source_reference": "document:ieum-058",
+          "spans": [
+            {
+              "end": 215,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 긴급도 구분\n\n계정 비밀번호 재설정, 새 접근권한, 정상 기기 오류는 일반 지원이다. 계정 탈취 의심, 본인이 승인하지 않은 MFA 요청, 기기 분실·도난, 고객·개인정보 오발송, 잘못된 외부 공유, 비밀정보 노출은 보안 사고로 즉시 신고한다. 고객이 이용하는 SaaS 서비스 자체가 중단된 경우는 서비스 장애로 분류한다. 보안과 서비스 장애가 겹치면 두 경로를 모두 사용한다.\n",
+          "title": "계정·기기·오공유 긴급 문제 안내"
+        },
+        {
+          "chunk_ids": [
+            "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f"
+          ],
+          "document_id": "f61c74b5-8ca7-5ae5-8201-20274fd8d9f8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-026",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "52cd78b2-507d-4210-8532-dcd9a2d108b8",
+          "score": 0.44199711084365845,
+          "source_reference": "document:ieum-026",
+          "spans": [
+            {
+              "end": 411,
+              "kind": "body",
+              "start": 190
+            }
+          ],
+          "text": "## 최초 등록과 평상시 사용\n\n계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다. 서비스가 허용하는 회사 승인 인증 방법을 사용하고, 일회용 코드·복구 코드·패스키 등 본인 확인 자료를 다른 사람에게 보내지 않는다. 복구 정보를 Slack, 일반 이메일, 공개되거나 넓게 공유된 문서에 저장하지 않는다. 반복되는 승인 알림 중 본인이 시작하지 않은 요청은 승인하지 않는다.\n",
+          "title": "다중 인증과 계정 복구"
+        },
+        {
+          "chunk_ids": [
+            "3f9d6b4471ff119494f731cd531b356f66714c08b4fba64426f70bb2089143ae"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.43987488746643066,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 1007,
+              "kind": "body",
+              "start": 572
+            }
+          ],
+          "text": "## 업무 구매\n\n구매 전에 이음 포털의 재무 > 업무 구매에 목적, 수량, 세금 포함 예상 총액, 예산 코드, 공급업체, 유지 비용을 작성한다.\n\n| 총액 | 승인·검토 |\n|---|---|\n| 300,000원 미만 | 팀장 승인 |\n| 300,000원 이상 2,000,000원 미만 | 팀장과 재무팀 승인 |\n| 2,000,000원 이상 | 비교 견적 3곳과 팀장·재무팀의 서면 승인 |\n\n비교 견적 세 곳을 받을 수 없는 공급처는 이유와 대안을 적고 재무팀의 별도 승인을 받는다. 새 SaaS, 소프트웨어, 클라우드, 네트워크 장비, 고객정보 처리 서비스는 결제·계약 전에 IT운영팀과 보안·개인정보 담당자의 기술·자료 검토도 마친다. 자동 갱신, 사용 인원, 데이터 반환·삭제, 전체 비용을 기록한다. 주문을 나누거나 개인 계정으로 먼저 결제해 승인을 우회하지 않는다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        },
+        {
+          "chunk_ids": [
+            "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb"
+          ],
+          "document_id": "f61c74b5-8ca7-5ae5-8201-20274fd8d9f8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-026",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "52cd78b2-507d-4210-8532-dcd9a2d108b8",
+          "score": 0.43441563844680786,
+          "source_reference": "document:ieum-026",
+          "spans": [
+            {
+              "end": 918,
+              "kind": "body",
+              "start": 695
+            }
+          ],
+          "text": "## 의심 승인과 계정 침해\n\n본인이 시작하지 않은 인증 알림을 승인하지 말고, 반복되면 가능한 공식 계정 보호 조치를 수행한 뒤 #security-incident에 즉시 신고한다. 보안 사고 포털을 사용할 수 있으면 신고를 보완한다. 신고에는 계정 종류, 알림 시각과 본인이 취한 조치만 기록하고 코드나 비밀번호는 기록하지 않는다. 세션 차단 등 관리 조치는 IT운영팀이 상황을 확인해 수행한다.\n",
+          "title": "다중 인증과 계정 복구"
+        },
+        {
+          "chunk_ids": [
+            "750b68efb2c65607b74449fdb3094ba583bff80db9c84a843eebaa8d4b86ab8a"
+          ],
+          "document_id": "b5bdd805-35d6-51ea-a128-50ab8764d2e0",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-054",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "e3f453cb-797c-4152-be61-200e6db54dd9",
+          "score": 0.4280397593975067,
+          "source_reference": "document:ieum-054",
+          "spans": [
+            {
+              "end": 1501,
+              "kind": "body",
+              "start": 1301
+            }
+          ],
+          "text": "## 변경과 종료\n\n도구의 비용·계약·저장 위치·접근 역할·외부 연결이 바뀌면 기존 승인 범위가 계속 유효한지 재검토한다. 담당자가 바뀌면 개인 계정 공유 대신 역할 기반 회사 계정과 접근 권한을 수정한다. 서비스 사용 종료나 공급자 변경 시 원본 위치, 내보낼 자료, 접근 회수, 보존·삭제 기준을 기록하고 법적·계약상 보류 대상을 임의 삭제하지 않는다.\n",
+          "title": "승인된 업무 도구와 데이터 범위"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.143313+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D11",
+    "context": {
+      "candidate_chunk_ids": [
+        "98cd2d71552a6969579ed9dfd33122f65136e51f0a10727700bc0aa02ac57cdb",
+        "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5",
+        "f05be4f1ebd758680faf5d94d4f70512778ff32fabde0b4e1a7e4cca138d23b6",
+        "05d2aa5cd4aef3122dc227a0abdbf647232fb0e2710e97afe793a3750db899f7",
+        "666d33de09e972bfd4dc1558089f75553f60b2d37b29283ddf23165100e93122",
+        "14d7dbc8abe3511b30a34077d26d6ef6c2907e65eeff3c8a13f92a64142a2252",
+        "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+        "49baea6c805b61fa57716887e6d686b3215bd41cf78c396cb11c33c08fdccc72",
+        "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8",
+        "504cd64ba2fcf26ea95f0b721eb1d7170136d529205cbfbf4cb6c412970573b7"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "98cd2d71552a6969579ed9dfd33122f65136e51f0a10727700bc0aa02ac57cdb"
+          ],
+          "document_id": "a3844dac-56cf-587c-bbdf-2d16cb4f8ba6",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-003",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "90000e75-589f-47ca-b6ca-c0c273b61642",
+          "score": 0.6292942762374878,
+          "source_reference": "document:ieum-003",
+          "spans": [
+            {
+              "end": 480,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 회사가 제공하는 기준\n\n이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다. 회사 제공 기준은 다음과 같다.\n\n| 사유 | 회사 제공 일수 |\n|---|---:|\n| 구성원 본인의 혼인 | 5근무일 |\n| 배우자·자녀·부모의 사망 | 5근무일 |\n| 형제자매·조부모의 사망 | 3근무일 |\n\n회사 경조 휴가는 행사 발생일부터 30일 이내에 사용하는 것이 기본 기준이다. 본인 혼인처럼 행사 전에 사용해야 하거나 행사 전후 일정 조정이 필요한 경우에는 People팀에 미리 알려 사용 기간을 조정하고 결과를 포털에 기록한다. 이 회사 기준은 법령이나 개인별 계약에 따라 적용될 수 있는 별도 권리를 계산하거나 대체하지 않는다. 가족 관계나 사유가 표에 없거나 다른 제도와 함께 적용되는지 불분명하면 People팀이 현행 기준과 개인 상황을 확인한다. 팀장은 회사 제공 일수만을 이유로 별도 권리를 줄이지 않는다.\n",
+          "title": "가족 경조사 휴가"
+        },
+        {
+          "chunk_ids": [
+            "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.5678820610046387,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 1334,
+              "kind": "body",
+              "start": 993
+            }
+          ],
+          "text": "## 회사 복지와 법적 권리의 구분\n\n회사의 복지·운영 기준으로 연차는 예정일 3영업일 전 신청을 목표로 하며 급한 상황은 가능한 시점에 신청을 보완한다. 회사 단기 병가 한도는 연간 최대 5근무일이고, 연속 3근무일 초과 예상 또는 한도 초과는 People팀 확인으로 연결한다. 회사 경조 휴가 기준은 본인 혼인 5근무일, 배우자·자녀·부모 사망 5근무일, 형제자매·조부모 사망 3근무일이며 원칙적으로 30일 안에 사용한다. 이 수치는 회사가 정한 복지·운영 범위이며 법률상 최소·최대 기준이나 개인의 전체 권리를 계산한 값이 아니다. 실제 개인별 적용은 People팀이 현재 기준과 인사 기록을 확인한다.\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        },
+        {
+          "chunk_ids": [
+            "f05be4f1ebd758680faf5d94d4f70512778ff32fabde0b4e1a7e4cca138d23b6"
+          ],
+          "document_id": "a3844dac-56cf-587c-bbdf-2d16cb4f8ba6",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-003",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "90000e75-589f-47ca-b6ca-c0c273b61642",
+          "score": 0.5193299055099487,
+          "source_reference": "document:ieum-003",
+          "spans": [
+            {
+              "end": 710,
+              "kind": "body",
+              "start": 481
+            }
+          ],
+          "text": "## 신청과 증빙\n\n가능하면 행사일 3영업일 전까지 이음 포털의 **인사 > 경조 휴가**에 사유 유형과 사용할 날짜를 등록한다. 사망처럼 급박한 사정은 팀장에게 먼저 알리고, 포털은 첫 근무 복귀일까지 보완한다. 신청에는 업무 조정에 필요한 날짜와 인수인계만 적는다. 증빙은 People팀이 필요한 경우에만 최소 범위로 요청하며 가족관계·사망 관련 자료를 Slack이나 팀 공용 Drive에 올리지 않는다.\n",
+          "title": "가족 경조사 휴가"
+        },
+        {
+          "chunk_ids": [
+            "05d2aa5cd4aef3122dc227a0abdbf647232fb0e2710e97afe793a3750db899f7"
+          ],
+          "document_id": "a3844dac-56cf-587c-bbdf-2d16cb4f8ba6",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-003",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "90000e75-589f-47ca-b6ca-c0c273b61642",
+          "score": 0.47612833976745605,
+          "source_reference": "document:ieum-003",
+          "spans": [
+            {
+              "end": 1233,
+              "kind": "body",
+              "start": 711
+            }
+          ],
+          "text": "## 분할·변경·취소와 업무 인계\n\n휴가를 나누어 써야 하는 사정은 사용 전에 People팀에 알린다. People팀은 팀장과 사용 가능한 기간 및 일정 영향을 확인해 처리 결과를 제한된 인사 기록에 남긴다. 날짜가 바뀌거나 휴가를 취소하면 기존 포털 신청을 수정하고 팀에 전달한 업무 일정을 함께 갱신한다. 포털 수정이 되지 않으면 신청 번호를 적어 People팀에 정정을 요청한다.\n\n팀장은 업무 마감이나 고객 약속 중 실제로 인계가 필요한 항목만 조정한다. 구성원에게 가족의 상세 사정을 반복해서 공개하도록 요구하지 않는다. 반려·보완 요청을 받으면 필요한 항목만 보완하며, 표에 없는 사유의 처리 결과는 임의로 약속하지 않는다.\n\n구성원은 가능한 범위에서 일정을 신청하고, 팀장은 인수인계를 조정한다. People팀은 회사 제공 기준과 적용 관계를 확인한다. 관련: 연차 사용 신청 (문서 ID: ieum-001), 근태 변경 안내 (문서 ID: ieum-059), 회사 역할과 문의 길잡이 (문서 ID: ieum-053).\n",
+          "title": "가족 경조사 휴가"
+        },
+        {
+          "chunk_ids": [
+            "666d33de09e972bfd4dc1558089f75553f60b2d37b29283ddf23165100e93122"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.417196661233902,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 801,
+              "kind": "body",
+              "start": 226
+            }
+          ],
+          "text": "## 신청 변경·취소 흐름\n\n| 변경 상황 | 구성원이 할 일 | 확인·처리 |\n|---|---|---|\n| 연차 날짜·기간을 바꿈 | 이음 포털 인사 > 휴가에서 기존 요청을 수정하거나 취소 후 재신청 | 팀장이 기존 승인 상태와 대체 일정 확인, People팀은 법적 적용·잔액을 담당 |\n| 병가 예상 복귀일이 바뀜 | 건강 정보의 상세 대신 예상 부재 기간과 업무 인계를 업데이트 | 팀장은 일정 조정, People팀은 회사 병가와 별도 권리 구분 |\n| 경조 휴가의 시작·분할이 바뀜 | 포털 인사 > 경조 휴가에서 사유 유형과 날짜를 보완 | People팀이 회사 기준과 적용 범위 재확인 |\n| 출퇴근 기록이 잘못됨 | 실제 시작·종료·휴게 시각과 사유를 근태 정정에 제출 | 팀장 확인 후 People팀이 승인 기록에 따라 반영 |\n| 지각·당일 조퇴 | 안전을 우선해 팀장에게 가능한 즉시 알리고 실제 시간 기록 | 팀장이 업무 공백 조정, 포털 기록은 가능한 빠른 시점에 보완 |\n| 시차 출퇴근·재택 일정 변경 | 새 일정의 적용 전 포털에 변경 요청 | People팀과 팀장의 승인 상태 확인 후 적용 |\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.191435+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D14",
+    "context": {
+      "candidate_chunk_ids": [
+        "170e9ead5c7942b13aba7ee3fd9850ca35dce9343b92866994cacafff72e4211",
+        "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a",
+        "2c15455278291b9a88148a4162e1482c92a5d5bea94ada1765878fed5aa68a21",
+        "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27",
+        "445a34836d9a1b153db833d1c600db02635c9ebc95d1352c4231ebf721f2a789",
+        "671d17a72e9e8bbfc6452c48a3fde144de05dca97dcf500e3747a35767607618",
+        "6c1e2e657e09360a7b67bf530cfdfaccf2bdeab2fcbc99aa67c3e7b0c884c1dd",
+        "5692f3679217f1d926c71ce5ffa54e37897e5c982efdc6a57bae0ce32ca45229",
+        "a1412699aca67dae0090af824f3f0d8b32e7c749e33dc2e56b0bb80160c00712",
+        "41302b022592ca83968112fcb22a76f25af4954a6065912d1e553fdb507cb855"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "170e9ead5c7942b13aba7ee3fd9850ca35dce9343b92866994cacafff72e4211"
+          ],
+          "document_id": "1d941ab0-8046-520d-ac89-a0af0db40c13",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-061",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "755f8892-fa50-4810-8c33-2813be3f358d",
+          "score": 0.5752134919166565,
+          "source_reference": "document:ieum-061",
+          "spans": [
+            {
+              "end": 481,
+              "kind": "body",
+              "start": 225
+            }
+          ],
+          "text": "## 비동기 요청 작성\n\n요청에는 목적, 필요한 결정·행동, 배경 링크, 담당 역할, 원하는 응답 시점을 적는다. “확인 바랍니다”만 보내지 않고 무엇을 확인해야 하는지 쓴다. 받은 사람은 응답이 늦어지는 경우 이유와 예상 시점을 알려준다. 평일 일반 업무시간은 09:00–18:00이고 12:00–13:00은 점심시간이다. 일반 협업은 즉시 응답을 전제로 하지 않는다. 안전·보안 사고와 서비스 장애는 일반 응답 규칙 대신 즉시 신고·당직 인계를 따른다.\n",
+          "title": "회의와 비동기 협업"
+        },
+        {
+          "chunk_ids": [
+            "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a"
+          ],
+          "document_id": "24cd0f80-6856-5f08-8e86-dd421c0435b3",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-035",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "c673b3d0-004b-4214-900f-dd13d36b700d",
+          "score": 0.5726053714752197,
+          "source_reference": "document:ieum-035",
+          "spans": [
+            {
+              "end": 1340,
+              "kind": "body",
+              "start": 781
+            }
+          ],
+          "text": "## 접수와 담당 인계\n\n당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다. 당직자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리며 신고를 보류하지 말고 팀장에게 대체 인계를 요청한다. 팀장도 대응을 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결한다. 연결 시도와 인수 여부를 사건 기록에 남긴다.\n\n| 단계 | 책임과 행동 | 완료로 기록할 내용 |\n|---|---|---|\n| 발견 | 추가 전송·접속을 중단하고 첫 신고 | 발견 시각, 영향 추정, 이미 한 조치 |\n| 접수 | 당직 담당자가 확인 후 담당 역할 지정 | 인수 담당, 다음 연락 경로, 시각 |\n| 대응 | 보안·개인정보 담당자가 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청 | 수행 주체, 승인, 조치 결과와 미확인 사항 |\n| 후속 | 업무·자료 소유자와 필요한 복구, 보존, 추가 통지 판단 | 미완료 작업, 다음 확인 시점, 대외 안내 승인자 |\n",
+          "title": "보안 사고 신고와 초동 대응"
+        },
+        {
+          "chunk_ids": [
+            "2c15455278291b9a88148a4162e1482c92a5d5bea94ada1765878fed5aa68a21"
+          ],
+          "document_id": "451b8992-b1bf-5944-b853-9451cef6d2dc",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-058",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "3a658d4d-6176-4b0c-b70d-247642161169",
+          "score": 0.5547836422920227,
+          "source_reference": "document:ieum-058",
+          "spans": [
+            {
+              "end": 682,
+              "kind": "body",
+              "start": 216
+            }
+          ],
+          "text": "## 신고와 대체 연결\n\n보안 사고는 #security-incident와 이음 포털 보안 메뉴로 알린다. 서비스 장애는 #service-incident와 이음 포털 고객지원 > 장애 기록에 기록한다. 운영상 24시간 당직 체계를 두며 발견 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 운영 목표이며 30분을 기다렸다 신고하라는 뜻은 아니다. 담당자의 목표 인수 시간은 15분이다. 15분 내 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청한다. 팀장이 즉시 조정할 수 없거나 개인정보·보안 위험이 있으면 보안·개인정보 담당자에게 직접 연결한다.\n\nSlack과 포털 모두 사용할 수 없으면 입사 시 오프라인으로 배부한 비상연락카드를 사용한다. 카드 위치를 분실했으면 팀장이나 총무 담당자에게 다시 배부를 요청한다. 개인 연락처를 임의로 작성하거나 공개 채널에 공유하지 않는다.\n",
+          "title": "계정·기기·오공유 긴급 문제 안내"
+        },
+        {
+          "chunk_ids": [
+            "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27"
+          ],
+          "document_id": "60a754e7-d9a2-54fb-80bf-f3ccc4fea66e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-069",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "a8884d2f-8ddb-429b-b7eb-05cc8106425f",
+          "score": 0.5488682985305786,
+          "source_reference": "document:ieum-069",
+          "spans": [
+            {
+              "end": 1538,
+              "kind": "body",
+              "start": 902
+            }
+          ],
+          "text": "## 발견과 호출\n\n발견자는 시간, 기능, 관찰한 증상, 현재 영향을 기록해 `#service-incident`에 알린다. 계정·로그·화면의 민감한 값은 채널에 올리지 않는다. 보안 침해, 자격정보 노출, 비인가 데이터 접근 또는 개인정보 유출 가능성이 있으면 `#security-incident`와 이음 포털의 **보안 > 사고 신고**를 함께 사용한다.\n\n서비스는 **24시간 당직 체계**로 운영한다. 당직자에게 호출을 보낸 뒤 **15분 안에 수락 확인을 받는 것을 인계 목표**로 한다. 이는 응답 SLA 보증이 아니다. 당직자가 수락하지 않으면 기다리기만 하지 말고 팀장 대체 경로로 연락한다. 보안·개인정보가 관련되면 보안 책임자에게도 즉시 별도로 연락한다. Slack이나 포털을 쓸 수 없는 상황에 대비한 최신 비상연락 카드를 오프라인으로 확인해 같은 순서를 따른다. 비상연락 카드의 실제 연락처는 제한된 회사 운영 자료에서 확인하며 이 핸드북이나 공개 채널에 복사하지 않는다.\n\n호출에는 다음을 포함한다.\n\n- P1/P2/P3 잠정 등급과 그 근거\n- 시작·발견 시각과 시간대\n- 영향을 받는 기능과 확인된 고객 영향\n- 데이터 손실·보안 노출 의심 여부\n- 이미 시도한 조치와 결과\n- 현재 담당자와 즉시 필요한 결정\n",
+          "title": "서비스 장애와 고객 공지"
+        },
+        {
+          "chunk_ids": [
+            "445a34836d9a1b153db833d1c600db02635c9ebc95d1352c4231ebf721f2a789"
+          ],
+          "document_id": "bb1faf25-ec06-5524-b820-2b4ba3ad9327",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-053",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "db6eefaf-08d9-483b-961f-14655a8a248c",
+          "score": 0.5449499487876892,
+          "source_reference": "document:ieum-053",
+          "spans": [
+            {
+              "end": 1616,
+              "kind": "body",
+              "start": 1426
+            }
+          ],
+          "text": "일반 문의의 업무시간은 평일 09:00–18:00이며 12:00–13:00은 점심시간이다. 보안 사고와 서비스 장애 신고는 이 시간표와 별개로 24시간 접수·당직 인계를 목표로 한다. Slack과 포털을 사용할 수 없는 경우 개인 전화번호를 임의로 찾거나 만들어 전달하지 말고, 회사가 입사 때 오프라인으로 배부한 비상연락카드를 사용한다.\n",
+          "title": "회사 역할과 문의 길잡이"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.240820+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D16",
+    "context": {
+      "candidate_chunk_ids": [
+        "217e6d916fd361c12f834401253ce023be6a2282fb3ee320bed2fa7e66deeabe",
+        "73c24a0f54b46262b263be36e4d06865e6b16302bce16be175619f5a3a1c3b0b",
+        "77f3e9b2b96f148bbe306e6e8c7a283c594979fc051f6f8d34df0dd4bb25bb02",
+        "708fb71e464bc04b9f923f3716dd7e73be07963e1b9c740cd88baebe2c3bf744",
+        "860711104fa6d6a793b9f324401cec28facbe39ddae8bac089314d42a31c59e1",
+        "481b83b4da86bb9a7d5339260ed4994f9a13f005d1f2e5fe11e6c8267cacba35",
+        "0459fa3678c06730ebeba52f8773b42ae0c8cb1434530b085dfa8eb061db2590",
+        "1e5af7a231e6153045080ff3b539a56ff35aab3931a02406a86b3718fa4ef07c",
+        "10e1d51eab85b39ccfcfc50d584878a78df6ff810a3264d546a4fcf7fc1aff99",
+        "402adaf34b6515eabe55ea2d73c0990394c16265c3429668ff8112620e44d51b"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "217e6d916fd361c12f834401253ce023be6a2282fb3ee320bed2fa7e66deeabe"
+          ],
+          "document_id": "e98e28d2-aa8d-5b87-ac26-ee577e94aef3",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-041",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "0904632c-2e89-4cbf-9bac-b3b424791ccb",
+          "score": 0.6183668971061707,
+          "source_reference": "document:ieum-041",
+          "spans": [
+            {
+              "end": 779,
+              "kind": "body",
+              "start": 396
+            }
+          ],
+          "text": "## 진행과 결정 기록\n\n회의 시작 때 주최자는 목표와 예상 종료 시각을 확인하고, 논의·결정·보류 사항을 구분한다. 결정이 나면 무엇을 결정했는지, 선택 이유, 담당자, 기한, 남은 위험을 읽어 참석자와 확인한다. 참석자에게 동의 여부를 묻지 않은 채 침묵을 승인으로 기록하지 않는다. 법률·보안·개인정보 검토가 필요한 항목은 검토 전 결정 완료로 처리하지 않는다.\n\n회의 뒤 주최자는 핵심 결과와 후속 작업을 Google Workspace의 프로젝트·팀 기준 문서에 기록하고 Slack에 링크를 공유한다. 개발 변경은 해당 GitHub 이슈나 변경 기록에 연결한다. 개인·고객 관련 상세 내용은 접근이 제한된 문서에 기록한다. 불참자에게는 결정과 자신에게 배정된 작업을 전달한다.\n",
+          "title": "회의 일정과 안건 공유"
+        },
+        {
+          "chunk_ids": [
+            "73c24a0f54b46262b263be36e4d06865e6b16302bce16be175619f5a3a1c3b0b"
+          ],
+          "document_id": "e98e28d2-aa8d-5b87-ac26-ee577e94aef3",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-041",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "0904632c-2e89-4cbf-9bac-b3b424791ccb",
+          "score": 0.5408889055252075,
+          "source_reference": "document:ieum-041",
+          "spans": [
+            {
+              "end": 395,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 회의가 필요한지와 초대 준비\n\n팀·프로젝트 회의와 1:1 업무 회의에 적용한다. 주최자는 회의 목적과 필요한 결과를 한 문장으로 정한다. 정보를 전달하거나 검토 의견을 받는 일만으로 충분하다면 Google 문서·프로젝트 이슈에 정리하고 Slack에서 비동기 의견을 모을 수 있다. 결정, 빠른 상호 조율, 민감한 논의처럼 대화가 필요한 경우에 회의를 잡는다.\n\n초대에는 목적, 안건, 필요한 결정, 참석 역할, 사전 자료 링크, 회의 종료 시 남길 결과를 적는다. 참석자는 안건에 기여하거나 결정을 맡는 사람으로 제한한다. 기밀 자료를 초대 본문에 붙이지 말고 권한을 확인한 회사 문서 링크를 사용한다. 안건 자료가 준비되지 않았거나 결정권자가 불참하면 주최자는 범위를 줄이거나 일정을 다시 잡는다.\n",
+          "title": "회의 일정과 안건 공유"
+        },
+        {
+          "chunk_ids": [
+            "77f3e9b2b96f148bbe306e6e8c7a283c594979fc051f6f8d34df0dd4bb25bb02"
+          ],
+          "document_id": "e98e28d2-aa8d-5b87-ac26-ee577e94aef3",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-041",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "0904632c-2e89-4cbf-9bac-b3b424791ccb",
+          "score": 0.5088619589805603,
+          "source_reference": "document:ieum-041",
+          "spans": [
+            {
+              "end": 960,
+              "kind": "body",
+              "start": 780
+            }
+          ],
+          "text": "## 비동기 후속과 일정 변경\n\n참석이 불가능하면 가능한 한 미리 주최자에게 알리고, 문서 댓글이나 이슈에 의견을 남긴다. 일정 취소나 변경 시 새 시간·새 안건·자료 상태를 다시 공지한다. 미해결 질문은 담당자와 다음 확인 시점을 지정한다. 기록이 없거나 담당자가 정해지지 않은 논의를 완료된 결정으로 취급하지 않는다.\n",
+          "title": "회의 일정과 안건 공유"
+        },
+        {
+          "chunk_ids": [
+            "708fb71e464bc04b9f923f3716dd7e73be07963e1b9c740cd88baebe2c3bf744"
+          ],
+          "document_id": "130a1ac3-5ce1-5453-bc05-a7f0b7caabf1",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-051",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "b0b26247-2ee0-49fd-97fb-942c8193b73d",
+          "score": 0.5002169013023376,
+          "source_reference": "document:ieum-051",
+          "spans": [
+            {
+              "end": 526,
+              "kind": "body",
+              "start": 192
+            }
+          ],
+          "text": "## 대화와 합의 기록\n\n지난 분기의 결과와 잘된 일을 확인한 뒤 목표와 실제 결과가 다른 부분은 업무 맥락, 장애 요인, 필요한 지원을 함께 살펴본다. 다음 분기의 우선순위는 최대 3개로 정하고 각 항목에 지원 내용, 담당자와 확인 날짜를 적는다. 면담은 보상·징계·공식 성과 등급 판정 절차가 아니다.\n\n양쪽의 견해가 다르면 어느 한쪽 의견을 합의된 것으로 기록하지 않는다. 합의된 항목, 각자의 다른 의견, 추가 확인이 필요한 사실을 구분한다. 구성원은 기록에 동의하지 않는 부분을 직접 표시하고 자신의 설명을 덧붙일 수 있다. 합의되지 않은 목표를 완료 책임이 확정된 것처럼 쓰지 않는다.\n",
+          "title": "분기별 성장 면담"
+        },
+        {
+          "chunk_ids": [
+            "860711104fa6d6a793b9f324401cec28facbe39ddae8bac089314d42a31c59e1"
+          ],
+          "document_id": "56f4fd06-1d7d-5ad2-a89f-44ff03db95ab",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-042",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "aef4ec24-5e3b-41b5-ab7b-6f481a70e834",
+          "score": 0.4934655427932739,
+          "source_reference": "document:ieum-042",
+          "spans": [
+            {
+              "end": 155,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 기본 기준\n\n회의 녹음·녹화·자동 전사는 기본 기능처럼 자동 사용하지 않는다. 음성·화면·전사문·스크린샷은 참석자를 식별하거나 고객·인사·기밀 정보를 포함할 수 있으므로 목적과 근거를 먼저 확인한다. 결정사항을 기록하는 데 녹음이 필요하지 않으면 일반 회의록을 사용한다.\n",
+          "title": "회의 녹음과 녹화"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.288431+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D18",
+    "context": {
+      "candidate_chunk_ids": [
+        "60981be33b6500be4b07d77451f2008c74b4caca280f6aa44cc999d75e902967",
+        "2371ff78a586337ead16d219aecd76993e38731e3a4da9397e1ece696a72bdd7",
+        "0d5bca0a41aba66891ccf71c0bbad064e4c048818600aa041267f1e28e048ea1",
+        "0fdbe369e1ec304e9239bff95245fc937ba8bc46e9b3e4469d0490b8a4ff61e4",
+        "6b195f29bcb7f1a7d4256a6c227bae05842f62371ec39a0d644499da81989ec9",
+        "b707d47047fde68f8e24d4481799283bce01888066c7d612596ce1037fec82f5",
+        "6d4d664f4a098f4d1bc6c8d085b9f71b46e9dcf1b67c5c3e5dd1bf2d7e31f062",
+        "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27",
+        "7fa0e43fa512ebeb8d86d7b2c8068d9b6da323291de6b6a4bc148d9a1e333ccd",
+        "f711f5131beeeab30690c0c31cde4944f6122dd3b5302d73c04741d1e0fea846"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "60981be33b6500be4b07d77451f2008c74b4caca280f6aa44cc999d75e902967"
+          ],
+          "document_id": "60a754e7-d9a2-54fb-80bf-f3ccc4fea66e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-069",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "a8884d2f-8ddb-429b-b7eb-05cc8106425f",
+          "score": 0.6262874603271484,
+          "source_reference": "document:ieum-069",
+          "spans": [
+            {
+              "end": 702,
+              "kind": "body",
+              "start": 150
+            }
+          ],
+          "text": "## 심각도 분류\n\n| 등급 | 판단 기준 | 대응과 안내 목표 |\n|---|---|---|\n| **P1** | 서비스 전체 또는 핵심 기능이 중단됐거나, 데이터 손실 가능성이 있다. 영향 범위가 아직 불명확해도 핵심 흐름을 사용할 수 없거나 손실 징후가 보이면 우선 P1로 시작한다. | 시간과 관계없이 즉시 서비스 당직에 연락한다. 고객지원팀은 최초 공지와 이후 상태 공지를 포함해 **30분 간격 갱신 목표**로 안내한다. 복구를 기다리는 동안에도 확인된 상태와 다음 안내 시점을 알린다. |\n| **P2** | 일부 고객 또는 기능에 장애가 있으나 영향 범위가 제한되고, 확인된 우회 방법이 있다. | 회사 업무시간에 대응한다. 고객지원팀은 **2영업시간 간격 갱신 목표**로 진행을 알린다. P1 징후나 데이터 손실 우려가 새로 확인되면 즉시 P1으로 올린다. |\n| **P3** | 넓은 서비스 중단 없이 일반 결함·사용 불편이 발생했다. | 일반 고객 문의와 버그 전달 절차를 따른다. 고객에게 개별 회신 목표를 안내하고 서비스 장애 당직을 불필요하게 호출하지 않는다. |\n",
+          "title": "서비스 장애와 고객 공지"
+        },
+        {
+          "chunk_ids": [
+            "2371ff78a586337ead16d219aecd76993e38731e3a4da9397e1ece696a72bdd7"
+          ],
+          "document_id": "60a754e7-d9a2-54fb-80bf-f3ccc4fea66e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-069",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "a8884d2f-8ddb-429b-b7eb-05cc8106425f",
+          "score": 0.6023180484771729,
+          "source_reference": "document:ieum-069",
+          "spans": [
+            {
+              "end": 3161,
+              "kind": "body",
+              "start": 2889
+            }
+          ],
+          "text": "## 안정화와 종료 확인\n\n기술 책임자와 사고 지휘자는 고객 영향이 멈췄는지, 핵심 흐름이 정상인지, 데이터 상태에 미해결 확인이 없는지, 재발 징후가 없는지를 확인한다. 확인되지 않은 항목이 있으면 장애를 해결했다고 선언하지 않고 후속 관찰 또는 조사를 이어간다.\n\n안정화 후 고객지원팀은 마지막 상태와 고객이 취해야 할 행동을 안내한다. 고객지원 문의와 버그 이슈에 장애 식별자와 다음 담당자를 연결한다. P1은 회고를 열고, 반복된 P2 또는 요청된 P2도 회고 절차에 연결한다.\n",
+          "title": "서비스 장애와 고객 공지"
+        },
+        {
+          "chunk_ids": [
+            "0d5bca0a41aba66891ccf71c0bbad064e4c048818600aa041267f1e28e048ea1"
+          ],
+          "document_id": "cef7a585-894e-5322-bdac-701345efaa43",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-066",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "a02c4a7a-afe3-4db5-91bb-ce0a96c4e592",
+          "score": 0.5483372211456299,
+          "source_reference": "document:ieum-066",
+          "spans": [
+            {
+              "end": 2331,
+              "kind": "body",
+              "start": 1918
+            }
+          ],
+          "text": "## 우선순위와 결정\n\n서비스 영향 심각도는 장애 문서의 P1·P2·P3 기준으로 판단한다. 한 고객의 일반 결함이나 기능 제안을 서비스 장애로 부풀려 P1로 표시하지 않는다. 반대로 데이터 손실 우려, 핵심 기능 중단, 영향 확대 징후가 있으면 다수 고객의 수를 확정할 때까지 기다리지 말고 서비스 장애 담당자에게 즉시 알린다. 보안 의심은 P 등급과 별도로 보안 사고 경로를 동시에 시작한다.\n\n이슈가 생성되거나 개발팀에 전달됐다는 사실은 수정 약속이 아니다. 제품개발팀은 재현 여부, 영향, 범위, 위험과 다른 작업의 영향을 검토해 우선순위를 결정한다. 기능 요청에는 채택 여부와 출시일을 미리 약속하지 않는다. 고객지원팀은 확인된 결정과 다음 안내를 고객에게 설명하고, 결정이 보류 중이면 보류 이유와 다시 확인할 시점을 알린다.\n",
+          "title": "버그·기능 요청 전달"
+        },
+        {
+          "chunk_ids": [
+            "0fdbe369e1ec304e9239bff95245fc937ba8bc46e9b3e4469d0490b8a4ff61e4"
+          ],
+          "document_id": "e4cf957b-3a95-5bdf-9f42-c52f8fc8fb4a",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-070",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "a703d18f-4082-4017-a12b-a126fa29e67c",
+          "score": 0.5293082594871521,
+          "source_reference": "document:ieum-070",
+          "spans": [
+            {
+              "end": 530,
+              "kind": "body",
+              "start": 131
+            }
+          ],
+          "text": "## 회고 대상과 시점\n\n- **P1:** 안정화되면 반드시 회고한다.\n- **P2:** 같은 원인의 반복, 복수 팀 간 인계 문제, 큰 고객 영향이 있었거나 팀장이 요청하면 회고한다.\n- **P3:** 별도 요청이 없는 한 장애 회고 대신 고객 문의나 개발 이슈의 후속 기록에 필요한 사실만 남긴다.\n\n안정화는 긴급 대응이 끝나고, 영향 범위와 현재 서비스 상태가 확인돼 회고 초안을 작성할 수 있는 시점이다. 데이터 상태 등 중요한 확인이 계속되면 미해결 부분을 명시하고 담당자와 다음 확인일을 남긴다. P1 초안은 안정화 후 **3영업일 이내**, 검토는 초안 후 **5영업일 이내** 완료를 목표로 한다. 추가 자료가 필요해 목표를 지키기 어렵다면 지연 사유·담당·새 목표일을 기록하고 검토자에게 알린다.\n",
+          "title": "장애 회고와 후속 작업"
+        },
+        {
+          "chunk_ids": [
+            "6b195f29bcb7f1a7d4256a6c227bae05842f62371ec39a0d644499da81989ec9"
+          ],
+          "document_id": "cef7a585-894e-5322-bdac-701345efaa43",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-066",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "a02c4a7a-afe3-4db5-91bb-ce0a96c4e592",
+          "score": 0.4774855673313141,
+          "source_reference": "document:ieum-066",
+          "spans": [
+            {
+              "end": 603,
+              "kind": "body",
+              "start": 101
+            }
+          ],
+          "text": "## 버그, 사용 문의, 기능 요청 구분\n\n- **사용 문의:** 안내된 제품 동작이 고객의 기대와 달랐을 수 있다. 먼저 고객의 목표와 현재 절차를 확인하고, 올바른 사용 방법으로 해결되는지 살핀다.\n- **버그 의심:** 제품이 약속된 동작을 하지 않거나 오류·데이터 손실·권한 우회가 의심된다. 재현되지 않았더라도 근거가 있으면 ‘확인된 버그’라고 단정하지 말고 의심 상태로 전달한다.\n- **기능 요청:** 현재 동작 자체가 고장 난 것은 아니지만 고객이 추가 기능이나 다른 업무 흐름을 원한다. 고객의 목적, 현재 우회 방법, 막히는 지점을 기록한다.\n- **서비스 장애:** 영향이 여러 고객으로 넓어지거나 핵심 서비스·기능이 중단된 상황은 이슈 하나의 일반 분류에 머물지 않는다. 서비스 장애 절차를 시작한다.\n- **보안·개인정보 문제:** 비인가 접근, 자격정보 노출, 고객자료 오공유, 데이터가 노출됐을 가능성은 일반 버그 제보와 분리해 즉시 보안·개인정보 담당자에게 전달한다.\n",
+          "title": "버그·기능 요청 전달"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.336009+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "D20",
+    "context": {
+      "candidate_chunk_ids": [
+        "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f",
+        "87d94669b87e18025a8f460d1584f494e8a16160dd9b0cce75d80126374ac448",
+        "9f26c35c0f71488c930eb36f388aae8c5825e5f060970ac55a65e25c9c50230a",
+        "2c150868b01fc84d96fa37c2d21b325c6d10e8c7113bf952013b359eb83d69f3",
+        "7884bc53a8dc3efc6b8c28c8eec5a3c6f1465ac50d3bbfc3d863e299121109be",
+        "6dfb75261e2d390a2c32baa301c1db29147cc063b7e5a0efebc662ffae76c4ae",
+        "bc7240092d533116c28a3654919125ebaa168e07c1541e30d7a839fb1aa185b7",
+        "fa5e9d9c11e3d269d637fa5f4c650a3684a159a9df0136aa607f303996c4f9f5",
+        "f4d450d566877a586e3df6cd7870e7f40bdc49cfdaaf151abdb699daffaf5dce",
+        "a8cdc6bf42c1a0198b7f0a4cc0343429126b3d995875fe2234ee5062b851a31c"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f"
+          ],
+          "document_id": "c2140c61-fc0d-5dcb-ba1c-ae7e29c2440b",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-043",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "56dbfc36-1b73-456f-ac06-c419ab6fe9da",
+          "score": 0.5718029141426086,
+          "source_reference": "document:ieum-043",
+          "spans": [
+            {
+              "end": 923,
+              "kind": "body",
+              "start": 494
+            }
+          ],
+          "text": "## 최종본 게시와 회수\n\n필수 검토가 끝난 최종본만 지정된 회사 계정과 승인된 게시 위치에 올린다. 원본과 공개본을 구분하고, 게시 직전 파일 버전·링크 접근 범위·수신 대상을 다시 확인한다. 게시 위치, 승인 기록, 공개 담당자와 회수 조건을 포털 요청에 연결한다. 제한 공유는 원칙적으로 승인 후 7일 이내 접근이 끝나도록 설정하거나, 자동 만료 기능이 확인되지 않으면 만료일에 공유자가 직접 회수하고 결과를 확인한다. 공개 웹 콘텐츠의 게시 기간은 제한 공유의 7일 기준과 혼동하지 말고 공개 승인에 기록한다.\n\n오류를 발견하면 가능한 회수·수정 조치를 하고 실제로 공개 링크가 닫혔는지 확인한다. 이미 내려받거나 복제한 자료가 모두 없어졌다고 단정하지 않는다. 기밀·개인정보·제3자 자료의 잘못된 공개는 즉시 #security-incident에도 신고한다.\n",
+          "title": "내부 문서의 외부 공개"
+        },
+        {
+          "chunk_ids": [
+            "87d94669b87e18025a8f460d1584f494e8a16160dd9b0cce75d80126374ac448"
+          ],
+          "document_id": "1b447cbe-acfe-501f-8c81-0bf4a0b5efaa",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-056",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "ab78b34f-e072-4077-bf5e-b7f95ebd2713",
+          "score": 0.5717045068740845,
+          "source_reference": "document:ieum-056",
+          "spans": [
+            {
+              "end": 1651,
+              "kind": "body",
+              "start": 1422
+            }
+          ],
+          "text": "## 오공유·외부 링크\n\n공개 링크가 잘못 만들어졌거나 민감 파일의 수신자가 잘못됐으면 공유 설정을 통해 가능한 접근을 바로 줄이고, 설정 적용 여부를 다시 연 뒤 확인한다. 받는 사람이 이미 내려받거나 복사하지 않았다고 가정하지 않는다. #security-incident에 즉시 신고해 전송 시각·파일·수신자·회수 시도 결과를 보고한다. 제한 외부 공유는 승인·수신자·종료 시점이 확인된 경우에만 허용한다.\n",
+          "title": "Google Drive 저장·공유·접근 문제 해결"
+        },
+        {
+          "chunk_ids": [
+            "9f26c35c0f71488c930eb36f388aae8c5825e5f060970ac55a65e25c9c50230a"
+          ],
+          "document_id": "2ff8c1eb-4333-5048-8a20-46cb4e014d0a",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-031",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "9643d0a5-c788-4a58-b46f-75d0d85c635b",
+          "score": 0.568531334400177,
+          "source_reference": "document:ieum-031",
+          "spans": [
+            {
+              "end": 893,
+              "kind": "body",
+              "start": 499
+            }
+          ],
+          "text": "## 외부 수신자에게 제한 제공\n\n외부 제공은 특정 수신자에게 파일을 주는 일이다. 공개 웹 게시와 구분한다. 이음 포털의 재무 > 정보 제공 요청에 수신자, 목적, 자료 등급, 자료 소유자, 만료 예정일을 적는다. 팀장은 업무 필요를 확인하고 자료 소유자는 제공 가능 범위와 계약을 확인한다. 고객·개인정보·기밀 자료는 보안·개인정보 담당자의 검토와 필요한 계약상 확인이 끝나기 전 공유하지 않는다. 접근이 승인된 경우 지정된 수신자에게 최소 권한을 부여하고 외부 공유는 원칙적으로 최대 7일 안에 종료한다. 자동 만료 설정이 없거나 지원되지 않으면 공유자가 만료일에 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 남긴다. 업무가 더 이어져야 하면 만료 전에 사유와 새 기간을 다시 승인받는다.\n",
+          "title": "업무 파일 공유와 외부 제공"
+        },
+        {
+          "chunk_ids": [
+            "2c150868b01fc84d96fa37c2d21b325c6d10e8c7113bf952013b359eb83d69f3"
+          ],
+          "document_id": "2ff8c1eb-4333-5048-8a20-46cb4e014d0a",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-031",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "9643d0a5-c788-4a58-b46f-75d0d85c635b",
+          "score": 0.5642221570014954,
+          "source_reference": "document:ieum-031",
+          "spans": [
+            {
+              "end": 1160,
+              "kind": "body",
+              "start": 894
+            }
+          ],
+          "text": "## 링크 오류와 오공유\n\n받는 사람이 파일을 열지 못하면 회사·개인 계정 중 어떤 계정으로 접속했는지 확인하고, 요청 목적과 파일 위치를 자료 소유자에게 보낸다. 누구나 열 수 있는 링크를 만들어 문제를 우회하지 않는다. 파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다. 즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다.\n",
+          "title": "업무 파일 공유와 외부 제공"
+        },
+        {
+          "chunk_ids": [
+            "7884bc53a8dc3efc6b8c28c8eec5a3c6f1465ac50d3bbfc3d863e299121109be"
+          ],
+          "document_id": "2ff8c1eb-4333-5048-8a20-46cb4e014d0a",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-031",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "9643d0a5-c788-4a58-b46f-75d0d85c635b",
+          "score": 0.5535313487052917,
+          "source_reference": "document:ieum-031",
+          "spans": [
+            {
+              "end": 1356,
+              "kind": "body",
+              "start": 1161
+            }
+          ],
+          "text": "## 공개 게시와 역할\n\n승인된 최종본을 누구나 볼 수 있는 웹·공개 저장소·링크에 게시하는 것은 외부 공개다. 내부 문서의 외부 공개 (문서 ID: ieum-043)의 권리·승인 절차를 거친다. 팀장은 업무 필요를, 자료 소유자는 내용과 권리를, 보안·개인정보 담당자는 민감 정보와 계약 경계를 검토한다. 공유자는 수신자와 접근 종료를 확인한다.\n",
+          "title": "업무 파일 공유와 외부 제공"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.384022+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "U01",
+    "context": {
+      "candidate_chunk_ids": [
+        "a22f06f918c09f040433b497d12cf2ef4ff3421cb34f86fd3fddb27cb6f5e255",
+        "71d6ca0cd064bfdb8c7f6104bc5521d875d7dd7ac5a69f4ee857ce53e6b82b07",
+        "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f",
+        "b0d578209c3dda2f4bbf068c238c3b8e28e2d873b6510470d3f5864f158eddc4",
+        "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13",
+        "5f1f9cb2cec6cd99e7cc4f645ec9d987ef540d22a5937ae19cd26f38dcf212ca",
+        "c3d65f33ea58fce3289ec9554ae8a3fccc0ffb19b57b4254596035504e650224",
+        "5af755f55f054439bd082b0861aa95d2dff755aa53d364cb4cc03e279bbe8786",
+        "dcaa92d4acb408e4d75a538166c358435e77725e14f118861dd378a8726e2e2c",
+        "004ba0257c11db5c24ea2bf740b2916108d47be754e92d9d16802eab366f6fec"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "a22f06f918c09f040433b497d12cf2ef4ff3421cb34f86fd3fddb27cb6f5e255"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.3244342505931854,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 225,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 기본 근무 일정\n\n별도 승인 근무제가 없는 구성원의 기준 일정은 월요일부터 금요일, 09:00–18:00이며 12:00–13:00은 점심 휴게시간이다. 실제 근무시간과 휴게를 근태 기록에 사실대로 남긴다. 승인된 시차 출퇴근은 포털에 기록된 시작·종료 시간표가 적용된다. 재택근무 승인은 근무 장소만 바꾸며 근무시간은 바꾸지 않는다. 법정 권리나 개인별 휴가 잔액은 이 안내에서 계산하지 않는다.\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        },
+        {
+          "chunk_ids": [
+            "71d6ca0cd064bfdb8c7f6104bc5521d875d7dd7ac5a69f4ee857ce53e6b82b07"
+          ],
+          "document_id": "7229f41c-e7b8-5ccc-b484-1760966efd6e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-018",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "35ada92f-5663-4de1-9e76-98b176519b9e",
+          "score": 0.31304502487182617,
+          "source_reference": "document:ieum-018",
+          "spans": [
+            {
+              "end": 333,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 대상 비용과 한도\n\n승인된 국내 출장 중 출장자가 본인 식사에 실제 지출한 비용을 정산한다. 출장일마다 1인 기준 하루 최대 **35,000원**이다. 출장 일정에 포함된 식사나 주최자가 제공한 식사는 별도로 다시 청구하지 않는다. 제공되지 않은 식사는 실제 지출 합계를 이 하루 한도 안에서 청구할 수 있다.\n\n거래처 접대나 여러 사람을 위한 업무 식사는 개인 출장 식비에 합치지 않고 별도 업무 지출로 신청한다. 하루 한도를 넘어야 할 고객 일정은 지출 전에 팀장과 재무팀 승인을 받고 업무 접대 항목으로 분리한다. 주류·미니바·개인 간식·출장 동반자 식비는 회사 정산 대상이 아니다.\n",
+          "title": "출장 중 식비 정산"
+        },
+        {
+          "chunk_ids": [
+            "85d8bde56355c67d4c27e4f08aaee5d27003bd4e899feadf5cfa46e62328341f"
+          ],
+          "document_id": "7229f41c-e7b8-5ccc-b484-1760966efd6e",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-018",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "35ada92f-5663-4de1-9e76-98b176519b9e",
+          "score": 0.3004566431045532,
+          "source_reference": "document:ieum-018",
+          "spans": [
+            {
+              "end": 890,
+              "kind": "body",
+              "start": 334
+            }
+          ],
+          "text": "## 제출·누락·정정\n\n결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 날짜, 출장 기록 번호, 참석자 수, 업무상 식사 여부와 영수증을 등록한다. 동료와 함께 먹은 경우 실제 참석자와 각자 부담 금액을 기록해 같은 영수증의 중복 청구를 막는다. 영수증을 잃어버리면 사실대로 표시하고 재무팀에 대체 증빙 가능 여부를 묻는다. 증빙이 자동 면제되는 것은 아니다.\n\n한도나 참석 정보를 잘못 입력했다면 지급 전에 기존 경비 건을 수정한다. 이미 검토가 끝난 뒤 차이를 발견하면 신청 번호와 수정 사유를 재무팀에 보내고, 기존 기록을 지우거나 새 건으로 중복 신청하지 않는다. 일반 지급 일정과 보완 흐름은 경비 정산 제출과 지급 (문서 ID: ieum-019)을 따른다.\n\n출장자는 실제 지출만 제출하고, 팀장은 업무 목적을 확인하며, 재무팀은 영수증·한도·중복 여부를 검토한다. 일반 재무 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 국내 출장 사전 승인 (문서 ID: ieum-015), 출장·정산 안내 (문서 ID: ieum-060).\n",
+          "title": "출장 중 식비 정산"
+        },
+        {
+          "chunk_ids": [
+            "b0d578209c3dda2f4bbf068c238c3b8e28e2d873b6510470d3f5864f158eddc4"
+          ],
+          "document_id": "90000a84-5369-5adc-8ea0-821bdafc5207",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-004",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "53514cbd-c3cf-460f-b39a-742de7e05dc6",
+          "score": 0.28567013144493103,
+          "source_reference": "document:ieum-004",
+          "spans": [
+            {
+              "end": 342,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 기본 일정\n\n별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다. 휴게 시간에는 회의나 상시 업무를 배정하지 않는다.\n\n시차 출퇴근, 승인된 장소 변경 등 별도 일정은 그 승인이 포털에 등록된 시점과 적용일을 확인한다. 구두 대화나 Slack 메시지만으로 기본 일정이 바뀌었다고 간주하지 않는다. 업무시간 외 연락이나 긴급 보안·서비스 대응의 담당·처리 흐름은 일반 근무 일정과 별도이며, 이를 이유로 개인의 근태를 임의 변경하지 않는다.\n",
+          "title": "기본 근무 시간과 휴게"
+        },
+        {
+          "chunk_ids": [
+            "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13"
+          ],
+          "document_id": "1d6c771f-9499-5fa1-8a2d-fb856fb568af",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-060",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "63cae4d1-b8c7-4061-ab09-63a192a5510d",
+          "score": 0.27019596099853516,
+          "source_reference": "document:ieum-060",
+          "spans": [
+            {
+              "end": 571,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 출장 전부터 정산까지\n\n출장 목적, 장소, 일정, 비용 부담 프로젝트를 확정한 뒤 출발 2영업일 전까지 이음 포털의 재무 > 국내 출장 신청에 올린다. 팀장과 재무팀 승인이 모두 기록된 뒤 재무팀이 승인된 출장 요청에 제공한 예약 안내 링크를 사용한다. 링크가 보이지 않으면 재무팀에 문의하고 임의 구매하지 않는다. 기차는 일반실, 항공은 이코노미석, 숙박은 세금 포함 1박 160,000원까지가 현재 회사 기준이다. 초과가 불가피하면 결제 전에 팀장과 재무팀의 추가 승인을 받는다. 승인 총액이 20% 넘게 늘거나 날짜·방문지가 바뀌면 예약 변경 전에 재승인을 받는다.\n\n출장 중에는 실제 지출 영수증과 변경 기록을 보관한다. 출장 식비는 1인당 하루 최대 35,000원이며 일정에 포함되거나 주최자가 제공한 식사는 중복 청구하지 않는다. 각 거래의 결제일로부터 10영업일 안에 거래별 업무 목적과 출장 번호를 연결해 경비 정산을 제출한다. 출장 기간이 길어도 귀환일까지 제출을 미루지 않는다. 영수증을 잃어버렸다면 사실대로 알리고 재무팀에 대체 증빙을 요청한다. 승인이나 증빙이 없으면 지급을 보장하지 않는다.\n",
+          "title": "출장·구매·정산 실무 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.426347+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "U02",
+    "context": {
+      "candidate_chunk_ids": [
+        "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5",
+        "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+        "0db7506fc9087bb425c122efc2afc03e0356baf7ffa70c2b426a3edf8e059d72",
+        "1ce3bb1ea6c4ba38322726a280079bc1b00e3b44f06460b722069c69db8422f4",
+        "ee4af5ce29ddc230cd93dd6e7d077cbb9bf9fbefd3e0f1eb8a10e7df11c56f57",
+        "98cd2d71552a6969579ed9dfd33122f65136e51f0a10727700bc0aa02ac57cdb",
+        "b9ed577184fabc56970b79f1d33ec2bf4e2c4bc8b1bf7052fc67cf2919f2ece4",
+        "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f",
+        "d438174eb8e672ea44d05a851d8d1b25d8a26bc67815fa696a82d2073bce9b1e",
+        "e7771931736a47bd6deee76d77858a62cd8afbd2e872683bb85c3dd07f0d96af"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.369429349899292,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 1334,
+              "kind": "body",
+              "start": 993
+            }
+          ],
+          "text": "## 회사 복지와 법적 권리의 구분\n\n회사의 복지·운영 기준으로 연차는 예정일 3영업일 전 신청을 목표로 하며 급한 상황은 가능한 시점에 신청을 보완한다. 회사 단기 병가 한도는 연간 최대 5근무일이고, 연속 3근무일 초과 예상 또는 한도 초과는 People팀 확인으로 연결한다. 회사 경조 휴가 기준은 본인 혼인 5근무일, 배우자·자녀·부모 사망 5근무일, 형제자매·조부모 사망 3근무일이며 원칙적으로 30일 안에 사용한다. 이 수치는 회사가 정한 복지·운영 범위이며 법률상 최소·최대 기준이나 개인의 전체 권리를 계산한 값이 아니다. 실제 개인별 적용은 People팀이 현재 기준과 인사 기록을 확인한다.\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        },
+        {
+          "chunk_ids": [
+            "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6"
+          ],
+          "document_id": "57c0b9b8-90ce-501d-857c-47552b283ad8",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-019",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "92a9266c-cb55-4fff-92c1-24dbed68ceef",
+          "score": 0.32921886444091797,
+          "source_reference": "document:ieum-019",
+          "spans": [
+            {
+              "end": 993,
+              "kind": "body",
+              "start": 390
+            }
+          ],
+          "text": "## 검토·보완·지급\n\n팀장은 업무 관련성과 프로젝트 배정을 확인해 접수 후 2영업일 안에 승인하거나 보완을 요청한다. 팀장이 반려 또는 보완을 선택하면 부족한 항목과 사유를 확인해 같은 신청 건에 보완한다. 승인 건은 재무팀이 영업일 3일 안에 증빙과 중복 여부를 검토한다. 승인 완료 후에도 재무팀의 최종 검토 상태를 확인한다.\n\n지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다. 보완 요청이 있으면 보완 자료가 제출된 뒤 재무팀이 최종 검토를 완료한 달을 기준으로 지급일을 정한다. 포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다.\n\n출장 승인 한도를 넘긴 미승인 금액, 개인 비용, 중복 청구는 일반 경비로 처리하지 않는다. 구성원은 결제 증빙을, 팀장은 업무 필요를, 재무팀은 증빙·예외·지급 일정을 확인한다. 일반 문의는 평일 9:00–18:00(12:00–13:00 제외) 처리한다. 관련: 업무용 구매와 공급업체 선택 (문서 ID: ieum-021), 출장·정산 안내 (문서 ID: ieum-060), 회사 역할과 문의 길잡이 (문서 ID: ieum-053).\n",
+          "title": "경비 정산 제출과 지급"
+        },
+        {
+          "chunk_ids": [
+            "0db7506fc9087bb425c122efc2afc03e0356baf7ffa70c2b426a3edf8e059d72"
+          ],
+          "document_id": "59e69d2e-86c0-5dff-a702-fb8ae312d86c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-024",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "76f0579e-431a-4a46-95f3-c56715b5c745",
+          "score": 0.32784247398376465,
+          "source_reference": "document:ieum-024",
+          "spans": [
+            {
+              "end": 148,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 적용 범위\n\n회사에서 지급하거나 대여한 노트북을 사용하는 구성원에게 적용한다. 화면에 고객·직원·기밀 자료가 열려 있거나 기기에 회사 계정이 로그인된 경우에는 장소와 관계없이 이 기준을 따른다. 잠금은 분실이나 계정 탈취를 막는 모든 조치를 대신하지 않는다.\n",
+          "title": "회사 노트북 잠금과 보관"
+        },
+        {
+          "chunk_ids": [
+            "1ce3bb1ea6c4ba38322726a280079bc1b00e3b44f06460b722069c69db8422f4"
+          ],
+          "document_id": "bb1faf25-ec06-5524-b820-2b4ba3ad9327",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-053",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "db6eefaf-08d9-483b-961f-14655a8a248c",
+          "score": 0.31873518228530884,
+          "source_reference": "document:ieum-053",
+          "spans": [
+            {
+              "end": 443,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 회사와 조직\n\n이음웍스는 업무·협업 SaaS를 만드는 회사다. 구성원은 팀 업무와 자료를 관리하고, 팀장은 팀의 일정·승인·업무 인계와 담당자 연결에 책임을 진다.\n\n| 역할 | 주로 담당하는 일 |\n|---|---|\n| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |\n| 재무팀 | 구매·출장·경비·법인카드·비용 증빙과 지급 |\n| IT운영팀 | 회사 계정·기기·시스템 권한·업무 도구의 기술 처리 |\n| 보안·개인정보 담당자 | 정보 등급, 개인정보 처리 검토, 보안 사고 대응과 보호 조치 |\n| 총무 담당자 | 사무실·방문·출입·공용 시설·회사 자산 관리 |\n| 고객지원팀 | 고객 문의 접수, 사실 확인, 고객에게 진행 상황 안내, 담당 팀 인계 |\n| 제품개발팀 | SaaS 기능·코드·결함·기술 변경과 서비스 복구 |\n",
+          "title": "회사 역할과 문의 길잡이"
+        },
+        {
+          "chunk_ids": [
+            "ee4af5ce29ddc230cd93dd6e7d077cbb9bf9fbefd3e0f1eb8a10e7df11c56f57"
+          ],
+          "document_id": "b3027f7b-c927-5cb5-82ae-223ae53c7384",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-002",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "7675ddc7-9e04-4f99-8d7b-aab204a99afc",
+          "score": 0.30898362398147583,
+          "source_reference": "document:ieum-002",
+          "spans": [
+            {
+              "end": 234,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 먼저 구분할 것\n\n이음웍스는 별도 회사 복지로 **연간 최대 5근무일의 유급 단기 병가**를 운영한다. 이 회사 복지의 일수와 법령·계약에 따른 권리, 개인별 연차 잔액은 서로 다른 확인 항목이다. 연속 3근무일을 넘길 것으로 예상되거나 연간 한도를 넘는 요청은 People팀이 적용 가능한 회사 제도와 개인별 기준을 확인한다. 병가를 연차나 다른 휴가로 자동 전환하거나 본인 확인 없이 일수를 차감하지 않는다.\n",
+          "title": "병가 신청과 복귀 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.469195+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "U03",
+    "context": {
+      "candidate_chunk_ids": [
+        "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+        "46185b3c500e37d46c27095d2dd2e37229153682945e2389d4857d25cc0be7ac",
+        "f115c1a391ad9d66e4fe01a828022ff3bb67bb6684c23fd1691cf10dda1928f7",
+        "445a34836d9a1b153db833d1c600db02635c9ebc95d1352c4231ebf721f2a789",
+        "2c3a00d419d5abc20249347fed37a576f63446e5854314099ee952cb42787f2d",
+        "21260eaebb9efc7eccb5f0186dc8f19d94cf7dbae6380eb029be197f35cecf99",
+        "d020f9c15777cf7a7d5912073fb59b706f77fc9290dc2ecc307a200e48ade164",
+        "e0eba9a3b0d3b66b4dc4bcbc549ce117a7e919ddb28f5827c90b3a0d29554c46",
+        "1252caaec75ace55a966676f033e0996318d915687d80b7e131a200cf8a617dd",
+        "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f"
+          ],
+          "document_id": "59e69d2e-86c0-5dff-a702-fb8ae312d86c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-024",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "76f0579e-431a-4a46-95f3-c56715b5c745",
+          "score": 0.43984454870224,
+          "source_reference": "document:ieum-024",
+          "spans": [
+            {
+              "end": 835,
+              "kind": "body",
+              "start": 588
+            }
+          ],
+          "text": "## 분실·도난·잠금 고장\n\n분실이나 도난을 알게 되면 주변에서 기기를 찾느라 신고를 늦추지 말고 즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)의 긴급 경로로 알린다. 기기 이름이나 자산 표기, 마지막으로 확인한 시각과 장소, 당시 열려 있었을 수 있는 업무 계정·자료를 알려 준다. 비밀번호나 인증 코드는 신고에 적지 않는다. 본인이 원격 삭제나 계정 차단을 시도할 수 있다고 단정하지 말고 IT운영팀의 지시를 따른다.\n",
+          "title": "회사 노트북 잠금과 보관"
+        },
+        {
+          "chunk_ids": [
+            "46185b3c500e37d46c27095d2dd2e37229153682945e2389d4857d25cc0be7ac"
+          ],
+          "document_id": "b3027f7b-c927-5cb5-82ae-223ae53c7384",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-002",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "7675ddc7-9e04-4f99-8d7b-aab204a99afc",
+          "score": 0.4328901767730713,
+          "source_reference": "document:ieum-002",
+          "spans": [
+            {
+              "end": 1309,
+              "kind": "body",
+              "start": 1025
+            }
+          ],
+          "text": "## 역할과 참고 안내\n\n구성원은 가능한 시점에 일정과 최소한의 인수인계 정보를 알린다. 팀장은 업무 공백을 조정한다. People팀은 회사 한도, 개인별 기록과 추가 확인 필요 여부를 관리한다. 일반 문의는 평일 9:00–18:00(12:00–13:00 제외)에 처리하고, 긴급한 보안·서비스 사고는 해당 비상 신고 경로를 따른다. 관련: 연차 사용 신청 (문서 ID: ieum-001), 기본 근무 시간과 휴게 (문서 ID: ieum-004), 회사 역할과 문의 길잡이 (문서 ID: ieum-053).\n",
+          "title": "병가 신청과 복귀 안내"
+        },
+        {
+          "chunk_ids": [
+            "f115c1a391ad9d66e4fe01a828022ff3bb67bb6684c23fd1691cf10dda1928f7"
+          ],
+          "document_id": "af58840d-7f01-5003-888c-2d4f300e45f6",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-025",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "eed7fd33-03ca-4e20-b74d-ea895e508f43",
+          "score": 0.4277430772781372,
+          "source_reference": "document:ieum-025",
+          "spans": [
+            {
+              "end": 1128,
+              "kind": "body",
+              "start": 952
+            }
+          ],
+          "text": "## 제한과 역할\n\n일괄적인 정기 교체 주기나 모든 서비스에 공통인 최소 길이를 여기서 만들지 않는다. 서비스가 요구하는 기준과 IT 안내를 확인한다. 구성원은 자격정보를 비밀로 유지하고 노출을 신고한다. IT운영팀은 본인 확인과 계정 복구를 안내한다. 보안·개인정보 담당자는 침해 의심의 범위와 대응을 조정한다.\n",
+          "title": "회사 계정 비밀번호 관리"
+        },
+        {
+          "chunk_ids": [
+            "445a34836d9a1b153db833d1c600db02635c9ebc95d1352c4231ebf721f2a789"
+          ],
+          "document_id": "bb1faf25-ec06-5524-b820-2b4ba3ad9327",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-053",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "db6eefaf-08d9-483b-961f-14655a8a248c",
+          "score": 0.42212915420532227,
+          "source_reference": "document:ieum-053",
+          "spans": [
+            {
+              "end": 1616,
+              "kind": "body",
+              "start": 1426
+            }
+          ],
+          "text": "일반 문의의 업무시간은 평일 09:00–18:00이며 12:00–13:00은 점심시간이다. 보안 사고와 서비스 장애 신고는 이 시간표와 별개로 24시간 접수·당직 인계를 목표로 한다. Slack과 포털을 사용할 수 없는 경우 개인 전화번호를 임의로 찾거나 만들어 전달하지 말고, 회사가 입사 때 오프라인으로 배부한 비상연락카드를 사용한다.\n",
+          "title": "회사 역할과 문의 길잡이"
+        },
+        {
+          "chunk_ids": [
+            "2c3a00d419d5abc20249347fed37a576f63446e5854314099ee952cb42787f2d"
+          ],
+          "document_id": "bb1faf25-ec06-5524-b820-2b4ba3ad9327",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-053",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "db6eefaf-08d9-483b-961f-14655a8a248c",
+          "score": 0.4088207483291626,
+          "source_reference": "document:ieum-053",
+          "spans": [
+            {
+              "end": 828,
+              "kind": "body",
+              "start": 444
+            }
+          ],
+          "text": "괴롭힘 신고에서 People팀이나 소속 팀장이 이해관계자면 대표이사가 외부 노무 전문가를 조사 담당으로 지정한다. 대표이사도 사건과 관련되어 있으면 입사 때 배부한 오프라인 신고 연락카드의 외부 독립조사 창구로 직접 접수한다. 해당 책임자는 조사·승인·결과 의사결정에서 배제한다. 개인 연락처를 문서에 만들거나 사건 신고를 공개 채널에 올리지 않는다. 상세 흐름은 괴롭힘 신고·상담·보호 절차 (문서 ID: ieum-063)를 따른다.\n\n고객지원팀과 제품개발팀은 각 팀장이 팀 업무와 할당된 후속 조치에 책임진다. 고객지원이 개발팀에 이슈를 전달해도 고객에게 진행 상황을 안내할 책임은 담당이 명확히 넘겨질 때까지 유지한다. 팀장은 휴가·장애·업무 이동 시 대체 담당과 인계를 정한다.\n",
+          "title": "회사 역할과 문의 길잡이"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.512285+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  },
+  {
+    "case_id": "U04",
+    "context": {
+      "candidate_chunk_ids": [
+        "49baea6c805b61fa57716887e6d686b3215bd41cf78c396cb11c33c08fdccc72",
+        "2379afbeb225048c26309702e4e284475072522247b71ca5d43e3fd27c5d4050",
+        "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5",
+        "41e9c05a66f5ce0d32f3b918b56e9fac9301f7c2d245f9d6c9623dcadb7f516b",
+        "fc1e2a0480c99eddcfc92cbaa34058b35e669bf7590dfb441722a80847a2dc25",
+        "ee4af5ce29ddc230cd93dd6e7d077cbb9bf9fbefd3e0f1eb8a10e7df11c56f57",
+        "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+        "14d7dbc8abe3511b30a34077d26d6ef6c2907e65eeff3c8a13f92a64142a2252",
+        "0e4e1ac51b1c8133020c587553e9356da9d168272f44485464a4baac9481b198",
+        "46185b3c500e37d46c27095d2dd2e37229153682945e2389d4857d25cc0be7ac"
+      ],
+      "candidate_count": 10,
+      "evidence": [
+        {
+          "chunk_ids": [
+            "49baea6c805b61fa57716887e6d686b3215bd41cf78c396cb11c33c08fdccc72"
+          ],
+          "document_id": "0a8b8e46-f143-5e70-b6f8-db9d892ef8e7",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-001",
+          "rank": 1,
+          "revision": 1,
+          "revision_id": "c86c33f2-1094-4a8c-91be-878a57f7d7eb",
+          "score": 0.5316523313522339,
+          "source_reference": "document:ieum-001",
+          "spans": [
+            {
+              "end": 189,
+              "kind": "body",
+              "start": 0
+            }
+          ],
+          "text": "## 이 안내가 다루는 범위\n\n이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다. 법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다. 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다. 회사의 신청 일정은 법령상 권리를 줄이거나 포기시키는 조건으로 쓰지 않는다.\n",
+          "title": "연차 사용 신청"
+        },
+        {
+          "chunk_ids": [
+            "2379afbeb225048c26309702e4e284475072522247b71ca5d43e3fd27c5d4050"
+          ],
+          "document_id": "0a8b8e46-f143-5e70-b6f8-db9d892ef8e7",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-001",
+          "rank": 2,
+          "revision": 1,
+          "revision_id": "c86c33f2-1094-4a8c-91be-878a57f7d7eb",
+          "score": 0.47964757680892944,
+          "source_reference": "document:ieum-001",
+          "spans": [
+            {
+              "end": 1002,
+              "kind": "body",
+              "start": 642
+            }
+          ],
+          "text": "## 변경·취소·반려\n\n날짜가 바뀌면 포털에서 기존 신청을 수정하고, 팀에 이미 공유한 일정도 바로잡는다. 사용하지 않게 된 연차는 시작 전에 포털에서 취소해 업무 계획과 기록이 함께 갱신되도록 한다. 포털에서 수정이나 취소가 잠겨 있거나 이미 처리가 끝났다면 같은 신청 번호를 적어 People팀에 정정을 요청한다. 별도의 새 신청을 중복으로 만들어 해결하지 않는다.\n\n반려되면 사유와 조정안을 확인한다. 단순히 상태가 반려되었다는 사실만으로 법적 권리나 잔여 일수가 확정되는 것은 아니다. 날짜·인수인계 계획을 보완해 다시 신청하거나, 권리·적용 기준에 관한 이견은 People팀에 확인한다. 확정 결과와 조정 이유는 포털 기록에 남긴다.\n",
+          "title": "연차 사용 신청"
+        },
+        {
+          "chunk_ids": [
+            "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 3,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.47657376527786255,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 1334,
+              "kind": "body",
+              "start": 993
+            }
+          ],
+          "text": "## 회사 복지와 법적 권리의 구분\n\n회사의 복지·운영 기준으로 연차는 예정일 3영업일 전 신청을 목표로 하며 급한 상황은 가능한 시점에 신청을 보완한다. 회사 단기 병가 한도는 연간 최대 5근무일이고, 연속 3근무일 초과 예상 또는 한도 초과는 People팀 확인으로 연결한다. 회사 경조 휴가 기준은 본인 혼인 5근무일, 배우자·자녀·부모 사망 5근무일, 형제자매·조부모 사망 3근무일이며 원칙적으로 30일 안에 사용한다. 이 수치는 회사가 정한 복지·운영 범위이며 법률상 최소·최대 기준이나 개인의 전체 권리를 계산한 값이 아니다. 실제 개인별 적용은 People팀이 현재 기준과 인사 기록을 확인한다.\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        },
+        {
+          "chunk_ids": [
+            "41e9c05a66f5ce0d32f3b918b56e9fac9301f7c2d245f9d6c9623dcadb7f516b"
+          ],
+          "document_id": "0a8b8e46-f143-5e70-b6f8-db9d892ef8e7",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-001",
+          "rank": 4,
+          "revision": 1,
+          "revision_id": "c86c33f2-1094-4a8c-91be-878a57f7d7eb",
+          "score": 0.4720739722251892,
+          "source_reference": "document:ieum-001",
+          "spans": [
+            {
+              "end": 641,
+              "kind": "body",
+              "start": 190
+            }
+          ],
+          "text": "## 예정된 사용 신청\n\n예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다. 사용할 날짜와 업무 공백을 메우기 위해 필요한 인수인계 항목만 적는다. 진단명, 가족의 자세한 사정, 사적인 대화 기록처럼 처리에 필요하지 않은 정보는 쓰지 않는다. 여러 날짜를 나누어 신청하거나 다른 휴가와 함께 쓸 때는 각 날짜가 어떻게 기록되는지 포털에서 확인하고, 중복 차감이 의심되면 People팀에 정정을 요청한다.\n\n신청을 제출하면 포털 상태가 접수되었는지 확인한다. 팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다. 업무 일정 조정이 필요하면 어떤 날짜 또는 인수인계를 조정해야 하는지 신청자에게 설명한다. 법령 적용이나 잔여 일수를 판단하기 어렵다면 팀장이 임의로 일수를 줄이거나 신청을 취소하지 않고 People팀에 검토를 요청한다.\n",
+          "title": "연차 사용 신청"
+        },
+        {
+          "chunk_ids": [
+            "fc1e2a0480c99eddcfc92cbaa34058b35e669bf7590dfb441722a80847a2dc25"
+          ],
+          "document_id": "728ee66e-8eb2-55d3-997c-a45d7607671c",
+          "expanded_chunk_ids": [],
+          "knowledge_id": "ieum-059",
+          "rank": 5,
+          "revision": 1,
+          "revision_id": "9908973e-2e85-4709-9622-25ef90c2e91e",
+          "score": 0.4608815610408783,
+          "source_reference": "document:ieum-059",
+          "spans": [
+            {
+              "end": 1573,
+              "kind": "body",
+              "start": 1335
+            }
+          ],
+          "text": "## 개인정보와 역할\n\n신청에 날짜·예상 복귀·인수인계에 필요한 항목만 적는다. 진단명, 가족 상세 사정, 증빙 원본은 팀 Slack이나 넓은 Drive에 올리지 않는다. 구성원은 실제 시간과 변경을 기록한다. 팀장은 업무 일정과 승인 상태를 관리한다. People팀은 개인별 잔액·법적 기준·회사 복지 기록을 확인한다. 세부 기준은 연차·병가·경조 휴가·근태 정정·시차 출퇴근·재택 관련 각각의 원문 정책을 함께 적용한다.\n",
+          "title": "근태·휴가 변경과 취소 안내"
+        }
+      ],
+      "observed_at": "2026-10-15T11:12:03.555957+00:00",
+      "search_config_id": "2234d58501bda58d1f02532690d2c408827337c4124ff2936adbe8eaf751c3cb",
+      "selected_count": 5,
+      "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+      "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529"
+    }
+  }
+]

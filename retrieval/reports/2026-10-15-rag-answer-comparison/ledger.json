@@ -1,0 +1,66 @@
+{
+  "budget_limits": {
+    "dev_dollars": 5.0,
+    "dev_seconds": null,
+    "max_calls": 40,
+    "total_dollars": 5.0,
+    "total_seconds": null
+  },
+  "reservations": {
+    "answer-R04-A": {
+      "actual_dollars": 0.00105125,
+      "charged_dollars": 0.00105125,
+      "phase": "final",
+      "reserved_at": 1792062750.2448592,
+      "reserved_dollars": 0.01572975,
+      "settled_at": 1792062755.6253557,
+      "status": "settled"
+    },
+    "answer-R04-B": {
+      "actual_dollars": 0.01503225,
+      "charged_dollars": 0.01503225,
+      "phase": "final",
+      "reserved_at": 1792062750.2484999,
+      "reserved_dollars": 0.0729535,
+      "settled_at": 1792062763.4126737,
+      "status": "settled"
+    },
+    "answer-R06-A": {
+      "actual_dollars": 0.014877,
+      "charged_dollars": 0.014877,
+      "phase": "final",
+      "reserved_at": 1792062763.439912,
+      "reserved_dollars": 0.0729555,
+      "settled_at": 1792062768.8847704,
+      "status": "settled"
+    },
+    "answer-R06-B": {
+      "actual_dollars": 0.00092775,
+      "charged_dollars": 0.00092775,
+      "phase": "final",
+      "reserved_at": 1792062763.444788,
+      "reserved_dollars": 0.01570975,
+      "settled_at": 1792062772.0665653,
+      "status": "settled"
+    },
+    "answer-R08-A": {
+      "actual_dollars": 0.00132425,
+      "charged_dollars": 0.00132425,
+      "phase": "final",
+      "reserved_at": 1792062772.0937521,
+      "reserved_dollars": 0.01576,
+      "settled_at": 1792062779.592441,
+      "status": "settled"
+    },
+    "answer-R08-B": {
+      "actual_dollars": 0,
+      "charged_dollars": 0.0,
+      "phase": "final",
+      "reserved_at": 1792062772.0973132,
+      "reserved_dollars": 0.0729515,
+      "settled_at": 1792062779.6079597,
+      "status": "settled"
+    }
+  },
+  "started_at": 1792062750.2448592
+}
