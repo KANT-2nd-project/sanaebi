@@ -39,6 +39,7 @@ flowchart TD
 | [라벨 기준](label-taxonomy.md) | 세 처리 라벨의 의미와 경계 사례 |
 | [데이터 안내](../data/README.md) | 분류 데이터와 답변용 회사 지식의 용도·검수·분할 |
 | [생성 평가 기준](generation-evaluation.md) | 응답 검사와 품질 평가 기준 |
+| [최종 생성 프롬프트](generation-final-prompt.md) · [실행 설정](generation-runtime.md) | 독립 생성·평가의 Luna 기본 구성과 서버 연결 경계 |
 | [문서 관리 가이드](documentation-guide.md) | 사실의 기준 위치·Notion 대응·작성 절차 |
 
 ## 결과와 과거 기록

@@ -20,3 +20,5 @@
 최초 결정·기록 정리에서는 실행 코드를 변경하지 않았다. 이후 사용자 요청으로 독립 generation·generation_evaluation 및 generate_from_documents/run_case의 기본값을 위 최종 구성에 연결했다. models.json에는 Luna 하나만 두고 company-final-v1을 기본 프리셋으로 사용한다. 서버 연결·서비스 품질 승인은 별도이며 추가 튜닝은 수행하지 않았다. [실행 반영·검증 기록](worklogs/2026-10-15-generation-final-runtime.md)을 따른다.
 
 [전체 과정·기록 점검](../generation_evaluation/reports/2026-10-15-luna-tuning-closure/README.md)과 [종료 일지](worklogs/2026-10-15-generation-prompt-tuning-closure.md)에서 실험별 결과, 중단·미판정 항목, 연구 근거, 추가4문항과 최종 결정을 확인할 수 있다.
+
+사용자의 후속 병합 요청에 따라 위 독립 런타임 구성을 main에도 통합했다. 이전 일지의 생성 브랜치 게시·main 미병합은 당시 상태로 보존한다. [통합 게시 기록](worklogs/2026-10-15-main-publication.md)을 따른다. 서버 생성 경로에는 연결하지 않았다.
