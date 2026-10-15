@@ -28,7 +28,7 @@ services:
       SANAEBI_RETRIEVAL_ROOT: /data/retrieval
       SANAEBI_RETRIEVAL_BASELINE: ${SANAEBI_RETRIEVAL_BUNDLE_CONTAINER_PATH:-/retrieval-baselines/not-ready.sqlite3}
       SANAEBI_RETRIEVAL_SOURCE: /retrieval-source/documents.jsonl
-      SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9}
+      SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/nlpai-lab--KURE-v1/8b418a58414668e75532ed045c22d9ca018ae2b2}
       TRACE_DIR: ""
       TRACE_FULL_PROMPT: "0"
     volumes:
@@ -89,7 +89,7 @@ services:
       SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-rag}
       SANAEBI_DOCUMENT_DB: /data/documents.sqlite3
       SANAEBI_RETRIEVAL_ROOT: /data/retrieval
-      SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9}
+      SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/nlpai-lab--KURE-v1/8b418a58414668e75532ed045c22d9ca018ae2b2}
       SANAEBI_RETRIEVAL_BASELINE: /retrieval-baseline/baseline.sqlite3
       SANAEBI_RETRIEVAL_SOURCE: /retrieval-source/documents.jsonl
       SANAEBI_RETRIEVAL_BUNDLE_HOST_PATH: ${SANAEBI_RETRIEVAL_BUNDLE_HOST_PATH:-/srv/sanaebi/retrieval-baselines/not-ready.sqlite3}

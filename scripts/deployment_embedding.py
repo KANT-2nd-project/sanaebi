@@ -1,4 +1,4 @@
-"""Download and verify the pinned KoEn-E5-Tiny deployment model."""
+"""Download and verify the pinned deployment retrieval model and splitter."""
 
 from __future__ import annotations
 
@@ -17,11 +17,20 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 
-EXPECTED_MODEL_ID = "exp-models/dragonkue-KoEn-E5-Tiny"
-EXPECTED_REVISION = "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9"
+EXPECTED_MODEL_ID = "nlpai-lab/KURE-v1"
+EXPECTED_REVISION = "8b418a58414668e75532ed045c22d9ca018ae2b2"
+LEGACY_MODEL_ID = "exp-models/dragonkue-KoEn-E5-Tiny"
+LEGACY_REVISION = "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9"
 EXPECTED_FILES = (
     "config.json",
     "model.safetensors",
+    "special_tokens_map.json",
+    "tokenizer.json",
+    "tokenizer_config.json",
+)
+KURE_EXPECTED_FILES = (*EXPECTED_FILES, "1_Pooling/config.json")
+EXPECTED_SPLITTER_FILES = (
+    "config.json",
     "special_tokens_map.json",
     "tokenizer.json",
     "tokenizer_config.json",
@@ -33,7 +42,7 @@ MANIFEST_KEYS = {
     "index_schema_version",
     "embedding",
 }
-EMBEDDING_KEYS = {
+LEGACY_EMBEDDING_KEYS = {
     "model_id",
     "revision",
     "dimension",
@@ -44,6 +53,10 @@ EMBEDDING_KEYS = {
     "passage_prefix",
     "dtype",
     "files",
+}
+KURE_EMBEDDING_KEYS = LEGACY_EMBEDDING_KEYS | {
+    "query_max_length",
+    "splitter",
 }
 
 
@@ -59,17 +72,27 @@ class FileRecord:
 
 
 @dataclass(frozen=True)
+class SplitterModel:
+    model_id: str
+    revision: str
+    directory: str
+    files: tuple[FileRecord, ...]
+
+
+@dataclass(frozen=True)
 class EmbeddingModel:
     model_id: str
     revision: str
     dimension: int
     max_length: int
+    query_max_length: int
     pooling: str
     normalization: str
     query_prefix: str
     passage_prefix: str
     dtype: str
     files: tuple[FileRecord, ...]
+    splitter: SplitterModel | None = None
 
 
 @dataclass(frozen=True)
@@ -107,19 +130,43 @@ def parse_manifest(raw: bytes) -> RetrievalRelease:
             raise ReleaseError(f"{field} must be a supported positive version")
 
     raw_model = value.get("embedding")
-    if not isinstance(raw_model, dict) or set(raw_model) != EMBEDDING_KEYS:
+    if not isinstance(raw_model, dict) or set(raw_model) not in (
+        LEGACY_EMBEDDING_KEYS,
+        KURE_EMBEDDING_KEYS,
+    ):
         raise ReleaseError("embedding model descriptor has unsupported fields")
-    expected_contract = {
-        "model_id": EXPECTED_MODEL_ID,
-        "revision": EXPECTED_REVISION,
-        "dimension": 384,
-        "max_length": 512,
-        "pooling": "attention-mask-mean",
-        "normalization": "l2",
-        "query_prefix": "query: ",
-        "passage_prefix": "passage: ",
-        "dtype": "float32",
-    }
+    if set(raw_model) == LEGACY_EMBEDDING_KEYS:
+        expected_contract = {
+            "model_id": LEGACY_MODEL_ID,
+            "revision": LEGACY_REVISION,
+            "dimension": 384,
+            "max_length": 512,
+            "pooling": "attention-mask-mean",
+            "normalization": "l2",
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "dtype": "float32",
+        }
+        query_max_length = 512
+        expected_files = EXPECTED_FILES
+        splitter = None
+    else:
+        expected_contract = {
+            "model_id": EXPECTED_MODEL_ID,
+            "revision": EXPECTED_REVISION,
+            "dimension": 1024,
+            "max_length": 8192,
+            "pooling": "cls",
+            "normalization": "l2",
+            "query_prefix": "",
+            "passage_prefix": "",
+            "dtype": "float32",
+        }
+        query_max_length = 512
+        expected_files = KURE_EXPECTED_FILES
+        splitter = _parse_splitter(raw_model.get("splitter"))
+        if raw_model.get("query_max_length") != query_max_length:
+            raise ReleaseError("embedding query length is not pinned")
     if any(
         raw_model.get(key) != expected for key, expected in expected_contract.items()
     ):
@@ -130,8 +177,25 @@ def parse_manifest(raw: bytes) -> RetrievalRelease:
     ):
         raise ReleaseError("embedding dimensions must be integers")
 
-    raw_files = raw_model.get("files")
-    if not isinstance(raw_files, list) or len(raw_files) != len(EXPECTED_FILES):
+    files = _parse_file_records(raw_model.get("files"), expected_files)
+
+    return RetrievalRelease(
+        default_mode=value["default_mode"],
+        baseline_schema_version=value["baseline_schema_version"],
+        index_schema_version=value["index_schema_version"],
+        model=EmbeddingModel(
+            **{
+                **expected_contract,
+                "query_max_length": query_max_length,
+                "files": tuple(files),
+                "splitter": splitter,
+            }
+        ),
+    )
+
+
+def _parse_file_records(raw_files: object, expected_names: tuple[str, ...]):
+    if not isinstance(raw_files, list) or len(raw_files) != len(expected_names):
         raise ReleaseError("embedding file inventory is invalid")
     files: list[FileRecord] = []
     for record in raw_files:
@@ -148,21 +212,42 @@ def parse_manifest(raw: bytes) -> RetrievalRelease:
             or re.fullmatch(r"[0-9a-f]{64}", digest) is None
         ):
             raise ReleaseError("embedding file record is invalid")
+        path = Path(name)
+        if (
+            path.is_absolute()
+            or "\\" in name
+            or any(part in {"", ".", ".."} for part in path.parts)
+        ):
+            raise ReleaseError("embedding file path is unsafe")
         files.append(FileRecord(name, size, digest))
-    if tuple(item.name for item in files) != EXPECTED_FILES:
+    if tuple(item.name for item in files) != expected_names:
         raise ReleaseError("embedding file inventory is missing, extra, or reordered")
+    return files
 
-    return RetrievalRelease(
-        default_mode=value["default_mode"],
-        baseline_schema_version=value["baseline_schema_version"],
-        index_schema_version=value["index_schema_version"],
-        model=EmbeddingModel(**{**expected_contract, "files": tuple(files)}),
+
+def _parse_splitter(raw_splitter: object) -> SplitterModel:
+    expected_keys = {"model_id", "revision", "directory", "files"}
+    if not isinstance(raw_splitter, dict) or set(raw_splitter) != expected_keys:
+        raise ReleaseError("embedding splitter descriptor has unsupported fields")
+    if (
+        raw_splitter.get("model_id") != LEGACY_MODEL_ID
+        or raw_splitter.get("revision") != LEGACY_REVISION
+        or raw_splitter.get("directory") != "splitter"
+    ):
+        raise ReleaseError("embedding splitter is not the pinned Tiny tokenizer")
+    return SplitterModel(
+        model_id=LEGACY_MODEL_ID,
+        revision=LEGACY_REVISION,
+        directory="splitter",
+        files=tuple(
+            _parse_file_records(raw_splitter.get("files"), EXPECTED_SPLITTER_FILES)
+        ),
     )
 
 
 def model_sidecar(model: EmbeddingModel) -> dict[str, object]:
-    """Return the exact runtime contract consumed by TinyEmbedder."""
-    return {
+    """Return the exact model identity and tokenizer contract consumed at runtime."""
+    value = {
         "model_id": model.model_id,
         "revision": model.revision,
         "dimension": model.dimension,
@@ -172,6 +257,15 @@ def model_sidecar(model: EmbeddingModel) -> dict[str, object]:
         "passage_prefix": model.passage_prefix,
         "dtype": model.dtype,
     }
+    if model.splitter is not None:
+        value["max_length"] = model.max_length
+        value["query_max_length"] = model.query_max_length
+        value["splitter"] = {
+            "model_id": model.splitter.model_id,
+            "revision": model.splitter.revision,
+            "directory": model.splitter.directory,
+        }
+    return value
 
 
 def _model_directory_name(model_id: str) -> str:
@@ -203,20 +297,31 @@ def validate_model_directory(path: Path, release: RetrievalRelease) -> None:
     path = Path(path)
     try:
         info = path.lstat()
-        entries = list(path.iterdir())
     except OSError:
         raise ReleaseError(
             "embedding model directory is missing or unreadable"
         ) from None
-    if not stat.S_ISDIR(info.st_mode) or {entry.name for entry in entries} != {
-        *EXPECTED_FILES,
-        "retrieval-model.json",
-    }:
+    if not stat.S_ISDIR(info.st_mode):
         raise ReleaseError("embedding model directory inventory is invalid")
-    for record in release.model.files:
-        size, digest = _sha256(path / record.name)
-        if size != record.size or digest != record.sha256:
-            raise ReleaseError(f"embedding payload verification failed: {record.name}")
+    expected_records = list(release.model.files)
+    extra_directories: set[str] = set()
+    if release.model.splitter is not None:
+        prefix = release.model.splitter.directory
+        extra_directories.add(prefix)
+        expected_records.extend(
+            FileRecord(
+                f"{prefix}/{record.name}",
+                record.size,
+                record.sha256,
+            )
+            for record in release.model.splitter.files
+        )
+    _validate_file_tree(
+        path,
+        expected_records,
+        extra_files={"retrieval-model.json"},
+        extra_directories=extra_directories,
+    )
     sidecar = path / "retrieval-model.json"
     try:
         actual = json.loads(sidecar.read_text(encoding="utf-8"))
@@ -242,6 +347,62 @@ def _validate_root(root: Path) -> None:
         info = absolute.lstat()
     if stat.S_ISLNK(info.st_mode) or not stat.S_ISDIR(info.st_mode):
         raise ReleaseError("embedding root is not a safe directory")
+
+
+def _validate_file_tree(
+    root: Path,
+    records: list[FileRecord],
+    *,
+    extra_files: set[str] = frozenset(),
+    extra_directories: set[str] = frozenset(),
+) -> None:
+    expected_files = {record.name for record in records} | extra_files
+    expected_directories = set(extra_directories)
+    for name in expected_files:
+        path = Path(name)
+        if (
+            path.is_absolute()
+            or "\\" in name
+            or any(part in {"", ".", ".."} for part in path.parts)
+        ):
+            raise ReleaseError("embedding file path is unsafe")
+        parent = Path()
+        for part in path.parts[:-1]:
+            parent /= part
+            expected_directories.add(parent.as_posix())
+
+    actual_files: set[str] = set()
+    actual_directories: set[str] = set()
+    try:
+        for directory, directories, files in os.walk(root, followlinks=False):
+            directory_path = Path(directory)
+            for name in list(directories):
+                child = directory_path / name
+                info = child.lstat()
+                relative = child.relative_to(root).as_posix()
+                if (
+                    not stat.S_ISDIR(info.st_mode)
+                    or relative not in expected_directories
+                ):
+                    raise ReleaseError("embedding model directory inventory is invalid")
+                actual_directories.add(relative)
+            for name in files:
+                child = directory_path / name
+                info = child.lstat()
+                relative = child.relative_to(root).as_posix()
+                if not stat.S_ISREG(info.st_mode) or relative not in expected_files:
+                    raise ReleaseError("embedding model file inventory is invalid")
+                actual_files.add(relative)
+    except OSError:
+        raise ReleaseError("embedding model directory is unreadable") from None
+    if actual_files != expected_files or actual_directories != expected_directories:
+        raise ReleaseError("embedding model inventory is incomplete")
+
+    records_by_name = {record.name: record for record in records}
+    for name, record in records_by_name.items():
+        size, digest = _sha256(root / name)
+        if size != record.size or digest != record.sha256:
+            raise ReleaseError(f"embedding payload verification failed: {name}")
 
 
 @contextmanager
@@ -298,25 +459,29 @@ def prepare_embedding(
                 from huggingface_hub import snapshot_download
 
                 downloader = snapshot_download
-            snapshot = Path(
-                downloader(
-                    repo_id=release.model.model_id,
-                    revision=release.model.revision,
-                    allow_patterns=list(EXPECTED_FILES),
-                    local_dir=str(download_directory),
-                    token=False,
-                )
+            _download_component(
+                downloader,
+                model_id=release.model.model_id,
+                revision=release.model.revision,
+                records=release.model.files,
+                download_directory=download_directory,
+                output=output,
+                error_label="embedding",
             )
-            if os.path.abspath(snapshot) != os.path.abspath(download_directory):
-                raise ReleaseError("embedding download returned an unexpected path")
-            for record in release.model.files:
-                source = snapshot / record.name
-                size, digest = _sha256(source)
-                if size != record.size or digest != record.sha256:
-                    raise ReleaseError(
-                        f"downloaded embedding file does not match pin: {record.name}"
-                    )
-                shutil.copyfile(source, output / record.name)
+            if release.model.splitter is not None:
+                splitter_download = staging / "download-splitter"
+                splitter_output = output / release.model.splitter.directory
+                splitter_download.mkdir(mode=0o700)
+                splitter_output.mkdir(mode=0o700)
+                _download_component(
+                    downloader,
+                    model_id=release.model.splitter.model_id,
+                    revision=release.model.splitter.revision,
+                    records=release.model.splitter.files,
+                    download_directory=splitter_download,
+                    output=splitter_output,
+                    error_label="embedding splitter",
+                )
             (output / "retrieval-model.json").write_text(
                 json.dumps(model_sidecar(release.model), sort_keys=True, indent=2)
                 + "\n",
@@ -324,7 +489,12 @@ def prepare_embedding(
             )
             validate_model_directory(output, release)
             for path in output.iterdir():
-                os.chmod(path, 0o444)
+                if path.is_dir():
+                    for child in path.iterdir():
+                        os.chmod(child, 0o444)
+                    os.chmod(path, 0o555)
+                else:
+                    os.chmod(path, 0o444)
             os.chmod(target.parent, 0o755)
             os.rename(output, target)
             os.chmod(target, 0o555)
@@ -334,6 +504,39 @@ def prepare_embedding(
             raise
         finally:
             shutil.rmtree(staging, ignore_errors=True)
+
+
+def _download_component(
+    downloader: Callable[..., str],
+    *,
+    model_id: str,
+    revision: str,
+    records: tuple[FileRecord, ...],
+    download_directory: Path,
+    output: Path,
+    error_label: str,
+) -> None:
+    snapshot = Path(
+        downloader(
+            repo_id=model_id,
+            revision=revision,
+            allow_patterns=[record.name for record in records],
+            local_dir=str(download_directory),
+            token=False,
+        )
+    )
+    if os.path.abspath(snapshot) != os.path.abspath(download_directory):
+        raise ReleaseError(f"{error_label} download returned an unexpected path")
+    for record in records:
+        source = snapshot / record.name
+        size, digest = _sha256(source)
+        if size != record.size or digest != record.sha256:
+            raise ReleaseError(
+                f"downloaded {error_label} file does not match pin: {record.name}"
+            )
+        destination = output / record.name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, destination)
 
 
 def main(argv: list[str] | None = None) -> int:

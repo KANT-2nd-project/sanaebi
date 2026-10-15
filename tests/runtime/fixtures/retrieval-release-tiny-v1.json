@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "default_mode": "rag",
+  "baseline_schema_version": 1,
+  "index_schema_version": 1,
+  "embedding": {
+    "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+    "dimension": 384,
+    "max_length": 512,
+    "pooling": "attention-mask-mean",
+    "normalization": "l2",
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "dtype": "float32",
+    "files": [
+      {
+        "name": "config.json",
+        "bytes": 627,
+        "sha256": "2dcfffa3b90b53294e612d1eb42850da3ba9a0b66fd9b2363d661b6c6174d3c0"
+      },
+      {
+        "name": "model.safetensors",
+        "bytes": 150090944,
+        "sha256": "e518f4afa630929731c87980f3d5afa63afea3529dc9e344c5956aec3985b574"
+      },
+      {
+        "name": "special_tokens_map.json",
+        "bytes": 965,
+        "sha256": "38d989b0fdad0fec0c67c14b1f3c8b68184022cf6d4adc5444526ced8653f738"
+      },
+      {
+        "name": "tokenizer.json",
+        "bytes": 2931715,
+        "sha256": "a6dd38d692ac1caa6d5dbc195d92f1f978b5c74ec60e02ed15fdf04404742fe3"
+      },
+      {
+        "name": "tokenizer_config.json",
+        "bytes": 1397,
+        "sha256": "a31cce3039d1c0610730707190f378fa2160f051c9172639fde71a41d2aaacf8"
+      }
+    ]
+  }
+}

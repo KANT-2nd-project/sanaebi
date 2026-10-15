@@ -1,6 +1,9 @@
 import hashlib
 import json
+import os
+import shutil
 import sqlite3
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -17,8 +20,44 @@ from scripts.production_maintenance import (
 
 RELEASE_ID = "a" * 40 + "-12345"
 IMAGE = "ghcr.io/kant-2nd-project/sanaebi-api@sha256:" + "b" * 64
-MODEL_ID = "exp-models/dragonkue-KoEn-E5-Tiny"
-REVISION = "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9"
+MODEL_ID = "nlpai-lab/KURE-v1"
+REVISION = "8b418a58414668e75532ed045c22d9ca018ae2b2"
+LEGACY_MODEL_ID = "exp-models/dragonkue-KoEn-E5-Tiny"
+LEGACY_REVISION = "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9"
+REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+
+
+@unittest.skipUnless(
+    Path("/usr/bin/python3").exists(), "production Python is unavailable"
+)
+class InstalledMaintenanceCliTests(unittest.TestCase):
+    def test_direct_installed_script_imports_sibling_helpers_outside_repository(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            scripts = root / "usr/local/libexec/sanaebi/scripts"
+            scripts.mkdir(parents=True)
+            for name in ("production_maintenance.py", "deployment_embedding.py"):
+                shutil.copy2(REPOSITORY_ROOT / "scripts" / name, scripts / name)
+
+            environment = os.environ.copy()
+            environment.pop("PYTHONPATH", None)
+            environment.pop("PYTHONHOME", None)
+            result = subprocess.run(
+                [
+                    "/usr/bin/python3",
+                    str(scripts / "production_maintenance.py"),
+                    "--help",
+                ],
+                cwd=root,
+                env=environment,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=10,
+            )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("restore-retrieval", result.stdout)
 
 
 class RagHostMaintenanceTests(unittest.TestCase):
@@ -69,11 +108,7 @@ class RagHostMaintenanceTests(unittest.TestCase):
         )
         self.bundle.parent.mkdir(parents=True)
         self.bundle.write_bytes(b"immutable baseline bundle")
-        self.embedding = (
-            self.paths.embedding_models
-            / "exp-models--dragonkue-KoEn-E5-Tiny"
-            / REVISION
-        )
+        self.embedding = self.paths.embedding_models / "nlpai-lab--KURE-v1" / REVISION
         self.embedding.mkdir(parents=True)
         binding = {
             "schema_version": 1,
@@ -115,6 +150,64 @@ class RagHostMaintenanceTests(unittest.TestCase):
         runtime = _active_retrieval_runtime(self.paths)
 
         self.assertEqual(runtime["mode"], "full")
+
+    def test_active_runtime_derives_model_path_from_descriptor_binding(self):
+        runtime = _active_retrieval_runtime(self.paths)
+
+        self.assertEqual(runtime["model_id"], MODEL_ID)
+        self.assertEqual(runtime["revision"], REVISION)
+        self.assertEqual(runtime["embedding"], self.embedding)
+        self.assertEqual(
+            runtime["embedding_container_path"],
+            f"/models/embeddings/nlpai-lab--KURE-v1/{REVISION}",
+        )
+
+    def test_legacy_tiny_release_remains_selectable_for_rollback(self):
+        descriptor_path = (
+            self.paths.root / "releases" / RELEASE_ID / "retrieval-release.json"
+        )
+        legacy_descriptor = (
+            Path(__file__).resolve().parent / "fixtures/retrieval-release-tiny-v1.json"
+        ).read_bytes()
+        descriptor_path.write_bytes(legacy_descriptor)
+        release_path = self.paths.root / "releases" / RELEASE_ID / "release.json"
+        release = json.loads(release_path.read_text(encoding="utf-8"))
+        release["retrieval_manifest_sha256"] = hashlib.sha256(
+            legacy_descriptor
+        ).hexdigest()
+        release_path.write_text(json.dumps(release), encoding="utf-8")
+
+        binding_path = self.paths.retrieval_bindings / f"{RELEASE_ID}.json"
+        binding = json.loads(binding_path.read_text(encoding="utf-8"))
+        binding["model_id"] = LEGACY_MODEL_ID
+        binding["revision"] = LEGACY_REVISION
+        binding_path.write_text(json.dumps(binding), encoding="utf-8")
+        legacy_embedding = (
+            self.paths.embedding_models
+            / LEGACY_MODEL_ID.replace("/", "--")
+            / LEGACY_REVISION
+        )
+        legacy_embedding.mkdir(parents=True)
+
+        runtime = _active_retrieval_runtime(self.paths)
+
+        self.assertEqual(runtime["model_id"], LEGACY_MODEL_ID)
+        self.assertEqual(runtime["revision"], LEGACY_REVISION)
+        self.assertEqual(runtime["embedding"], legacy_embedding)
+        self.assertEqual(
+            runtime["embedding_container_path"],
+            f"/models/embeddings/{LEGACY_MODEL_ID.replace('/', '--')}/{LEGACY_REVISION}",
+        )
+
+    def test_active_binding_cannot_mix_tiny_model_with_kure_descriptor(self):
+        binding_path = self.paths.retrieval_bindings / f"{RELEASE_ID}.json"
+        binding = json.loads(binding_path.read_text(encoding="utf-8"))
+        binding["model_id"] = LEGACY_MODEL_ID
+        binding["revision"] = LEGACY_REVISION
+        binding_path.write_text(json.dumps(binding), encoding="utf-8")
+
+        with self.assertRaisesRegex(MaintenanceError, "binding is invalid"):
+            _active_retrieval_runtime(self.paths)
 
     def test_legacy_full_reset_container_explicitly_disables_rag(self):
         (self.paths.config / "api.env").write_text(
@@ -244,6 +337,15 @@ class RagHostMaintenanceTests(unittest.TestCase):
             self.assertNotIn("/models/embedding", " ".join(command))
             self.assertNotIn("OPENAI_API_KEY", repr(kwargs.get("env", {})))
             self.assertNotIn("HF_TOKEN", repr(kwargs.get("env", {})))
+        compose_call = next(
+            (command, kwargs)
+            for command, kwargs in calls
+            if command[:2] == ["docker", "compose"]
+        )
+        self.assertEqual(
+            compose_call[1]["env"]["SANAEBI_EMBEDDING_PATH"],
+            f"/models/embeddings/nlpai-lab--KURE-v1/{REVISION}",
+        )
 
     def test_failed_rag_reset_preflight_never_stops_worker_or_writes_documents(self):
         original_source = self.paths.baseline.read_bytes()

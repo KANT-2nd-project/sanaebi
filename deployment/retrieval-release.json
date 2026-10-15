@@ -4,41 +4,74 @@
   "baseline_schema_version": 1,
   "index_schema_version": 1,
   "embedding": {
-    "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
-    "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
-    "dimension": 384,
-    "max_length": 512,
-    "pooling": "attention-mask-mean",
+    "model_id": "nlpai-lab/KURE-v1",
+    "revision": "8b418a58414668e75532ed045c22d9ca018ae2b2",
+    "dimension": 1024,
+    "max_length": 8192,
+    "query_max_length": 512,
+    "pooling": "cls",
     "normalization": "l2",
-    "query_prefix": "query: ",
-    "passage_prefix": "passage: ",
+    "query_prefix": "",
+    "passage_prefix": "",
     "dtype": "float32",
     "files": [
       {
         "name": "config.json",
-        "bytes": 627,
-        "sha256": "2dcfffa3b90b53294e612d1eb42850da3ba9a0b66fd9b2363d661b6c6174d3c0"
+        "bytes": 807,
+        "sha256": "852d42e020c7f989c2acaf30fc683b7f768e8c6d1ab17166e835442162bd825d"
       },
       {
         "name": "model.safetensors",
-        "bytes": 150090944,
-        "sha256": "e518f4afa630929731c87980f3d5afa63afea3529dc9e344c5956aec3985b574"
+        "bytes": 2271064456,
+        "sha256": "c18156e80caf8ff45eb84a24a853130c3bca03087ccb41b051f86e7556bae02c"
       },
       {
         "name": "special_tokens_map.json",
-        "bytes": 965,
-        "sha256": "38d989b0fdad0fec0c67c14b1f3c8b68184022cf6d4adc5444526ced8653f738"
+        "bytes": 964,
+        "sha256": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835"
       },
       {
         "name": "tokenizer.json",
-        "bytes": 2931715,
-        "sha256": "a6dd38d692ac1caa6d5dbc195d92f1f978b5c74ec60e02ed15fdf04404742fe3"
+        "bytes": 17083053,
+        "sha256": "fb3c3b93c46fd5a8634e262e1b7de7da11a18b527aa2282b312952b692781dfd"
       },
       {
         "name": "tokenizer_config.json",
-        "bytes": 1397,
-        "sha256": "a31cce3039d1c0610730707190f378fa2160f051c9172639fde71a41d2aaacf8"
+        "bytes": 1203,
+        "sha256": "b87c8703482b0300d3da30e201519aa641f6a450f5eb5bf1e624afbf70c74d80"
+      },
+      {
+        "name": "1_Pooling/config.json",
+        "bytes": 297,
+        "sha256": "13e69897522ee8255104483ed9f219465d1be3936654a54a318758738052789e"
       }
-    ]
+    ],
+    "splitter": {
+      "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
+      "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+      "directory": "splitter",
+      "files": [
+        {
+          "name": "config.json",
+          "bytes": 627,
+          "sha256": "2dcfffa3b90b53294e612d1eb42850da3ba9a0b66fd9b2363d661b6c6174d3c0"
+        },
+        {
+          "name": "special_tokens_map.json",
+          "bytes": 965,
+          "sha256": "38d989b0fdad0fec0c67c14b1f3c8b68184022cf6d4adc5444526ced8653f738"
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 2931715,
+          "sha256": "a6dd38d692ac1caa6d5dbc195d92f1f978b5c74ec60e02ed15fdf04404742fe3"
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 1397,
+          "sha256": "a31cce3039d1c0610730707190f378fa2160f051c9172639fde71a41d2aaacf8"
+        }
+      ]
+    }
   }
 }

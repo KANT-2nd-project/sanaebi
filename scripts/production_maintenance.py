@@ -20,6 +20,14 @@ from datetime import UTC, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+# The installed helper lives under /usr/local/libexec/sanaebi/scripts while
+# its sibling modules live one directory above it. Keep direct-script execution
+# independent of the caller's working directory.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from scripts.deployment_embedding import ReleaseError as EmbeddingReleaseError
+from scripts.deployment_embedding import parse_manifest as parse_retrieval_manifest
+
 
 class MaintenanceError(RuntimeError):
     """A maintenance operation could not be completed safely."""
@@ -73,8 +81,6 @@ DEFAULT_PATHS = HostPaths()
 IMAGE_RE = re.compile(r"^ghcr\.io/kant-2nd-project/sanaebi-api@sha256:[0-9a-f]{64}$")
 RELEASE_RE = re.compile(r"^[0-9a-f]{40}-[0-9]+$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-RETRIEVAL_MODEL_ID = "exp-models/dragonkue-KoEn-E5-Tiny"
-RETRIEVAL_MODEL_REVISION = "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9"
 RETRIEVAL_INDEXER_NAME = "sanaebi-retrieval-indexer"
 RESET_WORKER_STOP_SECONDS = 20
 
@@ -325,32 +331,16 @@ def _active_retrieval_runtime(paths: HostPaths) -> dict:
     try:
         descriptor_info = descriptor_path.lstat()
         descriptor_raw = descriptor_path.read_bytes()
-        descriptor = json.loads(descriptor_raw)
-    except (OSError, json.JSONDecodeError) as error:
+        descriptor = parse_retrieval_manifest(descriptor_raw)
+    except (OSError, json.JSONDecodeError, EmbeddingReleaseError) as error:
         raise MaintenanceError("active retrieval descriptor is unavailable") from error
     if (
         not stat.S_ISREG(descriptor_info.st_mode)
         or hashlib.sha256(descriptor_raw).hexdigest() != retrieval_digest
-        or not isinstance(descriptor, dict)
-        or descriptor.get("schema_version") != 1
-        or descriptor.get("default_mode") not in {"full", "rag"}
-        or type(descriptor.get("baseline_schema_version")) is not int
-        or not 1 <= descriptor["baseline_schema_version"] <= 1000
-        or type(descriptor.get("index_schema_version")) is not int
-        or not 1 <= descriptor["index_schema_version"] <= 1000
     ):
         raise MaintenanceError("active retrieval descriptor failed validation")
-    model = descriptor.get("embedding")
-    if (
-        not isinstance(model, dict)
-        or model.get("model_id") != RETRIEVAL_MODEL_ID
-        or model.get("revision") != RETRIEVAL_MODEL_REVISION
-        or model.get("dimension") != 384
-        or model.get("pooling") != "attention-mask-mean"
-        or model.get("normalization") != "l2"
-    ):
-        raise MaintenanceError("active retrieval model contract is unsupported")
-    mode = configured_mode or descriptor["default_mode"]
+    model = descriptor.model
+    mode = configured_mode or descriptor.default_mode
     runtime = {"mode": mode, "image": image, "release_id": release["release_id"]}
     if mode != "rag":
         return runtime
@@ -366,11 +356,10 @@ def _active_retrieval_runtime(paths: HostPaths) -> dict:
         or not isinstance(binding, dict)
         or binding.get("schema_version") != 1
         or binding.get("release_id") != release["release_id"]
-        or binding.get("model_id") != RETRIEVAL_MODEL_ID
-        or binding.get("revision") != RETRIEVAL_MODEL_REVISION
-        or binding.get("baseline_schema_version")
-        != descriptor["baseline_schema_version"]
-        or binding.get("index_schema_version") != descriptor["index_schema_version"]
+        or binding.get("model_id") != model.model_id
+        or binding.get("revision") != model.revision
+        or binding.get("baseline_schema_version") != descriptor.baseline_schema_version
+        or binding.get("index_schema_version") != descriptor.index_schema_version
         or not isinstance(binding.get("spec_id"), str)
         or SHA256_RE.fullmatch(binding["spec_id"]) is None
         or not isinstance(binding.get("source_sha256"), str)
@@ -392,9 +381,7 @@ def _active_retrieval_runtime(paths: HostPaths) -> dict:
         / "baseline.sqlite3"
     )
     embedding = (
-        paths.embedding_models
-        / RETRIEVAL_MODEL_ID.replace("/", "--")
-        / RETRIEVAL_MODEL_REVISION
+        paths.embedding_models / model.model_id.replace("/", "--") / model.revision
     )
     try:
         bundle_info = bundle.lstat()
@@ -413,6 +400,11 @@ def _active_retrieval_runtime(paths: HostPaths) -> dict:
         "binding": binding,
         "bundle": bundle,
         "embedding": embedding,
+        "model_id": model.model_id,
+        "revision": model.revision,
+        "embedding_container_path": (
+            f"/models/embeddings/{model.model_id.replace('/', '--')}/{model.revision}"
+        ),
         "source": paths.baseline,
     }
 
@@ -584,8 +576,11 @@ def _stop_retrieval_worker(paths: HostPaths, *, runner=subprocess.run) -> bool:
 def _resume_retrieval_worker(
     paths: HostPaths, runtime: dict, *, runner=subprocess.run
 ) -> None:
-    model_id = RETRIEVAL_MODEL_ID.replace("/", "--")
-    model_path = f"/models/embeddings/{model_id}/{RETRIEVAL_MODEL_REVISION}"
+    model_path = runtime.get("embedding_container_path")
+    if not isinstance(model_path, str) or not model_path.startswith(
+        "/models/embeddings/"
+    ):
+        raise MaintenanceError("active retrieval model path is unavailable")
     command = [
         "docker",
         "compose",

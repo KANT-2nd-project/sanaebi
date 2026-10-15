@@ -147,7 +147,11 @@ class ReleaseInputTests(unittest.TestCase):
             self.assertEqual(inputs.release.schema_version, 2)
             self.assertEqual(
                 inputs.retrieval_release.model.model_id,
-                "exp-models/dragonkue-KoEn-E5-Tiny",
+                "nlpai-lab/KURE-v1",
+            )
+            self.assertEqual(
+                inputs.retrieval_release.model.splitter.revision,
+                "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
             )
             self.assertEqual(payload["retrieval-release.json"], retrieval)
 
@@ -433,6 +437,42 @@ class HostPathTests(unittest.TestCase):
         self.assertEqual(
             overrides["SANAEBI_RETRIEVAL_BUNDLE_CONTAINER_PATH"],
             "/retrieval-baselines/schema-v1/bundle.sqlite3",
+        )
+        self.assertEqual(
+            overrides["SANAEBI_EMBEDDING_PATH"],
+            "/models/embeddings/nlpai-lab--KURE-v1/8b418a58414668e75532ed045c22d9ca018ae2b2",
+        )
+
+    def test_previous_tiny_retrieval_release_keeps_its_embedding_path(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            engine, release_id = self._candidate_engine(
+                root, descriptor_mode="rag", configured_mode=None
+            )
+            release_dir = root / "releases" / release_id
+            legacy_descriptor = (
+                Path(__file__).resolve().parent
+                / "fixtures/retrieval-release-tiny-v1.json"
+            ).read_bytes()
+            (release_dir / "retrieval-release.json").write_bytes(legacy_descriptor)
+            release_path = release_dir / "release.json"
+            release_value = json.loads(release_path.read_text(encoding="utf-8"))
+            release_value["retrieval_manifest_sha256"] = hashlib.sha256(
+                legacy_descriptor
+            ).hexdigest()
+            release_path.write_text(json.dumps(release_value), encoding="utf-8")
+            bundle = root / "retrieval-baselines" / "schema-v1" / "bundle.sqlite3"
+            with patch.object(
+                engine,
+                "_binding_for_release",
+                return_value={"bundle_path": bundle},
+            ):
+                mode, overrides, _ = engine._runtime_overrides(release_id)
+
+        self.assertEqual(mode, "rag")
+        self.assertEqual(
+            overrides["SANAEBI_EMBEDDING_PATH"],
+            "/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
         )
 
     def test_candidate_rag_api_receives_host_source_and_bundle_mounts(self):

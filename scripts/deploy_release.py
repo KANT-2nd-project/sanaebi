@@ -36,6 +36,9 @@ from scripts.deployment_embedding import (
 from scripts.deployment_embedding import (
     parse_manifest as parse_retrieval_manifest,
 )
+from scripts.deployment_embedding import (
+    validate_model_directory as validate_retrieval_model_directory,
+)
 from scripts.production_maintenance import (
     DEFAULT_PATHS,
     HostPaths,
@@ -1274,61 +1277,25 @@ class DeploymentEngine:
             "--root",
             "/models/embeddings",
         ]
-        self._run("KoEn-E5-Tiny preparation", command, timeout=1800)
+        self._run("retrieval embedding preparation", command, timeout=1800)
         self._validate_embedding_tree(model_path, inputs.retrieval_release)
         return model_path
 
     @staticmethod
     def _validate_embedding_tree(model_path: Path, retrieval: RetrievalRelease) -> None:
-        if model_path.is_symlink() or not model_path.is_dir():
-            raise DeploymentError("retrieval model directory is missing or unsafe")
-        expected = {record.name for record in retrieval.model.files} | {
-            "retrieval-model.json"
-        }
         try:
-            entries = list(model_path.iterdir())
-        except OSError as error:
-            raise DeploymentError("retrieval model directory is unreadable") from error
-        if {entry.name for entry in entries} != expected:
-            raise DeploymentError("retrieval model inventory does not match its pin")
-        for record in retrieval.model.files:
-            path = model_path / record.name
-            try:
-                info = path.lstat()
-                actual_size, actual_digest = _file_digest(path)
-            except OSError as error:
-                raise DeploymentError("retrieval model file is unavailable") from error
-            if (
-                not stat.S_ISREG(info.st_mode)
-                or actual_size != record.size
-                or actual_digest != record.sha256
-            ):
-                raise DeploymentError(
-                    f"retrieval model file does not match its pin: {record.name}"
-                )
-        try:
-            sidecar = json.loads(
-                (model_path / "retrieval-model.json").read_text(encoding="utf-8")
-            )
-        except (OSError, UnicodeError, json.JSONDecodeError) as error:
+            validate_retrieval_model_directory(model_path, retrieval)
+        except EmbeddingReleaseError as error:
             raise DeploymentError(
-                "retrieval runtime model metadata is invalid"
+                "retrieval model directory failed validation"
             ) from error
-        model = retrieval.model
-        expected_sidecar = {
-            "model_id": model.model_id,
-            "revision": model.revision,
-            "dimension": model.dimension,
-            "pooling": model.pooling,
-            "normalization": model.normalization,
-            "query_prefix": model.query_prefix,
-            "passage_prefix": model.passage_prefix,
-            "dtype": model.dtype,
-        }
-        if sidecar != expected_sidecar:
-            raise DeploymentError("retrieval runtime model metadata does not match")
-        for path in entries:
-            os.chmod(path, 0o444)
+        for path in model_path.iterdir():
+            if path.is_dir():
+                for child in path.iterdir():
+                    os.chmod(child, 0o444)
+                os.chmod(path, 0o555)
+            else:
+                os.chmod(path, 0o444)
         os.chmod(model_path, 0o555)
 
     def _prepare_retrieval_baseline(
