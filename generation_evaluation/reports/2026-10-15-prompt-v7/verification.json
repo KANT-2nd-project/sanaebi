@@ -22,6 +22,6 @@
   "browser_screenshots_recovered": false,
   "server_restart": false,
   "deployment": false,
-  "notion_sync": "pending",
-  "git_push": "pending"
+  "notion_sync": "three mapped pages updated and read back; see notion-verification.json",
+  "git_push": "report commit 584366b95c7addd8c272adc48ba1d8cf8435f2c0 confirmed on origin/main"
 }
