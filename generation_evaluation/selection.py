@@ -21,14 +21,15 @@ from generation.providers import (
     invoke_openai_message,
     to_messages,
 )
-from generation_evaluation.strategies import execute_strategy
 from generation_evaluation.budget import (
     BudgetExceeded,
     BudgetLedger,
     actual_cost,
     reserve_cost,
 )
+from generation_evaluation.experiment_support import digest, file_hashes
 from generation_evaluation.reporting import config_from_dict
+from generation_evaluation.strategies import execute_strategy
 
 DEFAULT_BUDGET_LIMITS = {
     "total_dollars": 5.0,
@@ -48,6 +49,7 @@ MANIFEST_SOURCE_PATHS = (
     "generation_evaluation/strategies.py",
     "generation/output_schema.py",
     "generation_evaluation/selection.py",
+    "generation_evaluation/experiment_support.py",
     "generation_evaluation/budget.py",
     "generation_evaluation/types.py",
     "generation_evaluation/reporting.py",
@@ -81,15 +83,8 @@ def _budget_ledger(args):
     return BudgetLedger(args.ledger, **_budget_limits(args))
 
 
-def _sha256_file(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
 def _manifest_code_hashes():
-    return {
-        name: _sha256_file(Path(name)) if Path(name).is_file() else None
-        for name in MANIFEST_SOURCE_PATHS
-    }
+    return file_hashes(MANIFEST_SOURCE_PATHS)
 
 
 def _validate_cases(cases):
@@ -205,14 +200,6 @@ def _manifest_matches(stored, expected, budget_limits):
         expected_without_identity.pop("budget_limits", None)
         return stored_without_identity == expected_without_identity
     return False
-
-
-def digest(value):
-    return hashlib.sha256(
-        json.dumps(
-            value, ensure_ascii=False, sort_keys=True, separators=(",", ":")
-        ).encode()
-    ).hexdigest()
 
 
 def format_check(raw):

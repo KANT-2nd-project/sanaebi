@@ -46,6 +46,8 @@ class SelectionTests(unittest.TestCase):
     def test_manifest_hash_inventory_covers_runtime_validation_and_lock_sources(self):
         hashes = _manifest_code_hashes()
         for name in (
+            "generation_evaluation/strategies.py",
+            "generation_evaluation/experiment_support.py",
             "generation/config.py",
             "generation/types.py",
             "generation/validation.py",
@@ -323,6 +325,30 @@ class SelectionRunnerTests(unittest.TestCase):
                 run(self.args)
 
         model.invoke.assert_called_once()
+
+    def test_support_code_change_rejects_resume_before_provider_creation(self):
+        from generation_evaluation.selection import run
+
+        with (
+            patch(
+                "generation_evaluation.selection.ChatOllama",
+                return_value=self._mock_ollama(),
+            ),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+        with (
+            patch(
+                "generation_evaluation.selection._manifest_code_hashes",
+                return_value={
+                    "generation_evaluation/experiment_support.py": "changed",
+                },
+            ),
+            patch("generation_evaluation.selection.ChatOllama") as provider,
+            self.assertRaisesRegex(ValueError, "manifest differs"),
+        ):
+            run(self.args)
+        provider.assert_not_called()
 
     def test_resume_rejects_changed_budget_limits_before_provider_call(self):
         from generation_evaluation.selection import run
