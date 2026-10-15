@@ -14,10 +14,18 @@ from unittest.mock import patch
 from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
 from langchain_core.messages import AIMessage
 
-import sanaebi_assistant as assistant
-from answer_pipeline.checks import JUDGE_GUIDELINES, call_status, code_checks
-from answer_pipeline.cli import DEFAULT_EVAL_SET_PATH, build_parser, main
-from answer_pipeline.run import (
+from archive.answering_v1 import assistant
+from archive.answering_v1.answer_pipeline.checks import (
+    JUDGE_GUIDELINES,
+    call_status,
+    code_checks,
+)
+from archive.answering_v1.answer_pipeline.cli import (
+    DEFAULT_EVAL_SET_PATH,
+    build_parser,
+    main,
+)
+from archive.answering_v1.answer_pipeline.run import (
     ModelConfig,
     applied_conditions,
     check_eval_set,
@@ -130,8 +138,8 @@ class RunCaseTests(ExecutorPatch):
     def test_structured_tool_call_preserves_raw_text_and_payload(self):
         from langchain_core.outputs import ChatGeneration, LLMResult
 
-        from answer_pipeline.checks import answer_text
-        from answer_pipeline.run import CallCapture
+        from archive.answering_v1.answer_pipeline.checks import answer_text
+        from archive.answering_v1.answer_pipeline.run import CallCapture
 
         payload = {
             "answer": "그룹웨어에서 신청하세요.",
@@ -398,8 +406,13 @@ class CommandLineTests(ExecutorPatch):
             return {key: {"passed": True, "reason": "확인"} for key in JUDGE_GUIDELINES}
 
         with (
-            patch("answer_pipeline.cli.openai_judge", lambda model: judge),
-            patch("answer_pipeline.cli.ask_openai_key", lambda: None),
+            patch(
+                "archive.answering_v1.answer_pipeline.cli.openai_judge",
+                lambda model: judge,
+            ),
+            patch(
+                "archive.answering_v1.answer_pipeline.cli.ask_openai_key", lambda: None
+            ),
         ):
             output = self.run_cli("judge", "--run-dir", str(run_dir), "--dry-run")
             self.assertIn("이번 호출 1건", output)
@@ -454,9 +467,13 @@ class CommandLineTests(ExecutorPatch):
     def test_default_eval_and_document_pair_runs_without_overrides(self):
         self.write_models({"name": "local", "provider": "ollama"})
         with (
-            patch("answer_pipeline.cli.DEFAULT_EVAL_SET_PATH", self.eval_set),
             patch(
-                "answer_pipeline.cli.DEFAULT_EVALUATION_DOCUMENTS_PATH", self.documents
+                "archive.answering_v1.answer_pipeline.cli.DEFAULT_EVAL_SET_PATH",
+                self.eval_set,
+            ),
+            patch(
+                "archive.answering_v1.answer_pipeline.cli.DEFAULT_EVALUATION_DOCUMENTS_PATH",
+                self.documents,
             ),
         ):
             output = self.run_cli(

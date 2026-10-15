@@ -64,3 +64,5 @@ flowchart TD
 - [v1·v3 반복 비교](../generation_evaluation/reports/2026-10-15-answer-grounding-repeat/README.md): 각25회·사용자 요청 중단, 소표본 해석 재검토와 기준 민감도.
 
 - [v3 기본값 채택·전환 검증](worklogs/2026-10-15-adopt-grounding-v3.md): 반복 결과를 확인한 사용자 결정, 공통 기본값 전환과 검증.
+
+- [핵심 코드 정리·완료 상태·후속 작업](worklogs/2026-10-15-core-cleanup.md): 구형 추출 제거, 프로필 필수화, legacy 이동과 단계별 인수인계.

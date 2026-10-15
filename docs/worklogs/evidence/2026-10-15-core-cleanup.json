@@ -1,0 +1,42 @@
+{
+  "baseline_tests": 586,
+  "current_tests": 588,
+  "removed_parser_tests": [
+    "test_ask_response.ExtractAnswerTextTests.test_parses_json_string",
+    "test_ask_response.ExtractAnswerTextTests.test_rejects_unusable_results",
+    "test_ask_response.ExtractAnswerTextTests.test_returns_only_text_from_result"
+  ],
+  "moved_test_mapping": {
+    "test_final_answer_debug.LegacyOfflineChainTests.test_legacy_chain_formats_structured_answer_with_fake_model": "test_legacy_answering.LegacyOfflineChainTests.test_legacy_chain_formats_structured_answer_with_fake_model",
+    "test_final_answer_debug.LegacyOfflineChainTests.test_legacy_process_response_keeps_provider_error_isolated": "test_legacy_answering.LegacyOfflineChainTests.test_legacy_process_response_keeps_provider_error_isolated"
+  },
+  "added_tests": [
+    "test_generation_profiles.ProfileCompatibilityTests.test_profile_must_be_explicit",
+    "test_legacy_answering.ArchivedEntrypointTests.test_archived_default_paths_still_point_to_repository_data",
+    "test_legacy_answering.ArchivedEntrypointTests.test_assistant_keeps_result_in_project_root",
+    "test_legacy_answering.ArchivedEntrypointTests.test_cli_help_does_not_request_credentials_or_models",
+    "test_legacy_answering.LegacyDocumentCompatibilityTests.test_published_corpus_remains_readable_by_legacy_loader"
+  ],
+  "unexpected_missing": [],
+  "profiles_sha256": {
+    "examples_answer_scope_v3": "226411716e69fa64c57d1476fe739090723a7224669bdd1e6ff2e919df558e5f",
+    "examples_answer_scope_v2": "ed3f80a3b17b16ada6a823bc750da6a946b0774e2f9f07210550d43f9952b94a",
+    "examples_answer_scope_v1": "92a941a0aa90be65680d5984bd84ab837ddd3a5d990646d18a44d5bd11f60821",
+    "examples_coverage": "c06177dfd41458e98c9ceb6c458923c9222e1060d944678ff1e8e1f64ab5a4a7",
+    "examples_conditions": "3e904b20cbecc2a4a8a02e655b1227d25620e049ecf617eedbec97d2955a071f",
+    "examples_json": "55ee186c0e6ffa78cc720894d7e4c24653b58106da12c61457ba9571658403f1",
+    "baseline": "9e7a7ddc9597fec3b371f2fab95feec80160c8f98a8256b661561ae82053ded8",
+    "concise": "54757ecfa0f99389a45882890c5a2e6930aa4e8c8ff3efe08246baa91dd7e406",
+    "examples": "f470ed2faba2c7684b11f1180fe24f0fc72f416bea9f696c66c8c1f7347b6386"
+  },
+  "profile_hashes_unchanged": true,
+  "user_files_unchanged": true,
+  "user_git_status_unchanged": true,
+  "frozen_experiments_models_data_dependencies_unchanged": true,
+  "only_missing_profile_call_is_negative_test": [
+    [
+      "tests/test_generation_profiles.py",
+      53
+    ]
+  ]
+}

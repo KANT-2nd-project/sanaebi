@@ -22,12 +22,12 @@ from langchain_core.messages import AIMessage
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
 
-import sanaebi_assistant
 from app import fastapi_main
 from app.dependencies import get_assistant_handler
 from app.diagnostics import trace
 from app.documents.context import DocumentContextSnapshot
 from app.questions.service import handle_classified_question
+from archive.answering_v1 import assistant as sanaebi_assistant
 
 LABEL = "SEARCH_KNOWLEDGE"
 DOCUMENTS = "연차 문서 " * 400  # 기본 2000자 제한을 넘는 문서 문맥

@@ -86,7 +86,7 @@ app/
 
 `SANAEBI_ANSWER_PROVIDER`는 미설정 또는 openai만 허용하며 그 밖의 값은 시작 시 거부한다. `generation.presets.load_runtime_settings`로 CLI와 같은 모델·프로필을 읽되 서버는 JSONL 경로를 요구하지 않는다. 최종 설정은 [최종 프롬프트 기준](generation-final-prompt.md)을 따른다. 비밀키·가중치는 Git에 게시하지 않는다.
 
-앱별 `GenerationAnswerer`는 첫 유효 검색에서 OpenAI 클라이언트를 생성한다. 초기화만 잠그고 원격 요청 전체는 직렬화하지 않는다. 각 요청은 별도 프롬프트를 구성하고 앱 종료 시 소유한 동기·비동기 클라이언트를 닫는다. 자동 재시도·fallback·temperature 전달은 없다. 문서 렌더러는 원본 knowledge_id·개정·제목·본문·순서를 보존한다. 서버는 `sanaebi_assistant`, `answer_pipeline`, `generation_evaluation`을 import하지 않는다.
+앱별 `GenerationAnswerer`는 첫 유효 검색에서 OpenAI 클라이언트를 생성한다. 초기화만 잠그고 원격 요청 전체는 직렬화하지 않는다. 각 요청은 별도 프롬프트를 구성하고 앱 종료 시 소유한 동기·비동기 클라이언트를 닫는다. 자동 재시도·fallback·temperature 전달은 없다. 문서 렌더러는 원본 knowledge_id·개정·제목·본문·순서를 보존한다. 서버는 `archive.answering_v1`과 `generation_evaluation`을 import하지 않는다. 과거 답변기·평가기의 새 실행 경로는 [보관 안내](../archive/answering_v1/README.md)를 따른다.
 
 ## 오류와 호환
 

@@ -1,10 +1,4 @@
-"""Regression checks for the active generation path and the archived offline chain.
-
-The HTTP test uses the real GenerationAnswerer, prompt builder, parser, routes,
-and a temporary SQLite publication store. Only the managed provider client is
-faked. The legacy LangChain tests below remain isolated unit checks; they do
-not represent the server request path.
-"""
+"""Current HTTP generation and explicit snapshot regression checks."""
 
 import os
 import tempfile
@@ -14,9 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from fastapi.testclient import TestClient
-from langchain_core.runnables import RunnableLambda
 
-import sanaebi_assistant as legacy_assistant
 from app.fastapi_main import app
 from generation.documents import load_documents
 from generation.types import GenerationPrompt, ModelResponse
@@ -41,55 +33,6 @@ class FakeManagedGenerationClient:
 
     async def aclose(self):
         self.closed = True
-
-
-class LegacyOfflineChainTests(unittest.TestCase):
-    """Keep regression coverage for the archived utility, separate from HTTP."""
-
-    def test_legacy_chain_formats_structured_answer_with_fake_model(self):
-        class FakeModel:
-            def with_structured_output(self, schema):
-                return RunnableLambda(
-                    lambda _: schema(
-                        answer=ANSWER,
-                        referenced_documents=["휴가 규정"],
-                        note="신청 위치를 명시함",
-                    )
-                )
-
-        request = {
-            "response": {"ok": True, "text": "연차는 어디서 신청해요?"},
-            "classification_label": legacy_assistant.CLARIFY,
-        }
-        with patch.object(
-            legacy_assistant, "create_chat_model", return_value=FakeModel()
-        ):
-            result = legacy_assistant.create_chain("openai").invoke(request)
-
-        self.assertEqual(result["answer"], ANSWER)
-        self.assertEqual(result["document"], "휴가 규정")
-        self.assertEqual(result["note(LLM)"], "신청 위치를 명시함")
-
-    def test_legacy_process_response_keeps_provider_error_isolated(self):
-        class FakeModel:
-            def with_structured_output(self, schema):
-                def fail(_):
-                    raise ConnectionError("테스트 연결 오류")
-
-                return RunnableLambda(fail)
-
-        with patch.object(
-            legacy_assistant, "create_chat_model", return_value=FakeModel()
-        ):
-            results = legacy_assistant.process_response(
-                {"ok": True, "text": "일반 질문", "reason": ""},
-                legacy_assistant.UNSUPPORTED,
-                provider="openai",
-            )
-
-        self.assertFalse(results["openai"]["success"])
-        self.assertEqual(results["openai"]["answer"], "")
-        self.assertIn("ConnectionError", results["openai"]["error"])
 
 
 class OfflineSnapshotFileTests(unittest.TestCase):

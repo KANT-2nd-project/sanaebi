@@ -5,8 +5,8 @@ import threading
 import unittest
 from pathlib import Path
 
-from answer_pipeline.checks import JUDGE_GUIDELINES
-from answer_pipeline.judge import (
+from archive.answering_v1.answer_pipeline.checks import JUDGE_GUIDELINES
+from archive.answering_v1.answer_pipeline.judge import (
     JudgeResult,
     build_prompt,
     judge_record,
@@ -15,7 +15,7 @@ from answer_pipeline.judge import (
     model_instructions,
     run_judge,
 )
-from answer_pipeline.run import record_key
+from archive.answering_v1.answer_pipeline.run import record_key
 from tests.answer_pipeline_support import (
     GOOD_ANSWER_TEXT,
     LEAVE_DOC,

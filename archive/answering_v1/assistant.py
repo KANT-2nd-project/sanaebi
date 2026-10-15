@@ -74,7 +74,7 @@ from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
-from app.settings import get_documents_path
+from app.settings import PROJECT_ROOT, get_documents_path
 from contracts.classification import (
     CLARIFY,
     LABELS,
@@ -567,7 +567,7 @@ def main():
         request["classification_label"],
     )
     result_json = json.dumps(result, ensure_ascii=False, indent=2)
-    result_path = Path(__file__).resolve().with_name("result.json")
+    result_path = PROJECT_ROOT / "result.json"
     result_path.write_text(f"{result_json}\n", encoding="utf-8")
     print(result_json)
 

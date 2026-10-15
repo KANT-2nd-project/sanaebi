@@ -26,9 +26,18 @@ class CompanyKnowledgeTests(unittest.TestCase):
 
     def test_published_documents_are_valid(self):
         self.assertEqual(validate(), [])
-        from answer_pipeline.run import load_documents
+        from generation.documents import load_documents
 
-        self.assertEqual(len(load_documents(DEFAULT)), 71)
+        # Runtime/CLI snapshots carry a positive revision; the published source
+        # corpus intentionally has no runtime database revision metadata.
+        rows = [json.loads(line) for line in DEFAULT.read_text().splitlines()]
+        with tempfile.TemporaryDirectory() as directory:
+            snapshot = Path(directory) / "snapshot.jsonl"
+            snapshot.write_text(
+                "\n".join(json.dumps({**row, "revision_number": 1}) for row in rows),
+                encoding="utf-8",
+            )
+            self.assertEqual(len(load_documents(snapshot)), 71)
 
     def test_empty_and_malformed_records_fail(self):
         for rows in ([], [None], [{"title": "제목"}], [self.row() | {"document": " "}]):
