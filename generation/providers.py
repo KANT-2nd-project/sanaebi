@@ -3,7 +3,6 @@ from inspect import isawaitable
 
 from httpx import TimeoutException
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
-from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 from openai import APITimeoutError
 
@@ -12,6 +11,7 @@ from generation.config import (
     GenerationOutputMode,
     GenerationProvider,
 )
+from generation.optional_providers import load_ollama_chat_model
 from generation.output_schema import OPENAI_ANSWER_RESPONSE_FORMAT
 from generation.types import GenerationPrompt, ModelResponse
 
@@ -91,7 +91,7 @@ def make_model_call(
     return model_call
 
 
-def build_ollama_model(config: GenerationConfig) -> ChatOllama:
+def build_ollama_model(config: GenerationConfig):
     if config.provider != "ollama":
         raise ValueError("provider가 ollama가 아닙니다.")
 
@@ -104,7 +104,7 @@ def build_ollama_model(config: GenerationConfig) -> ChatOllama:
     if config.temperature is not None:
         options["temperature"] = config.temperature
 
-    return ChatOllama(**options)
+    return load_ollama_chat_model()(**options)
 
 
 def build_ollama_call(

@@ -38,13 +38,14 @@ from archive.answering_v1.answer_pipeline.run import (
     run_case,
     run_comparison,
 )
-from tests.answer_pipeline_support import (
+from tests.support.answer_pipeline import (
     DOCUMENTS,
     LEAVE_DOC,
     ROOM_DOC,
     case,
     unsupported_case,
 )
+from tests.support.paths import ROOT
 
 LOCAL = ModelConfig(
     name="local-test", provider="ollama", model="test-local", num_ctx=8192
@@ -680,7 +681,7 @@ class EvalSetFileTests(unittest.TestCase):
                     load_documents(path)
 
     def test_historical_eval_set_loads_with_its_archived_documents(self):
-        root = Path(__file__).resolve().parents[1]
+        root = ROOT
         archive = root / "data" / "archive" / "company-knowledge-v0"
         documents = load_documents(archive / "ieum_works.jsonl")
         rows = load_eval_set(archive / "eval_set_dev.jsonl")

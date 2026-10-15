@@ -1,25 +1,19 @@
 import copy
 import csv
 import unittest
-from pathlib import Path
 
 from archive.classification_v1.legacy.document_split import (
     make_split_record,
     read_recorded_splits,
     split_documents,
 )
+from tests.support.paths import ROOT
 
 
 class DocumentSplitTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        path = (
-            Path(__file__).resolve().parents[1]
-            / "data"
-            / "archive"
-            / "document-topics-v0.2"
-            / "dataset.csv"
-        )
+        path = ROOT / "data" / "archive" / "document-topics-v0.2" / "dataset.csv"
         with path.open(encoding="utf-8-sig", newline="") as file:
             cls.rows = list(csv.DictReader(file))
 
@@ -64,25 +58,13 @@ class DocumentSplitTests(unittest.TestCase):
         self.assertIn(synthetic["document_id"], train_ids)
 
     def test_record_restores_the_exact_documents(self):
-        path = (
-            Path(__file__).resolve().parents[1]
-            / "data"
-            / "archive"
-            / "document-topics-v0.2"
-            / "dataset.csv"
-        )
+        path = ROOT / "data" / "archive" / "document-topics-v0.2" / "dataset.csv"
         splits = split_documents(self.rows)
         record = make_split_record(splits, path)
         self.assertEqual(read_recorded_splits(record, path), splits)
 
     def test_legacy_record_restores_from_default_dataset_without_mutation(self):
-        path = (
-            Path(__file__).resolve().parents[1]
-            / "data"
-            / "archive"
-            / "document-topics-v0.2"
-            / "dataset.csv"
-        )
+        path = ROOT / "data" / "archive" / "document-topics-v0.2" / "dataset.csv"
         splits = split_documents(self.rows)
         record = make_split_record(splits, path)
         record["dataset"] = "data/dataset.csv"
@@ -92,26 +74,14 @@ class DocumentSplitTests(unittest.TestCase):
         self.assertEqual(record, original_record)
 
     def test_record_rejects_changed_dataset(self):
-        path = (
-            Path(__file__).resolve().parents[1]
-            / "data"
-            / "archive"
-            / "document-topics-v0.2"
-            / "dataset.csv"
-        )
+        path = ROOT / "data" / "archive" / "document-topics-v0.2" / "dataset.csv"
         record = make_split_record(split_documents(self.rows), path)
         record["dataset_sha256"] = "different-dataset"
         with self.assertRaisesRegex(ValueError, "dataset.csv"):
             read_recorded_splits(record, path)
 
     def test_record_rejects_overlapping_document_ids(self):
-        path = (
-            Path(__file__).resolve().parents[1]
-            / "data"
-            / "archive"
-            / "document-topics-v0.2"
-            / "dataset.csv"
-        )
+        path = ROOT / "data" / "archive" / "document-topics-v0.2" / "dataset.csv"
         record = make_split_record(split_documents(self.rows), path)
         record["splits"]["test"]["document_ids"][0] = record["splits"]["train"][
             "document_ids"

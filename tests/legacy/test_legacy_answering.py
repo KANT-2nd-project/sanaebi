@@ -15,6 +15,7 @@ from langchain_core.runnables import RunnableLambda
 from archive.answering_v1 import assistant as legacy_assistant
 from archive.answering_v1.answer_pipeline.run import load_documents
 from scripts.validate_company_knowledge import DEFAULT
+from tests.support.paths import ROOT
 
 ANSWER = "인사 시스템에서 신청하세요."
 
@@ -123,7 +124,7 @@ class ArchivedEntrypointTests(unittest.TestCase):
             DEFAULT_EVALUATION_DOCUMENTS_PATH,
         )
 
-        root = Path(__file__).resolve().parents[1]
+        root = ROOT
         self.assertEqual(legacy_assistant.PROJECT_ROOT, root)
         self.assertEqual(
             DEFAULT_EVALUATION_DOCUMENTS_PATH,

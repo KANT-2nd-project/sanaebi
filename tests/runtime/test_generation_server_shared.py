@@ -27,8 +27,7 @@ from generation.providers import (
     to_messages,
 )
 from generation.types import GenerationPrompt, ModelResponse
-
-ROOT = Path(__file__).resolve().parent.parent
+from tests.support.paths import ROOT
 
 
 class GenerationServerSharedTests(unittest.TestCase):

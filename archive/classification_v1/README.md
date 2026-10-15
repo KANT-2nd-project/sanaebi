@@ -118,7 +118,7 @@ Jev 실제 평가는 `TYPESAFE_API_KEY`가 필요하다. 위 예시는 Git 제�
 ## 검증
 
 ```bash
-uv run --locked python -m unittest discover -s tests -v
+uv run --locked python -m unittest discover -s tests -t . -v
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv run --locked python scripts/validate_dataset.py

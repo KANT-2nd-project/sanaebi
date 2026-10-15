@@ -17,13 +17,14 @@ from archive.answering_v1.answer_pipeline.report import (
 )
 from archive.answering_v1.answer_pipeline.run import record_key
 from archive.answering_v1.answer_pipeline.scoring import agreement, verdicts_by_key
-from tests.answer_pipeline_support import (
+from tests.support.answer_pipeline import (
     GOOD_ANSWER_TEXT,
     LEAVE_DOC,
     llm_record,
     structured,
     unsupported_case,
 )
+from tests.support.paths import ROOT
 
 PRICES = {
     "cloud": {
@@ -99,7 +100,7 @@ class PriceFileTests(unittest.TestCase):
 
     def test_example_price_file_must_be_filled_before_use(self):
         example = (
-            Path(__file__).resolve().parents[1]
+            ROOT
             / "archive"
             / "answering_v1"
             / "answer_pipeline"

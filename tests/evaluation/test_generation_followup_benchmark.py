@@ -4,9 +4,9 @@ import csv
 import hashlib
 import json
 import unittest
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+from tests.support.paths import ROOT
+
 BENCHMARK = ROOT / "generation_evaluation" / "benchmarks" / "luna-reference-followup-v1"
 SNAPSHOT_SHA256 = "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74"
 CORPUS_SHA256 = "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4"

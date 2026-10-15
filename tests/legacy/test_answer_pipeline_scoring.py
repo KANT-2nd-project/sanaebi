@@ -20,7 +20,7 @@ from archive.answering_v1.answer_pipeline.scoring import (
     verdicts_by_key,
     write_check_sheet,
 )
-from tests.answer_pipeline_support import (
+from tests.support.answer_pipeline import (
     GOOD_ANSWER_TEXT,
     LEAVE_DOC,
     case,

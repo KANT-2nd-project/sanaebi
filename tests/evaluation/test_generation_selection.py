@@ -48,6 +48,9 @@ class SelectionTests(unittest.TestCase):
         for name in (
             "generation_evaluation/strategies.py",
             "generation_evaluation/experiment_support.py",
+            "generation_evaluation/selection_validation.py",
+            "generation_evaluation/selection_report_validation.py",
+            "generation/optional_providers.py",
             "generation/config.py",
             "generation/types.py",
             "generation/validation.py",
@@ -166,7 +169,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -180,7 +186,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -195,7 +204,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -217,7 +229,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -234,7 +249,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -264,7 +282,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -284,7 +305,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -303,7 +327,7 @@ class SelectionRunnerTests(unittest.TestCase):
             encoding="utf-8",
         )
         with (
-            patch("generation_evaluation.selection.ChatOllama") as provider,
+            patch("generation_evaluation.selection.load_ollama_chat_model") as provider,
             self.assertRaisesRegex(ValueError, "manual reconciliation"),
         ):
             run(self.args)
@@ -313,7 +337,10 @@ class SelectionRunnerTests(unittest.TestCase):
         from generation_evaluation.selection import run
 
         model = self._mock_ollama()
-        with patch("generation_evaluation.selection.ChatOllama", return_value=model):
+        with patch(
+            "generation_evaluation.selection.load_ollama_chat_model",
+            return_value=Mock(return_value=model),
+        ):
             with redirect_stdout(StringIO()):
                 self.assertEqual(run(self.args), 0)
             cases = json.loads(self.args.cases.read_text(encoding="utf-8"))
@@ -331,8 +358,8 @@ class SelectionRunnerTests(unittest.TestCase):
 
         with (
             patch(
-                "generation_evaluation.selection.ChatOllama",
-                return_value=self._mock_ollama(),
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=self._mock_ollama()),
             ),
             redirect_stdout(StringIO()),
         ):
@@ -344,7 +371,7 @@ class SelectionRunnerTests(unittest.TestCase):
                     "generation_evaluation/experiment_support.py": "changed",
                 },
             ),
-            patch("generation_evaluation.selection.ChatOllama") as provider,
+            patch("generation_evaluation.selection.load_ollama_chat_model") as provider,
             self.assertRaisesRegex(ValueError, "manifest differs"),
         ):
             run(self.args)
@@ -355,7 +382,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -370,7 +400,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -400,7 +433,10 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -421,7 +457,8 @@ class SelectionRunnerTests(unittest.TestCase):
         model = self._mock_ollama()
         with (
             patch(
-                "generation_evaluation.selection.ChatOllama", return_value=model
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
             ) as provider,
             redirect_stdout(StringIO()),
         ):
@@ -444,7 +481,8 @@ class SelectionRunnerTests(unittest.TestCase):
         model = self._mock_ollama()
         with (
             patch(
-                "generation_evaluation.selection.ChatOllama", return_value=model
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
             ) as provider,
             redirect_stdout(StringIO()),
         ):
@@ -495,7 +533,10 @@ class SelectionRunnerTests(unittest.TestCase):
         model = Mock()
         model.invoke.side_effect = RuntimeError(secret)
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -519,7 +560,10 @@ class SelectionRunnerTests(unittest.TestCase):
             {"refusal": "요청된 작업을 수행할 수 없습니다."},
         )
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -607,7 +651,10 @@ class SelectionRunnerTests(unittest.TestCase):
         self._enable_followup_candidate()
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 0)
@@ -644,7 +691,10 @@ class SelectionRunnerTests(unittest.TestCase):
         self.args.unlimited_budget = True
         model = self._mock_ollama()
         with (
-            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            patch(
+                "generation_evaluation.selection.load_ollama_chat_model",
+                return_value=Mock(return_value=model),
+            ),
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 2)

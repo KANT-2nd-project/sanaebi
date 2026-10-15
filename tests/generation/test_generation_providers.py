@@ -83,7 +83,10 @@ class GenerationProviderTests(unittest.TestCase):
 
     def test_ollama_receives_explicit_token_limits(self):
         config = GenerationConfig(GenerationProvider.OLLAMA, "model", 30, 40960, 512)
-        with patch("generation.providers.ChatOllama") as constructor:
+        with patch(
+            "generation.providers.load_ollama_chat_model", return_value=Mock()
+        ) as loader:
+            constructor = loader.return_value
             build_ollama_model(config)
             constructor.assert_called_once_with(
                 model="model",
@@ -295,8 +298,11 @@ class GenerationProviderTests(unittest.TestCase):
         for temperature, expected in ((None, {}), (0.3, {"temperature": 0.3})):
             with (
                 self.subTest(temperature=temperature),
-                patch("generation.providers.ChatOllama") as constructor,
+                patch(
+                    "generation.providers.load_ollama_chat_model", return_value=Mock()
+                ) as loader,
             ):
+                constructor = loader.return_value
                 config = GenerationConfig(
                     GenerationProvider.OLLAMA,
                     "model",
@@ -397,7 +403,10 @@ class GenerationProviderTests(unittest.TestCase):
 
     def test_ollama_http_timeout_reaches_generation_status(self):
         config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 12.5)
-        with patch("generation.providers.ChatOllama") as constructor:
+        with patch(
+            "generation.providers.load_ollama_chat_model", return_value=Mock()
+        ) as loader:
+            constructor = loader.return_value
             constructor.return_value.invoke.side_effect = httpx.ReadTimeout("timeout")
             result = generate(
                 GenerationPrompt(system="규칙", user="질문"), build_ollama_call(config)
@@ -417,7 +426,10 @@ class GenerationProviderTests(unittest.TestCase):
 
     def test_ollama_call_builds_once_and_defers_inference(self):
         config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 12.5)
-        with patch("generation.providers.ChatOllama") as constructor:
+        with patch(
+            "generation.providers.load_ollama_chat_model", return_value=Mock()
+        ) as loader:
+            constructor = loader.return_value
             model = constructor.return_value
             raw = '{"answer": " 안내 "}'
             model.invoke.return_value = AIMessage(content=raw)
@@ -442,7 +454,10 @@ class GenerationProviderTests(unittest.TestCase):
 
     def test_ollama_builder_passes_model_and_timeout_without_invoking(self):
         config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 12.5)
-        with patch("generation.providers.ChatOllama") as constructor:
+        with patch(
+            "generation.providers.load_ollama_chat_model", return_value=Mock()
+        ) as loader:
+            constructor = loader.return_value
             model = build_ollama_model(config)
             constructor.assert_called_once_with(
                 model="test-model",
@@ -455,7 +470,10 @@ class GenerationProviderTests(unittest.TestCase):
 
     def test_ollama_builder_rejects_other_provider_before_construction(self):
         config = GenerationConfig(GenerationProvider.OPENAI, "test-model", 30.0)
-        with patch("generation.providers.ChatOllama") as constructor:
+        with patch(
+            "generation.providers.load_ollama_chat_model", return_value=Mock()
+        ) as loader:
+            constructor = loader.return_value
             with self.assertRaises(ValueError):
                 build_ollama_model(config)
             constructor.assert_not_called()

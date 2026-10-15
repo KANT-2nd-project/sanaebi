@@ -55,7 +55,7 @@ summaries = summarize_runs(runs)
 저장소 루트에서 실행한다. 가짜 클라이언트·응답·시계만 사용한다.
 
 ```bash
-uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -v
+uv run --locked python -m unittest discover -s tests -t . -p 'test_generation_*.py' -v
 ```
 
 문서/프롬프트 식별과 전체 문서 배치 실행을 연결했고, 소수 문항의 속도·근거 품질을 검토했다. 별도 selection 실행기에 답변 가능성·필수 근거 평가셋, 예산·재개, 근거 추출/답변 분리 및 두 모델 비교를 구현했다. 아래 독립 비교 절과 [선정 실험 기록](../docs/worklogs/2026-10-15-generation-selection.md)을 따른다. 기존 CLI와 서버 연결 상태는 별개다. 새 모듈은 아직 설치 패키지 목록에 포함하지 않았다. [생성 모듈](../generation/README.md), [품질 평가 기준](../docs/generation-evaluation.md), [이번 작업 기록](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)을 함께 따른다.
@@ -158,3 +158,9 @@ run_case는 기본 examples_answer_scope_v3을 사용하며 keyword-only prompt_
 새 평가 코드는 날짜별 실험 실행기에서 helper를 import하지 않는다. 보존된 날짜별 실행기와 동적 import는 당시 기록이며 수정하지 않는다. 과거 실험은 해당 보고서에 기록된 고정 커밋에서 재현한다. 이번 이동 전 구조 확인 기준은 `57fdd26`이다. 현재 코드로 과거 결과를 resume하면 manifest 불일치로 호출 전에 거부한다. 기존 manifest를 다시 쓰거나 검사를 우회하지 않는다.
 
 변경·검증·완료 상태는 [S4 작업 기록](../docs/worklogs/2026-10-15-evaluation-cleanup.md)을 따른다.
+
+## 검증 모듈과 테스트 배치
+
+현재 selection의 문항·rubric 검증은 `selection_validation`, 보고서의 schema·정규화·파생값 처리는 `selection_report_validation`에서 담당한다. 실행·예산·resume·파일 기록은 selection에, 집계·순위는 기존 `selection_report.summarize`에 유지한다. 이 모듈들은 manifest 코드 해시에 포함하며 이전 결과의 코드 불일치 resume를 허용하지 않는다.
+
+전체·영역별 테스트 명령과 책임은 [테스트 안내](../tests/README.md)를 따른다. 과거 실험의 명령·경로는 해당 고정 커밋을 기준으로 재현한다.
