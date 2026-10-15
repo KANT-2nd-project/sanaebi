@@ -292,6 +292,99 @@ class SelectionRunnerTests(unittest.TestCase):
 
         model.invoke.assert_called_once()
 
+    def test_resume_rejects_changed_budget_limits_before_provider_call(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            self.args.total_dollars = 4.0
+            with self.assertRaisesRegex(ValueError, "manifest differs"):
+                run(self.args)
+
+        model.invoke.assert_called_once()
+
+    def test_legacy_manifest_without_budget_limits_resumes_only_with_defaults(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            manifest_path = self.args.output / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest.pop("budget_limits")
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+            self.assertEqual(run(self.args), 0)
+
+        migrated_manifest = json.loads(
+            (self.args.output / "manifest.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            migrated_manifest["budget_limits"],
+            {
+                "total_dollars": 5.0,
+                "dev_dollars": 3.0,
+                "total_seconds": 7200.0,
+                "dev_seconds": 4200.0,
+            },
+        )
+        model.invoke.assert_called_once()
+
+    def test_legacy_manifest_without_budget_limits_rejects_custom_limits(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            manifest_path = self.args.output / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest.pop("budget_limits")
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            self.args.total_dollars = 4.0
+
+            with self.assertRaisesRegex(ValueError, "manifest differs"):
+                run(self.args)
+
+        model.invoke.assert_called_once()
+
+    def test_custom_cost_cap_stops_before_openai_provider_call(self):
+        from generation_evaluation.selection import run
+
+        self.args = self._write_inputs(strategy="single", provider="openai")
+        self.args.total_dollars = 0.001
+        self.args.dev_dollars = 0.001
+        with (
+            patch("generation_evaluation.selection.reserve_cost", return_value=0.01),
+            patch("generation_evaluation.selection.build_openai_model") as provider,
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 2)
+
+        provider.assert_not_called()
+        self.assertEqual(len(self._read_jsonl(self.args.output / "runs.jsonl")), 1)
+        ledger = json.loads(self.args.ledger.read_text(encoding="utf-8"))
+        self.assertEqual(ledger["reservations"], {})
+
+    def test_invalid_budget_limits_fail_before_creating_run_files(self):
+        from generation_evaluation.selection import run
+
+        self.args.total_dollars = -1
+        with self.assertRaisesRegex(ValueError, "total_dollars"):
+            run(self.args)
+
+        self.assertFalse(self.args.output.exists())
+        self.assertFalse(self.args.ledger.exists())
+
     def test_provider_failure_is_persisted_without_exception_message(self):
         from generation_evaluation.selection import run
 

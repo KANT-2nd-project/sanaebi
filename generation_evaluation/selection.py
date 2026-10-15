@@ -25,6 +25,41 @@ from generation_evaluation.budget import (
 )
 from generation_evaluation.reporting import config_from_dict
 
+DEFAULT_BUDGET_LIMITS = {
+    "total_dollars": 5.0,
+    "dev_dollars": 3.0,
+    "total_seconds": 7200.0,
+    "dev_seconds": 4200.0,
+}
+
+
+def _budget_limits(args):
+    return {
+        name: getattr(args, name, default)
+        for name, default in DEFAULT_BUDGET_LIMITS.items()
+    }
+
+
+def _budget_ledger(args):
+    return BudgetLedger(args.ledger, **_budget_limits(args))
+
+
+def _manifest_matches(stored, expected, budget_limits):
+    stored_without_identity = dict(stored)
+    stored_without_identity.pop("ledger_identity", None)
+    expected_without_identity = dict(expected)
+    expected_without_identity.pop("ledger_identity", None)
+    if stored_without_identity == expected_without_identity:
+        return True
+    if (
+        "budget_limits" not in stored_without_identity
+        and budget_limits == DEFAULT_BUDGET_LIMITS
+    ):
+        stored_without_identity.pop("budget_limits", None)
+        expected_without_identity.pop("budget_limits", None)
+        return stored_without_identity == expected_without_identity
+    return False
+
 
 def digest(value):
     return hashlib.sha256(
@@ -110,6 +145,14 @@ def deadline(seconds):
 
 
 def run(args):
+    # Validate configured limits before creating any run files.
+    ledger = _budget_ledger(args)
+    budget_limits = {
+        "total_dollars": ledger.total_dollars,
+        "dev_dollars": ledger.dev_dollars,
+        "total_seconds": ledger.total_seconds,
+        "dev_seconds": ledger.dev_seconds,
+    }
     candidates = json.loads(args.candidates.read_text())
     candidate = candidates[args.candidate]
     cases = json.loads(args.cases.read_text())
@@ -138,6 +181,7 @@ def run(args):
         "candidate_id": args.candidate,
         "candidate": candidate,
         "phase": args.phase,
+        "budget_limits": budget_limits,
         "repeats": args.repeats,
         "start_repeat": args.start_repeat,
         "cases_sha256": digest(cases),
@@ -161,23 +205,20 @@ def run(args):
         raise ValueError(
             "Uncertain interrupted requests require manual reconciliation; not rerunning"
         )
-    ledger = BudgetLedger(args.ledger)
     if manifest_path.exists():
         stored_manifest = json.loads(manifest_path.read_text())
         if not isinstance(stored_manifest, dict):
             raise ValueError("Resume manifest differs; use a new run directory")
         stored_identity = stored_manifest.get("ledger_identity")
         if stored_identity is None:
-            if stored_manifest != manifest:
+            if not _manifest_matches(stored_manifest, manifest, budget_limits):
                 raise ValueError("Resume manifest differs; use a new run directory")
             _validate_prior_reservations(
                 result_records, ledger, require_legacy_history=True
             )
             ledger_identity = ledger.ensure_identity()
         else:
-            current_manifest = dict(stored_manifest)
-            del current_manifest["ledger_identity"]
-            if current_manifest != manifest:
+            if not _manifest_matches(stored_manifest, manifest, budget_limits):
                 raise ValueError("Resume manifest differs; use a new run directory")
             if ledger.get_identity() != stored_identity:
                 raise ValueError(
@@ -186,7 +227,10 @@ def run(args):
             _validate_prior_reservations(result_records, ledger)
             ledger_identity = stored_identity
         manifest["ledger_identity"] = ledger_identity
-        if stored_manifest.get("ledger_identity") is None:
+        if (
+            stored_manifest.get("ledger_identity") is None
+            or "budget_limits" not in stored_manifest
+        ):
             manifest_path.write_text(
                 json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
             )
@@ -349,9 +393,17 @@ def main():
     parser.add_argument("--start-repeat", type=int, default=1)
     parser.add_argument("--ledger", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--total-dollars", type=float, default=5.0)
+    parser.add_argument("--dev-dollars", type=float, default=3.0)
+    parser.add_argument("--total-seconds", type=float, default=7200.0)
+    parser.add_argument("--dev-seconds", type=float, default=4200.0)
     args = parser.parse_args()
     if args.repeats < 1 or args.start_repeat < 1:
         parser.error("repeats must be positive")
+    try:
+        _budget_ledger(args)
+    except (TypeError, ValueError) as exc:
+        parser.error(str(exc))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.with_suffix(".lock").open("w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
