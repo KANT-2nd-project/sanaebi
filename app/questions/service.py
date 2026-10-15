@@ -1,9 +1,11 @@
 """HTTP·모델 구현과 독립적인 라벨별 질문 처리 정책."""
 
+from __future__ import annotations
+
 from collections.abc import Callable
 from dataclasses import dataclass
 from time import perf_counter
-from typing import TYPE_CHECKING, Literal
+from typing import TYPE_CHECKING, Literal, Protocol
 
 from app.classification.errors import (
     ClassificationInferenceError,
@@ -16,17 +18,28 @@ from app.diagnostics.trace import (
 )
 from app.documents.context import DocumentContextSnapshot
 from contracts.classification import ClassificationLabel
+from generation.advisory import ClassificationContext
 
 if TYPE_CHECKING:
     from app.retrieval.types import RetrievedContext
 
 Retriever = Callable[[str, DocumentContextSnapshot], "RetrievedContext"]
-RetrievedAnswerer = Callable[[str, "RetrievedContext"], str]
 
 Classifier = Callable[[str], ClassificationLabel]
 DocumentReader = Callable[[], DocumentContextSnapshot]
-Answerer = Callable[[str, DocumentContextSnapshot], str]
-RoutingMode = Literal["gate", "shadow"]
+
+
+class Answerer(Protocol):
+    def __call__(
+        self,
+        question: str,
+        context: DocumentContextSnapshot | RetrievedContext,
+        *,
+        classification_context: ClassificationContext | None = None,
+    ) -> str: ...
+
+
+RoutingMode = Literal["gate", "shadow", "advisory"]
 _VALID_LABELS = frozenset({"SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"})
 
 
@@ -40,7 +53,7 @@ def handle_question(
     *,
     classify: Classifier,
     read_documents: DocumentReader,
-    answer: Answerer | RetrievedAnswerer,
+    answer: Answerer,
     retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
 ) -> QuestionResult:
@@ -70,13 +83,13 @@ def handle_question(
                 "classification_status": status,
                 "classification_elapsed_seconds": seconds,
                 "processing_path": (
-                    "classification_error_shadow"
-                    if routing_mode == "shadow"
+                    f"classification_error_{routing_mode}"
+                    if routing_mode in {"shadow", "advisory"}
                     else "classification_failed"
                 ),
             }
         )
-        if routing_mode != "shadow":
+        if routing_mode == "gate":
             raise
         return answer_question_with_documents(
             question,
@@ -127,7 +140,7 @@ def handle_classified_question(
     label: ClassificationLabel,
     *,
     read_documents: DocumentReader,
-    answer: Answerer | RetrievedAnswerer,
+    answer: Answerer,
     retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
 ) -> QuestionResult:
@@ -163,7 +176,7 @@ def _handle_validated_label(
     label: ClassificationLabel,
     *,
     read_documents: DocumentReader,
-    answer: Answerer | RetrievedAnswerer,
+    answer: Answerer,
     retrieve: Retriever | None = None,
     routing_mode: RoutingMode,
     label_source: Literal["model", "client"],
@@ -199,6 +212,11 @@ def _handle_validated_label(
         label_source=label_source,
         classification_status=classification_status,
         classification_elapsed_seconds=classification_elapsed_seconds,
+        classification_context=(
+            ClassificationContext(label)
+            if routing_mode == "advisory" and label_source == "model"
+            else None
+        ),
     )
 
 
@@ -206,12 +224,13 @@ def answer_question_with_documents(
     question: str,
     *,
     read_documents: DocumentReader,
-    answer: Answerer | RetrievedAnswerer,
+    answer: Answerer,
     retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
     label_source: Literal["model", "client"] | None = None,
     classification_status: str | None = None,
     classification_elapsed_seconds: float | None = None,
+    classification_context: ClassificationContext | None = None,
 ) -> QuestionResult:
     """한 번 스냅샷을 읽고, 문서가 있을 때만 답변기를 호출한다."""
     trace_fields = {
@@ -255,11 +274,16 @@ def answer_question_with_documents(
                 text="관련 문서에서 답변에 필요한 근거를 찾지 못했습니다."
             )
     record_routing({"processing_path": "generation", "generation_attempted": True})
-    answer_text = answer(question, context)
+    if classification_context is None:
+        answer_text = answer(question, context)
+    else:
+        answer_text = answer(
+            question, context, classification_context=classification_context
+        )
 
     return QuestionResult(text=answer_text)
 
 
 def _validate_routing_mode(routing_mode: str) -> None:
-    if routing_mode not in {"gate", "shadow"}:
-        raise ValueError("routing_mode must be gate or shadow")
+    if routing_mode not in {"gate", "shadow", "advisory"}:
+        raise ValueError("routing_mode must be gate, shadow or advisory")

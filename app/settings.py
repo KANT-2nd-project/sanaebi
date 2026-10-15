@@ -45,10 +45,10 @@ def get_answer_provider() -> str:
 
 
 def get_routing_mode() -> str:
-    """Return the request-routing behavior, defaulting to the adopted shadow policy."""
-    mode = os.getenv("SANAEBI_ROUTING_MODE", "shadow")
-    if mode not in {"gate", "shadow"}:
-        raise ValueError("SANAEBI_ROUTING_MODE must be gate or shadow")
+    """Return the request-routing behavior, defaulting to the adopted advisory policy."""
+    mode = os.getenv("SANAEBI_ROUTING_MODE", "advisory")
+    if mode not in {"gate", "shadow", "advisory"}:
+        raise ValueError("SANAEBI_ROUTING_MODE must be gate, shadow or advisory")
     return mode
 
 

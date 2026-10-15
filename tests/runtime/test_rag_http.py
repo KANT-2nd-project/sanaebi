@@ -149,3 +149,34 @@ class RagHttpTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.retriever.retrieve.assert_not_called()
         self.reserve.assert_not_called()
+
+
+class AdvisoryRagHttpTests(RagHttpTests):
+    def setUp(self):
+        super().setUp()
+        fastapi_main.app.state.routing_mode = "advisory"
+
+    def test_only_server_prediction_is_in_prompt_and_fallback_is_exact(self):
+        from app.classification.errors import ClassificationUnavailable
+        from generation.advisory import ClassificationContext, compose_advisory
+
+        self.assertEqual(self.ask().status_code, 200)
+        server_prompt = self.provider.prompts[-1]
+        client_response = self.client.post(
+            "/assistant",
+            json={
+                "response": {"ok": True, "text": "규정?"},
+                "classification_label": "UNSUPPORTED",
+            },
+        )
+        self.assertEqual(client_response.status_code, 200)
+        original = self.provider.prompts[-1]
+        self.assertEqual(
+            server_prompt, compose_advisory(original, ClassificationContext("CLARIFY"))
+        )
+        fastapi_main.app.dependency_overrides[get_classifier] = lambda: Mock(
+            predict=Mock(side_effect=ClassificationUnavailable("private"))
+        )
+        self.assertEqual(self.ask().status_code, 200)
+        self.assertEqual(self.provider.prompts[-1], original)
+        self.assertEqual(set(client_response.json()), {"ok", "text", "reason"})

@@ -1,6 +1,7 @@
 from collections.abc import Callable
 from dataclasses import replace
 
+from generation.advisory import ClassificationContext, compose_advisory
 from generation.profiles import DEFAULT_PROMPT_PROFILE, build_profile_prompt
 from generation.types import (
     GenerationPrompt,
@@ -64,6 +65,9 @@ def generate_from_documents(
     model_call: Callable[[GenerationPrompt], ModelResponse],
     *,
     prompt_profile: str = DEFAULT_PROMPT_PROFILE,
+    classification_context: ClassificationContext | None = None,
 ) -> GenerationResult:
     prompt = build_profile_prompt(question, documents, prompt_profile)
-    return generate(prompt=prompt, model_call=model_call)
+    return generate(
+        prompt=compose_advisory(prompt, classification_context), model_call=model_call
+    )

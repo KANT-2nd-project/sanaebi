@@ -77,7 +77,7 @@ _ROUTING_FIELDS = frozenset(
         "generation_attempted",
     }
 )
-_ROUTING_MODES = frozenset({"gate", "shadow"})
+_ROUTING_MODES = frozenset({"gate", "shadow", "advisory"})
 _LABEL_SOURCES = frozenset({"model", "client"})
 _CLASSIFICATION_STATUSES = frozenset(
     {
@@ -96,6 +96,7 @@ _PROCESSING_PATHS = frozenset(
         "classification",
         "classification_failed",
         "classification_error_shadow",
+        "classification_error_advisory",
         "upstream_failure",
         "invalid_label",
         "clarify",
