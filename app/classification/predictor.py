@@ -8,15 +8,11 @@ from typing import cast
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
+from app.classification.errors import (
+    ClassificationInferenceError,
+    ClassificationUnavailable,
+)
 from contracts.classification import LABELS, ClassificationLabel
-
-
-class ClassificationUnavailable(Exception):
-    """파일 부재·형식 오류 등으로 저장본을 사용할 수 없다."""
-
-
-class ClassificationInferenceError(Exception):
-    """로드된 모델의 추론이 실패했다."""
 
 
 class TransformerClassifier:

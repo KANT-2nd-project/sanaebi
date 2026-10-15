@@ -70,3 +70,10 @@ flowchart TD
 - [S4 평가 전략·지원 코드 정리](worklogs/2026-10-15-evaluation-cleanup.md): 동작 보존 검증과 남은 단계.
 
 - [S5·S6 남은 코드 정리](worklogs/2026-10-15-remaining-cleanup.md): 선택 설치·검증 모듈·테스트 배치와 완료 상태.
+
+## 분류 관찰 모드 비교
+
+- [40문항 종단 비교·권고](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md): gate/shadow의 두 반복 응답·AI 판정·실패·비용·지연.
+- [shadow main 통합](worklogs/2026-10-15-merge-shadow-main.md): v3·최신 코드 정리 보존, 통합 회귀와 게시.
+- [shadow 기본값 채택](worklogs/2026-10-15-adopt-shadow.md): 비교 후 사용자 결정, 미달 기준과 원복 설정.
+- [구현·검증·게시 기록](worklogs/2026-10-15-routing-shadow.md): AI 수행 범위, 기능별 커밋, 테스트와 Notion 동기화.

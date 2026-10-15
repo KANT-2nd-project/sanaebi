@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "output_dir": "/home/jake/workspace/projects/sanaebi-routing-shadow/tmp/routing-shadow-20261015/output-budget-followup",
+  "batch_id": "output-budget-followup",
+  "shared_ledger_path": "/home/jake/workspace/projects/sanaebi-routing-shadow/tmp/routing-shadow-20261015/.routing-shadow-followup/budget.json",
+  "shared_ledger_identity": "f5448c64bd7747389959a7836ddcb55f",
+  "expected_http_slots": 4,
+  "completed_http_slots": 4,
+  "generation_attempts": 4,
+  "cumulative_generation_reservations": 134,
+  "http_error_slots": 0,
+  "max_output_tokens": 16384,
+  "spent_or_reserved_cumulative_usd": 1.9867767499999995,
+  "original_ledger_reservations_preserved": true,
+  "original_run_hash_unchanged": true,
+  "source_run_tree_sha256_before": "4d4770ba282bf852e13b2096af441fe4bef4373f5d4c4bfe86d5312c3990ad17",
+  "source_run_tree_sha256_after": "4d4770ba282bf852e13b2096af441fe4bef4373f5d4c4bfe86d5312c3990ad17",
+  "stop_reason": null,
+  "automatic_retry": false,
+  "quality_judgment": "independent_ai_and_source_review",
+  "additional_cost_upper_estimate_usd": 0.06641674999999947,
+  "official_max_output_tokens": 128000,
+  "official_source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+  "source_checked_on": "2026-10-15",
+  "python_tests_after_change": 632,
+  "ruff_check": "pass",
+  "ruff_format": "pass",
+  "records": [
+    {
+      "slot_id": "followup:output-budget-followup:shadow:RSH-040:r2",
+      "case_id": "RSH-040",
+      "mode": "shadow",
+      "repeat": 2,
+      "http_status": 200,
+      "response": {
+        "ok": true,
+        "text": "검토 절차는 다음과 같습니다.\n1. 서비스 연결이나 자료 업로드 전에 이음 포털 IT > 소프트웨어 요청에 제품명·제공자·공식 주소, 업무 목적, 사용자, 자료 등급, 비용, 외부 연결 범위를 등록합니다. 팀장은 업무 필요와 예산을, IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 위험을 검토합니다.\n2. 고객 자료를 외부로 보내는 경우에는 이음 포털 보안 > 검토 요청도 별도로 받아야 합니다. 한쪽 검토가 다른 쪽을 대신하지 않습니다. 필수 확인이 기록되기 전에는 계정을 연결하거나 실제 자료를 올리지 않습니다.\n3. 유료 서비스라면 주문·서명·결제 전에 재무 > 업무 구매로 신청합니다. 세금 포함 예상 총액 30만 원 미만은 팀장 승인, 30만 원 이상 200만 원 미만은 팀장과 재무팀 승인, 200만 원 이상은 비교 견적 3곳과 팀장·재무팀의 서면 승인이 필요합니다. 고객 정보를 처리하는 서비스는 계약·결제 전 IT운영팀과 보안·개인정보 담당자의 검토도 마쳐야 합니다.\n\n다만 생성형 AI는 회사 관리 계정의 ChatGPT Business만 사용하도록 되어 있고, 입력 자료는 공개 정보로 제한됩니다. 고객 자료는 식별자를 지운 경우에도 입력할 수 없으며 별도 예외 허용 목록도 없습니다. 따라서 위 서비스 검토를 거치더라도 고객 자료를 AI에 올려 테스트하는 것은 문서상 허용되지 않습니다. 제가 신청이나 승인을 진행하거나 서비스를 실제로 사용해 업로드 테스트를 할 수는 없으며, 자료를 업로드하지 않았습니다. (문서 ID: ieum-021, ieum-032, ieum-033, ieum-054, ieum-071)",
+        "reason": ""
+      },
+      "request_elapsed_seconds": 18.676,
+      "usage_cost_upper_estimate_dollars": 0.01602575,
+      "prompt_sha256": "f19e6596e48a161559c5b247786297509b6db741d31f89867ba8f0ded8e3b9bf",
+      "finish_reason": "stop",
+      "input_tokens": 57491,
+      "output_tokens": 2204,
+      "generation_status": "completed",
+      "max_output_tokens": 16384,
+      "profile": "examples_answer_scope_v1"
+    },
+    {
+      "slot_id": "followup:output-budget-followup:gate:RSH-040:r2",
+      "case_id": "RSH-040",
+      "mode": "gate",
+      "repeat": 2,
+      "http_status": 200,
+      "response": {
+        "ok": true,
+        "text": "고객 자료를 외부 AI 서비스에 입력해 테스트하는 것은 문서상 허용되지 않습니다. 업무용 생성형 AI는 회사 관리 계정의 ChatGPT Business만 사용할 수 있고, 고객 자료는 식별정보를 가려도 입력할 수 없습니다. 별도 예외 허용 목록도 없습니다. 따라서 해당 자료를 업로드하거나 테스트할 수 없으며, 제가 실제로 업로드하거나 테스트하지도 않았습니다.\n\n새 서비스 도입 검토를 요청하려면 이음 포털의 **IT > 소프트웨어 요청**에 제품·제공자·공식 주소, 업무 목적, 필요한 사용자, 자료 등급, 요금, 외부 연결 범위를 적습니다. 팀장은 업무 필요와 예산을, IT운영팀은 계정·운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 위험을 검토합니다. 검토 결과가 기록되기 전에는 계정을 연결하거나 실제 자료를 올리지 않습니다. 이 절차가 고객 자료의 AI 입력 금지를 해제하는 것은 아닙니다.\n\n유료 구매·계약이 필요하면 주문·서명·결제 전에 **재무 > 업무 구매**도 신청해야 합니다. 세금 포함 총액이 300,000원 미만이면 팀장 승인, 300,000원 이상 2,000,000원 미만이면 팀장과 재무팀 승인, 2,000,000원 이상이면 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인이 필요합니다. 소프트웨어나 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토도 받아야 합니다.\n\n개발 테스트에는 합성·테스트 데이터를 우선 사용해 주세요. 실제 고객 자료 조회가 꼭 필요한 경우에도 승인된 접근 절차와 권한을 확인해야 하며, 이를 AI 서비스에 복사하거나 입력할 수는 없습니다.",
+        "reason": ""
+      },
+      "request_elapsed_seconds": 23.617,
+      "usage_cost_upper_estimate_dollars": 0.01648625,
+      "prompt_sha256": "f19e6596e48a161559c5b247786297509b6db741d31f89867ba8f0ded8e3b9bf",
+      "finish_reason": "stop",
+      "input_tokens": 57491,
+      "output_tokens": 2818,
+      "generation_status": "completed",
+      "max_output_tokens": 16384,
+      "profile": "examples_answer_scope_v1"
+    },
+    {
+      "slot_id": "followup:output-budget-followup:gate:RSH-040:r1",
+      "case_id": "RSH-040",
+      "mode": "gate",
+      "repeat": 1,
+      "http_status": 200,
+      "response": {
+        "ok": true,
+        "text": "고객 자료를 외부 AI 서비스에 올려 테스트할 수는 없습니다. 문서상 업무용 생성형 AI는 회사 관리 계정의 ChatGPT Business만 사용할 수 있고, 입력은 이용 조건을 확인한 공개 자료로 제한됩니다. 고객 자료는 식별자를 지운 경우에도 입력할 수 없으며, 별도 예외도 없습니다.\n\n서비스 추가 검토는 이음 포털의 **IT > 소프트웨어 요청**에 제품명·제공자·공식 주소·업무 목적·사용자·자료 등급·비용·외부 연결 범위를 적어 요청합니다. 팀장은 업무 필요와 예산을, IT운영팀은 기술·계정 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 위험을 검토합니다. 필요한 검토가 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않습니다. 유료 서비스의 구매·계약이 필요하면 결제·계약 전에 **재무 > 업무 구매** 절차도 거쳐야 하며, 세금 포함 예상 금액에 따라 팀장 승인, 팀장·재무팀 승인 또는 3곳 비교 견적과 팀장·재무팀 서면 승인이 필요합니다.\n\n제가 외부 서비스에 접속하거나 자료를 업로드해 테스트한 것은 아닙니다. 생성형 AI 시험에 자료를 입력할 때도 공개 자료만 사용해야 합니다.",
+        "reason": ""
+      },
+      "request_elapsed_seconds": 19.662,
+      "usage_cost_upper_estimate_dollars": 0.016142,
+      "prompt_sha256": "f19e6596e48a161559c5b247786297509b6db741d31f89867ba8f0ded8e3b9bf",
+      "finish_reason": "stop",
+      "input_tokens": 57491,
+      "output_tokens": 2359,
+      "generation_status": "completed",
+      "max_output_tokens": 16384,
+      "profile": "examples_answer_scope_v1"
+    },
+    {
+      "slot_id": "followup:output-budget-followup:shadow:RSH-040:r1",
+      "case_id": "RSH-040",
+      "mode": "shadow",
+      "repeat": 1,
+      "http_status": 200,
+      "response": {
+        "ok": true,
+        "text": "검토 절차는 다음과 같습니다.\n1. 신규 서비스 신청: 이음 포털의 IT > 소프트웨어 요청에 제품·제공자·공식 주소, 업무 목적, 사용자, 자료 등급, 비용과 외부 연결 범위를 기재합니다. 팀장은 업무 필요와 예산을, IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 위험을 검토합니다. 고객자료를 처리하는 경우에는 보안 > 검토 요청도 별도로 받아야 합니다. 필수 검토가 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않습니다.\n2. 다만 현행 생성형 AI 기준은 ChatGPT Business 회사 워크스페이스만 사용하고, 입력은 확인된 공개 자료로 제한합니다. 고객자료는 식별정보를 지워도 입력할 수 없고, 예외 허용 목록도 없습니다. 따라서 외부 AI 서비스에 고객자료를 올려 테스트하는 것은 현재 문서 기준으로 허용되지 않으며, 신규 서비스 검토만으로 이 제한이 해제된다고 볼 수 없습니다.\n3. 유료 서비스라면 주문·계약·결제 전에 재무 > 업무 구매 절차도 진행해야 합니다. 예상 총액 30만 원 미만은 팀장 승인, 30만 원 이상 200만 원 미만은 팀장과 재무팀 승인, 200만 원 이상은 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인이 필요합니다. (문서 ID: ieum-021, ieum-032, ieum-033, ieum-071)\n\n저는 신청·승인이나 외부 서비스 업로드·테스트를 직접 수행할 수 없습니다. 실제 자료를 업로드하지 않았으며, 고객자료로 테스트하는 것도 진행할 수 없습니다.",
+        "reason": ""
+      },
+      "request_elapsed_seconds": 34.12,
+      "usage_cost_upper_estimate_dollars": 0.01776275,
+      "prompt_sha256": "f19e6596e48a161559c5b247786297509b6db741d31f89867ba8f0ded8e3b9bf",
+      "finish_reason": "stop",
+      "input_tokens": 57491,
+      "output_tokens": 4520,
+      "generation_status": "completed",
+      "max_output_tokens": 16384,
+      "profile": "examples_answer_scope_v1"
+    }
+  ],
+  "truncated_count": 0,
+  "timeout_count": 0,
+  "quality_verdicts": {
+    "pass": 0,
+    "partial": 4,
+    "fail": 0,
+    "uncertain": 0
+  },
+  "quality_limit": "All four remain partial for required environment and permission-scope guidance; two additionally omit the distinct security-review request. This is separate from completion success."
+}

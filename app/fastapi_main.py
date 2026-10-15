@@ -23,6 +23,7 @@ from app.settings import (
     get_answer_provider,
     get_classifier_path,
     get_document_database_path,
+    get_routing_mode,
 )
 from generation.presets import load_runtime_settings
 
@@ -30,6 +31,7 @@ from generation.presets import load_runtime_settings
 @asynccontextmanager
 async def lifespan(application: FastAPI):
     get_answer_provider()
+    application.state.routing_mode = get_routing_mode()
     settings = load_runtime_settings(PROJECT_ROOT)
     repository = DocumentRepository(get_document_database_path())
     repository.initialize()

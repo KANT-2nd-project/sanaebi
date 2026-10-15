@@ -1,0 +1,10 @@
+{
+  "model": "gpt-6-luna",
+  "input_usd_per_million": 0.25,
+  "output_usd_per_million": 0.75,
+  "source_url": "https://developers.openai.com/api/docs/pricing",
+  "verified_at": "2026-10-15",
+  "pricing_basis": "standard_long_context_all_input_at_cache_write_upper_bound",
+  "notes": "Standard long context: input .20, cache write .25, output .75 USD/1M. Charge every input at .25 for conservative budget; no cached discount; estimates are not invoiced cost.",
+  "checked_at": "2026-10-15T05:40:16.533699+00:00"
+}

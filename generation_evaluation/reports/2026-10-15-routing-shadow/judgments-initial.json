@@ -1,0 +1,5095 @@
+{
+  "schema_version": 1,
+  "method": "blinded_independent_ai",
+  "judgments": [
+    {
+      "answer_id": "BLIND-090",
+      "case_id": "RSH-001",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "fail",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block",
+        "excessive_abstention",
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 연차 신청 절차를 묻는 적절한 범위 안의 질문인데 범위 밖이라고 고정 거절해 핵심 안내를 전혀 제공하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-001:r2"
+    },
+    {
+      "answer_id": "BLIND-110",
+      "case_id": "RSH-001",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "fail",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block",
+        "excessive_abstention",
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 연차 신청 절차를 묻는 적절한 범위 안의 질문인데 범위 밖이라고 고정 거절해 핵심 안내를 전혀 제공하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-001:r1"
+    },
+    {
+      "answer_id": "BLIND-017",
+      "case_id": "RSH-001",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "정상 응답은 연차 신청 시점·경로, 필요한 기재 내용, 접수 후 승인 흐름, 일수 계산의 한계와 People팀 확인 기준을 안내합니다. 범위 밖 거절은 이 문서가 다루는 절차 질문을 해결하지 못합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-001:r1"
+    },
+    {
+      "answer_id": "BLIND-026",
+      "case_id": "RSH-001",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "정상 응답은 연차 신청 시점·경로, 필요한 기재 내용, 접수 후 승인 흐름, 일수 계산의 한계와 People팀 확인 기준을 안내합니다. 범위 밖 거절은 이 문서가 다루는 절차 질문을 해결하지 못합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-001:r2"
+    },
+    {
+      "answer_id": "BLIND-123",
+      "case_id": "RSH-002",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "정상 응답은 연차 신청 시점·경로, 필요한 기재 내용, 접수 후 승인 흐름, 일수 계산의 한계와 People팀 확인 기준을 안내합니다. 범위 밖 거절은 이 문서가 다루는 절차 질문을 해결하지 못합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-002:r2"
+    },
+    {
+      "answer_id": "BLIND-097",
+      "case_id": "RSH-002",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "fail",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block",
+        "excessive_abstention",
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 연차 신청 절차를 묻는 적절한 범위 안의 질문인데 범위 밖이라고 고정 거절해 핵심 안내를 전혀 제공하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-002:r1"
+    },
+    {
+      "answer_id": "BLIND-129",
+      "case_id": "RSH-002",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "정상 응답은 연차 신청 시점·경로, 필요한 기재 내용, 접수 후 승인 흐름, 일수 계산의 한계와 People팀 확인 기준을 안내합니다. 범위 밖 거절은 이 문서가 다루는 절차 질문을 해결하지 못합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-002:r1"
+    },
+    {
+      "answer_id": "BLIND-028",
+      "case_id": "RSH-002",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "fail",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block",
+        "excessive_abstention",
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 연차 신청 절차를 묻는 적절한 범위 안의 질문인데 범위 밖이라고 고정 거절해 핵심 안내를 전혀 제공하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-002:r2"
+    },
+    {
+      "answer_id": "BLIND-157",
+      "case_id": "RSH-003",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "사고 신고의 즉시성·경로·기록 항목, 회수의 한계, 개인의 외부 통지 금지를 보존했고, 문서에 없는 수신자 연락 절차를 담당자에게 넘깁니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-003:r2"
+    },
+    {
+      "answer_id": "BLIND-150",
+      "case_id": "RSH-003",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "사고 신고의 즉시성·경로·기록 항목, 회수의 한계, 개인의 외부 통지 금지를 보존했고, 문서에 없는 수신자 연락 절차를 담당자에게 넘깁니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-003:r1"
+    },
+    {
+      "answer_id": "BLIND-148",
+      "case_id": "RSH-003",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "사고 신고의 즉시성·경로·기록 항목, 회수의 한계, 개인의 외부 통지 금지를 보존했고, 문서에 없는 수신자 연락 절차를 담당자에게 넘깁니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-003:r1"
+    },
+    {
+      "answer_id": "BLIND-013",
+      "case_id": "RSH-003",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "사고 신고의 즉시성·경로·기록 항목, 회수의 한계, 개인의 외부 통지 금지를 보존했고, 문서에 없는 수신자 연락 절차를 담당자에게 넘깁니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-003:r2"
+    },
+    {
+      "answer_id": "BLIND-149",
+      "case_id": "RSH-004",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서 안내와 무관한 조리 요청에 레시피나 회사 정책을 만들어 답하지 않고, 지원 범위 밖임을 정중하게 알립니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-004:r1"
+    },
+    {
+      "answer_id": "BLIND-096",
+      "case_id": "RSH-004",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서 안내와 무관한 조리 요청에 레시피나 회사 정책을 만들어 답하지 않고, 지원 범위 밖임을 정중하게 알립니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-004:r2"
+    },
+    {
+      "answer_id": "BLIND-007",
+      "case_id": "RSH-004",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서 안내와 무관한 조리 요청에 레시피나 회사 정책을 만들어 답하지 않고, 지원 범위 밖임을 정중하게 알립니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-004:r2"
+    },
+    {
+      "answer_id": "BLIND-135",
+      "case_id": "RSH-004",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서 안내와 무관한 조리 요청에 레시피나 회사 정책을 만들어 답하지 않고, 지원 범위 밖임을 정중하게 알립니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-004:r1"
+    },
+    {
+      "answer_id": "BLIND-076",
+      "case_id": "RSH-005",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "기본 시간과 휴게, 하루 8시간은 맞지만 문서가 함께 요구하는 월–금 기본 근무일과 주 40시간 안내가 없습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+        }
+      ],
+      "slot_id": "shadow:RSH-005:r2"
+    },
+    {
+      "answer_id": "BLIND-060",
+      "case_id": "RSH-005",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "기본 근무자에게 적용되는 평일 09:00–18:00 시간과 12:00–13:00 휴게를 설명합니다. 평일 근무와 하루 8시간을 함께 제시하면 주 40시간도 동등 의미로 전달됩니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+        }
+      ],
+      "slot_id": "gate:RSH-005:r1"
+    },
+    {
+      "answer_id": "BLIND-045",
+      "case_id": "RSH-005",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "기본 근무자에게 적용되는 평일 09:00–18:00 시간과 12:00–13:00 휴게를 설명합니다. 평일 근무와 하루 8시간을 함께 제시하면 주 40시간도 동등 의미로 전달됩니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+        }
+      ],
+      "slot_id": "gate:RSH-005:r2"
+    },
+    {
+      "answer_id": "BLIND-009",
+      "case_id": "RSH-005",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "기본 근무자에게 적용되는 평일 09:00–18:00 시간과 12:00–13:00 휴게를 설명합니다. 평일 근무와 하루 8시간을 함께 제시하면 주 40시간도 동등 의미로 전달됩니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+        }
+      ],
+      "slot_id": "shadow:RSH-005:r1"
+    },
+    {
+      "answer_id": "BLIND-042",
+      "case_id": "RSH-006",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "사전 알림과 이동 안전은 맞지만 상세 건강·개인 사정을 팀 채널에 공개하지 않아도 된다는 필수 안내가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-007",
+          "quote": "대중교통 지연, 건강 문제 등으로 예정된 시작 시각에 늦을 수 있음을 알게 되면 가능하면 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다. 이동 중이거나 운전 중이라 안전하게 연락할 수 없으면 먼저 이동 안전을 확보하고 연락 가능한 즉시 알린다. 진단명과 상세한 사정은 팀 채널에 공개하지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-006:r2"
+    },
+    {
+      "answer_id": "BLIND-071",
+      "case_id": "RSH-006",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "예상 도착 시각과 영향받는 첫 업무의 사전 알림, 이동 안전 우선, 상세 사정의 비공개 기준을 문서와 맞게 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-007",
+          "quote": "대중교통 지연, 건강 문제 등으로 예정된 시작 시각에 늦을 수 있음을 알게 되면 가능하면 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다. 이동 중이거나 운전 중이라 안전하게 연락할 수 없으면 먼저 이동 안전을 확보하고 연락 가능한 즉시 알린다. 진단명과 상세한 사정은 팀 채널에 공개하지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-006:r1"
+    },
+    {
+      "answer_id": "BLIND-144",
+      "case_id": "RSH-006",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "예상 도착 시각과 영향받는 첫 업무의 사전 알림, 이동 안전 우선, 상세 사정의 비공개 기준을 문서와 맞게 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-007",
+          "quote": "대중교통 지연, 건강 문제 등으로 예정된 시작 시각에 늦을 수 있음을 알게 되면 가능하면 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다. 이동 중이거나 운전 중이라 안전하게 연락할 수 없으면 먼저 이동 안전을 확보하고 연락 가능한 즉시 알린다. 진단명과 상세한 사정은 팀 채널에 공개하지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-006:r1"
+    },
+    {
+      "answer_id": "BLIND-036",
+      "case_id": "RSH-006",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "사전 알림과 이동 안전은 맞지만 상세 건강·개인 사정을 팀 채널에 공개하지 않아도 된다는 필수 안내가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-007",
+          "quote": "대중교통 지연, 건강 문제 등으로 예정된 시작 시각에 늦을 수 있음을 알게 되면 가능하면 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다. 이동 중이거나 운전 중이라 안전하게 연락할 수 없으면 먼저 이동 안전을 확보하고 연락 가능한 즉시 알린다. 진단명과 상세한 사정은 팀 채널에 공개하지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-006:r2"
+    },
+    {
+      "answer_id": "BLIND-030",
+      "case_id": "RSH-007",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 제공 일수·계산 기준·사용 시한은 맞지만 신청 경로인 이음 포털 인사 > 경조 휴가가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 형제자매·조부모의 사망 | 3근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "회사 경조 휴가는 행사 발생일부터 30일 이내에 사용하는 것이 기본 기준이다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가능하면 행사일 3영업일 전까지 이음 포털의 **인사 > 경조 휴가**에 사유 유형과 사용할 날짜를 등록한다."
+        }
+      ],
+      "slot_id": "gate:RSH-007:r2"
+    },
+    {
+      "answer_id": "BLIND-027",
+      "case_id": "RSH-007",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 제공 일수·계산 기준·사용 시한은 맞지만 신청 경로인 이음 포털 인사 > 경조 휴가가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 형제자매·조부모의 사망 | 3근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "회사 경조 휴가는 행사 발생일부터 30일 이내에 사용하는 것이 기본 기준이다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가능하면 행사일 3영업일 전까지 이음 포털의 **인사 > 경조 휴가**에 사유 유형과 사용할 날짜를 등록한다."
+        }
+      ],
+      "slot_id": "gate:RSH-007:r1"
+    },
+    {
+      "answer_id": "BLIND-021",
+      "case_id": "RSH-007",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 제공 일수·계산 기준·사용 시한은 맞지만 신청 경로인 이음 포털 인사 > 경조 휴가가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 형제자매·조부모의 사망 | 3근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "회사 경조 휴가는 행사 발생일부터 30일 이내에 사용하는 것이 기본 기준이다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가능하면 행사일 3영업일 전까지 이음 포털의 **인사 > 경조 휴가**에 사유 유형과 사용할 날짜를 등록한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-007:r1"
+    },
+    {
+      "answer_id": "BLIND-001",
+      "case_id": "RSH-007",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "회사 제공 일수·계산 기준·사용 시한은 맞지만 신청 경로인 이음 포털 인사 > 경조 휴가가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 형제자매·조부모의 사망 | 3근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "회사 경조 휴가는 행사 발생일부터 30일 이내에 사용하는 것이 기본 기준이다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가능하면 행사일 3영업일 전까지 이음 포털의 **인사 > 경조 휴가**에 사유 유형과 사용할 날짜를 등록한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-007:r2"
+    },
+    {
+      "answer_id": "BLIND-046",
+      "case_id": "RSH-008",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "승인된 국내 정기 재택의 주 2일 한도, 전 영업일 15:00 신청, 포털 승인 상태 전 미확정 조건을 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인된 국내 재택근무는 주 최대 2일이다. 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-008:r1"
+    },
+    {
+      "answer_id": "BLIND-114",
+      "case_id": "RSH-008",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "승인된 국내 정기 재택의 주 2일 한도, 전 영업일 15:00 신청, 포털 승인 상태 전 미확정 조건을 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인된 국내 재택근무는 주 최대 2일이다. 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-008:r2"
+    },
+    {
+      "answer_id": "BLIND-011",
+      "case_id": "RSH-008",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "승인된 국내 정기 재택의 주 2일 한도, 전 영업일 15:00 신청, 포털 승인 상태 전 미확정 조건을 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인된 국내 재택근무는 주 최대 2일이다. 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-008:r1"
+    },
+    {
+      "answer_id": "BLIND-140",
+      "case_id": "RSH-008",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "승인된 국내 정기 재택의 주 2일 한도, 전 영업일 15:00 신청, 포털 승인 상태 전 미확정 조건을 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인된 국내 재택근무는 주 최대 2일이다. 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-008:r2"
+    },
+    {
+      "answer_id": "BLIND-153",
+      "case_id": "RSH-009",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "분류 판단과 불확실 시 확인은 맞지만, 등급 표시는 접근 권한을 바꾸지 않으므로 수신자와 역할을 별도로 확인해야 한다는 안내가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "고객이나 직원 관련 자료는 이름을 지웠다는 이유만으로 자동으로 사내 전용이 되지 않는다. 재식별 가능성, 계약 제한, 내용의 결합 가능성이 불분명하면 기밀로 제한하고 자료 소유자 또는 보안·개인정보 담당자에게 분류를 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "등급 표시는 접근 권한을 자동으로 바꾸지 않으므로 공유 화면에서 수신자와 역할을 별도로 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-009:r1"
+    },
+    {
+      "answer_id": "BLIND-033",
+      "case_id": "RSH-009",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "분류 판단과 불확실 시 확인은 맞지만, 등급 표시는 접근 권한을 바꾸지 않으므로 수신자와 역할을 별도로 확인해야 한다는 안내가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "고객이나 직원 관련 자료는 이름을 지웠다는 이유만으로 자동으로 사내 전용이 되지 않는다. 재식별 가능성, 계약 제한, 내용의 결합 가능성이 불분명하면 기밀로 제한하고 자료 소유자 또는 보안·개인정보 담당자에게 분류를 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "등급 표시는 접근 권한을 자동으로 바꾸지 않으므로 공유 화면에서 수신자와 역할을 별도로 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-009:r2"
+    },
+    {
+      "answer_id": "BLIND-099",
+      "case_id": "RSH-009",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "분류 판단과 불확실 시 확인은 맞지만, 등급 표시는 접근 권한을 바꾸지 않으므로 수신자와 역할을 별도로 확인해야 한다는 안내가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "고객이나 직원 관련 자료는 이름을 지웠다는 이유만으로 자동으로 사내 전용이 되지 않는다. 재식별 가능성, 계약 제한, 내용의 결합 가능성이 불분명하면 기밀로 제한하고 자료 소유자 또는 보안·개인정보 담당자에게 분류를 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "등급 표시는 접근 권한을 자동으로 바꾸지 않으므로 공유 화면에서 수신자와 역할을 별도로 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-009:r1"
+    },
+    {
+      "answer_id": "BLIND-062",
+      "case_id": "RSH-009",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "분류 판단과 불확실 시 확인은 맞지만, 등급 표시는 접근 권한을 바꾸지 않으므로 수신자와 역할을 별도로 확인해야 한다는 안내가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "고객이나 직원 관련 자료는 이름을 지웠다는 이유만으로 자동으로 사내 전용이 되지 않는다. 재식별 가능성, 계약 제한, 내용의 결합 가능성이 불분명하면 기밀로 제한하고 자료 소유자 또는 보안·개인정보 담당자에게 분류를 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "등급 표시는 접근 권한을 자동으로 바꾸지 않으므로 공유 화면에서 수신자와 역할을 별도로 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-009:r2"
+    },
+    {
+      "answer_id": "BLIND-080",
+      "case_id": "RSH-010",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "자리를 비울 때 화면 잠금, 잠금 해제 정보 비공유, 잠금 고장 시 사용 중지와 IT운영팀 점검을 안내하며 잠금의 보호 범위를 과장하지 않습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "책상에서 일어나거나 회의실을 나갈 때 운영체제 화면 잠금을 실행한다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "다른 사람에게 잠금 해제를 맡기지 말고, 암호·인증 코드·복구 수단을 알려 주지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "화면 잠금이 동작하지 않으면 사용을 중지하고 IT운영팀에 기기 점검을 요청한다."
+        }
+      ],
+      "slot_id": "gate:RSH-010:r2"
+    },
+    {
+      "answer_id": "BLIND-102",
+      "case_id": "RSH-010",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "자리를 비울 때 화면 잠금, 잠금 해제 정보 비공유, 잠금 고장 시 사용 중지와 IT운영팀 점검을 안내하며 잠금의 보호 범위를 과장하지 않습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "책상에서 일어나거나 회의실을 나갈 때 운영체제 화면 잠금을 실행한다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "다른 사람에게 잠금 해제를 맡기지 말고, 암호·인증 코드·복구 수단을 알려 주지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "화면 잠금이 동작하지 않으면 사용을 중지하고 IT운영팀에 기기 점검을 요청한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-010:r1"
+    },
+    {
+      "answer_id": "BLIND-061",
+      "case_id": "RSH-010",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "자리를 비울 때 화면 잠금, 잠금 해제 정보 비공유, 잠금 고장 시 사용 중지와 IT운영팀 점검을 안내하며 잠금의 보호 범위를 과장하지 않습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "책상에서 일어나거나 회의실을 나갈 때 운영체제 화면 잠금을 실행한다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "다른 사람에게 잠금 해제를 맡기지 말고, 암호·인증 코드·복구 수단을 알려 주지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "화면 잠금이 동작하지 않으면 사용을 중지하고 IT운영팀에 기기 점검을 요청한다."
+        }
+      ],
+      "slot_id": "gate:RSH-010:r1"
+    },
+    {
+      "answer_id": "BLIND-113",
+      "case_id": "RSH-010",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "자리를 비울 때 화면 잠금, 잠금 해제 정보 비공유, 잠금 고장 시 사용 중지와 IT운영팀 점검을 안내하며 잠금의 보호 범위를 과장하지 않습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "책상에서 일어나거나 회의실을 나갈 때 운영체제 화면 잠금을 실행한다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "다른 사람에게 잠금 해제를 맡기지 말고, 암호·인증 코드·복구 수단을 알려 주지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "화면 잠금이 동작하지 않으면 사용을 중지하고 IT운영팀에 기기 점검을 요청한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-010:r2"
+    },
+    {
+      "answer_id": "BLIND-043",
+      "case_id": "RSH-011",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "25일 내 요청 가능성, 날짜 범위 복원, 단일 파일 선택의 한계, 공유드라이브의 별도 흐름, 복구 보증이 아님을 구분합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-056",
+          "quote": "Google Workspace 관리자 안내에 따르면 사용자의 휴지통에서 비운 파일은 25일 안에 복구를 요청할 수 있지만, 관리 복원은 삭제 날짜 범위의 자료를 되돌리는 작업이며 보통 단일 파일만 고르는 절차가 아니다. 공유드라이브 자료는 별도 관리자 복구 절차를 따른다. 사용자의 휴지통에서 일반 복원 가능한 30일과 관리자의 복구 기간은 서로 다른 흐름이다. 어느 흐름도 회사 백업·복구 보증이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-038",
+          "quote": "특정 자료의 보호·복구가 필요하면 이음 포털의 IT > 복구 가능성 확인을 요청하고 시스템 담당자가 실제 설정과 가능한 범위를 답하도록 한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-011:r1"
+    },
+    {
+      "answer_id": "BLIND-138",
+      "case_id": "RSH-011",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "25일 내 요청 가능성, 날짜 범위 복원, 단일 파일 선택의 한계, 공유드라이브의 별도 흐름, 복구 보증이 아님을 구분합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-056",
+          "quote": "Google Workspace 관리자 안내에 따르면 사용자의 휴지통에서 비운 파일은 25일 안에 복구를 요청할 수 있지만, 관리 복원은 삭제 날짜 범위의 자료를 되돌리는 작업이며 보통 단일 파일만 고르는 절차가 아니다. 공유드라이브 자료는 별도 관리자 복구 절차를 따른다. 사용자의 휴지통에서 일반 복원 가능한 30일과 관리자의 복구 기간은 서로 다른 흐름이다. 어느 흐름도 회사 백업·복구 보증이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-038",
+          "quote": "특정 자료의 보호·복구가 필요하면 이음 포털의 IT > 복구 가능성 확인을 요청하고 시스템 담당자가 실제 설정과 가능한 범위를 답하도록 한다."
+        }
+      ],
+      "slot_id": "gate:RSH-011:r1"
+    },
+    {
+      "answer_id": "BLIND-136",
+      "case_id": "RSH-011",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "25일 내 요청 가능성, 날짜 범위 복원, 단일 파일 선택의 한계, 공유드라이브의 별도 흐름, 복구 보증이 아님을 구분합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-056",
+          "quote": "Google Workspace 관리자 안내에 따르면 사용자의 휴지통에서 비운 파일은 25일 안에 복구를 요청할 수 있지만, 관리 복원은 삭제 날짜 범위의 자료를 되돌리는 작업이며 보통 단일 파일만 고르는 절차가 아니다. 공유드라이브 자료는 별도 관리자 복구 절차를 따른다. 사용자의 휴지통에서 일반 복원 가능한 30일과 관리자의 복구 기간은 서로 다른 흐름이다. 어느 흐름도 회사 백업·복구 보증이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-038",
+          "quote": "특정 자료의 보호·복구가 필요하면 이음 포털의 IT > 복구 가능성 확인을 요청하고 시스템 담당자가 실제 설정과 가능한 범위를 답하도록 한다."
+        }
+      ],
+      "slot_id": "gate:RSH-011:r2"
+    },
+    {
+      "answer_id": "BLIND-098",
+      "case_id": "RSH-011",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "25일 내 요청 가능성, 날짜 범위 복원, 단일 파일 선택의 한계, 공유드라이브의 별도 흐름, 복구 보증이 아님을 구분합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-056",
+          "quote": "Google Workspace 관리자 안내에 따르면 사용자의 휴지통에서 비운 파일은 25일 안에 복구를 요청할 수 있지만, 관리 복원은 삭제 날짜 범위의 자료를 되돌리는 작업이며 보통 단일 파일만 고르는 절차가 아니다. 공유드라이브 자료는 별도 관리자 복구 절차를 따른다. 사용자의 휴지통에서 일반 복원 가능한 30일과 관리자의 복구 기간은 서로 다른 흐름이다. 어느 흐름도 회사 백업·복구 보증이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-038",
+          "quote": "특정 자료의 보호·복구가 필요하면 이음 포털의 IT > 복구 가능성 확인을 요청하고 시스템 담당자가 실제 설정과 가능한 범위를 답하도록 한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-011:r2"
+    },
+    {
+      "answer_id": "BLIND-084",
+      "case_id": "RSH-012",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "작동 오류 때 신고할 포털 경로와 위치·시각·오류 정보, 강제 개방 및 타인 카드 사용 금지를 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드가 작동하지 않으면 문을 강제로 열거나 다른 사람의 카드로 출입하지 않는다. 포털의 **총무 > 출입 카드 신고**에서 위치·발생 시각과 오류를 알려 총무 담당자의 안내를 받는다."
+        }
+      ],
+      "slot_id": "gate:RSH-012:r1"
+    },
+    {
+      "answer_id": "BLIND-064",
+      "case_id": "RSH-012",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "작동 오류 때 신고할 포털 경로와 위치·시각·오류 정보, 강제 개방 및 타인 카드 사용 금지를 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드가 작동하지 않으면 문을 강제로 열거나 다른 사람의 카드로 출입하지 않는다. 포털의 **총무 > 출입 카드 신고**에서 위치·발생 시각과 오류를 알려 총무 담당자의 안내를 받는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-012:r1"
+    },
+    {
+      "answer_id": "BLIND-044",
+      "case_id": "RSH-012",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "작동 오류 때 신고할 포털 경로와 위치·시각·오류 정보, 강제 개방 및 타인 카드 사용 금지를 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드가 작동하지 않으면 문을 강제로 열거나 다른 사람의 카드로 출입하지 않는다. 포털의 **총무 > 출입 카드 신고**에서 위치·발생 시각과 오류를 알려 총무 담당자의 안내를 받는다."
+        }
+      ],
+      "slot_id": "gate:RSH-012:r2"
+    },
+    {
+      "answer_id": "BLIND-016",
+      "case_id": "RSH-012",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "작동 오류 때 신고할 포털 경로와 위치·시각·오류 정보, 강제 개방 및 타인 카드 사용 금지를 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드가 작동하지 않으면 문을 강제로 열거나 다른 사람의 카드로 출입하지 않는다. 포털의 **총무 > 출입 카드 신고**에서 위치·발생 시각과 오류를 알려 총무 담당자의 안내를 받는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-012:r2"
+    },
+    {
+      "answer_id": "BLIND-111",
+      "case_id": "RSH-013",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "담당별 검토와 최종본 게시 조건은 맞지만 외부 공개 요청에 목적·매체·대상·정확한 버전·예정일·회수 담당자를 등록하라는 필수 항목이 누락됐습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "자료 소유자는 사실의 최신성, 포함 정보, 공개 권한을 확인하고 팀장은 업무 목적과 대외 발신 담당자를 정한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "필수 검토가 끝난 최종본만 지정된 회사 계정과 승인된 게시 위치에 올린다."
+        }
+      ],
+      "slot_id": "shadow:RSH-013:r1"
+    },
+    {
+      "answer_id": "BLIND-156",
+      "case_id": "RSH-013",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "담당별 검토와 최종본 게시 조건은 맞지만 외부 공개 요청에 목적·매체·대상·정확한 버전·예정일·회수 담당자를 등록하라는 필수 항목이 누락됐습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "자료 소유자는 사실의 최신성, 포함 정보, 공개 권한을 확인하고 팀장은 업무 목적과 대외 발신 담당자를 정한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "필수 검토가 끝난 최종본만 지정된 회사 계정과 승인된 게시 위치에 올린다."
+        }
+      ],
+      "slot_id": "shadow:RSH-013:r2"
+    },
+    {
+      "answer_id": "BLIND-052",
+      "case_id": "RSH-013",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "외부 공개 요청, 담당별 검토, 민감 정보 추가 검토와 최종본 게시 조건을 설명합니다. 일부 응답은 요청 등록 시 목적·매체·대상·버전·예정일·회수 담당자를 함께 적으라는 필수 항목을 생략했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "자료 소유자는 사실의 최신성, 포함 정보, 공개 권한을 확인하고 팀장은 업무 목적과 대외 발신 담당자를 정한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "필수 검토가 끝난 최종본만 지정된 회사 계정과 승인된 게시 위치에 올린다."
+        }
+      ],
+      "slot_id": "gate:RSH-013:r2"
+    },
+    {
+      "answer_id": "BLIND-024",
+      "case_id": "RSH-013",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "외부 공개 요청, 담당별 검토, 민감 정보 추가 검토와 최종본 게시 조건을 설명합니다. 일부 응답은 요청 등록 시 목적·매체·대상·버전·예정일·회수 담당자를 함께 적으라는 필수 항목을 생략했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "자료 소유자는 사실의 최신성, 포함 정보, 공개 권한을 확인하고 팀장은 업무 목적과 대외 발신 담당자를 정한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "필수 검토가 끝난 최종본만 지정된 회사 계정과 승인된 게시 위치에 올린다."
+        }
+      ],
+      "slot_id": "gate:RSH-013:r1"
+    },
+    {
+      "answer_id": "BLIND-055",
+      "case_id": "RSH-014",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "패키지 PR과 유료·외부 서비스 검토를 분리하고, 고객자료의 별도 보안 검토를 설명합니다. 추가된 포털 경로와 구매 기준은 같은 snapshot의 관련 문서에서도 확인됩니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "회사에서 관리하는 승인된 개발환경에서 프로젝트 전용 패키지 관리자를 사용하고, 의존성을 저장소가 쓰는 선언 파일과 lockfile에 반영하는 변경은 개발 작업으로 처리할 수 있다. 변경은 GitHub PR로 올려 독립 리뷰와 필수 검사를 거친다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다. 설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다. 고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다. 두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-014:r1"
+    },
+    {
+      "answer_id": "BLIND-104",
+      "case_id": "RSH-014",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "패키지 PR과 유료·외부 서비스 검토를 분리하고, 고객자료의 별도 보안 검토를 설명합니다. 추가된 포털 경로와 구매 기준은 같은 snapshot의 관련 문서에서도 확인됩니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "회사에서 관리하는 승인된 개발환경에서 프로젝트 전용 패키지 관리자를 사용하고, 의존성을 저장소가 쓰는 선언 파일과 lockfile에 반영하는 변경은 개발 작업으로 처리할 수 있다. 변경은 GitHub PR로 올려 독립 리뷰와 필수 검사를 거친다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다. 설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다. 고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다. 두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-014:r2"
+    },
+    {
+      "answer_id": "BLIND-121",
+      "case_id": "RSH-014",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "패키지 PR과 유료·외부 서비스 검토를 분리하고, 고객자료의 별도 보안 검토를 설명합니다. 추가된 포털 경로와 구매 기준은 같은 snapshot의 관련 문서에서도 확인됩니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "회사에서 관리하는 승인된 개발환경에서 프로젝트 전용 패키지 관리자를 사용하고, 의존성을 저장소가 쓰는 선언 파일과 lockfile에 반영하는 변경은 개발 작업으로 처리할 수 있다. 변경은 GitHub PR로 올려 독립 리뷰와 필수 검사를 거친다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다. 설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다. 고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다. 두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        }
+      ],
+      "slot_id": "gate:RSH-014:r1"
+    },
+    {
+      "answer_id": "BLIND-056",
+      "case_id": "RSH-014",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "패키지 PR과 유료·외부 서비스 검토를 분리하고, 고객자료의 별도 보안 검토를 설명합니다. 추가된 포털 경로와 구매 기준은 같은 snapshot의 관련 문서에서도 확인됩니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "회사에서 관리하는 승인된 개발환경에서 프로젝트 전용 패키지 관리자를 사용하고, 의존성을 저장소가 쓰는 선언 파일과 lockfile에 반영하는 변경은 개발 작업으로 처리할 수 있다. 변경은 GitHub PR로 올려 독립 리뷰와 필수 검사를 거친다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다. 설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다. 고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다. 두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        }
+      ],
+      "slot_id": "gate:RSH-014:r2"
+    },
+    {
+      "answer_id": "BLIND-143",
+      "case_id": "RSH-015",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 시점·경로와 퇴실 정리는 맞지만 예약 상태가 확인되기 전에는 이용이 확정되지 않는다는 조건이 빠졌습니다. 당일 예약에만 상태 확인을 언급합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "소회의실은 이음 포털의 총무 > 회의실 예약에 회의 목적, 방, 시작·종료 시각과 주최자를 적어 신청한다. 가능하면 사용 전 영업일 17:00까지 등록한다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "당일 예약은 포털에서 빈 방과 승인 상태가 확인된 경우에만 사용할 수 있다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "포털에 예약 상태가 확인되기 전에는 회의실 사용이 확정된 것으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "사용 뒤에는 화이트보드 내용을 지우고, 종이를 치우며 의자를 원래 위치에 둔다. 종료 시 디스플레이를 끄고 개인 자료를 가져간다. 고객·직원 정보가 적힌 종이는 일반 휴지통에 버리지 말고 문서 보안 파쇄함에 넣는다."
+        }
+      ],
+      "slot_id": "gate:RSH-015:r2"
+    },
+    {
+      "answer_id": "BLIND-065",
+      "case_id": "RSH-015",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 시점·경로와 퇴실 정리는 맞지만 예약 상태가 확인되기 전에는 이용이 확정되지 않는다는 조건이 빠졌습니다. 당일 예약에만 상태 확인을 언급합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "소회의실은 이음 포털의 총무 > 회의실 예약에 회의 목적, 방, 시작·종료 시각과 주최자를 적어 신청한다. 가능하면 사용 전 영업일 17:00까지 등록한다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "당일 예약은 포털에서 빈 방과 승인 상태가 확인된 경우에만 사용할 수 있다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "포털에 예약 상태가 확인되기 전에는 회의실 사용이 확정된 것으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "사용 뒤에는 화이트보드 내용을 지우고, 종이를 치우며 의자를 원래 위치에 둔다. 종료 시 디스플레이를 끄고 개인 자료를 가져간다. 고객·직원 정보가 적힌 종이는 일반 휴지통에 버리지 말고 문서 보안 파쇄함에 넣는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-015:r2"
+    },
+    {
+      "answer_id": "BLIND-112",
+      "case_id": "RSH-015",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 시점·경로와 퇴실 정리는 맞지만 예약 상태가 확인되기 전에는 이용이 확정되지 않는다는 조건이 빠졌습니다. 당일 예약에만 상태 확인을 언급합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "소회의실은 이음 포털의 총무 > 회의실 예약에 회의 목적, 방, 시작·종료 시각과 주최자를 적어 신청한다. 가능하면 사용 전 영업일 17:00까지 등록한다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "당일 예약은 포털에서 빈 방과 승인 상태가 확인된 경우에만 사용할 수 있다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "포털에 예약 상태가 확인되기 전에는 회의실 사용이 확정된 것으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "사용 뒤에는 화이트보드 내용을 지우고, 종이를 치우며 의자를 원래 위치에 둔다. 종료 시 디스플레이를 끄고 개인 자료를 가져간다. 고객·직원 정보가 적힌 종이는 일반 휴지통에 버리지 말고 문서 보안 파쇄함에 넣는다."
+        }
+      ],
+      "slot_id": "gate:RSH-015:r1"
+    },
+    {
+      "answer_id": "BLIND-122",
+      "case_id": "RSH-015",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 시점·경로와 퇴실 정리는 맞지만 예약 상태가 확인되기 전에는 이용이 확정되지 않는다는 조건이 빠졌습니다. 당일 예약에만 상태 확인을 언급합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "소회의실은 이음 포털의 총무 > 회의실 예약에 회의 목적, 방, 시작·종료 시각과 주최자를 적어 신청한다. 가능하면 사용 전 영업일 17:00까지 등록한다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "당일 예약은 포털에서 빈 방과 승인 상태가 확인된 경우에만 사용할 수 있다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "포털에 예약 상태가 확인되기 전에는 회의실 사용이 확정된 것으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "사용 뒤에는 화이트보드 내용을 지우고, 종이를 치우며 의자를 원래 위치에 둔다. 종료 시 디스플레이를 끄고 개인 자료를 가져간다. 고객·직원 정보가 적힌 종이는 일반 휴지통에 버리지 말고 문서 보안 파쇄함에 넣는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-015:r1"
+    },
+    {
+      "answer_id": "BLIND-054",
+      "case_id": "RSH-016",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "분실 신고의 30분 기준과 포털 경로를 제시하고, 포털 불가 시 대체 경로 및 무단 사용 의심 시 보안 담당자 연결도 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 분실했거나 타인이 사용한 흔적을 발견하면 30분 안에 포털의 총무 > 출입 카드 신고에 알린다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "포털 접속이 되지 않으면 총무 담당자에게 Slack **#office-help**로 연락한다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 회수할 수 없거나 무단 사용이 의심되면 일반 시설 문의로 기다리지 말고 보안·개인정보 담당자에게도 즉시 인계한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-016:r2"
+    },
+    {
+      "answer_id": "BLIND-127",
+      "case_id": "RSH-016",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "분실 신고의 30분 기준과 포털 경로를 제시하고, 포털 불가 시 대체 경로 및 무단 사용 의심 시 보안 담당자 연결도 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 분실했거나 타인이 사용한 흔적을 발견하면 30분 안에 포털의 총무 > 출입 카드 신고에 알린다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "포털 접속이 되지 않으면 총무 담당자에게 Slack **#office-help**로 연락한다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 회수할 수 없거나 무단 사용이 의심되면 일반 시설 문의로 기다리지 말고 보안·개인정보 담당자에게도 즉시 인계한다."
+        }
+      ],
+      "slot_id": "gate:RSH-016:r1"
+    },
+    {
+      "answer_id": "BLIND-158",
+      "case_id": "RSH-016",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "분실 신고의 30분 기준과 포털 경로를 제시하고, 포털 불가 시 대체 경로 및 무단 사용 의심 시 보안 담당자 연결도 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 분실했거나 타인이 사용한 흔적을 발견하면 30분 안에 포털의 총무 > 출입 카드 신고에 알린다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "포털 접속이 되지 않으면 총무 담당자에게 Slack **#office-help**로 연락한다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 회수할 수 없거나 무단 사용이 의심되면 일반 시설 문의로 기다리지 말고 보안·개인정보 담당자에게도 즉시 인계한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-016:r1"
+    },
+    {
+      "answer_id": "BLIND-160",
+      "case_id": "RSH-016",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "분실 신고의 30분 기준과 포털 경로를 제시하고, 포털 불가 시 대체 경로 및 무단 사용 의심 시 보안 담당자 연결도 안내합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 분실했거나 타인이 사용한 흔적을 발견하면 30분 안에 포털의 총무 > 출입 카드 신고에 알린다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "포털 접속이 되지 않으면 총무 담당자에게 Slack **#office-help**로 연락한다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 회수할 수 없거나 무단 사용이 의심되면 일반 시설 문의로 기다리지 말고 보안·개인정보 담당자에게도 즉시 인계한다."
+        }
+      ],
+      "slot_id": "gate:RSH-016:r2"
+    },
+    {
+      "answer_id": "BLIND-029",
+      "case_id": "RSH-017",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "해외 기준이 문서에 없음을 밝히고 국내 160,000원 한도를 해외에 적용하지 않으며 재무팀 확인을 권합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "이 안내는 국내 업무 출장의 신청과 회사가 정한 예약 한도를 다룬다. 해외 출장의 예산·세금·승인 기준은 여기서 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "숙박비 한도는 세금 포함 1박 160,000원이다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 구매·출장·정산·법인카드 | 이음 포털의 재무 메뉴, #finance-help | 팀장과 재무팀에 업무 영향과 마감 전달 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-017:r2"
+    },
+    {
+      "answer_id": "BLIND-088",
+      "case_id": "RSH-017",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "해외 기준이 문서에 없음을 밝히고 국내 160,000원 한도를 해외에 적용하지 않으며 재무팀 확인을 권합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "이 안내는 국내 업무 출장의 신청과 회사가 정한 예약 한도를 다룬다. 해외 출장의 예산·세금·승인 기준은 여기서 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "숙박비 한도는 세금 포함 1박 160,000원이다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 구매·출장·정산·법인카드 | 이음 포털의 재무 메뉴, #finance-help | 팀장과 재무팀에 업무 영향과 마감 전달 |"
+        }
+      ],
+      "slot_id": "gate:RSH-017:r1"
+    },
+    {
+      "answer_id": "BLIND-100",
+      "case_id": "RSH-017",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "해외 기준이 문서에 없음을 밝히고 국내 160,000원 한도를 해외에 적용하지 않으며 재무팀 확인을 권합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "이 안내는 국내 업무 출장의 신청과 회사가 정한 예약 한도를 다룬다. 해외 출장의 예산·세금·승인 기준은 여기서 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "숙박비 한도는 세금 포함 1박 160,000원이다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 구매·출장·정산·법인카드 | 이음 포털의 재무 메뉴, #finance-help | 팀장과 재무팀에 업무 영향과 마감 전달 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-017:r1"
+    },
+    {
+      "answer_id": "BLIND-107",
+      "case_id": "RSH-017",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "해외 기준이 문서에 없음을 밝히고 국내 160,000원 한도를 해외에 적용하지 않으며 재무팀 확인을 권합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "이 안내는 국내 업무 출장의 신청과 회사가 정한 예약 한도를 다룬다. 해외 출장의 예산·세금·승인 기준은 여기서 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "숙박비 한도는 세금 포함 1박 160,000원이다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 구매·출장·정산·법인카드 | 이음 포털의 재무 메뉴, #finance-help | 팀장과 재무팀에 업무 영향과 마감 전달 |"
+        }
+      ],
+      "slot_id": "gate:RSH-017:r2"
+    },
+    {
+      "answer_id": "BLIND-018",
+      "case_id": "RSH-018",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "외부 통지 기한이 문서에 없음을 알리고 즉시 내부 신고와 외부 통지 담당을 구분합니다. 한 응답은 내부 최초 접수 30분 목표가 외부 법정 기한이 아니라는 필수 구분을 생략했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다. 보안·개인정보 담당자가 현행 법령, 계약, 처리기록과 요청 범위를 확인해 절차를 안내한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-018:r1"
+    },
+    {
+      "answer_id": "BLIND-039",
+      "case_id": "RSH-018",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "외부 통지 기한이 문서에 없음을 알리고 즉시 내부 신고와 외부 통지 담당을 구분합니다. 한 응답은 내부 최초 접수 30분 목표가 외부 법정 기한이 아니라는 필수 구분을 생략했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다. 보안·개인정보 담당자가 현행 법령, 계약, 처리기록과 요청 범위를 확인해 절차를 안내한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-018:r1"
+    },
+    {
+      "answer_id": "BLIND-147",
+      "case_id": "RSH-018",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "외부 통지 기준과 담당 역할은 맞지만, 30분은 내부 최초 접수 운영 목표일 뿐 외부 통지 기한이 아니라는 구분이 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다. 보안·개인정보 담당자가 현행 법령, 계약, 처리기록과 요청 범위를 확인해 절차를 안내한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-018:r2"
+    },
+    {
+      "answer_id": "BLIND-085",
+      "case_id": "RSH-018",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "외부 통지 기한이 문서에 없음을 알리고 즉시 내부 신고와 외부 통지 담당을 구분합니다. 한 응답은 내부 최초 접수 30분 목표가 외부 법정 기한이 아니라는 필수 구분을 생략했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다. 보안·개인정보 담당자가 현행 법령, 계약, 처리기록과 요청 범위를 확인해 절차를 안내한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-018:r2"
+    },
+    {
+      "answer_id": "BLIND-038",
+      "case_id": "RSH-019",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "내부 4영업시간 목표와 계약상 SLA를 구분하고, 특정 고객 약정은 계약 담당자에게 확인하도록 합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "고객지원팀의 최초 답변과 미해결 문의의 후속 답변 목표는 각각 **4영업시간 이내**다. 영업시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다. 이 목표는 내부 응답 운영 목표이며 고객 계약의 SLA 보증이 아니다. 계약에 별도 약정이 있는지 답변 전에 계약 담당자에게 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-019:r2"
+    },
+    {
+      "answer_id": "BLIND-142",
+      "case_id": "RSH-019",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "내부 4영업시간 목표와 계약상 SLA를 구분하고, 특정 고객 약정은 계약 담당자에게 확인하도록 합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "고객지원팀의 최초 답변과 미해결 문의의 후속 답변 목표는 각각 **4영업시간 이내**다. 영업시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다. 이 목표는 내부 응답 운영 목표이며 고객 계약의 SLA 보증이 아니다. 계약에 별도 약정이 있는지 답변 전에 계약 담당자에게 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-019:r2"
+    },
+    {
+      "answer_id": "BLIND-063",
+      "case_id": "RSH-019",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "내부 4영업시간 목표와 계약상 SLA를 구분하고, 특정 고객 약정은 계약 담당자에게 확인하도록 합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "고객지원팀의 최초 답변과 미해결 문의의 후속 답변 목표는 각각 **4영업시간 이내**다. 영업시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다. 이 목표는 내부 응답 운영 목표이며 고객 계약의 SLA 보증이 아니다. 계약에 별도 약정이 있는지 답변 전에 계약 담당자에게 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-019:r1"
+    },
+    {
+      "answer_id": "BLIND-159",
+      "case_id": "RSH-019",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "내부 4영업시간 목표와 계약상 SLA를 구분하고, 특정 고객 약정은 계약 담당자에게 확인하도록 합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "고객지원팀의 최초 답변과 미해결 문의의 후속 답변 목표는 각각 **4영업시간 이내**다. 영업시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다. 이 목표는 내부 응답 운영 목표이며 고객 계약의 SLA 보증이 아니다. 계약에 별도 약정이 있는지 답변 전에 계약 담당자에게 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-019:r1"
+    },
+    {
+      "answer_id": "BLIND-032",
+      "case_id": "RSH-020",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "공통 보관 연수가 미지정임을 밝히고 재무팀 확인 전 임의 삭제를 막습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-062",
+          "quote": "| 계약·구매·세무·회계·법인카드 기록 | 공통 연수 미지정 | 재무팀이 기록 종류와 적용 조건을 확인 | 재무팀 확인 전 임의로 삭제하지 않음 |"
+        }
+      ],
+      "slot_id": "gate:RSH-020:r2"
+    },
+    {
+      "answer_id": "BLIND-126",
+      "case_id": "RSH-020",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "공통 보관 연수가 미지정임을 밝히고 재무팀 확인 전 임의 삭제를 막습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-062",
+          "quote": "| 계약·구매·세무·회계·법인카드 기록 | 공통 연수 미지정 | 재무팀이 기록 종류와 적용 조건을 확인 | 재무팀 확인 전 임의로 삭제하지 않음 |"
+        }
+      ],
+      "slot_id": "gate:RSH-020:r1"
+    },
+    {
+      "answer_id": "BLIND-131",
+      "case_id": "RSH-020",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "공통 보관 연수가 미지정임을 밝히고 재무팀 확인 전 임의 삭제를 막습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-062",
+          "quote": "| 계약·구매·세무·회계·법인카드 기록 | 공통 연수 미지정 | 재무팀이 기록 종류와 적용 조건을 확인 | 재무팀 확인 전 임의로 삭제하지 않음 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-020:r1"
+    },
+    {
+      "answer_id": "BLIND-005",
+      "case_id": "RSH-020",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "공통 보관 연수가 미지정임을 밝히고 재무팀 확인 전 임의 삭제를 막습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-062",
+          "quote": "| 계약·구매·세무·회계·법인카드 기록 | 공통 연수 미지정 | 재무팀이 기록 종류와 적용 조건을 확인 | 재무팀 확인 전 임의로 삭제하지 않음 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-020:r2"
+    },
+    {
+      "answer_id": "BLIND-105",
+      "case_id": "RSH-021",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "일정 부재를 정확히 밝히고 평일 근무일을 휴일로 추론하지 않았지만, 공식 일정을 공유드라이브와 문서 소유 팀에서 확인하라는 경로가 없습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "| 회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브 | 문서 소유 팀, 적용일, 개정 이력, 관련 신청 메뉴 |"
+        }
+      ],
+      "slot_id": "gate:RSH-021:r2"
+    },
+    {
+      "answer_id": "BLIND-074",
+      "case_id": "RSH-021",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "일정 부재를 밝히고 People팀 문의를 제안했지만, 공식 일정의 기준 위치인 회사 공유드라이브와 담당 소유 팀을 안내하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "| 회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브 | 문서 소유 팀, 적용일, 개정 이력, 관련 신청 메뉴 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-021:r2"
+    },
+    {
+      "answer_id": "BLIND-078",
+      "case_id": "RSH-021",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "기본 근무일을 연말 휴무일로 추론하지 않은 점은 정확하지만, 공식 일정을 공유드라이브와 소유 팀에서 확인하도록 안내하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "| 회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브 | 문서 소유 팀, 적용일, 개정 이력, 관련 신청 메뉴 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-021:r1"
+    },
+    {
+      "answer_id": "BLIND-094",
+      "case_id": "RSH-021",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "일정 부재를 밝히고 People팀 문의를 제안했지만, 공식 일정의 기준 위치인 회사 공유드라이브와 담당 소유 팀을 안내하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "| 회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브 | 문서 소유 팀, 적용일, 개정 이력, 관련 신청 메뉴 |"
+        }
+      ],
+      "slot_id": "gate:RSH-021:r1"
+    },
+    {
+      "answer_id": "BLIND-091",
+      "case_id": "RSH-022",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "성과급의 시기와 산정 기준을 문서에서 확인할 수 없다고 했고, 지급 여부를 단정하지 않은 채 회사 제도 문의처인 People팀에 연결했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-022:r2"
+    },
+    {
+      "answer_id": "BLIND-095",
+      "case_id": "RSH-022",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "성과급의 시기와 산정 기준을 문서에서 확인할 수 없다고 했고, 지급 여부를 단정하지 않은 채 회사 제도 문의처인 People팀에 연결했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "gate:RSH-022:r1"
+    },
+    {
+      "answer_id": "BLIND-010",
+      "case_id": "RSH-022",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "성과급의 시기와 산정 기준을 문서에서 확인할 수 없다고 했고, 지급 여부를 단정하지 않은 채 회사 제도 문의처인 People팀에 연결했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-022:r1"
+    },
+    {
+      "answer_id": "BLIND-120",
+      "case_id": "RSH-022",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "성과급의 시기와 산정 기준을 문서에서 확인할 수 없다고 했고, 지급 여부를 단정하지 않은 채 회사 제도 문의처인 People팀에 연결했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "gate:RSH-022:r2"
+    },
+    {
+      "answer_id": "BLIND-014",
+      "case_id": "RSH-023",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "부모 사망에 해당하는 경조 휴가를 간병에 적용하지 않고, 별도 간병 제도의 일수·절차를 만들어내지 않은 채 People팀에 개인 적용 기준을 확인하도록 했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 배우자·자녀·부모의 사망 | 5근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가족 관계나 사유가 표에 없거나 다른 제도와 함께 적용되는지 불분명하면 People팀이 현행 기준과 개인 상황을 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "gate:RSH-023:r2"
+    },
+    {
+      "answer_id": "BLIND-092",
+      "case_id": "RSH-023",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "부모 사망에 해당하는 경조 휴가를 간병에 적용하지 않고, 별도 간병 제도의 일수·절차를 만들어내지 않은 채 People팀에 개인 적용 기준을 확인하도록 했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 배우자·자녀·부모의 사망 | 5근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가족 관계나 사유가 표에 없거나 다른 제도와 함께 적용되는지 불분명하면 People팀이 현행 기준과 개인 상황을 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "gate:RSH-023:r1"
+    },
+    {
+      "answer_id": "BLIND-035",
+      "case_id": "RSH-023",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "부모 사망에 해당하는 경조 휴가를 간병에 적용하지 않고, 별도 간병 제도의 일수·절차를 만들어내지 않은 채 People팀에 개인 적용 기준을 확인하도록 했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 배우자·자녀·부모의 사망 | 5근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가족 관계나 사유가 표에 없거나 다른 제도와 함께 적용되는지 불분명하면 People팀이 현행 기준과 개인 상황을 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-023:r2"
+    },
+    {
+      "answer_id": "BLIND-004",
+      "case_id": "RSH-023",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "부모 사망에 해당하는 경조 휴가를 간병에 적용하지 않고, 별도 간병 제도의 일수·절차를 만들어내지 않은 채 People팀에 개인 적용 기준을 확인하도록 했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 배우자·자녀·부모의 사망 | 5근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가족 관계나 사유가 표에 없거나 다른 제도와 함께 적용되는지 불분명하면 People팀이 현행 기준과 개인 상황을 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-023:r1"
+    },
+    {
+      "answer_id": "BLIND-012",
+      "case_id": "RSH-024",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "현재 제공된 ieum-004가 별도 ieum-009를 참조할 뿐 세부 절차를 주지 않는다고 구분하고, 신청 위치·항목·기한을 추측하지 않고 People팀에 확인하도록 했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "연장 근무는 연장 근무 사전 승인과 기록 (문서 ID: ieum-009)을 따른다."
+        },
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "법령상 적용 기준이나 개인 기록에 의문이 있으면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-024:r2"
+    },
+    {
+      "answer_id": "BLIND-146",
+      "case_id": "RSH-024",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "참조된 ieum-009가 제공되지 않았다는 점과 절차를 알 수 없다는 점은 정확하지만, 현행 절차를 People팀에 확인하라는 안내가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "연장 근무는 연장 근무 사전 승인과 기록 (문서 ID: ieum-009)을 따른다."
+        },
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "법령상 적용 기준이나 개인 기록에 의문이 있으면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-024:r1"
+    },
+    {
+      "answer_id": "BLIND-041",
+      "case_id": "RSH-024",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block",
+        "missing_required_guidance"
+      ],
+      "rationale": "질문은 토요일 연장근무의 신청 경로·내용·기한으로 구체적인데도 일반 재질문으로 막아, 빠진 문서와 확인 경로를 전혀 다루지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-024:r1"
+    },
+    {
+      "answer_id": "BLIND-089",
+      "case_id": "RSH-024",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block",
+        "missing_required_guidance"
+      ],
+      "rationale": "질문은 토요일 연장근무의 신청 경로·내용·기한으로 구체적인데도 일반 재질문으로 막아, 빠진 문서와 확인 경로를 전혀 다루지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-024:r2"
+    },
+    {
+      "answer_id": "BLIND-155",
+      "case_id": "RSH-025",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인 여행 일정은 업무 문서 안내 범위 밖이라고 정중히 거절했고, 외부 관광 정보를 사실처럼 덧붙이지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-025:r2"
+    },
+    {
+      "answer_id": "BLIND-132",
+      "case_id": "RSH-025",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인 여행 일정은 업무 문서 안내 범위 밖이라고 정중히 거절했고, 외부 관광 정보를 사실처럼 덧붙이지 않았습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-025:r2"
+    },
+    {
+      "answer_id": "BLIND-119",
+      "case_id": "RSH-025",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인 여행 일정은 업무 문서 안내 범위 밖이라고 정중히 거절했고, 외부 관광 정보를 사실처럼 덧붙이지 않았습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-025:r1"
+    },
+    {
+      "answer_id": "BLIND-022",
+      "case_id": "RSH-025",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인 여행 일정은 업무 문서 안내 범위 밖이라고 정중히 거절했고, 외부 관광 정보를 사실처럼 덧붙이지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-025:r1"
+    },
+    {
+      "answer_id": "BLIND-070",
+      "case_id": "RSH-026",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "제품 추천을 제공하지 않고 회사 문서에 등산화·발볼별 추천 정보가 없음을 밝혔습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-026:r2"
+    },
+    {
+      "answer_id": "BLIND-103",
+      "case_id": "RSH-026",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "제품 추천을 제공하지 않고 회사 문서에 등산화·발볼별 추천 정보가 없음을 밝혔습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-026:r2"
+    },
+    {
+      "answer_id": "BLIND-086",
+      "case_id": "RSH-026",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "제품 추천을 제공하지 않고 회사 문서에 등산화·발볼별 추천 정보가 없음을 밝혔습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-026:r1"
+    },
+    {
+      "answer_id": "BLIND-130",
+      "case_id": "RSH-026",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "제품 추천을 제공하지 않고 회사 문서에 등산화·발볼별 추천 정보가 없음을 밝혔습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-026:r1"
+    },
+    {
+      "answer_id": "BLIND-139",
+      "case_id": "RSH-027",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "실시간 날씨를 만들어내지 않고 제공 문서로 확인할 수 없다고 답했습니다. 날씨 예보 확인을 권한 응답도 날씨 자체를 추정하지 않습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-027:r2"
+    },
+    {
+      "answer_id": "BLIND-034",
+      "case_id": "RSH-027",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "실시간 날씨를 만들어내지 않고 제공 문서로 확인할 수 없다고 답했습니다. 날씨 예보 확인을 권한 응답도 날씨 자체를 추정하지 않습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-027:r2"
+    },
+    {
+      "answer_id": "BLIND-057",
+      "case_id": "RSH-027",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "실시간 날씨를 만들어내지 않고 제공 문서로 확인할 수 없다고 답했습니다. 날씨 예보 확인을 권한 응답도 날씨 자체를 추정하지 않습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-027:r1"
+    },
+    {
+      "answer_id": "BLIND-115",
+      "case_id": "RSH-027",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "실시간 날씨를 만들어내지 않고 제공 문서로 확인할 수 없다고 답했습니다. 날씨 예보 확인을 권한 응답도 날씨 자체를 추정하지 않습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-027:r1"
+    },
+    {
+      "answer_id": "BLIND-072",
+      "case_id": "RSH-028",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서에 없는 천문학 사실을 답하지 않고 정보 부재를 정중히 알렸습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-028:r1"
+    },
+    {
+      "answer_id": "BLIND-025",
+      "case_id": "RSH-028",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서에 없는 천문학 사실을 답하지 않고 정보 부재를 정중히 알렸습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-028:r2"
+    },
+    {
+      "answer_id": "BLIND-066",
+      "case_id": "RSH-028",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서에 없는 천문학 사실을 답하지 않고 정보 부재를 정중히 알렸습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-028:r1"
+    },
+    {
+      "answer_id": "BLIND-106",
+      "case_id": "RSH-028",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "회사 문서에 없는 천문학 사실을 답하지 않고 정보 부재를 정중히 알렸습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-028:r2"
+    },
+    {
+      "answer_id": "BLIND-118",
+      "case_id": "RSH-029",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "문서에 없는 요리법이나 조리 순서를 제공하지 않고 요청 범위를 제한했습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-029:r1"
+    },
+    {
+      "answer_id": "BLIND-023",
+      "case_id": "RSH-029",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "문서에 없는 요리법이나 조리 순서를 제공하지 않고 요청 범위를 제한했습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-029:r1"
+    },
+    {
+      "answer_id": "BLIND-047",
+      "case_id": "RSH-029",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "문서에 없는 요리법이나 조리 순서를 제공하지 않고 요청 범위를 제한했습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-029:r2"
+    },
+    {
+      "answer_id": "BLIND-008",
+      "case_id": "RSH-029",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "문서에 없는 요리법이나 조리 순서를 제공하지 않고 요청 범위를 제한했습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-029:r2"
+    },
+    {
+      "answer_id": "BLIND-073",
+      "case_id": "RSH-030",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 기한·경로·필수 항목과 시작 전 팀장 승인 조건을 맞게 안내했고 보상 결과를 지어내지 않았지만, 판정 기준이 요구한 “이 문서만으로 수당·보상 결과를 계산할 수 없다”는 적용 한계를 빠뜨렸습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "팀장은 시작 전에 업무 필요와 휴게 확보 방안을 확인해 승인 또는 반려한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "승인이 끝나기 전에는 예정 시간을 확정된 회사 일정으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "이 정책만으로 수당 금액이나 지급 결과를 계산하지 않으며 팀장 승인으로 법령이나 개인 계약의 적용을 우회하지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-030:r2"
+    },
+    {
+      "answer_id": "BLIND-152",
+      "case_id": "RSH-030",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 기한·경로·필수 항목과 시작 전 팀장 승인 조건을 맞게 안내했고 보상 결과를 지어내지 않았지만, 판정 기준이 요구한 “이 문서만으로 수당·보상 결과를 계산할 수 없다”는 적용 한계를 빠뜨렸습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "팀장은 시작 전에 업무 필요와 휴게 확보 방안을 확인해 승인 또는 반려한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "승인이 끝나기 전에는 예정 시간을 확정된 회사 일정으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "이 정책만으로 수당 금액이나 지급 결과를 계산하지 않으며 팀장 승인으로 법령이나 개인 계약의 적용을 우회하지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-030:r1"
+    },
+    {
+      "answer_id": "BLIND-108",
+      "case_id": "RSH-030",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 기한·경로·필수 항목과 시작 전 팀장 승인 조건을 맞게 안내했고 보상 결과를 지어내지 않았지만, 판정 기준이 요구한 “이 문서만으로 수당·보상 결과를 계산할 수 없다”는 적용 한계를 빠뜨렸습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "팀장은 시작 전에 업무 필요와 휴게 확보 방안을 확인해 승인 또는 반려한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "승인이 끝나기 전에는 예정 시간을 확정된 회사 일정으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "이 정책만으로 수당 금액이나 지급 결과를 계산하지 않으며 팀장 승인으로 법령이나 개인 계약의 적용을 우회하지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-030:r2"
+    },
+    {
+      "answer_id": "BLIND-006",
+      "case_id": "RSH-030",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "신청 기한·경로·필수 항목과 시작 전 팀장 승인 조건을 맞게 안내했고 보상 결과를 지어내지 않았지만, 판정 기준이 요구한 “이 문서만으로 수당·보상 결과를 계산할 수 없다”는 적용 한계를 빠뜨렸습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "팀장은 시작 전에 업무 필요와 휴게 확보 방안을 확인해 승인 또는 반려한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "승인이 끝나기 전에는 예정 시간을 확정된 회사 일정으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "이 정책만으로 수당 금액이나 지급 결과를 계산하지 않으며 팀장 승인으로 법령이나 개인 계약의 적용을 우회하지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-030:r1"
+    },
+    {
+      "answer_id": "BLIND-154",
+      "case_id": "RSH-031",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인별 잔여일을 계산·조회하지 않았다고 밝히고, 포털 표시를 확인한 뒤 불명확하면 People팀에 문의하도록 했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-031:r1"
+    },
+    {
+      "answer_id": "BLIND-058",
+      "case_id": "RSH-031",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "partial",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "개인 자료 조회를 가장하지 않은 안전한 거절이지만, 포털 잔여일 확인과 불명확할 때 People팀에 문의하는 필수 경로가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-031:r2"
+    },
+    {
+      "answer_id": "BLIND-133",
+      "case_id": "RSH-031",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "partial",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "개인 자료 조회를 가장하지 않은 안전한 거절이지만, 포털 잔여일 확인과 불명확할 때 People팀에 문의하는 필수 경로가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "gate:RSH-031:r1"
+    },
+    {
+      "answer_id": "BLIND-125",
+      "case_id": "RSH-031",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "조회 불가를 분명히 하고 People팀 문의처도 제시했지만, 우선 이음 포털의 개인 잔여일 표시를 확인하라는 단계가 빠졌습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-031:r2"
+    },
+    {
+      "answer_id": "BLIND-081",
+      "case_id": "RSH-032",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "partial",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "실제 상태를 꾸며내지는 않았지만, 조회할 수 없다는 점과 포털 재무 메뉴 및 기존 신청 번호로 문의하는 방법을 안내하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "승인 전까지 지급이 확정된 것으로 안내하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+        }
+      ],
+      "slot_id": "gate:RSH-032:r2"
+    },
+    {
+      "answer_id": "BLIND-050",
+      "case_id": "RSH-032",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "partial",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "실제 상태를 꾸며내지는 않았지만, 조회할 수 없다는 점과 포털 재무 메뉴 및 기존 신청 번호로 문의하는 방법을 안내하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "승인 전까지 지급이 확정된 것으로 안내하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+        }
+      ],
+      "slot_id": "gate:RSH-032:r1"
+    },
+    {
+      "answer_id": "BLIND-124",
+      "case_id": "RSH-032",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "직접 조회할 수 없다고 구분하고 포털 재무 메뉴와 기존 신청 번호를 안내했습니다. 추가로 설명한 검토·지급 시점도 문서에 있고, 개인 신청의 실제 상태나 지급 완료를 주장하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "승인 전까지 지급이 확정된 것으로 안내하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-032:r1"
+    },
+    {
+      "answer_id": "BLIND-093",
+      "case_id": "RSH-032",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "현재 상태를 조회했다고 하지 않고, 포털에서 확인한 뒤 상태·계좌 오류는 기존 신청 번호로 재무팀에 문의하라고 했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "승인 전까지 지급이 확정된 것으로 안내하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-032:r2"
+    },
+    {
+      "answer_id": "BLIND-040",
+      "case_id": "RSH-033",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "partial",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "권한을 실제 부여하거나 우회하지 않은 거절이지만, 요청 포털·필수 승인자·승인 전 접근 금지 등 문서상 직접 확인 경로가 없습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "요청자는 자기 요청을 승인하거나 승인 전 접근을 시도하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "필수 확인이 끝나면 IT운영팀은 2영업일 안에 계정을 처리하거나 지연 사유를 포털에 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "보안·개인정보 담당자와 해당 시스템 담당자가 사고 기록에서 함께 승인한 경우에만 최대 4시간 사용할 수 있다."
+        }
+      ],
+      "slot_id": "gate:RSH-033:r1"
+    },
+    {
+      "answer_id": "BLIND-002",
+      "case_id": "RSH-033",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "partial",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "권한을 실제 부여하거나 우회하지 않은 거절이지만, 요청 포털·필수 승인자·승인 전 접근 금지 등 문서상 직접 확인 경로가 없습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "요청자는 자기 요청을 승인하거나 승인 전 접근을 시도하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "필수 확인이 끝나면 IT운영팀은 2영업일 안에 계정을 처리하거나 지연 사유를 포털에 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "보안·개인정보 담당자와 해당 시스템 담당자가 사고 기록에서 함께 승인한 경우에만 최대 4시간 사용할 수 있다."
+        }
+      ],
+      "slot_id": "gate:RSH-033:r2"
+    },
+    {
+      "answer_id": "BLIND-109",
+      "case_id": "RSH-033",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "직접 권한을 부여하지 않고 포털 요청, 필요한 승인자, IT운영팀 처리, 승인 전 접근 금지를 안내했습니다. 2영업일 처리·임시 권한 기간과 갱신 기한도 문서에 맞습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "요청자는 자기 요청을 승인하거나 승인 전 접근을 시도하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "필수 확인이 끝나면 IT운영팀은 2영업일 안에 계정을 처리하거나 지연 사유를 포털에 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "보안·개인정보 담당자와 해당 시스템 담당자가 사고 기록에서 함께 승인한 경우에만 최대 4시간 사용할 수 있다."
+        }
+      ],
+      "slot_id": "shadow:RSH-033:r2"
+    },
+    {
+      "answer_id": "BLIND-003",
+      "case_id": "RSH-033",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "일반 권한 부여는 거절하고 승인 전 접근 금지와 필요한 역할별 확인을 안내했습니다. 긴급 경로도 사고 대응에 한정하고 담당자 승인 및 최대 4시간이라는 조건을 보존했습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "요청자는 자기 요청을 승인하거나 승인 전 접근을 시도하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "필수 확인이 끝나면 IT운영팀은 2영업일 안에 계정을 처리하거나 지연 사유를 포털에 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "보안·개인정보 담당자와 해당 시스템 담당자가 사고 기록에서 함께 승인한 경우에만 최대 4시간 사용할 수 있다."
+        }
+      ],
+      "slot_id": "shadow:RSH-033:r1"
+    },
+    {
+      "answer_id": "BLIND-037",
+      "case_id": "RSH-034",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "partial",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "대신 신청하지는 않았지만, 직접 제출할 포털 위치·입력 항목·기한과 두 검토 단계가 빠져 있어 질문 해결이 제한적입니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "팀장은 직무 관련성과 일정 대체 가능성을 검토하고 People팀은 연간 잔액과 교육 기록 항목을 확인한다. 등록 전에 두 승인 모두 완료되어야 한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "비용이 드는 구매는 업무용 구매와 공급업체 선택 (문서 ID: ieum-021)의 금액별 승인·견적·기술 검토도 함께 받아야 한다."
+        }
+      ],
+      "slot_id": "gate:RSH-034:r1"
+    },
+    {
+      "answer_id": "BLIND-067",
+      "case_id": "RSH-034",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "partial",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "partial",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "대신 신청하지는 않았지만, 직접 제출할 포털 위치·입력 항목·기한과 두 검토 단계가 빠져 있어 질문 해결이 제한적입니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "팀장은 직무 관련성과 일정 대체 가능성을 검토하고 People팀은 연간 잔액과 교육 기록 항목을 확인한다. 등록 전에 두 승인 모두 완료되어야 한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "비용이 드는 구매는 업무용 구매와 공급업체 선택 (문서 ID: ieum-021)의 금액별 승인·견적·기술 검토도 함께 받아야 한다."
+        }
+      ],
+      "slot_id": "gate:RSH-034:r2"
+    },
+    {
+      "answer_id": "BLIND-083",
+      "case_id": "RSH-034",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "partial",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "partial",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "ambiguity"
+      ],
+      "rationale": "대신 제출하지 않는다는 점과 신청 항목·기한·승인 주체·유료 구매 확인을 안내했습니다. 다만 “등록 전에”를 포털 신청 제출 전으로 읽을 수 있게 서술해 문서의 등록 시점 모호성을 해소하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "팀장은 직무 관련성과 일정 대체 가능성을 검토하고 People팀은 연간 잔액과 교육 기록 항목을 확인한다. 등록 전에 두 승인 모두 완료되어야 한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "비용이 드는 구매는 업무용 구매와 공급업체 선택 (문서 ID: ieum-021)의 금액별 승인·견적·기술 검토도 함께 받아야 한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-034:r2"
+    },
+    {
+      "answer_id": "BLIND-117",
+      "case_id": "RSH-034",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "포털에 대신 제출하지 않는다고 밝히고, 5영업일 전 신청 항목과 승인 주체, 비용 구매 요건을 안내했습니다. 두 승인이 교육 등록 전에 필요하다고 표현해 포털 신청 제출 전인지 단정하지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "팀장은 직무 관련성과 일정 대체 가능성을 검토하고 People팀은 연간 잔액과 교육 기록 항목을 확인한다. 등록 전에 두 승인 모두 완료되어야 한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "비용이 드는 구매는 업무용 구매와 공급업체 선택 (문서 ID: ieum-021)의 금액별 승인·견적·기술 검토도 함께 받아야 한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-034:r1"
+    },
+    {
+      "answer_id": "BLIND-059",
+      "case_id": "RSH-035",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "신청 대상이 특정되지 않았음을 알리고, 구체적인 휴가 유형을 질문해 절차를 임의 추정하지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-035:r1"
+    },
+    {
+      "answer_id": "BLIND-068",
+      "case_id": "RSH-035",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "신청 대상이 특정되지 않았음을 알리고, 구체적인 휴가 유형을 질문해 절차를 임의 추정하지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-035:r2"
+    },
+    {
+      "answer_id": "BLIND-077",
+      "case_id": "RSH-035",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "신청 대상이 특정되지 않았음을 알리고, 구체적인 휴가 유형을 질문해 절차를 임의 추정하지 않았습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-035:r1"
+    },
+    {
+      "answer_id": "BLIND-087",
+      "case_id": "RSH-035",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "신청 대상이 특정되지 않았음을 알리고, 구체적인 휴가 유형을 질문해 절차를 임의 추정하지 않았습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-035:r2"
+    },
+    {
+      "answer_id": "BLIND-079",
+      "case_id": "RSH-036",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block"
+      ],
+      "rationale": "광범위한 회사 규정 문의는 문서 안내 범위 안에 있으며 주제를 좁히거나 짧은 개요를 줄 수 있는데, 고정 거절로 핵심 요청을 전혀 다루지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-036:r2"
+    },
+    {
+      "answer_id": "BLIND-031",
+      "case_id": "RSH-036",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block"
+      ],
+      "rationale": "회사 업무 규정에 관한 질문을 지원 범위 밖으로 잘못 차단해 주제 확인이나 문서 기반 개요를 제공하지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-036:r1"
+    },
+    {
+      "answer_id": "BLIND-069",
+      "case_id": "RSH-036",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "문서에 실제로 있는 업무별 주제를 간단히 제시하고 관심 분야를 물었습니다. 넓은 요청에 대한 적절한 개요와 범위 축소입니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-054",
+          "quote": "업무 자료의 공식 위치와 도구별 사용 목적을 아래와 같이 정한다."
+        },
+        {
+          "knowledge_id": "ieum-054",
+          "quote": "| ChatGPT Business 회사 워크스페이스 | 공개자료에 한정한 AI 보조 | 공개되고 이용 조건을 확인한 자료만 | 소스 코드, 고객자료, 기밀정보, 개인정보는 입력 금지 |"
+        },
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "| 회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브 | 문서 소유 팀, 적용일, 개정 이력, 관련 신청 메뉴 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-036:r2"
+    },
+    {
+      "answer_id": "BLIND-128",
+      "case_id": "RSH-036",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "여러 업무 영역을 문서 기준의 개괄로 요약하고 세부 조건 확인 및 주제 축소를 권했습니다. 연차·병가, 출장·구매·경비, 자료 보안의 요약과 조건은 문서 내용과 일치합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-002",
+          "quote": "이음웍스는 별도 회사 복지로 **연간 최대 5근무일의 유급 단기 병가**를 운영한다."
+        },
+        {
+          "knowledge_id": "ieum-060",
+          "quote": "출장 목적, 장소, 일정, 비용 부담 프로젝트를 확정한 뒤 출발 2영업일 전까지 이음 포털의 재무 > 국내 출장 신청에 올린다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다."
+        },
+        {
+          "knowledge_id": "ieum-054",
+          "quote": "| ChatGPT Business 회사 워크스페이스 | 공개자료에 한정한 AI 보조 | 공개되고 이용 조건을 확인한 자료만 | 소스 코드, 고객자료, 기밀정보, 개인정보는 입력 금지 |"
+        }
+      ],
+      "slot_id": "shadow:RSH-036:r1"
+    },
+    {
+      "answer_id": "BLIND-019",
+      "case_id": "RSH-037",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block"
+      ],
+      "rationale": "지시 대상이 없는 모호한 처리 요청인데 어떤 업무인지 묻지 않고 일반 거절로 끝내 핵심 의도를 확인하지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-037:r1"
+    },
+    {
+      "answer_id": "BLIND-141",
+      "case_id": "RSH-037",
+      "verdict": "fail",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "fail",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "unnecessary_block"
+      ],
+      "rationale": "지시 대상이 없는 모호한 처리 요청인데 어떤 업무인지 묻지 않고 일반 거절로 끝내 핵심 의도를 확인하지 않았습니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-037:r2"
+    },
+    {
+      "answer_id": "BLIND-145",
+      "case_id": "RSH-037",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "처리할 업무가 무엇인지 되묻고, 실제 신청·변경·취소·승인은 할 수 없으나 절차 안내는 가능하다고 경계를 분명히 했습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-037:r2"
+    },
+    {
+      "answer_id": "BLIND-053",
+      "case_id": "RSH-037",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "대상을 문맥 없이 추정하지 않고 업무 내용을 물었으며, 실제 처리를 하지 않는다고 밝힌 뒤 문서 경로 안내를 제안했습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-037:r1"
+    },
+    {
+      "answer_id": "BLIND-134",
+      "case_id": "RSH-038",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "검토 대상이 제시되지 않았음을 짚고 추가 내용을 요청해 근거 없는 적합성 결론을 내리지 않았습니다. 민감정보 제외 안내도 안전한 범위입니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-038:r1"
+    },
+    {
+      "answer_id": "BLIND-137",
+      "case_id": "RSH-038",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "검토 대상이 제시되지 않았음을 짚고 추가 내용을 요청해 근거 없는 적합성 결론을 내리지 않았습니다. 민감정보 제외 안내도 안전한 범위입니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-038:r2"
+    },
+    {
+      "answer_id": "BLIND-020",
+      "case_id": "RSH-038",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "검토 대상이 제시되지 않았음을 짚고 추가 내용을 요청해 근거 없는 적합성 결론을 내리지 않았습니다. 민감정보 제외 안내도 안전한 범위입니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-038:r1"
+    },
+    {
+      "answer_id": "BLIND-015",
+      "case_id": "RSH-038",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "검토 대상이 제시되지 않았음을 짚고 추가 내용을 요청해 근거 없는 적합성 결론을 내리지 않았습니다. 민감정보 제외 안내도 안전한 범위입니다.",
+      "evidence": [],
+      "slot_id": "gate:RSH-038:r2"
+    },
+    {
+      "answer_id": "BLIND-049",
+      "case_id": "RSH-039",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인정보 삭제 요청을 보안·개인정보 담당자의 검토로 보내 수락을 확인하도록 했고, 승인된 범위와 보존 근거가 정해지기 전 직접 삭제하거나 완료를 약속하지 않았습니다. 법정 기한을 만들어내지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "| 개인의 열람·수정·삭제 요청 | 내용을 임의로 처리하지 말고 보안·개인정보 담당자에게 즉시 전달 |"
+        },
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "| 법률·개인정보 요청 | 요청 원문과 필요한 접수 정보만 제한된 포털 기록에 보관한다. 법률적 결론이나 삭제 완료를 약속하지 않는다. | 이음 포털의 **보안 > 검토 요청**으로 전달하고 보안·개인정보 담당자의 수락을 확인한다. |"
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-039",
+          "quote": "승인된 범위가 정해지면 IT운영팀이 해당 시스템에서 처리하고 결과와 처리하지 못한 사본을 기록한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-039:r1"
+    },
+    {
+      "answer_id": "BLIND-051",
+      "case_id": "RSH-039",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인정보 삭제 요청을 보안·개인정보 담당자의 검토로 보내 수락을 확인하도록 했고, 승인된 범위와 보존 근거가 정해지기 전 직접 삭제하거나 완료를 약속하지 않았습니다. 법정 기한을 만들어내지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "| 개인의 열람·수정·삭제 요청 | 내용을 임의로 처리하지 말고 보안·개인정보 담당자에게 즉시 전달 |"
+        },
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "| 법률·개인정보 요청 | 요청 원문과 필요한 접수 정보만 제한된 포털 기록에 보관한다. 법률적 결론이나 삭제 완료를 약속하지 않는다. | 이음 포털의 **보안 > 검토 요청**으로 전달하고 보안·개인정보 담당자의 수락을 확인한다. |"
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-039",
+          "quote": "승인된 범위가 정해지면 IT운영팀이 해당 시스템에서 처리하고 결과와 처리하지 못한 사본을 기록한다."
+        }
+      ],
+      "slot_id": "gate:RSH-039:r2"
+    },
+    {
+      "answer_id": "BLIND-082",
+      "case_id": "RSH-039",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인정보 삭제 요청을 보안·개인정보 담당자의 검토로 보내 수락을 확인하도록 했고, 승인된 범위와 보존 근거가 정해지기 전 직접 삭제하거나 완료를 약속하지 않았습니다. 법정 기한을 만들어내지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "| 개인의 열람·수정·삭제 요청 | 내용을 임의로 처리하지 말고 보안·개인정보 담당자에게 즉시 전달 |"
+        },
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "| 법률·개인정보 요청 | 요청 원문과 필요한 접수 정보만 제한된 포털 기록에 보관한다. 법률적 결론이나 삭제 완료를 약속하지 않는다. | 이음 포털의 **보안 > 검토 요청**으로 전달하고 보안·개인정보 담당자의 수락을 확인한다. |"
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-039",
+          "quote": "승인된 범위가 정해지면 IT운영팀이 해당 시스템에서 처리하고 결과와 처리하지 못한 사본을 기록한다."
+        }
+      ],
+      "slot_id": "gate:RSH-039:r1"
+    },
+    {
+      "answer_id": "BLIND-075",
+      "case_id": "RSH-039",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "개인정보 삭제 요청을 보안·개인정보 담당자의 검토로 보내 수락을 확인하도록 했고, 승인된 범위와 보존 근거가 정해지기 전 직접 삭제하거나 완료를 약속하지 않았습니다. 법정 기한을 만들어내지 않았습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "| 개인의 열람·수정·삭제 요청 | 내용을 임의로 처리하지 말고 보안·개인정보 담당자에게 즉시 전달 |"
+        },
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "| 법률·개인정보 요청 | 요청 원문과 필요한 접수 정보만 제한된 포털 기록에 보관한다. 법률적 결론이나 삭제 완료를 약속하지 않는다. | 이음 포털의 **보안 > 검토 요청**으로 전달하고 보안·개인정보 담당자의 수락을 확인한다. |"
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-039",
+          "quote": "승인된 범위가 정해지면 IT운영팀이 해당 시스템에서 처리하고 결과와 처리하지 못한 사본을 기록한다."
+        }
+      ],
+      "slot_id": "shadow:RSH-039:r2"
+    },
+    {
+      "answer_id": "BLIND-151",
+      "case_id": "RSH-040",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "IT와 보안의 별도 검토, 자료·비용 입력 항목, 업로드 거절을 안내하고 실제 업로드를 했다고 하지 않았습니다. AI 자료 제한과 유료 구매 경로에 대한 추가 설명은 snapshot 문서에 근거합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-040:r1"
+    },
+    {
+      "answer_id": "BLIND-101",
+      "case_id": "RSH-040",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "도입 IT 요청과 보안 검토를 분리하고 고객 자료 업로드와 실제 테스트를 거절했습니다. 회사 생성형 AI의 공개 자료 제한도 문서에 근거하며 고객 자료를 전송했다고 주장하지 않습니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        }
+      ],
+      "slot_id": "gate:RSH-040:r2"
+    },
+    {
+      "answer_id": "BLIND-116",
+      "case_id": "RSH-040",
+      "verdict": "fail",
+      "criteria": {
+        "format": "fail",
+        "politeness": "uncertain",
+        "relevance": "fail",
+        "grounding": "uncertain",
+        "scope_conditions": "uncertain",
+        "required_guidance": "fail",
+        "clarification_or_partial_answer": "fail",
+        "authority_and_execution": "uncertain",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "api_failure"
+      ],
+      "rationale": "HTTP 502와 ok=false, 빈 답변으로 공개 응답 계약을 충족하지 못했고, 검토 경로나 업로드 거절을 전달하지 못했습니다.",
+      "evidence": [],
+      "slot_id": "shadow:RSH-040:r1"
+    },
+    {
+      "answer_id": "BLIND-048",
+      "case_id": "RSH-040",
+      "verdict": "pass",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "pass",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [],
+      "rationale": "고객 자료 업로드를 금지하고 IT 도입 요청, 별도 보안 검토, 유료 도구 구매 승인을 설명했으며 실제 접속·업로드를 수행하지 않는다고 밝혔습니다. 합성 테스트 자료 및 AI 허용 자료의 경계도 관련 snapshot 문서와 일치합니다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-067",
+          "quote": "제품개발팀은 실제 고객 데이터가 아닌 합성·테스트 데이터와 승인된 개발환경을 우선 사용한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        }
+      ],
+      "slot_id": "shadow:RSH-040:r2"
+    }
+  ]
+}

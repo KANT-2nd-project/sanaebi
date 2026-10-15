@@ -6,7 +6,7 @@
 
 ## 현재 흐름과 책임
 
-`라우터 → 질문 서비스 → 외부 연동`을 사용한다. `/ask`는 분류 후 CLARIFY·UNSUPPORTED에 고정 안내를 반환하며 문서·LLM을 호출하지 않는다. SEARCH_KNOWLEDGE만 SQLite 게시 snapshot을 한 번 읽고, 비어 있지 않을 때 최종 Luna 생성 모듈로 답변을 생성한다. 빈 snapshot은 정상적인 자료 없음 안내다. 조회 실패를 빈 문서로 숨기지 않는다.
+`라우터 → 질문 서비스 → 외부 연동`을 사용한다. 원복용 `gate` 모드에서 `/ask`는 분류 후 CLARIFY·UNSUPPORTED에 고정 안내를 반환하며 문서·LLM을 호출하지 않는다. SEARCH_KNOWLEDGE만 SQLite 게시 snapshot을 한 번 읽고, 비어 있지 않을 때 최종 Luna 생성 모듈로 답변을 생성한다. 빈 snapshot은 정상적인 자료 없음 안내다. 조회 실패를 빈 문서로 숨기지 않는다.
 
 | 구성 | 책임 | 경계 |
 |---|---|---|
@@ -86,12 +86,12 @@ app/
 
 `SANAEBI_ANSWER_PROVIDER`는 미설정 또는 openai만 허용하며 그 밖의 값은 시작 시 거부한다. `generation.presets.load_runtime_settings`로 CLI와 같은 모델·프로필을 읽되 서버는 JSONL 경로를 요구하지 않는다. 최종 설정은 [최종 프롬프트 기준](generation-final-prompt.md)을 따른다. 비밀키·가중치는 Git에 게시하지 않는다.
 
-앱별 `GenerationAnswerer`는 첫 유효 검색에서 OpenAI 클라이언트를 생성한다. 초기화만 잠그고 원격 요청 전체는 직렬화하지 않는다. 각 요청은 별도 프롬프트를 구성하고 앱 종료 시 소유한 동기·비동기 클라이언트를 닫는다. 자동 재시도·fallback·temperature 전달은 없다. 문서 렌더러는 원본 knowledge_id·개정·제목·본문·순서를 보존한다. 서버는 `archive.answering_v1`과 `generation_evaluation`을 import하지 않는다. 과거 답변기·평가기의 새 실행 경로는 [보관 안내](../archive/answering_v1/README.md)를 따른다.
+앱별 `GenerationAnswerer`는 첫 유효 문서 답변 요청에서 OpenAI 클라이언트를 생성한다. 초기화만 잠그고 원격 요청 전체는 직렬화하지 않는다. 각 요청은 별도 프롬프트를 구성하고 앱 종료 시 소유한 동기·비동기 클라이언트를 닫는다. 자동 재시도·fallback·temperature 전달은 없다. 문서 렌더러는 원본 knowledge_id·개정·제목·본문·순서를 보존한다. 서버는 `archive.answering_v1`과 `generation_evaluation`을 import하지 않는다. 과거 답변기·평가기의 새 실행 경로는 [보관 안내](../archive/answering_v1/README.md)를 따른다.
 
 ## 오류와 호환
 
 - 입력 오류: 422, 기존 AnswerResponse 형식.
-- 분류 저장본 부재·잘못된 메타데이터·라벨 매핑 또는 추론 실패: 503, `분류 모델을 사용할 수 없습니다.`. 내부 경로·예외 원문은 반환하지 않는다.
+- gate 또는 분류 전용 API의 알려진 분류 저장본·추론 실패: 503, `분류 모델을 사용할 수 없습니다.`. 내부 경로·예외 원문은 반환하지 않는다.
 - 문서 공급 오류: 기존 503. 빈 snapshot의 정상 안내와 구별한다.
 - 생성 파싱 실패·추가 JSON 키·공백 답변·거절·잘림·timeout·제공자 오류: 안전한 502. 원문·키·예외 메시지는 응답하지 않는다.
 - 예상하지 못한 일반 오류: 기존 공통 500 처리. 모델 부재로 오인하지 않는다.
@@ -120,3 +120,15 @@ git diff --check
 기본 운영 환경은 분류 추론 의존성을 포함하며 Ollama integration은 선택한 경우에만 import한다. Ollama 미설치 안내와 다른 의존성 오류를 구분한다. 서버·평가기는 checkout 실행을 지원하며 공개 HTTP 계약은 유지한다.
 
 회귀 테스트는 runtime·generation·evaluation·classification·legacy로 나누며 공통 fixture와 루트 계산은 tests/support가 맡는다. discovery에는 `-t .`를 지정한다. [테스트 실행 안내](../tests/README.md)를 따른다. 문서 repository는 변환 helper의 독립적 재사용 이득이 작아 기존 구조·트랜잭션 단위를 유지한다.
+
+## 분류 관찰 모드와 비교 경계
+
+`SANAEBI_ROUTING_MODE`는 `shadow`(미설정 기본값) 또는 `gate`다. 앱 시작 시 검증해 저장하며 요청이 모드를 선택할 수 없다. 기존 모델·프롬프트는 유지한다.
+
+shadow는 분류 결과를 기록만 하고 세 라벨 모두 게시 snapshot으로 답변을 시도한다. 알려진 분류 저장본/추론 장애만 안전한 유형으로 기록하고 계속하며 예상 밖 오류와 허용 밖 라벨은 500이다. 문서 장애503·빈 문서 안내·생성 실패502는 유지한다. 동기 분류 실행·잠금 시간은 여전히 요청 지연에 포함된다.
+
+`/assistant`는 전달 라벨을 client 출처로 기록하고 재분류하지 않는다. 앞 단계 ok=false는 기존처럼 생성 없이 끝난다. `/ask`는 model 출처다. 분류 전용 API의 오류 계약은 그대로이며 클라이언트 라벨이나 분류 결과가 실제 데이터 권한을 부여하지 않는다.
+
+trace는 모드·라벨 출처·분류 상태·단계 경과 시간·처리 경로·생성 시도를 별도로 기록한다. 과거 기록의 누락 필드는 미확인으로 읽고 라벨을 프롬프트에 넣지 않는다. `TRACE_DIR`의 명시적 원문 기록은 로컬 민감 자료로 취급한다.
+
+관찰 모드 구현과 서비스 기본값 승격은 별개다. 평가에는 임시 DB·고정 snapshot·격리 프로세스를 사용하고 실제 서버 DB를 바꾸지 않는다. 비교 당시 gate를 유지했고, 이후 사용자가 상대 개선을 근거로 shadow 기본값을 채택했다. 절대 품질 기준 충족으로 해석하지 않는다. 원복은 `SANAEBI_ROUTING_MODE=gate`를 지정하고 앱을 재시작한다.

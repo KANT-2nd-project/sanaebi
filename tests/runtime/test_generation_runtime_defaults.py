@@ -43,7 +43,7 @@ class RuntimeDefaultsTests(unittest.TestCase):
                 "model": "gpt-6-luna",
                 "timeout": 180,
                 "max_retries": 0,
-                "max_completion_tokens": 4096,
+                "max_completion_tokens": 16384,
                 "reasoning_effort": "xhigh",
             },
         )

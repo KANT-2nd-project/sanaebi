@@ -42,3 +42,11 @@ def get_answer_provider() -> str:
             "SANAEBI_ANSWER_PROVIDER must be unset or openai; the server uses the adopted Luna model"
         )
     return provider
+
+
+def get_routing_mode() -> str:
+    """Return the request-routing behavior, defaulting to the adopted shadow policy."""
+    mode = os.getenv("SANAEBI_ROUTING_MODE", "shadow")
+    if mode not in {"gate", "shadow"}:
+        raise ValueError("SANAEBI_ROUTING_MODE must be gate or shadow")
+    return mode

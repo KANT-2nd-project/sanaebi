@@ -24,7 +24,10 @@ class ApiTests(unittest.TestCase):
         self.enterContext(
             patch.dict(
                 os.environ,
-                {"SANAEBI_DOCUMENT_DB": str(Path(directory) / "managed.sqlite3")},
+                {
+                    "SANAEBI_DOCUMENT_DB": str(Path(directory) / "managed.sqlite3"),
+                    "SANAEBI_ROUTING_MODE": "gate",
+                },
             )
         )
         self.document_file = Path(directory) / "documents.jsonl"
