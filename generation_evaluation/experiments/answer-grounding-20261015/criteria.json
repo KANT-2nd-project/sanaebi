@@ -1,0 +1,16 @@
+{
+  "profiles": [
+    "examples_answer_scope_v1",
+    "examples_answer_scope_v2"
+  ],
+  "new_repeats": 2,
+  "regression_repeats": 1,
+  "holdout_repeats": 2,
+  "api_calls": 2,
+  "planned_calls": 82,
+  "max_calls": 90,
+  "max_estimated_dollars": 5,
+  "gate": "All new and holdout v2 responses satisfy required claims, no unsupported judgments or internal IDs; no newly missing required claims or distortions against v1 on regression. Errors fail the gate. No post-result tuning.",
+  "review": "nonblind AI semantic review plus deterministic ID and format checks; not human approval",
+  "private_snapshot": "current published SQLite snapshot read only; request-time snapshot unavailable"
+}

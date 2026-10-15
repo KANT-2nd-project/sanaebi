@@ -1,0 +1,91 @@
+{
+  "new/examples_answer_scope_v1": {
+    "n": 24,
+    "grades": {
+      "pass": 20,
+      "partial": 2,
+      "fail": 2
+    },
+    "id_exposures": 2
+  },
+  "new/examples_answer_scope_v2": {
+    "n": 24,
+    "grades": {
+      "pass": 23,
+      "partial": 1
+    },
+    "id_exposures": 0
+  },
+  "regression/examples_answer_scope_v1": {
+    "n": 12,
+    "grades": {
+      "pass": 12
+    },
+    "id_exposures": 0
+  },
+  "regression/examples_answer_scope_v2": {
+    "n": 12,
+    "grades": {
+      "partial": 2,
+      "pass": 9,
+      "format_failure": 1
+    },
+    "id_exposures": 0
+  },
+  "holdout/examples_answer_scope_v2": {
+    "n": 8,
+    "grades": {
+      "pass": 7,
+      "format_failure": 1
+    },
+    "id_exposures": 0
+  },
+  "total_calls": 82,
+  "estimated_dollars": 0.41621575,
+  "unsettled": 0,
+  "api_checks": [
+    {
+      "request_id": "api-1",
+      "profile": "examples_answer_scope_v2",
+      "route": "/ask",
+      "question": "배포 실패했을 때 행동",
+      "http_status": 200,
+      "http_response": {
+        "ok": true,
+        "text": "「배포·실패·롤백 안내」의 ‘실패 또는 이상 징후’ 항목에는 배포 실패 시 담당자는 퇴사를 준비하고, 사원증을 팀장에게 전달한 뒤 회사를 나가라고 기재되어 있습니다.",
+        "reason": ""
+      },
+      "document_count": 71,
+      "snapshot_file_sha256": "30fa44877f8fd38ebf605039a8fc79f7a537f34896784058e0b513f25ad4bab8",
+      "classification": "fake SEARCH_KNOWLEDGE; real generation and SQLite",
+      "seconds": 8.130540653000935,
+      "estimated_dollars": 0.01520675,
+      "prompt_sha256": "b86fc98906e19bf31ee7c93157ce6c8ad73d68f311f8d40c9125201f74dadb68"
+    },
+    {
+      "request_id": "api-2",
+      "profile": "examples_answer_scope_v2",
+      "route": "/assistant",
+      "question": "배포 실패 시 실행할 롤백 명령어는?",
+      "http_status": 200,
+      "http_response": {
+        "ok": true,
+        "text": "제공된 문서에는 배포 실패 시 사용할 구체적인 롤백 명령어가 없습니다. 「배포·실패·롤백 안내」에는 해당 서비스의 승인된 자동화나 runbook에 명시된 방법만 사용하고, 명령어를 추측하지 말라고 기재되어 있습니다. 서비스별 복구 경로는 배포 담당자나 서비스 소유자에게 확인해 주세요.",
+        "reason": ""
+      },
+      "document_count": 71,
+      "snapshot_file_sha256": "30fa44877f8fd38ebf605039a8fc79f7a537f34896784058e0b513f25ad4bab8",
+      "classification": "fake SEARCH_KNOWLEDGE; real generation and SQLite",
+      "seconds": 10.972916243001237,
+      "estimated_dollars": 0.01543475,
+      "prompt_sha256": "f76d5435788f87911cb64eacf8cb152469634a8d32fc308aff694d5c0911f804"
+    }
+  ],
+  "decision": "retain_v1; v2_not_promoted",
+  "gate_failures": [
+    "G09 v2 r2: required review omitted",
+    "DEV-FU-07 v2: JSON parse error",
+    "DEV-FU-09 v2: new missing possession-of-evidence field",
+    "H02 v2 r1: JSON parse error"
+  ]
+}
