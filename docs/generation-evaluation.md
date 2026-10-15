@@ -79,3 +79,7 @@ GPT-6 Luna 선택 이후 프롬프트 강화의 개발48응답 결과와 고정�
 ## 선택 모델의 후속 프롬프트 비교
 
 GPT-6 Luna 선택 이후의 구현·판정 기준·새20문항 비교는 [프롬프트 강화 안내](generation-luna-prompt-improvement.md)와 [실험 보고서](../generation_evaluation/reports/2026-10-15-luna-prompt-improvement/README.md)를 따른다. 이전 모델 선정 세트는 이미 열람한 회귀 자료로 구분하며 새 결과로 과거 점수를 덮어쓰지 않는다. 의미 동등성·필수 주장과 선택적 배경의 구분·미확인과 금지의 구분을 호출 전에 rubric v1.1.0에 명시했다.
+
+## 독립 런타임 기본값 반영
+
+사용자 최종 채택에 따라 독립 생성·배치 평가 기본값은 scope/xhigh/4096 Luna로 연결했다. 과거 평가의 자동 승격 기준을 통과한 것으로 변경하지 않으며 서버 기본값·품질 승인은 별개다. 요약은 모델 설정과 prompt_profile을 함께 묶고 과거 누락 프로필은 None으로 보존한다. [최종 구성](generation-final-prompt.md)과 [반영 검증](worklogs/2026-10-15-generation-final-runtime.md)을 따른다.

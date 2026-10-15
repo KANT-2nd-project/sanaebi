@@ -2,6 +2,12 @@
 
 독립 생성 CLI의 실행 설정 기준이다. 모델 선택과 답변 품질 승인은 [생성 평가 기준](generation-evaluation.md), 과거 실측은 [TPS·품질 일지](worklogs/2026-10-15-generation-tps-quality.md)에서 관리한다.
 
+## 현재 기본 실행
+
+최종 구성은 [최종 프롬프트 기준](generation-final-prompt.md)을 따른다. GPT-6 Luna 하나를 examples_answer_scope_v1 / single / xhigh / 4096 / 180초 / prompt_json으로 실행하며 temperature는 생략한다. 문서 snapshot 준비와 최소 명령은 [생성 모듈](../generation/README.md#독립-실행)을 따른다. --model과 --experiment를 생략해도 두 CLI에서 같은 기본값을 사용한다.
+
+아래 Qwen·초기 GPT 비교는 역사 기록이다. 과거 별칭은 활성 models.json에서 제거했으며 당시 명령 재현에는 보관 설정과 당시 코드가 필요하다. 현재 Luna 명령에는 --experiment/--model을 생략한다.
+
 ## 로컬 Qwen 긴 문맥 프로필
 
 검증 환경은 Ollama 0.33.3, RTX 5060 Laptop 8GB, Qwen3 4B Instruct 2507 Q4_K_M, 문맥 98,304, 동시 요청 1개다. 모델 파일 약2.5GB와 별개로 KV 캐시·계산 버퍼가 메모리를 사용한다.

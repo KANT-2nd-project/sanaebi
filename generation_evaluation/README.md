@@ -37,7 +37,7 @@ config에는 context_window·max_output_tokens가 포함된다. CLI가 추가하
 
 ## 저장과 복원
 
-`summarize_runs`는 설정별 GenerationSummary 목록을 반환한다. 빈 입력은 빈 목록이며, 이것은 품질 판정이나 실험 동등성 검증이 아니다.
+`summarize_runs`는 모델 설정·prompt_profile별 GenerationSummary 목록을 반환한다. 빈 입력은 빈 목록이며, 이것은 품질 판정이나 실험 동등성 검증이 아니다.
 
 `save_runs_jsonl(path, runs)`는 원문을 포함한 실행 기록을 UTF-8 JSONL로 저장한다. 직렬화를 먼저 끝내고 상위 디렉터리를 만든 뒤 배타적 생성으로 기존 파일 덮어쓰기를 막는다. NaN·무한대 JSON 직렬화를 거부한다. 디스크 쓰기 실패·프로세스 중단까지 원자적으로 복구하는 방식은 아니다.
 
@@ -66,7 +66,7 @@ run_case는 로드된 문서 문자열 목록을 순서대로 JSON 직렬화하�
 
 세 필드는 GenerationRun과 JSONL 저장·복원에 유지된다. 구형 기록의 누락 값은 None으로 복원하며 현재 파일에서 추정해 채우지 않는다. 문서 수는 bool이 아닌 0 이상의 정수, 해시는 소문자 16진수 64자리 또는 None을 요구한다. 프롬프트 구성 실패 시 prompt_sha256은 None이고, 모델 호출 중 실패·timeout은 이미 계산한 프롬프트 해시를 보존한다.
 
-문서 해시는 시간 측정 전에 계산하고 프롬프트 해시는 호출 직전에 측정 구간 안에서 계산한다. 해시 기록 전후 시간에는 이 작은 부가 작업의 차이가 있다. 기초 summarize_runs 집계는 모델 설정별이며 입력 조건을 검사하지 않는다. 공통조건 비교에는 아래 summarize_comparable_runs를 사용한다. experiment·model_alias·question의 별도 필드는 CLI에만 존재한다.
+문서 해시는 시간 측정 전에 계산하고 프롬프트 해시는 호출 직전에 측정 구간 안에서 계산한다. 해시 기록 전후 시간에는 이 작은 부가 작업의 차이가 있다. 기초 summarize_runs 집계는 모델 설정·prompt_profile별이며 입력 조건을 검사하지 않는다. 공통조건 비교에는 아래 summarize_comparable_runs를 사용한다. experiment·model_alias·question의 별도 필드는 CLI에만 존재한다.
 
 ## 공통조건 비교 집계
 
@@ -90,13 +90,11 @@ CLI의 case_id=manual은 서로 다른 질문을 하나의 비교 세트에 넣�
 
 ```bash
 uv run --locked python -m generation_evaluation \
-  --experiment company-baseline-v1 \
-  --model qwen3-4b-q4km \
   --limit 1 \
   --output tmp/generation-baseline-first.jsonl
 ```
 
-전체 실행은 --limit을 생략하고 새 출력 경로를 지정한다. **현재 baseline의 전체 71건은 과거 입력 한도 초과 이력이 있고 모델 설정은 context_window=40960 그대로다. 위 명령은 실제 모델 성공을 보증하지 않는다.** 전체 배치 전 같은 입력의 한 건으로 문맥 수용·시간·메모리를 확인해야 한다. 배치 구현 검증은 실제 CSV 300문항과 문서 71건에 가짜 모델을 연결하여 수행했으며 실제 답변 품질·긴 문맥 처리를 검증한 것은 아니다.
+기본값은 company-final-v1 / gpt-6-luna이며 최종 scope 프롬프트를 사용한다. [생성 실행 안내](../generation/README.md#독립-실행)에 따라 snapshot과 OPENAI_API_KEY를 준비한다. .env 사용 시 uv run에 --env-file .env를 추가한다. 전체 실행은 --limit을 생략하고 새 출력 경로를 지정하며, 선택 문항 수만큼 유료 호출이 발생한다. 문서 증가 시 입력 한도와 지연을 다시 확인해야 한다.
 
 문서 로드와 클라이언트 생성은 한 번씩 수행한다. 출력은 x 모드로 열어 기존 파일을 덮어쓰지 않고 각 실행 결과를 JSONL 한 줄로 쓰고 flush한다. 모델 실행 오류도 기록하고 다음 문항으로 진행하며 KeyboardInterrupt는 전파한다. 중단 전에 저장된 줄은 남지만 재개 기능·fsync·디스크 장애의 원자적 복구는 없다. 초기 클라이언트 생성 실패는 빈 출력 파일을 남길 수 있다. 출력 상대 경로는 현재 작업 디렉터리 기준이다.
 
@@ -146,3 +144,7 @@ API 키와 실제 환경 파일, 원문 응답 전체는 `tmp/` 또는 별도 �
 기록에는 `output_mode`와 거절 정보가 추가된다. 과거 설정은 prompt_json, 과거 거절 필드는 None으로 복원하며 과거 판정은 재작성하지 않는다. 추가 키 응답은 신규 파싱에서 parse_error이므로 과거 실행 완료 수치와 형식 기준의 차이를 구분한다.
 
 GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](reports/2026-10-15-luna-reference-followup/README.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.
+
+## 최종 프로필 기록 호환성
+
+run_case는 기본 examples_answer_scope_v1을 사용하며 keyword-only prompt_profile로 과거 프로필을 지정할 수 있다. 새 기록은 프로필과 실제 프롬프트 해시를 함께 남긴다. 과거 누락 profile은 None이며 새 기본값으로 소급하지 않는다. summarize_runs는 모델 설정과 프로필을 함께 묶고 group_by_config는 기존 모델 설정별 인터페이스를 유지한다. 비교 집계는 각 설정·프로필 그룹의 문항과 시도 수도 검사한다. [실행 반영 기록](../docs/worklogs/2026-10-15-generation-final-runtime.md)을 참조한다.

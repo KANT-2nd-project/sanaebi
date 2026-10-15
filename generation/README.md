@@ -7,7 +7,7 @@
 ```text
 질문 + 문서 문자열 목록
   → generate_from_documents (공통 진입점)
-  → build_prompt → GenerationPrompt(system, user)
+  → build_profile_prompt (기본 examples_answer_scope_v1) → GenerationPrompt(system, user)
   → generate(prompt, model_call)
   → model_call(prompt)의 ModelResponse(원문·사용량·종료 사유)
   → 명시적 거절 / 길이 제한 판정 / parse_generation
@@ -42,25 +42,24 @@ COMPLETED는 정확성·근거 충분성·한국어 준수·모델 품질의 합
 
 ## 독립 실행
 
-저장소 루트에서 실행한다. 모델 설정은 [models.json](models.json), 문서와 모델 목록은 [experiments.json](experiments.json)에서 한 번 읽는다. 모델은 별칭으로 선택하며 실제 provider·model_name·timeout·문맥/출력 한도는 설정에서 가져온다. 문서 상대 경로는 저장소 루트 기준이다. 인증값은 설정 파일에 넣지 않는다.
+저장소 루트에서 실행한다. [models.json](models.json)에는 GPT-6 Luna 하나만 두며, [experiments.json](experiments.json)의 기본 프리셋은 company-final-v1이다. 두 CLI가 같은 설정 로더를 사용한다. 기본값은 examples_answer_scope_v1 / single / xhigh / 4096토큰 / 180초 / prompt_json이며 temperature는 전달하지 않는다. --model과 --experiment는 생략할 수 있고, 없는 별칭은 오류다.
+
+먼저 게시 문서를 내보낸다. 생성 모듈은 서버 DB를 직접 읽지 않고 이 snapshot만 사용한다. 기존 출력 파일은 덮어쓰지 않으므로 문서 갱신 시 기존 snapshot을 보존하고 새로 내보낸다.
 
 ```bash
-uv run --locked python -m generation --help
-uv run --locked python -m generation \
-  --experiment company-smoke-v1 \
-  --model qwen3-4b-q4km \
-  --question "예정된 연차는 언제까지 어디에서 신청해야 하나요?"
+uv run --locked python scripts/export_company_knowledge.py --output tmp/generation-cli-documents.jsonl
+uv run --locked --env-file .env python -m generation --question "예정된 연차는 언제까지 어디에서 신청해야 하나요?"
 ```
 
-**입력 파일은 저장소에 포함하지 않는다.** 기존 `scripts/export_company_knowledge.py --output tmp/generation-cli-documents.jsonl`로 내보낸 71건 snapshot에서 문서 한 건을 내용 변경 없이 `tmp/generation-smoke-documents.jsonl`로 복사해야 smoke 실험을 실행할 수 있다. 전체 baseline과 한 건 smoke는 별도 실험이다. 이 설정은 전체 문서가 모델 입력 한도에 맞는다는 보장이 아니다.
+OPENAI_API_KEY가 이미 환경에 있으면 --env-file .env는 생략한다. **문서 snapshot과 키는 저장소에 포함하지 않는다.** 문서 수는 고정하지 않으며 파일 누락·형식 오류는 모델 호출 전에 실패한다. 현재 원본 지식 JSONL에는 개정 정보가 없으므로 내보내기 JSONL 대신 직접 입력하지 않는다. 과거 모델·프리셋 값은 [설정 보관 자료](../generation_evaluation/archive/pre-final-runtime-20261015/README.md)에 남긴다.
 
 각 JSONL 행은 document_id·revision_number·title·document가 필요하다. 문자열은 비공백이어야 하며 개정은 bool이 아닌 1 이상의 정수다. 중복 ID·빈 줄·잘못된 JSON·빈 파일을 거부하며 행 오류에는 줄 번호를 붙인다. 원문·순서를 보존하고 개정이 없는 과거 원본에 임의 개정을 부여하지 않는다.
 
 context_window와 max_output_tokens는 선택값이며 지정 시 양의 정수여야 한다. 둘 다 있으면 출력 한도는 문맥보다 작아야 한다. 입력 토큰 수·출력 예약량을 합한 예산 검사는 아직 없다. 전체 71건은 과거 실행에서 한도를 초과했다. 정확한 사전 토큰 계산, manifest fingerprint 검증, 설치 패키지 배포는 후속이다. 본문 절단·자동 문서 선별·모델 다운로드는 하지 않는다.
 
-CLI는 문서 읽기·클라이언트 생성 후 run_case로 공통 생성 경로를 호출한다. stdout에는 case_id=manual, config, result, elapsed_seconds, error_type과 experiment·model_alias·question을 출력한다. result 안에 상태·답변·원문·입출력 토큰·종료 사유가 있다. COMPLETED는 종료 코드 0, 나머지 결과 또는 실행 오류는 1이다. 문서 읽기·클라이언트 생성 실패는 run_case 이전이라 기록 없이 예외로 종료한다. 파일 자동 저장은 하지 않으며 쉘 리다이렉션은 기존 파일을 덮어쓸 수 있다.
+CLI는 문서 읽기·클라이언트 생성 후 run_case로 공통 생성 경로를 호출한다. stdout에는 case_id=manual, config, prompt_profile, result, elapsed_seconds, error_type과 experiment·model_alias·question을 출력한다. result 안에 상태·답변·원문·입출력 토큰·종료 사유가 있다. COMPLETED는 종료 코드 0, 나머지 결과 또는 실행 오류는 1이다. 문서 읽기·클라이언트 생성 실패는 run_case 이전이라 기록 없이 예외로 종료한다. 파일 자동 저장은 하지 않으며 쉘 리다이렉션은 기존 파일을 덮어쓸 수 있다.
 
-사용량 누락은 None으로 보존하고 0과 구별한다. Ollama done_reason 또는 OpenAI finish_reason을 기록하며 length는 JSON 파싱보다 먼저 TRUNCATED로 판정한다. 그 밖의 종료 사유·거절을 모두 분류한 상태는 아니다. 제공자가 보고한 호출 후 토큰 수는 입력 전체가 누락 없이 처리됐다는 보증이나 사전 예산 검사가 아니다.
+사용량 누락은 None으로 보존하고 0과 구별한다. Ollama done_reason 또는 OpenAI finish_reason을 기록하며 length는 JSON 파싱보다 먼저 TRUNCATED로 판정한다. 명시적 거절은 REFUSAL로 분리한다. 제공자가 보고한 호출 후 토큰 수는 입력 전체가 누락 없이 처리됐다는 보증이나 사전 예산 검사가 아니다.
 
 시스템 프롬프트에는 사내비 역할·근거 제한·자료 부족 안내·문서 속 지시 무시·한국어 말투·JSON 형식을 둔다. 현재 신청·변경·취소·승인·개인 상태 조회를 실행하지 않으며 허위 완료·허위 조회를 주장하지 않도록 명시한다. 문서는 user 메시지의 데이터다. 규칙이 전달되는 단위 검사와 모델이 실제 따르는지 확인하는 검증은 구분한다.
 
@@ -95,7 +94,9 @@ uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -
 
 기존 `sanaebi_assistant.py`와 `answer_pipeline/`는 아직 활성 코드이며 이동하지 않았다. 목표 설계는 [서비스 아키텍처](../docs/service-architecture.md), 품질 기준은 [생성 평가](../docs/generation-evaluation.md), 이번 학습 기록은 [작업 일지](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)를 따른다.
 
-## 전체 문서 긴 문맥 실험 설정
+## 과거 전체 문서 긴 문맥 실험 설정
+
+아래 Qwen 명령과 설정은 당시 기록이다. 현재 CLI 목록에서는 제거했으며 재현 시 보관 설정과 당시 커밋을 사용한다.
 
 `qwen3-4b-q4km-96k`는 기존 별칭을 보존하고 추가한 실험용 설정이다. 문맥 98,304, 출력 한도 1,024, timeout 1,800초이며 `company-full-context-v1`에서 전체 문서 snapshot을 사용한다. 2026-10-15 RQ0001 한 건을 문서 71건으로 실행해 입력 67,665·출력 111토큰, completed/stop, 약 374.7초를 확인했다. 문서 증가 여유는 이번 입력과 출력 예약 기준 29,615토큰이다. 문서 개수나 다른 질문의 입력량을 보증하지 않는다.
 
@@ -133,9 +134,9 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 ### 선택형 프롬프트·근거 추출 실험
 
-기존 CLI 기본 프롬프트는 유지한다. `generation.profiles.build_profile_prompt`는 기존값, 간결한 규칙, 합성 대조 예시를 선택한다. 추가 실험용 examples_coverage(필수 안내 점검), examples_conditions(조건 연결), examples_json(JSON 대조 예시)도 명시적으로 선택할 수 있다. `generation.strategies.execute_strategy`는 단일 생성 또는 근거 추출 후 생성을 실행한다. 추출된 ID·인용은 입력 문서 본문에 실제 존재해야 하며 검증 실패·잘림을 재시도나 단일 생성으로 숨기지 않는다. 원문 일치 검사는 추출의 완전성이나 답변의 사실 정확성을 보장하지 않는다. 실험 방법과 선정 기준은 [평가 안내](../generation_evaluation/README.md)를 따른다.
+실험 도입 당시에는 기존 CLI 기본 프롬프트를 유지했다. 현재 독립 실행 기본값은 최종 scope 프로필이다. `generation.profiles.build_profile_prompt`는 기존값, 간결한 규칙, 합성 대조 예시를 선택한다. 추가 실험용 examples_coverage(필수 안내 점검), examples_conditions(조건 연결), examples_json(JSON 대조 예시)도 명시적으로 선택할 수 있다. `generation.strategies.execute_strategy`는 단일 생성 또는 근거 추출 후 생성을 실행한다. 추출된 ID·인용은 입력 문서 본문에 실제 존재해야 하며 검증 실패·잘림을 재시도나 단일 생성으로 숨기지 않는다. 원문 일치 검사는 추출의 완전성이나 답변의 사실 정확성을 보장하지 않는다. 실험 방법과 선정 기준은 [평가 안내](../generation_evaluation/README.md)를 따른다.
 
-선정 실험과 후보별 실패·권장 구성은 [모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)를 따른다. 선택형 프로필은 실험 실행기에서 명시적으로 지정하며 기존 CLI 기본값과 서버 연결을 자동 변경하지 않는다.
+선정 실험과 후보별 실패·권장 구성은 [모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)를 따른다. 실험 실행기는 프로필을 명시적으로 지정한다. 현재 독립 CLI 기본값 반영은 사용자 후속 요청에 따른 별도 변경이며 서버는 연결하지 않았다.
 
 현재 선택 모델은 **GPT-6 Luna**다. 두 후보의 상대 비교로 선정했으며 기본 설정 승격·서비스 품질 승인과는 구분한다. 후속 기준 구성과 실험 준비는 [GPT-6 Luna 프롬프트 강화 계획](../docs/generation-luna-prompt-improvement.md)을 따른다.
 
@@ -145,6 +146,6 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 설치된 SDK의 자동 parse 경로가 잘림 응답을 예외로 바꾸므로, strict 호출은 raw create 응답을 LangChain AIMessage로 변환한다. 원문·사용량·종료 사유·refusal을 보존하며 명시적 거절이 길이 판정보다 우선한다. 내부 SDK 메서드에 의존하므로 uv.lock과 전송 경로 회귀 테스트를 함께 유지한다.
 
-`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필과 CLI·서비스 기본값은 유지한다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
+`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존하고 독립 CLI·generate_from_documents 기본값은 scope로 연결했다. 서버는 기존 경로를 유지한다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
 
 GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.

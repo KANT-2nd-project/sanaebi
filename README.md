@@ -64,7 +64,7 @@ SANAEBI_CLASSIFIER_PATH=/absolute/path/to/model uv run --locked uvicorn app.fast
 
 ## 프로젝트 문서
 
-- [새 생성 모듈 안내](generation/README.md): 기본 계약·프롬프트·파싱 구현, 실제 모델·API·평가기 연결 전 단계
+- [새 생성 모듈 안내](generation/README.md): 최종 Luna 프롬프트의 독립 생성·배치 평가 실행, 서버 미연결
 - [이음웍스 회사 정책 데이터](data/README.md#답변용-회사-지식)
 - [서비스 아키텍처](docs/service-architecture.md): 현재 API 동작과 목표 질문 처리 흐름
 - [프런트엔드 설계](docs/frontend-architecture.md): Next.js 정적 내보내기·대화형 UI·개발 API 중계·SEO 기준. 기존 로컬 echo 연결을 검증했으며 새 실제 모델 답변의 브라우저 종단 검증·외부 배포는 후속 범위
