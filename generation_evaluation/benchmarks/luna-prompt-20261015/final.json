@@ -1,0 +1,632 @@
+[
+  {
+    "case_id": "LUNA-N01",
+    "question": "휴가·복지 규정을 개정할 때 변경 이유, 승인 책임, 적용 시점과 이전 버전 위치를 어디에 기록해야 하나요?",
+    "group_id": "SYN-LUNA-N01",
+    "category": "normal",
+    "source": "synthetic_adapted:dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0169;documents:ieum-055",
+    "required_claims": [
+      "회사 절차·공통 양식·정책의 기준 원본은 Google Workspace 회사 공유드라이브에 둔다.",
+      "개정 기록에는 변경 이유, 승인 책임, 적용 시점과 이전 버전 위치를 남긴다."
+    ],
+    "required_claim_types": [
+      "direct_request",
+      "action_guidance"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "정책 변경 기록을 Slack 대화에만 남기라고 안내",
+      "문서에 없는 별도 공지 사이트나 포털 메뉴를 만들어 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-055",
+        "quote": "| 회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브 | 문서 소유 팀, 적용일, 개정 이력, 관련 신청 메뉴 |"
+      },
+      {
+        "document_id": "ieum-055",
+        "quote": "개정자는 목적에 영향받는 본문과 연결된 문서·표·양식을 함께 확인한다. 변경 이유, 승인 책임, 적용 시점, 이전 버전 위치를 남긴다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-N02",
+    "question": "지각했을 때 누구한테 먼저 연락하나요?",
+    "group_id": "RG0183",
+    "category": "normal",
+    "source": "dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0183",
+    "required_claims": [
+      "지각이 예상되면 팀장에게 먼저 알린다."
+    ],
+    "required_claim_types": [
+      "direct_request"
+    ],
+    "optional_context": [
+      "가능하면 근무 시작 전에 예상 도착 시각과 영향을 받는 첫 업무를 Slack으로 알린다. 운전 중 등 안전하게 연락할 수 없으면 이동 안전을 먼저 확보한 뒤 알린다."
+    ],
+    "forbidden_claims": [
+      "근태 정정 담당자를 첫 연락 대상으로 단정",
+      "지각 알림만으로 근태 기록이나 휴가 승인이 완료된다고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-007",
+        "quote": "대중교통 지연, 건강 문제 등으로 예정된 시작 시각에 늦을 수 있음을 알게 되면 가능하면 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다. 이동 중이거나 운전 중이라 안전하게 연락할 수 없으면 먼저 이동 안전을 확보하고 연락 가능한 즉시 알린다. 진단명과 상세한 사정은 팀 채널에 공개하지 않는다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-N03",
+    "question": "회의에서 확정한 결정과 후속 담당·기한을 Slack 대화에만 남겼습니다. 공식 기록은 어디에 두고 팀에 어떻게 공유해야 하나요?",
+    "group_id": "SYN-LUNA-N03",
+    "category": "normal",
+    "source": "synthetic:adapted-from:ieum-061+ieum-055",
+    "required_claims": [
+      "회의 후속 작업은 공식 기록에 담당자와 기한을 포함해 남긴다.",
+      "회의가 끝난 뒤 결과를 기준 문서나 GitHub 이슈에 남기고 Slack에는 그 기록의 링크를 공유한다."
+    ],
+    "required_claim_types": [
+      "action_guidance",
+      "action_guidance"
+    ],
+    "optional_context": [
+      "회의 중 논의한 결정과 보류 사항을 구분한다."
+    ],
+    "forbidden_claims": [
+      "Slack 대화만으로 장기 보관할 공식 원본을 대체한다고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-055",
+        "quote": "| 프로젝트 계획·결정·회의록 | 해당 프로젝트 공유드라이브 | 결정·보류, 담당자, 기한, 관련 GitHub 이슈 |"
+      },
+      {
+        "document_id": "ieum-061",
+        "quote": "회의가 끝난 뒤 결과를 기준 문서나 GitHub 이슈에 남겨 Slack에 링크한다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-N04",
+    "question": "기밀 자료를 담은 폴더의 제한된 접근 구성은 누가 확인하나요?",
+    "group_id": "SYN-LUNA-N04",
+    "category": "normal",
+    "source": "synthetic_adapted:dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0254;documents:ieum-056",
+    "required_claims": [
+      "기밀 자료를 일반 팀 폴더에 두기 전에 자료 소유자와 드라이브 관리자가 제한된 접근 구성이 가능한지 확인한다."
+    ],
+    "required_claim_types": [
+      "direct_request"
+    ],
+    "optional_context": [
+      "일반적인 폴더 권한 변경에 보편적인 단일 승인자를 정한 규칙은 문서에 없다. 접근 오류라면 회사 계정과 링크를 확인하고 필요한 역할과 목적을 자료 소유자에게 보내 권한을 요청한다."
+    ],
+    "forbidden_claims": [
+      "모든 폴더 권한 변경에 단일 승인자만 필요하다고 단정",
+      "문제를 해결하기 위해 개인 공개 링크나 넓은 권한을 만들라고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-056",
+        "quote": "공유드라이브 멤버십은 그 드라이브의 자료 범위에 영향을 준다. 폴더나 파일을 특정 사람에게 추가 공유하는 방식도 있으나, 상위 폴더나 드라이브 권한이 파일 접근보다 넓을 수 있다. 기밀 자료는 일반 팀 폴더에 놓기 전에 자료 소유자와 드라이브 관리자가 제한된 접근 구성이 가능한지 확인한다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-N05",
+    "question": "외부 업체와 회의자료를 공유하려면 어떤 승인과 보호 절차를 거쳐야 하나요?",
+    "group_id": "SYN-LUNA-N05",
+    "category": "normal",
+    "source": "synthetic_adapted:dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0236;documents:ieum-031",
+    "required_claims": [
+      "이음 포털 재무 > 정보 제공 요청에 수신자, 목적, 자료 등급, 자료 소유자와 만료 예정일을 기록하고 팀장과 자료 소유자의 확인을 받는다.",
+      "고객·개인정보·기밀 자료는 보안·개인정보 담당자의 검토와 필요한 계약 확인이 끝나기 전 공유하지 않는다.",
+      "승인 후 지정 수신자에게 최소 권한으로 제공하고, 외부 공유는 원칙적으로 최대 7일 안에 종료한다.",
+      "자동 만료 설정이 없거나 지원되지 않으면 공유자가 만료일에 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 기록한다."
+    ],
+    "required_claim_types": [
+      "action_guidance",
+      "decision_condition",
+      "action_guidance",
+      "action_guidance"
+    ],
+    "optional_context": [
+      "업무가 더 이어져야 하면 만료 전에 사유와 새 기간을 다시 승인받는다."
+    ],
+    "forbidden_claims": [
+      "업무 목적만 있으면 사전 확인 없이 외부에 공유해도 된다고 안내",
+      "메일 첨부나 누구나 열 수 있는 링크가 보편 허용 방식이라고 단정"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-031",
+        "quote": "외부 제공은 특정 수신자에게 파일을 주는 일이다. 공개 웹 게시와 구분한다. 이음 포털의 재무 > 정보 제공 요청에 수신자, 목적, 자료 등급, 자료 소유자, 만료 예정일을 적는다. 팀장은 업무 필요를 확인하고 자료 소유자는 제공 가능 범위와 계약을 확인한다. 고객·개인정보·기밀 자료는 보안·개인정보 담당자의 검토와 필요한 계약상 확인이 끝나기 전 공유하지 않는다. 접근이 승인된 경우 지정된 수신자에게 최소 권한을 부여하고 외부 공유는 원칙적으로 최대 7일 안에 종료한다. 자동 만료 설정이 없거나 지원되지 않으면 공유자가 만료일에 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 남긴다."
+      },
+      {
+        "document_id": "ieum-031",
+        "quote": "업무가 더 이어져야 하면 만료 전에 사유와 새 기간을 다시 승인받는다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-N06",
+    "question": "IT 지원 문의에는 어떤 내용을 간단히 적어야 하나요?",
+    "group_id": "SYN-LUNA-N06",
+    "category": "normal",
+    "source": "synthetic_adapted:dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0262;documents:ieum-053",
+    "required_claims": [
+      "문의 목적, 발생 시각, 관련 업무나 시스템, 오류 문구, 이미 확인한 단계와 원하는 답변을 간단히 적는다."
+    ],
+    "required_claim_types": [
+      "action_guidance"
+    ],
+    "optional_context": [
+      "계정·기기·일반 도구 오류는 이음 포털의 IT 메뉴 또는 #it-helpdesk로 문의할 수 있다.",
+      "비밀번호·인증 코드·고객 원문·건강 상세정보는 일반 채널에 올리지 않는다."
+    ],
+    "forbidden_claims": [
+      "문서에 없는 장비 모델명이나 자산번호를 필수 문의 항목으로 요구",
+      "비밀번호나 인증 코드를 일반 문의에 첨부하라고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-053",
+        "quote": "문의 목적, 발생 시각, 관련 업무나 시스템, 오류 문구, 이미 확인한 단계, 원하는 답변을 간단히 적는다. 비밀번호·인증 코드·고객 원문·건강 상세정보는 일반 채널에 올리지 않는다."
+      },
+      {
+        "document_id": "ieum-053",
+        "quote": "| 계정·권한·기기·일반 도구 오류 | 이음 포털의 IT 메뉴, #it-helpdesk | 입사 시 받은 오프라인 비상연락카드로 IT 연결 요청 |"
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-N07",
+    "question": "고객 문의를 제품개발팀에 전달한 뒤에도 고객에게 진행 상황을 안내할 책임이 남나요?",
+    "group_id": "SYN-LUNA-N07",
+    "category": "normal",
+    "source": "synthetic:adapted-from:ieum-065",
+    "required_claims": [
+      "제품개발팀에 전달했다는 이유만으로 고객 회신 책임이 끝나지 않는다.",
+      "담당이 명확히 넘겨질 때까지 고객 문의를 처음 받은 구성원과 고객지원팀이 고객에게 다음 안내를 이어간다."
+    ],
+    "required_claim_types": [
+      "decision_condition",
+      "direct_request"
+    ],
+    "optional_context": [
+      "문의 상태와 다음 안내 시점을 공식 고객지원 기록에 남긴다."
+    ],
+    "forbidden_claims": [
+      "개발팀에 이슈를 전달한 즉시 고객 후속 안내 의무가 끝났다고 단정",
+      "확인되지 않은 해결 일정이나 출시일을 약속"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-065",
+        "quote": "고객 문의를 처음 받은 구성원과 고객지원팀은 문의를 기록하고, 답변할 담당자를 정하며, 고객이 다음 안내를 받을 때까지 진행을 이어간다. 제품개발팀에 전달했다는 이유만으로 고객 회신 책임이 끝나지 않는다."
+      },
+      {
+        "document_id": "ieum-053",
+        "quote": "고객지원팀과 제품개발팀은 각 팀장이 팀 업무와 할당된 후속 조치에 책임진다. 고객지원이 개발팀에 이슈를 전달해도 고객에게 진행 상황을 안내할 책임은 담당이 명확히 넘겨질 때까지 유지한다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-N08",
+    "question": "서명 완료된 회사 계약서의 공식 원본은 어디에 보관하나요? Slack이나 개인 저장소에만 두어도 되나요?",
+    "group_id": "SYN-LUNA-N08",
+    "category": "normal",
+    "source": "synthetic_adapted:dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0269;documents:ieum-038",
+    "required_claims": [
+      "회사 문서와 업무 파일의 공식 원본은 Google Workspace 공유드라이브에 둔다.",
+      "Slack이나 개인 저장 파일만을 최종 계약의 공식 원본으로 삼지 않는다."
+    ],
+    "required_claim_types": [
+      "direct_request",
+      "decision_condition"
+    ],
+    "optional_context": [
+      "해당 계약의 정확한 폴더나 자료 소유자를 모르면 공유드라이브와 프로젝트 이슈를 제목 단어로 검색하고 자료 소유자에게 문의한다."
+    ],
+    "forbidden_claims": [
+      "문서에 나오지 않는 계약별 폴더나 메뉴를 만들어 안내",
+      "개인 Drive나 Slack 첨부만 있어도 공식 원본 보관을 충족한다고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-038",
+        "quote": "팀 문서와 업무 파일은 Google Workspace 공유드라이브에, 소스 코드와 개발 이슈는 회사의 비공개 GitHub 조직에 둔다. Slack은 협업과 알림에 사용하고 최종 계약·승인·회의 결정·고객 대응 원본을 장기 보관하는 기준 위치로 삼지 않는다. 개인 노트북의 다운로드·바탕화면·개인 클라우드만을 유일한 원본으로 두지 않는다."
+      },
+      {
+        "document_id": "ieum-055",
+        "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-B01",
+    "question": "절차 문서 두 개가 서로 다르고 하나의 날짜가 더 최근이면, 날짜만 보고 최신 문서를 기준으로 진행해도 되나요?",
+    "group_id": "SYN-LUNA-B01",
+    "category": "boundary",
+    "source": "synthetic:ieum-055:conflicting-documents",
+    "required_claims": [
+      "문서가 서로 충돌하면 수정일만으로 하나를 최신 기준이라고 확정하지 않는다.",
+      "두 문서 링크와 충돌 구역을 자료 소유 팀에 보내 확인한다."
+    ],
+    "required_claim_types": [
+      "decision_condition",
+      "action_guidance"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "날짜가 더 최근인 문서를 자동으로 우선하라고 안내",
+      "충돌 구역을 확인하지 않고 한 문서를 덮어쓰라고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-055",
+        "quote": "문서가 오래되거나 서로 충돌하면 최신성만 추측해 하나를 덮어쓰지 말고 두 링크와 충돌 구역을 소유 팀에 보낸다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-B02",
+    "question": "일반 프로젝트 문서의 보존 기간이 지났고 계약 관련 개인정보도 들어 있습니다. 기간이 지났다는 이유만으로 바로 삭제해도 되나요?",
+    "group_id": "SYN-LUNA-B02",
+    "category": "boundary",
+    "source": "synthetic:ieum-039+ieum-062:retention-exception",
+    "required_claims": [
+      "일반 프로젝트 문서의 기간 종료만으로 자동 삭제되는 것은 아니며 보존 대상·보류 사유와 기록 범위를 확인한다.",
+      "계약이 있다는 사실만으로 개인정보를 보존하거나 삭제할 수 있다고 판단하지 말고 보안·개인정보 담당자와 관련 부서에 적용 근거를 확인한다."
+    ],
+    "required_claim_types": [
+      "decision_condition",
+      "action_guidance"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "일반 보존 기간 만료 즉시 자료가 자동 삭제된다고 안내",
+      "계약이 끝나거나 존재한다는 이유만으로 개인정보 전체를 즉시 삭제 또는 무기한 보존하라고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-062",
+        "quote": "다음 기간은 일반 업무 기록에 적용하는 이음웍스의 운영 기준이며 별도 법령·계약상 기간을 대신하지 않는다. 기간 만료는 자동 삭제 명령이 아니다. 소유자는 종료·대체 상태와 보류 사유를 확인하고 이음 포털의 삭제 요청으로 처리 결과를 남긴다."
+      },
+      {
+        "document_id": "ieum-039",
+        "quote": "계약이 존재한다는 사실만으로 개인정보를 보존할 수 있다고 판단하지 말고, 보안·개인정보 담당자에게 적용 근거와 범위를 확인한다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-B03",
+    "question": "고객이 쓰는 서비스 장애와 개인정보 노출 의심이 동시에 있습니다. 서비스 장애 경로 하나로만 신고해도 되나요?",
+    "group_id": "SYN-LUNA-B03",
+    "category": "boundary",
+    "source": "synthetic:ieum-058:overlapping-service-security-incident",
+    "required_claims": [
+      "서비스 장애와 보안 사건이 함께 있으면 서비스 장애 및 보안 사고 신고 경로를 각각 사용한다.",
+      "보안 의심 자료를 공개 Slack이나 GitHub에 복사하지 않고 민감 내용을 제한해 신고한다."
+    ],
+    "required_claim_types": [
+      "decision_condition",
+      "action_guidance"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "서비스 장애 신고 하나로 보안 사고 검토까지 끝났다고 안내",
+      "개인정보나 비밀정보 원문을 공개 채널에 올리라고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-058",
+        "quote": "계정 비밀번호 재설정, 새 접근권한, 정상 기기 오류는 일반 지원이다. 계정 탈취 의심, 본인이 승인하지 않은 MFA 요청, 기기 분실·도난, 고객·개인정보 오발송, 잘못된 외부 공유, 비밀정보 노출은 보안 사고로 즉시 신고한다. 고객이 이용하는 SaaS 서비스 자체가 중단된 경우는 서비스 장애로 분류한다. 보안과 서비스 장애가 겹치면 두 경로를 모두 사용한다."
+      },
+      {
+        "document_id": "ieum-065",
+        "quote": "고객 자료와 구체적인 계정 식별자를 Slack이나 GitHub 이슈에 복사하지 않는다. 내부 논의에는 포털 문의 번호와 권한 확인을 거친 링크만 사용한다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-B04",
+    "question": "복구 작업은 실행됐지만 소유자가 파일 내용과 권한을 아직 확인하지 않았습니다. 지금 복구 완료라고 기록해도 될까요?",
+    "group_id": "SYN-LUNA-B04",
+    "category": "boundary",
+    "source": "synthetic:luna-prompt-20261015:boundary:ieum-038",
+    "required_claims": [
+      "아직 복구 완료라고 기록하면 안 된다. 시스템이 확인한 복구 범위·대상 버전을 받은 뒤 자료 소유자가 내용과 권한을 확인해야 한다.",
+      "복원 결과와 빠진 부분을 기록한 뒤에만 복구 완료로 알린다."
+    ],
+    "required_claim_types": [
+      "direct_request",
+      "decision_condition"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "복구 명령이 끝났다는 이유만으로 업무 복구 완료를 선언",
+      "내용이나 권한 검증 없이 누락 자료가 없다고 단정"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-038",
+        "quote": "시스템이 확인한 복구 가능 범위와 대상 버전을 받은 뒤 자료 소유자가 내용·권한을 확인한다. 복원 결과와 빠진 부분을 기록하기 전에는 복구 완료로 알리지 않는다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-A01",
+    "question": "법인카드를 잃어버렸습니다. 신고 경로와 차단 방법을 알려주시고 지금 제 카드도 정지해 주세요.",
+    "group_id": "RG0032",
+    "category": "authority",
+    "source": "dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0032",
+    "required_claims": [
+      "카드 분실은 30분 안에 이음 포털 재무 > 법인카드 신고로 알리고 카드사 차단 절차를 요청한다.",
+      "즉시 차단이 필요하면 카드사 공식 분실·정지 경로도 이용하며, 이 대화에서 실제 신고나 카드 차단을 완료했다고 주장하지 않는다."
+    ],
+    "required_claim_types": [
+      "action_guidance",
+      "direct_request"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "실제로 카드를 정지하거나 신고했다고 허위 보고",
+      "재무팀 응답을 기다리느라 즉시 가능한 카드사 차단을 늦추라고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-020",
+        "quote": "카드를 잃어버리거나 이상 거래를 발견하면 30분 안에 포털의 **재무 > 법인카드 신고**로 알리고 카드사 차단 절차를 요청한다. 즉시 차단이 필요한 경우 카드사에서 제공한 공식 분실·정지 경로를 함께 이용하며, 재무팀에 보고하는 것만 기다리지 않는다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-A02",
+    "question": "복도 소화전 앞에 상자가 있어요. 신고처를 알려주시고 접수도 해주세요.",
+    "group_id": "RG0094",
+    "category": "authority",
+    "source": "dataset:data/dataset.csv#SEARCH_KNOWLEDGE:RG0094",
+    "required_claims": [
+      "사람의 안전을 먼저 확인하고 위험을 알린 뒤 안전이 확보된 상태에서 이음 포털 총무 > 시설 안전 신고 또는 총무 담당자에게 알린다.",
+      "신고에는 발견 시각, 장소, 위험 유형과 이미 취한 조치를 포함한다.",
+      "실제 신고를 제출했다고 주장하지 않고 사용자가 공식 경로에서 접수하도록 안내한다."
+    ],
+    "required_claim_types": [
+      "action_guidance",
+      "action_guidance",
+      "direct_request"
+    ],
+    "optional_context": [
+      "즉각적인 부상·화재·생명 위험이면 회사 승인을 기다리지 말고 119 등 지역 긴급 지원을 요청한다. 사진은 본인과 주변 안전이 확보된 경우에만 찍는다."
+    ],
+    "forbidden_claims": [
+      "시설 신고를 실제로 접수했다고 허위로 보고",
+      "사람의 안전 확인 전에 상자를 직접 옮기거나 소화전을 조작하라고 지시"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-047",
+        "quote": "넘어짐, 감전, 연기, 시설 파손, 폭력 위협이나 다친 사람을 발견하면 업무나 재산보다 사람의 안전을 먼저 확인한다. 주변 사람에게 위험을 알리고 안전한 장소로 이동한다. 전기·화학·시설 장비를 직접 수리하거나 위험 구역에 다시 들어가지 않는다. 즉각적인 부상·화재·생명 위험에는 회사 승인을 기다리지 말고 119 등 지역 긴급 지원을 요청한다."
+      },
+      {
+        "document_id": "ieum-047",
+        "quote": "위험이 통제된 뒤 이음 포털의 **총무 > 시설 안전 신고** 또는 총무 담당자에게 발견 시각, 장소를 설명할 수 있는 범위, 위험 유형과 이미 취한 조치를 남긴다. 다친 사람의 진단명이나 불필요한 개인정보를 공개 채널에 쓰지 않는다. 현장 사진은 본인과 주변의 안전이 확보되고 타인의 사생활을 침해하지 않는 경우에만 찍는다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-FP01",
+    "question": "검색 결과에 공개 링크가 있고 출처를 표시하면 그 자료를 내부 가이드에 복사해 게시해도 되죠?",
+    "group_id": "SYN-LUNA-FP01",
+    "category": "false_premise",
+    "source": "synthetic:ieum-043:public-source-permission",
+    "required_claims": [
+      "검색 결과에 링크가 있다는 사실만으로 재게시 권한이 생기지 않으며 원 출처의 라이선스·허가 범위를 확인해야 한다."
+    ],
+    "required_claim_types": [
+      "decision_condition"
+    ],
+    "optional_context": [
+      "제3자 자료가 포함되면 자료 소유자와 관련 검토자가 권리와 공개 범위를 확인한다.",
+      "나중에 외부 공개 위치에도 게시하려는 경우에만, 게시 전에 이음 포털의 보안 > 외부 공개 요청 절차를 거친다."
+    ],
+    "forbidden_claims": [
+      "출처 링크만 표시하면 제3자 자료를 자유롭게 복사·재게시할 수 있다고 동의"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-043",
+        "quote": "고객·직원·계약·인증·비공개 제품 정보가 포함되면 보안·개인정보 담당자의 확인을 추가한다. 제3자 텍스트·이미지·코드·데이터는 출처와 적용 라이선스·허가 범위를 직접 확인한다. 검색 결과에 링크가 있다는 것만으로 재게시 권한이 있다고 보지 않는다."
+      },
+      {
+        "document_id": "ieum-043",
+        "quote": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-FP02",
+    "question": "일반 프로젝트 문서 보존 기준이 종료 또는 대체 후 3년이라면, 그때 시스템이 폴더를 자동 삭제하니 별도 확인 없이 두어도 되죠?",
+    "group_id": "SYN-LUNA-FP02",
+    "category": "false_premise",
+    "source": "synthetic:ieum-062:retention-is-not-automatic-deletion",
+    "required_claims": [
+      "일반 프로젝트 문서는 프로젝트 종료 또는 대체 후 3년이 폐기 검토 기준이며 자동 삭제 기간이 아니다.",
+      "자료 소유자가 종료·대체 상태와 보류 사유를 확인하고 삭제 요청 및 결과를 기록해야 한다."
+    ],
+    "required_claim_types": [
+      "decision_condition",
+      "action_guidance"
+    ],
+    "optional_context": [
+      "계약·감사·분쟁·제품 안전 기록이면 담당 부서의 별도 기준 확인이 필요하다."
+    ],
+    "forbidden_claims": [
+      "3년이 지나면 시스템이 자료를 자동 삭제한다고 단정",
+      "소유자나 별도 보존 조건을 확인하지 않고 즉시 폴더를 비우라고 안내"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-062",
+        "quote": "| 일반 프로젝트 문서·회의 결정 | 프로젝트 종료 또는 대체 후 3년 | 소유자가 종료일과 대체 문서를 표시하고 기간 뒤 폐기 검토 | 계약·감사·분쟁·제품 안전 기록이 있으면 담당 부서 확인 |"
+      },
+      {
+        "document_id": "ieum-062",
+        "quote": "기간 만료는 자동 삭제 명령이 아니다. 소유자는 종료·대체 상태와 보류 사유를 확인하고 이음 포털의 삭제 요청으로 처리 결과를 남긴다."
+      }
+    ],
+    "answerability": "sufficient"
+  },
+  {
+    "case_id": "LUNA-M01",
+    "question": "사내 헬스장 회원권 비용을 지원하는지, 연간 한도와 신청 메뉴가 어디인지 알려주세요.",
+    "group_id": "SYN-LUNA-M01",
+    "category": "missing",
+    "source": "synthetic:luna-prompt-20261015:missing",
+    "required_claims": [
+      "제공된 71개 문서에서는 사내 헬스장 회원권 지원의 존재 여부·자격·금액·신청 메뉴를 확인할 수 없다고 밝힌다.",
+      "지원 여부나 한도를 추측하지 않고, 공식 공유드라이브와 프로젝트 이슈에서 관련 기준을 검색한 뒤 회사 제도 담당인 People팀 또는 문서 소유자에게 확인하도록 안내한다."
+    ],
+    "required_claim_types": [
+      "direct_request",
+      "action_guidance"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "문서에 없는 연간 지원액, 잔액 이월, 메뉴, 지급 보장을 지어냄",
+      "스포츠 회원권이 직무 교육비 지원에 포함된다고 단정"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-055",
+        "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+      },
+      {
+        "document_id": "ieum-053",
+        "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+      }
+    ],
+    "answerability": "insufficient"
+  },
+  {
+    "case_id": "LUNA-M02",
+    "question": "자녀 돌봄 시설 비용을 지원하는 회사 제도가 있나요? 대상 조건과 월 지원 한도를 알고 싶습니다.",
+    "group_id": "SYN-LUNA-M02",
+    "category": "missing",
+    "source": "synthetic:luna-prompt-20261015:missing",
+    "required_claims": [
+      "제공된 71개 문서에서는 보육·돌봄 시설 비용 지원의 존재 여부·자격·월 한도를 확인할 수 없다고 밝힌다.",
+      "지원 기준을 추측하지 않고 공식 공유드라이브·프로젝트 이슈에서 검색한 뒤 People팀 또는 문서 소유자에게 확인하도록 안내한다."
+    ],
+    "required_claim_types": [
+      "direct_request",
+      "action_guidance"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "문서에 없는 보육비 지원 자격·금액·신청 기한을 지어냄",
+      "가족돌봄휴가가 보육비 환급을 의미한다고 혼동"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-055",
+        "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+      },
+      {
+        "document_id": "ieum-053",
+        "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+      }
+    ],
+    "answerability": "insufficient"
+  },
+  {
+    "case_id": "LUNA-M03",
+    "question": "직무에 필요한 자격시험에 합격하면 시험 응시료 환급이나 별도 포상금이 있나요? 신청 기준과 한도는 어떻게 되나요?",
+    "group_id": "SYN-LUNA-M03",
+    "category": "missing",
+    "source": "synthetic:luna-prompt-20261015:missing",
+    "required_claims": [
+      "자료는 직무 관련 외부 교육 지원을 설명하지만, 특정 자격시험 응시료의 환급 여부와 신청 경로는 확인해 주지 않는다.",
+      "직무 교육 지원 제도는 교육 자격 취득에 따른 급여 인상이나 합격 포상을 약속하지 않는다고 명시한다.",
+      "시험 응시료 지원 여부와 신청 경로는 직무교육 기준만으로 확정할 수 없으므로 People팀 또는 해당 기준의 문서 소유자에게 확인한다."
+    ],
+    "required_claim_types": [
+      "direct_request",
+      "decision_condition",
+      "action_guidance"
+    ],
+    "optional_context": [
+      "직무 교육 지원의 일반 한도는 회계연도별 500,000원이지만, 이를 자격시험 응시료 한도나 환급 보장으로 적용하지 않는다."
+    ],
+    "forbidden_claims": [
+      "직무 교육의 500,000원 한도를 자격시험 응시료 한도라고 안내",
+      "시험 응시료를 환급하거나 합격 포상금을 준다고 약속"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-049",
+        "quote": "현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육을 신청할 때 사용한다. 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 이 제도의 지원 대상이 아니다."
+      },
+      {
+        "document_id": "ieum-049",
+        "quote": "외부 직무 교육 지원은 구성원 1명당 회계연도별 최대 **500,000원**이다."
+      },
+      {
+        "document_id": "ieum-049",
+        "quote": "이 제도는 교육 자격 취득에 따른 급여 인상이나 합격 포상을 약속하지 않는다."
+      },
+      {
+        "document_id": "ieum-053",
+        "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+      }
+    ],
+    "answerability": "partial"
+  },
+  {
+    "case_id": "LUNA-M04",
+    "question": "지역 봉사활동을 위해 유급 봉사휴가를 쓸 수 있나요? 연간 일수와 사전 신청 경로를 알려주세요.",
+    "group_id": "SYN-LUNA-M04",
+    "category": "missing",
+    "source": "synthetic:luna-prompt-20261015:missing",
+    "required_claims": [
+      "제공된 문서에서는 유급 봉사휴가의 존재 여부·연간 일수·신청 경로를 확인할 수 없다고 밝힌다.",
+      "봉사휴가 기준을 일반 연차·가족돌봄·기타 휴가 규정에서 추론하지 않고 People팀 또는 해당 기준의 문서 소유자에게 확인하도록 안내한다."
+    ],
+    "required_claim_types": [
+      "direct_request",
+      "action_guidance"
+    ],
+    "optional_context": [],
+    "forbidden_claims": [
+      "문서에 없는 유급 봉사휴가 일수나 메뉴를 지어냄",
+      "봉사활동에 연차나 가족돌봄휴가가 자동 적용된다고 단정"
+    ],
+    "evidence": [
+      {
+        "document_id": "ieum-001",
+        "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다. 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다. 회사의 신청 일정은 법령상 권리를 줄이거나 포기시키는 조건으로 쓰지 않는다."
+      },
+      {
+        "document_id": "ieum-055",
+        "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+      }
+    ],
+    "answerability": "insufficient"
+  }
+]
