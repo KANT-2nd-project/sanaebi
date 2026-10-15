@@ -4,6 +4,6 @@
     "models": [
       "gpt-6-luna"
     ],
-    "prompt_profile": "examples_answer_scope_v1"
+    "prompt_profile": "examples_answer_scope_v3"
   }
 }

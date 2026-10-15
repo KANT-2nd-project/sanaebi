@@ -94,7 +94,7 @@ _ANSWER_SCOPE_V3 = """
 """.strip()
 
 
-DEFAULT_PROMPT_PROFILE = "examples_answer_scope_v1"
+DEFAULT_PROMPT_PROFILE = "examples_answer_scope_v3"
 
 
 _PROFILE_SUFFIXES = {
