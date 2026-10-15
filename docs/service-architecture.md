@@ -3,7 +3,7 @@
 서버와 독립 생성·평가는 같은 [generation 모듈](../generation/README.md)의 최종 Luna 설정과 프롬프트·응답 검사를 사용한다. 서버는 SQLite 게시 snapshot을, CLI는 명시적으로 내보낸 JSONL을 사용하며 같은 렌더러로 프롬프트를 구성한다. 연결 구현과 검증 결과·남은 한계는 [서버 생성 통합 기록](worklogs/2026-10-15-server-generation-integration.md)을 따른다. 과거 실행기와 평가 자료는 비활성 레거시 재현용으로 보존한다.
 
 - 기준일: 2026-10-15
-- 상태: 현재 API 동작과 아직 연결되지 않은 목표 설계를 구분한다.
+- 상태: 코드 기본값은 shadow + full이며 gate와 rag를 선택할 수 있다. 실제 운영 적용 상태는 별도 확인한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
 - 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
 - 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 내보내기 + nginx + FastAPI를 채택한다. 정적 내보내기·로컬 nginx→FastAPI echo 연결과 메모리 기반 대화형 화면을 구현했다. 이전 메시지는 서버 답변에 반영되지 않으며 새 모델 경로의 브라우저 종단 검증·외부 배포는 후속 범위다. 공개 시연은 익명 질문·문서 편집·게시를 허용하며 nginx가 공개 API를 제한하고 FastAPI가 요청 제한·일일 생성 예산을 적용한다. 운영 구성은 [배포 안내](../deployment/README.md)를 따른다.
@@ -32,31 +32,39 @@
 
 등록 요청은 기존 `{"doc":"본문"}` 형식을 유지하며 50,000자·512KiB 제한을 적용한다. 게시 전에는 답변에 사용하지 않는다. 원본 JSONL은 최초 이관·과거 평가를 위해 보존한다.
 
-`/ask`와 `/assistant`는 공통 라벨 정책을 사용한다. CLARIFY·UNSUPPORTED는 고정 안내로 종료하고 문서·LLM을 호출하지 않는다. 검색 질문은 SQLite snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 앱별 `GenerationAnswerer`를 호출한다. 빈 게시 목록은 정상 안내, 분류·DB 장애는 503, 생성 결과·제공자 오류는 502, 예상 밖 코드 오류는 500이다. 앞 단계 실패 입력은 생성하지 않는다.
+`/ask`와 `/assistant`는 같은 앱 설정을 사용한다. 기본 shadow는 세 라벨 모두 문서 단계로 진행하고, gate에서만 CLARIFY·UNSUPPORTED를 고정 안내로 종료한다. 문서 단계는 SQLite snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 full 또는 rag 근거로 `GenerationAnswerer`를 호출한다. 빈 게시 목록은 정상 안내다. 알려진 분류 장애는 shadow에서 기록 후 계속하며 gate에서는 503이다. DB·색인 장애는 503, 생성 결과·제공자 오류는 502, 예상 밖 코드 오류는 500이다. `/assistant`의 앞 단계 실패 입력은 생성하지 않는다.
 
 2026-10-15 사용자 결정으로 KoELECTRA base를 현 단계 서버 분류기로 채택했다. [선정 근거와 연결 절차](worklogs/2026-10-15-classifier-selection.md)를 따른다. 기존 연동 코드의 존재와 이번에 선정한 checkpoint의 연결 완료는 구분하며, 이번 저장본은 공통 Transformer 추론기로 연결한다. 검증 결과는 [연결 작업 기록](worklogs/2026-10-15-server-classifier-integration.md)을 따른다.
 
-## 목표 질문 처리 흐름
+## 현재 질문 처리 흐름
 
-분류 입력은 현재 질문 하나다. 대화 이력이나 사용자별 실시간 정보를 분류 입력으로 사용하지 않는다. 라벨은 다음 처리 경로를 고르며 문서의 존재나 답변 근거가 충분한지를 판정하지 않는다. 세 라벨의 유일한 상세 기준과 경계 사례는 [라벨 기준](label-taxonomy.md)에 둔다.
-
-| 라벨 | 목표 처리 |
-|---|---|
-| `SEARCH_KNOWLEDGE` | 회사 문서를 근거로 답변을 시도한다. 답변 단계에서 실제 근거와 한계를 확인한다. |
-| `CLARIFY` | 대상이나 원하는 도움을 알 수 있도록 구체적으로 되묻는다. |
-| `UNSUPPORTED` | 현재 지원하지 않는 조회·실행·요청임을 안내한다. |
-
-SEARCH_KNOWLEDGE로 분류된 질문에는 SQLite의 유효 게시 문서 전체, 공통 답변 지침, 원래 질문을 LangChain 흐름에 전달해 LLM 답변을 만든다. CLARIFY와 UNSUPPORTED는 각각 되묻기와 지원 범위 안내로 처리한다.
+분류 입력은 현재 질문 하나이며 대화 이력은 사용하지 않는다. 라벨 의미·데이터 정답은 [라벨 기준](label-taxonomy.md)에서 관리한다. 기본 shadow는 라벨을 관찰만 하고, 선택적 gate는 CLARIFY·UNSUPPORTED를 고정 안내로 종료한다. 라벨은 답변 근거의 존재나 권한을 보장하지 않으며 생성 프롬프트에 전달하지 않는다.
 
 ```mermaid
 flowchart TD
-    Q["현재 질문"] --> C{"요청 처리 분류"}
-    C -->|"SEARCH_KNOWLEDGE"| D["회사 문서 전체 + 공통 지침 + 원래 질문"]
-    D --> LC["LangChain"] --> LLM["LLM 답변 생성"]
-    LLM --> E["근거·충돌·자료 부족 확인"]
-    C -->|"CLARIFY"| CL["필요한 정보 되묻기"]
-    C -->|"UNSUPPORTED"| U["지원 범위 안내"]
+    Q["현재 질문"] --> C["분류·결과 기록"]
+    C --> M{"라우팅 모드"}
+    M -->|"shadow: 세 라벨 모두"| D["SQLite 게시 snapshot 1회"]
+    M -->|"gate: SEARCH_KNOWLEDGE"| D
+    M -->|"gate: CLARIFY 또는 UNSUPPORTED"| G["고정 안내"]
+    D --> V{"게시 문서 있음"}
+    V -->|"없음"| N["자료 없음 안내"]
+    V -->|"있음"| R{"문서 공급 모드"}
+    R -->|"full: 기본"| F["게시본 전체"]
+    R -->|"rag: 선택"| S["유효 색인에서 근거 검색"]
+    F --> L["질문·문서 근거·공통 지침으로 생성"]
+    S --> L
+    L --> A["응답 형식 검사 후 답변 또는 생성 오류"]
 ```
+
+| 라우팅 / 문서 공급 | 문서 단계 진입 | 생성에 전달하는 근거 |
+|---|---|---|
+| shadow + full (기본) | 세 라벨 모두 | 게시본 전체 |
+| shadow + rag | 세 라벨 모두 | 검색으로 선택한 근거 |
+| gate + full | SEARCH_KNOWLEDGE | 게시본 전체 |
+| gate + rag | SEARCH_KNOWLEDGE | 검색으로 선택한 근거 |
+
+빈 문서는 검색·생성하지 않는다. rag 색인 미준비·장애는 503이며 full로 자동 fallback하지 않는다. 검색 입력 초과는 422다. 코드 기본값은 실행 중 서버의 실효 설정이나 배포 완료를 증명하지 않는다.
 
 기본 full 경로는 SQLite의 현재 유효한 게시본 전체를 사용한다. 기존 71건 JSONL은 최초 이관 원본으로 보존하며 서비스는 파일과 DB를 합치지 않는다. 관리 화면의 게시·사용 중단은 다음 검색 질문에 적용된다. 요청 단위 snapshot을 모델 호출 전에 확보하고 Luna 단일 호출에 전달한다. 명시적 평가 JSONL은 재현용으로 유지한다. 저장·이관 기준은 [문서 관리](document-management.md), 원본 이력은 [회사 정책 데이터](../data/README.md#답변용-회사-지식)를 따른다. 선택적 RAG의 임베딩은 사용자 결정으로 KoEn-E5-Tiny를 선정했다. [16종 비교와 선정 계약](../retrieval/reports/2026-10-15-cpu-embedding-comparison/selection.md)을 따른다. 별도 SQLite 벡터 저장소·서버 검색 연결·게시 개정 동기화를 구현했다. 기본 full은 유지하며 rag를 명시하면 선택 근거만 전달한다. 준비 중 요청은503이며 운영 전환·품질 검증과 구분한다. [실행 계약](rag-runtime.md)을 따른다.
 
@@ -106,7 +114,7 @@ flowchart TD
 | [LangSmith, Evaluation types](https://docs.langchain.com/langsmith/evaluation-types) | 대표 입력과 기준 출력으로 오프라인 평가를 구성하는 방법 | 라우터, 답변 생성, 종단 평가의 데이터와 통과 기준 |
 | [Anthropic, Mitigating the risk of prompt injections in browser use](https://www.anthropic.com/research/prompt-injection-defenses) | 외부 문서에 모델 지시를 바꾸려는 문구가 포함될 수 있다는 위험 | 문서 본문을 데이터로 다루는 지침의 실제 효과와 별도 방어 필요성 |
 
-세 라벨의 의미·경계, JSON Lines 문서 전체 제공, 단계별 평가 구분은 이 프로젝트의 설계 결정이다. 사용할 모델, 입력 예산, 분류 점수, 근거 인용 정확성, 응답 시간과 비용은 아직 확인되지 않았다.
+세 라벨의 의미·경계와 단계별 평가 구분은 프로젝트의 설계 결정이다. 서버 근거는 SQLite 게시본이며 full/rag 설정에 따라 전체 또는 선택 근거를 사용한다. 선정 모델·실측 결과는 [생성 기준](generation-final-prompt.md)과 [검색 실행·평가 상태](rag-runtime.md)에서 확인한다. 개별 실험 결과를 전체 품질 승인이나 운영 성능으로 일반화하지 않는다.
 
 ## 등록 자료의 관리와 답변 연결 단계
 
