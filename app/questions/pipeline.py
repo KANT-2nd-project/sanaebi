@@ -62,6 +62,31 @@ def _document_flow(
                     if isinstance(getattr(item, "chunk_ids", None), (tuple, list))
                     for chunk_id in item.chunk_ids
                 ],
+                "source_ranges": [
+                    {
+                        "document_id": item.document_id,
+                        "revision_id": item.revision_id,
+                        "kind": kind,
+                        "start": span.start,
+                        "end": span.end,
+                    }
+                    for item in context.evidence
+                    if hasattr(item, "document_id") and hasattr(item, "spans")
+                    for kind, spans in (
+                        ("original", getattr(item, "original_spans", ()) or item.spans),
+                        ("expanded", getattr(item, "expanded_spans", ())),
+                    )
+                    if isinstance(spans, (tuple, list))
+                    for span in spans
+                ],
+                "expanded_chunk_ids": [
+                    chunk_id
+                    for item in context.evidence
+                    if isinstance(
+                        getattr(item, "expanded_chunk_ids", None), (tuple, list)
+                    )
+                    for chunk_id in item.expanded_chunk_ids
+                ],
                 "scores": [getattr(item, "score", None) for item in context.evidence],
                 "ranks": [getattr(item, "rank", None) for item in context.evidence],
             },

@@ -42,7 +42,9 @@ _STAGE_INTEGER_FIELDS = frozenset(
 _STAGE_NUMBER_FIELDS = frozenset(
     {"seconds", "elapsed_seconds", "classification_elapsed_seconds", "prompt_chars"}
 )
-_STAGE_LIST_FIELDS = frozenset({"selected_chunk_ids", "scores", "ranks"})
+_STAGE_LIST_FIELDS = frozenset(
+    {"selected_chunk_ids", "expanded_chunk_ids", "scores", "ranks"}
+)
 _STAGE_ENUM_FIELDS = frozenset({"classification_label"})
 _STAGE_METADATA_FIELDS = (
     _STAGE_STRING_FIELDS
@@ -50,6 +52,7 @@ _STAGE_METADATA_FIELDS = (
     | _STAGE_NUMBER_FIELDS
     | _STAGE_LIST_FIELDS
     | _STAGE_ENUM_FIELDS
+    | {"source_ranges"}
 )
 
 
@@ -61,7 +64,33 @@ def _safe_stage_metadata(value: Any) -> dict[str, Any]:
     for key, item in value.items():
         if not isinstance(key, str) or key not in _STAGE_METADATA_FIELDS:
             continue
-        if key in _STAGE_ENUM_FIELDS:
+        if key == "source_ranges":
+            if not isinstance(item, (list, tuple)):
+                continue
+            ranges = []
+            for span in item[:100]:
+                if not isinstance(span, Mapping):
+                    continue
+                if (
+                    span.get("kind") not in {"original", "expanded"}
+                    or type(span.get("start")) is not int
+                    or type(span.get("end")) is not int
+                    or not 0 <= span["start"] < span["end"]
+                    or not isinstance(span.get("document_id"), str)
+                    or not isinstance(span.get("revision_id"), str)
+                ):
+                    continue
+                ranges.append(
+                    {
+                        "document_id": clip_text(span["document_id"], limit=160),
+                        "revision_id": clip_text(span["revision_id"], limit=160),
+                        "kind": span["kind"],
+                        "start": span["start"],
+                        "end": span["end"],
+                    }
+                )
+            safe[key] = ranges
+        elif key in _STAGE_ENUM_FIELDS:
             if isinstance(item, str) and item in LABELS:
                 safe[key] = item
         elif key in _STAGE_STRING_FIELDS:
@@ -76,7 +105,7 @@ def _safe_stage_metadata(value: Any) -> dict[str, Any]:
                 if math.isfinite(numeric):
                     safe[key] = max(numeric, 0.0)
         elif key in _STAGE_LIST_FIELDS and isinstance(item, (list, tuple)):
-            if key == "selected_chunk_ids":
+            if key in {"selected_chunk_ids", "expanded_chunk_ids"}:
                 safe[key] = [
                     clip_text(entry, limit=160)
                     for entry in item[:20]

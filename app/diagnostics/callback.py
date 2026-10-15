@@ -27,6 +27,7 @@ _GENERATION_FIELDS = frozenset(
         "output_tokens",
         "error_type",
         "finish_reason",
+        "evidence_state",
     }
 )
 _GENERATION_ALIASES = {
@@ -138,6 +139,15 @@ class TraceCallback(BaseCallbackHandler):
         for key, value in fields.items():
             normalized_key = _GENERATION_ALIASES.get(key, key)
             if normalized_key not in _GENERATION_FIELDS:
+                continue
+            if normalized_key == "evidence_state" and (
+                value is not None
+                and (
+                    not isinstance(value, str)
+                    or value
+                    not in {"available", "no_matches", "no_published_documents"}
+                )
+            ):
                 continue
             if normalized_key == "config":
                 if not isinstance(value, dict):

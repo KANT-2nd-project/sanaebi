@@ -33,6 +33,12 @@ def _build_prompt_values(values: Mapping[str, Any]) -> dict[str, str]:
     prompt = compose_advisory(prompt, values.get("classification_context"))
     evidence_state = values.get("evidence_state")
     if evidence_state is not None:
+        from generation.profiles import RAG_PROMPT_PROFILE
+
+        if values["prompt_profile"] != RAG_PROMPT_PROFILE:
+            raise ValueError("Evidence state requires the RAG service profile")
+        if (evidence_state == "available") != bool(values["documents"]):
+            raise ValueError("Evidence state and documents disagree")
         prompt = compose_evidence_state(prompt, evidence_state)
     return {"system": prompt.system, "user": prompt.user}
 
