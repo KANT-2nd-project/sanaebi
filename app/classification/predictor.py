@@ -31,14 +31,18 @@ class TransformerClassifier:
             for name in ("metadata.json", "config.json", "model.safetensors"):
                 if not (self.model_path / name).is_file():
                     raise ValueError("Missing model file")
+
             metadata = json.loads(
                 (self.model_path / "metadata.json").read_text(encoding="utf-8")
             )
+
             if not isinstance(metadata, dict) or metadata.get("schema_version") != 1:
                 raise ValueError("Invalid metadata version")
+
             labels = metadata.get("labels")
             model_id = metadata.get("model_id")
             config = metadata.get("config")
+
             if (
                 not isinstance(labels, list)
                 or len(labels) != len(LABELS)
@@ -49,9 +53,12 @@ class TransformerClassifier:
                 or not isinstance(config, dict)
             ):
                 raise ValueError("Invalid model metadata")
+
             max_length = config.get("max_length")
+
             if type(max_length) is not int or max_length <= 0:
                 raise ValueError("Invalid maximum length")
+
             tokenizer = AutoTokenizer.from_pretrained(
                 self.model_path, local_files_only=True
             )
@@ -59,6 +66,7 @@ class TransformerClassifier:
                 self.model_path, local_files_only=True, use_safetensors=True
             ).to("cpu")
             expected = dict(enumerate(labels))
+
             if (
                 model.config.num_labels != len(labels)
                 or model.config.id2label != expected
@@ -66,9 +74,11 @@ class TransformerClassifier:
                 or max_length > model.config.max_position_embeddings
             ):
                 raise ValueError("Invalid model label mapping or maximum length")
+
             model.eval()
         except (OSError, ValueError, KeyError, TypeError, RuntimeError) as exc:
             raise ClassificationUnavailable("분류 모델을 사용할 수 없습니다.") from exc
+
         self.model_id = model_id
         self._loaded = tokenizer, model, max_length
 
@@ -78,6 +88,7 @@ class TransformerClassifier:
             if self._loaded is None:
                 self._load()
             tokenizer, model, max_length = self._loaded
+
             try:
                 inputs = tokenizer(
                     question.strip(),
@@ -94,4 +105,5 @@ class TransformerClassifier:
                 label = model.config.id2label[logits.argmax(dim=1).item()]
             except (OSError, ValueError, KeyError, TypeError, RuntimeError) as exc:
                 raise ClassificationInferenceError("분류 추론에 실패했습니다.") from exc
+
             return cast(ClassificationLabel, label)

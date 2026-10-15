@@ -74,6 +74,7 @@ class ManagedDocumentHttpMiddleware:
         )
         chunks: list[bytes] = []
         body_size = 0
+
         while True:
             message = await receive()
             if message["type"] == "http.disconnect":

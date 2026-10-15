@@ -75,12 +75,14 @@ def select_model(
     """test를 받지 않는다. 동점이면 앞선 후보/epoch를 유지한다."""
     if not train_rows or not validation_rows:
         raise ValueError("train과 validation이 필요합니다.")
+
     if (
         min(epochs, batch_size, max_length) <= 0
         or not learning_rates
         or any(not math.isfinite(lr) or lr <= 0 for lr in learning_rates)
     ):
         raise ValueError("epoch, batch, 길이, 학습률은 양수여야 합니다.")
+
     tokenizer = AutoTokenizer.from_pretrained(model_name, revision=revision)
     label_to_id = {label: i for i, label in enumerate(LABELS)}
     best_score, best_state, best_choice = -1.0, None, None
@@ -95,9 +97,11 @@ def select_model(
             label2id=label_to_id,
             id2label=dict(enumerate(LABELS)),
         ).to(device)
+
         fitted = TransformerClassifier(model, tokenizer, max_length, batch_size)
         optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
         generator = torch.Generator().manual_seed(seed)
+
         for epoch in range(1, epochs + 1):
             model.train()
             loss_sum = 0.0
