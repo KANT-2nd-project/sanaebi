@@ -1,0 +1,14 @@
+{
+  "gpt-luna-reference": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  }
+}

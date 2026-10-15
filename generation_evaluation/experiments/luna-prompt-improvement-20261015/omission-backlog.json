@@ -1,0 +1,219 @@
+{
+  "purpose": "diagnostic regression only; already exposed cases, not a new holdout",
+  "source": "../../reports/2026-10-15-model-selection/reasoning-extension/judgments.json",
+  "items": [
+    {
+      "case_id": "EXT-N02",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "자산 완료 전에 IT운영팀의 자료 인계 및 초기화 대기 상태 확인",
+          "document_id": "ieum-023",
+          "reason": "응답은 ‘실제 수령과 구성품 확인’까지만 완료 조건으로 들었습니다. 원문은 ‘총무 담당자는 실제 수령과 구성품을 확인하고, IT운영팀은 업무 자료 인계와 초기화 대기 상태를 확인해 자산 완료 여부를 알린다’고 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N04",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "자료 등급, 비밀번호·인증 코드 미첨부, IT운영팀 조치의 승인 범위",
+          "document_id": "ieum-035",
+          "reason": "응답은 ‘고객 정보 종류’와 ‘고객 원본 자료는 붙이지 마세요’까지만 씁니다. 원문은 ‘자료 종류와 등급’을 기록하고 ‘비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다’고 하며, ‘IT운영팀은 승인된 범위에서 계정·세션·기기를 보호’한다고 정합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N05",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "기록은 날짜와 업무 조정에 필요한 최소 정보만 사용하고 증빙은 People팀의 제한된 경로로 제출",
+          "document_id": "ieum-002",
+          "reason": "응답은 ‘사용 날짜와 예상 복귀일’을 언급하지만 최소 정보 원칙과 제한 경로를 말하지 않습니다. 원문은 ‘신청에는 날짜와 업무 조정에 필요한 최소 정보만 사용’하고 ‘확인 자료가 필요한 경우 People팀이 필요한 목적과 제한된 제출 경로를 안내’한다고 정합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N05",
+      "repeat": 2,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "확인 자료가 필요할 때 People팀이 안내하는 제한된 제출 경로",
+          "document_id": "ieum-002",
+          "reason": "응답은 ‘인사 > 병가에 사용 날짜와 예상 복귀일을 등록·보완’한다고 하지만 확인 자료 제출 경로는 말하지 않습니다. 원문은 ‘확인 자료가 필요한 경우 People팀이 필요한 목적과 제한된 제출 경로를 안내한다’고 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N02",
+      "repeat": 2,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "예정 퇴사일을 포털에 등록하고 팀장·People팀에 알리는 단계",
+          "document_id": "ieum-052",
+          "reason": "응답은 확정 퇴사 뒤 People팀이 마지막 근무일을 전달하는 절차만 말합니다. 원문은 ‘퇴사 예정 구성원은 이음 포털의 인사 > 퇴사 절차에 예정일을 등록하고 팀장과 People팀에 알린다’고 합니다."
+        },
+        {
+          "kind": "required_omission",
+          "claim": "자산 완료 전 IT운영팀의 자료 인계·초기화 대기 상태 확인",
+          "document_id": "ieum-023",
+          "reason": "응답은 ‘총무 담당자가 실제 수령과 구성품을 확인해야 완료’라고만 합니다. 원문은 ‘총무 담당자는 실제 수령과 구성품을 확인하고, IT운영팀은 업무 자료 인계와 초기화 대기 상태를 확인해 자산 완료 여부를 알린다’고 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N10",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "국내 출장 숙박은 승인된 필요와 숙박일에 한한다.",
+          "document_id": "ieum-017",
+          "reason": "응답은 \"숙박비가 세금 포함 1박 160,000원을 넘거나\"라고 한도만 안내하고 숙박 필요·숙박일 승인 조건을 명시하지 않습니다. 근거: \"국내 출장 신청에 숙박 필요와 숙박일이 승인된 경우에만 예약한다.\""
+        },
+        {
+          "kind": "required_omission",
+          "claim": "출장 취소 또는 숙박일 단축으로 예약을 변경·취소하면 환불 확인서를 남기고 실제 환불액과 취소 수수료를 청구액에 반영한다.",
+          "document_id": "ieum-017",
+          "reason": "응답에 환불 확인서·환불액·취소 수수료 처리 안내가 없습니다. 근거: \"환불 확인서를 정산 자료에 남긴다. 환불액과 취소 수수료는 실제 청구액에 반영한다.\""
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N09",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "승인 총액보다20%를 넘는 증가 시 재승인 조건 누락",
+          "document_id": "ieum-016",
+          "reason": "출장 날짜·방문지 변경만 안내하고 고정 첫 필수 주장의20% 초과 증가 조건은 빠뜨렸다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N10",
+      "repeat": 2,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "출장 취소 또는 숙박일 단축으로 예약을 변경·취소하면 환불 확인서를 남기고 실제 환불액과 취소 수수료를 청구액에 반영한다.",
+          "document_id": "ieum-017",
+          "reason": "응답에는 예약 취소·숙박일 단축 시 환불 확인서와 금액 반영 기준이 없습니다. 근거: \"환불 확인서를 정산 자료에 남긴다. 환불액과 취소 수수료는 실제 청구액에 반영한다.\""
+        },
+        {
+          "kind": "required_omission",
+          "claim": "숙박 필요·숙박일 승인 조건 및 세금 포함 한도 기준 누락",
+          "document_id": "ieum-017",
+          "reason": "응답은160,000원 한도와 추가 승인을 말하지만 숙박 필요·숙박일의 승인 조건과 세금 포함 기준은 명시하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N15",
+      "repeat": 2,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "신고에 제공자, 제안 내용·목적, 예정 날짜와 관련 거래·평가 업무를 기록한다.",
+          "document_id": "ieum-045",
+          "reason": "응답은 “받기 전에 이음 포털의 **인사 > 외부 혜택 신고**에 기록하고, 검토 중에는 수락하지 마세요.”라고 했으나 필수 입력 항목은 안내하지 않았습니다. 근거(ieum-045): “받거나 참석하기 전에 이음 포털의 **인사 > 외부 혜택 신고**에 제공자, 제안 내용·목적, 예정 날짜와 관련 거래·평가 업무를 기록한다.”"
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N15",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "신고에 제공자, 제안 내용·목적, 예정 날짜와 관련 거래·평가 업무를 기록한다.",
+          "document_id": "ieum-045",
+          "reason": "응답은 “받기 전에 이음 포털의 **인사 > 외부 혜택 신고**에 신고해야 합니다.”라고 했으나 필수 입력 항목은 안내하지 않았습니다. 근거(ieum-045): “받거나 참석하기 전에 이음 포털의 **인사 > 외부 혜택 신고**에 제공자, 제안 내용·목적, 예정 날짜와 관련 거래·평가 업무를 기록한다.”"
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N17",
+      "repeat": 2,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "자료 소유자에게 현행 주차 기준과 등록 경로를 문의하도록 안내한다.",
+          "document_id": "ieum-055",
+          "reason": "응답은 “제공된 문서에는 차량 추가 등록 메뉴와 월 주차 지원 한도가 안내되어 있지 않아 확인할 수 없습니다.”라고만 하며 문의 안내를 생략했습니다. ieum-055는 “문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다.”라고 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N17",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "자료 소유자에게 현행 주차 기준과 등록 경로를 문의하도록 안내한다.",
+          "document_id": "ieum-055",
+          "reason": "응답은 “참고 문서에는 차량 추가 등록 메뉴나 월 주차 지원 한도가 안내되어 있지 않아 확인할 수 없습니다.”라고만 하며 문의 안내를 생략했습니다. ieum-055는 “문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다.”라고 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N18",
+      "repeat": 2,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "해당 제도의 문서 소유자에게 현행 기준을 문의하도록 안내한다.",
+          "document_id": "ieum-055",
+          "reason": "응답은 구내식당 기준을 확인할 수 없다고 밝히고 출장 식비와 구분했으나, 자료 소유자 문의를 안내하지 않았습니다. ieum-055는 “문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다.”라고 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N18",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "해당 제도의 문서 소유자에게 현행 기준을 문의하도록 안내한다.",
+          "document_id": "ieum-055",
+          "reason": "응답은 구내식당 기준을 확인할 수 없다고 밝히고 출장 식비와 구분했으나, 자료 소유자 문의를 안내하지 않았습니다. ieum-055는 “문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다.”라고 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "EXT-N20",
+      "repeat": 1,
+      "verdict": "partial",
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "해당 회사 제도 문서의 소유자에게 지원 금액과 증빙 제출 경로를 확인한다.",
+          "document_id": "ieum-055",
+          "reason": "응답은 “제공된 문서에는 승인된 재택근무일의 인터넷 요금 지원액이나 통신비 영수증 제출 위치가 안내되어 있지 않습니다.”라고만 하며 문의 안내를 생략했습니다. ieum-055는 “문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다.”라고 안내합니다."
+        }
+      ]
+    }
+  ]
+}

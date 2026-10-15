@@ -1,0 +1,27 @@
+{
+  "status": "prepared_not_executed",
+  "selected_model": "gpt-6-luna",
+  "baseline_candidate": "gpt-luna-reference",
+  "candidate_drafts_registered": false,
+  "fresh_holdout_status": "not_created",
+  "additional_api_calls": 0,
+  "new_budget_authorized": false,
+  "reference_sets": [
+    {
+      "path": "generation_evaluation/benchmarks/selection-20261015/dev.json",
+      "sha256": "519171f4cc554fc2866867479d919dfccd25f7db27ee56925f55630d22d56cb9",
+      "use": "development"
+    },
+    {
+      "path": "generation_evaluation/benchmarks/selection-20261015/final.json",
+      "sha256": "94e6a0fe13da9855001e127e335e685b44bfd77f22ca1f5279287659238f6e1b",
+      "use": "exposed_regression_only"
+    },
+    {
+      "path": "generation_evaluation/benchmarks/selection-20261015/reasoning-final.json",
+      "sha256": "84c6d95e67cbda239e6edad7973cf0e7318d9fa6189e8df78a7bf151301985a2",
+      "use": "exposed_regression_only"
+    }
+  ],
+  "prior_document_snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74"
+}
