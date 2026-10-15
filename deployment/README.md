@@ -64,6 +64,8 @@ GitHub `production` environment는 main만 허용한다. 환경 secret은 `DEPLO
 
 RAG 릴리스 준비 때 배포 helper는 공개 KoEn-E5-Tiny의 고정 revision과 파일 SHA를 검증해 `/srv/sanaebi/embeddings/`에 준비한다. API와 indexer에는 Hugging Face 자격 증명을 전달하지 않는다. 최초 host baseline은 컨테이너 이미지에서 한 번 복사하고 이후에는 이 host 파일을 기준 원본으로 보존한다. 각 RAG 릴리스는 그 원본과 릴리스가 선언한 schema를 사용해 기본 벡터 묶음을 만들고, 임시 DB에서 후보 검색 색인이 준비되는지 확인한다. 검색 번들과 활성 문서 DB의 연결값은 release별 binding에 보관하므로 schema가 바뀌어도 이전 묶음을 삭제하거나 새 묶음으로 덮어쓰지 않는다.
 
+RAG의 문서 변경 API도 색인 준비까지 기다리므로 API와 indexer에 같은 기본 원본·벡터 묶음을 읽기 전용으로 연결한다. 원본은 `SANAEBI_RETRIEVAL_SOURCE`, 묶음은 `SANAEBI_RETRIEVAL_BASELINE`을 사용한다. 기본 복원 요청 전에 묶음의 원본·spec 일치를 확인하며 이미지의 원본으로 host 자료를 덮어쓰지 않는다. API·worker·복원 CLI의 색인 잠금은 작업 단위다. 부분 실패의 동일 요청 재시도는 [RAG 실행 계약](../docs/rag-runtime.md#문서-변경-응답과-검색-반영)을 따른다. 이 변경의 코드 게시와 운영 배포는 별개다.
+
 RAG 모드의 자정 초기화는 사전 점검 후 indexer를 멈추고 문서 DB를 백업한 다음 기준 문서와 벡터 묶음을 함께 복원한다. 준비 상태를 확인한 뒤 worker를 다시 시작한다. 벡터 연결만 깨졌다면 다음 mapping-only 복구 명령을 사용한다. 이 명령은 기준 문서와 현재 문서 DB를 재초기화하지 않는다.
 
 ```bash

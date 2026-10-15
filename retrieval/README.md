@@ -31,3 +31,5 @@ RAG의 검색 모델 선정과 실험 근거를 관리한다. 서버 검색 코�
 | [A/B/C 문맥 비교](reports/2026-10-15-context-limits/README.md) | 검색48문항 및 실제 답변12문항, 제한 중단과 키 교체 후 완료 |
 
 과거 비교 실행기는 `retrieval/experiments/`에 보관한다. 서버는 해당 실험 코드를 import하지 않는다.
+
+[문서 변경 즉시 반영 검증](reports/2026-10-16-document-sync/README.md)은 게시 응답의 검색 준비 보장, 실제 Tiny와 격리 DB의 수명주기·부분 실패 복구를 다룬다. 검색 품질 재평가나 운영 배포 검증과 구분한다.

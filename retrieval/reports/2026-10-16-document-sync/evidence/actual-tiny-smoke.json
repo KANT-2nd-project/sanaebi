@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-15T15:54:24.265216+00:00",
+  "started_at_kst": "2026-10-16T00:54:24.265298+09:00",
+  "git_head": "c7f428a972e50f3d4ff95784d26583db69888ad5",
+  "git_worktree_clean": false,
+  "runner_sha256": "5d3f5b624d72e45764b233b74adfc0092bb8251658bae1d3fcdcfe3c9d8a1303",
+  "implementation_files_sha256": {
+    "app/fastapi_main.py": "61369da88e1b5844f7af04834218547d4eeb32f124228ce1179a0bb81b0d45c9",
+    "app/documents/router.py": "607e7bbde900a55c091521c3cd08724553e08b2fed50d7942d32b05467e78b76",
+    "app/documents/service.py": "eac865bb095460578c83be8effe28bc5c703bc02d9e289674d1100bb04b215b9",
+    "app/retrieval/sync.py": "c3fe9f10679d6e069008ce92ca07de4e79f4d9bac17535366ab670e7b8f3ec9b",
+    "scripts/index_documents.py": "d0ddd86b00110734379015c340d66312c7e0bb3c34da8298211981dbf63e9d2b"
+  },
+  "python": "3.12.14",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "cpu_affinity_count": 24,
+  "embedding": {
+    "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+    "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529",
+    "local_files_only": true,
+    "hub_offline": true
+  },
+  "source": {
+    "repo_relative_path": "data/company-knowledge/documents.jsonl",
+    "sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4"
+  },
+  "isolation": {
+    "document_database": "temporary SQLite; removed after the run",
+    "retrieval_database": "temporary SQLite; removed after the run",
+    "baseline_bundle": "temporary SQLite; removed after the run",
+    "real_generation_calls": 0
+  },
+  "phases": {
+    "baseline_bundle_preparation": {
+      "warmup_ms": 2990.76,
+      "elapsed_ms": 41165.0,
+      "document_encode_calls": 38,
+      "document_vectors_encoded": 298,
+      "bundle_created": true
+    },
+    "create_draft": {
+      "http_status": 201,
+      "elapsed_ms": 8.15,
+      "document_encode_calls": 0
+    },
+    "publish_failure": {
+      "http_status": 503,
+      "error_code": "retrieval_sync_failed",
+      "elapsed_ms": 2.92,
+      "document_encode_calls": 1,
+      "document_vectors_attempted": 1,
+      "published_revision_preserved": true,
+      "public_error_details": {
+        "document_saved": true,
+        "retryable": true
+      }
+    },
+    "publish_retry": {
+      "http_status": 200,
+      "elapsed_ms": 31.63,
+      "document_encode_calls": 1,
+      "document_vectors_attempted": 1,
+      "revision_count": 1,
+      "same_published_revision": true,
+      "embedding_completed_before_success_response": true
+    },
+    "search_after_publish": {
+      "http_status": 200,
+      "elapsed_ms": 16.19,
+      "expected_code_found": true,
+      "selected_evidence_count": 1,
+      "top_score": 0.7883021831512451,
+      "fake_generator_calls": 1
+    },
+    "edit_draft": {
+      "http_status": 200,
+      "elapsed_ms": 1.43,
+      "document_encode_calls": 0
+    },
+    "republish_update": {
+      "http_status": 200,
+      "elapsed_ms": 28.27,
+      "document_encode_calls": 1,
+      "embedding_completed_before_success_response": true,
+      "immediate_search_elapsed_ms": 17.09,
+      "new_code_found": true,
+      "old_code_excluded": true,
+      "selected_evidence_count": 1
+    },
+    "withdraw": {
+      "http_status": 200,
+      "elapsed_ms": 1.91,
+      "document_encode_calls": 0,
+      "immediate_ask_elapsed_ms": 1.26,
+      "withdrawn_code_excluded": true,
+      "fake_generator_calls": 2
+    },
+    "clear": {
+      "http_status": 200,
+      "elapsed_ms": 2.28,
+      "document_encode_calls": 0,
+      "search_status": {
+        "ready": true,
+        "expected": 0,
+        "ready_count": 0,
+        "missing": 0
+      }
+    },
+    "baseline_restore": {
+      "http_status": 200,
+      "elapsed_ms": 78.88,
+      "document_encode_calls": 0,
+      "document_vectors_attempted": 0,
+      "search_status": {
+        "ready": true,
+        "expected": 71,
+        "ready_count": 71,
+        "missing": 0
+      },
+      "immediate_search_elapsed_ms": 49.51,
+      "query": "유급 단기 병가의 연간 최대 일수는 며칠인가요?",
+      "selected_titles": [
+        "병가 신청과 복귀 안내",
+        "근태·휴가 변경과 취소 안내"
+      ],
+      "selected_evidence_count": 3,
+      "top_score": 0.5491931438446045,
+      "fake_generator_calls": 3
+    }
+  },
+  "checks": {
+    "draft_saves_skip_document_embedding": true,
+    "failed_publish_preserves_document_and_returns_503": true,
+    "same_key_retry_recovers_without_duplicate_revision": true,
+    "publish_success_is_searchable_immediately": true,
+    "republish_replaces_stale_search_evidence": true,
+    "withdraw_excludes_old_vectors": true,
+    "clear_leaves_empty_search_ready": true,
+    "baseline_restore_uses_zero_document_embeddings": true,
+    "baseline_is_searchable_immediately": true,
+    "fake_generator_only": true
+  },
+  "final": {
+    "temporary_workspace_removed": true,
+    "production_access": false,
+    "real_llm_calls": 0
+  },
+  "finished_at": "2026-10-15T15:55:09.511675+00:00",
+  "finished_at_kst": "2026-10-16T00:55:09.511685+09:00"
+}

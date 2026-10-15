@@ -88,6 +88,8 @@ app/
 
 앱별 `GenerationAnswerer`는 첫 유효 문서 답변 요청에서 OpenAI 클라이언트를 생성한다. 초기화만 잠그고 원격 요청 전체는 직렬화하지 않는다. 각 요청은 별도 프롬프트를 구성하고 앱 종료 시 소유한 동기·비동기 클라이언트를 닫는다. 자동 재시도·fallback·temperature 전달은 없다. 문서 렌더러는 원본 knowledge_id·개정·제목·본문·순서를 보존한다. 서버는 `archive.answering_v1`과 `generation_evaluation`을 import하지 않는다. 과거 답변기·평가기의 새 실행 경로는 [보관 안내](../archive/answering_v1/README.md)를 따른다.
 
+문서 게시 상태를 바꾸는 요청은 문서 조립 계층에서 검색 동기화를 수행한다. 라우터·저장소에 임베딩 계산을 넣지 않는다. 검색 반영 완료 후 성공 응답하며 부분 실패·멱등 재시도와 잠금 계약은 [문서 관리](document-management.md#rag-색인과-자정-초기화)를 따른다.
+
 ## 오류와 호환
 
 - 입력 오류: 422, 기존 AnswerResponse 형식.
