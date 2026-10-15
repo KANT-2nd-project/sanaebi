@@ -1,0 +1,54 @@
+{
+  "base": "94bafaa47444ea87a50b54994288850c64ea33b6",
+  "planned_questions": 6,
+  "completed_question_blocks": 5,
+  "planned_calls": 24,
+  "actual_calls": 20,
+  "completed_json_responses": 19,
+  "parse_errors": 1,
+  "unexecuted_questions": [
+    "N6"
+  ],
+  "unexecuted_slots": 4,
+  "stop_reason": "First JSON contract failure at N5:A:2; stopped without retry.",
+  "automatic_retries": 0,
+  "conservative_usd": 0.0492315,
+  "arms": {
+    "A": {
+      "calls": 10,
+      "grades": {
+        "pass": 7,
+        "partial": 2,
+        "fail": 1
+      },
+      "stable_cases": 3,
+      "semantic_stable_cases": 4,
+      "denominator": 5,
+      "median_generation_seconds": 6.657152090499949,
+      "median_conservative_usd": 0.002120875,
+      "total_conservative_usd": 0.024475,
+      "input_tokens": 72142,
+      "output_tokens": 8586
+    },
+    "C": {
+      "calls": 10,
+      "grades": {
+        "pass": 8,
+        "partial": 2,
+        "fail": 0
+      },
+      "stable_cases": 4,
+      "semantic_stable_cases": 4,
+      "denominator": 5,
+      "median_generation_seconds": 4.990712338000094,
+      "median_conservative_usd": 0.002172375,
+      "total_conservative_usd": 0.0247565,
+      "input_tokens": 74834,
+      "output_tokens": 8064
+    }
+  },
+  "followup_candidate": false,
+  "decision": "Incomplete experiment; no adoption or superiority claim. C edge on completed subset comes solely from one A JSON failure. Semantic stability tied.",
+  "default_changed": false,
+  "scope": "Same public documents; six newly authored other-topic questions; no retraining or new document DB content; not certified unseen global holdout."
+}

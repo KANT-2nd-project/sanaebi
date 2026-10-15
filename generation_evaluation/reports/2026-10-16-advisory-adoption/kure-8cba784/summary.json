@@ -1,0 +1,70 @@
+{
+  "base": "8cba784585accbb30cc3c377a3456cd0cc9c8cfc",
+  "profile": "examples_answer_scope_v5",
+  "search_spec": {
+    "chunker_version": "markdown-source-spans-v1",
+    "dimension": 1024,
+    "dtype": "float32",
+    "max_document_tokens": 8192,
+    "max_query_tokens": 512,
+    "model_id": "nlpai-lab/KURE-v1",
+    "model_revision": "8b418a58414668e75532ed045c22d9ca018ae2b2",
+    "normalization": "l2",
+    "passage_prefix": "",
+    "pooling": "cls",
+    "query_prefix": "",
+    "target_body_tokens": 360,
+    "overlap_tokens": 60,
+    "splitter": {
+      "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
+      "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+      "directory": "splitter"
+    }
+  },
+  "questions": 6,
+  "generated_questions": 5,
+  "generation_calls": 20,
+  "skipped_slots": 4,
+  "generated_statuses": {
+    "completed": 20
+  },
+  "automatic_retries": 0,
+  "conservative_usd": 0.043483,
+  "arms": {
+    "A": {
+      "calls": 10,
+      "pass": 9,
+      "partial": 1,
+      "fail": 0,
+      "stable_cases": 4,
+      "median_generation_seconds": 7.10301414699984,
+      "total_conservative_usd": 0.0218395,
+      "median_conservative_usd": 0.002219875,
+      "input_tokens": 65890,
+      "output_tokens": 7156
+    },
+    "C": {
+      "calls": 10,
+      "pass": 8,
+      "partial": 1,
+      "fail": 1,
+      "stable_cases": 3,
+      "median_generation_seconds": 5.6539930444998845,
+      "total_conservative_usd": 0.0216435,
+      "median_conservative_usd": 0.00214,
+      "input_tokens": 68568,
+      "output_tokens": 6002
+    }
+  },
+  "followup_candidate": false,
+  "default_changed": false,
+  "decision": "No incremental benefit: stable C3/5 vs A4/5; new omission on stable A case R6.",
+  "date_error_sensitivity": "Even ignoring the current-date error, R2:C:1 omits team response deadline; stable counts unchanged.",
+  "limitations": [
+    "Two repeats of five generated questions; previously observed cases",
+    "No null-label control: combined guidance+label effect only",
+    "AI review non-independent/nonblind",
+    "Generation-call latency only, not end-to-end request latency",
+    "No default adoption, service deployment or production database access"
+  ]
+}
