@@ -42,7 +42,7 @@ COMPLETED는 정확성·근거 충분성·한국어 준수·모델 품질의 합
 
 ## 독립 실행
 
-저장소 루트에서 실행한다. [models.json](models.json)에는 GPT-6 Luna 하나만 두며, [experiments.json](experiments.json)의 기본 프리셋은 company-final-v1이다. 두 CLI가 같은 설정 로더를 사용한다. 기본값은 examples_answer_scope_v1 / single / xhigh / 4096토큰 / 180초 / prompt_json이며 temperature는 전달하지 않는다. --model과 --experiment는 생략할 수 있고, 없는 별칭은 오류다.
+저장소 루트에서 실행한다. [models.json](models.json)에는 GPT-6 Luna 하나만 두며, [experiments.json](experiments.json)의 기본 프리셋은 company-final-v1이다. 두 CLI가 같은 설정 로더를 사용한다. 기본값은 examples_answer_scope_v1 / single / xhigh / 16384토큰 / 180초 / prompt_json이며 temperature는 전달하지 않는다. --model과 --experiment는 생략할 수 있고, 없는 별칭은 오류다.
 
 먼저 게시 문서를 내보낸다. 생성 모듈은 서버 DB를 직접 읽지 않고 이 snapshot만 사용한다. 기존 출력 파일은 덮어쓰지 않으므로 문서 갱신 시 기존 snapshot을 보존하고 새로 내보낸다.
 

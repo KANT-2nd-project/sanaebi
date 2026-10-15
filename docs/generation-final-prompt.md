@@ -8,7 +8,7 @@
 | 프로필 | `examples_answer_scope_v1` |
 | 전략 | `single` |
 | 추론 | `xhigh` |
-| 최대 출력 | 4096토큰 |
+| 최대 출력 | 16384토큰 |
 | 호출 timeout | 180초 |
 | 출력 모드 | `prompt_json` |
 | temperature | 전달하지 않음 |
@@ -30,3 +30,7 @@
 ## 후속: 두 규칙만 추가한 v3 검증
 
 2026-10-15 추가 요청에 따라 v1에 출처 표시·불필요한 추측 금지 두 규칙만 추가한 `examples_answer_scope_v3`를 검증했다. 초기24회는 모두 정상 JSON이고 ID 비노출 목표를 확인했지만 신고 필수 입력 정보 누락이 남아 확대 평가·기본값 전환을 보류했다. **현재 기본값은 계속 v1이다.** 형식 실패가 없어 strict 후속 조건은 충족되지 않았고 API·브라우저 검증·공개 배포는 실행하지 않았다. [v3 결과·판정과 한계](../generation_evaluation/reports/2026-10-15-answer-grounding-v3/README.md)를 따른다. v2·v3는 명시적으로 선택하는 실험 프로필이며 현재 서비스 동작 보장으로 해석하지 않는다.
+
+## 분류 종단 비교 뒤 출력 예산 확대
+
+2026-10-15 사용자 요청으로 이 기능 브랜치의 공통 모델 설정 최대 출력을4096에서16384토큰으로 늘린다. 채택한 프롬프트 본문·xhigh·180초 timeout·prompt_json·temperature 생략은 유지한다. [40문항 비교](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md)의4096결과는 보존하고, 잘림이 있었던 혼합 요청만 별도 재검증한다. 실제 운영 서버 반영·main 병합과는 구분한다. [공식 Luna 사양](https://developers.openai.com/api/docs/models/gpt-6-luna)은 최대 출력128000토큰이며, 한도 증가는 답변 길이를 강요하거나 항상 그만큼 과금된다는 뜻이 아니다. 후속 검증 결과는 비교 보고서에 연결한다.
