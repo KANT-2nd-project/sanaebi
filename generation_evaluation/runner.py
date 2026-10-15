@@ -5,6 +5,7 @@ from collections.abc import Callable
 from time import perf_counter
 
 from generation.config import GenerationConfig
+from generation.profiles import DEFAULT_PROMPT_PROFILE
 from generation.service import generate_from_documents
 from generation.types import GenerationPrompt, ModelResponse
 from generation_evaluation.types import GenerationRun
@@ -16,6 +17,8 @@ def run_case(
     question: str,
     documents: list[str],
     model_call: Callable[[GenerationPrompt], ModelResponse],
+    *,
+    prompt_profile: str = DEFAULT_PROMPT_PROFILE,
 ) -> GenerationRun:
     # Input identity is prepared before the generation timing interval.
     documents_sha256 = hashlib.sha256(
@@ -46,6 +49,7 @@ def run_case(
             question=question,
             documents=documents,
             model_call=recorded_model_call,
+            prompt_profile=prompt_profile,
         )
     except Exception as exc:  # noqa: BLE001
         error_type = type(exc).__name__
@@ -60,4 +64,5 @@ def run_case(
         documents_sha256=documents_sha256,
         document_count=len(documents),
         prompt_sha256=prompt_sha256,
+        prompt_profile=prompt_profile,
     )

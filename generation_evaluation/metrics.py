@@ -77,12 +77,13 @@ def group_by_config(
 def summarize_runs(
     runs: list[GenerationRun],
 ) -> list[GenerationSummary]:
-    groups = group_by_config(runs)
+    groups = _group_by_profile(runs)
     summaries = []
 
-    for config, config_runs in groups.items():
+    for (config, profile), config_runs in groups.items():
         summary = GenerationSummary(
             config=config,
+            prompt_profile=profile,
             counts=count_outcomes(config_runs),
             completion_rate=completion_rate(config_runs),
             mean_attempt_seconds=mean_attempt_seconds(config_runs),
@@ -117,7 +118,7 @@ def summarize_comparable_runs(runs: list[GenerationRun]) -> list[GenerationSumma
             prompts_by_case[run.case_id] = run.prompt_sha256
 
     expected_counts = None
-    for config_runs in group_by_config(runs).values():
+    for config_runs in _group_by_profile(runs).values():
         counts = Counter(run.case_id for run in config_runs)
         if expected_counts is None:
             expected_counts = counts
@@ -125,3 +126,12 @@ def summarize_comparable_runs(runs: list[GenerationRun]) -> list[GenerationSumma
             raise ValueError("설정별 문항 목록 또는 문항별 시도 수가 다릅니다.")
 
     return summarize_runs(runs)
+
+
+def _group_by_profile(
+    runs: list[GenerationRun],
+) -> dict[tuple[GenerationConfig, str | None], list[GenerationRun]]:
+    groups = {}
+    for run in runs:
+        groups.setdefault((run.config, run.prompt_profile), []).append(run)
+    return groups

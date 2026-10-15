@@ -4,7 +4,7 @@ from io import StringIO
 from unittest.mock import Mock, patch
 
 from generation.config import GenerationConfig, GenerationProvider
-from generation.prompts import build_prompt
+from generation.profiles import DEFAULT_PROMPT_PROFILE, build_profile_prompt
 from generation.types import GenerationResult, GenerationStatus, ModelResponse
 from generation_evaluation.runner import run_case
 
@@ -28,7 +28,7 @@ class GenerationRunnerTests(unittest.TestCase):
         model_call = Mock()
         with (
             patch(
-                "generation.service.build_prompt",
+                "generation.service.build_profile_prompt",
                 side_effect=ValueError("invalid input"),
             ),
             patch("generation_evaluation.runner.perf_counter", side_effect=(1.0, 1.25)),
@@ -48,7 +48,9 @@ class GenerationRunnerTests(unittest.TestCase):
         self.config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 30.0)
         self.question = "예약은 어디에서 하나요?"
         self.documents = ["예약은 사내 포털에서 합니다."]
-        self.prompt = build_prompt(self.question, self.documents)
+        self.prompt = build_profile_prompt(
+            self.question, self.documents, DEFAULT_PROMPT_PROFILE
+        )
 
     def test_records_case_config_response_and_elapsed_time(self):
         events = []
@@ -65,15 +67,15 @@ class GenerationRunnerTests(unittest.TestCase):
             self.assertEqual(prompt, self.prompt)
             return ModelResponse(raw)
 
-        def record_build(question, documents):
+        def record_build(question, documents, profile):
             events.append("prompt")
             self.assertEqual(question, self.question)
             self.assertIs(documents, self.documents)
-            return build_prompt(question, documents)
+            return build_profile_prompt(question, documents, profile)
 
         with (
             patch("generation_evaluation.runner.perf_counter", side_effect=clock),
-            patch("generation.service.build_prompt", side_effect=record_build),
+            patch("generation.service.build_profile_prompt", side_effect=record_build),
         ):
             run = run_case(
                 "case-001", self.config, self.question, self.documents, model_call

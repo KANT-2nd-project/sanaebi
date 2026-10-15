@@ -69,6 +69,9 @@ _JSON_EXAMPLES = "\n".join(
 _ANSWER_SCOPE_V1 = "질문에 답할 수 있는 범위를 구분하세요. 질문이 여러 항목을 묻는다면 확인되는 항목에는 답하고, 확인되지 않는 항목만 구체적으로 알리세요. 판단·가능 여부를 묻는 질문에는 결론을 바꾸는 문서상 조건과 예외를, 절차를 묻는 질문에는 해당 업무를 수행하는 데 문서가 요구하는 주체와 단계를 포함하세요. 그 업무에 관한 모든 배경 정보를 나열할 필요는 없습니다. 문서에 정보가 없다는 이유로 실제 제도나 권한이 존재하지 않는다고 단정하지 마세요. 최종 출력은 기존 JSON 형식을 따르세요."
 
 
+DEFAULT_PROMPT_PROFILE = "examples_answer_scope_v1"
+
+
 _PROFILE_SUFFIXES = {
     "examples_answer_scope_v1": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_ANSWER_SCOPE_V1}",
     "examples_coverage": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_COVERAGE_CHECK}",

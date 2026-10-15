@@ -15,8 +15,15 @@ class GenerationRun:
     documents_sha256: str | None = None
     document_count: int | None = None
     prompt_sha256: str | None = None
+    prompt_profile: str | None = None
 
     def __post_init__(self) -> None:
+        if self.prompt_profile is not None and (
+            not isinstance(self.prompt_profile, str) or not self.prompt_profile.strip()
+        ):
+            raise ValueError(
+                "prompt_profile은 비어 있지 않은 문자열 또는 None이어야 합니다."
+            )
         for field in ("documents_sha256", "prompt_sha256"):
             value = getattr(self, field)
             if value is not None:
@@ -52,3 +59,4 @@ class GenerationSummary:
     completion_rate: float | None
     mean_attempt_seconds: float | None
     mean_completed_seconds: float | None
+    prompt_profile: str | None = None

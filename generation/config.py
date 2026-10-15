@@ -91,3 +91,31 @@ class GenerationConfig:
             and self.max_output_tokens >= self.context_window
         ):
             raise ValueError("출력 토큰 한도는 문맥 크기보다 작아야 합니다.")
+
+
+def config_from_dict(data: dict[str, object]) -> GenerationConfig:
+    provider_value = data.get("provider")
+    model_name = data.get("model_name")
+    timeout_seconds = data.get("timeout_seconds")
+
+    if not isinstance(provider_value, str):
+        raise TypeError("provider는 문자열이어야 합니다.")
+
+    if not isinstance(model_name, str):
+        raise TypeError("model_name은 문자열이어야 합니다.")
+
+    if isinstance(timeout_seconds, bool) or not isinstance(
+        timeout_seconds, (int, float)
+    ):
+        raise TypeError("timeout_seconds는 숫자여야 합니다.")
+
+    return GenerationConfig(
+        provider=GenerationProvider(provider_value),
+        model_name=model_name,
+        timeout_seconds=timeout_seconds,
+        context_window=data.get("context_window"),
+        max_output_tokens=data.get("max_output_tokens"),
+        reasoning_effort=data.get("reasoning_effort"),
+        temperature=data.get("temperature"),
+        output_mode=GenerationOutputMode(data.get("output_mode", "prompt_json")),
+    )

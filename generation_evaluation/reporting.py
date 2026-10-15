@@ -1,13 +1,18 @@
 import json
 from pathlib import Path
 
-from generation.config import (
-    GenerationConfig,
-    GenerationOutputMode,
-    GenerationProvider,
-)
+from generation.config import config_from_dict
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.types import GenerationRun
+
+__all__ = [
+    "config_from_dict",
+    "read_runs_jsonl",
+    "result_from_dict",
+    "run_from_dict",
+    "run_to_dict",
+    "save_runs_jsonl",
+]
 
 
 def run_to_dict(run: GenerationRun) -> dict[str, object]:
@@ -42,6 +47,7 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
         "documents_sha256": run.documents_sha256,
         "document_count": run.document_count,
         "prompt_sha256": run.prompt_sha256,
+        "prompt_profile": run.prompt_profile,
     }
 
 
@@ -79,34 +85,6 @@ def read_runs_jsonl(path: Path) -> list[dict[str, object]]:
             records.append(row)
 
     return records
-
-
-def config_from_dict(data: dict[str, object]) -> GenerationConfig:
-    provider_value = data.get("provider")
-    model_name = data.get("model_name")
-    timeout_seconds = data.get("timeout_seconds")
-
-    if not isinstance(provider_value, str):
-        raise TypeError("provider는 문자열이어야 합니다.")
-
-    if not isinstance(model_name, str):
-        raise TypeError("model_name은 문자열이어야 합니다.")
-
-    if isinstance(timeout_seconds, bool) or not isinstance(
-        timeout_seconds, (int, float)
-    ):
-        raise TypeError("timeout_seconds는 숫자여야 합니다.")
-
-    return GenerationConfig(
-        provider=GenerationProvider(provider_value),
-        model_name=model_name,
-        timeout_seconds=timeout_seconds,
-        context_window=data.get("context_window"),
-        max_output_tokens=data.get("max_output_tokens"),
-        reasoning_effort=data.get("reasoning_effort"),
-        temperature=data.get("temperature"),
-        output_mode=GenerationOutputMode(data.get("output_mode", "prompt_json")),
-    )
 
 
 def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
@@ -198,4 +176,5 @@ def run_from_dict(data: dict[str, object]) -> GenerationRun:
         documents_sha256=data.get("documents_sha256"),
         document_count=data.get("document_count"),
         prompt_sha256=data.get("prompt_sha256"),
+        prompt_profile=data.get("prompt_profile"),
     )

@@ -74,7 +74,9 @@ class GenerationCliTests(unittest.TestCase):
         records = []
         with patch("generation.__main__.build_model_call", return_value=model_call):
             for prompt in prompts:
-                with patch("generation.service.build_prompt", return_value=prompt):
+                with patch(
+                    "generation.service.build_profile_prompt", return_value=prompt
+                ):
                     code, output = self.run_cli(self.argv(path))
                 self.assertEqual(code, 1)
                 records.append(json.loads(output))
@@ -340,7 +342,7 @@ class GenerationCliTests(unittest.TestCase):
             with (
                 patch("sys.argv", argv),
                 patch("generation.__main__.build_model_call") as model_factory,
-                self.assertRaises(ValueError),
+                self.assertRaises(SystemExit),
             ):
                 main()
 

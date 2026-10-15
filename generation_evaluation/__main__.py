@@ -9,16 +9,17 @@ import sys
 from pathlib import Path
 
 from generation.documents import load_documents
+from generation.presets import DEFAULT_EXPERIMENT, DEFAULT_MODEL, load_preset
 from generation.providers import build_model_call
 from generation.types import GenerationStatus
-from generation_evaluation.reporting import config_from_dict, run_to_dict
+from generation_evaluation.reporting import run_to_dict
 from generation_evaluation.runner import run_case
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="SEARCH_KNOWLEDGE 질문 배치 생성")
-    parser.add_argument("--experiment", required=True)
-    parser.add_argument("--model", required=True)
+    parser.add_argument("--experiment", default=DEFAULT_EXPERIMENT)
+    parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -26,18 +27,11 @@ def main() -> int:
         parser.error("--limit은 양의 정수여야 합니다.")
 
     root = Path(__file__).resolve().parent.parent
-    generation_dir = root / "generation"
-    models = json.loads((generation_dir / "models.json").read_text(encoding="utf-8"))
-    experiments = json.loads(
-        (generation_dir / "experiments.json").read_text(encoding="utf-8")
-    )
-    if args.experiment not in experiments:
-        parser.error(f"등록되지 않은 실험입니다: {args.experiment}")
-    experiment = experiments[args.experiment]
-    if args.model not in models or args.model not in experiment["models"]:
-        parser.error(f"실험에 등록되지 않은 모델입니다: {args.model}")
-    settings = models[args.model]
-    config = config_from_dict(settings)
+    try:
+        preset = load_preset(root, args.experiment, args.model)
+    except ValueError as exc:
+        parser.error(str(exc))
+    config = preset.config
 
     dataset_bytes = (root / "data/dataset.csv").read_bytes()
     dataset_sha256 = hashlib.sha256(dataset_bytes).hexdigest()
@@ -64,7 +58,7 @@ def main() -> int:
     if args.limit is not None:
         cases = cases[: args.limit]
 
-    documents = load_documents(root / experiment["documents"])
+    documents = load_documents(preset.documents_path)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     completed = 0
     # Reserve the destination before client creation or inference. Never append to
@@ -78,6 +72,7 @@ def main() -> int:
                 question=row["question"],
                 documents=documents,
                 model_call=model_call,
+                prompt_profile=preset.prompt_profile,
             )
             record = run_to_dict(run)
             record.update(

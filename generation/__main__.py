@@ -5,16 +5,17 @@ import json
 from pathlib import Path
 
 from generation.documents import load_documents
+from generation.presets import DEFAULT_EXPERIMENT, DEFAULT_MODEL, load_preset
 from generation.providers import build_model_call
 from generation.types import GenerationStatus
-from generation_evaluation.reporting import config_from_dict, run_to_dict
+from generation_evaluation.reporting import run_to_dict
 from generation_evaluation.runner import run_case
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="사내비 문서 기반 답변 생성")
-    parser.add_argument("--experiment", required=True)
-    parser.add_argument("--model", required=True)  # 실제 모델명이 아닌 별칭
+    parser.add_argument("--experiment", default=DEFAULT_EXPERIMENT)
+    parser.add_argument("--model", default=DEFAULT_MODEL)  # 실제 모델명이 아닌 별칭
     parser.add_argument("--question", required=True)
     args = parser.parse_args()
 
@@ -25,25 +26,12 @@ def main() -> int:
     generation_dir = Path(__file__).resolve().parent
     project_root = generation_dir.parent
 
-    models = json.loads((generation_dir / "models.json").read_text(encoding="utf-8"))
-    experiments = json.loads(
-        (generation_dir / "experiments.json").read_text(encoding="utf-8")
-    )
-
-    if args.experiment not in experiments:
-        parser.error(f"등록되지 않은 실험입니다: {args.experiment}")
-    experiment = experiments[args.experiment]
-
-    if args.model not in models:
-        parser.error(f"등록되지 않은 모델입니다: {args.model}")
-
-    if args.model not in experiment["models"]:
-        parser.error(f"{args.experiment} 실험에 등록되지 않은 모델입니다: {args.model}")
-    model_settings = models[args.model]
-
-    config = config_from_dict(model_settings)
-
-    documents_path = project_root / experiment["documents"]
+    try:
+        preset = load_preset(project_root, args.experiment, args.model)
+    except ValueError as exc:
+        parser.error(str(exc))
+    config = preset.config
+    documents_path = preset.documents_path
     documents = load_documents(documents_path)
     model_call = build_model_call(config)
     run = run_case(
@@ -52,6 +40,7 @@ def main() -> int:
         question=question,
         documents=documents,
         model_call=model_call,
+        prompt_profile=preset.prompt_profile,
     )
     record = run_to_dict(run)
     record["experiment"] = args.experiment

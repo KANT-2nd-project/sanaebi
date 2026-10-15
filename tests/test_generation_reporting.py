@@ -501,6 +501,7 @@ class GenerationReportingTests(unittest.TestCase):
                 "documents_sha256": None,
                 "document_count": None,
                 "prompt_sha256": None,
+                "prompt_profile": None,
             },
         )
         self.assertEqual(json.loads(json.dumps(data, ensure_ascii=False)), data)
