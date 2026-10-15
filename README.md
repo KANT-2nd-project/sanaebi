@@ -72,6 +72,8 @@ npm run dev
 
 [전체 문서](docs/README.md)
 
+전체·영역별 회귀 명령은 [테스트 안내](tests/README.md)를 따른다.
+
 ## 설치 범위와 선택 provider
 
 서버·평가기는 소스 checkout에서 실행한다. 독립 wheel 배포는 지원 범위가 아니다. 기본 운영 의존성은 `uv sync --locked --no-dev`로 설치하며 분류 추론의 torch·transformers를 포함한다. Ollama와 과거 답변기 사용 시 `uv sync --locked --extra ollama`로 선택 의존성을 설치한다. 전체 테스트에도 이 extra가 필요하다. `sanaebi`·`sanaebi-train`은 기존 보관 분류 CLI를 유지한다.

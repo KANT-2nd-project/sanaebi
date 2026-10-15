@@ -70,7 +70,7 @@ GenerationResult 생성 시 필드 타입과 상태별 원문·답변 조합을 
 저장소 루트에서 실행한다. 네트워크·실제 모델 호출 없이 입력 전달, 파싱 경계, 시간 초과와 예외 전달을 확인한다.
 
 ```bash
-uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -v
+uv run --locked python -m unittest discover -s tests -t . -p 'test_generation_*.py' -v
 ```
 
 테스트는 사용자 요청에 따라 AI가 작성·실행한다. 공통 생성 진입점 등은 사용자가 작성했고, 위임받은 구현·테스트는 AI가 수행했으며, 테스트 통과를 독립 구현 숙련도나 실모델 평가로 해석하지 않는다.
