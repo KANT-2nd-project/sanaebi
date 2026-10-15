@@ -1,0 +1,63 @@
+{
+  "checked_on": "2026-10-15",
+  "published_report_commit": "755cd9be678ffff8de0517acf2c9b8da3422b30d",
+  "pages": [
+    {
+      "id": "3f905a3cdadc81a19d1bfa4ea41c9e98",
+      "title": "분류 직접 구현·7종 비교 실험과 아카이브 게시",
+      "url": "https://www.notion.so/3f905a3cdadc81a19d1bfa4ea41c9e98",
+      "checks": {
+        "section": true,
+        "report_link": true,
+        "ai_scope": true,
+        "default_preserved": true
+      }
+    },
+    {
+      "id": "3f805a3cdadc81d7b909fc71ed78381b",
+      "title": "🧭 서비스 처리 기준",
+      "url": "https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b",
+      "checks": {
+        "section": true,
+        "report_link": true,
+        "ai_scope": true,
+        "default_preserved": true
+      }
+    },
+    {
+      "id": "3f805a3cdadc813485e4d94773974acc",
+      "title": "🏷️ 요청 처리 분류·라벨링 기준 v1.0",
+      "url": "https://www.notion.so/3f805a3cdadc813485e4d94773974acc",
+      "checks": {
+        "section": true,
+        "report_link": true,
+        "ai_scope": true,
+        "default_preserved": true
+      }
+    },
+    {
+      "id": "3f805a3cdadc81e1a70bfe82c89cebe7",
+      "title": "📘 프로젝트 문서 안내",
+      "url": "https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7",
+      "checks": {
+        "section": true,
+        "report_link": true,
+        "ai_scope": true,
+        "default_preserved": true
+      }
+    },
+    {
+      "id": "3f905a3cdadc8146a9bbedb690ab5ecf",
+      "title": "생성 모듈 구현 학습 — 독립 CLI·전체 문서 평가·TPS·답변 근거",
+      "url": "https://www.notion.so/3f905a3cdadc8146a9bbedb690ab5ecf",
+      "checks": {
+        "section": true,
+        "report_link": true,
+        "ai_scope": true,
+        "default_preserved": true
+      }
+    }
+  ],
+  "scope": "AI implementation, execution and review; no human approval claim; no main merge or production change"
+}
+
