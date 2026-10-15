@@ -89,7 +89,32 @@ textarea:focus-visible {
 .user-message { margin-left: auto; max-width: 85%; width: fit-content; border-radius: 20px 20px 5px 20px; padding: 12px 18px; background: #e9efeb; white-space: pre-wrap; }
 .assistant-message { padding-top: 16px; line-height: 1.75; }
 .message-author { font-size: 13px; font-weight: 650; color: var(--action); margin-bottom: 8px; }
-.answer-text, .message-error p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.message-error p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.answer-text { min-width: 0; overflow-wrap: anywhere; }
+.answer-text > * + * { margin-top: 12px; }
+.answer-text h3, .answer-text h4, .answer-text h5, .answer-text h6 { font-size: 1.05em; font-weight: 650; line-height: 1.5; margin-top: 20px; }
+.answer-text > :first-child { margin-top: 0; }
+.answer-text strong { font-weight: 700; }
+.answer-text em { font-style: italic; }
+.answer-text ul, .answer-text ol { padding-left: 24px; }
+.answer-text ul { list-style: disc; }
+.answer-text ol { list-style: decimal; }
+.answer-text li + li, .answer-text li > p + p { margin-top: 6px; }
+.answer-text li > ul, .answer-text li > ol { margin-top: 6px; }
+.answer-text blockquote { border-left: 3px solid var(--action); padding-left: 14px; color: var(--muted); }
+.answer-text a { color: var(--action); text-decoration: underline; text-underline-offset: 3px; }
+.answer-text a:hover { color: var(--action-hover); }
+.answer-text code { background: var(--subtle); border-radius: 4px; padding: 2px 4px; font-size: .9em; }
+.answer-text pre { max-width: 100%; overflow-x: auto; white-space: pre; padding: 14px; border-radius: var(--radius-control); background: var(--subtle); }
+.answer-text pre code { padding: 0; background: transparent; white-space: pre; overflow-wrap: normal; }
+.answer-table-scroll { max-width: 100%; overflow-x: auto; }
+.answer-text table { border-collapse: collapse; width: max-content; min-width: 100%; }
+.answer-text th, .answer-text td { border: 1px solid var(--divider); padding: 8px 12px; min-width: 100px; max-width: 320px; }
+.answer-text th { background: var(--subtle); font-weight: 650; }
+.answer-text .task-list-item { list-style: none; }
+.answer-text input[type="checkbox"] { margin-right: 8px; }
+.answer-text :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.answer-text hr { border: 0; border-top: 1px solid var(--divider); }
 .pending-message { color: var(--muted); }
 .message-error h3 { color: var(--danger); font-weight: 600; margin-bottom: 8px; }
 .retry-button { margin-top: 10px; background: var(--subtle); font-size: 14px; }
