@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 from datetime import UTC, datetime
 
 import numpy as np
@@ -13,6 +15,7 @@ from app.retrieval.config import (
     retrieval_spec_id,
     validate_runtime_spec,
 )
+from app.retrieval.expansion import expand_evidence
 from app.retrieval.indexer import RetrievalIndexer
 from app.retrieval.repository import IndexRepository, _validated_matrix
 from app.retrieval.search import SearchPolicy, policy_for_spec, search_config_id
@@ -36,7 +39,11 @@ class RetrievalService:
         spec: RetrievalSpec | None = None,
         search_policy: SearchPolicy | None = None,
         indexer: RetrievalIndexer | None = None,
+        expand_context: bool = False,
     ):
+        if type(expand_context) is not bool:
+            raise TypeError("expand_context must be bool")
+        self.expand_context = expand_context
         self.repository = repository
         self.embedder = embedder
         self.spec = repository.spec if spec is None else spec
@@ -58,6 +65,21 @@ class RetrievalService:
             repository, embedder, baseline_path, spec=self.spec
         )
         self.spec_id = getattr(repository, "spec_id", retrieval_spec_id(self.spec))
+
+    @property
+    def search_config_id(self):
+        original = search_config_id(self.search_policy)
+        if not self.expand_context:
+            return original
+        policy = {
+            "base_policy": original,
+            "context_expansion": "source-context-v1",
+            "max_documents": 3,
+            "whole_document_max_chars": 4000,
+            "max_added_source_chars": 6000,
+            "neighbor_radius": 1,
+        }
+        return hashlib.sha256(json.dumps(policy, sort_keys=True).encode()).hexdigest()
 
     def status(self, snapshot):
         """Readiness inspection remains separate from online retrieval."""
@@ -104,6 +126,8 @@ class RetrievalService:
         candidate_chunk_ids = tuple(chunk.chunk_id for chunk, _ in hits)
         evidence_groups = merge_hits(hits, snapshot)
         selected = render_evidence(evidence_groups)
+        if self.expand_context:
+            selected = expand_evidence(selected, current, snapshot)
         return RetrievedContext(
             snapshot_fingerprint=snapshot.fingerprint,
             spec_id=self.spec_id,
@@ -112,7 +136,7 @@ class RetrievalService:
             selected_count=len(selected),
             observed_at=datetime.now(UTC),
             candidate_chunk_ids=candidate_chunk_ids,
-            search_config_id=search_config_id(self.search_policy),
+            search_config_id=self.search_config_id,
             source_document_count=len(snapshot.documents),
         )
 
@@ -125,7 +149,7 @@ class RetrievalService:
             selected_count=0,
             observed_at=datetime.now(UTC),
             candidate_chunk_ids=(),
-            search_config_id=search_config_id(self.search_policy),
+            search_config_id=self.search_config_id,
             source_document_count=0,
         )
 

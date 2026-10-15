@@ -57,6 +57,8 @@ class Evidence:
     score: float
     rank: int
     expanded_chunk_ids: tuple[str, ...] = ()
+    original_spans: tuple[SourceSpan, ...] = ()
+    expanded_spans: tuple[SourceSpan, ...] = ()
 
 
 @dataclass(frozen=True)
