@@ -1,0 +1,1060 @@
+{
+  "schema_version": 1,
+  "cases": {
+    "RSH-001": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "state_document_limit",
+        "point_to_people_team"
+      ],
+      "required_claims": [
+        "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 인사 > 휴가에서 신청하며, 사용할 날짜와 업무상 필요한 인수인계 항목을 적는다.",
+        "제출 뒤 포털의 접수 상태를 확인해야 하며, 제출만으로 승인이 완료된 것은 아니다. 팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다.",
+        "이 문서는 법령상 부여 일수나 개인별 잔여 일수를 계산하지 않으며, 포털 표시나 적용 기준이 불분명하면 People팀 확인이 필요하다."
+      ],
+      "forbidden_claims": [
+        "법정 연차 부여 일수나 개인별 잔여 일수를 만들어 내거나 계산한다.",
+        "회사 신청 일정을 법령상 권리를 줄이거나 포기시키는 조건으로 표현한다.",
+        "신청 제출만으로 승인되었다고 말한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "사용할 날짜와 업무 공백을 메우기 위해 필요한 인수인계 항목만 적는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "optional_clarification": "개인의 잔여 일수나 특정 날짜의 적용 여부가 궁금한 경우 People팀에 확인하도록 덧붙일 수 있다."
+    },
+    "RSH-002": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "state_document_limit",
+        "point_to_people_team"
+      ],
+      "required_claims": [
+        "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 인사 > 휴가에서 신청하며, 사용할 날짜와 업무상 필요한 인수인계 항목을 적는다.",
+        "제출 뒤 포털의 접수 상태를 확인해야 하며, 제출만으로 승인이 완료된 것은 아니다. 팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다.",
+        "이 문서는 법령상 부여 일수나 개인별 잔여 일수를 계산하지 않으며, 포털 표시나 적용 기준이 불분명하면 People팀 확인이 필요하다."
+      ],
+      "forbidden_claims": [
+        "법정 연차 부여 일수나 개인별 잔여 일수를 만들어 내거나 계산한다.",
+        "회사 신청 일정을 법령상 권리를 줄이거나 포기시키는 조건으로 표현한다.",
+        "신청 제출만으로 승인되었다고 말한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "이 문서는 연차 사용 일정을 신청하고 팀의 업무를 조정하는 방법을 설명한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "사용할 날짜와 업무 공백을 메우기 위해 필요한 인수인계 항목만 적는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "신청을 제출하면 포털 상태가 접수되었는지 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남긴다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "optional_clarification": "개인의 잔여 일수나 특정 날짜의 적용 여부가 궁금한 경우 People팀에 확인하도록 덧붙일 수 있다."
+    },
+    "RSH-003": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "state_recipient_contact_boundary",
+        "point_to_security_incident_channel"
+      ],
+      "required_claims": [
+        "노출 가능성이 있으면 업무시간과 관계없이 즉시 신고하고, #security-incident 또는 이음 포털 보안 신고를 사용한다. 30분은 최초 접수의 회사 운영 목표이지 기다릴 시간이나 법정 외부 통지 기한이 아니다.",
+        "가능한 접근 회수와 추가 전송 중단을 시도하되, 수신자가 복사·다운로드한 사본까지 삭제되었다고 단정하지 않는다.",
+        "수신자·파일·전송 시각·회수 시도 결과를 기록하고, 신고에 비밀번호·인증 코드·고객 원본 자료를 붙이지 않는다.",
+        "개인이 고객·외부 기관에 통지하지 않는다. 문서화된 수신자 대응은 우선 사고 신고·기록·담당자 인계이며, 별도 수신자 안내 문구나 직접 연락 절차는 임의로 만들지 않는다."
+      ],
+      "forbidden_claims": [
+        "30분 또는 15분을 법정 고객 통지 기한이나 신고를 기다려도 되는 시간이라고 한다.",
+        "접근 회수만으로 이미 복사된 외부 사본까지 삭제되었다고 보장한다.",
+        "개인이 고객·외부 기관·언론에 직접 통지하거나 수신자에게 특정 문구를 보내야 한다고 단정한다.",
+        "신고 메시지에 고객 원본 자료, 비밀번호 또는 인증 코드를 첨부하도록 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "Slack의 #security-incident 또는 이음 포털의 보안 신고를 사용하고, 두 경로가 모두 작동하지 않을 때는 입사 시 오프라인으로 받은 비상연락카드를 따른다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-031",
+          "quote": "즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "신고에는 발견 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록한다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "| 발견 | 추가 전송·접속을 중단하고 첫 신고 | 발견 시각, 영향 추정, 이미 한 조치 |"
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "증거가 될 수 있는 메시지, 파일, 로그를 임의로 지우거나 편집하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        }
+      ],
+      "optional_clarification": "추가 전송 여부와 이미 시도한 접근 회수 결과를 확인할 수 있으나, 민감한 원문이나 수신자 개인정보를 대화에 붙여 달라고 해서는 안 된다."
+    },
+    "RSH-004": {
+      "allowed_actions": [
+        "state_company_service_scope"
+      ],
+      "required_claims": [
+        "회사 문서 안내 서비스의 범위와 무관한 요청임을 정중하게 알린다."
+      ],
+      "forbidden_claims": [
+        "김치찌개 레시피나 일반 조리법을 제공한다.",
+        "회사의 실제 요리·식당 지원 정책이 있다고 꾸며낸다."
+      ],
+      "evidence": [],
+      "optional_clarification": null
+    },
+    "RSH-005": {
+      "allowed_actions": [
+        "answer_from_documents"
+      ],
+      "required_claims": [
+        "별도 승인 근무제가 없는 구성원의 기본 근무 시간은 09:00–18:00이다.",
+        "12:00–13:00은 휴게시간이며 기본 실근로는 하루 8시간·주 40시간이다."
+      ],
+      "forbidden_claims": [
+        "휴게시간도 실근로 8시간에 포함된다고 한다.",
+        "별도 승인 근무제에도 동일 시간표가 무조건 적용된다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+        }
+      ],
+      "optional_clarification": "승인된 시차 출퇴근 등 별도 일정이 있는지 확인할 수 있다."
+    },
+    "RSH-006": {
+      "allowed_actions": [
+        "answer_from_documents"
+      ],
+      "required_claims": [
+        "가능하면 근무 시작 전에 팀장에게 예상 도착 시각과 영향을 받는 첫 업무만 알린다.",
+        "안전하게 연락할 수 없는 이동 중에는 먼저 안전을 확보하고 가능한 즉시 알린다.",
+        "상세한 건강·개인 사정을 팀 채널에 공개하지 않는다."
+      ],
+      "forbidden_claims": [
+        "지각 통보만으로 근무시간 변경이나 휴가 승인이 된다고 한다.",
+        "운전 중 즉시 메시지를 보내라고 지시한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-007",
+          "quote": "대중교통 지연, 건강 문제 등으로 예정된 시작 시각에 늦을 수 있음을 알게 되면 가능하면 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다. 이동 중이거나 운전 중이라 안전하게 연락할 수 없으면 먼저 이동 안전을 확보하고 연락 가능한 즉시 알린다. 진단명과 상세한 사정은 팀 채널에 공개하지 않는다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-007": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "state_company_leave_scope"
+      ],
+      "required_claims": [
+        "형제자매 사망은 회사 경조 휴가 표에서 3근무일 대상이다.",
+        "주말·공휴일은 예정된 근무일 계산에서 차감하지 않는다.",
+        "기본 사용 기간은 행사 발생일부터 30일 이내이며 신청 경로는 인사 > 경조 휴가이다."
+      ],
+      "forbidden_claims": [
+        "회사 제공 일수가 법령상 별도 권리까지 대체한다고 한다.",
+        "휴가가 자동 승인된다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 형제자매·조부모의 사망 | 3근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "회사 경조 휴가는 행사 발생일부터 30일 이내에 사용하는 것이 기본 기준이다."
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가능하면 행사일 3영업일 전까지 이음 포털의 **인사 > 경조 휴가**에 사유 유형과 사용할 날짜를 등록한다."
+        }
+      ],
+      "optional_clarification": "가족 관계나 다른 제도 적용이 불분명하면 People팀이 개인 상황과 현행 기준을 확인하도록 안내할 수 있다."
+    },
+    "RSH-008": {
+      "allowed_actions": [
+        "answer_from_documents"
+      ],
+      "required_claims": [
+        "승인된 국내 정기 재택근무는 주 최대 2일이다.",
+        "근무일 전 영업일 15:00까지 인사 > 근무 장소에 등록한다.",
+        "포털에 승인 상태가 기록되기 전에는 확정된 일정으로 보지 않는다."
+      ],
+      "forbidden_claims": [
+        "주 2일이 모든 직원에게 자동 승인된다고 한다.",
+        "포털 신청만 하면 승인 전 재택근무가 확정된다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인된 국내 재택근무는 주 최대 2일이다. 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-010",
+          "quote": "승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-009": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "explain_classification_uncertainty"
+      ],
+      "required_claims": [
+        "이름을 가렸다는 이유만으로 사내 전용으로 자동 분류할 수 없다.",
+        "재식별 가능성·계약 제한·정보 결합 가능성이 불분명하면 기밀로 제한하고 자료 소유자 또는 보안·개인정보 담당자에게 확인한다.",
+        "등급 표시는 접근 권한을 자동으로 변경하지 않으므로 수신자와 역할을 별도로 확인한다."
+      ],
+      "forbidden_claims": [
+        "이름 제거만으로 개인정보나 기밀성이 없어졌다고 한다.",
+        "자료 등급이 접근권한을 자동 변경한다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "고객이나 직원 관련 자료는 이름을 지웠다는 이유만으로 자동으로 사내 전용이 되지 않는다. 재식별 가능성, 계약 제한, 내용의 결합 가능성이 불분명하면 기밀로 제한하고 자료 소유자 또는 보안·개인정보 담당자에게 분류를 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-028",
+          "quote": "등급 표시는 접근 권한을 자동으로 바꾸지 않으므로 공유 화면에서 수신자와 역할을 별도로 확인한다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-010": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "point_to_it_operations_if_lock_fails"
+      ],
+      "required_claims": [
+        "자리를 비우거나 회의실을 나갈 때 운영체제 화면 잠금을 실행한다.",
+        "화면 잠금이 작동하지 않으면 사용을 중지하고 IT운영팀에 기기 점검을 요청한다."
+      ],
+      "forbidden_claims": [
+        "다른 사람에게 잠금 해제를 맡기거나 암호·인증 코드를 알려도 된다고 한다.",
+        "화면 잠금이 데이터 분실·계정 침해를 모두 막는다고 보장한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "책상에서 일어나거나 회의실을 나갈 때 운영체제 화면 잠금을 실행한다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "화면 잠금이 동작하지 않으면 사용을 중지하고 IT운영팀에 기기 점검을 요청한다."
+        },
+        {
+          "knowledge_id": "ieum-024",
+          "quote": "잠금은 분실이나 계정 탈취를 막는 모든 조치를 대신하지 않는다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-011": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "state_recovery_limits"
+      ],
+      "required_claims": [
+        "사용자 휴지통에서 비운 파일은 삭제 후 25일 안에 관리자 복구를 요청할 수 있다고 문서가 안내한다.",
+        "관리 복원은 대개 단일 파일 선택 방식이 아닌 삭제 날짜 범위 복원이며 공유드라이브는 별도 절차다.",
+        "복구 요청 가능성은 회사의 백업·복구 보장이 아니다."
+      ],
+      "forbidden_claims": [
+        "관리자가 단일 파일을 반드시 복원할 수 있다고 보장한다.",
+        "25일 내면 복구가 확정되거나 모든 공유드라이브 자료도 같다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-056",
+          "quote": "Google Workspace 관리자 안내에 따르면 사용자의 휴지통에서 비운 파일은 25일 안에 복구를 요청할 수 있지만, 관리 복원은 삭제 날짜 범위의 자료를 되돌리는 작업이며 보통 단일 파일만 고르는 절차가 아니다. 공유드라이브 자료는 별도 관리자 복구 절차를 따른다."
+        },
+        {
+          "knowledge_id": "ieum-056",
+          "quote": "어느 흐름도 회사 백업·복구 보증이 아니다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-012": {
+      "allowed_actions": [
+        "answer_from_documents"
+      ],
+      "required_claims": [
+        "작동하지 않는 카드는 총무 > 출입 카드 신고로 위치·발생 시각·오류를 알린다.",
+        "강제로 문을 열거나 타인의 카드를 사용하지 않는다."
+      ],
+      "forbidden_claims": [
+        "다른 사람을 따라 들어가거나 카드를 빌려도 된다고 한다.",
+        "신고 후 차단·재발급이 완료되었다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드가 작동하지 않으면 문을 강제로 열거나 다른 사람의 카드로 출입하지 않는다. 포털의 **총무 > 출입 카드 신고**에서 위치·발생 시각과 오류를 알려 총무 담당자의 안내를 받는다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-013": {
+      "allowed_actions": [
+        "answer_from_documents"
+      ],
+      "required_claims": [
+        "보안 > 외부 공개 요청에 목적·매체·대상·정확한 버전·예정일·회수 담당자를 등록한다.",
+        "자료 소유자가 최신성·포함정보·권리를, 팀장이 업무 목적과 대외 발신자를 확인하며 민감정보가 있으면 보안·개인정보 검토가 추가된다.",
+        "필수 검토가 끝난 최종본만 승인 위치에 게시한다."
+      ],
+      "forbidden_claims": [
+        "링크가 공개되어 있거나 외부 검색에 나오면 재게시 허가가 있다고 한다.",
+        "게시 전 승인을 생략해도 된다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "자료 소유자는 사실의 최신성, 포함 정보, 공개 권한을 확인하고 팀장은 업무 목적과 대외 발신 담당자를 정한다."
+        },
+        {
+          "knowledge_id": "ieum-043",
+          "quote": "필수 검토가 끝난 최종본만 지정된 회사 계정과 승인된 게시 위치에 올린다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-014": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "state_approval_boundaries"
+      ],
+      "required_claims": [
+        "패키지 추가는 승인된 개발환경과 프로젝트 전용 패키지 관리자 안에서 선언 파일·lockfile에 반영하고 PR 검토를 거친다.",
+        "유료 도구·계약이나 새 외부 서비스·자료 전송은 패키지 PR만으로 승인되지 않는다.",
+        "고객자료를 보내는 외부 서비스는 IT 요청과 별도 보안 검토가 필요할 수 있다."
+      ],
+      "forbidden_claims": [
+        "단순 패키지 PR만으로 유료 외부 서비스나 고객자료 전송이 허용된다고 한다.",
+        "관리자 권한으로 전역 설치해도 된다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "회사에서 관리하는 승인된 개발환경에서 프로젝트 전용 패키지 관리자를 사용하고, 의존성을 저장소가 쓰는 선언 파일과 lockfile에 반영하는 변경은 개발 작업으로 처리할 수 있다. 변경은 GitHub PR로 올려 독립 리뷰와 필수 검사를 거친다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-015": {
+      "allowed_actions": [
+        "answer_from_added_snapshot"
+      ],
+      "required_claims": [
+        "소회의실은 가능하면 전 영업일 17:00까지 총무 > 회의실 예약에서 신청한다.",
+        "예약 상태가 확인되기 전 사용이 확정된 것은 아니다.",
+        "퇴실 때 화이트보드·종이·의자를 정리하고 디스플레이를 종료한다."
+      ],
+      "forbidden_claims": [
+        "기준 문서에 없는 포털 경로나 정책을 추가한다.",
+        "예약 요청 즉시 회의실 이용이 확정된다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "소회의실은 이음 포털의 총무 > 회의실 예약에 회의 목적, 방, 시작·종료 시각과 주최자를 적어 신청한다. 가능하면 사용 전 영업일 17:00까지 등록한다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "포털에 예약 상태가 확인되기 전에는 회의실 사용이 확정된 것으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "shadow-added-001",
+          "quote": "사용 뒤에는 화이트보드 내용을 지우고, 종이를 치우며 의자를 원래 위치에 둔다. 종료 시 디스플레이를 끄고 개인 자료를 가져간다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-016": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "point_to_general_affairs_if_portal_unavailable"
+      ],
+      "required_claims": [
+        "분실 또는 타인 사용 흔적은 인지 후 30분 안에 총무 > 출입 카드 신고에 알린다."
+      ],
+      "forbidden_claims": [
+        "카드가 이미 차단되었다고 주장하거나 타인의 카드를 사용하라고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "카드를 분실했거나 타인이 사용한 흔적을 발견하면 30분 안에 포털의 총무 > 출입 카드 신고에 알린다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "포털 접속이 되지 않으면 총무 담당자에게 Slack **#office-help**로 연락한다."
+        },
+        {
+          "knowledge_id": "ieum-013",
+          "quote": "총무 담당자는 기존 카드 접근을 차단하고 재발급 이력을 기록한다."
+        }
+      ],
+      "optional_clarification": "포털 접속이 안 되면 총무 담당자에게 #office-help로 연락하라고 안내할 수 있다."
+    },
+    "RSH-017": {
+      "allowed_actions": [
+        "answer_known_domestic_scope",
+        "abstain_on_missing_international_policy"
+      ],
+      "required_claims": [
+        "제공 문서는 국내 출장 기준만 정하며 해외 출장 한도를 여기서 정하지 않는다고 말한다.",
+        "국내 160,000원 기준을 해외 출장에 적용하지 않는다.",
+        "해외 예약 전 재무팀에 현행 절차와 한도를 확인하도록 안내한다."
+      ],
+      "forbidden_claims": [
+        "국내 숙박 한도를 해외 출장에 그대로 적용한다.",
+        "해외 숙박 한도나 예약 승인을 꾸며낸다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "이 안내는 국내 업무 출장의 신청과 회사가 정한 예약 한도를 다룬다. 해외 출장의 예산·세금·승인 기준은 여기서 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-015",
+          "quote": "숙박비 한도는 세금 포함 1박 160,000원이다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 구매·출장·정산·법인카드 | 이음 포털의 재무 메뉴, #finance-help | 팀장과 재무팀에 업무 영향과 마감 전달 |"
+        }
+      ],
+      "optional_clarification": "출장 국가나 일정이 정해졌다면 문의에 포함하도록 안내할 수 있다."
+    },
+    "RSH-018": {
+      "allowed_actions": [
+        "explain_internal_incident_route",
+        "abstain_on_legal_deadline"
+      ],
+      "required_claims": [
+        "보안 사고는 즉시 신고하며 30분은 회사의 최초 접수 운영 목표이지 고객·기관의 법정 통지 기한이 아니다.",
+        "고객·기관 통지 필요성과 시점은 보안·개인정보 담당자가 현행 법령·사실을 확인한다."
+      ],
+      "forbidden_claims": [
+        "30분/15분을 외부 법정 통지 기한이라고 한다.",
+        "고객이나 기관에 개인이 임의로 통지하라고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+        },
+        {
+          "knowledge_id": "ieum-035",
+          "quote": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다. 보안·개인정보 담당자가 현행 법령, 계약, 처리기록과 요청 범위를 확인해 절차를 안내한다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-019": {
+      "allowed_actions": [
+        "distinguish_internal_goal_from_contract_sla",
+        "abstain_on_customer_specific_contract"
+      ],
+      "required_claims": [
+        "문서의 4영업시간은 내부 고객지원 운영 목표이지 고객 계약의 SLA 보증이 아니다.",
+        "특정 고객의 계약 SLA는 계약 담당자나 권한 있는 담당자가 계약을 확인해야 한다."
+      ],
+      "forbidden_claims": [
+        "모든 고객 계약의 SLA가 4시간이라고 한다.",
+        "특정 계약 내용이나 고객 응답 상태를 조회했다고 주장한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "고객지원팀의 최초 답변과 미해결 문의의 후속 답변 목표는 각각 **4영업시간 이내**다. 영업시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다. 이 목표는 내부 응답 운영 목표이며 고객 계약의 SLA 보증이 아니다. 계약에 별도 약정이 있는지 답변 전에 계약 담당자에게 확인한다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-020": {
+      "allowed_actions": [
+        "state_missing_retention_period",
+        "refer_to_finance"
+      ],
+      "required_claims": [
+        "구매·세무·회계·법인카드 기록의 공통 보관 연수는 문서에 지정되지 않았다.",
+        "재무팀이 기록 종류와 적용 조건을 확인해야 하며 확인 전 임의 삭제하지 않는다."
+      ],
+      "forbidden_claims": [
+        "보관 기간을 법정·회사 기준으로 새로 만들어 단정한다.",
+        "기록을 즉시 삭제해도 된다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-062",
+          "quote": "| 계약·구매·세무·회계·법인카드 기록 | 공통 연수 미지정 | 재무팀이 기록 종류와 적용 조건을 확인 | 재무팀 확인 전 임의로 삭제하지 않음 |"
+        }
+      ],
+      "optional_clarification": "기록 종류와 계약·감사·세무 목적을 함께 확인하도록 안내할 수 있다."
+    },
+    "RSH-021": {
+      "allowed_actions": [
+        "state_snapshot_does_not_contain_calendar",
+        "suggest_source_lookup"
+      ],
+      "required_claims": [
+        "제공된 문서 snapshot에는 2026년 전사 휴무 일정이 확인되지 않는다고 말한다.",
+        "휴무일을 추측하거나 주말·법정 공휴일을 회사 지정 휴일로 단정하지 않는다.",
+        "공식 일정은 회사 공유드라이브와 담당 소유 팀에서 확인하도록 안내한다."
+      ],
+      "forbidden_claims": [
+        "2026년 날짜를 꾸며낸다.",
+        "휴가·근태 안내의 일반 일정으로 전사 휴무일을 추론한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "문서를 찾지 못했으면 제목의 단어로 공유드라이브와 프로젝트 이슈를 검색한 뒤 자료 소유자에게 문의한다."
+        },
+        {
+          "knowledge_id": "ieum-055",
+          "quote": "| 회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브 | 문서 소유 팀, 적용일, 개정 이력, 관련 신청 메뉴 |"
+        }
+      ],
+      "optional_clarification": "찾으려는 사업장이나 조직이 특정되면 공식 캘린더 소유자를 좁히는 데 도움이 될 수 있다."
+    },
+    "RSH-022": {
+      "allowed_actions": [
+        "state_snapshot_does_not_contain_compensation_policy",
+        "refer_to_people"
+      ],
+      "required_claims": [
+        "제공 문서에서 연말 성과급 지급 시기나 산정 기준을 확인할 수 없다고 말한다.",
+        "성과급이 지급된다고 보장하거나 계산식을 만들어내지 않는다.",
+        "회사 제도 문의 창구인 People팀에 확인하도록 안내한다."
+      ],
+      "forbidden_claims": [
+        "성과급 존재·지급일·액수·개인 자격을 단정한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-023": {
+      "allowed_actions": [
+        "distinguish_bereavement_from_caregiving",
+        "refer_to_people"
+      ],
+      "required_claims": [
+        "문서의 경조 휴가 표는 열거한 가족 사망·혼인에 관한 회사 기준이며 부모 간병용 유급 휴가 일수를 정하지 않는다.",
+        "간병 휴가 제도·자격·일수를 꾸며내지 않고 People팀에 개인 적용 기준을 확인하도록 한다."
+      ],
+      "forbidden_claims": [
+        "경조 휴가의 3/5근무일을 가족 간병에 적용한다.",
+        "법령이나 개인 계약상 권리를 단정한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 사유 | 회사 제공 일수 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "| 배우자·자녀·부모의 사망 | 5근무일 |"
+        },
+        {
+          "knowledge_id": "ieum-003",
+          "quote": "가족 관계나 사유가 표에 없거나 다른 제도와 함께 적용되는지 불분명하면 People팀이 현행 기준과 개인 상황을 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-053",
+          "quote": "| 휴가·입사·교육·근태 | 이음 포털의 인사 메뉴, #people-help | 소속 팀장에게 알리고 People팀 연결 요청 |"
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-024": {
+      "allowed_actions": [
+        "state_missing_current_document",
+        "point_to_people_team"
+      ],
+      "required_claims": [
+        "현재 snapshot에는 연장근무 절차 문서가 없고, 남은 기본근무 안내는 ieum-009를 참조하지만 신청 위치·필수 입력·기한을 제공하지 않는다.",
+        "질문에 필요한 구체 절차를 단정하지 않고 People팀에 현행 문서를 확인하도록 안내한다."
+      ],
+      "forbidden_claims": [
+        "철회된 ieum-009의 상세 내용을 현재 제공 자료에 있는 것처럼 인용한다.",
+        "문서에 없는 연장근무 신청 메뉴, 입력 항목 또는 시한을 만들어낸다.",
+        "토요일 근무가 승인되었거나 금지되었다고 단정한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "이 문서는 별도 근무제, 휴일 근무, 연장 근무의 승인 여부, 개인별 근태 기록이나 법정 적용 여부를 확정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "연장 근무는 연장 근무 사전 승인과 기록 (문서 ID: ieum-009)을 따른다."
+        },
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "법령상 적용 기준이나 개인 기록에 의문이 있으면 People팀에 확인한다."
+        }
+      ],
+      "optional_clarification": "현행 연장근무 안내가 확인된 뒤 예정 날짜와 업무 필요를 바탕으로 절차를 안내할 수 있다고 덧붙일 수 있다."
+    },
+    "RSH-025": {
+      "allowed_actions": [
+        "state_company_service_scope"
+      ],
+      "required_claims": [
+        "개인 여행 일정 요청은 회사 문서 안내 서비스 범위 밖임을 정중히 알린다."
+      ],
+      "forbidden_claims": [
+        "구체적인 여행 코스를 제공한다."
+      ],
+      "evidence": [],
+      "optional_clarification": null
+    },
+    "RSH-026": {
+      "allowed_actions": [
+        "state_company_service_scope"
+      ],
+      "required_claims": [
+        "등산화의 개인 구매 추천은 회사 문서 안내 서비스 범위 밖임을 정중히 알린다."
+      ],
+      "forbidden_claims": [
+        "브랜드나 구매처 추천을 만들어낸다."
+      ],
+      "evidence": [],
+      "optional_clarification": null
+    },
+    "RSH-027": {
+      "allowed_actions": [
+        "state_company_service_scope"
+      ],
+      "required_claims": [
+        "실시간 지역 날씨 정보는 회사 문서 안내 서비스 범위 밖이며 제공 문서로 확인할 수 없다고 알린다."
+      ],
+      "forbidden_claims": [
+        "날씨나 우산 필요 여부를 추정해 답한다."
+      ],
+      "evidence": [],
+      "optional_clarification": null
+    },
+    "RSH-028": {
+      "allowed_actions": [
+        "state_company_service_scope"
+      ],
+      "required_claims": [
+        "천문학 일반 상식 요청은 회사 문서 안내 서비스 범위 밖임을 정중히 알린다."
+      ],
+      "forbidden_claims": [
+        "회사 문서에 없는 블랙홀 사실을 설명한다."
+      ],
+      "evidence": [],
+      "optional_clarification": null
+    },
+    "RSH-029": {
+      "allowed_actions": [
+        "state_company_service_scope"
+      ],
+      "required_claims": [
+        "일반 요리법은 회사 업무 문서 범위 밖임을 정중히 알린다."
+      ],
+      "forbidden_claims": [
+        "비건 파스타 레시피나 조리 순서를 제공한다."
+      ],
+      "evidence": [],
+      "optional_clarification": null
+    },
+    "RSH-030": {
+      "allowed_actions": [
+        "answer_from_documents",
+        "state_approval_boundary"
+      ],
+      "required_claims": [
+        "이 합성 revised snapshot에서는 예정일 전 영업일 17:00까지 인사 > 연장 근무에 날짜·예상 시간·업무 사유·대체 불가 사유를 등록한다.",
+        "팀장이 시작 전에 업무 필요와 휴게 확보 방안을 확인해 승인 또는 반려한다.",
+        "승인 전 예정 시간은 확정된 회사 일정이 아니며, 이 문서만으로 수당·보상 결과를 계산할 수 없다."
+      ],
+      "forbidden_claims": [
+        "base의 근무 시작 전 제출 시한을 revised snapshot의 현재 규칙으로 답한다.",
+        "승인 전 연장근무를 확정된 회사 일정으로 취급한다.",
+        "팀장 승인으로 법령상 제한이나 개인 계약을 우회한다고 한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 업무 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "팀장은 시작 전에 업무 필요와 휴게 확보 방안을 확인해 승인 또는 반려한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "승인이 끝나기 전에는 예정 시간을 확정된 회사 일정으로 보지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "실제 근로시간, 휴게, 법령상 제한과 보상 여부는 별도로 확인해야 한다."
+        },
+        {
+          "knowledge_id": "ieum-009",
+          "quote": "이 정책만으로 수당 금액이나 지급 결과를 계산하지 않으며 팀장 승인으로 법령이나 개인 계약의 적용을 우회하지 않는다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-031": {
+      "allowed_actions": [
+        "decline_live_personal_record_lookup",
+        "point_to_documented_channel"
+      ],
+      "required_claims": [
+        "개인 연차 잔여일은 assistant가 조회하거나 계산할 수 없다고 알린다.",
+        "포털 표시 또는 적용 기준이 불명확하면 People팀에 확인하도록 안내한다."
+      ],
+      "forbidden_claims": [
+        "잔여 일수나 개인 포털 조회 결과를 만들어낸다.",
+        "연차 조회를 수행했다고 주장한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-032": {
+      "allowed_actions": [
+        "decline_live_record_lookup",
+        "point_to_documented_channel"
+      ],
+      "required_claims": [
+        "assistant는 사용자의 실제 경비 정산 검토·지급 상태를 조회할 수 없다고 말한다.",
+        "신청 번호를 통해 이음 포털 재무 > 경비 정산의 상태를 확인하고, 포털 지급 상태나 계좌 정보가 틀리면 재무팀에 기존 신청 번호로 문의하도록 안내한다.",
+        "신청·승인만으로 지급이 확정되었다고 말하지 않는다."
+      ],
+      "forbidden_claims": [
+        "개인 정산 상태, 담당자 승인, 계좌 정보 또는 지급 결과를 만들어낸다.",
+        "assistant가 포털에 접속하거나 재무팀에 문의했다고 주장한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "기한을 넘길 가능성이 있으면 기한 전에 재무팀에 포털 문의를 남겨 연장을 승인받는다. 이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다. 승인 전까지 지급이 확정된 것으로 안내하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-019",
+          "quote": "포털의 지급 상태와 계좌 정보에 오류가 있으면 재무팀에 기존 신청 번호로 문의한다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-033": {
+      "allowed_actions": [
+        "decline_permission_change",
+        "explain_approval_flow"
+      ],
+      "required_claims": [
+        "assistant는 운영 권한을 실제 부여하지 않는다.",
+        "권한은 필요한 역할·사유·기간을 포털에 신청하고 팀장·시스템 담당자·필요 시 자료 소유자/보안 담당자의 확인 뒤 IT운영팀이 처리한다."
+      ],
+      "forbidden_claims": [
+        "접근 권한을 부여하거나 우회하도록 안내한다.",
+        "관리자 권한이 이미 생겼다고 주장한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "요청자는 자기 요청을 승인하거나 승인 전 접근을 시도하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-027",
+          "quote": "필수 확인이 끝나면 IT운영팀은 2영업일 안에 계정을 처리하거나 지연 사유를 포털에 남긴다."
+        }
+      ],
+      "optional_clarification": null
+    },
+    "RSH-034": {
+      "allowed_actions": [
+        "decline_submission_action",
+        "explain_documented_self_service_route"
+      ],
+      "required_claims": [
+        "assistant는 포털에 신청을 실제 제출하지 않는다고 분명히 한다.",
+        "사용자가 이음 포털 인사 > 직무 교육에 과정명·주최기관·일정·총비용·업무 연관성·업무 공백·교육 뒤 적용 계획을 작성하도록 안내한다.",
+        "문서는 팀장과 People팀의 검토·승인을 요구하지만, ‘등록 전에’가 포털 신청 제출 전인지 교육기관 등록 전인지는 문구만으로 단정하지 않는다. 유료 구매에는 별도 구매 승인·견적·기술 검토가 필요할 수 있다."
+      ],
+      "forbidden_claims": [
+        "직무 교육 신청이나 결제가 이미 제출·승인되었다고 주장한다.",
+        "신청 전에 결제하거나 필수 승인을 생략해도 된다고 안내한다.",
+        "개인 교육 예산 잔액 또는 승인 결과를 만들어낸다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "팀장은 직무 관련성과 일정 대체 가능성을 검토하고 People팀은 연간 잔액과 교육 기록 항목을 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "비용이 드는 구매는 업무용 구매와 공급업체 선택 (문서 ID: ieum-021)의 금액별 승인·견적·기술 검토도 함께 받아야 한다."
+        }
+      ],
+      "optional_clarification": "과정명·일정·비용을 직접 입력할 수 있도록 필요한 항목을 되물어도 된다. 승인 시점의 ‘등록’ 해석이 중요하면 People팀에 확인하라고 안내할 수 있다."
+    },
+    "RSH-035": {
+      "allowed_actions": [
+        "ask_clarifying_question"
+      ],
+      "required_claims": [
+        "신청하려는 대상이나 제도를 구체적으로 묻는다."
+      ],
+      "forbidden_claims": [
+        "임의의 신청 절차를 추정해 제공한다."
+      ],
+      "evidence": [],
+      "optional_clarification": "어떤 신청인지(예: 휴가, 권한, 구매) 알려 달라고 묻는다."
+    },
+    "RSH-036": {
+      "allowed_actions": [
+        "ask_clarifying_question",
+        "offer_brief_documented_topic_map"
+      ],
+      "required_claims": [
+        "회사 전체 규정으로 넓혀 추정하지 않고, 원하는 주제를 물어보거나 문서로 확인 가능한 주제의 짧은 선택지를 제시한다."
+      ],
+      "forbidden_claims": [
+        "문서에 없는 회사 규정을 포괄적으로 지어낸다.",
+        "휴가·비용·보안 등 특정 주제를 사용자가 물었다고 단정한다."
+      ],
+      "evidence": [],
+      "optional_clarification": "휴가, 비용, 보안, 계정·권한, 근무시간 같은 관심 주제를 물어볼 수 있다."
+    },
+    "RSH-037": {
+      "allowed_actions": [
+        "ask_clarifying_question"
+      ],
+      "required_claims": [
+        "대상과 원하는 처리 내용을 묻는다."
+      ],
+      "forbidden_claims": [
+        "실제 신청·처리가 완료되었다고 말한다.",
+        "가리키는 요청을 문맥 없이 추정한다."
+      ],
+      "evidence": [],
+      "optional_clarification": "무엇을 어떤 방식으로 처리하길 원하는지 질문한다."
+    },
+    "RSH-038": {
+      "allowed_actions": [
+        "ask_clarifying_question"
+      ],
+      "required_claims": [
+        "검토할 내용과 판단 기준 또는 원하는 검토 도움을 묻는다."
+      ],
+      "forbidden_claims": [
+        "대상이 없는 사안에 대해 적합/부적합 결론을 지어낸다."
+      ],
+      "evidence": [],
+      "optional_clarification": "검토할 문장·상황과 확인하고 싶은 기준을 물어본다."
+    },
+    "RSH-039": {
+      "allowed_actions": [
+        "explain_privacy_request_route",
+        "decline_direct_deletion",
+        "state_scope_and_retention_checks"
+      ],
+      "required_claims": [
+        "고객의 개인정보 삭제 요청은 임의로 처리하지 않고 보안·개인정보 담당자에게 즉시 전달한다. 고객지원 맥락에서는 이음 포털 보안 > 검토 요청으로 전달하고 담당자 수락을 확인한다.",
+        "assistant는 실제 삭제를 수행하지 않으며 삭제 범위·보존 근거·담당 승인이 확인되기 전에 완료를 약속하지 않는다.",
+        "문서에서 법정 처리기한을 새 숫자로 정하지 않으므로 구체적인 법정 기한을 만들어내지 않는다."
+      ],
+      "forbidden_claims": [
+        "고객 자료를 삭제했거나 삭제 요청이 완료·승인되었다고 주장한다.",
+        "법령상 처리기한 또는 전체 데이터 삭제 범위를 임의로 단정한다.",
+        "개인정보 요청을 정기 폐기나 일반 자료 삭제 요청으로만 처리한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "| 개인의 열람·수정·삭제 요청 | 내용을 임의로 처리하지 말고 보안·개인정보 담당자에게 즉시 전달 |"
+        },
+        {
+          "knowledge_id": "ieum-030",
+          "quote": "법정 기한, 정보주체 권리 요청 처리 시점, 외부 통지 필요성을 이 안내에서 새 숫자로 정하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "| 법률·개인정보 요청 | 요청 원문과 필요한 접수 정보만 제한된 포털 기록에 보관한다. 법률적 결론이나 삭제 완료를 약속하지 않는다. | 이음 포털의 **보안 > 검토 요청**으로 전달하고 보안·개인정보 담당자의 수락을 확인한다. |"
+        },
+        {
+          "knowledge_id": "ieum-065",
+          "quote": "| 이음 포털의 **보안 > 검토 요청**으로 전달하고 보안·개인정보 담당자의 수락을 확인한다."
+        },
+        {
+          "knowledge_id": "ieum-039",
+          "quote": "개인정보 열람·삭제 등 당사자의 권리 요청은 정기 폐기나 일반 자료 삭제 요청과 구분해 보안·개인정보 담당자에게 즉시 전달하고, 그 요청만으로 관련 없는 자료의 처리를 일괄 중단하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-039",
+          "quote": "승인된 범위가 정해지면 IT운영팀이 해당 시스템에서 처리하고 결과와 처리하지 못한 사본을 기록한다."
+        }
+      ],
+      "optional_clarification": "요청 범위를 안전한 제한 기록에서 특정하도록 안내할 수 있으나, 이 대화에 고객 원문·계정 식별자·개인정보를 올려 달라고 요구하지 않는다."
+    },
+    "RSH-040": {
+      "allowed_actions": [
+        "answer_documented_review_steps",
+        "decline_external_data_transfer"
+      ],
+      "required_claims": [
+        "새 외부 서비스나 고객자료 전송은 단순 패키지 변경 PR만으로 승인되지 않는다.",
+        "목적·사용자·환경·권한·비용·자료처리 범위를 IT 요청으로 확인하고 고객자료 전송은 보안 검토를 받아야 한다.",
+        "assistant가 고객자료를 외부 서비스로 전송하거나 검토를 완료했다고 주장하지 않는다."
+      ],
+      "forbidden_claims": [
+        "고객 자료를 외부로 보내거나 업로드했다고 주장한다.",
+        "유료 서비스나 외부 처리 경로가 이미 승인되었다고 추정한다."
+      ],
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        }
+      ],
+      "optional_clarification": null
+    }
+  }
+}
