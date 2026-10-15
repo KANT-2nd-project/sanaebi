@@ -10,7 +10,6 @@ from unittest.mock import Mock, patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
-from app.answering import router as assistant
 from app.classification.predictor import (
     ClassificationInferenceError,
     ClassificationUnavailable,
@@ -35,7 +34,10 @@ class ApiTests(unittest.TestCase):
         fastapi_main.app.dependency_overrides[get_classifier] = lambda: self.classifier
         self.addCleanup(fastapi_main.app.dependency_overrides.clear)
         self.question_generator = self.enterContext(
-            patch("app.dependencies.generate_answer", return_value="가상 답변")
+            patch(
+                "app.answering.adapter.GenerationAnswerer.answer",
+                return_value="가상 답변",
+            )
         )
         self.client = self.enterContext(
             TestClient(fastapi_main.app, raise_server_exceptions=False)
@@ -115,9 +117,7 @@ class ApiTests(unittest.TestCase):
             response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
         )
         self.question_classifier.assert_called_once_with("휴가 안내")
-        self.question_generator.assert_called_once_with(
-            "휴가 안내", self.snapshot, provider="ollama"
-        )
+        self.question_generator.assert_called_once_with("휴가 안내", self.snapshot)
         self.reader.assert_called_once_with()
         self.assertFalse(self.document_file.exists())
 
@@ -213,7 +213,7 @@ class ApiTests(unittest.TestCase):
                 "/documents/{document_id}/withdraw",
             },
         )
-        for route in ("/ask", "/regist-docs"):
+        for route in ("/ask", "/regist-docs", "/assistant"):
             for status in ("200", "422"):
                 with self.subTest(route=route, status=status):
                     model = schema["paths"][route]["post"]["responses"][status][
@@ -227,39 +227,76 @@ class ApiTests(unittest.TestCase):
             {"ok", "text", "reason"},
         )
 
-    def test_assistant_preserves_langchain_input_and_output(self):
+    def test_assistant_uses_same_answer_contract_without_reclassification(self):
         payload = {
-            "response": {"ok": True, "text": "출장비 절차 알려줘", "reason": ""},
+            "response": {"ok": True, "text": " 출장비 절차 알려줘 ", "reason": ""},
             "classification_label": "SEARCH_KNOWLEDGE",
         }
-        result = {
-            "ollama": {"output": {"ok": True, "text": "가상 답변", "reason": ""}},
-            "openai": {"output": None, "success": False, "error": "가상 호출 오류"},
-        }
-        with patch.object(
-            assistant, "generate_assistant_response", return_value=result
-        ) as generate:
-            response = self.client.post("/assistant", json=payload)
-            self.assertEqual(response.status_code, 200)
-            self.assertEqual(response.json(), result)
-            generate.assert_called_once_with(
-                response=payload["response"],
-                category=payload["classification_label"],
-                document_provider=fastapi_main.app.state.document_provider,
-            )
+        response = self.client.post("/assistant", json=payload)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
+        )
+        self.question_generator.assert_called_once_with(
+            "출장비 절차 알려줘", self.snapshot
+        )
+        self.question_classifier.assert_not_called()
+        self.reader.assert_called_once_with()
 
     def test_assistant_rejects_invalid_category_without_llm_call(self):
-        with patch.object(assistant, "generate_assistant_response") as generate:
-            self.assert_validation_error(
-                self.client.post(
-                    "/assistant",
-                    json={
-                        "response": {"ok": True, "text": "질문", "reason": ""},
-                        "classification_label": "HR",
-                    },
-                )
+        self.assert_validation_error(
+            self.client.post(
+                "/assistant",
+                json={
+                    "response": {"ok": True, "text": "질문", "reason": ""},
+                    "classification_label": "HR",
+                },
             )
-            generate.assert_not_called()
+        )
+        self.question_generator.assert_not_called()
+
+    def test_assistant_failed_input_and_nonsearch_skip_dependencies(self):
+        result = self.client.post(
+            "/assistant",
+            json={
+                "response": {"ok": False, "text": "", "reason": "private"},
+                "classification_label": "SEARCH_KNOWLEDGE",
+            },
+        )
+        self.assertEqual(
+            result.json(),
+            {
+                "ok": False,
+                "text": "",
+                "reason": "이전 단계에서 요청을 처리하지 못했습니다.",
+            },
+        )
+        for label in ("CLARIFY", "UNSUPPORTED"):
+            response = self.client.post(
+                "/assistant",
+                json={
+                    "response": {"ok": True, "text": "질문", "reason": ""},
+                    "classification_label": label,
+                },
+            )
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(response.json()["ok"])
+        self.reader.assert_not_called()
+        self.question_classifier.assert_not_called()
+        self.question_generator.assert_not_called()
+
+    def test_assistant_empty_successful_question_is_422(self):
+        self.assert_validation_error(
+            self.client.post(
+                "/assistant",
+                json={
+                    "response": {"ok": True, "text": "  ", "reason": ""},
+                    "classification_label": "SEARCH_KNOWLEDGE",
+                },
+            )
+        )
+        self.reader.assert_not_called()
+        self.question_generator.assert_not_called()
 
     def test_classification_returns_category_without_answer_generation(self):
         for label in ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"):
