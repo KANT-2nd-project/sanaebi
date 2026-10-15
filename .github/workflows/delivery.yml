@@ -118,6 +118,8 @@ jobs:
           printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
           printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+          printf '%s\n' 'Host *' '  ServerAliveInterval 30' '  ServerAliveCountMax 6' > ~/.ssh/config
+          chmod 600 ~/.ssh/config
       - name: Upload and deploy
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
