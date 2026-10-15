@@ -300,3 +300,108 @@ def _revision_conflict(current_version: int | None) -> DocumentServiceError:
         "문서가 변경되었습니다. 최신 내용을 다시 확인해주세요.",
         details,
     )
+
+
+def preview_maintenance(repository, action, source):
+    import sqlite3
+
+    from app.documents.maintenance import prepared_baseline, state_token
+
+    try:
+        with (
+            prepared_baseline(repository, action, source) as (_, raw, count),
+            repository.transaction(immediate=False) as connection,
+        ):
+            return {
+                "action": action,
+                "total_count": connection.execute(
+                    "SELECT COUNT(*) FROM documents"
+                ).fetchone()[0],
+                "restored_count": count,
+                "expected_state": state_token(connection, action, raw),
+            }
+    except (OSError, ValueError, sqlite3.Error) as exc:
+        raise DocumentServiceError(
+            503,
+            "maintenance_unavailable",
+            "문서 전체 관리 정보를 확인할 수 없습니다. 잠시 후 다시 시도해주세요.",
+        ) from exc
+
+
+def maintain_documents(repository, action, expected_state, key, source):
+    import sqlite3
+    from datetime import UTC
+
+    from app.documents.maintenance import (
+        prepared_baseline,
+        replacement_backup,
+        state_token,
+    )
+    from app.documents.reset import ResetBusyError, _replace, reset_lock
+
+    try:
+        uuid.UUID(key or "")
+    except (ValueError, TypeError) as exc:
+        raise DocumentServiceError(
+            422, "invalid_idempotency_key", "유효한 Idempotency-Key가 필요합니다."
+        ) from exc
+    payload_hash = hashlib.sha256(
+        json.dumps([action, expected_state]).encode()
+    ).hexdigest()
+    try:
+        with reset_lock(repository.path), repository.transaction() as connection:
+            replay = repository.lookup_idempotency(
+                connection, key, "POST /documents/maintenance", payload_hash
+            )
+            if replay:
+                return replay[1]
+            with prepared_baseline(repository, action, source) as (
+                seed,
+                raw,
+                count,
+            ):
+                if state_token(connection, action, raw) != expected_state:
+                    raise DocumentServiceError(
+                        409,
+                        "maintenance_state_changed",
+                        "문서 또는 기본 자료가 변경되었습니다. 현재 상태를 다시 확인해주세요.",
+                    )
+                deleted = connection.execute(
+                    "SELECT COUNT(*) FROM documents"
+                ).fetchone()[0]
+                with replacement_backup(repository, action, raw):
+                    _replace(connection, seed)
+                    result = {
+                        "action": action,
+                        "deleted_count": deleted,
+                        "restored_count": count,
+                        "completed_at": datetime.now(UTC).isoformat(),
+                    }
+                    repository.store_idempotency(
+                        connection,
+                        key,
+                        "POST /documents/maintenance",
+                        payload_hash,
+                        200,
+                        result,
+                    )
+                    connection.commit()
+                return result
+    except IdempotencyConflictError as exc:
+        raise DocumentServiceError(
+            409,
+            "idempotency_conflict",
+            "다른 요청에 사용된 키입니다. 상태를 다시 확인해주세요.",
+        ) from exc
+    except ResetBusyError as exc:
+        raise DocumentServiceError(
+            409,
+            "maintenance_busy",
+            "다른 문서 전체 관리 작업이 진행 중입니다. 잠시 후 다시 확인해주세요.",
+        ) from exc
+    except (OSError, ValueError, sqlite3.Error) as exc:
+        raise DocumentServiceError(
+            503,
+            "maintenance_unavailable",
+            "문서 전체 관리 결과를 확인할 수 없습니다. 같은 요청으로 다시 확인해주세요.",
+        ) from exc

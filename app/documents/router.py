@@ -15,10 +15,14 @@ from app.documents.schemas import (
     DocumentCapabilitiesResponse,
     DocumentDetailResponse,
     DocumentListResponse,
+    MaintenancePreviewResponse,
+    MaintenanceRequest,
+    MaintenanceResponse,
     PublishDocumentRequest,
     UpdateDocumentRequest,
     WithdrawDocumentRequest,
 )
+from app.settings import DEFAULT_DOCUMENTS_PATH
 
 router = APIRouter()
 
@@ -51,6 +55,28 @@ def list_documents(
         _repository(request), q=q, status=status, limit=limit, offset=offset
     )
     return _json_response(200, DocumentListResponse, result)
+
+
+@router.get("/documents/maintenance-preview", response_model=MaintenancePreviewResponse)
+def preview_maintenance(request: Request, action: Literal["clear", "restore"]):
+    return document_service.preview_maintenance(
+        _repository(request), action, DEFAULT_DOCUMENTS_PATH
+    )
+
+
+@router.post("/documents/maintenance", response_model=MaintenanceResponse)
+def maintain_documents(
+    payload: MaintenanceRequest,
+    request: Request,
+    idempotency_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
+):
+    return document_service.maintain_documents(
+        _repository(request),
+        payload.action,
+        payload.expected_state,
+        idempotency_key,
+        DEFAULT_DOCUMENTS_PATH,
+    )
 
 
 @router.get("/documents/{document_id}", response_model=DocumentDetailResponse)

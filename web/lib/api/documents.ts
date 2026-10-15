@@ -374,3 +374,25 @@ export async function withdrawDocument(
     body: JSON.stringify({ expected_version: expectedVersion }),
   }, 200, parseDocumentDetail, options);
 }
+
+export type MaintenanceAction = "clear" | "restore";
+export type MaintenancePreview = { action: MaintenanceAction; total_count: number; restored_count: number; expected_state: string };
+export type MaintenanceResult = { action: MaintenanceAction; deleted_count: number; restored_count: number; completed_at: string };
+
+function parseMaintenancePreview(value: unknown): MaintenancePreview {
+  if (!isRecord(value) || !["clear", "restore"].includes(String(value.action)) || !isNonNegativeInteger(value.total_count)
+    || !isNonNegativeInteger(value.restored_count) || !isString(value.expected_state) || !/^[0-9a-f]{64}$/.test(value.expected_state)) throw invalidResponse();
+  return value as MaintenancePreview;
+}
+function parseMaintenanceResult(value: unknown): MaintenanceResult {
+  if (!isRecord(value) || !["clear", "restore"].includes(String(value.action)) || !isNonNegativeInteger(value.deleted_count)
+    || !isNonNegativeInteger(value.restored_count) || !isString(value.completed_at)) throw invalidResponse();
+  return value as MaintenanceResult;
+}
+export function previewDocumentMaintenance(action: MaintenanceAction, options: DocumentRequestOptions = {}) {
+  return request(`/api/documents/maintenance-preview?action=${action}`, { method: "GET" }, 200, parseMaintenancePreview, options);
+}
+export function maintainDocuments(preview: MaintenancePreview, key: string) {
+  return request("/api/documents/maintenance", { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": key },
+    body: JSON.stringify({ action: preview.action, expected_state: preview.expected_state }) }, 200, parseMaintenanceResult, {});
+}

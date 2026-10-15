@@ -22,6 +22,10 @@ TABLES = (
 RESET_METHOD_PATH = "demo-reset:invalidated"
 
 
+class ResetBusyError(RuntimeError):
+    pass
+
+
 @contextmanager
 def reset_lock(database):
     # Do not unlink: another process may already have opened this inode.
@@ -29,7 +33,7 @@ def reset_lock(database):
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as exc:
-            raise RuntimeError("A demo reset is already running") from exc
+            raise ResetBusyError("A demo reset is already running") from exc
         try:
             yield
         finally:
@@ -55,7 +59,20 @@ def _backup(database, destination):
 
 
 def _replace(connection, seed):
-    versions = dict(connection.execute("SELECT id, record_version FROM documents"))
+    floor = (
+        max(
+            connection.execute(
+                "SELECT version_floor FROM document_maintenance_state WHERE id=1"
+            ).fetchone()[0],
+            connection.execute(
+                "SELECT COALESCE(MAX(record_version), 0) FROM documents"
+            ).fetchone()[0],
+        )
+        + 1
+    )
+    connection.execute(
+        "UPDATE document_maintenance_state SET version_floor=? WHERE id=1", (floor,)
+    )
     # The reset is the sole privileged exception to immutable revision deletion.
     # Transactional DDL restores these triggers even if anything below fails.
     triggers = connection.execute(
@@ -86,13 +103,12 @@ def _replace(connection, seed):
             connection.executemany(
                 f'INSERT INTO "{name}" VALUES ({placeholders})', rows
             )
-    for document_id, previous_version in versions.items():
-        connection.execute(
-            "UPDATE documents SET record_version = MAX(record_version, ?) WHERE id = ?",
-            (previous_version + 1, document_id),
-        )
     connection.execute(
-        "UPDATE idempotency_keys SET method_path=?, response_status=409, response_body='{}'",
+        "UPDATE documents SET record_version = MAX(record_version, ?)", (floor,)
+    )
+    connection.execute(
+        "UPDATE idempotency_keys SET method_path=?, response_status=409, response_body='{}' "
+        "WHERE method_path != 'POST /documents/maintenance'",
         (RESET_METHOD_PATH,),
     )
     for _, sql in triggers:
