@@ -11,8 +11,9 @@ import {
   type DocumentStatus,
 } from "../../lib/api/documents";
 import {
-  documentPayload, emptyDocumentForm, formFromRevision, isDocumentFormDirty,
+  canRetryDocumentWrite, documentPayload, emptyDocumentForm, formFromRevision, isDocumentFormDirty,
   newIdempotencyKey, nextWriteAttempt, validateDocumentForm,
+  retrievalSyncFailureMessage,
   type DocumentForm, type DocumentFormErrors, type DocumentWriteAttempt,
 } from "./document-state";
 import { DocumentRouteState } from "./document-route-state";
@@ -28,13 +29,11 @@ type WriteKind = "save" | "publish" | "withdraw";
 type PendingWrite = { kind: WriteKind; attempt: DocumentWriteAttempt; documentId: string | null; originRoute: string };
 function errorMessage(error: unknown, fallback: string): { message: string; kind: DocumentApiError["kind"] | "" } {
   if (!(error instanceof DocumentApiError)) return { message: fallback, kind: "" };
+  const retrievalMessage = retrievalSyncFailureMessage(error);
+  if (retrievalMessage) return { message: retrievalMessage, kind: error.kind };
   if (error.kind === "permission") return { message: "이 문서 관리 화면을 볼 권한이 없습니다.", kind: error.kind };
   if (error.kind === "not-found") return { message: "문서를 찾을 수 없습니다. 목록을 새로고침해주세요.", kind: error.kind };
   return { message: error.message, kind: error.kind };
-}
-
-function isTransient(kind: string) {
-  return ["timeout", "network", "gateway"].includes(kind);
 }
 
 export function DocumentPanel() {
@@ -131,6 +130,9 @@ export function DocumentPanel() {
       setConflictError("");
       setCurrentWrite(null);
       setLatestConflict(null);
+      setWriteFailure("");
+      setWriteFailureKind("");
+      setNotice("");
     }
     if (transition.kind === "blocked") router.replace(transition.restoreUrl);
   }, [routeState, router, setCurrentWrite]);
@@ -357,8 +359,8 @@ export function DocumentPanel() {
       setConflictBusy(false);
       setConflictError("");
       setFormErrors({});
-      setNotice(pending.kind === "publish" ? `개정 v${result.published?.revision_number}을 게시했습니다. 시행일 조건에 따라 다음 질문에 적용됩니다.`
-        : pending.kind === "withdraw" ? "문서를 사용 중단했습니다. 기록은 보존되며 다음 질문의 답변 근거에서 제외됩니다." : `초안 v${result.draft.revision_number}을 저장했습니다. 게시 전에는 답변에 반영되지 않습니다.`);
+      setNotice(pending.kind === "publish" ? `개정 v${result.published?.revision_number} 게시 처리를 완료했습니다. 시행일 조건에 따라 다음 질문에 적용됩니다.`
+        : pending.kind === "withdraw" ? "문서를 사용 중단하고 검색 대상에서 제외했습니다. 기록은 보존됩니다." : `초안 v${result.draft.revision_number}을 저장했습니다. 게시 전에는 답변에 반영되지 않습니다.`);
       setActionDialog(null);
       if (pending.kind === "save") {
         const path = documentViewUrl({ ...view, id: result.id, isNew: false, editing: false, revision: "draft" });
@@ -376,7 +378,7 @@ export function DocumentPanel() {
       }
       const issue = errorMessage(error, "문서 변경을 완료하지 못했습니다. 입력은 보존했습니다.");
       setWriteFailure(issue.message);
-      setWriteFailureKind(issue.kind);
+      setWriteFailureKind(canRetryDocumentWrite(error) ? issue.kind : "");
       setActionDialog(null);
       if (issue.kind === "conflict" && pending.documentId) void fetchLatestConflict(pending.documentId);
     } finally {
@@ -390,6 +392,8 @@ export function DocumentPanel() {
     if (requestInFlight.current) return;
     const previous = pendingWriteRef.current?.attempt ?? null;
     const attempt = nextWriteAttempt(previous, method, path, body, newIdempotencyKey);
+    if (previous && writeFailureKind && previous.signature !== attempt.signature
+      && !window.confirm("앞선 요청은 문서에 적용됐지만 검색 반영이 끝나지 않았을 수 있습니다. 새 요청을 시작하면 같은 키로 다시 확인할 기회를 잃습니다. 새 요청을 진행할까요?")) return;
     const pending: PendingWrite = { kind, attempt, documentId: detail?.id ?? null, originRoute: routeUrl };
     setCurrentWrite(pending);
     void executeWrite(pending);
@@ -468,7 +472,7 @@ export function DocumentPanel() {
   const pageNumber = Math.floor(filters.offset / PAGE_SIZE) + 1;
   const totalPages = Math.max(1, Math.ceil((list?.total ?? 0) / PAGE_SIZE));
   const effectiveFrom = detail?.draft.effective_from ?? null;
-  const retryableWrite = pendingWrite && isTransient(writeFailureKind) ? pendingWrite : null;
+  const retryableWrite = pendingWrite && writeFailureKind ? pendingWrite : null;
 
   function detailUrl(id: string, patch: Partial<DocumentView> = {}) {
     return documentViewUrl({ ...view, id, isNew: false, editing: false, revision: null, ...patch });

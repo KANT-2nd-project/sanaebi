@@ -1,9 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  emptyDocumentForm, formFromRevision, isDocumentFormDirty, nextWriteAttempt,
+  canRetryDocumentWrite, emptyDocumentForm, formFromRevision, isDocumentFormDirty, nextWriteAttempt,
   documentPayload, newIdempotencyKey, reconcileDocumentDetail, validateDocumentForm,
+  retrievalSyncFailureMessage,
 } from "../../tmp/frontend-unit-tests/features/documents/document-state.js";
+import { DocumentApiError } from "../../tmp/frontend-unit-tests/lib/api/documents.js";
 
 const revision = (title, body = "내용") => ({
   id: "revision-1", revision_number: 1, title, body, source_label: "공통 자료", source_url: null,
@@ -62,4 +64,25 @@ test("선택 메타데이터 빈 값은 null로 보내고 원문 개행은 보�
 
 test("새 멱등성 키는 표준 UUID 형식이다", () => {
   assert.match(newIdempotencyKey(), /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+});
+
+test("검색 반영 실패는 변경 보존을 알리고 retryable일 때만 재시도를 허용한다", () => {
+  const failed = new DocumentApiError("retrieval-sync", "backend detail", "retrieval_sync_failed", {
+    document_saved: true, retryable: true,
+  });
+  assert.equal(canRetryDocumentWrite(failed), true);
+  assert.match(retrievalSyncFailureMessage(failed), /문서 변경은 적용됐지만 검색 반영이 끝나지 않았습니다/);
+  assert.match(retrievalSyncFailureMessage(failed), /같은 요청으로 검색 반영을 다시 확인/);
+
+  const preflightFailed = new DocumentApiError("retrieval-sync", "backend detail", "retrieval_sync_failed", {
+    document_saved: false, retryable: true,
+  });
+  assert.equal(canRetryDocumentWrite(preflightFailed), true);
+  assert.match(retrievalSyncFailureMessage(preflightFailed), /문서 변경은 시작되지 않았습니다/);
+
+  const busy = new DocumentApiError("retrieval-sync", "backend detail", "retrieval_sync_busy", {
+    document_saved: false, retryable: true,
+  });
+  assert.equal(canRetryDocumentWrite(busy), true);
+  assert.match(retrievalSyncFailureMessage(busy), /이전 요청이 있었다면 저장됐을 수/);
 });
