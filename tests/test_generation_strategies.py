@@ -39,6 +39,31 @@ class GenerationProfileTests(unittest.TestCase):
         self.assertNotIn("실제 입력 문서", prompt.system)
         self.assertEqual(documents, original)
 
+    def test_followup_profiles_preserve_documents_and_reference(self):
+        reference = build_profile_prompt("질문", ["실제 문서"], "examples")
+        for profile in ("examples_coverage", "examples_conditions"):
+            prompt = build_profile_prompt("질문", ["실제 문서"], profile)
+            self.assertEqual(prompt.user, reference.user)
+            self.assertTrue(prompt.system.startswith(reference.system.rstrip()))
+            self.assertNotIn("실제 문서", prompt.system)
+
+    def test_json_examples_change_only_example_serialization(self):
+        reference = build_profile_prompt("질문", ["문서"], "examples")
+        candidate = build_profile_prompt("질문", ["문서"], "examples_json")
+        restored = []
+        count = 0
+        for line in candidate.system.splitlines():
+            if line.startswith("답변: "):
+                value = json.loads(line.removeprefix("답변: "))
+                self.assertEqual(set(value), {"answer"})
+                restored.append("답변: " + value["answer"])
+                count += 1
+            else:
+                restored.append(line)
+        self.assertEqual(count, 6)
+        self.assertEqual("\n".join(restored), reference.system.rstrip("\n"))
+        self.assertEqual(candidate.user, reference.user)
+
     def test_unknown_profile_is_rejected(self):
         with self.assertRaises(ValueError):
             build_profile_prompt("질문", [], "unknown")

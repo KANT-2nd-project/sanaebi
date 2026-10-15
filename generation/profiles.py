@@ -1,5 +1,7 @@
 """Composable prompt profiles for controlled generation experiments."""
 
+import json
+
 from generation.prompts import build_prompt
 from generation.types import GenerationPrompt
 
@@ -48,7 +50,26 @@ _SYNTHETIC_EXAMPLES = """
 """.strip()
 
 
+_COVERAGE_CHECK = """
+답변 전에 질문의 업무·대상에 적용되는 근거를 확인하세요. 질문에 직접 필요한 결론과 이를 바꾸는 조건·예외, 수행에 필요한 담당 주체·경로·기한·증빙이 문서에 명시되어 있다면 함께 안내하세요. 모르는 조건은 충족됐다고 가정하지 말고 조건부로 표현하세요. 질문과 관계없는 정책을 나열하거나 문서에 없는 항목을 채우지 마세요. 근거가 있는 안내를 빠뜨리지 않았는지 확인한 뒤 최종 answer만 출력하세요.
+""".strip()
+
+_CONDITION_LINK = """
+여러 문서가 같은 업무의 기본 규정과 예외를 각각 설명하면 두 근거의 적용 대상과 발동 조건을 함께 확인하세요. 긴급·일반, 사전·사후, 본인·담당자의 조건을 섞지 마세요. 조건부 안내는 ‘해당하는 경우’로 구분하고, 문서가 연결하지 않은 절차는 임의로 이어 붙이지 마세요. 최종 답변은 질문의 결론을 먼저 말하고 필요한 조건과 후속 안내를 덧붙이세요.
+""".strip()
+
+_JSON_EXAMPLES = "\n".join(
+    "답변: " + json.dumps({"answer": line.removeprefix("답변: ")}, ensure_ascii=False)
+    if line.startswith("답변: ")
+    else line
+    for line in _SYNTHETIC_EXAMPLES.splitlines()
+)
+
+
 _PROFILE_SUFFIXES = {
+    "examples_coverage": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_COVERAGE_CHECK}",
+    "examples_conditions": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_CONDITION_LINK}",
+    "examples_json": f"{_CONCISE_RULES}\n\n{_JSON_EXAMPLES}",
     "baseline": "",
     "concise": _CONCISE_RULES,
     "examples": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}",
