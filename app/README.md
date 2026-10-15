@@ -171,3 +171,7 @@ uv run --locked python -m unittest discover -s tests -t . -v
 ## 분류 차단과 관찰 비교
 
 기본은 `SANAEBI_ROUTING_MODE=shadow`다. `gate`를 명시하면 기존 라벨 차단으로 원복한다. `shadow`는 분류 라벨을 기록하고 게시된 문서를 바탕으로 답변을 시도하는 채택한 기본 경로다. 회사 문서 밖 일반 지식을 허용하는 설정이 아니다. 적용에는 해당 앱 재시작이 필요하며 실행 중인 운영 서버를 실험용으로 전환하지 않는다. 오류·기록·호환 경계는 [서버 규약](../docs/server-conventions.md#분류-관찰-모드와-비교-경계)을 따른다.
+
+## 선택적 RAG 연결
+
+`SANAEBI_RETRIEVAL_MODE=full`이 기본이다. `rag`는 동일 게시 snapshot에서 검색한 근거를 답변기에 전달한다. [모델·색인 준비와 자정 복구](../docs/rag-runtime.md)를 따른다. 기존 shadow/gate 정책과 생성 한도는 유지한다.

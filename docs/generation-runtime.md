@@ -58,3 +58,7 @@ uv run --locked --env-file .env python -m generation \
 ```
 
 비교 실험은 같은 문서·질문·system/user 해시를 확인한다. 출력 형식 강제 옵션은 추가하지 않고 기존 prompt의 JSON 계약으로 비교한다. API 인증 성공, 실제 응답 성공, 답변 품질 판정은 별도 상태다. 최신 진행과 결과는 [GPT 비교 일지](worklogs/2026-10-15-generation-openai-comparison.md)를 따른다.
+
+## 서버의 선택적 RAG 입력
+
+서버의 rag 모드는 선택한 발췌 근거를 기존 생성 서비스에 전달한다. Luna·실행 프롬프트·출력 검사·예산 예약은 같은 경로를 사용한다. [RAG 준비 안내](rag-runtime.md)를 참고한다. 이번 검색 연결은 프롬프트 튜닝이나 생성 품질 승인으로 기록하지 않는다.

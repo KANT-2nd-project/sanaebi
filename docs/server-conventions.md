@@ -138,3 +138,11 @@ shadow는 분류 결과를 기록만 하고 세 라벨 모두 게시 snapshot으
 trace는 모드·라벨 출처·분류 상태·단계 경과 시간·처리 경로·생성 시도를 별도로 기록한다. 과거 기록의 누락 필드는 미확인으로 읽고 라벨을 프롬프트에 넣지 않는다. `TRACE_DIR`의 명시적 원문 기록은 로컬 민감 자료로 취급한다.
 
 관찰 모드 구현과 서비스 기본값 승격은 별개다. 평가에는 임시 DB·고정 snapshot·격리 프로세스를 사용하고 실제 서버 DB를 바꾸지 않는다. 비교 당시 gate를 유지했고, 이후 사용자가 상대 개선을 근거로 shadow 기본값을 채택했다. 절대 품질 기준 충족으로 해석하지 않는다. 원복은 `SANAEBI_ROUTING_MODE=gate`를 지정하고 앱을 재시작한다.
+
+## 선택적 RAG 경계
+
+`SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 full을 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 GenerationAnswerer의 retrieved 입구로 보낸다. full 입구는 기존 snapshot 계약을 유지한다. 두 입구의 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
+
+검색은 현재 문서/개정/digest를 검증한 청크만 대상으로 한다. 예전 개정을 top-k 이후 거르는 방식은 허용하지 않는다. 빈 원본은 정상 안내, 미완성 색인은503, 검색 입력 초과는422, 일반 코드 오류는500이다. 검색 실패에서 생성기/예산 예약0회를 회귀 검증한다. startup Tiny 준비·ready 조회와 생성 API 호출을 분리한다.
+
+기본 벡터 묶음은 실제 host 초기화 원본으로 준비하고, 자정 reset은 원본 복원 후 새 revision mapping만 연결한다. 원본 commit 뒤 실패를 다시 reset으로 복구하지 않는다. 단일 writer lock과 worker 중지/재개의 운영 경계는 [RAG 실행 안내](rag-runtime.md)·[배포 안내](../deployment/README.md)를 따른다. 직접 운영 전환과 서비스 품질 검증은 별도다.
