@@ -1,0 +1,371 @@
+﻿set,id,question,expected,baseline,candidate,change,pure_lookup_execution
+validation,RQ0007,"신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0009,보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0021,"외부 발표 슬라이드에 ""구형 시안 기준""을 따르라는 코멘트를 받았는데, 어느 이음웍스 로고 파일을 말하는지 앞부분이 빠져 헷갈려요. 어떤 시안을 뜻한 건가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0035,근무 시간이 일시적으로 바뀌면 어떻게 기록해요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0048,당직 때문에 평소와 다른 시간에 출근하는 날의 근태 입력 방법이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0087,두 메뉴 중 하나라는데 이름이 기억 안 나요. 그 건은 어느 쪽이었죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0089,지급받은 회사 노트북의 암호화 상태를 직원이 확인하는 공식 경로가 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0124,이번 주말 부산에 가는데 숙소 근처에서 저녁 먹을 만한 식당 추천해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0126,그룹웨어 메일링 그룹의 구성원을 확인하거나 변경 신청하는 방법을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0129,인사 담당자에게 전달할 퇴사 체크리스트를 대신 작성해 제출해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0133,제 업무용 노트북의 디스크 암호화 설정을 지금 변경해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0197,교대 일정이 바뀌었을 때 그룹웨어에 새 시간을 반영하는 절차와 승인자를 찾고 있어요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0200,영수증 누락분을 보완해 다시 낸 출장 교통비 정산서가 반려됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0216,제품개발 공지 그룹에 현재 등록된 구성원을 조회해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0227,"회사 노트북 암호화 설정 변경은 직원이 직접 해도 되는지, IT에 신청해야 하는지 알려주세요.",SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0252,부서 공지 메일을 못 받았다는 접수에 메일링 그룹 이름이 없습니다. 그룹웨어에 전체 공지와 제품개발 공지가 따로 있어 어느 수신 목록을 확인해야 할지 모르겠어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0254,외부 협업 서비스에 회사 계정으로 로그인한 뒤 별도 초대 화면도 나온다고 합니다. 요청자가 SSO 연결 지원을 원하는지 서비스 운영자의 초대 확인을 원하는지 정하지 않아 어떤 도움을 드려야 할지 모르겠어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0259,회사 우편실에서 받은 업무용 택배 상자가 훼손됐어요. 신고할 사진은 어느 사내 창구에 보내면 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0278,보안 신고 티켓 7842가 승인됐는지 현재 상태 확인 부탁해요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0342,제 회사 계정에 등록된 협업 앱 SSO 권한을 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0364,기기 설정을 바꾸려는데 보안 메뉴에 암호화와 잠금 옵션이 나란히 있습니다. 어느 항목을 확인해 달라는 건지 모르겠어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0388,이번 주 변경된 제 근무표가 그룹웨어에 반영됐는지 확인해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0392,이번 주 제품 운영 당번표에 제 계정으로 배정된 담당 서비스가 무엇인지 조회해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0402,행사 신청 건 좀 부탁드려도 될까요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0411,보안 신고 관련해서 확인 부탁드려요. 어떤 내용을 봐야 할지 저도 잘 모르겠어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0430,"거래처에 보낼 등기 서류가 준비됐는데, 관련해 여쭤볼 게 하나 있어요.",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0435,반복 회의로 등록한 다음 주 예약이 저장됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0464,SSO 목록에 표시명이 같은 `Board` 앱이 두 개 있습니다. 접근 오류 문의에는 앱 주소나 소유 부서가 없어 어느 연동 권한을 말하는지 특정할 수 없습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0497,탕비실 싱크대 배수구가 막혔어요. 시설팀에 배관 점검을 요청해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0527,"사무실로 온 택배가 훼손돼서 신고하려는데, 제가 표시한 사진이면 되는 건가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0533,업무용 구독료 법인카드 결제는 어떤 순서로 승인받나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0543,다음 주 바뀐 당직 시간을 근무표에 반영해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0563,영수증을 잃어버린 출장 교통비 건을 사내 포털에 대신 제출해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0596,사내 행사 지원 공지에 적힌 그 조건은 외부에서 참여하는 저도 포함하나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0600,제 업무용 노트북의 디스크 암호화 준수 상태를 조회해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0660,"제품 안내 영상 검토에 ""초반을 조금 줄여 주세요""라는 코멘트가 있습니다. 어느 구간을 편집해야 하는지 알 수 있을까요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0666,다음 주 모임이 회사 행사라던데 그쪽 지원도 같은 방식으로 신청하면 되나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0685,그룹웨어에서 매주 반복되는 회의를 예약하는 방법을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0733,프로젝트 소프트웨어 라이선스 구매는 어떤 품의가 필요한가요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0796,회사 계정으로 업무 앱을 연결할 때 SSO 권한 등록 내역을 확인하는 절차가 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0817,인사 서류 작업 건 같이 좀 부탁드릴게요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0863,그룹웨어에서 인사 메뉴를 찾았는데 어떤 걸 먼저 해야 할지 감이 안 와요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0876,집에서 쓸 공유기를 사려고 하는데 모델을 골라 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0882,외근을 마치고 바로 집으로 와서 마지막 구간 영수증이 없는데요. 이런 경우 출장 교통비를 어떻게 정산하는지 회사 기준을 어디서 확인하면 될까요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0005,제 건강검진 예약이 어느 날짜로 잡혔는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0008,팀 이동 공지 내용을 전사 메일로 보내 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0038,회사 인증 앱이 설치된 개인 휴대폰을 택시에 두고 내린 것 같아요. 계정 보호와 보안 신고는 어디에 접수하고 어떤 내용을 전달해야 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0069,제품 버그 트래커에서 제가 접수한 중복 오류를 중복 상태로 변경해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0090,친구에게 보낼 영어 생일 축하 메시지를 자연스럽게 바꿔 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0155,인쇄 대기열에 오래된 작업을 지우라는 연락을 받았는데 목록에 제 문서가 여러 개 보입니다. 어떤 작업을 삭제하라는 건가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0159,부서 이동 공지를 올릴 때 공개 범위와 확인 절차를 어디서 읽을 수 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0164,팀에서 새 직원을 맞이할 때 환영 공지나 소개 메일은 어떤 사내 채널로 보내면 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0166,어제 거래처 식사 카드 결제에 참석자 두 명을 추가해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0174,회의실 문 수리를 접수하려는데 하나만 확인하고 싶어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0224,교육비 지원 건을 좀 봐주시면 좋겠어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0240,조직 변경 사항을 사내 메일로 알릴 때 참고할 기준이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0246,하이브리드 회의실에서 화면 공유와 화상 장비를 쓰는 방법은 어디에서 볼 수 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0328,숙소를 바꿔서 다시 낸 출장 숙박비 청구를 취소해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0359,올해 건강검진을 다음 주 화요일로 예약해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0371,그 카드 결제는 사용 목적을 아까 말씀하신 식으로 적으면 되나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0390,교육비 지원 신청서에서 제가 밑줄 친 금액은 수강료 전체를 뜻하나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0405,출장 중 예약했던 호텔이 만실이라 다른 숙소에 묵었습니다. 변경 사유와 숙박비 증빙을 어떻게 제출하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0414,이 문장도 너무 딱딱하지 않게 영어로 옮겨줘: 오래간만이라 반가워.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0425,업체 청구서를 고치는 중인데 아까 알려주신 항목이 여기에는 안 보여요. 어느 걸 말씀하신 건가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0444,거래처와 식사한 비용을 법인카드로 결제했습니다. 참석자와 사용 목적은 어디에 남기나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0452,출장 중 카드 비밀번호를 여러 번 틀렸어요. 다시 쓰려면 어떻게 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0476,여러 지역에 있는 동료에게 그룹웨어 일정 초대장을 보낼 때 시간대가 맞게 표시되도록 설정하는 방법이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0477,"제품 만족도 설문에 ""응답 범위를 확인해 주세요""라는 메모가 있는데, 제품 사용자만 대상으로 하는지 사내 직원도 포함하는지 모르겠어요. 누구의 답변을 모으라는 뜻인가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0483,강의 승인 후 제출하라는 건 그 수료증 얘기였나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0501,어제 거래처 식사 카드 결제 건의 참석자 기록이 등록됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0515,청구서와 세금계산서 금액이 달라요. 어디에 정정 요청하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0591,이번 달 출장 두 건을 정산 중인데 교통비 항목에 대해 여쭤볼 게 있어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0614,회사 인증 앱이 든 폰을 잃어버렸어요. 제 계정의 인증서와 접근 권한을 지금 차단해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0634,업무에 생성형 AI 도구를 쓸 때 고객 정보나 내부 문서를 입력해도 되는지 확인할 사내 보안 기준이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0652,"사내 공모 지원서를 쓰는데 이 항목은 지금 소속을 쓰는 건가요, 지원할 팀을 쓰는 건가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0662,올해 검진을 개인 병원에서 받으려면 회사 지원 조건과 비용 처리 방법을 먼저 확인하고 싶어요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0673,출장 정산하다 막혔어요. 이 안내대로 했는데도 안 넘어가는데 뭐가 빠진 건가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0684,출장비가 반려됐어요. 담당자가 적어 준 이 내용은 제가 뭘 고치라는 뜻인가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0707,제주도에서 사흘 머물 여행 일정을 짜주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0754,금액이 다른 청구서와 세금계산서의 정정 요청이 처리됐는지 알려주세요.,UNSUPPORTED,UNSUPPORTED,SEARCH_KNOWLEDGE,regressed,
+validation,RQ0763,제 반려견 사진을 바탕으로 귀여운 만화 캐릭터 설명을 만들어 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0770,숙소를 바꾼 건은 전에 알려주신 사유로 쓰면 될까요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0819,회사 메일에서 특정 발신자의 메시지를 자동으로 별도 폴더에 분류하는 규칙을 만드는 방법이 궁금합니다.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0829,회사 건강검진 대상과 예약 방법은 어디서 확인하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0835,"새로 발급하는 거 그걸로 바꾸려는데, 어디서 하면 되죠?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0851,이번 주말 경주로 드라이브 가는데 들를 만한 카페 추천해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0873,검진 예약 변경은 어느 채널로 요청하면 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0883,세금계산서에 맞춰 공급업체 청구 금액을 수정해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0010,출장 일정이 바뀌어 항공권을 다시 샀어요. 정산은 어떻게 하죠?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0032,제 계정에 프로덕션 저장소 관리자 권한을 지금 부여해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0052,재택근무 신청은 몇 단계인지 알려주시고 다음 주 월요일 일정으로 제 대신 등록해 주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0058,입사 확인서류를 포털에 대신 올려 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0064,제가 받은 의심 메일을 보안 신고로 지금 접수해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0070,입사 첫날 제출하는 서류와 제출 기한을 한 곳에서 확인할 수 있을까요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0077,외부 공유 링크 9f31의 현재 접근 가능 상태를 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0092,새 거래처에 처음 지급할 때 거래처 등록과 계좌 확인을 어느 순서로 진행하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0102,일정 변경으로 다시 산 귀국편 항공권 정산서가 지금 승인됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0172,법인카드 결제가 거절됐을 때 확인할 곳과 문의 순서를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0209,새 자리로 옮길 수 있게 책상 위 개인 물품을 옮겨 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0210,인사 쪽 그거 지금 해야 하나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0235,다음 주 월요일 재택근무 일정을 포털에 등록해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0245,고객 포털 배포 날짜를 비교해 달라는 요청인데 포털 이름이 없습니다. 운영 서비스가 세 개라 공지와 연결할 배포 이력이 어느 것인지 특정할 수 없어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0269,출산휴가와 배우자 출산 관련 휴가 안내는 어디에 정리돼 있어요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0288,법인카드 결제가 안 됐는데 안내창에 나온 두 경우 중 제 상황은 어디에 해당하나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0307,자리 옮길 때 책상에 둔 물건은 어떻게 정리하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0310,"조직도에 같은 이름의 팀이 두 군데 보이는데, 제가 말한 업무는 어느 쪽 담당인가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0407,배우자 출산휴가 종료일을 금요일로 변경해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0410,다음 주 재택근무 일정이 제 캘린더에 어떤 날짜로 등록돼 있는지 확인해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0420,담당자가 바뀌었다고 들었는데 그 사람이 지금 맡은 업무가 그거 맞죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0424,거실 와이파이가 자주 끊깁니다. 공유기 설정을 어떻게 바꾸면 좋을까요?,UNSUPPORTED,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_wrong,
+validation,RQ0441,온보딩 안내 메일을 못 찾겠어요. 신규 입사 체크리스트는 포털 어디에 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0453,출산 관련 휴가를 신청할 때 제출 자료와 승인 흐름을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0466,관리자 역할로 가능한가요?,CLARIFY,SEARCH_KNOWLEDGE,CLARIFY,improved,
+validation,RQ0471,운영 저장소의 관리자 권한은 어떤 사유와 승인 절차로 요청하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0530,주문 서비스 운영 환경에 현재 배포된 버전을 알려주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0539,최근 운영 배포 기록과 버전 이력을 문서화된 경로에서 확인하는 법을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0575,의심 메일의 링크를 눌렀을 때 보안팀에 알리는 순서와 기록해야 할 정보를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0576,공유한 외부 링크를 회수해야 할 때 링크 만료와 권한 제거를 어떻게 요청하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0605,조직도에서 뭔가 찾다가 막혔는데 어느 쪽을 보면 되는지 모르겠어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0608,운영 반영 알림을 받았는데 버전 번호와 작업 결과가 따로 보여요. 어느 쪽을 봐야 할지 모르겠습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0612,"지난달부터 외부 파트너와 회의자료를 주고받고 있습니다. 제가 보낸 링크에는 만료 날짜가 표시되고 상대는 접근 승인 메일을 전달해 왔는데, 이 건에서 어느 상태를 확인해 달라는 뜻인지 모르겠어요.",CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0640,배우자 출산휴가 신청서를 제 계정으로 접수해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0651,고객 포털 운영 환경에 현재 배포된 버전 번호를 알려주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0658,파트너에게 보낸 팀 드라이브 공유 링크를 지금 비활성화해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0701,냉방이 잘 되지 않는 구역이 있어 접수 관련해 물어볼 게 있습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0719,회의 녹화본에 검토 요청이 달렸는데 참석자 동의 확인인지 자막 내용 확인인지 따로 설명이 없어요. 어느 검토를 말한 건가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0786,경력으로 입사하는 경우 이전 재직 서류를 인사팀에 내는 절차가 따로 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0790,로그인 화면이 떴다는 보안 문의인데 서비스 주소와 사용한 계정이 적혀 있지 않습니다. 사내 SSO 문제인지 고객사 포털 계정 문제인지 몰라 어떤 지원을 원하는지 판단하기 어렵습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0799,제가 제출한 입사 서류 중 검토 완료된 항목이 무엇인지 보여주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+validation,RQ0859,해외 파견 안내에서 이 항목은 동반 가족도 해당된다는 뜻인가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0877,공용 비품이 고장 나 교체를 알아보는 중인데 문의가 있습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+validation,RQ0881,가족 상황에 따라 쓸 수 있는 출산·육아 휴가가 어떤 종류인지 규정 문서에서 확인하고 싶습니다.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+validation,RQ0894,외부 업체와 공유한 드라이브 링크를 확인하는 일반 절차가 궁금합니다.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0011,개발 도구 라이선스를 신청한 뒤 좌석 배정 여부를 직원이 확인하는 방법이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0078,결제 서비스 장애 티켓의 현재 담당자와 조치 상태를 조회해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0086,허리 통증으로 높낮이 책상이 필요해요. 어떻게 요청하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0095,세림솔루션 계약 검토 요청이 현재 완료됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0125,팀원 경조사 지원이나 경조 휴가가 궁금하면 어느 규정 문서를 확인하면 될까요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0160,재택 일정이 바뀌었어요. 아까 말한 날짜를 기준으로 다시 올리면 되는 거죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0163,경조휴가와 지원금 신청을 제 이름으로 넣어 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0173,"임신 중 근무 지원 안내를 읽었는데, 제가 표시한 부분은 기간 전체에 적용돼요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0176,협력사와 맺을 계약서 초안을 법무 검토에 보내려면 어느 양식과 자료를 준비해 어디로 신청하면 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0203,"제가 신청한 가족돌봄휴가, 지금 승인 단계가 어디까지 왔나요?",UNSUPPORTED,CLARIFY,CLARIFY,both_wrong,
+test,RQ0229,초등학생 조카가 분수 덧셈을 어려워해요. 예시를 들어 설명해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0257,"가족을 한동안 돌봐야 하는 직원이 휴직이나 가족돌봄휴가를 검토할 때, 신청 전에 어떤 규정과 상담 창구를 확인해야 하는지 정리해 주세요.",SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0263,팀에서 IDE 좌석 배정 여부를 확인해 달라고 했는데 라이선스 목록에는 IntelliJ와 DataGrip 두 제품이 있습니다. 신청자와 제품명이 빠져 어느 좌석을 뜻하는지 특정할 수 없어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0283,동료의 저장소 쓰기 권한 신청을 회사 포털에 대신 제출해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0299,장애 당직을 인계받으면서 “그 내용은 다음 담당자에게 꼭 전해 주세요”라는 말을 들었어요. 전달하라는 게 어느 내용이었죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0326,제가 올린 경조휴가 신청이 승인됐는지 포털에서 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0336,경조사 때 쓸 수 있는 회사 지원이 있는지 먼저 살펴볼 포털 메뉴가 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0351,바닥 오염 건은 그 시설 항목으로 올리면 되겠죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0428,라이선스 담당팀에 서류를 보낼 건데 제가 고른 양식이 맞는 건가요? 비슷한 이름의 서식이 둘이라 헷갈려요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0447,제가 바꾼 재택 날짜가 근무표에 반영됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0462,재택근무 일정 건 좀 봐주시면 안 될까요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0488,제 자리 천장에서 물이 떨어져요. 누수 신고는 어디에 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0494,"가족 간병 때문에 휴직을 검토 중인데 신청 전 상담 절차를 알려주고, 제 이름으로 상담 예약도 잡아 주세요.",SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0520,집에서 일할 날짜를 바꾸는 중인데 화면의 이 두 항목은 뭐가 다른가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0525,바닥 청소를 요청한 건이 처리 완료됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0537,운영 장애 공지가 난 뒤 직원이 공식 티켓의 진행 정보를 확인하는 경로가 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0538,협력사 계약 검토 신청을 포털에 대신 접수해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0554,"그룹웨어에서 이걸 등록하면 되는지, 아니면 다른 데 해야 하는지 모르겠어요.",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0560,가족 사정으로 근무를 잠시 쉬어야 할 때 어떤 휴직 제도가 있는지 사내 기준이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0604,제 계정에 개발 도구 라이선스 좌석이 배정됐는지 알려주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0643,신규 개발자 계정 추가 건인데 저장소 이름이 `atlas`로만 적혀 있습니다. GitLab에 앱팀과 플랫폼팀의 `atlas` 저장소가 각각 있어 어느 프로젝트 권한을 말하는지 모르겠어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0645,"네, 그걸로 이어서 진행하면 될 것 같아요.",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0647,재택근무 일정을 금요일에서 목요일로 바꿔 저장해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0678,"가족돌봄휴가를 생각 중입니다. 대상이나 기간 기준을 어디에서 확인하고, 인사팀 상담은 어떻게 신청하나요?",SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0687,타운홀 장소 준비 중인데 지난번에 말씀하신 조건이 이 공간에도 적용돼요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0695,근무 시간 조정이라고 했던 게 지난번 말한 휴가 신청을 뜻하는 건가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0734,점심을 쏟아 바닥이 미끄럽습니다. 사무실 청소를 긴급 요청하는 경로가 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0735,제 개인 깃허브 포트폴리오에 올릴 알고리즘 문제 풀이를 대신 작성해 줄 수 있나요?,UNSUPPORTED,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_wrong,
+test,RQ0750,파이썬으로 사진 파일 이름을 날짜순으로 바꾸는 스크립트를 짜주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0764,회의실 바닥에 쏟은 음료 청소를 시설팀에 요청해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0794,구매 요청서를 작성 중인데 문의할 점이 하나 있어요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0862,전체 타운홀을 위해 큰 공간을 잡을 때 예약 시점이나 승인 절차가 따로 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0878,사물함을 새로 신청하려는데 좌석과 함께 문의할 점이 생겼습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0892,동료 대신 저장소 권한을 신청할 수 있는 조건과 본인 확인 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0013,출장 결재는 그때 말씀하신 항목을 그대로 두면 되나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0022,저녁에 먹을 만한 채식 메뉴를 골라 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0041,제가 신청한 교육비 지원이 승인됐는지 상태를 봐줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0111,계약이 종료된 외부 인력의 사원증 출입 권한을 회수해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0140,사무실 대피 안내도에 표시된 이 통로가 평소 출입로와 같은 건가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0143,동료와 나눈 택시비를 제 출장 정산서에 교통비로 등록해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0177,제가 결제한 직무 교육비 지원 신청을 지금 제출해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0185,제 택배를 동료가 대신 받을 수 있도록 수령인을 바꿔 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0211,그룹웨어 설문에서 익명 응답을 허용하고 마감 시각을 정하는 방법을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0218,직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차를 볼 수 있을까요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0230,교육비를 신청할 때 수료증은 언제 제출하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0234,개발용 노트북을 새로 받아야 할 때 구매 요청과 결재는 어떤 순서로 올리나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0250,급여 관련 문의는 인사팀과 재무팀 중 어디로 보내야 하나요? 담당 구분을 볼 수 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0297,장애 대응 문서를 갱신해 달라는 요청을 받았는데 “내용 최신화”라고만 적혀 있습니다. 당번 인계용 현재 상태를 고치라는 건지 장애 종료 후 원인 기록을 보완하라는 건지 요청 범위가 불분명합니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0334,개발용 노트북 구매 요청을 제 이름으로 등록하고 결재를 올려 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0337,그 권한은 계약 종료일에 맞춰서 끄면 되는 거였나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0340,급여명세서 금액에 질문이 있을 때 개인 내역은 제외하고 정정 문의를 넣는 공식 경로를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0341,프로젝트 위키의 API 운영 가이드 문서에 제 계정 편집 권한을 추가해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0387,그 봉투는 보안 우편으로 맡기면 되는 거 맞나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0404,계약서가 든 봉투를 사내에서 전달할 때 일반 우편과 다른 보안 절차가 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0432,수당 항목이 예상과 다르게 표시됐습니다. 확인 요청을 하려면 어떤 자료를 준비해 어느 팀에 문의하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0443,회의실 조명이 깜빡입니다. 시설 접수 때 뭘 적어야 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0456,지난번처럼 하면 되는 거죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0469,계약이 끝난 외부 인력의 출입 권한을 회수하는 절차와 담당 부서를 안내해 주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0472,제가 제출한 사내 발명 제안서가 현재 검토 대기인지 승인 완료인지 등록 상태를 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0505,그 신고 건은 대리 수령한 분 이름을 넣으면 되나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0508,택시를 동료와 같이 타서 정산 중이에요. 제가 표시한 칸에는 어느 쪽 금액을 쓰는 건가요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0514,이번 달 제 급여명세서에 야근수당이 얼마로 찍혔는지 조회해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0553,그룹웨어로 정기 회의를 등록하는 중인데 하나만 확인 부탁드립니다.,CLARIFY,CLARIFY,UNSUPPORTED,regressed,
+test,RQ0570,"보안 문의에는 “로그인 알림이 이상하다”는 내용만 있고, 본인이 출장 중 접속한 건지 낯선 접근인지 정보가 없습니다. 계정 문의인지 사고 신고인지 어떤 도움을 원하는지 판단하기 어렵습니다.",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0573,팀 공지 건 좀 부탁드려요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0597,"포털에도 같은 공지가 있다고 했는데, 메일로 온 그 내용이 최신본인가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0607,해외 출장 뒤 현지 통화 영수증을 원화로 정산하려면 환율 증빙을 어디서 확인해야 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0633,개인정보 자료를 “정리해도 되나요?”라는 문의가 왔는데 대상이 상담 기록인지 계약 증빙인지 적혀 있지 않습니다. 삭제 여부를 묻는 건지 보관기간을 확인하려는 건지도 알 수 없어 필요한 안내를 정하기 어렵습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0636,인사 공지가 여러 개 와서 뭐가 궁금한지도 정리가 안 되네요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0649,제 회사 계정에 현재 로그인된 기기와 세션을 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0663,온라인 자격증 강의도 교육비 지원 대상인지 확인하는 내부 기준이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0665,제 회사 계정의 모든 활성 로그인 세션을 지금 종료해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0672,부모님 기념일에 보낼 카드 문구를 따뜻하게 다듬어 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0706,"사내 추천 채용 안내의 여기 적힌 기간은 추천한 날부터인가요, 입사한 날부터인가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0757,계정 보호를 위해 본인이 활성 로그인 세션을 점검하는 공식 방법을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0783,동료 대신 택배를 받아도 되나요? 대리 수령 절차와 확인할 사항을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0814,모르는 위치의 로그인 알림을 받았을 때 계정을 보호하고 활성 세션을 종료하는 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0846,신청한 개발용 노트북이 현재 발주 단계인지 확인해 주실래요?,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0872,급여 입금 계좌를 새 은행 계좌로 변경해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0889,세금계산서를 포털에 올리다 문의할 점이 생겼습니다. 잠시 확인 부탁드려도 될까요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0890,복귀할 때 동료와 택시를 같이 탔는데 제 몫을 청구하려면 비용을 어떻게 적어야 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0014,신규 입사자가 사원증과 사무실 출입 권한을 받으려면 어떤 신청 절차가 필요한가요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0030,새 장비를 그 위치에 추가해도 된다고 하셨죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0037,다른 모델로 온 모니터의 교환 요청이 접수됐는지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0051,주문한 모니터와 다른 모델이 도착했습니다. 반품이나 교환은 어떤 절차로 신청하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0061,개발 장비 견적을 받아 구매 요청서를 쓰는 중인데 여쭤볼 게 있습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0099,이번 주 장애 대응 당번인데 임시 관리자 권한 승인 절차가 궁금합니다. 제 계정에도 해당 권한을 지금 추가해 주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0108,"브라우저 추가 기능 검토표에 붙은 이 표시는 사용 가능이라는 뜻인가요, 검토 중이라는 뜻인가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0120,친구들과 할 보드게임 모임 초대장을 써주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0134,결제 저장소에 지난주 누가 접근했는지 로그를 조회해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0135,다음 주 사내 엔지니어링 세미나 발표 신청이 제 이름으로 등록됐는지 지금 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0145,조직도에서 제 직급을 한 단계 올려서 수정해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0154,여윳돈으로 투자할 국내 ETF를 몇 개 추천해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0169,대학 과제에 쓸 기후변화 발표 개요를 만들어 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0206,현재 팀별 담당 업무는 어디에 정리돼 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0212,프로젝트 협업 중 담당팀을 못 찾았어요. 조직도에서 직무별 연락 창구를 찾는 요령이 있나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0213,"발표 자료에 ""출처 표시를 바로잡아 주세요""라는 코멘트가 달렸습니다. 어느 슬라이드의 출처를 말씀하시는 건가요?",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0258,팀 이동 때 담당 업무를 누가 이어받는지 정하는 사내 절차가 있나요? 조직 변경 안내를 찾고 싶어요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0267,"담당 업무를 넘기는 거였나 팀장에게 먼저 말하는 거였나, 전에 들은 내용이 헷갈려요.",CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0285,제가 쓴 짧은 소설의 마지막 장면을 이어서 작성해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0292,도킹 장비 교체 신청 화면의 첫 번째 항목을 고르면 되는지 모르겠어요. 이게 맞나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0301,연차 건 좀 봐주세요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0302,임시 관리자 권한은 어떤 경로로 신청하죠?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0331,연차 기록에 뭔가 떠 있는데 어떤 내용인지 몰라서요. 이거 좀 봐주실 수 있나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0343,점심 메뉴로 비빔밥과 돈가스 중 하나를 골라 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0358,"임시 방문증 연장 절차를 알려주시고, 오늘 방문객의 출입 기간도 늘려 주세요.",SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0370,프로젝트 저장소에 누가 들어왔는지 확인해야 한다고 전달받았는데 감사 기록과 멤버 목록 중 무엇인지 모르겠습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0416,임시 방문증에 기록된 출입 만료일이 언제인지 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0429,재택근무자인데 다음 주 출근해요. 사무실 출입 신청이 필요할까요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0445,부서 이동이 있으면 팀별 업무 책임을 어디에 기록하고 공유하는지 안내를 부탁해요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0448,잘못 배송된 모니터를 공급업체로 반품 접수해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0480,남은 연차 관련해서 말씀하신 그 기준이 그대로 되는 거죠?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0486,조직도에서 이름과 팀을 검색하는 방법을 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0489,그 비품은 지난번 골랐던 모델로 신청하는 게 맞나요?,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0586,운영 대응을 맡았는데 안내에는 저장소 권한과 서비스 관리자 권한이 함께 나와요. 어느 쪽을 신청할지 아직 정하지 못했습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0609,제 계정에 운영 서비스 관리자 권한을 지금 추가해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0616,업무상 필요한 저장소 접근 기록을 확인하려면 어떤 승인과 사유가 필요한가요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0722,내 연차 잔여일수 지금 조회해 줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0746,월급날마다 적립식으로 살 만한 펀드와 비중을 골라줘.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0772,팀을 옮기면서 맡던 온보딩 업무를 넘겨야 해요. 인계 기준을 알려주고 담당자도 시스템에서 바꿔 주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0773,업체 지급 서류를 봐주셨으면 하는데 어떤 단계까지 맡기면 되는지 잘 모르겠습니다.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+test,RQ0779,제 자리 모니터 받침대는 시설과 좌석 중 어디에 요청하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0825,오늘 방문할 협력사 담당자의 임시 출입 기간을 하루 더 연장해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,
+test,RQ0827,"다른 도킹 스테이션을 사야 하는 절차를 설명해 주시고, 제 교체 구매 요청도 등록해 주세요.",SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,
+test,RQ0880,팀이 바뀌면 이건 누가 맡는 건가요? 제가 계속 하는 건지 다른 분께 넘기는 건지요.,CLARIFY,CLARIFY,CLARIFY,both_correct,
+regression,leave_policy-1,우리 회사 연차 규정에 대해 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,leave_policy-2,우리 회사 연차 규정에 대해 알려주세요.,SEARCH_KNOWLEDGE,UNSUPPORTED,UNSUPPORTED,both_wrong,False
+regression,leave_policy-3,연차 규정이 어떻게 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,leave_policy-4,우리 회사 연차 사용 기준과 신청 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,leave_method-1,연차 신청 절차 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,leave_method-2,연차는 어디에서 신청하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,leave_method-3,휴가 신청 방법 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,leave_method-4,휴가를 어떻게 써?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,expense-1,출장비 규정 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,expense-2,출장비 정산은 어떻게 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,expense-3,법인카드 사용 규정 알려주세요.,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,expense-4,법인카드 사용 시 지켜야 할 기준은 무엇인가요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,security-1,개인정보 사고 신고 절차 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,security-2,고객 정보가 든 메일을 잘못 보냈을 때 개인정보 사고 신고와 수신자 대응 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,security-3,비밀번호 변경 방법 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,security-4,회사 계정 비밀번호는 어디에서 변경하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,lookup_method-1,내 연차 잔여일은 어디서 확인해?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,lookup_method-2,내 출장비 지급 상태를 확인하는 방법을 알려줘,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,lookup_method-3,내 휴가 승인 여부는 어디에서 확인하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,lookup_method-4,개인정보 사고 신고 내역 확인 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,mixed-1,휴가 규정 알려주고 내 잔여일도 조회해줘.,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,mixed-2,휴가 신청 방법 알려주고 다음 주로 등록해줘.,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,mixed-3,출장비 정산 절차를 알려주고 내 지급 상태도 조회해줘.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,mixed-4,개인정보 사고 신고 절차를 설명하고 대신 신고도 접수해줘.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,personal-1,내 연차가 며칠 남았어?,UNSUPPORTED,CLARIFY,CLARIFY,both_wrong,True
+regression,personal-2,내 연차 잔여 일수를 조회해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+regression,personal-3,내 출장비가 지급됐는지 조회해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+regression,personal-4,내 휴가 신청이 승인됐는지 확인해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+regression,execute-1,내일 연차 신청해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+regression,execute-2,연차 신청해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+regression,execute-3,내 휴가 신청을 취소해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+regression,execute-4,개인정보 사고 신고를 대신 접수해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+regression,unrelated-1,김치찌개 만드는 법 알려줘,UNSUPPORTED,UNSUPPORTED,SEARCH_KNOWLEDGE,regressed,False
+regression,unrelated-2,오늘 야구 경기 결과 알려줘,UNSUPPORTED,UNSUPPORTED,SEARCH_KNOWLEDGE,regressed,False
+regression,unrelated-3,연애 운세 봐줘,UNSUPPORTED,UNSUPPORTED,CLARIFY,regressed,False
+regression,unrelated-4,여행 사진을 고양이 그림으로 바꿔줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,False
+regression,unclear-1,그거 어떻게 해?,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+regression,unclear-2,이거 알려줘,CLARIFY,UNSUPPORTED,CLARIFY,improved,False
+regression,unclear-3,이 제도를 어떻게 적용하면 될까?,CLARIFY,CLARIFY,SEARCH_KNOWLEDGE,regressed,False
+regression,unclear-4,이 요청 좀 도와줘,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+regression,ambiguous_help-1,휴가 신청 도와줘,CLARIFY,UNSUPPORTED,SEARCH_KNOWLEDGE,both_wrong,False
+regression,ambiguous_help-2,출장비 처리 도와줘,CLARIFY,UNSUPPORTED,SEARCH_KNOWLEDGE,both_wrong,False
+regression,ambiguous_help-3,계정 관련해서 도와줘,CLARIFY,UNSUPPORTED,CLARIFY,improved,False
+regression,ambiguous_help-4,신고 관련해서 도와줘,CLARIFY,UNSUPPORTED,CLARIFY,improved,False
+regression,given_situation-1,내가 입사한 지 8개월 됐어. 회사 휴가 발생 기준을 내 상황에 적용하면 어떻게 돼?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+regression,given_situation-2,입사 8개월 차인데 연차 발생 기준 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,given_situation-3,블루데이 제도 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+regression,given_situation-4,미등록된 장기근속 포상 기준 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH001,사내 수어 통역 지원 기준 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH002,회의에 수어 통역을 요청하려면 어떻게 하나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+fresh,FRESH003,사내 수어 통역 신청 절차 설명해주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+fresh,FRESH004,사내 녹음실 사용 규정 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH005,회사 녹음실을 쓰려면 어떤 절차가 필요한가요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+fresh,FRESH006,사내 녹음실 이용 방법 알려주세요.,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH007,점자 명함 신청 방법 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH008,직원이 점자 명함을 만들 때 따를 회사 기준은 뭐야?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+fresh,FRESH009,점자 명함 제작 절차 알려주세요.,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH010,업무용 전자책 대여 규정 알려주고 책도 빌려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH011,회사 전자책 이용 방법을 설명하고 내 계정에 대여도 해주세요.,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH012,업무 전자책 대여 절차 안내하고 대신 대여 처리해줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+fresh,FRESH013,내 사내 동호회 가입 상태 조회해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH014,제가 가입한 사내 동호회 목록을 확인해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH015,내 동호회 가입 승인됐어?,UNSUPPORTED,CLARIFY,CLARIFY,both_wrong,True
+fresh,FRESH016,내일 회사 샤워실 예약해줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH017,사내 샤워실을 제 이름으로 예약해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH018,내 샤워실 예약 시간을 오후로 바꿔줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH019,내가 올린 사내 도서 나눔 글 지워줘,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH020,제 도서 나눔 게시물을 삭제해 주세요.,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH021,내 중고책 나눔 글 삭제 처리해,UNSUPPORTED,UNSUPPORTED,UNSUPPORTED,both_correct,True
+fresh,FRESH022,기부 매칭 안내에서 그 조건이 이거야?,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+fresh,FRESH023,사내 기부 매칭의 그 항목 좀 봐주세요.,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+fresh,FRESH024,기부 매칭에서 아까 말한 기준 그대로야?,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+fresh,FRESH025,사내 옥상 텃밭 건 좀 도와줘,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+fresh,FRESH026,회사 텃밭 관련해서 도움 부탁드립니다.,CLARIFY,UNSUPPORTED,CLARIFY,improved,False
+fresh,FRESH027,옥상 텃밭 쪽 좀 봐줘,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+fresh,FRESH028,사내 라디오 건 좀 도와줘,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+fresh,FRESH029,회사 라디오 관련해서 도와주세요.,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+fresh,FRESH030,사내 라디오 그 일 좀 봐줘,CLARIFY,CLARIFY,CLARIFY,both_correct,False
+phrasing,PAIR001,연차 신청 절차 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+phrasing,PAIR002,연차 신청 절차 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR003,연차 신청 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR004,연차 신청 절차가 어떻게 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR005,연차 신청 절차에 대해 설명해줘,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR006,연차 신청 절차에 대해 설명해주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR007,출장비 정산 절차 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+phrasing,PAIR008,출장비 정산 절차 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR009,출장비 정산 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR010,출장비 정산 절차가 어떻게 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR011,출장비 정산 절차에 대해 설명해줘,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR012,출장비 정산 절차에 대해 설명해주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR013,개인정보 사고 신고 절차 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+phrasing,PAIR014,개인정보 사고 신고 절차 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR015,개인정보 사고 신고 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR016,개인정보 사고 신고 절차가 어떻게 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR017,개인정보 사고 신고 절차에 대해 설명해줘,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR018,개인정보 사고 신고 절차에 대해 설명해주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR019,회사 계정 비밀번호 변경 절차 알려줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+phrasing,PAIR020,회사 계정 비밀번호 변경 절차 알려주세요.,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+phrasing,PAIR021,회사 계정 비밀번호 변경 절차를 알려주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR022,회사 계정 비밀번호 변경 절차가 어떻게 되나요?,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False
+phrasing,PAIR023,회사 계정 비밀번호 변경 절차에 대해 설명해줘,SEARCH_KNOWLEDGE,UNSUPPORTED,SEARCH_KNOWLEDGE,improved,False
+phrasing,PAIR024,회사 계정 비밀번호 변경 절차에 대해 설명해주세요.,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,SEARCH_KNOWLEDGE,both_correct,False

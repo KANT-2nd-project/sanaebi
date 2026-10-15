@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "model_name": "learning_transformer",
+  "model_id": "a3d0ea88baeb4e35ab2dd5facb394a6c",
+  "created_at": "2026-10-15T05:05:59.415099+00:00",
+  "labels": [
+    "SEARCH_KNOWLEDGE",
+    "CLARIFY",
+    "UNSUPPORTED"
+  ],
+  "dataset_sha256": "95d2033f411598440450dfc752e3fc328f777d4a2d4c1251e22c7c788522126e",
+  "split_id": "b04634f79ef9b3f456324f53b3c065fbd1388ce0fd578b9915b9472dd5c231a8",
+  "split_manifest_sha256": "8081d2132a01675607a33cc1492285f845f959a4e0cbe656657e695b2841d5fe",
+  "seed": 20261013,
+  "config": {
+    "pretrained_model": "monologg/koelectra-base-v3-discriminator",
+    "revision": "68b30cd259f34a4b5aa8786392612ba2a2617fcc",
+    "max_length": 256,
+    "batch_size": 4,
+    "epochs": 3,
+    "learning_rates": [
+      2e-05
+    ],
+    "device": "cuda"
+  },
+  "selection": {
+    "selected": {
+      "learning_rate": 2e-05,
+      "epoch": 1
+    },
+    "validation_macro_f1": 0.9851778656126481,
+    "trials": [
+      {
+        "candidate": 0,
+        "learning_rate": 2e-05,
+        "epoch": 1,
+        "train_loss": 0.6295141330881462,
+        "validation_macro_f1": 0.9851778656126481
+      },
+      {
+        "candidate": 0,
+        "learning_rate": 2e-05,
+        "epoch": 2,
+        "train_loss": 0.11113284726387246,
+        "validation_macro_f1": 0.977565485539389
+      },
+      {
+        "candidate": 0,
+        "learning_rate": 2e-05,
+        "epoch": 3,
+        "train_loss": 0.04327098006728283,
+        "validation_macro_f1": 0.9622491829854015
+      }
+    ],
+    "resolved_revision": null
+  },
+  "test_exposure": "이미 열람한 합성 개발 평가 자료",
+  "complete": true,
+  "files_sha256": {
+    "tokenizer.json": "482e96afde0f8e350fe0131bbc340f99fe3f62ff2b0bb643a0f7faf5ba796b71",
+    "config.json": "b23f485afaad4f041305c43df45e42f0276b97d04647235504591d09e4cc83fd",
+    "metadata.json": "6fc682ba821c6270e3cf2bd630329ddba54abaa61d768a58df07826bee307119",
+    "tokenizer_config.json": "9cd988573a9588a6085cd353eeefa09b803dba75b03f58d0c1d302aad3078193",
+    "model.safetensors": "3bc71a1527c85d3760398a27509de7f393065ee440095c0895377fc450c6eaa1"
+  },
+  "transitions": {
+    "validation": {
+      "both_correct": 130,
+      "regressed": 1,
+      "both_wrong": 1,
+      "improved": 1
+    },
+    "test": {
+      "both_correct": 132,
+      "both_wrong": 2,
+      "regressed": 1
+    },
+    "regression": {
+      "improved": 15,
+      "both_wrong": 4,
+      "both_correct": 25,
+      "regressed": 4
+    },
+    "fresh": {
+      "improved": 9,
+      "both_correct": 20,
+      "both_wrong": 1
+    },
+    "phrasing": {
+      "improved": 6,
+      "both_correct": 18
+    }
+  }
+}
