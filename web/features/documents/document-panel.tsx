@@ -1,5 +1,4 @@
 "use client";
-
 import { MarkdownContent } from "../../components/markdown-content";
 
 import Link from "next/link";
@@ -493,7 +492,7 @@ export function DocumentPanel() {
   </nav>;
 
   return (
-    <main className="documents-page">
+    <main className={`documents-page${editorOpen ? " documents-page-editing" : ""}`}>
       <header className="documents-header">
         <Link href="/" className="documents-brand" onClick={event => {
           if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

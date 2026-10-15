@@ -390,3 +390,51 @@ button.send-button:enabled:active { background: var(--action-pressed); }
   .chat-header { flex-wrap: wrap; gap: 4px; }
   .chat-header nav { width: 100%; }
 }
+
+/* The source remains mounted when switching mobile preview tabs. */
+.document-markdown-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+.document-markdown-tabs [aria-selected="true"] { background: var(--subtle); border-color: var(--action); }
+.document-markdown-columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.document-markdown-source, .document-markdown-preview { min-width: 0; }
+.document-markdown-source { display: flex; flex-direction: column; gap: 8px; }
+/* The library owns editing; our renderer owns all preview content. */
+.document-body-label { font-weight: 650; }
+.document-body-label span { color: var(--danger); }
+.document-source-editor { min-height: 320px; flex: 1; min-width: 0; }
+.document-source-editor .w-md-editor { height: 100% !important; display: flex; flex-direction: column; border: 1px solid var(--control-border); border-radius: var(--radius-control); box-shadow: none; color: var(--foreground); background: var(--surface); }
+.document-source-editor .w-md-editor-toolbar { flex: none; height: auto; padding: 8px; border-color: var(--divider); background: var(--subtle); border-radius: var(--radius-control) var(--radius-control) 0 0; }
+.document-source-editor .w-md-editor-toolbar ul { display: flex; flex-wrap: wrap; gap: 4px; }
+.document-source-editor .w-md-editor-toolbar li { margin: 0; }
+.document-source-editor .w-md-editor-toolbar button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; height: auto; padding: 8px 12px; border-radius: var(--radius-control); font-size: 13px; line-height: 1.4; color: var(--foreground); }
+.document-source-editor .w-md-editor-toolbar button:not(:disabled):hover { background: var(--subtle-hover); }
+.document-source-editor .w-md-editor-toolbar button:not(:disabled):active { background: var(--divider); }
+.document-source-editor .w-md-editor-toolbar button:disabled { opacity: .55; }
+.document-source-editor .w-md-editor-content { flex: 1; min-height: 320px; height: auto !important; }
+.document-source-editor .w-md-editor-input { height: 100%; }
+.document-source-editor .w-md-editor-text { min-height: 100%; }
+.document-source-editor textarea.w-md-editor-text-input { min-height: 100%; border: 0; border-radius: 0; padding: 12px; font-family: monospace; font-size: 16px; line-height: 1.7; resize: none; }
+.document-markdown-preview { padding: 20px; border: 1px solid var(--control-border); border-radius: var(--radius-control); overflow: auto; line-height: 1.75; max-height: max(480px, calc(100dvh - 180px)); }
+.document-preview-content { max-width: 720px; margin: 0 auto; }
+.document-preview-heading { font-size: 14px; color: var(--muted); font-weight: 600; margin-bottom: 16px; }
+.document-preview-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; margin-bottom: 24px; }
+.documents-page-editing { width: min(1600px, 100%); }
+.documents-page-editing .documents-intro { padding: 12px 0; }
+.documents-page-editing .documents-intro > h1 { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.documents-page-editing .documents-intro > p:last-child { display: none; }
+.documents-page-editing .documents-callout { margin-bottom: 0; }
+.documents-page-editing .documents-editor-panel { padding: 16px; }
+.documents-page-editing .documents-editor-toolbar { margin-bottom: 8px; }
+.documents-page-editing .documents-editor-form { margin-top: 16px; }
+.documents-page-editing .documents-editor-form > .documents-editor-actions { position: sticky; bottom: 0; z-index: 2; padding: 12px 0; background: var(--surface); border-top: 1px solid var(--divider); }
+.documents-page-editing :is(input, textarea, summary, button, [tabindex]) { scroll-margin-block: 24px 100px; }
+@media (max-width: 1023px) {
+  .document-markdown-editor[data-mode="edit"] .document-markdown-preview,
+  .document-markdown-editor[data-mode="preview"] .document-markdown-source { display: none; }
+}
+@media (min-width: 1024px) {
+  .document-markdown-tabs { display: none; }
+  .document-markdown-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); height: max(620px, calc(100dvh - 300px)); }
+  .document-markdown-source { min-height: 0; overflow: auto; }
+
+  .document-markdown-preview { min-height: 0; max-height: none; }
+}
