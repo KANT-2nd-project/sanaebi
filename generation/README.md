@@ -7,7 +7,7 @@
 ```text
 질문 + 문서 문자열 목록
   → generate_from_documents (공통 진입점)
-  → build_profile_prompt (기본 examples_answer_scope_v1) → GenerationPrompt(system, user)
+  → build_profile_prompt (기본 examples_answer_scope_v3) → GenerationPrompt(system, user)
   → generate(prompt, model_call)
   → model_call(prompt)의 ModelResponse(원문·사용량·종료 사유)
   → 명시적 거절 / 길이 제한 판정 / parse_generation
@@ -42,7 +42,7 @@ COMPLETED는 정확성·근거 충분성·한국어 준수·모델 품질의 합
 
 ## 독립 실행
 
-저장소 루트에서 실행한다. [models.json](models.json)에는 GPT-6 Luna 하나만 두며, [experiments.json](experiments.json)의 기본 프리셋은 company-final-v1이다. 두 CLI가 같은 설정 로더를 사용한다. 기본값은 examples_answer_scope_v1 / single / xhigh / 4096토큰 / 180초 / prompt_json이며 temperature는 전달하지 않는다. --model과 --experiment는 생략할 수 있고, 없는 별칭은 오류다.
+저장소 루트에서 실행한다. [models.json](models.json)에는 GPT-6 Luna 하나만 두며, [experiments.json](experiments.json)의 기본 프리셋은 company-final-v1이다. 두 CLI가 같은 설정 로더를 사용한다. 기본값은 examples_answer_scope_v3 / single / xhigh / 4096토큰 / 180초 / prompt_json이며 temperature는 전달하지 않는다. --model과 --experiment는 생략할 수 있고, 없는 별칭은 오류다.
 
 먼저 게시 문서를 내보낸다. 생성 모듈은 서버 DB를 직접 읽지 않고 이 snapshot만 사용한다. 기존 출력 파일은 덮어쓰지 않으므로 문서 갱신 시 기존 snapshot을 보존하고 새로 내보낸다.
 
@@ -146,6 +146,6 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 설치된 SDK의 자동 parse 경로가 잘림 응답을 예외로 바꾸므로, strict 호출은 raw create 응답을 LangChain AIMessage로 변환한다. 원문·사용량·종료 사유·refusal을 보존하며 명시적 거절이 길이 판정보다 우선한다. 내부 SDK 메서드에 의존하므로 uv.lock과 전송 경로 회귀 테스트를 함께 유지한다.
 
-`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존하고 독립 CLI·generate_from_documents 기본값은 scope로 연결했다. 서버도 동일 프로필을 사용한다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
+`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존한다. 현재 독립 CLI·generate_from_documents·서버 기본값은 두 규칙을 추가한 `examples_answer_scope_v3`이며 [채택 기준](../docs/generation-final-prompt.md)을 따른다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
 
 GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.
