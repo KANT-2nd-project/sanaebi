@@ -27,13 +27,31 @@ class DeploymentEmbeddingManifestTests(unittest.TestCase):
     def test_static_release_descriptor_pins_tiny_and_runtime_schema(self):
         release = parse_manifest(MANIFEST_PATH.read_bytes())
 
-        self.assertEqual(release.default_mode, "full")
+        self.assertEqual(release.default_mode, "rag")
         self.assertEqual(release.baseline_schema_version, 1)
         self.assertEqual(release.index_schema_version, 1)
         self.assertEqual(release.model.model_id, EXPECTED_MODEL_ID)
         self.assertEqual(release.model.revision, EXPECTED_REVISION)
         self.assertEqual(release.model.dimension, 384)
         self.assertEqual(release.model.max_length, 512)
+
+    def test_legacy_full_descriptor_remains_valid(self):
+        value = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        value["default_mode"] = "full"
+
+        release = parse_manifest(json.dumps(value).encode())
+
+        self.assertEqual(release.default_mode, "full")
+
+    def test_compose_api_and_indexer_default_to_rag_with_override_support(self):
+        compose = (
+            Path(__file__).resolve().parents[2] / "deployment/compose.production.yaml"
+        ).read_text(encoding="utf-8")
+
+        self.assertEqual(
+            compose.count("SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-rag}"),
+            2,
+        )
 
     def test_descriptor_rejects_unpinned_model_or_file_inventory(self):
         value = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))

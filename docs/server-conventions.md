@@ -141,7 +141,7 @@ trace는 모드·라벨 출처·분류 상태·단계 경과 시간·처리 경�
 
 ## 선택적 RAG 경계
 
-`SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 full을 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 GenerationAnswerer의 retrieved 입구로 보낸다. full 입구는 기존 snapshot 계약을 유지한다. 두 입구의 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
+`SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 rag를 사용한다. C는 현재 게시 개정의 벡터 점수0.35 이상 청크 전체를 대상으로 겹친 구간을 병합하며, 후보·근거 개수·본문 문자·별도 전달 토큰 제한을 두지 않는다. 임베딩 입력512와 제공자 입력 한계는 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 GenerationAnswerer의 retrieved 입구로 보낸다. full 입구는 기존 snapshot 계약을 유지한다. 두 입구의 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
 
 검색은 현재 문서/개정/digest를 검증한 청크만 대상으로 한다. 예전 개정을 top-k 이후 거르는 방식은 허용하지 않는다. 빈 원본은 정상 안내, 미완성 색인은503, 검색 입력 초과는422, 일반 코드 오류는500이다. 검색 실패에서 생성기/예산 예약0회를 회귀 검증한다. startup Tiny 준비·ready 조회와 생성 API 호출을 분리한다.
 

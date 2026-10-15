@@ -1046,7 +1046,7 @@ class DeploymentEngine:
                     if old_mode is None:
                         # Older journal revisions did not save the prior runtime
                         # mode; retain their config-based recovery compatibility.
-                        old_mode = self._configured_retrieval_mode()
+                        old_mode = self._configured_retrieval_mode() or "full"
                     if old_mode not in ("full", "rag"):
                         raise DeploymentError("journaled retrieval mode is invalid")
                     mode, runtime_overrides, _ = self._runtime_overrides(
@@ -1697,6 +1697,17 @@ class DeploymentEngine:
             "scripts.index_documents",
             "--once",
         ]
+        # Read-only index access requires the candidate schema. Migrate only the
+        # isolated DB copy, just as API startup will do after the live backup.
+        initialize = command[:-3] + [
+            "-c",
+            (
+                "from app.documents.repository import DocumentRepository; "
+                "from app.settings import get_document_database_path; "
+                "DocumentRepository(get_document_database_path()).initialize()"
+            ),
+        ]
+        self._run("candidate document schema preparation", initialize, timeout=600)
         result = self._run("candidate retrieval index", command, timeout=1800)
         try:
             status = json.loads(result.stdout)
@@ -1725,7 +1736,7 @@ class DeploymentEngine:
             f"API readiness check timed out ({last_error or 'no response'})"
         )
 
-    def _configured_retrieval_mode(self) -> str:
+    def _configured_retrieval_mode(self) -> str | None:
         path = self.paths.config / "api.env"
         try:
             lines = path.read_text(encoding="utf-8").splitlines()
@@ -1745,10 +1756,9 @@ class DeploymentEngine:
             if len(value) >= 2 and value[0] == value[-1] and value[0] in "'\"":
                 value = value[1:-1]
             configured = value
-        mode = configured or "full"
-        if mode not in {"full", "rag"}:
+        if configured is not None and configured not in {"full", "rag"}:
             raise DeploymentError("retrieval mode must be full or rag")
-        return mode
+        return configured
 
     def _active_api_retrieval_mode(self) -> str:
         """Read the mode from the running container, not a possibly edited env file."""
@@ -1901,11 +1911,14 @@ class DeploymentEngine:
         force_mode: str | None = None,
     ) -> tuple[str, dict[str, str], dict[str, object] | None]:
         _, retrieval = self._release_retrieval(release_id)
-        requested_mode = (
-            force_mode or self._configured_retrieval_mode()
-            if retrieval is not None
-            else "full"
-        )
+        if retrieval is None:
+            requested_mode = "full"
+        else:
+            requested_mode = (
+                force_mode
+                or self._configured_retrieval_mode()
+                or retrieval.default_mode
+            )
         binding = None
         if retrieval is not None and (prepared is not None or requested_mode == "rag"):
             binding = self._binding_for_release(

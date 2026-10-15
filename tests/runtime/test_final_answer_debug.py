@@ -55,6 +55,7 @@ class ActiveHttpGenerationTests(unittest.TestCase):
                 os.environ,
                 {
                     "SANAEBI_DOCUMENT_DB": str(directory / "documents.sqlite3"),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
                     "SANAEBI_ANSWER_PROVIDER": "openai",
                     "TRACE_DIR": "",
                 },

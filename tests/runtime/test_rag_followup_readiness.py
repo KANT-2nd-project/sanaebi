@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import ClassVar
 from unittest.mock import Mock, patch
 
+import numpy as np
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
@@ -41,7 +42,17 @@ def _write_source(path: Path, body: str) -> None:
     path.write_text(json.dumps(_row(body), ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-class RuntimeFakeEmbedder(FakeEmbedder):
+class MatchingEmbedder(FakeEmbedder):
+    """Readiness tests use a known relevant vector; ranking has separate tests."""
+
+    @staticmethod
+    def _vector(text):
+        vector = np.zeros(384, dtype=np.float32)
+        vector[0] = 1.0
+        return vector
+
+
+class RuntimeFakeEmbedder(MatchingEmbedder):
     instances: ClassVar[list[RuntimeFakeEmbedder]] = []
 
     def __init__(self, path: str | Path):
@@ -63,7 +74,7 @@ class RagFollowupReadinessTests(unittest.TestCase):
         )
         _write_source(self.source, self.baseline_text)
         self.bundle = prepare_baseline(
-            self.source, root / "baseline-bundles", FakeEmbedder()
+            self.source, root / "baseline-bundles", MatchingEmbedder()
         )
         RuntimeFakeEmbedder.instances.clear()
 
@@ -129,6 +140,29 @@ class RagFollowupReadinessTests(unittest.TestCase):
         )
         self.reserve = Mock()
         fastapi_main.app.state.answerer.reserve_generation = self.reserve
+
+    def test_below_threshold_returns_notice_without_generation_or_reservation(self):
+        self._maintain("restore")
+        snapshot = fastapi_main.app.state.document_provider.snapshot()
+        self.worker.reconcile(snapshot)
+        orthogonal = np.zeros((1, 384), dtype=np.float32)
+        orthogonal[0, 1] = 1.0
+        with patch.object(self.embedder, "encode_queries", return_value=orthogonal):
+            for path, body in (
+                ("/ask", {"question": "무관한 질문"}),
+                (
+                    "/assistant",
+                    {
+                        "response": {"ok": True, "text": "무관한 질문"},
+                        "classification_label": "SEARCH_KNOWLEDGE",
+                    },
+                ),
+            ):
+                response = self.client.post(path, json=body)
+                self.assertEqual(response.status_code, 200, response.text)
+                self.assertIn("근거를 찾지 못했습니다", response.json()["text"])
+        self.reserve.assert_not_called()
+        self.assertEqual(self.provider.prompts, [])
 
     def _maintain(self, action: str):
         preview = self.client.get(

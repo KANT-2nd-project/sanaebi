@@ -1,0 +1,595 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "D09",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "즉시 보안 신고와 해당 계정 및 같은 비밀번호를 사용한 다른 계정의 서비스별 변경을 안내했다. 추가 보안 조치도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D09",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "즉시 보안 신고와 해당 계정 및 같은 비밀번호를 사용한 다른 계정의 서비스별 변경을 안내했다. 추가 보안 조치도 원문에 부합한다."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "즉시 보안 신고와 해당 계정 및 같은 비밀번호를 사용한 다른 계정의 서비스별 변경을 안내했다. 추가 보안 조치도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D09",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "즉시 보안 신고와 해당 계정 및 같은 비밀번호를 사용한 다른 계정의 서비스별 변경을 안내했다. 추가 보안 조치도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보안·개인정보 담당자와 시스템 담당자의 공동 승인, 최대 4시간, 종료 즉시 회수 요청, 다음 영업일 검토를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보안·개인정보 담당자와 시스템 담당자의 공동 승인, 최대 4시간, 종료 즉시 회수 요청, 다음 영업일 검토를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 유료 플랜만으로 비공개 자료 입력이 허용되지 않으며, 사내 전용 문서는 금지되고 공개 배포본을 확인해야 함을 설명했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 유료 플랜만으로 비공개 자료 입력이 허용되지 않으며, 사내 전용 문서는 금지되고 공개 배포본을 확인해야 함을 설명했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "구매 승인만으로 서비스 계정·권한이 자동 발급되지 않는다고 명시했다. 별도 접근 신청 등 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "형제자매·조부모 사망 시 3근무일과 주말·공휴일 미차감 기준을 모두 정확히 전달했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D08",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "차량 내부를 보관 장소로 쓰지 말라고 하고, 퇴근 뒤 잠긴 장소 보관 기준도 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보안·개인정보 담당자와 시스템 담당자의 공동 승인, 최대 4시간, 종료 즉시 회수 요청, 다음 영업일 검토를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "형제자매·조부모 사망 시 3근무일과 주말·공휴일 미차감 기준을 모두 정확히 전달했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D08",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "차량 내부를 보관 장소로 쓰지 말라고 하고, 퇴근 뒤 잠긴 장소 보관 기준도 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 유료 플랜만으로 비공개 자료 입력이 허용되지 않으며, 사내 전용 문서는 금지되고 공개 배포본을 확인해야 함을 설명했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "구매 승인만으로 서비스 계정·권한이 자동 발급되지 않는다고 명시했다. 별도 접근 신청 등 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 유료 플랜만으로 비공개 자료 입력이 허용되지 않으며, 사내 전용 문서는 금지되고 공개 배포본을 확인해야 함을 설명했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "형제자매·조부모 사망 시 3근무일과 주말·공휴일 미차감 기준을 모두 정확히 전달했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "형제자매·조부모 사망 시 3근무일과 주말·공휴일 미차감 기준을 모두 정확히 전달했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 유료 플랜만으로 비공개 자료 입력이 허용되지 않으며, 사내 전용 문서는 금지되고 공개 배포본을 확인해야 함을 설명했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D08",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "차량 내부를 보관 장소로 쓰지 말라고 하고, 퇴근 뒤 잠긴 장소 보관 기준도 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "구매 승인만으로 서비스 계정·권한이 자동 발급되지 않는다고 명시했다. 별도 접근 신청 등 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D09",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "즉시 보안 신고와 해당 계정 및 같은 비밀번호를 사용한 다른 계정의 서비스별 변경을 안내했다. 추가 보안 조치도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보안·개인정보 담당자와 시스템 담당자의 공동 승인, 최대 4시간, 종료 즉시 회수 요청, 다음 영업일 검토를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D07-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "개별 계정의 현재 상태를 조회할 수 없다는 점은 밝혔지만, 구매 검토 완료만으로 계정·권한이 자동 발급되지 않는다는 문서상 기준을 전달하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보안·개인정보 담당자와 시스템 담당자의 공동 승인, 최대 4시간, 종료 즉시 회수 요청, 다음 영업일 검토를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 유료 플랜만으로 비공개 자료 입력이 허용되지 않으며, 사내 전용 문서는 금지되고 공개 배포본을 확인해야 함을 설명했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D08",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "차량 내부를 보관 장소로 쓰지 말라고 하고, 퇴근 뒤 잠긴 장소 보관 기준도 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D09",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "즉시 보안 신고와 해당 계정 및 같은 비밀번호를 사용한 다른 계정의 서비스별 변경을 안내했다. 추가 보안 조치도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D07-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "개별 계정의 현재 상태를 조회할 수 없다는 점은 밝혔지만, 구매 검토 완료만으로 계정·권한이 자동 발급되지 않는다는 문서상 기준을 전달하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "구매 승인만으로 서비스 계정·권한이 자동 발급되지 않는다고 명시했다. 별도 접근 신청 등 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D09",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "즉시 보안 신고와 해당 계정 및 같은 비밀번호를 사용한 다른 계정의 서비스별 변경을 안내했다. 추가 보안 조치도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "형제자매·조부모 사망 시 3근무일과 주말·공휴일 미차감 기준을 모두 정확히 전달했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D08",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "차량 내부를 보관 장소로 쓰지 말라고 하고, 퇴근 뒤 잠긴 장소 보관 기준도 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "형제자매·조부모 사망 시 3근무일과 주말·공휴일 미차감 기준을 모두 정확히 전달했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D08",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "차량 내부를 보관 장소로 쓰지 말라고 하고, 퇴근 뒤 잠긴 장소 보관 기준도 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보안·개인정보 담당자와 시스템 담당자의 공동 승인, 최대 4시간, 종료 즉시 회수 요청, 다음 영업일 검토를 모두 안내했다."
+        }
+      ]
+    }
+  ]
+}

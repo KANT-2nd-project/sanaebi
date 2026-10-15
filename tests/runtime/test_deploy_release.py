@@ -374,6 +374,95 @@ class SqliteBackupTests(unittest.TestCase):
 
 
 class HostPathTests(unittest.TestCase):
+    def _candidate_engine(
+        self, root: Path, *, descriptor_mode: str | None, configured_mode: str | None
+    ):
+        release_id = "a" * 40 + "-12345"
+        release_dir = root / "releases" / release_id
+        release_dir.mkdir(parents=True)
+        image = "ghcr.io/kant-2nd-project/sanaebi-api@sha256:" + "b" * 64
+        release = {
+            "schema_version": 2,
+            "release_id": release_id,
+            "image": image,
+            "web_archive": "web.tar.gz",
+            "web_sha256": "1" * 64,
+            "model_manifest": "model-release.json",
+            "model_manifest_sha256": "2" * 64,
+        }
+        if descriptor_mode is not None:
+            retrieval = json.loads(
+                (
+                    Path(__file__).resolve().parents[2]
+                    / "deployment/retrieval-release.json"
+                ).read_text(encoding="utf-8")
+            )
+            retrieval["default_mode"] = descriptor_mode
+            retrieval_raw = json.dumps(retrieval).encode()
+            (release_dir / "retrieval-release.json").write_bytes(retrieval_raw)
+            release["retrieval_manifest"] = "retrieval-release.json"
+            release["retrieval_manifest_sha256"] = hashlib.sha256(
+                retrieval_raw
+            ).hexdigest()
+        (release_dir / "release.json").write_text(json.dumps(release))
+        config = root / "etc"
+        config.mkdir(parents=True)
+        env_value = (
+            f"SANAEBI_RETRIEVAL_MODE={configured_mode}\n"
+            if configured_mode is not None
+            else "SANAEBI_PUBLIC_DEMO=1\n"
+        )
+        (config / "api.env").write_text(env_value, encoding="utf-8")
+        return DeploymentEngine(HostPaths(root=root, config=config)), release_id
+
+    def test_candidate_mode_uses_new_descriptor_default_when_unset(self):
+        with tempfile.TemporaryDirectory() as directory:
+            engine, release_id = self._candidate_engine(
+                Path(directory), descriptor_mode="rag", configured_mode=None
+            )
+            with patch.object(
+                engine,
+                "_binding_for_release",
+                return_value={"bundle_path": "/tmp/bundle"},
+            ):
+                mode, overrides, _ = engine._runtime_overrides(release_id)
+
+        self.assertEqual(mode, "rag")
+        self.assertEqual(overrides["SANAEBI_RETRIEVAL_MODE"], "rag")
+
+    def test_legacy_descriptor_default_remains_full_when_unset(self):
+        with tempfile.TemporaryDirectory() as directory:
+            engine, release_id = self._candidate_engine(
+                Path(directory), descriptor_mode="full", configured_mode=None
+            )
+            mode, overrides, binding = engine._runtime_overrides(release_id)
+
+        self.assertEqual(mode, "full")
+        self.assertEqual(overrides["SANAEBI_RETRIEVAL_MODE"], "full")
+        self.assertIsNone(binding)
+
+    def test_explicit_full_mode_overrides_candidate_descriptor_default(self):
+        with tempfile.TemporaryDirectory() as directory:
+            engine, release_id = self._candidate_engine(
+                Path(directory), descriptor_mode="rag", configured_mode="full"
+            )
+            mode, overrides, binding = engine._runtime_overrides(release_id)
+
+        self.assertEqual(mode, "full")
+        self.assertEqual(overrides["SANAEBI_RETRIEVAL_MODE"], "full")
+        self.assertIsNone(binding)
+
+    def test_legacy_descriptorless_release_keeps_full_default(self):
+        with tempfile.TemporaryDirectory() as directory:
+            engine, release_id = self._candidate_engine(
+                Path(directory), descriptor_mode=None, configured_mode=None
+            )
+            mode, overrides, binding = engine._runtime_overrides(release_id)
+
+        self.assertEqual(mode, "full")
+        self.assertEqual(overrides["SANAEBI_RETRIEVAL_MODE"], "full")
+        self.assertIsNone(binding)
+
     def test_previous_runtime_mode_comes_from_running_api_container(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "srv" / "sanaebi"
@@ -390,6 +479,25 @@ class HostPathTests(unittest.TestCase):
                     stdout=json.dumps(
                         ["SANAEBI_RETRIEVAL_MODE=full", "SANAEBI_PUBLIC_DEMO=1"]
                     ),
+                    stderr="",
+                )
+
+            engine = DeploymentEngine(
+                HostPaths(root=root, config=config), runner=runner
+            )
+
+            self.assertEqual(engine._active_api_retrieval_mode(), "full")
+
+    def test_previous_runtime_without_mode_environment_is_discovered_as_full(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "srv" / "sanaebi"
+            config = Path(directory) / "etc" / "sanaebi"
+            config.mkdir(parents=True)
+
+            def runner(_command, **_kwargs):
+                return SimpleNamespace(
+                    returncode=0,
+                    stdout=json.dumps(["SANAEBI_PUBLIC_DEMO=1"]),
                     stderr="",
                 )
 
@@ -538,6 +646,53 @@ class HostPathTests(unittest.TestCase):
             )
             journal = json.loads((root / "deployment-journal.json").read_text())
             self.assertEqual(journal["phase"], "rolled_back")
+
+    def test_candidate_index_upgrades_only_the_copied_legacy_database(self):
+        from app.documents.context import DocumentContextProvider
+        from app.documents.repository import SCHEMA_VERSION, DocumentRepository
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            live = root / "live.sqlite3"
+            DocumentRepository(live).initialize()
+            with sqlite3.connect(live) as connection:
+                connection.execute("DROP TABLE document_maintenance_state")
+                connection.execute("PRAGMA user_version = 2")
+            original = live.read_bytes()
+            data = root / "candidate"
+            data.mkdir()
+            candidate = data / "documents.sqlite3"
+            snapshot_sqlite_database(live, candidate)
+            phases = []
+
+            def runner(command, **_kwargs):
+                if "-c" in command:
+                    phases.append("initialize")
+                    with patch.dict(
+                        os.environ, {"SANAEBI_DOCUMENT_DB": str(candidate)}
+                    ):
+                        exec(command[command.index("-c") + 1], {})  # noqa: S102 - execute our emitted migration command
+                else:
+                    phases.append("index")
+                    # The real reader rejects a legacy schema before indexing.
+                    DocumentContextProvider(database_path=candidate).snapshot()
+                return SimpleNamespace(
+                    returncode=0, stdout='{"ready": true, "missing": 0}', stderr=""
+                )
+
+            engine = DeploymentEngine(HostPaths(root=root), runner=runner)
+            engine._preflight_candidate_index(
+                "candidate-image",
+                data,
+                {"bundle_path": root / "baseline", "embedding_path": root / "model"},
+            )
+            self.assertEqual(phases, ["initialize", "index"])
+            self.assertEqual(live.read_bytes(), original)
+            with sqlite3.connect(candidate) as connection:
+                self.assertEqual(
+                    connection.execute("PRAGMA user_version").fetchone()[0],
+                    SCHEMA_VERSION,
+                )
 
     def test_candidate_index_failure_removes_preflight_directory_for_retry(self):
         with tempfile.TemporaryDirectory() as directory:

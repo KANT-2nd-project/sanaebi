@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "default_mode": "full",
+  "default_mode": "rag",
   "baseline_schema_version": 1,
   "index_schema_version": 1,
   "embedding": {

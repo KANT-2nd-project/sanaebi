@@ -276,12 +276,12 @@ def _active_release(paths: HostPaths) -> dict:
     return release
 
 
-def _configured_retrieval_mode(paths: HostPaths) -> str:
+def _configured_retrieval_mode(paths: HostPaths) -> str | None:
     env_file = paths.config / "api.env"
     try:
         lines = env_file.read_text(encoding="utf-8").splitlines()
     except FileNotFoundError:
-        return "full"
+        return None
     except OSError as error:
         raise MaintenanceError("API environment file is unavailable") from error
     configured = None
@@ -298,21 +298,20 @@ def _configured_retrieval_mode(paths: HostPaths) -> str:
         if len(value) >= 2 and value[0] == value[-1] and value[0] in "'\"":
             value = value[1:-1]
         configured = value
-    mode = configured or "full"
-    if mode not in {"full", "rag"}:
+    if configured is not None and configured not in {"full", "rag"}:
         raise MaintenanceError("retrieval mode must be full or rag")
-    return mode
+    return configured
 
 
 def _active_retrieval_runtime(paths: HostPaths) -> dict:
     release = _active_release(paths)
     image = release["image"]
-    mode = _configured_retrieval_mode(paths)
+    configured_mode = _configured_retrieval_mode(paths)
     if release.get("schema_version") == 1:
-        mode = "full"
+        configured_mode = None
     retrieval_name = release.get("retrieval_manifest")
     retrieval_digest = release.get("retrieval_manifest_sha256")
-    if mode == "rag" and not retrieval_name:
+    if configured_mode == "rag" and not retrieval_name:
         raise MaintenanceError("active release does not include retrieval support")
     if not retrieval_name:
         return {"mode": "full", "image": image, "release_id": release["release_id"]}
@@ -334,7 +333,7 @@ def _active_retrieval_runtime(paths: HostPaths) -> dict:
         or hashlib.sha256(descriptor_raw).hexdigest() != retrieval_digest
         or not isinstance(descriptor, dict)
         or descriptor.get("schema_version") != 1
-        or descriptor.get("default_mode") != "full"
+        or descriptor.get("default_mode") not in {"full", "rag"}
         or type(descriptor.get("baseline_schema_version")) is not int
         or not 1 <= descriptor["baseline_schema_version"] <= 1000
         or type(descriptor.get("index_schema_version")) is not int
@@ -351,6 +350,7 @@ def _active_retrieval_runtime(paths: HostPaths) -> dict:
         or model.get("normalization") != "l2"
     ):
         raise MaintenanceError("active retrieval model contract is unsupported")
+    mode = configured_mode or descriptor["default_mode"]
     runtime = {"mode": mode, "image": image, "release_id": release["release_id"]}
     if mode != "rag":
         return runtime

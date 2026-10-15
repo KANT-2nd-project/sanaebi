@@ -1,0 +1,36 @@
+{
+  "A_matches_previous48": true,
+  "AB_exact_evidence_cases": 45,
+  "AB_boundary_differences": [
+    {
+      "case_id": "R03",
+      "A_chars": 6550,
+      "B_chars": 6547,
+      "A_proxy": 4000,
+      "B_proxy": 4000
+    },
+    {
+      "case_id": "R10",
+      "A_chars": 6566,
+      "B_chars": 6568,
+      "A_proxy": 3999,
+      "B_proxy": 4000
+    },
+    {
+      "case_id": "D04",
+      "A_chars": 6873,
+      "B_chars": 6871,
+      "A_proxy": 4000,
+      "B_proxy": 3999
+    }
+  ],
+  "AB_frozen12_prompts_identical": true,
+  "all144_source_span_texts_checked": true,
+  "C_candidate_claims_equal_final48": true,
+  "all_AB_proxy_tokens_at_most4000": true,
+  "actual_provider_attempts": 2,
+  "received_answers": 0,
+  "estimated_settled_cost_usd": 0.0,
+  "error": "OpenAIRateLimitError twice; no additional calls",
+  "failure_body_limitation": "No model response; original executor stores error class/status/timing but not raw HTTP error body. Cause of rate limit is not determined."
+}

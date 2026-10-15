@@ -1,0 +1,224 @@
+{
+  "review_kind": "mode_score_cost_blinded_ai",
+  "cases": [
+    {
+      "case_id": "R08",
+      "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "intent_group": "out_of_pocket_expense_payment_timing",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "R08-r01",
+          "claim": "재무팀 최종 검토가 끝난 달의 다음 달 15일이 지급일이다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-019",
+              "spans": [
+                {
+                  "start": 577,
+                  "end": 611,
+                  "text": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "R08-o01",
+          "claim": "보완 요청이 있으면 자료 제출 뒤 재무팀 최종 검토 완료 월을 기준으로 지급일을 정한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-019",
+              "spans": [
+                {
+                  "start": 643,
+                  "end": 700,
+                  "text": "보완 요청이 있으면 보완 자료가 제출된 뒤 재무팀이 최종 검토를 완료한 달을 기준으로 지급일을 정한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "R11",
+      "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+      "intent_group": "unsolicited_mfa_approval",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "R11-r01",
+          "claim": "본인이 시작하지 않은 인증 알림은 승인하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-026",
+              "spans": [
+                {
+                  "start": 712,
+                  "end": 738,
+                  "text": "본인이 시작하지 않은 인증 알림을 승인하지 말고"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "R11-r02",
+          "claim": "반복되면 가능한 공식 계정 보호 조치를 한 뒤 #security-incident에 즉시 신고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-026",
+              "spans": [
+                {
+                  "start": 740,
+                  "end": 796,
+                  "text": "반복되면 가능한 공식 계정 보호 조치를 수행한 뒤 #security-incident에 즉시 신고한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    }
+  ],
+  "responses": [
+    {
+      "case_id": "R11",
+      "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "본인이 시작하지 않은 인증 알림은 승인하지 마세요. 반복되면 가능한 공식 계정 보호 조치를 한 뒤 즉시 #security-incident에 신고하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 본인이 취한 조치만 적고, 비밀번호나 인증 코드는 보내지 마세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"본인이 시작하지 않은 인증 알림은 승인하지 마세요. 반복되면 가능한 공식 계정 보호 조치를 한 뒤 즉시 #security-incident에 신고하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 본인이 취한 조치만 적고, 비밀번호나 인증 코드는 보내지 마세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"본인이 시작하지 않은 인증 알림은 승인하지 마세요. 반복되면 가능한 공식 계정 보호 조치를 한 뒤 즉시 #security-incident에 신고하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 본인이 취한 조치만 적고, 비밀번호나 인증 코드는 보내지 마세요.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R08",
+      "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "재무팀의 최종 검토가 끝난 달의 다음 달 15일에 입금됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 따라서 결제일이나 제출일이 아니라 최종 검토 완료 시점에 따라 지급일이 정해집니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"재무팀의 최종 검토가 끝난 달의 다음 달 15일에 입금됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 따라서 결제일이나 제출일이 아니라 최종 검토 완료 시점에 따라 지급일이 정해집니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"재무팀의 최종 검토가 끝난 달의 다음 달 15일에 입금됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 따라서 결제일이나 제출일이 아니라 최종 검토 완료 시점에 따라 지급일이 정해집니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R08",
+      "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "경비 정산을 제출한 뒤 재무팀의 최종 검토가 완료되면, 그 달의 다음 달 15일에 지급됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 보완 요청을 받으셨다면 보완 자료 제출 후 재무팀의 최종 검토가 완료된 달을 기준으로 합니다. 최종 검토 전에는 지급일이 확정되지 않습니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"경비 정산을 제출한 뒤 재무팀의 최종 검토가 완료되면, 그 달의 다음 달 15일에 지급됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 보완 요청을 받으셨다면 보완 자료 제출 후 재무팀의 최종 검토가 완료된 달을 기준으로 합니다. 최종 검토 전에는 지급일이 확정되지 않습니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"경비 정산을 제출한 뒤 재무팀의 최종 검토가 완료되면, 그 달의 다음 달 15일에 지급됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 보완 요청을 받으셨다면 보완 자료 제출 후 재무팀의 최종 검토가 완료된 달을 기준으로 합니다. 최종 검토 전에는 지급일이 확정되지 않습니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R11",
+      "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "본인이 시작하지 않은 MFA 알림은 승인하지 말고 거부하세요. 반복되면 계정 사용 상태와 알림 시각을 기록하고, 가능한 공식 계정 보호 조치를 한 뒤 즉시 #security-incident에 신고하세요. 보안 사고 포털을 사용할 수 있으면 신고를 보완하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 취한 조치만 적고 비밀번호나 인증 코드는 포함하지 마세요. 세션 차단 등 관리 조치는 IT운영팀이 상황을 확인해 수행합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"본인이 시작하지 않은 MFA 알림은 승인하지 말고 거부하세요. 반복되면 계정 사용 상태와 알림 시각을 기록하고, 가능한 공식 계정 보호 조치를 한 뒤 즉시 #security-incident에 신고하세요. 보안 사고 포털을 사용할 수 있으면 신고를 보완하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 취한 조치만 적고 비밀번호나 인증 코드는 포함하지 마세요. 세션 차단 등 관리 조치는 IT운영팀이 상황을 확인해 수행합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"본인이 시작하지 않은 MFA 알림은 승인하지 말고 거부하세요. 반복되면 계정 사용 상태와 알림 시각을 기록하고, 가능한 공식 계정 보호 조치를 한 뒤 즉시 #security-incident에 신고하세요. 보안 사고 포털을 사용할 수 있으면 신고를 보완하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 취한 조치만 적고 비밀번호나 인증 코드는 포함하지 마세요. 세션 차단 등 관리 조치는 IT운영팀이 상황을 확인해 수행합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R11",
+      "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "본인이 시작하지 않은 인증 알림은 승인하지 마세요. 반복되면 계정 사용 상태와 알림 시각을 기록하고, 가능한 공식 계정 보호 조치를 한 뒤 #security-incident에 즉시 신고하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 취한 조치만 적고 비밀번호나 인증 코드는 보내지 마세요. 세션 차단 등 관리 조치는 IT운영팀이 상황을 확인해 수행합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"본인이 시작하지 않은 인증 알림은 승인하지 마세요. 반복되면 계정 사용 상태와 알림 시각을 기록하고, 가능한 공식 계정 보호 조치를 한 뒤 #security-incident에 즉시 신고하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 취한 조치만 적고 비밀번호나 인증 코드는 보내지 마세요. 세션 차단 등 관리 조치는 IT운영팀이 상황을 확인해 수행합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"본인이 시작하지 않은 인증 알림은 승인하지 마세요. 반복되면 계정 사용 상태와 알림 시각을 기록하고, 가능한 공식 계정 보호 조치를 한 뒤 #security-incident에 즉시 신고하세요. 신고에는 계정 종류, 알림 시각, 반복 여부와 취한 조치만 적고 비밀번호나 인증 코드는 보내지 마세요. 세션 차단 등 관리 조치는 IT운영팀이 상황을 확인해 수행합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R08",
+      "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "경비 정산은 재무팀의 최종 검토가 완료된 달의 다음 달 15일에 지급됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 지급일은 결제일이나 제출일이 아니라 재무팀 최종 검토 완료 시점을 기준으로 정하며, 개인별 정산 상태는 현재 확인하기 어렵습니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"경비 정산은 재무팀의 최종 검토가 완료된 달의 다음 달 15일에 지급됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 지급일은 결제일이나 제출일이 아니라 재무팀 최종 검토 완료 시점을 기준으로 정하며, 개인별 정산 상태는 현재 확인하기 어렵습니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "json_error_retryable",
+          "generation_status": "parse_error",
+          "raw_text": "업무를 위해 개인 결제하신 경비는 팀장 승인과 재무팀의 최종 검토가 완료된 달의 **다음 달 15일**에 지급됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 보완 요청이 있으면 재무팀의 최종 검토 완료 시점에 따라 지급일이 정해집니다.\n\n실제 지급 상태는 제가 조회할 수 없습니다. 이음 포털의 **재무 > 경비 정산**에서 확인하시고, 지급 상태나 계좌 정보에 오류가 있으면 기존 신청 번호로 재무팀에 문의해 주세요."
+        },
+        {
+          "attempt": 2,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"경비 정산은 재무팀의 최종 검토가 완료된 달의 다음 달 15일에 지급됩니다. 15일이 은행 휴무일이면 다음 은행 영업일에 지급됩니다. 지급일은 결제일이나 제출일이 아니라 재무팀 최종 검토 완료 시점을 기준으로 정하며, 개인별 정산 상태는 현재 확인하기 어렵습니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    }
+  ]
+}

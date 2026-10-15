@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-10-15T12:34:27.035239+00:00",
+  "tracked_head": "2dbe3f74245fb2d1c2dd24de17cfa35dbfe98eb5",
+  "capture_note": "Uncommitted experiment utilities. Runtime executor and generation files unchanged during actual execution. Search export/filter and review utilities corrected separately; this captures current reproducer after retrieval measurement, not a claim that HEAD contains these utilities.",
+  "files": {
+    "retrieval/experiments/calibration_summary.py": "2998760a09c009ba693dbcda027d526cd0fb04223bd3c79da91eee360ad9db90",
+    "retrieval/experiments/calibration_search.py": "aef637a481064f0f71dfbb2b170fde44c6666986518734e9c5cbd4f274810b71",
+    "retrieval/experiments/calibration_metrics.py": "bfbd292b748a14ac189819350300de340c5466362d4c7d9e0c5c5bf9af845eca",
+    "retrieval/experiments/calibration_review_packet.py": "a24acd96f37b58cdb20b6aa79f45dd4f2bc924e0237c04b3e4bdc95bf6f9ffae",
+    "retrieval/experiments/calibration_answers.py": "9827cd9abc90742e7d12f9479a9ab8e176aef83d0754af0004c9d3c75a60fac3",
+    "retrieval/experiments/calibration_prepare.py": "e018dc53431025be1a6b7d00518a34936188e8a084259702b905c9162ad93eca",
+    "generation/profiles.py": "efd1678c404ee6fda7686c3c5c23bc20be18dbad1db493e1e386166479e7d4aa",
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "generation/service.py": "42ba68643cc515c8356800600b58c68701300bd3edf3d506a900551be8bfa16f",
+    "generation/providers.py": "c3892d4064a1c9127c4b0dc5a1dfbf54fc85f9391cca17ac85c84b1a6f9c6c45",
+    "generation/config.py": "e114cea1ceca6b7129f09e92cae9854ffa2fec5616d790a799881832a3bb5319",
+    "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3",
+    "generation/experiments.json": "060f28a092ef16a023dbb03a9d4f375a33f0455d91d69c790e3a5d02c64b6168",
+    "generation_evaluation/budget.py": "f112616c39ae049bfa7851b423cf773dc625da42a56ed68b680ee35a36a3e42e",
+    "app/retrieval/service.py": "cfc1cdd3861f550583cb3d86ded1b0a6196bf124313ee7881f9a6e121c1d48b9",
+    "app/retrieval/chunking.py": "d32429e5448535809a505f731019e6bf3ef1f956a1b232f7a564ed2ec02ab242",
+    "app/retrieval/config.py": "28fce2097417327d8fd2a237d3dc53fa286b14779a89fac865eec96520bd9021"
+  }
+}

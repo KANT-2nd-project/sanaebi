@@ -247,6 +247,13 @@ def answer_question_with_documents(
                 seconds=perf_counter() - started,
                 selected_count=len(getattr(context, "evidence", ())),
             )
+        if not context.evidence:
+            record_routing(
+                {"processing_path": "empty_retrieval", "generation_attempted": False}
+            )
+            return QuestionResult(
+                text="관련 문서에서 답변에 필요한 근거를 찾지 못했습니다."
+            )
     record_routing({"processing_path": "generation", "generation_attempted": True})
     answer_text = answer(question, context)
 

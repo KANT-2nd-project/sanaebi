@@ -1,0 +1,5186 @@
+[
+  {
+    "case_id": "R01",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1826,
+    "rendered_text_characters": 1826,
+    "selection_ms": 0.18945200008602114,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1711,
+    "rendered_text_characters": 1711,
+    "selection_ms": 10.902371000156563,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1826,
+    "rendered_text_characters": 1826,
+    "selection_ms": 0.9004769999592099,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1826,
+    "rendered_text_characters": 1826,
+    "selection_ms": 0.8050569995248225,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3092,
+    "rendered_text_characters": 3092,
+    "selection_ms": 0.2004410007430124,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1711,
+    "rendered_text_characters": 1711,
+    "selection_ms": 11.869823000779434,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3092,
+    "rendered_text_characters": 3092,
+    "selection_ms": 1.3463719997162116,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3092,
+    "rendered_text_characters": 3092,
+    "selection_ms": 1.3005179998799576,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.30685599995194934,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1711,
+    "rendered_text_characters": 1711,
+    "selection_ms": 14.140919000055874,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3411,
+    "rendered_text_characters": 3411,
+    "selection_ms": 22.433709999859275,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R01",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6758,
+    "rendered_text_characters": 6758,
+    "selection_ms": 38.88408900002105,
+    "query_stage_ms": 2464.485937000063
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1765,
+    "rendered_text_characters": 1765,
+    "selection_ms": 0.16017100006138207,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1663,
+    "rendered_text_characters": 1663,
+    "selection_ms": 10.190910000346776,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1765,
+    "rendered_text_characters": 1765,
+    "selection_ms": 0.7546829992861603,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1765,
+    "rendered_text_characters": 1765,
+    "selection_ms": 0.7313369997064001,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2726,
+    "rendered_text_characters": 2726,
+    "selection_ms": 0.10841099992831005,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1663,
+    "rendered_text_characters": 1663,
+    "selection_ms": 10.903872999733721,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2726,
+    "rendered_text_characters": 2726,
+    "selection_ms": 1.6664510003465693,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2726,
+    "rendered_text_characters": 2726,
+    "selection_ms": 1.5225099996314384,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.3060770004594815,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1663,
+    "rendered_text_characters": 1663,
+    "selection_ms": 15.182226999968407,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3290,
+    "rendered_text_characters": 3290,
+    "selection_ms": 22.71399700020993,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R02",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6785,
+    "rendered_text_characters": 6785,
+    "selection_ms": 40.12845200031734,
+    "query_stage_ms": 14.464133000728907
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2149,
+    "rendered_text_characters": 2149,
+    "selection_ms": 0.14022899995325133,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1728,
+    "rendered_text_characters": 1728,
+    "selection_ms": 10.530060999371926,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2149,
+    "rendered_text_characters": 2149,
+    "selection_ms": 0.8841079998092027,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2149,
+    "rendered_text_characters": 2149,
+    "selection_ms": 0.8422649998465204,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2950,
+    "rendered_text_characters": 2950,
+    "selection_ms": 0.1629879998290562,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1728,
+    "rendered_text_characters": 1728,
+    "selection_ms": 11.305422999612347,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2950,
+    "rendered_text_characters": 2950,
+    "selection_ms": 1.2652490004256833,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2950,
+    "rendered_text_characters": 2950,
+    "selection_ms": 1.219922000018414,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.42872399990301346,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1728,
+    "rendered_text_characters": 1728,
+    "selection_ms": 14.536931999828084,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3354,
+    "rendered_text_characters": 3354,
+    "selection_ms": 23.085054000148375,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R03",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6550,
+    "rendered_text_characters": 6550,
+    "selection_ms": 41.15793499931897,
+    "query_stage_ms": 15.320219999921392
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1884,
+    "rendered_text_characters": 1884,
+    "selection_ms": 0.14426000052480958,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1690,
+    "rendered_text_characters": 1690,
+    "selection_ms": 10.790645999804838,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1884,
+    "rendered_text_characters": 1884,
+    "selection_ms": 0.7881419996920158,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1884,
+    "rendered_text_characters": 1884,
+    "selection_ms": 0.7714459998169332,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3621,
+    "rendered_text_characters": 3621,
+    "selection_ms": 0.11648499912553234,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1690,
+    "rendered_text_characters": 1690,
+    "selection_ms": 12.228438000420283,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3478,
+    "rendered_text_characters": 3478,
+    "selection_ms": 21.541106000768195,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3621,
+    "rendered_text_characters": 3621,
+    "selection_ms": 1.4696289999847068,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.32165500033443095,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1690,
+    "rendered_text_characters": 1690,
+    "selection_ms": 14.249373999518866,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3478,
+    "rendered_text_characters": 3478,
+    "selection_ms": 22.499052000057418,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R04",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6884,
+    "rendered_text_characters": 6884,
+    "selection_ms": 39.55552599927614,
+    "query_stage_ms": 14.887096999700589
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1524,
+    "rendered_text_characters": 1524,
+    "selection_ms": 0.1362590001008357,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1524,
+    "rendered_text_characters": 1524,
+    "selection_ms": 0.7461669993062969,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1524,
+    "rendered_text_characters": 1524,
+    "selection_ms": 0.6639250004809583,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1524,
+    "rendered_text_characters": 1524,
+    "selection_ms": 0.7219449998956406,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2139,
+    "rendered_text_characters": 2139,
+    "selection_ms": 0.06936000045243418,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1619,
+    "rendered_text_characters": 1619,
+    "selection_ms": 10.32170300004509,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2139,
+    "rendered_text_characters": 2139,
+    "selection_ms": 0.8886719997462933,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2139,
+    "rendered_text_characters": 2139,
+    "selection_ms": 0.8441019999736454,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.2351970006202464,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1619,
+    "rendered_text_characters": 1619,
+    "selection_ms": 13.918044999627455,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3408,
+    "rendered_text_characters": 3408,
+    "selection_ms": 22.36372500010475,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R05",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6725,
+    "rendered_text_characters": 6725,
+    "selection_ms": 40.666158000021824,
+    "query_stage_ms": 13.502243999937491
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1890,
+    "rendered_text_characters": 1890,
+    "selection_ms": 0.1242179996552295,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1711,
+    "rendered_text_characters": 1711,
+    "selection_ms": 11.81916200039268,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1890,
+    "rendered_text_characters": 1890,
+    "selection_ms": 0.7744909999019001,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1890,
+    "rendered_text_characters": 1890,
+    "selection_ms": 0.7553139994342928,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3150,
+    "rendered_text_characters": 3150,
+    "selection_ms": 0.09498399958829395,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1711,
+    "rendered_text_characters": 1711,
+    "selection_ms": 11.127879999548895,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3150,
+    "rendered_text_characters": 3150,
+    "selection_ms": 1.206863000334124,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3150,
+    "rendered_text_characters": 3150,
+    "selection_ms": 1.2295630003791302,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.23018600040813908,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1711,
+    "rendered_text_characters": 1711,
+    "selection_ms": 14.182944000822317,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3444,
+    "rendered_text_characters": 3444,
+    "selection_ms": 22.523653999996895,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R06",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6853,
+    "rendered_text_characters": 6853,
+    "selection_ms": 39.915585999551695,
+    "query_stage_ms": 15.460397000424564
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1903,
+    "rendered_text_characters": 1903,
+    "selection_ms": 0.13626399959321134,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1681,
+    "rendered_text_characters": 1681,
+    "selection_ms": 9.837155000241182,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1903,
+    "rendered_text_characters": 1903,
+    "selection_ms": 0.849676999678195,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1903,
+    "rendered_text_characters": 1903,
+    "selection_ms": 0.7598789998155553,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3245,
+    "rendered_text_characters": 3245,
+    "selection_ms": 0.3200309993189876,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1681,
+    "rendered_text_characters": 1681,
+    "selection_ms": 12.308610000218323,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3245,
+    "rendered_text_characters": 3245,
+    "selection_ms": 1.5098499998202897,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3245,
+    "rendered_text_characters": 3245,
+    "selection_ms": 1.7057850000128383,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.8449630004179198,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1681,
+    "rendered_text_characters": 1681,
+    "selection_ms": 17.170469999655325,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3388,
+    "rendered_text_characters": 3388,
+    "selection_ms": 24.59058299973549,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R07",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6712,
+    "rendered_text_characters": 6712,
+    "selection_ms": 41.845339000246895,
+    "query_stage_ms": 15.015230000244628
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1952,
+    "rendered_text_characters": 1952,
+    "selection_ms": 0.12696900012088008,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1607,
+    "rendered_text_characters": 1607,
+    "selection_ms": 10.100003000843571,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1952,
+    "rendered_text_characters": 1952,
+    "selection_ms": 0.8200780002880492,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1952,
+    "rendered_text_characters": 1952,
+    "selection_ms": 0.7996730000741081,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3283,
+    "rendered_text_characters": 3283,
+    "selection_ms": 0.09431899979972513,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1607,
+    "rendered_text_characters": 1607,
+    "selection_ms": 12.29873700049211,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3283,
+    "rendered_text_characters": 3283,
+    "selection_ms": 1.3577890003944049,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3283,
+    "rendered_text_characters": 3283,
+    "selection_ms": 1.347180999800912,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.23771500036673388,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1607,
+    "rendered_text_characters": 1607,
+    "selection_ms": 14.678092999929504,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3283,
+    "rendered_text_characters": 3283,
+    "selection_ms": 22.8438139993159,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6580,
+    "rendered_text_characters": 6580,
+    "selection_ms": 39.79844800051069,
+    "query_stage_ms": 14.073201000428526
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1591,
+    "rendered_text_characters": 1591,
+    "selection_ms": 0.12196599982416956,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1562,
+    "rendered_text_characters": 1562,
+    "selection_ms": 9.775862999958917,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1591,
+    "rendered_text_characters": 1591,
+    "selection_ms": 0.775797000642342,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1591,
+    "rendered_text_characters": 1591,
+    "selection_ms": 0.6673739999314421,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2640,
+    "rendered_text_characters": 2640,
+    "selection_ms": 0.07144200026232284,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1562,
+    "rendered_text_characters": 1562,
+    "selection_ms": 10.383226000158174,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2640,
+    "rendered_text_characters": 2640,
+    "selection_ms": 1.0191450001002522,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2640,
+    "rendered_text_characters": 2640,
+    "selection_ms": 1.0005210006056586,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.45480599965230795,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1562,
+    "rendered_text_characters": 1562,
+    "selection_ms": 13.844426000105159,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3233,
+    "rendered_text_characters": 3233,
+    "selection_ms": 21.16422900053294,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R09",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6553,
+    "rendered_text_characters": 6553,
+    "selection_ms": 39.23149000002013,
+    "query_stage_ms": 14.015480000125535
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1083,
+    "rendered_text_characters": 1083,
+    "selection_ms": 0.12667699957091827,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1083,
+    "rendered_text_characters": 1083,
+    "selection_ms": 0.5858300000909367,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1083,
+    "rendered_text_characters": 1083,
+    "selection_ms": 0.5417020001914352,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1083,
+    "rendered_text_characters": 1083,
+    "selection_ms": 0.5473539995364263,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 1744,
+    "rendered_text_characters": 1744,
+    "selection_ms": 0.12565499946504133,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1540,
+    "rendered_text_characters": 1540,
+    "selection_ms": 10.77865000024758,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1744,
+    "rendered_text_characters": 1744,
+    "selection_ms": 0.8442520002063247,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1744,
+    "rendered_text_characters": 1744,
+    "selection_ms": 0.8728150005481439,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.34910900012619095,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1540,
+    "rendered_text_characters": 1540,
+    "selection_ms": 14.937175000341085,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3180,
+    "rendered_text_characters": 3180,
+    "selection_ms": 23.40886199999659,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R10",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6566,
+    "rendered_text_characters": 6566,
+    "selection_ms": 41.51117499986867,
+    "query_stage_ms": 15.63095199981035
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1631,
+    "rendered_text_characters": 1631,
+    "selection_ms": 0.1505979998910334,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1631,
+    "rendered_text_characters": 1631,
+    "selection_ms": 0.7467909999832045,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1631,
+    "rendered_text_characters": 1631,
+    "selection_ms": 0.7499719995394116,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1631,
+    "rendered_text_characters": 1631,
+    "selection_ms": 0.7485019996238407,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2706,
+    "rendered_text_characters": 2706,
+    "selection_ms": 0.23603099998581456,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1631,
+    "rendered_text_characters": 1631,
+    "selection_ms": 11.91513899993879,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2706,
+    "rendered_text_characters": 2706,
+    "selection_ms": 1.254967999557266,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2706,
+    "rendered_text_characters": 2706,
+    "selection_ms": 1.293010999688704,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.642705000245769,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1631,
+    "rendered_text_characters": 1631,
+    "selection_ms": 15.91731600001367,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3392,
+    "rendered_text_characters": 3392,
+    "selection_ms": 25.29368700015766,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R11",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6701,
+    "rendered_text_characters": 6701,
+    "selection_ms": 42.58762500012381,
+    "query_stage_ms": 13.411756999630597
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2317,
+    "rendered_text_characters": 2317,
+    "selection_ms": 0.12922499990963843,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1754,
+    "rendered_text_characters": 1754,
+    "selection_ms": 11.040255999432702,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2317,
+    "rendered_text_characters": 2317,
+    "selection_ms": 0.9015490004458115,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2317,
+    "rendered_text_characters": 2317,
+    "selection_ms": 0.9189450001940713,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3130,
+    "rendered_text_characters": 3130,
+    "selection_ms": 0.28722300066874595,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1754,
+    "rendered_text_characters": 1754,
+    "selection_ms": 12.213969999720575,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3130,
+    "rendered_text_characters": 3130,
+    "selection_ms": 1.401767000061227,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3130,
+    "rendered_text_characters": 3130,
+    "selection_ms": 2.094536999720731,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 7999,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.695955000082904,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1754,
+    "rendered_text_characters": 1754,
+    "selection_ms": 15.722830000413524,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3449,
+    "rendered_text_characters": 3449,
+    "selection_ms": 24.019581000175094,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R12",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6977,
+    "rendered_text_characters": 6978,
+    "selection_ms": 40.93892000037158,
+    "query_stage_ms": 15.499311999519705
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1699,
+    "rendered_text_characters": 1699,
+    "selection_ms": 0.11774199992942158,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1699,
+    "rendered_text_characters": 1699,
+    "selection_ms": 0.7820870005161851,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1699,
+    "rendered_text_characters": 1699,
+    "selection_ms": 0.70327699995687,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1699,
+    "rendered_text_characters": 1699,
+    "selection_ms": 1.095781000003626,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2763,
+    "rendered_text_characters": 2763,
+    "selection_ms": 0.11858000016218284,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1699,
+    "rendered_text_characters": 1699,
+    "selection_ms": 11.01631300025474,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2763,
+    "rendered_text_characters": 2763,
+    "selection_ms": 1.2823529996239813,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2763,
+    "rendered_text_characters": 2763,
+    "selection_ms": 1.1793490002673934,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.43401800030551385,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1699,
+    "rendered_text_characters": 1699,
+    "selection_ms": 14.800705000197922,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3350,
+    "rendered_text_characters": 3350,
+    "selection_ms": 23.290119000193954,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R13",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6726,
+    "rendered_text_characters": 6726,
+    "selection_ms": 43.773487999715144,
+    "query_stage_ms": 14.786611000090488
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1344,
+    "rendered_text_characters": 1344,
+    "selection_ms": 0.13674999991053483,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1344,
+    "rendered_text_characters": 1344,
+    "selection_ms": 0.6847790000392706,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1344,
+    "rendered_text_characters": 1344,
+    "selection_ms": 0.637824000477849,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1344,
+    "rendered_text_characters": 1344,
+    "selection_ms": 0.6135260000519338,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2220,
+    "rendered_text_characters": 2220,
+    "selection_ms": 0.10141700022359146,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1648,
+    "rendered_text_characters": 1648,
+    "selection_ms": 10.754392999842821,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2220,
+    "rendered_text_characters": 2220,
+    "selection_ms": 0.9272560000681551,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2220,
+    "rendered_text_characters": 2220,
+    "selection_ms": 0.9139480007434031,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.4342820002420922,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1648,
+    "rendered_text_characters": 1648,
+    "selection_ms": 14.57862400002341,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3256,
+    "rendered_text_characters": 3256,
+    "selection_ms": 23.249885000041104,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6624,
+    "rendered_text_characters": 6624,
+    "selection_ms": 40.941272000054596,
+    "query_stage_ms": 13.556134000282327
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2144,
+    "rendered_text_characters": 2144,
+    "selection_ms": 0.13005799974052934,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1794,
+    "rendered_text_characters": 1794,
+    "selection_ms": 11.082052999881853,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2144,
+    "rendered_text_characters": 2144,
+    "selection_ms": 0.8621139995739213,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2144,
+    "rendered_text_characters": 2144,
+    "selection_ms": 0.8530249997420469,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2561,
+    "rendered_text_characters": 2561,
+    "selection_ms": 0.13967799986858154,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1794,
+    "rendered_text_characters": 1794,
+    "selection_ms": 12.197863000437792,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2561,
+    "rendered_text_characters": 2561,
+    "selection_ms": 1.1206420003873063,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2561,
+    "rendered_text_characters": 2561,
+    "selection_ms": 1.370444000713178,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.4265550005584373,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1794,
+    "rendered_text_characters": 1794,
+    "selection_ms": 14.953665000575711,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3298,
+    "rendered_text_characters": 3298,
+    "selection_ms": 23.818986999685876,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R15",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6705,
+    "rendered_text_characters": 6705,
+    "selection_ms": 44.35444099999586,
+    "query_stage_ms": 15.110100000129023
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1713,
+    "rendered_text_characters": 1713,
+    "selection_ms": 0.1548489999549929,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 10.299880000275152,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1713,
+    "rendered_text_characters": 1713,
+    "selection_ms": 0.8428720002484624,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1713,
+    "rendered_text_characters": 1713,
+    "selection_ms": 0.7303499996851315,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 1713,
+    "rendered_text_characters": 1713,
+    "selection_ms": 0.07733700022072298,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 9.691227000075742,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1713,
+    "rendered_text_characters": 1713,
+    "selection_ms": 0.6837649998487905,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1713,
+    "rendered_text_characters": 1713,
+    "selection_ms": 0.8213420005631633,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.1866509992396459,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 13.964149000457837,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3448,
+    "rendered_text_characters": 3448,
+    "selection_ms": 21.928842999841436,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6818,
+    "rendered_text_characters": 6818,
+    "selection_ms": 40.71717599981639,
+    "query_stage_ms": 15.878430999691773
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 0.13064999984635506,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 0.8338090001416276,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 0.9150690002570627,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 1.0778360001495457,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 1346,
+    "rendered_text_characters": 1346,
+    "selection_ms": 0.08215100024244748,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1346,
+    "rendered_text_characters": 1346,
+    "selection_ms": 0.597246000324958,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1346,
+    "rendered_text_characters": 1346,
+    "selection_ms": 0.5683790004695766,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1346,
+    "rendered_text_characters": 1346,
+    "selection_ms": 0.5639580003844458,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 1820,
+    "rendered_text_characters": 1820,
+    "selection_ms": 0.070417999268102,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 10.182158000134223,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1820,
+    "rendered_text_characters": 1820,
+    "selection_ms": 0.7407290004266542,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R17",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1820,
+    "rendered_text_characters": 1820,
+    "selection_ms": 0.7359119999819086,
+    "query_stage_ms": 10.720374000811717
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2638,
+    "rendered_text_characters": 2638,
+    "selection_ms": 0.13046099957136903,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 10.450600000694976,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2638,
+    "rendered_text_characters": 2638,
+    "selection_ms": 1.261727999917639,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2638,
+    "rendered_text_characters": 2638,
+    "selection_ms": 1.0486339997441974,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2638,
+    "rendered_text_characters": 2638,
+    "selection_ms": 0.06627199945796747,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 10.078415999487333,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2638,
+    "rendered_text_characters": 2638,
+    "selection_ms": 0.9738010003275122,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2638,
+    "rendered_text_characters": 2638,
+    "selection_ms": 1.0003070001403103,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.16963100006250897,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1630,
+    "rendered_text_characters": 1630,
+    "selection_ms": 13.532252999539196,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3328,
+    "rendered_text_characters": 3328,
+    "selection_ms": 21.113626999976987,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "R18",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6663,
+    "rendered_text_characters": 6663,
+    "selection_ms": 37.806891000400356,
+    "query_stage_ms": 14.85966299969732
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2065,
+    "rendered_text_characters": 2065,
+    "selection_ms": 0.1336269997409545,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1694,
+    "rendered_text_characters": 1694,
+    "selection_ms": 10.365260999606107,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2065,
+    "rendered_text_characters": 2065,
+    "selection_ms": 0.8388969999941764,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2065,
+    "rendered_text_characters": 2065,
+    "selection_ms": 0.8871600002748892,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2943,
+    "rendered_text_characters": 2943,
+    "selection_ms": 0.17724400004226482,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1694,
+    "rendered_text_characters": 1694,
+    "selection_ms": 11.699425000188057,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2943,
+    "rendered_text_characters": 2943,
+    "selection_ms": 1.2911910007460392,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2943,
+    "rendered_text_characters": 2943,
+    "selection_ms": 1.3921670006311615,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.3790760001720628,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1694,
+    "rendered_text_characters": 1694,
+    "selection_ms": 14.589608999813208,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3405,
+    "rendered_text_characters": 3405,
+    "selection_ms": 21.334520999516826,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D01",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6750,
+    "rendered_text_characters": 6750,
+    "selection_ms": 37.27475899995625,
+    "query_stage_ms": 17.43277199966542
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2199,
+    "rendered_text_characters": 2199,
+    "selection_ms": 0.144292999721074,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1637,
+    "rendered_text_characters": 1637,
+    "selection_ms": 10.191875000600703,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2199,
+    "rendered_text_characters": 2199,
+    "selection_ms": 0.8776180002314504,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2199,
+    "rendered_text_characters": 2199,
+    "selection_ms": 0.8614459993623313,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3754,
+    "rendered_text_characters": 3754,
+    "selection_ms": 0.0824389999252162,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1637,
+    "rendered_text_characters": 1637,
+    "selection_ms": 12.038988999847788,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3308,
+    "rendered_text_characters": 3308,
+    "selection_ms": 19.92557600078726,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3754,
+    "rendered_text_characters": 3754,
+    "selection_ms": 1.5321330001825118,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.24829099947965005,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1637,
+    "rendered_text_characters": 1637,
+    "selection_ms": 13.853805000508146,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3308,
+    "rendered_text_characters": 3308,
+    "selection_ms": 22.761833000004117,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D02",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6574,
+    "rendered_text_characters": 6574,
+    "selection_ms": 39.68259900011617,
+    "query_stage_ms": 17.934887000592425
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2359,
+    "rendered_text_characters": 2359,
+    "selection_ms": 0.1339410000582575,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1621,
+    "rendered_text_characters": 1621,
+    "selection_ms": 10.386254999502853,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2359,
+    "rendered_text_characters": 2359,
+    "selection_ms": 0.9052879995579133,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2359,
+    "rendered_text_characters": 2359,
+    "selection_ms": 0.9210749994963408,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3358,
+    "rendered_text_characters": 3358,
+    "selection_ms": 0.08774100024311338,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1621,
+    "rendered_text_characters": 1621,
+    "selection_ms": 11.43346000026213,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3213,
+    "rendered_text_characters": 3213,
+    "selection_ms": 19.78444300038973,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3358,
+    "rendered_text_characters": 3358,
+    "selection_ms": 1.3675049995072186,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.17449099959776504,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1621,
+    "rendered_text_characters": 1621,
+    "selection_ms": 14.644445000158157,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3213,
+    "rendered_text_characters": 3213,
+    "selection_ms": 21.02355399983935,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D03",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6508,
+    "rendered_text_characters": 6508,
+    "selection_ms": 38.64762499961216,
+    "query_stage_ms": 17.384515999765426
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1851,
+    "rendered_text_characters": 1851,
+    "selection_ms": 0.12679399969783844,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1659,
+    "rendered_text_characters": 1659,
+    "selection_ms": 9.946995000063907,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1851,
+    "rendered_text_characters": 1851,
+    "selection_ms": 0.717785999768239,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1851,
+    "rendered_text_characters": 1851,
+    "selection_ms": 1.0764859998744214,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2800,
+    "rendered_text_characters": 2800,
+    "selection_ms": 0.13479699919116683,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1659,
+    "rendered_text_characters": 1659,
+    "selection_ms": 10.830586999873049,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2800,
+    "rendered_text_characters": 2800,
+    "selection_ms": 1.1524569999892265,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2800,
+    "rendered_text_characters": 2800,
+    "selection_ms": 1.1634390002654982,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.3476739993857336,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1659,
+    "rendered_text_characters": 1659,
+    "selection_ms": 14.215418999810936,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3341,
+    "rendered_text_characters": 3341,
+    "selection_ms": 22.515630000270903,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D04",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6873,
+    "rendered_text_characters": 6873,
+    "selection_ms": 38.86477699961688,
+    "query_stage_ms": 17.374005000419857
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2241,
+    "rendered_text_characters": 2241,
+    "selection_ms": 0.12461800088203745,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1655,
+    "rendered_text_characters": 1655,
+    "selection_ms": 10.091658000419557,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2241,
+    "rendered_text_characters": 2241,
+    "selection_ms": 1.0423490002722247,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2241,
+    "rendered_text_characters": 2241,
+    "selection_ms": 0.8725479992790497,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3558,
+    "rendered_text_characters": 3558,
+    "selection_ms": 0.10687499980122084,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1655,
+    "rendered_text_characters": 1655,
+    "selection_ms": 10.742994999418443,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3318,
+    "rendered_text_characters": 3318,
+    "selection_ms": 19.217568000385654,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3558,
+    "rendered_text_characters": 3558,
+    "selection_ms": 1.3904939996791654,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.18915000055130804,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1655,
+    "rendered_text_characters": 1655,
+    "selection_ms": 12.61260699993727,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3318,
+    "rendered_text_characters": 3318,
+    "selection_ms": 21.109820000674517,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D05",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6565,
+    "rendered_text_characters": 6565,
+    "selection_ms": 39.43203800008632,
+    "query_stage_ms": 16.734625999561104
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1836,
+    "rendered_text_characters": 1836,
+    "selection_ms": 0.1372380002067075,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1556,
+    "rendered_text_characters": 1556,
+    "selection_ms": 10.53041100021801,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1836,
+    "rendered_text_characters": 1836,
+    "selection_ms": 0.7876519994169939,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1836,
+    "rendered_text_characters": 1836,
+    "selection_ms": 0.7639270006620791,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3035,
+    "rendered_text_characters": 3035,
+    "selection_ms": 0.09214200053975219,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1556,
+    "rendered_text_characters": 1556,
+    "selection_ms": 11.882519999744545,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3035,
+    "rendered_text_characters": 3035,
+    "selection_ms": 1.2538909995782888,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3035,
+    "rendered_text_characters": 3035,
+    "selection_ms": 1.2511839995568153,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.18109999928128673,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1556,
+    "rendered_text_characters": 1556,
+    "selection_ms": 13.666108000506938,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3204,
+    "rendered_text_characters": 3204,
+    "selection_ms": 22.10213400030625,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D06",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6552,
+    "rendered_text_characters": 6552,
+    "selection_ms": 38.963822000368964,
+    "query_stage_ms": 19.18139200006408
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1294,
+    "rendered_text_characters": 1294,
+    "selection_ms": 0.2096640000672778,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1294,
+    "rendered_text_characters": 1294,
+    "selection_ms": 0.6746779999957653,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1294,
+    "rendered_text_characters": 1294,
+    "selection_ms": 0.5767259999629459,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1294,
+    "rendered_text_characters": 1294,
+    "selection_ms": 0.6873270003779908,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2270,
+    "rendered_text_characters": 2270,
+    "selection_ms": 0.08718400022189599,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1546,
+    "rendered_text_characters": 1546,
+    "selection_ms": 10.711186999287747,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2270,
+    "rendered_text_characters": 2270,
+    "selection_ms": 0.938803000281041,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2270,
+    "rendered_text_characters": 2270,
+    "selection_ms": 0.9546300007059472,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.25037999967025826,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1546,
+    "rendered_text_characters": 1546,
+    "selection_ms": 14.276427999902808,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3352,
+    "rendered_text_characters": 3352,
+    "selection_ms": 22.784664999562665,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6787,
+    "rendered_text_characters": 6787,
+    "selection_ms": 39.95321100046567,
+    "query_stage_ms": 14.11246099996788
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1251,
+    "rendered_text_characters": 1251,
+    "selection_ms": 0.12882999999419553,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1251,
+    "rendered_text_characters": 1251,
+    "selection_ms": 0.6479450003098464,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1251,
+    "rendered_text_characters": 1251,
+    "selection_ms": 0.5768440005340381,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1251,
+    "rendered_text_characters": 1251,
+    "selection_ms": 0.5615569998553838,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2765,
+    "rendered_text_characters": 2765,
+    "selection_ms": 0.1378619999741204,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1565,
+    "rendered_text_characters": 1565,
+    "selection_ms": 18.5212380001758,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2765,
+    "rendered_text_characters": 2765,
+    "selection_ms": 1.5976289996615378,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2765,
+    "rendered_text_characters": 2765,
+    "selection_ms": 1.4337510001496412,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.5314889995133854,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1565,
+    "rendered_text_characters": 1565,
+    "selection_ms": 18.80514399999811,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3262,
+    "rendered_text_characters": 3262,
+    "selection_ms": 24.4633550000799,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D08",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6562,
+    "rendered_text_characters": 6562,
+    "selection_ms": 38.07558700009395,
+    "query_stage_ms": 17.26594399951864
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1618,
+    "rendered_text_characters": 1618,
+    "selection_ms": 0.14126600035524461,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1618,
+    "rendered_text_characters": 1618,
+    "selection_ms": 0.8108179999908316,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1618,
+    "rendered_text_characters": 1618,
+    "selection_ms": 0.7105060003596009,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1618,
+    "rendered_text_characters": 1618,
+    "selection_ms": 0.671600000714534,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2393,
+    "rendered_text_characters": 2393,
+    "selection_ms": 0.16633999985060655,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1734,
+    "rendered_text_characters": 1734,
+    "selection_ms": 12.289178000173706,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2393,
+    "rendered_text_characters": 2393,
+    "selection_ms": 1.032912000482611,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2393,
+    "rendered_text_characters": 2393,
+    "selection_ms": 1.0323200003767852,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.35861600008502137,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1734,
+    "rendered_text_characters": 1734,
+    "selection_ms": 14.71166200008156,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3357,
+    "rendered_text_characters": 3357,
+    "selection_ms": 25.460062000092876,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D09",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6832,
+    "rendered_text_characters": 6832,
+    "selection_ms": 43.35351699955936,
+    "query_stage_ms": 20.27409600032115
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1972,
+    "rendered_text_characters": 1972,
+    "selection_ms": 0.13287399997352622,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1623,
+    "rendered_text_characters": 1623,
+    "selection_ms": 10.868959000617906,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1972,
+    "rendered_text_characters": 1972,
+    "selection_ms": 1.3548489996537683,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1972,
+    "rendered_text_characters": 1972,
+    "selection_ms": 0.8989469997686683,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2968,
+    "rendered_text_characters": 2968,
+    "selection_ms": 0.1794560002963408,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1623,
+    "rendered_text_characters": 1623,
+    "selection_ms": 11.877005999849644,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2968,
+    "rendered_text_characters": 2968,
+    "selection_ms": 1.338760999715305,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2968,
+    "rendered_text_characters": 2968,
+    "selection_ms": 1.3191710004321067,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.5204010003581061,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1623,
+    "rendered_text_characters": 1623,
+    "selection_ms": 15.60726999923645,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3299,
+    "rendered_text_characters": 3299,
+    "selection_ms": 24.329920999662136,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D10",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6802,
+    "rendered_text_characters": 6802,
+    "selection_ms": 41.09890400013683,
+    "query_stage_ms": 16.90115700057504
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2147,
+    "rendered_text_characters": 2147,
+    "selection_ms": 0.17042899980879156,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1634,
+    "rendered_text_characters": 1634,
+    "selection_ms": 10.83058800031722,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2147,
+    "rendered_text_characters": 2147,
+    "selection_ms": 0.8787440001469804,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2147,
+    "rendered_text_characters": 2147,
+    "selection_ms": 0.9360280000692001,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3230,
+    "rendered_text_characters": 3230,
+    "selection_ms": 0.09007199969346402,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1634,
+    "rendered_text_characters": 1634,
+    "selection_ms": 11.716082000020833,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3230,
+    "rendered_text_characters": 3230,
+    "selection_ms": 1.2919709997731843,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3230,
+    "rendered_text_characters": 3230,
+    "selection_ms": 1.3717279998672893,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.27838500045618275,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1634,
+    "rendered_text_characters": 1634,
+    "selection_ms": 14.418131000638823,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3361,
+    "rendered_text_characters": 3361,
+    "selection_ms": 22.308642999632866,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D11",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6688,
+    "rendered_text_characters": 6688,
+    "selection_ms": 50.37629900016327,
+    "query_stage_ms": 17.580867000106082
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2061,
+    "rendered_text_characters": 2061,
+    "selection_ms": 0.15715900008217432,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1736,
+    "rendered_text_characters": 1736,
+    "selection_ms": 10.459604000061518,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2061,
+    "rendered_text_characters": 2061,
+    "selection_ms": 0.8202320004784269,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2061,
+    "rendered_text_characters": 2061,
+    "selection_ms": 0.8229680006479612,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3049,
+    "rendered_text_characters": 3049,
+    "selection_ms": 0.27978500020253705,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1736,
+    "rendered_text_characters": 1736,
+    "selection_ms": 12.009408000267285,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3049,
+    "rendered_text_characters": 3049,
+    "selection_ms": 1.9575260002966388,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3049,
+    "rendered_text_characters": 3049,
+    "selection_ms": 1.5844419995119097,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.7539529997302452,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1736,
+    "rendered_text_characters": 1736,
+    "selection_ms": 16.357482999410422,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3459,
+    "rendered_text_characters": 3459,
+    "selection_ms": 25.340387000142073,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D12",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6828,
+    "rendered_text_characters": 6828,
+    "selection_ms": 46.09658200024569,
+    "query_stage_ms": 16.103953000310867
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 0.23119599973142613,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 0.8470460006719804,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 0.7425020003211102,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 0.7430170007864945,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2386,
+    "rendered_text_characters": 2386,
+    "selection_ms": 0.34442899959685747,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 13.693265999791038,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2386,
+    "rendered_text_characters": 2386,
+    "selection_ms": 1.3366889997996623,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2386,
+    "rendered_text_characters": 2386,
+    "selection_ms": 1.501394000115397,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.8611339999333723,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1660,
+    "rendered_text_characters": 1660,
+    "selection_ms": 17.46624699990207,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3387,
+    "rendered_text_characters": 3387,
+    "selection_ms": 27.582497999901534,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D13",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6723,
+    "rendered_text_characters": 6723,
+    "selection_ms": 42.94972099978622,
+    "query_stage_ms": 15.62355900023249
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2107,
+    "rendered_text_characters": 2107,
+    "selection_ms": 0.14461200044024736,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1720,
+    "rendered_text_characters": 1720,
+    "selection_ms": 18.737391000286152,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2107,
+    "rendered_text_characters": 2107,
+    "selection_ms": 1.0183379999944009,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2107,
+    "rendered_text_characters": 2107,
+    "selection_ms": 1.0340190001443261,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3582,
+    "rendered_text_characters": 3582,
+    "selection_ms": 0.3326440000819275,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1720,
+    "rendered_text_characters": 1720,
+    "selection_ms": 12.825284000427928,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3554,
+    "rendered_text_characters": 3554,
+    "selection_ms": 22.264816000642895,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3582,
+    "rendered_text_characters": 3582,
+    "selection_ms": 1.664139999775216,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.9480910002821474,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1720,
+    "rendered_text_characters": 1720,
+    "selection_ms": 16.216440999414772,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3554,
+    "rendered_text_characters": 3554,
+    "selection_ms": 24.468169000101625,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D14",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6993,
+    "rendered_text_characters": 6993,
+    "selection_ms": 43.93049900045298,
+    "query_stage_ms": 18.920532999800344
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1862,
+    "rendered_text_characters": 1862,
+    "selection_ms": 0.13334800041775452,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1671,
+    "rendered_text_characters": 1671,
+    "selection_ms": 10.68304300042655,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1862,
+    "rendered_text_characters": 1862,
+    "selection_ms": 0.832583000374143,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1862,
+    "rendered_text_characters": 1862,
+    "selection_ms": 0.7835509995857137,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2639,
+    "rendered_text_characters": 2639,
+    "selection_ms": 0.4423750006026239,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1671,
+    "rendered_text_characters": 1671,
+    "selection_ms": 12.467446000300697,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2639,
+    "rendered_text_characters": 2639,
+    "selection_ms": 1.467620000767056,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2639,
+    "rendered_text_characters": 2639,
+    "selection_ms": 2.426936999654572,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 1.780302000042866,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1671,
+    "rendered_text_characters": 1671,
+    "selection_ms": 22.894529999575752,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3387,
+    "rendered_text_characters": 3387,
+    "selection_ms": 26.536868999755825,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D15",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6731,
+    "rendered_text_characters": 6731,
+    "selection_ms": 44.81175599994458,
+    "query_stage_ms": 19.275501999800326
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1447,
+    "rendered_text_characters": 1447,
+    "selection_ms": 0.13050200050201965,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1447,
+    "rendered_text_characters": 1447,
+    "selection_ms": 0.7840660000510979,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1447,
+    "rendered_text_characters": 1447,
+    "selection_ms": 0.7062429995130515,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1447,
+    "rendered_text_characters": 1447,
+    "selection_ms": 0.6529699994644034,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2104,
+    "rendered_text_characters": 2104,
+    "selection_ms": 0.16411699925811263,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1637,
+    "rendered_text_characters": 1637,
+    "selection_ms": 11.22763599960308,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2104,
+    "rendered_text_characters": 2104,
+    "selection_ms": 0.9673670001575374,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2104,
+    "rendered_text_characters": 2104,
+    "selection_ms": 0.9710659996926552,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.33866200010379544,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1637,
+    "rendered_text_characters": 1637,
+    "selection_ms": 14.702788999784389,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3099,
+    "rendered_text_characters": 3099,
+    "selection_ms": 22.99011899958714,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D16",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6471,
+    "rendered_text_characters": 6471,
+    "selection_ms": 41.32583400041767,
+    "query_stage_ms": 17.973607999920205
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2077,
+    "rendered_text_characters": 2077,
+    "selection_ms": 0.13316199965629494,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1667,
+    "rendered_text_characters": 1667,
+    "selection_ms": 10.427538999465469,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2077,
+    "rendered_text_characters": 2077,
+    "selection_ms": 0.8463549993393826,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2077,
+    "rendered_text_characters": 2077,
+    "selection_ms": 0.7816570005161338,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2931,
+    "rendered_text_characters": 2931,
+    "selection_ms": 0.3276449997429154,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1667,
+    "rendered_text_characters": 1667,
+    "selection_ms": 12.778800999512896,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2931,
+    "rendered_text_characters": 2931,
+    "selection_ms": 1.7060690006474033,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2931,
+    "rendered_text_characters": 2931,
+    "selection_ms": 2.8547209994940204,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.9841529999903287,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1667,
+    "rendered_text_characters": 1667,
+    "selection_ms": 16.86440999947081,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3397,
+    "rendered_text_characters": 3397,
+    "selection_ms": 25.96470299977227,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D17",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6756,
+    "rendered_text_characters": 6756,
+    "selection_ms": 43.63991599984729,
+    "query_stage_ms": 23.047811999276746
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2138,
+    "rendered_text_characters": 2138,
+    "selection_ms": 0.13584899988927646,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1636,
+    "rendered_text_characters": 1636,
+    "selection_ms": 11.09672300026432,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2138,
+    "rendered_text_characters": 2138,
+    "selection_ms": 0.875204000294616,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2138,
+    "rendered_text_characters": 2138,
+    "selection_ms": 0.8551640003133798,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3384,
+    "rendered_text_characters": 3384,
+    "selection_ms": 0.12845699984609382,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1636,
+    "rendered_text_characters": 1636,
+    "selection_ms": 11.734945999705815,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3384,
+    "rendered_text_characters": 3384,
+    "selection_ms": 1.4916149993950967,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3384,
+    "rendered_text_characters": 3384,
+    "selection_ms": 1.5023409996501869,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.35327099976711906,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1636,
+    "rendered_text_characters": 1636,
+    "selection_ms": 16.238342000178818,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3384,
+    "rendered_text_characters": 3384,
+    "selection_ms": 23.14735100026155,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D18",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6739,
+    "rendered_text_characters": 6739,
+    "selection_ms": 41.13675099961256,
+    "query_stage_ms": 17.989627000133623
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1615,
+    "rendered_text_characters": 1615,
+    "selection_ms": 0.13240699991001748,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1615,
+    "rendered_text_characters": 1615,
+    "selection_ms": 0.8005720001165173,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1615,
+    "rendered_text_characters": 1615,
+    "selection_ms": 0.7882320005592192,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1615,
+    "rendered_text_characters": 1615,
+    "selection_ms": 0.7940539999253815,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 3535,
+    "rendered_text_characters": 3536,
+    "selection_ms": 0.3676749993246631,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1626,
+    "rendered_text_characters": 1626,
+    "selection_ms": 14.084079999520327,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3435,
+    "rendered_text_characters": 3436,
+    "selection_ms": 20.986841000194545,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3535,
+    "rendered_text_characters": 3536,
+    "selection_ms": 1.8310890000066138,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 37,
+    "source_characters": 7998,
+    "rendered_text_characters": 8000,
+    "selection_ms": 162.47425300025498,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1626,
+    "rendered_text_characters": 1626,
+    "selection_ms": 18.860973000300874,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3435,
+    "rendered_text_characters": 3436,
+    "selection_ms": 26.02996199948393,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D19",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 37,
+    "source_characters": 6854,
+    "rendered_text_characters": 6856,
+    "selection_ms": 47.541144999740936,
+    "query_stage_ms": 17.043881999597943
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1513,
+    "rendered_text_characters": 1513,
+    "selection_ms": 0.1388690006933757,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1513,
+    "rendered_text_characters": 1513,
+    "selection_ms": 0.8432489994447678,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1513,
+    "rendered_text_characters": 1513,
+    "selection_ms": 0.704037999639695,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1513,
+    "rendered_text_characters": 1513,
+    "selection_ms": 0.6793909997213632,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2456,
+    "rendered_text_characters": 2456,
+    "selection_ms": 0.4711820001830347,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1647,
+    "rendered_text_characters": 1647,
+    "selection_ms": 14.346476000355324,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2456,
+    "rendered_text_characters": 2456,
+    "selection_ms": 1.7904099995575962,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2456,
+    "rendered_text_characters": 2456,
+    "selection_ms": 4.004700999757915,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.7659269995201612,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1647,
+    "rendered_text_characters": 1647,
+    "selection_ms": 18.643534000148065,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3382,
+    "rendered_text_characters": 3382,
+    "selection_ms": 26.852623000195308,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "D20",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6804,
+    "rendered_text_characters": 6804,
+    "selection_ms": 44.915737000337685,
+    "query_stage_ms": 18.54725000066537
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2027,
+    "rendered_text_characters": 2027,
+    "selection_ms": 0.1473259999329457,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1585,
+    "rendered_text_characters": 1585,
+    "selection_ms": 10.785979000502266,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2027,
+    "rendered_text_characters": 2027,
+    "selection_ms": 0.8735919991522678,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2027,
+    "rendered_text_characters": 2027,
+    "selection_ms": 0.8230769999499898,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.021562999791058246,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.02777800000330899,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.022711000383424107,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.02056199991784524,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.00995800019154558,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.018370000361755956,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.017534000107843895,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U01",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.0182229996426031,
+    "query_stage_ms": 13.368120999984967
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1769,
+    "rendered_text_characters": 1769,
+    "selection_ms": 0.14479399942501914,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1536,
+    "rendered_text_characters": 1536,
+    "selection_ms": 10.29286500033777,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1769,
+    "rendered_text_characters": 1769,
+    "selection_ms": 0.8098220005194889,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1769,
+    "rendered_text_characters": 1769,
+    "selection_ms": 0.9114140002566273,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.021868999283469748,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.029043000722595025,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.023923000298964325,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.021445000129460823,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 341,
+    "rendered_text_characters": 341,
+    "selection_ms": 0.029597999855468515,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 341,
+    "rendered_text_characters": 341,
+    "selection_ms": 0.18766900029731914,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 341,
+    "rendered_text_characters": 341,
+    "selection_ms": 0.18054799966193968,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U02",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 341,
+    "rendered_text_characters": 341,
+    "selection_ms": 0.1864300002125674,
+    "query_stage_ms": 13.94911100032914
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.15574000008200528,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.6949110002096859,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.6043549992682529,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.6608049998249044,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.06674699943687301,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.5632590000459459,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.547384000128659,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1281,
+    "rendered_text_characters": 1281,
+    "selection_ms": 0.621697000497079,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.35573199966165703,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1551,
+    "rendered_text_characters": 1551,
+    "selection_ms": 15.021029000308772,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3188,
+    "rendered_text_characters": 3188,
+    "selection_ms": 23.9163850001205,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U03",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6610,
+    "rendered_text_characters": 6610,
+    "selection_ms": 42.078242999195936,
+    "query_stage_ms": 15.286881999600155
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1579,
+    "rendered_text_characters": 1579,
+    "selection_ms": 0.13240099997346988,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1579,
+    "rendered_text_characters": 1579,
+    "selection_ms": 0.7908119996500318,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1579,
+    "rendered_text_characters": 1579,
+    "selection_ms": 0.7645450004929444,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1579,
+    "rendered_text_characters": 1579,
+    "selection_ms": 0.7179269996413495,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2707,
+    "rendered_text_characters": 2707,
+    "selection_ms": 0.1006559996312717,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1579,
+    "rendered_text_characters": 1579,
+    "selection_ms": 11.246136999943701,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2707,
+    "rendered_text_characters": 2707,
+    "selection_ms": 1.121855999372201,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2707,
+    "rendered_text_characters": 2707,
+    "selection_ms": 1.1268139996900572,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.2522060003684601,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1579,
+    "rendered_text_characters": 1579,
+    "selection_ms": 15.48302499941201,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3265,
+    "rendered_text_characters": 3265,
+    "selection_ms": 23.52912100013782,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U04",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6752,
+    "rendered_text_characters": 6752,
+    "selection_ms": 42.005481000160216,
+    "query_stage_ms": 15.017183999589179
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 2209,
+    "rendered_text_characters": 2209,
+    "selection_ms": 0.18342200019105803,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1639,
+    "rendered_text_characters": 1639,
+    "selection_ms": 9.96033899991744,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2209,
+    "rendered_text_characters": 2209,
+    "selection_ms": 0.8310580005854717,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2209,
+    "rendered_text_characters": 2209,
+    "selection_ms": 0.8453319996988284,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.02135700015060138,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.02881299951695837,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.02352699993934948,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.01999100004468346,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.010893999387917574,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.019703999896591995,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.018268000530952122,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U05",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 0,
+    "rendered_text_characters": 0,
+    "selection_ms": 0.01713599976937985,
+    "query_stage_ms": 14.961571000640106
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1536,
+    "rendered_text_characters": 1536,
+    "selection_ms": 0.1496639997640159,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1536,
+    "rendered_text_characters": 1536,
+    "selection_ms": 0.7737870000710245,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1536,
+    "rendered_text_characters": 1536,
+    "selection_ms": 0.6984139999985928,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1536,
+    "rendered_text_characters": 1536,
+    "selection_ms": 0.6888149991937098,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2703,
+    "rendered_text_characters": 2703,
+    "selection_ms": 0.29955399986647535,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1639,
+    "rendered_text_characters": 1639,
+    "selection_ms": 12.568875999932061,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2703,
+    "rendered_text_characters": 2703,
+    "selection_ms": 1.2889550007457728,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2703,
+    "rendered_text_characters": 2703,
+    "selection_ms": 1.270679000299424,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.8017879999897559,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1639,
+    "rendered_text_characters": 1639,
+    "selection_ms": 17.182661999868287,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3353,
+    "rendered_text_characters": 3353,
+    "selection_ms": 26.191259999905014,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U06",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6786,
+    "rendered_text_characters": 6786,
+    "selection_ms": 58.69424100001197,
+    "query_stage_ms": 15.440522999597306
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1585,
+    "rendered_text_characters": 1585,
+    "selection_ms": 0.1318260001426097,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1585,
+    "rendered_text_characters": 1585,
+    "selection_ms": 0.782940000135568,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1585,
+    "rendered_text_characters": 1585,
+    "selection_ms": 0.7946629993966781,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1585,
+    "rendered_text_characters": 1585,
+    "selection_ms": 0.7577229998787516,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2745,
+    "rendered_text_characters": 2745,
+    "selection_ms": 0.12984699969820213,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1629,
+    "rendered_text_characters": 1629,
+    "selection_ms": 12.245396999787772,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2745,
+    "rendered_text_characters": 2745,
+    "selection_ms": 1.2905359999422217,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2745,
+    "rendered_text_characters": 2745,
+    "selection_ms": 1.724361000015051,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 7999,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.32585700046183774,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1629,
+    "rendered_text_characters": 1629,
+    "selection_ms": 15.867950999563618,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3276,
+    "rendered_text_characters": 3276,
+    "selection_ms": 22.997338000095624,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U07",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6548,
+    "rendered_text_characters": 6549,
+    "selection_ms": 40.52771399983612,
+    "query_stage_ms": 13.846982999893953
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1773,
+    "rendered_text_characters": 1773,
+    "selection_ms": 0.1346910003121593,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1611,
+    "rendered_text_characters": 1611,
+    "selection_ms": 11.25155400040967,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1773,
+    "rendered_text_characters": 1773,
+    "selection_ms": 0.844063999466016,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1773,
+    "rendered_text_characters": 1773,
+    "selection_ms": 0.8187319999706233,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 1183,
+    "rendered_text_characters": 1183,
+    "selection_ms": 0.05279099968902301,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1183,
+    "rendered_text_characters": 1183,
+    "selection_ms": 0.5126949999976205,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1183,
+    "rendered_text_characters": 1183,
+    "selection_ms": 0.7171080005718977,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1183,
+    "rendered_text_characters": 1183,
+    "selection_ms": 0.5265260006126482,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 1577,
+    "rendered_text_characters": 1577,
+    "selection_ms": 0.06130700057838112,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1577,
+    "rendered_text_characters": 1577,
+    "selection_ms": 0.6878450003569014,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1577,
+    "rendered_text_characters": 1577,
+    "selection_ms": 0.7060970001475653,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U08",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1577,
+    "rendered_text_characters": 1577,
+    "selection_ms": 0.7237680001708213,
+    "query_stage_ms": 15.091023999957542
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1766,
+    "rendered_text_characters": 1766,
+    "selection_ms": 0.13480800043907948,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1766,
+    "rendered_text_characters": 1766,
+    "selection_ms": 1.8661050007722224,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1766,
+    "rendered_text_characters": 1766,
+    "selection_ms": 0.9454139999434119,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1766,
+    "rendered_text_characters": 1766,
+    "selection_ms": 0.8236550002038712,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2747,
+    "rendered_text_characters": 2747,
+    "selection_ms": 0.27171500005351845,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1766,
+    "rendered_text_characters": 1766,
+    "selection_ms": 13.058609999461623,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2747,
+    "rendered_text_characters": 2747,
+    "selection_ms": 1.3360680004552705,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2747,
+    "rendered_text_characters": 2747,
+    "selection_ms": 1.305333000345854,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 0.5382589997680043,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1766,
+    "rendered_text_characters": 1766,
+    "selection_ms": 16.44779400066909,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3351,
+    "rendered_text_characters": 3351,
+    "selection_ms": 25.09641999949963,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U09",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6865,
+    "rendered_text_characters": 6865,
+    "selection_ms": 43.381661999774224,
+    "query_stage_ms": 16.02033999915875
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "baseline",
+    "duplicated_source_characters": 0,
+    "source_characters": 1584,
+    "rendered_text_characters": 1584,
+    "selection_ms": 0.13309000041772379,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "baseline_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1584,
+    "rendered_text_characters": 1584,
+    "selection_ms": 0.8239709995905287,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "baseline_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1584,
+    "rendered_text_characters": 1584,
+    "selection_ms": 0.7200949994512484,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "baseline_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1584,
+    "rendered_text_characters": 1584,
+    "selection_ms": 0.7073140004649758,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score040_max8",
+    "duplicated_source_characters": 0,
+    "source_characters": 2954,
+    "rendered_text_characters": 2954,
+    "selection_ms": 0.4464510002435418,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score040_max8_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1584,
+    "rendered_text_characters": 1584,
+    "selection_ms": 15.774892000081309,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score040_max8_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2954,
+    "rendered_text_characters": 2954,
+    "selection_ms": 1.8871030006266665,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score040_max8_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 2954,
+    "rendered_text_characters": 2954,
+    "selection_ms": 4.1382429999430315,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score035_unlimited",
+    "duplicated_source_characters": 0,
+    "source_characters": 8000,
+    "rendered_text_characters": 8000,
+    "selection_ms": 1.2949269994351198,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score035_unlimited_proxy1000",
+    "duplicated_source_characters": 0,
+    "source_characters": 1584,
+    "rendered_text_characters": 1584,
+    "selection_ms": 22.872202999678848,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score035_unlimited_proxy2000",
+    "duplicated_source_characters": 0,
+    "source_characters": 3261,
+    "rendered_text_characters": 3261,
+    "selection_ms": 26.530338999691594,
+    "query_stage_ms": 14.840925000498828
+  },
+  {
+    "case_id": "U10",
+    "variant_id": "score035_unlimited_proxy4000",
+    "duplicated_source_characters": 0,
+    "source_characters": 6641,
+    "rendered_text_characters": 6641,
+    "selection_ms": 45.09942999993655,
+    "query_stage_ms": 14.840925000498828
+  }
+]

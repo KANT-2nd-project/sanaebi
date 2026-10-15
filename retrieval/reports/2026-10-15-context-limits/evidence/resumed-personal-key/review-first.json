@@ -1,0 +1,234 @@
+{
+  "review_kind": "mode_score_cost_blinded_ai",
+  "cases": [
+    {
+      "case_id": "R01",
+      "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+      "intent_group": "planned_annual_leave_application",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "R01-r01",
+          "claim": "예정 연차는 사용 시작일 기준 3영업일 전까지 신청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-001",
+              "spans": [
+                {
+                  "start": 222,
+                  "end": 230,
+                  "text": "3영업일 전까지"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "R01-r02",
+          "claim": "이음 포털 인사 > 휴가에서 신청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-001",
+              "spans": [
+                {
+                  "start": 231,
+                  "end": 257,
+                  "text": "이음 포털의 **인사 > 휴가**에서 신청한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "R05",
+      "question": "집에서 일하려면 언제까지 신청해야 돼?",
+      "intent_group": "domestic_remote_work_deadline",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "R05-r01",
+          "claim": "재택 근무일 전 영업일 15:00까지 신청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-010",
+              "spans": [
+                {
+                  "start": 40,
+                  "end": 57,
+                  "text": "근무일 전 영업일 15:00까지"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "R05-o01",
+          "claim": "이음 포털 인사 > 근무 장소로 신청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-010",
+              "spans": [
+                {
+                  "start": 58,
+                  "end": 79,
+                  "text": "이음 포털의 **인사 > 근무 장소**"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "R05-o02",
+          "claim": "승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-010",
+              "spans": [
+                {
+                  "start": 220,
+                  "end": 262,
+                  "text": "승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    }
+  ],
+  "responses": [
+    {
+      "case_id": "R05",
+      "question": "집에서 일하려면 언제까지 신청해야 돼?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "정기 국내 재택은 근무일 전 영업일 15:00까지 포털의 **인사 > 근무 장소**에 신청하시면 됩니다. 평소 승인된 장소와 다른 곳에서 일회성으로 근무하는 경우에는 예정일 2영업일 전까지 **인사 > 근무 장소 변경**에 신청하세요. 어느 경우든 승인이 포털에 기록되기 전에는 확정된 일정으로 볼 수 없습니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"정기 국내 재택은 근무일 전 영업일 15:00까지 포털의 **인사 > 근무 장소**에 신청하시면 됩니다. 평소 승인된 장소와 다른 곳에서 일회성으로 근무하는 경우에는 예정일 2영업일 전까지 **인사 > 근무 장소 변경**에 신청하세요. 어느 경우든 승인이 포털에 기록되기 전에는 확정된 일정으로 볼 수 없습니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"정기 국내 재택은 근무일 전 영업일 15:00까지 포털의 **인사 > 근무 장소**에 신청하시면 됩니다. 평소 승인된 장소와 다른 곳에서 일회성으로 근무하는 경우에는 예정일 2영업일 전까지 **인사 > 근무 장소 변경**에 신청하세요. 어느 경우든 승인이 포털에 기록되기 전에는 확정된 일정으로 볼 수 없습니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R01",
+      "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청하시면 됩니다. 다른 종류의 휴가를 말씀하신 거라면 신청 시점이 다를 수 있습니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청하시면 됩니다. 다른 종류의 휴가를 말씀하신 거라면 신청 시점이 다를 수 있습니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청하시면 됩니다. 다른 종류의 휴가를 말씀하신 거라면 신청 시점이 다를 수 있습니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R01",
+      "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "연차라면 사용 시작일 기준 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하시면 됩니다. 경조 휴가라면 가능하면 행사일 3영업일 전까지 **인사 > 경조 휴가**에 등록하시면 됩니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"연차라면 사용 시작일 기준 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하시면 됩니다. 경조 휴가라면 가능하면 행사일 3영업일 전까지 **인사 > 경조 휴가**에 등록하시면 됩니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"연차라면 사용 시작일 기준 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하시면 됩니다. 경조 휴가라면 가능하면 행사일 3영업일 전까지 **인사 > 경조 휴가**에 등록하시면 됩니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R05",
+      "question": "집에서 일하려면 언제까지 신청해야 돼?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "정기 국내 재택근무는 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에서 신청하시면 됩니다. 포털에 승인 상태가 기록되기 전까지는 확정된 일정으로 보지 않습니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"정기 국내 재택근무는 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에서 신청하시면 됩니다. 포털에 승인 상태가 기록되기 전까지는 확정된 일정으로 보지 않습니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"정기 국내 재택근무는 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에서 신청하시면 됩니다. 포털에 승인 상태가 기록되기 전까지는 확정된 일정으로 보지 않습니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R05",
+      "question": "집에서 일하려면 언제까지 신청해야 돼?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "정기 국내 재택근무라면 근무일 전 영업일 15:00까지 이음 포털 **인사 > 근무 장소**에 신청하시면 됩니다. 팀장은 같은 날 18:00까지 승인 또는 조정안을 회신하며, 포털에 승인이 기록되기 전에는 확정된 일정이 아닙니다. 평소 승인된 장소와 다른 곳에서 일회성으로 근무 장소를 바꾸는 경우에는 예정일 2영업일 전까지 **인사 > 근무 장소 변경**에 신청해야 합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"정기 국내 재택근무라면 근무일 전 영업일 15:00까지 이음 포털 **인사 > 근무 장소**에 신청하시면 됩니다. 팀장은 같은 날 18:00까지 승인 또는 조정안을 회신하며, 포털에 승인이 기록되기 전에는 확정된 일정이 아닙니다. 평소 승인된 장소와 다른 곳에서 일회성으로 근무 장소를 바꾸는 경우에는 예정일 2영업일 전까지 **인사 > 근무 장소 변경**에 신청해야 합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"정기 국내 재택근무라면 근무일 전 영업일 15:00까지 이음 포털 **인사 > 근무 장소**에 신청하시면 됩니다. 팀장은 같은 날 18:00까지 승인 또는 조정안을 회신하며, 포털에 승인이 기록되기 전에는 확정된 일정이 아닙니다. 평소 승인된 장소와 다른 곳에서 일회성으로 근무 장소를 바꾸는 경우에는 예정일 2영업일 전까지 **인사 > 근무 장소 변경**에 신청해야 합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R01",
+      "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "예정된 연차라면 사용 시작일 기준 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하시면 됩니다. 경조사 휴가를 말씀하신 거라면 **인사 > 경조 휴가**에 가능하면 행사일 3영업일 전까지 등록하시면 됩니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"예정된 연차라면 사용 시작일 기준 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하시면 됩니다. 경조사 휴가를 말씀하신 거라면 **인사 > 경조 휴가**에 가능하면 행사일 3영업일 전까지 등록하시면 됩니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"예정된 연차라면 사용 시작일 기준 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하시면 됩니다. 경조사 휴가를 말씀하신 거라면 **인사 > 경조 휴가**에 가능하면 행사일 3영업일 전까지 등록하시면 됩니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    }
+  ]
+}

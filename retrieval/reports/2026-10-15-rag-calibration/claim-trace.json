@@ -1,0 +1,3939 @@
+[
+  {
+    "case_id": "R01",
+    "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+    "claim": {
+      "claim_id": "R01-r01",
+      "claim": "예정 연차는 사용 시작일 기준 3영업일 전까지 신청한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-001",
+          "spans": [
+            {
+              "start": 222,
+              "end": 230,
+              "text": "3영업일 전까지"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 3,
+    "source_chunks": [
+      {
+        "rank": 3,
+        "chunk_id": "41e9c05a66f5ce0d32f3b918b56e9fac9301f7c2d245f9d6c9623dcadb7f516b",
+        "score": 0.5036675930023193,
+        "document_id": "ieum-001",
+        "spans": [
+          {
+            "start": 190,
+            "end": 641,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R01",
+    "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+    "claim": {
+      "claim_id": "R01-r02",
+      "claim": "이음 포털 인사 > 휴가에서 신청한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-001",
+          "spans": [
+            {
+              "start": 231,
+              "end": 257,
+              "text": "이음 포털의 **인사 > 휴가**에서 신청한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 3,
+    "source_chunks": [
+      {
+        "rank": 3,
+        "chunk_id": "41e9c05a66f5ce0d32f3b918b56e9fac9301f7c2d245f9d6c9623dcadb7f516b",
+        "score": 0.5036675930023193,
+        "document_id": "ieum-001",
+        "spans": [
+          {
+            "start": 190,
+            "end": 641,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R02",
+    "question": "연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?",
+    "claim": {
+      "claim_id": "R02-r01",
+      "claim": "잠긴 수정·취소는 기존 신청 번호로 People팀에 정정을 요청한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-001",
+          "spans": [
+            {
+              "start": 755,
+              "end": 819,
+              "text": "포털에서 수정이나 취소가 잠겨 있거나 이미 처리가 끝났다면 같은 신청 번호를 적어 People팀에 정정을 요청한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "2379afbeb225048c26309702e4e284475072522247b71ca5d43e3fd27c5d4050",
+        "score": 0.6620734930038452,
+        "document_id": "ieum-001",
+        "spans": [
+          {
+            "start": 642,
+            "end": 1002,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R02",
+    "question": "연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?",
+    "claim": {
+      "claim_id": "R02-r02",
+      "claim": "별도의 새 신청을 중복으로 만들지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-001",
+          "spans": [
+            {
+              "start": 820,
+              "end": 848,
+              "text": "별도의 새 신청을 중복으로 만들어 해결하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "2379afbeb225048c26309702e4e284475072522247b71ca5d43e3fd27c5d4050",
+        "score": 0.6620734930038452,
+        "document_id": "ieum-001",
+        "spans": [
+          {
+            "start": 642,
+            "end": 1002,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R03",
+    "question": "어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?",
+    "claim": {
+      "claim_id": "R03-r01",
+      "claim": "실제 출퇴근 오류를 인사 > 근태 정정에서 날짜, 실제 시각, 휴게와 사유를 적어 요청한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-006",
+          "spans": [
+            {
+              "start": 157,
+              "end": 233,
+              "text": "오류를 발견한 뒤 3영업일 안에 이음 포털의 **인사 > 근태 정정**에 날짜, 실제 시작·종료 시각, 휴게 시간과 정정 사유를 적는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "5fd51c2d0335d316944fbcf1216d686136f03f35b9ed5cad15f029efa120bdfa",
+        "score": 0.4980192482471466,
+        "document_id": "ieum-006",
+        "spans": [
+          {
+            "start": 0,
+            "end": 336,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R04",
+    "question": "근태 오류를 발견한 지 일주일 지났는데 수정 못 해?",
+    "claim": {
+      "claim_id": "R04-r01",
+      "claim": "3영업일이 지난 오류도 지연 사유를 적어 People팀에 제출한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-006",
+          "spans": [
+            {
+              "start": 689,
+              "end": 726,
+              "text": "3영업일이 지난 오류는 지연 사유를 적어 People팀에 제출한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 3,
+    "source_chunks": [
+      {
+        "rank": 3,
+        "chunk_id": "4d4c11c39d53a0098d4cf11038233fd37f969ece9269627818b154a8840fca17",
+        "score": 0.5068470239639282,
+        "document_id": "ieum-006",
+        "spans": [
+          {
+            "start": 337,
+            "end": 992,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R05",
+    "question": "집에서 일하려면 언제까지 신청해야 돼?",
+    "claim": {
+      "claim_id": "R05-r01",
+      "claim": "재택 근무일 전 영업일 15:00까지 신청한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-010",
+          "spans": [
+            {
+              "start": 40,
+              "end": 57,
+              "text": "근무일 전 영업일 15:00까지"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "15f4b4b412fb938eeba677a2849e59164a725825af28f9a9660cab903370b900",
+        "score": 0.4771781265735626,
+        "document_id": "ieum-010",
+        "spans": [
+          {
+            "start": 0,
+            "end": 263,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R06",
+    "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+    "claim": {
+      "claim_id": "R06-r01",
+      "claim": "해외 근무는 일반 재택 승인에 포함되지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-010",
+          "spans": [
+            {
+              "start": 526,
+              "end": 558,
+              "text": "해외에서 일하는 계획은 일반 재택 승인에 포함되지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb",
+        "score": 0.6105961203575134,
+        "document_id": "ieum-010",
+        "spans": [
+          {
+            "start": 509,
+            "end": 1017,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R06",
+    "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+    "claim": {
+      "claim_id": "R06-r02",
+      "claim": "예정일 10영업일 전까지 신청해 People팀과 보안·개인정보 담당자의 검토 및 소속 팀장의 최종 승인을 받는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-010",
+          "spans": [
+            {
+              "start": 559,
+              "end": 639,
+              "text": "예정일 10영업일 전까지 신청하고 People팀과 보안·개인정보 담당자의 각각의 검토, 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb",
+        "score": 0.6105961203575134,
+        "document_id": "ieum-010",
+        "spans": [
+          {
+            "start": 509,
+            "end": 1017,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R06",
+    "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+    "claim": {
+      "claim_id": "R06-r03",
+      "claim": "필요한 승인이 기록되기 전에는 해외 업무를 시작하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-010",
+          "spans": [
+            {
+              "start": 640,
+              "end": 681,
+              "text": "검토 중이거나 필요한 승인이 없으면 해외 장소에서 업무를 시작하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb",
+        "score": 0.6105961203575134,
+        "document_id": "ieum-010",
+        "spans": [
+          {
+            "start": 509,
+            "end": 1017,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R07",
+    "question": "회사 들어가는 카드를 잃어버렸고 포털도 안 돼.",
+    "claim": {
+      "claim_id": "R07-r01",
+      "claim": "포털 접속이 안 되면 총무 담당자에게 Slack #office-help로 연락한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-013",
+          "spans": [
+            {
+              "start": 447,
+              "end": 499,
+              "text": "포털 접속이 되지 않으면 총무 담당자에게 Slack **#office-help**로 연락한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "9931c83b64f9a01fefe163cf31e2eb5f03d6e9c907cad1b98f308db962914f93",
+        "score": 0.6247935891151428,
+        "document_id": "ieum-013",
+        "spans": [
+          {
+            "start": 375,
+            "end": 808,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R08",
+    "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+    "claim": {
+      "claim_id": "R08-r01",
+      "claim": "재무팀 최종 검토가 끝난 달의 다음 달 15일이 지급일이다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 577,
+              "end": 611,
+              "text": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 15,
+    "source_chunks": [
+      {
+        "rank": 15,
+        "chunk_id": "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+        "score": 0.37119653820991516,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 390,
+            "end": 993,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      },
+      "score040_max8": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R09",
+    "question": "영수증 제출 기한이 이미 지났으면 어떻게 해?",
+    "claim": {
+      "claim_id": "R09-r01",
+      "claim": "기한이 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 269,
+              "end": 314,
+              "text": "이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "score": 0.5517978072166443,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 0,
+            "end": 389,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R09",
+    "question": "영수증 제출 기한이 이미 지났으면 어떻게 해?",
+    "claim": {
+      "claim_id": "R09-r02",
+      "claim": "승인 전까지 지급이 확정된 것으로 안내하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 315,
+              "end": 343,
+              "text": "승인 전까지 지급이 확정된 것으로 안내하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "score": 0.5517978072166443,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 0,
+            "end": 389,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R10",
+    "question": "인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?",
+    "claim": {
+      "claim_id": "R10-r01",
+      "claim": "타인의 기기나 계정으로 우회 로그인하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-026",
+          "spans": [
+            {
+              "start": 585,
+              "end": 611,
+              "text": "타인의 기기나 계정으로 우회 로그인하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+        "score": 0.5669691562652588,
+        "document_id": "ieum-026",
+        "spans": [
+          {
+            "start": 412,
+            "end": 694,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R10",
+    "question": "인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?",
+    "claim": {
+      "claim_id": "R10-r02",
+      "claim": "포털 IT > 계정 복구를 이용하고 포털에 못 들어가면 민감 인증정보를 빼고 #it-helpdesk에 접수한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-026",
+          "spans": [
+            {
+              "start": 462,
+              "end": 534,
+              "text": "이음 포털의 IT > 계정 복구를 이용하고, 포털에 접근할 수 없으면 #it-helpdesk에 민감한 인증 정보를 빼고 접수한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+        "score": 0.5669691562652588,
+        "document_id": "ieum-026",
+        "spans": [
+          {
+            "start": 412,
+            "end": 694,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R11",
+    "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+    "claim": {
+      "claim_id": "R11-r01",
+      "claim": "본인이 시작하지 않은 인증 알림은 승인하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-026",
+          "spans": [
+            {
+              "start": 712,
+              "end": 738,
+              "text": "본인이 시작하지 않은 인증 알림을 승인하지 말고"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+        "score": 0.5971742868423462,
+        "document_id": "ieum-026",
+        "spans": [
+          {
+            "start": 695,
+            "end": 918,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R11",
+    "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+    "claim": {
+      "claim_id": "R11-r02",
+      "claim": "반복되면 가능한 공식 계정 보호 조치를 한 뒤 #security-incident에 즉시 신고한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-026",
+          "spans": [
+            {
+              "start": 740,
+              "end": 796,
+              "text": "반복되면 가능한 공식 계정 보호 조치를 수행한 뒤 #security-incident에 즉시 신고한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+        "score": 0.5971742868423462,
+        "document_id": "ieum-026",
+        "spans": [
+          {
+            "start": 695,
+            "end": 918,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R12",
+    "question": "회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?",
+    "claim": {
+      "claim_id": "R12-r01",
+      "claim": "회사 플랜이라도 고객 자료와 지원 티켓은 입력할 수 없고 식별자를 지워도 금지된다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-033",
+          "spans": [
+            {
+              "start": 341,
+              "end": 400,
+              "text": "고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지"
+            },
+            {
+              "start": 116,
+              "end": 161,
+              "text": "서비스가 회사용 플랜이라는 이유만으로 비공개 자료를 입력할 수 있는 것은 아니다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 3,
+    "source_chunks": [
+      {
+        "rank": 3,
+        "chunk_id": "845783cf64a5f3428c87acc286629ca93bb4aebaedf25f37cf85b885b385ae0a",
+        "score": 0.5106378793716431,
+        "document_id": "ieum-033",
+        "spans": [
+          {
+            "start": 0,
+            "end": 638,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R13",
+    "question": "AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?",
+    "claim": {
+      "claim_id": "R13-r01",
+      "claim": "비공개 자료를 AI에 입력했다면 사용을 중단하고 #security-incident에 즉시 신고한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-033",
+          "spans": [
+            {
+              "start": 987,
+              "end": 1049,
+              "text": "비공개 자료를 입력했거나 계정이 의심스러우면 사용을 중단하고 #security-incident에 즉시 신고한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+        "score": 0.5832169651985168,
+        "document_id": "ieum-033",
+        "spans": [
+          {
+            "start": 965,
+            "end": 1196,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R13",
+    "question": "AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?",
+    "claim": {
+      "claim_id": "R13-r02",
+      "claim": "입력 내용이나 대화 기록을 임의로 삭제해 증거를 없애지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-033",
+          "spans": [
+            {
+              "start": 1050,
+              "end": 1085,
+              "text": "입력 내용이나 대화 기록을 임의로 삭제해 증거를 없애지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+        "score": 0.5832169651985168,
+        "document_id": "ieum-033",
+        "spans": [
+          {
+            "start": 965,
+            "end": 1196,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R14",
+    "question": "내 PR은 내가 승인해서 머지해도 돼?",
+    "claim": {
+      "claim_id": "R14-r01",
+      "claim": "PR 작성자와 다른 사람이 최소 한 명 독립적으로 검토해야 한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-067",
+          "spans": [
+            {
+              "start": 821,
+              "end": 853,
+              "text": "PR 작성자와 다른 사람이 최소 1명 독립적으로 검토한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 25,
+    "source_chunks": [
+      {
+        "rank": 25,
+        "chunk_id": "671229ef331fdf747981b74b00ac61f4f977c242f4460518918c8b9b5a76a816",
+        "score": 0.37299859523773193,
+        "document_id": "ieum-067",
+        "spans": [
+          {
+            "start": 810,
+            "end": 1413,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      },
+      "score040_max8": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": false,
+        "loss_stage": "selection_or_budget"
+      }
+    }
+  },
+  {
+    "case_id": "R15",
+    "question": "배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?",
+    "claim": {
+      "claim_id": "R15-r01",
+      "claim": "장애 뒤 추가 배포와 반복 실행을 멈춘다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-068",
+          "spans": [
+            {
+              "start": 1169,
+              "end": 1187,
+              "text": "추가 배포와 반복 실행을 멈춘다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+        "score": 0.5333566665649414,
+        "document_id": "ieum-068",
+        "spans": [
+          {
+            "start": 1081,
+            "end": 1764,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R15",
+    "question": "배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?",
+    "claim": {
+      "claim_id": "R15-r02",
+      "claim": "같은 명령 재실행으로 중복 작업이나 상태 변화가 생기는지 먼저 확인한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-068",
+          "spans": [
+            {
+              "start": 1188,
+              "end": 1230,
+              "text": "같은 명령을 재실행하면 작업이 중복되거나 상태가 더 바뀌는지 먼저 확인한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+        "score": 0.5333566665649414,
+        "document_id": "ieum-068",
+        "spans": [
+          {
+            "start": 1081,
+            "end": 1764,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R16",
+    "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+    "claim": {
+      "claim_id": "R16-r01",
+      "claim": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 비밀값이 제거된다고 보장되지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-071",
+          "spans": [
+            {
+              "start": 2194,
+              "end": 2275,
+              "text": "비밀값을 현재 파일에서 지우거나 커밋을 새로 올리는 것만으로 과거 Git 기록, 다른 사람의 복제본, 캐시와 로그에서 제거됐다고 보장할 수 없다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "ba146da8855cb2e87fde22dbd13539aa41a9e7d91bb8353caf283935f04f50cc",
+        "score": 0.47466737031936646,
+        "document_id": "ieum-071",
+        "spans": [
+          {
+            "start": 2194,
+            "end": 2422,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R16",
+    "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+    "claim": {
+      "claim_id": "R16-r02",
+      "claim": "자격정보 담당자 또는 권한 있는 운영자가 즉시 자격정보를 폐기·회전한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-071",
+          "spans": [
+            {
+              "start": 1794,
+              "end": 1841,
+              "text": "해당 자격정보를 소유한 서비스 담당자 또는 권한이 있는 운영자가 즉시 폐기·회전한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 39,
+    "source_chunks": [
+      {
+        "rank": 39,
+        "chunk_id": "fdfd398d04386f7016982148b5128a0970a72a635cbc1cd14cbf51780675fe45",
+        "score": 0.32752346992492676,
+        "document_id": "ieum-071",
+        "spans": [
+          {
+            "start": 1601,
+            "end": 2193,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      },
+      "score040_max8": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      },
+      "score035_unlimited": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": false,
+        "final_included": false,
+        "loss_stage": "candidate_or_threshold"
+      }
+    }
+  },
+  {
+    "case_id": "R17",
+    "question": "연차신청 어디서함",
+    "claim": {
+      "claim_id": "R17-r01",
+      "claim": "예정 연차는 이음 포털 인사 > 휴가에서 신청한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-001",
+          "spans": [
+            {
+              "start": 231,
+              "end": 257,
+              "text": "이음 포털의 **인사 > 휴가**에서 신청한다."
+            }
+          ]
+        },
+        {
+          "document_id": "ieum-059",
+          "spans": [
+            {
+              "start": 302,
+              "end": 339,
+              "text": "이음 포털 인사 > 휴가에서 기존 요청을 수정하거나 취소 후 재신청"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "41e9c05a66f5ce0d32f3b918b56e9fac9301f7c2d245f9d6c9623dcadb7f516b",
+        "score": 0.5479685068130493,
+        "document_id": "ieum-001",
+        "spans": [
+          {
+            "start": 190,
+            "end": 641,
+            "kind": "body"
+          }
+        ]
+      },
+      {
+        "rank": 13,
+        "chunk_id": "666d33de09e972bfd4dc1558089f75553f60b2d37b29283ddf23165100e93122",
+        "score": 0.33277931809425354,
+        "document_id": "ieum-059",
+        "spans": [
+          {
+            "start": 226,
+            "end": 801,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "R18",
+    "question": "제출한 경비의 지급일인 15일이 은행 쉬는 날이면?",
+    "claim": {
+      "claim_id": "R18-r01",
+      "claim": "15일이 은행 휴무일이면 다음 은행 영업일에 지급한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 612,
+              "end": 642,
+              "text": "15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+        "score": 0.6406278610229492,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 390,
+            "end": 993,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D01",
+    "question": "해외에서 일정 기간 원격 근무하려고 하는데, 국내 재택 승인이 있으면 별도 절차 없이 시작해도 돼?",
+    "claim": {
+      "claim_id": "D01-r01",
+      "claim": "해외 근무는 일반 재택 승인에 포함되지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-010",
+          "spans": [
+            {
+              "start": 526,
+              "end": 558,
+              "text": "해외에서 일하는 계획은 일반 재택 승인에 포함되지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb",
+        "score": 0.6510345935821533,
+        "document_id": "ieum-010",
+        "spans": [
+          {
+            "start": 509,
+            "end": 1017,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D01",
+    "question": "해외에서 일정 기간 원격 근무하려고 하는데, 국내 재택 승인이 있으면 별도 절차 없이 시작해도 돼?",
+    "claim": {
+      "claim_id": "D01-r02",
+      "claim": "예정일 10영업일 전 신청, People팀과 보안·개인정보 담당자 검토, 소속 팀장 최종 승인이 필요하다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-010",
+          "spans": [
+            {
+              "start": 559,
+              "end": 639,
+              "text": "예정일 10영업일 전까지 신청하고 People팀과 보안·개인정보 담당자의 각각의 검토, 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb",
+        "score": 0.6510345935821533,
+        "document_id": "ieum-010",
+        "spans": [
+          {
+            "start": 509,
+            "end": 1017,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D02",
+    "question": "개인 결제 경비는 언제까지 제출해야 하고, 보통 언제 입금돼? 지급일이 휴일이면 어떻게 돼?",
+    "claim": {
+      "claim_id": "D02-r01",
+      "claim": "개인 결제 경비는 결제일로부터 10영업일 안에 포털 재무 > 경비 정산에 거래별 내용과 영수증을 제출한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 83,
+              "end": 159,
+              "text": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "score": 0.542148232460022,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 0,
+            "end": 389,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D02",
+    "question": "개인 결제 경비는 언제까지 제출해야 하고, 보통 언제 입금돼? 지급일이 휴일이면 어떻게 돼?",
+    "claim": {
+      "claim_id": "D02-r02",
+      "claim": "지급일은 재무팀 최종 검토가 끝난 달의 다음 달 15일이다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 577,
+              "end": 611,
+              "text": "지급일은 재무팀의 최종 검토가 끝난 달의 다음 달 15일이다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+        "score": 0.5470561981201172,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 390,
+            "end": 993,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D02",
+    "question": "개인 결제 경비는 언제까지 제출해야 하고, 보통 언제 입금돼? 지급일이 휴일이면 어떻게 돼?",
+    "claim": {
+      "claim_id": "D02-r03",
+      "claim": "15일이 은행 휴무일이면 다음 은행 영업일에 지급한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 612,
+              "end": 642,
+              "text": "15일이 은행 휴무일이면 다음 은행 영업일에 지급한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+        "score": 0.5470561981201172,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 390,
+            "end": 993,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D03",
+    "question": "경비 정산 날짜를 놓쳤어. 영수증만 지금 올리면 지급까지 진행되는 거야?",
+    "claim": {
+      "claim_id": "D03-r01",
+      "claim": "기한이 지났다면 지연 사유와 영수증을 제출해 팀장과 재무팀의 예외 승인을 받는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 269,
+              "end": 314,
+              "text": "이미 지났다면 지연 사유와 영수증을 제출하고 팀장과 재무팀의 예외 승인을 받는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "score": 0.638157844543457,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 0,
+            "end": 389,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D03",
+    "question": "경비 정산 날짜를 놓쳤어. 영수증만 지금 올리면 지급까지 진행되는 거야?",
+    "claim": {
+      "claim_id": "D03-r02",
+      "claim": "승인 전까지 지급이 확정됐다고 안내하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-019",
+          "spans": [
+            {
+              "start": 315,
+              "end": 343,
+              "text": "승인 전까지 지급이 확정된 것으로 안내하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f013a6eadba2b42ccf18e5306da2f315e9b19cbd6533586c5cfe788fbc1fae73",
+        "score": 0.638157844543457,
+        "document_id": "ieum-019",
+        "spans": [
+          {
+            "start": 0,
+            "end": 389,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D04",
+    "question": "사무실 출입카드를 잃어버렸는데 어디에 알려야 하고, 카드 차단은 누가 해?",
+    "claim": {
+      "claim_id": "D04-r01",
+      "claim": "분실을 30분 안에 포털 총무 > 출입 카드 신고에 알린다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-013",
+          "spans": [
+            {
+              "start": 389,
+              "end": 446,
+              "text": "카드를 분실했거나 타인이 사용한 흔적을 발견하면 30분 안에 포털의 총무 > 출입 카드 신고에 알린다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "9931c83b64f9a01fefe163cf31e2eb5f03d6e9c907cad1b98f308db962914f93",
+        "score": 0.6474921703338623,
+        "document_id": "ieum-013",
+        "spans": [
+          {
+            "start": 375,
+            "end": 808,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D04",
+    "question": "사무실 출입카드를 잃어버렸는데 어디에 알려야 하고, 카드 차단은 누가 해?",
+    "claim": {
+      "claim_id": "D04-r02",
+      "claim": "총무 담당자가 기존 카드 접근을 차단하고 재발급 이력을 기록한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-013",
+          "spans": [
+            {
+              "start": 569,
+              "end": 605,
+              "text": "총무 담당자는 기존 카드 접근을 차단하고 재발급 이력을 기록한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "9931c83b64f9a01fefe163cf31e2eb5f03d6e9c907cad1b98f308db962914f93",
+        "score": 0.6474921703338623,
+        "document_id": "ieum-013",
+        "spans": [
+          {
+            "start": 375,
+            "end": 808,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D05",
+    "question": "출장 호텔이 회사 한도보다 비싸. 일단 결제하고 영수증에 사유를 적으면 괜찮아?",
+    "claim": {
+      "claim_id": "D05-r01",
+      "claim": "숙박 한도를 넘겨야 하면 결제 전에 팀장과 재무팀의 추가 승인을 포털에 기록한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-017",
+          "spans": [
+            {
+              "start": 335,
+              "end": 404,
+              "text": "지역 행사나 예약 가능 객실 부족으로 1박 한도를 넘겨야 하면 결제 전에 팀장과 재무팀의 추가 승인을 모두 포털에 기록한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8",
+        "score": 0.5757529735565186,
+        "document_id": "ieum-017",
+        "spans": [
+          {
+            "start": 319,
+            "end": 873,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D05",
+    "question": "출장 호텔이 회사 한도보다 비싸. 일단 결제하고 영수증에 사유를 적으면 괜찮아?",
+    "claim": {
+      "claim_id": "D05-r02",
+      "claim": "승인되지 않았다면 더 비싼 방을 먼저 예약하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-017",
+          "spans": [
+            {
+              "start": 454,
+              "end": 487,
+              "text": "승인이 되지 않으면 더 비싼 방을 먼저 예약해 두지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8",
+        "score": 0.5757529735565186,
+        "document_id": "ieum-017",
+        "spans": [
+          {
+            "start": 319,
+            "end": 873,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D06",
+    "question": "법인카드 영수증에 개인 지출이 섞였어. 업무 비용에서 개인 부분만 빼고 나중에 맞추면 돼?",
+    "claim": {
+      "claim_id": "D06-r01",
+      "claim": "개인 비용과 회사 비용이 한 영수증에 섞였으면 재무팀에 분리 방법을 문의하고 임의로 다른 거래와 상계하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-020",
+          "spans": [
+            {
+              "start": 555,
+              "end": 624,
+              "text": "영수증을 분실했거나 비용이 개인 결제와 섞였으면 임의로 다른 거래로 상계하지 말고 재무팀에 대체 증빙·분리 방법을 문의한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 3,
+    "source_chunks": [
+      {
+        "rank": 3,
+        "chunk_id": "89d04d93e1e6ecff3df3e947a34b9c68841b6ff939682f31f8de0c157005c7ad",
+        "score": 0.5730307102203369,
+        "document_id": "ieum-020",
+        "spans": [
+          {
+            "start": 425,
+            "end": 665,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D07",
+    "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+    "claim": {
+      "claim_id": "D07-r01",
+      "claim": "구매 검토가 끝났다는 사실만으로 서비스 계정·권한이 자동 발급되지는 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-021",
+          "spans": [
+            {
+              "start": 605,
+              "end": 647,
+              "text": "구매 검토가 끝났다는 사실만으로 서비스 계정·권한이 자동 발급되지는 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 6,
+    "source_chunks": [
+      {
+        "rank": 6,
+        "chunk_id": "4b71542495b8c177215f5f80897b4e6e6b57b04e8c05fa6346850a564e747e21",
+        "score": 0.4057052433490753,
+        "document_id": "ieum-021",
+        "spans": [
+          {
+            "start": 402,
+            "end": 648,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": false,
+        "loss_stage": "selection_or_budget"
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D08",
+    "question": "회사 노트북을 차 안에 두고 잠깐 자리를 비워도 될까? 퇴근 뒤에는 어디에 둬야 해?",
+    "claim": {
+      "claim_id": "D08-r01",
+      "claim": "차량 내부를 보관 장소로 사용하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-024",
+          "spans": [
+            {
+              "start": 409,
+              "end": 432,
+              "text": "차량 내부는 보관 장소로 사용하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "41c37a831d609df88da1d17c9e85dfd4af11b8131d758ad813ea049ede36f064",
+        "score": 0.736314058303833,
+        "document_id": "ieum-024",
+        "spans": [
+          {
+            "start": 362,
+            "end": 587,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D08",
+    "question": "회사 노트북을 차 안에 두고 잠깐 자리를 비워도 될까? 퇴근 뒤에는 어디에 둬야 해?",
+    "claim": {
+      "claim_id": "D08-r02",
+      "claim": "퇴근 뒤에는 회사가 안내한 잠금 보관 장소 또는 본인이 통제할 수 있는 잠긴 장소에 둔다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-024",
+          "spans": [
+            {
+              "start": 433,
+              "end": 485,
+              "text": "퇴근 뒤에는 회사가 안내한 잠금 보관 장소에 두거나 본인이 통제할 수 있는 잠긴 장소에 둔다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "41c37a831d609df88da1d17c9e85dfd4af11b8131d758ad813ea049ede36f064",
+        "score": 0.736314058303833,
+        "document_id": "ieum-024",
+        "spans": [
+          {
+            "start": 362,
+            "end": 587,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D09",
+    "question": "가짜 로그인 페이지에 회사 비밀번호를 입력한 것 같아. 다른 서비스에도 같은 비밀번호를 썼는데 어떻게 해야 해?",
+    "claim": {
+      "claim_id": "D09-r01",
+      "claim": "비밀번호를 잘못된 곳에 입력했을 수 있으면 보안 사고 신고와 초동 대응에 즉시 알린다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-025",
+          "spans": [
+            {
+              "start": 642,
+              "end": 721,
+              "text": "비밀번호를 잘못된 곳에 입력했거나 다른 사람에게 보냈을 수 있으면 즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알린다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "0e06ddeb02b7c9a394c64d63235c50536aee41dbcff6251eccf4f2f470d65b0f",
+        "score": 0.6203854084014893,
+        "document_id": "ieum-025",
+        "spans": [
+          {
+            "start": 624,
+            "end": 951,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D09",
+    "question": "가짜 로그인 페이지에 회사 비밀번호를 입력한 것 같아. 다른 서비스에도 같은 비밀번호를 썼는데 어떻게 해야 해?",
+    "claim": {
+      "claim_id": "D09-r02",
+      "claim": "해당 계정 비밀번호와 같은 값을 쓴 다른 계정 비밀번호도 서비스별로 변경한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-025",
+          "spans": [
+            {
+              "start": 722,
+              "end": 783,
+              "text": "해당 계정의 비밀번호를 안전한 공식 경로에서 변경하고, 같은 값을 사용한 계정도 서비스별로 새 값으로 바꾼다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "0e06ddeb02b7c9a394c64d63235c50536aee41dbcff6251eccf4f2f470d65b0f",
+        "score": 0.6203854084014893,
+        "document_id": "ieum-025",
+        "spans": [
+          {
+            "start": 624,
+            "end": 951,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D10",
+    "question": "장애 대응 때문에 긴급 권한이 필요해. 누가 승인해야 하고 사용이 끝나면 어떻게 해?",
+    "claim": {
+      "claim_id": "D10-r01",
+      "claim": "긴급 권한은 보안·개인정보 담당자와 해당 시스템 담당자가 함께 승인한 경우에만 최대 4시간 쓴다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-027",
+          "spans": [
+            {
+              "start": 796,
+              "end": 857,
+              "text": "보안·개인정보 담당자와 해당 시스템 담당자가 사고 기록에서 함께 승인한 경우에만 최대 4시간 사용할 수 있다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "ecabe53c6dfd34678698c79d977b832fd38049d88b38e7ec1d3b03fb7955ddc9",
+        "score": 0.5568779110908508,
+        "document_id": "ieum-027",
+        "spans": [
+          {
+            "start": 686,
+            "end": 929,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D10",
+    "question": "장애 대응 때문에 긴급 권한이 필요해. 누가 승인해야 하고 사용이 끝나면 어떻게 해?",
+    "claim": {
+      "claim_id": "D10-r02",
+      "claim": "접근 종료 즉시 회수를 요청하고 IT운영팀은 다음 영업일 사용 내역을 검토한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-027",
+          "spans": [
+            {
+              "start": 858,
+              "end": 903,
+              "text": "접근 종료 즉시 회수를 요청하며 IT운영팀은 다음 영업일에 사용 내역을 검토한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "ecabe53c6dfd34678698c79d977b832fd38049d88b38e7ec1d3b03fb7955ddc9",
+        "score": 0.5568779110908508,
+        "document_id": "ieum-027",
+        "spans": [
+          {
+            "start": 686,
+            "end": 929,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D11",
+    "question": "형제자매나 조부모 상을 당한 경우 회사 경조 휴가 일수와 주말 처리 기준은?",
+    "claim": {
+      "claim_id": "D11-r01",
+      "claim": "형제자매·조부모 사망의 회사 제공 경조 휴가는 3근무일이다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-003",
+          "spans": [
+            {
+              "start": 164,
+              "end": 187,
+              "text": "| 형제자매·조부모의 사망 | 3근무일 |"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "98cd2d71552a6969579ed9dfd33122f65136e51f0a10727700bc0aa02ac57cdb",
+        "score": 0.6292942762374878,
+        "document_id": "ieum-003",
+        "spans": [
+          {
+            "start": 0,
+            "end": 480,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D11",
+    "question": "형제자매나 조부모 상을 당한 경우 회사 경조 휴가 일수와 주말 처리 기준은?",
+    "claim": {
+      "claim_id": "D11-r02",
+      "claim": "주말과 공휴일은 경조 휴가 일수에서 차감하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-003",
+          "spans": [
+            {
+              "start": 16,
+              "end": 68,
+              "text": "이음웍스의 유급 경조 휴가는 예정된 근무일 기준으로 계산하며 주말과 공휴일은 차감하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "98cd2d71552a6969579ed9dfd33122f65136e51f0a10727700bc0aa02ac57cdb",
+        "score": 0.6292942762374878,
+        "document_id": "ieum-003",
+        "spans": [
+          {
+            "start": 0,
+            "end": 480,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D12",
+    "question": "회사 유료 AI 계정이면 사내 절차 문서를 붙여 넣어도 되는 거야?",
+    "claim": {
+      "claim_id": "D12-r01",
+      "claim": "회사 플랜만으로 비공개 자료 입력이 허용되지는 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-033",
+          "spans": [
+            {
+              "start": 116,
+              "end": 161,
+              "text": "서비스가 회사용 플랜이라는 이유만으로 비공개 자료를 입력할 수 있는 것은 아니다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "845783cf64a5f3428c87acc286629ca93bb4aebaedf25f37cf85b885b385ae0a",
+        "score": 0.5630858540534973,
+        "document_id": "ieum-033",
+        "spans": [
+          {
+            "start": 0,
+            "end": 638,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D12",
+    "question": "회사 유료 AI 계정이면 사내 절차 문서를 붙여 넣어도 되는 거야?",
+    "claim": {
+      "claim_id": "D12-r02",
+      "claim": "사내 전용 문서·회의록·출시 전 제품 정보는 입력 금지이며 공개용 배포본이 따로 있는지 확인한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-033",
+          "spans": [
+            {
+              "start": 273,
+              "end": 338,
+              "text": "| 사내 전용 문서, 회의록, 출시 전 제품 정보 | 금지 | 공개용으로 적법하게 배포된 버전이 따로 있는지 확인 |"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "845783cf64a5f3428c87acc286629ca93bb4aebaedf25f37cf85b885b385ae0a",
+        "score": 0.5630858540534973,
+        "document_id": "ieum-033",
+        "spans": [
+          {
+            "start": 0,
+            "end": 638,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D13",
+    "question": "수상한 링크에 들어가 회사 계정 정보를 입력했어. 로그인은 계속해도 돼?",
+    "claim": {
+      "claim_id": "D13-r01",
+      "claim": "의심 링크에서 입력·다운로드·실행을 더 하지 말고 즉시 #security-incident에 신고한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-034",
+          "spans": [
+            {
+              "start": 476,
+              "end": 526,
+              "text": "입력·다운로드·실행을 더 진행하지 말고 즉시 #security-incident에 신고한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "997fba76adde54001f21cf5251c5bbf9669dca1508df7958ac7c5ff2e98e1c8e",
+        "score": 0.5095491409301758,
+        "document_id": "ieum-034",
+        "spans": [
+          {
+            "start": 453,
+            "end": 784,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D13",
+    "question": "수상한 링크에 들어가 회사 계정 정보를 입력했어. 로그인은 계속해도 돼?",
+    "claim": {
+      "claim_id": "D13-r02",
+      "claim": "IT운영팀 안내 전까지 의심스러운 세션을 계속 사용하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-034",
+          "spans": [
+            {
+              "start": 579,
+              "end": 635,
+              "text": "업무 시스템에 로그인할 수 있더라도 IT운영팀의 안내 전까지 의심스러운 세션을 계속 사용하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "997fba76adde54001f21cf5251c5bbf9669dca1508df7958ac7c5ff2e98e1c8e",
+        "score": 0.5095491409301758,
+        "document_id": "ieum-034",
+        "spans": [
+          {
+            "start": 453,
+            "end": 784,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D14",
+    "question": "사고 당직에 연락한 지 15분이 지났는데 답이 없으면 기다리면 되는지, 15분은 해결 목표인지 궁금해.",
+    "claim": {
+      "claim_id": "D14-r01",
+      "claim": "15분은 신고 확인과 대응 책임자 인수의 목표이며 사고 해결 시간이나 법정 통지 기한이 아니다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-035",
+          "spans": [
+            {
+              "start": 795,
+              "end": 848,
+              "text": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다."
+            },
+            {
+              "start": 849,
+              "end": 892,
+              "text": "이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a",
+        "score": 0.5726053714752197,
+        "document_id": "ieum-035",
+        "spans": [
+          {
+            "start": 781,
+            "end": 1340,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D14",
+    "question": "사고 당직에 연락한 지 15분이 지났는데 답이 없으면 기다리면 되는지, 15분은 해결 목표인지 궁금해.",
+    "claim": {
+      "claim_id": "D14-r02",
+      "claim": "당직자가 답하지 않으면 기다리지 말고 팀장에게 대체 인계를 요청한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-035",
+          "spans": [
+            {
+              "start": 893,
+              "end": 957,
+              "text": "당직자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리며 신고를 보류하지 말고 팀장에게 대체 인계를 요청한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 2,
+    "source_chunks": [
+      {
+        "rank": 2,
+        "chunk_id": "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a",
+        "score": 0.5726053714752197,
+        "document_id": "ieum-035",
+        "spans": [
+          {
+            "start": 781,
+            "end": 1340,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D15",
+    "question": "공유드라이브 파일을 잘못 덮어쓴 것 같아. 복구될 때까지 무엇을 멈추고 누구에게 먼저 알려야 해?",
+    "claim": {
+      "claim_id": "D15-r01",
+      "claim": "덮어쓰기 뒤 추가 편집·이동·삭제를 멈춘다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-038",
+          "spans": [
+            {
+              "start": 494,
+              "end": 528,
+              "text": "문서가 사라지거나 덮어써졌다면 추가 편집·이동·삭제를 멈춘다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f4d450d566877a586e3df6cd7870e7f40bdc49cfdaaf151abdb699daffaf5dce",
+        "score": 0.6734978556632996,
+        "document_id": "ieum-038",
+        "spans": [
+          {
+            "start": 476,
+            "end": 996,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D15",
+    "question": "공유드라이브 파일을 잘못 덮어쓴 것 같아. 복구될 때까지 무엇을 멈추고 누구에게 먼저 알려야 해?",
+    "claim": {
+      "claim_id": "D15-r02",
+      "claim": "자료 소유자와 IT운영팀에 먼저 알린다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-038",
+          "spans": [
+            {
+              "start": 598,
+              "end": 675,
+              "text": "파일이 Google Drive 휴지통이나 버전 기록에 보이면 혼자 복원해 공유 범위를 바꾸지 말고 자료 소유자와 IT운영팀에 먼저 알린다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f4d450d566877a586e3df6cd7870e7f40bdc49cfdaaf151abdb699daffaf5dce",
+        "score": 0.6734978556632996,
+        "document_id": "ieum-038",
+        "spans": [
+          {
+            "start": 476,
+            "end": 996,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D16",
+    "question": "회의에서 합의된 결정으로 기록하려면 무엇을 남겨야 해? 참석자가 조용하면 동의로 봐도 돼?",
+    "claim": {
+      "claim_id": "D16-r01",
+      "claim": "결정 내용, 선택 이유, 담당자, 기한과 남은 위험을 참석자와 확인한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-041",
+          "spans": [
+            {
+              "start": 462,
+              "end": 516,
+              "text": "결정이 나면 무엇을 결정했는지, 선택 이유, 담당자, 기한, 남은 위험을 읽어 참석자와 확인한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "217e6d916fd361c12f834401253ce023be6a2282fb3ee320bed2fa7e66deeabe",
+        "score": 0.6183668971061707,
+        "document_id": "ieum-041",
+        "spans": [
+          {
+            "start": 396,
+            "end": 779,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D16",
+    "question": "회의에서 합의된 결정으로 기록하려면 무엇을 남겨야 해? 참석자가 조용하면 동의로 봐도 돼?",
+    "claim": {
+      "claim_id": "D16-r02",
+      "claim": "참석자에게 동의를 묻지 않은 채 침묵을 승인으로 기록하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-041",
+          "spans": [
+            {
+              "start": 517,
+              "end": 556,
+              "text": "참석자에게 동의 여부를 묻지 않은 채 침묵을 승인으로 기록하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "217e6d916fd361c12f834401253ce023be6a2282fb3ee320bed2fa7e66deeabe",
+        "score": 0.6183668971061707,
+        "document_id": "ieum-041",
+        "spans": [
+          {
+            "start": 396,
+            "end": 779,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D17",
+    "question": "Google Drive 사용자 휴지통을 비운 파일은 25일 안에 관리자에게 요청하면 돼? 관리 복구는 특정 파일만 되살려 주는 백업이야?",
+    "claim": {
+      "claim_id": "D17-r01",
+      "claim": "사용자 휴지통에서 비운 파일은 25일 안에 관리자 복원을 요청할 수 있다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-056",
+          "spans": [
+            {
+              "start": 1121,
+              "end": 1159,
+              "text": "사용자의 휴지통에서 비운 파일은 25일 안에 복구를 요청할 수 있지만"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "b7909f8034e95349dc09d7a9f96b02fe1be2e8d7e9f65e6f55870dd6ec966014",
+        "score": 0.8306605815887451,
+        "document_id": "ieum-056",
+        "spans": [
+          {
+            "start": 952,
+            "end": 1421,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D17",
+    "question": "Google Drive 사용자 휴지통을 비운 파일은 25일 안에 관리자에게 요청하면 돼? 관리 복구는 특정 파일만 되살려 주는 백업이야?",
+    "claim": {
+      "claim_id": "D17-r02",
+      "claim": "관리 복원은 삭제 날짜 범위의 자료를 되돌리며 보통 단일 파일만 선택하는 절차가 아니다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-056",
+          "spans": [
+            {
+              "start": 1161,
+              "end": 1213,
+              "text": "관리 복원은 삭제 날짜 범위의 자료를 되돌리는 작업이며 보통 단일 파일만 고르는 절차가 아니다"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "b7909f8034e95349dc09d7a9f96b02fe1be2e8d7e9f65e6f55870dd6ec966014",
+        "score": 0.8306605815887451,
+        "document_id": "ieum-056",
+        "spans": [
+          {
+            "start": 952,
+            "end": 1421,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D17",
+    "question": "Google Drive 사용자 휴지통을 비운 파일은 25일 안에 관리자에게 요청하면 돼? 관리 복구는 특정 파일만 되살려 주는 백업이야?",
+    "claim": {
+      "claim_id": "D17-r03",
+      "claim": "관리 복원은 회사 백업·복구 보증이 아니다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-056",
+          "spans": [
+            {
+              "start": 1295,
+              "end": 1319,
+              "text": "어느 흐름도 회사 백업·복구 보증이 아니다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "b7909f8034e95349dc09d7a9f96b02fe1be2e8d7e9f65e6f55870dd6ec966014",
+        "score": 0.8306605815887451,
+        "document_id": "ieum-056",
+        "spans": [
+          {
+            "start": 952,
+            "end": 1421,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D18",
+    "question": "핵심 기능이 멈춘 장애라면 P1 기준과 고객에게 상태를 알리는 간격은 어떻게 돼?",
+    "claim": {
+      "claim_id": "D18-r01",
+      "claim": "서비스 전체나 핵심 기능 중단 또는 데이터 손실 가능성은 P1 기준이다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-069",
+          "spans": [
+            {
+              "start": 213,
+              "end": 252,
+              "text": "서비스 전체 또는 핵심 기능이 중단됐거나, 데이터 손실 가능성이 있다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "60981be33b6500be4b07d77451f2008c74b4caca280f6aa44cc999d75e902967",
+        "score": 0.6262874603271484,
+        "document_id": "ieum-069",
+        "spans": [
+          {
+            "start": 150,
+            "end": 702,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D18",
+    "question": "핵심 기능이 멈춘 장애라면 P1 기준과 고객에게 상태를 알리는 간격은 어떻게 돼?",
+    "claim": {
+      "claim_id": "D18-r02",
+      "claim": "P1 고객 공지는 30분 간격 갱신을 목표로 한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-069",
+          "spans": [
+            {
+              "start": 368,
+              "end": 380,
+              "text": "30분 간격 갱신 목표"
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 1,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "60981be33b6500be4b07d77451f2008c74b4caca280f6aa44cc999d75e902967",
+        "score": 0.6262874603271484,
+        "document_id": "ieum-069",
+        "spans": [
+          {
+            "start": 150,
+            "end": 702,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D19",
+    "question": "개발팀에 이슈를 넘겼으면 고객 문의 담당은 바로 손을 떼도 돼?",
+    "claim": {
+      "claim_id": "D19-r01",
+      "claim": "개발팀에 전달했다는 이유만으로 문의 책임이 끝나지 않으며, 수신자가 명시적으로 수락할 때까지 기존 담당자가 고객 문의를 맡는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-065",
+          "spans": [
+            {
+              "start": 77,
+              "end": 114,
+              "text": "제품개발팀에 전달했다는 이유만으로 고객 회신 책임이 끝나지 않는다."
+            },
+            {
+              "start": 2493,
+              "end": 2531,
+              "text": "수신자가 명시적으로 수락할 때까지 기존 담당자가 고객 문의를 맡는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 5,
+    "source_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "fda90bca0203479e3cc96b3ce0f5f8462c846a3e06e443f665ac611afbec8ae6",
+        "score": 0.6520713567733765,
+        "document_id": "ieum-065",
+        "spans": [
+          {
+            "start": 0,
+            "end": 115,
+            "kind": "body"
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "chunk_id": "dadc1b2663a61cc8632bfa38c3840785a022602980d76caeaec81f5af1d03d1f",
+        "score": 0.5867252349853516,
+        "document_id": "ieum-065",
+        "spans": [
+          {
+            "start": 2379,
+            "end": 2861,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D20",
+    "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+    "claim": {
+      "claim_id": "D20-r01",
+      "claim": "승인된 외부 공유는 지정 수신자에게 최소 권한을 주고 원칙적으로 최대 7일 안에 종료한다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-031",
+          "spans": [
+            {
+              "start": 724,
+              "end": 784,
+              "text": "접근이 승인된 경우 지정된 수신자에게 최소 권한을 부여하고 외부 공유는 원칙적으로 최대 7일 안에 종료한다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 3,
+    "source_chunks": [
+      {
+        "rank": 3,
+        "chunk_id": "9f26c35c0f71488c930eb36f388aae8c5825e5f060970ac55a65e25c9c50230a",
+        "score": 0.568531334400177,
+        "document_id": "ieum-031",
+        "spans": [
+          {
+            "start": 499,
+            "end": 893,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  },
+  {
+    "case_id": "D20",
+    "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+    "claim": {
+      "claim_id": "D20-r02",
+      "claim": "누구나 열 수 있는 링크로 우회하지 않는다.",
+      "evidence_alternatives": [
+        {
+          "document_id": "ieum-031",
+          "spans": [
+            {
+              "start": 986,
+              "end": 1018,
+              "text": "누구나 열 수 있는 링크를 만들어 문제를 우회하지 않는다."
+            }
+          ]
+        }
+      ]
+    },
+    "first_complete_rank": 4,
+    "source_chunks": [
+      {
+        "rank": 4,
+        "chunk_id": "2c150868b01fc84d96fa37c2d21b325c6d10e8c7113bf952013b359eb83d69f3",
+        "score": 0.5642221570014954,
+        "document_id": "ieum-031",
+        "spans": [
+          {
+            "start": 894,
+            "end": 1160,
+            "kind": "body"
+          }
+        ]
+      }
+    ],
+    "stages": {
+      "baseline": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score040_max8": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      },
+      "score035_unlimited_proxy4000": {
+        "candidate_included": true,
+        "final_included": true,
+        "loss_stage": null
+      }
+    }
+  }
+]

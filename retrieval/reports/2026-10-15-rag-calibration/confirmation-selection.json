@@ -1,0 +1,159 @@
+{
+  "selected": "score035_unlimited_proxy4000",
+  "baseline": "baseline",
+  "basis": "All zero major/unsupported. Frozen v2 final complete 91 vs 90 vs baseline88; select highest completeness, not posthoc errata-adjusted score. Confirmation not yet executed.",
+  "development_diagnostics": {
+    "baseline": {
+      "excluding_errata_complete": 88,
+      "excluding_errata_slots": 90,
+      "missing": [
+        [
+          "D02",
+          1,
+          [
+            "D02-r01"
+          ]
+        ],
+        [
+          "D02",
+          2,
+          [
+            "D02-r01"
+          ]
+        ],
+        [
+          "D04",
+          1,
+          [
+            "D04-r02"
+          ]
+        ],
+        [
+          "D04",
+          2,
+          [
+            "D04-r02"
+          ]
+        ],
+        [
+          "D07",
+          1,
+          [
+            "D07-r01"
+          ]
+        ],
+        [
+          "D07",
+          2,
+          [
+            "D07-r01"
+          ]
+        ],
+        [
+          "D14",
+          1,
+          [
+            "D14-r01"
+          ]
+        ],
+        [
+          "D14",
+          2,
+          [
+            "D14-r01"
+          ]
+        ]
+      ]
+    },
+    "score035_unlimited": {
+      "excluding_errata_complete": 89,
+      "excluding_errata_slots": 90,
+      "missing": [
+        [
+          "R11",
+          1,
+          [
+            "R11-r02"
+          ]
+        ],
+        [
+          "D02",
+          1,
+          [
+            "D02-r01"
+          ]
+        ],
+        [
+          "D04",
+          1,
+          [
+            "D04-r02"
+          ]
+        ],
+        [
+          "D04",
+          2,
+          [
+            "D04-r02"
+          ]
+        ],
+        [
+          "D14",
+          1,
+          [
+            "D14-r01"
+          ]
+        ],
+        [
+          "D14",
+          2,
+          [
+            "D14-r01"
+          ]
+        ]
+      ]
+    },
+    "score035_unlimited_proxy4000": {
+      "excluding_errata_complete": 90,
+      "excluding_errata_slots": 90,
+      "missing": [
+        [
+          "D02",
+          1,
+          [
+            "D02-r01"
+          ]
+        ],
+        [
+          "D04",
+          1,
+          [
+            "D04-r02"
+          ]
+        ],
+        [
+          "D04",
+          2,
+          [
+            "D04-r02"
+          ]
+        ],
+        [
+          "D14",
+          1,
+          [
+            "D14-r01"
+          ]
+        ],
+        [
+          "D14",
+          2,
+          [
+            "D14-r01"
+          ]
+        ]
+      ]
+    }
+  },
+  "human_review": false
+}

@@ -10,6 +10,8 @@ flowchart TD
     R --> H["근거: 실험 보고서·과거 기록"]
 ```
 
+**[사내비 바로 사용하기](https://sanaebi.29232923.xyz/chat)** — 공용 문서·자정 초기화 등 이용 조건은 [배포 안내](../deployment/README.md#공개-시연-제한)를 따른다.
+
 ## 이해하기
 
 | 문서 | 읽는 목적 |
@@ -23,7 +25,7 @@ flowchart TD
 
 | 문서 | 작업 |
 |---|---|
-| [프로젝트 빠른 시작](../README.md#빠른-시작) | 설치·통합 실행 |
+| [로컬 개발 시작](../README.md#로컬-개발-시작) | 설치·통합 실행 |
 | [서버 준비·API 확인](../app/README.md#실행-준비와-api-확인) | 모델·문서·제공자 준비, HTTP 확인과 선택적 답변 요청 |
 | [분류기 독립 확인](../app/classification/README.md#분류기만-직접-확인하기) | HTTP·문서 저장소 없이 로컬 저장본 추론 |
 | [분류 학습](../classification/README.md) | 데이터·그룹 분할·TF-IDF·Transformer 학습과 명시적 평가 |
@@ -80,7 +82,7 @@ flowchart TD
 
 - [사용자용 말투·범위 안내 보완](worklogs/2026-10-15-user-facing-prompt.md): 연봉·도움 범위·일반 기술 질문, 공식 레퍼런스와 독립 AI 검토·실제 비교.
 
-- [선택적 RAG 실행·색인 갱신·자정 벡터 복구](rag-runtime.md): 로컬 준비와 서버 검색 계약.
+- [RAG 실행·색인 갱신·자정 벡터 복구](rag-runtime.md): 로컬 준비와 서버 검색 계약.
 
 RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklogs/2026-10-15-rag-local-integration.md)에서 확인한다.
 
@@ -94,3 +96,5 @@ RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklog
 
 - [Full·RAG 실제 답변 비교와 문서 초기화 연동](../retrieval/reports/2026-10-15-rag-answer-comparison/README.md): 형식 오류에 따른 중단·승격 보류와 격리 검증.
 - [전체 프롬프트 v7 독립 보강108회 비교](../generation_evaluation/reports/2026-10-15-prompt-v7/README.md): 가독성·완전성 분리,3회 반복과 v5 유지, 재부팅 뒤 증거 복구·미복구 범위. [일지](worklogs/2026-10-15-prompt-v7.md).
+
+- [RAG C 채택·인자 및 문맥 비교](../retrieval/reports/2026-10-15-c-adoption/README.md): 검색 근거 누락 최소화에 따른 사용자 선택, rag 코드 기본값과 운영 미전환 구분.

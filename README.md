@@ -2,6 +2,10 @@
 
 회사 규정과 업무 절차를 질문하면 회사 문서를 바탕으로 안내하는 사내 지식 도우미입니다. LinkUp 팀은 반복되는 업무 문의를 줄이고 필요한 정보를 쉽게 찾는 서비스를 만듭니다.
 
+**[사내비 바로 사용하기](https://sanaebi.29232923.xyz/chat)**
+
+상시 운영하는 공개 데모입니다. 공용 가상 문서를 사용하며 누구나 익명으로 문서를 편집·게시할 수 있습니다. 문서는 매일 한국시간 자정에 기준 가상 문서로 초기화됩니다. 실제 사내 자료나 개인정보는 입력하지 마세요. [이용 제한·운영 안내](deployment/README.md#공개-시연-제한)
+
 ## 사용 모습
 
 채팅 화면에서 궁금한 규정이나 절차를 질문하고 안내를 확인합니다.
@@ -20,14 +24,12 @@
 
 ```mermaid
 flowchart LR
-    Q["질문 입력"] --> C["분류 결과 관찰"]
-    C --> D["게시 문서 확인"]
-    D --> E["전체 문서 또는 선택적 RAG 근거"]
-    E --> A["문서 기반 답변·재질문·지원 범위 안내"]
+    Q["질문 입력"] --> D["게시 문서 확인"]
+    D --> A["문서 기반 안내"]
     D -->|"빈 문서"| N["자료 없음 안내"]
 ```
 
-기본 `shadow`에서는 분류 라벨을 기록만 하고 생성 프롬프트에는 전달하지 않습니다. `gate`를 선택하면 일부 라벨은 생성 전 고정 안내로 종료합니다. [상세 구조](app/README.md)
+질문 처리 정책과 문서 활용 방식은 [서비스 설계](docs/service-architecture.md)를 참고하세요.
 
 ## 현재 구성
 
@@ -35,9 +37,9 @@ flowchart LR
 |---|---|---|---|
 | 질문 분류 | KoELECTRA base | 선정·서버 적용 | [선정 기록](docs/worklogs/2026-10-15-classifier-selection.md#결정과-근거) |
 | 답변 생성 | GPT-6 Luna | 서버·독립 실행 공통 기본값 | [최종 구성](docs/generation-final-prompt.md) |
-| 선택적 문서 검색 | KoEn-E5-Tiny | RAG 구현, 기본은 전체 문서 `full` 유지 | [RAG 실행·검증 범위](docs/rag-runtime.md) |
+| 문서 검색 | KoEn-E5-Tiny | 코드 기본값 `rag`, C 검색 설정 채택·운영 전환 별도 | [RAG 실행·검증 범위](docs/rag-runtime.md) |
 
-## 빠른 시작
+## 로컬 개발 시작
 
 Python 3.12.14·uv, Node.js 22 이상·npm을 사용합니다. 저장소 루트에서 의존성을 설치합니다.
 
@@ -54,7 +56,9 @@ uv run --locked python scripts/import_company_knowledge.py \
   --source data/company-knowledge/documents.jsonl --apply --publish-imported
 ```
 
-[분류 저장본과 답변 제공자](app/README.md#실행-준비와-api-확인)를 준비한 뒤 웹과 API를 실행합니다. [상세 절차](web/README.md#개발)
+로컬에서 실제 답변을 생성하려면 `OPENAI_API_KEY`가 필요하며 API 사용 요금이 발생합니다. [키 설정·답변 준비](app/README.md#문서-기반-답변-확인)
+
+[분류 저장본과 답변 제공자](app/README.md#실행-준비와-api-확인), [RAG 모델·색인·worker](docs/rag-runtime.md#준비와-실행)를 준비한 뒤 웹과 API를 실행합니다. [상세 절차](web/README.md#개발)
 
 ```bash
 npm run dev
@@ -76,6 +80,4 @@ npm run dev
 
 전체·영역별 회귀 명령은 [테스트 안내](tests/README.md)를 따른다.
 
-## 설치 범위와 선택 provider
-
-서버·평가기는 소스 checkout에서 실행한다. 독립 wheel 배포는 지원 범위가 아니다. 기본 운영 의존성은 `uv sync --locked --no-dev`로 설치하며 분류 추론의 torch·transformers를 포함한다. Ollama와 과거 답변기 사용 시 `uv sync --locked --extra ollama`로 선택 의존성을 설치한다. 전체 테스트에도 이 extra가 필요하다. `sanaebi`·`sanaebi-train`은 기존 보관 분류 CLI를 유지한다.
+소스 실행·선택 의존성의 상세 범위는 [설치 안내](generation/README.md#설치-범위와-선택-provider)를 참고하세요. 현재 서버의 답변 제공자는 OpenAI입니다.

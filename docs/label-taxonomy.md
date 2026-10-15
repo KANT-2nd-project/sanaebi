@@ -21,7 +21,7 @@
 | `CLARIFY` | 현재 발화만으로 가리키는 대상이나 원하는 도움을 정할 수 없다. 정보 안내를 원하는지 실제 실행을 원하는지도 불분명할 수 있다. | 필요한 대상이나 의도를 구체적으로 묻는다. |
 | `UNSUPPORTED` | 개인·조직의 실시간 기록을 조회하거나 실제 업무를 실행·변경하라는 요청, 또는 회사 업무와 무관한 요청이다. | 현재 지원 범위를 안내한다. |
 
-`SEARCH_KNOWLEDGE`는 회사 지식을 찾아 답변을 시도하는 경로다. 서버는 SQLite 게시 snapshot을, 독립 CLI는 JSON Lines snapshot을 같은 문서 렌더러로 생성 흐름에 전달한다. 이 라벨 자체는 근거 존재나 RAG 구현 여부를 뜻하지 않는다. 서버는 기본 full과 선택적 rag를 구현했으며 [현재 문서 공급 정책](service-architecture.md#선택적-검색-근거-구성)을 따른다.
+`SEARCH_KNOWLEDGE`는 회사 지식을 찾아 답변을 시도하는 경로다. 서버는 SQLite 게시 snapshot을, 독립 CLI는 JSON Lines snapshot을 같은 문서 렌더러로 생성 흐름에 전달한다. 이 라벨 자체는 근거 존재나 RAG 구현 여부를 뜻하지 않는다. 서버는 기본 rag(C)와 명시적 full를 구현했으며 [현재 문서 공급 정책](service-architecture.md#검색-근거-구성)을 따른다.
 
 ## 판정 순서와 경계 규칙
 

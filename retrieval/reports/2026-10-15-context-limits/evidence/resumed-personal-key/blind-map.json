@@ -1,0 +1,62 @@
+{
+  "D07": {
+    "A_existing": "B",
+    "B_tokens_only": "A",
+    "C_unlimited": "C"
+  },
+  "D19": {
+    "A_existing": "B",
+    "B_tokens_only": "A",
+    "C_unlimited": "C"
+  },
+  "D20": {
+    "A_existing": "A",
+    "B_tokens_only": "C",
+    "C_unlimited": "B"
+  },
+  "R01": {
+    "A_existing": "C",
+    "B_tokens_only": "A",
+    "C_unlimited": "B"
+  },
+  "R05": {
+    "A_existing": "A",
+    "B_tokens_only": "C",
+    "C_unlimited": "B"
+  },
+  "R08": {
+    "A_existing": "C",
+    "B_tokens_only": "B",
+    "C_unlimited": "A"
+  },
+  "R11": {
+    "A_existing": "A",
+    "B_tokens_only": "C",
+    "C_unlimited": "B"
+  },
+  "R14": {
+    "A_existing": "A",
+    "B_tokens_only": "B",
+    "C_unlimited": "C"
+  },
+  "R16": {
+    "A_existing": "C",
+    "B_tokens_only": "B",
+    "C_unlimited": "A"
+  },
+  "U01": {
+    "A_existing": "A",
+    "B_tokens_only": "B",
+    "C_unlimited": "C"
+  },
+  "U03": {
+    "A_existing": "A",
+    "B_tokens_only": "B",
+    "C_unlimited": "C"
+  },
+  "U04": {
+    "A_existing": "C",
+    "B_tokens_only": "B",
+    "C_unlimited": "A"
+  }
+}

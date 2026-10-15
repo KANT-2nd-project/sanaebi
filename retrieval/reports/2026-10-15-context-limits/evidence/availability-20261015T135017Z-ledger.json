@@ -1,0 +1,22 @@
+{
+  "budget_limits": {
+    "dev_dollars": null,
+    "dev_seconds": null,
+    "max_calls": 1,
+    "total_dollars": null,
+    "total_seconds": null
+  },
+  "ledger_identity": "8fb751f3a9bd49f8b9e4676cc4f433a1",
+  "reservations": {
+    "availability-20261015T135017Z": {
+      "actual_dollars": 0.0,
+      "charged_dollars": 0.0,
+      "phase": "dev",
+      "reserved_at": 1792072217.6892443,
+      "reserved_dollars": 0.01891975,
+      "settled_at": 1792072218.6812773,
+      "status": "settled"
+    }
+  },
+  "started_at": 1792072217.6892443
+}

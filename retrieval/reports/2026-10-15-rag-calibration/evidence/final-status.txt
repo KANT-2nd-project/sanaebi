@@ -1,0 +1,22 @@
+Verification workspace: /home/jake/workspace/projects/.sanaebi-rag-answer-evaluation-20261015
+HEAD at verification: 2dbe3f74245fb2d1c2dd24de17cfa35dbfe98eb5
+
+Commands and results
+- `uv run --locked python -m unittest discover -s tests -t .`: exit 0; `Ran 859 tests in 52.218s`; `OK`.
+- `uv run --locked ruff check .`: exit 0; `All checks passed!`.
+- `uv run --locked ruff format --check .`: exit 0; `484 files already formatted`; failed-file list: none.
+- `git diff --check`: exit 0; no output. Note: this command does not inspect untracked files.
+
+Logs
+- final-python-tests.log
+- final-ruff-check.log
+- final-ruff-format.log
+- final-diff-check.log
+- final-preservation-check.log
+
+Read-only preservation check
+- Original workspace HEAD: a23b11a8fdbfbdc2a4a712f22b81b33da6a84d82.
+- Scoped `app`, `data`, and `artifacts` git status was clean in both original and isolated workspaces.
+- SHA-256 matched for all 16 tracked `data/` files across both workspaces.
+- `tmp/answer-evaluation/snapshot.json` exists only in the isolated workspace, so no cross-workspace hash comparison was possible.
+- No tracked or untracked `app`/`data`/`artifacts` changes are shown by scoped git status. The audit does not cover ignored cache files; only requested `tmp/calibration/final-*` logs were deliberately written.

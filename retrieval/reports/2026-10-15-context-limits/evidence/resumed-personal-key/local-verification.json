@@ -1,0 +1,21 @@
+{
+  "focused_tests": {
+    "command": "uv run --locked python -m unittest tests.retrieval.test_calibration_answers tests.retrieval.test_calibration_answer_summary tests.retrieval.test_calibration_search -q",
+    "passed": 24
+  },
+  "ruff_check": "passed",
+  "ruff_format_check": {
+    "passed": true,
+    "files": 493
+  },
+  "git_diff_check": "passed",
+  "local_markdown_links_checked": 27,
+  "slots": 36,
+  "completed_api_slots": 33,
+  "empty_context_slots": 3,
+  "provider_attempts": 34,
+  "credential_scan": "no exact current env key value found in uncompressed report files",
+  "original_repo_app_data_generation_artifacts_git_status": "clean",
+  "server_settings_changed": false,
+  "human_review": false
+}

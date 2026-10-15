@@ -1,0 +1,522 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "N25",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N25",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N25",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "N29-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "원본 로그·이메일을 이슈에 넣지 말라고 하고 필요한 부분만 제한하지만, 오류 문구에서 비밀정보를 제거한다는 필수 기준은 명시하지 않습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "고객 원본 로그와 실제 이메일을 GitHub 이슈에 넣지 말라고 하고, 안전한 재현·자료 전달 경계를 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N25",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "고객 원본 로그와 실제 이메일을 GitHub 이슈에 넣지 말라고 하고, 안전한 재현·자료 전달 경계를 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "N29-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "원본 로그·이메일을 이슈에 넣지 말라고 하고 필요한 부분만 제한하지만, 오류 문구에서 비밀정보를 제거한다는 필수 기준은 명시하지 않습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+        }
+      ]
+    }
+  ]
+}

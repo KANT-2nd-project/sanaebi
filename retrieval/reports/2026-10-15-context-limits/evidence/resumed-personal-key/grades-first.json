@@ -1,0 +1,102 @@
+{
+  "human_review": false,
+  "judge": "independent AI resumed_blind_review",
+  "answers": [
+    {
+      "case_id": "R05",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "정기 재택 신청 기한과 포털 메뉴를 정확히 안내했다. 일회성 국내 장소 변경 기한과 승인 전 미확정 안내도 관련 회사 문서에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "예정 연차의 3영업일 전 신청 기한과 이음 포털 인사 > 휴가 메뉴를 정확히 안내했다. 다른 휴가 종류는 시점이 다를 수 있다는 한정도 타당하다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "예정 연차의 기한과 신청 메뉴를 정확히 안내했다. 경조 휴가에 관한 추가 기한과 메뉴도 회사 문서에 근거한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "정기 국내 재택 신청의 영업일 전 15:00 기한을 정확히 안내했다. 신청 메뉴와 승인 기록 전 미확정 안내도 선택 정보로 정확하다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "정기 재택 신청 기한을 정확히 안내했다. 포털 메뉴, 팀장의 같은 날 18:00 회신, 승인 전 미확정 설명 및 일회성 장소 변경 기한은 모두 회사 문서와 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "예정 연차의 기한과 신청 메뉴를 정확히 안내했다. 경조 휴가 관련 추가 기한과 메뉴도 회사 문서에 근거한다."
+        }
+      ]
+    }
+  ]
+}

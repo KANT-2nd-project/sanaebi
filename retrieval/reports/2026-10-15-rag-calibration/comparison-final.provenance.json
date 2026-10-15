@@ -1,0 +1,8 @@
+{
+  "tmp/calibration/development-search-validated/search.json": "e99a00fc4d70bf2588acf6104a9fc5b28c5607df12644b0e836db8dd98698ccb",
+  "tmp/calibration/development-search-validated/relevance-packet.json": "fbb23083383e04046b1bac5cf934495ce4815f8bd864187e1253dcad3d6c864e",
+  "retrieval/reports/2026-10-15-rag-calibration/relevance-grades-1.json": "73685a2cd0ee004a7932c08e1c0adefaec1d4da07e334f6a4ab537e74cefd72b",
+  "retrieval/reports/2026-10-15-rag-calibration/relevance-grades-2.json": "eb801b1fb8574e0e8764b3e80330d1b7c16f44906b7731a2550967bd29a3a725",
+  "retrieval/reports/2026-10-15-rag-calibration/relevance-grades-3.json": "29ae14bcd26434fa5a3738effc49d1d868b996121432da3773a91165319c8694",
+  "retrieval/reports/2026-10-15-rag-calibration/relevance-grades-4.json": "6e7a0584639e251cd6fed110ebaf3c3cf14e020a2b3b2e8d4823ab96b11ee7df"
+}

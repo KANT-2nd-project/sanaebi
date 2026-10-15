@@ -1,0 +1,28 @@
+{
+  "status": "frozen_independent_ai_reviewed",
+  "human_review": false,
+  "case_ids": [
+    "R01",
+    "R05",
+    "R08",
+    "R11",
+    "R14",
+    "R16",
+    "D07",
+    "D19",
+    "D20",
+    "U01",
+    "U03",
+    "U04"
+  ],
+  "qrels_sha": "4945edf39a1b4102ddf98f83542109d84a13c63508e8becf713d63e7d8ab10c4",
+  "repeats": 1,
+  "variants": [
+    "A_existing",
+    "B_tokens_only",
+    "C_unlimited"
+  ],
+  "selection_rationale": "Fixed by user before search and answer results; deadlines, multi-source security response, authority boundaries, ordinary controls and unanswerable questions. Development diagnostic, not new holdout.",
+  "reviewer": "context_cases_review, source-only independent AI",
+  "review_approved": true
+}

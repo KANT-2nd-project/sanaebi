@@ -24,7 +24,7 @@ services:
       SANAEBI_DAILY_GENERATION_LIMIT: "1000"
       SANAEBI_DOCUMENT_DB: /data/documents.sqlite3
       SANAEBI_CLASSIFIER_PATH: /models/classifier
-      SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-full}
+      SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-rag}
       SANAEBI_RETRIEVAL_ROOT: /data/retrieval
       SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9}
       TRACE_DIR: ""
@@ -76,7 +76,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=128m,mode=1777
     environment:
-      SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-full}
+      SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-rag}
       SANAEBI_DOCUMENT_DB: /data/documents.sqlite3
       SANAEBI_RETRIEVAL_ROOT: /data/retrieval
       SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9}

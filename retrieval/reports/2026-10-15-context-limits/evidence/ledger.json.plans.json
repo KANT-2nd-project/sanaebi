@@ -1,0 +1,11 @@
+{
+  "phases": {
+    "quick_context": {
+      "input_sha256": "dba50e0624605ed8ef7916a11e9bcce5c27472b55b99ac8f2df36b6a36ab886c",
+      "max_attempts": 72,
+      "planned_calls": 36
+    }
+  },
+  "planned_calls": 36,
+  "schema_version": 1
+}

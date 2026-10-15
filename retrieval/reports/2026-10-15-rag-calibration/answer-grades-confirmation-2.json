@@ -1,0 +1,520 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "N09",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N09",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "공개 채널의 비밀 보호 원칙과 지정된 상담·신고 경로를 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N09",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "공개 채널의 비밀 보호 원칙과 지정된 상담·신고 경로를 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "공개 채널의 비밀 보호 원칙과 지정된 상담·신고 경로를 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N09",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "N16-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "공개 Slack에 신고 내용이나 조사 경위를 올리지 말라고 하고 제한 공유 원칙은 안내하지만, 포털 또는 People팀의 제한된 접수 경로를 제시하지 않습니다. 이 누락은 별도 검토에서 N16-r01이 질문에 비해 과잉 필수일 가능성을 표시했습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+        }
+      ]
+    }
+  ]
+}

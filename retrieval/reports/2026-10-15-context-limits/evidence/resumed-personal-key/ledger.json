@@ -1,0 +1,319 @@
+{
+  "budget_limits": {
+    "dev_dollars": null,
+    "dev_seconds": null,
+    "max_calls": 72,
+    "total_dollars": null,
+    "total_seconds": null
+  },
+  "ledger_identity": "e8151b16251847d78167ae491943bfe1",
+  "reservations": {
+    "cal-quick_context-dba50e062460-D07--A_existing--r1-a1": {
+      "actual_dollars": 0.00196775,
+      "charged_dollars": 0.00196775,
+      "phase": "dev",
+      "reserved_at": 1792072853.066214,
+      "reserved_dollars": 0.01888225,
+      "settled_at": 1792072862.335349,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D07--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.0021215,
+      "charged_dollars": 0.0021215,
+      "phase": "dev",
+      "reserved_at": 1792072862.3592741,
+      "reserved_dollars": 0.01888225,
+      "settled_at": 1792072874.577631,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D07--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00323725,
+      "charged_dollars": 0.00323725,
+      "phase": "dev",
+      "reserved_at": 1792072874.6135454,
+      "reserved_dollars": 0.02365725,
+      "settled_at": 1792072885.4058475,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D19--A_existing--r1-a1": {
+      "actual_dollars": 0.0018705,
+      "charged_dollars": 0.0018705,
+      "phase": "dev",
+      "reserved_at": 1792072895.8527164,
+      "reserved_dollars": 0.018958,
+      "settled_at": 1792072903.0371048,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D19--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.001767,
+      "charged_dollars": 0.001767,
+      "phase": "dev",
+      "reserved_at": 1792072885.433399,
+      "reserved_dollars": 0.018958,
+      "settled_at": 1792072889.943664,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D19--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00999075,
+      "charged_dollars": 0.00999075,
+      "phase": "dev",
+      "reserved_at": 1792072889.9714525,
+      "reserved_dollars": 0.05135275,
+      "settled_at": 1792072895.8242059,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D20--A_existing--r1-a1": {
+      "actual_dollars": 0.0019555,
+      "charged_dollars": 0.0019555,
+      "phase": "dev",
+      "reserved_at": 1792072915.7012804,
+      "reserved_dollars": 0.01902975,
+      "settled_at": 1792072923.5766108,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D20--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.002011,
+      "charged_dollars": 0.002011,
+      "phase": "dev",
+      "reserved_at": 1792072923.6059387,
+      "reserved_dollars": 0.01902975,
+      "settled_at": 1792072932.804428,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-D20--C_unlimited--r1-a1": {
+      "actual_dollars": 0.0088305,
+      "charged_dollars": 0.0088305,
+      "phase": "dev",
+      "reserved_at": 1792072903.0702538,
+      "reserved_dollars": 0.04524125,
+      "settled_at": 1792072915.6728632,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R01--A_existing--r1-a1": {
+      "actual_dollars": 0.001796,
+      "charged_dollars": 0.001796,
+      "phase": "dev",
+      "reserved_at": 1792072690.9842458,
+      "reserved_dollars": 0.01891975,
+      "settled_at": 1792072697.1458035,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R01--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.001895,
+      "charged_dollars": 0.001895,
+      "phase": "dev",
+      "reserved_at": 1792072697.172444,
+      "reserved_dollars": 0.01891975,
+      "settled_at": 1792072703.980785,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R01--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00431925,
+      "charged_dollars": 0.00431925,
+      "phase": "dev",
+      "reserved_at": 1792072704.0077357,
+      "reserved_dollars": 0.028933,
+      "settled_at": 1792072708.083347,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R05--A_existing--r1-a1": {
+      "actual_dollars": 0.001773,
+      "charged_dollars": 0.001773,
+      "phase": "dev",
+      "reserved_at": 1792072725.2285986,
+      "reserved_dollars": 0.01895,
+      "settled_at": 1792072730.4359083,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R05--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.00203625,
+      "charged_dollars": 0.00203625,
+      "phase": "dev",
+      "reserved_at": 1792072708.1093996,
+      "reserved_dollars": 0.01895,
+      "settled_at": 1792072716.4396822,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R05--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00234825,
+      "charged_dollars": 0.00234825,
+      "phase": "dev",
+      "reserved_at": 1792072716.4672685,
+      "reserved_dollars": 0.02033375,
+      "settled_at": 1792072725.2023904,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R08--A_existing--r1-a1": {
+      "actual_dollars": 0.002403,
+      "charged_dollars": 0.002403,
+      "phase": "dev",
+      "reserved_at": 1792072741.6598902,
+      "reserved_dollars": 0.0187485,
+      "settled_at": 1792072756.6461833,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R08--A_existing--r1-a2": {
+      "actual_dollars": 0.001956,
+      "charged_dollars": 0.001956,
+      "phase": "dev",
+      "reserved_at": 1792072757.6989207,
+      "reserved_dollars": 0.0187485,
+      "settled_at": 1792072766.1022208,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R08--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.00222,
+      "charged_dollars": 0.00222,
+      "phase": "dev",
+      "reserved_at": 1792072766.1288598,
+      "reserved_dollars": 0.0187485,
+      "settled_at": 1792072779.8773508,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R08--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00271625,
+      "charged_dollars": 0.00271625,
+      "phase": "dev",
+      "reserved_at": 1792072730.4617941,
+      "reserved_dollars": 0.0209425,
+      "settled_at": 1792072741.6342237,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R11--A_existing--r1-a1": {
+      "actual_dollars": 0.00209975,
+      "charged_dollars": 0.00209975,
+      "phase": "dev",
+      "reserved_at": 1792072779.9029872,
+      "reserved_dollars": 0.01897275,
+      "settled_at": 1792072790.1585445,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R11--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.0019115,
+      "charged_dollars": 0.0019115,
+      "phase": "dev",
+      "reserved_at": 1792072790.1989727,
+      "reserved_dollars": 0.01897275,
+      "settled_at": 1792072797.1345935,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R11--C_unlimited--r1-a1": {
+      "actual_dollars": 0.008126,
+      "charged_dollars": 0.008126,
+      "phase": "dev",
+      "reserved_at": 1792072797.1803749,
+      "reserved_dollars": 0.0431525,
+      "settled_at": 1792072807.0820096,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R14--A_existing--r1-a1": {
+      "actual_dollars": 0.001828,
+      "charged_dollars": 0.001828,
+      "phase": "dev",
+      "reserved_at": 1792072818.806505,
+      "reserved_dollars": 0.0190415,
+      "settled_at": 1792072825.344575,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R14--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.00183325,
+      "charged_dollars": 0.00183325,
+      "phase": "dev",
+      "reserved_at": 1792072807.112433,
+      "reserved_dollars": 0.0190415,
+      "settled_at": 1792072812.2252345,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R14--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00324675,
+      "charged_dollars": 0.00324675,
+      "phase": "dev",
+      "reserved_at": 1792072812.2532513,
+      "reserved_dollars": 0.024633,
+      "settled_at": 1792072818.7747014,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R16--A_existing--r1-a1": {
+      "actual_dollars": 0.00182025,
+      "charged_dollars": 0.00182025,
+      "phase": "dev",
+      "reserved_at": 1792072835.2022588,
+      "reserved_dollars": 0.0188655,
+      "settled_at": 1792072842.4043274,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R16--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.0020415,
+      "charged_dollars": 0.0020415,
+      "phase": "dev",
+      "reserved_at": 1792072842.4329627,
+      "reserved_dollars": 0.0188655,
+      "settled_at": 1792072853.0389452,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R16--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00213475,
+      "charged_dollars": 0.00213475,
+      "phase": "dev",
+      "reserved_at": 1792072825.370851,
+      "reserved_dollars": 0.019669,
+      "settled_at": 1792072835.174891,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-U03--A_existing--r1-a1": {
+      "actual_dollars": 0.001827,
+      "charged_dollars": 0.001827,
+      "phase": "dev",
+      "reserved_at": 1792072949.5383003,
+      "reserved_dollars": 0.01883775,
+      "settled_at": 1792072956.1706533,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-U03--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.0019905,
+      "charged_dollars": 0.0019905,
+      "phase": "dev",
+      "reserved_at": 1792072932.867019,
+      "reserved_dollars": 0.01883775,
+      "settled_at": 1792072941.8914914,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-U03--C_unlimited--r1-a1": {
+      "actual_dollars": 0.00390925,
+      "charged_dollars": 0.00390925,
+      "phase": "dev",
+      "reserved_at": 1792072941.922956,
+      "reserved_dollars": 0.02662175,
+      "settled_at": 1792072949.507066,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-U04--A_existing--r1-a1": {
+      "actual_dollars": 0.00176725,
+      "charged_dollars": 0.00176725,
+      "phase": "dev",
+      "reserved_at": 1792072960.926865,
+      "reserved_dollars": 0.01879875,
+      "settled_at": 1792072966.909267,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-U04--B_tokens_only--r1-a1": {
+      "actual_dollars": 0.00176725,
+      "charged_dollars": 0.00176725,
+      "phase": "dev",
+      "reserved_at": 1792072966.9360986,
+      "reserved_dollars": 0.01879875,
+      "settled_at": 1792072971.6598644,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-U04--C_unlimited--r1-a1": {
+      "actual_dollars": 0.002589,
+      "charged_dollars": 0.002589,
+      "phase": "dev",
+      "reserved_at": 1792072956.2003694,
+      "reserved_dollars": 0.0221795,
+      "settled_at": 1792072960.9002998,
+      "status": "settled"
+    }
+  },
+  "started_at": 1792072690.9842458
+}

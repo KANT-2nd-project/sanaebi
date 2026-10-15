@@ -1,0 +1,6 @@
+COMMAND: uv run --locked ruff check .
+EXIT_CODE: 0
+--- STDOUT ---
+All checks passed!
+
+--- STDERR ---
