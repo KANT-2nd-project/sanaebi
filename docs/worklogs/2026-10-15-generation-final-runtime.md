@@ -33,3 +33,9 @@ generate_from_documents와 run_case는 keyword-only prompt_profile을 받으며 
 프롬프트 튜닝은 종료 상태다. 과거 회귀 게이트와 알려진 필수 안내 누락을 보존한다. 이번 기본값 적용은 사용자 요청에 따른 독립 런타임 채택이며, 게이트 통과나 서비스 연결·품질 승인이 아니다.
 
 Notion 반영 대상은 문서 안내 3f805a3cdadc81e1a70bfe82c89cebe7과 개인 일지 3f905a3cdadc8146a9bbedb690ab5ecf다. 게시 후 저장·재조회를 확인해 아래에 기록한다.
+
+## 게시·Notion 재조회 완료
+
+19a5715(설정 보관·단일 Luna), 51008bb(공통 실행·프로필 기록), 3ef727b(결과·문서)를 생성 브랜치에 푸시하고 원격 3ef727ba2301bc3af01c4369e15af6a4961d787a 일치를 확인했다.
+
+[Notion 기술 요약](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7)과 [개인 일지](https://www.notion.so/3f905a3cdadc8146a9bbedb690ab5ecf)에 최종 설정·별칭 정리·실호출2회·parse_error·비용·품질 한계·기여를 추가했다. 저장 후 두 페이지를 재조회하여 핵심 문장과 게시 커밋 링크를 확인했다(2026-10-15 13:05 KST). 과거 실험 기록은 보존했다.
