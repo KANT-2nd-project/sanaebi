@@ -92,3 +92,23 @@ def get_retrieval_source() -> Path:
     return _root_path(
         "SANAEBI_RETRIEVAL_SOURCE", "data/company-knowledge/documents.jsonl"
     )
+
+
+def get_rag_prompt_profile() -> str:
+    """Adopted RAG-only profile; explicit v5 restores the no-evidence notice."""
+    from generation.profiles import DEFAULT_PROMPT_PROFILE, RAG_PROMPT_PROFILE
+
+    value = os.getenv("SANAEBI_RAG_PROMPT_PROFILE", RAG_PROMPT_PROFILE)
+    if value not in {DEFAULT_PROMPT_PROFILE, RAG_PROMPT_PROFILE}:
+        raise ValueError(
+            "SANAEBI_RAG_PROMPT_PROFILE must be v5 or v5_rag_service_v1 profile name"
+        )
+    return value
+
+
+def get_rag_expand_context() -> bool:
+    """User-adopted context expansion, with an explicit rollback switch."""
+    value = os.getenv("SANAEBI_RAG_EXPAND_CONTEXT", "1")
+    if value not in {"0", "1"}:
+        raise ValueError("SANAEBI_RAG_EXPAND_CONTEXT must be 0 or 1")
+    return value == "1"

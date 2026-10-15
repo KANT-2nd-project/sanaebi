@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from dataclasses import replace
 from threading import BoundedSemaphore, Lock
 
 from fastapi import FastAPI
@@ -53,6 +54,10 @@ async def lifespan(application: FastAPI):
     application.state.retriever = None
     application.state.retrieval_sync = None
     if retrieval_mode == "rag":
+        from app.settings import get_rag_expand_context, get_rag_prompt_profile
+
+        settings = replace(settings, prompt_profile=get_rag_prompt_profile())
+        expand_context = get_rag_expand_context()
         from app.retrieval.config import SERVER_SPEC
         from app.retrieval.embedding import create_embedder
         from app.retrieval.indexer import RetrievalIndexer
@@ -72,6 +77,7 @@ async def lifespan(application: FastAPI):
             embedder,
             search_policy=policy_for_spec(SERVER_SPEC),
             indexer=retrieval_indexer,
+            expand_context=expand_context,
         )
     public_demo = is_public_demo_enabled()
     generation_budget = None

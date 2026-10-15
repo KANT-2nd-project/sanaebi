@@ -118,3 +118,78 @@ class EmptyRagTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             old.answer_retrieved("안녕", self.context)
         self.assertIsNone(old._client)
+
+    def test_both_http_routes_use_real_empty_rag_pipeline(self):
+        import os
+
+        from fastapi import FastAPI
+        from fastapi.testclient import TestClient
+
+        from app.answering.router import router as assistant_router
+        from app.errors import register_error_handlers
+        from app.questions.router import router as questions_router
+
+        app = FastAPI()
+        register_error_handlers(app)
+        app.include_router(questions_router)
+        app.include_router(assistant_router)
+        app.state.classifier = Mock(predict=Mock(return_value="CLARIFY"))
+        app.state.document_provider = Mock(snapshot=self.read)
+        app.state.retriever = Mock(retrieve=self.retrieve)
+        app.state.answerer = self.answerer
+        app.state.routing_mode = "advisory"
+        with (
+            patch.dict(os.environ, {"SANAEBI_PUBLIC_DEMO": "0"}),
+            TestClient(app) as client,
+        ):
+            for route, payload in [
+                ("/ask", {"question": "안녕"}),
+                (
+                    "/assistant",
+                    {
+                        "response": {"ok": True, "text": "안녕"},
+                        "classification_label": "UNSUPPORTED",
+                    },
+                ),
+            ]:
+                response = client.post(route, json=payload)
+                self.assertEqual(response.status_code, 200, response.text)
+                self.assertTrue(response.json()["ok"])
+            self.assertEqual(len(self.client.prompts), 2)
+            self.retrieve.side_effect = RetrievalNotReady("safe")
+            self.assertEqual(
+                client.post("/ask", json={"question": "안녕"}).status_code, 503
+            )
+            self.assertEqual(len(self.client.prompts), 2)
+            self.retrieve.side_effect = None
+            self.client.response = ModelResponse(raw_text="bad", finish_reason="stop")
+            self.assertEqual(
+                client.post("/ask", json={"question": "안녕"}).status_code, 502
+            )
+
+    def test_rag_profile_setting_default_rollback_and_invalid(self):
+        import os
+
+        from app.settings import get_rag_prompt_profile
+        from generation.profiles import DEFAULT_PROMPT_PROFILE
+
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(get_rag_prompt_profile(), RAG_PROMPT_PROFILE)
+            os.environ["SANAEBI_RAG_PROMPT_PROFILE"] = DEFAULT_PROMPT_PROFILE
+            self.assertEqual(get_rag_prompt_profile(), DEFAULT_PROMPT_PROFILE)
+            os.environ["SANAEBI_RAG_PROMPT_PROFILE"] = "unknown"
+            with self.assertRaises(ValueError):
+                get_rag_prompt_profile()
+
+    def test_expansion_setting_default_rollback_and_invalid(self):
+        import os
+
+        from app.settings import get_rag_expand_context
+
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertTrue(get_rag_expand_context())
+            os.environ["SANAEBI_RAG_EXPAND_CONTEXT"] = "0"
+            self.assertFalse(get_rag_expand_context())
+            os.environ["SANAEBI_RAG_EXPAND_CONTEXT"] = "invalid"
+            with self.assertRaises(ValueError):
+                get_rag_expand_context()

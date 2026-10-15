@@ -154,7 +154,16 @@ class RagFollowupReadinessTests(unittest.TestCase):
         self.assertEqual(response.json(), {"status": "not_ready"})
         self.reserve.assert_not_called()
 
-    def test_below_threshold_returns_notice_without_generation_or_reservation(self):
+    def test_default_runtime_combines_expansion_and_empty_evidence_profile(self):
+        self.assertTrue(self.retriever.expand_context)
+        self.assertTrue(fastapi_main.app.state.answerer.supports_empty_retrieval)
+        self._restore_and_index()
+        response = self._ask()
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertEqual(self.reserve.call_count, 1)
+        self.assertIn("근거 있음", self.provider.prompts[0].system)
+
+    def test_below_threshold_generates_with_explicit_no_matches(self):
         self._maintain("restore")
         snapshot = fastapi_main.app.state.document_provider.snapshot()
         self.worker.reconcile(snapshot)
@@ -173,9 +182,11 @@ class RagFollowupReadinessTests(unittest.TestCase):
             ):
                 response = self.client.post(path, json=body)
                 self.assertEqual(response.status_code, 200, response.text)
-                self.assertIn("근거를 찾지 못했습니다", response.json()["text"])
-        self.reserve.assert_not_called()
-        self.assertEqual(self.provider.prompts, [])
+                self.assertEqual("검증용 모의 답변", response.json()["text"])
+        self.assertEqual(self.reserve.call_count, 2)
+        self.assertEqual(len(self.provider.prompts), 2)
+        for prompt in self.provider.prompts:
+            self.assertIn("검색 완료·검색 결과 없음", prompt.system)
 
     def _maintain(self, action: str):
         preview = self.client.get(
@@ -217,11 +228,13 @@ class RagFollowupReadinessTests(unittest.TestCase):
             self.retriever, "retrieve", wraps=self.retriever.retrieve
         ) as retrieve:
             empty_answer = self._ask()
-            retrieve.assert_not_called()
+            retrieve.assert_called_once()
         self.assertEqual(empty_answer.status_code, 200, empty_answer.text)
-        self.assertIn("회사 문서가 없어", empty_answer.json()["text"])
-        self.assertEqual(self.reserve.call_count, 1)
-        self.assertEqual(len(self.provider.prompts), 1)
+        self.assertEqual("검증용 모의 답변", empty_answer.json()["text"])
+        self.assertEqual(self.reserve.call_count, 2)
+        self.assertEqual(len(self.provider.prompts), 2)
+        self.assertIn("게시 문서 없음", self.provider.prompts[-1].system)
+        self.assertNotIn("BASELINE-CONTENT", self.provider.prompts[-1].user)
 
         restored = self._maintain("restore")
         self.assertEqual(restored.status_code, 200, restored.text)
@@ -235,8 +248,8 @@ class RagFollowupReadinessTests(unittest.TestCase):
             final_answer = self._ask()
             retrieve.assert_called_once()
         self.assertEqual(final_answer.status_code, 200, final_answer.text)
-        self.assertEqual(self.reserve.call_count, 2)
-        self.assertEqual(len(self.provider.prompts), 2)
+        self.assertEqual(self.reserve.call_count, 3)
+        self.assertEqual(len(self.provider.prompts), 3)
         self.assertEqual(self.embedder.document_batches, [])
         current = self.retriever.retrieve("출근 기록은 어디에 남기나요?", new_snapshot)
         self.assertTrue(current.evidence)
