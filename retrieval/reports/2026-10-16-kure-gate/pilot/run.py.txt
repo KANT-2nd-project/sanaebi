@@ -1,0 +1,218 @@
+import os
+
+os.environ["HF_HUB_OFFLINE"] = "1"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.sched_setaffinity(0, sorted(os.sched_getaffinity(0))[:2])
+import hashlib
+import json
+import resource
+import shutil
+import sys
+import time
+from dataclasses import asdict
+from pathlib import Path
+
+import numpy as np
+import torch
+from transformers import AutoModel, AutoTokenizer
+
+from app.documents.context import DocumentContextProvider
+from app.retrieval.embedding import TinyEmbedder
+from app.retrieval.repository import IndexRepository
+from retrieval.experiments.calibration_metrics import claim_metrics
+from retrieval.experiments.calibration_search import evidence_items, select_evidence
+from retrieval.experiments.optimization import _verify_qrel_spans
+
+ROOT = Path.cwd()
+OUT = ROOT / "tmp/kure-v3-pilot-2026-10-16"
+name = sys.argv[1]
+assert name in ["tiny", "kure"]
+dest = OUT / name
+dest.mkdir(exist_ok=False)
+base = ROOT.parent / ".sanaebi-rag-answer-evaluation-20261015/tmp/answer-evaluation"
+manifest = json.loads((base / "manifest.json").read_text())
+spec = manifest["source"]["retrieval_spec_id"]
+source = base / "source/documents.sqlite3"
+idx = base / f"retrieval/schema-v1/{spec}/index.sqlite3"
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+before = {str(p): sha(p) for p in [source, idx]}
+shutil.copyfile(source, dest / "documents.sqlite3")
+target = dest / f"retrieval/schema-v1/{spec}/index.sqlite3"
+target.parent.mkdir(parents=True)
+shutil.copyfile(idx, target)
+snapshot = DocumentContextProvider(database_path=dest / "documents.sqlite3").snapshot()
+assert snapshot.fingerprint == manifest["source"]["snapshot_fingerprint"]
+qpath = ROOT / "retrieval/reports/2026-10-15-retrieval-v3/qrels-v3.json"
+cases = json.loads(qpath.read_text())["cases"]
+_verify_qrel_spans(cases, snapshot)
+current = IndexRepository(dest / "retrieval").current_chunks(snapshot)
+chunks = [c for c, v in current]
+torch.set_num_threads(2)
+torch.set_num_interop_threads(1)
+t = time.perf_counter()
+if name == "tiny":
+    model = TinyEmbedder(
+        ROOT.parent / ".sanaebi-rag-answer-evaluation-20261015/tmp/tiny-model"
+    )
+    model.warmup()
+    tok = model.tokenizer
+    torch.set_num_threads(2)
+    encode = lambda texts: model.encode_queries(texts)
+    matrix = np.stack([v for c, v in current])
+    index_seconds = None
+    rev = "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9"
+    load_seconds = time.perf_counter() - t
+    max_length = None
+else:
+    rev = "8b418a58414668e75532ed045c22d9ca018ae2b2"
+    path = (
+        Path.home()
+        / f".cache/huggingface/hub/models--nlpai-lab--KURE-v1/snapshots/{rev}"
+    )
+    pooling = json.loads((path / "1_Pooling/config.json").read_text())
+    assert pooling["pooling_mode_cls_token"] and not pooling["pooling_mode_mean_tokens"]
+    tok = AutoTokenizer.from_pretrained(
+        path, local_files_only=True, trust_remote_code=False
+    )
+    model = (
+        AutoModel.from_pretrained(path, local_files_only=True, trust_remote_code=False)
+        .float()
+        .to("cpu")
+        .eval()
+    )
+    load_seconds = time.perf_counter() - t
+
+    def encode(texts):
+        batch = tok(texts, padding=True, truncation=False, return_tensors="pt")
+        assert batch["input_ids"].shape[1] <= 8192
+        with torch.inference_mode():
+            return torch.nn.functional.normalize(
+                model(**batch).last_hidden_state[:, 0], p=2, dim=1
+            ).numpy()
+
+    texts = [c.embedding_text.removeprefix("passage: ") for c in chunks]
+    max_length = max(len(tok(x, truncation=False)["input_ids"]) for x in texts)
+    assert max_length <= 8192
+    t = time.perf_counter()
+    vectors = []
+    for i in range(0, len(texts), 8):
+        vectors.append(encode(texts[i : i + 8]))
+        print("indexed", i + len(texts[i : i + 8]), "/", len(texts), flush=True)
+    matrix = np.concatenate(vectors)
+    index_seconds = time.perf_counter() - t
+np.save(dest / "vectors.npy", matrix)
+assert np.allclose(np.linalg.norm(matrix, axis=1), 1, atol=1e-4)
+encode(["워밍업 질문입니다."])
+rows = []
+rankings = []
+times = []
+query_vectors = []
+for case in cases:
+    t = time.perf_counter()
+    q = encode([case["question"]])[0]
+    encode_ms = (time.perf_counter() - t) * 1000
+    query_vectors.append(q)
+    t = time.perf_counter()
+    scores = matrix @ q
+    order = sorted(
+        range(len(chunks)), key=lambda j: (-float(scores[j]), chunks[j].chunk_id)
+    )
+    ranked = [(chunks[j], float(scores[j])) for j in order]
+    search_ms = (time.perf_counter() - t) * 1000
+    rankings.append(
+        {
+            "case_id": case["case_id"],
+            "ranking": [{"chunk_id": c.chunk_id, "score": s} for c, s in ranked],
+        }
+    )
+    for policy in ["top5", "top12", "top20", "threshold035"]:
+        hits = (
+            [x for x in ranked if x[1] >= 0.35]
+            if policy == "threshold035"
+            else ranked[: int(policy[3:])]
+        )
+        t = time.perf_counter()
+        evidence = select_evidence(
+            hits,
+            snapshot,
+            float("inf"),
+            tok,
+            None,
+            total_chars=None,
+            per_evidence_chars=None,
+        )
+        select_ms = (time.perf_counter() - t) * 1000
+        metrics = claim_metrics(evidence_items(evidence), case)
+        rows.append(
+            {
+                "case_id": case["case_id"],
+                "policy": policy,
+                **metrics,
+                "selected_chunks": len(hits),
+                "chars": sum(len(e.text) for e in evidence),
+                "evidence": [asdict(e) for e in evidence],
+                "encode_ms": encode_ms,
+                "search_ms": search_ms,
+                "select_ms": select_ms,
+            }
+        )
+    times.append(encode_ms + search_ms)
+# Same fixed 48 questions, 3 further warm rounds, single request, no query cache.
+for repeat in range(3):
+    for case in cases:
+        t = time.perf_counter()
+        q = encode([case["question"]])[0]
+        scores = matrix @ q
+        sorted(
+            range(len(chunks)), key=lambda j: (-float(scores[j]), chunks[j].chunk_id)
+        )
+        times.append((time.perf_counter() - t) * 1000)
+np.save(dest / "queries.npy", np.stack(query_vectors))
+summary = []
+for policy in ["top5", "top12", "top20", "threshold035"]:
+    selected = [r for r in rows if r["policy"] == policy]
+    summary.append(
+        {
+            "policy": policy,
+            "complete": sum(r["complete"] is True for r in selected),
+            "required_cases": sum(r["complete"] is not None for r in selected),
+            "facts": sum(r["included"] for r in selected),
+            "required_facts": sum(r["required"] for r in selected),
+            "mean_chars": float(np.mean([r["chars"] for r in selected])),
+            "mean_chunks": float(np.mean([r["selected_chunks"] for r in selected])),
+            "failed_ids": [r["case_id"] for r in selected if r["complete"] is False],
+        }
+    )
+result = {
+    "model": name,
+    "revision": rev,
+    "qrels_sha": sha(qpath),
+    "snapshot": snapshot.fingerprint,
+    "chunks": len(chunks),
+    "source_hashes": before,
+    "affinity": sorted(os.sched_getaffinity(0)),
+    "threads": torch.get_num_threads(),
+    "load_seconds": load_seconds,
+    "index_seconds": index_seconds,
+    "max_document_tokens": max_length,
+    "peak_rss_mib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024,
+    "warm_encode_and_rank_ms": {
+        "samples": len(times),
+        "p50": float(np.percentile(times, 50)),
+        "p95": float(np.percentile(times, 95)),
+    },
+    "summary": summary,
+    "rows": rows,
+    "rankings": rankings,
+}
+assert before == {str(p): sha(p) for p in [source, idx]}
+(dest / "results.json").write_text(
+    json.dumps(result, ensure_ascii=False, indent=2) + "\n"
+)
+print(
+    json.dumps(
+        {k: v for k, v in result.items() if k not in ["rows", "rankings"]},
+        ensure_ascii=False,
+    ),
+    flush=True,
+)
