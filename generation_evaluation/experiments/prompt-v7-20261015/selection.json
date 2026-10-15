@@ -1,0 +1,906 @@
+{
+  "experiment_id": "prompt-v7-20261015",
+  "scope": "prompt-v7-20261015",
+  "split": "selection",
+  "case_count": 12,
+  "snapshot_path": "/home/jake/workspace/projects/sanaebi/tmp/readability-v6-20261015/snapshot.json",
+  "snapshot_fingerprint": "9d02a7ba77a340bea017e89ab43e25db62a8cdeef83b2a40c5bbfb203a8eddf7",
+  "snapshot_document_count": 72,
+  "shared_rubric": {
+    "content": "pass only when every required claim is supported and no forbidden claim is made; partial for a noncritical omission; fail for critical omission, unsupported material claim, authority/action fabrication, or material distortion of actor, order, condition, deadline, or scope. uncertain never counts as pass. Optional context is not required. Use only the frozen published snapshot as company-policy evidence; check all 72 documents before calling a claim unsupported. Runtime contract evidence cannot create company policy.",
+    "common_readability": "Judge answer findability, directness, and appropriate density independently from content and case structure. A short response may pass without Markdown; do not score Markdown alone. Labels: pass|partial|fail|uncertain.",
+    "structure_adherence": "Score independently from content and common readability using each case structure_rubric. Do not pass structure if it changes meaning or loses a required condition. Use pass|partial|fail|uncertain; uncertain is not pass."
+  },
+  "intent_overlap_exceptions": [
+    {
+      "selection_case_ids": [
+        "H01",
+        "H02"
+      ],
+      "development_case_id": "R01",
+      "overlap": "Broad capability-introduction task and profile example are intentionally represented in both sets because the approved final category requires two capability cases.",
+      "limit": "Selection audience and specific task differ, but these two cases are exposed at the broad intent level and must not be described as wholly unseen capability intents."
+    }
+  ],
+  "cases": [
+    {
+      "id": "H01",
+      "question": "다음 주 입사하는 신입 구성원에게 사내비가 어떤 회사 업무를 안내할 수 있는지 짧은 소개 문구를 만들어줘. 직접 처리할 수 없는 일도 밝혀줘.",
+      "category": "capability_intro",
+      "intent_group": "selection_new_hire_scope_intro",
+      "exposure": "Specific onboarding audience and task differ from dev R01 and the synthetic capability example, but the broad capability-introduction intent is exposed by both; not an unseen intent.",
+      "required": [
+        "Introduce the assistant as providing guidance from company work information/rules/procedures and company-documented tools.",
+        "Give a few grounded areas useful to a new hire, such as onboarding, leave/attendance, accounts/permissions, or security.",
+        "State it cannot directly submit/change/approve requests or look up individual live status.",
+        "Invite the new hire to ask about a concrete work topic."
+      ],
+      "critical_required": [
+        "Do not claim direct actions or individual status lookup."
+      ],
+      "optional": [],
+      "forbidden": [
+        "Promise to do onboarding setup or inspect the new hire’s live permissions."
+      ],
+      "major_forbidden": [
+        "Claim account access or onboarding is already completed."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "intro_bullets_limits",
+        "target": "Intro sentence, representative parallel work areas in bullets, then action/status limitations and a next-step invitation.",
+        "pass": "All three parts are distinguishable; bullets represent parallel areas.",
+        "partial": "One part is blended or list structure is weak but answer remains clear.",
+        "fail": "Claims direct execution/status access or omits the required boundary."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-050",
+          "title": "신규 입사자 온보딩",
+          "section": "시작 전에 준비할 항목",
+          "quote": "People팀은 공통 체크리스트와 제도·문의 안내를 준비한다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/profiles.py",
+          "quote": "사내비는 이음웍스의 사내 업무 정보·규정·절차와 회사 문서에 설명된 업무 도구·기술의 사용을 안내합니다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-050",
+          "title": "신규 입사자 온보딩",
+          "section": "첫날과 첫 주",
+          "quote": "입사자는 첫 로그인 과정에서 다중 인증 등록을 완료한다. MFA 설정이 끝나기 전에는 업무 시스템과 자료에 접근하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-027",
+          "title": "시스템 접근 권한 신청과 회수",
+          "section": "신청과 처리",
+          "quote": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "사내비는 제공된 문서를 바탕으로 정보를 안내하며, 실제 신청·변경·취소·승인이나 개인별 상태 조회를 수행하지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "question": "팀원들에게 사내비를 권한 신청 전에 어떻게 활용할 수 있는지 소개해줘. 권한이 이미 부여됐는지 대신 확인할 수 있는지도 포함해줘.",
+      "category": "capability_intro",
+      "intent_group": "selection_access_request_capability_intro",
+      "exposure": "Specific audience and access-request use case differ from dev R01 and the synthetic capability example, but broad capability-introduction intent is exposed; not an unseen intent.",
+      "required": [
+        "Introduce company-work guidance, with account/permission procedures as a relevant example.",
+        "Mention that the assistant can explain how to request access and who/what must review it, based on company documents.",
+        "State it cannot check an individual’s live access or directly grant/change/approve access.",
+        "Ask the team member to specify the system or access question."
+      ],
+      "critical_required": [
+        "Do not claim live access lookup or permission changes."
+      ],
+      "optional": [
+        "Mention least-privilege/request pathway if useful, without turning the answer into a full access procedure."
+      ],
+      "forbidden": [
+        "Claim permissions can be checked or granted by the assistant.",
+        "Say team membership alone means all access is available."
+      ],
+      "major_forbidden": [
+        "Invent system status, direct permission operations, or bypass approval."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "intro_bullets_limits",
+        "target": "Intro sentence, representative work area(s) as parallel bullets, explicit execution/status limit, and follow-up prompt.",
+        "pass": "The introduction, short parallel work-area bullet list, and execution/status boundary are each clear; no long procedure is forced.",
+        "partial": "The scope is clear but organization is somewhat dense or repeats itself.",
+        "fail": "Claims live lookup/action or hides the limitation."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-027",
+          "title": "시스템 접근 권한 신청과 회수",
+          "section": "기본 원칙",
+          "quote": "권한은 현재 업무에 필요한 시스템·자료에 한해 개인별 회사 계정으로 부여한다. 직함이나 팀 소속만으로 모든 자료를 볼 수 있는 것은 아니다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-027",
+          "title": "시스템 접근 권한 신청과 회수",
+          "section": "신청과 처리",
+          "quote": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-027",
+          "title": "시스템 접근 권한 신청과 회수",
+          "section": "문제 해결과 책임",
+          "quote": "접근 거부 시 로그인한 회사 계정, 파일·시스템 주소, 필요한 업무 역할, 오류 시각을 확인한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-027",
+          "title": "시스템 접근 권한 신청과 회수",
+          "section": "신청과 처리",
+          "quote": "팀장은 업무 필요를 확인한다. 해당 시스템 담당자는 역할 범위와 기술 조건을 검토하고, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자 및 보안·개인정보 담당자의 확인도 받는다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/profiles.py",
+          "quote": "사내비는 이음웍스의 사내 업무 정보·규정·절차와 회사 문서에 설명된 업무 도구·기술의 사용을 안내합니다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "사내비는 제공된 문서를 바탕으로 정보를 안내하며, 실제 신청·변경·취소·승인이나 개인별 상태 조회를 수행하지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "question": "방문객 등록은 어디에서 언제까지 해야 해?",
+      "category": "short_single_fact",
+      "intent_group": "selection_visitor_registration_fact",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "State the portal route as 총무 > 방문객 등록.",
+        "State the deadline as one business day before the visit."
+      ],
+      "critical_required": [
+        "Correct portal route and one-business-day deadline."
+      ],
+      "optional": [
+        "Name visitor, affiliation, purpose, expected time, and escort if elaborating beyond the direct route/deadline answer."
+      ],
+      "forbidden": [
+        "Change the deadline or route; say an unregistered visitor may enter a restricted area."
+      ],
+      "major_forbidden": [
+        "Invent an exception that bypasses urgent visitor confirmation."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "compact_direct_answer",
+        "target": "One sentence or short paragraph; no heading or numbered list.",
+        "pass": "Direct route and deadline are easy to find.",
+        "partial": "Answer is correct but padded with tangential details.",
+        "fail": "Decorative structure obscures the fact or distorts deadline."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-014",
+          "title": "방문객 등록과 동행",
+          "section": "방문 전 등록",
+          "quote": "방문일 1영업일 전까지 이음 포털의 **총무 > 방문객 등록**에 방문객 이름, 소속, 목적, 예정 시간과 동행자를 입력한다."
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "question": "소프트웨어 구매를 추진하려고 해. 신청부터 계약 전 승인까지 순서와 금액별 승인 기준을 알려줘.",
+      "category": "ordered_multi_step_procedure",
+      "intent_group": "selection_software_purchase_approval",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Submit through 이음 포털 재무 > 업무 구매 before ordering, signing, or paying, including purpose, quantity, expected total, budget code, supplier, and recurring cost.",
+        "Under 300,000 KRW: team lead; 300,000 to under 2,000,000 KRW: team lead and Finance; 2,000,000 KRW or more: three comparable quotes plus written approval by both.",
+        "Software/cloud/customer-data services also need IT operations and security/privacy review before contract/payment.",
+        "Approval does not automatically grant a service account or permission."
+      ],
+      "critical_required": [
+        "Application and applicable approvals occur before ordering/signing/payment.",
+        "Correct three amount bands, including threshold boundary and reviewers.",
+        "Software gets IT and privacy/security review before contract/payment."
+      ],
+      "optional": [
+        "Explain that a software purchase approval does not issue access."
+      ],
+      "forbidden": [
+        "Allow splitting purchases to evade threshold or using corporate card to skip review.",
+        "Claim approval automatically grants account/permissions."
+      ],
+      "major_forbidden": [
+        "State false amount band/approver or permit purchase before approval."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "ordered_steps_with_threshold_table_optional",
+        "target": "Use ordered steps for application/review/purchase gate; a compact table or bullets may represent parallel amount bands. Do not force a table.",
+        "pass": "The sequence and all thresholds/reviewers are preserved; amount bands are scannable.",
+        "partial": "Mostly clear but one band or gate is difficult to locate.",
+        "fail": "Reverses purchase/approval order or merges thresholds incorrectly."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-021",
+          "title": "업무용 구매와 공급업체 선택",
+          "section": "필요 확인과 승인 구간",
+          "quote": "업무 물품, 외부 서비스, 소프트웨어는 주문·서명·결제 전에 이음 포털의 **재무 > 업무 구매**로 신청한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-021",
+          "title": "업무용 구매와 공급업체 선택",
+          "section": "필요 확인과 승인 구간",
+          "quote": "| 세금 포함 예상 총액 | 필요한 승인 |\n|---|---|\n| 300,000원 미만 | 팀장 |\n| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |\n| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-021",
+          "title": "업무용 구매와 공급업체 선택",
+          "section": "기술·정보 처리 확인",
+          "quote": "소프트웨어, 클라우드 서비스, 네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-021",
+          "title": "업무용 구매와 공급업체 선택",
+          "section": "기술·정보 처리 확인",
+          "quote": "구매 검토가 끝났다는 사실만으로 서비스 계정·권한이 자동 발급되지는 않는다."
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "question": "작은 코드 변경을 배포하려고 해. 변경을 시작한 뒤 운영 반영까지 무엇을 확인해야 하는지 순서대로 정리해줘.",
+      "category": "ordered_multi_step_procedure",
+      "intent_group": "selection_code_change_deploy",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Record change purpose, affected users/components, compatibility, and data effects before work.",
+        "Submit a PR and complete required automated checks and independent review; a PR is not itself approval.",
+        "Use approved deployment automation/runbook only after required merge/approval/checks.",
+        "After deployment, verify service owner’s stated normal conditions; do not call deployment successful before verification."
+      ],
+      "critical_required": [
+        "PR is not approval/merge; required review/checks precede deployment.",
+        "Use approved runbook/automation and verify actual post-deploy conditions before declaring success."
+      ],
+      "optional": [
+        "Split work into reviewable independent units when scope is too large."
+      ],
+      "forbidden": [
+        "Invent a deployment command/tool or bypass the approved runbook.",
+        "Claim merge alone proves deployment or customer issue resolution."
+      ],
+      "major_forbidden": [
+        "Claim successful deployment before normal-condition verification."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "ordered_steps",
+        "target": "Use genuine ordered stages from scope definition through PR/review, deployment, and verification.",
+        "pass": "Stages are visibly ordered and deployment success is conditional on observed verification.",
+        "partial": "Sequence exists but an important stage is hard to find.",
+        "fail": "Says PR/merge is deployment or reports success before verification."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-067",
+          "title": "개발 변경과 코드 리뷰",
+          "section": "변경을 시작하기 전",
+          "quote": "먼저 연결된 GitHub 이슈 또는 변경 목적을 기록한다. 어떤 동작이 바뀌는지, 영향을 받는 사용자와 구성 요소, 기존 호환성, 데이터 변경 여부를 확인한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-067",
+          "title": "개발 변경과 코드 리뷰",
+          "section": "병합 기준",
+          "quote": "최소 독립 승인 1건과 저장소에서 지정한 필수 검사 통과가 모두 필요하다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-068",
+          "title": "배포·실패·롤백 안내",
+          "section": "배포와 정상 확인",
+          "quote": "배포는 해당 저장소·서비스가 승인한 자동화나 runbook에 적힌 방법으로만 수행한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-068",
+          "title": "배포·실패·롤백 안내",
+          "section": "배포와 정상 확인",
+          "quote": "확인 전에 “배포 성공”이나 고객 문제 해결을 선언하지 않는다."
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "question": "프로젝트 잠금파일의 패키지를 설치하는 것과 브라우저 확장을 설치하는 것은 절차가 어떻게 달라?",
+      "category": "conditional_alternatives",
+      "intent_group": "selection_dependency_vs_extension",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "For a dependency fixed in the project lockfile and installed in the approved development environment, per-install IT approval is not required; team code review/project procedures still apply.",
+        "A browser extension/plugin that reads account/page data or sends information externally requires IT and security/privacy review.",
+        "Submit such review through 이음 포털 IT > 소프트웨어 요청 and do not install/connect real data before review is recorded."
+      ],
+      "critical_required": [
+        "Distinguish standard locked dependency from special-risk extension; the latter requires review before use/data connection."
+      ],
+      "optional": [
+        "Mention source, purpose, licence, and unexpected network/permission behavior as relevant checks."
+      ],
+      "forbidden": [
+        "Say every package install needs individual IT approval.",
+        "Treat a company device/business account as automatic permission to install an extension."
+      ],
+      "major_forbidden": [
+        "Advise installing/connecting actual data before the required review."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "conditional_branches",
+        "target": "Use two separate alternatives for lockfile dependency vs browser extension; do not number them as steps in one path.",
+        "pass": "Each rule is tied to the correct type of software and no false sequence is added.",
+        "partial": "Difference is present but conditions are not easy to compare.",
+        "fail": "Blends distinct cases or reverses the required pre-review gate."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-037",
+          "title": "회사 기기 소프트웨어 설치",
+          "section": "개발 의존성의 정상 흐름",
+          "quote": "승인된 개발환경에서 잠금파일에 고정된 의존성을 설치하는 행위 자체에 매번 별도 신청을 요구하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-037",
+          "title": "회사 기기 소프트웨어 설치",
+          "section": "별도 검토가 필요한 설치",
+          "quote": "브라우저 확장·플러그인 또는 계정·페이지 내용을 읽거나 외부로 보내는 도구"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-037",
+          "title": "회사 기기 소프트웨어 설치",
+          "section": "별도 검토가 필요한 설치",
+          "quote": "이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 배포 주소, 업무 목적, 필요한 권한·자료 접근, 비용을 적는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-037",
+          "title": "회사 기기 소프트웨어 설치",
+          "section": "별도 검토가 필요한 설치",
+          "quote": "검토가 기록되기 전 설치하거나 실제 자료를 연결하지 않는다."
+        }
+      ]
+    },
+    {
+      "id": "H07",
+      "question": "재택근무 중 회사 자료를 출력해도 돼? 불가피한 경우와 폐기 방법도 알려줘.",
+      "category": "conditional_alternatives",
+      "intent_group": "selection_remote_printing",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Printing company documents at home is normally prohibited/not done.",
+        "If unavoidable, obtain security/privacy approval before printing and store the document locked with access limited to necessary people.",
+        "If storage/destruction method is not in the approval record, do not print and ask the responsible person.",
+        "Dispose by office secure-shred bin or approved safe pickup; not household waste or ordinary recycling."
+      ],
+      "critical_required": [
+        "Prior approval before print and no print if storage/destruction method is unspecified.",
+        "Do not dispose of company output in household waste/recycling."
+      ],
+      "optional": [
+        "Keep access limited to people who need the document."
+      ],
+      "forbidden": [
+        "Treat printing as generally allowed or use ordinary home disposal."
+      ],
+      "major_forbidden": [
+        "Invent permission or say approval is unnecessary."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "conditional_branches",
+        "target": "Separate the default prohibition from the conditional exception and disposal options; do not turn alternative disposal methods into serial steps.",
+        "pass": "Default, precondition, and alternative disposal paths are distinct.",
+        "partial": "The exception is stated but one condition is hard to locate.",
+        "fail": "Presents printing as allowed without prior approval or mandates both disposal alternatives."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-011",
+          "title": "재택근무 중 정보보호",
+          "section": "출력물과 자료 보관",
+          "quote": "재택 중 회사 문서의 출력은 원칙적으로 하지 않는다. 업무상 불가피하게 출력해야 하면 출력 전에 보안·개인정보 담당자의 승인을 받고, 문서를 잠금 보관하며 필요한 사람만 접근하게 한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-011",
+          "title": "재택근무 중 정보보호",
+          "section": "출력물과 자료 보관",
+          "quote": "보관·파쇄 방법이 승인 기록에 명시되지 않았다면 출력하지 말고 담당자에게 확인한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-011",
+          "title": "재택근무 중 정보보호",
+          "section": "출력물과 자료 보관",
+          "quote": "사용한 출력물은 첫 사무실 방문 때 보안 파쇄함에 넣거나, 승인된 경우 IT운영팀·총무 담당자에게 안전한 회수·파쇄를 요청한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-011",
+          "title": "재택근무 중 정보보호",
+          "section": "출력물과 자료 보관",
+          "quote": "가정용 쓰레기나 일반 재활용으로 버리지 않는다."
+        }
+      ]
+    },
+    {
+      "id": "H08",
+      "question": "거래처가 7만원짜리 식사를 제안했어. 회사 신고 절차와 법적으로 허용되는 금액을 알려줘.",
+      "category": "partial_answer_and_unknown",
+      "intent_group": "selection_external_meal_legal_limit",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "State that the company sets no blanket permitted amount and even a low-value offer should be reported if it may affect or appear to affect impartial judgment.",
+        "Before accepting/attending, report through 이음 포털 인사 > 외부 혜택 신고 with provider, purpose/content, date, and related transaction/evaluation; do not accept while review is pending.",
+        "Explain that the exact applicable legal/national limit is not supplied and requires a separate People-team legal review.",
+        "Company reporting does not waive legal or contract restrictions."
+      ],
+      "critical_required": [
+        "Do not invent a numeric legal threshold or imply internal reporting removes legal restrictions.",
+        "Do not accept while review is pending."
+      ],
+      "optional": [
+        "Mention review by team lead and People team."
+      ],
+      "forbidden": [
+        "Say a 70,000 KRW meal is automatically allowed or prohibited by a made-up law limit."
+      ],
+      "major_forbidden": [
+        "Fabricate legal advice or promise internal reporting legalizes acceptance."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "supported_part_plus_unknown",
+        "target": "Answer company procedure directly, then clearly isolate the unavailable jurisdiction-specific legal limit and its referral.",
+        "pass": "Supported company facts and unknown legal detail are distinguished without refusing the whole request.",
+        "partial": "The supported process is right but the unknown legal question is vague.",
+        "fail": "Invents a legal limit or refuses the supported company procedure."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-045",
+          "title": "외부 선물과 접대 제안 처리",
+          "section": "대상과 기본 원칙",
+          "quote": "업무 판단의 공정성이나 외관에 영향을 줄 수 있으면 금액이 작아 보여도 신고한다. 이음웍스는 일괄 허용 금액을 정하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-045",
+          "title": "외부 선물과 접대 제안 처리",
+          "section": "사전 신고와 이미 전달된 물품",
+          "quote": "받거나 참석하기 전에 이음 포털의 **인사 > 외부 혜택 신고**에 제공자, 제안 내용·목적, 예정 날짜와 관련 거래·평가 업무를 기록한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-045",
+          "title": "외부 선물과 접대 제안 처리",
+          "section": "사전 신고와 이미 전달된 물품",
+          "quote": "신청 상태가 검토 중이면 수락하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-045",
+          "title": "외부 선물과 접대 제안 처리",
+          "section": "대상과 기본 원칙",
+          "quote": "회사 신고만으로 적용될 수 있는 법률·계약상 제한이 해제되는 것은 아니다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-045",
+          "title": "외부 선물과 접대 제안 처리",
+          "section": "검토와 후속 변경",
+          "quote": "공직자나 특정 계약에 적용될 수 있는 국가별 제한은 내부 승인이 아니라 People팀의 별도 법률 검토 대상이다."
+        }
+      ]
+    },
+    {
+      "id": "H09",
+      "question": "집에서 키우는 강아지를 위한 간식 레시피를 알려줘.",
+      "category": "out_of_scope_general_knowledge",
+      "intent_group": "selection_pet_recipe_scope",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Briefly state that the assistant is for Ieumworks company work information, rules/procedures, and company-documented work tools.",
+        "Decline the pet-recipe request without answering it.",
+        "Keep the response brief and direct; no unsupported company-policy claim."
+      ],
+      "critical_required": [
+        "Do not provide the out-of-scope recipe."
+      ],
+      "optional": [
+        "Offer a concise invitation to ask a company-work question."
+      ],
+      "forbidden": [
+        "Provide a pet recipe or claim company documents cover general personal topics."
+      ],
+      "major_forbidden": [
+        "Invent a company policy about pet care."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "brief_scope_redirect",
+        "target": "A short paragraph; no bullets, heading, or table.",
+        "pass": "Brief scope boundary and redirect, without recipe content.",
+        "partial": "Correct refusal but somewhat overexplains or sounds instruction-facing.",
+        "fail": "Answers the recipe or uses a long structured format."
+      },
+      "evidence": [
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "사내비는 제공된 문서를 바탕으로 정보를 안내하며, 실제 신청·변경·취소·승인이나 개인별 상태 조회를 수행하지 않습니다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/profiles.py",
+          "quote": "사내비는 이음웍스의 사내 업무 정보·규정·절차와 회사 문서에 설명된 업무 도구·기술의 사용을 안내합니다. 회사 업무와 관계없는 일반 지식 강의·조리법·오락 요청에는 자료가 없다고 설명하지 말고, '이음웍스의 사내 업무 정보와 절차를 안내하는 서비스라 해당 일반 지식 설명은 도와드리기 어렵습니다'처럼 서비스 범위를 짧게 알리고 관련 업무 질문을 유도하세요."
+        }
+      ]
+    },
+    {
+      "id": "H10",
+      "question": "승인이 안 되고 있는데 어떻게 해야 해?",
+      "category": "ambiguous_work_context",
+      "intent_group": "selection_unspecified_approval_context",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Ask which request/process is awaiting approval and what status or error is shown.",
+        "Do not assume the request is leave, travel, purchase, access, or deployment.",
+        "Avoid requiring sensitive personal/customer details; ask only what is needed to identify the process."
+      ],
+      "critical_required": [
+        "Ask a focused clarification instead of asserting an ungrounded route."
+      ],
+      "optional": [
+        "Mention the user can provide the request category and visible status."
+      ],
+      "forbidden": [
+        "Invent a process, approver, delay deadline, or status.",
+        "Tell the user to bypass or resubmit blindly."
+      ],
+      "major_forbidden": [
+        "Claim to inspect an individual live approval status."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "single_clarifying_question",
+        "target": "One concise question or a short two-part clarification; no procedure list.",
+        "pass": "The ambiguity is resolved with a focused, non-sensitive clarification.",
+        "partial": "Asks for clarification but is broad or burdensome.",
+        "fail": "Assumes the workflow or claims access to live status."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-027",
+          "title": "시스템 접근 권한 신청과 회수",
+          "section": "신청과 처리",
+          "quote": "팀장은 업무 필요를 확인한다. 해당 시스템 담당자는 역할 범위와 기술 조건을 검토하고, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자 및 보안·개인정보 담당자의 확인도 받는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-027",
+          "title": "시스템 접근 권한 신청과 회수",
+          "section": "신청과 처리",
+          "quote": "필수 확인이 끝나면 IT운영팀은 2영업일 안에 계정을 처리하거나 지연 사유를 포털에 남긴다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "사내비는 제공된 문서를 바탕으로 정보를 안내하며, 실제 신청·변경·취소·승인이나 개인별 상태 조회를 수행하지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "H11",
+      "question": "배포 뒤 핵심 기능이 멈추고 데이터가 사라졌을 가능성이 있어. 15분이 지나도 당직자가 인수하지 않았는데 롤백하고 고객에게 공지해도 돼?",
+      "category": "composite_incident_response",
+      "intent_group": "selection_p1_postdeploy_data_loss",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Treat service/core-function interruption or possible data loss as P1 immediately, even if scope is uncertain; alert #service-incident without waiting.",
+        "Report immediately rather than waiting for acknowledgement. If the on-call person has not accepted within 15 minutes, contact the team-lead fallback; 15 minutes is an acknowledgement target, not a reason to delay initial reporting.",
+        "Do not perform rollback unless the incident commander approves the emergency change; use an approved automation or runbook as the method. Record the target/affected service and data, rollback condition, and verification before if possible, or promptly after stabilization if urgency prevents it.",
+        "Customer notice is sent by designated Customer Support through the official channel; state confirmed impact, unknowns, and next update target. For P1, the update goal is every 30 minutes; this is an operational goal, not a contractual SLA.",
+        "Do not declare resolved until customer impact stops, core flow works, data has no unresolved issue, and recurrence signs are checked."
+      ],
+      "critical_required": [
+        "Immediate P1 routing and team-lead fallback on missed acknowledgement.",
+        "No unauthorized rollback; use approval/runbook and verify data/service before resolution.",
+        "No invented customer SLA or premature resolution claim."
+      ],
+      "optional": [
+        "Maintain separate security incident path if exposure/unauthorized access is also suspected."
+      ],
+      "forbidden": [
+        "Wait passively for 15 minutes before raising incident.",
+        "Perform rollback without approved authority or promise a resolution time."
+      ],
+      "major_forbidden": [
+        "Claim data restored/resolved or make an unauthorized rollback instruction."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "incident_timeline_and_branches",
+        "target": "Make P1 action immediate, 15-minute non-ack fallback separate, rollback authorization gate explicit, and customer communication/closure a later step.",
+        "pass": "Immediate incident routing and approval constraints are not confused with later recovery/updates.",
+        "partial": "Main incident handling is correct but one condition/goal is hard to distinguish.",
+        "fail": "Waits before reporting, recommends unauthorized rollback, or declares unverified recovery."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "심각도 분류",
+          "quote": "서비스 전체 또는 핵심 기능이 중단됐거나, 데이터 손실 가능성이 있다. 영향 범위가 아직 불명확해도 핵심 흐름을 사용할 수 없거나 손실 징후가 보이면 우선 P1로 시작한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "발견과 호출",
+          "quote": "발견자는 시간, 기능, 관찰한 증상, 현재 영향을 기록해 `#service-incident`에 알린다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "심각도 분류",
+          "quote": "시간과 관계없이 즉시 서비스 당직에 연락한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "발견과 호출",
+          "quote": "당직자가 수락하지 않으면 기다리기만 하지 말고 팀장 대체 경로로 연락한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "발견과 호출",
+          "quote": "당직자에게 호출을 보낸 뒤 **15분 안에 수락 확인을 받는 것을 인계 목표**로 한다. 이는 응답 SLA 보증이 아니다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "심각도 분류",
+          "quote": "고객지원팀은 최초 공지와 이후 상태 공지를 포함해 **30분 간격 갱신 목표**로 안내한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-068",
+          "title": "배포·실패·롤백 안내",
+          "section": "긴급 변경",
+          "quote": "이 경우 **사고 지휘자**가 긴급 사유와 범위를 확인하고 승인하며, 제품개발팀이 영향을 평가한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-068",
+          "title": "배포·실패·롤백 안내",
+          "section": "배포와 정상 확인",
+          "quote": "배포는 해당 저장소·서비스가 승인한 자동화나 runbook에 적힌 방법으로만 수행한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-068",
+          "title": "배포·실패·롤백 안내",
+          "section": "긴급 변경",
+          "quote": "긴급 변경 전에 가능하면 변경 대상, 실행 담당자, 영향을 받는 서비스·데이터, 되돌리기 조건과 검증 방법을 기록한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-068",
+          "title": "배포·실패·롤백 안내",
+          "section": "긴급 변경",
+          "quote": "급박해서 일부 항목을 미리 적지 못했다면 안정화 후 지체 없이 기록하고 독립 리뷰·검사를 보완한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "고객 공지",
+          "quote": "외부 공지는 고객지원팀의 지정 담당자가 계약·제품에서 안내한 공식 고객 채널을 통해 전달한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "안정화와 종료 확인",
+          "quote": "고객 영향이 멈췄는지, 핵심 흐름이 정상인지, 데이터 상태에 미해결 확인이 없는지, 재발 징후가 없는지를 확인한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-069",
+          "title": "서비스 장애와 고객 공지",
+          "section": "심각도 분류",
+          "quote": "목표 시간은 회사의 운영 목표이지 계약상 SLA 보증이 아니다."
+        }
+      ]
+    },
+    {
+      "id": "H12",
+      "question": "사무실 화재 경보가 울렸고 한 명이 다쳤으며 동료 한 명이 보이지 않아. 무엇을 먼저 해야 해?",
+      "category": "composite_incident_response",
+      "intent_group": "selection_fire_missing_person_injury",
+      "exposure": "new AI-authored fixed case; not previously observed",
+      "required": [
+        "Prioritize evacuation and on-scene instructions; do not delay evacuation for internal reporting or belongings.",
+        "Call 119 for fire/rescue needs within the bounds of not delaying evacuation.",
+        "At a safe location, account for people and tell rescuers the missing person’s last known location.",
+        "Do not re-enter until firefighters or actual building management explicitly confirm safety and direct re-entry.",
+        "Do not send someone back into the building to search."
+      ],
+      "critical_required": [
+        "Evacuate; do not re-enter/search; 119 as urgent rescue path; share last known location with rescuers from safe area."
+      ],
+      "optional": [
+        "After immediate safety, follow facility reporting and notify the team."
+      ],
+      "forbidden": [
+        "Tell the user to search inside or re-enter before explicit safety confirmation.",
+        "Prioritize internal reporting over emergency services."
+      ],
+      "major_forbidden": [
+        "Advise actions that expose people to immediate danger."
+      ],
+      "common_readability_rubric": {
+        "axis": "common_readability",
+        "pass": "A user can quickly find the answer and distinguish separate topics at the response length. Wording is direct and polite. Markdown is not required for a short answer.",
+        "partial": "Mostly understandable, but one meaningful idea is hard to find, unnecessarily dense, or needlessly split.",
+        "fail": "The response is materially difficult to scan, buries the requested answer, or combines distinct topics in a confusing way.",
+        "not_scored_by_markdown_alone": true
+      },
+      "structure_rubric": {
+        "kind": "safety_ordered_actions",
+        "target": "Clear immediate safety sequence: evacuate, contact emergency services, account at safe place/share last location, prohibit re-entry pending explicit clearance.",
+        "pass": "Safety-critical order and no-reentry condition are clear.",
+        "partial": "Core safety advice is present but one key action is hard to find.",
+        "fail": "Advises re-entry/search or delays urgent rescue response."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-048",
+          "title": "화재 경보와 비상 대피",
+          "section": "화재 경보와 비상 대피",
+          "quote": "대피를 늦추지 않는 범위에서 119에 화재나 구조 필요를 알린다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-048",
+          "title": "화재 경보와 비상 대피",
+          "section": "긴급 연락과 인원 확인",
+          "quote": "안전한 장소에 도착한 뒤 팀장은 가능한 출석·방문 기록으로 동행자의 안전을 확인하고, 확인되지 않은 사람이 있으면 마지막으로 알려진 위치를 구조자에게 알린다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-048",
+          "title": "화재 경보와 비상 대피",
+          "section": "긴급 연락과 인원 확인",
+          "quote": "사람을 찾으러 건물 안으로 되돌아가지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-048",
+          "title": "화재 경보와 비상 대피",
+          "section": "긴급 연락과 인원 확인",
+          "quote": "소방관 또는 실제 건물 관리자가 안전을 확인하고 재입장을 명시적으로 안내하기 전에는 건물로 돌아가지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-048",
+          "title": "화재 경보와 비상 대피",
+          "section": "긴급 연락과 인원 확인",
+          "quote": "위급 시 회사 내부 보고보다 119 등 지역 긴급 지원이 우선한다."
+        }
+      ]
+    }
+  ]
+}

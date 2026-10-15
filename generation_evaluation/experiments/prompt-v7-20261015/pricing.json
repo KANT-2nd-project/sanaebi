@@ -1,0 +1,9 @@
+{
+  "source_url": "https://developers.openai.com/api/docs/pricing",
+  "checked_at": "2026-10-15",
+  "provider": "openai",
+  "model_name": "gpt-6-luna",
+  "input_usd_per_million": 0.25,
+  "output_usd_per_million": 0.75,
+  "estimation_note": "Standard long-context cache-write input rate used conservatively for all input; output long-context rate. No cache discounts. Estimates are not invoices or mathematical upper bounds. Official standard long-context input 0.20, cached input 0.02, cache writes 0.25, output 0.75 USD per million."
+}
