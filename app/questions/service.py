@@ -48,11 +48,24 @@ def handle_classified_question(
         if label != "SEARCH_KNOWLEDGE":
             raise ValueError("분류기가 허용되지 않은 라벨을 반환했습니다.")
 
-        documents = read_documents()
-        if not documents.documents:
-            return QuestionResult(
-                text="현재 확인 가능한 회사 문서가 없어 답변하기 어렵습니다."
-            )
+    return answer_question_with_documents(
+        question, read_documents=read_documents, answer=answer
+    )
+
+
+def answer_question_with_documents(
+    question: str,
+    *,
+    read_documents: DocumentReader,
+    answer: Answerer,
+) -> QuestionResult:
+    """한 번 스냅샷을 읽고, 문서가 있을 때만 답변기를 호출한다."""
+    documents = read_documents()
+    if not documents.documents:
+        return QuestionResult(
+            text="현재 확인 가능한 회사 문서가 없어 답변하기 어렵습니다."
+        )
+
     answer_text = answer(question, documents)
 
     return QuestionResult(text=answer_text)
