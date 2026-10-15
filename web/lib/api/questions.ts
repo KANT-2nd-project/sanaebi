@@ -1,6 +1,6 @@
 import type { AnswerResponse, QuestionErrorKind } from "../../features/question/types";
 
-export const QUESTION_TIMEOUT_MS = 35_000;
+export const QUESTION_TIMEOUT_MS = 240_000;
 
 export class QuestionError extends Error {
   constructor(public readonly kind: QuestionErrorKind, message: string) {
@@ -58,14 +58,16 @@ export async function askQuestion(
       throw invalidResponse();
     }
     if (signal.aborted || timedOut) throw invalidResponse();
-    if (![200, 422, 502].includes(response.status)) {
+    if (![200, 422, 502, 503].includes(response.status)) {
       throw new QuestionError("request", "요청을 처리하지 못했어요. 잠시 후 다시 시도해주세요.");
     }
     if (!isAnswerResponse(value)) throw invalidResponse();
     if (response.status === 200 && value.ok && value.text.trim()) return value.text;
-    if ((response.status === 422 || response.status === 502) &&
+    if ((response.status === 422 || response.status === 502 || response.status === 503) &&
         !value.ok && value.text === "" && value.reason.trim()) {
-      throw new QuestionError(response.status === 422 ? "validation" : "generation", value.reason);
+      const kind = response.status === 422 ? "validation"
+        : response.status === 502 ? "generation" : "unavailable";
+      throw new QuestionError(kind, value.reason);
     }
     throw invalidResponse();
   } catch (error) {

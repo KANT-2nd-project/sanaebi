@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { askQuestion } from "../../tmp/frontend-unit-tests/lib/api/questions.js";
+import { askQuestion, QUESTION_TIMEOUT_MS } from "../../tmp/frontend-unit-tests/lib/api/questions.js";
 
 test("question JSON만 전송하고 검증된 본문을 반환한다", async (t) => {
   t.mock.method(globalThis, "fetch", async (url, options) => {
@@ -22,6 +22,14 @@ for (const [status, kind] of [[422, "validation"], [502, "generation"]]) {
     await assert.rejects(askQuestion("질문", signal()), { kind, message: "안전한 안내" });
   });
 }
+test("분류·문서 준비 실패 503은 서버의 안전한 안내를 보존한다", async (t) => {
+  t.mock.method(globalThis, "fetch", async () => Response.json(
+    { ok: false, text: "", reason: "분류 서비스를 준비하지 못했습니다." }, { status: 503 },
+  ));
+  await assert.rejects(askQuestion("질문", signal()), {
+    kind: "unavailable", message: "분류 서비스를 준비하지 못했습니다.",
+  });
+});
 for (const body of [null, [], {}, { ok: true, text: null, reason: "" },
   { ok: true, text: "   ", reason: "" }, { ok: false, text: "", reason: "내부 오류" },
   { ok: true, text: "답변" }]) {
@@ -73,6 +81,9 @@ test("시간 초과는 fetch를 중단하고 재호출하지 않는다", async (
   }));
   await assert.rejects(askQuestion("질문", signal(), 10), { kind: "timeout" });
   assert.equal(count, 1);
+});
+test("웹의 기본 답변 대기 한도는 240초다", () => {
+  assert.equal(QUESTION_TIMEOUT_MS, 240_000);
 });
 test("화면 이탈 취소는 timeout과 구분한다", async (t) => {
   const controller = new AbortController();

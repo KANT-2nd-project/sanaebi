@@ -23,7 +23,7 @@ export default function nextConfig(phase: string): NextConfig {
     experimental: {
       // Avoid restoring stale CSS transforms across development restarts.
       turbopackFileSystemCacheForDev: false,
-      proxyTimeout: 30_000,
+      proxyTimeout: 210_000,
     },
     async rewrites() {
       return [{ source: "/api/:path*", destination: "http://127.0.0.1:8000/:path*" }];
