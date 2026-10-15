@@ -1,0 +1,33 @@
+{"event": "run_started", "maximum_generation_attempts": 16, "reserved_upper_usd": 1.1751694999999998}
+{"slot": "R01:examples_answer_scope_v5", "attempt": 1, "event": "started", "reserved_usd": 0.07319875}
+{"slot": "R01:examples_answer_scope_v5", "attempt": 1, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.01469525}
+{"slot": "R01:examples_answer_scope_v6", "attempt": 2, "event": "started", "reserved_usd": 0.0736725}
+{"slot": "R01:examples_answer_scope_v6", "attempt": 2, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.01486}
+{"slot": "R02:examples_answer_scope_v6", "attempt": 3, "event": "started", "reserved_usd": 0.0736785}
+{"slot": "R02:examples_answer_scope_v6", "attempt": 3, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.01469475}
+{"slot": "R02:examples_answer_scope_v5", "attempt": 4, "event": "started", "reserved_usd": 0.07320475}
+{"slot": "R02:examples_answer_scope_v5", "attempt": 4, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.0145795}
+{"slot": "R03:examples_answer_scope_v5", "attempt": 5, "event": "started", "reserved_usd": 0.07321175}
+{"slot": "R03:examples_answer_scope_v5", "attempt": 5, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.0149475}
+{"slot": "R03:examples_answer_scope_v6", "attempt": 6, "event": "started", "reserved_usd": 0.0736855}
+{"slot": "R03:examples_answer_scope_v6", "attempt": 6, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.01521425}
+{"slot": "R04:examples_answer_scope_v6", "attempt": 7, "event": "started", "reserved_usd": 0.0737175}
+{"slot": "R04:examples_answer_scope_v6", "attempt": 7, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.0148435}
+{"slot": "R04:examples_answer_scope_v5", "attempt": 8, "event": "started", "reserved_usd": 0.07324375}
+{"slot": "R04:examples_answer_scope_v5", "attempt": 8, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.014759}
+{"slot": "R05:examples_answer_scope_v5", "attempt": 9, "event": "started", "reserved_usd": 0.073209}
+{"slot": "R05:examples_answer_scope_v5", "attempt": 9, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.01488}
+{"slot": "R05:examples_answer_scope_v6", "attempt": 10, "event": "started", "reserved_usd": 0.07368275}
+{"slot": "R05:examples_answer_scope_v6", "attempt": 10, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.0149255}
+{"slot": "R06:examples_answer_scope_v6", "attempt": 11, "event": "started", "reserved_usd": 0.07367275}
+{"slot": "R06:examples_answer_scope_v6", "attempt": 11, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.01474625}
+{"slot": "R06:examples_answer_scope_v5", "attempt": 12, "event": "started", "reserved_usd": 0.073199}
+{"slot": "R06:examples_answer_scope_v5", "attempt": 12, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.014628}
+{"slot": "R07:examples_answer_scope_v5", "attempt": 13, "event": "started", "reserved_usd": 0.07320075}
+{"slot": "R07:examples_answer_scope_v5", "attempt": 13, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.0146905}
+{"slot": "R07:examples_answer_scope_v6", "attempt": 14, "event": "started", "reserved_usd": 0.0736745}
+{"slot": "R07:examples_answer_scope_v6", "attempt": 14, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.0147645}
+{"slot": "R08:examples_answer_scope_v6", "attempt": 15, "event": "started", "reserved_usd": 0.07369575}
+{"slot": "R08:examples_answer_scope_v6", "attempt": 15, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.0160645}
+{"slot": "R08:examples_answer_scope_v5", "attempt": 16, "event": "started", "reserved_usd": 0.073222}
+{"slot": "R08:examples_answer_scope_v5", "attempt": 16, "event": "finished", "status": "completed", "usage_known": true, "cost_upper_usd": 0.01611125}
