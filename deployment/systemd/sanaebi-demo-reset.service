@@ -1,0 +1,13 @@
+[Unit]
+Description=Reset Sanaebi disposable demo documents
+
+[Service]
+Type=oneshot
+User=@RUN_USER@
+WorkingDirectory=@PROJECT_ROOT@
+Environment=SANAEBI_DOCUMENT_DB=@DEMO_DATABASE@
+ExecStart=@PROJECT_ROOT@/.venv/bin/python @PROJECT_ROOT@/scripts/reset_demo_documents.py --source @BASELINE_SOURCE@ --database @DEMO_DATABASE@ --apply
+Restart=no
+UMask=0077
+TimeoutStartSec=5min
+NoNewPrivileges=true

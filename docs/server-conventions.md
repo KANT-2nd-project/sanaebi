@@ -43,7 +43,8 @@ app/
 │   ├── metadata.py          # 메타데이터 저장
 │   ├── context.py           # 게시 snapshot·출처
 │   ├── http.py              # 문서 HTTP 오류·입력 제한
-│   └── transfer.py          # 이관·내보내기
+│   ├── transfer.py          # 이관·내보내기
+│   └── reset.py             # 명시적 시연 DB 복원·백업
 ├── answering/
 │   ├── router.py            # 기존 /assistant
 │   ├── adapter.py           # 기존 LangChain 연동 함수
@@ -109,3 +110,5 @@ git diff --check
 ```
 
 구조·내부 계약·연결 상태가 바뀌면 이 문서를 함께 수정한다. 구현과 검증이 끝난 항목만 현재 상태로 기록하고 향후 설계와 구분한다. 작업별 실행 로그는 작업 일지에 둔다. 서비스 정책은 서비스 설계·API 테스트에도 반영하고 [문서 관리 가이드](documentation-guide.md)에 따라 Notion 요약을 갱신·재조회한다. 원격 미게시 파일을 게시 링크처럼 안내하지 않는다.
+
+시연용 자정 초기화는 별도 관리 명령과 systemd 타이머가 담당한다. 복원 트랜잭션·백업·오래된 요청 거부 정책은 [문서 관리 안내](document-management.md#공용-시연-문서-자정-초기화)를 따른다. HTTP 초기화 API는 제공하지 않는다.

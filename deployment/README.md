@@ -84,3 +84,47 @@ curl -i http://127.0.0.1:8080/api/ask \
 빌드에 `out/admin/documents.html`이 필요합니다. `/admin/documents/`는 query를 유지해 `/admin/documents`로 이동합니다. 새 `/api/documents`도 기존 API 중계를 사용하며 FastAPI가 해당 문서 요청에512KiB 제한을 적용합니다. 기존 nginx 본문 제한은 유지하며 HTML 형태의 nginx 오류는 프런트가 안전한 안내로 처리합니다.
 
 기본 SQLite는 `var/documents.sqlite3`, 경로 변경은 `SANAEBI_DOCUMENT_DB`를 사용합니다. [문서 관리·백업·이관 안내](../docs/document-management.md)를 따르세요. 인증 없는 로컬 가상 자료 범위이며 실제 사내 공유 배포는 지원하지 않습니다. 새 장비에서는 문서 관리 안내의 회사 지식 이관을 먼저 수행합니다. 서비스는 SQLite 게시본을 사용하며 DB 파일·WAL을 Git이나 정적 웹 빌드에 포함하지 않습니다.
+
+## 시연 문서 자정 초기화 (systemd)
+
+별도 상시 Linux 서버의 systemd에서 실행한다. 저장소에는 템플릿만 제공하며 **현재 서버 예약 활성화는 수행하지 않았다.** 매일 `Asia/Seoul` 00:00에 실행하며 서버가 꺼져 놓친 실행은 기동 직후 보충하지 않는다. 서버·타이머를 자정 이후 켰다면 다음 자정이 첫 실행이다. 초기화 의미와 복구 절차는 [문서 관리 안내](../docs/document-management.md#공용-시연-문서-자정-초기화)를 따른다.
+
+1. 서버의 프로젝트와 `.venv`를 `uv sync --locked`로 준비한다. 전용 비-root 실행 계정에 프로젝트·원본 읽기 권한과 시연 DB 디렉터리 쓰기 권한을 부여한다. 서버 시간 동기화와 `Asia/Seoul` 시간대 지원을 확인한다.
+2. 아래 서비스 템플릿을 설치 전에 편집한다. `@RUN_USER@`는 실행 계정, `@PROJECT_ROOT@`, `@BASELINE_SOURCE@`, `@DEMO_DATABASE@`는 각각 프로젝트·원본 JSONL·전용 시연 DB의 절대 경로다. 이 예시는 공백·개행·`%`가 없는 경로를 사용한다. 실제 값이 들어간 파일은 서버에만 보관한다.
+3. FastAPI의 실행 환경에도 같은 `SANAEBI_DOCUMENT_DB` 절대 경로를 지정한다. 실제 FastAPI 실행 설정과 서비스의 `--database` 값을 대조한다. 다른 로컬 DB를 초기화 대상으로 지정하지 않는다. DB가 없다면 해당 경로에 최초 이관 후 dry-run을 수행한다.
+
+```bash
+# 서버에서 프로젝트 루트 기준. 실제 설치 전에 경로·계정을 편집한다.
+cp deployment/systemd/sanaebi-demo-reset.service /tmp/sanaebi-demo-reset.service
+editor /tmp/sanaebi-demo-reset.service
+# 아래 세 경로는 편집한 서비스와 반드시 동일하게 교체한다.
+/absolute/project/.venv/bin/python /absolute/project/scripts/reset_demo_documents.py \
+  --source /absolute/project/data/company-knowledge/documents.jsonl \
+  --database /absolute/demo/documents.sqlite3
+
+systemd-analyze verify /tmp/sanaebi-demo-reset.service deployment/systemd/sanaebi-demo-reset.timer
+systemd-analyze calendar --iterations=2 '*-*-* 00:00:00 Asia/Seoul'
+sudo install -m 0644 /tmp/sanaebi-demo-reset.service /etc/systemd/system/sanaebi-demo-reset.service
+sudo install -m 0644 deployment/systemd/sanaebi-demo-reset.timer /etc/systemd/system/sanaebi-demo-reset.timer
+sudo systemctl daemon-reload
+sudo systemctl enable --now sanaebi-demo-reset.timer
+systemctl list-timers --all sanaebi-demo-reset.timer
+systemctl cat sanaebi-demo-reset.service sanaebi-demo-reset.timer
+```
+
+타이머는 `Persistent=false`, `AccuracySec=1s`, 무작위 지연 없음으로 설정한다. 재부팅 시 FastAPI가 초기화를 수행하지 않는다. 시스템 부하에 따른 실행 지연까지 없애는 실시간 실행 보장은 아니다. 서비스는 최대 5분, 자동 재시도 없이 동작하며 기본 파일 권한은 `UMask=0077`이다. 실패 시 journal과 DB 옆 백업 manifest를 함께 확인한다. 강제 종료나 결과 기록 오류는 성공으로 간주하지 말고 실제 DB 상태를 검사한다.
+
+```bash
+# 결과와 다음 실행 확인
+systemctl status sanaebi-demo-reset.service sanaebi-demo-reset.timer
+journalctl -u sanaebi-demo-reset.service --since today
+systemctl list-timers --all sanaebi-demo-reset.timer
+
+# 수동 초기화: 실제 시연 데이터가 복원되므로 실행 시점을 조율한다.
+sudo systemctl start sanaebi-demo-reset.service
+
+# 예약 중지: 이미 실행 중인 서비스까지 취소하는 명령은 아니다.
+sudo systemctl disable --now sanaebi-demo-reset.timer
+```
+
+최초 실제 실행 후 journal의 `status=success`, 백업 존재, 기준 문서 수·게시 snapshot, 제거된 시연 문서와 오래된 편집 요청의 동작을 확인한다. 서비스 설치와 무관하게 프런트에는 자정 초기화 안내가 표시되므로, 공개 시연 전에 타이머 활성화까지 완료한다.

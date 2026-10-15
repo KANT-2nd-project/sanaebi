@@ -119,6 +119,44 @@ DB가 다른 버전이거나 저장 불가능하면 오류를 확인하고 무�
 
 현재 로컬 `/ask`는 요구하는 분류 모델 파일이 없어 503이다. 분류기를 거치지 않는 독립 Ollama 호출에서는 같은 71건 snapshot의 입력이 66,652토큰으로 측정되어 현재 `num_ctx=40960`을 초과해 400으로 실패했다. 본문은 절단하지 않았고 모델 설정을 변경하지 않았다. 관리·공급 연결과 실제 답변 생성 성공을 구분해야 하며, 모델 준비·전체 문맥 처리 방식은 후속 결정이 필요하다. 상세 증거는 [전환 작업 기록](worklogs/2026-10-14-sqlite-documents.md)에 둔다. UI/UX 게시 전 재검증에서도 같은 분류 모델 부재와 문맥 한도 오류가 확인됐다. 화면·접근성 검사와 미검증 기기 조건은 [UI/UX 작업 기록](worklogs/2026-10-14-document-management-ux.md)을 따른다.
 
+## 공용 시연 문서 자정 초기화
+
+시연 전용 DB를 저장소의 `data/company-knowledge/documents.jsonl` 기준으로 매일 한국 시간 00:00에 복원하는 관리 명령을 제공한다. **예약 설정 파일을 설치·활성화해야 실행된다.** 서버 시작 시에는 초기화하지 않으며 공개 초기화 API도 없다. 화면의 자정 안내는 이 예약 운영을 전제로 한다. 실제 서버 활성화 절차는 [배포 안내](../deployment/README.md#시연-문서-자정-초기화-systemd)를 따른다.
+
+```bash
+uv run --locked python scripts/reset_demo_documents.py --database /absolute/demo/documents.sqlite3
+uv run --locked python scripts/reset_demo_documents.py --database /absolute/demo/documents.sqlite3 --apply
+```
+
+기본 실행은 원본과 DB를 메모리에서 검증하는 dry-run이다. `--apply`에서만 변경한다. `--source` 기본은 저장소 원본 JSONL, `--database` 기본은 `SANAEBI_DOCUMENT_DB` 또는 기존 로컬 DB 경로다. **예약 서비스에는 전용 시연 DB의 절대 경로를 반드시 명시한다.** 없는 DB를 자동 생성하지 않는다. 최초 준비는 기존 이관 명령을 사용한다.
+
+복원은 기준 자료 전체를 게시하고 추가 문서·수정 초안·중단 상태·기존 개정 및 이관 기록을 제거한다. 해당 기록은 초기화 전 DB 백업에 남는다. 원본 JSONL 파일은 변경하지 않는다. 배포 시 원본 자료가 변경되면 다음 초기화부터 새 자료가 적용되므로 배포 전에 dry-run으로 검증한다. 기준 문서의 관리 ID는 유지하고 `record_version`은 증가시킨다. 오래된 편집 요청은 409, 제거된 문서 조회는 404다. 이전 멱등 키도 남은 24시간 유효기간 동안 409로 거부하며 만료 시각을 연장하지 않는다. 충돌 시 입력을 보관한 뒤 최신 화면에서 새 요청으로 작성한다.
+
+DB별 프로세스 잠금과 SQLite 쓰기 트랜잭션으로 초기화를 직렬화한다. 다른 쓰기는 잠금 해제까지 대기하며 기존 DB 대기 한도를 넘기면 실패할 수 있다. 읽기는 부분 복원 상태를 보지 않으며 SQLite journal 모드에 따라 잠시 대기할 수 있다. 이미 확보한 snapshot으로 생성 중인 답변은 초기화 전 문서를 계속 사용하고 이후 질문부터 복원 자료를 사용한다. 자정 이후의 신규 작성은 다음 초기화까지 유지된다.
+
+백업은 DB 옆 `backups/demo-reset-<실행 ID>/`의 `database.sqlite3`, `source.jsonl`, `manifest.json`이다. SQLite backup API로 WAL 내용도 포함하고, 백업 실패·지원하지 않는 스키마·잘못된 자료·검증 실패에서는 복원 내용을 커밋하지 않는다. manifest에는 원본 해시, 시각, 건수, 백업 위치와 결과를 남긴다. 백업은 민감한 원문을 포함할 수 있으므로 전용 계정으로 보관하며 Git에 넣지 않는다. 자동 삭제하지 않으므로 운영자가 용량과 보존 기간을 관리한다. `.reset.lock` 파일은 정상 실행 뒤에도 남으며 파일 존재 자체는 실행 중이라는 뜻이 아니다. 잠금 파일을 수동 삭제하지 않는다.
+
+명령은 실패 시 비정상 종료하고 문서 내용 없이 오류 종류만 출력한다. 백업 디렉터리 생성 전 실패는 표준 오류에서 확인한다. `prepared` manifest 또는 커밋 뒤 manifest 기록 실패는 실행 결과가 불확실한 상태이므로 **실제 DB를 확인한 뒤** 재실행한다. 오류 메시지 원문이나 문서 본문은 journal에 남기지 않는다.
+
+### 백업 복구
+
+먼저 타이머와 FastAPI 및 DB에 쓰는 도구를 중지하고, 현재 DB·WAL·SHM을 별도 보존한다. 사용할 백업의 manifest와 `PRAGMA integrity_check`를 확인한다. SQLite backup API로 백업을 대상 DB에 복원하고 문서 수·게시 snapshot을 검사한 뒤 서비스를 재시작한다. 실행 중 DB 파일 덮어쓰기나 WAL 파일 임의 삭제는 하지 않는다. 필요한 시연 내용을 복구했다면 예약 초기화를 다시 켤 시점을 결정한다.
+
+```python
+# 모든 DB 사용 프로세스를 중지한 상태에서, 실제 절대 경로로 바꿔 실행한다.
+import sqlite3
+from contextlib import closing
+
+with closing(
+    sqlite3.connect("file:/absolute/backup/database.sqlite3?mode=ro", uri=True)
+) as source:
+    assert source.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+    with closing(sqlite3.connect("/absolute/demo/documents.sqlite3")) as target:
+        source.backup(target)
+        assert target.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+        assert not target.execute("PRAGMA foreign_key_check").fetchall()
+```
+
 ## 사용자 화면과 내부 안내의 경계
 
-인증·권한 검증 미제공, 로컬 시연 구성, 모델 준비 조건, 게시본 공급 연결 여부와 내부 ID·해시·이관 정보는 내부 문서/API에서 관리한다. 게시가 사람 검수 승인을 뜻하지 않는다는 해석도 내부 관리 기준이다. 화면에는 실제 검수 상태와 출처, 저장/게시/중단 결과를 표시한다. 미저장 입력 소실, 초안과 게시본의 차이는 사용자 행동에 영향을 주므로 안내를 유지한다. 오류가 발생하면 현재 작업의 실패와 복구 방법을 안내하며 구현 상태를 추측해 덧붙이지 않는다.
+인증·권한 검증 미제공, 로컬 시연 구성, 모델 준비 조건, 게시본 공급 연결 여부와 내부 ID·해시·이관 정보는 내부 문서/API에서 관리한다. 게시가 사람 검수 승인을 뜻하지 않는다는 해석도 내부 관리 기준이다. 화면에는 실제 검수 상태와 출처, 저장/게시/중단 결과를 표시한다. 매일 자정 초기화, 미저장 입력 소실, 초안과 게시본의 차이는 사용자 행동에 영향을 주므로 안내를 유지한다. 오류가 발생하면 현재 작업의 실패와 복구 방법을 안내하며 구현 상태를 추측해 덧붙이지 않는다.

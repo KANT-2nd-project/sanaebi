@@ -1,0 +1,12 @@
+[Unit]
+Description=Reset Sanaebi demo documents at midnight Korea time
+
+[Timer]
+OnCalendar=*-*-* 00:00:00 Asia/Seoul
+Persistent=false
+AccuracySec=1s
+RandomizedDelaySec=0
+Unit=sanaebi-demo-reset.service
+
+[Install]
+WantedBy=timers.target
