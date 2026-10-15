@@ -58,7 +58,7 @@ summaries = summarize_runs(runs)
 uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -v
 ```
 
-문서/프롬프트 식별과 전체 문서 배치 실행을 연결했고, 소수 문항의 속도·근거 품질을 검토했다. 다음은 답변 가능성·필수 근거 평가셋과 입력 예산 검사, 근거 추출/답변 분리 및 다른 모델 비교다. 최신 실측은 [속도·품질 일지](../docs/worklogs/2026-10-15-generation-tps-quality.md)를 따른다. 새 모듈은 아직 설치 패키지 목록에 포함하지 않았다. [생성 모듈](../generation/README.md), [품질 평가 기준](../docs/generation-evaluation.md), [이번 작업 기록](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)을 함께 따른다.
+문서/프롬프트 식별과 전체 문서 배치 실행을 연결했고, 소수 문항의 속도·근거 품질을 검토했다. 별도 selection 실행기에 답변 가능성·필수 근거 평가셋, 예산·재개, 근거 추출/답변 분리 및 두 모델 비교를 구현했다. 아래 독립 비교 절과 [선정 실험 기록](../docs/worklogs/2026-10-15-generation-selection.md)을 따른다. 기존 CLI와 서버 연결 상태는 별개다. 새 모듈은 아직 설치 패키지 목록에 포함하지 않았다. [생성 모듈](../generation/README.md), [품질 평가 기준](../docs/generation-evaluation.md), [이번 작업 기록](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)을 함께 따른다.
 
 ## 실행 입력 식별
 
@@ -129,6 +129,8 @@ uv run --locked --env-file /path/to/local/.env python -m generation_evaluation.s
   --ledger tmp/selection/budget.json --output tmp/selection/dev-gpt-baseline
 ```
 
-모든 후보는 같은 ledger를 사용한다. 프로필은 baseline/concise/examples, 전략은 single/evidence_first이다. `--start-repeat 2`와 새 output 경로로 선택 후보의 두 번째 회차를 실행한다. 같은 실행 명령의 재개는 이미 저장한 항목을 건너뛰며 입력·설정·코드 hash가 달라지면 거부한다. 시작 이벤트만 남은 호출은 비용/완료 여부를 수동 확인하기 전 자동 재호출하지 않는다.
+모든 후보는 같은 ledger를 사용한다. 프로필은 baseline/concise/examples, 전략은 single/evidence_first이다. `--start-repeat 2`와 새 output 경로로 선택 후보의 두 번째 회차를 실행한다. 같은 실행 명령의 재개는 이미 저장한 항목을 건너뛰며 입력·설정·코드 hash가 달라지면 거부한다. 시작 이벤트만 남은 호출은 비용/완료 여부를 수동 확인하기 전 자동 재호출하지 않는다. 재개는 원장의 고정 식별자와 기존 호출의 예약 이력도 확인하므로 새 원장으로 예산을 초기화할 수 없다. 원장을 옮길 때는 기존 실행을 멈추고 식별자·전체 이력을 함께 보존한다. 코드 hash가 다른 과거 실행은 당시 코드에서 재개한다.
 
 API 키와 실제 환경 파일, 원문 응답 전체는 `tmp/` 또는 별도 비공개 경로에 보관한다. 결과 보고서에는 필요한 응답 비교·판정·설정·hash·집계만 남긴다. 실험 결과를 기본 설정에 자동 적용하지 않는다.
+
+실제 후보 비교와 두 차례의 별도20문항 선정 결과는 [모델 선정 보고서](reports/2026-10-15-model-selection/README.md)에 모은다. 원응답·문항별 판정·근거·비용·반복 변동을 함께 보고, 기본값 승격 여부를 일반적인 서비스 정확도와 구분한다.
