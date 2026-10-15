@@ -150,7 +150,8 @@ class PublicDemoApiTests(unittest.TestCase):
         self.assertGreaterEqual(int(writes[5].headers["retry-after"]), 1)
 
     def test_daily_budget_counts_only_actual_generation_attempts(self):
-        fixed = self._ask("198.51.100.51", "CLARIFY")
+        with patch.dict(os.environ, {"SANAEBI_ROUTING_MODE": "gate"}):
+            fixed = self._ask("198.51.100.51", "CLARIFY", published_snapshot())
         self.assertEqual(fixed.status_code, 200)
 
         empty = self._ask(
@@ -168,6 +169,23 @@ class PublicDemoApiTests(unittest.TestCase):
         self.assertGreaterEqual(int(exhausted.headers["retry-after"]), 1)
         self.assertEqual(len(self.model_client.prompts), 1)
         self.assertEqual(set(exhausted.json()), {"ok", "text", "reason"})
+
+    def test_shadow_counts_generation_for_all_classification_labels(self):
+        with patch.dict(
+            os.environ,
+            {"SANAEBI_ROUTING_MODE": "shadow", "SANAEBI_DAILY_GENERATION_LIMIT": "2"},
+        ):
+            for ip, label in (
+                ("198.51.100.71", "CLARIFY"),
+                ("198.51.100.72", "UNSUPPORTED"),
+            ):
+                response = self._ask(ip, label, published_snapshot())
+                self.assertEqual(response.status_code, 200, response.text)
+            exhausted = self._ask(
+                "198.51.100.73", "SEARCH_KNOWLEDGE", published_snapshot()
+            )
+        self.assertEqual(exhausted.status_code, 429)
+        self.assertEqual(len(self.model_client.prompts), 2)
 
     def test_failed_provider_attempt_consumes_the_daily_budget(self):
         self.model_client.next_error = TimeoutError("private provider details")

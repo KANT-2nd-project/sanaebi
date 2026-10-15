@@ -3,7 +3,7 @@
     "provider": "openai",
     "model_name": "gpt-6-luna",
     "timeout_seconds": 180,
-    "max_output_tokens": 4096,
+    "max_output_tokens": 16384,
     "reasoning_effort": "xhigh",
     "output_mode": "prompt_json"
   }

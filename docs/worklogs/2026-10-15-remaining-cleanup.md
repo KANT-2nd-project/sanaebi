@@ -6,7 +6,7 @@ S4 후속 요청으로 Ollama 선택 설치, 직접 의존성 명시, 평가 검
 
 - [x] S5 선택 의존성·실행 계약 정리
 - [x] S6 테스트 배치·평가 검증 책임 분리
-- [ ] S7 이번 변경의 문서·검증·main·Notion 게시 — 로컬 검증 완료, 게시 확인 대기
+- [x] S7 이번 변경의 문서·검증·main·Notion 게시 — 저장 후 재조회 완료
 - [ ] S8 파일·캐시·모델 용량 정리 — 범위 제외
 
 C06·C08·C09·C10·C11을 요청 범위로 완료했다. C09는 기존 CLI·checkout 지원 유지 결정이며 wheel 지원 완료가 아니다. C12 repository는 검토 후 유지: helper의 주 소비자가 같은 모듈이고 SQL·상태 조합과 가까워 분리 이득이 작다. C13은 현재 안내의 정합성을 갱신했으며 과거 보고서·일지·실험 경로는 해당 커밋의 기록으로 보존한다. C14는 제외한다.
@@ -48,3 +48,11 @@ selection의 문항·rubric 입력 검증과 selection_report의 스키마·파�
 최신 main94eca80에서 별도 worktree와 refactor/remaining-cleanup-20261015 브랜치를 생성했다. 사용자 프런트 변경의 해시와 Git 상태를 확인했다. 병행 배포 작업의 PyTorch aarch64 설정은 해당 브랜치에 보존했으며 이번 정리에 임의로 가져오지 않았다. 병합 직전 최신 main을 다시 대조한다.
 
 사용자가 범위·설치 지원·완료 표시를 결정했고 AI가 구현·검증·문서화를 수행했다. 커밋은 Ollama 경계 ec72dd9, 의존성3fb1b0b, 검증 분리30e5737, 테스트 재배치77c0a81로 나눴다. 게시·외부 저장 확인은 완료 후 아래에 기록한다.
+
+## 게시·Notion·완료 표시 확인
+
+전용 브랜치 게시 후 최신 main94eca80과 재대조했고 main `0df58f67aa7c5bf3be573d4a30e382f1c8169ae3`에 병합·푸시해 원격 일치를 확인했다. 통합 후 기본 환경의 runtime145·generation113·evaluation147개 및 Ruff·lock 검사를 통과했다. 병행 배포 브랜치3e604d4의 aarch64 PyTorch 설정은 해당 브랜치에 그대로 보존했다.
+
+Notion [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7), [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b), [기존 생성 일지](https://www.notion.so/3f905a3cdadc8146a9bbedb690ab5ecf)에 이번 완료 구역을 추가했다. 저장 직전 읽기·저장 후 핵심 내용과 Git 링크3개 재조회를 완료했다. 그 사이 추가된 routing-shadow 기록을 포함해 기존 본문·속성을 보존했다.
+
+원래 tmp 조사 폴더의 구현 계획·상태표에 S5·S6·이번 S7 완료를 체크했다. 최초 조사 자료는 유지했고 C04·C12는 검토 후 유지, C14/S8은 제외로 구분했다. 이번 요청 범위의 미완료 항목은 없다.

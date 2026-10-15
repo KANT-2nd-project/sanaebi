@@ -164,3 +164,7 @@ run_case는 기본 examples_answer_scope_v3을 사용하며 keyword-only prompt_
 현재 selection의 문항·rubric 검증은 `selection_validation`, 보고서의 schema·정규화·파생값 처리는 `selection_report_validation`에서 담당한다. 실행·예산·resume·파일 기록은 selection에, 집계·순위는 기존 `selection_report.summarize`에 유지한다. 이 모듈들은 manifest 코드 해시에 포함하며 이전 결과의 코드 불일치 resume를 허용하지 않는다.
 
 전체·영역별 테스트 명령과 책임은 [테스트 안내](../tests/README.md)를 따른다. 과거 실험의 명령·경로는 해당 고정 커밋을 기준으로 재현한다.
+
+## 분류 정책 종단 비교
+
+[고정40문항](benchmarks/routing-shadow-20261015/README.md)과 [보고서](reports/2026-10-15-routing-shadow/README.md)는 독립 생성 배치와 구분한다. `scripts/evaluate_routing_policy.py`가 격리된 기존 ASGI 앱의 `/ask`를 호출해 분류·문서 공급·생성을 포함한 전체 요청을 비교한다. 실험 실행기는 기본값을 자동 전환하지 않는다. 이후 사용자 결정에 따른 shadow 채택과 main 통합은 [통합 기록](../docs/worklogs/2026-10-15-merge-shadow-main.md)을 따른다. 실행·재개 방법과 한도는 보고서를 따른다.

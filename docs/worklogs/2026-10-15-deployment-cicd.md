@@ -1,6 +1,6 @@
 # 공개 시연 배포·CI/CD 구현 기록
 
-최신 main `55a060c06d8577f65c0a0b4615927f92892d8e82`에서 별도 `feat/deployment-cicd-20261015` worktree를 구성했다. 기존 기능 브랜치 전체를 병합하지 않고 사용자 미커밋 웹 변경을 복사해 검증 대상으로 포함했다. 원래 worktree·학습 결과는 보존한다.
+시작 시점 main `55a060c06d8577f65c0a0b4615927f92892d8e82`에서 별도 `feat/deployment-cicd-20261015` worktree를 구성했다. 기존 기능 브랜치 전체를 병합하지 않고 사용자 미커밋 웹 변경을 복사해 검증 대상으로 포함했다. 원래 worktree·학습 결과는 보존한다.
 
 ## 검증 진행 상태
 
@@ -17,3 +17,5 @@
 
 - [ARM64 측정 원자료](evidence/2026-10-15-arm64-runtime.json): 저장 예측 133/133 일치, cold 571.9ms, warm 평균 105.237ms, peak RSS 912601088 bytes. mock 동시 요청 1·2 모두 초과 429 즉시 반환. 실제 유료 생성 부하를 의미하지 않는다.
 - 독립 검토로 최초 배포 rollback, ContextVar, 운영 로그, DB mount 격리, 강제 종료 복구, nginx activation 재시도 문제를 발견하고 보완했다. 배포·reset 관련 34개 테스트 통과.
+
+- 사용자 확인에 따라 main `2070dc6`까지 통합했다. `shadow` 기본값과 Luna 출력 한도 16,384를 포함하며 shadow의 CLARIFY·UNSUPPORTED 생성에도 실제 호출 예산이 적용됨을 회귀 검증했다. 관련 39개 테스트와 Ruff 검사 통과.

@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "RSH-001",
+      "question": "우리 회사 연차 규정에 대해 알려줘",
+      "category": "business_guidance",
+      "provenance": "known_regression",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-002",
+      "question": "우리 회사 연차 규정에 대해 알려주세요.",
+      "category": "business_guidance",
+      "provenance": "known_regression",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-003",
+      "question": "고객 정보가 든 메일을 잘못 보냈을 때 개인정보 사고 신고와 수신자 대응 절차를 알려주세요.",
+      "category": "business_guidance",
+      "provenance": "known_regression",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-004",
+      "question": "김치찌개 만드는 법 알려줘",
+      "category": "out_of_scope",
+      "provenance": "known_regression",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-005",
+      "question": "일반 근무자의 하루 근무 시간과 점심 휴게시간은 어떻게 정해져 있나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-006",
+      "question": "출근이 늦을 것 같으면 팀장에게 어떤 정보를 언제 알려야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-007",
+      "question": "형제자매 사망으로 경조휴가를 쓰면 회사 기준 일수와 사용 시한이 어떻게 되나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-008",
+      "question": "승인된 정기 재택근무는 주 몇 일까지이고 언제 신청해야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-009",
+      "question": "이름을 가린 고객자료는 자동으로 사내 전용으로 분류해도 되나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-010",
+      "question": "자리를 비울 때 회사 노트북 화면을 어떻게 잠가야 하고, 잠금이 작동하지 않으면 어떻게 해야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-011",
+      "question": "사용자 휴지통에서 비운 회사 파일은 관리자가 복구할 수 있나요? 복구 기간과 한계도 알려주세요.",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-012",
+      "question": "사무실 출입 카드가 작동하지 않을 때 어떤 경로로 신고하고 무엇을 피해야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-013",
+      "question": "회사 안내문을 공개 웹사이트에 게시하기 전에 누구의 검토와 승인을 받아야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-014",
+      "question": "개발 프로젝트에 새 패키지나 유료 외부 서비스를 추가할 때 확인할 검토·승인은 무엇인가요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-015",
+      "question": "소회의실은 며칠 전에 어디서 예약하고, 사용 후에는 무엇을 정리해야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "added"
+    },
+    {
+      "id": "RSH-016",
+      "question": "출입 카드를 분실하면 몇 분 안에 어디로 신고해야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-017",
+      "question": "내년 해외 출장의 1박 숙박 한도와 예약 승인 절차는 어떻게 되나요?",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-018",
+      "question": "개인정보 사고가 나면 고객이나 기관에 몇 시간 안에 통지해야 하나요?",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-019",
+      "question": "특정 고객 계약서에 정한 최초 문의 응답 SLA가 몇 시간인지 알려주세요.",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-020",
+      "question": "회사 구매·세무·회계 기록은 몇 년 동안 보관해야 하나요?",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-021",
+      "question": "2026년 연말 전사 휴무 일정과 회사 지정 휴일은 언제인가요?",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-022",
+      "question": "회사의 연말 성과급 지급 시기와 산정 기준을 알려주세요.",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-023",
+      "question": "부모님을 돌보기 위해 쓸 수 있는 유급 가족돌봄 휴가 일수와 신청 절차가 있나요?",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-024",
+      "question": "이번 주 토요일 연장근무가 필요할 것 같습니다. 어디에 어떤 내용을 언제까지 신청해야 하나요?",
+      "category": "partial_or_insufficient",
+      "provenance": "new_ai_authored",
+      "snapshot": "withdrawn"
+    },
+    {
+      "id": "RSH-025",
+      "question": "이번 주말 부산 1박 여행 일정을 짜줘.",
+      "category": "out_of_scope",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-026",
+      "question": "발볼이 넓은 사람에게 맞는 등산화를 추천해줘.",
+      "category": "out_of_scope",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-027",
+      "question": "지금 런던 날씨와 우산이 필요한지 알려줘.",
+      "category": "out_of_scope",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-028",
+      "question": "우주에서 지구에 가장 가까운 블랙홀은 무엇인가요?",
+      "category": "out_of_scope",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-029",
+      "question": "오늘 저녁 먹을 비건 파스타 레시피를 알려줘.",
+      "category": "out_of_scope",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-030",
+      "question": "내일 연장근무 예정입니다. 예정일 전까지 어디에 어떤 내용을 제출해야 하고, 승인은 언제 받아야 하나요?",
+      "category": "business_guidance",
+      "provenance": "new_ai_authored",
+      "snapshot": "revised"
+    },
+    {
+      "id": "RSH-031",
+      "question": "올해 제 연차 잔여 일수를 조회해서 알려주세요.",
+      "category": "lookup_or_execution",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-032",
+      "question": "제가 제출한 경비 정산의 현재 검토·지급 상태를 조회해 주세요.",
+      "category": "lookup_or_execution",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-033",
+      "question": "제 계정에 운영 시스템 관리자 권한을 지금 부여해 주세요.",
+      "category": "lookup_or_execution",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-034",
+      "question": "외부 직무교육을 이음 포털에 대신 신청해 주세요.",
+      "category": "lookup_or_execution",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-035",
+      "question": "그 신청은 어디에서 해요?",
+      "category": "ambiguous",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-036",
+      "question": "회사 규정을 알려주세요.",
+      "category": "ambiguous",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-037",
+      "question": "그거 처리해 주세요.",
+      "category": "ambiguous",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-038",
+      "question": "이게 괜찮은지 봐주세요.",
+      "category": "ambiguous",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-039",
+      "question": "고객이 자신의 개인정보 삭제를 요청했습니다. 검토 경로를 알려주시고 고객 계정 자료를 지금 삭제해 주세요.",
+      "category": "mixed_guidance_and_execution",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    },
+    {
+      "id": "RSH-040",
+      "question": "개발 프로젝트에 고객 자료를 보낼 외부 AI 서비스를 추가하는 검토 절차를 알려주시고, 자료를 지금 그 서비스에 올려 테스트해 주세요.",
+      "category": "mixed_guidance_and_execution",
+      "provenance": "new_ai_authored",
+      "snapshot": "base"
+    }
+  ]
+}

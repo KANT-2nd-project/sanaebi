@@ -67,6 +67,44 @@ _GENERATION_ALIASES = {
     "elapsed_seconds": "seconds",
     "generation_seconds": "seconds",
 }
+_ROUTING_FIELDS = frozenset(
+    {
+        "routing_mode",
+        "label_source",
+        "classification_status",
+        "classification_elapsed_seconds",
+        "processing_path",
+        "generation_attempted",
+    }
+)
+_ROUTING_MODES = frozenset({"gate", "shadow"})
+_LABEL_SOURCES = frozenset({"model", "client"})
+_CLASSIFICATION_STATUSES = frozenset(
+    {
+        "running",
+        "ok",
+        "provided",
+        "not_run",
+        "unavailable",
+        "inference_error",
+        "unexpected_error",
+        "invalid_label",
+    }
+)
+_PROCESSING_PATHS = frozenset(
+    {
+        "classification",
+        "classification_failed",
+        "classification_error_shadow",
+        "upstream_failure",
+        "invalid_label",
+        "clarify",
+        "unsupported",
+        "document_lookup",
+        "empty_documents",
+        "generation",
+    }
+)
 
 _write_lock = threading.Lock()
 
@@ -173,6 +211,7 @@ class TraceCallback(BaseCallbackHandler):
         self._classification_label: str | None = None
         self._classification_seconds: float | None = None
         self._generation: dict[str, Any] | None = None
+        self._routing: dict[str, Any] = {}
         self._lock = threading.Lock()
 
     def _now(self) -> float:
@@ -230,6 +269,31 @@ class TraceCallback(BaseCallbackHandler):
 
         with self._lock:
             self._generation = safe
+
+    def record_routing(self, fields: Mapping[str, Any]) -> None:
+        """Record allowlisted routing state without request or exception text."""
+        safe: dict[str, Any] = {}
+        for key, value in fields.items():
+            if key not in _ROUTING_FIELDS:
+                continue
+            if key == "routing_mode" and value not in _ROUTING_MODES:
+                continue
+            if key == "label_source" and value not in _LABEL_SOURCES:
+                continue
+            if key == "classification_status" and value not in _CLASSIFICATION_STATUSES:
+                continue
+            if key == "classification_elapsed_seconds":
+                if value is not None and not isinstance(value, int | float):
+                    continue
+                if value is not None:
+                    value = round(max(float(value), 0.0), 3)
+            if key == "processing_path" and value not in _PROCESSING_PATHS:
+                continue
+            if key == "generation_attempted" and not isinstance(value, bool):
+                continue
+            safe[key] = value
+        with self._lock:
+            self._routing.update(safe)
 
     def _start(
         self, run_id, parent_run_id, *, name, tags=None, model_call=False, **fields
@@ -376,15 +440,27 @@ class TraceCallback(BaseCallbackHandler):
             generation = (
                 dict(self._generation) if self._generation is not None else None
             )
+            routing = dict(self._routing)
         if label is None and roots and isinstance(roots[0]["input"], dict):
             label = roots[0]["input"].get("classification_label")
         stopped = label is None and not roots and (status or 0) >= 400
+        classification_status = routing.get("classification_status")
+        classification_step_status = (
+            "skipped"
+            if classification_status == "not_run"
+            else "error"
+            if classification_status
+            in {"unavailable", "inference_error", "unexpected_error", "invalid_label"}
+            else "error"
+            if stopped
+            else "ok"
+        )
         classification = {
             "trace_id": self.trace_id,
             "seq": None,
             "model": None,
             "stage": "분류",
-            "status": "error" if stopped else "ok",
+            "status": classification_step_status,
             "at_seconds": 0.0,
             # 새 경로는 분류기가 직접 완료 시점을 기록한다. 과거 체인에서는
             # 첫 체인 시작 시점을 분류 시간의 근사치로 사용한다.
@@ -398,7 +474,13 @@ class TraceCallback(BaseCallbackHandler):
             "input": _question_text(request),
             "output": label,
             "error": f"LangChain 전에 멈춤 (HTTP {status})" if stopped else None,
-            "source": "분류기" if path == "/ask" else "요청 값",
+            "source": (
+                "분류기"
+                if routing.get("label_source", "model" if path == "/ask" else "client")
+                == "model"
+                else "요청 값"
+            ),
+            **routing,
         }
         result_rows = [classification, *rows]
         if generation is not None:
@@ -470,6 +552,16 @@ def record_generation(fields: Mapping[str, Any]) -> None:
             callback.record_generation(fields)
         except Exception:  # noqa: BLE001 - omit exception text from safe logs
             logger.warning("생성 trace 메타데이터 기록 실패")
+
+
+def record_routing(fields: Mapping[str, Any]) -> None:
+    """Record safe routing state for the current request trace, if enabled."""
+    callback = _current_trace.get()
+    if callback is not None:
+        try:
+            callback.record_routing(fields)
+        except Exception:  # noqa: BLE001 - diagnostics must not alter responses
+            logger.warning("라우팅 trace 메타데이터 기록 실패")
 
 
 def _body_record(chunks: list[bytes]) -> Any:

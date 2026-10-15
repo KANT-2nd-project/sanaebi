@@ -6,7 +6,7 @@
 
 ## 모델과 영속 데이터
 
-모델은 Hugging Face private `js2923/sanaebi-koelectra-base`에서 배포할 때만 내려받는다. revision `4a1d0c7964072535a52a66efe29389a6470dd6f4`와 다섯 파일의 크기·SHA-256은 [모델 manifest](model-release.json)에 고정한다. 임시 다운로드를 검증한 뒤 원자적으로 게시하고 검증된 캐시만 재사용한다. 운영 API에는 모델을 읽기 전용으로 연결하며 HF 토큰을 전달하지 않는다. 학습 환경·분류 정책·생성 프롬프트는 유지한다.
+모델은 Hugging Face private `js2923/sanaebi-koelectra-base`에서 배포할 때만 내려받는다. revision `4a1d0c7964072535a52a66efe29389a6470dd6f4`와 다섯 파일의 크기·SHA-256은 [모델 manifest](model-release.json)에 고정한다. 임시 다운로드를 검증한 뒤 원자적으로 게시하고 검증된 캐시만 재사용한다. 운영 API에는 모델을 읽기 전용으로 연결하며 HF 토큰을 전달하지 않는다. 학습 환경·생성 프롬프트는 유지한다. 사용자 확인에 따라 최신 main의 `shadow` 기본 분류 정책과 Luna 출력 한도 16,384를 포함한다. `shadow`에서는 분류 라벨과 무관하게 문서 기반 생성을 시도하며 모든 실제 호출에 같은 일일 한도를 적용한다.
 
 | 경로 | 용도 |
 |---|---|
@@ -25,7 +25,7 @@
 
 - 질문: IP별 분당 6회, burst 3회. 진행 중 질문 2개 초과 시 대기열 없이 429. `SANAEBI_MAX_INFLIGHT_ASKS=1`로 줄일 수 있다.
 - 문서 쓰기: IP별 분당 12회, burst 5회와 기존 본문 크기 제한.
-- 실제 생성 시도: 전체 KST 하루 1,000회. provider 호출 직전 SQLite로 원자 예약하며 실패·timeout도 포함한다. 고정 안내·빈 문서 응답은 제외한다.
+- 실제 생성 시도: 전체 KST 하루 1,000회. provider 호출 직전 SQLite로 원자 예약하며 실패·timeout도 포함한다. `gate` 모드의 고정 안내·빈 문서 응답은 제외한다.
 - 초과 응답: 기존 `{ok,text,reason}`와 `Retry-After`를 포함한 429. 웹은 입력·안내를 보존하고 자동 재호출하지 않는다.
 - 호출 수 상한은 금액 상한이 아니다. 원문 trace는 운영에서 끄고 생성 상태·사용량·지연만 관측한다.
 
