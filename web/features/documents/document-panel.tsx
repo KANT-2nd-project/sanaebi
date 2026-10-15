@@ -1,5 +1,7 @@
 "use client";
 
+import { MarkdownContent } from "../../components/markdown-content";
+
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
@@ -513,7 +515,7 @@ export function DocumentPanel() {
           {conflictDocumentId === detail?.id && <div className="documents-conflict" role="alert"><strong>다른 변경이 먼저 저장됐습니다. 내 입력은 유지했습니다.</strong>
             {conflictBusy && <p role="status">서버 최신본 확인 중…</p>}
             {conflictError && <p role="alert">{conflictError}</p>}
-            {latestConflict && <details><summary>서버 최신 초안 v{latestConflict.draft.revision_number} 확인</summary><h3>{latestConflict.draft.title}</h3><div className="documents-plain-text">{latestConflict.draft.body}</div></details>}
+            {latestConflict && <details><summary>서버 최신 초안 v{latestConflict.draft.revision_number} 확인</summary><h3>{latestConflict.draft.title}</h3><div className="documents-conflict-body"><MarkdownContent text={latestConflict.draft.body} /></div></details>}
             {editorOpen && <button type="button" className="documents-button documents-button-secondary" onClick={() => void copyInput()}>내 입력 복사</button>}
             {!latestConflict && <button type="button" className="documents-button documents-button-secondary" disabled={conflictBusy || writePending} onClick={() => void fetchLatestConflict(conflictDocumentId!)}>서버 최신본 다시 확인</button>}
             {latestConflict && <button type="button" className="documents-button documents-button-secondary" disabled={writePending || conflictBusy} onClick={acceptLatest}>최신 초안 불러오기</button>}</div>}

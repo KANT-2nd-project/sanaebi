@@ -1,4 +1,5 @@
 "use client";
+import { MarkdownContent } from "../../components/markdown-content";
 import type { DocumentDetail } from "../../lib/api/documents";
 import { eligibilityLabel, hasDraftChanges, reviewLabel, selectedRevision, type DocumentView } from "./document-view-state";
 
@@ -25,7 +26,7 @@ export function DocumentReadView({ detail, revision, busy, onRevision, onEdit, o
     {detail.eligibility === "scheduled" && <p className="documents-help">게시본 시행일 {detail.published?.effective_from}부터 답변 근거가 됩니다. 다른 게시본으로 자동 교체하는 예약 기능은 아닙니다.</p>}
     <div className="documents-reader-layout">
       <article className="documents-reader-body" aria-label="선택한 개정의 원문"><p className="documents-help">검수: {reviewLabel(selected.metadata?.review_status)}</p>
-        <div className="documents-plain-text">{selected.body}</div></article>
+        <div className="documents-rendered-body"><MarkdownContent text={selected.body} /></div></article>
       <aside className="documents-reader-metadata" aria-label="선택한 개정 정보">
         <h3>이 개정의 정보</h3><dl><dt>개정</dt><dd>v{selected.revision_number}</dd><dt>시행일</dt><dd>{selected.effective_from || "없음"}</dd>
           <dt>담당 부서</dt><dd>{selected.owner_department || "미지정"}</dd><dt>출처 이름</dt><dd>{selected.source_label || "없음"}</dd>
