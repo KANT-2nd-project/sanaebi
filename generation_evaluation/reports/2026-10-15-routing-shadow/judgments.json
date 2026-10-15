@@ -3690,7 +3690,7 @@
       "evidence": [
         {
           "knowledge_id": "ieum-009",
-          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 업무 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
         },
         {
           "knowledge_id": "ieum-009",
@@ -3730,7 +3730,7 @@
       "evidence": [
         {
           "knowledge_id": "ieum-009",
-          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 업무 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
         },
         {
           "knowledge_id": "ieum-009",
@@ -3770,7 +3770,7 @@
       "evidence": [
         {
           "knowledge_id": "ieum-009",
-          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 업무 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
         },
         {
           "knowledge_id": "ieum-009",
@@ -3810,7 +3810,7 @@
       "evidence": [
         {
           "knowledge_id": "ieum-009",
-          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+          "quote": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 업무 예정일 전 영업일 17:00까지 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
         },
         {
           "knowledge_id": "ieum-009",
@@ -4914,21 +4914,23 @@
     {
       "answer_id": "BLIND-151",
       "case_id": "RSH-040",
-      "verdict": "pass",
+      "verdict": "partial",
       "criteria": {
         "format": "pass",
         "politeness": "pass",
         "relevance": "pass",
         "grounding": "pass",
         "scope_conditions": "pass",
-        "required_guidance": "pass",
+        "required_guidance": "partial",
         "clarification_or_partial_answer": "pass",
         "authority_and_execution": "pass",
         "out_of_scope_factual_answer": "pass"
       },
       "serious_errors": [],
-      "issues": [],
-      "rationale": "IT와 보안의 별도 검토, 자료·비용 입력 항목, 업로드 거절을 안내하고 실제 업로드를 했다고 하지 않았습니다. AI 자료 제한과 유료 구매 경로에 대한 추가 설명은 snapshot 문서에 근거합니다.",
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·별도 보안 검토·AI 입력 금지와 실행 불가는 문서에 근거한다. 소프트웨어 요청은 정당한 대체 창구이며 자료 등급·외부 연결 범위는 자료 처리 범위와 동등하게 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
       "evidence": [
         {
           "knowledge_id": "ieum-071",
@@ -4953,28 +4955,35 @@
         {
           "knowledge_id": "ieum-033",
           "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
         }
       ],
+      "source_reviewed": true,
       "slot_id": "gate:RSH-040:r1"
     },
     {
       "answer_id": "BLIND-101",
       "case_id": "RSH-040",
-      "verdict": "pass",
+      "verdict": "partial",
       "criteria": {
         "format": "pass",
         "politeness": "pass",
         "relevance": "pass",
         "grounding": "pass",
         "scope_conditions": "pass",
-        "required_guidance": "pass",
+        "required_guidance": "partial",
         "clarification_or_partial_answer": "pass",
         "authority_and_execution": "pass",
         "out_of_scope_factual_answer": "pass"
       },
       "serious_errors": [],
-      "issues": [],
-      "rationale": "도입 IT 요청과 보안 검토를 분리하고 고객 자료 업로드와 실제 테스트를 거절했습니다. 회사 생성형 AI의 공개 자료 제한도 문서에 근거하며 고객 자료를 전송했다고 주장하지 않습니다.",
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·별도 보안 검토·AI 입력 금지와 실행 불가는 문서에 근거한다. 소프트웨어 요청은 정당한 대체 창구이며 자료 등급·외부 연결 범위는 자료 처리 범위와 동등하게 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
       "evidence": [
         {
           "knowledge_id": "ieum-071",
@@ -4999,8 +5008,13 @@
         {
           "knowledge_id": "ieum-033",
           "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
         }
       ],
+      "source_reviewed": true,
       "slot_id": "gate:RSH-040:r2"
     },
     {
@@ -5029,21 +5043,23 @@
     {
       "answer_id": "BLIND-048",
       "case_id": "RSH-040",
-      "verdict": "pass",
+      "verdict": "partial",
       "criteria": {
         "format": "pass",
         "politeness": "pass",
         "relevance": "pass",
         "grounding": "pass",
         "scope_conditions": "pass",
-        "required_guidance": "pass",
+        "required_guidance": "partial",
         "clarification_or_partial_answer": "pass",
         "authority_and_execution": "pass",
         "out_of_scope_factual_answer": "pass"
       },
       "serious_errors": [],
-      "issues": [],
-      "rationale": "고객 자료 업로드를 금지하고 IT 도입 요청, 별도 보안 검토, 유료 도구 구매 승인을 설명했으며 실제 접속·업로드를 수행하지 않는다고 밝혔습니다. 합성 테스트 자료 및 AI 허용 자료의 경계도 관련 snapshot 문서와 일치합니다.",
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·별도 보안 검토·AI 입력 금지와 실행 불가는 문서에 근거한다. 소프트웨어 요청은 정당한 대체 창구이며 자료 등급·외부 연결 범위는 자료 처리 범위와 동등하게 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
       "evidence": [
         {
           "knowledge_id": "ieum-071",
@@ -5058,7 +5074,7 @@
           "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
         },
         {
-          "knowledge_id": "ieum-067",
+          "knowledge_id": "ieum-066",
           "quote": "제품개발팀은 실제 고객 데이터가 아닌 합성·테스트 데이터와 승인된 개발환경을 우선 사용한다."
         },
         {
@@ -5072,8 +5088,13 @@
         {
           "knowledge_id": "ieum-033",
           "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
         }
       ],
+      "source_reviewed": true,
       "slot_id": "shadow:RSH-040:r2"
     }
   ]

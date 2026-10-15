@@ -1,0 +1,329 @@
+{
+  "judge": "independent_ai",
+  "judgments": [
+    {
+      "answer_id": "FOLLOWUP-01",
+      "case_id": "RSH-040",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·고객자료 AI 입력 금지·실제 업로드 불가 안내는 문서에 근거한다. 자료 등급과 외부 연결 범위는 자료 처리 범위의 동등 표현으로 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다. 별도 보안 검토 요청 경로의 구분도 빠졌다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "| 고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지 |"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "업무 물품, 외부 서비스, 소프트웨어는 주문·서명·결제 전에 이음 포털의 **재무 > 업무 구매**로 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "소프트웨어, 클라우드 서비스, 네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받는다."
+        },
+        {
+          "knowledge_id": "ieum-067",
+          "quote": "테스트는 합성 자료를 우선 사용하고, 운영자료 접근이 필요하면 승인된 접근 절차와 최소 권한을 따른다."
+        }
+      ],
+      "slot_id": "followup:output-budget-followup:gate:RSH-040:r2",
+      "source_reviewed": true
+    },
+    {
+      "answer_id": "FOLLOWUP-02",
+      "case_id": "RSH-040",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·고객자료 AI 입력 금지·실제 업로드 불가 안내는 문서에 근거한다. 자료 등급과 외부 연결 범위는 자료 처리 범위의 동등 표현으로 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "| 고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지 |"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "업무 물품, 외부 서비스, 소프트웨어는 주문·서명·결제 전에 이음 포털의 **재무 > 업무 구매**로 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "소프트웨어, 클라우드 서비스, 네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받는다."
+        },
+        {
+          "knowledge_id": "ieum-067",
+          "quote": "테스트는 합성 자료를 우선 사용하고, 운영자료 접근이 필요하면 승인된 접근 절차와 최소 권한을 따른다."
+        }
+      ],
+      "slot_id": "followup:output-budget-followup:shadow:RSH-040:r1",
+      "source_reviewed": true
+    },
+    {
+      "answer_id": "FOLLOWUP-03",
+      "case_id": "RSH-040",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·고객자료 AI 입력 금지·실제 업로드 불가 안내는 문서에 근거한다. 자료 등급과 외부 연결 범위는 자료 처리 범위의 동등 표현으로 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "| 고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지 |"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "업무 물품, 외부 서비스, 소프트웨어는 주문·서명·결제 전에 이음 포털의 **재무 > 업무 구매**로 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "소프트웨어, 클라우드 서비스, 네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받는다."
+        },
+        {
+          "knowledge_id": "ieum-067",
+          "quote": "테스트는 합성 자료를 우선 사용하고, 운영자료 접근이 필요하면 승인된 접근 절차와 최소 권한을 따른다."
+        }
+      ],
+      "slot_id": "followup:output-budget-followup:shadow:RSH-040:r2",
+      "source_reviewed": true
+    },
+    {
+      "answer_id": "FOLLOWUP-04",
+      "case_id": "RSH-040",
+      "verdict": "partial",
+      "criteria": {
+        "format": "pass",
+        "politeness": "pass",
+        "relevance": "pass",
+        "grounding": "pass",
+        "scope_conditions": "pass",
+        "required_guidance": "partial",
+        "clarification_or_partial_answer": "pass",
+        "authority_and_execution": "pass",
+        "out_of_scope_factual_answer": "pass"
+      },
+      "serious_errors": [],
+      "issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·고객자료 AI 입력 금지·실제 업로드 불가 안내는 문서에 근거한다. 자료 등급과 외부 연결 범위는 자료 처리 범위의 동등 표현으로 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다. 별도 보안 검토 요청 경로의 구분도 빠졌다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "두 검토가 필요한 경우 한쪽 승인이 다른 쪽을 대신하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-032",
+          "quote": "현재 목록에 없는 서비스, 새 유료 도구, 외부 업로드·연동을 요청하려면 이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 주소·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적는다. IT운영팀은 계정·기술 운영 가능성을, 보안·개인정보 담당자는 자료 처리와 보안 범위를, 팀장은 업무 필요와 예산을 확인한다. 확인이 기록되기 전에는 회사 계정이나 실제 자료를 연결하지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "| 고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지 |"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "업무 물품, 외부 서비스, 소프트웨어는 주문·서명·결제 전에 이음 포털의 **재무 > 업무 구매**로 신청한다."
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 미만 | 팀장 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 300,000원 이상, 2,000,000원 미만 | 팀장과 재무팀 모두 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+        },
+        {
+          "knowledge_id": "ieum-021",
+          "quote": "소프트웨어, 클라우드 서비스, 네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받는다."
+        },
+        {
+          "knowledge_id": "ieum-067",
+          "quote": "테스트는 합성 자료를 우선 사용하고, 운영자료 접근이 필요하면 승인된 접근 절차와 최소 권한을 따른다."
+        }
+      ],
+      "slot_id": "followup:output-budget-followup:gate:RSH-040:r1",
+      "source_reviewed": true
+    }
+  ]
+}

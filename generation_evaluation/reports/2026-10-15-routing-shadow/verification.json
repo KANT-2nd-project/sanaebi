@@ -45,5 +45,11 @@
     "model_call_seconds": 30.214,
     "reasoning_tokens_breakdown": "not_recorded",
     "timeout": false
-  }
+  },
+  "independent_initial_judges": 2,
+  "boundary_nonpass_reviewed": 48,
+  "boundary_verdict_changes": 7,
+  "citation_only_corrections": 5,
+  "final_judgment_exact_citations_verified_including_followup": 432,
+  "followup_consistency_original_pass_rechecked": 3
 }

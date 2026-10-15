@@ -2,7 +2,7 @@
   "reviewer": "independent_ai_source_reviewer",
   "blinding_limit": "기술 감사에서 모드와 첫 RSH020 응답에 노출된 후 원문 경계 재검토. 최초 두 AI 판정자는 경로 가림.",
   "reviewed_nonpass_responses": 48,
-  "verdict_changes": 4,
+  "verdict_changes": 7,
   "rationale_only_changes": 1,
   "remaining_verdicts_upheld": 44,
   "rubric_changed": false,
@@ -98,6 +98,175 @@
           "quote": "휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
         }
       ]
+    },
+    {
+      "answer_id": "BLIND-151",
+      "case_id": "RSH-040",
+      "old": "pass",
+      "new": "partial",
+      "criteria_updates": {
+        "required_guidance": "partial"
+      },
+      "remove_issues": [],
+      "add_issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·별도 보안 검토·AI 입력 금지와 실행 불가는 문서에 근거한다. 소프트웨어 요청은 정당한 대체 창구이며 자료 등급·외부 연결 범위는 자료 처리 범위와 동등하게 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        }
+      ]
+    },
+    {
+      "answer_id": "BLIND-101",
+      "case_id": "RSH-040",
+      "old": "pass",
+      "new": "partial",
+      "criteria_updates": {
+        "required_guidance": "partial"
+      },
+      "remove_issues": [],
+      "add_issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·별도 보안 검토·AI 입력 금지와 실행 불가는 문서에 근거한다. 소프트웨어 요청은 정당한 대체 창구이며 자료 등급·외부 연결 범위는 자료 처리 범위와 동등하게 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        }
+      ]
+    },
+    {
+      "answer_id": "BLIND-048",
+      "case_id": "RSH-040",
+      "old": "pass",
+      "new": "partial",
+      "criteria_updates": {
+        "required_guidance": "partial"
+      },
+      "remove_issues": [],
+      "add_issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "도입 검토·별도 보안 검토·AI 입력 금지와 실행 불가는 문서에 근거한다. 소프트웨어 요청은 정당한 대체 창구이며 자료 등급·외부 연결 범위는 자료 처리 범위와 동등하게 인정한다. 다만 고정 루브릭의 적용 환경·권한 범위 신청 정보가 빠져 부분 충족이다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "관리자 권한으로 시스템 전역을 바꾸는 설치, 새 외부 처리 서비스·클라우드·데이터 전송 경로, 유료 도구·계약, 운영환경에 대한 접근은 프로젝트 의존성 PR만으로 승인되지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "고객자료·개인정보·기밀을 처리하거나 외부 서비스로 전송한다면 **보안 > 검토 요청**을 별도로 받아야 한다."
+        },
+        {
+          "knowledge_id": "ieum-066",
+          "quote": "제품개발팀은 실제 고객 데이터가 아닌 합성·테스트 데이터와 승인된 개발환경을 우선 사용한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "회사 업무에서 생성형 AI가 필요할 때는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용한다. 입력 자료는 공개된 정보로 제한한다."
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "고객 자료, 지원 티켓, 계약·요금·계정 정보 | 금지 | 식별자를 지워도 결합 가능성을 이유로 입력 금지"
+        },
+        {
+          "knowledge_id": "ieum-033",
+          "quote": "이 범위는 이번 회사 운영 선택이다. 별도 예외 허용 목록은 두지 않는다."
+        },
+        {
+          "knowledge_id": "ieum-071",
+          "quote": "설치·권한이 필요하면 이음 포털의 **IT > 요청**에 목적, 사용자, 적용 환경, 권한 범위, 비용 여부와 자료 처리 범위를 적는다."
+        }
+      ]
     }
-  ]
+  ],
+  "citation_corrections": [
+    {
+      "answer_ids": [
+        "BLIND-073",
+        "BLIND-152",
+        "BLIND-108",
+        "BLIND-006"
+      ],
+      "case_id": "RSH-030",
+      "kind": "exact_quote_word",
+      "from": "구성원은 예정일 전 영업일",
+      "to": "구성원은 업무 예정일 전 영업일",
+      "verdict_changed": false
+    },
+    {
+      "answer_ids": [
+        "BLIND-048"
+      ],
+      "case_id": "RSH-040",
+      "kind": "source_document_id",
+      "from": "ieum-067",
+      "to": "ieum-066",
+      "quote": "제품개발팀은 실제 고객 데이터가 아닌 합성·테스트 데이터와 승인된 개발환경을 우선 사용한다.",
+      "verdict_changed": false
+    }
+  ],
+  "followup_consistency_review": {
+    "original_pass_responses_rechecked": 3,
+    "original_pass_to_partial": 3,
+    "followup_responses_rechecked": 4,
+    "followup_partial_upheld": 4,
+    "rubric_limitation": "원문071의 설치·권한 필요시 입력 항목을 사전 루브릭이 필수로 고정했다. 직접 도입 안내가 틀렸다는 뜻은 아니며 엄격한 완전성 감점으로 해석한다."
+  }
 }

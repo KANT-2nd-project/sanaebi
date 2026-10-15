@@ -33,4 +33,4 @@
 
 ## 분류 종단 비교 뒤 출력 예산 확대
 
-2026-10-15 사용자 요청으로 이 기능 브랜치의 공통 모델 설정 최대 출력을4096에서16384토큰으로 늘린다. 채택한 프롬프트 본문·xhigh·180초 timeout·prompt_json·temperature 생략은 유지한다. [40문항 비교](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md)의4096결과는 보존하고, 잘림이 있었던 혼합 요청만 별도 재검증한다. 실제 운영 서버 반영·main 병합과는 구분한다. [공식 Luna 사양](https://developers.openai.com/api/docs/models/gpt-6-luna)은 최대 출력128000토큰이며, 한도 증가는 답변 길이를 강요하거나 항상 그만큼 과금된다는 뜻이 아니다. 후속 검증 결과는 비교 보고서에 연결한다.
+2026-10-15 사용자 요청으로 이 기능 브랜치의 공통 모델 설정 최대 출력을4096에서16384토큰으로 늘렸다. 채택한 프롬프트 본문·xhigh·180초 timeout·prompt_json·temperature 생략은 유지한다. [40문항 비교](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md)의4096결과는 보존하고, 잘림이 있었던 혼합 요청만 별도 재검증한다. 실제 운영 서버 반영·main 병합과는 구분한다. [공식 Luna 사양](https://developers.openai.com/api/docs/models/gpt-6-luna)은 최대 출력128000토큰이며, 한도 증가는 답변 길이를 강요하거나 항상 그만큼 과금된다는 뜻이 아니다. 해당 혼합 요청의 후속4회는 모두 정상 종료했으며 출력4520토큰을 사용한 응답도 확인했다. 원래160응답 점수와 별도로 비교 보고서에 기록한다.
