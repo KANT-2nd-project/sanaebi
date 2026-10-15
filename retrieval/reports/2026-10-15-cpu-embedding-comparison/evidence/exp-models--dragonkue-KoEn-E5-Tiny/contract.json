@@ -1,0 +1,8 @@
+{
+  "pooling": "mean",
+  "max_length": 512,
+  "query_prefix": "query: ",
+  "passage_prefix": "passage: ",
+  "dtype": "float32",
+  "backend": "pytorch"
+}

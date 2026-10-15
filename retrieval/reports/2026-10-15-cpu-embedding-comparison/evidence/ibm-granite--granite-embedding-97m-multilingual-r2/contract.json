@@ -1,0 +1,8 @@
+{
+  "pooling": "cls",
+  "max_length": 32768,
+  "query_prefix": "",
+  "passage_prefix": "",
+  "dtype": "float32",
+  "backend": "pytorch"
+}

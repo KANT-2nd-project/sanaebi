@@ -1,0 +1,353 @@
+model,question,answerable,document_rank,evidence_rank,top_score,top_document
+dragonkue/multilingual-e5-small-ko-v2,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,3,3,0.6252700686454773,ieum-003
+dragonkue/multilingual-e5-small-ko-v2,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.6963501572608948,ieum-001
+dragonkue/multilingual-e5-small-ko-v2,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.6192641258239746,ieum-006
+dragonkue/multilingual-e5-small-ko-v2,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.6611045598983765,ieum-006
+dragonkue/multilingual-e5-small-ko-v2,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.599489152431488,ieum-010
+dragonkue/multilingual-e5-small-ko-v2,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,1,0.6975078582763672,ieum-010
+dragonkue/multilingual-e5-small-ko-v2,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.6848835945129395,ieum-013
+dragonkue/multilingual-e5-small-ko-v2,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,6,6,0.6070693731307983,ieum-049
+dragonkue/multilingual-e5-small-ko-v2,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.6226067543029785,ieum-019
+dragonkue/multilingual-e5-small-ko-v2,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.6457149982452393,ieum-026
+dragonkue/multilingual-e5-small-ko-v2,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.6431005001068115,ieum-026
+dragonkue/multilingual-e5-small-ko-v2,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,6,6,0.6646490097045898,ieum-065
+dragonkue/multilingual-e5-small-ko-v2,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.6842036843299866,ieum-033
+dragonkue/multilingual-e5-small-ko-v2,내 PR은 내가 승인해서 머지해도 돼?,True,1,23,0.5740854740142822,ieum-067
+dragonkue/multilingual-e5-small-ko-v2,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.67038893699646,ieum-068
+dragonkue/multilingual-e5-small-ko-v2,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,2,3,0.5933419466018677,ieum-037
+dragonkue/multilingual-e5-small-ko-v2,연차신청 어디서함,True,1,2,0.6645534038543701,ieum-001
+dragonkue/multilingual-e5-small-ko-v2,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.7572507858276367,ieum-019
+dragonkue/multilingual-e5-small-ko-v2,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.48649775981903076,ieum-018
+dragonkue/multilingual-e5-small-ko-v2,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.4912518858909607,ieum-059
+dragonkue/multilingual-e5-small-ko-v2,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.5685362815856934,ieum-001
+dragonkue/multilingual-e5-small-ko-v2,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.635400652885437,ieum-001
+BAAI/bge-m3,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,3,3,0.6005210876464844,ieum-015
+BAAI/bge-m3,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.624756932258606,ieum-001
+BAAI/bge-m3,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.7013437747955322,ieum-006
+BAAI/bge-m3,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.5882072448730469,ieum-006
+BAAI/bge-m3,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.6566823720932007,ieum-010
+BAAI/bge-m3,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,2,0.650920033454895,ieum-010
+BAAI/bge-m3,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.6632736921310425,ieum-013
+BAAI/bge-m3,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.6776922941207886,ieum-019
+BAAI/bge-m3,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.6708983778953552,ieum-019
+BAAI/bge-m3,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.6254445910453796,ieum-026
+BAAI/bge-m3,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.59340500831604,ieum-026
+BAAI/bge-m3,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,2,2,0.6408252716064453,ieum-032
+BAAI/bge-m3,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.5743162631988525,ieum-033
+BAAI/bge-m3,내 PR은 내가 승인해서 머지해도 돼?,True,1,1,0.5892173647880554,ieum-067
+BAAI/bge-m3,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.685789942741394,ieum-068
+BAAI/bge-m3,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,6,0.5752500295639038,ieum-071
+BAAI/bge-m3,연차신청 어디서함,True,1,1,0.629665732383728,ieum-001
+BAAI/bge-m3,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.734594464302063,ieum-019
+BAAI/bge-m3,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.46137288212776184,ieum-059
+BAAI/bge-m3,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.470600426197052,ieum-003
+BAAI/bge-m3,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.5433884263038635,ieum-053
+BAAI/bge-m3,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.6067996025085449,ieum-001
+nlpai-lab/KURE-v1,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,7,7,0.5796566009521484,ieum-015
+nlpai-lab/KURE-v1,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.5975626707077026,ieum-001
+nlpai-lab/KURE-v1,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.6596199870109558,ieum-006
+nlpai-lab/KURE-v1,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.5823739767074585,ieum-006
+nlpai-lab/KURE-v1,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.6476327180862427,ieum-010
+nlpai-lab/KURE-v1,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,2,0.642191469669342,ieum-010
+nlpai-lab/KURE-v1,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.6365466117858887,ieum-013
+nlpai-lab/KURE-v1,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.6611284017562866,ieum-019
+nlpai-lab/KURE-v1,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.6400499939918518,ieum-019
+nlpai-lab/KURE-v1,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.6092954874038696,ieum-026
+nlpai-lab/KURE-v1,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.5778896808624268,ieum-026
+nlpai-lab/KURE-v1,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,3,3,0.6441071033477783,ieum-032
+nlpai-lab/KURE-v1,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.6038125157356262,ieum-033
+nlpai-lab/KURE-v1,내 PR은 내가 승인해서 머지해도 돼?,True,1,1,0.5382165312767029,ieum-067
+nlpai-lab/KURE-v1,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.6931192874908447,ieum-068
+nlpai-lab/KURE-v1,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,4,0.5627936720848083,ieum-071
+nlpai-lab/KURE-v1,연차신청 어디서함,True,1,1,0.59444260597229,ieum-001
+nlpai-lab/KURE-v1,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.732803225517273,ieum-019
+nlpai-lab/KURE-v1,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.44868767261505127,ieum-059
+nlpai-lab/KURE-v1,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.4257133901119232,ieum-064
+nlpai-lab/KURE-v1,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.5058361887931824,ieum-044
+nlpai-lab/KURE-v1,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.5530099868774414,ieum-001
+Snowflake/snowflake-arctic-embed-l-v2.0,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,1,1,0.4562948942184448,ieum-001
+Snowflake/snowflake-arctic-embed-l-v2.0,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.4490228295326233,ieum-001
+Snowflake/snowflake-arctic-embed-l-v2.0,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.5943890810012817,ieum-006
+Snowflake/snowflake-arctic-embed-l-v2.0,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,2,2,0.46670567989349365,ieum-059
+Snowflake/snowflake-arctic-embed-l-v2.0,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.4218319058418274,ieum-010
+Snowflake/snowflake-arctic-embed-l-v2.0,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,2,0.584786057472229,ieum-010
+Snowflake/snowflake-arctic-embed-l-v2.0,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.501984715461731,ieum-013
+Snowflake/snowflake-arctic-embed-l-v2.0,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.4977388381958008,ieum-019
+Snowflake/snowflake-arctic-embed-l-v2.0,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.4734852910041809,ieum-019
+Snowflake/snowflake-arctic-embed-l-v2.0,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.5396043062210083,ieum-026
+Snowflake/snowflake-arctic-embed-l-v2.0,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.38445624709129333,ieum-026
+Snowflake/snowflake-arctic-embed-l-v2.0,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,1,1,0.5845149159431458,ieum-033
+Snowflake/snowflake-arctic-embed-l-v2.0,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,2,0.48493483662605286,ieum-033
+Snowflake/snowflake-arctic-embed-l-v2.0,내 PR은 내가 승인해서 머지해도 돼?,True,1,2,0.4301004409790039,ieum-067
+Snowflake/snowflake-arctic-embed-l-v2.0,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.5887489914894104,ieum-068
+Snowflake/snowflake-arctic-embed-l-v2.0,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,2,0.4052794575691223,ieum-071
+Snowflake/snowflake-arctic-embed-l-v2.0,연차신청 어디서함,True,1,1,0.4754076898097992,ieum-001
+Snowflake/snowflake-arctic-embed-l-v2.0,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.631834864616394,ieum-019
+Snowflake/snowflake-arctic-embed-l-v2.0,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.3135753571987152,ieum-018
+Snowflake/snowflake-arctic-embed-l-v2.0,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.216890349984169,ieum-059
+Snowflake/snowflake-arctic-embed-l-v2.0,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.3620421886444092,ieum-058
+Snowflake/snowflake-arctic-embed-l-v2.0,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.4126434624195099,ieum-001
+dragonkue/BGE-m3-ko,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,9,9,0.5107437372207642,ieum-015
+dragonkue/BGE-m3-ko,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.5606245994567871,ieum-001
+dragonkue/BGE-m3-ko,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.6192483305931091,ieum-006
+dragonkue/BGE-m3-ko,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.5311227440834045,ieum-006
+dragonkue/BGE-m3-ko,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.5867565870285034,ieum-010
+dragonkue/BGE-m3-ko,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,2,0.589134156703949,ieum-010
+dragonkue/BGE-m3-ko,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.5828640460968018,ieum-013
+dragonkue/BGE-m3-ko,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.590937614440918,ieum-019
+dragonkue/BGE-m3-ko,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.5897986888885498,ieum-019
+dragonkue/BGE-m3-ko,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.5492206811904907,ieum-026
+dragonkue/BGE-m3-ko,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.5256686210632324,ieum-026
+dragonkue/BGE-m3-ko,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,3,3,0.5825093984603882,ieum-032
+dragonkue/BGE-m3-ko,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.5499316453933716,ieum-033
+dragonkue/BGE-m3-ko,내 PR은 내가 승인해서 머지해도 돼?,True,1,1,0.503158450126648,ieum-067
+dragonkue/BGE-m3-ko,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.6671719551086426,ieum-068
+dragonkue/BGE-m3-ko,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,2,6,0.48851001262664795,ieum-066
+dragonkue/BGE-m3-ko,연차신청 어디서함,True,1,1,0.5445834398269653,ieum-001
+dragonkue/BGE-m3-ko,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.6921204328536987,ieum-019
+dragonkue/BGE-m3-ko,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.3394845128059387,ieum-059
+dragonkue/BGE-m3-ko,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.34431546926498413,ieum-003
+dragonkue/BGE-m3-ko,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.4293423891067505,ieum-053
+dragonkue/BGE-m3-ko,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.5099056959152222,ieum-001
+exp-models/dragonkue-KoEn-E5-Tiny,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,3,3,0.5169901847839355,ieum-059
+exp-models/dragonkue-KoEn-E5-Tiny,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.601653516292572,ieum-001
+exp-models/dragonkue-KoEn-E5-Tiny,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.4947538673877716,ieum-006
+exp-models/dragonkue-KoEn-E5-Tiny,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.5598400831222534,ieum-006
+exp-models/dragonkue-KoEn-E5-Tiny,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.4643799066543579,ieum-010
+exp-models/dragonkue-KoEn-E5-Tiny,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,1,0.6331550478935242,ieum-010
+exp-models/dragonkue-KoEn-E5-Tiny,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.6040265560150146,ieum-013
+exp-models/dragonkue-KoEn-E5-Tiny,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,4,4,0.4989916980266571,ieum-049
+exp-models/dragonkue-KoEn-E5-Tiny,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.5297942161560059,ieum-019
+exp-models/dragonkue-KoEn-E5-Tiny,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.529159426689148,ieum-026
+exp-models/dragonkue-KoEn-E5-Tiny,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.5475364923477173,ieum-026
+exp-models/dragonkue-KoEn-E5-Tiny,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,5,5,0.5640748143196106,ieum-065
+exp-models/dragonkue-KoEn-E5-Tiny,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.562634289264679,ieum-033
+exp-models/dragonkue-KoEn-E5-Tiny,내 PR은 내가 승인해서 머지해도 돼?,True,1,29,0.4405208230018616,ieum-067
+exp-models/dragonkue-KoEn-E5-Tiny,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.5502221584320068,ieum-068
+exp-models/dragonkue-KoEn-E5-Tiny,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,2,2,0.47015026211738586,ieum-037
+exp-models/dragonkue-KoEn-E5-Tiny,연차신청 어디서함,True,1,1,0.5260083675384521,ieum-001
+exp-models/dragonkue-KoEn-E5-Tiny,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.6963566541671753,ieum-019
+exp-models/dragonkue-KoEn-E5-Tiny,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.32275956869125366,ieum-018
+exp-models/dragonkue-KoEn-E5-Tiny,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.32950693368911743,ieum-059
+exp-models/dragonkue-KoEn-E5-Tiny,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.4414287805557251,ieum-001
+exp-models/dragonkue-KoEn-E5-Tiny,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.5162318348884583,ieum-001
+hotchpotch/bekko-embedding-v1-a25m,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,10,10,0.4699884355068207,ieum-059
+hotchpotch/bekko-embedding-v1-a25m,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.6490687131881714,ieum-001
+hotchpotch/bekko-embedding-v1-a25m,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.4774008095264435,ieum-006
+hotchpotch/bekko-embedding-v1-a25m,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,2,2,0.3909934163093567,ieum-059
+hotchpotch/bekko-embedding-v1-a25m,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.6330341100692749,ieum-010
+hotchpotch/bekko-embedding-v1-a25m,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,1,0.6428319215774536,ieum-010
+hotchpotch/bekko-embedding-v1-a25m,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.44315266609191895,ieum-013
+hotchpotch/bekko-embedding-v1-a25m,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,3,3,0.5162046551704407,ieum-060
+hotchpotch/bekko-embedding-v1-a25m,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.5174366235733032,ieum-019
+hotchpotch/bekko-embedding-v1-a25m,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.4572659432888031,ieum-026
+hotchpotch/bekko-embedding-v1-a25m,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.4601146876811981,ieum-026
+hotchpotch/bekko-embedding-v1-a25m,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,2,2,0.4528041481971741,ieum-053
+hotchpotch/bekko-embedding-v1-a25m,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,2,2,0.4292798936367035,ieum-032
+hotchpotch/bekko-embedding-v1-a25m,내 PR은 내가 승인해서 머지해도 돼?,True,1,5,0.3892379403114319,ieum-067
+hotchpotch/bekko-embedding-v1-a25m,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,2,0.5044085383415222,ieum-068
+hotchpotch/bekko-embedding-v1-a25m,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,14,0.3984282612800598,ieum-071
+hotchpotch/bekko-embedding-v1-a25m,연차신청 어디서함,True,1,2,0.5394003987312317,ieum-001
+hotchpotch/bekko-embedding-v1-a25m,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.6382131576538086,ieum-019
+hotchpotch/bekko-embedding-v1-a25m,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.29346439242362976,ieum-018
+hotchpotch/bekko-embedding-v1-a25m,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.30796536803245544,ieum-060
+hotchpotch/bekko-embedding-v1-a25m,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.36653590202331543,ieum-012
+hotchpotch/bekko-embedding-v1-a25m,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.5160630941390991,ieum-004
+hotchpotch/bekko-embedding-v1-a8m,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,8,8,0.40983083844184875,ieum-059
+hotchpotch/bekko-embedding-v1-a8m,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.5749236345291138,ieum-001
+hotchpotch/bekko-embedding-v1-a8m,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.47820889949798584,ieum-006
+hotchpotch/bekko-embedding-v1-a8m,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,5,5,0.4073435664176941,ieum-059
+hotchpotch/bekko-embedding-v1-a8m,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.46436595916748047,ieum-010
+hotchpotch/bekko-embedding-v1-a8m,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,1,0.5529544949531555,ieum-010
+hotchpotch/bekko-embedding-v1-a8m,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.44921454787254333,ieum-013
+hotchpotch/bekko-embedding-v1-a8m,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,5,5,0.4471113979816437,ieum-060
+hotchpotch/bekko-embedding-v1-a8m,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.4044404923915863,ieum-019
+hotchpotch/bekko-embedding-v1-a8m,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.4537620544433594,ieum-026
+hotchpotch/bekko-embedding-v1-a8m,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.42905375361442566,ieum-026
+hotchpotch/bekko-embedding-v1-a8m,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,5,5,0.5458238124847412,ieum-065
+hotchpotch/bekko-embedding-v1-a8m,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.44935962557792664,ieum-033
+hotchpotch/bekko-embedding-v1-a8m,내 PR은 내가 승인해서 머지해도 돼?,True,3,3,0.3027896285057068,ieum-054
+hotchpotch/bekko-embedding-v1-a8m,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.4611605405807495,ieum-068
+hotchpotch/bekko-embedding-v1-a8m,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,2,18,0.3919677138328552,ieum-038
+hotchpotch/bekko-embedding-v1-a8m,연차신청 어디서함,True,1,1,0.5287622809410095,ieum-001
+hotchpotch/bekko-embedding-v1-a8m,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.634057879447937,ieum-019
+hotchpotch/bekko-embedding-v1-a8m,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.2568693161010742,ieum-018
+hotchpotch/bekko-embedding-v1-a8m,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.31222954392433167,ieum-051
+hotchpotch/bekko-embedding-v1-a8m,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.4294690787792206,ieum-008
+hotchpotch/bekko-embedding-v1-a8m,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.4907732307910919,ieum-001
+ibm-granite/granite-embedding-97m-multilingual-r2,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,8,8,0.8332251310348511,ieum-059
+ibm-granite/granite-embedding-97m-multilingual-r2,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.8930374383926392,ieum-001
+ibm-granite/granite-embedding-97m-multilingual-r2,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.8992395401000977,ieum-006
+ibm-granite/granite-embedding-97m-multilingual-r2,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.856019139289856,ieum-006
+ibm-granite/granite-embedding-97m-multilingual-r2,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.8760511875152588,ieum-010
+ibm-granite/granite-embedding-97m-multilingual-r2,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,1,0.9160496592521667,ieum-010
+ibm-granite/granite-embedding-97m-multilingual-r2,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.8667809367179871,ieum-013
+ibm-granite/granite-embedding-97m-multilingual-r2,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.8826983571052551,ieum-019
+ibm-granite/granite-embedding-97m-multilingual-r2,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.8320406675338745,ieum-019
+ibm-granite/granite-embedding-97m-multilingual-r2,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.8653589487075806,ieum-026
+ibm-granite/granite-embedding-97m-multilingual-r2,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.8433690667152405,ieum-026
+ibm-granite/granite-embedding-97m-multilingual-r2,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,1,1,0.8732612729072571,ieum-033
+ibm-granite/granite-embedding-97m-multilingual-r2,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.8514999151229858,ieum-033
+ibm-granite/granite-embedding-97m-multilingual-r2,내 PR은 내가 승인해서 머지해도 돼?,True,39,60,0.8305001854896545,ieum-045
+ibm-granite/granite-embedding-97m-multilingual-r2,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.8609226942062378,ieum-068
+ibm-granite/granite-embedding-97m-multilingual-r2,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,21,0.8330404162406921,ieum-071
+ibm-granite/granite-embedding-97m-multilingual-r2,연차신청 어디서함,True,1,1,0.8811149001121521,ieum-001
+ibm-granite/granite-embedding-97m-multilingual-r2,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.9121129512786865,ieum-019
+ibm-granite/granite-embedding-97m-multilingual-r2,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.7643378973007202,ieum-004
+ibm-granite/granite-embedding-97m-multilingual-r2,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.8113311529159546,ieum-019
+ibm-granite/granite-embedding-97m-multilingual-r2,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.8416861295700073,ieum-044
+ibm-granite/granite-embedding-97m-multilingual-r2,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.8770840167999268,ieum-001
+intfloat/multilingual-e5-base,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,4,4,0.8352438807487488,ieum-015
+intfloat/multilingual-e5-base,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,2,0.8380351662635803,ieum-001
+intfloat/multilingual-e5-base,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,8,8,0.8391698598861694,ieum-039
+intfloat/multilingual-e5-base,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.8459107279777527,ieum-006
+intfloat/multilingual-e5-base,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.8397687077522278,ieum-010
+intfloat/multilingual-e5-base,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,2,0.8568074107170105,ieum-010
+intfloat/multilingual-e5-base,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.8643350601196289,ieum-013
+intfloat/multilingual-e5-base,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,3,3,0.8515344858169556,ieum-049
+intfloat/multilingual-e5-base,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.8485623598098755,ieum-019
+intfloat/multilingual-e5-base,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.8410229682922363,ieum-026
+intfloat/multilingual-e5-base,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,2,2,0.8502600789070129,ieum-058
+intfloat/multilingual-e5-base,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,7,7,0.8571549654006958,ieum-065
+intfloat/multilingual-e5-base,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.8507046699523926,ieum-033
+intfloat/multilingual-e5-base,내 PR은 내가 승인해서 머지해도 돼?,True,1,1,0.8416297435760498,ieum-067
+intfloat/multilingual-e5-base,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.8628348112106323,ieum-068
+intfloat/multilingual-e5-base,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,6,0.8343604803085327,ieum-071
+intfloat/multilingual-e5-base,연차신청 어디서함,True,1,2,0.8365119099617004,ieum-001
+intfloat/multilingual-e5-base,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.8869540691375732,ieum-019
+intfloat/multilingual-e5-base,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.8052107691764832,ieum-018
+intfloat/multilingual-e5-base,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.8090208172798157,ieum-023
+intfloat/multilingual-e5-base,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.8308141231536865,ieum-030
+intfloat/multilingual-e5-base,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.8427668213844299,ieum-059
+intfloat/multilingual-e5-large,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,1,1,0.8380205631256104,ieum-001
+intfloat/multilingual-e5-large,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.8622949123382568,ieum-001
+intfloat/multilingual-e5-large,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.8657811880111694,ieum-006
+intfloat/multilingual-e5-large,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,4,4,0.8363341689109802,ieum-059
+intfloat/multilingual-e5-large,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.8547269105911255,ieum-010
+intfloat/multilingual-e5-large,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,2,0.8827139139175415,ieum-010
+intfloat/multilingual-e5-large,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,2,3,0.8741060495376587,ieum-020
+intfloat/multilingual-e5-large,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.8461394906044006,ieum-019
+intfloat/multilingual-e5-large,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.8441423773765564,ieum-019
+intfloat/multilingual-e5-large,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.856632649898529,ieum-026
+intfloat/multilingual-e5-large,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.8491598963737488,ieum-026
+intfloat/multilingual-e5-large,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,2,2,0.8650230169296265,ieum-032
+intfloat/multilingual-e5-large,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,3,0.8561489582061768,ieum-033
+intfloat/multilingual-e5-large,내 PR은 내가 승인해서 머지해도 돼?,True,1,6,0.8318841457366943,ieum-067
+intfloat/multilingual-e5-large,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.8696832060813904,ieum-068
+intfloat/multilingual-e5-large,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,2,6,0.8355730772018433,ieum-066
+intfloat/multilingual-e5-large,연차신청 어디서함,True,1,1,0.8643350005149841,ieum-001
+intfloat/multilingual-e5-large,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.890141487121582,ieum-019
+intfloat/multilingual-e5-large,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.8158692121505737,ieum-018
+intfloat/multilingual-e5-large,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.8067691922187805,ieum-051
+intfloat/multilingual-e5-large,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.8366492986679077,ieum-020
+intfloat/multilingual-e5-large,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.8324106931686401,ieum-001
+intfloat/multilingual-e5-small,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,5,5,0.8659610748291016,ieum-059
+intfloat/multilingual-e5-small,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.8899437189102173,ieum-001
+intfloat/multilingual-e5-small,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,4,4,0.8715973496437073,ieum-070
+intfloat/multilingual-e5-small,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.871421217918396,ieum-006
+intfloat/multilingual-e5-small,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.8663692474365234,ieum-010
+intfloat/multilingual-e5-small,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,1,0.8823469877243042,ieum-010
+intfloat/multilingual-e5-small,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.8785398602485657,ieum-013
+intfloat/multilingual-e5-small,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,9,9,0.8615635633468628,ieum-060
+intfloat/multilingual-e5-small,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.8559631109237671,ieum-019
+intfloat/multilingual-e5-small,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.8695200681686401,ieum-026
+intfloat/multilingual-e5-small,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,3,3,0.8782922029495239,ieum-058
+intfloat/multilingual-e5-small,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,4,4,0.8860788345336914,ieum-065
+intfloat/multilingual-e5-small,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.8885228633880615,ieum-033
+intfloat/multilingual-e5-small,내 PR은 내가 승인해서 머지해도 돼?,True,1,5,0.851432204246521,ieum-067
+intfloat/multilingual-e5-small,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,2,0.8842372894287109,ieum-068
+intfloat/multilingual-e5-small,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,4,0.8570127487182617,ieum-071
+intfloat/multilingual-e5-small,연차신청 어디서함,True,1,3,0.8812613487243652,ieum-001
+intfloat/multilingual-e5-small,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.8891834020614624,ieum-019
+intfloat/multilingual-e5-small,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.8360704779624939,ieum-018
+intfloat/multilingual-e5-small,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.8415508270263672,ieum-059
+intfloat/multilingual-e5-small,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.8515493869781494,ieum-058
+intfloat/multilingual-e5-small,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.8690400719642639,ieum-001
+microsoft/harrier-oss-v1-270m,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,10,17,0.47999265789985657,ieum-004
+microsoft/harrier-oss-v1-270m,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,2,0.5725170969963074,ieum-001
+microsoft/harrier-oss-v1-270m,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,3,0.5620267391204834,ieum-006
+microsoft/harrier-oss-v1-270m,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.6037940382957458,ieum-006
+microsoft/harrier-oss-v1-270m,집에서 일하려면 언제까지 신청해야 돼?,True,1,2,0.5421478748321533,ieum-010
+microsoft/harrier-oss-v1-270m,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,2,0.6105917692184448,ieum-010
+microsoft/harrier-oss-v1-270m,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,2,2,0.614478588104248,ieum-020
+microsoft/harrier-oss-v1-270m,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.5497584342956543,ieum-019
+microsoft/harrier-oss-v1-270m,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,3,3,0.5187413096427917,ieum-018
+microsoft/harrier-oss-v1-270m,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.5843979120254517,ieum-026
+microsoft/harrier-oss-v1-270m,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.5543643236160278,ieum-026
+microsoft/harrier-oss-v1-270m,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,5,8,0.5710508227348328,ieum-053
+microsoft/harrier-oss-v1-270m,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,3,3,0.556988537311554,ieum-001
+microsoft/harrier-oss-v1-270m,내 PR은 내가 승인해서 머지해도 돼?,True,2,2,0.503555953502655,ieum-043
+microsoft/harrier-oss-v1-270m,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.5781392455101013,ieum-068
+microsoft/harrier-oss-v1-270m,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,19,0.540876030921936,ieum-071
+microsoft/harrier-oss-v1-270m,연차신청 어디서함,True,1,4,0.5831520557403564,ieum-001
+microsoft/harrier-oss-v1-270m,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.6641882658004761,ieum-019
+microsoft/harrier-oss-v1-270m,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.4041210412979126,ieum-018
+microsoft/harrier-oss-v1-270m,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.42246317863464355,ieum-001
+microsoft/harrier-oss-v1-270m,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.4865671694278717,ieum-001
+microsoft/harrier-oss-v1-270m,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.5152268409729004,ieum-007
+minishlab/potion-multilingual-128M,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,1,1,0.4732714295387268,ieum-001
+minishlab/potion-multilingual-128M,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,2,0.5466657280921936,ieum-001
+minishlab/potion-multilingual-128M,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,2,2,0.461887925863266,ieum-059
+minishlab/potion-multilingual-128M,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,12,12,0.4565636217594147,ieum-067
+minishlab/potion-multilingual-128M,집에서 일하려면 언제까지 신청해야 돼?,True,11,11,0.505993127822876,ieum-001
+minishlab/potion-multilingual-128M,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,20,20,0.4954403042793274,ieum-018
+minishlab/potion-multilingual-128M,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.5645557045936584,ieum-013
+minishlab/potion-multilingual-128M,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,3,3,0.6261497139930725,ieum-020
+minishlab/potion-multilingual-128M,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.5945513844490051,ieum-019
+minishlab/potion-multilingual-128M,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,2,2,0.5528560876846313,ieum-025
+minishlab/potion-multilingual-128M,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.529485821723938,ieum-026
+minishlab/potion-multilingual-128M,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,10,82,0.5898009538650513,ieum-025
+minishlab/potion-multilingual-128M,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,2,2,0.5405206680297852,ieum-025
+minishlab/potion-multilingual-128M,내 PR은 내가 승인해서 머지해도 돼?,True,1,3,0.33814483880996704,ieum-067
+minishlab/potion-multilingual-128M,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,2,0.5283409953117371,ieum-068
+minishlab/potion-multilingual-128M,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,9,36,0.3838208019733429,ieum-066
+minishlab/potion-multilingual-128M,연차신청 어디서함,True,1,1,0.4683927297592163,ieum-001
+minishlab/potion-multilingual-128M,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.6039639711380005,ieum-019
+minishlab/potion-multilingual-128M,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.43849098682403564,ieum-018
+minishlab/potion-multilingual-128M,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.5460840463638306,ieum-064
+minishlab/potion-multilingual-128M,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.42126333713531494,ieum-065
+minishlab/potion-multilingual-128M,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.4026295244693756,ieum-001
+nlpai-lab/KoE5,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,7,7,0.4607381224632263,ieum-008
+nlpai-lab/KoE5,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.5461223125457764,ieum-001
+nlpai-lab/KoE5,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.6124297380447388,ieum-006
+nlpai-lab/KoE5,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,1,1,0.4985702335834503,ieum-006
+nlpai-lab/KoE5,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.5164919495582581,ieum-010
+nlpai-lab/KoE5,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,1,0.6869574785232544,ieum-010
+nlpai-lab/KoE5,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,1,1,0.558254599571228,ieum-013
+nlpai-lab/KoE5,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,1,1,0.5494321584701538,ieum-019
+nlpai-lab/KoE5,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,1,0.45593270659446716,ieum-019
+nlpai-lab/KoE5,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,1,1,0.5982833504676819,ieum-026
+nlpai-lab/KoE5,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.4909084439277649,ieum-026
+nlpai-lab/KoE5,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,1,1,0.5014696717262268,ieum-033
+nlpai-lab/KoE5,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,1,1,0.477436900138855,ieum-033
+nlpai-lab/KoE5,내 PR은 내가 승인해서 머지해도 돼?,True,1,2,0.4717516303062439,ieum-067
+nlpai-lab/KoE5,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,1,1,0.629291832447052,ieum-068
+nlpai-lab/KoE5,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,1,8,0.3774561285972595,ieum-071
+nlpai-lab/KoE5,연차신청 어디서함,True,1,1,0.5444104075431824,ieum-001
+nlpai-lab/KoE5,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,1,1,0.6767029762268066,ieum-019
+nlpai-lab/KoE5,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.25300133228302,ieum-018
+nlpai-lab/KoE5,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.2738734483718872,ieum-051
+nlpai-lab/KoE5,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.35165101289749146,ieum-053
+nlpai-lab/KoE5,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.381925106048584,ieum-059
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?,True,34,34,0.6157492399215698,ieum-004
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?,True,1,1,0.6223555207252502,ieum-001
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?,True,1,1,0.5226908922195435,ieum-006
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,근태 오류를 발견한 지 일주일 지났는데 수정 못 해?,True,17,17,0.5023820400238037,ieum-008
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,집에서 일하려면 언제까지 신청해야 돼?,True,1,1,0.6358046531677246,ieum-010
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?,True,1,7,0.5809415578842163,ieum-010
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,회사 들어가는 카드를 잃어버렸고 포털도 안 돼.,True,3,3,0.4881861209869385,ieum-020
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,개인 돈으로 업무 비용을 냈는데 언제 입금돼?,True,4,4,0.5847684144973755,ieum-021
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,영수증 제출 기한이 이미 지났으면 어떻게 해?,True,1,3,0.6301568746566772,ieum-019
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?,True,3,3,0.6494594812393188,ieum-025
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.,True,1,1,0.6344271898269653,ieum-026
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?,True,10,10,0.6275924444198608,ieum-054
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?,True,19,106,0.5204159021377563,ieum-046
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,내 PR은 내가 승인해서 머지해도 돼?,True,88,109,0.5181317329406738,ieum-010
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?,True,41,70,0.5168822407722473,ieum-046
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,Git에 토큰을 올렸어. 파일에서 지우면 끝이야?,True,4,4,0.5215529799461365,ieum-066
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,연차신청 어디서함,True,1,8,0.5124484896659851,ieum-001
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,제출한 경비의 지급일인 15일이 은행 쉬는 날이면?,True,5,5,0.6718571186065674,ieum-060
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,이번 주 구내식당 점심 메뉴가 뭐야?,False,,,0.46467506885528564,ieum-018
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,우리 회사 올해 성과급 지급률은 몇 퍼센트야?,False,,,0.5862643122673035,ieum-060
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,대표님의 개인 휴대전화 번호 알려줘.,False,,,0.5399587154388428,ieum-001
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,내 개인 잔여 연차가 정확히 며칠이야?,False,,,0.5623123049736023,ieum-059

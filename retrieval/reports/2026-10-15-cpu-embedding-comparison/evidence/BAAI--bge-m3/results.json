@@ -1,0 +1,57 @@
+{
+  "model": "BAAI/bge-m3",
+  "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "25d2904e940a8e765af3c8e423a76e27faad5326",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "cls_normalized",
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 374,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 1024,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "torch_threads": 2,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.19.0",
+  "load_including_download_seconds": 269.82977637899967,
+  "indexing_seconds": 222.8828533119995,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 103.64637400016363,
+    "p95": 125.91939729882141,
+    "max": 144.369261997781
+  },
+  "search_ms": {
+    "p50": 0.11988750156888273,
+    "p95": 0.1547961508549633,
+    "max": 5.004349000955699
+  },
+  "peak_process_rss_mib": 3457.62890625,
+  "metrics": {
+    "document_hit_at_1": 0.8888888888888888,
+    "document_hit_at_3": 1.0,
+    "document_hit_at_5": 1.0,
+    "document_hit_at_10": 1.0,
+    "document_mrr": 0.9351851851851851,
+    "evidence_hit_at_1": 0.7777777777777778,
+    "evidence_hit_at_3": 0.9444444444444444,
+    "evidence_hit_at_5": 0.9444444444444444,
+    "evidence_hit_at_10": 1.0,
+    "evidence_mrr": 0.8611111111111112
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

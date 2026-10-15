@@ -1,0 +1,62 @@
+[
+  {
+    "model": "intfloat/multilingual-e5-small",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a8m",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a25m",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "microsoft/harrier-oss-v1-270m",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "intfloat/multilingual-e5-base",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "intfloat/multilingual-e5-large",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "Snowflake/snowflake-arctic-embed-l-v2.0",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "dragonkue/BGE-m3-ko",
+    "status": "completed",
+    "exit_code": 0
+  },
+  {
+    "model": "nlpai-lab/KoE5",
+    "status": "completed",
+    "exit_code": 0
+  }
+]

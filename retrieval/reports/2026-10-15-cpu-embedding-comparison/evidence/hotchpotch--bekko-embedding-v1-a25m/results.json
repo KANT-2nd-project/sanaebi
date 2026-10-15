@@ -1,0 +1,61 @@
+{
+  "model": "hotchpotch/bekko-embedding-v1-a25m",
+  "revision": "44f0b8af0f487acd0ccf1a7cb7ae7a29a6dfc09c",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "25d2904e940a8e765af3c8e423a76e27faad5326",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "mean_normalized",
+  "truncated_chunks": 0,
+  "query_prefix": "",
+  "passage_prefix": "",
+  "max_length": 8192,
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 529,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 384,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "torch_threads": 2,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.19.0",
+  "load_including_download_seconds": 4.596415061998414,
+  "indexing_seconds": 28.10252025000227,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 11.762623000322492,
+    "p95": 15.22170979860675,
+    "max": 17.595481000171276
+  },
+  "search_ms": {
+    "p50": 0.08754349983064458,
+    "p95": 0.12396005095069992,
+    "max": 0.8966030000010505
+  },
+  "peak_process_rss_mib": 1633.02734375,
+  "metrics": {
+    "document_hit_at_1": 0.7222222222222222,
+    "document_hit_at_3": 0.9444444444444444,
+    "document_hit_at_5": 0.9444444444444444,
+    "document_hit_at_10": 1.0,
+    "document_mrr": 0.8296296296296296,
+    "evidence_hit_at_1": 0.5,
+    "evidence_hit_at_3": 0.8333333333333334,
+    "evidence_hit_at_5": 0.8888888888888888,
+    "evidence_hit_at_10": 0.9444444444444444,
+    "evidence_mrr": 0.678042328042328
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

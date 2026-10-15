@@ -1,0 +1,57 @@
+{
+  "model": "nlpai-lab/KURE-v1",
+  "revision": "8b418a58414668e75532ed045c22d9ca018ae2b2",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "25d2904e940a8e765af3c8e423a76e27faad5326",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "cls_normalized",
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 374,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 1024,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "torch_threads": 2,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.19.0",
+  "load_including_download_seconds": 3.8781733569994685,
+  "indexing_seconds": 186.23796106499867,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 87.55298200048856,
+    "p95": 97.5396093501331,
+    "max": 104.65198300153133
+  },
+  "search_ms": {
+    "p50": 0.1072055001714034,
+    "p95": 0.11795960108429424,
+    "max": 0.18863800141843967
+  },
+  "peak_process_rss_mib": 2714.40234375,
+  "metrics": {
+    "document_hit_at_1": 0.8888888888888888,
+    "document_hit_at_3": 0.9444444444444444,
+    "document_hit_at_5": 0.9444444444444444,
+    "document_hit_at_10": 1.0,
+    "document_mrr": 0.9153439153439152,
+    "evidence_hit_at_1": 0.7777777777777778,
+    "evidence_hit_at_3": 0.8888888888888888,
+    "evidence_hit_at_5": 0.9444444444444444,
+    "evidence_hit_at_10": 1.0,
+    "evidence_mrr": 0.8458994708994709
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

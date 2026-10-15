@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "models": [
+    "Snowflake/snowflake-arctic-embed-l-v2.0",
+    "dragonkue/BGE-m3-ko",
+    "exp-models/dragonkue-KoEn-E5-Tiny",
+    "hotchpotch/bekko-embedding-v1-a25m",
+    "hotchpotch/bekko-embedding-v1-a8m",
+    "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "intfloat/multilingual-e5-base",
+    "intfloat/multilingual-e5-large",
+    "intfloat/multilingual-e5-small",
+    "microsoft/harrier-oss-v1-270m",
+    "minishlab/potion-multilingual-128M",
+    "nlpai-lab/KoE5",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  ],
+  "checks": [
+    "same fixed questions and exact source spans",
+    "finite unit vectors",
+    "rankings and metrics recomputed from saved vectors",
+    "source SHA unchanged"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "model": "hotchpotch/bekko-embedding-v1-a8m",
+  "revision": "c721113d59a1d91b447450324f51c4b3332c924a",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "25d2904e940a8e765af3c8e423a76e27faad5326",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "mean_normalized",
+  "truncated_chunks": 0,
+  "query_prefix": "",
+  "passage_prefix": "",
+  "max_length": 8192,
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 529,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 384,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "torch_threads": 2,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.19.0",
+  "load_including_download_seconds": 4.413984776998404,
+  "indexing_seconds": 8.479955302002054,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 3.908992999640759,
+    "p95": 4.641921100846956,
+    "max": 5.393684001319343
+  },
+  "search_ms": {
+    "p50": 0.07358999755524565,
+    "p95": 0.09845454933383731,
+    "max": 0.13118100105202757
+  },
+  "peak_process_rss_mib": 1824.875,
+  "metrics": {
+    "document_hit_at_1": 0.6666666666666666,
+    "document_hit_at_3": 0.7777777777777778,
+    "document_hit_at_5": 0.9444444444444444,
+    "document_hit_at_10": 1.0,
+    "document_mrr": 0.7532407407407408,
+    "evidence_hit_at_1": 0.6666666666666666,
+    "evidence_hit_at_3": 0.7222222222222222,
+    "evidence_hit_at_5": 0.8888888888888888,
+    "evidence_hit_at_10": 0.9444444444444444,
+    "evidence_mrr": 0.7285493827160494
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

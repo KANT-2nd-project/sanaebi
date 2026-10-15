@@ -1,0 +1,976 @@
+[
+  {
+    "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6252700686454773,
+        "chunk_index": 5,
+        "document_id": "ieum-003",
+        "title": "가족 경조사 휴가"
+      },
+      {
+        "rank": 2,
+        "score": 0.6227108836174011,
+        "chunk_index": 132,
+        "document_id": "ieum-059",
+        "title": "근태·휴가 변경과 취소 안내"
+      },
+      {
+        "rank": 3,
+        "score": 0.6111549139022827,
+        "chunk_index": 0,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 4,
+        "score": 0.598098874092102,
+        "chunk_index": 6,
+        "document_id": "ieum-003",
+        "title": "가족 경조사 휴가"
+      },
+      {
+        "rank": 5,
+        "score": 0.5906807780265808,
+        "chunk_index": 7,
+        "document_id": "ieum-004",
+        "title": "기본 근무 시간과 휴게"
+      }
+    ],
+    "expected_document_id": "ieum-001",
+    "evidence": "3영업일 전까지",
+    "document_rank": 3,
+    "evidence_rank": 3
+  },
+  {
+    "question": "연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6963501572608948,
+        "chunk_index": 1,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 2,
+        "score": 0.658588171005249,
+        "chunk_index": 0,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 3,
+        "score": 0.6168067455291748,
+        "chunk_index": 2,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 4,
+        "score": 0.6138360500335693,
+        "chunk_index": 6,
+        "document_id": "ieum-003",
+        "title": "가족 경조사 휴가"
+      },
+      {
+        "rank": 5,
+        "score": 0.5848032236099243,
+        "chunk_index": 4,
+        "document_id": "ieum-002",
+        "title": "병가 신청과 복귀 안내"
+      }
+    ],
+    "expected_document_id": "ieum-001",
+    "evidence": "새 신청을 중복으로",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6192641258239746,
+        "chunk_index": 11,
+        "document_id": "ieum-006",
+        "title": "출퇴근 기록 정정"
+      },
+      {
+        "rank": 2,
+        "score": 0.605370283126831,
+        "chunk_index": 109,
+        "document_id": "ieum-052",
+        "title": "퇴사와 업무 인계"
+      },
+      {
+        "rank": 3,
+        "score": 0.597171425819397,
+        "chunk_index": 127,
+        "document_id": "ieum-057",
+        "title": "입사·이동·퇴사 체크리스트"
+      },
+      {
+        "rank": 4,
+        "score": 0.5945079326629639,
+        "chunk_index": 13,
+        "document_id": "ieum-007",
+        "title": "지각 알림과 근무 시작"
+      },
+      {
+        "rank": 5,
+        "score": 0.5917579531669617,
+        "chunk_index": 55,
+        "document_id": "ieum-027",
+        "title": "시스템 접근 권한 신청과 회수"
+      }
+    ],
+    "expected_document_id": "ieum-006",
+    "evidence": "인사 > 근태 정정",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "근태 오류를 발견한 지 일주일 지났는데 수정 못 해?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6611045598983765,
+        "chunk_index": 12,
+        "document_id": "ieum-006",
+        "title": "출퇴근 기록 정정"
+      },
+      {
+        "rank": 2,
+        "score": 0.6271841526031494,
+        "chunk_index": 11,
+        "document_id": "ieum-006",
+        "title": "출퇴근 기록 정정"
+      },
+      {
+        "rank": 3,
+        "score": 0.6264115571975708,
+        "chunk_index": 10,
+        "document_id": "ieum-005",
+        "title": "시차 출퇴근형 근무 시간"
+      },
+      {
+        "rank": 4,
+        "score": 0.6063636541366577,
+        "chunk_index": 4,
+        "document_id": "ieum-002",
+        "title": "병가 신청과 복귀 안내"
+      },
+      {
+        "rank": 5,
+        "score": 0.6020488142967224,
+        "chunk_index": 131,
+        "document_id": "ieum-059",
+        "title": "근태·휴가 변경과 취소 안내"
+      }
+    ],
+    "expected_document_id": "ieum-006",
+    "evidence": "3영업일이 지난 오류",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "집에서 일하려면 언제까지 신청해야 돼?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.599489152431488,
+        "chunk_index": 19,
+        "document_id": "ieum-010",
+        "title": "재택근무 신청과 변경"
+      },
+      {
+        "rank": 2,
+        "score": 0.5751645565032959,
+        "chunk_index": 7,
+        "document_id": "ieum-004",
+        "title": "기본 근무 시간과 휴게"
+      },
+      {
+        "rank": 3,
+        "score": 0.5700498223304749,
+        "chunk_index": 20,
+        "document_id": "ieum-010",
+        "title": "재택근무 신청과 변경"
+      },
+      {
+        "rank": 4,
+        "score": 0.5648790597915649,
+        "chunk_index": 14,
+        "document_id": "ieum-007",
+        "title": "지각 알림과 근무 시작"
+      },
+      {
+        "rank": 5,
+        "score": 0.5408928394317627,
+        "chunk_index": 24,
+        "document_id": "ieum-012",
+        "title": "근무 장소 변경 신청"
+      }
+    ],
+    "expected_document_id": "ieum-010",
+    "evidence": "전 영업일 15:00",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6975078582763672,
+        "chunk_index": 19,
+        "document_id": "ieum-010",
+        "title": "재택근무 신청과 변경"
+      },
+      {
+        "rank": 2,
+        "score": 0.6651391386985779,
+        "chunk_index": 20,
+        "document_id": "ieum-010",
+        "title": "재택근무 신청과 변경"
+      },
+      {
+        "rank": 3,
+        "score": 0.6270625591278076,
+        "chunk_index": 22,
+        "document_id": "ieum-011",
+        "title": "재택근무 중 정보보호"
+      },
+      {
+        "rank": 4,
+        "score": 0.6167131066322327,
+        "chunk_index": 24,
+        "document_id": "ieum-012",
+        "title": "근무 장소 변경 신청"
+      },
+      {
+        "rank": 5,
+        "score": 0.585465669631958,
+        "chunk_index": 31,
+        "document_id": "ieum-015",
+        "title": "국내 출장 사전 승인"
+      }
+    ],
+    "expected_document_id": "ieum-010",
+    "evidence": "예정일 10영업일 전까지",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "회사 들어가는 카드를 잃어버렸고 포털도 안 돼.",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6848835945129395,
+        "chunk_index": 26,
+        "document_id": "ieum-013",
+        "title": "사무실 출입 카드 관리"
+      },
+      {
+        "rank": 2,
+        "score": 0.6713888645172119,
+        "chunk_index": 27,
+        "document_id": "ieum-013",
+        "title": "사무실 출입 카드 관리"
+      },
+      {
+        "rank": 3,
+        "score": 0.6590389013290405,
+        "chunk_index": 41,
+        "document_id": "ieum-020",
+        "title": "법인카드 사용과 정산"
+      },
+      {
+        "rank": 4,
+        "score": 0.6381941437721252,
+        "chunk_index": 51,
+        "document_id": "ieum-025",
+        "title": "회사 계정 비밀번호 관리"
+      },
+      {
+        "rank": 5,
+        "score": 0.6351135969161987,
+        "chunk_index": 136,
+        "document_id": "ieum-060",
+        "title": "출장·구매·정산 실무 안내"
+      }
+    ],
+    "expected_document_id": "ieum-013",
+    "evidence": "#office-help",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6070693731307983,
+        "chunk_index": 102,
+        "document_id": "ieum-049",
+        "title": "직무 교육 신청과 비용 지원"
+      },
+      {
+        "rank": 2,
+        "score": 0.5894131660461426,
+        "chunk_index": 135,
+        "document_id": "ieum-060",
+        "title": "출장·구매·정산 실무 안내"
+      },
+      {
+        "rank": 3,
+        "score": 0.5652161836624146,
+        "chunk_index": 36,
+        "document_id": "ieum-018",
+        "title": "출장 중 식비 정산"
+      },
+      {
+        "rank": 4,
+        "score": 0.5569642782211304,
+        "chunk_index": 27,
+        "document_id": "ieum-013",
+        "title": "사무실 출입 카드 관리"
+      },
+      {
+        "rank": 5,
+        "score": 0.5518333315849304,
+        "chunk_index": 40,
+        "document_id": "ieum-020",
+        "title": "법인카드 사용과 정산"
+      }
+    ],
+    "expected_document_id": "ieum-019",
+    "evidence": "다음 달 15일",
+    "document_rank": 6,
+    "evidence_rank": 6
+  },
+  {
+    "question": "영수증 제출 기한이 이미 지났으면 어떻게 해?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6226067543029785,
+        "chunk_index": 38,
+        "document_id": "ieum-019",
+        "title": "경비 정산 제출과 지급"
+      },
+      {
+        "rank": 2,
+        "score": 0.5490599870681763,
+        "chunk_index": 31,
+        "document_id": "ieum-015",
+        "title": "국내 출장 사전 승인"
+      },
+      {
+        "rank": 3,
+        "score": 0.5473541021347046,
+        "chunk_index": 46,
+        "document_id": "ieum-023",
+        "title": "퇴사 시 회사 자산 반납"
+      },
+      {
+        "rank": 4,
+        "score": 0.5464381575584412,
+        "chunk_index": 125,
+        "document_id": "ieum-057",
+        "title": "입사·이동·퇴사 체크리스트"
+      },
+      {
+        "rank": 5,
+        "score": 0.5443730354309082,
+        "chunk_index": 136,
+        "document_id": "ieum-060",
+        "title": "출장·구매·정산 실무 안내"
+      }
+    ],
+    "expected_document_id": "ieum-019",
+    "evidence": "팀장과 재무팀의 예외 승인",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6457149982452393,
+        "chunk_index": 52,
+        "document_id": "ieum-026",
+        "title": "다중 인증과 계정 복구"
+      },
+      {
+        "rank": 2,
+        "score": 0.6124660968780518,
+        "chunk_index": 53,
+        "document_id": "ieum-026",
+        "title": "다중 인증과 계정 복구"
+      },
+      {
+        "rank": 3,
+        "score": 0.5980308055877686,
+        "chunk_index": 129,
+        "document_id": "ieum-058",
+        "title": "계정·기기·오공유 긴급 문제 안내"
+      },
+      {
+        "rank": 4,
+        "score": 0.588464081287384,
+        "chunk_index": 128,
+        "document_id": "ieum-058",
+        "title": "계정·기기·오공유 긴급 문제 안내"
+      },
+      {
+        "rank": 5,
+        "score": 0.5819809436798096,
+        "chunk_index": 130,
+        "document_id": "ieum-058",
+        "title": "계정·기기·오공유 긴급 문제 안내"
+      }
+    ],
+    "expected_document_id": "ieum-026",
+    "evidence": "타인의 기기나 계정으로 우회 로그인하지",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6431005001068115,
+        "chunk_index": 52,
+        "document_id": "ieum-026",
+        "title": "다중 인증과 계정 복구"
+      },
+      {
+        "rank": 2,
+        "score": 0.6344363689422607,
+        "chunk_index": 53,
+        "document_id": "ieum-026",
+        "title": "다중 인증과 계정 복구"
+      },
+      {
+        "rank": 3,
+        "score": 0.6276262402534485,
+        "chunk_index": 69,
+        "document_id": "ieum-034",
+        "title": "피싱 의심 메일과 메시지 대응"
+      },
+      {
+        "rank": 4,
+        "score": 0.6129110455513,
+        "chunk_index": 59,
+        "document_id": "ieum-029",
+        "title": "기밀 정보의 열람과 전달"
+      },
+      {
+        "rank": 5,
+        "score": 0.6057175993919373,
+        "chunk_index": 129,
+        "document_id": "ieum-058",
+        "title": "계정·기기·오공유 긴급 문제 안내"
+      }
+    ],
+    "expected_document_id": "ieum-026",
+    "evidence": "본인이 시작하지 않은 인증 알림을 승인하지",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6646490097045898,
+        "chunk_index": 151,
+        "document_id": "ieum-065",
+        "title": "고객 문의 접수와 인계"
+      },
+      {
+        "rank": 2,
+        "score": 0.6497865915298462,
+        "chunk_index": 152,
+        "document_id": "ieum-065",
+        "title": "고객 문의 접수와 인계"
+      },
+      {
+        "rank": 3,
+        "score": 0.639101505279541,
+        "chunk_index": 66,
+        "document_id": "ieum-032",
+        "title": "클라우드 서비스와 회사 자료 사용"
+      },
+      {
+        "rank": 4,
+        "score": 0.6328256726264954,
+        "chunk_index": 65,
+        "document_id": "ieum-032",
+        "title": "클라우드 서비스와 회사 자료 사용"
+      },
+      {
+        "rank": 5,
+        "score": 0.6305334568023682,
+        "chunk_index": 115,
+        "document_id": "ieum-054",
+        "title": "승인된 업무 도구와 데이터 범위"
+      }
+    ],
+    "expected_document_id": "ieum-033",
+    "evidence": "식별자를 지워도",
+    "document_rank": 6,
+    "evidence_rank": 6
+  },
+  {
+    "question": "AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6842036843299866,
+        "chunk_index": 68,
+        "document_id": "ieum-033",
+        "title": "생성형 AI 업무 사용"
+      },
+      {
+        "rank": 2,
+        "score": 0.6381337642669678,
+        "chunk_index": 67,
+        "document_id": "ieum-033",
+        "title": "생성형 AI 업무 사용"
+      },
+      {
+        "rank": 3,
+        "score": 0.6255499124526978,
+        "chunk_index": 66,
+        "document_id": "ieum-032",
+        "title": "클라우드 서비스와 회사 자료 사용"
+      },
+      {
+        "rank": 4,
+        "score": 0.6158257722854614,
+        "chunk_index": 115,
+        "document_id": "ieum-054",
+        "title": "승인된 업무 도구와 데이터 범위"
+      },
+      {
+        "rank": 5,
+        "score": 0.5936124920845032,
+        "chunk_index": 65,
+        "document_id": "ieum-032",
+        "title": "클라우드 서비스와 회사 자료 사용"
+      }
+    ],
+    "expected_document_id": "ieum-033",
+    "evidence": "임의로 삭제해 증거를 없애지",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "내 PR은 내가 승인해서 머지해도 돼?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.5740854740142822,
+        "chunk_index": 165,
+        "document_id": "ieum-067",
+        "title": "개발 변경과 코드 리뷰"
+      },
+      {
+        "rank": 2,
+        "score": 0.5681741833686829,
+        "chunk_index": 32,
+        "document_id": "ieum-016",
+        "title": "출장 교통편 예약"
+      },
+      {
+        "rank": 3,
+        "score": 0.5665721297264099,
+        "chunk_index": 163,
+        "document_id": "ieum-067",
+        "title": "개발 변경과 코드 리뷰"
+      },
+      {
+        "rank": 4,
+        "score": 0.5597770810127258,
+        "chunk_index": 91,
+        "document_id": "ieum-043",
+        "title": "내부 문서의 외부 공개"
+      },
+      {
+        "rank": 5,
+        "score": 0.5575120449066162,
+        "chunk_index": 183,
+        "document_id": "ieum-071",
+        "title": "개발 도구와 비밀정보 관리"
+      }
+    ],
+    "expected_document_id": "ieum-067",
+    "evidence": "작성자와 다른 사람이 최소 1명",
+    "document_rank": 1,
+    "evidence_rank": 23
+  },
+  {
+    "question": "배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.67038893699646,
+        "chunk_index": 168,
+        "document_id": "ieum-068",
+        "title": "배포·실패·롤백 안내"
+      },
+      {
+        "rank": 2,
+        "score": 0.6463645696640015,
+        "chunk_index": 167,
+        "document_id": "ieum-068",
+        "title": "배포·실패·롤백 안내"
+      },
+      {
+        "rank": 3,
+        "score": 0.6137537956237793,
+        "chunk_index": 169,
+        "document_id": "ieum-068",
+        "title": "배포·실패·롤백 안내"
+      },
+      {
+        "rank": 4,
+        "score": 0.6092976331710815,
+        "chunk_index": 170,
+        "document_id": "ieum-068",
+        "title": "배포·실패·롤백 안내"
+      },
+      {
+        "rank": 5,
+        "score": 0.5935646891593933,
+        "chunk_index": 116,
+        "document_id": "ieum-054",
+        "title": "승인된 업무 도구와 데이터 범위"
+      }
+    ],
+    "expected_document_id": "ieum-068",
+    "evidence": "추가 배포와 반복 실행을 멈춘다",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.5933419466018677,
+        "chunk_index": 77,
+        "document_id": "ieum-037",
+        "title": "회사 기기 소프트웨어 설치"
+      },
+      {
+        "rank": 2,
+        "score": 0.5749997496604919,
+        "chunk_index": 185,
+        "document_id": "ieum-071",
+        "title": "개발 도구와 비밀정보 관리"
+      },
+      {
+        "rank": 3,
+        "score": 0.5721874237060547,
+        "chunk_index": 184,
+        "document_id": "ieum-071",
+        "title": "개발 도구와 비밀정보 관리"
+      },
+      {
+        "rank": 4,
+        "score": 0.5652419328689575,
+        "chunk_index": 78,
+        "document_id": "ieum-038",
+        "title": "업무 자료 보관과 복구"
+      },
+      {
+        "rank": 5,
+        "score": 0.5580269694328308,
+        "chunk_index": 74,
+        "document_id": "ieum-036",
+        "title": "이동식 저장장치 사용"
+      }
+    ],
+    "expected_document_id": "ieum-071",
+    "evidence": "즉시 폐기·회전",
+    "document_rank": 2,
+    "evidence_rank": 3
+  },
+  {
+    "question": "연차신청 어디서함",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.6645534038543701,
+        "chunk_index": 2,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 2,
+        "score": 0.6586657762527466,
+        "chunk_index": 0,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 3,
+        "score": 0.6326754689216614,
+        "chunk_index": 1,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 4,
+        "score": 0.5569134950637817,
+        "chunk_index": 6,
+        "document_id": "ieum-003",
+        "title": "가족 경조사 휴가"
+      },
+      {
+        "rank": 5,
+        "score": 0.5342898368835449,
+        "chunk_index": 4,
+        "document_id": "ieum-002",
+        "title": "병가 신청과 복귀 안내"
+      }
+    ],
+    "expected_document_id": "ieum-001",
+    "evidence": "인사 > 휴가",
+    "document_rank": 1,
+    "evidence_rank": 2
+  },
+  {
+    "question": "제출한 경비의 지급일인 15일이 은행 쉬는 날이면?",
+    "answerable": true,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.7572507858276367,
+        "chunk_index": 39,
+        "document_id": "ieum-019",
+        "title": "경비 정산 제출과 지급"
+      },
+      {
+        "rank": 2,
+        "score": 0.6961145997047424,
+        "chunk_index": 38,
+        "document_id": "ieum-019",
+        "title": "경비 정산 제출과 지급"
+      },
+      {
+        "rank": 3,
+        "score": 0.6240211725234985,
+        "chunk_index": 37,
+        "document_id": "ieum-018",
+        "title": "출장 중 식비 정산"
+      },
+      {
+        "rank": 4,
+        "score": 0.6201890110969543,
+        "chunk_index": 136,
+        "document_id": "ieum-060",
+        "title": "출장·구매·정산 실무 안내"
+      },
+      {
+        "rank": 5,
+        "score": 0.5732534527778625,
+        "chunk_index": 36,
+        "document_id": "ieum-018",
+        "title": "출장 중 식비 정산"
+      }
+    ],
+    "expected_document_id": "ieum-019",
+    "evidence": "다음 은행 영업일",
+    "document_rank": 1,
+    "evidence_rank": 1
+  },
+  {
+    "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+    "answerable": false,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.48649775981903076,
+        "chunk_index": 36,
+        "document_id": "ieum-018",
+        "title": "출장 중 식비 정산"
+      },
+      {
+        "rank": 2,
+        "score": 0.46356186270713806,
+        "chunk_index": 131,
+        "document_id": "ieum-059",
+        "title": "근태·휴가 변경과 취소 안내"
+      },
+      {
+        "rank": 3,
+        "score": 0.4492373466491699,
+        "chunk_index": 94,
+        "document_id": "ieum-045",
+        "title": "외부 선물과 접대 제안 처리"
+      },
+      {
+        "rank": 4,
+        "score": 0.4470190405845642,
+        "chunk_index": 37,
+        "document_id": "ieum-018",
+        "title": "출장 중 식비 정산"
+      },
+      {
+        "rank": 5,
+        "score": 0.44407951831817627,
+        "chunk_index": 7,
+        "document_id": "ieum-004",
+        "title": "기본 근무 시간과 휴게"
+      }
+    ]
+  },
+  {
+    "question": "우리 회사 올해 성과급 지급률은 몇 퍼센트야?",
+    "answerable": false,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.4912518858909607,
+        "chunk_index": 133,
+        "document_id": "ieum-059",
+        "title": "근태·휴가 변경과 취소 안내"
+      },
+      {
+        "rank": 2,
+        "score": 0.48468756675720215,
+        "chunk_index": 132,
+        "document_id": "ieum-059",
+        "title": "근태·휴가 변경과 취소 안내"
+      },
+      {
+        "rank": 3,
+        "score": 0.48006051778793335,
+        "chunk_index": 110,
+        "document_id": "ieum-053",
+        "title": "회사 역할과 문의 길잡이"
+      },
+      {
+        "rank": 4,
+        "score": 0.47061610221862793,
+        "chunk_index": 109,
+        "document_id": "ieum-052",
+        "title": "퇴사와 업무 인계"
+      },
+      {
+        "rank": 5,
+        "score": 0.4616885483264923,
+        "chunk_index": 16,
+        "document_id": "ieum-008",
+        "title": "조퇴 신청과 긴급 변경"
+      }
+    ]
+  },
+  {
+    "question": "대표님의 개인 휴대전화 번호 알려줘.",
+    "answerable": false,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.5685362815856934,
+        "chunk_index": 2,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 2,
+        "score": 0.5645334124565125,
+        "chunk_index": 129,
+        "document_id": "ieum-058",
+        "title": "계정·기기·오공유 긴급 문제 안내"
+      },
+      {
+        "rank": 3,
+        "score": 0.5561505556106567,
+        "chunk_index": 173,
+        "document_id": "ieum-069",
+        "title": "서비스 장애와 고객 공지"
+      },
+      {
+        "rank": 4,
+        "score": 0.5556953549385071,
+        "chunk_index": 113,
+        "document_id": "ieum-053",
+        "title": "회사 역할과 문의 길잡이"
+      },
+      {
+        "rank": 5,
+        "score": 0.5420879125595093,
+        "chunk_index": 49,
+        "document_id": "ieum-024",
+        "title": "회사 노트북 잠금과 보관"
+      }
+    ]
+  },
+  {
+    "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+    "answerable": false,
+    "hits": [
+      {
+        "rank": 1,
+        "score": 0.635400652885437,
+        "chunk_index": 0,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 2,
+        "score": 0.6261236667633057,
+        "chunk_index": 133,
+        "document_id": "ieum-059",
+        "title": "근태·휴가 변경과 취소 안내"
+      },
+      {
+        "rank": 3,
+        "score": 0.599821150302887,
+        "chunk_index": 1,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      },
+      {
+        "rank": 4,
+        "score": 0.5897465348243713,
+        "chunk_index": 132,
+        "document_id": "ieum-059",
+        "title": "근태·휴가 변경과 취소 안내"
+      },
+      {
+        "rank": 5,
+        "score": 0.5863970518112183,
+        "chunk_index": 2,
+        "document_id": "ieum-001",
+        "title": "연차 사용 신청"
+      }
+    ]
+  }
+]

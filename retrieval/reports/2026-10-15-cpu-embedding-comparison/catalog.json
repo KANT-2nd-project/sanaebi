@@ -1,0 +1,1055 @@
+[
+  {
+    "model": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_name_or_path": "tmp/",
+      "architectures": [
+        "BertModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "classifier_dropout": null,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 384,
+      "initializer_range": 0.02,
+      "intermediate_size": 1536,
+      "layer_norm_eps": 1e-12,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pad_token_id": 0,
+      "position_embedding_type": "absolute",
+      "tokenizer_class": "XLMRobertaTokenizer",
+      "torch_dtype": "float32",
+      "transformers_version": "4.29.0",
+      "type_vocab_size": 2,
+      "use_cache": true,
+      "vocab_size": 250037
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 384,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 512,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "architectures": [
+        "BertModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "classifier_dropout": null,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 384,
+      "initializer_range": 0.02,
+      "intermediate_size": 1536,
+      "layer_norm_eps": 1e-12,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pad_token_id": 0,
+      "position_embedding_type": "absolute",
+      "tokenizer_class": "XLMRobertaTokenizer",
+      "torch_dtype": "float32",
+      "transformers_version": "4.51.3",
+      "type_vocab_size": 2,
+      "use_cache": true,
+      "vocab_size": 41348
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 384,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": false,
+      "include_prompt": true
+    },
+    "config_sentence_transformers.json": {
+      "__version__": {
+        "sentence_transformers": "4.1.0",
+        "transformers": "4.51.3",
+        "pytorch": "2.4.1+cu124"
+      },
+      "prompts": {},
+      "default_prompt_name": null,
+      "similarity_fn_name": "cosine"
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 512,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a8m",
+    "revision": "c721113d59a1d91b447450324f51c4b3332c924a",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "architectures": [
+        "ModernBertModel"
+      ],
+      "attention_bias": false,
+      "attention_dropout": 0.0,
+      "bos_token_id": 2,
+      "classifier_activation": "gelu",
+      "classifier_bias": false,
+      "classifier_dropout": 0.0,
+      "classifier_pooling": "mean",
+      "cls_token_id": 1,
+      "decoder_bias": true,
+      "deterministic_flash_attn": false,
+      "dtype": "bfloat16",
+      "embedding_dropout": 0.0,
+      "eos_token_id": 1,
+      "global_attn_every_n_layers": 3,
+      "global_rope_theta": 160000,
+      "gradient_checkpointing": false,
+      "hidden_activation": "gelu",
+      "hidden_size": 384,
+      "initializer_cutoff_factor": 2.0,
+      "initializer_range": 0.02,
+      "intermediate_size": 1152,
+      "layer_norm_eps": 1e-05,
+      "local_attention": 128,
+      "local_rope_theta": 160000,
+      "mask_token_id": 4,
+      "max_position_embeddings": 8192,
+      "mlp_bias": false,
+      "mlp_dropout": 0.0,
+      "model_type": "modernbert",
+      "norm_bias": false,
+      "norm_eps": 1e-05,
+      "num_attention_heads": 6,
+      "num_hidden_layers": 4,
+      "pad_token_id": 0,
+      "position_embedding_type": "sans_pos",
+      "repad_logits_with_grad": false,
+      "sep_token_id": 1,
+      "sparse_pred_ignore_index": -100,
+      "sparse_prediction": false,
+      "transformers_version": "4.57.6",
+      "vocab_size": 256000
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 384,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": false,
+      "include_prompt": true
+    },
+    "config_sentence_transformers.json": {
+      "model_type": "SentenceTransformer",
+      "__version__": {
+        "sentence_transformers": "5.3.0.dev0",
+        "transformers": "4.57.6",
+        "pytorch": "2.8.0+cu129"
+      },
+      "prompts": {
+        "query": "",
+        "document": ""
+      },
+      "default_prompt_name": null,
+      "similarity_fn_name": "cosine"
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 8192,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a25m",
+    "revision": "44f0b8af0f487acd0ccf1a7cb7ae7a29a6dfc09c",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "architectures": [
+        "ModernBertModel"
+      ],
+      "attention_bias": false,
+      "attention_dropout": 0.0,
+      "bos_token_id": 2,
+      "classifier_activation": "gelu",
+      "classifier_bias": false,
+      "classifier_dropout": 0.0,
+      "classifier_pooling": "mean",
+      "cls_token_id": 1,
+      "decoder_bias": true,
+      "deterministic_flash_attn": false,
+      "dtype": "float32",
+      "embedding_dropout": 0.0,
+      "eos_token_id": 1,
+      "global_attn_every_n_layers": 3,
+      "global_rope_theta": 160000.0,
+      "gradient_checkpointing": false,
+      "hidden_activation": "gelu",
+      "hidden_size": 384,
+      "initializer_cutoff_factor": 2.0,
+      "initializer_range": 0.02,
+      "intermediate_size": 1152,
+      "layer_norm_eps": 1e-05,
+      "layer_types": [
+        "full_attention",
+        "sliding_attention",
+        "sliding_attention",
+        "full_attention",
+        "sliding_attention",
+        "sliding_attention",
+        "full_attention",
+        "sliding_attention",
+        "sliding_attention",
+        "full_attention",
+        "sliding_attention",
+        "sliding_attention",
+        "full_attention"
+      ],
+      "local_attention": 128,
+      "local_rope_theta": 160000.0,
+      "mask_token_id": 4,
+      "max_position_embeddings": 8192,
+      "mlp_bias": false,
+      "mlp_dropout": 0.0,
+      "model_type": "modernbert",
+      "norm_bias": false,
+      "norm_eps": 1e-05,
+      "num_attention_heads": 6,
+      "num_hidden_layers": 13,
+      "pad_token_id": 0,
+      "position_embedding_type": "sans_pos",
+      "repad_logits_with_grad": false,
+      "rope_parameters": {
+        "full_attention": {
+          "rope_theta": 160000,
+          "rope_type": "default"
+        },
+        "sliding_attention": {
+          "rope_theta": 160000,
+          "rope_type": "default"
+        }
+      },
+      "sep_token_id": 1,
+      "sparse_pred_ignore_index": -100,
+      "sparse_prediction": false,
+      "transformers_version": "4.57.6",
+      "vocab_size": 256000
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 384,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": false,
+      "include_prompt": true
+    },
+    "config_sentence_transformers.json": {
+      "model_type": "SentenceTransformer",
+      "__version__": {
+        "sentence_transformers": "5.3.0.dev0",
+        "transformers": "4.57.6",
+        "pytorch": "2.8.0+cu129"
+      },
+      "prompts": {
+        "query": "",
+        "document": ""
+      },
+      "default_prompt_name": null,
+      "similarity_fn_name": "cosine"
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 8192,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "architectures": [
+        "ModernBertModel"
+      ],
+      "attention_bias": false,
+      "attention_dropout": 0.0,
+      "bos_token_id": 179934,
+      "classifier_activation": "silu",
+      "classifier_bias": false,
+      "classifier_dropout": 0.0,
+      "classifier_pooling": "cls",
+      "cls_token_id": 179934,
+      "decoder_bias": true,
+      "deterministic_flash_attn": false,
+      "dtype": "bfloat16",
+      "embedding_dropout": 0.0,
+      "eos_token_id": 179938,
+      "global_attn_every_n_layers": 3,
+      "global_rope_theta": 150000.0,
+      "gradient_checkpointing": false,
+      "hidden_activation": "silu",
+      "hidden_size": 384,
+      "initializer_cutoff_factor": 2.0,
+      "initializer_range": 0.02,
+      "intermediate_size": 1536,
+      "layer_norm_eps": 1e-05,
+      "local_attention": 128,
+      "local_rope_theta": 160000.0,
+      "max_position_embeddings": 32768,
+      "mlp_bias": false,
+      "mlp_dropout": 0.0,
+      "model_type": "modernbert",
+      "norm_bias": false,
+      "norm_eps": 1e-05,
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pad_token_id": 179935,
+      "position_embedding_type": "absolute",
+      "repad_logits_with_grad": false,
+      "sep_token_id": 179938,
+      "sparse_pred_ignore_index": -100,
+      "sparse_prediction": false,
+      "transformers_version": "4.56.2",
+      "vocab_size": 180000
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 384,
+      "pooling_mode_cls_token": true,
+      "pooling_mode_mean_tokens": false,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": false,
+      "include_prompt": false
+    },
+    "config_sentence_transformers.json": {
+      "model_type": "SentenceTransformer",
+      "__version__": {
+        "sentence_transformers": "5.1.1",
+        "transformers": "4.56.2",
+        "pytorch": "2.6.0+cu124"
+      },
+      "prompts": {
+        "query": "",
+        "document": ""
+      },
+      "default_prompt_name": null,
+      "similarity_fn_name": "cosine"
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 32768,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "microsoft/harrier-oss-v1-270m",
+    "revision": "31de22b673913c7d658c0f03f792d77c2dcf8ebd",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_sliding_window_pattern": 1,
+      "architectures": [
+        "Gemma3TextModel"
+      ],
+      "attention_bias": false,
+      "attention_dropout": 0.0,
+      "attn_logit_softcapping": null,
+      "bos_token_id": 2,
+      "dtype": "bfloat16",
+      "eos_token_id": 1,
+      "final_logit_softcapping": null,
+      "head_dim": 256,
+      "hidden_activation": "gelu_pytorch_tanh",
+      "hidden_size": 640,
+      "initializer_range": 0.02,
+      "intermediate_size": 2048,
+      "layer_types": [
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention"
+      ],
+      "max_position_embeddings": 32768,
+      "model_type": "gemma3_text",
+      "num_attention_heads": 4,
+      "num_hidden_layers": 18,
+      "num_key_value_heads": 1,
+      "pad_token_id": 0,
+      "query_pre_attn_scalar": 256,
+      "rms_norm_eps": 1e-06,
+      "rope_local_base_freq": 10000.0,
+      "rope_scaling": null,
+      "rope_theta": 1000000.0,
+      "sliding_window": 512,
+      "sliding_window_pattern": 1,
+      "transformers_version": "4.57.6",
+      "use_bidirectional_attention": false,
+      "use_cache": false,
+      "vocab_size": 262144
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 640,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": false,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": true,
+      "include_prompt": true
+    },
+    "config_sentence_transformers.json": {
+      "prompts": {
+        "web_search_query": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: ",
+        "sts_query": "Instruct: Retrieve semantically similar text\nQuery: ",
+        "bitext_query": "Instruct: Retrieve parallel sentences\nQuery: "
+      },
+      "default_prompt_name": null,
+      "similarity_fn_name": "cosine"
+    }
+  },
+  {
+    "model": "minishlab/potion-multilingual-128M",
+    "revision": "73908c3438cf03b6a01bcb9611d62b23d0726f08",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "model_type": "model2vec",
+      "architectures": [
+        "StaticModel"
+      ],
+      "tokenizer_name": "BAAI/bge-m3",
+      "apply_pca": null,
+      "apply_zipf": null,
+      "sif_coefficient": null,
+      "hidden_dim": 256,
+      "seq_length": 1000000,
+      "normalize": true
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": ".",
+        "type": "sentence_transformers.models.StaticEmbedding"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ]
+  },
+  {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_name_or_path": "old_models/paraphrase-multilingual-MiniLM-L12-v2/0_Transformer",
+      "architectures": [
+        "BertModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "gradient_checkpointing": false,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 384,
+      "initializer_range": 0.02,
+      "intermediate_size": 1536,
+      "layer_norm_eps": 1e-12,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pad_token_id": 0,
+      "position_embedding_type": "absolute",
+      "transformers_version": "4.7.0",
+      "type_vocab_size": 2,
+      "use_cache": true,
+      "vocab_size": 250037
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 384,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false
+    },
+    "config_sentence_transformers.json": {
+      "__version__": {
+        "sentence_transformers": "2.0.0",
+        "transformers": "4.7.0",
+        "pytorch": "1.9.0+cu102"
+      }
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 128,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "google/embeddinggemma-300m",
+    "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+    "gated": "manual",
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "error_type": "GatedRepoError"
+    },
+    "modules.json": {
+      "error_type": "GatedRepoError"
+    },
+    "1_Pooling/config.json": {
+      "error_type": "GatedRepoError"
+    },
+    "config_sentence_transformers.json": {
+      "error_type": "GatedRepoError"
+    },
+    "sentence_bert_config.json": {
+      "error_type": "GatedRepoError"
+    }
+  },
+  {
+    "model": "intfloat/multilingual-e5-base",
+    "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_name_or_path": "tmp/",
+      "architectures": [
+        "XLMRobertaModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "bos_token_id": 0,
+      "classifier_dropout": null,
+      "eos_token_id": 2,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 768,
+      "initializer_range": 0.02,
+      "intermediate_size": 3072,
+      "layer_norm_eps": 1e-05,
+      "max_position_embeddings": 514,
+      "model_type": "xlm-roberta",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "output_past": true,
+      "pad_token_id": 1,
+      "position_embedding_type": "absolute",
+      "torch_dtype": "float32",
+      "transformers_version": "4.29.0.dev0",
+      "type_vocab_size": 1,
+      "use_cache": true,
+      "vocab_size": 250002
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 768,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 512,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "intfloat/multilingual-e5-large",
+    "revision": "3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_name_or_path": "tmp/",
+      "architectures": [
+        "XLMRobertaModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "bos_token_id": 0,
+      "classifier_dropout": null,
+      "eos_token_id": 2,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 1024,
+      "initializer_range": 0.02,
+      "intermediate_size": 4096,
+      "layer_norm_eps": 1e-05,
+      "max_position_embeddings": 514,
+      "model_type": "xlm-roberta",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 24,
+      "output_past": true,
+      "pad_token_id": 1,
+      "position_embedding_type": "absolute",
+      "torch_dtype": "float32",
+      "transformers_version": "4.29.0",
+      "type_vocab_size": 1,
+      "use_cache": true,
+      "vocab_size": 250002
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 1024,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 512,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "Snowflake/snowflake-arctic-embed-l-v2.0",
+    "revision": "ac6544c8a46e00af67e330e85a9028c66b8cfd9a",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_name_or_path": "/data/.model_and_tokenizer_cache/5f7f80c2aaf0a35ee04e2a3981c5beaab3d690223605fcb1001d7ea826acf6d9",
+      "architectures": [
+        "XLMRobertaModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "bos_token_id": 0,
+      "classifier_dropout": null,
+      "eos_token_id": 2,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 1024,
+      "initializer_range": 0.02,
+      "intermediate_size": 4096,
+      "layer_norm_eps": 1e-05,
+      "max_position_embeddings": 8194,
+      "model_type": "xlm-roberta",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 24,
+      "output_past": true,
+      "pad_token_id": 1,
+      "position_embedding_type": "absolute",
+      "torch_dtype": "float32",
+      "transformers_version": "4.39.3",
+      "type_vocab_size": 1,
+      "use_cache": true,
+      "matryoshka_dimensions": [
+        256
+      ],
+      "vocab_size": 250002
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 1024,
+      "pooling_mode_cls_token": true,
+      "pooling_mode_mean_tokens": false,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": false,
+      "include_prompt": true
+    },
+    "config_sentence_transformers.json": {
+      "__version__": {
+        "sentence_transformers": "2.7.0.dev0",
+        "transformers": "4.39.3",
+        "pytorch": "2.1.0+cu121"
+      },
+      "prompts": {
+        "query": "query: "
+      },
+      "default_prompt_name": null
+    }
+  },
+  {
+    "model": "dragonkue/BGE-m3-ko",
+    "revision": "7074d66aa46562342193ca4feb3d89bf9dad71b4",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_name_or_path": "BAAI/BGE-m3",
+      "architectures": [
+        "XLMRobertaModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "bos_token_id": 0,
+      "classifier_dropout": null,
+      "eos_token_id": 2,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 1024,
+      "initializer_range": 0.02,
+      "intermediate_size": 4096,
+      "layer_norm_eps": 1e-05,
+      "max_position_embeddings": 8194,
+      "model_type": "xlm-roberta",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 24,
+      "output_past": true,
+      "pad_token_id": 1,
+      "position_embedding_type": "absolute",
+      "torch_dtype": "float32",
+      "transformers_version": "4.44.2",
+      "type_vocab_size": 1,
+      "use_cache": true,
+      "vocab_size": 250002
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 1024,
+      "pooling_mode_cls_token": true,
+      "pooling_mode_mean_tokens": false,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": false,
+      "include_prompt": true
+    },
+    "config_sentence_transformers.json": {
+      "__version__": {
+        "sentence_transformers": "3.1.0",
+        "transformers": "4.44.2",
+        "pytorch": "2.4.0+cu121"
+      },
+      "prompts": {},
+      "default_prompt_name": null,
+      "similarity_fn_name": null
+    },
+    "sentence_bert_config.json": {
+      "max_seq_length": 8192,
+      "do_lower_case": false
+    }
+  },
+  {
+    "model": "nlpai-lab/KoE5",
+    "revision": "237b580aea358e3042fcf5baf78124c33c3afd16",
+    "gated": false,
+    "weights": [
+      "model.safetensors"
+    ],
+    "config.json": {
+      "_name_or_path": "/data/yjoonjang/KUKE/KUKE-ft-bs=512-ep=1-lr=2e-5-240826",
+      "architectures": [
+        "XLMRobertaModel"
+      ],
+      "attention_probs_dropout_prob": 0.1,
+      "bos_token_id": 0,
+      "classifier_dropout": null,
+      "eos_token_id": 2,
+      "hidden_act": "gelu",
+      "hidden_dropout_prob": 0.1,
+      "hidden_size": 1024,
+      "initializer_range": 0.02,
+      "intermediate_size": 4096,
+      "layer_norm_eps": 1e-05,
+      "max_position_embeddings": 514,
+      "model_type": "xlm-roberta",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 24,
+      "output_past": true,
+      "pad_token_id": 1,
+      "position_embedding_type": "absolute",
+      "torch_dtype": "float32",
+      "transformers_version": "4.44.2",
+      "type_vocab_size": 1,
+      "use_cache": true,
+      "vocab_size": 250002
+    },
+    "modules.json": [
+      {
+        "idx": 0,
+        "name": "0",
+        "path": "",
+        "type": "sentence_transformers.models.Transformer"
+      },
+      {
+        "idx": 1,
+        "name": "1",
+        "path": "1_Pooling",
+        "type": "sentence_transformers.models.Pooling"
+      },
+      {
+        "idx": 2,
+        "name": "2",
+        "path": "2_Normalize",
+        "type": "sentence_transformers.models.Normalize"
+      }
+    ],
+    "1_Pooling/config.json": {
+      "word_embedding_dimension": 1024,
+      "pooling_mode_cls_token": false,
+      "pooling_mode_mean_tokens": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_weightedmean_tokens": false,
+      "pooling_mode_lasttoken": false,
+      "include_prompt": true
+    },
+    "config_sentence_transformers.json": {
+      "__version__": {
+        "sentence_transformers": "2.6.1",
+        "transformers": "4.39.3",
+        "pytorch": "2.2.2"
+      },
+      "prompts": {},
+      "default_prompt_name": null
+    }
+  }
+]

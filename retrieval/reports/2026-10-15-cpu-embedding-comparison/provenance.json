@@ -1,0 +1,130 @@
+[
+  {
+    "model": "dragonkue/multilingual-e5-small-ko-v2",
+    "revision": "fcfc26bf355882620c48df58be112275bd756f50",
+    "experiment_git_head": "69dedcc48adc8a1ac6ac7a1cdb1d00edc4f9f9b9",
+    "local_source": "tmp/e5-small-ko-v2-pilot-2026-10-15",
+    "published_evidence": "evidence/dragonkue--multilingual-e5-small-ko-v2",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-comparison-2026-10-15/BAAI--bge-m3",
+    "published_evidence": "evidence/BAAI--bge-m3",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "nlpai-lab/KURE-v1",
+    "revision": "8b418a58414668e75532ed045c22d9ca018ae2b2",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-comparison-2026-10-15/nlpai-lab--KURE-v1",
+    "published_evidence": "evidence/nlpai-lab--KURE-v1",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "Snowflake/snowflake-arctic-embed-l-v2.0",
+    "revision": "ac6544c8a46e00af67e330e85a9028c66b8cfd9a",
+    "experiment_git_head": "b21d4ef5455d9a164be7382a7dd4ff326ed6df80",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/Snowflake--snowflake-arctic-embed-l-v2.0",
+    "published_evidence": "evidence/Snowflake--snowflake-arctic-embed-l-v2.0",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "dragonkue/BGE-m3-ko",
+    "revision": "7074d66aa46562342193ca4feb3d89bf9dad71b4",
+    "experiment_git_head": "b21d4ef5455d9a164be7382a7dd4ff326ed6df80",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/dragonkue--BGE-m3-ko",
+    "published_evidence": "evidence/dragonkue--BGE-m3-ko",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/exp-models--dragonkue-KoEn-E5-Tiny",
+    "published_evidence": "evidence/exp-models--dragonkue-KoEn-E5-Tiny",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a25m",
+    "revision": "44f0b8af0f487acd0ccf1a7cb7ae7a29a6dfc09c",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/hotchpotch--bekko-embedding-v1-a25m",
+    "published_evidence": "evidence/hotchpotch--bekko-embedding-v1-a25m",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a8m",
+    "revision": "c721113d59a1d91b447450324f51c4b3332c924a",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/hotchpotch--bekko-embedding-v1-a8m",
+    "published_evidence": "evidence/hotchpotch--bekko-embedding-v1-a8m",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/ibm-granite--granite-embedding-97m-multilingual-r2",
+    "published_evidence": "evidence/ibm-granite--granite-embedding-97m-multilingual-r2",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "intfloat/multilingual-e5-base",
+    "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/intfloat--multilingual-e5-base",
+    "published_evidence": "evidence/intfloat--multilingual-e5-base",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "intfloat/multilingual-e5-large",
+    "revision": "3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+    "experiment_git_head": "68becbedcc54fd3d7e087fe8dab4a72a57d617e4",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/intfloat--multilingual-e5-large",
+    "published_evidence": "evidence/intfloat--multilingual-e5-large",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/intfloat--multilingual-e5-small",
+    "published_evidence": "evidence/intfloat--multilingual-e5-small",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "microsoft/harrier-oss-v1-270m",
+    "revision": "31de22b673913c7d658c0f03f792d77c2dcf8ebd",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/microsoft--harrier-oss-v1-270m",
+    "published_evidence": "evidence/microsoft--harrier-oss-v1-270m",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "minishlab/potion-multilingual-128M",
+    "revision": "73908c3438cf03b6a01bcb9611d62b23d0726f08",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/minishlab--potion-multilingual-128M",
+    "published_evidence": "evidence/minishlab--potion-multilingual-128M",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "nlpai-lab/KoE5",
+    "revision": "237b580aea358e3042fcf5baf78124c33c3afd16",
+    "experiment_git_head": "b21d4ef5455d9a164be7382a7dd4ff326ed6df80",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/nlpai-lab--KoE5",
+    "published_evidence": "evidence/nlpai-lab--KoE5",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  },
+  {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "experiment_git_head": "25d2904e940a8e765af3c8e423a76e27faad5326",
+    "local_source": "tmp/embedding-broad-pilot-2026-10-15/sentence-transformers--paraphrase-multilingual-MiniLM-L12-v2",
+    "published_evidence": "evidence/sentence-transformers--paraphrase-multilingual-MiniLM-L12-v2",
+    "predictions_transform": "removed hits[].body only; ranks, scores, IDs and evidence unchanged"
+  }
+]

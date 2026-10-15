@@ -1,0 +1,8 @@
+{
+  "pooling": "last",
+  "max_length": 32768,
+  "query_prefix": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: ",
+  "passage_prefix": "",
+  "dtype": "float32",
+  "backend": "pytorch"
+}

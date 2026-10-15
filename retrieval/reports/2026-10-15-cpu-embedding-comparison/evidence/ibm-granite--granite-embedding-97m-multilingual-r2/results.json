@@ -1,0 +1,61 @@
+{
+  "model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+  "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "25d2904e940a8e765af3c8e423a76e27faad5326",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "cls_normalized",
+  "truncated_chunks": 0,
+  "query_prefix": "",
+  "passage_prefix": "",
+  "max_length": 32768,
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 429,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 384,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "torch_threads": 2,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.19.0",
+  "load_including_download_seconds": 3.476666579997982,
+  "indexing_seconds": 24.835505094000837,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 12.055775498083676,
+    "p95": 14.141534499503905,
+    "max": 15.852202999667497
+  },
+  "search_ms": {
+    "p50": 0.0908365000213962,
+    "p95": 0.11549484934221255,
+    "max": 0.13279300037538633
+  },
+  "peak_process_rss_mib": 1701.2265625,
+  "metrics": {
+    "document_hit_at_1": 0.8888888888888888,
+    "document_hit_at_3": 0.8888888888888888,
+    "document_hit_at_5": 0.8888888888888888,
+    "document_hit_at_10": 0.9444444444444444,
+    "document_mrr": 0.8972578347578347,
+    "evidence_hit_at_1": 0.8333333333333334,
+    "evidence_hit_at_3": 0.8333333333333334,
+    "evidence_hit_at_5": 0.8333333333333334,
+    "evidence_hit_at_10": 0.8888888888888888,
+    "evidence_mrr": 0.8438492063492062
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

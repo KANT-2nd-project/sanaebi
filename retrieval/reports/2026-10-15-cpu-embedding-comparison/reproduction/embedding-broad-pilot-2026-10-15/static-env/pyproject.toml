@@ -1,0 +1,8 @@
+[project]
+name = "static-env"
+version = "0.1.0"
+requires-python = ">=3.12.14"
+dependencies = [
+    "model2vec>=0.10.0",
+    "numpy>=2.5.4",
+]

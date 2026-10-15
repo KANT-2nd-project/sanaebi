@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "dataset SHA unchanged",
+    "finite normalized 186x384 vectors",
+    "source offsets and full non-whitespace coverage",
+    "stored metric recomputation",
+    "prediction bodies match chunks"
+  ]
+}

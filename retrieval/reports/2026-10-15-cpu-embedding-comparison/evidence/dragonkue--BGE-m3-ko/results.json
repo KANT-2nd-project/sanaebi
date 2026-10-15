@@ -1,0 +1,61 @@
+{
+  "model": "dragonkue/BGE-m3-ko",
+  "revision": "7074d66aa46562342193ca4feb3d89bf9dad71b4",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "b21d4ef5455d9a164be7382a7dd4ff326ed6df80",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "cls_normalized",
+  "truncated_chunks": 0,
+  "query_prefix": "",
+  "passage_prefix": "",
+  "max_length": 8192,
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 374,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 1024,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "torch_threads": 2,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.19.0",
+  "load_including_download_seconds": 3.3981648179978947,
+  "indexing_seconds": 188.34936768000262,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 90.12802249890228,
+    "p95": 99.78499204844411,
+    "max": 101.87895199851482
+  },
+  "search_ms": {
+    "p50": 0.10472249960002955,
+    "p95": 0.11647569863271198,
+    "max": 0.15666800027247518
+  },
+  "peak_process_rss_mib": 2739.61328125,
+  "metrics": {
+    "document_hit_at_1": 0.8333333333333334,
+    "document_hit_at_3": 0.9444444444444444,
+    "document_hit_at_5": 0.9444444444444444,
+    "document_hit_at_10": 1.0,
+    "document_mrr": 0.8858024691358025,
+    "evidence_hit_at_1": 0.7777777777777778,
+    "evidence_hit_at_3": 0.8888888888888888,
+    "evidence_hit_at_5": 0.8888888888888888,
+    "evidence_hit_at_10": 1.0,
+    "evidence_mrr": 0.8395061728395061
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

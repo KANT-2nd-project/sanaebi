@@ -1,0 +1,61 @@
+{
+  "model": "nlpai-lab/KoE5",
+  "revision": "237b580aea358e3042fcf5baf78124c33c3afd16",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "b21d4ef5455d9a164be7382a7dd4ff326ed6df80",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "mean_normalized",
+  "truncated_chunks": 0,
+  "query_prefix": "query: ",
+  "passage_prefix": "passage: ",
+  "max_length": 512,
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 376,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 1024,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "torch_threads": 2,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.19.0",
+  "load_including_download_seconds": 4.090703088000737,
+  "indexing_seconds": 224.2366344610018,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 101.90489999877173,
+    "p95": 124.72896194940401,
+    "max": 154.72315800070646
+  },
+  "search_ms": {
+    "p50": 0.11188250209670514,
+    "p95": 0.1699750995612701,
+    "max": 1.2541729993245099
+  },
+  "peak_process_rss_mib": 2668.84375,
+  "metrics": {
+    "document_hit_at_1": 0.9444444444444444,
+    "document_hit_at_3": 0.9444444444444444,
+    "document_hit_at_5": 0.9444444444444444,
+    "document_hit_at_10": 1.0,
+    "document_mrr": 0.9523809523809523,
+    "evidence_hit_at_1": 0.8333333333333334,
+    "evidence_hit_at_3": 0.8888888888888888,
+    "evidence_hit_at_5": 0.8888888888888888,
+    "evidence_hit_at_10": 1.0,
+    "evidence_mrr": 0.8759920634920635
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "models": [
+    "BAAI/bge-m3",
+    "nlpai-lab/KURE-v1"
+  ],
+  "checks": [
+    "same fixed questions and exact source spans",
+    "finite unit vectors",
+    "rankings and metrics recomputed from saved vectors",
+    "source SHA unchanged"
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "model": "dragonkue/multilingual-e5-small-ko-v2",
+    "specified_evidence_rank": 23,
+    "alternative_explicit_evidence_top5_ranks": [
+      1
+    ]
+  },
+  {
+    "model": "BAAI/bge-m3",
+    "specified_evidence_rank": 1,
+    "alternative_explicit_evidence_top5_ranks": [
+      2
+    ]
+  },
+  {
+    "model": "nlpai-lab/KURE-v1",
+    "specified_evidence_rank": 1,
+    "alternative_explicit_evidence_top5_ranks": [
+      3
+    ]
+  },
+  {
+    "model": "Snowflake/snowflake-arctic-embed-l-v2.0",
+    "specified_evidence_rank": 2,
+    "alternative_explicit_evidence_top5_ranks": [
+      3
+    ]
+  },
+  {
+    "model": "dragonkue/BGE-m3-ko",
+    "specified_evidence_rank": 1,
+    "alternative_explicit_evidence_top5_ranks": [
+      3
+    ]
+  },
+  {
+    "model": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "specified_evidence_rank": 29,
+    "alternative_explicit_evidence_top5_ranks": [
+      2
+    ]
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a25m",
+    "specified_evidence_rank": 5,
+    "alternative_explicit_evidence_top5_ranks": []
+  },
+  {
+    "model": "hotchpotch/bekko-embedding-v1-a8m",
+    "specified_evidence_rank": 3,
+    "alternative_explicit_evidence_top5_ranks": []
+  },
+  {
+    "model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "specified_evidence_rank": 60,
+    "alternative_explicit_evidence_top5_ranks": []
+  },
+  {
+    "model": "intfloat/multilingual-e5-base",
+    "specified_evidence_rank": 1,
+    "alternative_explicit_evidence_top5_ranks": []
+  },
+  {
+    "model": "intfloat/multilingual-e5-large",
+    "specified_evidence_rank": 6,
+    "alternative_explicit_evidence_top5_ranks": [
+      5
+    ]
+  },
+  {
+    "model": "intfloat/multilingual-e5-small",
+    "specified_evidence_rank": 5,
+    "alternative_explicit_evidence_top5_ranks": [
+      1
+    ]
+  },
+  {
+    "model": "microsoft/harrier-oss-v1-270m",
+    "specified_evidence_rank": 2,
+    "alternative_explicit_evidence_top5_ranks": []
+  },
+  {
+    "model": "minishlab/potion-multilingual-128M",
+    "specified_evidence_rank": 3,
+    "alternative_explicit_evidence_top5_ranks": [
+      1
+    ]
+  },
+  {
+    "model": "nlpai-lab/KoE5",
+    "specified_evidence_rank": 2,
+    "alternative_explicit_evidence_top5_ranks": [
+      3
+    ]
+  },
+  {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "specified_evidence_rank": 109,
+    "alternative_explicit_evidence_top5_ranks": []
+  }
+]

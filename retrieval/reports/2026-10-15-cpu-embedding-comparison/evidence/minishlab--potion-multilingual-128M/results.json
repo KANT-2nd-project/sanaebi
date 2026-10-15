@@ -1,0 +1,59 @@
+{
+  "model": "minishlab/potion-multilingual-128M",
+  "revision": "73908c3438cf03b6a01bcb9611d62b23d0726f08",
+  "dataset_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "git_commit": "25d2904e940a8e765af3c8e423a76e27faad5326",
+  "documents": 71,
+  "chunks": 186,
+  "pooling": "model2vec_static_normalized",
+  "truncated_chunks": 0,
+  "backend": "model2vec",
+  "retrieval_mode": "dense_only",
+  "chunk_provenance": "unchanged E5-tokenized source spans",
+  "max_chunk_tokens": 401,
+  "chunk_body_tokens": 360,
+  "overlap_tokens": 60,
+  "dimension": 256,
+  "device": "cpu",
+  "affinity": [
+    0,
+    1
+  ],
+  "use_multiprocessing": false,
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "model2vec": "0.10.0",
+  "python": "3.12.14",
+  "load_including_download_seconds": 11.774345609002921,
+  "indexing_seconds": 0.09240319200034719,
+  "indexing_batch_size": 8,
+  "query_timing_samples": 88,
+  "query_ms": {
+    "p50": 0.06805600060033612,
+    "p95": 0.10377095077274133,
+    "max": 0.19250699915573932
+  },
+  "search_ms": {
+    "p50": 0.007519998689531349,
+    "p95": 0.022077849644119844,
+    "max": 0.06152900095912628
+  },
+  "peak_process_rss_mib": 1886.18359375,
+  "metrics": {
+    "document_hit_at_1": 0.5,
+    "document_hit_at_3": 0.7222222222222222,
+    "document_hit_at_5": 0.7222222222222222,
+    "document_hit_at_10": 0.8333333333333334,
+    "document_mrr": 0.6260381593714928,
+    "evidence_hit_at_1": 0.3333333333333333,
+    "evidence_hit_at_3": 0.7222222222222222,
+    "evidence_hit_at_5": 0.7222222222222222,
+    "evidence_hit_at_10": 0.7222222222222222,
+    "evidence_mrr": 0.5239378883687826
+  },
+  "limitations": [
+    "AI-authored corpus-aware small questions; not independent quality evaluation",
+    "CPU affinity 2 on developer workstation is not deployed 2vCPU",
+    "No classifier contention, concurrency, live DB, publish/update lifecycle or LLM evaluated",
+    "Document hits use one designated source; other relevant sources may exist"
+  ]
+}

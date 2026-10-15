@@ -1,0 +1,101 @@
+{
+  "answerable": [
+    {
+      "question": "휴가를 미리 쓰려고 하는데 어디서 며칠 전에 올려야 해?",
+      "document_id": "ieum-001",
+      "evidence": "3영업일 전까지"
+    },
+    {
+      "question": "연차 취소 버튼이 잠겨 있어. 새로 신청하면 될까?",
+      "document_id": "ieum-001",
+      "evidence": "새 신청을 중복으로"
+    },
+    {
+      "question": "어제 퇴근 체크를 빼먹었어. 기록을 어떻게 고치지?",
+      "document_id": "ieum-006",
+      "evidence": "인사 > 근태 정정"
+    },
+    {
+      "question": "근태 오류를 발견한 지 일주일 지났는데 수정 못 해?",
+      "document_id": "ieum-006",
+      "evidence": "3영업일이 지난 오류"
+    },
+    {
+      "question": "집에서 일하려면 언제까지 신청해야 돼?",
+      "document_id": "ieum-010",
+      "evidence": "전 영업일 15:00"
+    },
+    {
+      "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+      "document_id": "ieum-010",
+      "evidence": "예정일 10영업일 전까지"
+    },
+    {
+      "question": "회사 들어가는 카드를 잃어버렸고 포털도 안 돼.",
+      "document_id": "ieum-013",
+      "evidence": "#office-help"
+    },
+    {
+      "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "document_id": "ieum-019",
+      "evidence": "다음 달 15일"
+    },
+    {
+      "question": "영수증 제출 기한이 이미 지났으면 어떻게 해?",
+      "document_id": "ieum-019",
+      "evidence": "팀장과 재무팀의 예외 승인"
+    },
+    {
+      "question": "인증용 휴대폰을 잃어버렸어. 동료 계정으로 들어가도 돼?",
+      "document_id": "ieum-026",
+      "evidence": "타인의 기기나 계정으로 우회 로그인하지"
+    },
+    {
+      "question": "내가 로그인 안 했는데 인증 승인 알림이 자꾸 와.",
+      "document_id": "ieum-026",
+      "evidence": "본인이 시작하지 않은 인증 알림을 승인하지"
+    },
+    {
+      "question": "회사 ChatGPT 계정이면 고객 이름을 지우고 문의 내용을 넣어도 돼?",
+      "document_id": "ieum-033",
+      "evidence": "식별자를 지워도"
+    },
+    {
+      "question": "AI에 회사 정보를 잘못 넣었어. 대화를 지워야 하나?",
+      "document_id": "ieum-033",
+      "evidence": "임의로 삭제해 증거를 없애지"
+    },
+    {
+      "question": "내 PR은 내가 승인해서 머지해도 돼?",
+      "document_id": "ieum-067",
+      "evidence": "작성자와 다른 사람이 최소 1명"
+    },
+    {
+      "question": "배포하다 장애가 났는데 같은 명령부터 다시 돌리면 돼?",
+      "document_id": "ieum-068",
+      "evidence": "추가 배포와 반복 실행을 멈춘다"
+    },
+    {
+      "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+      "document_id": "ieum-071",
+      "evidence": "즉시 폐기·회전"
+    },
+    {
+      "question": "연차신청 어디서함",
+      "document_id": "ieum-001",
+      "evidence": "인사 > 휴가"
+    },
+    {
+      "question": "제출한 경비의 지급일인 15일이 은행 쉬는 날이면?",
+      "document_id": "ieum-019",
+      "evidence": "다음 은행 영업일"
+    }
+  ],
+  "unanswerable": [
+    "이번 주 구내식당 점심 메뉴가 뭐야?",
+    "우리 회사 올해 성과급 지급률은 몇 퍼센트야?",
+    "대표님의 개인 휴대전화 번호 알려줘.",
+    "내 개인 잔여 연차가 정확히 며칠이야?"
+  ],
+  "provenance": "AI-authored after reading corpus; fixed before inference; not human reviewed"
+}
