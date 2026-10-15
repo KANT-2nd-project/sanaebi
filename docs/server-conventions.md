@@ -2,6 +2,8 @@
 
 서버 책임 분리와 회귀 검증의 기준이다. 서비스 정책은 [서비스 설계](service-architecture.md), 라벨 의미는 [라벨 기준](label-taxonomy.md), 문서 저장 계약은 [문서 관리](document-management.md)를 따른다.
 
+처음 읽는 경우 [서버 요청 흐름](../app/README.md) → [분류기 추론](../app/classification/README.md)을 따른다. 이 문서는 구현을 변경할 때 지켜야 할 책임·설정·검증 기준을 관리한다.
+
 ## 현재 흐름과 책임
 
 `라우터 → 질문 서비스 → 외부 연동`을 사용한다. `/ask`는 분류 후 CLARIFY·UNSUPPORTED에 고정 안내를 반환하며 문서·LLM을 호출하지 않는다. SEARCH_KNOWLEDGE만 SQLite 게시 snapshot을 한 번 읽고, 비어 있지 않을 때 선택한 LangChain 제공자로 답변을 생성한다. 빈 snapshot은 정상적인 자료 없음 안내다. 조회 실패를 빈 문서로 숨기지 않는다.
