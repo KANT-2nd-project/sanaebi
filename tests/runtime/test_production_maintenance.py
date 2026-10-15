@@ -221,7 +221,6 @@ class RagHostMaintenanceTests(unittest.TestCase):
         )
         self.assertEqual(self.paths.baseline.read_bytes(), b'{"id":"baseline"}\n')
 
-
     def test_mapping_only_recovery_never_resets_source_or_loads_embedding_model(self):
         source_before = self.paths.baseline.read_bytes()
         database_before = self.paths.database.read_bytes()

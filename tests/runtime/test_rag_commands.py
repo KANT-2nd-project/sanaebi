@@ -5,10 +5,12 @@ import json
 import os
 import tempfile
 import unittest
+import uuid
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
+from app.documents import service as document_service
 from app.documents.context import DocumentContextProvider
 from app.documents.repository import DocumentRepository
 from app.documents.transfer import _apply_rows, read_source, sha
@@ -156,3 +158,40 @@ class RagCommandTests(unittest.TestCase):
             )
         self.assertEqual(result, 0)
         self.assertFalse((self.root / "absent.sqlite3").exists())
+
+    def test_clear_restore_invalidates_then_reuses_baseline_without_encoding(self):
+        from app.retrieval.service import RetrievalService
+        from tests.retrieval.helpers import FakeEmbedder
+
+        index = IndexRepository(self.index_root)
+        retriever = RetrievalService(index, FakeEmbedder(), baseline_path=self.bundle)
+        retriever.reconcile(self.provider.snapshot())
+        previous = self.provider.snapshot()
+        repository = DocumentRepository(self.database)
+        for action in ("clear", "restore"):
+            preview = document_service.preview_maintenance(
+                repository, action, self.source
+            )
+            document_service.maintain_documents(
+                repository,
+                action,
+                preview["expected_state"],
+                str(uuid.uuid4()),
+                self.source,
+            )
+            current = self.provider.snapshot()
+            if action == "clear":
+                self.assertEqual(current.documents, ())
+                self.assertEqual(index.current_chunks(current), [])
+            else:
+                self.assertNotEqual(
+                    previous.documents[0].revision_id, current.documents[0].revision_id
+                )
+                self.assertFalse(retriever.status(current)["ready"])
+                with patch.object(
+                    retriever.embedder,
+                    "encode_documents",
+                    side_effect=AssertionError("baseline reuse only"),
+                ):
+                    retriever.reconcile(current)
+                self.assertTrue(retriever.status(current)["ready"])
