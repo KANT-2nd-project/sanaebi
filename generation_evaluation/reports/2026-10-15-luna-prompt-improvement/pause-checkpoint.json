@@ -1,0 +1,117 @@
+{
+  "status": "paused_by_user",
+  "paused_at": 1792030790.549495,
+  "user_instruction": "잠시 지금 하는 실험까지만 하고 중단해봐",
+  "runs": {
+    "regression-reasoning-coverage": {
+      "responses": 20,
+      "sha256": "73e9346d05bf0602648711c194a22384a8a7ecc838efb081f349171509d7d731",
+      "status_counts": {
+        "completed": 19,
+        "parse_error": 1
+      }
+    },
+    "regression-original-coverage": {
+      "responses": 20,
+      "sha256": "3d33ee87ece1060394a5082fb8d6021995164c5074fb90e72ccb7ad4289088ad",
+      "status_counts": {
+        "completed": 20
+      }
+    },
+    "regression-original-reference": {
+      "responses": 20,
+      "sha256": "836ef41726a33bc90fddeef0e037010a8443092db6d0c2cd42afee9a6aec8fba",
+      "status_counts": {
+        "completed": 20
+      }
+    },
+    "final-reference-r2": {
+      "responses": 20,
+      "sha256": "7c489e5b0d6238ebd565eaff74d2714c67ca977fcf8a33b4b16f12c729a0364d",
+      "status_counts": {
+        "completed": 20
+      }
+    },
+    "final-coverage-r2": {
+      "responses": 20,
+      "sha256": "51d091a364b696762ddd2c6767275fc1dd1e7d50d5401e32e84d2e2866b809c8",
+      "status_counts": {
+        "completed": 20
+      }
+    },
+    "final-coverage-r1": {
+      "responses": 20,
+      "sha256": "a4b8dc6d87298b210d8420d07c16544cd4f1dfe74b74583f77981a389f243752",
+      "status_counts": {
+        "completed": 20
+      }
+    },
+    "final-reference-r1": {
+      "responses": 20,
+      "sha256": "515097f4a833b06244415200f4d89d14b662369edd5dace1bf5bc570e2fa2c0f",
+      "status_counts": {
+        "completed": 20
+      }
+    },
+    "dev-coverage-r2": {
+      "responses": 8,
+      "sha256": "17e364187980ad6e461a88dd4b7c1b3f3147a51ad97f4be9ff9602d798d7a656",
+      "status_counts": {
+        "completed": 8
+      }
+    },
+    "dev-reference-r2": {
+      "responses": 8,
+      "sha256": "5fc2539941451a1672382d90f9f9d176b0b607eed17106a8dfa969275b60ce93",
+      "status_counts": {
+        "completed": 8
+      }
+    },
+    "dev-json": {
+      "responses": 8,
+      "sha256": "8b8f4acf5787850147a7c7cf27a52456d6a754061d79f482759de00bf5c82aaa",
+      "status_counts": {
+        "completed": 8
+      }
+    },
+    "dev-conditions": {
+      "responses": 8,
+      "sha256": "8ec6a122bf1243ae830227fe5d8d18cbb8dade9f331cb52dd6ef0100c184ce7f",
+      "status_counts": {
+        "completed": 8
+      }
+    },
+    "dev-coverage": {
+      "responses": 8,
+      "sha256": "a4897133cd9930319e65976e55a64a5d5d80b7a5bcc82a958f6634247150480a",
+      "status_counts": {
+        "completed": 8
+      }
+    },
+    "dev-reference": {
+      "responses": 8,
+      "sha256": "ff7d15a88defd35e36e067acd837101a8c36f7a2f25206d92081892d22a93697",
+      "status_counts": {
+        "completed": 8
+      }
+    }
+  },
+  "total_responses": 188,
+  "ledger_reservations": 188,
+  "charged_dollars": 2.03041528,
+  "ledger_started_at": 1792027771.865088,
+  "ledger_sha256": "b718308931941d78f66cfc538f552aae4632d0209490b016a4f8d925282cbff6",
+  "active_until_last_call_minutes": 50.208127947648364,
+  "unsettled_calls": 0,
+  "final_new20": "80 responses judged and adjudicated; reference29pass11partial stable14/20 vs coverage27pass13partial stable13/20; retain reference",
+  "pending": [
+    "regression-original-b4 blind export and10 judgments",
+    "regression-original N01 material verdict boundary audit",
+    "regression-reasoning-reference20 model calls not started",
+    "regression-reasoning paired blind grading40 responses after reference run",
+    "regression reports and aggregate cost/runtime",
+    "final docs/Notion journal verification and feature commit/push"
+  ],
+  "publication_head": "97af57bca52c67408cd0c0216b2fbcd53de97df3",
+  "time_budget_note": "Preserve ledger identity, reservations, and start. Resume must account for elapsed wall clock; do not reset prior history."
+}

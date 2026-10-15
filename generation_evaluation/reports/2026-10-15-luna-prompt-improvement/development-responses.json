@@ -25,6 +25,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\\n\\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 19.34948232700117,
     "calls": [
@@ -39,6 +46,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\\n\\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.\"}",
         "usage": {
           "input_tokens": 57356,
           "output_tokens": 1413,
@@ -81,6 +89,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\\n\\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.\"}",
+          "input_tokens": 57356,
+          "output_tokens": 1413,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 19.348020555000403,
         "estimated_dollars": 0.0153986
       }
@@ -112,6 +126,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 16.818235705000916,
     "calls": [
@@ -126,6 +147,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\"}",
         "usage": {
           "input_tokens": 57328,
           "output_tokens": 1161,
@@ -168,6 +190,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 1161,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 16.815929989001233,
         "estimated_dollars": 0.0152026
       }
@@ -199,6 +227,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 5.948685735998879,
     "calls": [
@@ -213,6 +248,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
         "usage": {
           "input_tokens": 57328,
           "output_tokens": 266,
@@ -255,6 +291,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 266,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 5.945857535998584,
         "estimated_dollars": 0.01453135
       }
@@ -286,6 +328,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 5.35591694499999,
     "calls": [
@@ -300,6 +349,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}",
         "usage": {
           "input_tokens": 57337,
           "output_tokens": 320,
@@ -342,6 +392,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 320,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 5.354111619999458,
         "estimated_dollars": 0.0145741
       }
@@ -373,6 +429,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 7.512266094001461,
     "calls": [
@@ -387,6 +450,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.\"}",
         "usage": {
           "input_tokens": 57337,
           "output_tokens": 365,
@@ -429,6 +493,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 365,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 7.51104706499973,
         "estimated_dollars": 0.01460785
       }
@@ -460,6 +530,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 2.9783826410002803,
     "calls": [
@@ -474,6 +551,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57324,
           "output_tokens": 107,
@@ -516,6 +594,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57324,
+          "output_tokens": 107,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 2.9754819969984965,
         "estimated_dollars": 0.0144111
       }
@@ -547,6 +631,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 8.54416143600065,
     "calls": [
@@ -561,6 +652,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.\"}",
         "usage": {
           "input_tokens": 57334,
           "output_tokens": 460,
@@ -603,6 +695,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.\"}",
+          "input_tokens": 57334,
+          "output_tokens": 460,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 8.542867676998867,
         "estimated_dollars": 0.01467835
       }
@@ -634,6 +732,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 9.821690777000185,
     "calls": [
@@ -648,6 +753,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
         "usage": {
           "input_tokens": 57330,
           "output_tokens": 596,
@@ -690,6 +796,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+          "input_tokens": 57330,
+          "output_tokens": 596,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 9.820428541999718,
         "estimated_dollars": 0.01477935
       }
@@ -721,6 +833,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 17.262248461000127,
     "calls": [
@@ -735,6 +854,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.\"}",
         "usage": {
           "input_tokens": 57481,
           "output_tokens": 1143,
@@ -777,6 +897,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.\"}",
+          "input_tokens": 57481,
+          "output_tokens": 1143,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 17.260548002002906,
         "estimated_dollars": 0.01499137
       }
@@ -808,6 +934,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 12.125074932999269,
     "calls": [
@@ -822,6 +955,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.\"}",
         "usage": {
           "input_tokens": 57453,
           "output_tokens": 892,
@@ -864,6 +998,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.\"}",
+          "input_tokens": 57453,
+          "output_tokens": 892,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 12.123561552001775,
         "estimated_dollars": 0.014796120000000001
       }
@@ -895,6 +1035,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 5.870230368000193,
     "calls": [
@@ -909,6 +1056,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
         "usage": {
           "input_tokens": 57453,
           "output_tokens": 359,
@@ -951,6 +1099,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+          "input_tokens": 57453,
+          "output_tokens": 359,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 5.868695072000264,
         "estimated_dollars": 0.01439637
       }
@@ -982,6 +1136,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 11.76073931800056,
     "calls": [
@@ -996,6 +1157,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
         "usage": {
           "input_tokens": 57462,
           "output_tokens": 329,
@@ -1038,6 +1200,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 329,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 11.75913459399817,
         "estimated_dollars": 0.014376120000000001
       }
@@ -1069,6 +1237,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 10.96322486400095,
     "calls": [
@@ -1083,6 +1258,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.\"}",
         "usage": {
           "input_tokens": 57462,
           "output_tokens": 775,
@@ -1125,6 +1301,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 775,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 10.961539659001573,
         "estimated_dollars": 0.01471062
       }
@@ -1156,6 +1338,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 5.057140503999108,
     "calls": [
@@ -1170,6 +1359,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.\"}",
         "usage": {
           "input_tokens": 57449,
           "output_tokens": 196,
@@ -1212,6 +1402,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.\"}",
+          "input_tokens": 57449,
+          "output_tokens": 196,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 5.055546346997289,
         "estimated_dollars": 0.01427312
       }
@@ -1243,6 +1439,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 9.132024135000393,
     "calls": [
@@ -1257,6 +1460,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.\"}",
         "usage": {
           "input_tokens": 57459,
           "output_tokens": 649,
@@ -1299,6 +1503,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.\"}",
+          "input_tokens": 57459,
+          "output_tokens": 649,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 9.130614417001198,
         "estimated_dollars": 0.014851350000000001
       }
@@ -1330,6 +1540,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 14.681205749002402,
     "calls": [
@@ -1344,6 +1561,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.\"}",
         "usage": {
           "input_tokens": 57455,
           "output_tokens": 999,
@@ -1386,6 +1604,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 999,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 14.67954069299958,
         "estimated_dollars": 0.01487687
       }
@@ -1417,6 +1641,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 11.976633089001552,
     "calls": [
@@ -1431,6 +1662,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.\"}",
         "usage": {
           "input_tokens": 57474,
           "output_tokens": 673,
@@ -1473,6 +1705,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.\"}",
+          "input_tokens": 57474,
+          "output_tokens": 673,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 11.97403757199936,
         "estimated_dollars": 0.0148731
       }
@@ -1504,6 +1742,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\\n\\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 21.26099269900078,
     "calls": [
@@ -1518,6 +1763,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\\n\\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.\"}",
         "usage": {
           "input_tokens": 57446,
           "output_tokens": 1286,
@@ -1560,6 +1806,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\\n\\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.\"}",
+          "input_tokens": 57446,
+          "output_tokens": 1286,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 21.25927158900231,
         "estimated_dollars": 0.01532585
       }
@@ -1591,6 +1843,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 4.760885004001466,
     "calls": [
@@ -1605,6 +1864,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.\"}",
         "usage": {
           "input_tokens": 57446,
           "output_tokens": 180,
@@ -1647,6 +1907,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.\"}",
+          "input_tokens": 57446,
+          "output_tokens": 180,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 4.758712725997611,
         "estimated_dollars": 0.01449635
       }
@@ -1678,6 +1944,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 7.8269744380013435,
     "calls": [
@@ -1692,6 +1965,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.\"}",
         "usage": {
           "input_tokens": 57455,
           "output_tokens": 331,
@@ -1734,6 +2008,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 331,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 7.824295219998021,
         "estimated_dollars": 0.014611850000000001
       }
@@ -1765,6 +2045,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 12.046831114999804,
     "calls": [
@@ -1779,6 +2066,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.\"}",
         "usage": {
           "input_tokens": 57455,
           "output_tokens": 706,
@@ -1821,6 +2109,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 706,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 12.045228338000015,
         "estimated_dollars": 0.014893100000000001
       }
@@ -1852,6 +2146,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 4.0567117069986125,
     "calls": [
@@ -1866,6 +2167,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57442,
           "output_tokens": 119,
@@ -1908,6 +2210,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57442,
+          "output_tokens": 119,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 4.054728274000809,
         "estimated_dollars": 0.0144496
       }
@@ -1939,6 +2247,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 11.22376006400009,
     "calls": [
@@ -1953,6 +2268,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.\"}",
         "usage": {
           "input_tokens": 57452,
           "output_tokens": 599,
@@ -1995,6 +2311,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.\"}",
+          "input_tokens": 57452,
+          "output_tokens": 599,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 11.222173300000577,
         "estimated_dollars": 0.0148121
       }
@@ -2026,6 +2348,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 9.915628807997564,
     "calls": [
@@ -2040,6 +2369,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.\"}",
         "usage": {
           "input_tokens": 57448,
           "output_tokens": 521,
@@ -2082,6 +2412,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.\"}",
+          "input_tokens": 57448,
+          "output_tokens": 521,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 9.913995883998723,
         "estimated_dollars": 0.014752600000000001
       }
@@ -2113,6 +2449,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 11.974985759999981,
     "calls": [
@@ -2127,6 +2470,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.\"}",
         "usage": {
           "input_tokens": 57386,
           "output_tokens": 949,
@@ -2169,6 +2513,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.\"}",
+          "input_tokens": 57386,
+          "output_tokens": 949,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 11.973030645000108,
         "estimated_dollars": 0.0150581
       }
@@ -2200,6 +2550,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 11.055437877999793,
     "calls": [
@@ -2214,6 +2571,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.\"}",
         "usage": {
           "input_tokens": 57358,
           "output_tokens": 767,
@@ -2256,6 +2614,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.\"}",
+          "input_tokens": 57358,
+          "output_tokens": 767,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 11.052893493000738,
         "estimated_dollars": 0.0149146
       }
@@ -2287,6 +2651,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 3.8671336850020452,
     "calls": [
@@ -2301,6 +2672,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
         "usage": {
           "input_tokens": 57358,
           "output_tokens": 185,
@@ -2343,6 +2715,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+          "input_tokens": 57358,
+          "output_tokens": 185,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 3.8654019679997873,
         "estimated_dollars": 0.0144781
       }
@@ -2374,6 +2752,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 6.83552249299828,
     "calls": [
@@ -2388,6 +2773,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
         "usage": {
           "input_tokens": 57367,
           "output_tokens": 340,
@@ -2430,6 +2816,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+          "input_tokens": 57367,
+          "output_tokens": 340,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 6.83388117800132,
         "estimated_dollars": 0.0145966
       }
@@ -2461,6 +2853,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 7.892270385000302,
     "calls": [
@@ -2475,6 +2874,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.\"}",
         "usage": {
           "input_tokens": 57367,
           "output_tokens": 583,
@@ -2517,6 +2917,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57367,
+          "output_tokens": 583,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 7.8896565299983195,
         "estimated_dollars": 0.01477885
       }
@@ -2548,6 +2954,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 2.773200850999274,
     "calls": [
@@ -2562,6 +2975,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57354,
           "output_tokens": 123,
@@ -2604,6 +3018,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57354,
+          "output_tokens": 123,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 2.7707135979981103,
         "estimated_dollars": 0.0144306
       }
@@ -2635,6 +3055,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 9.455213520999678,
     "calls": [
@@ -2649,6 +3076,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.\"}",
         "usage": {
           "input_tokens": 57364,
           "output_tokens": 583,
@@ -2691,6 +3119,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.\"}",
+          "input_tokens": 57364,
+          "output_tokens": 583,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 9.453519607002818,
         "estimated_dollars": 0.0147781
       }
@@ -2722,6 +3156,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 7.491255133001687,
     "calls": [
@@ -2736,6 +3177,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
         "usage": {
           "input_tokens": 57360,
           "output_tokens": 531,
@@ -2778,6 +3220,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+          "input_tokens": 57360,
+          "output_tokens": 531,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 7.48865091100015,
         "estimated_dollars": 0.0147381
       }
@@ -2809,6 +3257,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\\n\\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 19.699675985000795,
     "calls": [
@@ -2823,6 +3278,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\\n\\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57356,
           "output_tokens": 1507,
@@ -2865,6 +3321,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\\n\\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.\"}",
+          "input_tokens": 57356,
+          "output_tokens": 1507,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 19.697472274001484,
         "estimated_dollars": 0.0022779099999999997
       }
@@ -2896,6 +3358,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\\n\\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 14.61949486100275,
     "calls": [
@@ -2910,6 +3379,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\\n\\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57328,
           "output_tokens": 1047,
@@ -2952,6 +3422,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\\n\\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 1047,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 14.617658488001325,
         "estimated_dollars": 0.00193235
       }
@@ -2983,6 +3459,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 3.86503628599894,
     "calls": [
@@ -2997,6 +3480,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
         "usage": {
           "input_tokens": 57328,
           "output_tokens": 140,
@@ -3039,6 +3523,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 140,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 3.862996192998253,
         "estimated_dollars": 0.0012521
       }
@@ -3070,6 +3560,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 5.911978247000661,
     "calls": [
@@ -3084,6 +3581,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.\"}",
         "usage": {
           "input_tokens": 57337,
           "output_tokens": 273,
@@ -3126,6 +3624,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 273,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 5.910090960998787,
         "estimated_dollars": 0.00135203
       }
@@ -3157,6 +3661,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 8.545163236998633,
     "calls": [
@@ -3171,6 +3682,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.\"}",
         "usage": {
           "input_tokens": 57337,
           "output_tokens": 613,
@@ -3213,6 +3725,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 613,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 8.542956647997926,
         "estimated_dollars": 0.00160703
       }
@@ -3244,6 +3762,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 2.9863103740026418,
     "calls": [
@@ -3258,6 +3783,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57324,
           "output_tokens": 114,
@@ -3300,6 +3826,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57324,
+          "output_tokens": 114,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 2.983942996001133,
         "estimated_dollars": 0.00123252
       }
@@ -3331,6 +3863,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 8.49112077600148,
     "calls": [
@@ -3345,6 +3884,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.\"}",
         "usage": {
           "input_tokens": 57334,
           "output_tokens": 492,
@@ -3387,6 +3927,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.\"}",
+          "input_tokens": 57334,
+          "output_tokens": 492,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 8.489361521998944,
         "estimated_dollars": 0.00151622
       }
@@ -3418,6 +3964,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 10.114435999003035,
     "calls": [
@@ -3432,6 +3985,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.\"}",
         "usage": {
           "input_tokens": 57330,
           "output_tokens": 646,
@@ -3474,6 +4028,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.\"}",
+          "input_tokens": 57330,
+          "output_tokens": 646,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 10.112396232998435,
         "estimated_dollars": 0.00163164
       }
@@ -3505,6 +4065,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 14.82306601000164,
     "calls": [
@@ -3519,6 +4086,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57481,
           "output_tokens": 1019,
@@ -3561,6 +4129,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.\"}",
+          "input_tokens": 57481,
+          "output_tokens": 1019,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 14.820538747997489,
         "estimated_dollars": 0.0019144099999999999
       }
@@ -3592,6 +4166,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 15.671422898001765,
     "calls": [
@@ -3606,6 +4187,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)\"}",
         "usage": {
           "input_tokens": 57453,
           "output_tokens": 1171,
@@ -3648,6 +4230,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)\"}",
+          "input_tokens": 57453,
+          "output_tokens": 1171,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 15.667237726000167,
         "estimated_dollars": 0.00202785
       }
@@ -3679,6 +4267,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 7.297288461999415,
     "calls": [
@@ -3693,6 +4288,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
         "usage": {
           "input_tokens": 57453,
           "output_tokens": 489,
@@ -3735,6 +4331,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+          "input_tokens": 57453,
+          "output_tokens": 489,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 7.29475520699998,
         "estimated_dollars": 0.0015163499999999999
       }
@@ -3766,6 +4368,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 5.449187792000885,
     "calls": [
@@ -3780,6 +4389,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}",
         "usage": {
           "input_tokens": 57462,
           "output_tokens": 192,
@@ -3822,6 +4432,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 192,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 5.446368588000041,
         "estimated_dollars": 0.00129378
       }
@@ -3853,6 +4469,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 9.394182310003089,
     "calls": [
@@ -3867,6 +4490,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.\"}",
         "usage": {
           "input_tokens": 57462,
           "output_tokens": 676,
@@ -3909,6 +4533,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 676,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 9.39226590799808,
         "estimated_dollars": 0.00165678
       }
@@ -3940,6 +4570,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 4.214716479000344,
     "calls": [
@@ -3954,6 +4591,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
         "usage": {
           "input_tokens": 57449,
           "output_tokens": 138,
@@ -3996,6 +4634,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57449,
+          "output_tokens": 138,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 4.212419060000684,
         "estimated_dollars": 0.00125302
       }
@@ -4027,6 +4671,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 13.160149662999174,
     "calls": [
@@ -4041,6 +4692,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.\"}",
         "usage": {
           "input_tokens": 57459,
           "output_tokens": 583,
@@ -4083,6 +4735,12 @@
           "finish_reason": "stop",
           "logprobs": null
         },
+        "response": {
+          "raw_text": "{\"answer\":\"은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.\"}",
+          "input_tokens": 57459,
+          "output_tokens": 583,
+          "finish_reason": "stop"
+        },
         "elapsed_seconds": 13.15826100599952,
         "estimated_dollars": 0.00158697
       }
@@ -4114,6 +4772,13 @@
     },
     "error_type": null,
     "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.\"}"
+      }
+    ],
     "format_pass": true,
     "elapsed_seconds": 10.2988199729989,
     "calls": [
@@ -4128,6 +4793,7 @@
           "max_output_tokens": 4096,
           "reasoning_effort": "xhigh"
         },
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.\"}",
         "usage": {
           "input_tokens": 57455,
           "output_tokens": 711,
@@ -4169,6 +4835,12 @@
           "service_tier": "default",
           "finish_reason": "stop",
           "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 711,
+          "finish_reason": "stop"
         },
         "elapsed_seconds": 10.296836459001497,
         "estimated_dollars": 0.0016828899999999998

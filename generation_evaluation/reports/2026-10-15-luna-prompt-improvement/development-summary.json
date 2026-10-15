@@ -85,9 +85,9 @@
           "uncertain": 0
         },
         "action_boundary": {
-          "pass": 4,
+          "pass": 2,
           "fail": 0,
-          "na": 12,
+          "na": 14,
           "uncertain": 0
         },
         "style": {
@@ -197,9 +197,9 @@
           "uncertain": 0
         },
         "action_boundary": {
-          "pass": 8,
+          "pass": 3,
           "fail": 0,
-          "na": 8,
+          "na": 13,
           "uncertain": 0
         },
         "style": {
@@ -421,9 +421,9 @@
           "uncertain": 0
         },
         "action_boundary": {
-          "pass": 2,
+          "pass": 1,
           "fail": 0,
-          "na": 6,
+          "na": 7,
           "uncertain": 0
         },
         "style": {

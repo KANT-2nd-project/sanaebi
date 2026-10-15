@@ -1,48 +1,46 @@
-# GPT-6 Luna 선택 이후 프롬프트 강화 준비
+# GPT-6 Luna 프롬프트 강화
 
-현재 사용자의 실행 요청과 새2시간·3달러 승인으로 [후속 실험](../generation_evaluation/reports/2026-10-15-luna-prompt-improvement/README.md)의 개발48응답 평가와 최종20문항 고정을 완료했다. 최종 비교 호출·후보 채택은 아직 완료하지 않았다. 이후 사용자는 비용 제한을 철회했고 시간 범위는 유지했다. 아래 준비 시점의 미실행 설명은 역사 기록이며 실행 결과·채택 여부는 후속 보고서를 따른다.
+> 현재 최종 구성은 [프롬프트 확정·튜닝 종료](generation-final-prompt.md)를 따른다. 아래 비교와 유지/보류 결정은 해당 실험 시점의 기록이다.
 
-## 확정한 결정
+두 모델 중 더 좋은 모델을 고른다는 기존 목적에 따라 **GPT-6 Luna를 선택했다.** 이후에는 같은 모델의 필수 안내 누락을 줄이는 프롬프트를 비교한다. 모델 선택과 기본 설정 승격·서비스 품질 승인은 별도 결정이다. 이전 Qwen/GPT 점수와 당시 판단은 [이전 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/reasoning-extension/README.md)에 보존한다.
 
-이번 모델 선정의 목적은 Qwen3 4B Q4_K_M과 GPT-6 Luna 중 더 좋은 모델을 고르는 것이었다. 상대 비교 결과에 따라 **GPT-6 Luna를 선택했다.** 이후 작업은 선택을 미루는 단계가 아니라 선택한 모델의 답변 품질을 개선하는 단계다.
+이번 구현·실행과 채택 판단의 기준 위치는 [프롬프트 강화 보고서](../generation_evaluation/reports/2026-10-15-luna-prompt-improvement/README.md)다. [작업 일지](worklogs/2026-10-15-generation-luna-prompt-experiment.md)는 변경 계기·검증·게시를 기록한다. 이번 실험·판정은 AI 위임 수행이며 사용자의 독립 숙련도나 사람의 품질 승인을 의미하지 않는다.
 
-최신 20문항×2회에서 GPT는 통과25·부분15·실패0, 중대한 오류0문항, 두 반복 통과11/20이었다. Qwen은 통과0·부분26·실패14, 중대한 오류5문항, 두 반복 통과0/20이었다. [최종 비교 근거](../generation_evaluation/reports/2026-10-15-model-selection/reasoning-extension/README.md)를 보존한다. 18/20 기준은 기본 설정 승격·서비스 품질 판단의 별도 목표이며 상대적인 모델 선택을 취소하지 않는다. 기존 실행 기본값과 서버 연결은 이번 준비에서 바꾸지 않았다.
+## 비교한 구성
 
-## 준비된 자료와 아직 하지 않은 일
+기준은 GPT-6 Luna / examples / single / reasoning xhigh / 출력4096 / timeout180초이며 temperature는 전달하지 않는다. [후보 설정](../generation_evaluation/experiments/luna-prompt-improvement-20261015/candidates.json)의 모델·추론·문서·전략은 같고 다음 프롬프트 요소만 바꾼다.
 
-- [기준 후보 설정](../generation_evaluation/experiments/luna-prompt-improvement-20261015/baseline.json): GPT-6 Luna, examples, single, reasoning xhigh, 출력4096, timeout180초. temperature 미전달.
-- [입력 고정 목록](../generation_evaluation/experiments/luna-prompt-improvement-20261015/inputs.json): 개발8·이미 열람한 두20문항 세트의 경로와 해시. 이전 문서 snapshot 식별 포함.
-- [누락 분석 목록](../generation_evaluation/experiments/luna-prompt-improvement-20261015/omission-backlog.json): GPT의 부분 충족15응답과 판정 근거. 평가자용 자료이며 모델 입력으로 전달하지 않는다.
-- [프롬프트 후보 초안](../generation_evaluation/experiments/luna-prompt-improvement-20261015/candidate-drafts.md): 필수 안내 점검, 조건 연결, 출력 예시 정렬의 세 후보. 아직 런타임 프로필에 등록하지 않았다.
+| 후보 | 프로필 | 변경 |
+|---|---|---|
+| luna-reference | examples | 기존 기준 |
+| luna-coverage | examples_coverage | 답변 전 필수 안내 누락 점검 |
+| luna-conditions | examples_conditions | 같은 업무의 조건·예외 연결 확인 |
+| luna-json | examples_json | 합성 대조 예시의 답변을 JSON 계약으로 표현 |
 
-이번에는 설정·초안·검증 순서를 준비했으며 추가 API 호출, 성능 향상 확인, 새 미공개 세트 생성은 하지 않았다. 과거 2시간·5달러 실험 원장과 결과는 그대로 보존한다. 후속 실행 시작 시 적용할 예산·시간 범위를 먼저 확정하고 원장에 남긴다. 준비 작업이 과거 한도를 초기화하거나 새 유료 실행을 뜻하지 않는다.
+공통 `generation/prompts.py`의 역할·말투·근거·출력 규칙에 `generation/profiles.py`의 선택형 규칙과 예시를 더한다. 따라서 실험의 실제 입력은 prompts.py만 읽어서는 모두 확인할 수 없다. [실제 system 프롬프트](../generation_evaluation/reports/2026-10-15-luna-prompt-improvement/system-prompts.json)와 각 실행의 프롬프트 hash를 함께 확인한다. 합성 예시의 정책을 회사 정책으로 사용하지 않도록 경계를 유지한다.
 
-## 다음 실험 순서
+## 평가와 현재 결정
 
-1. 입력과 판정 기준 확인: 같은 문서71건 snapshot과 기존 개발8문항을 사용한다. 문서가 추가·개정됐다면 별도 snapshot으로 분리하고 기준 응답부터 다시 실행한다. 모든 문항의 필수 주장에 질문 직접 요구인지, 결론을 바꾸는 조건인지, 부가 안내인지 표시하는 기준 개정안을 준비한다. 과거 점수는 바꾸지 않으며 새 기준은 호출 전에 버전으로 고정한다.
-2. 기준 구성 재확인: 같은 실행 환경에서 baseline을 실행하여 기존 기록과 구분한다. 서버·문서 검색·모델·추론·출력 한도를 동시에 바꾸지 않는다.
-3. C1부터 비교: 질문에 필요한 조건·담당 주체·기한·증빙 누락을 줄이는 짧은 점검 지시만 추가한다. 근거 없는 내용을 채우거나 무관한 절차를 늘리면 탈락시킨다. 효과가 없으면 C2를 독립 비교한다.
-4. 형식 후보 C3: 합성 예시의 답변 형식을 계약과 맞추는 효과만 별도로 측정한다. 최신40응답은 이미 형식 성공이므로 형식 성공률만으로 개선을 주장하지 않는다. strict JSON Schema는 별도 코드 변경·검증 후보다.
-5. 유망 후보 반복: 개발8문항 1회 비교 후 최선 후보만 두 번째 반복한다. 이미 열람한 두20문항은 회귀용으로 사용한다. 이를 새로운 독립 최종 성적으로 발표하지 않는다.
-6. 새 최종 검증: 기존 개발·예시·두 선정 세트와 질문 그룹이 겹치지 않는 새20문항과 원문 판정 기준을 독립 검토하여 고정한다. 기준 구성과 최선 후보를 각각2회 비교하고 이름을 가린 판정·경계 재검토를 수행한다. 결과를 본 뒤 해당 평가를 유지한 채 후보를 수정하지 않는다.
+개발8문항에서 기준과 필수 안내 점검을 각각2회, 조건 연결·JSON 예시를각1회 실행했다. 통과는 기준11/16, 필수 안내 점검13/16, 조건 연결6/8, JSON 예시5/8이었다. 조건 연결과 JSON 예시가 연속으로 최선 후보보다 개선되지 않아 추가 튜닝을 중단했다. 새20문항각2회 비교에서 기준은29/40·안정14/20, 필수 안내 점검은27/40·안정13/20이었다. 개발 개선이 재현되지 않아 기준 examples를 유지하고 coverage는 채택하지 않는다. 사용자 요청으로 회귀 후속 실행·게시를 일시 중단하며 완료 범위는 보고서를 따른다.
 
-## 성공·중단 판단
+[판정 기준](../generation_evaluation/benchmarks/luna-prompt-20261015/rubric.json)은 형식, 문서 근거, 적용 범위·조건, 필수 안내, 유보, 조회·실행 경계, 한국어 존댓말, 관련성의8차원이다. 문항별 필수 주장·금지 주장·정확한 원문 구간을 사전에 고정했다. 의미가 같은 표현은 인정하며 선택적 배경 누락은 감점하지 않는다. 형식 실패·잘림·불확실을 제외하거나 통과로 간주하지 않는다.
 
-8개 차원과 실패 포함 분모는 유지한다. 우선 중대한 근거·권한 오류가 늘지 않아야 하며, 두 반복 모두 통과한 문항 수와 필수 안내 누락 응답 수를 함께 본다. 과잉 유보·무관한 절차·형식 실패·잘림도 별도 집계한다. 평균 점수 하나로 새 환각을 상쇄하지 않는다.
+[새20문항](../generation_evaluation/benchmarks/luna-prompt-20261015/README.md)은 기존48개 질문 그룹과 구분하고 독립 작성·검토했다. 같은71문서를 사용하며 일부 인접 정책이 남아 새로운 정책 일반화 검증은 아니다. 최종 결과를 본 뒤 프롬프트를 고쳐 같은 최종 점수로 다시 제시하지 않는다. 이전 두20문항은 이미 열람한 회귀 자료로만 사용한다.
 
-두 차례 연속 개선이 없거나 예산·시간이 부족하면 추가 후보를 멈춘다. 품질이 같으면 응답 시간·출력 길이·추론 토큰·비용이 적은 구성을 우선한다. 캐시 적중 차이를 비용 개선으로 단정하지 않는다. 프롬프트 개선 채택 여부와 모델 선택은 별개다. 후보가 모두 실패해도 선택 모델 GPT-6 Luna와 기존 기준 구성을 유지한다.
+## 재현
 
-## 실행 진입점
-
-기존 `python -m generation_evaluation.selection`을 사용한다. 먼저 `--help`로 인자를 확인할 수 있다. 아래는 **후속 실행 시 사용할 기준 후보 명령 템플릿**이며 이번에는 실행하지 않았다. `$LUNA_DOCUMENTS`는 검증한 snapshot, `$LUNA_LEDGER`는 후속 실행 범위를 명시한 원장, `$LUNA_OUTPUT`은 새 결과 경로, `$SANAEBI_ENV_FILE`은 로컬 인증 파일 경로다. 키를 명령이나 저장소에 적지 않는다.
+기존 공통 CLI와 서버 기본값을 자동으로 바꾸지 않는다. 아래는 selection 실행기에서 기준을 명시하는 재현 명령이다. 문서는 보고서에 기록된 snapshot과 동일해야 한다. 환경 파일·API키는 저장소에 넣지 않는다.
 
 ```bash
 uv run --locked --env-file "$SANAEBI_ENV_FILE" python -m generation_evaluation.selection \
-  --candidates generation_evaluation/experiments/luna-prompt-improvement-20261015/baseline.json \
-  --candidate gpt-luna-reference \
-  --cases generation_evaluation/benchmarks/selection-20261015/dev.json \
-  --documents "$LUNA_DOCUMENTS" --phase dev \
-  --ledger "$LUNA_LEDGER" --output "$LUNA_OUTPUT"
+  --candidates generation_evaluation/experiments/luna-prompt-improvement-20261015/candidates.json \
+  --candidate luna-reference \
+  --cases generation_evaluation/benchmarks/luna-prompt-20261015/final.json \
+  --documents "$LUNA_DOCUMENTS" --phase final \
+  --ledger "$LUNA_LEDGER" --output "$LUNA_OUTPUT" \
+  --total-dollars 3 --dev-dollars 1.2 --total-seconds 7200 --dev-seconds 4200
 ```
 
-실험 후보는 초안을 프로필에 등록하고 오프라인 검증한 뒤 별도 이름으로 추가한다. 같은 조건의 모든 후보는 같은 원장을 사용한다. 기존 완료 실행을 새 코드로 재개하지 않고 새 실험으로 기록하며, 과거 실행의 재개라면 당시 코드와 원장 식별자·예약 이력을 유지한다. 문서 해시·질문 그룹·프롬프트 해시·원응답·실패·시간·토큰·비용을 보존한다.
+필수 안내 점검은 `--candidate luna-coverage`로 실행한다. 두 번째 반복은 같은 원장과 새 output에 `--start-repeat 2`를 지정한다. 처음에는2시간·3달러를 승인받았고 이후 사용자가 비용 제한을 철회했다. 이번에는 충분한 운영 상한3달러를 유지했으며 이전 실험의 원장·시간을 초기화하지 않았다. 예산은 호출 전 입력·최대 출력을 예약하고 확인된 사용량으로 정산한다. 실제 청구 금액과는 구분한다.
+
+같은 실행의 재개에서는 완료 항목을 건너뛰고 입력·설정·코드·원장 식별자·예약 이력을 확인한다. 다른 한도나 코드로 과거 출력 폴더를 재개하지 않는다. 문서가 추가·개정되면 새 snapshot/hash로 입력 예산·지연·답변 품질을 다시 평가하며 이번 성적을 그대로 승계하지 않는다.

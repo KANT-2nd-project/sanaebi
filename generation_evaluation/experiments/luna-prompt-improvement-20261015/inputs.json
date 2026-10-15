@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_executed",
+  "status": "historical_preparation_snapshot",
   "selected_model": "gpt-6-luna",
   "baseline_candidate": "gpt-luna-reference",
   "candidate_drafts_registered": false,
@@ -23,5 +23,6 @@
       "use": "exposed_regression_only"
     }
   ],
-  "prior_document_snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74"
+  "prior_document_snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+  "historical_note": "아래 미실행 필드는 c338437 준비 시점 기록이다. 후속 실행 상태와 고정 입력은 reports/2026-10-15-luna-prompt-improvement/frozen-final.json 및 README.md를 따른다."
 }

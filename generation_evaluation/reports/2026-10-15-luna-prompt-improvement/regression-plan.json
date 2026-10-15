@@ -1,0 +1,14 @@
+{
+  "frozen_before_regression_calls": 1792029430.4279118,
+  "sets": {
+    "generation_evaluation/benchmarks/selection-20261015/final.json": "94e6a0fe13da9855001e127e335e685b44bfd77f22ca1f5279287659238f6e1b",
+    "generation_evaluation/benchmarks/selection-20261015/reasoning-final.json": "84c6d95e67cbda239e6edad7973cf0e7318d9fa6189e8df78a7bf151301985a2"
+  },
+  "candidates": [
+    "luna-reference",
+    "luna-coverage"
+  ],
+  "repeats_each": 1,
+  "calls": 80,
+  "interpretation": "Previously exposed cases, regression only. No post-final tuning. Same required claims with rubric v1.1 semantic equivalence; do not overwrite historical grades. Single repeats cannot demonstrate stability."
+}

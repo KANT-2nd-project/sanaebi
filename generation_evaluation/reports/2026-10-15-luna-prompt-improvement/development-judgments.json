@@ -89,9 +89,9 @@
         "reason": "It bounds the answer to the supplied documentation and does not invent a lookup screen."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "Response does not claim to look up this report; it says the self-service menu/permission is not documented and gives a documented handoff path.",
-        "reason": "No private-state lookup or completed action is claimed."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",
@@ -140,9 +140,9 @@
         "reason": "No unsupported contact details are inferred."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "No lookup, contact, submission, or completed action is claimed.",
-        "reason": "The question asks for guidance and the answer stays within guidance."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",
@@ -191,9 +191,9 @@
         "reason": "It stays within the documented steps."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "It does not claim to sign in, register MFA, grant access, or use another account.",
-        "reason": "No action or access has been falsely represented as completed."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",
@@ -293,9 +293,9 @@
         "reason": "The evidence is sufficient and the response answers the supported part."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "The response gives submission instructions and does not claim to submit or approve an expense.",
-        "reason": "No private lookup or completed action is asserted."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",
@@ -351,9 +351,9 @@
         "reason": "It does not infer a menu or date from offboarding guidance."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "No personal payroll record is claimed to have been accessed or changed.",
-        "reason": "The answer gives the appropriate contact for the requested individualized process."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",
@@ -613,9 +613,9 @@
         "reason": "문서에 없는 우회책을 채우지 않습니다."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "응답은 동료 계정 사용을 허용하거나 접근 권한을 부여했다고 하지 않습니다.",
-        "reason": "계정 공유·접근 권한에 관한 경계를 유지합니다."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",
@@ -1457,9 +1457,9 @@
         "reason": "문서에 없는 인증 우회책을 만들지 않았습니다."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "응답은 동료 계정 접근을 허가하거나 실제 MFA·계정 처리를 완료했다고 하지 않습니다.",
-        "reason": "계정 사용 권한 경계를 지킵니다."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",
@@ -2308,9 +2308,9 @@
         "reason": "문서에 없는 우회 방식을 제안하지 않습니다."
       },
       "action_boundary": {
-        "status": "pass",
+        "status": "na",
         "evidence": "응답은 동료 계정 사용을 허용하거나 계정·권한 설정을 완료했다고 주장하지 않습니다.",
-        "reason": "계정 접근 경계를 유지합니다."
+        "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
       },
       "style": {
         "status": "pass",

@@ -74,4 +74,8 @@
 
 후속 선택형 프롬프트·근거 추출·추론 비교와 별도20문항 선정은 [최신 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)를 따른다. 최초 결과 이후 사용자가 높은 추론 설정의 추가 실험을 요청했으므로, 추가 후보는 새로운 질문 그룹20개로 재검증하고 최초 세트 결과와 분리한다. 위 A/B 기록은 이전 개발 실험으로 보존한다.
 
-GPT-6 Luna 선택 이후 프롬프트 강화의 개발48응답 결과와 고정한 새20문항은 [후속 보고서](../generation_evaluation/reports/2026-10-15-luna-prompt-improvement/README.md)를 따른다. 현재 최종 비교 결과와 후보 채택은 미완료다.
+GPT-6 Luna 선택 이후 프롬프트 강화의 개발48응답 결과와 고정한 새20문항은 [후속 보고서](../generation_evaluation/reports/2026-10-15-luna-prompt-improvement/README.md)를 따른다. 해당 최종80응답 비교는 완료됐고 coverage는 채택하지 않았다. 이후 별도 scope 실험과 추가4문항을 거친 사용자 최종 선택·튜닝 종료는 [최종 프롬프트 기준](generation-final-prompt.md)을 따른다.
+
+## 선택 모델의 후속 프롬프트 비교
+
+GPT-6 Luna 선택 이후의 구현·판정 기준·새20문항 비교는 [프롬프트 강화 안내](generation-luna-prompt-improvement.md)와 [실험 보고서](../generation_evaluation/reports/2026-10-15-luna-prompt-improvement/README.md)를 따른다. 이전 모델 선정 세트는 이미 열람한 회귀 자료로 구분하며 새 결과로 과거 점수를 덮어쓰지 않는다. 의미 동등성·필수 주장과 선택적 배경의 구분·미확인과 금지의 구분을 호출 전에 rubric v1.1.0에 명시했다.

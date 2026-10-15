@@ -1,0 +1,161 @@
+{
+  "response_count": 80,
+  "final_cases": 20,
+  "candidate_count": 2,
+  "repeats": 2,
+  "formats_valid": 80,
+  "run_manifests": {
+    "final-reference-r1": {
+      "schema_version": 1,
+      "code_sha256": {
+        "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+        "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+        "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+        "generation_evaluation/selection.py": "894bd68a6c49118f756c84e70d12a056e2c0a4f4e1444242c137dababf3ee581",
+        "generation_evaluation/budget.py": "514f053c52771829f9ed9f213f5b2750ca74c11a2857856ddca772fbad29e782"
+      },
+      "candidate_id": "luna-reference",
+      "candidate": {
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "profile": "examples",
+        "strategy": "single",
+        "seed": null
+      },
+      "phase": "final",
+      "budget_limits": {
+        "total_dollars": 3.0,
+        "dev_dollars": 1.2,
+        "total_seconds": 7200.0,
+        "dev_seconds": 4200.0
+      },
+      "repeats": 1,
+      "start_repeat": 1,
+      "cases_sha256": "8554a1823f06811ed775210a0329edc60a720574ac340b4513ef13a46f3c2d35",
+      "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+      "document_count": 71,
+      "profile_code_sha256": "53fe52ccf13c3fea15610459d03e579e562e09706ee546a5bb6cb007fde11c0c",
+      "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507",
+      "ledger_identity": "6bbc26dd2b74404f9b251073a0fb01f9"
+    },
+    "final-coverage-r1": {
+      "schema_version": 1,
+      "code_sha256": {
+        "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+        "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+        "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+        "generation_evaluation/selection.py": "894bd68a6c49118f756c84e70d12a056e2c0a4f4e1444242c137dababf3ee581",
+        "generation_evaluation/budget.py": "514f053c52771829f9ed9f213f5b2750ca74c11a2857856ddca772fbad29e782"
+      },
+      "candidate_id": "luna-coverage",
+      "candidate": {
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "profile": "examples_coverage",
+        "strategy": "single",
+        "seed": null
+      },
+      "phase": "final",
+      "budget_limits": {
+        "total_dollars": 3.0,
+        "dev_dollars": 1.2,
+        "total_seconds": 7200.0,
+        "dev_seconds": 4200.0
+      },
+      "repeats": 1,
+      "start_repeat": 1,
+      "cases_sha256": "8554a1823f06811ed775210a0329edc60a720574ac340b4513ef13a46f3c2d35",
+      "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+      "document_count": 71,
+      "profile_code_sha256": "53fe52ccf13c3fea15610459d03e579e562e09706ee546a5bb6cb007fde11c0c",
+      "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507",
+      "ledger_identity": "6bbc26dd2b74404f9b251073a0fb01f9"
+    },
+    "final-coverage-r2": {
+      "schema_version": 1,
+      "code_sha256": {
+        "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+        "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+        "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+        "generation_evaluation/selection.py": "894bd68a6c49118f756c84e70d12a056e2c0a4f4e1444242c137dababf3ee581",
+        "generation_evaluation/budget.py": "514f053c52771829f9ed9f213f5b2750ca74c11a2857856ddca772fbad29e782"
+      },
+      "candidate_id": "luna-coverage",
+      "candidate": {
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "profile": "examples_coverage",
+        "strategy": "single",
+        "seed": null
+      },
+      "phase": "final",
+      "budget_limits": {
+        "total_dollars": 3.0,
+        "dev_dollars": 1.2,
+        "total_seconds": 7200.0,
+        "dev_seconds": 4200.0
+      },
+      "repeats": 1,
+      "start_repeat": 2,
+      "cases_sha256": "8554a1823f06811ed775210a0329edc60a720574ac340b4513ef13a46f3c2d35",
+      "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+      "document_count": 71,
+      "profile_code_sha256": "53fe52ccf13c3fea15610459d03e579e562e09706ee546a5bb6cb007fde11c0c",
+      "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507",
+      "ledger_identity": "6bbc26dd2b74404f9b251073a0fb01f9"
+    },
+    "final-reference-r2": {
+      "schema_version": 1,
+      "code_sha256": {
+        "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+        "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+        "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+        "generation_evaluation/selection.py": "894bd68a6c49118f756c84e70d12a056e2c0a4f4e1444242c137dababf3ee581",
+        "generation_evaluation/budget.py": "514f053c52771829f9ed9f213f5b2750ca74c11a2857856ddca772fbad29e782"
+      },
+      "candidate_id": "luna-reference",
+      "candidate": {
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "profile": "examples",
+        "strategy": "single",
+        "seed": null
+      },
+      "phase": "final",
+      "budget_limits": {
+        "total_dollars": 3.0,
+        "dev_dollars": 1.2,
+        "total_seconds": 7200.0,
+        "dev_seconds": 4200.0
+      },
+      "repeats": 1,
+      "start_repeat": 2,
+      "cases_sha256": "8554a1823f06811ed775210a0329edc60a720574ac340b4513ef13a46f3c2d35",
+      "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+      "document_count": 71,
+      "profile_code_sha256": "53fe52ccf13c3fea15610459d03e579e562e09706ee546a5bb6cb007fde11c0c",
+      "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507",
+      "ledger_identity": "6bbc26dd2b74404f9b251073a0fb01f9"
+    }
+  }
+}
