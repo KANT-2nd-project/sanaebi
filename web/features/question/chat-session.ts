@@ -57,7 +57,6 @@ export class ChatSession {
   }
 
   changeDraft(value: string) {
-    if (this.active) return;
     this.publish({ ...this.state, draft: value, inputError: "" });
   }
 
@@ -82,10 +81,12 @@ export class ChatSession {
     const controller = new AbortController();
     this.active = controller;
     const id = existingId ?? `turn-${++this.sequence}`;
-    const clearSubmittedDraft = this.state.draft.trim() === question;
+    const submittedDraft = this.state.draft;
+    const clearSubmittedDraft = submittedDraft.trim() === question;
     const turn: Turn = { id, question, status: "pending" };
     this.publish({
       ...this.state,
+      draft: clearSubmittedDraft ? "" : this.state.draft,
       turns: existingId ? this.state.turns.map(item => item.id === id ? turn : item) : [...this.state.turns, turn],
       activeTurnId: id, inputError: "", announcement: "답변을 기다리고 있습니다.",
     });
@@ -95,22 +96,23 @@ export class ChatSession {
       this.active = null;
       this.publish({
         ...this.state,
-        draft: clearSubmittedDraft ? "" : this.state.draft,
         turns: this.state.turns.map(item => item.id === id ? { ...turn, status: "success", answer } : item),
         activeTurnId: null, announcement: "답변이 도착했습니다.",
       });
     } catch (error) {
       if (this.active !== controller) return;
       this.active = null;
+      const restoreSubmittedDraft = clearSubmittedDraft && this.state.draft === "";
       const failure = error instanceof QuestionError ? error
         : new QuestionError("request", "요청을 처리하지 못했어요. 다시 시도해주세요.");
       this.publish({
         ...this.state,
+        draft: restoreSubmittedDraft ? submittedDraft : this.state.draft,
         turns: this.state.turns.map(item => item.id === id ? {
           ...turn, status: "error", error: { kind: failure.kind, message: failure.message },
         } : item),
         activeTurnId: null,
-        inputError: failure.kind === "validation" && clearSubmittedDraft ? failure.message : "",
+        inputError: failure.kind === "validation" && restoreSubmittedDraft ? failure.message : "",
         announcement: "답변을 받지 못했습니다. 오류 안내를 확인해주세요.",
       });
     }

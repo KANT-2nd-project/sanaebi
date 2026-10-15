@@ -36,7 +36,7 @@ test("새 탭·새 창·보조 클릭은 브라우저 기본 동작", () => {
     assert.equal(allowDocumentNavigation({...click,...change}, state, unused), true);
 });
 
-test("이동 확인 중 도착한 응답도 페이지 전환 전에 취소해 초안을 보존", async () => {
+test("이동 확인 중 도착한 응답도 취소하고 이미 전송한 초안을 복원하지 않음", async () => {
   const { ChatSession } = await import("../../tmp/frontend-unit-tests/features/question/chat-session.js");
   let resolve, signal, draft = "전송 중 질문";
   const promise = new Promise(done => { resolve = done; });
@@ -51,7 +51,7 @@ test("이동 확인 중 도착한 응답도 페이지 전환 전에 취소해 �
   assert.equal(allowed, true);
   assert.equal(signal.aborted, true);
   await pending;
-  assert.equal(draft, "전송 중 질문");
+  assert.equal(draft, "");
   assert.equal(session.state.turns[0].status, "pending");
 });
 
