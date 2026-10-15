@@ -147,7 +147,7 @@ GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판�
 
 ## 최종 프로필 기록 호환성
 
-run_case는 기본 examples_answer_scope_v3을 사용하며 keyword-only prompt_profile로 과거 프로필을 지정할 수 있다. 새 기록은 프로필과 실제 프롬프트 해시를 함께 남긴다. 과거 누락 profile은 None이며 새 기본값으로 소급하지 않는다. summarize_runs는 모델 설정과 프로필을 함께 묶고 group_by_config는 기존 모델 설정별 인터페이스를 유지한다. 비교 집계는 각 설정·프로필 그룹의 문항과 시도 수도 검사한다. [실행 반영 기록](../docs/worklogs/2026-10-15-generation-final-runtime.md)을 참조한다.
+run_case는 기본 examples_answer_scope_v5을 사용하며 keyword-only prompt_profile로 과거 프로필을 지정할 수 있다. 새 기록은 프로필과 실제 프롬프트 해시를 함께 남긴다. 과거 누락 profile은 None이며 새 기본값으로 소급하지 않는다. summarize_runs는 모델 설정과 프로필을 함께 묶고 group_by_config는 기존 모델 설정별 인터페이스를 유지한다. 비교 집계는 각 설정·프로필 그룹의 문항과 시도 수도 검사한다. [실행 반영 기록](../docs/worklogs/2026-10-15-generation-final-runtime.md)을 참조한다.
 
 ## 현재 평가 코드와 과거 실험의 경계
 

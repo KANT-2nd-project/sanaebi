@@ -77,3 +77,5 @@ flowchart TD
 - [shadow main 통합](worklogs/2026-10-15-merge-shadow-main.md): v3·최신 코드 정리 보존, 통합 회귀와 게시.
 - [shadow 기본값 채택](worklogs/2026-10-15-adopt-shadow.md): 비교 후 사용자 결정, 미달 기준과 원복 설정.
 - [구현·검증·게시 기록](worklogs/2026-10-15-routing-shadow.md): AI 수행 범위, 기능별 커밋, 테스트와 Notion 동기화.
+
+- [사용자용 말투·범위 안내 보완](worklogs/2026-10-15-user-facing-prompt.md): 연봉·도움 범위·일반 기술 질문, 공식 레퍼런스와 독립 AI 검토·실제 비교.
