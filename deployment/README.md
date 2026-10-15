@@ -12,7 +12,7 @@
 
 ## 모델과 영속 데이터
 
-모델은 Hugging Face private `js2923/sanaebi-koelectra-base`에서 배포할 때만 내려받는다. revision `4a1d0c7964072535a52a66efe29389a6470dd6f4`와 다섯 파일의 크기·SHA-256은 [모델 manifest](model-release.json)에 고정한다. 임시 다운로드를 검증한 뒤 원자적으로 게시하고 검증된 캐시만 재사용한다. 운영 API에는 모델을 읽기 전용으로 연결하며 HF 토큰을 전달하지 않는다. 학습 환경·생성 프롬프트는 유지한다. 사용자 확인에 따라 최신 main의 `shadow` 기본 분류 정책과 Luna 출력 한도 16,384를 포함한다. `shadow`에서는 분류 라벨과 무관하게 문서 기반 생성을 시도하며 모든 실제 호출에 같은 일일 한도를 적용한다.
+모델은 Hugging Face private `js2923/sanaebi-koelectra-base`에서 배포할 때만 내려받는다. revision `4a1d0c7964072535a52a66efe29389a6470dd6f4`와 다섯 파일의 크기·SHA-256은 [모델 manifest](model-release.json)에 고정한다. 임시 다운로드를 검증한 뒤 원자적으로 게시하고 검증된 캐시만 재사용한다. 운영 API에는 모델을 읽기 전용으로 연결하며 HF 토큰을 전달하지 않는다. 학습 환경·생성 프롬프트는 유지한다. 현재 코드의 미설정 기본값은 `advisory`이며 정상 서버 라벨을 생성 참고 정보로 전달한다. 명시적 `shadow`·`gate` 환경 설정은 우선한다. 이번 변경에서 운영 설정 변경·배포·재시작은 하지 않았다. Luna 출력 한도 16,384와 모든 실제 호출의 동일 일일 한도를 유지한다. [채택·원복 경계](../docs/worklogs/2026-10-16-adopt-advisory.md)를 따른다.
 
 | 경로 | 용도 |
 |---|---|

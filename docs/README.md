@@ -103,3 +103,5 @@ RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklog
 - [RAG C 채택·인자 및 문맥 비교](../retrieval/reports/2026-10-15-c-adoption/README.md): 검색 근거 누락 최소화에 따른 사용자 선택, rag 코드 기본값과 운영 미전환 구분.
 
 [KURE 검색 전환 검증](../retrieval/reports/2026-10-16-kure-gate/README.md): 당시 소규모 비교·질문 게이트 검증·보류 기록. 이후 사용자 결정에 따른 [KURE 채택·서버 연결](../retrieval/reports/2026-10-16-kure-adoption/README.md)을 함께 본다.
+
+[분류 참고 정보 C 후속 채택](worklogs/2026-10-16-adopt-advisory.md): 공통 지침+서버 라벨 advisory 기본값, 평가 결과와 사용자 설계 결정, 검증·원복·게시 기록.

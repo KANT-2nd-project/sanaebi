@@ -75,3 +75,5 @@ npm run dev
 전체·영역별 회귀 명령은 [테스트 안내](tests/README.md)를 따른다.
 
 소스 실행·선택 의존성의 상세 범위는 [설치 안내](generation/README.md#설치-범위와-선택-provider)를 참고하세요. 현재 서버의 답변 제공자는 OpenAI입니다.
+
+코드 기본 라우팅은 공통 지침과 서버 예측 라벨을 참고 정보로 전달하는 advisory다. 질문·문서가 우선하며 [채택 사유와 원복](docs/worklogs/2026-10-16-adopt-advisory.md)은 품질 개선 입증과 구분한다.

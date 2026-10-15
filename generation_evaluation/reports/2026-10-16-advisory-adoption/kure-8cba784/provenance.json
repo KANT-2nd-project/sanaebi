@@ -1,0 +1,10 @@
+{
+  "source_folder": "/home/jake/workspace/projects/sanaebi/tmp/rag-label-minimal-20261016/kure-8cba784",
+  "manifest_sha256": "11cc1991fb08e1b41362a927f41ebe6daa60b4b3cbb9530fbe42860a6d359e51",
+  "files_sha256": {
+    "summary.json": "59afe8a525c3611fa42454677c4264364b11337d4c0f2361a9c4ab3c79c31426",
+    "judgments.json": "99c8d70598e33f6b2a55d301aff27a86eaa53fb790cfc87a88240e7bbbb00519",
+    "responses.jsonl": "2ade7e36add9fee6dfa8f56b83e172fc8fae9e9b07b4726de5fa351d8594766e",
+    "case-results.md": "0e615d7a453da7db961f37a2b75987e4311c8e5a180af68c558315bd9f0e9b77"
+  }
+}

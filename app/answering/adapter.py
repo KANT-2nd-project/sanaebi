@@ -19,6 +19,7 @@ from app.public_limits import (
     GenerationBudgetExceeded,
     GenerationBudgetUnavailable,
 )
+from generation.advisory import ClassificationContext
 from generation.documents import render_document
 from generation.presets import RuntimeSettings
 from generation.providers import (
@@ -61,7 +62,13 @@ class GenerationAnswerer:
         if client is not None:
             await client.aclose()
 
-    def answer(self, question: str, snapshot: DocumentContextSnapshot) -> str:
+    def answer(
+        self,
+        question: str,
+        snapshot: DocumentContextSnapshot,
+        *,
+        classification_context: ClassificationContext | None = None,
+    ) -> str:
         # Keep the full snapshot at this boundary. Render only once, in order.
         documents = [
             render_document(d.knowledge_id, d.title, d.body, d.revision)
@@ -70,9 +77,20 @@ class GenerationAnswerer:
 
         if not documents:
             raise ValueError("The question service must handle empty snapshots")
-        return self._generate(question, documents, snapshot.fingerprint)
+        return self._generate(
+            question,
+            documents,
+            snapshot.fingerprint,
+            classification_context=classification_context,
+        )
 
-    def answer_retrieved(self, question: str, context: "RetrievedContext") -> str:
+    def answer_retrieved(
+        self,
+        question: str,
+        context: "RetrievedContext",
+        *,
+        classification_context: ClassificationContext | None = None,
+    ) -> str:
         documents = [
             render_document(e.knowledge_id, e.title, e.text, e.revision)
             for e in context.evidence
@@ -80,9 +98,21 @@ class GenerationAnswerer:
         if not documents:
             raise ValueError("Retrieval must provide at least one evidence item")
         documents = ["[현재 게시 문서의 발췌 근거]\n" + text for text in documents]
-        return self._generate(question, documents, context.snapshot_fingerprint)
+        return self._generate(
+            question,
+            documents,
+            context.snapshot_fingerprint,
+            classification_context=classification_context,
+        )
 
-    def _generate(self, question: str, documents: list[str], fingerprint: str) -> str:
+    def _generate(
+        self,
+        question: str,
+        documents: list[str],
+        fingerprint: str,
+        *,
+        classification_context: ClassificationContext | None = None,
+    ) -> str:
         started = perf_counter()
         metadata = {
             "model": self.settings.config.model_name,
@@ -113,6 +143,7 @@ class GenerationAnswerer:
                 documents,
                 call,
                 prompt_profile=self.settings.prompt_profile,
+                classification_context=classification_context,
             )
         except (OpenAIError, HTTPError, GenerationProviderResponseError) as exc:
             metadata.update(status="execution_error", error_type=type(exc).__name__)

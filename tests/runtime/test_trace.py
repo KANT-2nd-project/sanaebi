@@ -46,7 +46,7 @@ def fake_generate(response, category, provider=None, document_provider=None):
     return {"ollama": {"answer": message.content}}
 
 
-def fake_answer(question, snapshot=None):
+def fake_answer(question, snapshot=None, *, classification_context=None):
     return fake_generate({"text": question}, LABEL)["ollama"]["answer"]
 
 
@@ -292,6 +292,7 @@ class TraceTests(unittest.TestCase):
         self.assertIn("질문: 연차 신청", model["input"]["head"])
         self.assertEqual(record["steps"][0]["source"], "분류기")
         self.assertEqual(record["steps"][0]["output"], LABEL)
+        self.assertEqual(record["steps"][0]["routing_mode"], "advisory")
 
     def test_untraced_path_is_not_recorded(self):
         with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):

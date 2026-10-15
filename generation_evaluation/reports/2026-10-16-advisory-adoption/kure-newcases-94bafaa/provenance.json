@@ -1,0 +1,10 @@
+{
+  "source_folder": "/home/jake/workspace/projects/sanaebi/tmp/rag-label-minimal-20261016/kure-newcases-94bafaa",
+  "manifest_sha256": "eb3e8461b6ba4e52144de557a0c8f8f30e6de6a6333b737e4119ec615e164d7c",
+  "files_sha256": {
+    "summary.json": "d3f57959d9108ce3884434a26bea6e7128d6faedaf44f772d25ec0c667e99eea",
+    "judgments.json": "f48a71b98b52ed2f6de0af24d658e5772a70442cc269b3177475ef7de4c0dae6",
+    "responses.jsonl": "14bf1236a8c0edf5e031a7ba4b2f7e8c23d9f57d4feff7a274afef68d065c37f",
+    "case-results.md": "c40fa7399b1edee3eaf5ac1298fd44ce51247a5f5d8850bee895dfc4758e350e"
+  }
+}

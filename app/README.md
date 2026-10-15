@@ -2,7 +2,7 @@
 
 로컬 통합 준비는 `npm run setup:local -- --init-documents`, 실행은 `npm run dev`를 사용한다. 기존 DB·전체 삭제 상태는 보존하며 검색 색인과 기본 복원 묶음을 함께 준비한다. [준비·진단 상세](../docs/rag-runtime.md#준비와-실행).
 
-서버는 질문을 분류하고 기본 `shadow`에서는 그 결과를 관찰 기록으로만 남긴다. 유효한 게시 문서가 있으면 문서 기반 답변을 시도하며 분류 라벨을 생성 프롬프트에 넣지 않는다. 분류기는 FastAPI 프로세스 안에서 실행하며 별도 HTTP 서버가 아니다. 서비스 소개와 공통 설치는 [프로젝트 README](../README.md#로컬-개발-시작)를, 서버 준비와 API 확인은 아래 절차를 따른다.
+서버는 질문을 분류하고 기본 `advisory`에서는 정상 서버 예측을 공통 지침과 함께 생성 참고 정보로 전달한다. 라벨은 오류 가능하며 질문·문서를 우선한다. 유효한 게시 문서가 있으면 세 라벨 모두 문서 기반 답변을 시도한다. 분류기는 FastAPI 프로세스 안에서 실행하며 별도 HTTP 서버가 아니다. 서비스 소개와 공통 설치는 [프로젝트 README](../README.md#로컬-개발-시작)를, 서버 준비와 API 확인은 아래 절차를 따른다.
 
 ## 실행 준비와 API 확인
 
@@ -42,7 +42,7 @@ curl -X POST http://127.0.0.1:8000/classify/koelectra-base \
 
 `GET /`는 `{"message":"FastAPI 서버가 실행 중입니다."}`로 HTTP 실행을 확인합니다. 모델 로딩 확인은 두 번째 요청입니다. 분류 응답은 `{"category":"UNSUPPORTED"}` 형태이며 실제 라벨은 모델 결과에 따라 달라집니다. 질문별 문서 조회·LLM 호출 없이 분류만 확인하지만, 서버 시작 시에는 SQLite 저장소를 초기화합니다.
 
-분류 전용 API의 모델 부재·잘못된 저장본·추론 실패는 503과 `분류 모델을 사용할 수 없습니다.`라는 오류 안내를 반환합니다. 모델을 준비하지 않았다면 분류 성공으로 간주하지 않습니다. `/ask`의 기본 shadow는 알려진 분류 장애를 기록하고 문서 기반 생성으로 계속 진행할 수 있습니다.
+분류 전용 API의 모델 부재·잘못된 저장본·추론 실패는 503과 `분류 모델을 사용할 수 없습니다.`라는 오류 안내를 반환합니다. 모델을 준비하지 않았다면 분류 성공으로 간주하지 않습니다. `/ask`의 기본 advisory는 알려진 분류 장애를 기록하고 문서 기반 생성으로 계속 진행할 수 있습니다.
 
 ### 문서 기반 답변 확인
 
@@ -56,7 +56,7 @@ curl -X POST http://127.0.0.1:8000/ask \
   -d '{"question":"휴가 신청 방법 알려줘"}'
 ```
 
-성공 응답은 `{"ok":true,"text":"안내 또는 생성된 답변","reason":""}` 형태입니다. 기본 shadow에서는 세 라벨 모두 문서 기반 답변을 시도하며, 빈 문서이면 자료 없음 안내를 반환합니다. 선택적 gate에서만 CLARIFY·UNSUPPORTED가 생성 전 고정 안내로 종료합니다. 생성 실패는 502이며 빈 문서의 정상 안내와 다릅니다. 이 요청은 준비 상태 확인 예시이며 실제 답변 품질 검증을 대신하지 않습니다.
+성공 응답은 `{"ok":true,"text":"안내 또는 생성된 답변","reason":""}` 형태입니다. 기본 advisory에서는 세 라벨 모두 문서 기반 답변을 시도하며, 빈 문서이면 자료 없음 안내를 반환합니다. 선택적 gate에서만 CLARIFY·UNSUPPORTED가 생성 전 고정 안내로 종료합니다. 생성 실패는 502이며 빈 문서의 정상 안내와 다릅니다. 이 요청은 준비 상태 확인 예시이며 실제 답변 품질 검증을 대신하지 않습니다.
 
 ## 서버 시작과 첫 요청
 
@@ -81,7 +81,7 @@ sequenceDiagram
     end
     Model->>Model: 토큰화·CPU 추론
     Model-->>Service: 세 라벨 중 하나
-    Service->>Service: shadow 관찰 또는 gate 분기
+    Service->>Service: advisory 참고 전달 / shadow 관찰 / gate 분기
     opt 문서 단계 진입 및 유효 문서 있음
         Service->>Service: full 또는 rag 근거로 생성
     end
@@ -90,7 +90,7 @@ sequenceDiagram
     HTTP-->>Client: JSON 응답
 ```
 
-FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우터가 DI 함수를 직접 호출하는 것은 아니다. 알려진 분류 로딩·추론 장애는 shadow에서 기록 후 문서 단계로 진행하고 gate에서는 503으로 종료한다. 예상 밖 오류와 허용 밖 라벨은 500으로 처리한다. 성공한 모델은 앱 프로세스에서 재사용하며 여러 worker는 각각 별도 모델을 갖는다.
+FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우터가 DI 함수를 직접 호출하는 것은 아니다. 알려진 분류 로딩·추론 장애는 advisory·shadow에서 기록 후 문서 단계로 진행하고 gate에서는 503으로 종료한다. 예상 밖 오류와 허용 밖 라벨은 500으로 처리한다. 성공한 모델은 앱 프로세스에서 재사용하며 여러 worker는 각각 별도 모델을 갖는다.
 
 ## 질문 한 건이 지나가는 경계
 
@@ -118,15 +118,15 @@ def handle(question):
         read_documents=document_provider.snapshot,
         answer=answerer.answer_retrieved if retriever is not None else answerer.answer,
         retrieve=retriever.retrieve if retriever is not None else None,
-        routing_mode=routing_mode,  # app.state에서 주입: 기본 shadow
+        routing_mode=routing_mode,  # app.state에서 주입: 기본 advisory
     )
 ```
 
 서비스는 모델 경로나 DB 접속 방법을 몰라도 된다. 테스트에서는 이 함수들을 대체해 모델·LLM 없이 정책을 확인한다. 구현 선택은 조립 계층, 처리 순서는 서비스가 맡는다.
 
-### 기본 shadow와 선택적 gate
+### 기본 advisory와 선택적 gate
 
-기본 shadow에서는 세 라벨과 알려진 분류 장애 모두 문서를 한 번 읽는다. 빈 snapshot이면 안내하고, 유효 문서가 있으면 full 또는 rag 근거로 생성한다. 분류가 회사 밖 지식이나 실제 조회·실행을 허용하지는 않는다.
+기본 advisory에서는 세 라벨과 알려진 분류 장애 모두 문서를 한 번 읽는다. 빈 snapshot이면 안내하고, 유효 문서가 있으면 full 또는 rag 근거로 생성한다. 분류가 회사 밖 지식이나 실제 조회·실행을 허용하지는 않는다.
 
 아래 표는 **gate를 명시했을 때만** 적용한다.
 
@@ -143,7 +143,7 @@ def handle(question):
 
 `DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 같은 snapshot을 답변기에 전달한다. rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택 근거를 `answer_retrieved`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 준비된 색인에서 질문 최고 점수가0.42882221937179565 미만이면 고정 안내로 종료하며 생성·예약하지 않는다. 검색 입력 한도 초과는 422다.
 
-`GenerationAnswerer`는 full의 snapshot 또는 rag의 선택 근거를 렌더링하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다. 생성 경계에는 질문·렌더링한 문서·프로필만 전달하며 분류 라벨은 전달하지 않는다. 라벨 보조 전달 helper는 [미채택 실험](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)용이다.
+`GenerationAnswerer`는 full의 snapshot 또는 rag의 선택 근거를 렌더링하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다. 생성 경계에는 질문·렌더링한 문서·프로필과 선택적 keyword 인자 `classification_context`를 전달한다. advisory의 정상 서버 예측만 기존 공통 조합 함수로 연결한다. 라벨 없음·알려진 분류 장애·client 출처는 기존 프롬프트로 정확히 복귀한다. [채택 결정·한계](../docs/worklogs/2026-10-16-adopt-advisory.md)를 따른다.
 
 ## API별 차이와 오류
 
@@ -151,7 +151,7 @@ def handle(question):
 |---|---|
 | `POST /ask` | 분류 → 서비스 정책 → 필요한 경우 문서·답변 생성. `ok`, `text`, `reason` 반환 |
 | `POST /classify/koelectra-base` | `/ask`와 같은 분류 객체로 라벨만 확인. `category` 반환 |
-| `POST /assistant` | 이미 분류한 `response`·`classification_label`을 공통 라벨 정책에 전달. 재분류 없이 `/ask`와 같은 `{ok,text,reason}` 응답. 라벨은 shadow에서 관찰, gate에서 분기에 사용하며 생성 프롬프트에는 미전달 |
+| `POST /assistant` | 이미 분류한 `response`·`classification_label`을 공통 라벨 정책에 전달. 재분류 없이 `/ask`와 같은 `{ok,text,reason}` 응답. client 라벨은 advisory/shadow에서 관찰, gate에서 분기에 사용하며 생성 프롬프트에는 미전달 |
 
 `/ask/langchain`은 없다. `/ask` 성공의 `text`는 고정 안내 또는 생성 답변이며 `reason`은 빈 문자열이다. 입력 검증과 rag 검색 입력 초과는 422, gate 또는 분류 전용 API의 분류 장애와 문서·색인 장애는 503, 답변 생성·본문 검증 실패는 502다. 빈 문서의 정상 안내와 저장소 장애를 구분한다. 상세 설정·오류·문서 관리 API 계약은 [서버 규약](../docs/server-conventions.md)과 [문서 관리](../docs/document-management.md)를 따른다.
 
@@ -185,7 +185,7 @@ uv run --locked python -m unittest discover -s tests -t . -v
 
 ## 분류 차단과 관찰 비교
 
-기본은 `SANAEBI_ROUTING_MODE=shadow`다. `gate`를 명시하면 기존 라벨 차단으로 원복한다. `shadow`는 분류 라벨을 기록하고 게시된 문서를 바탕으로 답변을 시도하는 채택한 기본 경로다. 회사 문서 밖 일반 지식을 허용하는 설정이 아니다. 적용에는 해당 앱 재시작이 필요하며 실행 중인 운영 서버를 실험용으로 전환하지 않는다. 오류·기록·호환 경계는 [서버 규약](../docs/server-conventions.md#분류-관찰-모드와-비교-경계)을 따른다.
+기본은 `SANAEBI_ROUTING_MODE=advisory`다. `shadow`를 명시하면 라벨 미전달로 원복한다. `gate`를 명시하면 기존 라벨 차단으로 원복한다. `shadow`는 분류 라벨을 기록하고 게시된 문서를 바탕으로 답변을 시도하는 선택 경로다. 회사 문서 밖 일반 지식을 허용하는 설정이 아니다. 적용에는 해당 앱 재시작이 필요하며 실행 중인 운영 서버를 실험용으로 전환하지 않는다. 오류·기록·호환 경계는 [서버 규약](../docs/server-conventions.md#분류-관찰-모드와-비교-경계)을 따른다.
 
 ## RAG 연결
 

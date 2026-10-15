@@ -19,9 +19,9 @@ from app.settings import get_routing_mode
 
 
 class RoutingModeSettingsTests(unittest.TestCase):
-    def test_routing_mode_defaults_to_shadow(self):
+    def test_routing_mode_defaults_to_advisory(self):
         with patch.dict(os.environ, {}, clear=True):
-            self.assertEqual(get_routing_mode(), "shadow")
+            self.assertEqual(get_routing_mode(), "advisory")
 
     def test_gate_remains_an_explicit_rollback(self):
         with patch.dict(os.environ, {"SANAEBI_ROUTING_MODE": "gate"}):
@@ -134,9 +134,9 @@ class RoutingModeApiTests(unittest.TestCase):
         env = {
             "SANAEBI_DOCUMENT_DB": str(Path(self.directory) / "managed.sqlite3"),
             "SANAEBI_RETRIEVAL_MODE": "full",
+            "SANAEBI_ROUTING_MODE": "shadow",
         }
         self.enterContext(patch.dict(os.environ, env))
-        os.environ.pop("SANAEBI_ROUTING_MODE", None)
         self.classifier = Mock()
         self.classifier.predict.return_value = "UNSUPPORTED"
         fastapi_main.app.dependency_overrides[get_classifier] = lambda: self.classifier

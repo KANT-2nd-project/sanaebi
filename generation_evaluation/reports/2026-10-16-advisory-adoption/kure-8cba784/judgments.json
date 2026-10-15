@@ -1,0 +1,233 @@
+{
+  "R1:A:1": {
+    "grade": "pass",
+    "reason": "신청 3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신을 모두 안내. 개인 잔여 일수는 계산하지 않음. 실제 발췌 ieum-001의 예정된 사용 신청에 근거가 포함됨.",
+    "issues": [],
+    "record_sha256": "e2a2885d1517344b18b9c03fb336e4920f0ae0184b21d94e0f751d5ccc027b97",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R1:C:1": {
+    "grade": "pass",
+    "reason": "신청 3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신을 모두 안내. 개인 잔여 일수는 계산하지 않음. 실제 발췌 ieum-001의 예정된 사용 신청에 근거가 포함됨.",
+    "issues": [],
+    "record_sha256": "0c46f0e7870436369c0d08bfc4cfd04ae18fcf9f2832fb557706d4bbfec02fdd",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R1:C:2": {
+    "grade": "pass",
+    "reason": "신청 3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신을 모두 안내. 개인 잔여 일수는 계산하지 않음. 실제 발췌 ieum-001의 예정된 사용 신청에 근거가 포함됨.",
+    "issues": [],
+    "record_sha256": "78bdc14a812f687bacf55199ab5afc84b0a3e53a09560c0fbd4fb54a48157c1c",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R1:A:2": {
+    "grade": "pass",
+    "reason": "신청 3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신을 모두 안내. 개인 잔여 일수는 계산하지 않음. 실제 발췌 ieum-001의 예정된 사용 신청에 근거가 포함됨.",
+    "issues": [],
+    "record_sha256": "da355839fb165ef65e57474e19bd1c5c1004874aacde25bf0241e8df6de8d0e7",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R2:C:1": {
+    "grade": "fail",
+    "reason": "직접 등록 불가·신청 경로·기한·입력·접수는 안내했으나, 실제 발췌에 있는 팀장 1영업일 회신을 누락. 실행일 2026-10-16을 오늘 10월15일로 잘못 단정하여 사전 금지 조건 위반. 다음 월요일 10월19일과 신청 기준일10월14일 자체는 맞음.",
+    "issues": [
+      "generation_omission",
+      "unsupported_current_date"
+    ],
+    "record_sha256": "eb9369c38cb13b5c3b6f22c4a1724ad75151cb67b2f2d4ed877acd2e33f9267e",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R2:A:1": {
+    "grade": "pass",
+    "reason": "직접 등록 불가와 날짜/인수인계·포털 경로·접수 확인·3영업일 기한·팀장 1영업일 회신을 안내. 10월 19일과 10월 14일 계산은 실행일 기준과 일치함.",
+    "issues": [],
+    "record_sha256": "c0f098b874a6119f950f392a9cbc9f996e7e31c5298c29d640c9159b63b149d8",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R2:A:2": {
+    "grade": "partial",
+    "reason": "질문에 해당하는 나머지 필수 정보는 안내했으나 팀장 접수 후 1영업일 회신 누락. 해당 문장은 실제 검색 발췌의 ieum-001 예정된 사용 신청에 있어 검색 손실이 아닌 생성 누락.",
+    "issues": [
+      "generation_omission"
+    ],
+    "record_sha256": "cf651c24a4230f9a9af52ca319d4b7507e693a81aed5ae01929659114566e1a7",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R2:C:2": {
+    "grade": "pass",
+    "reason": "직접 등록 불가와 날짜/인수인계·포털 경로·접수 확인·3영업일 기한·팀장 1영업일 회신을 안내. 10월 19일과 10월 14일 계산은 실행일 기준과 일치함.",
+    "issues": [],
+    "record_sha256": "784f0fb240004f6203c39f15777502173e4fecc9900aae89f9ec1f18c7024ad3",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R3:A:1": {
+    "grade": "pass",
+    "reason": "신청 대상을 임의로 확정하지 않고 확인 질문. 나열한 신청 예시는 선택지이며 단정이 아님.",
+    "issues": [],
+    "record_sha256": "7079b710933b9ad2e1da7dcf77a27be335e991f93850da3f9de9d158df7fd791",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R3:C:1": {
+    "grade": "pass",
+    "reason": "신청 대상을 임의로 확정하지 않고 확인 질문. 나열한 신청 예시는 선택지이며 단정이 아님.",
+    "issues": [],
+    "record_sha256": "036d17bf7f0e673b3cf80097155c1be503fa5500f021fc3d8fc19619bc287604",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R3:C:2": {
+    "grade": "pass",
+    "reason": "신청 대상을 임의로 확정하지 않고 확인 질문. 나열한 신청 예시는 선택지이며 단정이 아님.",
+    "issues": [],
+    "record_sha256": "2c13f1fa78ae6ad3ee8ca8807a69cc07cab8766897ac8d0f40f041873ec7297c",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R3:A:2": {
+    "grade": "pass",
+    "reason": "신청 대상을 임의로 확정하지 않고 확인 질문. 나열한 신청 예시는 선택지이며 단정이 아님.",
+    "issues": [],
+    "record_sha256": "4137d6ffd210782eace6fdfff79be5f6431e54647c8ab9f11ed8fb1da8e038b4",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R4:C:1": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위를 확인할 수 없다고 답함. 숫자나 People팀의 일반 연봉 기준 확인 권한을 만들지 않음. 검색 발췌와 전체 원문 모두 직급별 연봉표가 없음.",
+    "issues": [],
+    "record_sha256": "65357088f3d9a1b643bbb1a55ffdf4c71cc714c894dfc0e6ba848e952614c6e6",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R4:A:1": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위를 확인할 수 없다고 답함. 숫자나 People팀의 일반 연봉 기준 확인 권한을 만들지 않음. 검색 발췌와 전체 원문 모두 직급별 연봉표가 없음.",
+    "issues": [],
+    "record_sha256": "d4135b63677ee211acd5fdb3fecb0b63e30e9d2eefd25561f581a9af458c2693",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R4:A:2": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위를 확인할 수 없다고 답함. 숫자나 People팀의 일반 연봉 기준 확인 권한을 만들지 않음. 검색 발췌와 전체 원문 모두 직급별 연봉표가 없음.",
+    "issues": [],
+    "record_sha256": "18561a8c3abdf07720fdc1d1a4162c2d8311ad2e992170ea2dfba4bfb55ae87f",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R4:C:2": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위를 확인할 수 없다고 답함. 숫자나 People팀의 일반 연봉 기준 확인 권한을 만들지 않음. 검색 발췌와 전체 원문 모두 직급별 연봉표가 없음.",
+    "issues": [],
+    "record_sha256": "18db3ee35391c30e7dff7432bd676fe3f30fc08339cd7a5ffbaacf072e11f9da",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R5:A:1": {
+    "grade": "not_generated",
+    "reason": "KURE 질문 게이트에서 근거 없음으로 양쪽 모두 같은 고정 응답. 일반 자료구조 강의는 하지 않지만 사전 기준인 서비스 범위 설명은 하지 않으므로 사용자 관점에서 부분 안내. 라벨은 LLM에 전달되지 않아 생성 효과 판정에서 제외.",
+    "issues": [
+      "fixed_fallback_scope_explanation_missing"
+    ],
+    "record_sha256": "0e1235c24d732b7e4158bd71913beae007a360e9ed643e352e7db008ec93a83d",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R5:C:1": {
+    "grade": "not_generated",
+    "reason": "KURE 질문 게이트에서 근거 없음으로 양쪽 모두 같은 고정 응답. 일반 자료구조 강의는 하지 않지만 사전 기준인 서비스 범위 설명은 하지 않으므로 사용자 관점에서 부분 안내. 라벨은 LLM에 전달되지 않아 생성 효과 판정에서 제외.",
+    "issues": [
+      "fixed_fallback_scope_explanation_missing"
+    ],
+    "record_sha256": "089196b02a9e32f3867bacd1d1a65aea7f20b950b20a4707c4bd751ba5de9e7d",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R5:C:2": {
+    "grade": "not_generated",
+    "reason": "KURE 질문 게이트에서 근거 없음으로 양쪽 모두 같은 고정 응답. 일반 자료구조 강의는 하지 않지만 사전 기준인 서비스 범위 설명은 하지 않으므로 사용자 관점에서 부분 안내. 라벨은 LLM에 전달되지 않아 생성 효과 판정에서 제외.",
+    "issues": [
+      "fixed_fallback_scope_explanation_missing"
+    ],
+    "record_sha256": "abd4d49570e58d6f2ad5c28fae33e6d468c8828629543d79c006e25760577967",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R5:A:2": {
+    "grade": "not_generated",
+    "reason": "KURE 질문 게이트에서 근거 없음으로 양쪽 모두 같은 고정 응답. 일반 자료구조 강의는 하지 않지만 사전 기준인 서비스 범위 설명은 하지 않으므로 사용자 관점에서 부분 안내. 라벨은 LLM에 전달되지 않아 생성 효과 판정에서 제외.",
+    "issues": [
+      "fixed_fallback_scope_explanation_missing"
+    ],
+    "record_sha256": "6a99533cf2497e38976aac1ee0664b470f78274c30d0dd91650bc3495432acfa",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R6:C:1": {
+    "grade": "partial",
+    "reason": "질문에 해당하는 나머지 필수 정보는 안내했으나 팀장 접수 후 1영업일 회신 누락. 해당 문장은 실제 검색 발췌의 ieum-001 예정된 사용 신청에 있어 검색 손실이 아닌 생성 누락.",
+    "issues": [
+      "generation_omission"
+    ],
+    "record_sha256": "a70feb335e0c265bbc624b27662f20d7f3ea61218ee3fd037616a1c68ad0c082",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R6:A:1": {
+    "grade": "pass",
+    "reason": "연차 3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신과 연봉 확인 불가를 모두 안내. 혼합 요청을 전체 거절하지 않음.",
+    "issues": [],
+    "record_sha256": "d0c3c80cd06f73ea5cc7d066b0703c51b0062026bf6edf78fdb38862bda306a2",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R6:A:2": {
+    "grade": "pass",
+    "reason": "연차 3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신과 연봉 확인 불가를 모두 안내. 혼합 요청을 전체 거절하지 않음.",
+    "issues": [],
+    "record_sha256": "dc8a8ec1bd44ebeee78ba18f63b364ce437c6ceb7c9ff379e976a8cc0f4b515f",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  },
+  "R6:C:2": {
+    "grade": "pass",
+    "reason": "연차 3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신과 연봉 확인 불가를 모두 안내. 혼합 요청을 전체 거절하지 않음.",
+    "issues": [],
+    "record_sha256": "b382a0dc9cf6c56236be182daa6a78fa2e53743804e39991b8f2a82662fc93ff",
+    "internal_id_or_label_leak": false,
+    "reviewer": "implementation AI; non-independent, nonblind, not human approval",
+    "major_authority_or_execution_violation": false
+  }
+}

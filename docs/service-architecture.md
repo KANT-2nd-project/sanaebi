@@ -2,8 +2,8 @@
 
 서버와 독립 생성·평가는 같은 [generation 모듈](../generation/README.md)의 최종 Luna 설정과 프롬프트·응답 검사를 사용한다. 서버는 SQLite 게시 snapshot을, CLI는 명시적으로 내보낸 JSONL을 사용하며 같은 렌더러로 프롬프트를 구성한다. 연결 구현과 검증 결과·남은 한계는 [서버 생성 통합 기록](worklogs/2026-10-15-server-generation-integration.md)을 따른다. 과거 실행기와 평가 자료는 비활성 레거시 재현용으로 보존한다.
 
-- 기준일: 2026-10-15
-- 상태: 코드 기본값은 shadow + rag(KURE)이며 gate와 명시적 full을 선택할 수 있다. 실제 운영 적용 상태는 별도 확인한다.
+- 기준일: 2026-10-16
+- 상태: 코드 기본값은 advisory + rag(KURE)이며 shadow·gate와 명시적 full을 선택할 수 있다. 실제 운영 적용 상태는 별도 확인한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
 - 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
 - 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 내보내기 + nginx + FastAPI를 채택한다. 정적 내보내기·FastAPI 연결과 메모리 기반 대화형 화면을 구현하고 [공개 데모](https://sanaebi.29232923.xyz/chat)를 운영한다. 이전 메시지는 서버 답변에 반영되지 않는다. 배포·접속 검증과 모델 답변 품질 승인은 구분한다. 공용 가상 문서는 매일 한국시간 자정에 초기화된다. 공개 데모는 익명 질문·문서 편집·게시를 허용하며 nginx가 공개 API를 제한하고 FastAPI가 요청 제한·일일 생성 예산을 적용한다. 운영 구성은 [배포 안내](../deployment/README.md)를 따른다.
@@ -14,7 +14,7 @@
 
 ## 현재 구현 상태
 
-현재 `/ask`는 질문 서비스를 통해 분류한다. 선택적 `gate`는 검색 라벨·유효 문서가 있을 때만 생성한다. 기본 `shadow`는 분류 결과를 관찰 기록으로 남기고 유효 문서가 있으면 생성한다. `/documents`와 `/regist-docs`는 같은 SQLite 저장소에 초안을 생성하고, 검색 답변은 현재 유효한 게시본만 읽는다. 게시와 사람 검수 승인은 별개다.
+현재 `/ask`는 질문 서비스를 통해 분류한다. 선택적 `gate`는 검색 라벨·유효 문서가 있을 때만 생성한다. 기본 `advisory`는 정상 서버 예측을 오류 가능한 참고 정보로 생성기에 전달한다. 세 라벨 모두 유효 문서가 있으면 생성하며, 명시적 `shadow`는 라벨을 관찰만 한다. `/documents`와 `/regist-docs`는 같은 SQLite 저장소에 초안을 생성하고, 검색 답변은 현재 유효한 게시본만 읽는다. 게시와 사람 검수 승인은 별개다.
 
 | 구성 | 저장소에서 확인한 동작 |
 |---|---|
@@ -32,35 +32,37 @@
 
 등록 요청은 기존 `{"doc":"본문"}` 형식을 유지하며 50,000자·512KiB 제한을 적용한다. 게시 전에는 답변에 사용하지 않는다. 원본 JSONL은 최초 이관·과거 평가를 위해 보존한다.
 
-`/ask`와 `/assistant`는 같은 앱 설정을 사용한다. 기본 shadow는 세 라벨 모두 문서 단계로 진행하고, gate에서만 CLARIFY·UNSUPPORTED를 고정 안내로 종료한다. 문서 단계는 SQLite snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 full 또는 rag 근거로 `GenerationAnswerer`를 호출한다. 빈 게시 목록은 정상 안내다. 알려진 분류 장애는 shadow에서 기록 후 계속하며 gate에서는 503이다. DB·색인 장애는 503, 생성 결과·제공자 오류는 502, 예상 밖 코드 오류는 500이다. `/assistant`의 앞 단계 실패 입력은 생성하지 않는다.
+`/ask`와 `/assistant`는 같은 앱 설정을 사용한다. 기본 advisory와 명시적 shadow는 세 라벨 모두 문서 단계로 진행하고, gate에서만 CLARIFY·UNSUPPORTED를 고정 안내로 종료한다. 문서 단계는 SQLite snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 full 또는 rag 근거로 `GenerationAnswerer`를 호출한다. 빈 게시 목록은 정상 안내다. 알려진 분류 장애는 advisory·shadow에서 기록 후 계속하며 gate에서는 503이다. DB·색인 장애는 503, 생성 결과·제공자 오류는 502, 예상 밖 코드 오류는 500이다. `/assistant`의 앞 단계 실패 입력은 생성하지 않는다.
 
 2026-10-15 사용자 결정으로 KoELECTRA base를 현 단계 서버 분류기로 채택했다. [선정 근거와 연결 절차](worklogs/2026-10-15-classifier-selection.md)를 따른다. 기존 연동 코드의 존재와 이번에 선정한 checkpoint의 연결 완료는 구분하며, 이번 저장본은 공통 Transformer 추론기로 연결한다. 검증 결과는 [연결 작업 기록](worklogs/2026-10-15-server-classifier-integration.md)을 따른다.
 
 ## 현재 질문 처리 흐름
 
-분류 입력은 현재 질문 하나이며 대화 이력은 사용하지 않는다. 라벨 의미·데이터 정답은 [라벨 기준](label-taxonomy.md)에서 관리한다. 기본 shadow는 라벨을 관찰만 하고, 선택적 gate는 CLARIFY·UNSUPPORTED를 고정 안내로 종료한다. 라벨은 답변 근거의 존재나 권한을 보장하지 않으며 생성 프롬프트에 전달하지 않는다.
+분류 입력은 현재 질문 하나이며 대화 이력은 사용하지 않는다. 라벨 의미·데이터 정답은 [라벨 기준](label-taxonomy.md)에서 관리한다. 기본 advisory는 같은 공통 지침과 서버 예측 라벨을 생성 프롬프트에 전달한다. shadow는 관찰만 하고 gate는 CLARIFY·UNSUPPORTED를 고정 안내로 종료한다. 라벨은 오류 가능한 참고 정보이며 답변 근거의 존재나 권한을 보장하지 않는다. 질문·문서를 우선하고 라벨별 지침 분기는 없다.
 
 ```mermaid
 flowchart TD
     Q["현재 질문"] --> C["분류·결과 기록"]
     C --> M{"라우팅 모드"}
-    M -->|"shadow: 세 라벨 모두"| D["SQLite 게시 snapshot 1회"]
+    M -->|"advisory / shadow: 세 라벨 모두"| D["SQLite 게시 snapshot 1회"]
     M -->|"gate: SEARCH_KNOWLEDGE"| D
     M -->|"gate: CLARIFY 또는 UNSUPPORTED"| G["고정 안내"]
     D --> V{"게시 문서 있음"}
     V -->|"없음"| N["자료 없음 안내"]
     V -->|"있음"| R{"문서 공급 모드"}
     R -->|"full: 수동 선택"| F["게시본 전체"]
-    R -->|"rag: 기본 C"| S["유효 색인에서 근거 검색"]
-    F --> L["질문·문서 근거·공통 지침으로 생성"]
+    R -->|"rag: KURE"| S["유효 색인에서 근거 검색"]
+    F --> L["질문·문서 근거로 생성 / advisory는 공통 지침·서버 라벨 추가"]
     S --> L
     L --> A["응답 형식 검사 후 답변 또는 생성 오류"]
 ```
 
 | 라우팅 / 문서 공급 | 문서 단계 진입 | 생성에 전달하는 근거 |
 |---|---|---|
+| advisory + full | 세 라벨 모두 | 게시본 전체 + 서버 분류 참고 정보 |
+| advisory + rag (기본) | 세 라벨 모두 | 검색 근거 + 서버 분류 참고 정보 |
 | shadow + full | 세 라벨 모두 | 게시본 전체 |
-| shadow + rag (기본) | 세 라벨 모두 | 검색으로 선택한 근거 |
+| shadow + rag | 세 라벨 모두 | 검색으로 선택한 근거 |
 | gate + full | SEARCH_KNOWLEDGE | 게시본 전체 |
 | gate + rag | SEARCH_KNOWLEDGE | 검색으로 선택한 근거 |
 
@@ -86,11 +88,11 @@ flowchart TD
 
 ## 분류 관찰 모드
 
-`SANAEBI_ROUTING_MODE`는 앱 시작 시 `shadow`(기본값) 또는 `gate`로 고정된다. `/ask`와 `/assistant`가 같은 정책을 사용한다. `/ask`는 모델 예측을, 재분류하지 않는 `/assistant`는 클라이언트 제공 라벨을 기록한다. `/assistant`의 앞 단계 실패는 생성하지 않는다.
+`SANAEBI_ROUTING_MODE`는 앱 시작 시 `advisory`(기본값), `shadow` 또는 `gate`로 고정된다. `/ask`와 `/assistant`가 같은 정책을 사용한다. `/ask`는 모델 예측을, 재분류하지 않는 `/assistant`는 클라이언트 제공 라벨을 기록한다. `/assistant`의 앞 단계 실패는 생성하지 않는다. advisory에서도 client 라벨은 생성 프롬프트에 넣지 않고 재분류하지 않는다.
 
 `shadow`는 회사 밖 질문을 자유롭게 답하도록 허용하는 설정이 아니다. 라벨을 프롬프트에 넣지 않고 기존 문서 기반 생성 지침으로 범위·자료 부족·실행 불가를 판단하게 하는 비교 경로다. 알려진 분류 로딩·추론 장애는 안전한 상태를 기록하고 계속 진행하지만, 예상 밖 오류·잘못된 내부 라벨은500으로 남긴다. 분류를 동기 실행하므로 그 지연도 포함된다. 상세 계약은 [서버 규약](server-conventions.md#분류-관찰-모드와-비교-경계)을 따른다.
 
-40문항×두 경로×두 반복 비교의 기준·실제 결과·권고는 [종단 비교 보고서](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md)에 둔다. 비교 후 사용자가 상대 개선을 근거로 기본값을 `shadow`로 채택했다. 두 반복 통과는 gate 25/40, shadow 30/40으로 사전 36/40 기준에는 미달한다. main 통합으로 v3 프롬프트와 함께 사용한다. 이 비교·채택 당시에는 실행 중인 서버 전환·공개 배포를 수행하지 않았다. 이후 공개 배포와 설정 확인은 [main 배포 기록](worklogs/2026-10-15-main-deploy-doc-sync.md)을 따른다. [후속 채택 결정](worklogs/2026-10-15-adopt-shadow.md)에 사유와 원복 방법을 기록한다. 이번 비교는 고정된 v1 생성 구성의 합성 자료 평가로, 다른 프롬프트 변경의 품질이나 운영 신뢰성을 보장하지 않는다.
+40문항×두 경로×두 반복 비교의 기준·실제 결과·권고는 [종단 비교 보고서](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md)에 둔다. 비교 후 사용자가 상대 개선을 근거로 기본값을 `shadow`로 채택했다. 두 반복 통과는 gate 25/40, shadow 30/40으로 사전 36/40 기준에는 미달한다. 당시 main 통합에서는 v3 프롬프트와 함께 사용했다. 이 비교·채택 당시에는 실행 중인 서버 전환·공개 배포를 수행하지 않았다. 이후 공개 배포와 설정 확인은 [main 배포 기록](worklogs/2026-10-15-main-deploy-doc-sync.md)을 따른다. [후속 채택 결정](worklogs/2026-10-15-adopt-shadow.md)에 사유와 원복 방법을 기록한다. 이번 비교는 고정된 v1 생성 구성의 합성 자료 평가로, 다른 프롬프트 변경의 품질이나 운영 신뢰성을 보장하지 않는다.
 
 ## 질문 데이터와 평가 설계
 
@@ -135,10 +137,10 @@ flowchart TD
 
 ## 검색 근거 구성
 
-현재 기본 `SANAEBI_RETRIEVAL_MODE=rag`로 게시 개정별 검색을 연결한다. `full`은 명시적인 수동 복구 경로다. shadow/gate 정책은 유지하며 원본 snapshot 한 번 → 유효 색인 확인 → 선택 근거 → 기존 생성기 순서다. 색인 미준비는503이고 전체 문서 자동 fallback은 없다. [RAG 실행 계약](rag-runtime.md)을 따른다. 코드 기본값 변경과 운영 전환·실제 답변 품질 승인은 별개다.
+현재 기본 `SANAEBI_RETRIEVAL_MODE=rag`로 게시 개정별 검색을 연결한다. `full`은 명시적인 수동 복구 경로다. 라우팅 모드와 독립적으로 원본 snapshot 한 번 → 유효 색인 확인 → 선택 근거 → 기존 생성기 순서다. 색인 미준비는503이고 전체 문서 자동 fallback은 없다. [RAG 실행 계약](rag-runtime.md)을 따른다. 코드 기본값 변경과 운영 전환·실제 답변 품질 승인은 별개다.
 
 ## 분류 참고 정보 비교 결과
 
-분류 라벨을 오류 가능한 생성 참고 정보로 전달하는 후보는 탐색 기준을 충족하지 못해 미채택했다. 현재 shadow/gate와 HTTP 계약은 유지하며, advisory 서버 모드는 제공하지 않는다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
+초기 탐색은 기준 미달로 미채택했고 KURE 최소 비교도 개선을 입증하지 못했다. 이후 사용자가 프로젝트 설계 의도에 따라 공통 지침+라벨 C를 채택했다. 현재 미설정 기본값은 advisory이며 기존 shadow/gate와 HTTP 계약은 유지한다. 품질 기준 통과로 소급 기록하지 않는다. [후속 채택·검증 기록](worklogs/2026-10-16-adopt-advisory.md)을 따른다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
 
 문서 변경의 완료 경계는 [문서 관리 계약](document-management.md#rag-색인과-자정-초기화)을 따른다. rag의 게시·철회·전체 삭제·기본 복원은 현재 게시 snapshot의 검색 준비 확인 후 성공 응답한다. 문서 저장 후 검색 반영 실패는 자료를 보존하고 같은 요청으로 복구한다. 초안 저장은 임베딩하지 않는다.

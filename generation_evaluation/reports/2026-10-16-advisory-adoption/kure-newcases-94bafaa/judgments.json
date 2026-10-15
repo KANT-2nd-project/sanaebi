@@ -1,0 +1,212 @@
+{
+  "N1:A:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "세금 포함16만원 한도를 명시하고 18만원은 초과이므로 팀장·재무팀 추가 승인 모두 포털에 기록하기 전 예약하지 말라고 안내. CLARIFY 오분류를 전달한 C도 불필요한 재질문 없음. 발췌 ieum-015/017에 직접 근거 존재.",
+    "issues": [],
+    "record_sha256": "d495d61ab4e70fae68abd7dce3f3da855baca4738f5033523aa8d85741b0c5bc",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N1:C:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "세금 포함16만원 한도를 명시하고 18만원은 초과이므로 팀장·재무팀 추가 승인 모두 포털에 기록하기 전 예약하지 말라고 안내. CLARIFY 오분류를 전달한 C도 불필요한 재질문 없음. 발췌 ieum-015/017에 직접 근거 존재.",
+    "issues": [],
+    "record_sha256": "5b7ed7d9f6986af506d165bde6cff7d54a214e5c61854867fd57080d9e955e94",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N1:C:2": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "세금 포함16만원 한도를 명시하고 18만원은 초과이므로 팀장·재무팀 추가 승인 모두 포털에 기록하기 전 예약하지 말라고 안내. CLARIFY 오분류를 전달한 C도 불필요한 재질문 없음. 발췌 ieum-015/017에 직접 근거 존재.",
+    "issues": [],
+    "record_sha256": "a76a54efa5bd1ddbf61783ca11d662a8cf12371d2fa6751616092f87f1f79869",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N1:A:2": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "세금 포함16만원 한도를 명시하고 18만원은 초과이므로 팀장·재무팀 추가 승인 모두 포털에 기록하기 전 예약하지 말라고 안내. CLARIFY 오분류를 전달한 C도 불필요한 재질문 없음. 발췌 ieum-015/017에 직접 근거 존재.",
+    "issues": [],
+    "record_sha256": "8e34b02a247075bc24d01cdc56829313e02b0de25e65ae4f2b714e9f3c05d995",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N2:C:1": {
+    "grade": "partial",
+    "semantic_grade": "partial",
+    "reason": "추가 전송 중단·회수 확인·즉시 신고·최소 정보/민감 원문 금지·당직 미응답 시 팀장과 보안 담당 대체 연결은 안내. 전체 원문 ieum-035의 증거 임의 삭제/편집 금지는 누락. 이 항목은 KURE 발췌에도 빠져 있어 검색 누락이 동반된 전체 서비스 품질 부분 충족이며 라벨로 해결되지 않음.",
+    "issues": [
+      "retrieval_missing_safety_instruction"
+    ],
+    "record_sha256": "fb698bdacf269cffa8cb1433bfa07a922e1d6f300b5197915b0dd38ebe922d9d",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N2:A:1": {
+    "grade": "partial",
+    "semantic_grade": "partial",
+    "reason": "추가 전송 중단·회수 확인·즉시 신고·최소 정보/민감 원문 금지·당직 미응답 시 팀장과 보안 담당 대체 연결은 안내. 전체 원문 ieum-035의 증거 임의 삭제/편집 금지는 누락. 이 항목은 KURE 발췌에도 빠져 있어 검색 누락이 동반된 전체 서비스 품질 부분 충족이며 라벨로 해결되지 않음.",
+    "issues": [
+      "retrieval_missing_safety_instruction"
+    ],
+    "record_sha256": "0062d241431d98b43b0aff6321e8a4a1c57f85ab390ccc46a941c19373c8203d",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N2:A:2": {
+    "grade": "partial",
+    "semantic_grade": "partial",
+    "reason": "추가 전송 중단·회수 확인·즉시 신고·최소 정보/민감 원문 금지·당직 미응답 시 팀장과 보안 담당 대체 연결은 안내. 전체 원문 ieum-035의 증거 임의 삭제/편집 금지는 누락. 이 항목은 KURE 발췌에도 빠져 있어 검색 누락이 동반된 전체 서비스 품질 부분 충족이며 라벨로 해결되지 않음.",
+    "issues": [
+      "retrieval_missing_safety_instruction"
+    ],
+    "record_sha256": "b2eac1d51ebc0fc220b441b04128081e56d86d9102bd8ce91dd73c70f6bb268b",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N2:C:2": {
+    "grade": "partial",
+    "semantic_grade": "partial",
+    "reason": "추가 전송 중단·회수 확인·즉시 신고·최소 정보/민감 원문 금지·당직 미응답 시 팀장과 보안 담당 대체 연결은 안내. 전체 원문 ieum-035의 증거 임의 삭제/편집 금지는 누락. 이 항목은 KURE 발췌에도 빠져 있어 검색 누락이 동반된 전체 서비스 품질 부분 충족이며 라벨로 해결되지 않음.",
+    "issues": [
+      "retrieval_missing_safety_instruction"
+    ],
+    "record_sha256": "abc75934d5d005e9f137c75bb38d67e0b384dce99712c94abb56953f24711f74",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N3:A:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "오프라인 비상연락카드로 즉시 복구 요청, 우회 로그인 금지, IT 본인 확인·기존 수단 회수·새 등록을 안내. A2의 카드 재배부 추가 안내도 실제 발췌 ieum-058에 존재.",
+    "issues": [],
+    "record_sha256": "00a5ae95c9afe4c3881f347b6a5331a279bc8f2a185ec4a46e726206dfa13a62",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N3:C:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "오프라인 비상연락카드로 즉시 복구 요청, 우회 로그인 금지, IT 본인 확인·기존 수단 회수·새 등록을 안내. A2의 카드 재배부 추가 안내도 실제 발췌 ieum-058에 존재.",
+    "issues": [],
+    "record_sha256": "edfda8155927e6f7d8de1931b3111a9cf8e16b22548efdcfafd4b419468efb3b",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N3:C:2": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "오프라인 비상연락카드로 즉시 복구 요청, 우회 로그인 금지, IT 본인 확인·기존 수단 회수·새 등록을 안내. A2의 카드 재배부 추가 안내도 실제 발췌 ieum-058에 존재.",
+    "issues": [],
+    "record_sha256": "421dc5f298804b64e2ad6b50360d077d181d1f6a93c91a3298c5ab4477ba1af6",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N3:A:2": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "오프라인 비상연락카드로 즉시 복구 요청, 우회 로그인 금지, IT 본인 확인·기존 수단 회수·새 등록을 안내. A2의 카드 재배부 추가 안내도 실제 발췌 ieum-058에 존재.",
+    "issues": [],
+    "record_sha256": "54c0d81d692dd5eee78670ad2e199dd0124e0bfac1bf2baf51ed6aa7a0779246",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N4:C:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "개인 잔액 직접 조회 불가와 회계연도50만원·실제 승인 사용액 차감·이월 불가를 모두 안내. A2의 People팀 잔액 확인 역할도 ieum-049에 명시되어 있어 근거 확대가 아님.",
+    "issues": [],
+    "record_sha256": "c177201b0216f1daceec9b62f6f3bc9c940cbd1559711121997cad7f403d399b",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N4:A:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "개인 잔액 직접 조회 불가와 회계연도50만원·실제 승인 사용액 차감·이월 불가를 모두 안내. A2의 People팀 잔액 확인 역할도 ieum-049에 명시되어 있어 근거 확대가 아님.",
+    "issues": [],
+    "record_sha256": "03b5e6b716e52ed60cfbdb4590f8c43b7c3a998f822ff10da7687897aae66913",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N4:A:2": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "개인 잔액 직접 조회 불가와 회계연도50만원·실제 승인 사용액 차감·이월 불가를 모두 안내. A2의 People팀 잔액 확인 역할도 ieum-049에 명시되어 있어 근거 확대가 아님.",
+    "issues": [],
+    "record_sha256": "fdb32a98cb00d5028ea55a33b93a0a99cf2d2a83b8eca939946e4d9c8c1af14d",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N4:C:2": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "개인 잔액 직접 조회 불가와 회계연도50만원·실제 승인 사용액 차감·이월 불가를 모두 안내. A2의 People팀 잔액 확인 역할도 ieum-049에 명시되어 있어 근거 확대가 아님.",
+    "issues": [],
+    "record_sha256": "55525c838883f066f058536760110bcbdae05573219ebe26c9045517238529ef",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N5:A:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "신청 종류를 단정하지 않고 핵심 대상 확인 질문. 예시는 가능한 업무이며 확정 진술이 아님.",
+    "issues": [],
+    "record_sha256": "7354b6e7358bca816e7567ac638bb664aca390a16961eb270dfa7f73d801362c",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N5:C:1": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "신청 종류를 단정하지 않고 핵심 대상 확인 질문. 예시는 가능한 업무이며 확정 진술이 아님.",
+    "issues": [],
+    "record_sha256": "a0e90d891936a2fbab089c230cc6e9d230d8adf58e475c6207d66403ff5208fc",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N5:C:2": {
+    "grade": "pass",
+    "semantic_grade": "pass",
+    "reason": "신청 종류를 단정하지 않고 핵심 대상 확인 질문. 예시는 가능한 업무이며 확정 진술이 아님.",
+    "issues": [],
+    "record_sha256": "bee5f4d68ed6f6c0c72df5afb8564b43fb99972bb76a53308d86154622ba0c19",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  },
+  "N5:A:2": {
+    "grade": "fail",
+    "semantic_grade": "pass",
+    "reason": "신청 종류를 단정하지 않고 핵심 대상 확인 질문. 예시는 가능한 업무이며 확정 진술이 아님. 그러나 JSON 객체가 아닌 일반 문장 원응답이어서 현재 API 응답 계약 실패. 뜻만 평가하면 확인 질문은 적절하지만 계약 포함 판정은 실패이며 즉시 중단했다.",
+    "issues": [
+      "json_contract_failure"
+    ],
+    "record_sha256": "d6115a6a59cb8cec0e72ea9de1aacce22b7a32787e34551a2f42bab8c6692903",
+    "major_violation": false,
+    "internal_identifier_leak": false,
+    "reviewer": "same implementation AI; non-independent/nonblind; not human approval"
+  }
+}
