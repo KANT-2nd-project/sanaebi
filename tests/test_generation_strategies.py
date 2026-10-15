@@ -4,7 +4,7 @@ from unittest.mock import Mock
 
 from generation.profiles import build_profile_prompt
 from generation.prompts import build_prompt
-from generation.strategies import execute_strategy
+from generation_evaluation.strategies import execute_strategy
 from generation.types import GenerationStatus, ModelResponse
 
 

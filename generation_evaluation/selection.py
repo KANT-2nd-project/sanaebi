@@ -21,7 +21,7 @@ from generation.providers import (
     invoke_openai_message,
     to_messages,
 )
-from generation.strategies import execute_strategy
+from generation_evaluation.strategies import execute_strategy
 from generation_evaluation.budget import (
     BudgetExceeded,
     BudgetLedger,
@@ -45,7 +45,7 @@ MANIFEST_SOURCE_PATHS = (
     "generation/types.py",
     "generation/validation.py",
     "generation/profiles.py",
-    "generation/strategies.py",
+    "generation_evaluation/strategies.py",
     "generation/output_schema.py",
     "generation_evaluation/selection.py",
     "generation_evaluation/budget.py",
