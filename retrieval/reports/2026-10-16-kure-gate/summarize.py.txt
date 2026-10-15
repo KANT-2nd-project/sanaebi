@@ -1,0 +1,26 @@
+import json,statistics,csv,gzip,hashlib
+from pathlib import Path
+from retrieval.experiments.kure_gate import validate_confirmation,resource_passes,decide_adoption
+p=Path('retrieval/reports/2026-10-16-kure-gate'); tmp=Path('tmp/kure-gate')
+read=lambda x:json.loads(x.read_text())
+cases=read(p/'confirmation-cases.json')['cases']; dev=read(p/'threshold-selection.json')
+a=read(tmp/'confirmation-tiny/results.json');b=read(tmp/'confirmation-kure/results.json');bench=read(tmp/'benchmark-kure/results.json')
+validate_confirmation(cases,a['rows'],b['rows'])
+decision=decide_adoption(development_eligible=dev['eligible'],baseline_success=[x['case_id'] for x in a['rows'] if x['complete']],candidate_success=[x['case_id'] for x in b['rows'] if x['complete']],related_rejected=[x['case_id'] for x in b['rows'] if x['related'] and x['gate_rejected']],unrelated_rejected=sum(x['gate_negative'] and x['gate_rejected'] for x in b['rows']),resource_passed=resource_passes(bench['benchmark']))
+summary={'decision':decision,'threshold':dev['threshold'],'benchmark':bench['benchmark'],'comparisons':[],'raw_sha256':{}}
+with (p/'comparison.csv').open('w') as f:
+ w=csv.DictWriter(f,fieldnames=['phase','model','case_id','answerability','related','gate_negative','maximum','complete','gate_rejected','chars','selected_chunk_count','missing_claims']);w.writeheader()
+ for phase in ['development','confirmation']:
+  for model in ['tiny','kure']:
+   name=f'{phase}-{model}';raw=(tmp/name/'results.json').read_bytes();r=json.loads(raw);summary['raw_sha256'][name]=hashlib.sha256(raw).hexdigest()
+   with gzip.open(p/f'{name}.json.gz','wb') as g:g.write(raw)
+   rows=r['rows'];ans=[x for x in rows if x['complete'] is not None]
+   # Development KURE rows are pre-gate; report the frozen gate's impact separately.
+   gate=lambda x: x['maximum']<dev['threshold'] if model=='kure' else x['gate_rejected']
+   s={'phase':phase,'model':model,'required_complete':sum(x['complete'] for x in ans),'required_cases':len(ans),'mean_chars':statistics.mean(x['chars'] for x in rows),'related_count':sum(x['related'] for x in rows),'related_rejected':[x['case_id'] for x in rows if x['related'] and gate(x)],'new_negative_rejected':[x['case_id'] for x in rows if x['gate_negative'] and gate(x)],'negative_count':sum(x['gate_negative'] for x in rows),'missing':{x['case_id']:x['missing_claims'] for x in ans if not x['complete']}}
+   if phase=='development' and model=='kure':s['post_gate_mean_chars']=statistics.mean(0 if gate(x) else x['chars'] for x in rows)
+   summary['comparisons'].append(s)
+   for row in rows:w.writerow({k:row.get(k,phase if k=='phase' else model if k=='model' else '') for k in w.fieldnames})
+(p/'benchmark.json').write_text(json.dumps(bench,ensure_ascii=False,indent=2)+'\n')
+(p/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(summary,ensure_ascii=False,indent=2))

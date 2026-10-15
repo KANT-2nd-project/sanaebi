@@ -1,0 +1,1036 @@
+{
+  "schema_version": "kure-gate-cases-v1",
+  "status": "frozen_independent_ai_reviewed",
+  "reviewed_by_human": false,
+  "source_corpus_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "claim_logic": "claims AND; alternatives OR; spans within alternative AND",
+  "cases": [
+    {
+      "case_id": "H01",
+      "question": "이음웍스의 시차 출퇴근 승인을 받으면 법률상 선택적 근로시간제나 자율 근무제로 보는 거야?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H01-r01",
+          "claim": "이음웍스의 회사 일정으로 운영하며 법률상 다른 근무제와 동일시하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-005",
+              "spans": [
+                {
+                  "start": 69,
+                  "end": 130,
+                  "text": "여기의 시차 출퇴근은 이음웍스가 정한 회사 일정이며 법률상 선택적 근로시간제나 자율 근무제로 설명하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "company_flex_schedule_legal_characterization",
+      "source_review_note": "ieum-005의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: V02는 선택 가능한 출퇴근 시각과 공통 시간을 묻고, H01은 제도의 법적 성격을 구분한다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H02",
+      "question": "승인된 재택 장소에서도 회사 자료를 개인 메일이나 개인 파일 저장소로 옮겨도 돼?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H02-r01",
+          "claim": "재택 승인은 회사 자료를 개인 저장소로 옮길 권한을 주지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-011",
+              "spans": [
+                {
+                  "start": 270,
+                  "end": 324,
+                  "text": "개인 이메일·개인 파일 저장소로 회사 자료를 옮기거나 공용 컴퓨터에 인증 정보를 저장하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "remote_work_does_not_expand_data_permissions",
+      "source_review_note": "ieum-011의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: H05는 재택 중 종이 출력·보관 조건을 다루고 H02는 전자 자료의 개인 저장 경로를 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H03",
+      "question": "출장 숙박비에 조식이 포함되어 있으면 출장 식비로 조식을 한 번 더 청구할 수 있어?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H03-r01",
+          "claim": "객실 요금에 포함된 조식은 출장 식비로 중복 청구할 수 없다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-017",
+              "spans": [
+                {
+                  "start": 139,
+                  "end": 185,
+                  "text": "조식이 객실 요금에 포함되어 있으면 같은 식사를 출장 식비로 다시 청구하지 않는다."
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-018",
+              "spans": [
+                {
+                  "start": 88,
+                  "end": 132,
+                  "text": "출장 일정에 포함된 식사나 주최자가 제공한 식사는 별도로 다시 청구하지 않는다."
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-060",
+              "spans": [
+                {
+                  "start": 355,
+                  "end": 417,
+                  "text": "출장 식비는 1인당 하루 최대 35,000원이며 일정에 포함되거나 주최자가 제공한 식사는 중복 청구하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "hotel_breakfast_double_claim",
+      "source_review_note": "ieum-017의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: D05는 숙박비 한도 초과 승인, H03은 포함 조식의 중복 정산이라는 다른 비용 조건이다. 과거 rag-quality-improvement/cases.json H08과 제공 식사 중복 청구 금지 정책군을 공유한다. 숙박 요금에 포함된 조식 조건을 확인하며 독립 정책으로 과장하지 않는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H04",
+      "question": "경비 제출 기한을 넘길 것 같아. 기한이 지난 뒤 영수증만 올리면 돼, 아니면 미리 요청해야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H04-r01",
+          "claim": "경비 기한을 넘길 것으로 예상하면 기한 전에 재무팀에 연장 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-019",
+              "spans": [
+                {
+                  "start": 221,
+                  "end": 268,
+                  "text": "기한을 넘길 가능성이 있으면 기한 전에 재무팀에 포털 문의를 남겨 연장을 승인받는다."
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-060",
+              "spans": [
+                {
+                  "start": 1491,
+                  "end": 1526,
+                  "text": "제출이 늦을 것 같으면 기한 전에 재무팀에 연장 요청을 남긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "expense_deadline_extension_pre_request",
+      "source_review_note": "ieum-019의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: R09는 기한이 이미 지난 뒤의 예외를 묻는다. H04는 기한이 지나기 전 예방적 연장 절차를 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H05",
+      "question": "공용 좌석에서 자리를 정리할 때 화면만 잠그면 돼, 보안 키나 저장장치도 챙겨야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H05-r01",
+          "claim": "공용 좌석을 떠날 때 로그아웃하고 보안 키와 저장장치도 챙긴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-024",
+              "spans": [
+                {
+                  "start": 251,
+                  "end": 315,
+                  "text": "공용 좌석에서는 회의나 업무를 마친 뒤 회사 계정에서 로그아웃하고, 화면과 연결된 보안 키·저장장치를 함께 챙긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "shared_seat_logout_and_security_key",
+      "source_review_note": "ieum-024의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: D08은 노트북의 차량·퇴근 후 보관을 묻는다. H05는 공용 좌석에서 세션과 주변 장치를 정리하는 사실이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H06",
+      "question": "MFA 복구 코드나 패스키는 동료에게 보내서 계정 복구를 부탁해도 돼?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H06-r01",
+          "claim": "승인된 본인 인증 방법을 사용하고 복구 자료를 다른 사람에게 보내지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-026",
+              "spans": [
+                {
+                  "start": 248,
+                  "end": 322,
+                  "text": "서비스가 허용하는 회사 승인 인증 방법을 사용하고, 일회용 코드·복구 코드·패스키 등 본인 확인 자료를 다른 사람에게 보내지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "mfa_recovery_material_nonsharing",
+      "source_review_note": "ieum-026의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: R10은 분실 휴대전화 뒤 동료 계정 사용을 묻는다. H06은 복구 자격정보 자체의 공유 금지를 평가한다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H07",
+      "question": "시스템 접근 요청에서 팀장 승인만 받으면 자료 소유자나 보안 검토를 생략해도 돼?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H07-r01",
+          "claim": "필요한 승인·소유자·보안 검토 단계는 서로 대체할 수 없다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-027",
+              "spans": [
+                {
+                  "start": 89,
+                  "end": 163,
+                  "text": "팀장 승인, 자료 소유자 확인, 보안·개인정보 검토는 필요한 경우 서로 다른 확인 단계이며 어느 하나가 다른 단계를 대신하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "access_approvals_are_non_substitutable",
+      "source_review_note": "ieum-027의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: V30은 반려된 접근 요청의 수정 방법을 묻는다. H07은 접근 심사에 필요한 여러 주체의 확인이 서로 대체되는지 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H08",
+      "question": "기록을 보관하거나 삭제할 시점을 정하기 전에 자료 소유자는 어떤 기준 정보를 식별해야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H08-r01",
+          "claim": "기록 소유자는 위치·목적·접근 역할·업무 종료 시점·보존 분류를 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-039",
+              "spans": [
+                {
+                  "start": 96,
+                  "end": 148,
+                  "text": "자료 소유자는 기록의 기준 위치, 목적, 접근 역할, 업무 종료 시점과 보존 분류를 식별한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "record_owner_retention_basis_inventory",
+      "source_review_note": "ieum-039의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: V17은 문서 유형별 보존 기간을 묻는다. H08은 기간표 적용 전 소유자가 파악할 관리 항목을 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H09",
+      "question": "의심스러운 회사 메시지의 링크가 진짜인지 확인하려면 메시지 속 링크를 눌러도 돼?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H09-r01",
+          "claim": "링크를 누르지 말고 이미 알고 있는 공식 연락처나 승인 채널로 별도 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-034",
+              "spans": [
+                {
+                  "start": 142,
+                  "end": 195,
+                  "text": "메시지 안의 링크를 눌러 확인하지 말고, 저장된 회사 연락처나 기존 승인 채널로 별도 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "phishing_out_of_band_verification",
+      "source_review_note": "ieum-034의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: D09와 D13은 자격정보 입력 후의 조치를 묻는다. H09는 클릭 전 별도 경로 검증이라는 예방 단계다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H10",
+      "question": "회사 보안 사고 신고 목표가 인지 후 30분이면 그 시간까지 기다렸다 접수해도 돼?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H10-r01",
+          "claim": "30분은 늦어도 남길 접수 목표이고 그때까지 기다릴 유예시간이 아니다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-035",
+              "spans": [
+                {
+                  "start": 282,
+                  "end": 375,
+                  "text": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다."
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-058",
+              "spans": [
+                {
+                  "start": 359,
+                  "end": 420,
+                  "text": "늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 운영 목표이며 30분을 기다렸다 신고하라는 뜻은 아니다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "security_report_target_is_not_wait_period",
+      "source_review_note": "ieum-035의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: D14의 15분은 당직 수락 인계 목표다. H10은 최초 사고 접수 30분 목표의 해석을 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H11",
+      "question": "공유드라이브 파일이 덮어써졌을 때 복구 요청에는 어떤 파일·시각·영향 정보를 적어야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H11-r01",
+          "claim": "복구 요청에는 파일 식별·정상 확인 시각·위치·발견 시각·영향 사용자·조치 내역을 기록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-038",
+              "spans": [
+                {
+                  "start": 529,
+                  "end": 597,
+                  "text": "문서 이름이나 링크, 마지막으로 정상 확인한 시각, 저장 위치, 발견 시각, 영향받은 사용자, 이미 시도한 조치를 적는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "drive_recovery_request_evidence_fields",
+      "source_review_note": "ieum-038의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: D15는 덮어쓰기 뒤 무엇을 중단하고 누구에게 알릴지 묻는다. H11은 복구 담당자가 판단할 근거 목록이라는 별도 사실을 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H12",
+      "question": "같은 거래처가 혜택을 반복 제안하거나 여러 직원에게 나누어 주면, 신고를 건별·직원별로 따로 해야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H12-r01",
+          "claim": "반복 제안이나 여러 사람에게 나누어 제공하는 혜택도 하나의 관계로 함께 신고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-045",
+              "spans": [
+                {
+                  "start": 432,
+                  "end": 477,
+                  "text": "반복 제안이나 여러 사람에게 나누어 제공하는 방식도 하나의 관계로 함께 신고한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "aggregate_repeated_or_split_external_benefit_disclosures",
+      "source_review_note": "가장 가까운 기존 질문은 retrieval/reports/2026-10-15-rag-quality-improvement/cases.json의 H16, “협력사가 선물을 이미 보내서 돌려보내기 애매해. 개봉해서 쓰지 말고 뭘 해야 해?”이다. H16은 이미 전달된 한 물품의 보관·처리 절차를 묻고, 이 대체 문항은 반복 제안 또는 여러 직원에게 나눈 제공을 신고 기록에서 하나의 관계로 묶는 규칙을 묻는다. 원문 근거는 ieum-045[432:477]이다. 모든 보고서 JSON의 중첩된 question 필드도 재귀 검사했으며(148개 고유 질문), 같은 사실을 묻는 다른 과거 질문이나 나머지 신규 초안은 찾지 못했다. 점수나 검색 결과는 보지 않았다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H13",
+      "question": "사무실에서 사람이 다쳤거나 화재 위험이 급박한데 회사 승인부터 받아야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H13-r01",
+          "claim": "즉각적인 생명·화재 위험에는 회사 승인보다 지역 긴급 지원 요청이 우선이다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-047",
+              "spans": [
+                {
+                  "start": 153,
+                  "end": 208,
+                  "text": "즉각적인 부상·화재·생명 위험에는 회사 승인을 기다리지 말고 119 등 지역 긴급 지원을 요청한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "immediate_emergency_services_before_approval",
+      "source_review_note": "ieum-047의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: H03은 위험을 시설 안전 채널에 기록하는 절차를 다룬다. H13은 급박한 위험에서 긴급 지원을 먼저 부르는 우선순위다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H14",
+      "question": "직무 교육비 지원을 신청할 때 어느 메뉴에 언제까지 어떤 내용을 등록해야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H14-r01",
+          "claim": "교육 시작 5영업일 전까지 직무 교육 메뉴에 과정·비용·업무 연관·공백·적용 계획을 등록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-049",
+              "spans": [
+                {
+                  "start": 148,
+                  "end": 242,
+                  "text": "교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "job_training_request_deadline_and_fields",
+      "source_review_note": "ieum-049의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: H17은 외부 교육 지원 한도와 선결제 여부를 묻는다. H14는 신청 시점과 필요한 입력 항목을 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H15",
+      "question": "신규 입사자에게 관리자 권한을 기본으로 먼저 주고 나중에 줄여도 돼?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H15-r01",
+          "claim": "역할별 권한을 검토하고 관리자 권한을 기본값으로 주지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-050",
+              "spans": [
+                {
+                  "start": 306,
+                  "end": 364,
+                  "text": "역할별 시스템 권한은 팀장과 해당 시스템 담당자가 각각 검토하며 관리자 권한을 기본으로 부여하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "onboarding_no_default_admin_access",
+      "source_review_note": "ieum-050의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: V28은 입사 전 팀 준비와 업무 안내 동료 지정에 초점을 두고, H15는 신규 계정 권한의 최소 부여 원칙을 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H16",
+      "question": "입사·이동·퇴사 체크리스트에서 상태가 확인되지 않은 항목은 완료로 표시해도 돼?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H16-r01",
+          "claim": "실제 확인 결과가 없는 체크리스트 항목은 미완료 상태로 둔다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-057",
+              "spans": [
+                {
+                  "start": 103,
+                  "end": 154,
+                  "text": "각 담당자는 포털에 요청과 확인 결과를 남기고, 상태가 확인되지 않은 항목은 미완료로 둔다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "unverified_checklist_items_remain_incomplete",
+      "source_review_note": "ieum-057의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: P01·P05는 특정 방문 일정이나 인계 상태를 묻는다. H16은 조직 변경 체크리스트 전체에 적용되는 완료 판정 규칙이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H17",
+      "question": "승인된 외부 교육의 일정이나 가격이 바뀌거나 취소되면 누구에게 알려야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H17-r01",
+          "claim": "승인된 교육 변경은 사전에 팀장·People팀에 알리고 회사 결제가 있으면 재무팀에도 알린다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-064",
+              "spans": [
+                {
+                  "start": 223,
+                  "end": 293,
+                  "text": "승인된 교육을 취소하거나 일정·가격이 바뀌면 변경 전에 팀장·People팀에 알리고 회사 결제가 진행됐다면 재무팀도 연결한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "approved_training_change_notification",
+      "source_review_note": "ieum-064의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: H14는 최초 교육 신청 조건이다. H17은 승인 후 취소·일정·가격 변경 시의 별도 후속 의무다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H18",
+      "question": "프로젝트 패키지를 추가하는 PR에서 패키지 출처·유지보수·라이선스·알려진 보안 문제에 관해 무엇을 확인해야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H18-r01",
+          "claim": "의존성의 공식 출처·유지 상태·라이선스·알려진 보안 문제를 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-071",
+              "spans": [
+                {
+                  "start": 419,
+                  "end": 455,
+                  "text": "패키지의 공식 출처, 유지보수 상태, 라이선스와 알려진 보안 문제"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "dependency_source_maintenance_license_review",
+      "source_review_note": "ieum-071의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: V14는 잠금파일 패키지 설치와 IT 승인 경계를 묻는다. H18은 프로젝트 의존성 변경 PR에서 검토할 품질 항목이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H19",
+      "question": "비동기 검토를 부탁할 때 “확인 바랍니다”만 쓰지 않으려면 요청에 어떤 항목을 넣어야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H19-r01",
+          "claim": "비동기 요청에는 목적, 필요한 결정이나 행동, 배경 링크, 담당 역할, 원하는 응답 시점을 적고 무엇을 확인할지 구체적으로 쓴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-061",
+              "spans": [
+                {
+                  "start": 239,
+                  "end": 323,
+                  "text": "요청에는 목적, 필요한 결정·행동, 배경 링크, 담당 역할, 원하는 응답 시점을 적는다. “확인 바랍니다”만 보내지 않고 무엇을 확인해야 하는지 쓴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "async_review_request_required_fields",
+      "source_review_note": "근거는 ieum-061의 비동기 요청 작성 기준이다. 기존 N06은 회의와 비동기 진행 중 어떤 방식을 쓸지 묻고, N07–N08은 회의 초대·준비·재조정 기준을 묻는다. 이 대체 문항은 비동기 검토 요청 자체에 적을 정보라는 별도 사실을 평가한다. 초안 H19의 데이터 마이그레이션 롤백 내용과 다르고, 역사 자료와 나머지 신규 초안에서 ieum-061의 이 요청 형식을 평가 근거로 사용한 기록은 찾지 못했다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H20",
+      "question": "변경 규모가 너무 커서 안전하게 검토하기 어렵다면 PR을 어떻게 나눠야 해?",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "H20-r01",
+          "claim": "리뷰가 한 번에 안전하지 않은 큰 변경은 독립 검증 가능한 단위로 나눈다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-067",
+              "spans": [
+                {
+                  "start": 252,
+                  "end": 303,
+                  "text": "작업 범위가 커서 한 번에 안전하게 리뷰하기 어렵다면 독립적으로 확인 가능한 단위로 나눈다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "large_change_reviewable_splitting",
+      "source_review_note": "ieum-067의 원문 구간이 직접 답을 준다. 기존 질문과의 구분: R14는 작성자 본인의 PR 승인 여부, V21·V22는 민감 변경의 추가 검토와 설명 사항을 묻는다. H20은 리뷰 가능한 변경 크기라는 별도 원칙이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H21",
+      "question": "경비 제출에는 어떤 증빙과 목적을 연결하고 팀장은 언제까지 검토해? 청구 EXP-931이 승인됐는지도 확인해줘.",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "H21-r01",
+          "claim": "거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-019",
+              "spans": [
+                {
+                  "start": 122,
+                  "end": 152,
+                  "text": "거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "H21-r02",
+          "claim": "경비 제출 후 팀장은 2영업일 안에 승인하거나 보완을 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-019",
+              "spans": [
+                {
+                  "start": 403,
+                  "end": 456,
+                  "text": "팀장은 업무 관련성과 프로젝트 배정을 확인해 접수 후 2영업일 안에 승인하거나 보완을 요청한다."
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-060",
+              "spans": [
+                {
+                  "start": 1327,
+                  "end": 1355,
+                  "text": "경비 제출 후 팀장은 2영업일 안에 승인·보완 요청"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "expense_claim_procedure_and_specific_status",
+      "source_review_note": "경비 제출과 팀장 검토 절차는 답할 수 있지만 EXP-931의 현재 포털 상태는 원문 자료에 없다. 기존 U06·V31 등은 다른 개인 업무 요청 상태이므로 경비 정산 ID 상태라는 구체 정보는 독립이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H22",
+      "question": "퇴사 자산 AST-620 반납이 지연되면 People팀이나 팀장이 장비 금액을 임금·퇴직급여에서 임의로 공제할 수 있어? AST-620에 실제 공제가 적용됐는지도 알려줘.",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "H22-r01",
+          "claim": "People팀이나 팀장은 장비 금액을 임금·퇴직급여에서 임의로 공제할 수 없다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-023",
+              "spans": [
+                {
+                  "start": 626,
+                  "end": 670,
+                  "text": "People팀이나 팀장은 장비 금액을 임금·퇴직급여에서 임의로 공제하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "asset_return_delay_and_arbitrary_pay_deduction_policy_plus_live_status",
+      "source_review_note": "가장 가까운 기존 질문은 retrieval/reports/2026-10-15-rag-quality-improvement/cases.json의 H09, “대여한 노트북을 더 써야 하는데 반납일 당일에 연장 요청해도 돼? 택배로 보냈으면 반납 완료야?”이다. H09는 반납 연장과 운송장 대 실물 수령을 묻고, 이 대체 문항은 반납 지연을 이유로 장비 금액을 임금·퇴직급여에서 임의 공제할 수 있는지라는 별도 정책 사실을 묻는다. 기존 V38은 지급 자산의 식별번호·지급일을 묻는 질문이다. 원문 근거는 ieum-023[626:670]이며, 실제 AST-620의 급여 공제 여부는 원문에 없다. 모든 보고서 JSON의 중첩된 question 필드를 재귀 검사했으며(148개 고유 질문), 이 공제 제한을 묻는 과거 질문이나 나머지 신규 초안은 찾지 못했다. 점수나 검색 결과는 보지 않았다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H23",
+      "question": "시스템 권한 요청에는 어떤 역할과 기간을 적어야 해? IT-742 요청이 지금 활성 권한으로 바뀌었는지도 알려줘.",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "H23-r01",
+          "claim": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-027",
+              "spans": [
+                {
+                  "start": 176,
+                  "end": 238,
+                  "text": "구성원은 이음 포털의 IT > 접근 권한에서 시스템 이름, 필요한 역할, 업무 사유, 시작일과 종료일을 적는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "access_request_fields_and_live_grant_status",
+      "source_review_note": "권한 요청에 필요한 항목은 답할 수 있지만 IT-742의 처리 및 현재 권한 부여 상태는 문서에서 알 수 없다. 기존 V30은 반려 시 재요청 정책을 묻고 이 항목은 특정 접수 번호의 완료 상태를 추가한다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H24",
+      "question": "프로젝트 의존성 PR에서 lockfile·테스트는 무엇을 확인해야 하고, PR-884의 CI가 실제 통과했는지도 확인해줘.",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "H24-r01",
+          "claim": "lockfile이 의도한 버전·출처를 고정하는지",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-071",
+              "spans": [
+                {
+                  "start": 489,
+                  "end": 515,
+                  "text": "lockfile이 의도한 버전·출처를 고정하는지"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "H24-r02",
+          "claim": "테스트와 빌드가 예상대로 동작하는지",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-071",
+              "spans": [
+                {
+                  "start": 518,
+                  "end": 537,
+                  "text": "테스트와 빌드가 예상대로 동작하는지"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "dependency_review_requirements_and_pr_ci_status",
+      "source_review_note": "의존성 리뷰 기준은 문서에 있지만 PR-884의 실제 CI 결과는 저장소 이슈·CI 실행 자료 없이는 확인할 수 없다. V14는 프로젝트 패키지 설치와 별도 시스템 승인 경계를 다루므로 특정 PR의 검사 결과와는 다른 질문이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H25",
+      "question": "외부 공개 요청에는 어떤 게시 정보를 등록해야 해? EXT-510 파일이 실제 승인돼 공개 가능 상태인지도 알려줘.",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "H25-r01",
+          "claim": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-043",
+              "spans": [
+                {
+                  "start": 218,
+                  "end": 290,
+                  "text": "작성자는 이음 포털의 보안 > 외부 공개 요청에 공개 목적, 매체, 대상, 파일의 정확한 버전, 예정일과 회수 담당자를 등록한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "external_publication_request_fields_and_live_approval",
+      "source_review_note": "외부 공개 신청 등록 필드라는 정책과 EXT-510 실제 승인 상태를 구분한다. 과거 질문의 공개 가능 조건이나 승인 담당과 달리 등록할 정보를 묻는다. 특정 요청 상태는 원문에 없다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H26",
+      "question": "보안 사고 SEC-2026-8842의 현재 담당자와 계정 세션 폐기 완료 시각을 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "specific_security_case_owner_and_revocation",
+      "source_review_note": "보안 사고 신고·계정 보호 정책은 관련되지만 해당 사고의 배정자와 조치 결과는 회사 지식 문서에 없다. 기존 문항과의 구분: 기존 U07은 장애 영향을 받은 고객 범위, D09·D13은 피싱/계정 침해 시 대응 원칙을 묻는다. 이 문항은 특정 SEC 사례의 담당자와 세션 폐기 완료 시각이라는 개별 사건 상태를 요구한다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H27",
+      "question": "내 업무 노트북에 설치된 ClipBoard Pro 확장 프로그램이 회사에서 현재 승인한 도구인지 확인해줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "specific_endpoint_extension_approval",
+      "source_review_note": "회사 소프트웨어 설치 기준은 관련되지만 특정 기기의 설치 목록과 승인 기록은 문서 원문에 없다. 기존 문항과의 구분: 기존 V14는 잠금파일 패키지 설치와 관리자 권한·확장기능 검토의 일반 기준이다. 특정 ClipBoard Pro의 회사 승인 여부와 사용자 장치 설치 목록을 묻는 별도 사실이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H28",
+      "question": "운영 공유드라이브에서 현재 승인된 출장 정책 파일의 버전 번호와 승인 적용일을 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "live_policy_revision_identifier_and_effective_date",
+      "source_review_note": "코퍼스 배포 version 2.0.0과 현행 운영 공유드라이브 승인본 메타데이터는 다르다. 개정·적용일 정책은 관련되지만 후자의 실제 버전·승인 적용일은 원문에 없다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H29",
+      "question": "공유드라이브 폴더 “고객-전환”을 지금 열 수 있는 구성원 목록을 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "live_shared_drive_acl",
+      "source_review_note": "공유드라이브 접근과 권한 상속 기준은 관련되지만 해당 폴더의 현재 ACL은 회사 정책 문서에 포함되지 않는다. 기존 문항과의 구분: 기존 V10·D20은 전달받은 링크와 외부 공유의 안전 조건·회수 정책이다. H29는 특정 공유 폴더의 현재 구성원 ACL이라는 실시간 권한 목록을 묻는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H30",
+      "question": "현재 보존 보류 상태로 남아 있는 기록 삭제 요청이 몇 건인지 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": true,
+      "cohort": "confirmation",
+      "intent": "live_record_deletion_hold_count",
+      "source_review_note": "보존 분류와 보류 여부를 확인하는 절차는 관련되지만 현재 요청 건수나 상태 목록은 이 문서 집합에 없다. 기존 문항과의 구분: 기존 N05는 보존 근거가 불분명할 때 보류 범위와 다음 검토를 관리하는 절차, V17은 기록 유형별 보존·폐기 검토 기간이다. H30은 현재 보류 중인 삭제 요청의 전체 건수라는 운영 상태를 요구한다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": false
+    },
+    {
+      "case_id": "H31",
+      "question": "이음웍스 사무실 건물의 월 정기주차 요금과 방문객 주차 할인 기준을 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "company_parking_fees",
+      "source_review_note": "사무실·방문객이라는 회사 맥락은 있으나 71개 문서에 주차 시설·요금 정책이나 실제 건물 운영 정보가 없다. 기존 문항과의 구분: 기존 V36은 사무실 내부 소화기 위치라는 안전 설비 위치다. H31은 건물 주차 요금·방문객 할인이라는 시설 운영/가격 정책으로 별도이며 전체 문서에 관련 기준이 없다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H32",
+      "question": "이음웍스의 공식 로고 파일을 어디서 내려받고 배경색별 사용 규칙은 어떻게 돼?",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "company_brand_asset_guidelines",
+      "source_review_note": "문서 전체에 로고 배포 위치나 브랜드 디자인 사용 정책이 없으며 일반 시설·문서 정책과 무관하다. 기존 문항과의 구분: 기존 질문 중 로고 자산 배포·브랜드 가이드 질문은 없다. 문서 보안 등급이나 외부 게시 검토 규칙은 시각 자산의 다운로드 위치·색상 사용 규칙을 답하지 않는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H33",
+      "question": "오늘 열리는 MLB 경기 일정과 선발 투수를 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "current_sports_schedule",
+      "source_review_note": "회사 문서 전체에 스포츠 일정·선수 정보가 없다. 기존 문항과의 구분: 기존 V36–V40은 회사 시설 또는 회사 운영·요청 상태를 묻는다. H33은 외부 스포츠 일정·선수라는 일반 실시간 정보 질문이다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H34",
+      "question": "이음웍스 통근 셔틀버스의 노선과 정류장별 출발 시각을 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "company_commute_shuttle_schedule",
+      "source_review_note": "회사 맥락은 있으나 해당 제도의 정책·조회 절차를71개 원문에서 찾지 못했다. 다른 복지·출장·휴가 규칙을 이 제도에 전이하지 않는다. 기존 질문과 동일한 제도 의도 없음. 독립 재검수 전.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H35",
+      "question": "미분에서 연쇄법칙을 간단한 예제로 설명해줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "calculus_tutorial",
+      "source_review_note": "일반 수학 학습 질문으로 회사 문서에 관련 정책·근거가 없다. 기존 문항과의 구분: 기존 문항에 미적분 설명이나 수학 학습은 없다. 기술 문서의 일반 개발 절차는 연쇄법칙 수업 근거가 아니다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H36",
+      "question": "이음웍스 직원 정기 건강검진의 지정 병원과 예약 절차를 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "company_health_screening_procedure",
+      "source_review_note": "회사 맥락은 있으나 해당 제도의 정책·조회 절차를71개 원문에서 찾지 못했다. 다른 복지·출장·휴가 규칙을 이 제도에 전이하지 않는다. 기존 질문과 동일한 제도 의도 없음. 독립 재검수 전.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H37",
+      "question": "이음웍스 제품의 개인용 요금제와 이번 달 구독 할인 가격은 얼마야?",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "company_product_consumer_pricing",
+      "source_review_note": "제품을 언급하지만 문서 전체에 개인 요금제·구독료·할인 가격 정책이 없다. 업무 구매 승인·비용 정책과는 다른 공개 소비자 가격 정보다. 기존 문항과의 구분: 기존 문항의 구매·경비 질문은 업무용 승인·정산 정책이다. H37은 이음웍스 제품의 개인 구독 가격·할인이라는 소비자 상업 조건이며, 같은 회사명이 나온다는 이유로 관련 근거로 간주하지 않는다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H38",
+      "question": "목성의 위성 중 가장 큰 위성 이름과 특징을 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "astronomy_fact",
+      "source_review_note": "행성·위성의 일반 천문 정보는 회사 문서 전체에 없다. 기존 문항과의 구분: 기존 문항에 천문 정보 질문은 없다. 회사 문서 전체에 목성 위성의 일반 지식이 없다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H39",
+      "question": "부산에서 주말에 열리는 미술 전시를 추천해줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "local_event_recommendation",
+      "source_review_note": "지역 문화 행사 일정은 회사 문서 전체에 없고 외부 최신 정보다. 기존 문항과의 구분: 기존 문항에 부산의 주말 문화 행사 추천은 없다. 외부 지역 행사 일정으로 회사 지식과 무관하다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    },
+    {
+      "case_id": "H40",
+      "question": "노트북 배터리 수명을 늘리는 개인 기기 설정 방법을 알려줘.",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "related": false,
+      "cohort": "confirmation",
+      "intent": "consumer_device_advice",
+      "source_review_note": "일반 개인 기기 최적화 조언이며 회사 자산 보안·보관 규정에 관한 질문이 아니다. 기존 문항과의 구분: 기존 V38은 회사가 지급한 노트북의 자산번호·지급일, 문서 보안 규칙은 회사 관리 장치의 업무상 취급이다. H40은 개인 노트북의 배터리 설정 조언으로 대상과 사실이 다르다.",
+      "review_status": "independent_ai_reviewed",
+      "gate_negative": true
+    }
+  ]
+}

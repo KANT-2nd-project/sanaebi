@@ -1,0 +1,248 @@
+{
+  "schema_version": "existing-qrel-relatedness-v1",
+  "status": "frozen_independent_ai_reviewed",
+  "source": "retrieval/reports/2026-10-15-retrieval-v3/qrels-v3.json",
+  "note": "Only relatedness metadata is added here; original qrel answerability and evidence are unchanged.",
+  "cases": [
+    {
+      "case_id": "R01",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R02",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R03",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R04",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R05",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R06",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R07",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R08",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R09",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R10",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R11",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R12",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R13",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R14",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R15",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R16",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R17",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "R18",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D01",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D02",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D03",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D04",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D05",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D06",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D07",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D08",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D09",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D10",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D11",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D12",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D13",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D14",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D15",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D16",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D17",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D18",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D19",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "D20",
+      "related": true,
+      "reason": "기존 qrels-v3에서 직접 근거가 지정된 정책 질문이다. 기존 answerability와 근거 범위는 이 자료에서 변경하지 않는다."
+    },
+    {
+      "case_id": "U01",
+      "related": false,
+      "reason": "71개 문서 전체에서 구내식당 또는 실제 메뉴 정보가 없다. 출장 식비·조식 정산 규정은 구내식당의 이번 주/오늘 메뉴와 다른 주제이므로 단순히 식사 단어가 있다는 이유로 관련 처리하지 않는다."
+    },
+    {
+      "case_id": "U02",
+      "related": false,
+      "reason": "문서 전체에 회사 성과급 지급률이나 보너스 산정 정책이 없다. 성장 면담·교육 기록은 성과급 정책을 답하는 근거가 아니다."
+    },
+    {
+      "case_id": "U03",
+      "related": true,
+      "reason": "ieum-053[1529:1615]는 Slack·포털 사용 불가 때 개인번호를 임의 탐색하지 않고 공식 비상 경로를 쓰는 조건부 정책이다. 개인정보·공식 연락이라는 관련 정책은 있지만 대표 개인번호나 비상카드에 그 번호가 있다는 증거는 없다."
+    },
+    {
+      "case_id": "U04",
+      "related": true,
+      "reason": "ieum-001은 개인별 잔여 연차를 여기서 계산하지 않으며 포털과 다르거나 불분명하면 People팀에 확인하도록 명시한다. 실제 개인 잔액은 없지만 관련 정책은 직접 존재한다."
+    },
+    {
+      "case_id": "U05",
+      "related": false,
+      "reason": "71개 문서 전체에서 구내식당 또는 실제 메뉴 정보가 없다. 출장 식비·조식 정산 규정은 구내식당의 이번 주/오늘 메뉴와 다른 주제이므로 단순히 식사 단어가 있다는 이유로 관련 처리하지 않는다."
+    },
+    {
+      "case_id": "U06",
+      "related": true,
+      "reason": "개인 또는 실시간 포털/서비스 상태를 요청한다. 해당 업무 절차 문서는 있지만 요청한 계정·사건·예산의 현재 데이터는 회사 지식 문서에 없다."
+    },
+    {
+      "case_id": "U07",
+      "related": true,
+      "reason": "개인 또는 실시간 포털/서비스 상태를 요청한다. 해당 업무 절차 문서는 있지만 요청한 계정·사건·예산의 현재 데이터는 회사 지식 문서에 없다."
+    },
+    {
+      "case_id": "U08",
+      "related": true,
+      "reason": "개인 또는 실시간 포털/서비스 상태를 요청한다. 해당 업무 절차 문서는 있지만 요청한 계정·사건·예산의 현재 데이터는 회사 지식 문서에 없다."
+    },
+    {
+      "case_id": "U09",
+      "related": true,
+      "reason": "개인 또는 실시간 포털/서비스 상태를 요청한다. 해당 업무 절차 문서는 있지만 요청한 계정·사건·예산의 현재 데이터는 회사 지식 문서에 없다."
+    },
+    {
+      "case_id": "U10",
+      "related": true,
+      "reason": "개인 또는 실시간 포털/서비스 상태를 요청한다. 해당 업무 절차 문서는 있지만 요청한 계정·사건·예산의 현재 데이터는 회사 지식 문서에 없다."
+    }
+  ]
+}

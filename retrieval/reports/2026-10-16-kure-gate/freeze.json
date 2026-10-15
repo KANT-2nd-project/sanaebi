@@ -1,0 +1,14 @@
+{
+  "status": "frozen_before_model_execution",
+  "created_at": "2026-10-15T17:09:09.491700+00:00",
+  "files": {
+    "protocol.md": "91c747102cc8f9c43d04679f42a1a8dc0f94794cb62d4b69b83dba8b3617ed49",
+    "source-review.md": "059543d621a1855b0743bcd76af954a9b434cd996b0fa54e6b2d538b2bfcfda4",
+    "development-cases.json": "a1e988f6b061869230fce043918324a2edf3b8eb1ef961724138bd997a23b4ab",
+    "confirmation-cases.json": "f80f0e2e1b5e22bdbe021439fe67d40b955c293f3c99a0465b22efa07f9cc14b",
+    "existing-relatedness.json": "9f62135611094fe5eef395a32b3f6cb9577cb64a67fef576c4987aa1120a9193",
+    "source-review-drafts.json.gz": "eefbbf61be70e7a393b879943d42e56298750441297dfc3ec8137938a130308d"
+  },
+  "reviewed_by_human": false,
+  "confirmation_used": false
+}
