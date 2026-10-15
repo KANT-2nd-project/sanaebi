@@ -3,15 +3,25 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 from time import perf_counter
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 from app.classification.errors import (
     ClassificationInferenceError,
     ClassificationUnavailable,
 )
-from app.diagnostics.trace import record_classification, record_routing
+from app.diagnostics.trace import (
+    record_classification,
+    record_retrieval,
+    record_routing,
+)
 from app.documents.context import DocumentContextSnapshot
 from contracts.classification import ClassificationLabel
+
+if TYPE_CHECKING:
+    from app.retrieval.types import RetrievedContext
+
+Retriever = Callable[[str, DocumentContextSnapshot], "RetrievedContext"]
+RetrievedAnswerer = Callable[[str, "RetrievedContext"], str]
 
 Classifier = Callable[[str], ClassificationLabel]
 DocumentReader = Callable[[], DocumentContextSnapshot]
@@ -30,7 +40,8 @@ def handle_question(
     *,
     classify: Classifier,
     read_documents: DocumentReader,
-    answer: Answerer,
+    answer: Answerer | RetrievedAnswerer,
+    retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
 ) -> QuestionResult:
     _validate_routing_mode(routing_mode)
@@ -71,6 +82,7 @@ def handle_question(
             question,
             read_documents=read_documents,
             answer=answer,
+            retrieve=retrieve,
             routing_mode=routing_mode,
             label_source="model",
             classification_status=status,
@@ -102,6 +114,7 @@ def handle_question(
         label,
         read_documents=read_documents,
         answer=answer,
+        retrieve=retrieve,
         routing_mode=routing_mode,
         label_source="model",
         classification_status="ok",
@@ -114,7 +127,8 @@ def handle_classified_question(
     label: ClassificationLabel,
     *,
     read_documents: DocumentReader,
-    answer: Answerer,
+    answer: Answerer | RetrievedAnswerer,
+    retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
 ) -> QuestionResult:
     _validate_routing_mode(routing_mode)
@@ -136,6 +150,7 @@ def handle_classified_question(
         label,
         read_documents=read_documents,
         answer=answer,
+        retrieve=retrieve,
         routing_mode=routing_mode,
         label_source="client",
         classification_status="provided",
@@ -148,7 +163,8 @@ def _handle_validated_label(
     label: ClassificationLabel,
     *,
     read_documents: DocumentReader,
-    answer: Answerer,
+    answer: Answerer | RetrievedAnswerer,
+    retrieve: Retriever | None = None,
     routing_mode: RoutingMode,
     label_source: Literal["model", "client"],
     classification_status: str,
@@ -178,6 +194,7 @@ def _handle_validated_label(
         question,
         read_documents=read_documents,
         answer=answer,
+        retrieve=retrieve,
         routing_mode=routing_mode,
         label_source=label_source,
         classification_status=classification_status,
@@ -189,7 +206,8 @@ def answer_question_with_documents(
     question: str,
     *,
     read_documents: DocumentReader,
-    answer: Answerer,
+    answer: Answerer | RetrievedAnswerer,
+    retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
     label_source: Literal["model", "client"] | None = None,
     classification_status: str | None = None,
@@ -212,8 +230,25 @@ def answer_question_with_documents(
             text="현재 확인 가능한 회사 문서가 없어 답변하기 어렵습니다."
         )
 
+    context = documents
+    if retrieve is not None:
+        record_routing({"processing_path": "retrieval", "generation_attempted": False})
+        started = perf_counter()
+        try:
+            context = retrieve(question, documents)
+        except Exception:
+            record_retrieval(
+                status="failed", seconds=perf_counter() - started, selected_count=0
+            )
+            raise
+        else:
+            record_retrieval(
+                status="ok",
+                seconds=perf_counter() - started,
+                selected_count=len(getattr(context, "evidence", ())),
+            )
     record_routing({"processing_path": "generation", "generation_attempted": True})
-    answer_text = answer(question, documents)
+    answer_text = answer(question, context)
 
     return QuestionResult(text=answer_text)
 

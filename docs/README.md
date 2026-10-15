@@ -46,7 +46,7 @@ flowchart TD
 
 | 문서 | 시간·용도 구분 |
 |---|---|
-| [문서 검색·임베딩 보고서](../retrieval/reports/2026-10-15-cpu-embedding-comparison/README.md) | 16종 CPU 비교와 KoEn-E5-Tiny 선정. 서버 RAG 연결은 후속 |
+| [문서 검색·임베딩 보고서](../retrieval/reports/2026-10-15-cpu-embedding-comparison/README.md) | 16종 CPU 비교와 KoEn-E5-Tiny 선정 당시 기록 |
 | [분류 보고서 목록](../classification/reports/README.md) | 현재 학습 코드의 비교·선정 판단과 근거 |
 | [Luna 서버 통합 기록](worklogs/2026-10-15-server-generation-integration.md) | 공통 생성 경로·API 통일·검증과 한계 |
 | [서버 연결 기록](worklogs/2026-10-15-server-classifier-integration.md) | 선정 checkpoint 연결·당시 검증 결과 |
@@ -80,8 +80,14 @@ flowchart TD
 
 - [사용자용 말투·범위 안내 보완](worklogs/2026-10-15-user-facing-prompt.md): 연봉·도움 범위·일반 기술 질문, 공식 레퍼런스와 독립 AI 검토·실제 비교.
 
+- [선택적 RAG 실행·색인 갱신·자정 벡터 복구](rag-runtime.md): 로컬 준비와 서버 검색 계약.
+
+RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklogs/2026-10-15-rag-local-integration.md)에서 확인한다.
+
 - [답변 가독성 v5/v6 비교](../generation_evaluation/reports/2026-10-15-readability-v6/README.md): 16회 실제 응답·익명 AI 판정·화면 검증과 v5 기본값 유지 결정. [작업 일지](worklogs/2026-10-15-readability-v6.md).
 
 ## 분류 라벨 보조 전달 평가
 
 기존 프롬프트·지침만 추가·실제 라벨 전달·대체 라벨 비교의 원응답, 판정과 미채택 근거. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
+
+- [RAG 단계별 검색 품질 비교](../retrieval/reports/2026-10-15-rag-quality-improvement/README.md): 기존 검색 유지 결정과 인접 확장의 관측 개선·미채택 근거. [구현·게시 기록](worklogs/2026-10-15-rag-quality-improvement.md).

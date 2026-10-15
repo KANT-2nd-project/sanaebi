@@ -381,12 +381,19 @@ class RoutingEvaluationWorkerTests(unittest.TestCase):
             application.state.routing_mode = mode
             application.state.classifier = FakeClassifier()
             application.state.answerer = answerer
+            application.state.retriever = None
             yield
 
         old_lifespan = fastapi_main.app.router.lifespan_context
         old_state = {
             name: getattr(fastapi_main.app.state, name, None)
-            for name in ("routing_mode", "classifier", "answerer", "document_provider")
+            for name in (
+                "routing_mode",
+                "classifier",
+                "answerer",
+                "document_provider",
+                "retriever",
+            )
         }
         original_max_dollars = runner.MAX_DOLLARS
         runner.MAX_DOLLARS = max_dollars

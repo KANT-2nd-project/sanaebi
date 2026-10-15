@@ -33,6 +33,9 @@ from app.settings import (
     get_answer_provider,
     get_classifier_path,
     get_document_database_path,
+    get_embedding_path,
+    get_retrieval_mode,
+    get_retrieval_root,
     get_routing_mode,
 )
 from generation.presets import load_runtime_settings
@@ -43,6 +46,19 @@ async def lifespan(application: FastAPI):
     get_answer_provider()
     application.state.routing_mode = get_routing_mode()
     settings = load_runtime_settings(PROJECT_ROOT)
+    retrieval_mode = get_retrieval_mode()
+    application.state.retrieval_mode = retrieval_mode
+    application.state.retriever = None
+    if retrieval_mode == "rag":
+        from app.retrieval.embedding import TinyEmbedder
+        from app.retrieval.repository import IndexRepository
+        from app.retrieval.service import RetrievalService
+
+        embedder = TinyEmbedder(get_embedding_path())
+        embedder.warmup()
+        application.state.retriever = RetrievalService(
+            IndexRepository(get_retrieval_root()), embedder
+        )
     public_demo = is_public_demo_enabled()
     generation_budget = None
     if public_demo:

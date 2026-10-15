@@ -7,6 +7,7 @@ from collections.abc import Callable
 from dataclasses import asdict
 from threading import Lock
 from time import perf_counter
+from typing import TYPE_CHECKING
 
 from httpx import HTTPError
 from openai import OpenAIError
@@ -26,6 +27,9 @@ from generation.providers import (
 )
 from generation.service import generate_from_documents
 from generation.types import GenerationPrompt, GenerationStatus
+
+if TYPE_CHECKING:
+    from app.retrieval.types import RetrievedContext
 
 logger = logging.getLogger("uvicorn.error")
 
@@ -65,12 +69,25 @@ class GenerationAnswerer:
         ]
         if not documents:
             raise ValueError("The question service must handle empty snapshots")
+        return self._generate(question, documents, snapshot.fingerprint)
+
+    def answer_retrieved(self, question: str, context: "RetrievedContext") -> str:
+        documents = [
+            render_document(e.knowledge_id, e.title, e.text, e.revision)
+            for e in context.evidence
+        ]
+        if not documents:
+            raise ValueError("Retrieval must provide at least one evidence item")
+        documents = ["[현재 게시 문서의 발췌 근거]\n" + text for text in documents]
+        return self._generate(question, documents, context.snapshot_fingerprint)
+
+    def _generate(self, question: str, documents: list[str], fingerprint: str) -> str:
         started = perf_counter()
         metadata = {
             "model": self.settings.config.model_name,
             "profile": self.settings.prompt_profile,
             "config": asdict(self.settings.config),
-            "snapshot_fingerprint": snapshot.fingerprint,
+            "snapshot_fingerprint": fingerprint,
         }
         provider_attempted = False
 

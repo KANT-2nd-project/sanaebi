@@ -30,7 +30,16 @@ def get_question_handler(
         handle_question,
         classify=classifier.predict,
         read_documents=request.app.state.document_provider.snapshot,
-        answer=request.app.state.answerer.answer,
+        answer=(
+            request.app.state.answerer.answer_retrieved
+            if request.app.state.retriever is not None
+            else request.app.state.answerer.answer
+        ),
+        retrieve=(
+            request.app.state.retriever.retrieve
+            if request.app.state.retriever is not None
+            else None
+        ),
         routing_mode=request.app.state.routing_mode,
     )
 
@@ -39,6 +48,15 @@ def get_assistant_handler(request: Request) -> AssistantHandler:
     return partial(
         handle_classified_question,
         read_documents=request.app.state.document_provider.snapshot,
-        answer=request.app.state.answerer.answer,
+        answer=(
+            request.app.state.answerer.answer_retrieved
+            if request.app.state.retriever is not None
+            else request.app.state.answerer.answer
+        ),
+        retrieve=(
+            request.app.state.retriever.retrieve
+            if request.app.state.retriever is not None
+            else None
+        ),
         routing_mode=request.app.state.routing_mode,
     )

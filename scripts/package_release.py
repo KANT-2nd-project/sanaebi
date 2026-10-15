@@ -17,19 +17,25 @@ def package(directory: Path, git_sha: str, run_id: str, image_digest: str) -> di
         raise ValueError("Invalid image digest")
     source = Path(__file__).resolve().parents[1] / "deployment/model-release.json"
     shutil.copyfile(source, directory / "model-release.json")
+    retrieval_source = (
+        Path(__file__).resolve().parents[1] / "deployment/retrieval-release.json"
+    )
+    shutil.copyfile(retrieval_source, directory / "retrieval-release.json")
 
     def digest(name):
         with (directory / name).open("rb") as stream:
             return hashlib.file_digest(stream, "sha256").hexdigest()
 
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
         "release_id": f"{git_sha}-{run_id}",
         "image": f"ghcr.io/kant-2nd-project/sanaebi-api@{image_digest}",
         "web_archive": "web.tar.gz",
         "web_sha256": digest("web.tar.gz"),
         "model_manifest": "model-release.json",
         "model_manifest_sha256": digest("model-release.json"),
+        "retrieval_manifest": "retrieval-release.json",
+        "retrieval_manifest_sha256": digest("retrieval-release.json"),
     }
     (directory / "release.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
