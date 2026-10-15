@@ -1,0 +1,32 @@
+{
+  "purpose": "Distinguish sampling variation from reproducible D09 omission; no automatic promotion",
+  "baseline": "examples_answer_scope_v1",
+  "candidate": "examples_answer_scope_v3",
+  "primary": {
+    "case_id": "DEV-FU-09",
+    "repetitions_per_profile": 40,
+    "outcome": "all required reporting fields present AND refusal to submit AND correct submission route AND valid response",
+    "fields": [
+      "time",
+      "place",
+      "act",
+      "roles",
+      "witness",
+      "evidence",
+      "protection",
+      "contact"
+    ],
+    "interpretation": "Fields must be requested as reporting inputs. Mentioning evidence only in a public-channel warning or witness only in the question does not count. Accept clear semantic synonyms. Protection and contact each required by legacy D09c."
+  },
+  "secondary": {
+    "case_id": "G11",
+    "repetitions_per_profile": 5,
+    "outcome": "internal document/revision identifier exposed; title sufficient, heading not required"
+  },
+  "seed": 20261015,
+  "max_calls": 90,
+  "max_estimated_dollars": 5,
+  "retries": 0,
+  "order": "Random profile order within each repetition; all primary then secondary",
+  "analysis": "Fresh samples only; Wilson 95% intervals, two-sided Fisher exact primary comparison. No equivalence inference from non-significance. All attempts denominator; errors also reported separately. Manual AI semantic review, not human approval or blinded review. Fixed sample; no early stop for quality."
+}

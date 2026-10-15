@@ -1,0 +1,519 @@
+[
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 1,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 2,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 3,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 4,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 5,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 6,
+    "missing": [
+      "evidence",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "입력 항목에서 evidence,contact 안내가 없음. 공개 증거 경고는 입력 안내가 아님."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 1,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 2,
+    "missing": [
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "입력 항목에서 contact 안내가 없음. 공개 증거 경고는 입력 안내가 아님."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 3,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 4,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 5,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 6,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 7,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 8,
+    "missing": [
+      "witness",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 witness,contact 누락. 목격자 자격/공개 증거 경고를 입력 항목으로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 9,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 10,
+    "missing": [
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 contact 누락. 목격자 자격/공개 증거 경고를 입력 항목으로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 7,
+    "missing": [
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 contact 누락. 목격자 자격/공개 증거 경고를 입력 항목으로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 8,
+    "missing": [
+      "witness",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 witness,contact 누락. 목격자 자격/공개 증거 경고를 입력 항목으로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 9,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 10,
+    "missing": [
+      "time",
+      "place",
+      "act",
+      "roles",
+      "witness",
+      "evidence",
+      "protection",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 time,place,act,roles,witness,evidence,protection,contact 누락. 목격자 자격/공개 증거 경고를 입력 항목으로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 11,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 12,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 11,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 12,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 13,
+    "missing": [
+      "witness",
+      "evidence",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 witness,evidence,contact 누락. 공개 증거 경고/자료 보존은 입력 안내로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 14,
+    "missing": [
+      "witness"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 witness 누락. 공개 증거 경고/자료 보존은 입력 안내로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 15,
+    "missing": [
+      "witness",
+      "evidence",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 witness,evidence,contact 누락. 공개 증거 경고/자료 보존은 입력 안내로 인정하지 않음."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 13,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 14,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 15,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 16,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 16,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 17,
+    "missing": [
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 contact 누락. 공개 증거 경고는 입력 안내가 아님."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 17,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 18,
+    "missing": [
+      "evidence",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 evidence,contact 누락. 공개 증거 경고는 입력 안내가 아님."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 18,
+    "missing": [
+      "witness"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 항목에서 목격자 누락."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 19,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 19,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 20,
+    "missing": [
+      "roles",
+      "witness",
+      "evidence",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 항목에서 roles,witness,evidence,contact 누락. 공개 증거 경고는 입력 안내가 아님."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 20,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 21,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 21,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 22,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 22,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 23,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 23,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 24,
+    "missing": [
+      "time",
+      "place",
+      "act",
+      "roles",
+      "witness",
+      "evidence",
+      "protection",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 time,place,act,roles,witness,evidence,protection,contact 누락."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 24,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v1",
+    "repeat": 25,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 25,
+    "missing": [],
+    "refusal": true,
+    "route": true,
+    "reason": "직접 제출 불가·정확한 경로·필수 입력 항목을 모두 안내함."
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "profile": "v3",
+    "repeat": 26,
+    "missing": [
+      "witness",
+      "contact"
+    ],
+    "refusal": true,
+    "route": true,
+    "reason": "신고 입력 안내에서 witness,contact 누락."
+  }
+]

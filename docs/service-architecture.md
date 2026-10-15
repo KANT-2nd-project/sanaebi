@@ -107,3 +107,5 @@ flowchart TD
 ## 공용 시연 자료 복원
 
 시연 전용 SQLite를 기준 JSONL의 게시 자료로 매일 한국 시간 자정에 복원하는 관리 명령과 systemd 예약 템플릿을 제공한다. 실제 배포 서버에서 예약을 설치·활성화해야 동작한다. 사용자별 공간 분리는 없으며 당일 변경은 다른 시연자에게도 영향을 준다. 백업·동시 요청·복원 정책은 [문서 관리 안내](document-management.md#공용-시연-문서-자정-초기화), 설치는 [배포 안내](../deployment/README.md#시연-문서-자정-초기화-systemd)를 따른다.
+
+후속 [반복 비교](../generation_evaluation/reports/2026-10-15-answer-grounding-repeat/README.md)에서는 신고 완전 응답이 v1 15/25·v3 20/25로 이전 소표본의 악화 방향이 재현되지 않았다. 이는 v3의 서비스 품질 승인이나 기본값 전환이 아니며 현재 v1을 유지한다.
