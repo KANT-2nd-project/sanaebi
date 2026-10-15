@@ -17,6 +17,7 @@ import {
 } from "./document-state";
 import { DocumentRouteState } from "./document-route-state";
 import { DocumentActionDialog, type DocumentAction } from "./document-action-dialog";
+import { DocumentMaintenance } from "./document-maintenance";
 import { DocumentEditor } from "./document-editor";
 import { DocumentReadView } from "./document-read-view";
 import { DocumentListView } from "./document-list-view";
@@ -145,11 +146,11 @@ export function DocumentPanel() {
   }, [handleRouteChange]);
 
   useEffect(() => {
-    if (!editorDirty && !pendingWrite) return;
+    if (!editorDirty && !pendingWrite && !writePending) return;
     const warn = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ""; };
     window.addEventListener("beforeunload", warn);
     return () => window.removeEventListener("beforeunload", warn);
-  }, [editorDirty, pendingWrite]);
+  }, [editorDirty, pendingWrite, writePending]);
 
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
@@ -561,6 +562,10 @@ export function DocumentPanel() {
           {view.q || view.status !== "all" ? <button type="button" className="documents-button documents-button-secondary" onClick={resetSearch}>조건 초기화</button>
             : <button type="button" className="documents-button documents-button-primary" onClick={openNewDocument}>첫 문서 초안 만들기</button>}</div>}
       </section>}
+      {!detailOpen && <DocumentMaintenance onBusy={busy => { requestInFlight.current = busy; setWritePending(busy); }} onComplete={() => {
+        setSearchInput(""); setStatusInput("all"); setListRefresh(n => n + 1);
+        routeState.approve("/admin/documents"); router.replace("/admin/documents");
+      }} />}
       {detail && actionDialog && <DocumentActionDialog action={actionDialog} title={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).title} revision={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).revision_number}
         previousRevision={detail.published?.revision_number ?? null} reviewStatus={detail.draft.metadata?.review_status}
         effectiveFrom={effectiveFrom} busy={actionBusy} onCancel={() => setActionDialog(null)} onConfirm={confirmAction} />}

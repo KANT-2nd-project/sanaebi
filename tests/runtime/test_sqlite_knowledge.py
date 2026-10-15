@@ -13,7 +13,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
         self.db = self.directory / "documents.sqlite3"
         self.repo = DocumentRepository(self.db)
 
-    def test_schema_v2_and_original_document_survive_reinitialization(self):
+    def test_schema_v3_and_original_document_survive_reinitialization(self):
         self.repo.initialize()
         with self.repo.transaction() as con:
             detail = self.repo.create_in_transaction(
@@ -22,7 +22,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
         self.repo.initialize()
         self.assertEqual(self.repo.get(detail["id"])["draft"]["body"], " 원문\n ")
         with sqlite3.connect(self.db) as con:
-            self.assertEqual(con.execute("PRAGMA user_version").fetchone()[0], 2)
+            self.assertEqual(con.execute("PRAGMA user_version").fetchone()[0], 3)
 
     def source(self):
         source = self.directory / "source.jsonl"
@@ -91,6 +91,7 @@ class SqliteKnowledgeTests(unittest.TestCase):
             self.repo.publish_in_transaction(con, doc["id"], 1, doc["draft"]["id"])
             con.execute("DROP TABLE document_revision_metadata")
             con.execute("DROP TABLE document_imports")
+            con.execute("DROP TABLE document_maintenance_state")
             con.execute("PRAGMA user_version=1")
         self.repo.initialize()
         detail = self.repo.get(doc["id"])

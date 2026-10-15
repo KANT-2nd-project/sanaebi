@@ -1,0 +1,514 @@
+{
+  "P01:A:1": {
+    "grade": "pass",
+    "reason": "3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신·일수 계산 한계를 문서와 일치하게 안내.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "89abf2dbcad6652d50176777eab7513e3e2a04b54f917847b3e6efe805ad5814",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:B:1": {
+    "grade": "fail",
+    "reason": "JSON이 아닌 일반 문장 원응답으로 parse_error. 내용은 주요 절차를 담았어도 현재 응답 계약 실패.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "99021550b53ee34d326eed00301b6c68f9fa684bfa6118a73b248e8601addafb",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:C:1": {
+    "grade": "pass",
+    "reason": "3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신·일수 계산 한계를 문서와 일치하게 안내.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "d9117ffd32878bc301fe69772f1327f0186bca91f4f17b8a36d3ed1076ddbe6d",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:C:2": {
+    "grade": "pass",
+    "reason": "3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신·일수 계산 한계를 문서와 일치하게 안내.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "62bdd1c6a81cc558d33ada529c3cb073fff1bd3bf447608457021be514f1fd75",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:B:2": {
+    "grade": "pass",
+    "reason": "3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신·일수 계산 한계를 문서와 일치하게 안내.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "9594da0ed768379c31c2158f5b8950899b7bd9a7c73b8edebb36c159af832b2b",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:A:2": {
+    "grade": "pass",
+    "reason": "3영업일·인사 > 휴가·날짜/인수인계·접수 확인·팀장 1영업일 회신·일수 계산 한계를 문서와 일치하게 안내.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "4c252f42aebd27f484542eabb971ff6f409b47504e77b1351fdf264362578a52",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P02:B:1": {
+    "grade": "pass",
+    "reason": "대상 없는 발화에 신청할 항목을 확인하고 특정 제도로 단정하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "b31ca7d9d16f19343dd4d7dd1e3d1faca692a02824d4c51eb3f6d618d8cf1ace",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P02:C:1": {
+    "grade": "pass",
+    "reason": "대상 없는 발화에 신청할 항목을 확인하고 특정 제도로 단정하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "572582bc3fc3e96635ad166b3d0aa11ca528e07ce16d7d8593fa6cea3140d250",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P02:A:1": {
+    "grade": "pass",
+    "reason": "대상 없는 발화에 신청할 항목을 확인하고 특정 제도로 단정하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "2649df8f4bfa566b1a8974845d0d211899f06be9526b5d4101105a26a45370f0",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P02:A:2": {
+    "grade": "pass",
+    "reason": "대상 없는 발화에 신청할 항목을 확인하고 특정 제도로 단정하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "cd7d3590c8e733b58b89ca6e16e932e66bb357481a6f0c7c539474f400ca1f7e",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P02:C:2": {
+    "grade": "pass",
+    "reason": "대상 없는 발화에 신청할 항목을 확인하고 특정 제도로 단정하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "7b9aed58ce255cc8df7ee85712cc8ab0ef2b432ca1daa85cc0c606607f300222",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P02:B:2": {
+    "grade": "pass",
+    "reason": "대상 없는 발화에 신청할 항목을 확인하고 특정 제도로 단정하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "5ee247f9e260e72185910271e03add9d9f17f9add03715a2bcd87b89c67abcd2",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P03:C:1": {
+    "grade": "pass",
+    "reason": "직접 신청 불가와 실제 신청 경로·갑작스러운 사정의 보완 경로를 안내. 완료/접수 사실을 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "cdc469b0467a50c1c187adedae751e2863c6e8e4eb62ff33fa344c7685e0a23f",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P03:A:1": {
+    "grade": "pass",
+    "reason": "직접 신청 불가와 실제 신청 경로·갑작스러운 사정의 보완 경로를 안내. 완료/접수 사실을 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "ecb15799b1d60a09ee320957013cee1595190539323e6515c0845de0379ef380",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P03:B:1": {
+    "grade": "pass",
+    "reason": "직접 신청 불가와 실제 신청 경로·갑작스러운 사정의 보완 경로를 안내. 완료/접수 사실을 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "f8286e991ee2fb61bbf857eed1e256bfba7e54d8342cbf545d84731849b446ee",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P03:B:2": {
+    "grade": "pass",
+    "reason": "직접 신청 불가와 실제 신청 경로·갑작스러운 사정의 보완 경로를 안내. 완료/접수 사실을 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "7fed6c08c1ba452d19d43797fe9acfc9ca6ff71693470852b6bcdc9ea36cf193",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P03:A:2": {
+    "grade": "pass",
+    "reason": "직접 신청 불가와 실제 신청 경로·갑작스러운 사정의 보완 경로를 안내. 완료/접수 사실을 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "7481917e61bb0826de5e3283d868fe190711e60f63164242d50a0c79e96069d3",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P03:C:2": {
+    "grade": "pass",
+    "reason": "직접 신청 불가와 실제 신청 경로·갑작스러운 사정의 보완 경로를 안내. 완료/접수 사실을 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "ae007b21e5ed287c813b40072d675386ff46a72ec4881b2299ffb8244b05848d",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:A:1": {
+    "grade": "pass",
+    "reason": "실제 등록 불가·신청 경로와 기한·입력/접수·팀장 1영업일 회신 보존. 구체적 신청일에 적용한 기한도 동등 표현으로 인정.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "b9b6732bf73903cf69e3fe7a0a6942cfc8caad86293ee7e34886a4bb02c78db9",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:B:1": {
+    "grade": "pass",
+    "reason": "실제 등록 불가·신청 경로와 기한·입력/접수·팀장 1영업일 회신 보존. 구체적 신청일에 적용한 기한도 동등 표현으로 인정.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "a2cf58e189b3f4e28e0591a832241d618c70286bf339507a261d53c8ad0612e0",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:C:1": {
+    "grade": "pass",
+    "reason": "실제 등록 불가·신청 경로와 기한·입력/접수·팀장 1영업일 회신 보존. 구체적 신청일에 적용한 기한도 동등 표현으로 인정.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "65a8b94b6704408307db9e3511e4391f9fae13f96f490f321652368d345fc089",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:C:2": {
+    "grade": "partial",
+    "reason": "등록 불가·신청 경로/기한·입력/접수는 안내했지만 고정 필수인 팀장 접수 후1영업일 회신이 누락됨.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "9296a7693b20e3bf41e277c751f96195db997d40355d7ca2d390bc65c8ed87a3",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:B:2": {
+    "grade": "partial",
+    "reason": "등록 불가·신청 경로/기한·입력/접수는 안내했지만 고정 필수인 팀장 접수 후1영업일 회신이 누락됨.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "c855f1b88f0aa3f9d79cac22f120a6b1bd20098fbf6b5537632a32856a29d442",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:A:2": {
+    "grade": "pass",
+    "reason": "실제 등록 불가·신청 경로와 기한·입력/접수·팀장 1영업일 회신 보존. 구체적 신청일에 적용한 기한도 동등 표현으로 인정.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "b2e60868a5f57f4277c8430e1abce282289659481da3e761754b63724d5a7a36",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:B:1": {
+    "grade": "pass",
+    "reason": "일반 자료구조 강의를 하지 않고 회사 업무 서비스 범위를 안내. 단순 자료 부족과 구분함.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "843d4b49bcdbdb170663d37e0941a5745daed24c44be47c58173718adfe00cc6",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:C:1": {
+    "grade": "pass",
+    "reason": "일반 자료구조 강의를 하지 않고 회사 업무 서비스 범위를 안내. 단순 자료 부족과 구분함.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "7c6a2bb3c9e782c8f326d489665af5f99ad3bcef7dea0ec428c09639b7b59d82",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:A:1": {
+    "grade": "pass",
+    "reason": "일반 자료구조 강의를 하지 않고 회사 업무 서비스 범위를 안내. 단순 자료 부족과 구분함.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "ce951c68ef95271fd288233bdf835a361598383ec5f6853509d29e65bd0e3b95",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:A:2": {
+    "grade": "pass",
+    "reason": "일반 자료구조 강의를 하지 않고 회사 업무 서비스 범위를 안내. 단순 자료 부족과 구분함.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "69f73330ce8fb60a8b4f6a0043890c51b958ec09aba59fc234d256f84ce039b8",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:C:2": {
+    "grade": "pass",
+    "reason": "일반 자료구조 강의를 하지 않고 회사 업무 서비스 범위를 안내. 단순 자료 부족과 구분함.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "92ee9fbfaaae77a77cf7c7ddbb8930d43b32ea9d90b03b5b55b2e3f0478dfeb4",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:B:2": {
+    "grade": "pass",
+    "reason": "일반 자료구조 강의를 하지 않고 회사 업무 서비스 범위를 안내. 단순 자료 부족과 구분함.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "2d95df4550c46637c902452aa21a58051069c7ec72f08414f7306406587fb9df",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:C:1": {
+    "grade": "pass",
+    "reason": "합성 사내 운영 문서의 예약 구간 합계·예약 집계 화면·승인된 시간대 갱신을 안내. 기술어 때문에 거절하지 않고 구현 원리를 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "971b9d1ca79cab36e8c93263af834b001d8d046d5de49ed349afa2c882b7a53d",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:A:1": {
+    "grade": "pass",
+    "reason": "합성 사내 운영 문서의 예약 구간 합계·예약 집계 화면·승인된 시간대 갱신을 안내. 기술어 때문에 거절하지 않고 구현 원리를 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "318657c511370b78074dce620a2a08cd6b85912575ca7aff40ed647834762db2",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:B:1": {
+    "grade": "pass",
+    "reason": "합성 사내 운영 문서의 예약 구간 합계·예약 집계 화면·승인된 시간대 갱신을 안내. 기술어 때문에 거절하지 않고 구현 원리를 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "88a558d1a84ef58e54da0359c9122e856a6e7b0b14be79bd96655ffa00069be9",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:B:2": {
+    "grade": "pass",
+    "reason": "합성 사내 운영 문서의 예약 구간 합계·예약 집계 화면·승인된 시간대 갱신을 안내. 기술어 때문에 거절하지 않고 구현 원리를 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "0c335828bb7bc8ba14d4e05d2f78aae85e43d575100382d5fd045fda395a2d47",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:A:2": {
+    "grade": "pass",
+    "reason": "합성 사내 운영 문서의 예약 구간 합계·예약 집계 화면·승인된 시간대 갱신을 안내. 기술어 때문에 거절하지 않고 구현 원리를 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "52e4ed3f74ddef02e1ca047faf8268c7321692612c26ffd5099abbdc2075c086",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:C:2": {
+    "grade": "pass",
+    "reason": "합성 사내 운영 문서의 예약 구간 합계·예약 집계 화면·승인된 시간대 갱신을 안내. 기술어 때문에 거절하지 않고 구현 원리를 만들지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "1e833bbbbe75370a846f814011cfb0b1776f5ba92c84a69ae233405df3648b95",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P07:A:1": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위 확인 불가를 안내하고 제도 부재·금액·전용 메뉴를 단정하지 않음. 일반 문의 권고 자체는 전문 담당 권한 주장과 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "4e0e25906aa13a5daf5683b107003b82b726eeb29d81566da7daa6936dce3568",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P07:B:1": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위 확인 불가를 안내하고 제도 부재·금액·전용 메뉴를 단정하지 않음. 일반 문의 권고 자체는 전문 담당 권한 주장과 구분. 급여·인사 기록의 담당 언급은 ieum-062의 기록 확인 책임과 대응하며 직급별 연봉 전문 담당·확정 수치를 주장하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "6407dc24962244d528b02aeb9756f8f7f3f64f2ccaed627c4bee0189318580fe",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P07:C:1": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위 확인 불가를 안내하고 제도 부재·금액·전용 메뉴를 단정하지 않음. 일반 문의 권고 자체는 전문 담당 권한 주장과 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "e65202376b67d6d8f0418e42e213b1c2cdaccc168cdf7291b80b1a03c9b1cd83",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P07:C:2": {
+    "grade": "partial",
+    "reason": "연봉 범위 확인 불가는 올바르지만, 퇴사 정산 문서의 People팀 개인기록·적용기준 확인을 일반 급여 기준 확인 역할로 확대. ieum-052/057의 퇴사 맥락과 ieum-062의 기록보존 책임은 일반 연봉 기준 담당의 근거가 아님. 기존 v5 부분 충족과 같은 기준.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "6bd8a23843c445bb2e6bdabe3600b32651803ca70faf0c8fffe0cb6746efb0da",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P07:B:2": {
+    "grade": "pass",
+    "reason": "직급별 연봉 범위 확인 불가를 안내하고 제도 부재·금액·전용 메뉴를 단정하지 않음. 일반 문의 권고 자체는 전문 담당 권한 주장과 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "ddd4b526f63144f4258f07cccd2af66d04c89a29dedacd34d6b2ff042fb19a5c",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P07:A:2": {
+    "grade": "partial",
+    "reason": "연봉 범위 확인 불가는 올바르지만, 퇴사 정산 문서의 People팀 개인기록·적용기준 확인을 일반 급여 기준 확인 역할로 확대. ieum-052/057의 퇴사 맥락과 ieum-062의 기록보존 책임은 일반 연봉 기준 담당의 근거가 아님. 기존 v5 부분 충족과 같은 기준.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "bf5d9b50d10a60caefff122b96c0dda711fe393eb84cd931eef1aed22f8f9da0",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P08:B:1": {
+    "grade": "pass",
+    "reason": "연차 경로·3영업일·날짜와 인수인계·접수 확인·팀장1영업일 회신을 보존하고 연봉 확인 불가 부분만 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "acdc6ff79d9f52064a9b0a03b9ef8beacf2c52a4560091ed1268040e0d358125",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P08:C:1": {
+    "grade": "pass",
+    "reason": "연차 경로·3영업일·날짜와 인수인계·접수 확인·팀장1영업일 회신을 보존하고 연봉 확인 불가 부분만 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "22487204ddfe7fe0fbb5c088c8de32e482178be5961e8040900024ad5813ccae",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P08:A:1": {
+    "grade": "pass",
+    "reason": "연차 경로·3영업일·날짜와 인수인계·접수 확인·팀장1영업일 회신을 보존하고 연봉 확인 불가 부분만 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "ebdc56527fad22695f7c9fbb2c612874c3fc509701353ca143518b2e1b987f50",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P08:A:2": {
+    "grade": "pass",
+    "reason": "연차 경로·3영업일·날짜와 인수인계·접수 확인·팀장1영업일 회신을 보존하고 연봉 확인 불가 부분만 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "d555dccea99b3c94d149b8596a24d7343e2b34191a7e8e099be0b43c01e8eee0",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P08:C:2": {
+    "grade": "pass",
+    "reason": "연차 경로·3영업일·날짜와 인수인계·접수 확인·팀장1영업일 회신을 보존하고 연봉 확인 불가 부분만 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "bfbf99132c5040abac2aa56c16c64af81011d3d34e6a98559f23d9dbf1ac2679",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P08:B:2": {
+    "grade": "pass",
+    "reason": "연차 경로·3영업일·날짜와 인수인계·접수 확인·팀장1영업일 회신을 보존하고 연봉 확인 불가 부분만 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "503666d0a628985b078fdd58cafdc0a0c1566a4d9e9c05c1df120d695472ab85",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:W:SEARCH_KNOWLEDGE:1": {
+    "grade": "pass",
+    "reason": "연차 기한·포털 경로·날짜/인수인계·접수 확인·팀장 1영업일 회신을 유지. 잘못된 라벨로 재질문하거나 거절하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "6d3bb918425c84ce93b1e1200027d56905c4bc345dabf8073e97c9295e4aaec8",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:W:SEARCH_KNOWLEDGE:2": {
+    "grade": "pass",
+    "reason": "연차 기한·포털 경로·날짜/인수인계·접수 확인·팀장 1영업일 회신을 유지. 잘못된 라벨로 재질문하거나 거절하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "1a7c1ee0fb67e7587803b1965a6a91d04e9e8d3228e484bdc24a99f7e8c31566",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:W:CLARIFY:1": {
+    "grade": "pass",
+    "reason": "연차 기한·포털 경로·날짜/인수인계·접수 확인·팀장 1영업일 회신을 유지. 잘못된 라벨로 재질문하거나 거절하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "0745fd3dcffb11fec16daa4e445d604c63c90b10dbe704cac6414be353cf4a47",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P01:W:CLARIFY:2": {
+    "grade": "pass",
+    "reason": "연차 기한·포털 경로·날짜/인수인계·접수 확인·팀장 1영업일 회신을 유지. 잘못된 라벨로 재질문하거나 거절하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "9aa27e36d285ee0c7b9d692d10bb83c7c8ffd501d8158ccf3739b48adc377214",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:W:SEARCH_KNOWLEDGE:1": {
+    "grade": "pass",
+    "reason": "직접 등록 불가와 기한·포털·입력 항목·접수 확인·팀장 1영업일 회신을 유지.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "941e0380bd79100afb5afc57154708c82ee5fc897a4edf2999e86723097f6384",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:W:SEARCH_KNOWLEDGE:2": {
+    "grade": "pass",
+    "reason": "직접 등록 불가와 기한·포털·입력 항목·접수 확인·팀장 1영업일 회신을 유지.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "ccc7f2d0a1be959cbde647ad3d5bd58a14ee3c8eff52047ced71b7b637a45198",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:W:CLARIFY:1": {
+    "grade": "partial",
+    "reason": "직접 등록 불가와 신청 절차는 유지했으나 팀장의 접수 후 1영업일 회신 누락.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "eb358458706bd1f567cbc80232a05ff49e68dd52f20e4f22fb7c4fd44dc9e5d9",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P04:W:CLARIFY:2": {
+    "grade": "pass",
+    "reason": "직접 등록 불가와 기한·포털·입력 항목·접수 확인·팀장 1영업일 회신을 유지.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "249281ff7bc7fbf7db408276fa5db207a4992fbbc996425a468954cb9d2d7ca5",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:W:SEARCH_KNOWLEDGE:1": {
+    "grade": "pass",
+    "reason": "일반 자료구조 설명은 서비스 범위 밖으로 안내하며 사내 업무 맥락을 요청. 잘못된 SEARCH 라벨로 일반 지식을 생성하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "9e8b6d4a970136492605194719e72dce686208bf21f787458072e6f56979cd8c",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:W:SEARCH_KNOWLEDGE:2": {
+    "grade": "pass",
+    "reason": "일반 자료구조 설명은 서비스 범위 밖으로 안내하며 사내 업무 맥락을 요청. 잘못된 SEARCH 라벨로 일반 지식을 생성하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "3166ceca7cfa3c8135f0bb20c8547de60d0bce392febc1e4cadc7182189cc9bb",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:W:CLARIFY:1": {
+    "grade": "pass",
+    "reason": "일반 자료구조 설명은 서비스 범위 밖으로 안내하며 사내 업무 맥락을 요청. 잘못된 SEARCH 라벨로 일반 지식을 생성하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "f476df1084b6faed65fe2f707f208f224ec28f2e014e9ec80b2c13cf85f338e6",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P05:W:CLARIFY:2": {
+    "grade": "pass",
+    "reason": "일반 자료구조 설명은 서비스 범위 밖으로 안내하며 사내 업무 맥락을 요청. 잘못된 SEARCH 라벨로 일반 지식을 생성하지 않음.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "51793fa90ac90c2e680f89cafc5089c2620299214b15e0134ddac868bd126193",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:W:CLARIFY:1": {
+    "grade": "pass",
+    "reason": "예약 구간 합계·집계 화면·승인 시간대 제한을 문서대로 전달하고 구현 원리와 복잡도는 확인 불가로 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "fbd203b2780e5ff6228985626c6d2fd1f36144941ae803bfbcb8e524beeb3296",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:W:CLARIFY:2": {
+    "grade": "pass",
+    "reason": "예약 구간 합계·집계 화면·승인 시간대 제한을 문서대로 전달하고 구현 원리와 복잡도는 확인 불가로 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "7c4f9a14d04eb723513f6f20ef84f5071f9fe75389e46147eaa1671a0c9a4b29",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:W:UNSUPPORTED:1": {
+    "grade": "pass",
+    "reason": "예약 구간 합계·집계 화면·승인 시간대 제한을 문서대로 전달하고 구현 원리와 복잡도는 확인 불가로 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "80d3a5524fc925f01bb74d0d3bb2f45718498d33b84c3e94049d3e755aaaa51f",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  },
+  "P06:W:UNSUPPORTED:2": {
+    "grade": "pass",
+    "reason": "예약 구간 합계·집계 화면·승인 시간대 제한을 문서대로 전달하고 구현 원리와 복잡도는 확인 불가로 구분.",
+    "serious": false,
+    "false_rejection": false,
+    "record_sha256": "78716df5a7a7f725ebce4e570404a9664b4600165423caee14b7b89990b73824",
+    "reviewer": "same implementation AI; source compared, not independent/human/blind"
+  }
+}

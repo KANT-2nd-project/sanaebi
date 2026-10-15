@@ -105,7 +105,11 @@ def _apply_rows(repo, con, rows, source_hash, publish):
         )
         if publish:
             repo.publish_in_transaction(
-                con, document_id, 1, revision_id, actor="migration:company-knowledge"
+                con,
+                document_id,
+                detail["record_version"],
+                revision_id,
+                actor="migration:company-knowledge",
             )
         mapping.append(
             {

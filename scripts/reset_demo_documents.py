@@ -7,7 +7,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from app.documents.reset import reset_demo_documents
+from app.documents.reset import ResetBusyError, reset_demo_documents
 from app.settings import DEFAULT_DOCUMENTS_PATH, get_document_database_path
 
 
@@ -25,7 +25,9 @@ def main(argv=None):
             json.dumps(
                 {
                     "status": "failed",
-                    "error_type": type(exc).__name__,
+                    "error_type": "RuntimeError"
+                    if isinstance(exc, ResetBusyError)
+                    else type(exc).__name__,
                     "occurred_at": datetime.now(UTC).isoformat(),
                     "database": str(args.database.resolve()),
                     "source": str(args.source.resolve()),

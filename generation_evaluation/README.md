@@ -168,3 +168,7 @@ run_case는 기본 examples_answer_scope_v5을 사용하며 keyword-only prompt_
 ## 분류 정책 종단 비교
 
 [고정40문항](benchmarks/routing-shadow-20261015/README.md)과 [보고서](reports/2026-10-15-routing-shadow/README.md)는 독립 생성 배치와 구분한다. `scripts/evaluate_routing_policy.py`가 격리된 기존 ASGI 앱의 `/ask`를 호출해 분류·문서 공급·생성을 포함한 전체 요청을 비교한다. 실험 실행기는 기본값을 자동 전환하지 않는다. 이후 사용자 결정에 따른 shadow 채택과 main 통합은 [통합 기록](../docs/worklogs/2026-10-15-merge-shadow-main.md)을 따른다. 실행·재개 방법과 한도는 보고서를 따른다.
+
+## 분류 참고 정보 A/B/C/W 비교
+
+`python -m generation_evaluation.advisory_experiment`는 고정 예측·문서·프롬프트와 예산 예약·resume 해시 검사를 사용하는 실험 실행기다. 이번 탐색은 64회에서 기준 미충족으로 종료했고 확인 120회와 API 통합은 시작하지 않았다. [평가 결과](reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.

@@ -159,3 +159,7 @@ GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판�
 ### 가독성 후보 v6
 
 `examples_answer_scope_v6`는 v5에 문단·불릿·번호 목록 선택 지침을 추가한 명시적 실험 프로필이다. [16회 비교](../generation_evaluation/reports/2026-10-15-readability-v6/README.md)에서 도움 소개의 목록화 미충족과 일부 필수 안내 퇴행이 있어 채택을 보류했다. 기본 CLI·평가·서버는 계속 v5를 사용한다. 기존 프로필과 JSON 계약은 변경하지 않았다.
+
+## 분류 보조 정보 후보 — 미채택
+
+`advisory.py`는 명시적 ClassificationContext를 받는 순수 실험 조합 함수다. 현재 답변기·CLI에는 연결하지 않았다. 라벨 없음·분류 실패·client 출처는 기존 프롬프트로 정확히 복귀한다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.

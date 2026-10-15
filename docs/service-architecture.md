@@ -122,3 +122,7 @@ flowchart TD
 
 
 사용자용 말투·범위 구분 보완 이후 현재 공통 기본 프로필은 **examples_answer_scope_v5**다. 자료 부족과 회사 업무 범위 밖을 구분하고, 작성 규칙 선언 대신 질문에 직접 답한다. 사내 기술 문서·부분 답변·명시적 출처 설명은 유지한다. [v5 채택과 남은 품질 한계](generation-final-prompt.md#후속-채택-사용자용-말투서비스-범위-v5)를 따른다.
+
+## 분류 참고 정보 비교 결과
+
+분류 라벨을 오류 가능한 생성 참고 정보로 전달하는 후보는 탐색 기준을 충족하지 못해 미채택했다. 현재 shadow/gate와 HTTP 계약은 유지하며, advisory 서버 모드는 제공하지 않는다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.

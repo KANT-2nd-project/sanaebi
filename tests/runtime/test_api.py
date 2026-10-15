@@ -211,6 +211,8 @@ class ApiTests(unittest.TestCase):
                 "/assistant",
                 "/documents",
                 "/documents/capabilities",
+                "/documents/maintenance-preview",
+                "/documents/maintenance",
                 "/documents/{document_id}",
                 "/documents/{document_id}/publish",
                 "/documents/{document_id}/withdraw",
