@@ -141,6 +141,125 @@ class SelectionRunnerTests(unittest.TestCase):
         model.invoke.assert_called_once()
         self.assertEqual(len(self._read_jsonl(self.args.output / "runs.jsonl")), 1)
 
+    def test_resume_rejects_replacement_ledger_after_completed_run(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            self.args.ledger = self.root / "fresh-ledger.json"
+            with self.assertRaisesRegex(ValueError, "ledger identity"):
+                run(self.args)
+
+        model.invoke.assert_called_once()
+
+    def test_resume_accepts_copied_ledger_with_preserved_identity_and_history(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            source_ledger = json.loads(self.args.ledger.read_text(encoding="utf-8"))
+            copied_ledger_path = self.root / "copied-ledger.json"
+            copied_ledger_path.write_text(
+                self.args.ledger.read_text(encoding="utf-8"), encoding="utf-8"
+            )
+            self.args.ledger = copied_ledger_path
+
+            self.assertEqual(run(self.args), 0)
+
+        copied_ledger = json.loads(copied_ledger_path.read_text(encoding="utf-8"))
+        self.assertEqual(copied_ledger, source_ledger)
+        model.invoke.assert_called_once()
+
+    def test_resume_rejects_ledger_missing_completed_call_reservation(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            ledger = json.loads(self.args.ledger.read_text(encoding="utf-8"))
+            ledger["reservations"].clear()
+            self.args.ledger.write_text(json.dumps(ledger), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "prior reservations"):
+                run(self.args)
+
+        model.invoke.assert_called_once()
+
+    def test_legacy_manifest_migrates_with_complete_reservation_history(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            manifest_path = self.args.output / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest.pop("ledger_identity")
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            ledger = json.loads(self.args.ledger.read_text(encoding="utf-8"))
+            ledger.pop("ledger_identity")
+            self.args.ledger.write_text(json.dumps(ledger), encoding="utf-8")
+
+            self.assertEqual(run(self.args), 0)
+
+        migrated_manifest = json.loads(
+            (self.args.output / "manifest.json").read_text(encoding="utf-8")
+        )
+        migrated_ledger = json.loads(self.args.ledger.read_text(encoding="utf-8"))
+        self.assertTrue(migrated_manifest["ledger_identity"])
+        self.assertEqual(
+            migrated_manifest["ledger_identity"], migrated_ledger["ledger_identity"]
+        )
+        self.assertEqual(len(migrated_ledger["reservations"]), 1)
+        model.invoke.assert_called_once()
+
+    def test_legacy_manifest_rejects_fresh_ledger_without_reservation_history(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            manifest_path = self.args.output / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest.pop("ledger_identity")
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            self.args.ledger = self.root / "fresh-ledger.json"
+
+            with self.assertRaisesRegex(ValueError, "prior reservations"):
+                run(self.args)
+
+        model.invoke.assert_called_once()
+
+    def test_existing_records_without_manifest_are_rejected(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            (self.args.output / "manifest.json").unlink()
+            with self.assertRaisesRegex(ValueError, "manifest is missing"):
+                run(self.args)
+
+        model.invoke.assert_called_once()
+
     def test_uncertain_started_event_is_rejected_before_provider_call(self):
         from generation_evaluation.selection import run
 

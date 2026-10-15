@@ -68,6 +68,33 @@ def completed_keys(records):
     return set(keys)
 
 
+def _validate_prior_reservations(records, ledger, *, require_legacy_history=False):
+    request_ids = []
+    for record in records:
+        calls = record.get("calls")
+        if not isinstance(calls, list) or (require_legacy_history and not calls):
+            raise ValueError(
+                "Resume history does not contain verifiable prior reservations"
+            )
+        for call in calls:
+            request_id = call.get("request_id") if isinstance(call, dict) else None
+            if not isinstance(request_id, str) or not request_id.strip():
+                raise ValueError(
+                    "Resume history does not contain verifiable prior reservations"
+                )
+            request_ids.append(request_id)
+
+    if require_legacy_history and not request_ids:
+        raise ValueError(
+            "Resume history does not contain verifiable prior reservations"
+        )
+    known_ids = ledger.snapshot()["reservations"]
+    if set(request_ids) - known_ids.keys():
+        raise ValueError(
+            "Resume ledger is missing prior reservations; use the original ledger"
+        )
+
+
 @contextmanager
 def deadline(seconds):
     def expire(_signum, _frame):
@@ -124,22 +151,54 @@ def run(args):
         ).hexdigest(),
     }
     manifest_path = args.output / "manifest.json"
-    if manifest_path.exists():
-        if json.loads(manifest_path.read_text()) != manifest:
-            raise ValueError("Resume manifest differs; use a new run directory")
-    else:
-        manifest_path.write_text(
-            json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
-        )
     result_path = args.output / "runs.jsonl"
     events_path = args.output / "events.jsonl"
-    done = completed_keys(read_records(result_path))
-    begun = {(e["case_id"], e["repeat"]) for e in read_records(events_path)}
+    result_records = read_records(result_path)
+    event_records = read_records(events_path)
+    done = completed_keys(result_records)
+    begun = {(e["case_id"], e["repeat"]) for e in event_records}
     if begun - done:
         raise ValueError(
             "Uncertain interrupted requests require manual reconciliation; not rerunning"
         )
     ledger = BudgetLedger(args.ledger)
+    if manifest_path.exists():
+        stored_manifest = json.loads(manifest_path.read_text())
+        if not isinstance(stored_manifest, dict):
+            raise ValueError("Resume manifest differs; use a new run directory")
+        stored_identity = stored_manifest.get("ledger_identity")
+        if stored_identity is None:
+            if stored_manifest != manifest:
+                raise ValueError("Resume manifest differs; use a new run directory")
+            _validate_prior_reservations(
+                result_records, ledger, require_legacy_history=True
+            )
+            ledger_identity = ledger.ensure_identity()
+        else:
+            current_manifest = dict(stored_manifest)
+            del current_manifest["ledger_identity"]
+            if current_manifest != manifest:
+                raise ValueError("Resume manifest differs; use a new run directory")
+            if ledger.get_identity() != stored_identity:
+                raise ValueError(
+                    "Resume ledger identity differs; use the original ledger"
+                )
+            _validate_prior_reservations(result_records, ledger)
+            ledger_identity = stored_identity
+        manifest["ledger_identity"] = ledger_identity
+        if stored_manifest.get("ledger_identity") is None:
+            manifest_path.write_text(
+                json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
+            )
+    else:
+        if result_path.exists() or events_path.exists():
+            raise ValueError(
+                "Resume manifest is missing for existing run records; use a new run directory"
+            )
+        manifest["ledger_identity"] = ledger.ensure_identity()
+        manifest_path.write_text(
+            json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
+        )
     provider = candidate["config"]["provider"]
     for repeat in range(args.start_repeat, args.start_repeat + args.repeats):
         for case in cases:

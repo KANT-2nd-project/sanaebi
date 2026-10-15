@@ -65,6 +65,20 @@ class BudgetLedgerTests(unittest.TestCase):
                 resumed.snapshot()["reservations"]["first"]["charged_dollars"], 1.25
             )
 
+    def test_identity_migration_preserves_legacy_reservations(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "budget.json"
+            ledger = BudgetLedger(path)
+            ledger.reserve("existing-request", "dev", 0.5)
+            before = ledger.snapshot()
+
+            identity = ledger.ensure_identity()
+
+            migrated = BudgetLedger(path).snapshot()
+            self.assertEqual(migrated["ledger_identity"], identity)
+            self.assertEqual(migrated["reservations"], before["reservations"])
+            self.assertEqual(BudgetLedger(path).ensure_identity(), identity)
+
     def test_actual_settlement_releases_unused_reservation_and_is_idempotent(self):
         with TemporaryDirectory() as directory:
             ledger = BudgetLedger(Path(directory) / "budget.json", 1, 0.8)

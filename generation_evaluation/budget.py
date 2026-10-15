@@ -7,6 +7,7 @@ import json
 import os
 import tempfile
 import time
+import uuid
 from math import isfinite
 from pathlib import Path
 from typing import Any, Literal
@@ -75,9 +76,40 @@ class BudgetLedger:
                 data.get("started_at") is not None
                 and not isinstance(data["started_at"], (int, float))
             )
+            or (
+                "ledger_identity" in data
+                and (
+                    not isinstance(data["ledger_identity"], str)
+                    or not data["ledger_identity"].strip()
+                )
+            )
         ):
             raise RuntimeError("예산 ledger 형식이 올바르지 않습니다.")
         return data
+
+    def get_identity(self) -> str | None:
+        """Return the persisted identity, or None for a legacy/uninitialized ledger."""
+        lock_file = self._locked()
+        try:
+            return self._read().get("ledger_identity")
+        finally:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+            lock_file.close()
+
+    def ensure_identity(self) -> str:
+        """Persist and return a stable identity without changing reservation history."""
+        lock_file = self._locked()
+        try:
+            data = self._read()
+            identity = data.get("ledger_identity")
+            if identity is None:
+                identity = uuid.uuid4().hex
+                data["ledger_identity"] = identity
+                self._write(data)
+            return identity
+        finally:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+            lock_file.close()
 
     def _write(self, data: dict[str, Any]) -> None:
         fd, temp_name = tempfile.mkstemp(
