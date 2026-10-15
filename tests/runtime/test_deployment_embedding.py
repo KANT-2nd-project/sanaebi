@@ -52,6 +52,10 @@ class DeploymentEmbeddingManifestTests(unittest.TestCase):
             compose.count("SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-rag}"),
             2,
         )
+        self.assertIn(
+            "SANAEBI_RETRIEVAL_BASELINE: ${SANAEBI_RETRIEVAL_BUNDLE_CONTAINER_PATH:-/retrieval-baselines/not-ready.sqlite3}",
+            compose,
+        )
 
     def test_descriptor_rejects_unpinned_model_or_file_inventory(self):
         value = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))

@@ -20,6 +20,8 @@ export function DocumentActionDialog({ action, title, revision, effectiveFrom, p
   const dialogRef = useRef<HTMLDialogElement>(null);
   const cancelRef = useRef<HTMLButtonElement>(null);
   const publishing = action === "publish";
+  const busyLabel = publishing ? "게시 및 반영 확인 중…" : "사용 중단 및 검색 상태 확인 중…";
+  const actionLabel = publishing ? "게시 확인" : "사용 중단";
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -59,7 +61,7 @@ export function DocumentActionDialog({ action, title, revision, effectiveFrom, p
           <button ref={cancelRef} type="button" className="documents-button documents-button-secondary" disabled={busy} onClick={onCancel}>취소</button>
           <button type="button" className={`documents-button ${publishing ? "documents-button-primary" : "documents-button-danger"}`}
             disabled={busy} onClick={onConfirm}>
-            {busy ? "처리 중…" : publishing ? "게시 확인" : "사용 중단"}
+            {busy ? busyLabel : actionLabel}
           </button>
         </div>
       </div>

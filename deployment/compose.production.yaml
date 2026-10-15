@@ -26,6 +26,8 @@ services:
       SANAEBI_CLASSIFIER_PATH: /models/classifier
       SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-rag}
       SANAEBI_RETRIEVAL_ROOT: /data/retrieval
+      SANAEBI_RETRIEVAL_BASELINE: ${SANAEBI_RETRIEVAL_BUNDLE_CONTAINER_PATH:-/retrieval-baselines/not-ready.sqlite3}
+      SANAEBI_RETRIEVAL_SOURCE: /retrieval-source/documents.jsonl
       SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9}
       TRACE_DIR: ""
       TRACE_FULL_PROMPT: "0"
@@ -40,6 +42,14 @@ services:
       - type: bind
         source: /srv/sanaebi/embeddings
         target: /models/embeddings
+        read_only: true
+      - type: bind
+        source: ${SANAEBI_RETRIEVAL_BASELINES_HOST_DIR:-/srv/sanaebi/retrieval-baselines}
+        target: /retrieval-baselines
+        read_only: true
+      - type: bind
+        source: ${SANAEBI_RETRIEVAL_SOURCE_HOST_DIR:-/var/lib/sanaebi/baseline}
+        target: /retrieval-source
         read_only: true
     command:
       - python

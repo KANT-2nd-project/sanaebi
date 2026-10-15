@@ -420,15 +420,83 @@ class HostPathTests(unittest.TestCase):
             engine, release_id = self._candidate_engine(
                 Path(directory), descriptor_mode="rag", configured_mode=None
             )
+            bundle = engine.paths.retrieval_baselines / "schema-v1" / "bundle.sqlite3"
             with patch.object(
                 engine,
                 "_binding_for_release",
-                return_value={"bundle_path": "/tmp/bundle"},
+                return_value={"bundle_path": str(bundle)},
             ):
                 mode, overrides, _ = engine._runtime_overrides(release_id)
 
         self.assertEqual(mode, "rag")
         self.assertEqual(overrides["SANAEBI_RETRIEVAL_MODE"], "rag")
+        self.assertEqual(
+            overrides["SANAEBI_RETRIEVAL_BUNDLE_CONTAINER_PATH"],
+            "/retrieval-baselines/schema-v1/bundle.sqlite3",
+        )
+
+    def test_candidate_rag_api_receives_host_source_and_bundle_mounts(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = HostPaths(root=root / "srv", data=root / "data")
+            paths.data.mkdir(parents=True)
+            model = root / "model"
+            model.mkdir()
+            bundle = paths.retrieval_baselines / "bundle.sqlite3"
+            release_id = "c" * 40 + "-12345"
+            calls = []
+
+            def runner(command, **_kwargs):
+                calls.append(command)
+                return SimpleNamespace(returncode=0, stdout="", stderr="")
+
+            engine = DeploymentEngine(paths, runner=runner, uid=os.geteuid())
+            with (
+                patch("scripts.deploy_release.os.chown"),
+                patch.object(engine, "_preflight_candidate_index"),
+                patch.object(engine, "_wait_ready"),
+            ):
+                engine._preflight_candidate(
+                    "candidate-image",
+                    model,
+                    release_id,
+                    retrieval_binding={
+                        "bundle_path": bundle,
+                        "embedding_path": model,
+                    },
+                )
+
+        api_start = calls[0]
+        self.assertIn(
+            "SANAEBI_RETRIEVAL_BASELINE=/retrieval-baseline/baseline.sqlite3", api_start
+        )
+        self.assertIn(
+            "SANAEBI_RETRIEVAL_SOURCE=/retrieval-source/documents.jsonl", api_start
+        )
+        self.assertIn(
+            f"type=bind,src={bundle},dst=/retrieval-baseline/baseline.sqlite3,readonly",
+            api_start,
+        )
+        self.assertIn(
+            f"type=bind,src={paths.baseline},dst=/retrieval-source/documents.jsonl,readonly",
+            api_start,
+        )
+
+    def test_full_runtime_mount_directory_exists_before_compose_startup(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = HostPaths(root=root / "srv", data=root / "data")
+            paths.data.mkdir(parents=True)
+            paths.database.write_bytes(b"existing database")
+            engine = DeploymentEngine(paths, uid=os.geteuid())
+            with (
+                patch("scripts.deploy_release.os.chown"),
+                patch.object(engine, "_copy_baseline_from_image"),
+            ):
+                initialized = engine._initialize_database_if_missing("legacy-image")
+                self.assertTrue(paths.retrieval_baselines.is_dir())
+
+        self.assertFalse(initialized)
 
     def test_legacy_descriptor_default_remains_full_when_unset(self):
         with tempfile.TemporaryDirectory() as directory:

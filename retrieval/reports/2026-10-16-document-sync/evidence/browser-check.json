@@ -1,0 +1,70 @@
+{
+  "date_kst": "2026-10-16",
+  "backend": "mocked with Playwright route; no DB writes",
+  "result": "pass",
+  "checks": [
+    "publish confirm stays disabled while indexing check is pending",
+    "publish cancel stays disabled while request is pending",
+    "publish partial failure explains document mutation was preserved",
+    "publish retry happens only after explicit user action",
+    "publish retry reuses exact Idempotency-Key",
+    "publish retry reuses exact body and URL",
+    "withdraw confirm stays disabled while indexing check is pending",
+    "withdraw cancel stays disabled while request is pending",
+    "withdraw retry happens only after explicit user action",
+    "withdraw retry reuses exact Idempotency-Key",
+    "withdraw retry reuses exact body and URL",
+    "maintenance submit stays disabled while indexing check is pending",
+    "maintenance cancel stays disabled while request is pending",
+    "maintenance retry locks original confirmation input",
+    "maintenance retry happens only after explicit user action",
+    "maintenance retry reuses exact Idempotency-Key",
+    "maintenance retry reuses exact body and URL"
+  ],
+  "request_log": [
+    {
+      "operation": "publish",
+      "url": "/api/documents/document-1/publish",
+      "method": "POST",
+      "body": "{\"expected_version\":1,\"revision_id\":\"revision-1\"}",
+      "key": "31735c10-d5d6-4603-afed-15d867e19714"
+    },
+    {
+      "operation": "publish",
+      "url": "/api/documents/document-1/publish",
+      "method": "POST",
+      "body": "{\"expected_version\":1,\"revision_id\":\"revision-1\"}",
+      "key": "31735c10-d5d6-4603-afed-15d867e19714"
+    },
+    {
+      "operation": "withdraw",
+      "url": "/api/documents/document-1/withdraw",
+      "method": "POST",
+      "body": "{\"expected_version\":2}",
+      "key": "c8487b4f-8ff4-42eb-95c1-447dbd97c413"
+    },
+    {
+      "operation": "withdraw",
+      "url": "/api/documents/document-1/withdraw",
+      "method": "POST",
+      "body": "{\"expected_version\":2}",
+      "key": "c8487b4f-8ff4-42eb-95c1-447dbd97c413"
+    },
+    {
+      "operation": "maintenance",
+      "url": "/api/documents/maintenance",
+      "method": "POST",
+      "body": "{\"action\":\"clear\",\"expected_state\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+      "key": "661864b3-7f90-42c4-a46e-2014389fccfd"
+    },
+    {
+      "operation": "maintenance",
+      "url": "/api/documents/maintenance",
+      "method": "POST",
+      "body": "{\"action\":\"clear\",\"expected_state\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+      "key": "661864b3-7f90-42c4-a46e-2014389fccfd"
+    }
+  ],
+  "screenshot_note": "7 local screenshots retained in tmp/document-rag-sync-ui-2026-10-16; not public downloads",
+  "runtime_errors": 0
+}

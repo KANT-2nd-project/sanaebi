@@ -140,3 +140,5 @@ flowchart TD
 ## 분류 참고 정보 비교 결과
 
 분류 라벨을 오류 가능한 생성 참고 정보로 전달하는 후보는 탐색 기준을 충족하지 못해 미채택했다. 현재 shadow/gate와 HTTP 계약은 유지하며, advisory 서버 모드는 제공하지 않는다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
+
+문서 변경의 완료 경계는 [문서 관리 계약](document-management.md#rag-색인과-자정-초기화)을 따른다. rag의 게시·철회·전체 삭제·기본 복원은 현재 게시 snapshot의 검색 준비 확인 후 성공 응답한다. 문서 저장 후 검색 반영 실패는 자료를 보존하고 같은 요청으로 복구한다. 초안 저장은 임베딩하지 않는다.

@@ -16,14 +16,16 @@ from app.documents.context import DocumentContextProvider
 from app.documents.repository import DocumentRepository
 from app.documents.transfer import _apply_rows, read_source, sha
 from app.retrieval.baseline import prepare_baseline, validate_baseline
+from app.retrieval.chunking import chunk_document
 from app.retrieval.config import (
-    CONTEXTUAL_SPEC,
     DEFAULT_SPEC,
     MODEL_ID,
     MODEL_REVISION,
 )
 from app.retrieval.embedding import TinyEmbedder
 from app.retrieval.repository import IndexRepository
+from retrieval.experiments.contextual_chunking import contextual_chunk_document
+from retrieval.experiments.contextual_config import CONTEXTUAL_SPEC
 from retrieval.experiments.legacy_search import SearchConfig
 from retrieval.experiments.legacy_service import (
     LegacyRetrievalService as RetrievalService,
@@ -258,6 +260,8 @@ def main(argv=None):
             b"".join(
                 p.read_bytes() for p in sorted((ROOT / "app/retrieval").glob("*.py"))
             )
+            + (ROOT / "retrieval/experiments/contextual_config.py").read_bytes()
+            + (ROOT / "retrieval/experiments/contextual_chunking.py").read_bytes()
             + Path(__file__).read_bytes()
         ).hexdigest(),
     }
@@ -287,7 +291,16 @@ def main(argv=None):
         key = json.dumps(config, sort_keys=True)
         if key not in services:
             spec = CONTEXTUAL_SPEC if config["contextual"] else DEFAULT_SPEC
-            bundle = prepare_baseline(args.source, out / "bundles", embedder, spec=spec)
+            chunker = (
+                contextual_chunk_document if config["contextual"] else chunk_document
+            )
+            bundle = prepare_baseline(
+                args.source,
+                out / "bundles",
+                embedder,
+                spec=spec,
+                chunker=chunker,
+            )
             metadata = validate_baseline(bundle, args.source, spec=spec)
             manifest.setdefault("prepared_bundles", {})[metadata["spec_id"]] = metadata
             index = IndexRepository(out / "indexes", spec=spec)
@@ -296,6 +309,7 @@ def main(argv=None):
                 embedder,
                 baseline_path=bundle,
                 spec=spec,
+                chunker=chunker,
                 search_config=SearchConfig(
                     expand_adjacent=config["expand_adjacent"],
                     hybrid_search=config["hybrid_search"],

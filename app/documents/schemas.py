@@ -187,17 +187,6 @@ class DocumentCapabilitiesResponse(BaseModel):
     answer_integration: Literal["connected"] = "connected"
 
 
-class DocumentErrorDetail(BaseModel):
-    code: str
-    message: str
-    details: dict | None = None
-
-
-class DocumentErrorResponse(BaseModel):
-    ok: Literal[False] = False
-    error: DocumentErrorDetail
-
-
 class MaintenanceRequest(StrictRequest):
     action: Literal["clear", "restore"]
     expected_state: str = Field(pattern=r"^[0-9a-f]{64}$")

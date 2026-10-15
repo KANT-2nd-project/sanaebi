@@ -23,3 +23,7 @@ uv run --locked python -m archive.answering_v1.answer_pipeline.cli report --help
 ## 설치 범위와 선택 provider
 
 서버·평가기는 소스 checkout에서 실행한다. 독립 wheel 배포는 지원 범위가 아니다. 기본 운영 의존성은 `uv sync --locked --no-dev`로 설치하며 분류 추론의 torch·transformers를 포함한다. Ollama와 과거 답변기 사용 시 `uv sync --locked --extra ollama`로 선택 의존성을 설치한다. 전체 테스트에도 이 extra가 필요하다. `sanaebi`·`sanaebi-train`은 기존 보관 분류 CLI를 유지한다.
+
+## 과거 trace 단계 해석
+
+[trace](trace.py)는 이 실행기의 `prepare_input`·`RunnableBranch`·`format_answer` 단계 이름을 해석하는 보관 콜백이다. 현재 서버의 일반 trace를 확장하지만 서버가 보관 코드를 역으로 import하지 않는다. 기존 단계 해석은 legacy 테스트에서 확인하며, 현재 요청·검색·생성 기록은 [서버 trace](../../app/diagnostics/trace.py)가 담당한다.

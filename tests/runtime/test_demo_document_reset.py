@@ -1,6 +1,7 @@
 import fcntl
 import io
 import json
+import os
 import sqlite3
 import subprocess
 import sys
@@ -155,6 +156,7 @@ class DemoDocumentResetTests(unittest.TestCase):
                 capture_output=True,
                 text=True,
                 timeout=10,
+                env={**os.environ, "SANAEBI_RETRIEVAL_MODE": "full"},
             )
             self.assertEqual(run.returncode, 1)
             self.assertEqual(json.loads(run.stderr)["error_type"], "RuntimeError")
@@ -263,6 +265,71 @@ class DemoDocumentResetTests(unittest.TestCase):
             status = main(["--source", str(self.source), "--database", str(self.db)])
         self.assertEqual(status, 1)
         self.assertNotIn("PRIVATE CONTENT", error.getvalue())
+
+    def test_rag_cli_uses_configured_source_when_argument_is_omitted(self):
+        from scripts.reset_demo_documents import main
+
+        configured_source = self.root / "configured-source.jsonl"
+        configured_source.write_bytes(self.source.read_bytes())
+        output = io.StringIO()
+        with (
+            patch.dict(
+                os.environ,
+                {
+                    "SANAEBI_RETRIEVAL_MODE": "rag",
+                    "SANAEBI_RETRIEVAL_SOURCE": str(configured_source),
+                },
+            ),
+            redirect_stdout(output),
+        ):
+            status = main(["--database", str(self.db)])
+
+        report = json.loads(output.getvalue())
+        self.assertEqual(status, 0)
+        self.assertEqual(report["source"], str(configured_source.resolve()))
+
+    def test_rag_cli_reports_mapping_failure_without_hiding_completed_reset(self):
+        from app.retrieval.baseline import prepare_baseline
+        from scripts.reset_demo_documents import main
+        from tests.retrieval.helpers import FakeEmbedder
+
+        bundle = prepare_baseline(self.source, self.root / "bundles", FakeEmbedder())
+        env = {
+            "SANAEBI_DOCUMENT_DB": str(self.db),
+            "SANAEBI_RETRIEVAL_MODE": "rag",
+            "SANAEBI_RETRIEVAL_ROOT": str(self.root / "retrieval"),
+            "SANAEBI_RETRIEVAL_BASELINE": str(bundle),
+        }
+        error = io.StringIO()
+        with (
+            patch.dict(os.environ, env),
+            patch(
+                "app.retrieval.sync.DocumentIndexSynchronizer.restore_current",
+                side_effect=OSError("private vector mapping failure"),
+            ),
+            redirect_stderr(error),
+        ):
+            result = main(
+                [
+                    "--source",
+                    str(self.source),
+                    "--database",
+                    str(self.db),
+                    "--apply",
+                ]
+            )
+
+        report = json.loads(error.getvalue())
+        self.assertEqual(result, 1)
+        self.assertEqual(report["status"], "failed")
+        self.assertTrue(report["documents_reset"])
+        self.assertFalse(report["retrieval_ready"])
+        self.assertEqual(
+            report["recovery_hint"],
+            "python -m scripts.index_documents --restore-baseline",
+        )
+        self.assertNotIn("private vector mapping failure", error.getvalue())
+        self.assertEqual(len(self.repo.published_snapshot()), 1)
 
     def test_full_repository_baseline_and_legacy_provenance(self):
         from app.settings import DEFAULT_DOCUMENTS_PATH

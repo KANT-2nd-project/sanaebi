@@ -165,7 +165,7 @@ def handle(question):
 uv run --locked python -m scripts.inspect_document_context
 ```
 
-[진단 trace](diagnostics/trace.py)는 선택적 요청·LangChain 기록이다. `TRACE_DIR`을 지정했을 때 기록하며 `TRACE_MAX_CHARS`·`TRACE_FULL_PROMPT`로 기록 길이를 조절한다. 상세 기록 형식은 해당 모듈의 설명을, 변경 기준은 [서버 규약](../docs/server-conventions.md)을 따른다. 문서를 수정하거나 이관하려면 [문서 관리 절차](../docs/document-management.md)를, 전체 문서 탐색은 [문서 색인](../docs/README.md)을 이용한다.
+[진단 trace](diagnostics/trace.py)는 선택적 요청·분류·검색·생성 및 일반 모델 콜백 기록이다. 과거 실행기의 단계 해석은 [보관 trace](../archive/answering_v1/trace.py)에 분리하며 서버는 보관 모듈을 import하지 않는다. `TRACE_DIR`을 지정했을 때 기록하며 `TRACE_MAX_CHARS`·`TRACE_FULL_PROMPT`로 기록 길이를 조절한다. 상세 기록 형식은 해당 모듈의 설명을, 변경 기준은 [서버 규약](../docs/server-conventions.md)을 따른다. 문서를 수정하거나 이관하려면 [문서 관리 절차](../docs/document-management.md)를, 전체 문서 탐색은 [문서 색인](../docs/README.md)을 이용한다.
 
 ## 개발 검사
 
@@ -186,5 +186,7 @@ uv run --locked python -m unittest discover -s tests -t . -v
 ## RAG 연결
 
 `SANAEBI_RETRIEVAL_MODE=rag`가 기본이다. C 설정으로 동일 게시 snapshot의 점수0.35 이상 근거를 개수·문자·별도 문맥 토큰 제한 없이 전달한다. `full`은 명시적으로 전체 게시본을 전달하는 수동 복구 경로다. [모델·색인 준비와 자정 복구](../docs/rag-runtime.md)를 따른다. 기존 shadow/gate 정책과 생성 한도는 유지한다.
+
+문서 게시·사용 중단·전체 삭제·기본 복원은 rag에서 검색 준비까지 확인한 뒤 성공 응답한다. 초안은 임베딩하지 않는다. 저장 후 색인 실패와 동일 요청 재시도는 [문서 관리 계약](../docs/document-management.md#rag-색인과-자정-초기화)을 따른다.
 
 검색 설정의 선정 근거와 한계는 [v3 검색 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)에 기록했다. 기본 rag+C 유지와 실제 운영 활성화는 별개다. 0.35는 코사인 점수이며 관련 확률·답변 정확도가 아니다.

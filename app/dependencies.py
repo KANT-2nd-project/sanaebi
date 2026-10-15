@@ -29,34 +29,25 @@ def get_question_handler(
     return partial(
         handle_question,
         classify=classifier.predict,
-        read_documents=request.app.state.document_provider.snapshot,
-        answer=(
-            request.app.state.answerer.answer_retrieved
-            if request.app.state.retriever is not None
-            else request.app.state.answerer.answer
-        ),
-        retrieve=(
-            request.app.state.retriever.retrieve
-            if request.app.state.retriever is not None
-            else None
-        ),
-        routing_mode=request.app.state.routing_mode,
+        **_document_answer_dependencies(request),
     )
 
 
 def get_assistant_handler(request: Request) -> AssistantHandler:
     return partial(
         handle_classified_question,
-        read_documents=request.app.state.document_provider.snapshot,
-        answer=(
-            request.app.state.answerer.answer_retrieved
-            if request.app.state.retriever is not None
-            else request.app.state.answerer.answer
-        ),
-        retrieve=(
-            request.app.state.retriever.retrieve
-            if request.app.state.retriever is not None
-            else None
-        ),
-        routing_mode=request.app.state.routing_mode,
+        **_document_answer_dependencies(request),
     )
+
+
+def _document_answer_dependencies(request: Request) -> dict:
+    state = request.app.state
+    retriever = state.retriever
+    return {
+        "read_documents": state.document_provider.snapshot,
+        "answer": state.answerer.answer_retrieved
+        if retriever is not None
+        else state.answerer.answer,
+        "retrieve": retriever.retrieve if retriever is not None else None,
+        "routing_mode": state.routing_mode,
+    }

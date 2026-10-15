@@ -78,6 +78,7 @@ export type DocumentApiErrorKind =
   | "invalid-response"
   | "request"
   | "gateway"
+  | "retrieval-sync"
   | "conflict"
   | "validation"
   | "not-found"
@@ -96,6 +97,10 @@ export class DocumentApiError extends Error {
 }
 
 const DEFAULT_TIMEOUT_MS = 35_000;
+const RETRIEVAL_SYNC_TIMEOUT_MS = 180_000;
+function retrievalSyncOptions(options: DocumentRequestOptions = {}): DocumentRequestOptions {
+  return { ...options, timeoutMs: options.timeoutMs ?? RETRIEVAL_SYNC_TIMEOUT_MS };
+}
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === "object" && !Array.isArray(value);
 const isString = (value: unknown): value is string => typeof value === "string";
@@ -242,6 +247,7 @@ async function request<T>(
 
   const controller = new AbortController();
   const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const timeoutMessage = `${Math.ceil(timeoutMs / 1_000)}초 동안 응답이 없어 요청을 중단했습니다. 입력과 동일 요청 재시도 정보를 보존했어요.`;
   let didTimeout = false;
   const abortFromCaller = () => controller.abort();
   options.signal?.addEventListener("abort", abortFromCaller, { once: true });
@@ -256,7 +262,7 @@ async function request<T>(
   } catch (error) {
     clearTimeout(timer);
     options.signal?.removeEventListener("abort", abortFromCaller);
-    if (didTimeout) throw new DocumentApiError("timeout", "35초 동안 응답이 없어 요청을 중단했습니다. 입력을 보존했어요.");
+    if (didTimeout) throw new DocumentApiError("timeout", timeoutMessage);
     if (options.signal?.aborted || (error instanceof DOMException && error.name === "AbortError")) {
       throw new DocumentApiError("aborted", "요청이 취소되었습니다.");
     }
@@ -269,14 +275,14 @@ async function request<T>(
   } catch {
     clearTimeout(timer);
     options.signal?.removeEventListener("abort", abortFromCaller);
-    if (didTimeout) throw new DocumentApiError("timeout", "35초 동안 응답이 없어 요청을 중단했습니다. 입력을 보존했어요.");
+    if (didTimeout) throw new DocumentApiError("timeout", timeoutMessage);
     if (!response.ok && response.status >= 500) throw safeFailure(response.status);
     throw invalidResponse();
   }
   if (didTimeout) {
     clearTimeout(timer);
     options.signal?.removeEventListener("abort", abortFromCaller);
-    throw new DocumentApiError("timeout", "35초 동안 응답이 없어 요청을 중단했습니다. 입력을 보존했어요.");
+    throw new DocumentApiError("timeout", timeoutMessage);
   }
   if (options.signal?.aborted) {
     clearTimeout(timer);
@@ -289,11 +295,13 @@ async function request<T>(
   if (!response.ok) {
     const failure = parseErrorEnvelope(payload);
     if (!failure) throw safeFailure(response.status);
-    const kind: DocumentApiErrorKind = response.status === 409 ? "conflict"
-      : response.status === 422 ? "validation"
-        : response.status === 404 ? "not-found"
-          : response.status === 401 || response.status === 403 ? "permission"
-          : response.status >= 500 ? "gateway" : "request";
+    const kind: DocumentApiErrorKind = response.status === 503
+      && ["retrieval_sync_failed", "retrieval_sync_busy"].includes(failure.code) ? "retrieval-sync"
+      : response.status === 409 ? "conflict"
+        : response.status === 422 ? "validation"
+          : response.status === 404 ? "not-found"
+            : response.status === 401 || response.status === 403 ? "permission"
+              : response.status >= 500 ? "gateway" : "request";
     throw new DocumentApiError(kind, failure.message, failure.code, failure.details);
   }
 
@@ -359,7 +367,7 @@ export async function publishDocument(
     method: "POST",
     headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey },
     body: JSON.stringify({ expected_version: expectedVersion, revision_id: revisionId }),
-  }, 200, parseDocumentDetail, options);
+  }, 200, parseDocumentDetail, retrievalSyncOptions(options));
 }
 
 export async function withdrawDocument(
@@ -372,7 +380,7 @@ export async function withdrawDocument(
     method: "POST",
     headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey },
     body: JSON.stringify({ expected_version: expectedVersion }),
-  }, 200, parseDocumentDetail, options);
+  }, 200, parseDocumentDetail, retrievalSyncOptions(options));
 }
 
 export type MaintenanceAction = "clear" | "restore";
@@ -392,7 +400,11 @@ function parseMaintenanceResult(value: unknown): MaintenanceResult {
 export function previewDocumentMaintenance(action: MaintenanceAction, options: DocumentRequestOptions = {}) {
   return request(`/api/documents/maintenance-preview?action=${action}`, { method: "GET" }, 200, parseMaintenancePreview, options);
 }
-export function maintainDocuments(preview: MaintenancePreview, key: string) {
+export function maintainDocuments(
+  preview: MaintenancePreview,
+  key: string,
+  options: DocumentRequestOptions = {},
+) {
   return request("/api/documents/maintenance", { method: "POST", headers: { "Content-Type": "application/json", "Idempotency-Key": key },
-    body: JSON.stringify({ action: preview.action, expected_state: preview.expected_state }) }, 200, parseMaintenanceResult, {});
+    body: JSON.stringify({ action: preview.action, expected_state: preview.expected_state }) }, 200, parseMaintenanceResult, retrievalSyncOptions(options));
 }

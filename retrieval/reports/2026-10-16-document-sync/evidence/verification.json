@@ -1,0 +1,29 @@
+{
+  "date_kst": "2026-10-16",
+  "python": {
+    "command": "uv run --locked python -m unittest discover -s tests -t . -q",
+    "passed": 896,
+    "seconds": 63.877
+  },
+  "web": {
+    "passed": 124,
+    "typecheck": "passed",
+    "eslint": "passed",
+    "static_build": "passed",
+    "mock_browser_assertions": 17
+  },
+  "ruff": {
+    "check": "passed",
+    "format_check": "passed",
+    "files": 512
+  },
+  "independent_review": {
+    "targeted_passed": 78,
+    "outstanding_material_findings": 0
+  },
+  "paid_llm_calls": 0,
+  "production_access": false,
+  "production_deployment": false,
+  "real_docker_validation": false,
+  "production_2vcpu_validation": false
+}

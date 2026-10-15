@@ -1,4 +1,4 @@
-import type { DocumentDetail, DocumentRevision } from "../../lib/api/documents";
+import { DocumentApiError, type DocumentDetail, type DocumentRevision } from "../../lib/api/documents";
 
 export type DocumentForm = {
   title: string;
@@ -18,6 +18,27 @@ export type DocumentWriteAttempt = {
   signature: string;
   key: string;
 };
+
+export function canRetryDocumentWrite(error: unknown): boolean {
+  if (!(error instanceof DocumentApiError)) return false;
+  if (error.code === "retrieval_sync_failed" || error.code === "retrieval_sync_busy") {
+    return error.details?.retryable === true;
+  }
+  return ["timeout", "network", "gateway", "invalid-response"].includes(error.kind);
+}
+
+export function retrievalSyncFailureMessage(error: unknown): string | null {
+  if (!(error instanceof DocumentApiError)) return null;
+  if (error.code === "retrieval_sync_failed") {
+    return error.details?.document_saved === true
+      ? "문서 변경은 적용됐지만 검색 반영이 끝나지 않았습니다. 변경 내용은 보존되어 있습니다. 같은 요청으로 검색 반영을 다시 확인해주세요."
+      : "검색 반영 준비를 확인하지 못해 문서 변경은 시작되지 않았습니다. 잠시 후 같은 요청을 다시 시도해주세요.";
+  }
+  if (error.code === "retrieval_sync_busy") {
+    return "다른 문서 작업이 진행 중이라 이번 요청은 시작하지 못했습니다. 이전 요청이 있었다면 저장됐을 수 있으므로 잠시 후 같은 요청으로 다시 확인해주세요.";
+  }
+  return null;
+}
 
 export type ReconciledDocument = {
   detail: DocumentDetail;

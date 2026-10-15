@@ -55,6 +55,8 @@ app/
 
 코드를 읽을 때는 `fastapi_main.py` → `dependencies.py` → `questions/router.py` → `questions/service.py` → `classification/predictor.py` 순서로 확인한다. 문서 기능은 documents, 이후 답변 연결은 answering에서 읽는다. 루트 classification/은 학습 공간이며 app/classification/은 서버 추론 기능이다.
 
+서버는 `retrieval/experiments/`와 `archive/`를 import하지 않는다. 미채택 임베딩 문맥 확장은 실험 계층에서 재현하고, 과거 실행기 전용 trace 단계 해석은 보관 계층에서 관리한다. 현재 trace의 요청·분류·검색·생성 기록과 일반 모델 콜백은 유지한다. `/ask`와 `/assistant`는 공통 의존성 조립으로 같은 문서 provider·검색기·답변기 선택을 사용한다.
+
 기존 routers/services/infrastructure 폴더와 재수출 래퍼는 제거했다. 내부 Python import 경로는 변경했으며 외부에 배포된 Python 라이브러리 호환을 보장하지 않는다. HTTP API와 `app.fastapi_main:app` 실행 진입점은 유지한다. 과거 단독 KoELECTRA 래퍼·echo 답변 함수는 제거하고, JSONL 처리는 archive/server_legacy에 보존한다.
 
 문서 snapshot 진단은 `uv run --locked python -m scripts.inspect_document_context`로 실행한다. 읽기 전용이며 DB가 없으면 오류를 숨기지 않는다. trace는 기존 TRACE_DIR·TRACE_FULL_PROMPT·TRACE_MAX_CHARS 설정과 기록 형식을 유지한다. 모델 종료와 별개로 최종 생성 판정·설정 식별자·snapshot/프롬프트 해시·시간·사용량을 기록한다. 새 생성 요약에는 원문·키·예외 메시지를 넣지 않는다. 기존 opt-in trace의 요청·응답·콜백 원문은 민감 자료로 취급한다.
@@ -87,6 +89,8 @@ app/
 `SANAEBI_ANSWER_PROVIDER`는 미설정 또는 openai만 허용하며 그 밖의 값은 시작 시 거부한다. `generation.presets.load_runtime_settings`로 CLI와 같은 모델·프로필을 읽되 서버는 JSONL 경로를 요구하지 않는다. 최종 설정은 [최종 프롬프트 기준](generation-final-prompt.md)을 따른다. 비밀키·가중치는 Git에 게시하지 않는다.
 
 앱별 `GenerationAnswerer`는 첫 유효 문서 답변 요청에서 OpenAI 클라이언트를 생성한다. 초기화만 잠그고 원격 요청 전체는 직렬화하지 않는다. 각 요청은 별도 프롬프트를 구성하고 앱 종료 시 소유한 동기·비동기 클라이언트를 닫는다. 자동 재시도·fallback·temperature 전달은 없다. 문서 렌더러는 원본 knowledge_id·개정·제목·본문·순서를 보존한다. 서버는 `archive.answering_v1`과 `generation_evaluation`을 import하지 않는다. 과거 답변기·평가기의 새 실행 경로는 [보관 안내](../archive/answering_v1/README.md)를 따른다.
+
+문서 게시 상태를 바꾸는 요청은 문서 조립 계층에서 검색 동기화를 수행한다. 라우터·저장소에 임베딩 계산을 넣지 않는다. 검색 반영 완료 후 성공 응답하며 부분 실패·멱등 재시도와 잠금 계약은 [문서 관리](document-management.md#rag-색인과-자정-초기화)를 따른다.
 
 ## 오류와 호환
 

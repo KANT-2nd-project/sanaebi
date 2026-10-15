@@ -152,7 +152,11 @@ class LangChainAdapterTests(unittest.TestCase):
     def test_server_import_does_not_import_legacy_or_evaluation(self):
         code = """import sys
 import app.fastapi_main
+import app.retrieval.sync
+import app.retrieval.service
 assert 'sanaebi_assistant' not in sys.modules
+assert not any(k == 'retrieval.experiments' or k.startswith('retrieval.experiments.') for k in sys.modules)
+assert not any(k == 'archive' or k.startswith('archive.') for k in sys.modules)
 assert not any(k == 'archive.answering_v1' or k.startswith('archive.answering_v1.') for k in sys.modules)
 assert not any(k == 'answer_pipeline' or k.startswith('answer_pipeline.') for k in sys.modules)
 assert not any(k == 'generation_evaluation' or k.startswith('generation_evaluation.') for k in sys.modules)

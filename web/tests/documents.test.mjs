@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createDocument, listDocuments, publishDocument, updateDocument, withdrawDocument } from "../../tmp/frontend-unit-tests/lib/api/documents.js";
+import { createDocument, listDocuments, maintainDocuments, publishDocument, updateDocument, withdrawDocument } from "../../tmp/frontend-unit-tests/lib/api/documents.js";
 
 const revision = {
   id: "revision-1", revision_number: 1, title: "휴가 안내", body: "연차를 신청합니다.",
@@ -82,8 +82,111 @@ test("35초 timeout 경계는 요청을 한 번만 취소한다", async (t) => {
     calls++;
     options.signal.addEventListener("abort", () => reject(new DOMException("aborted", "AbortError")), { once: true });
   }));
-  await assert.rejects(listDocuments({}, { timeoutMs: 10 }), { kind: "timeout" });
+  await assert.rejects(listDocuments({}, { timeoutMs: 10 }), error => error.kind === "timeout" && error.message.startsWith("1초 동안 응답이 없어"));
   assert.equal(calls, 1);
+});
+
+test("색인 동기화 요청은 caller signal과 함께 180초 대기 한도를 사용한다", async (t) => {
+  const delays = [];
+  const originalSetTimeout = globalThis.setTimeout;
+  t.mock.method(globalThis, "setTimeout", (callback, delay, ...args) => {
+    delays.push(delay);
+    return originalSetTimeout(callback, delay, ...args);
+  });
+  t.mock.method(globalThis, "fetch", async (url, options) => {
+    assert.ok(options.signal instanceof AbortSignal);
+    return url === "/api/documents/maintenance"
+      ? Response.json({ action: "clear", deleted_count: 1, restored_count: 0, completed_at: "2026-10-16T00:00:00Z" })
+      : Response.json(detail);
+  });
+  const signal = new AbortController().signal;
+  await publishDocument("document-1", 8, "revision-1", "publish-key", { signal });
+  await withdrawDocument("document-1", 8, "withdraw-key", { signal });
+  await maintainDocuments({ action: "clear", total_count: 1, restored_count: 0, expected_state: "a".repeat(64) }, "maintenance-key", { signal });
+  assert.deepEqual(delays, [180_000, 180_000, 180_000]);
+});
+
+test("게시 색인 실패는 부분 저장 상태를 보존하고 같은 키·본문 재시도로 검색 반영을 확인한다", async (t) => {
+  let calls = 0;
+  const sent = [];
+  t.mock.method(globalThis, "fetch", async (url, options) => {
+    calls++;
+    sent.push({ url, key: options.headers.get("Idempotency-Key"), body: options.body });
+    if (calls === 1) return Response.json({
+      ok: false,
+      error: {
+        code: "retrieval_sync_failed",
+        message: "문서는 저장됐지만 검색 반영이 완료되지 않았습니다.",
+        details: { document_saved: true, retryable: true },
+      },
+    }, { status: 503 });
+    return Response.json(detail);
+  });
+
+  await assert.rejects(publishDocument("document-1", 8, "revision-1", "same-key"), error => {
+    assert.equal(error.kind, "retrieval-sync");
+    assert.equal(error.code, "retrieval_sync_failed");
+    assert.equal(error.details.document_saved, true);
+    assert.equal(error.details.retryable, true);
+    return true;
+  });
+  await publishDocument("document-1", 8, "revision-1", "same-key");
+
+  assert.equal(calls, 2);
+  assert.deepEqual(sent[1], sent[0]);
+});
+
+test("사용 중단 색인 실패도 같은 요청 키와 expected_version으로 재시도한다", async (t) => {
+  let calls = 0;
+  const sent = [];
+  t.mock.method(globalThis, "fetch", async (url, options) => {
+    calls++;
+    sent.push({ url, key: options.headers.get("Idempotency-Key"), body: options.body });
+    if (calls === 1) return Response.json({
+      ok: false,
+      error: {
+        code: "retrieval_sync_failed",
+        message: "문서 변경은 적용됐지만 검색 반영이 완료되지 않았습니다.",
+        details: { document_saved: true, retryable: true },
+      },
+    }, { status: 503 });
+    return Response.json(detail);
+  });
+
+  await assert.rejects(withdrawDocument("document-1", 9, "same-key"), { kind: "retrieval-sync" });
+  await withdrawDocument("document-1", 9, "same-key");
+  assert.equal(calls, 2);
+  assert.equal(sent[0].url, "/api/documents/document-1/withdraw");
+  assert.deepEqual(sent[1], sent[0]);
+});
+
+test("전체 문서 색인 반영 실패도 동일한 멱등 키와 preview 본문으로 재시도한다", async (t) => {
+  let calls = 0;
+  const sent = [];
+  const result = { action: "restore", deleted_count: 71, restored_count: 71, completed_at: "2026-10-16T00:00:00Z" };
+  t.mock.method(globalThis, "fetch", async (_url, options) => {
+    calls++;
+    sent.push({ key: options.headers.get("Idempotency-Key"), body: options.body });
+    if (calls === 1) return Response.json({
+      ok: false,
+      error: {
+        code: "retrieval_sync_failed",
+        message: "문서 변경은 적용됐지만 검색 반영이 완료되지 않았습니다.",
+        details: { document_saved: true, retryable: true },
+      },
+    }, { status: 503 });
+    return Response.json(result);
+  });
+
+  await assert.rejects(maintainDocuments({ action: "restore", total_count: 4, restored_count: 71, expected_state: "a".repeat(64) }, "same-key"), error => {
+    assert.equal(error.kind, "retrieval-sync");
+    assert.equal(error.details.document_saved, true);
+    return true;
+  });
+  assert.deepEqual(await maintainDocuments({ action: "restore", total_count: 4, restored_count: 71, expected_state: "a".repeat(64) }, "same-key"), result);
+
+  assert.equal(calls, 2);
+  assert.deepEqual(sent[1], sent[0]);
 });
 
 test("응답 body를 읽는 중 timeout은 성공으로 처리하지 않는다", async (t) => {

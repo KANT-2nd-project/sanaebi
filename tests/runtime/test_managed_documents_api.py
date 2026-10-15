@@ -1,10 +1,14 @@
 """Managed document API contracts use an isolated SQLite database."""
 
 import sqlite3
+import subprocess
+import sys
 import tempfile
+import threading
 import unittest
 import uuid
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
 from datetime import datetime, timedelta
 from pathlib import Path
 from unittest.mock import patch
@@ -15,6 +19,43 @@ from fastapi.testclient import TestClient
 from app.documents.http import ManagedDocumentHttpMiddleware
 from app.documents.repository import DocumentRepository
 from app.fastapi_main import app
+from app.retrieval.repository import IndexRepository
+from app.retrieval.sync import DocumentIndexSynchronizer
+
+
+class _FakeRetrievalSync:
+    def __init__(self):
+        self.lock_count = 0
+        self.reconcile_count = 0
+        self.preflight_count = 0
+        self.restore_count = 0
+        self.fail_reconcile = False
+        self.fail_restore = False
+        self.started = threading.Event()
+        self.release = threading.Event()
+
+    @contextmanager
+    def writer_lock(self):
+        self.lock_count += 1
+        yield
+
+    def reconcile_current(self):
+        self.reconcile_count += 1
+        self.started.set()
+        if self.release.is_set() is False and self.block:
+            self.release.wait(timeout=5)
+        if self.fail_reconcile:
+            raise RuntimeError("private index failure")
+
+    def preflight_restore(self):
+        self.preflight_count += 1
+
+    def restore_current(self):
+        self.restore_count += 1
+        if self.fail_restore:
+            raise RuntimeError("private mapping failure")
+
+    block = False
 
 
 class ManagedDocumentsApiTests(unittest.TestCase):
@@ -31,6 +72,14 @@ class ManagedDocumentsApiTests(unittest.TestCase):
             )
         )
         self.client = self.enterContext(TestClient(app, raise_server_exceptions=False))
+
+    def use_rag_sync(self, sync):
+        previous_mode = app.state.retrieval_mode
+        previous_sync = getattr(app.state, "retrieval_sync", None)
+        app.state.retrieval_mode = "rag"
+        app.state.retrieval_sync = sync
+        self.addCleanup(setattr, app.state, "retrieval_mode", previous_mode)
+        self.addCleanup(setattr, app.state, "retrieval_sync", previous_sync)
 
     def create(self, *, title="휴가 안내", body="휴가 신청 절차", **metadata):
         return self.client.post(
@@ -81,6 +130,152 @@ class ManagedDocumentsApiTests(unittest.TestCase):
         self.assertEqual(changed.status_code, 409)
         self.assertEqual(changed.json()["error"]["code"], "idempotency_conflict")
         self.assertEqual(changed.headers["cache-control"], "no-store")
+
+    def test_draft_writes_skip_retrieval_sync_and_publish_waits_for_readiness(self):
+        sync = _FakeRetrievalSync()
+        self.use_rag_sync(sync)
+        created = self.create().json()
+        self.assertEqual(sync.lock_count, 0)
+        self.assertEqual(sync.reconcile_count, 0)
+
+        sync.block = True
+        payload = {
+            "expected_version": created["record_version"],
+            "revision_id": created["draft"]["id"],
+        }
+        headers = {"Idempotency-Key": str(uuid.uuid4())}
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(
+                self.client.post,
+                f"/documents/{created['id']}/publish",
+                headers=headers,
+                json=payload,
+            )
+            self.assertTrue(sync.started.wait(timeout=2))
+            with self.assertRaises(TimeoutError):
+                future.result(timeout=0.05)
+            sync.release.set()
+            response = future.result(timeout=5)
+
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertEqual(sync.lock_count, 1)
+        self.assertEqual(sync.reconcile_count, 1)
+
+    def test_failed_publish_retry_replays_saved_revision_and_rechecks_index(self):
+        sync = _FakeRetrievalSync()
+        sync.fail_reconcile = True
+        self.use_rag_sync(sync)
+        created = self.create().json()
+        payload = {
+            "expected_version": created["record_version"],
+            "revision_id": created["draft"]["id"],
+        }
+        headers = {"Idempotency-Key": str(uuid.uuid4())}
+        path = f"/documents/{created['id']}/publish"
+
+        failed = self.client.post(path, headers=headers, json=payload)
+        self.assertEqual(failed.status_code, 503, failed.text)
+        self.assertEqual(failed.json()["error"]["code"], "retrieval_sync_failed")
+        self.assertEqual(
+            failed.json()["error"]["details"],
+            {"document_saved": True, "retryable": True},
+        )
+        self.assertNotIn("private index failure", failed.text)
+
+        saved_after_failure = self.client.get(f"/documents/{created['id']}").json()
+        self.assertEqual(saved_after_failure["record_version"], 2)
+        sync.fail_reconcile = False
+        replay = self.client.post(path, headers=headers, json=payload)
+        saved_after_replay = self.client.get(f"/documents/{created['id']}").json()
+
+        self.assertEqual(replay.status_code, 200, replay.text)
+        self.assertEqual(replay.json()["published"]["id"], created["draft"]["id"])
+        self.assertEqual(saved_after_replay["record_version"], 2)
+        self.assertEqual(sync.reconcile_count, 2)
+
+    def test_restore_mapping_failure_retries_without_resetting_documents(self):
+        sync = _FakeRetrievalSync()
+        sync.fail_restore = True
+        self.use_rag_sync(sync)
+        preview = self.client.get(
+            "/documents/maintenance-preview", params={"action": "restore"}
+        )
+        self.assertEqual(preview.status_code, 200, preview.text)
+        payload = {
+            "action": "restore",
+            "expected_state": preview.json()["expected_state"],
+        }
+        headers = {"Idempotency-Key": str(uuid.uuid4())}
+        failed = self.client.post(
+            "/documents/maintenance", headers=headers, json=payload
+        )
+        self.assertEqual(failed.status_code, 503, failed.text)
+        self.assertEqual(failed.json()["error"]["code"], "retrieval_sync_failed")
+        self.assertEqual(
+            failed.json()["error"]["details"],
+            {"document_saved": True, "retryable": True},
+        )
+        snapshot_after_failure = DocumentRepository(self.db_path).published_snapshot()
+
+        sync.fail_restore = False
+        preflight_count_before_replay = sync.preflight_count
+        replay = self.client.post(
+            "/documents/maintenance", headers=headers, json=payload
+        )
+        snapshot_after_replay = DocumentRepository(self.db_path).published_snapshot()
+        self.assertEqual(replay.status_code, 200, replay.text)
+        self.assertEqual(snapshot_after_replay, snapshot_after_failure)
+        self.assertEqual(sync.preflight_count, preflight_count_before_replay + 1)
+        self.assertEqual(sync.restore_count, 2)
+        self.assertEqual(sync.reconcile_count, 0)
+
+    def test_cross_process_writer_contention_returns_retryable_503_before_publish(self):
+        created = self.create().json()
+        index_root = self.db_path.parent / "retrieval"
+        sync = DocumentIndexSynchronizer(
+            repository=IndexRepository(index_root),
+            retrieval_service=object(),
+            document_provider=app.state.document_provider,
+            baseline_path=None,
+            source_path=self.db_path.parent / "unused.jsonl",
+            writer_lock_timeout=0.05,
+        )
+        self.use_rag_sync(sync)
+        script = """import sys, time
+from pathlib import Path
+from app.retrieval.sync import writer_lock
+with writer_lock(Path(sys.argv[1])):
+    print('locked', flush=True)
+    time.sleep(1)
+"""
+        process = subprocess.Popen(
+            [sys.executable, "-c", script, str(index_root)],
+            cwd=Path.cwd(),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        try:
+            self.assertEqual(process.stdout.readline().strip(), "locked")
+            response = self.client.post(
+                f"/documents/{created['id']}/publish",
+                headers={"Idempotency-Key": str(uuid.uuid4())},
+                json={
+                    "expected_version": created["record_version"],
+                    "revision_id": created["draft"]["id"],
+                },
+            )
+        finally:
+            process.terminate()
+            process.wait(timeout=5)
+            process.stdout.close()
+            process.stderr.close()
+
+        self.assertEqual(response.status_code, 503, response.text)
+        self.assertEqual(response.json()["error"]["code"], "retrieval_sync_busy")
+        current = self.client.get(f"/documents/{created['id']}").json()
+        self.assertEqual(current["record_version"], created["record_version"])
+        self.assertIsNone(current["published"])
 
     def test_concurrent_identical_create_requests_store_one_document(self):
         key = str(uuid.uuid4())
