@@ -92,7 +92,7 @@ uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -
 
 설치 패키지 포함과 직접 사용하는 httpx/openai 의존성의 명시적 선언은 배포 구성 단계에서 정리한다. 현재 환경에는 기존 의존성 트리로 설치되어 있다.
 
-기존 `sanaebi_assistant.py`와 `answer_pipeline/`는 과거 독립 실행·평가 재현용으로 제자리에 보존한다. 현재 서버는 이 경로를 호출하거나 import하지 않는다. 목표 설계는 [서비스 아키텍처](../docs/service-architecture.md), 품질 기준은 [생성 평가](../docs/generation-evaluation.md), 이번 학습 기록은 [작업 일지](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)를 따른다.
+과거 독립 실행·평가 도구는 [archive/answering_v1](../archive/answering_v1/README.md)에 보존한다. 현재 서버는 이 경로를 호출하거나 import하지 않는다. 목표 설계는 [서비스 아키텍처](../docs/service-architecture.md), 품질 기준은 [생성 평가](../docs/generation-evaluation.md), 이번 학습 기록은 [작업 일지](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)를 따른다.
 
 ## 과거 전체 문서 긴 문맥 실험 설정
 
@@ -149,3 +149,5 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 `examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존한다. 현재 독립 CLI·generate_from_documents·서버 기본값은 두 규칙을 추가한 `examples_answer_scope_v3`이며 [채택 기준](../docs/generation-final-prompt.md)을 따른다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
 
 GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.
+
+`build_profile_prompt(question, documents, profile)`는 프로필을 필수로 받는다. 직접 호출 시 `"baseline"` 또는 원하는 등록 프로필을 명시한다. 서비스·CLI·평가의 실행 기본값은 공통 설정의 v3이며, 과거 실험 전략의 baseline 기본값과 구분한다.
