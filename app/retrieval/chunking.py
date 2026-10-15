@@ -10,7 +10,6 @@ from app.retrieval.config import (
     DEFAULT_SPEC,
     MAX_INPUT_TOKENS,
     OVERLAP_TOKENS,
-    PASSAGE_PREFIX,
     TARGET_BODY_TOKENS,
     RetrievalSpec,
     retrieval_spec_id,
@@ -59,11 +58,16 @@ def token_count(tokenizer, text: str, *, special_tokens=True) -> int:
     return len(_as_list(encoded["input_ids"]))
 
 
-def embedding_input(title: str, heading: str, text: str) -> str:
+def embedding_input(
+    title: str,
+    heading: str,
+    text: str,
+    *,
+    spec: RetrievalSpec = DEFAULT_SPEC,
+) -> str:
     context = "\n".join(part for part in (title, heading) if part.strip())
-    return (
-        f"{PASSAGE_PREFIX}{context}\n{text}" if context else f"{PASSAGE_PREFIX}{text}"
-    )
+    content = f"{context}\n{text}" if context else text
+    return f"{spec.passage_prefix}{content}"
 
 
 def embedding_input_key(value: str, *, spec: RetrievalSpec = DEFAULT_SPEC) -> str:
@@ -232,7 +236,7 @@ def chunk_document(
         text = _render(body, spans)
         base_header = _clip_header(document.title, heading, tokenizer)
         header = base_header
-        encoded_text = embedding_input(header, "", text)
+        encoded_text = embedding_input(header, "", text, spec=spec)
         # The header budget reserves room for a 360-token body and model specials.
         # Keep this as a checked invariant so tokenizer behavior changes fail closed.
         while (
@@ -242,7 +246,7 @@ def chunk_document(
             if len(header_offsets) > 1:
                 base_header = base_header[: header_offsets[-2][1]].rstrip() + "…"
                 header = base_header
-                encoded_text = embedding_input(header, "", text)
+                encoded_text = embedding_input(header, "", text, spec=spec)
                 continue
             raise RetrievalUnavailable("청크가 임베딩 입력 한도를 넘습니다.")
         input_key = embedding_input_key(encoded_text, spec=spec)

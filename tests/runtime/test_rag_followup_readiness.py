@@ -19,9 +19,10 @@ from fastapi.testclient import TestClient
 from app import fastapi_main
 from app.dependencies import get_classifier
 from app.retrieval.baseline import prepare_baseline
+from app.retrieval.config import KURE_SPEC
 from app.retrieval.service import RetrievalService
 from generation.types import ModelResponse
-from tests.retrieval.helpers import FakeEmbedder
+from tests.runtime.kure_helpers import KureFakeEmbedder
 from tests.runtime.test_server_generation import FakeManagedGenerationClient
 
 
@@ -42,12 +43,12 @@ def _write_source(path: Path, body: str) -> None:
     path.write_text(json.dumps(_row(body), ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-class MatchingEmbedder(FakeEmbedder):
+class MatchingEmbedder(KureFakeEmbedder):
     """Readiness tests use a known relevant vector; ranking has separate tests."""
 
     @staticmethod
     def _vector(text):
-        vector = np.zeros(384, dtype=np.float32)
+        vector = np.zeros(1024, dtype=np.float32)
         vector[0] = 1.0
         return vector
 
@@ -74,7 +75,7 @@ class RagFollowupReadinessTests(unittest.TestCase):
         )
         _write_source(self.source, self.baseline_text)
         self.bundle = prepare_baseline(
-            self.source, root / "baseline-bundles", MatchingEmbedder()
+            self.source, root / "baseline-bundles", MatchingEmbedder(), spec=KURE_SPEC
         )
         RuntimeFakeEmbedder.instances.clear()
 
@@ -101,7 +102,10 @@ class RagFollowupReadinessTests(unittest.TestCase):
             patch("app.documents.router.DEFAULT_DOCUMENTS_PATH", self.source)
         )
         self.enterContext(
-            patch("app.retrieval.embedding.TinyEmbedder", RuntimeFakeEmbedder)
+            patch(
+                "app.retrieval.embedding.create_embedder",
+                side_effect=lambda path, **_: RuntimeFakeEmbedder(path),
+            )
         )
 
         self.provider = FakeManagedGenerationClient(
@@ -145,7 +149,7 @@ class RagFollowupReadinessTests(unittest.TestCase):
         self._maintain("restore")
         snapshot = fastapi_main.app.state.document_provider.snapshot()
         self.worker.reconcile(snapshot)
-        orthogonal = np.zeros((1, 384), dtype=np.float32)
+        orthogonal = np.zeros((1, 1024), dtype=np.float32)
         orthogonal[0, 1] = 1.0
         with patch.object(self.embedder, "encode_queries", return_value=orthogonal):
             for path, body in (

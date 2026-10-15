@@ -208,7 +208,9 @@ class IndexRepository:
             connection.close()
 
     def _store_one(self, connection, document, chunks, vectors):
-        array = _validated_matrix(vectors, rows=len(chunks))
+        array = _validated_matrix(
+            vectors, rows=len(chunks), dimension=self.spec.dimension
+        )
         if not chunks and document.body.strip():
             raise RetrievalUnavailable("내용이 있는 문서에서 청크를 만들지 못했습니다.")
         if any(
@@ -276,7 +278,10 @@ class IndexRepository:
             result = {}
             for row in rows:
                 result.setdefault(
-                    row["input_key"], _vector_from_blob(row["vector_blob"])
+                    row["input_key"],
+                    _vector_from_blob(
+                        row["vector_blob"], dimension=self.spec.dimension
+                    ),
                 )
             return result
         except RetrievalUnavailable:
@@ -364,7 +369,9 @@ class IndexRepository:
                         "검색 청크 위치가 문서 범위를 벗어납니다."
                     )
             text = "\n".join(document.body[span.start : span.end] for span in spans)
-            embedding_text = embedding_input(stored["embedding_header"], "", text)
+            embedding_text = embedding_input(
+                stored["embedding_header"], "", text, spec=self.spec
+            )
             if (
                 embedding_input_key(embedding_text, spec=self.spec)
                 != stored["input_key"]
@@ -394,9 +401,13 @@ class IndexRepository:
             self._validate_chunk_against_source(document, chunk)
             chunks.append(chunk)
             if load_vectors:
-                vectors.append(_vector_from_blob(stored["vector_blob"]))
+                vectors.append(
+                    _vector_from_blob(
+                        stored["vector_blob"], dimension=self.spec.dimension
+                    )
+                )
             else:
-                _vector_from_blob(stored["vector_blob"])
+                _vector_from_blob(stored["vector_blob"], dimension=self.spec.dimension)
         covered = bytearray(len(document.body))
         for chunk in chunks:
             for span in chunk.spans:
@@ -444,7 +455,9 @@ class IndexRepository:
         source_text = "\n".join(
             document.body[span.start : span.end] for span in chunk.spans
         )
-        expected_embedding = embedding_input(chunk.embedding_header, "", source_text)
+        expected_embedding = embedding_input(
+            chunk.embedding_header, "", source_text, spec=self.spec
+        )
         if (
             source_text != chunk.text
             or expected_embedding != chunk.embedding_text
@@ -462,11 +475,11 @@ class IndexRepository:
             raise RetrievalUnavailable("검색 청크가 원문과 일치하지 않습니다.")
 
 
-def _vector_from_blob(blob):
-    if not isinstance(blob, bytes) or len(blob) != VECTOR_DIMENSION * 4:
+def _vector_from_blob(blob, *, dimension=VECTOR_DIMENSION):
+    if not isinstance(blob, bytes) or len(blob) != dimension * 4:
         raise RetrievalUnavailable("검색 벡터 차원이 올바르지 않습니다.")
     vector = np.frombuffer(blob, dtype="<f4").astype(np.float32, copy=True)
-    if vector.shape != (VECTOR_DIMENSION,) or not np.isfinite(vector).all():
+    if vector.shape != (dimension,) or not np.isfinite(vector).all():
         raise RetrievalUnavailable("검색 벡터가 유한한 숫자가 아닙니다.")
     norm = float(np.linalg.norm(vector))
     if not np.isclose(norm, 1.0, rtol=1e-4, atol=1e-4):
@@ -474,9 +487,9 @@ def _vector_from_blob(blob):
     return vector
 
 
-def _validated_matrix(vectors, *, rows):
+def _validated_matrix(vectors, *, rows, dimension=VECTOR_DIMENSION):
     array = np.asarray(vectors, dtype=np.float32)
-    if array.shape != (rows, VECTOR_DIMENSION) or not np.isfinite(array).all():
+    if array.shape != (rows, dimension) or not np.isfinite(array).all():
         raise RetrievalUnavailable("저장할 검색 벡터 형식이 올바르지 않습니다.")
     if rows and not np.allclose(
         np.linalg.norm(array, axis=1), 1.0, rtol=1e-4, atol=1e-4

@@ -75,6 +75,11 @@ def prepare_baseline(
     chunker=chunk_document,
 ) -> Path:
     """Build a source-bound immutable bundle and publish it without overwriting."""
+    embedder_spec = getattr(embedder, "spec", None)
+    if embedder_spec is not None and embedder_spec != spec:
+        raise RetrievalUnavailable(
+            "기본 벡터 생성 모델과 요청한 retrieval spec이 다릅니다."
+        )
     source_path = Path(source_path)
     source_raw, rows = _read_source(source_path)
     source_sha = hashlib.sha256(source_raw).hexdigest()
@@ -102,7 +107,14 @@ def prepare_baseline(
                 body=row["document"],
                 source_reference=f"document:{row['document_id']}",
             )
-            chunks = chunker(document, embedder.tokenizer, spec=spec)
+            splitter_tokenizer = getattr(embedder, "splitter_tokenizer", None)
+            chunks = chunker(
+                document,
+                splitter_tokenizer
+                if splitter_tokenizer is not None
+                else embedder.tokenizer,
+                spec=spec,
+            )
             if row["document"].strip() and not chunks:
                 raise RetrievalUnavailable(
                     "기본 문서에서 검색 청크를 만들지 못했습니다."
@@ -117,8 +129,9 @@ def prepare_baseline(
                 embedder.encode_documents([chunk.embedding_text for chunk in batch])
             )
         matrix = _validated_matrix(
-            np.asarray(vectors, dtype=np.float32).reshape((-1, 384)),
+            np.asarray(vectors, dtype=np.float32).reshape((-1, spec.dimension)),
             rows=len(all_chunks),
+            dimension=spec.dimension,
         )
 
         connection = sqlite3.connect(staged, isolation_level=None)
@@ -308,7 +321,9 @@ def restore_baseline(
             for row in rows:
                 spans = _read_spans(row["spans_json"])
                 text = "\n".join(document.body[span.start : span.end] for span in spans)
-                embedding_text = embedding_input(row["embedding_header"], "", text)
+                embedding_text = embedding_input(
+                    row["embedding_header"], "", text, spec=spec
+                )
                 if embedding_input_key(embedding_text, spec=spec) != row["input_key"]:
                     raise RetrievalUnavailable(
                         "기본 벡터 입력이 source와 일치하지 않습니다."
@@ -333,12 +348,14 @@ def restore_baseline(
                         ),
                     )
                 )
-                vectors.append(_vector_from_blob(row["vector_blob"]))
+                vectors.append(
+                    _vector_from_blob(row["vector_blob"], dimension=spec.dimension)
+                )
             records.append(
                 (
                     document,
                     tuple(chunks),
-                    np.asarray(vectors, dtype=np.float32).reshape((-1, 384)),
+                    np.asarray(vectors, dtype=np.float32).reshape((-1, spec.dimension)),
                 )
             )
     except RetrievalUnavailable:
@@ -410,12 +427,12 @@ def _validate_bundle_chunks(title, body, rows, *, spec=DEFAULT_SPEC):
                 )
             covered[span.start : span.end] = b"\x01" * (span.end - span.start)
         text = "\n".join(body[span.start : span.end] for span in spans)
-        embedding_text = embedding_input(row["embedding_header"], "", text)
+        embedding_text = embedding_input(row["embedding_header"], "", text, spec=spec)
         if embedding_input_key(embedding_text, spec=spec) != row["input_key"]:
             raise RetrievalUnavailable("기본 벡터 입력 식별값이 일치하지 않습니다.")
         if not row["embedding_header"].strip():
             raise RetrievalUnavailable("기본 벡터 청크의 임베딩 헤더가 비었습니다.")
-        _vector_from_blob(row["vector_blob"])
+        _vector_from_blob(row["vector_blob"], dimension=spec.dimension)
     if any(
         not char.isspace() and not covered[index] for index, char in enumerate(body)
     ):

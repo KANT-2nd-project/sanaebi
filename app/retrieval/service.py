@@ -11,13 +11,20 @@ import numpy as np
 from app.retrieval.baseline import _connect_bundle
 from app.retrieval.chunking import chunk_document, token_count
 from app.retrieval.config import (
+    DEFAULT_SPEC,
+    KURE_SPEC,
     RetrievalSpec,
     canonical_retrieval_spec,
     retrieval_spec_id,
 )
 from app.retrieval.embedding import _validate_vectors
 from app.retrieval.repository import IndexRepository, _validated_matrix
-from app.retrieval.search import MINIMUM_SIMILARITY_SCORE, search_config_id
+from app.retrieval.search import (
+    KURE_MINIMUM_SIMILARITY_SCORE,
+    KURE_TOP_K,
+    MINIMUM_SIMILARITY_SCORE,
+    search_config_id,
+)
 from app.retrieval.types import (
     Evidence,
     RetrievalInputTooLong,
@@ -43,6 +50,9 @@ class RetrievalService:
         self.spec = repository.spec if spec is None else spec
         if self.spec != repository.spec:
             raise ValueError("retrieval service and repository specs must match")
+        embedder_spec = getattr(embedder, "spec", None)
+        if embedder_spec is not None and embedder_spec != self.spec:
+            raise ValueError("retrieval service and embedder specs must match")
         self.spec_id = retrieval_spec_id(self.spec)
         self.canonical_spec = canonical_retrieval_spec(self.spec)
 
@@ -61,7 +71,14 @@ class RetrievalService:
             single_snapshot = type(snapshot)((document,))
             if self.repository.status(single_snapshot)["ready"]:
                 continue
-            chunks = chunk_document(document, self.embedder.tokenizer, spec=self.spec)
+            splitter_tokenizer = getattr(self.embedder, "splitter_tokenizer", None)
+            chunks = chunk_document(
+                document,
+                splitter_tokenizer
+                if splitter_tokenizer is not None
+                else self.embedder.tokenizer,
+                spec=self.spec,
+            )
             baseline_vectors = self._baseline_vectors(chunks)
             keys = [chunk.input_key for chunk in chunks]
             reusable = self.repository.reusable_vectors(keys)
@@ -75,6 +92,7 @@ class RetrievalService:
                         [chunk.embedding_text for chunk in batch]
                     ),
                     rows=len(batch),
+                    dimension=self.spec.dimension,
                 )
                 for chunk, vector in zip(batch, encoded, strict=True):
                     newly_encoded[chunk.input_key] = vector
@@ -84,7 +102,7 @@ class RetrievalService:
                     for chunk in chunks
                 ],
                 dtype=np.float32,
-            ).reshape((-1, 384))
+            ).reshape((-1, self.spec.dimension))
             self.repository.store_documents(((document, chunks, vectors),))
 
         return self.status(snapshot)
@@ -94,8 +112,11 @@ class RetrievalService:
             raise RetrievalUnavailable("검색 임베딩 모델을 사용할 수 없습니다.")
         if not isinstance(question, str):
             raise TypeError("검색 질문은 문자열이어야 합니다.")
-        query_input = f"query: {question}"
-        if token_count(self.embedder.tokenizer, query_input, special_tokens=True) > 512:
+        query_input = f"{self.spec.query_prefix}{question}"
+        if (
+            token_count(self.embedder.tokenizer, query_input, special_tokens=True)
+            > self.spec.max_query_tokens
+        ):
             raise RetrievalInputTooLong(
                 "검색 질문이 임베딩 모델의 길이 제한을 넘습니다."
             )
@@ -111,18 +132,24 @@ class RetrievalService:
                 selected_count=0,
                 observed_at=datetime.now(UTC),
                 candidate_chunk_ids=(),
-                search_config_id=search_config_id(),
+                search_config_id=search_config_id(self.spec),
             )
 
-        query = _validated_matrix(self.embedder.encode_queries([question]), rows=1)[0]
+        query = _validated_matrix(
+            self.embedder.encode_queries([question]),
+            rows=1,
+            dimension=self.spec.dimension,
+        )[0]
         current = self.repository.current_chunks(snapshot)
         if not current:
             raise RetrievalUnavailable("준비된 게시 문서에 검색 청크가 없습니다.")
         matrix = _validated_matrix(
-            np.stack([vector for _, vector in current]), rows=len(current)
+            np.stack([vector for _, vector in current]),
+            rows=len(current),
+            dimension=self.spec.dimension,
         )
         scores = matrix @ query
-        hits = _ranked_hits(current, scores)
+        hits = _ranked_hits(current, scores, spec=self.spec)
         candidate_chunk_ids = tuple(chunk.chunk_id for chunk, _ in hits)
         evidence_groups = _merge_hits(hits, snapshot)
         selected = _render_evidence(evidence_groups)
@@ -134,7 +161,7 @@ class RetrievalService:
             selected_count=len(selected),
             observed_at=datetime.now(UTC),
             candidate_chunk_ids=candidate_chunk_ids,
-            search_config_id=search_config_id(),
+            search_config_id=search_config_id(self.spec),
         )
 
     def _baseline_vectors(self, chunks):
@@ -166,7 +193,11 @@ class RetrievalService:
                     vector = np.frombuffer(row["vector_blob"], dtype="<f4").astype(
                         np.float32, copy=True
                     )
-                    _validate_vectors(vector.reshape((1, -1)), expected_rows=1)
+                    _validate_vectors(
+                        vector.reshape((1, -1)),
+                        expected_rows=1,
+                        dimension=self.spec.dimension,
+                    )
                     result.setdefault(row["input_key"], vector)
                 return result
             finally:
@@ -177,12 +208,17 @@ class RetrievalService:
             return {}
 
 
-def _ranked_hits(current, scores):
-    """Return every vector hit meeting the fixed inclusive score threshold."""
+def _ranked_hits(current, scores, *, spec=DEFAULT_SPEC):
+    """Apply the active profile's fixed selection contract to ranked vectors."""
     ranked = sorted(
         range(len(current)),
         key=lambda index: (-float(scores[index]), current[index][0].chunk_id),
     )
+    if spec == KURE_SPEC:
+        if not ranked or float(scores[ranked[0]]) < KURE_MINIMUM_SIMILARITY_SCORE:
+            return []
+        ranked = ranked[:KURE_TOP_K]
+        return [(current[index][0], float(scores[index])) for index in ranked]
     return [
         (current[index][0], float(scores[index]))
         for index in ranked

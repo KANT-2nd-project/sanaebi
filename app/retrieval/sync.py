@@ -7,7 +7,7 @@ import time
 from contextlib import contextmanager
 from pathlib import Path
 
-from app.retrieval.config import DEFAULT_SPEC, retrieval_spec_id
+from app.retrieval.config import DEFAULT_SPEC, RetrievalSpec, retrieval_spec_id
 from app.retrieval.types import RetrievalNotReady, RetrievalUnavailable
 
 WRITER_LOCK_TIMEOUT_SECONDS = 10.0
@@ -22,11 +22,14 @@ class RetrievalWriterUnavailable(RuntimeError):
 
 
 @contextmanager
-def writer_lock(root: str | Path, *, timeout: float = WRITER_LOCK_TIMEOUT_SECONDS):
+def writer_lock(
+    root: str | Path,
+    *,
+    spec: RetrievalSpec = DEFAULT_SPEC,
+    timeout: float = WRITER_LOCK_TIMEOUT_SECONDS,
+):
     """Serialize API, worker, CLI, and maintenance index writers on one inode."""
-    lock_path = (
-        Path(root) / "schema-v1" / retrieval_spec_id(DEFAULT_SPEC) / "writer.lock"
-    )
+    lock_path = Path(root) / "schema-v1" / retrieval_spec_id(spec) / "writer.lock"
     try:
         lock_path.parent.mkdir(parents=True, exist_ok=True)
         lock_file_context = lock_path.open("a")
@@ -71,7 +74,11 @@ class DocumentIndexSynchronizer:
         self.writer_lock_timeout = writer_lock_timeout
 
     def writer_lock(self):
-        return writer_lock(self.repository.root, timeout=self.writer_lock_timeout)
+        return writer_lock(
+            self.repository.root,
+            spec=self.repository.spec,
+            timeout=self.writer_lock_timeout,
+        )
 
     def reconcile_current(self):
         snapshot = self.document_provider.snapshot()
@@ -85,7 +92,9 @@ class DocumentIndexSynchronizer:
             raise RetrievalUnavailable("기본 벡터 묶음이 설정되지 않았습니다.")
         from app.retrieval.baseline import validate_baseline
 
-        return validate_baseline(self.baseline_path, self.source_path)
+        return validate_baseline(
+            self.baseline_path, self.source_path, spec=self.repository.spec
+        )
 
     def restore_current(self):
         if self.baseline_path is None:
@@ -98,6 +107,7 @@ class DocumentIndexSynchronizer:
             self.baseline_path,
             self.source_path,
             snapshot,
+            spec=self.repository.spec,
         )
         if status.get("ready") is not True:
             raise RetrievalNotReady("기본 문서의 검색 색인이 준비되지 않았습니다.")

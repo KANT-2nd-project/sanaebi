@@ -8,23 +8,24 @@ from pathlib import Path
 from app.documents.context import DocumentContextProvider
 from app.documents.reset import reset_demo_documents
 from app.retrieval.baseline import restore_baseline, validate_baseline
+from app.retrieval.config import DEFAULT_SPEC, SERVER_SPEC
 from app.retrieval.repository import IndexRepository
 from app.retrieval.service import RetrievalService
 from app.settings import get_retrieval_root
 from scripts.index_documents import writer_lock
 
 
-def reset_with_retrieval(source, database, bundle, root):
+def reset_with_retrieval(source, database, bundle, root, *, spec=DEFAULT_SPEC):
     report = {"documents_reset": False, "retrieval_ready": False}
     try:
-        validate_baseline(bundle, source)
-        with writer_lock(root):
+        validate_baseline(bundle, source, spec=spec)
+        with writer_lock(root, spec=spec):
             # Revalidate after waiting for the writer, before the first source mutation.
-            validate_baseline(bundle, source)
+            validate_baseline(bundle, source, spec=spec)
             reset_demo_documents(source, database, apply=True)
             report["documents_reset"] = True
             provider = DocumentContextProvider(database_path=database)
-            repository = IndexRepository(root)
+            repository = IndexRepository(root, spec=spec)
             restore_baseline(repository, bundle, source, provider.snapshot())
             report.update(
                 RetrievalService(repository, None).status(provider.snapshot())
@@ -50,7 +51,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.check:
         try:
-            metadata = validate_baseline(args.bundle, args.source)
+            metadata = validate_baseline(args.bundle, args.source, spec=SERVER_SPEC)
         except Exception as exc:  # noqa: BLE001 - safe preflight
             print(
                 json.dumps({"status": "failed", "error_type": type(exc).__name__}),
@@ -60,7 +61,7 @@ def main(argv=None):
         print(json.dumps({"status": "ready", **metadata}))
         return 0
     report = reset_with_retrieval(
-        args.source, args.database, args.bundle, get_retrieval_root()
+        args.source, args.database, args.bundle, get_retrieval_root(), spec=SERVER_SPEC
     )
     print(
         json.dumps(report), file=sys.stdout if report["retrieval_ready"] else sys.stderr

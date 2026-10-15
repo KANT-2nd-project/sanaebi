@@ -124,7 +124,7 @@ class RetrievalWriterLockTests(unittest.TestCase):
         signal_calls = []
 
         @contextmanager
-        def tracked_lock(_root):
+        def tracked_lock(_root, **_):
             lock_state["depth"] += 1
             lock_state["entered"] += 1
             try:
@@ -188,7 +188,7 @@ class RetrievalWriterLockTests(unittest.TestCase):
             patch.object(
                 index_documents, "DocumentContextProvider", return_value=FakeProvider()
             ),
-            patch.object(index_documents, "TinyEmbedder", return_value=object()),
+            patch.object(index_documents, "create_embedder", return_value=object()),
             patch.object(index_documents, "RetrievalService", FakeService),
             patch.object(index_documents, "writer_lock", tracked_lock),
             patch.object(index_documents, "Event", return_value=fake_event),

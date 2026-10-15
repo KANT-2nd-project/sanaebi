@@ -8,7 +8,8 @@ from threading import Event
 
 from app.documents.context import DocumentContextProvider
 from app.retrieval.baseline import restore_baseline
-from app.retrieval.embedding import TinyEmbedder
+from app.retrieval.config import SERVER_SPEC
+from app.retrieval.embedding import create_embedder
 from app.retrieval.repository import IndexRepository
 from app.retrieval.service import RetrievalService
 from app.retrieval.sync import writer_lock
@@ -28,7 +29,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         root = get_retrieval_root()
-        repository = IndexRepository(root)
+        repository = IndexRepository(root, spec=SERVER_SPEC)
         provider = DocumentContextProvider()
         if args.status:
             result = RetrievalService(repository, None).status(provider.snapshot())
@@ -38,18 +39,18 @@ def main(argv=None):
             bundle = get_retrieval_baseline()
             if bundle is None:
                 raise ValueError("A baseline bundle is required")
-            with writer_lock(root):
+            with writer_lock(root, spec=SERVER_SPEC):
                 snapshot = provider.snapshot()
                 restore_baseline(repository, bundle, get_retrieval_source(), snapshot)
                 result = RetrievalService(repository, None).status(snapshot)
                 print(json.dumps(result))
                 return 0 if result["ready"] else 2
-        embedder = TinyEmbedder(get_embedding_path())
+        embedder = create_embedder(get_embedding_path(), spec=SERVER_SPEC)
         service = RetrievalService(
             repository, embedder, baseline_path=get_retrieval_baseline()
         )
         if args.once:
-            with writer_lock(root):
+            with writer_lock(root, spec=SERVER_SPEC):
                 snapshot = provider.snapshot()
                 service.reconcile(snapshot)
                 result = service.status(snapshot)
@@ -63,7 +64,7 @@ def main(argv=None):
         try:
             while not stopped.is_set():
                 try:
-                    with writer_lock(root):
+                    with writer_lock(root, spec=SERVER_SPEC):
                         snapshot = provider.snapshot()
                         service.reconcile(snapshot)
                         result = service.status(snapshot)

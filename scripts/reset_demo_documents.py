@@ -31,6 +31,7 @@ def main(argv=None):
     if args.apply and retrieval_mode == "rag":
         from app.documents.context import DocumentContextProvider
         from app.documents.repository import DocumentRepository
+        from app.retrieval.config import SERVER_SPEC
         from app.retrieval.repository import IndexRepository
         from app.retrieval.service import RetrievalService
         from app.retrieval.sync import DocumentIndexSynchronizer
@@ -39,7 +40,7 @@ def main(argv=None):
         try:
             bundle = get_retrieval_baseline()
             database = DocumentRepository(args.database)
-            index = IndexRepository(get_retrieval_root())
+            index = IndexRepository(get_retrieval_root(), spec=SERVER_SPEC)
             synchronizer = DocumentIndexSynchronizer(
                 repository=index,
                 retrieval_service=RetrievalService(index, None, baseline_path=bundle),

@@ -6,7 +6,8 @@ import sys
 from pathlib import Path
 
 from app.retrieval.baseline import prepare_baseline, validate_baseline
-from app.retrieval.embedding import TinyEmbedder
+from app.retrieval.config import SERVER_SPEC
+from app.retrieval.embedding import create_embedder
 from app.settings import get_embedding_path
 
 
@@ -17,9 +18,12 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         bundle = prepare_baseline(
-            args.source, args.output_root, TinyEmbedder(get_embedding_path())
+            args.source,
+            args.output_root,
+            create_embedder(get_embedding_path(), spec=SERVER_SPEC),
+            spec=SERVER_SPEC,
         )
-        metadata = validate_baseline(bundle, args.source)
+        metadata = validate_baseline(bundle, args.source, spec=SERVER_SPEC)
         print(json.dumps({"status": "ready", **metadata, "bundle": str(bundle)}))
         return 0
     except Exception as exc:  # noqa: BLE001 - safe CLI failure

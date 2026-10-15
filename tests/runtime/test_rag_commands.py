@@ -15,10 +15,11 @@ from app.documents.context import DocumentContextProvider
 from app.documents.repository import DocumentRepository
 from app.documents.transfer import _apply_rows, read_source, sha
 from app.retrieval.baseline import prepare_baseline
+from app.retrieval.config import KURE_SPEC
 from app.retrieval.repository import IndexRepository
 from app.retrieval.service import RetrievalService
 from scripts import index_documents, reset_demo_retrieval
-from tests.retrieval.helpers import FakeEmbedder
+from tests.runtime.kure_helpers import KureFakeEmbedder as FakeEmbedder
 
 
 class RagCommandTests(unittest.TestCase):
@@ -38,7 +39,7 @@ class RagCommandTests(unittest.TestCase):
             _apply_rows(self.repository, connection, rows, sha(raw), True)
         self.provider = DocumentContextProvider(repository=self.repository)
         self.bundle = prepare_baseline(
-            self.source, self.root / "bundles", FakeEmbedder()
+            self.source, self.root / "bundles", FakeEmbedder(), spec=KURE_SPEC
         )
         self.index_root = self.root / "index"
         self.enterContext(
@@ -59,7 +60,7 @@ class RagCommandTests(unittest.TestCase):
 
     def test_status_does_not_create_index_or_load_model(self):
         with patch.object(
-            index_documents, "TinyEmbedder", side_effect=AssertionError("no model")
+            index_documents, "create_embedder", side_effect=AssertionError("no model")
         ):
             self.assertEqual(self.run_cli(["--status"]), 2)
         self.assertFalse(self.index_root.exists())
@@ -67,12 +68,16 @@ class RagCommandTests(unittest.TestCase):
     def test_two_resets_map_fresh_revisions_without_model(self):
         before = self.provider.snapshot()
         with patch(
-            "app.retrieval.embedding.TinyEmbedder.warmup",
+            "app.retrieval.embedding.KureEmbedder.warmup",
             side_effect=AssertionError("no model"),
         ):
             for _ in range(2):
                 report = reset_demo_retrieval.reset_with_retrieval(
-                    self.source, self.database, self.bundle, self.index_root
+                    self.source,
+                    self.database,
+                    self.bundle,
+                    self.index_root,
+                    spec=KURE_SPEC,
                 )
                 self.assertTrue(report["documents_reset"], report)
                 self.assertTrue(report["retrieval_ready"], report)
@@ -86,7 +91,7 @@ class RagCommandTests(unittest.TestCase):
         before = self.provider.snapshot().fingerprint
         self.source.write_text(self.source.read_text() + "\n")
         report = reset_demo_retrieval.reset_with_retrieval(
-            self.source, self.database, self.bundle, self.index_root
+            self.source, self.database, self.bundle, self.index_root, spec=KURE_SPEC
         )
         self.assertFalse(report["documents_reset"])
         self.assertEqual(self.provider.snapshot().fingerprint, before)
@@ -98,7 +103,7 @@ class RagCommandTests(unittest.TestCase):
             side_effect=OSError("simulated disk failure"),
         ):
             failed = reset_demo_retrieval.reset_with_retrieval(
-                self.source, self.database, self.bundle, self.index_root
+                self.source, self.database, self.bundle, self.index_root, spec=KURE_SPEC
             )
         self.assertTrue(failed["documents_reset"])
         self.assertFalse(failed["retrieval_ready"])
@@ -111,7 +116,7 @@ class RagCommandTests(unittest.TestCase):
             ),
             patch.object(
                 index_documents,
-                "TinyEmbedder",
+                "create_embedder",
                 side_effect=AssertionError("never load"),
             ),
         ):
@@ -122,16 +127,16 @@ class RagCommandTests(unittest.TestCase):
             version,
         )
         self.assertTrue(
-            RetrievalService(IndexRepository(self.index_root), None).status(before)[
-                "ready"
-            ]
+            RetrievalService(
+                IndexRepository(self.index_root, spec=KURE_SPEC), None
+            ).status(before)["ready"]
         )
 
     def test_writer_lock_refuses_other_writer_before_reset(self):
         before = self.provider.snapshot().fingerprint
-        with index_documents.writer_lock(self.index_root):
+        with index_documents.writer_lock(self.index_root, spec=KURE_SPEC):
             result = reset_demo_retrieval.reset_with_retrieval(
-                self.source, self.database, self.bundle, self.index_root
+                self.source, self.database, self.bundle, self.index_root, spec=KURE_SPEC
             )
         self.assertFalse(result["documents_reset"])
         self.assertEqual(self.provider.snapshot().fingerprint, before)
@@ -161,9 +166,9 @@ class RagCommandTests(unittest.TestCase):
 
     def test_clear_restore_invalidates_then_reuses_baseline_without_encoding(self):
         from app.retrieval.service import RetrievalService
-        from tests.retrieval.helpers import FakeEmbedder
+        from tests.runtime.kure_helpers import KureFakeEmbedder as FakeEmbedder
 
-        index = IndexRepository(self.index_root)
+        index = IndexRepository(self.index_root, spec=KURE_SPEC)
         retriever = RetrievalService(index, FakeEmbedder(), baseline_path=self.bundle)
         retriever.reconcile(self.provider.snapshot())
         previous = self.provider.snapshot()

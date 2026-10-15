@@ -67,7 +67,7 @@ def _root_path(name: str, default: str) -> Path:
 def get_embedding_path() -> Path:
     return _root_path(
         "SANAEBI_EMBEDDING_PATH",
-        "artifacts/embeddings/koen-e5-tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+        "artifacts/embeddings/nlpai-lab--KURE-v1/8b418a58414668e75532ed045c22d9ca018ae2b2",
     )
 
 

@@ -53,14 +53,15 @@ async def lifespan(application: FastAPI):
     application.state.retriever = None
     application.state.retrieval_sync = None
     if retrieval_mode == "rag":
-        from app.retrieval.embedding import TinyEmbedder
+        from app.retrieval.config import SERVER_SPEC
+        from app.retrieval.embedding import create_embedder
         from app.retrieval.repository import IndexRepository
         from app.retrieval.service import RetrievalService
         from app.retrieval.sync import DocumentIndexSynchronizer
 
-        embedder = TinyEmbedder(get_embedding_path())
+        embedder = create_embedder(get_embedding_path(), spec=SERVER_SPEC)
         embedder.warmup()
-        index_repository = IndexRepository(get_retrieval_root())
+        index_repository = IndexRepository(get_retrieval_root(), spec=SERVER_SPEC)
         application.state.retriever = RetrievalService(
             index_repository, embedder, baseline_path=get_retrieval_baseline()
         )

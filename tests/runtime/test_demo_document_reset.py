@@ -290,10 +290,13 @@ class DemoDocumentResetTests(unittest.TestCase):
 
     def test_rag_cli_reports_mapping_failure_without_hiding_completed_reset(self):
         from app.retrieval.baseline import prepare_baseline
+        from app.retrieval.config import KURE_SPEC
         from scripts.reset_demo_documents import main
-        from tests.retrieval.helpers import FakeEmbedder
+        from tests.runtime.kure_helpers import KureFakeEmbedder as FakeEmbedder
 
-        bundle = prepare_baseline(self.source, self.root / "bundles", FakeEmbedder())
+        bundle = prepare_baseline(
+            self.source, self.root / "bundles", FakeEmbedder(), spec=KURE_SPEC
+        )
         env = {
             "SANAEBI_DOCUMENT_DB": str(self.db),
             "SANAEBI_RETRIEVAL_MODE": "rag",
