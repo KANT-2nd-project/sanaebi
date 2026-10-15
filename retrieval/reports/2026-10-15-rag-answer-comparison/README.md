@@ -55,3 +55,7 @@ prepare는 로컬 Tiny 색인과 입력만 준비한다. execute는 유료 API�
 실제 원자료는 별도 작업 공간의 `tmp/answer-evaluation/`에 있다. 이는 `/tmp` 메모리 파일시스템이 아닌 프로젝트 작업 공간 아래이며 공개 다운로드 경로가 아니다. 모델·색인·DB·중복 전체 prompt는 Git에 넣지 않는다. 게시한 결과의 근거와 미복제 원자료 범위를 구분한다.
 
 [실행·복원 안내](../../../docs/rag-runtime.md) · [작업 기록](../../../docs/worklogs/2026-10-15-rag-answer-comparison.md)
+
+## 개발 PC CPU 제한 측정
+
+CPU affinity 2개·torch thread 1에서 R04를 warmup 1회 후10회 검색했다. p50 44.067ms·p95 46.348ms, peak RSS 1,017,672KiB였다. 질의 임베딩과 검색·근거 조립만 포함하며 모델 로딩·HTTP·생성은 제외한다. 한 질문의 개발 PC 측정으로 실제2vCPU 운영 성능을 입증하지 않는다. [설정·개별 측정값](readiness-local-cpu.json).

@@ -23,3 +23,6 @@
 - 실제 Tiny CPU·임시DB에서 전체삭제→빈문서200(검색·생성·예약0), 기본복원→새revision 준비전503(예약0), baseline연결후200과현재revision근거만사용을 확인했다. 동일baseline71문서 복원 중 문서인코딩0회다. 초기 smoke의 보고서가 API에없는status필드를 읽어실패해 action/count로 보고만 수정후 재실행했다. 제품코드는 변경하지 않았다.
 - 모의HTTP 집중4개 및 관련95개, 전체Python815개(50.904초), Ruffcheck·format437파일 통과. 독립검토자가10개+4개테스트와5호출·40CSV행·비용원장·판정집계를 재확인했다. 비밀값·로컬절대경로가 게시결과에 없는지도 확인했다.
 - [실험 보고서·원자료·미완료 항목](../../retrieval/reports/2026-10-15-rag-answer-comparison/README.md)을 기준으로 삼는다. PR/main·Notion 게시 결과는 아래에 후속 기록한다.
+
+- 최신 main `d459758`의 v7 실험·기록을 보존해 통합했다. 기본 v5는 변경하지 않았다. 통합 후 전체 Python832개(49.973초)·Ruff check·format461파일 통과.
+- 개발 PC의 CPU affinity2·torch thread1에서 한 질문10회 검색 p50 44.067ms·p95 46.348ms. 실제2vCPU 운영·전체HTTP 성능과 구분한다.
