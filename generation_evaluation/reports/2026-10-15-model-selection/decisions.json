@@ -1,0 +1,97 @@
+{
+  "development_decisions": [
+    {
+      "candidate": "gpt-concise",
+      "decision": "continue",
+      "reason": "pass4->5,fail2unchanged; RQ6 uncertainty resolved; no previouslypassedcase regression"
+    },
+    {
+      "candidate": "gpt-examples",
+      "decision": "current_best",
+      "reason": "pass6,fail1,uncertain1; criticallookup error removed"
+    },
+    {
+      "candidate": "gpt-examples-low",
+      "decision": "reject",
+      "reason": "criticallookup regression relative examples:none; pass5 partial1 fail1 uncertain1; usage reported0reasoningtokens; noimprovementstreak1"
+    },
+    {
+      "candidate": "gpt-examples-evidence",
+      "decision": "reject",
+      "reason": "4pass3partial1fail; missingcontextoverabstention and quotevalidationfailure; secondconsecutive nonimprovement afterlow; stoptuning"
+    },
+    {
+      "candidate": "gpt-examples",
+      "decision": "final_selected",
+      "reason": "repeat2:4pass2partial2uncertain; bestsinglecritical0 vsbaselinecritical1; instabilityretained; freezeexamples/none/single/output1024/temp0"
+    },
+    {
+      "candidate": "qwen-concise",
+      "decision": "improved_severity",
+      "reason": "criticalcase4->3 whilepass3 fail4 uncertain1"
+    },
+    {
+      "candidate": "qwen-examples",
+      "decision": "current_best",
+      "reason": "critical3 pass4 fail3 uncertain1; no baselinepassedcase regression after behavioralexclusionadjudication"
+    },
+    {
+      "candidate": "qwen-examples-evidence",
+      "decision": "reject",
+      "reason": "1 pass, 2 partial, 5 fail; parsing regressions on previously successful cases"
+    },
+    {
+      "candidate": "qwen-examples",
+      "decision": "final_selected",
+      "reason": "second repeat 4 pass, 1 partial, 3 fail; 4/8 stable; preserve three critical cases; examples/single frozen before final"
+    }
+  ],
+  "gpt_frozen_configuration": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt_frozen_before_final": true,
+  "final_frozen": {
+    "frozen_at": "2026-10-15T00:04:32.321961+00:00",
+    "candidates": {
+      "gpt-examples": {
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "profile": "examples",
+        "strategy": "single",
+        "seed": null
+      },
+      "qwen-examples": {
+        "config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "profile": "examples",
+        "strategy": "single",
+        "seed": 42
+      }
+    },
+    "final_cases_sha256": "94e6a0fe13da9855001e127e335e685b44bfd77f22ca1f5279287659238f6e1b",
+    "rubric_sha256": "7ad85447a6d41de5963090debdab4a6e60c0e63110acee1a7fd0cac65b7ba2aa",
+    "selection_reason": "Development regression screening: concise/examples improve; reasoning-low regressed; evidence-first increased omissions or technical failures; select examples single with verified repeated run, preserve remaining errors. No final results viewed."
+  }
+}

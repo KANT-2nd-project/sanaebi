@@ -1,0 +1,238 @@
+{
+  "denominator": {
+    "attempt_count": 80,
+    "judgment_count": 80,
+    "candidate_count": 2,
+    "case_count": 20,
+    "all_attempts_retained": true
+  },
+  "final_evaluation": true,
+  "candidates": [
+    {
+      "candidate_id": "gpt-examples",
+      "case_count": 20,
+      "response_count": 40,
+      "verdict_counts": {
+        "pass": 12,
+        "partial": 12,
+        "fail": 16,
+        "uncertain": 0
+      },
+      "pass_count": 12,
+      "partial_count": 12,
+      "fail_count": 16,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 5,
+      "repeat_disagreement_case_count": 4,
+      "format_fail_count": 16,
+      "median_elapsed_seconds": 3.1603378155004975,
+      "max_elapsed_seconds": 10.6256696190012,
+      "total_input_tokens": 2293466,
+      "total_output_tokens": 5789,
+      "total_reasoning_tokens": 0,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.31396746000000003,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 18,
+        "over_abstention": 0,
+        "format_error": 16,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 18,
+        "over_abstention": 0,
+        "format_error": 16,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 24,
+          "fail": 16,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 40,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 40,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 22,
+          "fail": 18,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 40,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 5,
+          "fail": 0,
+          "na": 35,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 40,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 40,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 16,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 24,
+        "parse_error": 16
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        -5,
+        -12,
+        0,
+        3.1603378155004975,
+        0,
+        0.31396746000000003
+      ],
+      "rank": 1
+    },
+    {
+      "candidate_id": "qwen-examples",
+      "case_count": 20,
+      "response_count": 40,
+      "verdict_counts": {
+        "pass": 8,
+        "partial": 9,
+        "fail": 23,
+        "uncertain": 0
+      },
+      "pass_count": 8,
+      "partial_count": 9,
+      "fail_count": 23,
+      "uncertain_count": 0,
+      "critical_case_count": 5,
+      "critical_response_count": 9,
+      "stable_both_pass_case_count": 4,
+      "repeat_disagreement_case_count": 1,
+      "format_fail_count": 4,
+      "median_elapsed_seconds": 10.087799175000328,
+      "max_elapsed_seconds": 87.6768900499992,
+      "total_input_tokens": 2600126,
+      "total_output_tokens": 7198,
+      "total_reasoning_tokens": 0,
+      "unknown_input_token_calls": 2,
+      "unknown_output_token_calls": 2,
+      "unknown_reasoning_token_calls": 40,
+      "estimated_cost_dollars": 0.0,
+      "estimated_cost_unknown_count": 2,
+      "issue_counts": {
+        "critical_error": 9,
+        "material_error": 8,
+        "required_omission": 21,
+        "over_abstention": 4,
+        "format_error": 4,
+        "style_relevance": 2
+      },
+      "issue_response_counts": {
+        "critical_error": 9,
+        "material_error": 8,
+        "required_omission": 17,
+        "over_abstention": 4,
+        "format_error": 4,
+        "style_relevance": 2
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 36,
+          "fail": 4,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 19,
+          "fail": 19,
+          "na": 2,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 25,
+          "fail": 13,
+          "na": 2,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 10,
+          "fail": 28,
+          "na": 2,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 23,
+          "fail": 15,
+          "na": 2,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 2,
+          "fail": 2,
+          "na": 36,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 38,
+          "fail": 0,
+          "na": 2,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 34,
+          "fail": 4,
+          "na": 2,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 4,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 36,
+        "parse_error": 2
+      },
+      "default_promotable": false,
+      "rank_key": [
+        5,
+        -4,
+        -8,
+        0,
+        10.087799175000328,
+        1,
+        0.0
+      ],
+      "rank": 2
+    }
+  ]
+}

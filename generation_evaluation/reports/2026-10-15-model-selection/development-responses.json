@@ -1,0 +1,1498 @@
+[
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"마지막 이동 구간 영수증을 분실하셨다면 실제 지출 사실대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 출장 기록 번호·거래별 금액·업무 목적과 함께 제출해 주세요. 영수증이 없다고 증빙이 자동 면제되는 것은 아니므로 재무팀에 대체 증빙 가능 여부를 문의하시면 됩니다. 반려되면 포털의 해당 경비 신청 건에서 사유와 보완이 필요한 항목을 확인해 같은 신청 건에 보완하세요. 제가 포털을 조회하거나 신청을 처리할 수는 없습니다.\"}",
+      "answer": "마지막 이동 구간 영수증을 분실하셨다면 실제 지출 사실대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 출장 기록 번호·거래별 금액·업무 목적과 함께 제출해 주세요. 영수증이 없다고 증빙이 자동 면제되는 것은 아니므로 재무팀에 대체 증빙 가능 여부를 문의하시면 됩니다. 반려되면 포털의 해당 경비 신청 건에서 사유와 보완이 필요한 항목을 확인해 같은 신청 건에 보완하세요. 제가 포털을 조회하거나 신청을 처리할 수는 없습니다.",
+      "input_tokens": 56685,
+      "output_tokens": 153,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.636906032999832,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "119745389944102cc61d4486b130a50a2a4e134d5c14a7bd6bd669d6725b3f4e"
+  },
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"보안 신고 후에는 이음 포털의 보안 신고 기록에서 접수 상태와 담당자·처리 결과를 확인하세요. 담당 당직자는 신고를 확인한 뒤 대응 책임자를 지정하고, 인수 담당자와 다음 연락 경로를 기록합니다. 인수 여부가 확인되지 않거나 담당자가 응답하지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게도 직접 연결할 수 있습니다. 포털과 Slack을 모두 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 이용하세요. 사내비는 실제 신고 상태나 담당자 배정을 조회할 수 없습니다.\"}",
+      "answer": "보안 신고 후에는 이음 포털의 보안 신고 기록에서 접수 상태와 담당자·처리 결과를 확인하세요. 담당 당직자는 신고를 확인한 뒤 대응 책임자를 지정하고, 인수 담당자와 다음 연락 경로를 기록합니다. 인수 여부가 확인되지 않거나 담당자가 응답하지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게도 직접 연결할 수 있습니다. 포털과 Slack을 모두 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 이용하세요. 사내비는 실제 신고 상태나 담당자 배정을 조회할 수 없습니다.",
+      "input_tokens": 56657,
+      "output_tokens": 162,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.175288726000872,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "90af93d5ca5b57b7b3e2c81cefc3850037f181087b891e86c2331819ca5f259c"
+  },
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 카드가 없거나 위치를 모르면 팀장이나 총무 담당자에게 재배부를 요청하세요.\"}",
+      "answer": "Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 카드가 없거나 위치를 모르면 팀장이나 총무 담당자에게 재배부를 요청하세요.",
+      "input_tokens": 56657,
+      "output_tokens": 82,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.1463873489992693,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "8717c036b449b8fae61fb81aa9557b4fc676f4455d9fbcafe9038f100abc3ed8"
+  },
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 첫 로그인 과정에서 다중 인증(MFA) 등록을 완료해야 하며, 등록 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 대신 사용하지 마세요. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}",
+      "answer": "네. 첫 로그인 과정에서 다중 인증(MFA) 등록을 완료해야 하며, 등록 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 대신 사용하지 마세요. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.",
+      "input_tokens": 56666,
+      "output_tokens": 78,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.2703784790010104,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "97939889cc089cf86274e591debcdeea76944de8e94f4eb50a73b77e64bc279c"
+  },
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 재무팀에 기존 지급 건의 신청 번호와 정정 사유를 전달해 처리 방법을 확인해 주세요. 제가 계좌를 조회하거나 변경할 수는 없습니다. 본인 계좌 변경도 문서에 절차가 안내되어 있지 않아, 이음 포털의 재무 메뉴 또는 #finance-help로 문의해 주세요. 계좌 정보는 공개 채널에 올리지 마세요.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 재무팀에 기존 지급 건의 신청 번호와 정정 사유를 전달해 처리 방법을 확인해 주세요. 제가 계좌를 조회하거나 변경할 수는 없습니다. 본인 계좌 변경도 문서에 절차가 안내되어 있지 않아, 이음 포털의 재무 메뉴 또는 #finance-help로 문의해 주세요. 계좌 정보는 공개 채널에 올리지 마세요.",
+      "input_tokens": 56666,
+      "output_tokens": 116,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.747952723000708,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "1011e87fa5f2ebeec1445f8558f1cd77f059ada04edc78960014ecb982c6c025"
+  },
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.\"}",
+      "answer": "경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.",
+      "input_tokens": 56653,
+      "output_tokens": 60,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.480057566001051,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "99ca0035b2e105362de8b03af3efd0d9ce37936649062269c7b02f995cfc7137"
+  },
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경의 마감 시점이나 수정 메뉴가 안내되어 있지 않습니다. People팀에 확인해 주세요. 사내비는 계좌 정보를 직접 변경할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경의 마감 시점이나 수정 메뉴가 안내되어 있지 않습니다. People팀에 확인해 주세요. 사내비는 계좌 정보를 직접 변경할 수 없습니다.",
+      "input_tokens": 56663,
+      "output_tokens": 53,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.140315111999371,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "644a0c196f4fc4513e171bb40cc9be8f1ed1538ad3d550db30650e33b1da0c59"
+  },
+  {
+    "candidate_id": "gpt-baseline",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에서 VPN 신청의 승인 여부를 확인하는 경로나 승인 알림 기준은 확인할 수 없습니다. VPN 신청 메뉴와 처리 절차는 IT운영팀에 문의해 주세요. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk를 이용하시면 됩니다.\"}",
+      "answer": "제공된 문서에서 VPN 신청의 승인 여부를 확인하는 경로나 승인 알림 기준은 확인할 수 없습니다. VPN 신청 메뉴와 처리 절차는 IT운영팀에 문의해 주세요. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk를 이용하시면 됩니다.",
+      "input_tokens": 56659,
+      "output_tokens": 76,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.4904033199982223,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "4c4dc50442dedf1ab02a9ca63e1957b33fba2698e982e4a9a201c89bac8d955c"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"출장 정산에서 영수증을 분실한 경우, 이음 포털 **재무 > 경비 정산**에 사실대로 표시하고 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 결제일로부터 10영업일 안에 거래별 금액·업무 목적·비용 부담 프로젝트와 함께 제출하며, 출장 건이면 출장 기록 번호도 연결합니다. 반려되면 포털의 기존 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 문서에는 반려 사유를 확인하는 별도 메뉴 경로는 안내되어 있지 않습니다.\"}",
+      "answer": "출장 정산에서 영수증을 분실한 경우, 이음 포털 **재무 > 경비 정산**에 사실대로 표시하고 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 결제일로부터 10영업일 안에 거래별 금액·업무 목적·비용 부담 프로젝트와 함께 제출하며, 출장 건이면 출장 기록 번호도 연결합니다. 반려되면 포털의 기존 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 문서에는 반려 사유를 확인하는 별도 메뉴 경로는 안내되어 있지 않습니다.",
+      "input_tokens": 56857,
+      "output_tokens": 154,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.68956864699976,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "fc8531838f03d7c9df4e08c2e79a97bbaefc0ef360e4082787368cbf66125fe2"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"보안 신고 후에는 이음 포털의 보안 신고 기록에서 접수 상태와 담당자 인수 여부를 확인하세요. 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하는 것을 목표로 합니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기세요. 처리 단계와 조치 결과는 담당자·승인·미확인 사항 등이 기록되도록 되어 있지만, 문서에는 신고자가 별도로 조회할 수 있는 메뉴나 경로가 명시되어 있지 않습니다.\"}",
+      "answer": "보안 신고 후에는 이음 포털의 보안 신고 기록에서 접수 상태와 담당자 인수 여부를 확인하세요. 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하는 것을 목표로 합니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기세요. 처리 단계와 조치 결과는 담당자·승인·미확인 사항 등이 기록되도록 되어 있지만, 문서에는 신고자가 별도로 조회할 수 있는 메뉴나 경로가 명시되어 있지 않습니다.",
+      "input_tokens": 56829,
+      "output_tokens": 180,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.2616355680002016,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f436a4ff86333400f5acbcb1523ad1158297987f91ba41faef1349d8ff77f733"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 56829,
+      "output_tokens": 58,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.9871473710009013,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7d61e44ef11bac07c4d8ba5bfab0064b38aa11865b0d52c7687ef2ddfc7f0b7f"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀에 문의해 주세요.\"}",
+      "answer": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀에 문의해 주세요.",
+      "input_tokens": 56838,
+      "output_tokens": 80,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.221559067000271,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "e0709db8f62fbb6ef293325b8b4d55a54a8ea766ffa7b5f87f50b0e8057d89ca"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에서는 거래처 계좌 정정 및 재지급 절차를 확인할 수 없습니다. 개인별 지급 계좌 변경 절차도 안내되어 있지 않아 계좌를 바꿔 드릴 수 없습니다. 재무팀에 문의해 해당 건의 정정·재지급 방법과 계좌 변경 경로를 확인해 주세요. 실제 변경이나 재지급은 수행하지 않았습니다.\"}",
+      "answer": "제공된 문서에서는 거래처 계좌 정정 및 재지급 절차를 확인할 수 없습니다. 개인별 지급 계좌 변경 절차도 안내되어 있지 않아 계좌를 바꿔 드릴 수 없습니다. 재무팀에 문의해 해당 건의 정정·재지급 방법과 계좌 변경 경로를 확인해 주세요. 실제 변경이나 재지급은 수행하지 않았습니다.",
+      "input_tokens": 56838,
+      "output_tokens": 96,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.556173913000748,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b0fd398a80d88727cac314c8a73926a35706d95622983578ecc44829889f6462"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.",
+      "input_tokens": 56825,
+      "output_tokens": 55,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.210236810000424,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "8a76e7b9a7a3efd7028635301a1833da484961dbab6293cccfd50b6bf24e99f7"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에서는 급여 계좌 변경의 신청 기한이나 수정 메뉴를 확인할 수 없습니다. People팀에 다음 급여 반영 가능 시점과 변경 절차를 문의해 주세요.\"}",
+      "answer": "제공된 문서에서는 급여 계좌 변경의 신청 기한이나 수정 메뉴를 확인할 수 없습니다. People팀에 다음 급여 반영 가능 시점과 변경 절차를 문의해 주세요.",
+      "input_tokens": 56835,
+      "output_tokens": 51,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.115836869999839,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "d69f842b2610fafac9d79fb889b4a17469b06f26560a6bf26235d5758e580328"
+  },
+  {
+    "candidate_id": "gpt-concise",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에서 VPN 신청의 승인 여부를 확인하는 경로나 승인 알림 기준은 확인할 수 없습니다. VPN 신청 절차를 안내하는 문서가 없어 확인 경로를 추측해 안내드릴 수 없습니다.\"}",
+      "answer": "제공된 문서에서 VPN 신청의 승인 여부를 확인하는 경로나 승인 알림 기준은 확인할 수 없습니다. VPN 신청 절차를 안내하는 문서가 없어 확인 경로를 추측해 안내드릴 수 없습니다.",
+      "input_tokens": 56831,
+      "output_tokens": 57,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.805666447000476,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "be3fee8adb4ce9b87ae927f89f026a57aac3da3502a1480fed08696bde7c4aef"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"마지막 이동 구간 영수증을 분실하셨다면, 실제 지출을 사실대로 표시하고 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 경비는 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액·업무 목적·출장 기록 번호와 함께 제출합니다. 반려되면 포털의 기존 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 문서에는 반려 사유를 확인하는 별도의 메뉴 경로는 안내되어 있지 않습니다.\"}",
+      "answer": "마지막 이동 구간 영수증을 분실하셨다면, 실제 지출을 사실대로 표시하고 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 경비는 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액·업무 목적·출장 기록 번호와 함께 제출합니다. 반려되면 포털의 기존 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 문서에는 반려 사유를 확인하는 별도의 메뉴 경로는 안내되어 있지 않습니다.",
+      "input_tokens": 57356,
+      "output_tokens": 154,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.6014941120010917,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 메뉴·경로가 명시되어 있지 않습니다. 보안 사고 신고 후 당직 담당자는 목표로 15분 안에 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자와 다음 연락 경로·시각을 기록합니다. 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 신고 경로는 #security-incident 또는 이음 포털 보안 신고이며, 두 경로를 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 따릅니다.\"}",
+      "answer": "문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 메뉴·경로가 명시되어 있지 않습니다. 보안 사고 신고 후 당직 담당자는 목표로 15분 안에 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자와 다음 연락 경로·시각을 기록합니다. 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 신고 경로는 #security-incident 또는 이음 포털 보안 신고이며, 두 경로를 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 따릅니다.",
+      "input_tokens": 57328,
+      "output_tokens": 172,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.6756136560015875,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.228111741000248,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록이 끝나기 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하지 말고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 정상 문의 창구를 이용하세요.\"}",
+      "answer": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록이 끝나기 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하지 말고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 정상 문의 창구를 이용하세요.",
+      "input_tokens": 57337,
+      "output_tokens": 87,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.021695269999327,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않아 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 문서에 명시된 재무 문의 경로는 이음 포털의 재무 메뉴 또는 #finance-help이며, 일반 문의는 평일 9:00–18:00(12:00–13:00 제외)에 처리됩니다.\"}",
+      "answer": "제공된 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않아 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 문서에 명시된 재무 문의 경로는 이음 포털의 재무 메뉴 또는 #finance-help이며, 일반 문의는 평일 9:00–18:00(12:00–13:00 제외)에 처리됩니다.",
+      "input_tokens": 57337,
+      "output_tokens": 102,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.1076938240003074,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.\"}",
+      "answer": "경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 60,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.7999463350006408,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경의 마감 시점이나 수정 메뉴가 안내되어 있지 않습니다. People팀에 확인해 주세요. 문서상 일반 People 문의는 평일 9:00–18:00(12:00–13:00 제외)에 처리됩니다.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경의 마감 시점이나 수정 메뉴가 안내되어 있지 않습니다. People팀에 확인해 주세요. 문서상 일반 People 문의는 평일 9:00–18:00(12:00–13:00 제외)에 처리됩니다.",
+      "input_tokens": 57334,
+      "output_tokens": 70,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.322291956999834,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 여부를 직원이 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 여부를 직원이 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 확인할 수 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 41,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.9850211440007115,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"출장 중 마지막 이동 구간 영수증을 분실하셨다면 이음 포털의 **재무 > 경비 정산**에서 실제 지출을 사실대로 표시하고, 영수증을 잃어버렸다고 적어 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 반려된 경우에는 포털의 기존 경비 신청 건에서 사유와 부족한 항목을 확인해 같은 신청 건에 보완하세요. 문서에는 반려 사유를 확인하는 구체적인 포털 메뉴 경로까지는 안내되어 있지 않습니다.\"}",
+      "answer": "출장 중 마지막 이동 구간 영수증을 분실하셨다면 이음 포털의 **재무 > 경비 정산**에서 실제 지출을 사실대로 표시하고, 영수증을 잃어버렸다고 적어 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 반려된 경우에는 포털의 기존 경비 신청 건에서 사유와 부족한 항목을 확인해 같은 신청 건에 보완하세요. 문서에는 반려 사유를 확인하는 구체적인 포털 메뉴 경로까지는 안내되어 있지 않습니다.",
+      "input_tokens": 57356,
+      "output_tokens": 142,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.2124984209985996,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 보안 신고의 담당자 배정·인수 여부와 다음 연락 경로, 시각을 사건 기록에 남기도록 되어 있습니다. 신고 후 #security-incident 또는 이음 포털의 보안 신고 기록에서 인수 여부를 확인하세요. 담당자가 15분 안에 응답하거나 명시적으로 인수한 사실이 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 보안·개인정보 위험이 있으면 해당 담당자에게도 직접 연결하세요. Slack과 포털을 모두 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 이용합니다. 제가 신고 상태를 직접 조회할 수는 없습니다.\"}",
+      "answer": "문서에는 보안 신고의 담당자 배정·인수 여부와 다음 연락 경로, 시각을 사건 기록에 남기도록 되어 있습니다. 신고 후 #security-incident 또는 이음 포털의 보안 신고 기록에서 인수 여부를 확인하세요. 담당자가 15분 안에 응답하거나 명시적으로 인수한 사실이 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 보안·개인정보 위험이 있으면 해당 담당자에게도 직접 연결하세요. Slack과 포털을 모두 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 이용합니다. 제가 신고 상태를 직접 조회할 수는 없습니다.",
+      "input_tokens": 57328,
+      "output_tokens": 156,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.669779052001104,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 때 오프라인으로 배부받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 이음 포털이 모두 작동하지 않으면 입사 때 오프라인으로 배부받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 65,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.6463939269997354,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근하면 안 됩니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하는 것도 금지되어 있습니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 이용해 주세요.\"}",
+      "answer": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근하면 안 됩니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하는 것도 금지되어 있습니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 이용해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 85,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.5044809179998992,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않아 확인할 수 없습니다. 개인별 지급 계좌 변경도 제가 직접 처리할 수 없습니다. 관련 처리 경로는 문서에서 확인되지 않으므로 재무팀에 문의해 안내받아 주세요.\"}",
+      "answer": "참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않아 확인할 수 없습니다. 개인별 지급 계좌 변경도 제가 직접 처리할 수 없습니다. 관련 처리 경로는 문서에서 확인되지 않으므로 재무팀에 문의해 안내받아 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 73,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.0565101760003017,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.\"}",
+      "answer": "경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 60,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.943025022999791,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경의 신청 기한이나 수정 메뉴가 안내되어 있지 않아 확인할 수 없습니다. People팀에 문의해 변경 경로와 다음 급여 반영 가능 시점을 확인해 주세요. 사내 안내에 따르면 일반 People 문의는 평일 9:00–18:00(12:00–13:00 제외)에 처리됩니다.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경의 신청 기한이나 수정 메뉴가 안내되어 있지 않아 확인할 수 없습니다. People팀에 문의해 변경 경로와 다음 급여 반영 가능 시점을 확인해 주세요. 사내 안내에 따르면 일반 People 문의는 평일 9:00–18:00(12:00–13:00 제외)에 처리됩니다.",
+      "input_tokens": 57334,
+      "output_tokens": 89,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.3558292950001487,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-low",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 여부를 직원이 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 여부를 직원이 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 확인할 수 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 41,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.1251189519989566,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"evidence\":[{\"document_id\":\"ieum-060\",\"quote\":\"영수증을 잃어버렸다면 사실대로 알리고 재무팀에 대체 증빙을 요청한다.\",\"scope\":\"출장 정산에서 영수증을 분실한 경우\",\"conditions\":\"대체 증빙이 자동으로 면제되는 것은 아니며 재무팀에 확인해야 합니다.\"},{\"document_id\":\"ieum-019\",\"quote\":\"영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다.\",\"scope\":\"개인 선결제 업무 경비 정산\",\"conditions\":\"결제일로부터 10영업일 안에 이음 포털 재무 > 경비 정산에 제출합니다.\"},{\"document_id\":\"ieum-019\",\"quote\":\"팀장은 반려 또는 보완을 선택하면 부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.\",\"scope\":\"경비 정산 신청의 반려·보완\",\"conditions\":\"반려 사유와 부족한 항목은 기존 신청 건에서 확인하고 보완합니다.\"}],\"missing\":[\"마지막 이동 구간 영수증 누락을 별도로 기재하는 전용 항목이나 구체적인 작성 문구\",\"신입 출장 정산서의 반려 사유를 포털에서 확인하는 구체적인 화면·메뉴 경로\"]}",
+      "answer": null,
+      "input_tokens": 56636,
+      "output_tokens": 297,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.319173214998955,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 당직 담당자가 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수하며, 연결 시도와 인수 여부를 사건 기록에 남긴다고 되어 있습니다. 다만 신고자가 담당자 배정이나 처리 단계를 직접 확인하는 방법이나 경로는 안내되어 있지 않습니다.\"}",
+      "answer": "문서에는 당직 담당자가 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수하며, 연결 시도와 인수 여부를 사건 기록에 남긴다고 되어 있습니다. 다만 신고자가 담당자 배정이나 처리 단계를 직접 확인하는 방법이나 경로는 안내되어 있지 않습니다.",
+      "input_tokens": 57838,
+      "output_tokens": 387,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 5.205479514999752,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 오프라인으로 받은 비상연락카드를 따르시면 됩니다.\"}",
+      "answer": "Slack과 이음 포털이 모두 작동하지 않으면 입사 시 오프라인으로 받은 비상연락카드를 따르시면 됩니다.",
+      "input_tokens": 57695,
+      "output_tokens": 142,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.978686340000422,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록하며, 설정이 끝나기 전에는 업무 시스템과 자료에 접근하지 않습니다. 계정이 준비되지 않았을 때는 동료 계정으로 우회해서는 안 됩니다.\"}",
+      "answer": "다중 인증은 첫 로그인 과정에서 등록하며, 설정이 끝나기 전에는 업무 시스템과 자료에 접근하지 않습니다. 계정이 준비되지 않았을 때는 동료 계정으로 우회해서는 안 됩니다.",
+      "input_tokens": 57748,
+      "output_tokens": 253,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.848896636000063,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.",
+      "input_tokens": 56617,
+      "output_tokens": 40,
+      "finish_reason": null
+    },
+    "elapsed_seconds": 2.212533011001142,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출하시면 됩니다.",
+      "input_tokens": 57685,
+      "output_tokens": 166,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.054180272998565,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.",
+      "input_tokens": 56614,
+      "output_tokens": 41,
+      "finish_reason": null
+    },
+    "elapsed_seconds": 3.085023440000441,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-evidence",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.",
+      "input_tokens": 56610,
+      "output_tokens": 33,
+      "finish_reason": null
+    },
+    "elapsed_seconds": 2.1507651960000658,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0007",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"출장 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출합니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 임의로 만들거나 누락을 숨기지 말고, 사실대로 표시한 뒤 재무팀에 대체 증빙이 가능한지 문의하세요. 문서에는 증빙 누락을 적는 별도 문구나 입력란은 안내되어 있지 않습니다. 반려되면 포털의 기존 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 출장 식비 정산이라면 참석 정보나 한도 오류는 지급 전에 기존 경비 건을 수정하고, 이미 검토가 끝난 뒤 발견한 차이는 신청 번호와 수정 사유를 재무팀에 보내야 합니다.\"}",
+      "answer": "출장 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출합니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 임의로 만들거나 누락을 숨기지 말고, 사실대로 표시한 뒤 재무팀에 대체 증빙이 가능한지 문의하세요. 문서에는 증빙 누락을 적는 별도 문구나 입력란은 안내되어 있지 않습니다. 반려되면 포털의 기존 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 출장 식비 정산이라면 참석 정보나 한도 오류는 지급 전에 기존 경비 건을 수정하고, 이미 검토가 끝난 뒤 발견한 차이는 신청 번호와 수정 사유를 재무팀에 보내야 합니다.",
+      "input_tokens": 57356,
+      "output_tokens": 192,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.9192873319989303,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0009",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 보안 신고 후 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 메뉴·경로가 명시되어 있지 않습니다. 보안 사고 신고와 초동 대응 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 기록합니다. 15분 안에 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 보안·개인정보 위험이 있으면 해당 담당자에게 직접 연결하세요. 신고 경로는 #security-incident 또는 이음 포털의 보안 신고이며, 두 경로를 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 이용합니다.\"}",
+      "answer": "문서에는 보안 신고 후 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 메뉴·경로가 명시되어 있지 않습니다. 보안 사고 신고와 초동 대응 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 기록합니다. 15분 안에 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 보안·개인정보 위험이 있으면 해당 담당자에게 직접 연결하세요. 신고 경로는 #security-incident 또는 이음 포털의 보안 신고이며, 두 경로를 사용할 수 없으면 입사 때 받은 오프라인 비상연락카드를 이용합니다.",
+      "input_tokens": 57328,
+      "output_tokens": 169,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.4283013830008713,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "POS02",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 61,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.9439016800006357,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "POS03",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근하지 않습니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하지 말고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 정상 문의 창구를 이용하세요.\"}",
+      "answer": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근하지 않습니다. 계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 대신 사용하지 말고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 정상 문의 창구를 이용하세요.",
+      "input_tokens": 57337,
+      "output_tokens": 82,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.9479385939994245,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0006",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않아 확인할 수 없습니다. 등록하신 지급 계좌를 직접 변경할 수도 없습니다. 관련 업무는 재무팀에 문의해 처리 경로를 확인해 주세요. 문서에는 일반 재무 문의 창구로 평일 9:00–18:00(12:00–13:00 제외)가 안내되어 있습니다.\"}",
+      "answer": "참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않아 확인할 수 없습니다. 등록하신 지급 계좌를 직접 변경할 수도 없습니다. 관련 업무는 재무팀에 문의해 처리 경로를 확인해 주세요. 문서에는 일반 재무 문의 창구로 평일 9:00–18:00(12:00–13:00 제외)가 안내되어 있습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 99,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.8742039570006455,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "POS01",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 39,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.6003049800001463,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0001",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 방법이나 다음 급여에 반영되는 마감 시점, 수정 메뉴가 안내되어 있지 않습니다. People팀에 확인해 주세요.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경 방법이나 다음 급여에 반영되는 마감 시점, 수정 메뉴가 안내되어 있지 않습니다. People팀에 확인해 주세요.",
+      "input_tokens": 57334,
+      "output_tokens": 48,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.9433341470012238,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "RQ0004",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 여부를 직원이 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 여부를 직원이 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 확인할 수 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 41,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 1.9170663730001252,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았을 경우, 증빙 누락은 다음과 같이 적습니다.\\n\\n- \\\"영수증을 잃어버렸으며, 실제 지출 합계를 확인할 수 없습니다.\\\"\\n- \\\"증빙 자료를 찾지 못한 사유를 기록하고, 재무팀에 대체 증빙 가능 여부를 문의합니다.\\\"\\n\\n이에 대한 반려 사유는 이음 포털의 \\\"경비 정산 제출과 지급\\\" 문서(문서 ID: ieum-019)에서 확인할 수 있습니다. 해당 문서의 \\\"보완 요청\\\" 항목에 따르면, 반려 사유는 다음과 같은 내용을 기반으로 합니다.\\n\\n- \\\"지출 내역이 부족하거나 증빙이 누락됨\\\"\\n- \\\"영수증을 분실했거나, 실제 지출 합계를 확인할 수 없음\\\"\\n\\n이 사유를 기반으로 포털에 반려 요청을 하면 됩니다. 증빙이 누락된 경우, 재무팀이 대체 증빙을 요청하거나, 지급을 보류할 수 있습니다.\\n\\n또한, 증빙이 누락된 경우, 정산 요청이 반려되며, 재무팀이 처리 결과를 안내합니다. 정산 요청이 반려된 경우, 처리 결과는 이음 포털의 \\\"경비 정산 제출과 지급\\\" 문서의 \\\"검토·보완·지급\\\" 항목에서 확인할 수 있습니다.\"}",
+      "answer": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았을 경우, 증빙 누락은 다음과 같이 적습니다.\n\n- \"영수증을 잃어버렸으며, 실제 지출 합계를 확인할 수 없습니다.\"\n- \"증빙 자료를 찾지 못한 사유를 기록하고, 재무팀에 대체 증빙 가능 여부를 문의합니다.\"\n\n이에 대한 반려 사유는 이음 포털의 \"경비 정산 제출과 지급\" 문서(문서 ID: ieum-019)에서 확인할 수 있습니다. 해당 문서의 \"보완 요청\" 항목에 따르면, 반려 사유는 다음과 같은 내용을 기반으로 합니다.\n\n- \"지출 내역이 부족하거나 증빙이 누락됨\"\n- \"영수증을 분실했거나, 실제 지출 합계를 확인할 수 없음\"\n\n이 사유를 기반으로 포털에 반려 요청을 하면 됩니다. 증빙이 누락된 경우, 재무팀이 대체 증빙을 요청하거나, 지급을 보류할 수 있습니다.\n\n또한, 증빙이 누락된 경우, 정산 요청이 반려되며, 재무팀이 처리 결과를 안내합니다. 정산 요청이 반려된 경우, 처리 결과는 이음 포털의 \"경비 정산 제출과 지급\" 문서의 \"검토·보완·지급\" 항목에서 확인할 수 있습니다.",
+      "input_tokens": 67692,
+      "output_tokens": 364,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 20.403747881000527,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "119745389944102cc61d4486b130a50a2a4e134d5c14a7bd6bd669d6725b3f4e"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\\n\\n1. **신고 후 즉시 확인**: 보안 신고를 올린 후, 신고를 받은 당직 담당자가 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시합니다. 이 과정은 이음 포털의 보안 신고 또는 Slack의 #security-incident 채널에서 확인할 수 있습니다.\\n\\n2. **접수 및 인계 기록 확인**: 신고 후, 당직 담당자는 신고를 인계하고 다음 책임자, 연락 경로, 시각을 기록합니다. 이 정보는 신고를 받은 채널 또는 이음 포털의 보안 신고 기록에서 확인할 수 있습니다.\\n\\n3. **대응 및 처리 단계 확인**: 보안·개인정보 담당자는 위험 범위와 보존 조치를 조정하고, IT운영팀은 승인된 계정·기기 조치를 수행합니다. 이 과정은 이음 포털의 보안 신고 기록 또는 Slack 채널에서 확인할 수 있습니다.\\n\\n4. **접수 이후 확인**: 담당자는 접수 시각과 인수 여부, 다음 책임자를 기록합니다. 이 정보는 신고 기록에서 확인할 수 있습니다.\\n\\n5. **실제 처리 결과 확인**: 처리가 완료되면, 보안·개인정보 담당자는 영향과 추가 조치를 조정하고, IT운영팀은 기술 조치를 수행합니다. 이 내용은 이음 포털의 보안 신고 기록에서 확인할 수 있습니다.\\n\\n이 모든 절차는 이음웍스의 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에서 명시된 방식에 따라 진행됩니다. 신고 후 30분 안에 최초 접수를 남기고, 15분 안에 당직 담당자가 인계를 완료하는 것이 회사 운영 목표입니다.\\n\\n실제 처리 결과는 이음 포털의 보안 신고 기록에서 확인할 수 있으며, 처리 단계는 신고 기록과 함께 기록된 담당자 및 다음 조치를 통해 확인할 수 있습니다.\"}",
+      "answer": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\n\n1. **신고 후 즉시 확인**: 보안 신고를 올린 후, 신고를 받은 당직 담당자가 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시합니다. 이 과정은 이음 포털의 보안 신고 또는 Slack의 #security-incident 채널에서 확인할 수 있습니다.\n\n2. **접수 및 인계 기록 확인**: 신고 후, 당직 담당자는 신고를 인계하고 다음 책임자, 연락 경로, 시각을 기록합니다. 이 정보는 신고를 받은 채널 또는 이음 포털의 보안 신고 기록에서 확인할 수 있습니다.\n\n3. **대응 및 처리 단계 확인**: 보안·개인정보 담당자는 위험 범위와 보존 조치를 조정하고, IT운영팀은 승인된 계정·기기 조치를 수행합니다. 이 과정은 이음 포털의 보안 신고 기록 또는 Slack 채널에서 확인할 수 있습니다.\n\n4. **접수 이후 확인**: 담당자는 접수 시각과 인수 여부, 다음 책임자를 기록합니다. 이 정보는 신고 기록에서 확인할 수 있습니다.\n\n5. **실제 처리 결과 확인**: 처리가 완료되면, 보안·개인정보 담당자는 영향과 추가 조치를 조정하고, IT운영팀은 기술 조치를 수행합니다. 이 내용은 이음 포털의 보안 신고 기록에서 확인할 수 있습니다.\n\n이 모든 절차는 이음웍스의 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에서 명시된 방식에 따라 진행됩니다. 신고 후 30분 안에 최초 접수를 남기고, 15분 안에 당직 담당자가 인계를 완료하는 것이 회사 운영 목표입니다.\n\n실제 처리 결과는 이음 포털의 보안 신고 기록에서 확인할 수 있으며, 처리 단계는 신고 기록과 함께 기록된 담당자 및 다음 조치를 통해 확인할 수 있습니다.",
+      "input_tokens": 67663,
+      "output_tokens": 543,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 30.20380267099972,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "90af93d5ca5b57b7b3e2c81cefc3850037f181087b891e86c2331819ca5f259c"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면, 입사 시 받은 오프라인 비상연락카드를 사용합니다. 비상연락카드의 실제 전화번호는 문서에 적지 않으며, 공개 채널에 복사하지 않습니다.\"}",
+      "answer": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면, 입사 시 받은 오프라인 비상연락카드를 사용합니다. 비상연락카드의 실제 전화번호는 문서에 적지 않으며, 공개 채널에 복사하지 않습니다.",
+      "input_tokens": 67659,
+      "output_tokens": 76,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.394707639999979,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "8717c036b449b8fae61fb81aa9557b4fc676f4455d9fbcafe9038f100abc3ed8"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"예, 첫 로그인 전에 다중 인증(MFA)을 반드시 등록해야 합니다. 다중 인증은 회사 계정에 접근할 때 보안을 확보하기 위한 필수 절차이며, 등록이 완료되지 않은 상태에서 업무 시스템이나 자료에 접근할 수 없습니다.\\n\\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 금지되어 있습니다. 회사 계정은 개인 기기나 타인의 계정을 통해 우회하지 않으며, 모든 업무는 승인된 회사 계정과 권한을 기반으로 수행되어야 합니다. 계정 준비가 완료되지 않았을 경우, 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 통해 지원을 받는 것이 원칙입니다.\"}",
+      "answer": "예, 첫 로그인 전에 다중 인증(MFA)을 반드시 등록해야 합니다. 다중 인증은 회사 계정에 접근할 때 보안을 확보하기 위한 필수 절차이며, 등록이 완료되지 않은 상태에서 업무 시스템이나 자료에 접근할 수 없습니다.\n\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 금지되어 있습니다. 회사 계정은 개인 기기나 타인의 계정을 통해 우회하지 않으며, 모든 업무는 승인된 회사 계정과 권한을 기반으로 수행되어야 합니다. 계정 준비가 완료되지 않았을 경우, 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 통해 지원을 받는 것이 원칙입니다.",
+      "input_tokens": 67675,
+      "output_tokens": 203,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 11.413332101001288,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "97939889cc089cf86274e591debcdeea76944de8e94f4eb50a73b77e64bc279c"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에는 거래처 계좌 정정과 재지급 절차, 또는 계좌 변경에 관한 내용이 없습니다. 또한, 계좌를 바꾸는 요청에 대한 처리 경로도 명시되어 있지 않습니다.\\n\\n따라서 해당 요청은 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 거래처 계좌 정정과 재지급 절차, 또는 계좌 변경에 관한 내용이 없습니다. 또한, 계좌를 바꾸는 요청에 대한 처리 경로도 명시되어 있지 않습니다.\n\n따라서 해당 요청은 확인할 수 없습니다.",
+      "input_tokens": 67666,
+      "output_tokens": 70,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.256395088001227,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "1011e87fa5f2ebeec1445f8558f1cd77f059ada04edc78960014ecb982c6c025"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"결제 후 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.\"}",
+      "answer": "결제 후 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.",
+      "input_tokens": 67654,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.684100052998474,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "99ca0035b2e105362de8b03af3efd0d9ce37936649062269c7b02f995cfc7137"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"은행 계좌 변경은 개인 기록에 반영되어야 하며, 이는 급여 처리와 관련된 사항입니다. 회사의 급여 정산 절차에 따르면, 급여 전에 계좌 정보를 수정해야 합니다. 관련된 절차는 다음과 같습니다.\\n\\n1. **수정 시점**: 퇴사 전 또는 퇴사 후 급여 처리 전에 수정해야 합니다.\\n2. **수정 방법**: 이음 포털의 **인사 > 퇴사 절차** 또는 **인사 > 개인 정보 수정** 메뉴에서 계좌 정보를 업데이트합니다.\\n3. **확인**: 수정 후 팀장과 People팀에 알리고, 급여 처리 전에 계좌 정보가 정확히 반영되었는지 확인합니다.\\n\\n이 절차는 회사의 인사 정책에 따라 정해져 있으며, 급여 처리 전에 반드시 수정되어야 합니다. 추가 문의는 People팀에 직접 문의하시기 바랍니다.\"}",
+      "answer": "은행 계좌 변경은 개인 기록에 반영되어야 하며, 이는 급여 처리와 관련된 사항입니다. 회사의 급여 정산 절차에 따르면, 급여 전에 계좌 정보를 수정해야 합니다. 관련된 절차는 다음과 같습니다.\n\n1. **수정 시점**: 퇴사 전 또는 퇴사 후 급여 처리 전에 수정해야 합니다.\n2. **수정 방법**: 이음 포털의 **인사 > 퇴사 절차** 또는 **인사 > 개인 정보 수정** 메뉴에서 계좌 정보를 업데이트합니다.\n3. **확인**: 수정 후 팀장과 People팀에 알리고, 급여 처리 전에 계좌 정보가 정확히 반영되었는지 확인합니다.\n\n이 절차는 회사의 인사 정책에 따라 정해져 있으며, 급여 처리 전에 반드시 수정되어야 합니다. 추가 문의는 People팀에 직접 문의하시기 바랍니다.",
+      "input_tokens": 67665,
+      "output_tokens": 240,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 110.27880199399988,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "644a0c196f4fc4513e171bb40cc9be8f1ed1538ad3d550db30650e33b1da0c59"
+  },
+  {
+    "candidate_id": "qwen-baseline",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제출한 VPN 신청이 승인됐는지 확인하는 경로와 알림 기준에 대해 제공된 문서에서 명시된 정보가 없습니다. 따라서 해당 내용은 확인할 수 없습니다.\"}",
+      "answer": "제출한 VPN 신청이 승인됐는지 확인하는 경로와 알림 기준에 대해 제공된 문서에서 명시된 정보가 없습니다. 따라서 해당 내용은 확인할 수 없습니다.",
+      "input_tokens": 67663,
+      "output_tokens": 50,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.0858872779990634,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "4c4dc50442dedf1ab02a9ca63e1957b33fba2698e982e4a9a201c89bac8d955c"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"증빙 누락은 신청서 제출 후 10영업일 안에 이음 포털의 \\\"재무 > 경비 정산\\\"에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 하며, 영수증을 잃어버렸다면 사실대로 표시하고 재무팀에 대체 증빙 가능 여부를 묻는 절차를 따릅니다. 반려 사유는 포털에서 \\\"반려\\\" 상태가 되면 사유와 부족한 정보를 확인하고, 그 사유는 포털 기록에 명시되어 있습니다. 처리 결과가 반려된 경우, 사유와 보완 요청을 확인하여 필요한 항목만 보완하고, 기존 신청 건에 보완을 진행합니다. 관련 문서: 문서 ID: ieum-019, 문서 ID: ieum-060\"}",
+      "answer": "증빙 누락은 신청서 제출 후 10영업일 안에 이음 포털의 \"재무 > 경비 정산\"에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 하며, 영수증을 잃어버렸다면 사실대로 표시하고 재무팀에 대체 증빙 가능 여부를 묻는 절차를 따릅니다. 반려 사유는 포털에서 \"반려\" 상태가 되면 사유와 부족한 정보를 확인하고, 그 사유는 포털 기록에 명시되어 있습니다. 처리 결과가 반려된 경우, 사유와 보완 요청을 확인하여 필요한 항목만 보완하고, 기존 신청 건에 보완을 진행합니다. 관련 문서: 문서 ID: ieum-019, 문서 ID: ieum-060",
+      "input_tokens": 67878,
+      "output_tokens": 210,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 11.81395289700049,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "fc8531838f03d7c9df4e08c2e79a97bbaefc0ef360e4082787368cbf66125fe2"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 신고를 올린 후 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\\n\\n1. 신고 후 30분 안에 이음 포털의 **보안 > 사고 신고** 또는 Slack의 **#security-incident** 채널에 최초 접수를 남깁니다. 이는 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아닙니다.\\n\\n2. 신고 후 15분 이내에 24시간 당직 담당자가 신고를 확인하고 인계 책임자를 명시합니다. 이 시간은 인계 목표이며, 사고 해결 시간이나 법정 통지 기한을 뜻지 않습니다.\\n\\n3. 당직 담당자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리지 말고 팀장에게 대체 인계를 요청합니다. 팀장도 대응을 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\\n\\n4. 접수 이후 담당자는 다음 내용을 기록합니다:\\n- 신고 시각, 발견 시각, 대상 시스템, 자료 종류와 등급\\n- 이미 한 조치\\n- 다음 책임자와 연락 경로\\n\\n5. 보안·개인정보 담당자는 위험·증거 보존·필요한 보호 조치를 검토하고, IT운영팀은 승인된 계정·기기 조치를 수행합니다.\\n\\n6. 처리 단계를 확인하려면 이음 포털의 보안 신고 기록 또는 Slack의 #security-incident 채널에서 접수 시각, 인계 담당자, 다음 확인 시점 등을 확인합니다.\\n\\n이 과정은 신고 후 15분 이내에 담당자 인계가 이루어지며, 이후 진행 상황은 기록에 따라 확인할 수 있습니다.\"}",
+      "answer": "보안 신고를 올린 후 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\n\n1. 신고 후 30분 안에 이음 포털의 **보안 > 사고 신고** 또는 Slack의 **#security-incident** 채널에 최초 접수를 남깁니다. 이는 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아닙니다.\n\n2. 신고 후 15분 이내에 24시간 당직 담당자가 신고를 확인하고 인계 책임자를 명시합니다. 이 시간은 인계 목표이며, 사고 해결 시간이나 법정 통지 기한을 뜻지 않습니다.\n\n3. 당직 담당자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리지 말고 팀장에게 대체 인계를 요청합니다. 팀장도 대응을 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\n\n4. 접수 이후 담당자는 다음 내용을 기록합니다:\n- 신고 시각, 발견 시각, 대상 시스템, 자료 종류와 등급\n- 이미 한 조치\n- 다음 책임자와 연락 경로\n\n5. 보안·개인정보 담당자는 위험·증거 보존·필요한 보호 조치를 검토하고, IT운영팀은 승인된 계정·기기 조치를 수행합니다.\n\n6. 처리 단계를 확인하려면 이음 포털의 보안 신고 기록 또는 Slack의 #security-incident 채널에서 접수 시각, 인계 담당자, 다음 확인 시점 등을 확인합니다.\n\n이 과정은 신고 후 15분 이내에 담당자 인계가 이루어지며, 이후 진행 상황은 기록에 따라 확인할 수 있습니다.",
+      "input_tokens": 67849,
+      "output_tokens": 468,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 25.843793895999625,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f436a4ff86333400f5acbcb1523ad1158297987f91ba41faef1349d8ff77f733"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면, 입사 시 배부한 비상연락카드의 보안 연락 안내를 따릅니다. 비상연락카드에는 실제 전화번호가 기재되어 있으며, 이는 공개 문서에 포함되지 않습니다.\"}",
+      "answer": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면, 입사 시 배부한 비상연락카드의 보안 연락 안내를 따릅니다. 비상연락카드에는 실제 전화번호가 기재되어 있으며, 이는 공개 문서에 포함되지 않습니다.",
+      "input_tokens": 67845,
+      "output_tokens": 76,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.425958771000296,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7d61e44ef11bac07c4d8ba5bfab0064b38aa11865b0d52c7687ef2ddfc7f0b7f"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"예, 첫 로그인 전에 다중 인증(MFA)을 꼭 등록해야 합니다. 다중 인증은 회사 계정의 보안을 위해 필수적인 절차이며, 등록이 완료되기 전에는 업무 시스템이나 자료에 접근할 수 없습니다.\\n\\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 금지됩니다. 회사 기준에 따라 개인 기기나 타인의 계정을 우회하여 업무를 시작하는 것은 허용되지 않으며, 이는 보안 위험과 정보 유출을 초래할 수 있습니다. 계정이 준비되지 않았을 경우, 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 통해 지원을 받는 것이 원칙입니다.\"}",
+      "answer": "예, 첫 로그인 전에 다중 인증(MFA)을 꼭 등록해야 합니다. 다중 인증은 회사 계정의 보안을 위해 필수적인 절차이며, 등록이 완료되기 전에는 업무 시스템이나 자료에 접근할 수 없습니다.\n\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 금지됩니다. 회사 기준에 따라 개인 기기나 타인의 계정을 우회하여 업무를 시작하는 것은 허용되지 않으며, 이는 보안 위험과 정보 유출을 초래할 수 있습니다. 계정이 준비되지 않았을 경우, 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 통해 지원을 받는 것이 원칙입니다.",
+      "input_tokens": 67861,
+      "output_tokens": 199,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 11.149724372999117,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "e0709db8f62fbb6ef293325b8b4d55a54a8ea766ffa7b5f87f50b0e8057d89ca"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에 따르면, 거래처 계좌 정정과 재지급 절차, 또는 지급 계좌 변경에 대한 내용이 포함되어 있지 않습니다. 관련된 절차나 권한, 처리 경로에 대한 정보가 없습니다.\"}",
+      "answer": "제공된 문서에 따르면, 거래처 계좌 정정과 재지급 절차, 또는 지급 계좌 변경에 대한 내용이 포함되어 있지 않습니다. 관련된 절차나 권한, 처리 경로에 대한 정보가 없습니다.",
+      "input_tokens": 67852,
+      "output_tokens": 63,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.710135322999122,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b0fd398a80d88727cac314c8a73926a35706d95622983578ecc44829889f6462"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"결제 후 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.\"}",
+      "answer": "결제 후 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.",
+      "input_tokens": 67840,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.6309384899996076,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "8a76e7b9a7a3efd7028635301a1833da484961dbab6293cccfd50b6bf24e99f7"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에는 은행 계좌 변경에 대한 정보가 포함되어 있지 않습니다. 은행 계좌 변경은 재무팀 또는 People팀에 문의하여 처리해야 하며, 관련 절차는 '출장·정산 안내' 또는 '업무용 구매와 공급업체 선택' 등의 문서에서 다루지 않습니다. 은행 계좌 변경을 위한 정확한 절차와 기한은 회사의 재무 정책에 따르며, 이에 대한 문의는 People팀에 직접 요청하시기 바랍니다.\"}",
+      "answer": "제공된 문서에는 은행 계좌 변경에 대한 정보가 포함되어 있지 않습니다. 은행 계좌 변경은 재무팀 또는 People팀에 문의하여 처리해야 하며, 관련 절차는 '출장·정산 안내' 또는 '업무용 구매와 공급업체 선택' 등의 문서에서 다루지 않습니다. 은행 계좌 변경을 위한 정확한 절차와 기한은 회사의 재무 정책에 따르며, 이에 대한 문의는 People팀에 직접 요청하시기 바랍니다.",
+      "input_tokens": 67851,
+      "output_tokens": 128,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 106.26945872599936,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "d69f842b2610fafac9d79fb889b4a17469b06f26560a6bf26235d5758e580328"
+  },
+  {
+    "candidate_id": "qwen-concise",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제출한 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준은 제공된 문서에서 명시되어 있지 않습니다. 관련된 정책이나 절차를 찾을 수 없습니다.\"}",
+      "answer": "제출한 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준은 제공된 문서에서 명시되어 있지 않습니다. 관련된 정책이나 절차를 찾을 수 없습니다.",
+      "input_tokens": 67849,
+      "output_tokens": 53,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.2917032950008434,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "be3fee8adb4ce9b87ae927f89f026a57aac3da3502a1480fed08696bde7c4aef"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"사내 포털 안내에 따르면, 증빙 누락은 정산 요청 시 제출한 영수증이 실제 지출과 일치하지 않거나, 영수증이 분실된 경우에 적용됩니다. 이 경우, 증빙 누락 사유는 다음 항목을 기록하여 제출해야 합니다.\\n\\n- 실제 지출이 발생한 날짜와 장소\\n- 영수증이 분실된 사유 (예: 보관 장소에서 분실, 이동 중 잃어버림 등)\\n- 분실 시점과 장소, 당시의 상황\\n- 분실 후 즉시 조치 (예: 보안 사고 신고, 보관 장소 확인 등)\\n\\n이 정보는 이음 포털의 **재무 > 경비 정산**에 제출된 신청서에 포함되어야 하며, 증빙이 누락된 경우에만 반려 사유가 적용됩니다.\\n\\n반려 사유는 팀장과 재무팀이 승인한 기준에 따라 검토되며, 반려 사유는 포털의 **재무 > 경비 정산**에서 승인 결과와 보완 요청 사항을 확인할 수 있습니다. 반려 사유는 다음 항목을 포함합니다:\\n\\n- 부족한 항목 (예: 영수증 없음, 지출 기간 불일치 등)\\n- 보완 요청 사유 (예: 영수증 분실, 지출 기록 부족 등)\\n- 승인 기준에 미치지 못한 사항\\n\\n이 정보는 포털에서 승인 결과와 보완 요청 사항을 확인할 수 있으며, 반려 사유는 해당 신청의 처리 결과에 명시됩니다. 증빙이 누락된 경우, 반려 사유는 위 항목을 기반으로 하여 팀장과 재무팀이 검토한 결과로 결정됩니다.\"}",
+      "answer": "사내 포털 안내에 따르면, 증빙 누락은 정산 요청 시 제출한 영수증이 실제 지출과 일치하지 않거나, 영수증이 분실된 경우에 적용됩니다. 이 경우, 증빙 누락 사유는 다음 항목을 기록하여 제출해야 합니다.\n\n- 실제 지출이 발생한 날짜와 장소\n- 영수증이 분실된 사유 (예: 보관 장소에서 분실, 이동 중 잃어버림 등)\n- 분실 시점과 장소, 당시의 상황\n- 분실 후 즉시 조치 (예: 보안 사고 신고, 보관 장소 확인 등)\n\n이 정보는 이음 포털의 **재무 > 경비 정산**에 제출된 신청서에 포함되어야 하며, 증빙이 누락된 경우에만 반려 사유가 적용됩니다.\n\n반려 사유는 팀장과 재무팀이 승인한 기준에 따라 검토되며, 반려 사유는 포털의 **재무 > 경비 정산**에서 승인 결과와 보완 요청 사항을 확인할 수 있습니다. 반려 사유는 다음 항목을 포함합니다:\n\n- 부족한 항목 (예: 영수증 없음, 지출 기간 불일치 등)\n- 보완 요청 사유 (예: 영수증 분실, 지출 기록 부족 등)\n- 승인 기준에 미치지 못한 사항\n\n이 정보는 포털에서 승인 결과와 보완 요청 사항을 확인할 수 있으며, 반려 사유는 해당 신청의 처리 결과에 명시됩니다. 증빙이 누락된 경우, 반려 사유는 위 항목을 기반으로 하여 팀장과 재무팀이 검토한 결과로 결정됩니다.",
+      "input_tokens": 68445,
+      "output_tokens": 435,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 24.177127815999484,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 신고를 올린 후 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\\n\\n1. 신고 후 15분 안에 24시간 당직 담당자가 신고를 확인하고 대응 책임자를 명시합니다. 이 시간은 인계 목표이며, 사고 해결 시간이나 법정 통지 기한을 뜻하지 않습니다.\\n\\n2. 인계 후 담당자는 신고를 받은 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록합니다.\\n\\n3. 접수와 인계 이후, 보안·개인정보 담당자는 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청을 합니다.\\n\\n4. 처리 단계는 다음 순서로 진행됩니다:\\n- 발견: 추가 전송·접속을 중단하고 첫 신고\\n- 접수: 당직 담당자가 확인 후 담당 역할 지정\\n- 대응: 보안·개인정보 담당자가 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청\\n- 후속: 업무·자료 소유자와 필요한 복구, 보존, 추가 통지 판단\\n\\n5. 이 모든 단계는 이음 포털의 보안 > 사고 신고 또는 Slack의 #security-incident 채널에서 확인할 수 있습니다. 신고 메시지에는 발견 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록하며, 비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않습니다.\\n\\n6. 처리 상태는 이음 포털의 보안 > 사고 신고 기록에서 확인할 수 있습니다. 기록에는 인계 담당자, 다음 연락 경로, 시각, 수행 주체, 승인, 조치 결과와 미확인 사항이 포함됩니다.\\n\\n따라, 신고 후 15분 안에 당직 담당자가 인계를 완료하고, 이후 처리 단계는 이음 포털 및 Slack 채널에서 확인할 수 있습니다.\"}",
+      "answer": "보안 신고를 올린 후 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\n\n1. 신고 후 15분 안에 24시간 당직 담당자가 신고를 확인하고 대응 책임자를 명시합니다. 이 시간은 인계 목표이며, 사고 해결 시간이나 법정 통지 기한을 뜻하지 않습니다.\n\n2. 인계 후 담당자는 신고를 받은 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록합니다.\n\n3. 접수와 인계 이후, 보안·개인정보 담당자는 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청을 합니다.\n\n4. 처리 단계는 다음 순서로 진행됩니다:\n- 발견: 추가 전송·접속을 중단하고 첫 신고\n- 접수: 당직 담당자가 확인 후 담당 역할 지정\n- 대응: 보안·개인정보 담당자가 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청\n- 후속: 업무·자료 소유자와 필요한 복구, 보존, 추가 통지 판단\n\n5. 이 모든 단계는 이음 포털의 보안 > 사고 신고 또는 Slack의 #security-incident 채널에서 확인할 수 있습니다. 신고 메시지에는 발견 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록하며, 비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않습니다.\n\n6. 처리 상태는 이음 포털의 보안 > 사고 신고 기록에서 확인할 수 있습니다. 기록에는 인계 담당자, 다음 연락 경로, 시각, 수행 주체, 승인, 조치 결과와 미확인 사항이 포함됩니다.\n\n따라, 신고 후 15분 안에 당직 담당자가 인계를 완료하고, 이후 처리 단계는 이음 포털 및 Slack 채널에서 확인할 수 있습니다.",
+      "input_tokens": 68416,
+      "output_tokens": 552,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 30.660639019999508,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드를 사용합니다.\"}",
+      "answer": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드를 사용합니다.",
+      "input_tokens": 68412,
+      "output_tokens": 43,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.5907843229997525,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"네, 첫 로그인 전에 다중 인증(MFA)을 반드시 등록해야 합니다. 다중 인증 등록이 완료되기 전에는 업무 시스템과 자료에 접근하지 않아야 하며, 등록 전에 업무 시스템에 접근하는 것은 금지됩니다.\\n\\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 허용되지 않습니다. 계정이 준비되지 않았을 경우, 동료 계정을 사용하거나 개인 기기로 우회하는 것은 금지되며, 팀장에게 첫날 진행할 대체 업무를 요청하고, IT운영팀의 정상 문의 창구를 이용해야 합니다.\"}",
+      "answer": "네, 첫 로그인 전에 다중 인증(MFA)을 반드시 등록해야 합니다. 다중 인증 등록이 완료되기 전에는 업무 시스템과 자료에 접근하지 않아야 하며, 등록 전에 업무 시스템에 접근하는 것은 금지됩니다.\n\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 허용되지 않습니다. 계정이 준비되지 않았을 경우, 동료 계정을 사용하거나 개인 기기로 우회하는 것은 금지되며, 팀장에게 첫날 진행할 대체 업무를 요청하고, IT운영팀의 정상 문의 창구를 이용해야 합니다.",
+      "input_tokens": 68428,
+      "output_tokens": 172,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 9.770485310000367,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"참고 문서에 따르면, 거래처 계좌 정정과 재지급 절차, 또는 지급 계좌 변경에 대한 내용이 포함되어 있지 않습니다. 관련된 절차나 권한은 제공된 문서에서 확인할 수 없습니다.\"}",
+      "answer": "참고 문서에 따르면, 거래처 계좌 정정과 재지급 절차, 또는 지급 계좌 변경에 대한 내용이 포함되어 있지 않습니다. 관련된 절차나 권한은 제공된 문서에서 확인할 수 없습니다.",
+      "input_tokens": 68419,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.656162224999207,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"결제 후 10영업일 안에 이음 포털의 \\\"재무 > 경비 정산\\\"에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.\"}",
+      "answer": "결제 후 10영업일 안에 이음 포털의 \"재무 > 경비 정산\"에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.",
+      "input_tokens": 68407,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.6864385659991967,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 은행 계좌 변경에 관한 내용이 포함되어 있지 않습니다. 은행 계좌 변경은 급여 처리와 관련된 절차를 따르며, 이에 대한 처리 경로는 제공된 문서에서 확인할 수 없습니다. 관련 문의는 People팀에 직접 연결하여 확인하시기 바랍니다.\"}",
+      "answer": "문서에 은행 계좌 변경에 관한 내용이 포함되어 있지 않습니다. 은행 계좌 변경은 급여 처리와 관련된 절차를 따르며, 이에 대한 처리 경로는 제공된 문서에서 확인할 수 없습니다. 관련 문의는 People팀에 직접 연결하여 확인하시기 바랍니다.",
+      "input_tokens": 68418,
+      "output_tokens": 77,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 94.4262847480004,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제출한 VPN 신청이 승인됐는지 확인하는 경로나 알림 기준에 대해 제공된 문서에서 확인할 수 없습니다.\"}",
+      "answer": "제출한 VPN 신청이 승인됐는지 확인하는 경로나 알림 기준에 대해 제공된 문서에서 확인할 수 없습니다.",
+      "input_tokens": 68416,
+      "output_tokens": 39,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.4483288409992383,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"evidence\":[{\"document_id\":\"ieum-059\",\"quote\":\"결제일로부터 10영업일 안에 이음 포털의 재무 > 경비 정산에 날짜, 출장 기록 번호, 참석자 수, 업무상 식사 여부와 영수증을 등록한다. 동료와 함께 먹은 경우 실제 참석자와 각자 부담 금액을 기록해 같은 영수증의 중복 청구를 막는다. 영수증을 잃어버리면 사실대로 표시하고 재무팀에 대체 증빙 가능 여부를 묻는다. 증빙이 자동 면제되는 것은 아니다.\",\"scope\":\"출장 정산서 작성 및 증빙 누락 처리\",\"conditions\":\"신입 구성원이 출장 정산서를 작성 중에 마지막 이동 구간 영수증을 찾지 못한 경우\"},{\"document_id\":\"ieum-019\",\"quote\":\"결제일로부터 10영업일 안에 이음 포털의 재무 > 경비 정산에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다. 함께한 업무 식사라면 참석자와 목적도 기록한다. 개인 용도 지출이나 같은 영수증을 두 번 청구하지 않는다.\",\"scope\":\"출장 정산서 작성 및 증빙 누락 처리\",\"conditions\":\"신입 구성원이 출장 정산서를 작성 중에 마지막 이동 구간 영수증을 찾지 못한 경우\"},{\"document_id\":\"ieum-059\",\"quote\":\"한도나 참석 정보를 잘못 입력했다면 지급 전에 기존 경비 건을 수정한다. 이미 검토가 끝난 뒤 차이를 발견하면 신청 번호와 수정 사유를 재무팀에 보내고, 기존 기록을 지우거나 새 건으로 중복 신청하지 않는다.\",\"scope\":\"출장 정산서 작성 및 증빙 누락 처리\",\"conditions\":\"신입 구성원이 출장 정산서를 작성 중에 마지막 이동 구간 영수증을 찾지 못한 경우\"},{\"document_id\":\"ieum-059\",\"quote\":\"반려되면 사유와 재신청 방법을 확인해 사실을 바로잡은 새 자료로 다시 요청한다.\",\"scope\":\"출장 정산서 작성 및 증빙 누락 처리\",\"conditions\":\"신입 구성원이 출장 정산서를 작성 중에 마지막 이동 구간 영수증을 찾지 못한 경우\"}],\"missing\":[\"출장 정산서 작성 및 증빙 누락 처리 절차에서 포털 내 '반려 사유' 확인 방법\"]}\"",
+      "answer": null,
+      "input_tokens": 67636,
+      "output_tokens": 616,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 34.02840561599987,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"evidence\":[{\"document_id\":\"ieum-035\",\"quote\":\"당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며, 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다. 당직자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리며 신고를 보류하지 말고 팀장에게 대체 인계를 요청한다. 팀장도 대응을 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결한다. 연결 시도와 인수 여부를 사건 기록에 남긴다.\",\"scope\":\"보안 신고 후 담당자 배정 및 처리 단계 확인\",\"conditions\":\"신고 후 15분 이내에 당직 담당자가 확인하고, 응답이 없으면 팀장에게 대체 인계 요청, 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결\"}],\"missing\":[\"보안 신고 후 처리 단계 확인을 위한 기록 위치\",\"처리 완료 후 담당자에 대한 최종 확인 절차\"]}",
+      "answer": null,
+      "input_tokens": 67607,
+      "output_tokens": 295,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 16.43408255199938,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"evidence\":[{\"document_id\":\"문서 ID\",\"quote\":\"Slack과 포털이 모두 사용할 수 없으면 입사 때 받은 비상연락카드의 보안 연락 안내를 따른다.\",\"scope\":\"적용 대상\",\"conditions\":\"Slack과 포털이 모두 사용할 수 없을 때\"}],\"missing\":[\"보안 사고 신고 시 Slack과 포털이 모두 작동하지 않을 경우의 구체적인 절차\"]}\"",
+      "answer": null,
+      "input_tokens": 67603,
+      "output_tokens": 101,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 5.798093956998855,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"evidence\":[{\"document_id\":\"ieum-050\",\"quote\":\"입사자는 첫 로그인 과정에서 다중 인증 등록을 완료한다. MFA 설정이 끝나기 전에는 업무 시스템과 자료에 접근하지 않는다.\",\"scope\":\"적용 대상\",\"conditions\":\"입사자 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, MFA 설정이 끝나기 전에는 업무 시스템과 자료에 접근하지 않는다.\"},{\"document_id\":\"ieum-050\",\"quote\":\"계정이나 필수 권한이 준비되지 않았으면 동료 계정으로 일을 시작하지 않는다.\",\"scope\":\"적용 대상\",\"conditions\":\"계정이나 필수 권한이 준비되지 않았을 때 동료 계정으로 일을 시작하지 않는다.\"}],\"missing\":[\"계정이 준비되지 않았을 때 동료 계정을 써도 되는지 여부는 문서에서 명시되지 않음\"]}",
+      "answer": null,
+      "input_tokens": 67619,
+      "output_tokens": 228,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 12.75264623700059,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.",
+      "input_tokens": 67610,
+      "output_tokens": 19,
+      "finish_reason": null
+    },
+    "elapsed_seconds": 1.3587903799998458,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"evidence\":[{\"document_id\":\"ieum-018\",\"quote\":\"결제일로부터 10영업일 안에 이음 포털의 재무 > 경비 정산에 날짜, 출장 기록 번호, 참석자 수, 업무상 식사 여부와 영수증을 등록한다.\",\"scope\":\"결제 후 10영업일 이내\",\"conditions\":\"결제일로부터 10영업일 내, 재무 > 경비 정산 메뉴\"}],\"missing\":[\"결제 후 10영업일 이내에 제출해야 하는 메뉴의 구체적인 경로를 설명하지 않음\"]}",
+      "answer": null,
+      "input_tokens": 67598,
+      "output_tokens": 148,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.354226360999746,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.",
+      "input_tokens": 67609,
+      "output_tokens": 40,
+      "finish_reason": null
+    },
+    "elapsed_seconds": 95.11688447899905,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "qwen-examples-evidence",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 질문에 답할 근거를 확인할 수 없습니다.",
+      "input_tokens": 67607,
+      "output_tokens": 40,
+      "finish_reason": null
+    },
+    "elapsed_seconds": 2.444985344000088,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0007",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"사내 포털 안내에 따르면, 증빙 누락은 정산 요청 시 제출한 영수증이 실제 지출과 일치하지 않거나, 영수증이 분실된 경우에 적용됩니다. 이 경우, 증빙 누락 사유는 다음 항목을 기록하여 제출해야 합니다.\\n\\n- 실제 지출이 발생한 날짜와 장소\\n- 영수증이 분실된 사유 (예: 보관 장소에서 분실, 이동 중 잃어버림 등)\\n- 분실 시점과 장소, 당시의 상황\\n- 분실 후 즉시 조치 (예: 보안 사고 신고, 보관 장소 확인 등)\\n\\n이 정보는 이음 포털의 **재무 > 경비 정산**에 제출된 신청서에 포함되어야 하며, 증빙이 누락된 경우에만 반려 사유가 적용됩니다.\\n\\n반려 사유는 팀장과 재무팀이 승인한 기준에 따라 검토되며, 반려 사유는 포털의 **재무 > 경비 정산**에서 승인 결과와 보완 요청 사항을 확인할 수 있습니다. 반려 사유는 다음 항목을 포함합니다:\\n\\n- 부족한 항목 (예: 영수증 없음, 지출 기간 불일치 등)\\n- 보완 요청 사유 (예: 영수증 분실, 지출 기록 부족 등)\\n- 승인 기준에 미치지 못한 사항\\n\\n이 정보는 포털에서 승인 결과와 보완 요청 사항을 확인할 수 있으며, 반려 사유는 해당 신청의 처리 결과에 명시됩니다. 증빙이 누락된 경우, 반려 사유는 위 항목을 기반으로 하여 팀장과 재무팀이 검토한 결과로 결정됩니다.\"}",
+      "answer": "사내 포털 안내에 따르면, 증빙 누락은 정산 요청 시 제출한 영수증이 실제 지출과 일치하지 않거나, 영수증이 분실된 경우에 적용됩니다. 이 경우, 증빙 누락 사유는 다음 항목을 기록하여 제출해야 합니다.\n\n- 실제 지출이 발생한 날짜와 장소\n- 영수증이 분실된 사유 (예: 보관 장소에서 분실, 이동 중 잃어버림 등)\n- 분실 시점과 장소, 당시의 상황\n- 분실 후 즉시 조치 (예: 보안 사고 신고, 보관 장소 확인 등)\n\n이 정보는 이음 포털의 **재무 > 경비 정산**에 제출된 신청서에 포함되어야 하며, 증빙이 누락된 경우에만 반려 사유가 적용됩니다.\n\n반려 사유는 팀장과 재무팀이 승인한 기준에 따라 검토되며, 반려 사유는 포털의 **재무 > 경비 정산**에서 승인 결과와 보완 요청 사항을 확인할 수 있습니다. 반려 사유는 다음 항목을 포함합니다:\n\n- 부족한 항목 (예: 영수증 없음, 지출 기간 불일치 등)\n- 보완 요청 사유 (예: 영수증 분실, 지출 기록 부족 등)\n- 승인 기준에 미치지 못한 사항\n\n이 정보는 포털에서 승인 결과와 보완 요청 사항을 확인할 수 있으며, 반려 사유는 해당 신청의 처리 결과에 명시됩니다. 증빙이 누락된 경우, 반려 사유는 위 항목을 기반으로 하여 팀장과 재무팀이 검토한 결과로 결정됩니다.",
+      "input_tokens": 68445,
+      "output_tokens": 435,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 24.19685997600027,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0009",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 신고를 올린 후 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\\n\\n1. 신고 후 15분 안에 24시간 당직 담당자가 신고를 확인하고 대응 책임자를 명시합니다. 이 시간은 인계 목표이며, 사고 해결 시간이나 법정 통지 기한을 뜻하지 않습니다.\\n\\n2. 인계 후 담당자는 신고를 받은 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록합니다.\\n\\n3. 접수와 인계 이후, 보안·개인정보 담당자는 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청을 합니다.\\n\\n4. 처리 단계는 다음 순서로 진행됩니다:\\n- 발견: 추가 전송·접속을 중단하고 첫 신고\\n- 접수: 당직 담당자가 확인 후 담당 역할 지정\\n- 대응: 보안·개인정보 담당자가 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청\\n- 후속: 업무·자료 소유자와 필요한 복구, 보존, 추가 통지 판단\\n\\n5. 이 모든 단계는 이음 포털의 보안 > 사고 신고 또는 Slack의 #security-incident 채널에서 확인할 수 있습니다. 신고 메시지에는 발견 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록하며, 비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않습니다.\\n\\n6. 처리 상태는 이음 포털의 보안 > 사고 신고 기록에서 확인할 수 있습니다. 기록에는 인계 담당자, 다음 연락 경로, 시각, 수행 주체, 승인, 조치 결과와 미확인 사항이 포함됩니다.\\n\\n따라, 신고 후 15분 안에 당직 담당자가 인계를 완료하고, 이후 처리 단계는 이음 포털 및 Slack 채널에서 확인할 수 있습니다.\"}",
+      "answer": "보안 신고를 올린 후 담당자 배정이나 처리 단계를 확인하는 방법은 다음과 같습니다.\n\n1. 신고 후 15분 안에 24시간 당직 담당자가 신고를 확인하고 대응 책임자를 명시합니다. 이 시간은 인계 목표이며, 사고 해결 시간이나 법정 통지 기한을 뜻하지 않습니다.\n\n2. 인계 후 담당자는 신고를 받은 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록합니다.\n\n3. 접수와 인계 이후, 보안·개인정보 담당자는 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청을 합니다.\n\n4. 처리 단계는 다음 순서로 진행됩니다:\n- 발견: 추가 전송·접속을 중단하고 첫 신고\n- 접수: 당직 담당자가 확인 후 담당 역할 지정\n- 대응: 보안·개인정보 담당자가 범위를 조정하고 IT운영팀에 필요한 차단·복구 요청\n- 후속: 업무·자료 소유자와 필요한 복구, 보존, 추가 통지 판단\n\n5. 이 모든 단계는 이음 포털의 보안 > 사고 신고 또는 Slack의 #security-incident 채널에서 확인할 수 있습니다. 신고 메시지에는 발견 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록하며, 비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않습니다.\n\n6. 처리 상태는 이음 포털의 보안 > 사고 신고 기록에서 확인할 수 있습니다. 기록에는 인계 담당자, 다음 연락 경로, 시각, 수행 주체, 승인, 조치 결과와 미확인 사항이 포함됩니다.\n\n따라, 신고 후 15분 안에 당직 담당자가 인계를 완료하고, 이후 처리 단계는 이음 포털 및 Slack 채널에서 확인할 수 있습니다.",
+      "input_tokens": 68416,
+      "output_tokens": 552,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 30.70234011299908,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "POS02",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드를 사용합니다.\"}",
+      "answer": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드를 사용합니다.",
+      "input_tokens": 68412,
+      "output_tokens": 43,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.618632608000553,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "POS03",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"네, 첫 로그인 전에 다중 인증(MFA)을 반드시 등록해야 합니다. 다중 인증 등록이 완료되기 전에는 업무 시스템과 자료에 접근하지 않아야 하며, 등록 전에 업무 시스템에 접근하는 것은 금지됩니다.\\n\\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 허용되지 않습니다. 계정이 준비되지 않았을 경우, 동료 계정을 사용하거나 개인 기기로 우회하는 것은 금지되며, 팀장에게 첫날 진행할 대체 업무를 요청하고, IT운영팀의 정상 문의 창구를 이용해야 합니다.\"}",
+      "answer": "네, 첫 로그인 전에 다중 인증(MFA)을 반드시 등록해야 합니다. 다중 인증 등록이 완료되기 전에는 업무 시스템과 자료에 접근하지 않아야 하며, 등록 전에 업무 시스템에 접근하는 것은 금지됩니다.\n\n또한, 계정이 준비되지 않았을 때 동료 계정을 사용하는 것은 허용되지 않습니다. 계정이 준비되지 않았을 경우, 동료 계정을 사용하거나 개인 기기로 우회하는 것은 금지되며, 팀장에게 첫날 진행할 대체 업무를 요청하고, IT운영팀의 정상 문의 창구를 이용해야 합니다.",
+      "input_tokens": 68428,
+      "output_tokens": 172,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 9.707179529001223,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0006",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"참고 문서에 따르면, 거래처 계좌 정정과 재지급 절차, 또는 지급 계좌 변경에 대한 내용이 포함되어 있지 않습니다. 관련된 절차나 권한은 제공된 문서에서 확인할 수 없습니다.\"}",
+      "answer": "참고 문서에 따르면, 거래처 계좌 정정과 재지급 절차, 또는 지급 계좌 변경에 대한 내용이 포함되어 있지 않습니다. 관련된 절차나 권한은 제공된 문서에서 확인할 수 없습니다.",
+      "input_tokens": 68419,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.7217728849991545,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "POS01",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"결제 후 10영업일 안에 이음 포털의 \\\"재무 > 경비 정산\\\"에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.\"}",
+      "answer": "결제 후 10영업일 안에 이음 포털의 \"재무 > 경비 정산\"에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출해야 합니다.",
+      "input_tokens": 68407,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.636639786998785,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0001",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면 은행 계좌 변경은 급여 처리와 관련된 사항으로, 이에 대한 정책이나 절차는 제공된 문서에 포함되어 있지 않습니다. 따라서 은행 계좌 변경을 반영하기 위한 정확한 기한이나 메뉴는 확인할 수 없습니다. 관련 문의는 People팀에 직접 문의하시기 바랍니다.\"}",
+      "answer": "문서에 따르면 은행 계좌 변경은 급여 처리와 관련된 사항으로, 이에 대한 정책이나 절차는 제공된 문서에 포함되어 있지 않습니다. 따라서 은행 계좌 변경을 반영하기 위한 정확한 기한이나 메뉴는 확인할 수 없습니다. 관련 문의는 People팀에 직접 문의하시기 바랍니다.",
+      "input_tokens": 68418,
+      "output_tokens": 89,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.247454803000437,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "RQ0004",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제출한 VPN 신청이 승인됐는지 확인하는 경로나 알림 기준에 대해 제공된 문서에서 확인할 수 없습니다.\"}",
+      "answer": "제출한 VPN 신청이 승인됐는지 확인하는 경로나 알림 기준에 대해 제공된 문서에서 확인할 수 없습니다.",
+      "input_tokens": 68416,
+      "output_tokens": 39,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.4849386299993057,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  }
+]

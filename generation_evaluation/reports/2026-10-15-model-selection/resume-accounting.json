@@ -1,0 +1,17 @@
+{
+  "pause": {
+    "paused_at": "2026-10-14T23:45:41.799668+00:00",
+    "completed_responses": 88,
+    "completed_calls": 92,
+    "elapsed_active_seconds": 953.027506351471,
+    "conservative_dollars": 0.47940609
+  },
+  "resume": {
+    "original_started_at": 1792020588.7686942,
+    "paused_at": "2026-10-14T23:45:41.799668+00:00",
+    "resumed_at": 1792022491.2968805,
+    "active_seconds_before_pause": 953.027506351471,
+    "reason": "explicit user pause and resume; preserve all prior reservations and charges"
+  },
+  "accounting": "Original ledger retained. Resumed ledger copies every reservation and charge; only explicit pause interval excluded from active time. No completed model requests rerun."
+}
