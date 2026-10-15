@@ -113,7 +113,7 @@ _PROFILE_SUFFIXES = {
 def build_profile_prompt(
     question: str,
     documents: list[str],
-    profile: str = "baseline",
+    profile: str,
 ) -> GenerationPrompt:
     """Build a named prompt profile while preserving the baseline unchanged."""
     try:

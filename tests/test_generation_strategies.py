@@ -13,7 +13,7 @@ class GenerationProfileTests(unittest.TestCase):
         question = "휴가 신청은 어디서 하나요?"
         documents = ["문서 하나", "문서 둘"]
         self.assertEqual(
-            build_profile_prompt(question, documents), build_prompt(question, documents)
+            build_profile_prompt(question, documents, "baseline"), build_prompt(question, documents)
         )
 
     def test_concise_adds_only_rules_and_keeps_user_input(self):

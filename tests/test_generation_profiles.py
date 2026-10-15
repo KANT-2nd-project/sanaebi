@@ -47,3 +47,7 @@ class ProfileCompatibilityTests(unittest.TestCase):
     def test_unknown_profile_rejected(self):
         with self.assertRaises(ValueError):
             build_profile_prompt("Q42", ["D17"], "unknown-profile")
+
+    def test_profile_must_be_explicit(self):
+        with self.assertRaises(TypeError):
+            build_profile_prompt("Q42", ["D17"])
