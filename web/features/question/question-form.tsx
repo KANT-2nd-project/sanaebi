@@ -60,7 +60,7 @@ export function QuestionForm({ question, error, pending, empty, touchEnter, inpu
               if (!event.repeat && !pending) event.currentTarget.form?.requestSubmit();
             }}
             aria-invalid={Boolean(error)}
-            aria-describedby={`question-help chat-disclosure${error ? " question-error" : ""}`}
+            aria-describedby={`question-help${error ? " question-error" : ""}`}
             placeholder="사내비에게 질문해보세요"
           />
           {error && <p id="question-error" role="alert" className="input-error">{error}</p>}

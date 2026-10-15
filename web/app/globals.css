@@ -68,9 +68,20 @@ textarea:focus-visible {
 .chat-welcome > p:last-child { color: var(--muted); }
 .is-empty .chat-viewport { display: flex; flex-direction: column; }
 .is-empty .chat-welcome { margin-top: auto; flex-shrink: 0; }
-.chat-guide { max-width: 720px; width: 100%; margin: 12px auto 24px; border: 1px solid var(--divider); border-radius: var(--chat-radius-surface); padding: 16px; background: var(--surface); font-size: 14px; overflow-wrap: anywhere; flex-shrink: 0; }
-.chat-guide h2 { font-weight: 600; margin-bottom: 8px; }
-.chat-guide p + p { margin-top: 8px; }
+/* Help is outside the conversation flow; only its body scrolls. */
+.usage-guide-trigger { gap: 5px; }
+.usage-guide-dialog { margin: auto; inset: 0; width: min(520px, calc(100% - 32px)); max-height: 90dvh; overflow: hidden; padding: 0; border: 1px solid var(--boundary); border-radius: var(--radius-surface); background: var(--surface); color: var(--foreground); box-shadow: 0 18px 80px #172b2640; }
+.usage-guide-dialog[open] { display: flex; flex-direction: column; }
+.usage-guide-dialog::backdrop { background: #101b18a8; }
+.usage-guide-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-shrink: 0; padding: 16px; border-bottom: 1px solid var(--divider); }
+.usage-guide-heading h2 { font-size: 20px; font-weight: 650; }
+.usage-guide-heading button { flex-shrink: 0; }
+.usage-guide-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 20px; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.usage-guide-body section + section { margin-top: 24px; }
+.usage-guide-body h3 { margin-bottom: 8px; font-weight: 650; }
+.usage-guide-body p + p, .usage-guide-body li + li { margin-top: 8px; }
+.usage-guide-body ul { list-style: disc; padding-left: 20px; }
+.usage-guide-dialog :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .message-list { max-width: 720px; margin: 0 auto; padding: 0; list-style: none; }
 .message-list:empty { display: none; }
 .chat-turn { margin-bottom: 28px; overflow-wrap: anywhere; }
@@ -97,7 +108,6 @@ textarea:focus-visible {
 .input-error { margin-top: 8px; color: var(--danger); font-size: 14px; }
 .question-examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 22px 0 12px; }
 .example-button { border-radius: var(--chat-radius-pill); background: var(--subtle); font-size: 14px; }
-.chat-disclosure { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); word-break: keep-all; overflow-wrap: anywhere; }
 .latest-button { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); white-space: nowrap; background: var(--surface); border: 1px solid var(--control-border); box-shadow: 0 2px 6px #172b260c; font-size: 13px; }
 @media (hover: hover) and (pointer: fine) {
   a.chat-button:hover, button.chat-button:enabled:hover { background: var(--subtle-hover); }
