@@ -68,3 +68,5 @@ flowchart TD
 - [핵심 코드 정리·완료 상태·후속 작업](worklogs/2026-10-15-core-cleanup.md): 구형 추출 제거, 프로필 필수화, legacy 이동과 단계별 인수인계.
 
 - [S4 평가 전략·지원 코드 정리](worklogs/2026-10-15-evaluation-cleanup.md): 동작 보존 검증과 남은 단계.
+
+- [S5·S6 남은 코드 정리](worklogs/2026-10-15-remaining-cleanup.md): 선택 설치·검증 모듈·테스트 배치와 완료 상태.

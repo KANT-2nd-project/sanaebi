@@ -105,7 +105,7 @@ app/
 서비스는 가짜 분류·문서·답변 의존성으로 세 라벨 분기, 비검색 미호출, snapshot 1회 조회·동일 객체 전달, 빈 문서, 잘못된 라벨·오류를 검증한다. API는 임시 DB·대체 모델로 공개 URL·필드·오류를 확인한다. 실제 모델 연결은 저장된 validation 예측과 서버 추론의 일치 및 모의 생성기를 이용한 HTTP 검증으로 확인한다. 이는 새로운 성능 평가나 실제 LLM 종단 품질 검증이 아니다.
 
 ```bash
-uv run --locked python -m unittest discover -s tests -v
+uv run --locked python -m unittest discover -s tests -t . -v
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 git diff --check
@@ -120,3 +120,9 @@ git diff --check
 `SANAEBI_PUBLIC_DEMO=1`에서 IP별 질문·문서 쓰기 제한과 즉시 거절하는 질문 동시 요청 상한을 적용한다. 원자적인 일일 생성 예약은 `app/public_limits.py`가 별도 SQLite에서 관리하고 `GenerationAnswerer`의 실제 provider 호출 직전에 수행한다. 문서 초기화와 카운터 수명주기는 분리한다. 한도 초과는 기존 AnswerResponse를 유지하는 429와 Retry-After, 카운터 장애는 503이다.
 
 `/health/live`·`/health/ready`는 내부 관리용이다. readiness는 설정·문서 snapshot·분류기 첫 추론을 확인하며 생성 API를 호출하지 않는다. 공개 nginx는 웹에 필요한 질문·문서 API만 허용한다. 원문 trace를 끈 운영 환경에서도 생성 시도 여부·상태·token 수·지연은 별도 구조화 로그로 남긴다. 숫자 한도·경로·배포/복구 절차는 [운영 배포](../deployment/README.md)에서 관리한다.
+
+## 선택 의존성과 회귀 테스트 경계
+
+기본 운영 환경은 분류 추론 의존성을 포함하며 Ollama integration은 선택한 경우에만 import한다. Ollama 미설치 안내와 다른 의존성 오류를 구분한다. 서버·평가기는 checkout 실행을 지원하며 공개 HTTP 계약은 유지한다.
+
+회귀 테스트는 runtime·generation·evaluation·classification·legacy로 나누며 공통 fixture와 루트 계산은 tests/support가 맡는다. discovery에는 `-t .`를 지정한다. [테스트 실행 안내](../tests/README.md)를 따른다. 문서 repository는 변환 helper의 독립적 재사용 이득이 작아 기존 구조·트랜잭션 단위를 유지한다.

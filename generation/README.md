@@ -70,7 +70,7 @@ GenerationResult 생성 시 필드 타입과 상태별 원문·답변 조합을 
 저장소 루트에서 실행한다. 네트워크·실제 모델 호출 없이 입력 전달, 파싱 경계, 시간 초과와 예외 전달을 확인한다.
 
 ```bash
-uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -v
+uv run --locked python -m unittest discover -s tests -t . -p 'test_generation_*.py' -v
 ```
 
 테스트는 사용자 요청에 따라 AI가 작성·실행한다. 공통 생성 진입점 등은 사용자가 작성했고, 위임받은 구현·테스트는 AI가 수행했으며, 테스트 통과를 독립 구현 숙련도나 실모델 평가로 해석하지 않는다.
@@ -151,3 +151,7 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.
 
 `build_profile_prompt(question, documents, profile)`는 프로필을 필수로 받는다. 직접 호출 시 `"baseline"` 또는 원하는 등록 프로필을 명시한다. 서비스·CLI·평가의 실행 기본값은 공통 설정의 v3이며, 과거 실험 전략의 baseline 기본값과 구분한다.
+
+## 설치 범위와 선택 provider
+
+서버·평가기는 소스 checkout에서 실행한다. 독립 wheel 배포는 지원 범위가 아니다. 기본 운영 의존성은 `uv sync --locked --no-dev`로 설치하며 분류 추론의 torch·transformers를 포함한다. Ollama와 과거 답변기 사용 시 `uv sync --locked --extra ollama`로 선택 의존성을 설치한다. 전체 테스트에도 이 extra가 필요하다. `sanaebi`·`sanaebi-train`은 기존 보관 분류 CLI를 유지한다.

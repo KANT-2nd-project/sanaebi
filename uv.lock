@@ -2100,17 +2100,24 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastapi", extra = ["standard"] },
+    { name = "httpx" },
     { name = "joblib" },
     { name = "langchain-core" },
-    { name = "langchain-ollama" },
     { name = "langchain-openai" },
     { name = "mlflow" },
+    { name = "numpy" },
+    { name = "openai" },
     { name = "pydantic" },
     { name = "scikit-learn" },
     { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'linux' and sys_platform != 'win32')" },
     { name = "torch", version = "2.14.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
     { name = "torch", version = "2.14.1+cu130", source = { registry = "https://download.pytorch.org/whl/cu130" }, marker = "sys_platform == 'win32'" },
     { name = "transformers" },
+]
+
+[package.optional-dependencies]
+ollama = [
+    { name = "langchain-ollama" },
 ]
 
 [package.dev-dependencies]
@@ -2121,11 +2128,14 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.143.0" },
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "joblib", specifier = ">=1.6.0" },
     { name = "langchain-core", specifier = ">=1.6.9" },
-    { name = "langchain-ollama", specifier = ">=1.1.0" },
+    { name = "langchain-ollama", marker = "extra == 'ollama'", specifier = ">=1.1.0" },
     { name = "langchain-openai", specifier = ">=1.7.1" },
     { name = "mlflow", specifier = ">=3.17.1" },
+    { name = "numpy", specifier = ">=2.5.4" },
+    { name = "openai", specifier = ">=3.29.0" },
     { name = "pydantic", specifier = ">=2.14.0" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "torch", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'linux' and sys_platform != 'win32')", specifier = ">=2.14.1" },
@@ -2133,6 +2143,7 @@ requires-dist = [
     { name = "torch", marker = "sys_platform == 'win32'", specifier = ">=2.14.1", index = "https://download.pytorch.org/whl/cu130" },
     { name = "transformers", specifier = ">=5.19.0" },
 ]
+provides-extras = ["ollama"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "ruff", specifier = ">=0.16.10" }]

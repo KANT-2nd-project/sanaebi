@@ -165,5 +165,5 @@ uv lock --check
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv run --locked python scripts/validate_dataset.py
-uv run --locked python -m unittest discover -s tests -v
+uv run --locked python -m unittest discover -s tests -t . -v
 ```

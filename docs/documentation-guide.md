@@ -10,7 +10,7 @@
 | 목적별 문서 탐색 | [문서 색인](README.md) | 실행·이해·참조·결과·과거 기록의 진입점 |
 | 서버 요청을 이해하는 설명 | [서버 입문](../app/README.md) | 시작·의존성 조립·요청 순서. 책임·설정 계약은 서버 규약 유지 |
 | 서버 분류 추론 설명 | [추론 안내](../app/classification/README.md) | 토큰화·점수·라벨·저장본 로딩. 학습 절차·성과는 학습 안내·보고서 유지 |
-| 실제 API 입력·응답·오류 | [스키마](../app/schemas.py), [질문](../app/questions/router.py)·[문서 라우터](../app/documents/registration.py), [API 테스트](../tests/test_api.py)와 실행 결과 | 서버 입문의 최소 예시, 설계 문서의 현재 API 설명 |
+| 실제 API 입력·응답·오류 | [스키마](../app/schemas.py), [질문](../app/questions/router.py)·[문서 라우터](../app/documents/registration.py), [API 테스트](../tests/runtime/test_api.py)와 실행 결과 | 서버 입문의 최소 예시, 설계 문서의 현재 API 설명 |
 | 채택된 서비스 설계 | [서비스 아키텍처](service-architecture.md) | Notion의 흐름 요약과 결정 배경 |
 | 프런트엔드 화면·API 연결·SEO 설계 | [프런트엔드 설계](frontend-architecture.md) | README·서비스 설계의 링크, Notion 문서 안내의 요약. 구현·공개 단계 구분 |
 | 서버 코드 구성·변경 규약 | [서버 구성 규약](server-conventions.md) | README·작업 지침의 링크, Notion 문서 안내·서비스 처리 기준·운영 규칙의 요약 |

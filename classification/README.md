@@ -50,7 +50,7 @@ uv run --locked python -m classification.tfidf --candidates 10 30 100 300 1000
 
 ```bash
 uv run --locked python scripts/validate_dataset.py
-uv run --locked python -m unittest discover -s tests -p test_learning_classification.py
+uv run --locked python -m unittest discover -s tests -t . -p test_learning_classification.py
 ```
 
 저장·재로딩 일치, 기존 모델·결과 보존, 실패 시 미게시, 분할별 평가·결과 공존, 잘못된 데이터·분할 거부, 동점 선택을 검사한다. 실제 학습 자료·가중치·MLflow는 기존 위치에 보존하며 새 결과는 별도 실험 경로에 둔다.

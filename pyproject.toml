@@ -12,14 +12,21 @@ dependencies = [
     "transformers>=5.19.0",
     "langchain-core>=1.6.9",
     "langchain-openai>=1.7.1",
-    "langchain-ollama>=1.1.0",
     "pydantic>=2.14.0",
     "mlflow>=3.17.1",
+    "openai>=3.29.0",
+    "httpx>=0.28.1",
+    "numpy>=2.5.4",
 ]
 
 [project.scripts]
 sanaebi = "archive.classification_v1.cli.main:main"
 sanaebi-train = "archive.classification_v1.cli.train:main"
+
+[project.optional-dependencies]
+ollama = [
+    "langchain-ollama>=1.1.0",
+]
 
 [build-system]
 requires = ["setuptools>=68"]

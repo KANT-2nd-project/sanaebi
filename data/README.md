@@ -121,7 +121,7 @@ TF-IDF와 BERT 등 비교 모델은 동일한 분할을 사용하고 실제 문�
 
 ```bash
 uv run --locked python scripts/validate_dataset.py
-uv run --locked python -m unittest discover -s tests -v
+uv run --locked python -m unittest discover -s tests -t . -v
 ```
 
 기본 검증은 CSV 형식·수량·라벨·검수 상태·질문 중복·그룹 크기와 검수 기록의 ID·최종 라벨·질문 해시 연결을 확인한다. 의미상 정답과 실제 서비스 성능은 별도 평가한다.
