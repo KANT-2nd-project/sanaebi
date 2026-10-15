@@ -1,0 +1,27 @@
+{
+  "gpt-examples-xhigh-4096": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "qwen-examples": {
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": 42
+  }
+}

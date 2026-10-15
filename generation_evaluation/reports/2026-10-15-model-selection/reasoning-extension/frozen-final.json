@@ -1,0 +1,41 @@
+{
+  "frozen_at": "2026-10-15T00:37:49.718802+00:00",
+  "candidates": {
+    "gpt-examples-xhigh-4096": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "qwen-examples": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": 42
+    }
+  },
+  "final_cases_sha256": "84c6d95e67cbda239e6edad7973cf0e7318d9fa6189e8df78a7bf151301985a2",
+  "rubric_sha256": "7ad85447a6d41de5963090debdab4a6e60c0e63110acee1a7fd0cac65b7ba2aa",
+  "selection_reason": "User-authorized post-selection extension, same original budget. xhigh/4096 had 6/8 stable pass vs high 5/8 and original none 4/8, all zero critical development cases. Fresh 20 groups reviewed and fixed before any responses. Initial final results retained separately.",
+  "precall_audit": {
+    "cases": 20,
+    "original_SEARCH_KNOWLEDGE": 13,
+    "synthetic": 7,
+    "exact_quotes": 69,
+    "rubric_application": "reasoning-final-README.md",
+    "independent_author_no_model_outputs": true
+  }
+}
