@@ -8,7 +8,7 @@
 
 CLI 기본은 dry-run이며 적용은 --apply로 명시한다. 실패 시 문서가 들어갈 수 있는 예외 원문 대신 오류 종류를 출력한다. 초기화 백업과 실행 manifest는 Git 제외 경로에 보관한다. systemd는 `Asia/Seoul` 자정, `Persistent=false`, 자동 재시도 없음이다. 문서 관리·채팅 등록 UI에 안내를 추가했다.
 
-기준 정책은 [문서 관리](../document-management.md#공용-시연-문서-자정-초기화), 설치는 [배포 안내](../../deployment/README.md#시연-문서-자정-초기화-systemd)에 정리했다. 서버 규약·서비스 설계에는 요약과 링크를 반영했다.
+기준 정책은 [문서 관리](../document-management.md#공용-시연-문서-자정-초기화), 설치는 [배포 안내](../../deployment/local-nginx.md#시연-문서-자정-초기화-systemd)에 정리했다. 서버 규약·서비스 설계에는 요약과 링크를 반영했다.
 
 ## 검증
 

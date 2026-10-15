@@ -14,7 +14,7 @@ test("question JSON만 전송하고 검증된 본문을 반환한다", async (t)
 });
 
 const signal = () => new AbortController().signal;
-for (const [status, kind] of [[422, "validation"], [502, "generation"]]) {
+for (const [status, kind] of [[422, "validation"], [429, "rate-limit"], [502, "generation"]]) {
   test(`${status}의 안전한 reason을 유지한다`, async (t) => {
     t.mock.method(globalThis, "fetch", async () => Response.json(
       { ok: false, text: "", reason: "안전한 안내" }, { status },

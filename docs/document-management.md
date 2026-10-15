@@ -99,7 +99,7 @@ uv run --locked python scripts/export_company_knowledge.py --output tmp/evaluati
 
 ## 실행·보존
 
-FastAPI와 Next를 모두 loopback에 실행한다. nginx는 [기존 실행 안내](../deployment/README.md)를 따른다.
+FastAPI와 Next를 모두 loopback에 실행한다. nginx는 [기존 실행 안내](../deployment/local-nginx.md)를 따른다.
 
 ```bash
 npm run dev
@@ -121,7 +121,7 @@ DB가 다른 버전이거나 저장 불가능하면 오류를 확인하고 무�
 
 ## 공용 시연 문서 자정 초기화
 
-시연 전용 DB를 저장소의 `data/company-knowledge/documents.jsonl` 기준으로 매일 한국 시간 00:00에 복원하는 관리 명령을 제공한다. **예약 설정 파일을 설치·활성화해야 실행된다.** 서버 시작 시에는 초기화하지 않으며 공개 초기화 API도 없다. 화면의 자정 안내는 이 예약 운영을 전제로 한다. 실제 서버 활성화 절차는 [배포 안내](../deployment/README.md#시연-문서-자정-초기화-systemd)를 따른다.
+시연 전용 DB를 저장소의 `data/company-knowledge/documents.jsonl` 기준으로 매일 한국 시간 00:00에 복원하는 관리 명령을 제공한다. **예약 설정 파일을 설치·활성화해야 실행된다.** 서버 시작 시에는 초기화하지 않으며 공개 초기화 API도 없다. 화면의 자정 안내는 이 예약 운영을 전제로 한다. 실제 서버 활성화 절차는 [배포 안내](../deployment/README.md#운영-확인과-복구)를 따른다.
 
 ```bash
 uv run --locked python scripts/reset_demo_documents.py --database /absolute/demo/documents.sqlite3

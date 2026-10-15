@@ -6,7 +6,7 @@
 - 상태: 현재 API 동작과 아직 연결되지 않은 목표 설계를 구분한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
 - 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
-- 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 내보내기 + nginx + FastAPI를 채택한다. 정적 내보내기·로컬 nginx→FastAPI echo 연결과 메모리 기반 대화형 화면을 구현했다. 이전 메시지는 서버 답변에 반영되지 않으며 새 모델 경로의 브라우저 종단 검증·외부 배포는 후속 범위다. 운영에서 nginx가 정적 파일과 API 중계를 담당하고 FastAPI가 질문 처리·인증·권한을 맡는 설계다.
+- 화면·API 중계·공개 페이지 SEO 설계: [프런트엔드 설계](frontend-architecture.md). Next.js 정적 내보내기 + nginx + FastAPI를 채택한다. 정적 내보내기·로컬 nginx→FastAPI echo 연결과 메모리 기반 대화형 화면을 구현했다. 이전 메시지는 서버 답변에 반영되지 않으며 새 모델 경로의 브라우저 종단 검증·외부 배포는 후속 범위다. 공개 시연은 익명 질문·문서 편집·게시를 허용하며 nginx가 공개 API를 제한하고 FastAPI가 요청 제한·일일 생성 예산을 적용한다. 운영 구성은 [배포 안내](../deployment/README.md)를 따른다.
 - 질문 데이터와 데이터 상태: [요청 처리 데이터 안내](../data/README.md)
 - 프로젝트 설계 참고: [Notion 서비스 처리 기준](https://app.notion.com/p/3f805a3cdadc81d7b909fc71ed78381b)
 
@@ -114,7 +114,7 @@ flowchart TD
 
 ## 공용 시연 자료 복원
 
-시연 전용 SQLite를 기준 JSONL의 게시 자료로 매일 한국 시간 자정에 복원하는 관리 명령과 systemd 예약 템플릿을 제공한다. 실제 배포 서버에서 예약을 설치·활성화해야 동작한다. 사용자별 공간 분리는 없으며 당일 변경은 다른 시연자에게도 영향을 준다. 백업·동시 요청·복원 정책은 [문서 관리 안내](document-management.md#공용-시연-문서-자정-초기화), 설치는 [배포 안내](../deployment/README.md#시연-문서-자정-초기화-systemd)를 따른다.
+시연 전용 SQLite를 기준 JSONL의 게시 자료로 매일 한국 시간 자정에 복원하는 관리 명령과 systemd 예약 템플릿을 제공한다. 실제 배포 서버에서 예약을 설치·활성화해야 동작한다. 사용자별 공간 분리는 없으며 당일 변경은 다른 시연자에게도 영향을 준다. 백업·동시 요청·복원 정책은 [문서 관리 안내](document-management.md#공용-시연-문서-자정-초기화), 설치는 [배포 안내](../deployment/README.md#운영-확인과-복구)를 따른다.
 
 후속 [반복 비교](../generation_evaluation/reports/2026-10-15-answer-grounding-repeat/README.md)에서는 신고 완전 응답이 v1 15/25·v3 20/25로 이전 소표본의 악화 방향이 재현되지 않았다. 이는 v3의 서비스 품질 승인이나 기본값 전환이 아니며 당시 v1을 유지했다.
 

@@ -44,7 +44,7 @@ npm run build
 - `out/404.html`: 없는 페이지 안내
 - `out/_next/`: CSS·JavaScript 등 정적 자산
 
-`out/` 전체를 정적 웹 서버에 전달합니다. 운영에 `next dev`나 `next start`를 사용하지 않으며 start 스크립트는 제공하지 않습니다. 프로젝트 nginx 설정은 `/chat`을 `chat.html`에 연결하고 존재하지 않는 경로는 404로 처리합니다. 설치·실행·종료·장애 확인은 [로컬 nginx 안내](../deployment/README.md)를 따릅니다.
+`out/` 전체를 정적 웹 서버에 전달합니다. 운영에 `next dev`나 `next start`를 사용하지 않으며 start 스크립트는 제공하지 않습니다. 프로젝트 nginx 설정은 `/chat`을 `chat.html`에 연결하고 존재하지 않는 경로는 404로 처리합니다. 설치·실행·종료·장애 확인은 [로컬 nginx 안내](../deployment/local-nginx.md)를 따릅니다.
 
 개발·시연 단계이므로 소개·채팅·문서 관리 화면 모두 noindex를 유지합니다. noindex는 인증이나 접근 권한 검사를 대신하지 않습니다. 자세한 방향은 [프런트엔드 설계](../docs/frontend-architecture.md)를 참고하세요.
 

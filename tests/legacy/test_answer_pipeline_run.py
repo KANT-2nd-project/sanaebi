@@ -179,7 +179,15 @@ class RunCaseTests(ExecutorPatch):
     def test_unparsable_reply_is_format_failure_not_call_error(self):
         # 모델은 답했는데 실행기가 평문을 풀지 못하면 호출 실패가 아니라 JSON 형식 지침 실패다
         self.use_model("그룹웨어에서 신청하세요.")
-        result = run_case(case(), LOCAL)
+        documents_path = (
+            Path(self.enterContext(tempfile.TemporaryDirectory())) / "docs.jsonl"
+        )
+        document = {"title": "실행 테스트 문서", "document": "실행 테스트 근거"}
+        documents_path.write_text(
+            json.dumps(document, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+
+        result = run_case(case(), LOCAL, documents_path=documents_path)
         self.assertIsNone(result["error"])
         self.assertEqual(result["output_error"], "ValidationError")
         self.assertEqual(result["response_text"], "그룹웨어에서 신청하세요.")
