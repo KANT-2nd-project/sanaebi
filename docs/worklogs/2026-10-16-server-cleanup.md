@@ -39,4 +39,10 @@ worker는 누락·실패 복구와 시행일 도래 문서 반영에 필요하�
 
 ## 게시와 외부 기록
 
-PR #12의 최종 CI·main 병합과 Notion 저장·재조회는 수행 후 기록한다. 과거 문서 동기화 검증은 [기존 기록](2026-10-16-document-rag-sync.md)에 보존하고 이번 결과와 구분한다.
+기능별 커밋은 `a523329`(실험 분리), `29dbb63`(서버·trace), `a33e427`(문서·검증)이다. 이후 병행 main 변경을 통합한 최종 PR HEAD는 `c5c8f30ba2187d9645b84ae3c83a9b2ce76a83b6`이다. [CI 실행](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38769586828)의 Python·웹·ARM64 이미지 빌드와 CPU 런타임 검사가 모두 통과했고 deploy job은 건너뛰었다.
+
+[PR #12](https://github.com/KANT-2nd-project/sanaebi/pull/12)는 [eff7226](https://github.com/KANT-2nd-project/sanaebi/commit/eff72266b8043a4a7794ed5646235b71ff5546ab) merge commit으로 main에 병합했다. 부모 커밋은 당시 main `5e0a39a`와 검증된 PR HEAD다. 제목에 `[skip ci]`를 적용해 이번 병합의 운영 자동 배포를 제외했다. 이 게시 기록만 갱신하는 후속 커밋도 `[skip ci]`를 사용한다.
+
+Notion 프로젝트 문서 안내·서비스 처리 기준·운영 개발 규칙은 해당 구역만 main 반영으로 갱신하고 본문·링크를 재조회했다. v3 평가와 다른 작업의 기록은 보존했다. 중복 없는 [새 개인 일지](https://www.notion.so/3fa05a3cdadc8168a6a6e4f1d942cd23)를 담당자 최재선·FastAPI/연동·2026-10-16·완료로 기록하고 실제 속성을 재확인했다. 기존 동기화 일지는 당시 기록을 유지하고 후속 병합 절만 추가·재조회했다.
+
+과거 문서 동기화 검증은 [기존 기록](2026-10-16-document-rag-sync.md)에 보존하고 이번 결과와 구분한다. 원래 작업 폴더의 브랜치를 reset하거나 변경하지 않았으며, 다른 작업자가 게시한 main 변경은 별도 작업 공간에서 통합했다. 이번 변경에는 비밀값·실제 환경 파일·DB·가중치를 포함하지 않았다.
