@@ -66,3 +66,5 @@ flowchart TD
 - [v3 기본값 채택·전환 검증](worklogs/2026-10-15-adopt-grounding-v3.md): 반복 결과를 확인한 사용자 결정, 공통 기본값 전환과 검증.
 
 - [핵심 코드 정리·완료 상태·후속 작업](worklogs/2026-10-15-core-cleanup.md): 구형 추출 제거, 프로필 필수화, legacy 이동과 단계별 인수인계.
+
+- [S4 평가 전략·지원 코드 정리](worklogs/2026-10-15-evaluation-cleanup.md): 동작 보존 검증과 남은 단계.
