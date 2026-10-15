@@ -179,3 +179,68 @@ class DiagnosticEvaluationTests(unittest.TestCase):
         self.assertEqual(
             file_sha(dataset.DATASET_PATH), manifest["base_dataset_sha256"]
         )
+
+
+class TrainingSplitCliTests(unittest.TestCase):
+    def test_optional_manifest_uses_fixed_rows_and_default_remains_compatible(self):
+        from unittest.mock import patch
+
+        from classification.transformer import main
+
+        bench = Path("classification/benchmarks/routing-augmentation-2026-10-15")
+        fixed = dataset.prepare_data_from_manifest(
+            bench / "combined.csv", bench / "split-manifest.json"
+        )
+        with patch(
+            "classification.transformer.select_model", return_value=(None, {})
+        ) as select:
+            main(
+                [
+                    "--dataset",
+                    str(bench / "combined.csv"),
+                    "--split-manifest",
+                    str(bench / "split-manifest.json"),
+                ]
+            )
+            self.assertEqual(
+                select.call_args.args, (fixed["train"], fixed["validation"])
+            )
+        with (
+            patch(
+                "classification.transformer.prepare_data", return_value=fixed
+            ) as legacy,
+            patch("classification.transformer.select_model", return_value=(None, {})),
+        ):
+            main([])
+            legacy.assert_called_once_with(dataset.DATASET_PATH, 20261013)
+
+    def test_changed_manifest_during_training_does_not_publish(self):
+        from unittest.mock import patch
+
+        from classification.transformer import main
+
+        bench = Path("classification/benchmarks/routing-augmentation-2026-10-15")
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest = root / "split.json"
+            manifest.write_bytes((bench / "split-manifest.json").read_bytes())
+
+            def changed(*args, **kwargs):
+                manifest.write_text(manifest.read_text() + "\n")
+                return None, {}
+
+            with (
+                patch("classification.transformer.select_model", side_effect=changed),
+                self.assertRaisesRegex(ValueError, "manifest"),
+            ):
+                main(
+                    [
+                        "--dataset",
+                        str(bench / "combined.csv"),
+                        "--split-manifest",
+                        str(manifest),
+                        "--output",
+                        str(root / "model"),
+                    ]
+                )
+            self.assertFalse((root / "model").exists())
