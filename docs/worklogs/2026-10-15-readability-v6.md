@@ -40,3 +40,12 @@
 main push를 계기로 공개 배포가 실행될 수 있는 `.github/workflows/delivery.yml`을 확인했다. 이번 요청은 공개 배포를 제외하므로 커밋 메시지에 `[skip ci]`를 넣어 push 워크플로를 건너뛴다. [GitHub 공식 동작](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs)에 따른 것이며 로컬 검증과 원격 CI 실행을 구분한다. 워크플로·운영 환경 설정은 수정하지 않는다. 이후 다른 작업의 push는 별개다.
 
 [비교 보고서](../../generation_evaluation/reports/2026-10-15-readability-v6/README.md)에 상세 답변·판정·근거·비용을, 이 기록에는 경위와 검증·기여를 둔다. Notion 반영과 최종 게시 상태는 후속 동기화 기록에 남긴다. 서버 재시작·공개 배포·실제 DB 수정은 수행하지 않았다.
+
+## 게시·Notion 동기화 확인
+
+- 기능 커밋: `a4fa057` 가독성 프로필·회귀 테스트, `92712cc` 고정 평가 자료·실제 결과·독립 검토, `7ae4f9f` 기본값 유지와 관련 문서.
+- 첫 push는 동시 작업의 원격 main 갱신으로 거절됐다. `origin/main`의 `13d6c8b`까지 웹 작업이 게시됐고, 해당 로컬16경로(삭제 경로 포함)가 원격과 바이트 단위로 동일한지 확인했다. 임시 stash로 보존한 뒤 `ad56ba7`에서 정상 병합했고 전후 해시가 동일했다. 중복 기능 커밋이나 강제 푸시는 하지 않았다.
+- 보존용 stash 이름은 `readability-v6-preserve-web-already-published-13d6c8b`이다. 원격에 동일 내용이 이미 있으므로 적용하지 않았으며 백업으로 남겼다.
+- 게시 시 로컬·원격 main은 `ad56ba782f9cf25ac4511760dd72816b5d96b5c8`로 일치했다. 이후 이 동기화 기록을 별도 커밋한다.
+- Notion [문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7), [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b), [생성 개인 일지](https://www.notion.so/3f905a3cdadc8146a9bbedb690ab5ecf)에 ‘답변 가독성 v6 비교 — v5 기본값 유지’ 구역을 추가했다. 2026-10-15 08:18 UTC 저장 후 각 페이지를 재조회해 결정·16회 결과·보고서 고정 커밋 링크·기여 구분을 확인했다. 기존 구역과 다른 작업의 기록은 보존했다.
+- 이번 push SHA의 Delivery 실행은 조회 시 없었다. 다른 작업의 `13d6c8b`·`b4b75c9` workflow는 별도로 진행 중이었으며 취소·변경하지 않았다. 이 작업의 skip ci와 다른 작업의 배포 상태를 구분한다.
