@@ -1,3 +1,4 @@
+import json
 import unittest
 
 from generation.types import GenerationResult, GenerationStatus
@@ -5,6 +6,14 @@ from generation.validation import parse_generation
 
 
 class GenerationValidationTests(unittest.TestCase):
+    def test_markdown_paragraphs_and_lists_survive_json_parsing(self):
+        answer = "안내입니다.\n\n- 첫 항목\n- 둘째 항목\n\n조건은 유지합니다."
+        raw = json.dumps({"answer": answer}, ensure_ascii=False)
+        result = parse_generation(raw)
+        self.assertEqual(result.status, GenerationStatus.COMPLETED)
+        self.assertEqual(result.answer, answer)
+        self.assertEqual(result.raw_text, raw)
+
     def test_invalid_json_or_answer_structure(self):
         for raw_text in (
             "안녕하세요",

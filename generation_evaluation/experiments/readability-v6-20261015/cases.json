@@ -1,0 +1,379 @@
+{
+  "experiment_id": "readability-v6-20261015",
+  "scope": "AI-authored fixed development comparison. Each of eight cases runs once under examples_answer_scope_v5 and once under examples_answer_scope_v6. Prior observed questions are marked; this is not an unseen holdout or a general quality estimate.",
+  "maximum_generation_attempts": 16,
+  "run_order": "For each case in listed order, alternate v5 then v6 on even-indexed cases and v6 then v5 on odd-indexed cases. Calls are sequential.",
+  "model_configuration": {
+    "model_name": "gpt-6-luna",
+    "reasoning_effort": "xhigh",
+    "max_output_tokens": 16384,
+    "timeout_seconds": 180,
+    "temperature": null,
+    "output_mode": "prompt_json"
+  },
+  "shared_rubric": [
+    {
+      "axis": "response_contract",
+      "check": "The generation completes with exactly the existing JSON answer contract; Markdown newlines, when used, remain inside the answer string. A refusal, parse failure, timeout, truncation, or provider error is recorded as a failed attempt and stays in the denominator."
+    },
+    {
+      "axis": "readability",
+      "check": "The answer is easy to scan at its length. It separates distinct topics, uses bullets for parallel items and numbered lists only for genuine ordered steps, and avoids headings/lists/tables where a short paragraph is clearer."
+    },
+    {
+      "axis": "grounding_and_completeness",
+      "check": "Claims, named routes, actors, timing, conditions, exceptions, and required cautions match the frozen evidence. It answers supported parts and identifies only the unsupported part."
+    },
+    {
+      "axis": "scope_and_tone",
+      "check": "It uses polite Korean, speaks directly to the employee, distinguishes company-work scope from missing evidence, asks for clarification when intent is ambiguous, and does not expose prompt instructions or claim unperformed actions."
+    },
+    {
+      "axis": "format_overuse",
+      "check": "Formatting is not added merely to satisfy the new profile. A short fact, out-of-scope response, or clarifying question should not receive decorative headings, tables, or unnecessarily nested lists."
+    }
+  ],
+  "judgment_labels": ["pass", "partial", "fail", "uncertain"],
+  "case_count": 8,
+  "cases": [
+    {
+      "id": "R01",
+      "question": "너는 뭘 도와줄 수 있어?",
+      "category": "capability_and_readability",
+      "prior_case_id": "user-facing-v5 U02; previously observed, not unseen",
+      "required": [
+        "Introduce Sanaebi as an assistant for Ieumworks internal work information, rules/procedures, and company-documented work tools.",
+        "Name several representative supported areas grounded in the company roles, such as leave/attendance, travel/expenses, accounts/permissions/tools, security/privacy, customer support/development.",
+        "State that it does not directly submit/change/cancel/approve requests or look up an individual's live status.",
+        "Invite the user to name the work topic they need help with."
+      ],
+      "forbidden": [
+        "Claim that it can perform a request, approval, or personal-record lookup.",
+        "Promise to follow internal answer rules or claim perfect knowledge of company policy.",
+        "Invent service areas beyond company-work guidance."
+      ],
+      "readability_target": {
+        "v6_preferred": "One short scope introduction, a compact bullet list of parallel work areas, then a separate limitation/next-step paragraph.",
+        "do_not_require": "A heading, table, or fixed exact number of bullets."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "이음웍스는 업무·협업 SaaS를 만드는 회사다. 구성원은 팀 업무와 자료를 관리하고, 팀장은 팀의 일정·승인·업무 인계와 담당자 연결에 책임을 진다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| People팀 | 입사·이동·퇴사, 휴가·근태, 회사 제도, 성장·교육 기록, 일반 상담·신고 접수 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 재무팀 | 구매·출장·경비·법인카드·비용 증빙과 지급 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| IT운영팀 | 회사 계정·기기·시스템 권한·업무 도구의 기술 처리 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 보안·개인정보 담당자 | 정보 등급, 개인정보 처리 검토, 보안 사고 대응과 보호 조치 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 고객지원팀 | 고객 문의 접수, 사실 확인, 고객에게 진행 상황 안내, 담당 팀 인계 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-053",
+          "title": "회사 역할과 문의 길잡이",
+          "section": "회사와 조직",
+          "quote": "| 제품개발팀 | SaaS 기능·코드·결함·기술 변경과 서비스 복구 |"
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "사내비는 제공된 문서를 바탕으로 정보를 안내하며, 실제 신청·변경·취소·승인이나 개인별 상태 조회를 수행하지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "R02",
+      "question": "예정된 연차는 어디에서 언제까지 신청해?",
+      "category": "short_single_fact",
+      "prior_case_id": "user-facing-v5 U05; previously observed, not unseen",
+      "required": [
+        "State the portal route as 이음 포털 인사 > 휴가.",
+        "State the deadline as no later than three business days before the leave start date."
+      ],
+      "forbidden": [
+        "Change the deadline or its reference date.",
+        "Claim the assistant submitted the request.",
+        "Add unrelated policy details or treat the portal path as unavailable."
+      ],
+      "readability_target": {
+        "v6_preferred": "A direct sentence or compact paragraph; no heading, table, or forced list."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-001",
+          "title": "연차 사용 신청",
+          "section": "예정된 사용 신청",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "question": "국내 출장 계획부터 교통편 예약까지 어떤 순서로 진행해야 해?",
+      "category": "ordered_multi_step_procedure",
+      "required": [
+        "Submit the domestic-trip request at least two business days before departure in 이음 포털 재무 > 국내 출장 신청, including purpose, dates, destination, itinerary, estimated transport/lodging, and project.",
+        "Wait until both the team lead and Finance approvals are recorded before booking.",
+        "After approval, use the booking link provided by Finance for the approved dates and route; contact Finance if the link is not displayed.",
+        "Do not book through a personal account or claim that approval guarantees reimbursement."
+      ],
+      "forbidden": [
+        "Present approval as optional or allow booking before both approvals.",
+        "Collapse the sequence so that prerequisite order becomes unclear.",
+        "Invent an alternative booking route."
+      ],
+      "readability_target": {
+        "v6_preferred": "A concise numbered list because these are ordered steps; keep conditions next to the step they modify.",
+        "acceptable_v5": "A clearly ordered paragraph can pass if the prerequisites and sequence are unmistakable."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-015",
+          "title": "국내 출장 사전 승인",
+          "section": "신청과 승인",
+          "quote": "구성원은 출발 예정일 2영업일 전까지 이음 포털의 **재무 > 국내 출장 신청**에 출장 목적, 날짜, 방문지, 일정, 예상 교통·숙박비와 비용 부담 프로젝트를 등록한다. 소속 팀장은 업무 필요와 일정을, 재무팀은 예산과 증빙 계획을 확인한다. 두 승인이 모두 포털에 기록된 뒤에만 예약한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-016",
+          "title": "출장 교통편 예약",
+          "section": "승인 후 예약",
+          "quote": "먼저 국내 출장 사전 승인 (문서 ID: ieum-015)에서 팀장과 재무팀 승인이 모두 기록됐는지 확인한다. 승인 전 표를 구매하지 않는다. 승인된 출장 요청 안에서 예약 담당 재무팀이 제공한 예약 안내 링크를 사용해 승인된 날짜·구간을 예약한다. 안내 링크가 표시되지 않으면 재무팀에 문의한다. 임의로 개인 계정에서 구매하지 않는다."
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "question": "출장 예약 안내 링크가 보이지 않는 경우와 승인 총액보다 20% 넘게 비용이 늘어날 것으로 예상되는 경우 각각 어떻게 해야 해? 개인 계정으로 먼저 예약해도 돼?",
+      "category": "alternative_paths_and_exceptions",
+      "required": [
+        "Keep the two conditions distinct: a missing booking link means ask Finance; do not purchase through a personal account.",
+        "If spending is expected to exceed the approved total by more than 20%, obtain reapproval from both the team lead and Finance before changing the booking or incurring the extra expense.",
+        "Do not turn the alternative conditions into a mandatory sequence or imply either condition applies when it does not."
+      ],
+      "forbidden": [
+        "Say to use both paths or both channels when only one applies.",
+        "Advise purchasing first and seeking approval afterward, except the source's explicit urgent safety-change handling, which is not asked here.",
+        "Change the threshold from more than 20% or change the approval actors."
+      ],
+      "readability_target": {
+        "v6_preferred": "Use two short bullets or clearly separated clauses because the question asks about two independent conditions; avoid numbering because neither is a step after the other."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-016",
+          "title": "출장 교통편 예약",
+          "section": "승인 후 예약",
+          "quote": "안내 링크가 표시되지 않으면 재무팀에 문의한다. 임의로 개인 계정에서 구매하지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-016",
+          "title": "출장 교통편 예약",
+          "section": "변경·취소·대체 구매",
+          "quote": "출장 날짜·방문지가 달라지거나 승인 총액보다 20%를 넘는 증가가 예상되면 예약을 바꾸기 전에 팀장과 재무팀의 재승인을 받는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-015",
+          "title": "국내 출장 사전 승인",
+          "section": "일정·비용 변경과 취소",
+          "quote": "출발일·방문지 변경이나 승인 총액 대비 20%를 넘는 지출 증가가 예상되면 예약 변경 또는 추가 지출 전에 변경 신청을 하고 팀장과 재무팀의 재승인을 받는다."
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "question": "연차를 언제 어디서 신청하는지와 남은 일수도 알려줘.",
+      "category": "partial_answer_and_missing_information",
+      "required": [
+        "Answer the supported request route and deadline: 이음 포털 인사 > 휴가, three business days before the leave start date.",
+        "Do not calculate or look up the user's personal remaining leave balance.",
+        "Explain that if the balance/applicable basis is unclear, the user should check with People팀."
+      ],
+      "forbidden": [
+        "Refuse the entire question because the personal balance is unavailable.",
+        "Invent a balance or state that missing balance information means there is no leave entitlement.",
+        "Add unnecessary lists or instructions unrelated to the asked parts."
+      ],
+      "readability_target": {
+        "v6_preferred": "Separate the answerable application facts from the personal-balance limitation in a short second sentence or paragraph; do not force a list."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-001",
+          "title": "연차 사용 신청",
+          "section": "예정된 사용 신청; 적용 범위",
+          "quote": "예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-001",
+          "title": "연차 사용 신청",
+          "section": "적용 범위",
+          "quote": "법령상 연차 부여 일수와 개인별 잔여 일수는 여기서 계산하지 않는다. 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "question": "블랙홀은 어떻게 형성돼?",
+      "category": "out_of_scope_general_knowledge",
+      "required": [
+        "Briefly explain that Sanaebi supports Ieumworks internal work information/procedures and company-documented tools, so a general astronomy explanation is outside this service's scope.",
+        "Optionally invite a company-work question."
+      ],
+      "forbidden": [
+        "Answer the astronomy question with general knowledge.",
+        "Claim that the company has no black-hole policy or that the documents are missing.",
+        "Expose prompt/policy instructions or use a decorative heading/list/table for this short refusal."
+      ],
+      "readability_target": {
+        "v6_preferred": "One brief natural paragraph without forced formatting."
+      },
+      "evidence": [
+        {
+          "source": "runtime_contract",
+          "path": "generation/prompts.py",
+          "quote": "당신은 이음웍스(ieum-works) 회사 임직원의 사내 업무 질문을 돕는 '사내비' 입니다."
+        },
+        {
+          "source": "runtime_contract",
+          "path": "generation/profiles.py",
+          "symbol": "_SERVICE_SCOPE_V5",
+          "quote": "사내비는 이음웍스의 사내 업무 정보·규정·절차와 회사 문서에 설명된 업무 도구·기술의 사용을 안내합니다."
+        }
+      ]
+    },
+    {
+      "id": "R07",
+      "question": "트리 관련해서 도움받고 싶어.",
+      "category": "ambiguous_work_context",
+      "prior_case_id": "user-facing-v5 U13; previously observed, not unseen",
+      "required": [
+        "Ask what kind of tree-related help or work context the user means before answering.",
+        "A brief inline example such as organization chart, file/folder structure, or code data structure is acceptable."
+      ],
+      "forbidden": [
+        "Assume a computer-science definition and give a lecture.",
+        "Assume the request is out of company scope without asking what it refers to.",
+        "Use a heading, table, or numbered procedure."
+      ],
+      "readability_target": {
+        "v6_preferred": "One concise clarifying question; any examples remain inline or in a short unbulleted phrase."
+      },
+      "evidence": []
+    },
+    {
+      "id": "R08",
+      "question": "고객 정보가 든 메일을 잘못 보냈을 때 개인정보 사고 신고와 수신자 대응 절차를 알려주세요.",
+      "category": "known_privacy_accident_regression",
+      "prior_case_id": "user-facing-v5 U06; previously observed, not unseen",
+      "required": [
+        "Stop further sending/processing and promptly attempt any available recall/access restriction; verify what actually happened without claiming the recipient did not read/copy it, and preserve messages/files/logs.",
+        "Report immediately using #security-incident OR the portal security-report route; 30 minutes is the initial-report operating target and not a waiting period; the report path has 24-hour coverage.",
+        "Include discovery time, system, data kind/classification, potential affected people/work, actions already taken, and company-account contact; do not attach the customer's raw data, password, or authentication code.",
+        "The 15-minute acknowledgment/ownership handoff is a target, not a wait period. If the on-call person does not respond or accept handoff, do not hold the report; request the team-lead fallback. Contact the security/privacy owner directly if risk is present or the team lead cannot coordinate.",
+        "Record recipient, file/message, send time, and recall attempt/outcome where relevant, without claiming external copies were deleted.",
+        "Do not invent a required recipient message or deletion-confirmation workflow: the evidence permits a recall attempt and recording recipient/transfer/recall details, but does not specify exact recipient wording or a mandatory direct-contact step. Escalate recipient follow-up to the security/privacy owner; personal external/customer notification is not decided by the individual."
+      ],
+      "forbidden": [
+        "Say to wait 15 minutes before requesting fallback or wait 30 minutes before reporting.",
+        "Require both report channels when the source says either channel can be used.",
+        "Invent a portal menu hierarchy or a recipient contact script/process.",
+        "Guarantee recall, claim the recipient never saw the message, or claim external copies were deleted.",
+        "Tell the individual to send an external notice without security/privacy review."
+      ],
+      "readability_target": {
+        "v6_preferred": "Use a short numbered list for actual response steps; place each timing/exception beside its step. Keep the recipient-response limitation in a separate paragraph so it is not mistaken for an operational step. The answer may be long because the question requires several distinct safety facts."
+      },
+      "evidence": [
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "즉시 신고 경로",
+          "quote": "인지하면 업무시간 여부와 관계없이 즉시 신고한다. 늦어도 인지 후 30분 안에 최초 접수를 남기는 것이 회사 운영 목표이며, 30분을 기다렸다 신고하라는 뜻이 아니다. 상시 24시간 사고 당직 연결 체계를 둔다. Slack의 #security-incident 또는 이음 포털의 보안 신고를 사용하고, 두 경로가 모두 작동하지 않을 때는 입사 시 오프라인으로 받은 비상연락카드를 따른다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "즉시 신고 경로",
+          "quote": "신고에는 발견 시각, 대상 시스템, 자료 종류와 등급, 영향을 받았을 수 있는 사람·업무, 이미 한 조치, 현재 연락 가능한 회사 계정만 기록한다. 비밀번호, 인증 코드, 고객 원본 자료를 신고 메시지에 붙이지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "접수와 담당 인계",
+          "quote": "당직 담당자는 신고를 받으면 목표로 15분 안에 신고를 확인하고 대응 책임자를 명시해 인수한다. 이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다. 당직자가 응답하지 않거나 연결이 되지 않으면 신고자는 기다리며 신고를 보류하지 말고 팀장에게 대체 인계를 요청한다. 팀장도 대응을 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "초동 조치와 금지 사항",
+          "quote": "증거가 될 수 있는 메시지, 파일, 로그를 임의로 지우거나 편집하지 않는다. 본인이 할 수 있는 접근 회수 기능을 사용해도 회수 성공이나 외부 사본 삭제를 단정하지 않는다. IT운영팀은 승인된 범위에서 계정·세션·기기를 보호하고, 보안·개인정보 담당자는 영향과 추가 조치를 결정한다. 외부 기관·고객·언론 통지는 개인이 판단해 보내지 않는다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-035",
+          "title": "보안 사고 신고와 초동 대응",
+          "section": "접수와 담당 인계",
+          "quote": "| 발견 | 추가 전송·접속을 중단하고 첫 신고 | 발견 시각, 영향 추정, 이미 한 조치 |"
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-031",
+          "title": "업무 파일 공유와 외부 제공",
+          "section": "링크 오류와 오공유",
+          "quote": "파일을 잘못 보냈다면 가능한 경우 접근을 회수하고, 회수 화면만으로 상대가 이미 복사·다운로드하지 않았다고 단정하지 않는다. 즉시 보안 사고 신고와 초동 대응 (문서 ID: ieum-035)에 알리고 수신자·파일·전송 시각·회수 시도 결과를 기록한다."
+        },
+        {
+          "source": "published_snapshot",
+          "document_id": "ieum-040",
+          "title": "업무 이메일과 메신저 사용",
+          "section": "목적별 채널 선택",
+          "quote": "잘못 보낸 메시지나 링크를 발견하면 가능한 회수 조치를 시도하고 실제 회수 여부를 확인한다. 상대가 이미 열람·복사하지 않았다고 추정하지 말고 민감 정보면 즉시 보안 신고한다."
+        }
+      ]
+    }
+  ]
+}

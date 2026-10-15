@@ -70,6 +70,19 @@ class ProfileCompatibilityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build_profile_prompt("Q42", ["D17"], "unknown-profile")
 
+    def test_readability_preserves_frozen_v5_and_model_inputs(self):
+        v5 = build_profile_prompt("질문", ["실제 문서"], "examples_answer_scope_v5")
+        self.assertEqual(
+            v5.system,
+            Path(
+                "generation_evaluation/reports/2026-10-15-user-facing-v5/examples_answer_scope_v5.txt"
+            ).read_text(),
+        )
+        v6 = build_profile_prompt("질문", ["실제 문서"], "examples_answer_scope_v6")
+        self.assertEqual(v6.user, v5.user)
+        self.assertTrue(v6.system.startswith(v5.system.rstrip() + "\n\n"))
+        self.assertEqual(v6.system.count("답변 구성 기준:"), 1)
+
     def test_profile_must_be_explicit(self):
         with self.assertRaises(TypeError):
             build_profile_prompt("Q42", ["D17"])

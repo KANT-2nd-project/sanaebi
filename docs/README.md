@@ -79,3 +79,5 @@ flowchart TD
 - [구현·검증·게시 기록](worklogs/2026-10-15-routing-shadow.md): AI 수행 범위, 기능별 커밋, 테스트와 Notion 동기화.
 
 - [사용자용 말투·범위 안내 보완](worklogs/2026-10-15-user-facing-prompt.md): 연봉·도움 범위·일반 기술 질문, 공식 레퍼런스와 독립 AI 검토·실제 비교.
+
+- [답변 가독성 v5/v6 비교](../generation_evaluation/reports/2026-10-15-readability-v6/README.md): 16회 실제 응답·익명 AI 판정·화면 검증과 v5 기본값 유지 결정. [작업 일지](worklogs/2026-10-15-readability-v6.md).

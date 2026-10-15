@@ -1,0 +1,71 @@
+{
+  "experiment_id": "readability-v6-20261015",
+  "maximum_generation_attempts": 16,
+  "profiles": [
+    "examples_answer_scope_v5",
+    "examples_answer_scope_v6"
+  ],
+  "model_configuration": {
+    "provider": "openai",
+    "model_name": "gpt-6-luna",
+    "reasoning_effort": "xhigh",
+    "max_output_tokens": 16384,
+    "timeout_seconds": 180,
+    "temperature": null,
+    "output_mode": "prompt_json"
+  },
+  "case_count": 8,
+  "run_order": "Sequential; alternate v5/v6 order within each case.",
+  "snapshot_path": "tmp/readability-v6-20261015/snapshot.json",
+  "snapshot_sha256": "1cb0891c174267a2ae7b450a9654e40309eaaab7656e8c2ca0cec2e71bd26e72",
+  "snapshot_fingerprint": "9d02a7ba77a340bea017e89ab43e25db62a8cdeef83b2a40c5bbfb203a8eddf7",
+  "snapshot_document_count": 72,
+  "snapshot_source": {
+    "captured_at_utc": "2026-10-15T08:00:06.376528+00:00",
+    "source_database": "/home/jake/workspace/projects/sanaebi/var/documents.sqlite3",
+    "source_database_sha256_before": "b448e916cceab8c49fcfc461016ea87015d5fcff2e1f76d0e3f172c2c8facb85",
+    "source_database_wal_sha256_before": null
+  },
+  "cases_sha256": "4fd34b17ad4cbdcb5c12d527229f32815c1fb07bfe2175e913c74e97da321ef6",
+  "code_sha256": {
+    "generation/profiles.py": "75c31254c40ee210829acf24c8efef85d398be2d1a98758d99a1c16570360412",
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "generation/documents.py": "6de589ec6c2813ae465e13a7ef9623cae3c4b314a33d2f2b8622907f25466209",
+    "generation/service.py": "42ba68643cc515c8356800600b58c68701300bd3edf3d506a900551be8bfa16f",
+    "generation/validation.py": "37b096eeed05b8b9654ae563223ac6c2a297ca2e078109f79fc7c6e9b3bd68cb",
+    "generation/providers.py": "c3892d4064a1c9127c4b0dc5a1dfbf54fc85f9391cca17ac85c84b1a6f9c6c45",
+    "generation/presets.py": "8b3d9d80508b09cba778d677da300fe31c0b3a1e2c1677f50da279c974804369",
+    "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3",
+    "generation/experiments.json": "060f28a092ef16a023dbb03a9d4f375a33f0455d91d69c790e3a5d02c64b6168",
+    "generation_evaluation/runner.py": "34a8da0805cfbc6289d48fd204d4167703eda2c88877a602b1d9146cb883b864",
+    "generation_evaluation/reporting.py": "34c9c9410f0e408f54d8339ed696e6dadfe07f1273f8809795fd3ec42dc3f219",
+    "uv.lock": "d3d7346024ffbc890761ec08049d725a83003448bd7089f42d025543df58fe62"
+  },
+  "runner_sha256": "693c3dc13b5a4fa6e21dfc096410b2a3864b20fa44b4e007fabff13acdfeaf12",
+  "slot_prompt_sha256": {
+    "R01:examples_answer_scope_v5": "86fdbb6c06b55b6cc81639e2786107eff703c9fa77f4a22c8a4c94cffea8e398",
+    "R01:examples_answer_scope_v6": "d3a544913a902895fc48a8c30e9de282cfed7e187e73dd836f863cf94a316698",
+    "R02:examples_answer_scope_v6": "6d4fbd7db1c51970e6c3f6c130d700dd9b0de996c979df29cc29cefb6cc72987",
+    "R02:examples_answer_scope_v5": "7d2b98f459a407a5acf7e05ef9e74d8de8a1e3720a7053a441f996a3dbaf82dd",
+    "R03:examples_answer_scope_v5": "582ccebe4c4b0845dbb1d04a29f7215b1e1e99e4d36d2127c05bf51752752ec4",
+    "R03:examples_answer_scope_v6": "0fb2b234c6e429ac79a7a828bce4f1a626d7d115b10cb060c3c0ec0edab98298",
+    "R04:examples_answer_scope_v6": "f20f1b593698850e735441d4222ea9e0533ff9bc5a74eae17889cc40b2038345",
+    "R04:examples_answer_scope_v5": "1be01779b73f878e1ac92f70012f8fc822e9959a21823e862aedef371d812bb0",
+    "R05:examples_answer_scope_v5": "6b2a2ab954a56ec1925c24efd66a32f9ee11561d56cb31cb07dc103828c37713",
+    "R05:examples_answer_scope_v6": "e91bf276b5e458e1c12bd710823ad32a8b74185402938c70cf90df14d72fa40a",
+    "R06:examples_answer_scope_v6": "20aaada9b7aeae519ab3770562f1a8d092991c66f957d16798b495e5f09cd4a4",
+    "R06:examples_answer_scope_v5": "9d90a1480ca4f4d2ee4e1a29ce321e45534c948b28bb25569af01ab38fc430aa",
+    "R07:examples_answer_scope_v5": "7260d3287eedfc355ba4c438fc3c51d248e023f29c62e8c19247e2114783d10f",
+    "R07:examples_answer_scope_v6": "abae428ef72d7a12e5fe58d80695603167d6241e830a0025f9bee52b22ce7ba6",
+    "R08:examples_answer_scope_v6": "d7cd29e0eeac953a0d597ae96085074973591097b3684990143aa5be4c6276f0",
+    "R08:examples_answer_scope_v5": "af96d4a9b982049ea3c45d027164680e1d025b7fea9d088e7151e8b765ad91f4"
+  },
+  "pricing_source": "https://developers.openai.com/api/docs/pricing",
+  "pricing_checked_on": "2026-10-15",
+  "pricing_method": "Conservative Standard long-context cache-write input upper bound $0.25/M (normal input is $0.20/M) and output $0.75/M; no cache discount; estimates are not invoices. Input reservation uses UTF-8 prompt bytes plus 512 tokens as a conservative estimate, not a tokenizer-proven ceiling.",
+  "reserved_upper_usd": 1.1751694999999998,
+  "usage_missing_cost_rule": "If either input or output usage is absent, record the full slot reservation instead of zero.",
+  "retry_or_resume": false,
+  "rubric_sent_to_model": false,
+  "scope": "Generation run_case with one frozen published SQLite snapshot; no HTTP, classifier, browser, retries, or resume."
+}
