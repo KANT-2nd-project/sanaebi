@@ -302,7 +302,7 @@ class SelectionRunnerTests(unittest.TestCase):
         ):
             self.assertEqual(run(self.args), 0)
             self.args.total_dollars = 4.0
-            with self.assertRaisesRegex(ValueError, "manifest differs"):
+            with self.assertRaisesRegex(ValueError, "다른 한도"):
                 run(self.args)
 
         model.invoke.assert_called_once()
@@ -352,10 +352,55 @@ class SelectionRunnerTests(unittest.TestCase):
             manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
             self.args.total_dollars = 4.0
 
-            with self.assertRaisesRegex(ValueError, "manifest differs"):
+            with self.assertRaisesRegex(ValueError, "다른 한도"):
                 run(self.args)
 
         model.invoke.assert_called_once()
+
+    def test_new_output_cannot_change_limits_for_the_same_ledger(self):
+        from generation_evaluation.selection import run
+
+        model = self._mock_ollama()
+        with (
+            patch(
+                "generation_evaluation.selection.ChatOllama", return_value=model
+            ) as provider,
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            changed = Namespace(**vars(self.args))
+            changed.output = self.root / "new-output"
+            changed.total_dollars = 4.0
+            with self.assertRaisesRegex(ValueError, "다른 한도"):
+                run(changed)
+
+        self.assertEqual(provider.call_count, 1)
+        model.invoke.assert_called_once()
+        self.assertFalse((self.root / "new-output").exists())
+
+    def test_new_output_cannot_omit_custom_limits_and_fall_back_to_defaults(self):
+        from generation_evaluation.selection import run
+
+        self.args.total_dollars = 3.0
+        self.args.dev_dollars = 1.2
+        model = self._mock_ollama()
+        with (
+            patch(
+                "generation_evaluation.selection.ChatOllama", return_value=model
+            ) as provider,
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            defaulted = Namespace(**vars(self.args))
+            defaulted.output = self.root / "new-output-defaults"
+            del defaulted.total_dollars
+            del defaulted.dev_dollars
+            with self.assertRaisesRegex(ValueError, "다른 한도"):
+                run(defaulted)
+
+        self.assertEqual(provider.call_count, 1)
+        model.invoke.assert_called_once()
+        self.assertFalse((self.root / "new-output-defaults").exists())
 
     def test_custom_cost_cap_stops_before_openai_provider_call(self):
         from generation_evaluation.selection import run

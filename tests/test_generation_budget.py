@@ -79,6 +79,53 @@ class BudgetLedgerTests(unittest.TestCase):
             self.assertEqual(migrated["reservations"], before["reservations"])
             self.assertEqual(BudgetLedger(path).ensure_identity(), identity)
 
+    def test_binding_limits_preserves_existing_reservations_and_is_idempotent(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "budget.json"
+            ledger = BudgetLedger(path, 3, 1.2, 7200, 4200)
+            ledger.reserve("existing-request", "dev", 0.5)
+            before = ledger.snapshot()
+
+            ledger.bind_limits()
+            ledger.bind_limits()
+
+            after = ledger.snapshot()
+            self.assertEqual(after["reservations"], before["reservations"])
+            self.assertEqual(after["started_at"], before["started_at"])
+            self.assertEqual(
+                after["budget_limits"],
+                {
+                    "total_dollars": 3.0,
+                    "dev_dollars": 1.2,
+                    "total_seconds": 7200.0,
+                    "dev_seconds": 4200.0,
+                },
+            )
+
+    def test_binding_limits_rejects_changed_cost_or_time_ceiling(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "budget.json"
+            BudgetLedger(path, 3, 1.2, 7200, 4200).bind_limits()
+            original = BudgetLedger(path).snapshot()
+
+            for changed_limits in (
+                {"total_dollars": 4, "dev_dollars": 1.2},
+                {"total_dollars": 3, "dev_dollars": 1.1},
+                {"total_dollars": 3, "dev_dollars": 1.2, "total_seconds": 7201},
+                {"total_dollars": 3, "dev_dollars": 1.2, "dev_seconds": 4199},
+            ):
+                with self.subTest(changed_limits=changed_limits):
+                    limits = {
+                        "total_dollars": 3,
+                        "dev_dollars": 1.2,
+                        "total_seconds": 7200,
+                        "dev_seconds": 4200,
+                    }
+                    limits.update(changed_limits)
+                    with self.assertRaisesRegex(ValueError, "다른 한도"):
+                        BudgetLedger(path, **limits).bind_limits()
+                    self.assertEqual(BudgetLedger(path).snapshot(), original)
+
     def test_actual_settlement_releases_unused_reservation_and_is_idempotent(self):
         with TemporaryDirectory() as directory:
             ledger = BudgetLedger(Path(directory) / "budget.json", 1, 0.8)

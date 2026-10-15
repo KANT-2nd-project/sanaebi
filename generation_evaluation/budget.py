@@ -111,6 +111,40 @@ class BudgetLedger:
             fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
             lock_file.close()
 
+    def bind_limits(self) -> None:
+        """Bind this shared ledger to one immutable set of experiment limits."""
+        limits = {
+            "total_dollars": self.total_dollars,
+            "dev_dollars": self.dev_dollars,
+            "total_seconds": self.total_seconds,
+            "dev_seconds": self.dev_seconds,
+        }
+        lock_file = self._locked()
+        try:
+            data = self._read()
+            if "budget_limits" not in data:
+                data["budget_limits"] = limits
+                self._write(data)
+                return
+
+            stored_limits = data["budget_limits"]
+            if not isinstance(stored_limits, dict) or set(stored_limits) != set(limits):
+                raise ValueError("예산 ledger의 고정 한도 형식이 올바르지 않습니다.")
+            try:
+                for name, value in stored_limits.items():
+                    self._validate_amount(value, name)
+            except (TypeError, ValueError) as exc:
+                raise ValueError(
+                    "예산 ledger의 고정 한도 형식이 올바르지 않습니다."
+                ) from exc
+            if {name: float(value) for name, value in stored_limits.items()} != limits:
+                raise ValueError(
+                    "예산 ledger가 다른 한도로 고정되어 있습니다. 기존 한도를 사용하세요."
+                )
+        finally:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+            lock_file.close()
+
     def _write(self, data: dict[str, Any]) -> None:
         fd, temp_name = tempfile.mkstemp(
             prefix=f".{self.path.name}.", suffix=".tmp", dir=self.path.parent

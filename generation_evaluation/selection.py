@@ -147,12 +147,6 @@ def deadline(seconds):
 def run(args):
     # Validate configured limits before creating any run files.
     ledger = _budget_ledger(args)
-    budget_limits = {
-        "total_dollars": ledger.total_dollars,
-        "dev_dollars": ledger.dev_dollars,
-        "total_seconds": ledger.total_seconds,
-        "dev_seconds": ledger.dev_seconds,
-    }
     candidates = json.loads(args.candidates.read_text())
     candidate = candidates[args.candidate]
     cases = json.loads(args.cases.read_text())
@@ -165,6 +159,13 @@ def run(args):
         raise ValueError("Unknown strategy")
     if len({c["case_id"] for c in cases}) != len(cases):
         raise ValueError("Duplicate case_id")
+    ledger.bind_limits()
+    budget_limits = {
+        "total_dollars": ledger.total_dollars,
+        "dev_dollars": ledger.dev_dollars,
+        "total_seconds": ledger.total_seconds,
+        "dev_seconds": ledger.dev_seconds,
+    }
     args.output.mkdir(parents=True, exist_ok=True)
     manifest = {
         "schema_version": 1,
