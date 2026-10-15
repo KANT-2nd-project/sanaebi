@@ -1,0 +1,49 @@
+{
+  "complete": true,
+  "request_slots": 160,
+  "generation_attempts": 130,
+  "ledger_settled": true,
+  "experiment_seconds": 724.473,
+  "estimated_cost_usd": 1.92036,
+  "limits": {
+    "seconds": 7200,
+    "dollars": 5,
+    "attempts": 160
+  },
+  "resume_additional_calls": 0,
+  "resume_budget_and_results_unchanged": true,
+  "resume_hashes": "f67bf1a29fccedbee9687cf71a8d6a1e239e46b74a0d240622a7ffe0401ab630  tmp/routing-shadow-20261015/run/budget.json\nec846905936ba8166db75145e2eab55a1d0025879d8cdf2eba2fa34429688dfa  tmp/routing-shadow-20261015/run/results.jsonl\n",
+  "api_error_count": 1,
+  "error_slot": "shadow:RSH-040:r1",
+  "error_status": "truncated",
+  "python_tests": {
+    "count": 622,
+    "result": "pass_with_isolated_test_document_db",
+    "baseline_default_db_failure_reproduced": true
+  },
+  "web_tests": 69,
+  "ruff_check": "pass",
+  "ruff_format_check": "pass",
+  "per_case_prompt_hash_identical_for_all_generated_responses": true,
+  "cold_classifier_first_requests": [
+    {
+      "mode": "shadow",
+      "classification_seconds": 1.636,
+      "request_seconds": 5.718
+    },
+    {
+      "mode": "gate",
+      "classification_seconds": 1.583,
+      "request_seconds": 5.598
+    }
+  ],
+  "truncation_detail": {
+    "finish_reason": "length",
+    "max_output_tokens": 4096,
+    "output_tokens": 4096,
+    "returned_text_length": 0,
+    "model_call_seconds": 30.214,
+    "reasoning_tokens_breakdown": "not_recorded",
+    "timeout": false
+  }
+}

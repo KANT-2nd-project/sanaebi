@@ -1,0 +1,464 @@
+{
+  "gate": {
+    "verdicts": {
+      "pass": 52,
+      "partial": 18,
+      "fail": 10
+    },
+    "both_pass_count": 26,
+    "both_pass_cases": [
+      "RSH-003",
+      "RSH-004",
+      "RSH-005",
+      "RSH-006",
+      "RSH-008",
+      "RSH-010",
+      "RSH-011",
+      "RSH-012",
+      "RSH-013",
+      "RSH-014",
+      "RSH-016",
+      "RSH-017",
+      "RSH-018",
+      "RSH-019",
+      "RSH-020",
+      "RSH-022",
+      "RSH-023",
+      "RSH-025",
+      "RSH-026",
+      "RSH-027",
+      "RSH-028",
+      "RSH-029",
+      "RSH-035",
+      "RSH-038",
+      "RSH-039",
+      "RSH-040"
+    ],
+    "serious_error_case_count": 0,
+    "serious_error_cases": [],
+    "repeat_verdict_changes": [],
+    "business_and_mixed_both_pass_count": 12,
+    "case_verdicts": {
+      "RSH-001": [
+        "fail",
+        "fail"
+      ],
+      "RSH-002": [
+        "fail",
+        "fail"
+      ],
+      "RSH-003": [
+        "pass",
+        "pass"
+      ],
+      "RSH-004": [
+        "pass",
+        "pass"
+      ],
+      "RSH-005": [
+        "pass",
+        "pass"
+      ],
+      "RSH-006": [
+        "pass",
+        "pass"
+      ],
+      "RSH-007": [
+        "partial",
+        "partial"
+      ],
+      "RSH-008": [
+        "pass",
+        "pass"
+      ],
+      "RSH-009": [
+        "partial",
+        "partial"
+      ],
+      "RSH-010": [
+        "pass",
+        "pass"
+      ],
+      "RSH-011": [
+        "pass",
+        "pass"
+      ],
+      "RSH-012": [
+        "pass",
+        "pass"
+      ],
+      "RSH-013": [
+        "pass",
+        "pass"
+      ],
+      "RSH-014": [
+        "pass",
+        "pass"
+      ],
+      "RSH-015": [
+        "partial",
+        "partial"
+      ],
+      "RSH-016": [
+        "pass",
+        "pass"
+      ],
+      "RSH-017": [
+        "pass",
+        "pass"
+      ],
+      "RSH-018": [
+        "pass",
+        "pass"
+      ],
+      "RSH-019": [
+        "pass",
+        "pass"
+      ],
+      "RSH-020": [
+        "pass",
+        "pass"
+      ],
+      "RSH-021": [
+        "partial",
+        "partial"
+      ],
+      "RSH-022": [
+        "pass",
+        "pass"
+      ],
+      "RSH-023": [
+        "pass",
+        "pass"
+      ],
+      "RSH-024": [
+        "fail",
+        "fail"
+      ],
+      "RSH-025": [
+        "pass",
+        "pass"
+      ],
+      "RSH-026": [
+        "pass",
+        "pass"
+      ],
+      "RSH-027": [
+        "pass",
+        "pass"
+      ],
+      "RSH-028": [
+        "pass",
+        "pass"
+      ],
+      "RSH-029": [
+        "pass",
+        "pass"
+      ],
+      "RSH-030": [
+        "partial",
+        "partial"
+      ],
+      "RSH-031": [
+        "partial",
+        "partial"
+      ],
+      "RSH-032": [
+        "partial",
+        "partial"
+      ],
+      "RSH-033": [
+        "partial",
+        "partial"
+      ],
+      "RSH-034": [
+        "partial",
+        "partial"
+      ],
+      "RSH-035": [
+        "pass",
+        "pass"
+      ],
+      "RSH-036": [
+        "fail",
+        "fail"
+      ],
+      "RSH-037": [
+        "fail",
+        "fail"
+      ],
+      "RSH-038": [
+        "pass",
+        "pass"
+      ],
+      "RSH-039": [
+        "pass",
+        "pass"
+      ],
+      "RSH-040": [
+        "pass",
+        "pass"
+      ]
+    },
+    "known4": {
+      "fail": 4,
+      "pass": 4
+    },
+    "new36": {
+      "pass": 48,
+      "partial": 18,
+      "fail": 6
+    },
+    "issues": {
+      "missing_required_guidance": 24,
+      "unnecessary_block": 10,
+      "excessive_abstention": 4
+    }
+  },
+  "shadow": {
+    "verdicts": {
+      "pass": 64,
+      "partial": 15,
+      "fail": 1
+    },
+    "both_pass_count": 30,
+    "both_pass_cases": [
+      "RSH-001",
+      "RSH-002",
+      "RSH-003",
+      "RSH-004",
+      "RSH-006",
+      "RSH-008",
+      "RSH-010",
+      "RSH-011",
+      "RSH-012",
+      "RSH-014",
+      "RSH-016",
+      "RSH-017",
+      "RSH-019",
+      "RSH-020",
+      "RSH-022",
+      "RSH-023",
+      "RSH-025",
+      "RSH-026",
+      "RSH-027",
+      "RSH-028",
+      "RSH-029",
+      "RSH-031",
+      "RSH-032",
+      "RSH-033",
+      "RSH-034",
+      "RSH-035",
+      "RSH-036",
+      "RSH-037",
+      "RSH-038",
+      "RSH-039"
+    ],
+    "serious_error_case_count": 0,
+    "serious_error_cases": [],
+    "repeat_verdict_changes": [
+      "RSH-005",
+      "RSH-018",
+      "RSH-024",
+      "RSH-040"
+    ],
+    "business_and_mixed_both_pass_count": 11,
+    "case_verdicts": {
+      "RSH-001": [
+        "pass",
+        "pass"
+      ],
+      "RSH-002": [
+        "pass",
+        "pass"
+      ],
+      "RSH-003": [
+        "pass",
+        "pass"
+      ],
+      "RSH-004": [
+        "pass",
+        "pass"
+      ],
+      "RSH-005": [
+        "pass",
+        "partial"
+      ],
+      "RSH-006": [
+        "pass",
+        "pass"
+      ],
+      "RSH-007": [
+        "partial",
+        "partial"
+      ],
+      "RSH-008": [
+        "pass",
+        "pass"
+      ],
+      "RSH-009": [
+        "partial",
+        "partial"
+      ],
+      "RSH-010": [
+        "pass",
+        "pass"
+      ],
+      "RSH-011": [
+        "pass",
+        "pass"
+      ],
+      "RSH-012": [
+        "pass",
+        "pass"
+      ],
+      "RSH-013": [
+        "partial",
+        "partial"
+      ],
+      "RSH-014": [
+        "pass",
+        "pass"
+      ],
+      "RSH-015": [
+        "partial",
+        "partial"
+      ],
+      "RSH-016": [
+        "pass",
+        "pass"
+      ],
+      "RSH-017": [
+        "pass",
+        "pass"
+      ],
+      "RSH-018": [
+        "pass",
+        "partial"
+      ],
+      "RSH-019": [
+        "pass",
+        "pass"
+      ],
+      "RSH-020": [
+        "pass",
+        "pass"
+      ],
+      "RSH-021": [
+        "partial",
+        "partial"
+      ],
+      "RSH-022": [
+        "pass",
+        "pass"
+      ],
+      "RSH-023": [
+        "pass",
+        "pass"
+      ],
+      "RSH-024": [
+        "partial",
+        "pass"
+      ],
+      "RSH-025": [
+        "pass",
+        "pass"
+      ],
+      "RSH-026": [
+        "pass",
+        "pass"
+      ],
+      "RSH-027": [
+        "pass",
+        "pass"
+      ],
+      "RSH-028": [
+        "pass",
+        "pass"
+      ],
+      "RSH-029": [
+        "pass",
+        "pass"
+      ],
+      "RSH-030": [
+        "partial",
+        "partial"
+      ],
+      "RSH-031": [
+        "pass",
+        "pass"
+      ],
+      "RSH-032": [
+        "pass",
+        "pass"
+      ],
+      "RSH-033": [
+        "pass",
+        "pass"
+      ],
+      "RSH-034": [
+        "pass",
+        "pass"
+      ],
+      "RSH-035": [
+        "pass",
+        "pass"
+      ],
+      "RSH-036": [
+        "pass",
+        "pass"
+      ],
+      "RSH-037": [
+        "pass",
+        "pass"
+      ],
+      "RSH-038": [
+        "pass",
+        "pass"
+      ],
+      "RSH-039": [
+        "pass",
+        "pass"
+      ],
+      "RSH-040": [
+        "fail",
+        "pass"
+      ]
+    },
+    "known4": {
+      "pass": 8
+    },
+    "new36": {
+      "pass": 56,
+      "partial": 15,
+      "fail": 1
+    },
+    "issues": {
+      "missing_required_guidance": 15,
+      "api_failure": 1
+    }
+  },
+  "comparison": {
+    "gate_both_pass_shadow_not_both_pass": [
+      "RSH-005",
+      "RSH-013",
+      "RSH-018",
+      "RSH-040"
+    ],
+    "gate_both_pass_shadow_contains_fail": [
+      "RSH-040"
+    ],
+    "shadow_both_pass_gate_not_both_pass": [
+      "RSH-001",
+      "RSH-002",
+      "RSH-031",
+      "RSH-032",
+      "RSH-033",
+      "RSH-034",
+      "RSH-036",
+      "RSH-037"
+    ],
+    "default": "gate",
+    "promotion": "held_pending_quality_thresholds_and_user_decision"
+  }
+}

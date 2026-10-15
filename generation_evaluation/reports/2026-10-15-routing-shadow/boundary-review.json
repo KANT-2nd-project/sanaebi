@@ -1,0 +1,103 @@
+{
+  "reviewer": "independent_ai_source_reviewer",
+  "blinding_limit": "기술 감사에서 모드와 첫 RSH020 응답에 노출된 후 원문 경계 재검토. 최초 두 AI 판정자는 경로 가림.",
+  "reviewed_nonpass_responses": 48,
+  "verdict_changes": 4,
+  "rationale_only_changes": 1,
+  "remaining_verdicts_upheld": 44,
+  "rubric_changed": false,
+  "changes": [
+    {
+      "answer_id": "BLIND-042",
+      "case_id": "RSH-006",
+      "old": "partial",
+      "new": "pass",
+      "criteria_updates": {
+        "required_guidance": "pass"
+      },
+      "remove_issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "예상 도착 시각과 영향을 받는 첫 업무만 전달하도록 제한하여 정보 최소화를 동등하게 충족한다. 진단명 등 금지 항목을 별도 문장으로 반복할 필요는 없다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-007",
+          "quote": "시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다."
+        }
+      ]
+    },
+    {
+      "answer_id": "BLIND-036",
+      "case_id": "RSH-006",
+      "old": "partial",
+      "new": "pass",
+      "criteria_updates": {
+        "required_guidance": "pass"
+      },
+      "remove_issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "공유 정보를 도착 시각과 영향 업무만으로 제한하고 안전 우선·가능한 즉시 연락을 안내한다. 정보 최소화의 동등 표현을 인정한다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-007",
+          "quote": "진단명과 상세한 사정은 팀 채널에 공개하지 않는다."
+        }
+      ]
+    },
+    {
+      "answer_id": "BLIND-125",
+      "case_id": "RSH-031",
+      "old": "partial",
+      "new": "pass",
+      "criteria_updates": {
+        "required_guidance": "pass"
+      },
+      "remove_issues": [
+        "missing_required_guidance"
+      ],
+      "rationale": "개인 잔여 일수 조회 불가와 People팀 확인 경로를 제공한다. 고정 루브릭에 없는 먼저 포털 표시 조회하기를 추가 필수 순서로 강요하지 않는다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-001",
+          "quote": "잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인한다."
+        }
+      ]
+    },
+    {
+      "answer_id": "BLIND-083",
+      "case_id": "RSH-034",
+      "old": "partial",
+      "new": "pass",
+      "criteria_updates": {
+        "scope_conditions": "pass",
+        "clarification_or_partial_answer": "pass"
+      },
+      "remove_issues": [
+        "ambiguity"
+      ],
+      "rationale": "등록 전 두 승인이라는 원문을 유지했으며 포털 신청 전에 승인이 필요하다고 명시하지 않는다. 원문의 모호함을 해소하는 선택 안내를 필수로 바꾸어 감점하지 않는다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-049",
+          "quote": "팀장은 직무 관련성과 일정 대체 가능성을 검토하고 People팀은 연간 잔액과 교육 기록 항목을 확인한다. 등록 전에 두 승인 모두 완료되어야 한다."
+        }
+      ]
+    },
+    {
+      "answer_id": "BLIND-076",
+      "case_id": "RSH-005",
+      "old": "partial",
+      "new": "partial",
+      "criteria_updates": {},
+      "remove_issues": [],
+      "rationale": "고정 필수 항목인 주 40시간 안내가 빠졌다. 월–금 안내 누락은 독립 필수 항목이 아니므로 감점 근거에서 제외한다.",
+      "evidence": [
+        {
+          "knowledge_id": "ieum-004",
+          "quote": "휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+        }
+      ]
+    }
+  ]
+}

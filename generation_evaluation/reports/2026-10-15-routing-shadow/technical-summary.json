@@ -1,0 +1,961 @@
+{
+  "schema_version": 1,
+  "analysis_type": "read_only_routing_shadow_technical_summary",
+  "analyzed_at": "2026-10-15T06:08:44.267758+00:00",
+  "run_dir": "/home/jake/workspace/projects/sanaebi-routing-shadow/tmp/routing-shadow-20261015/run",
+  "manifest": {
+    "git_head": "cfc9cf564abd29c716a786a0b2ba18743b69acb5",
+    "git_branch": "feat/routing-shadow-20261015",
+    "schedule_seed": 20261015,
+    "budget_limit_usd": 5.0,
+    "expected_case_count": 40,
+    "expected_repeats": [
+      1,
+      2
+    ],
+    "expected_modes": [
+      "gate",
+      "shadow"
+    ]
+  },
+  "progress": {
+    "expected_request_slots": 160,
+    "completed_request_slots": 160,
+    "pending_request_slots": 0,
+    "known_regression_case_ids_observed": [
+      "RSH-001",
+      "RSH-002",
+      "RSH-003",
+      "RSH-004"
+    ],
+    "known_regression_case_count_observed": 4
+  },
+  "modes": {
+    "gate": {
+      "requests": 80,
+      "http_status_counts": {
+        "200": 80
+      },
+      "http_error_count": 0,
+      "http_errors_by_status": {},
+      "latency": {
+        "count": 80,
+        "median_seconds": 3.1665,
+        "p95_seconds_nearest_rank": 13.567,
+        "max_seconds": 18.541
+      },
+      "generation_attempts": 50,
+      "generation_attempts_by_status": {
+        "settled": 50
+      },
+      "tokens": {
+        "input_total": 2874412,
+        "output_total": 26697,
+        "usage_known_generation_count": 50,
+        "usage_unknown_generation_count": 0
+      },
+      "cost": {
+        "observed_usage_upper_estimate_usd": 0.7386257499999999,
+        "ledger_charged_or_reserved_usd": 0.73862575,
+        "ledger_reservation_total_usd": 3.1410575,
+        "open_reservation_count": 0
+      },
+      "classifier": {
+        "classification_status_counts": {
+          "ok": 80
+        },
+        "processing_path_counts": {
+          "clarify": 4,
+          "generation": 50,
+          "unsupported": 26
+        },
+        "nonsearch_prediction_counts": {
+          "CLARIFY": 4,
+          "UNSUPPORTED": 26
+        },
+        "gate_classification_block_count": 30,
+        "shadow_nonsearch_generation_count": 0
+      },
+      "cases": {
+        "known_regression_4_pool_requests": 8,
+        "new_36_pool_requests": 72,
+        "known_regression_unique_cases_observed": 4,
+        "new_unique_cases_observed": 36,
+        "known_regression_4_pool_latency": {
+          "count": 8,
+          "median_seconds": 0.0285,
+          "p95_seconds_nearest_rank": 15.371,
+          "max_seconds": 15.371
+        },
+        "new_36_pool_latency": {
+          "count": 72,
+          "median_seconds": 3.2455,
+          "p95_seconds_nearest_rank": 13.567,
+          "max_seconds": 18.541
+        }
+      },
+      "trace_missing_count": 0,
+      "usage_by_generation_slot": [
+        {
+          "slot_id": "gate:RSH-003:r1",
+          "input_tokens": 57484,
+          "output_tokens": 1916,
+          "cost_upper_estimate_usd": 0.015808
+        },
+        {
+          "slot_id": "gate:RSH-003:r2",
+          "input_tokens": 57484,
+          "output_tokens": 1506,
+          "cost_upper_estimate_usd": 0.0155005
+        },
+        {
+          "slot_id": "gate:RSH-005:r1",
+          "input_tokens": 57478,
+          "output_tokens": 183,
+          "cost_upper_estimate_usd": 0.01450675
+        },
+        {
+          "slot_id": "gate:RSH-005:r2",
+          "input_tokens": 57478,
+          "output_tokens": 173,
+          "cost_upper_estimate_usd": 0.01449925
+        },
+        {
+          "slot_id": "gate:RSH-006:r1",
+          "input_tokens": 57475,
+          "output_tokens": 259,
+          "cost_upper_estimate_usd": 0.014563
+        },
+        {
+          "slot_id": "gate:RSH-006:r2",
+          "input_tokens": 57475,
+          "output_tokens": 279,
+          "cost_upper_estimate_usd": 0.014578
+        },
+        {
+          "slot_id": "gate:RSH-007:r1",
+          "input_tokens": 57482,
+          "output_tokens": 290,
+          "cost_upper_estimate_usd": 0.014588
+        },
+        {
+          "slot_id": "gate:RSH-007:r2",
+          "input_tokens": 57482,
+          "output_tokens": 164,
+          "cost_upper_estimate_usd": 0.0144935
+        },
+        {
+          "slot_id": "gate:RSH-008:r1",
+          "input_tokens": 57476,
+          "output_tokens": 212,
+          "cost_upper_estimate_usd": 0.014528
+        },
+        {
+          "slot_id": "gate:RSH-008:r2",
+          "input_tokens": 57476,
+          "output_tokens": 312,
+          "cost_upper_estimate_usd": 0.014603
+        },
+        {
+          "slot_id": "gate:RSH-009:r1",
+          "input_tokens": 57477,
+          "output_tokens": 187,
+          "cost_upper_estimate_usd": 0.0145095
+        },
+        {
+          "slot_id": "gate:RSH-009:r2",
+          "input_tokens": 57477,
+          "output_tokens": 186,
+          "cost_upper_estimate_usd": 0.01450875
+        },
+        {
+          "slot_id": "gate:RSH-010:r1",
+          "input_tokens": 57485,
+          "output_tokens": 126,
+          "cost_upper_estimate_usd": 0.01446575
+        },
+        {
+          "slot_id": "gate:RSH-010:r2",
+          "input_tokens": 57485,
+          "output_tokens": 150,
+          "cost_upper_estimate_usd": 0.01448375
+        },
+        {
+          "slot_id": "gate:RSH-011:r1",
+          "input_tokens": 57485,
+          "output_tokens": 614,
+          "cost_upper_estimate_usd": 0.01483175
+        },
+        {
+          "slot_id": "gate:RSH-011:r2",
+          "input_tokens": 57485,
+          "output_tokens": 690,
+          "cost_upper_estimate_usd": 0.01488875
+        },
+        {
+          "slot_id": "gate:RSH-012:r1",
+          "input_tokens": 57480,
+          "output_tokens": 225,
+          "cost_upper_estimate_usd": 0.01453875
+        },
+        {
+          "slot_id": "gate:RSH-012:r2",
+          "input_tokens": 57480,
+          "output_tokens": 212,
+          "cost_upper_estimate_usd": 0.014529
+        },
+        {
+          "slot_id": "gate:RSH-013:r1",
+          "input_tokens": 57478,
+          "output_tokens": 491,
+          "cost_upper_estimate_usd": 0.01473775
+        },
+        {
+          "slot_id": "gate:RSH-013:r2",
+          "input_tokens": 57478,
+          "output_tokens": 428,
+          "cost_upper_estimate_usd": 0.0146905
+        },
+        {
+          "slot_id": "gate:RSH-014:r1",
+          "input_tokens": 57483,
+          "output_tokens": 1923,
+          "cost_upper_estimate_usd": 0.015813
+        },
+        {
+          "slot_id": "gate:RSH-014:r2",
+          "input_tokens": 57483,
+          "output_tokens": 1805,
+          "cost_upper_estimate_usd": 0.0157245
+        },
+        {
+          "slot_id": "gate:RSH-015:r1",
+          "input_tokens": 57715,
+          "output_tokens": 373,
+          "cost_upper_estimate_usd": 0.0147085
+        },
+        {
+          "slot_id": "gate:RSH-015:r2",
+          "input_tokens": 57715,
+          "output_tokens": 325,
+          "cost_upper_estimate_usd": 0.0146725
+        },
+        {
+          "slot_id": "gate:RSH-016:r1",
+          "input_tokens": 57473,
+          "output_tokens": 176,
+          "cost_upper_estimate_usd": 0.01450025
+        },
+        {
+          "slot_id": "gate:RSH-016:r2",
+          "input_tokens": 57473,
+          "output_tokens": 175,
+          "cost_upper_estimate_usd": 0.0144995
+        },
+        {
+          "slot_id": "gate:RSH-017:r1",
+          "input_tokens": 57477,
+          "output_tokens": 410,
+          "cost_upper_estimate_usd": 0.01467675
+        },
+        {
+          "slot_id": "gate:RSH-017:r2",
+          "input_tokens": 57477,
+          "output_tokens": 565,
+          "cost_upper_estimate_usd": 0.014793
+        },
+        {
+          "slot_id": "gate:RSH-018:r1",
+          "input_tokens": 57476,
+          "output_tokens": 433,
+          "cost_upper_estimate_usd": 0.01469375
+        },
+        {
+          "slot_id": "gate:RSH-018:r2",
+          "input_tokens": 57476,
+          "output_tokens": 530,
+          "cost_upper_estimate_usd": 0.0147665
+        },
+        {
+          "slot_id": "gate:RSH-019:r1",
+          "input_tokens": 57475,
+          "output_tokens": 230,
+          "cost_upper_estimate_usd": 0.01454125
+        },
+        {
+          "slot_id": "gate:RSH-019:r2",
+          "input_tokens": 57475,
+          "output_tokens": 253,
+          "cost_upper_estimate_usd": 0.0145585
+        },
+        {
+          "slot_id": "gate:RSH-020:r1",
+          "input_tokens": 57474,
+          "output_tokens": 202,
+          "cost_upper_estimate_usd": 0.01452
+        },
+        {
+          "slot_id": "gate:RSH-020:r2",
+          "input_tokens": 57474,
+          "output_tokens": 295,
+          "cost_upper_estimate_usd": 0.01458975
+        },
+        {
+          "slot_id": "gate:RSH-021:r1",
+          "input_tokens": 57475,
+          "output_tokens": 255,
+          "cost_upper_estimate_usd": 0.01456
+        },
+        {
+          "slot_id": "gate:RSH-021:r2",
+          "input_tokens": 57475,
+          "output_tokens": 295,
+          "cost_upper_estimate_usd": 0.01459
+        },
+        {
+          "slot_id": "gate:RSH-022:r1",
+          "input_tokens": 57473,
+          "output_tokens": 470,
+          "cost_upper_estimate_usd": 0.01472075
+        },
+        {
+          "slot_id": "gate:RSH-022:r2",
+          "input_tokens": 57473,
+          "output_tokens": 184,
+          "cost_upper_estimate_usd": 0.01450625
+        },
+        {
+          "slot_id": "gate:RSH-023:r1",
+          "input_tokens": 57484,
+          "output_tokens": 379,
+          "cost_upper_estimate_usd": 0.01465525
+        },
+        {
+          "slot_id": "gate:RSH-023:r2",
+          "input_tokens": 57484,
+          "output_tokens": 434,
+          "cost_upper_estimate_usd": 0.0146965
+        },
+        {
+          "slot_id": "gate:RSH-028:r1",
+          "input_tokens": 57472,
+          "output_tokens": 92,
+          "cost_upper_estimate_usd": 0.014437
+        },
+        {
+          "slot_id": "gate:RSH-028:r2",
+          "input_tokens": 57472,
+          "output_tokens": 81,
+          "cost_upper_estimate_usd": 0.01442875
+        },
+        {
+          "slot_id": "gate:RSH-030:r1",
+          "input_tokens": 57492,
+          "output_tokens": 745,
+          "cost_upper_estimate_usd": 0.01493175
+        },
+        {
+          "slot_id": "gate:RSH-030:r2",
+          "input_tokens": 57492,
+          "output_tokens": 475,
+          "cost_upper_estimate_usd": 0.01472925
+        },
+        {
+          "slot_id": "gate:RSH-035:r1",
+          "input_tokens": 57463,
+          "output_tokens": 163,
+          "cost_upper_estimate_usd": 0.014488
+        },
+        {
+          "slot_id": "gate:RSH-035:r2",
+          "input_tokens": 57463,
+          "output_tokens": 284,
+          "cost_upper_estimate_usd": 0.01457875
+        },
+        {
+          "slot_id": "gate:RSH-039:r1",
+          "input_tokens": 57483,
+          "output_tokens": 1197,
+          "cost_upper_estimate_usd": 0.0152685
+        },
+        {
+          "slot_id": "gate:RSH-039:r2",
+          "input_tokens": 57483,
+          "output_tokens": 668,
+          "cost_upper_estimate_usd": 0.01487175
+        },
+        {
+          "slot_id": "gate:RSH-040:r1",
+          "input_tokens": 57491,
+          "output_tokens": 2329,
+          "cost_upper_estimate_usd": 0.0161195
+        },
+        {
+          "slot_id": "gate:RSH-040:r2",
+          "input_tokens": 57491,
+          "output_tokens": 2348,
+          "cost_upper_estimate_usd": 0.01613375
+        }
+      ]
+    },
+    "shadow": {
+      "requests": 80,
+      "http_status_counts": {
+        "200": 79,
+        "502": 1
+      },
+      "http_error_count": 1,
+      "http_errors_by_status": {
+        "502": 1
+      },
+      "latency": {
+        "count": 80,
+        "median_seconds": 3.9299999999999997,
+        "p95_seconds_nearest_rank": 15.787,
+        "max_seconds": 30.262
+      },
+      "generation_attempts": 80,
+      "generation_attempts_by_status": {
+        "settled": 80
+      },
+      "tokens": {
+        "input_total": 4597232,
+        "output_total": 43235,
+        "usage_known_generation_count": 80,
+        "usage_unknown_generation_count": 0
+      },
+      "cost": {
+        "observed_usage_upper_estimate_usd": 1.18173425,
+        "ledger_charged_or_reserved_usd": 1.18173425,
+        "ledger_reservation_total_usd": 5.023728,
+        "open_reservation_count": 0
+      },
+      "classifier": {
+        "classification_status_counts": {
+          "ok": 80
+        },
+        "processing_path_counts": {
+          "generation": 80
+        },
+        "nonsearch_prediction_counts": {
+          "CLARIFY": 4,
+          "UNSUPPORTED": 26
+        },
+        "gate_classification_block_count": 0,
+        "shadow_nonsearch_generation_count": 30
+      },
+      "cases": {
+        "known_regression_4_pool_requests": 8,
+        "new_36_pool_requests": 72,
+        "known_regression_unique_cases_observed": 4,
+        "new_unique_cases_observed": 36,
+        "known_regression_4_pool_latency": {
+          "count": 8,
+          "median_seconds": 6.228,
+          "p95_seconds_nearest_rank": 15.787,
+          "max_seconds": 15.787
+        },
+        "new_36_pool_latency": {
+          "count": 72,
+          "median_seconds": 3.8725,
+          "p95_seconds_nearest_rank": 16.175,
+          "max_seconds": 30.262
+        }
+      },
+      "trace_missing_count": 0,
+      "usage_by_generation_slot": [
+        {
+          "slot_id": "shadow:RSH-001:r1",
+          "input_tokens": 57466,
+          "output_tokens": 773,
+          "cost_upper_estimate_usd": 0.01494625
+        },
+        {
+          "slot_id": "shadow:RSH-001:r2",
+          "input_tokens": 57466,
+          "output_tokens": 606,
+          "cost_upper_estimate_usd": 0.014821
+        },
+        {
+          "slot_id": "shadow:RSH-002:r1",
+          "input_tokens": 57466,
+          "output_tokens": 617,
+          "cost_upper_estimate_usd": 0.01482925
+        },
+        {
+          "slot_id": "shadow:RSH-002:r2",
+          "input_tokens": 57466,
+          "output_tokens": 850,
+          "cost_upper_estimate_usd": 0.015004
+        },
+        {
+          "slot_id": "shadow:RSH-003:r1",
+          "input_tokens": 57484,
+          "output_tokens": 2195,
+          "cost_upper_estimate_usd": 0.01601725
+        },
+        {
+          "slot_id": "shadow:RSH-003:r2",
+          "input_tokens": 57484,
+          "output_tokens": 1622,
+          "cost_upper_estimate_usd": 0.0155875
+        },
+        {
+          "slot_id": "shadow:RSH-004:r1",
+          "input_tokens": 57464,
+          "output_tokens": 123,
+          "cost_upper_estimate_usd": 0.01445825
+        },
+        {
+          "slot_id": "shadow:RSH-004:r2",
+          "input_tokens": 57464,
+          "output_tokens": 74,
+          "cost_upper_estimate_usd": 0.0144215
+        },
+        {
+          "slot_id": "shadow:RSH-005:r1",
+          "input_tokens": 57478,
+          "output_tokens": 191,
+          "cost_upper_estimate_usd": 0.01451275
+        },
+        {
+          "slot_id": "shadow:RSH-005:r2",
+          "input_tokens": 57478,
+          "output_tokens": 191,
+          "cost_upper_estimate_usd": 0.01451275
+        },
+        {
+          "slot_id": "shadow:RSH-006:r1",
+          "input_tokens": 57475,
+          "output_tokens": 279,
+          "cost_upper_estimate_usd": 0.014578
+        },
+        {
+          "slot_id": "shadow:RSH-006:r2",
+          "input_tokens": 57475,
+          "output_tokens": 194,
+          "cost_upper_estimate_usd": 0.01451425
+        },
+        {
+          "slot_id": "shadow:RSH-007:r1",
+          "input_tokens": 57482,
+          "output_tokens": 202,
+          "cost_upper_estimate_usd": 0.014522
+        },
+        {
+          "slot_id": "shadow:RSH-007:r2",
+          "input_tokens": 57482,
+          "output_tokens": 187,
+          "cost_upper_estimate_usd": 0.01451075
+        },
+        {
+          "slot_id": "shadow:RSH-008:r1",
+          "input_tokens": 57476,
+          "output_tokens": 221,
+          "cost_upper_estimate_usd": 0.01453475
+        },
+        {
+          "slot_id": "shadow:RSH-008:r2",
+          "input_tokens": 57476,
+          "output_tokens": 279,
+          "cost_upper_estimate_usd": 0.01457825
+        },
+        {
+          "slot_id": "shadow:RSH-009:r1",
+          "input_tokens": 57477,
+          "output_tokens": 206,
+          "cost_upper_estimate_usd": 0.01452375
+        },
+        {
+          "slot_id": "shadow:RSH-009:r2",
+          "input_tokens": 57477,
+          "output_tokens": 256,
+          "cost_upper_estimate_usd": 0.01456125
+        },
+        {
+          "slot_id": "shadow:RSH-010:r1",
+          "input_tokens": 57485,
+          "output_tokens": 163,
+          "cost_upper_estimate_usd": 0.0144935
+        },
+        {
+          "slot_id": "shadow:RSH-010:r2",
+          "input_tokens": 57485,
+          "output_tokens": 125,
+          "cost_upper_estimate_usd": 0.014465
+        },
+        {
+          "slot_id": "shadow:RSH-011:r1",
+          "input_tokens": 57485,
+          "output_tokens": 588,
+          "cost_upper_estimate_usd": 0.01481225
+        },
+        {
+          "slot_id": "shadow:RSH-011:r2",
+          "input_tokens": 57485,
+          "output_tokens": 923,
+          "cost_upper_estimate_usd": 0.0150635
+        },
+        {
+          "slot_id": "shadow:RSH-012:r1",
+          "input_tokens": 57480,
+          "output_tokens": 348,
+          "cost_upper_estimate_usd": 0.014631
+        },
+        {
+          "slot_id": "shadow:RSH-012:r2",
+          "input_tokens": 57480,
+          "output_tokens": 176,
+          "cost_upper_estimate_usd": 0.014502
+        },
+        {
+          "slot_id": "shadow:RSH-013:r1",
+          "input_tokens": 57478,
+          "output_tokens": 717,
+          "cost_upper_estimate_usd": 0.01490725
+        },
+        {
+          "slot_id": "shadow:RSH-013:r2",
+          "input_tokens": 57478,
+          "output_tokens": 511,
+          "cost_upper_estimate_usd": 0.01475275
+        },
+        {
+          "slot_id": "shadow:RSH-014:r1",
+          "input_tokens": 57483,
+          "output_tokens": 2183,
+          "cost_upper_estimate_usd": 0.016008
+        },
+        {
+          "slot_id": "shadow:RSH-014:r2",
+          "input_tokens": 57483,
+          "output_tokens": 2510,
+          "cost_upper_estimate_usd": 0.01625325
+        },
+        {
+          "slot_id": "shadow:RSH-015:r1",
+          "input_tokens": 57715,
+          "output_tokens": 318,
+          "cost_upper_estimate_usd": 0.01466725
+        },
+        {
+          "slot_id": "shadow:RSH-015:r2",
+          "input_tokens": 57715,
+          "output_tokens": 319,
+          "cost_upper_estimate_usd": 0.014668
+        },
+        {
+          "slot_id": "shadow:RSH-016:r1",
+          "input_tokens": 57473,
+          "output_tokens": 193,
+          "cost_upper_estimate_usd": 0.014513
+        },
+        {
+          "slot_id": "shadow:RSH-016:r2",
+          "input_tokens": 57473,
+          "output_tokens": 145,
+          "cost_upper_estimate_usd": 0.014477
+        },
+        {
+          "slot_id": "shadow:RSH-017:r1",
+          "input_tokens": 57477,
+          "output_tokens": 574,
+          "cost_upper_estimate_usd": 0.01479975
+        },
+        {
+          "slot_id": "shadow:RSH-017:r2",
+          "input_tokens": 57477,
+          "output_tokens": 438,
+          "cost_upper_estimate_usd": 0.01469775
+        },
+        {
+          "slot_id": "shadow:RSH-018:r1",
+          "input_tokens": 57476,
+          "output_tokens": 457,
+          "cost_upper_estimate_usd": 0.01471175
+        },
+        {
+          "slot_id": "shadow:RSH-018:r2",
+          "input_tokens": 57476,
+          "output_tokens": 310,
+          "cost_upper_estimate_usd": 0.0146015
+        },
+        {
+          "slot_id": "shadow:RSH-019:r1",
+          "input_tokens": 57475,
+          "output_tokens": 245,
+          "cost_upper_estimate_usd": 0.0145525
+        },
+        {
+          "slot_id": "shadow:RSH-019:r2",
+          "input_tokens": 57475,
+          "output_tokens": 202,
+          "cost_upper_estimate_usd": 0.01452025
+        },
+        {
+          "slot_id": "shadow:RSH-020:r1",
+          "input_tokens": 57474,
+          "output_tokens": 295,
+          "cost_upper_estimate_usd": 0.01458975
+        },
+        {
+          "slot_id": "shadow:RSH-020:r2",
+          "input_tokens": 57474,
+          "output_tokens": 176,
+          "cost_upper_estimate_usd": 0.0145005
+        },
+        {
+          "slot_id": "shadow:RSH-021:r1",
+          "input_tokens": 57475,
+          "output_tokens": 148,
+          "cost_upper_estimate_usd": 0.01447975
+        },
+        {
+          "slot_id": "shadow:RSH-021:r2",
+          "input_tokens": 57475,
+          "output_tokens": 269,
+          "cost_upper_estimate_usd": 0.0145705
+        },
+        {
+          "slot_id": "shadow:RSH-022:r1",
+          "input_tokens": 57473,
+          "output_tokens": 381,
+          "cost_upper_estimate_usd": 0.014654
+        },
+        {
+          "slot_id": "shadow:RSH-022:r2",
+          "input_tokens": 57473,
+          "output_tokens": 503,
+          "cost_upper_estimate_usd": 0.0147455
+        },
+        {
+          "slot_id": "shadow:RSH-023:r1",
+          "input_tokens": 57484,
+          "output_tokens": 604,
+          "cost_upper_estimate_usd": 0.014824
+        },
+        {
+          "slot_id": "shadow:RSH-023:r2",
+          "input_tokens": 57484,
+          "output_tokens": 525,
+          "cost_upper_estimate_usd": 0.01476475
+        },
+        {
+          "slot_id": "shadow:RSH-024:r1",
+          "input_tokens": 56856,
+          "output_tokens": 494,
+          "cost_upper_estimate_usd": 0.0145845
+        },
+        {
+          "slot_id": "shadow:RSH-024:r2",
+          "input_tokens": 56856,
+          "output_tokens": 616,
+          "cost_upper_estimate_usd": 0.014676
+        },
+        {
+          "slot_id": "shadow:RSH-025:r1",
+          "input_tokens": 57469,
+          "output_tokens": 235,
+          "cost_upper_estimate_usd": 0.0145435
+        },
+        {
+          "slot_id": "shadow:RSH-025:r2",
+          "input_tokens": 57469,
+          "output_tokens": 255,
+          "cost_upper_estimate_usd": 0.0145585
+        },
+        {
+          "slot_id": "shadow:RSH-026:r1",
+          "input_tokens": 57472,
+          "output_tokens": 127,
+          "cost_upper_estimate_usd": 0.01446325
+        },
+        {
+          "slot_id": "shadow:RSH-026:r2",
+          "input_tokens": 57472,
+          "output_tokens": 124,
+          "cost_upper_estimate_usd": 0.014461
+        },
+        {
+          "slot_id": "shadow:RSH-027:r1",
+          "input_tokens": 57471,
+          "output_tokens": 120,
+          "cost_upper_estimate_usd": 0.01445775
+        },
+        {
+          "slot_id": "shadow:RSH-027:r2",
+          "input_tokens": 57471,
+          "output_tokens": 179,
+          "cost_upper_estimate_usd": 0.014502
+        },
+        {
+          "slot_id": "shadow:RSH-028:r1",
+          "input_tokens": 57472,
+          "output_tokens": 139,
+          "cost_upper_estimate_usd": 0.01447225
+        },
+        {
+          "slot_id": "shadow:RSH-028:r2",
+          "input_tokens": 57472,
+          "output_tokens": 117,
+          "cost_upper_estimate_usd": 0.01445575
+        },
+        {
+          "slot_id": "shadow:RSH-029:r1",
+          "input_tokens": 57471,
+          "output_tokens": 134,
+          "cost_upper_estimate_usd": 0.01446825
+        },
+        {
+          "slot_id": "shadow:RSH-029:r2",
+          "input_tokens": 57471,
+          "output_tokens": 120,
+          "cost_upper_estimate_usd": 0.01445775
+        },
+        {
+          "slot_id": "shadow:RSH-030:r1",
+          "input_tokens": 57492,
+          "output_tokens": 317,
+          "cost_upper_estimate_usd": 0.01461075
+        },
+        {
+          "slot_id": "shadow:RSH-030:r2",
+          "input_tokens": 57492,
+          "output_tokens": 281,
+          "cost_upper_estimate_usd": 0.01458375
+        },
+        {
+          "slot_id": "shadow:RSH-031:r1",
+          "input_tokens": 57470,
+          "output_tokens": 363,
+          "cost_upper_estimate_usd": 0.01463975
+        },
+        {
+          "slot_id": "shadow:RSH-031:r2",
+          "input_tokens": 57470,
+          "output_tokens": 376,
+          "cost_upper_estimate_usd": 0.0146495
+        },
+        {
+          "slot_id": "shadow:RSH-032:r1",
+          "input_tokens": 57475,
+          "output_tokens": 580,
+          "cost_upper_estimate_usd": 0.01480375
+        },
+        {
+          "slot_id": "shadow:RSH-032:r2",
+          "input_tokens": 57475,
+          "output_tokens": 331,
+          "cost_upper_estimate_usd": 0.014617
+        },
+        {
+          "slot_id": "shadow:RSH-033:r1",
+          "input_tokens": 57471,
+          "output_tokens": 1188,
+          "cost_upper_estimate_usd": 0.01525875
+        },
+        {
+          "slot_id": "shadow:RSH-033:r2",
+          "input_tokens": 57471,
+          "output_tokens": 463,
+          "cost_upper_estimate_usd": 0.014715
+        },
+        {
+          "slot_id": "shadow:RSH-034:r1",
+          "input_tokens": 57471,
+          "output_tokens": 1052,
+          "cost_upper_estimate_usd": 0.01515675
+        },
+        {
+          "slot_id": "shadow:RSH-034:r2",
+          "input_tokens": 57471,
+          "output_tokens": 829,
+          "cost_upper_estimate_usd": 0.0149895
+        },
+        {
+          "slot_id": "shadow:RSH-035:r1",
+          "input_tokens": 57463,
+          "output_tokens": 258,
+          "cost_upper_estimate_usd": 0.01455925
+        },
+        {
+          "slot_id": "shadow:RSH-035:r2",
+          "input_tokens": 57463,
+          "output_tokens": 189,
+          "cost_upper_estimate_usd": 0.0145075
+        },
+        {
+          "slot_id": "shadow:RSH-036:r1",
+          "input_tokens": 57461,
+          "output_tokens": 1001,
+          "cost_upper_estimate_usd": 0.015116
+        },
+        {
+          "slot_id": "shadow:RSH-036:r2",
+          "input_tokens": 57461,
+          "output_tokens": 320,
+          "cost_upper_estimate_usd": 0.01460525
+        },
+        {
+          "slot_id": "shadow:RSH-037:r1",
+          "input_tokens": 57461,
+          "output_tokens": 199,
+          "cost_upper_estimate_usd": 0.0145145
+        },
+        {
+          "slot_id": "shadow:RSH-037:r2",
+          "input_tokens": 57461,
+          "output_tokens": 177,
+          "cost_upper_estimate_usd": 0.014498
+        },
+        {
+          "slot_id": "shadow:RSH-038:r1",
+          "input_tokens": 57466,
+          "output_tokens": 227,
+          "cost_upper_estimate_usd": 0.01453675
+        },
+        {
+          "slot_id": "shadow:RSH-038:r2",
+          "input_tokens": 57466,
+          "output_tokens": 229,
+          "cost_upper_estimate_usd": 0.01453825
+        },
+        {
+          "slot_id": "shadow:RSH-039:r1",
+          "input_tokens": 57483,
+          "output_tokens": 1042,
+          "cost_upper_estimate_usd": 0.01515225
+        },
+        {
+          "slot_id": "shadow:RSH-039:r2",
+          "input_tokens": 57483,
+          "output_tokens": 953,
+          "cost_upper_estimate_usd": 0.0150855
+        },
+        {
+          "slot_id": "shadow:RSH-040:r1",
+          "input_tokens": 57491,
+          "output_tokens": 4096,
+          "cost_upper_estimate_usd": 0.01744475
+        },
+        {
+          "slot_id": "shadow:RSH-040:r2",
+          "input_tokens": 57491,
+          "output_tokens": 2692,
+          "cost_upper_estimate_usd": 0.01639175
+        }
+      ]
+    }
+  },
+  "budget": {
+    "ledger_reservation_count": 130,
+    "ledger_reserved_or_charged_usd": 1.92036,
+    "ledger_open_reservation_count": 0
+  },
+  "warnings": [],
+  "interpretation_limits": [
+    "이 도구는 HTTP·분류 경로·사용량·비용 추정만 집계하며 답변 품질을 판정하지 않습니다.",
+    "p95는 nearest-rank 방식이며, 표본 수가 작을 때는 기술 통계로만 해석해야 합니다.",
+    "usage 누락은 0으로 대체하지 않고 ledger 예약액으로 비용 한도 추적을 유지합니다."
+  ]
+}
