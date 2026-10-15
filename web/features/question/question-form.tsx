@@ -15,14 +15,12 @@ type QuestionFormProps = {
   empty: boolean;
   touchEnter: boolean;
   inputRef: RefObject<HTMLTextAreaElement | null>;
-  registerButtonRef: RefObject<HTMLButtonElement | null>;
   onChange: (value: string) => void;
   onExample: (value: string) => void;
-  onRegister: () => void;
   onSubmit: FormEventHandler<HTMLFormElement>;
 };
 
-export function QuestionForm({ question, error, pending, empty, touchEnter, inputRef, registerButtonRef, onChange, onExample, onRegister, onSubmit }: QuestionFormProps) {
+export function QuestionForm({ question, error, pending, empty, touchEnter, inputRef, onChange, onExample, onSubmit }: QuestionFormProps) {
   const composing = useRef(false);
   useLayoutEffect(() => {
     const input = inputRef.current;
@@ -70,7 +68,6 @@ export function QuestionForm({ question, error, pending, empty, touchEnter, inpu
             <p id="question-help" className="keyboard-help">
               {touchEnter ? "Enter 줄바꿈 · 버튼으로 전송" : "Enter 전송 · Shift+Enter 줄바꿈"}
             </p>
-            <button ref={registerButtonRef} type="button" disabled={pending} className="chat-button register-button" onClick={onRegister}>문서로 등록</button>
             <button type="submit" disabled={pending} className="chat-button send-button">
               전송 <span aria-hidden="true">↑</span>
             </button>
