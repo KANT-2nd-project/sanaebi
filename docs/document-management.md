@@ -58,12 +58,36 @@ SQLite schema v2는 기존 문서·개정·이벤트·멱등성을 유지하고 
 
 ## 회사 지식 이관·내보내기
 
-저장소 루트에서 실행한다. 기본 dry-run은 실제 DB를 생성·수정하지 않는다. 기존 DB는 메모리에 복제해 schema·중복·길이를 검사한다.
+### 새 환경의 DB 최초 구성
+
+[의존성 설치](../README.md#빠른-시작)를 마친 뒤 저장소 루트에서 **검증 → 이관·게시 → 게시 문서 확인 → 서버 실행** 순서로 진행한다. DB는 Git에 없지만 기본 원본 `data/company-knowledge/documents.jsonl`과 이관 스크립트는 포함되어 있다. 서버 시작은 빈 DB 구조를 준비할 뿐 기본 문서를 자동으로 채우지 않는다.
+
+기본 DB는 `var/documents.sqlite3`다. 다른 경로를 사용하려면 아래처럼 지정하고, 이후 이관·확인·서버 실행에 같은 환경변수를 전달한다. 다른 터미널에서도 같은 값을 설정한다. 상대 경로는 실행 디렉터리 기준이므로 사용자 지정 경로는 절대 경로를 권장한다.
+
+```bash
+# 기본 경로를 사용할 때는 생략한다. 실제 사용할 경로로 바꾼다.
+export SANAEBI_DOCUMENT_DB=/absolute/path/to/documents.sqlite3
+```
+
+기존 DB에 이관할 때는 먼저 서비스 쓰기를 중지한다. 아래 두 명령을 차례대로 실행한다. 기본 dry-run은 실제 DB를 생성·수정하지 않는다. 기존 DB는 메모리에 복제해 schema·중복·길이를 검사한다.
 
 ```bash
 uv run --locked python scripts/import_company_knowledge.py --source data/company-knowledge/documents.jsonl
 uv run --locked python scripts/import_company_knowledge.py --source data/company-knowledge/documents.jsonl --apply --publish-imported
 ```
+
+게시 문서가 준비됐는지 확인한 뒤 서버를 시작한다. 진단 명령은 문서 수와 snapshot 식별값을 출력하며 모델을 호출하지 않는다. 새 DB에서는 원본의 게시 가능한 문서가 반영됐는지 확인한다.
+
+```bash
+uv run --locked python -m scripts.inspect_document_context
+npm run dev
+```
+
+브라우저에서 http://127.0.0.1:3000/admin/documents 로 문서를 확인하고 http://127.0.0.1:3000/chat 에서 질문한다. 실제 답변에는 [분류 모델·생성 제공자 준비](../app/README.md#실행-준비와-api-확인)도 필요하다.
+
+원본 이관은 기존 DB에서 편집한 최신 내용을 복원하지 않는다. 최신 편집본을 옮기려면 별도 DB 백업·복원이 필요하다. 시연용 reset 명령은 최초 구성에 사용하지 않는다.
+
+### 재실행과 내보내기
 
 `--apply`만 쓰면 초안으로 이관한다. `--publish-imported`는 새로 이관한 자료만 게시하며 과거 사용 상태를 이어가기 위한 옵션이다. 재실행은 같은 원본 행을 건너뛰고 원본 ID의 내용이 달라지면 중단한다. 수정·중단된 기존 문서를 재게시하거나 덮어쓰지 않는다. 전체 이관은 한 트랜잭션으로 처리한다. 원본과 DB 백업·hash·매핑 manifest는 DB 옆 `backups/knowledge-*/`에 남긴다. 실제 이관 전 서비스 쓰기를 중지한다.
 

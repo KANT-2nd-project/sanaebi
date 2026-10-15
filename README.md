@@ -37,12 +37,22 @@ flowchart LR
 
 ## 빠른 시작
 
-Python 3.12.14·uv, Node.js 22 이상·npm을 사용합니다. 답변을 사용하려면 Git에 포함되지 않은 분류 저장본, 게시 문서, 답변 제공자를 준비합니다. 저장소 루트에서 실행합니다. [상세 절차](web/README.md#개발)
+Python 3.12.14·uv, Node.js 22 이상·npm을 사용합니다. 저장소 루트에서 의존성을 설치합니다.
 
 ```bash
 uv sync --locked
 npm ci
 npm --prefix web ci
+```
+
+답변을 사용하기 전에 다음을 준비합니다.
+
+- 분류 저장본과 답변 제공자: [준비 안내](app/README.md#실행-준비와-api-확인)
+- 문서 DB: Git에 포함되지 않으며, 저장소의 기본 문서와 이관 스크립트로 최초 구성할 수 있습니다. [초기 구성](docs/document-management.md#새-환경의-db-최초-구성)
+
+준비를 마치면 웹과 API를 함께 실행합니다. [상세 절차](web/README.md#개발)
+
+```bash
 npm run dev
 ```
 
