@@ -105,6 +105,20 @@ class TraceTests(unittest.TestCase):
         ]
         return [json.loads(line) for line in lines]
 
+    def test_active_stage_resolver_does_not_assume_legacy_chain_names(self):
+        self.assertEqual(
+            trace.stage_of("prepare_input", (), trace.ROOT_STAGE),
+            ("prepare_input", False),
+        )
+        self.assertEqual(
+            trace.stage_of("RunnableBranch", (), trace.ROOT_STAGE),
+            ("RunnableBranch", True),
+        )
+        self.assertEqual(
+            trace.stage_of("RunnableLambda", ("condition:legacy",), "RunnableBranch"),
+            ("RunnableLambda", False),
+        )
+
     def test_no_trace_dir_writes_nothing_and_keeps_response(self):
         response = self.ask()
         self.assertEqual(response.status_code, 200)
@@ -149,6 +163,19 @@ class TraceTests(unittest.TestCase):
         self.assertGreater(model["prompt_chars"], trace.DEFAULT_MAX_CHARS)
         self.assertEqual(len(model["input"]["head"]), trace.DEFAULT_MAX_CHARS)
         self.assertEqual(model["output"], "가상 답변")
+
+    def test_active_trace_keeps_generic_runnable_names(self):
+        with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):
+            self.ask()
+
+        [record] = self.records()
+        stages = [step["stage"] for step in record["steps"]]
+        self.assertEqual(stages[1], trace.ROOT_STAGE)
+        self.assertIn("RunnableLambda", stages)
+        self.assertIn("프롬프트 만들기", stages)
+        self.assertNotIn("문서 문맥 추가", stages)
+        self.assertNotIn("입력 정리", stages)
+        self.assertNotIn("경로 선택", stages)
 
     def test_two_model_calls_share_trace_id_and_split_by_root_run(self):
         def generate_twice(question, snapshot=None):

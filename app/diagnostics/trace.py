@@ -25,7 +25,7 @@ import os
 import threading
 import time
 import uuid
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from contextvars import ContextVar
 from datetime import datetime
 from pathlib import Path
@@ -163,40 +163,23 @@ def _error_record(error: BaseException) -> str:
     return f"{type(error).__name__}: {error}"
 
 
-# LangChain 실행 이름(RunnableLambda 등)을 사람이 읽는 단계 이름으로 바꾼다.
-# 실행기(sanaebi_assistant.create_chain) 구조: prepare_input → RunnableBranch →
-# 문서 문맥 lambda → RunnableAssign(프롬프트 | 모델 | 출력 해석) → format_answer
+# LangChain callback은 실행기 내부 구조를 알지 않아도 기본 정보를 남긴다.
 ROOT_STAGE = "실행기 전체"
 MODEL_STAGE = "모델 호출"
-_NAMED_STAGES = {
-    "prepare_input": "입력 정리",
-    "RunnableBranch": "경로 선택",
-    "format_answer": "출력 정리",
-    "format_failed_input": "입력 오류 응답",
-}
+StageResolver = Callable[[str | None, Any, str | None], tuple[str, bool]]
 
 
 def stage_of(name: str | None, tags, parent_stage: str | None) -> tuple[str, bool]:
-    """(단계 이름, 감싸기만 하는 실행인지)를 돌려준다. 모르는 실행은 원래 이름을 쓴다."""
+    """Return a generic stage label and whether the node only wraps child runs."""
     name = name or ""
     if parent_stage is None:
         return ROOT_STAGE, False
-    if name in _NAMED_STAGES:
-        return _NAMED_STAGES[name], False
     if name.endswith("PromptTemplate"):
         return "프롬프트 만들기", False
-    if name.startswith("RunnableAssign"):
-        return "구조화 답변", True
-    if parent_stage == "경로 선택":
-        if any(str(tag).startswith("condition:") for tag in tags or ()):
-            return "경로 조건", True
-        return "답변 체인", True
-    if parent_stage == "답변 체인" and name == "RunnableLambda":
-        return "문서 문맥 추가", False
-    if name.startswith(("RunnableSequence", "RunnableParallel")):
-        return parent_stage, True
-    if parent_stage == "구조화 답변":
-        return "출력 해석", False
+    if name.startswith(
+        ("RunnableAssign", "RunnableBranch", "RunnableParallel", "RunnableSequence")
+    ):
+        return name, True
     return name or "알 수 없음", False
 
 
@@ -205,9 +188,10 @@ class TraceCallback(BaseCallbackHandler):
 
     run_inline = True
 
-    def __init__(self):
+    def __init__(self, stage_resolver: StageResolver | None = None):
         self.trace_id = uuid.uuid4().hex
         self.started = time.perf_counter()
+        self._stage_resolver = stage_resolver or stage_of
         self._runs: dict[str, dict] = {}
         self._classification_label: str | None = None
         self._classification_seconds: float | None = None
@@ -310,7 +294,7 @@ class TraceCallback(BaseCallbackHandler):
                 parent_stage = parent["stage"] if parent else None
                 if parent is None and parent_run_id:
                     parent_stage = "알 수 없음"
-                stage, wrapper = stage_of(name, tags, parent_stage)
+                stage, wrapper = self._stage_resolver(name, tags, parent_stage)
             # 부모가 없는 실행이 체인 실행 1번(모델 1개)의 시작이고, 자식은 그 시작을 물려받는다
             root_run_id = parent["root_run_id"] if parent else (parent_run_id or run_id)
             self._runs[run_id] = {
