@@ -36,7 +36,9 @@ def get_classifier_path() -> Path:
 
 
 def get_answer_provider() -> str:
-    provider = os.getenv("SANAEBI_ANSWER_PROVIDER", "ollama")
-    if provider not in ("ollama", "openai"):
-        raise ValueError("SANAEBI_ANSWER_PROVIDER must be ollama or openai")
+    provider = os.getenv("SANAEBI_ANSWER_PROVIDER", "openai")
+    if provider != "openai":
+        raise ValueError(
+            "SANAEBI_ANSWER_PROVIDER must be unset or openai; the server uses the adopted Luna model"
+        )
     return provider

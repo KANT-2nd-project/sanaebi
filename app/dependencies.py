@@ -6,11 +6,16 @@ from typing import Annotated
 
 from fastapi import Depends, Request
 
-from app.answering.adapter import generate_answer
 from app.classification.predictor import TransformerClassifier
-from app.questions.service import QuestionResult, handle_question
+from app.questions.service import (
+    QuestionResult,
+    handle_classified_question,
+    handle_question,
+)
+from contracts.classification import ClassificationLabel
 
 QuestionHandler = Callable[[str], QuestionResult]
+AssistantHandler = Callable[[str, ClassificationLabel], QuestionResult]
 
 
 def get_classifier(request: Request) -> TransformerClassifier:
@@ -25,5 +30,13 @@ def get_question_handler(
         handle_question,
         classify=classifier.predict,
         read_documents=request.app.state.document_provider.snapshot,
-        answer=partial(generate_answer, provider=request.app.state.answer_provider),
+        answer=request.app.state.answerer.answer,
+    )
+
+
+def get_assistant_handler(request: Request) -> AssistantHandler:
+    return partial(
+        handle_classified_question,
+        read_documents=request.app.state.document_provider.snapshot,
+        answer=request.app.state.answerer.answer,
     )

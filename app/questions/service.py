@@ -3,6 +3,7 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
+from app.diagnostics.trace import record_classification
 from app.documents.context import DocumentContextSnapshot
 from contracts.classification import ClassificationLabel
 
@@ -23,7 +24,19 @@ def handle_question(
     read_documents: DocumentReader,
     answer: Answerer,
 ) -> QuestionResult:
-    label = classify(question)
+    return handle_classified_question(
+        question, classify(question), read_documents=read_documents, answer=answer
+    )
+
+
+def handle_classified_question(
+    question: str,
+    label: ClassificationLabel,
+    *,
+    read_documents: DocumentReader,
+    answer: Answerer,
+) -> QuestionResult:
+    record_classification(label)
 
     if label == "CLARIFY":
         return QuestionResult(
