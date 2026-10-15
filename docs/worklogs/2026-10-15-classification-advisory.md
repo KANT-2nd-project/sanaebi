@@ -28,3 +28,17 @@
 추가로 게시된 문서 관리 변경 e979fa6을 보존해 통합했다. 전체 Python **720개 통과(51.933초)**, Ruff check·format **396파일**, 상대 링크·앵커 **157개**, diff check를 통과했다. 기존 690개 ID 중 문서 schema v2→v3 검사명 변경 1개는 병행 main 변경으로 대응시켰고 검사 누락은 없다. 이번 신규 검사는 13개다. v5·모델 설정과 184개 예정 메시지 해시가 동일하며 최신 코드에서 옛 manifest resume 거부를 확인했다. [검사 요약](../../generation_evaluation/reports/2026-10-15-classification-advisory/verification.json)을 보존한다.
 
 원래 작업 폴더에는 다른 작성자의 문서·웹 변경이 진행되어 시작/종료 해시가 일부 달랐다. 이 작업은 해당 파일을 수정하거나 원래 checkout을 reset하지 않았고, 승인된 tmp 조사 상태표만 후속 기록으로 추가했다. 새 원자료는 별도 tmp에 보존하며 최초 조사 원자료는 유지했다. 변경 문서의 정적 링크·앵커 검사이며 브라우저 렌더링 검사는 별도로 수행하지 않았다.
+
+### 원격·Notion 반영 확인
+
+구현·결과·검증을 main `b69cbec33e71b39f83154d300b31fae48371022f`에 게시하고 원격 일치를 확인했다. 원래 작업 폴더의 main은 강제로 이동하지 않았다. 해당 SHA의 GitHub Actions 조회 결과 실행 0건이며 공개 배포를 시작하지 않았다.
+
+다음 5개 페이지에 ‘분류 라벨 보조 전달 — 탐색 종료·미채택’ 구역과 게시된 Git 보고서·일지 링크를 추가하고 재조회했다. 핵심 구역·링크 확인 5/5, 기존 속성 유지 5/5다. Notion 응답에는 unknown block/truncated 메타데이터가 제공되지 않아 기존 페이지 전체의 완전한 렌더링 검증으로 표현하지 않는다.
+
+- [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7)
+- [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b)
+- [라벨 기준](https://www.notion.so/3f805a3cdadc813485e4d94773974acc)
+- [기존 생성 일지](https://www.notion.so/3f905a3cdadc8146a9bbedb690ab5ecf)
+- [기존 분류 일지](https://www.notion.so/3f905a3cdadc81a19d1bfa4ea41c9e98)
+
+[재조회 결과](../../generation_evaluation/reports/2026-10-15-classification-advisory/notion-verification.json)를 후속 커밋으로 게시한다. 확인 평가·API 통합·승격은 미완료 작업이 아니라 탐색 조건 미충족으로 진행하지 않은 범위이며, 해당 성능을 검증했다는 뜻은 아니다. 다음 시도는 별도 가설과 새 평가 기준이 필요하다.

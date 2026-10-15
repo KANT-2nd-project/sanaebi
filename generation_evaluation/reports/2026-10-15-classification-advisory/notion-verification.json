@@ -1,0 +1,56 @@
+{
+  "published_commit": "b69cbec33e71b39f83154d300b31fae48371022f",
+  "verification": [
+    {
+      "id": "3f805a3cdadc81e1a70bfe82c89cebe7",
+      "title": "📘 프로젝트 문서 안내",
+      "isError": false,
+      "section_present": true,
+      "published_link_present": true,
+      "properties_unchanged": true,
+      "truncated": null,
+      "unknown_block_count": null
+    },
+    {
+      "id": "3f805a3cdadc81d7b909fc71ed78381b",
+      "title": "🧭 서비스 처리 기준",
+      "isError": false,
+      "section_present": true,
+      "published_link_present": true,
+      "properties_unchanged": true,
+      "truncated": null,
+      "unknown_block_count": null
+    },
+    {
+      "id": "3f805a3cdadc813485e4d94773974acc",
+      "title": "🏷️ 요청 처리 분류·라벨링 기준 v1.0",
+      "isError": false,
+      "section_present": true,
+      "published_link_present": true,
+      "properties_unchanged": true,
+      "truncated": null,
+      "unknown_block_count": null
+    },
+    {
+      "id": "3f905a3cdadc8146a9bbedb690ab5ecf",
+      "title": "생성 모듈 구현 학습 — 독립 CLI·전체 문서 평가·TPS·답변 근거",
+      "isError": false,
+      "section_present": true,
+      "published_link_present": true,
+      "properties_unchanged": true,
+      "truncated": null,
+      "unknown_block_count": null
+    },
+    {
+      "id": "3f905a3cdadc81a19d1bfa4ea41c9e98",
+      "title": "분류 직접 구현·7종 비교 실험과 아카이브 게시",
+      "isError": false,
+      "section_present": true,
+      "published_link_present": true,
+      "properties_unchanged": true,
+      "truncated": null,
+      "unknown_block_count": null
+    }
+  ],
+  "scope": "Appended result section and Git links; existing properties preserved; unknown block metadata not supplied."
+}
