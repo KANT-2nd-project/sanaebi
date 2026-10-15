@@ -10,8 +10,8 @@
   → build_prompt → GenerationPrompt(system, user)
   → generate(prompt, model_call)
   → model_call(prompt)의 ModelResponse(원문·사용량·종료 사유)
-  → 길이 제한 판정 / parse_generation
-  → GenerationResult(status, raw_text, answer, input_tokens, output_tokens, finish_reason)
+  → 명시적 거절 / 길이 제한 판정 / parse_generation
+  → GenerationResult(status, raw_text, answer, input_tokens, output_tokens, finish_reason, refusal)
 ```
 
 | 파일 | 책임 |
@@ -30,14 +30,15 @@
 | 상태 | 의미 | answer |
 |---|---|---|
 | COMPLETED | JSON 객체 안에 공백 제거 후 비어 있지 않은 문자열 answer가 있음 | 정리된 문자열 |
-| PARSE_ERROR | JSON 구문 오류, 객체가 아닌 루트, answer 누락 또는 문자열이 아님 | None |
+| PARSE_ERROR | JSON 구문 오류, 객체가 아닌 루트, answer 누락·비문자열 또는 추가 키 | None |
 | EMPTY_ANSWER | 문자열 answer가 공백 제거 후 비어 있음 | None |
 | TIMEOUT | 모델 함수가 TimeoutError를 발생시킴 | None |
 | TRUNCATED | finish_reason이 length여서 출력 길이 제한 종료로 판정 | None |
+| REFUSAL | 제공자가 명시적으로 거절함. refusal에 거절 정보를 보존 | None |
 
 응답이 있으면 raw_text는 원문 그대로 보존하고, 시간 초과는 raw_text도 None이다. 다른 예외는 호출자에게 전파한다. generate 자체가 제한 시간을 설정하거나 호출을 중단하지는 않는다. 연결부는 HTTPX TimeoutException과 OpenAI APITimeoutError를 원인을 보존한 TimeoutError로 변환한다. Ollama에는 client_kwargs.timeout과 num_ctx·num_predict를 전달한다. OpenAI에는 timeout과 max_retries=0을 전달한다. max_output_tokens는 max_completion_tokens로, 지정된 reasoning_effort·temperature는 해당 제공자 인자로 전달한다. OpenAI context_window 요청은 거부한다. reasoning_effort는 OpenAI에서만 허용하며 명시적 추론 활성화와 temperature 동시 지정은 거부한다. temperature는 bool이 아닌 유한한 0~2 숫자다. 이 timeout은 전체 작업의 절대 마감 시간을 보장하지 않는다. OpenAI 키는 환경에서 관리하며 코드·실험 기록에 저장하지 않는다. 설정은 제공자 enum·비어 있지 않은 모델 이름·유한한 양수 timeout을 검사하지만 모델의 실제 존재나 접근 권한을 검증하지 않는다. 타입 힌트만으로 모든 잘못된 입력을 거부하는 것은 아니다.
 
-COMPLETED는 정확성·근거 충분성·한국어 준수·모델 품질의 합격 판정이 아니다. “문서에서 확인할 수 없습니다”도 형식이 올바르면 COMPLETED다. 현재 최소 출력 계약은 `{"answer": "답변"}`이며 근거 문서 ID·인용 검증·추가 필드 금지 등은 구현하지 않았다. 빈 문서 목록도 프롬프트에 표시한 뒤 모델 함수로 전달할 수 있다. 실제 서비스의 무문서 호출 차단 정책은 별도 연결 대상이다.
+COMPLETED는 정확성·근거 충분성·한국어 준수·모델 품질의 합격 판정이 아니다. “문서에서 확인할 수 없습니다”도 형식이 올바르면 COMPLETED다. 현재 최소 출력 계약은 `{"answer": "답변"}`이며 추가 필드는 파싱 실패로 처리한다. 근거 문서 ID·인용 검증은 아직 출력 계약에 없다. 빈 문서 목록도 프롬프트에 표시한 뒤 모델 함수로 전달할 수 있다. 실제 서비스의 무문서 호출 차단 정책은 별도 연결 대상이다.
 
 ## 독립 실행
 
@@ -137,3 +138,13 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 선정 실험과 후보별 실패·권장 구성은 [모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)를 따른다. 선택형 프로필은 실험 실행기에서 명시적으로 지정하며 기존 CLI 기본값과 서버 연결을 자동 변경하지 않는다.
 
 현재 선택 모델은 **GPT-6 Luna**다. 두 후보의 상대 비교로 선정했으며 기본 설정 승격·서비스 품질 승인과는 구분한다. 후속 기준 구성과 실험 준비는 [GPT-6 Luna 프롬프트 강화 계획](../docs/generation-luna-prompt-improvement.md)을 따른다.
+
+## 후속 출력 옵션과 프롬프트 후보
+
+`output_mode` 기본값은 `prompt_json`이며 구형 설정도 이 값으로 읽는다. OpenAI에서 `strict_json_schema`를 선택하면 Chat Completions에 answer 한 키의 strict schema를 전달한다. Ollama에는 이 모드를 허용하지 않는다. strict 지원 오류를 일반 모드로 자동 재시도하지 않는다.
+
+설치된 SDK의 자동 parse 경로가 잘림 응답을 예외로 바꾸므로, strict 호출은 raw create 응답을 LangChain AIMessage로 변환한다. 원문·사용량·종료 사유·refusal을 보존하며 명시적 거절이 길이 판정보다 우선한다. 내부 SDK 메서드에 의존하므로 uv.lock과 전송 경로 회귀 테스트를 함께 유지한다.
+
+`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필과 CLI·서비스 기본값은 유지한다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
+
+GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 두 후보는 필수 안내 회귀로 탈락했고 기존 기준 구성을 유지합니다. 최종20문항과 반복 안정성은 미실행입니다.

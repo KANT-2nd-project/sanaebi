@@ -1,6 +1,6 @@
 # 생성 실행 기록과 기초 집계
 
-사용자가 AI 튜터의 설명·힌트·모범 답안을 참고해 직접 구현 중인 평가 모듈이다. 테스트 작성·검증과 요청한 기록 검증·복원 구현은 AI에 위임했다. 기존 `answer_pipeline/`와 활성 API에는 연결하지 않았고 사용자의 문서 한 건 smoke 결과를 확인했지만 정식 모델 품질 평가는 아직 수행하지 않았다.
+사용자가 AI 튜터의 설명·힌트·모범 답안을 참고해 직접 구현 중인 평가 모듈이다. 테스트 작성·검증과 요청한 기록 검증·복원 구현은 AI에 위임했다. 기존 `answer_pipeline/`와 활성 API에는 연결하지 않았다. 기초 단계에서는 사용자의 문서 한 건 smoke 결과를 확인했고, 이후 별도 selection 실행기로 고정 문항 비교를 수행했다. 현재 모델 선택·후속 실험과 과거 기초 단계 기록을 구분한다.
 
 ## 코드와 계약
 
@@ -13,13 +13,13 @@
 
 run_case에는 질문·문서 문자열 목록·미리 만든 호출 함수를 전달한다. 공통 진입점 generate_from_documents를 사용하며, 경과 시간은 프롬프트 구성·모델 호출·파싱을 포함한다. 문서 읽기와 클라이언트 초기화는 제외한다. 이전의 호출·파싱만 측정한 기록과 측정 범위가 다르므로 구분한다. config는 기록용으로 전달되므로 호출 함수가 실제로 그 설정에서 생성됐는지는 아직 강제하지 않는다.
 
-정상·파싱 실패·빈 답변·시간 초과·출력 잘림은 GenerationResult와 error_type=None으로 기록한다. 그 밖에 generate가 전파한 Exception은 result=None과 예외 클래스 이름으로 기록하며 시간도 남긴다. 평가 경계의 광범위한 예외 처리는 구현 버그도 포착할 수 있으므로 실행 오류를 숨기거나 성공으로 집계하지 않는다. KeyboardInterrupt는 전파한다. 전체 traceback과 상세 오류 메시지는 아직 보존하지 않는다.
+정상·파싱 실패·빈 답변·시간 초과·출력 잘림·명시적 거절은 GenerationResult와 error_type=None으로 기록한다. 그 밖에 generate가 전파한 Exception은 result=None과 예외 클래스 이름으로 기록하며 시간도 남긴다. 평가 경계의 광범위한 예외 처리는 구현 버그도 포착할 수 있으므로 실행 오류를 숨기거나 성공으로 집계하지 않는다. KeyboardInterrupt는 전파한다. 전체 traceback과 상세 오류 메시지는 아직 보존하지 않는다.
 
 ## 집계 의미
 
 | 함수 | 의미 | 빈 입력 |
 |---|---|---|
-| count_outcomes | total, completed, parse_error, empty_answer, timeout, truncated, execution_error 개수 | 모든 값 0 |
+| count_outcomes | total, completed, parse_error, empty_answer, timeout, truncated, refusal, execution_error 개수 | 모든 값 0 |
 | completion_rate | completed / 전체 시도 수, 실패도 분모에 포함 | None |
 | mean_attempt_seconds | 실패 포함 전체 기록의 평균 시간 | None |
 | mean_completed_seconds | 오류 없고 결과가 COMPLETED인 기록만의 평균 시간 | None |
@@ -136,3 +136,13 @@ API 키와 실제 환경 파일, 원문 응답 전체는 `tmp/` 또는 별도 �
 실제 후보 비교와 두 차례의 별도20문항 선정 결과는 [모델 선정 보고서](reports/2026-10-15-model-selection/README.md)에 모은다. 원응답·문항별 판정·근거·비용·반복 변동을 함께 보고, 기본값 승격 여부를 일반적인 서비스 정확도와 구분한다.
 
 현재 선택 모델은 **GPT-6 Luna**다. 두 후보의 상대 비교로 선정했으며 기본 설정 승격·서비스 품질 승인과는 구분한다. 후속 기준 구성과 실험 준비는 [GPT-6 Luna 프롬프트 강화 계획](../docs/generation-luna-prompt-improvement.md)을 따른다.
+
+## 연구 기반 후속 실행
+
+[후속 후보 설정](experiments/luna-reference-followup-v1/README.md)은 `selection` 실행기에 `--rubric`, `--unlimited-budget`, `--max-calls 166`을 전달한다. 금액·전체 시간 상한을 생략해도 호출별 timeout과 비용 추적은 유지한다. 기존 CLI의 기본 예산은 유한한 값으로 유지한다.
+
+루브릭은 입력 문항을 모두 포함해야 하며 모델 메시지에는 전달하지 않는다. manifest는 루브릭과 코드·스키마·lock 해시를 기록한다. 바뀐 입력/코드로 같은 run을 이어 실행하지 않으며, 저장된 실패도 자동 재호출하지 않는다. 시작 기록만 있는 요청은 확인 없이 재호출하지 않는다. 모든 후보가 동일 원장을 공유해 실패·불확실 예약을 포함한 166회 상한을 원자적으로 적용한다.
+
+기록에는 `output_mode`와 거절 정보가 추가된다. 과거 설정은 prompt_json, 과거 거절 필드는 None으로 복원하며 과거 판정은 재작성하지 않는다. 추가 키 응답은 신규 파싱에서 parse_error이므로 과거 실행 완료 수치와 형식 기준의 차이를 구분한다.
+
+GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](reports/2026-10-15-luna-reference-followup/README.md)을 참조하세요. 두 후보는 필수 안내 회귀로 탈락했고 기존 기준 구성을 유지합니다. 최종20문항과 반복 안정성은 미실행입니다.

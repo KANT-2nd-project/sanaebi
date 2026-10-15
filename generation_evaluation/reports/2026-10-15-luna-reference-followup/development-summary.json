@@ -1,0 +1,348 @@
+{
+  "denominator": {
+    "attempt_count": 36,
+    "judgment_count": 36,
+    "candidate_count": 3,
+    "case_count": 12,
+    "all_attempts_retained": true
+  },
+  "final_evaluation": false,
+  "candidates": [
+    {
+      "candidate_id": "scope",
+      "case_count": 12,
+      "response_count": 12,
+      "verdict_counts": {
+        "pass": 11,
+        "partial": 1,
+        "fail": 0,
+        "uncertain": 0
+      },
+      "pass_count": 11,
+      "partial_count": 1,
+      "fail_count": 0,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 0,
+      "repeat_disagreement_case_count": 0,
+      "format_fail_count": 0,
+      "median_elapsed_seconds": 5.390745403998153,
+      "max_elapsed_seconds": 7.0201782650001405,
+      "total_input_tokens": 689786,
+      "total_output_tokens": 6429,
+      "total_reasoning_tokens": 4692,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.17460994999999999,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 1,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 1,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 11,
+          "fail": 1,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 0,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 12
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        0,
+        -11,
+        0,
+        5.390745403998153,
+        0,
+        0.17460994999999999
+      ],
+      "rank": 1
+    },
+    {
+      "candidate_id": "reference-strict",
+      "case_count": 12,
+      "response_count": 12,
+      "verdict_counts": {
+        "pass": 11,
+        "partial": 1,
+        "fail": 0,
+        "uncertain": 0
+      },
+      "pass_count": 11,
+      "partial_count": 1,
+      "fail_count": 0,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 0,
+      "repeat_disagreement_case_count": 0,
+      "format_fail_count": 0,
+      "median_elapsed_seconds": 8.60307672700219,
+      "max_elapsed_seconds": 17.97544084400215,
+      "total_input_tokens": 688298,
+      "total_output_tokens": 5572,
+      "total_reasoning_tokens": 3851,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.1762517,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 1,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 1,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 11,
+          "fail": 1,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 0,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 12
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        0,
+        -11,
+        0,
+        8.60307672700219,
+        0,
+        0.1762517
+      ],
+      "rank": 2
+    },
+    {
+      "candidate_id": "reference",
+      "case_count": 12,
+      "response_count": 12,
+      "verdict_counts": {
+        "pass": 9,
+        "partial": 3,
+        "fail": 0,
+        "uncertain": 0
+      },
+      "pass_count": 9,
+      "partial_count": 3,
+      "fail_count": 0,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 0,
+      "repeat_disagreement_case_count": 0,
+      "format_fail_count": 0,
+      "median_elapsed_seconds": 4.764176866001435,
+      "max_elapsed_seconds": 18.57258059099695,
+      "total_input_tokens": 687998,
+      "total_output_tokens": 6260,
+      "total_reasoning_tokens": 4570,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.17669269999999995,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 3,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 3,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 9,
+          "fail": 3,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 12,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 0,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 12
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        0,
+        -9,
+        0,
+        4.764176866001435,
+        0,
+        0.17669269999999995
+      ],
+      "rank": 3
+    }
+  ]
+}

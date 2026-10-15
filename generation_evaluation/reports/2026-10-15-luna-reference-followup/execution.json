@@ -1,0 +1,39 @@
+{
+  "experiment_id": "luna-reference-followup-v1",
+  "generation_calls": 38,
+  "max_calls": 166,
+  "settled_calls": 38,
+  "estimated_cost_dollars": 0.5282063,
+  "cost_method": "conservative configured long-context rates; estimate, not invoice",
+  "monetary_limit": null,
+  "wall_clock_limit": null,
+  "automatic_retries": 0,
+  "integration_calls": 2,
+  "quality_calls": 36,
+  "raw_root": "tmp/luna-reference-followup-v1",
+  "ledger_sha256": "acd2c0fd4175d32166c63afebe1156b516918b56f910011a9b933204b45ac23b",
+  "validation": {
+    "date": "2026-10-15",
+    "generation_tests": {
+      "command": "uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py'",
+      "passed": 242,
+      "failed": 0
+    },
+    "ruff_check": "All checks passed",
+    "ruff_format": "247 files already formatted",
+    "independent_review": {
+      "blocking_findings_resolved": [
+        "strict SDK parse length exception",
+        "strict finish_reason metadata dropped"
+      ],
+      "remaining": "pinned LangChain private conversion methods require transport regression tests"
+    },
+    "live_api_compatibility": "2/2 completed",
+    "final_pre_quality": {
+      "generation_unittest": 245,
+      "ruff_check": "pass",
+      "ruff_format_files": 251,
+      "checked_at": "2026-10-15T03:22:20.017400+00:00"
+    }
+  }
+}
