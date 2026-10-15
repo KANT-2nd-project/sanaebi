@@ -12,5 +12,12 @@
   "stale_registrations_pruned": 12,
   "production_deployed": false,
   "paid_api_calls": 0,
-  "llm_quality_verified": false
+  "llm_quality_verified": false,
+  "pr": 15,
+  "ci_run": 38801247423,
+  "main_code_sha": "8cba784585accbb30cc3c377a3456cd0cc9c8cfc",
+  "main_push_run_cancelled": 38802074710,
+  "main_push_deploy_job_created": false,
+  "notion_technical_pages_verified": 4,
+  "notion_journal": "3fa05a3cdadc81b4b2ddf316a7be4ccb"
 }

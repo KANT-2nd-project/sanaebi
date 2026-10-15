@@ -25,4 +25,14 @@
 
 ## 게시와 외부 반영
 
-기능별 커밋, 같은 작업 폴더에서 원격 검증 브랜치 게시, PR CI, main `[skip ci]` 병합 후 결과를 기록한다. Notion 기술4페이지와 새 개인 일지는 원격 보고서 게시 후 반영하고 재조회한다. 과거 일지·다른 작업의 담당/기한/상태는 유지한다.
+모델·검색 연결 `8f73a99`, 복원·배포 준비 `c1f3bfb`, 문서·정리 기록 `8cba784`를 같은 로컬 main에서 커밋했다. 새 작업 공간 없이 원격 `feat/kure-adoption-20261016`에 게시해 [PR #15](https://github.com/KANT-2nd-project/sanaebi/pull/15)의 [CI](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38801247423)를 확인했다. Python2분2초·웹52초·ARM64 이미지2분51초가 통과했고 PR deploy는 건너뛰었다.
+
+`[skip ci]` 제목으로 병합 명령을 실행하기 직전에 원격 main이 이미 PR 끝 커밋 `8cba784585accbb30cc3c377a3456cd0cc9c8cfc`로 갱신돼 PR이 병합 완료로 표시됐다. 이 직접 갱신에는 skip ci가 없어 [main push 실행](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38802074710)이 시작됐다. 운영 미배포 조건을 유지하기 위해 cancel과 force-cancel을 요청하고 `completed/cancelled`를 확인했다. Python·웹 job만 생성됐고 이미지·deploy job은 생성되지 않았다. 원격 ref 갱신의 실행 주체를 별도로 확인하지 않았으므로 특정 작성자의 행동으로 단정하지 않는다. 따라서 계획한 skip-ci 병합이 실행됐다고 기록하지 않는다. 이번 후속 기록 커밋에는 `[skip ci]`를 사용한다.
+
+원격 main과 로컬 main의 코드 SHA, 게시 보고서 blob SHA를 대조했다. 변경49파일에 모델·DB·tmp·실제 환경 파일이 없고, 해당 변경 파일의 일반 credential 패턴 일치는0이었다. 저장소 전체·모든 비밀값 부재 보증은 아니다.
+
+Notion [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7), [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b), [데이터·실험 절차](https://www.notion.so/3f805a3cdadc81d59dc9fec6e4fcca1d), [운영·개발 규칙](https://www.notion.so/3f805a3cdadc81aa9f48d8445d372b80)의 현재 계약을 KURE로 갱신하고 이전 보류·Tiny C 구역을 과거 기록으로 구분했다. 수정 직전 재조회하고 저장 후 현재KURE·과거기록·고정 Git 링크를 재확인했다.
+
+동일 제목·담당자 중복0을 확인한 뒤 [새 개인 일지](https://www.notion.so/3fa05a3cdadc81b4b2ddf316a7be4ccb)를 생성했다. 최재선·검색/생성·2026-10-16·사용자 결정/AI 수행·본문·링크·게시 경위를 재조회하고 완료로 변경한 뒤 다시 확인했다. 과거 일지·다른 업무의 담당/기한/상태는 변경하지 않았다.
+
+아카이브 사후 검증은 source+diff를 합친1,880개 고유 object(3,443,130,417바이트)와 재현 사본45개(170,805,091바이트) 모두 통과했다. 정리 최종 manifest SHA는 `d592c1e9f7f428091dd5a87113cf73f27f8b97c0a9c57d84cc83b7b1e28def64`다. 독립 최종 문서 검수에서도 수치·기여·운영 미검증 구분의 중대한 오류는 없었다.
