@@ -1,8 +1,9 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 
 from app.dependencies import AssistantHandler, get_assistant_handler
+from app.diagnostics.trace import record_routing
 from app.schemas import AnswerResponse, AssistantRequest
 
 router = APIRouter()
@@ -20,9 +21,20 @@ router = APIRouter()
 )
 def ask_assistant(
     request: AssistantRequest,
+    http_request: Request,
     handle: Annotated[AssistantHandler, Depends(get_assistant_handler)],
 ) -> AnswerResponse:
     if not request.response.ok:
+        record_routing(
+            {
+                "routing_mode": http_request.app.state.routing_mode,
+                "label_source": "client",
+                "classification_status": "not_run",
+                "classification_elapsed_seconds": None,
+                "processing_path": "upstream_failure",
+                "generation_attempted": False,
+            }
+        )
         return AnswerResponse(
             ok=False, text="", reason="이전 단계에서 요청을 처리하지 못했습니다."
         )

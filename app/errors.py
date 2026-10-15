@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse, PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.answering.output import LLM_RESPONSE_ERROR, LLMResponseError
-from app.classification.predictor import (
+from app.classification.errors import (
     ClassificationInferenceError,
     ClassificationUnavailable,
 )

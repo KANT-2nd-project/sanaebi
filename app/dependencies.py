@@ -31,6 +31,7 @@ def get_question_handler(
         classify=classifier.predict,
         read_documents=request.app.state.document_provider.snapshot,
         answer=request.app.state.answerer.answer,
+        routing_mode=request.app.state.routing_mode,
     )
 
 
@@ -39,4 +40,5 @@ def get_assistant_handler(request: Request) -> AssistantHandler:
         handle_classified_question,
         read_documents=request.app.state.document_provider.snapshot,
         answer=request.app.state.answerer.answer,
+        routing_mode=request.app.state.routing_mode,
     )
