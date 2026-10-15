@@ -1,0 +1,31 @@
+from pathlib import Path
+import json,copy,tempfile,shutil
+from app.documents.context import DocumentContextProvider
+from retrieval.experiments.calibration_metrics import claim_metrics
+root=Path('tmp/retrieval-root-cause-2026-10-15');q=json.loads(Path('retrieval/reports/2026-10-15-rag-calibration/qrels-v2.json').read_text());new=copy.deepcopy(q)
+with tempfile.TemporaryDirectory() as t:
+ p=Path(t)/'source.sqlite3';shutil.copyfile('tmp/answer-evaluation/source/documents.sqlite3',p);docs={d.knowledge_id:d for d in DocumentContextProvider(database_path=p).snapshot().documents}
+changes={'R08-r01':('ieum-060',[(1387,1444)]),'R14-r01':('ieum-067',[(1651,1692),(1724,1758)]),'R16-r01':('ieum-037',[(1126,1178)])}
+for c in new['cases']:
+ for cl in c['required_claims']:
+  if cl['claim_id'] in changes:
+   did,spans=changes[cl['claim_id']];cl['evidence_alternatives'].append({'document_id':did,'spans':[{'start':a,'end':b,'text':docs[did].body[a:b]} for a,b in spans]})
+new['status']='diagnostic_sensitivity_only';new['notes']='Independent source-only AI review; no replacement of frozen v2 or official results. R16-r02 immediacy criterion unchanged.'
+(root/'qrels-sensitivity.json').write_text(json.dumps(new,ensure_ascii=False,indent=2))
+cs={c['case_id']:c for c in new['cases']};results=[]
+for source in ['tmp/context-limit-comparison/search/search.json','tmp/calibration/development-search-validated/search.json']:
+ search=json.loads(Path(source).read_text());rows=[]
+ for r in search['rows']:
+  c=cs[r['case_id']]
+  if not c['required_claims']:continue
+  items=[(e['knowledge_id'],[(s['start'],s['end']) for s in e['spans']]) for e in r['evidence']];metric=claim_metrics(items,c);rows.append({'case_id':r['case_id'],'variant_id':r['variant_id'],'original_complete':r['complete'],'sensitivity_complete':metric['complete'],'missing_claims':metric['missing_claims']})
+ summaries=[]
+ for v in dict.fromkeys(r['variant_id'] for r in rows):
+  group=[r for r in rows if r['variant_id']==v];summaries.append({'variant':v,'original':sum(r['original_complete'] for r in group),'sensitivity':sum(r['sensitivity_complete'] for r in group),'changed':[r['case_id'] for r in group if r['original_complete']!=r['sensitivity_complete']]})
+ rank_results=[]
+ for r in search['ranking']:
+  if r['case_id'] not in ['R08','R14','R16','D07']:continue
+  items=[(x['document_id'],[(s['start'],s['end']) for s in x['spans']]) for x in r['ranking']];c=cs[r['case_id']]
+  rank=next(i for i in range(1,len(items)+1) if claim_metrics(items[:i],c)['complete']);rank_results.append({'case_id':r['case_id'],'original_rank':r['all_claim_rank'],'sensitivity_rank':rank})
+ results.append({'source':source,'summaries':summaries,'ranks':rank_results,'rows':rows})
+(root/'sensitivity-results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2));print(json.dumps([{k:v for k,v in r.items() if k!='rows'} for r in results],ensure_ascii=False,indent=2))

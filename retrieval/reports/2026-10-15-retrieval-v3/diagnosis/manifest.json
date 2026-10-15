@@ -1,0 +1,17 @@
+{
+  "oracle-ablation.json": "56c2e75226100290b6f10e41e19e14774bf6f1832a188df5c6741c204fddfeda",
+  "query-probe.json": "c384cf43178988d2c8131d3285e2e4ea29ebee6ea4a5356623a7147936423c07",
+  "minimal-sensitivity-results.json": "80d24bd96cdb9b966adc63f613b9f5f1ba27f84e242474cd4e3be46809ef49df",
+  "qrels-minimal-sensitivity.json": "608c05e42b4d05d8e4492463e8e3bbb37f135de9a4526792339d518539a053d7",
+  "independent-review.md": "9e368e7be6d6e7602c3e3a4e4c8bf96e53c5ae5dcfd10981c3a599de871d4377",
+  "query_probe.py": "c640e294a2f311393747110a0acacc70d534b1823ec4c97eadcb4316bc9453b7",
+  "verification.json": "43c0b0206ea1a48643c9e9698f543ef0422b267c8251abc239d018913370285f",
+  "diagnose.py": "3420b62d272112197617dbbd9ba002fe3442111926a572815c38b8d680c5c387",
+  "sensitivity.py": "af86115f94d73fe17f00df81bc9997ae914258d0b4eb1796d392d001972bbc92",
+  "qrels-sensitivity.json": "0d949242a3fce63f190faa579e35d35b3fb602e3f24a6f6b9d8f3a57ef340cad",
+  "report.md": "02a9bcc24cd7d0f7521a4abb38a0d4394b0b2d13bc5019746fe87cd1ffcb18ce",
+  "distribution.json": "cbdc2d32716d6f6b9fc4981a3f63cada39b0e795109c07ca9e5a7d0cbea974c8",
+  "summary.json": "ba937d64ba20f7b75fc497e7f821f9ddbfb9dfefb9a885b034fbf8482c0a1a39",
+  "focus.json": "75a305db737f3a266cb5dd5f789f5d72ff716dc1c3a29d7ae4d40af9c744f926",
+  "sensitivity-results.json": "f255543d711877eea4a8d13e4ff814b7ec4e631ba54a29b802b2b9cd7c3418d8"
+}

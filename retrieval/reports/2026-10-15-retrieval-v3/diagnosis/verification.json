@@ -1,0 +1,13 @@
+{
+  "snapshot": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+  "documents": 71,
+  "chunks": 298,
+  "query_cache_max_abs_diff": 9.313225746154785e-08,
+  "passage_cache_max_abs_diff": 8.195638656616211e-08,
+  "unchanged_files_sha256": {
+    "tmp/answer-evaluation/source/documents.sqlite3": "238c8bb4d34718725036bbaa3586569d8dc9c69bd80c2d1fc0101888c8745f29",
+    "tmp/answer-evaluation/retrieval/schema-v1/d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529/index.sqlite3": "dbe6a08423a0548362fd2be6aa8c6b1f5d0d0bb29c98a2fbb21faaba0c950578"
+  },
+  "llm_calls": 0,
+  "oracle_ablation": "post-hoc answer-informed diagnostic; not production or unbiased quality comparison"
+}

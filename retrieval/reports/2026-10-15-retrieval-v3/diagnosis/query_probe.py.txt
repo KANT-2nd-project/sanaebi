@@ -1,0 +1,23 @@
+import json,hashlib,shutil,tempfile
+from pathlib import Path
+import numpy as np
+from app.documents.context import DocumentContextProvider
+from app.retrieval.repository import IndexRepository
+from app.retrieval.embedding import TinyEmbedder
+from retrieval.experiments.calibration_metrics import claim_metrics
+root=Path('tmp/retrieval-root-cause-2026-10-15');a=Path('tmp/answer-evaluation');m=json.loads((a/'manifest.json').read_text())
+with tempfile.TemporaryDirectory() as temp:
+ t=Path(temp);shutil.copyfile(a/'source/documents.sqlite3',t/'source.sqlite3');snapshot=DocumentContextProvider(database_path=t/'source.sqlite3').snapshot();dest=t/'retrieval/schema-v1'/m['source']['retrieval_spec_id']/'index.sqlite3';dest.parent.mkdir(parents=True);shutil.copyfile(a/'retrieval/schema-v1'/m['source']['retrieval_spec_id']/'index.sqlite3',dest);current=IndexRepository(t/'retrieval').current_chunks(snapshot)
+embedder=TinyEmbedder(Path('tmp/tiny-model'));embedder.warmup();ids={d.document_id:d.knowledge_id for d in snapshot.documents};mat=np.stack([v for _,v in current]);qrels=json.loads(Path('retrieval/reports/2026-10-15-rag-calibration/qrels-v2.json').read_text());cs={c['case_id']:c for c in qrels['cases']}
+rewrites={'R08':'개인이 먼저 낸 업무 경비는 언제 정산 지급되나요?','R14':'PR 작성자 본인이 자신의 변경을 승인할 수 있나요?','R16':'Git 저장소에 비밀 토큰이 노출됐을 때 파일 삭제 외에 어떤 대응이 필요한가요?','D07':'SaaS 구매 승인과 서비스 계정 권한 발급은 별도 절차인가요?'}
+results=[]
+for cid,q in rewrites.items():
+ for kind,text in [('original',cs[cid]['question']),('posthoc_paraphrase',q)]:
+  scores=mat@embedder.encode_queries([text])[0];order=sorted(range(len(current)),key=lambda i:(-float(scores[i]),current[i][0].chunk_id));ranked=[(ids[current[i][0].document_id],[(s.start,s.end) for s in current[i][0].spans]) for i in order]
+  claim_ranks=[]
+  for cl in cs[cid]['required_claims']:
+   rank=next(i for i in range(1,len(order)+1) if claim_metrics(ranked[:i],{'required_claims':[cl]})['complete']);claim_ranks.append({'claim_id':cl['claim_id'],'rank':rank,'score':float(scores[order[rank-1]])})
+  results.append({'case_id':cid,'kind':kind,'query':text,'claims':claim_ranks})
+tokens=[embedder.tokenizer(c.embedding_text,add_special_tokens=True,truncation=False)['input_ids'] for c,_ in current];unk=embedder.tokenizer.unk_token_id
+out={'posthoc_diagnostic_only':True,'no_quality_or_adoption_claim':True,'rows':results,'input_audit':{'chunks':len(tokens),'min_tokens':min(map(len,tokens)),'max_tokens':max(map(len,tokens)),'over512':sum(len(t)>512 for t in tokens),'unknown_tokens':sum(t.count(unk) for t in tokens),'total_tokens':sum(map(len,tokens))}}
+(root/'query-probe.json').write_text(json.dumps(out,ensure_ascii=False,indent=2));print(json.dumps(out,ensure_ascii=False,indent=2))
