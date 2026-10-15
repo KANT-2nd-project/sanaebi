@@ -4,6 +4,19 @@ import json
 from pathlib import Path
 
 
+def render_document(
+    document_id: str,
+    title: str,
+    document: str,
+    revision_number: int,
+) -> str:
+    """Render a document using the exact format shared by CLI and server."""
+    return (
+        f"문서 ID: {document_id}\n개정: {revision_number}\n"
+        f"제목: {title}\n본문:\n{document}"
+    )
+
+
 def load_documents(path: Path) -> list[str]:
     documents = []
     document_ids = set()
@@ -39,8 +52,12 @@ def load_documents(path: Path) -> list[str]:
 
                 document_ids.add(document_id)
                 documents.append(
-                    f"문서 ID: {document_id}\n개정: {revision}\n"
-                    f"제목: {row['title']}\n본문:\n{row['document']}"
+                    render_document(
+                        document_id,
+                        row["title"],
+                        row["document"],
+                        revision,
+                    )
                 )
             except (TypeError, ValueError) as exc:
                 raise ValueError(f"{i}번째 줄의 문서 오류: {exc}") from exc

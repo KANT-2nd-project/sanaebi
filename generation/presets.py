@@ -1,4 +1,4 @@
-"""Shared independent CLI configuration; no server or document loading."""
+"""Shared model and prompt configuration; CLI presets add document snapshots."""
 
 import json
 from dataclasses import dataclass
@@ -18,11 +18,19 @@ class RuntimePreset:
     prompt_profile: str
 
 
-def load_preset(
+@dataclass(frozen=True)
+class RuntimeSettings:
+    """Model and prompt settings that do not depend on a document source."""
+
+    config: GenerationConfig
+    prompt_profile: str
+
+
+def load_runtime_settings(
     root: Path,
     experiment: str = DEFAULT_EXPERIMENT,
     model: str = DEFAULT_MODEL,
-) -> RuntimePreset:
+) -> RuntimeSettings:
     directory = root / "generation"
     models = json.loads((directory / "models.json").read_text(encoding="utf-8"))
     experiments = json.loads(
@@ -37,8 +45,24 @@ def load_preset(
         raise ValueError(f"{experiment} 실험에 등록되지 않은 모델입니다: {model}")
     profile = preset.get("prompt_profile", DEFAULT_PROMPT_PROFILE)
     build_profile_prompt("설정 검사", [], profile)
-    return RuntimePreset(
+    return RuntimeSettings(
         config=config_from_dict(models[model]),
-        documents_path=root / preset["documents"],
         prompt_profile=profile,
+    )
+
+
+def load_preset(
+    root: Path,
+    experiment: str = DEFAULT_EXPERIMENT,
+    model: str = DEFAULT_MODEL,
+) -> RuntimePreset:
+    """Load CLI settings and the explicitly exported JSONL snapshot path."""
+    settings = load_runtime_settings(root, experiment, model)
+    experiments = json.loads(
+        (root / "generation" / "experiments.json").read_text(encoding="utf-8")
+    )
+    return RuntimePreset(
+        config=settings.config,
+        documents_path=root / experiments[experiment]["documents"],
+        prompt_profile=settings.prompt_profile,
     )

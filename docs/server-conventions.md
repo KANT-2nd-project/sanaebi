@@ -6,7 +6,7 @@
 
 ## 현재 흐름과 책임
 
-`라우터 → 질문 서비스 → 외부 연동`을 사용한다. `/ask`는 분류 후 CLARIFY·UNSUPPORTED에 고정 안내를 반환하며 문서·LLM을 호출하지 않는다. SEARCH_KNOWLEDGE만 SQLite 게시 snapshot을 한 번 읽고, 비어 있지 않을 때 선택한 LangChain 제공자로 답변을 생성한다. 빈 snapshot은 정상적인 자료 없음 안내다. 조회 실패를 빈 문서로 숨기지 않는다.
+`라우터 → 질문 서비스 → 외부 연동`을 사용한다. `/ask`는 분류 후 CLARIFY·UNSUPPORTED에 고정 안내를 반환하며 문서·LLM을 호출하지 않는다. SEARCH_KNOWLEDGE만 SQLite 게시 snapshot을 한 번 읽고, 비어 있지 않을 때 최종 Luna 생성 모듈로 답변을 생성한다. 빈 snapshot은 정상적인 자료 없음 안내다. 조회 실패를 빈 문서로 숨기지 않는다.
 
 | 구성 | 책임 | 경계 |
 |---|---|---|
@@ -17,7 +17,7 @@
 | 외부 연동 | 로컬 모델 추론·LangChain 호출·출력 검증 | 학습 코드 import 없음 |
 | 의존성 연결 | 앱 객체를 질문 처리 함수로 조립 | 서비스 내부에서 구현을 생성하지 않음 |
 
-`/classify/koelectra-base`는 호환 URL을 유지하며 `/ask`와 같은 앱별 추론 객체를 사용한다. `/assistant`는 이미 분류한 입력을 받는 기존 실행기 계약이며 이번 질문 서비스 정책 변경 대상이 아니다. `/ask/langchain`은 없다. 별도 `generation/`은 현재 서버에서 사용하지 않는다.
+`/classify/koelectra-base`는 호환 URL을 유지하며 `/ask`와 같은 앱별 추론 객체를 사용한다. `/assistant`는 기존 입력을 유지하고 재분류 없이 공통 `handle_classified_question`을 호출한다. 두 API는 동일한 `AnswerResponse`를 반환한다. 앞 단계 `ok=false`는 생성 없이 안전한 실패 안내로 끝나고, `ok=true`의 공백 질문은 422다. `/ask/langchain`은 없다.
 
 ## 현재 구조
 
@@ -46,8 +46,8 @@ app/
 │   ├── transfer.py          # 이관·내보내기
 │   └── reset.py             # 명시적 시연 DB 복원·백업
 ├── answering/
-│   ├── router.py            # 기존 /assistant
-│   ├── adapter.py           # 기존 LangChain 연동 함수
+│   ├── router.py            # 이미 분류한 입력의 /assistant
+│   ├── adapter.py           # 앱별 GenerationAnswerer·수명주기
 │   └── output.py            # 답변 본문 검증
 └── diagnostics/
     └── trace.py             # 선택적 요청·LangChain 추적
@@ -57,7 +57,7 @@ app/
 
 기존 routers/services/infrastructure 폴더와 재수출 래퍼는 제거했다. 내부 Python import 경로는 변경했으며 외부에 배포된 Python 라이브러리 호환을 보장하지 않는다. HTTP API와 `app.fastapi_main:app` 실행 진입점은 유지한다. 과거 단독 KoELECTRA 래퍼·echo 답변 함수는 제거하고, JSONL 처리는 archive/server_legacy에 보존한다.
 
-문서 snapshot 진단은 `uv run --locked python -m scripts.inspect_document_context`로 실행한다. 읽기 전용이며 DB가 없으면 오류를 숨기지 않는다. trace는 기존 TRACE_DIR·TRACE_FULL_PROMPT·TRACE_MAX_CHARS 설정과 기록 형식을 유지한다.
+문서 snapshot 진단은 `uv run --locked python -m scripts.inspect_document_context`로 실행한다. 읽기 전용이며 DB가 없으면 오류를 숨기지 않는다. trace는 기존 TRACE_DIR·TRACE_FULL_PROMPT·TRACE_MAX_CHARS 설정과 기록 형식을 유지한다. 모델 종료와 별개로 최종 생성 판정·설정 식별자·snapshot/프롬프트 해시·시간·사용량을 기록한다. 새 생성 요약에는 원문·키·예외 메시지를 넣지 않는다. 기존 opt-in trace의 요청·응답·콜백 원문은 민감 자료로 취급한다.
 
 
 작은 기능은 함수로 시작한다. 실제 필요가 없는 Protocol·앱 팩토리·빈 폴더는 추가하지 않는다. 구조를 옮길 때 공개 API 동작 변경은 별도로 명시한다. 현재 동기 라우트를 일괄 async로 바꾸지 않는다.
@@ -84,14 +84,16 @@ app/
 
 모델은 CPU에서 로컬 파일만 읽으며 첫 예측 시 잠금 안에서 로딩한다. 초기화·추론을 직렬화하고 성공한 객체를 앱 프로세스 안에서 재사용한다. 여러 worker는 각각 별도 가중치를 로딩하므로 메모리를 따로 사용한다. 파일을 교체해도 실행 중 객체는 바뀌지 않으며 재시작해야 한다. GPU·추론 큐·처리량 최적화는 후속 범위다.
 
-`SANAEBI_ANSWER_PROVIDER`는 ollama(기본) 또는 openai다. 실행기는 기존 모델·프롬프트를 사용하며 다른 생성 모듈로 자동 전환하지 않는다. 비밀키·가중치는 Git에 게시하지 않는다. API의 호출 동작은 앱 시작 시 읽은 설정을 따른다.
+`SANAEBI_ANSWER_PROVIDER`는 미설정 또는 openai만 허용하며 그 밖의 값은 시작 시 거부한다. `generation.presets.load_runtime_settings`로 CLI와 같은 모델·프로필을 읽되 서버는 JSONL 경로를 요구하지 않는다. 최종 설정은 [최종 프롬프트 기준](generation-final-prompt.md)을 따른다. 비밀키·가중치는 Git에 게시하지 않는다.
+
+앱별 `GenerationAnswerer`는 첫 유효 검색에서 OpenAI 클라이언트를 생성한다. 초기화만 잠그고 원격 요청 전체는 직렬화하지 않는다. 각 요청은 별도 프롬프트를 구성하고 앱 종료 시 소유한 동기·비동기 클라이언트를 닫는다. 자동 재시도·fallback·temperature 전달은 없다. 문서 렌더러는 원본 knowledge_id·개정·제목·본문·순서를 보존한다. 서버는 `sanaebi_assistant`, `answer_pipeline`, `generation_evaluation`을 import하지 않는다.
 
 ## 오류와 호환
 
 - 입력 오류: 422, 기존 AnswerResponse 형식.
 - 분류 저장본 부재·잘못된 메타데이터·라벨 매핑 또는 추론 실패: 503, `분류 모델을 사용할 수 없습니다.`. 내부 경로·예외 원문은 반환하지 않는다.
 - 문서 공급 오류: 기존 503. 빈 snapshot의 정상 안내와 구별한다.
-- 생성 실패·사용 불가 답변: 기존 502.
+- 생성 파싱 실패·추가 JSON 키·공백 답변·거절·잘림·timeout·제공자 오류: 안전한 502. 원문·키·예외 메시지는 응답하지 않는다.
 - 예상하지 못한 일반 오류: 기존 공통 500 처리. 모델 부재로 오인하지 않는다.
 
 `/documents`와 `/regist-docs`는 같은 SQLite를 사용한다. 기존 doc 입력·초안 생성·중복 409·50,000자/512KiB 제한을 유지한다. 게시와 사람 검수 승인은 별개다. 원본 파일·레거시 append·과거 FastAPI 프로토타입은 보존하며 활성 런타임 쓰기 경로로 사용하지 않는다.

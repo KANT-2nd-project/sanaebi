@@ -1,21 +1,21 @@
-"""LLM 답변 요청의 단계별 기록(trace)을 JSONL 파일에 남긴다.
+"""Opt-in JSONL trace for /ask and /assistant.
 
-TRACE_DIR 환경변수가 있을 때만 /ask·/assistant 요청 1건을 JSONL 1줄로 기록한다.
-기록 파일은 TRACE_DIR/YYYY-MM-DD.jsonl이고, 한 줄에 요청 본문, 단계별 행(steps), 최종 응답을 담는다.
+TRACE_DIR is unset by default. When enabled, the existing trace format keeps the
+request/response and LangChain callback details. Treat those files as sensitive:
+they can contain user text and clipped prompt/model output. TRACE_FULL_PROMPT=1
+stores the whole prompt instead of the default clipped preview.
 
-steps는 단계 1개 = 1행이다. 맨 앞은 분류 행(라벨, 출처: /ask는 분류기, /assistant는 요청 값)이고,
-이어서 LangChain 단계가 모델마다 실행기 전체, 입력 정리, 경로 선택, 문서 문맥 추가, 프롬프트 만들기,
-모델 호출, 출력 해석, 출력 정리 순으로 붙는다. 각 행은 model(ollama/openai), stage, status(ok/error),
-seconds(걸린 시간), input, output, error를 갖는다. 모델 호출 행에는 실제 모델명, 종료 사유,
-입력·출력 토큰이 더 붙는다. LangChain 내부에서 다른 단계를 감싸기만 하는 실행은 뺀다.
-한 요청의 모든 행은 같은 trace_id를 갖고, 두 모델을 차례로 부르면 root_run_id가 둘로 나뉜다.
+The current generation adapter also records the actual classification label and
+a separate, content-free generation result row. That row only accepts an
+allowlist of model/profile, snapshot/prompt hashes, outcome, duration, usage,
+and exception type. It never stores prompt, question, document, answer, key, or
+exception-message fields. LangChain callback rows still capture the model stop
+reason and remain separate from this final generation status.
 
-기록만 하고 요청·응답 본문과 실행기 동작은 바꾸지 않는다. 기록할 때는 응답 헤더 X-Trace-Id로
-trace_id를 알려 준다. 기록에 실패해도 요청은 그대로 처리한다.
-라우터·서비스·실행기 코드를 고치지 않도록 LangChain 전역 콜백 훅으로 단계를 받는다.
-
-긴 문자열(문서 문맥, 프롬프트 등)은 TRACE_MAX_CHARS(기본 2000자)까지만 남기고 전체 길이와
-sha256을 함께 적는다. TRACE_FULL_PROMPT=1이면 모델 프롬프트만 자르지 않고 전부 남긴다.
+Each request remains one JSONL line with one trace_id, and response headers
+include X-Trace-Id. A trace write failure never changes the answer response.
+Long callback strings are clipped to TRACE_MAX_CHARS (default 2000 characters)
+with their total length and SHA-256 hash.
 """
 
 import hashlib
@@ -25,6 +25,7 @@ import os
 import threading
 import time
 import uuid
+from collections.abc import Mapping
 from contextvars import ContextVar
 from datetime import datetime
 from pathlib import Path
@@ -39,6 +40,33 @@ logger = logging.getLogger(__name__)
 TRACED_PATHS = frozenset({"/ask", "/assistant"})
 TRACE_HEADER = b"x-trace-id"
 DEFAULT_MAX_CHARS = 2000
+GENERATION_STAGE = "생성 판정"
+
+# 새 생성 어댑터가 추가하는 요약 정보의 키만 허용한다. 질문, 프롬프트,
+# 문서 본문, 답변 원문, 예외 메시지는 이 레코드에 들어가지 않는다.
+_GENERATION_FIELDS = frozenset(
+    {
+        "model",
+        "profile",
+        "snapshot_fingerprint",
+        "prompt_sha256",
+        "prompt_roles_sha256",
+        "config",
+        "status",
+        "seconds",
+        "input_tokens",
+        "output_tokens",
+        "error_type",
+    }
+)
+_GENERATION_ALIASES = {
+    "model_name": "model",
+    "prompt_profile": "profile",
+    "snapshot_sha256": "snapshot_fingerprint",
+    "generation_status": "status",
+    "elapsed_seconds": "seconds",
+    "generation_seconds": "seconds",
+}
 
 _write_lock = threading.Lock()
 
@@ -142,10 +170,66 @@ class TraceCallback(BaseCallbackHandler):
         self.trace_id = uuid.uuid4().hex
         self.started = time.perf_counter()
         self._runs: dict[str, dict] = {}
+        self._classification_label: str | None = None
+        self._classification_seconds: float | None = None
+        self._generation: dict[str, Any] | None = None
         self._lock = threading.Lock()
 
     def _now(self) -> float:
         return time.perf_counter() - self.started
+
+    def record_classification(self, label: str) -> None:
+        """실제 분류 라벨과 분류 완료 시점만 보관한다."""
+        with self._lock:
+            self._classification_label = str(label)
+            self._classification_seconds = round(self._now(), 3)
+
+    def record_generation(self, fields: Mapping[str, Any]) -> None:
+        """모델 호출 결과와 구분되는 안전한 생성 판정 메타데이터를 보관한다."""
+        safe: dict[str, Any] = {}
+        for key, value in fields.items():
+            normalized_key = _GENERATION_ALIASES.get(key, key)
+            if normalized_key not in _GENERATION_FIELDS:
+                continue
+            if normalized_key == "config":
+                if not isinstance(value, dict):
+                    continue
+                allowed = {
+                    "provider",
+                    "model_name",
+                    "timeout_seconds",
+                    "context_window",
+                    "max_output_tokens",
+                    "reasoning_effort",
+                    "temperature",
+                    "output_mode",
+                }
+                value = {
+                    k: v
+                    for k, v in value.items()
+                    if k in allowed and (v is None or isinstance(v, str | int | float))
+                }
+            elif normalized_key == "error_type":
+                # 호출자는 예외 객체가 아닌 형식 이름만 전달해야 한다.
+                if isinstance(value, type) and issubclass(value, BaseException):
+                    value = value.__name__
+                elif isinstance(value, BaseException):
+                    value = type(value).__name__
+                elif value is not None and not isinstance(value, str):
+                    continue
+            elif normalized_key in {"seconds", "input_tokens", "output_tokens"}:
+                if value is not None and not isinstance(value, int | float):
+                    continue
+            elif value is not None and not isinstance(value, str):
+                enum_value = getattr(value, "value", None)
+                if isinstance(enum_value, str):
+                    value = enum_value
+                else:
+                    continue
+            safe[normalized_key] = value
+
+        with self._lock:
+            self._generation = safe
 
     def _start(
         self, run_id, parent_run_id, *, name, tags=None, model_call=False, **fields
@@ -286,10 +370,15 @@ class TraceCallback(BaseCallbackHandler):
         """기록할 steps: 맨 앞 분류 행 + LangChain 단계 행."""
         rows = self.stage_rows()
         roots = [row for row in rows if row["parent_run_id"] is None]
-        label = None
-        if roots and isinstance(roots[0]["input"], dict):
+        with self._lock:
+            label = self._classification_label
+            classification_seconds = self._classification_seconds
+            generation = (
+                dict(self._generation) if self._generation is not None else None
+            )
+        if label is None and roots and isinstance(roots[0]["input"], dict):
             label = roots[0]["input"].get("classification_label")
-        stopped = not roots and (status or 0) >= 400
+        stopped = label is None and not roots and (status or 0) >= 400
         classification = {
             "trace_id": self.trace_id,
             "seq": None,
@@ -297,14 +386,44 @@ class TraceCallback(BaseCallbackHandler):
             "stage": "분류",
             "status": "error" if stopped else "ok",
             "at_seconds": 0.0,
-            # 분류기는 LangChain 밖이라 첫 체인 실행이 시작될 때까지를 분류 시간으로 본다
-            "seconds": roots[0]["at_seconds"] if roots else None,
+            # 새 경로는 분류기가 직접 완료 시점을 기록한다. 과거 체인에서는
+            # 첫 체인 시작 시점을 분류 시간의 근사치로 사용한다.
+            "seconds": (
+                classification_seconds
+                if classification_seconds is not None
+                else roots[0]["at_seconds"]
+                if roots
+                else None
+            ),
             "input": _question_text(request),
             "output": label,
             "error": f"LangChain 전에 멈춤 (HTTP {status})" if stopped else None,
             "source": "분류기" if path == "/ask" else "요청 값",
         }
-        return _numbered([classification, *rows])
+        result_rows = [classification, *rows]
+        if generation is not None:
+            seconds = generation.get("seconds")
+            result_rows.append(
+                {
+                    "trace_id": self.trace_id,
+                    "seq": None,
+                    "model": generation.get("model"),
+                    "stage": GENERATION_STAGE,
+                    # 이는 on_llm_end의 finish_reason과 별개인 검증 결과다.
+                    "status": generation.get("status", "unknown"),
+                    "at_seconds": (
+                        round(max(self._now() - seconds, 0), 3)
+                        if isinstance(seconds, int | float)
+                        else None
+                    ),
+                    "seconds": seconds,
+                    "input": None,
+                    "output": None,
+                    "error": None,
+                    **generation,
+                }
+            )
+        return _numbered(result_rows)
 
 
 def _numbered(rows: list[dict]) -> list[dict]:
@@ -328,6 +447,29 @@ _current_trace: ContextVar[TraceCallback | None] = ContextVar(
 )
 # 요청마다 _current_trace에 넣은 콜백을 이 문맥의 모든 LangChain 실행에 붙인다.
 register_configure_hook(_current_trace, inheritable=True)
+
+
+def record_classification(label: str) -> None:
+    """현재 HTTP 요청의 trace에 실제 분류 라벨을 기록한다.
+
+    TRACE_DIR이 꺼져 있거나 요청 trace 문맥 밖이면 아무 일도 하지 않는다.
+    """
+    callback = _current_trace.get()
+    if callback is not None:
+        try:
+            callback.record_classification(label)
+        except Exception:  # noqa: BLE001 - diagnostic failure must not alter responses
+            logger.warning("분류 trace 메타데이터 기록 실패")
+
+
+def record_generation(fields: Mapping[str, Any]) -> None:
+    """현재 요청 trace에 허용된 생성 메타데이터만 기록한다."""
+    callback = _current_trace.get()
+    if callback is not None:
+        try:
+            callback.record_generation(fields)
+        except Exception:  # noqa: BLE001 - omit exception text from safe logs
+            logger.warning("생성 trace 메타데이터 기록 실패")
 
 
 def _body_record(chunks: list[bytes]) -> Any:

@@ -42,7 +42,7 @@ curl -X POST http://127.0.0.1:8000/classify/koelectra-base \
 
 검색 라벨의 실제 답변에는 게시된 회사 문서와 생성 제공자 준비가 추가로 필요합니다. 새 환경에서 기존 회사 지식 71건을 사용하려면 [DB 초기 구성](../docs/document-management.md#새-환경의-db-최초-구성)의 dry-run 후 명시적으로 적용·게시합니다. 이후 문서는 `/admin/documents`에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 게시는 사람 검수 승인을 의미하지 않습니다.
 
-`SANAEBI_ANSWER_PROVIDER`는 `ollama`(기본) 또는 `openai`입니다. Ollama는 실행 중인 서버와 모델이, OpenAI는 `OPENAI_API_KEY`가 필요하며 API 비용이 발생합니다. 필요한 환경변수는 실행 프로세스에 전달합니다. 위 명령이 `.env`를 자동으로 읽는다고 가정하지 않습니다. 실제 생성 모델의 입력 한도와 문서 준비를 확인한 뒤 호출하세요.
+`SANAEBI_ANSWER_PROVIDER`는 미설정 또는 `openai`만 허용합니다. 다른 값은 시작 시 오류입니다. 최종 GPT-6 Luna에는 `OPENAI_API_KEY`가 필요하며 API 비용이 발생합니다. 서버와 CLI는 같은 [모델·프롬프트 설정](../generation/README.md#독립-실행)을 사용합니다. 필요한 환경변수는 실행 프로세스에 전달합니다. 위 명령이 `.env`를 자동으로 읽는다고 가정하지 않습니다. 실제 생성 모델의 입력 한도와 문서 준비를 확인한 뒤 호출하세요.
 
 ```bash
 curl -X POST http://127.0.0.1:8000/ask \
@@ -54,7 +54,7 @@ curl -X POST http://127.0.0.1:8000/ask \
 
 ## 서버 시작과 첫 요청
 
-[fastapi_main.py](fastapi_main.py)의 `lifespan`은 SQLite 저장소를 초기화하고 문서 provider·분류기 객체·답변 제공자 설정을 `app.state`에 준비한다. 모델 가중치는 첫 `predict()`에서 읽는다. `GET /` 성공은 서버 응답 확인이며 모델 로딩 성공을 증명하지 않는다.
+[fastapi_main.py](fastapi_main.py)의 `lifespan`은 SQLite 저장소를 초기화하고 문서 provider·분류기 객체·앱별 GenerationAnswerer를 `app.state`에 준비한다. 분류 가중치는 첫 `predict()`에서 읽고, 생성 클라이언트는 첫 유효 검색 요청에서 생성해 재사용한다. 앱 종료 시 생성 클라이언트를 닫는다. `GET /` 성공은 서버 응답 확인이며 모델 로딩 성공을 증명하지 않는다.
 
 ```mermaid
 sequenceDiagram
@@ -94,7 +94,7 @@ FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우�
 | [questions/service.py](questions/service.py) | 질문과 세 함수 → QuestionResult | 라벨별 호출 순서 결정 |
 | [classification/predictor.py](classification/predictor.py) | 문자열 → ClassificationLabel | 저장 모델 추론 |
 | [documents/context.py](documents/context.py) | snapshot() → DocumentContextSnapshot | 유효한 게시 문서 확보 |
-| [answering/adapter.py](answering/adapter.py) | 질문·snapshot·provider → 문자열 | 기존 실행기 호출·답변 검증 |
+| [answering/adapter.py](answering/adapter.py) | 질문·snapshot → 문자열 | 최종 generation 호출·답변 검증 |
 
 ### 의존성 조립은 무엇인가
 
@@ -128,7 +128,7 @@ def handle(question):
 
 `DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. 서비스는 같은 snapshot을 답변기에 전달하고 어댑터는 DB를 다시 읽지 않는다. 현재 이 단계는 게시 문서 공급이며 질문 유사도 기반 벡터 검색은 아니다.
 
-답변 어댑터는 전달받은 질문과 snapshot으로 기존 `sanaebi_assistant.py` 실행기의 선택한 제공자를 호출한다. 실행 성공 여부와 답변 본문을 검증한 뒤 문자열을 반환한다. 별도 `generation/`은 현재 이 서버 경로에 연결되지 않았다. 이후 생성기를 구성할 때도 `질문 + snapshot → 답변 문자열` 경계를 유지하면 서비스 변경을 줄일 수 있다.
+`GenerationAnswerer`는 snapshot의 원본 ID·개정·제목·본문·순서를 CLI와 같은 렌더러로 변환하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다.
 
 ## API별 차이와 오류
 
@@ -136,7 +136,7 @@ def handle(question):
 |---|---|
 | `POST /ask` | 분류 → 서비스 정책 → 필요한 경우 문서·답변 생성. `ok`, `text`, `reason` 반환 |
 | `POST /classify/koelectra-base` | `/ask`와 같은 분류 객체로 라벨만 확인. `category` 반환 |
-| `POST /assistant` | 이미 분류한 `response`·`classification_label`을 기존 실행기에 전달. `/ask` 서비스 경로와 출력 계약이 다름 |
+| `POST /assistant` | 이미 분류한 `response`·`classification_label`을 공통 라벨 정책에 전달. 재분류 없이 `/ask`와 같은 `{ok,text,reason}` 응답 |
 
 `/ask/langchain`은 없다. `/ask` 성공의 `text`는 고정 안내 또는 생성 답변이며 `reason`은 빈 문자열이다. 입력 검증은 422, 분류 모델·문서 공급 장애는 503, 답변 생성·본문 검증 실패는 502다. 빈 문서의 정상 안내와 저장소 장애를 구분한다. 상세 설정·오류·문서 관리 API 계약은 [서버 규약](../docs/server-conventions.md)과 [문서 관리](../docs/document-management.md)를 따른다.
 

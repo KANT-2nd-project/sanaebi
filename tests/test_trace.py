@@ -24,10 +24,10 @@ from langchain_core.runnables import RunnableLambda
 
 import sanaebi_assistant
 from app import fastapi_main
-from app.answering import adapter as answerer
-from app.answering import router as assistant
+from app.dependencies import get_assistant_handler
 from app.diagnostics import trace
 from app.documents.context import DocumentContextSnapshot
+from app.questions.service import handle_classified_question
 
 LABEL = "SEARCH_KNOWLEDGE"
 DOCUMENTS = "연차 문서 " * 400  # 기본 2000자 제한을 넘는 문서 문맥
@@ -47,6 +47,10 @@ def fake_generate(response, category, provider=None, document_provider=None):
     # 실행기처럼 분류 라벨을 체인 입력에 함께 넣는다
     message = chain.invoke({**response, "classification_label": category})
     return {"ollama": {"answer": message.content}}
+
+
+def fake_answer(question, snapshot=None):
+    return fake_generate({"text": question}, LABEL)["ollama"]["answer"]
 
 
 def model_rows(record):
@@ -89,13 +93,26 @@ class TraceTests(unittest.TestCase):
         )
         os.environ.pop("TRACE_DIR", None)
         os.environ.pop("TRACE_FULL_PROMPT", None)
+        self.answer_impl = fake_answer
+        self._original_overrides = fastapi_main.app.dependency_overrides.copy()
+        fastapi_main.app.dependency_overrides[get_assistant_handler] = lambda: (
+            self._handle_assistant
+        )
+        self.addCleanup(self._restore_dependency_overrides)
         self.client = self.enterContext(
             TestClient(fastapi_main.app, raise_server_exceptions=False)
         )
-        self.enterContext(
-            patch.object(
-                assistant, "generate_assistant_response", side_effect=fake_generate
-            )
+
+    def _restore_dependency_overrides(self):
+        fastapi_main.app.dependency_overrides.clear()
+        fastapi_main.app.dependency_overrides.update(self._original_overrides)
+
+    def _handle_assistant(self, question, label):
+        return handle_classified_question(
+            question,
+            label,
+            read_documents=lambda: DocumentContextSnapshot((object(),)),
+            answer=self.answer_impl,
         )
 
     def ask(self, question="연차는 어디서 신청해?"):
@@ -115,19 +132,25 @@ class TraceTests(unittest.TestCase):
     def test_no_trace_dir_writes_nothing_and_keeps_response(self):
         response = self.ask()
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"ollama": {"answer": "가상 답변"}})
+        self.assertEqual(
+            response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
+        )
         self.assertFalse(self.trace_dir.exists())
 
     def test_request_steps_prompt_and_response_go_to_one_line(self):
         with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):
             response = self.ask()
 
-        self.assertEqual(response.json(), {"ollama": {"answer": "가상 답변"}})
+        self.assertEqual(
+            response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
+        )
         [record] = self.records()
         self.assertEqual(record["path"], "/assistant")
         self.assertEqual(record["request"]["response"]["text"], "연차는 어디서 신청해?")
         self.assertEqual(record["status"], 200)
-        self.assertEqual(record["response"], {"ollama": {"answer": "가상 답변"}})
+        self.assertEqual(
+            record["response"], {"ok": True, "text": "가상 답변", "reason": ""}
+        )
         self.assertIsNone(record["error"])
 
         steps = record["steps"]
@@ -152,19 +175,14 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(model["output"], "가상 답변")
 
     def test_two_model_calls_share_trace_id_and_split_by_root_run(self):
-        def generate_twice(response, category, provider=None, document_provider=None):
+        def generate_twice(question, snapshot=None):
             # 실행기처럼 한 요청에서 두 모델을 차례로 부른다
-            return {
-                "ollama": fake_generate(response, category)["ollama"],
-                "openai": fake_generate(response, category)["ollama"],
-            }
+            fake_generate({"text": question}, LABEL)
+            fake_generate({"text": question}, LABEL)
+            return "가상 답변"
 
-        with (
-            patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}),
-            patch.object(
-                assistant, "generate_assistant_response", side_effect=generate_twice
-            ),
-        ):
+        self.answer_impl = generate_twice
+        with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):
             self.ask()
 
         [record] = self.records()
@@ -196,27 +214,16 @@ class TraceTests(unittest.TestCase):
             def _call(self, *args, **kwargs):
                 raise ConnectionError("모델 서버 없음")
 
-        def generate_with_broken_model(
-            response, category, provider=None, document_provider=None
-        ):
+        def generate_with_broken_model(question, snapshot=None):
             chain = PromptTemplate.from_template("질문: {text}") | BrokenModel(
                 responses=["사용 안 함"]
             )
-            try:
-                chain.invoke(response)
-            except ConnectionError as error:
-                return {"ollama": {"answer": "", "error": str(error)}}
+            return chain.invoke({"text": question}).content
 
-        with (
-            patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}),
-            patch.object(
-                assistant,
-                "generate_assistant_response",
-                side_effect=generate_with_broken_model,
-            ),
-        ):
+        self.answer_impl = generate_with_broken_model
+        with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):
             response = self.ask()
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 500)
         [record] = self.records()
         [model] = model_rows(record)
         self.assertEqual(model["status"], "error")
@@ -227,20 +234,14 @@ class TraceTests(unittest.TestCase):
     def test_concurrent_requests_do_not_mix_steps(self):
         barrier = threading.Barrier(2)
 
-        def generate_after_both_started(
-            response, category, provider=None, document_provider=None
-        ):
+        def generate_after_both_started(question, snapshot=None):
             barrier.wait(timeout=5)  # 두 요청이 동시에 실행기 안에 있게 한다
-            return fake_generate(response, category)
+            return fake_answer(question, snapshot)
 
         questions = ["첫 번째 질문", "두 번째 질문"]
+        self.answer_impl = generate_after_both_started
         with (
             patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}),
-            patch.object(
-                assistant,
-                "generate_assistant_response",
-                side_effect=generate_after_both_started,
-            ),
             ThreadPoolExecutor(max_workers=2) as pool,
         ):
             responses = list(pool.map(self.ask, questions))
@@ -265,10 +266,6 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(len(model["input"]), model["prompt_chars"])
 
     def test_ask_with_classification_is_recorded(self):
-        def generate_for_ask(response, category, provider=None, document_snapshot=None):
-            answer = fake_generate(response, category)["ollama"]["answer"]
-            return {provider: {"success": True, "output": {"text": answer}}}
-
         with (
             patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}),
             patch.object(
@@ -279,7 +276,9 @@ class TraceTests(unittest.TestCase):
                 "snapshot",
                 return_value=DocumentContextSnapshot((object(),)),
             ),
-            patch.object(answerer, "execute", side_effect=generate_for_ask),
+            patch.object(
+                fastapi_main.app.state.answerer, "answer", side_effect=fake_answer
+            ),
         ):
             response = self.client.post("/ask", json={"question": "연차 신청"})
         self.assertEqual(response.json()["text"], "가상 답변")
@@ -297,13 +296,12 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(self.records(), [])
 
     def test_endpoint_error_is_recorded_and_response_unchanged(self):
+        def fail_answer(question, snapshot=None):
+            raise RuntimeError("실행기 실패")
+
+        self.answer_impl = fail_answer
         with (
             patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}),
-            patch.object(
-                assistant,
-                "generate_assistant_response",
-                side_effect=RuntimeError("실행기 실패"),
-            ),
         ):
             response = self.ask()
         self.assertEqual(response.status_code, 500)
@@ -312,18 +310,119 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(record["status"], 500)
         [classification] = record["steps"]
         self.assertEqual(classification["stage"], "분류")
-        self.assertEqual(classification["status"], "error")
+        self.assertEqual(classification["status"], "ok")
 
     def test_write_failure_does_not_break_request(self):
         blocked = self.trace_dir.parent / "not-a-directory"
         blocked.write_text("파일", encoding="utf-8")
+        self.answer_impl = fake_answer
         with (
             patch.dict(os.environ, {"TRACE_DIR": str(blocked)}),
             self.assertLogs(trace.logger, level="WARNING"),
         ):
             response = self.ask()
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"ollama": {"answer": "가상 답변"}})
+        self.assertEqual(
+            response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
+        )
+
+    def test_generation_metadata_is_safe_and_distinct_from_model_stop(self):
+        callback = trace.TraceCallback()
+        callback.record_classification(LABEL)
+        callback._start(
+            "model-run",
+            None,
+            name="ChatOpenAI",
+            model_call=True,
+            provider="openai",
+            model_name="gpt-6-luna",
+        )
+        callback._finish(
+            "model-run",
+            "ok",
+            finish_reason="stop",
+            input_tokens=120,
+            output_tokens=16,
+        )
+        callback.record_generation(
+            {
+                "model": "gpt-6-luna",
+                "profile": "examples_answer_scope_v1",
+                "snapshot_fingerprint": "snapshot-hash",
+                "prompt_sha256": "prompt-hash",
+                "status": "parse_error",
+                "seconds": 1.25,
+                "input_tokens": 120,
+                "output_tokens": 16,
+                "error_type": "JSONDecodeError",
+                "question": "PRIVATE QUESTION",
+                "documents": "PRIVATE DOCUMENT",
+                "answer": "PRIVATE ANSWER",
+                "api_key": "sk-private",
+                "exception": "private exception body",
+            }
+        )
+
+        rows = callback.record_rows("/ask", {"question": "trace request"}, 502)
+        [model] = model_rows({"steps": rows})
+        generation = next(row for row in rows if row["stage"] == trace.GENERATION_STAGE)
+        self.assertEqual(model["status"], "ok")
+        self.assertEqual(model["finish_reason"], "stop")
+        self.assertEqual(generation["status"], "parse_error")
+        self.assertEqual(generation["profile"], "examples_answer_scope_v1")
+        self.assertEqual(generation["snapshot_fingerprint"], "snapshot-hash")
+        self.assertEqual(generation["input_tokens"], 120)
+        self.assertNotIn("finish_reason", generation)
+        self.assertIsNone(generation["output"])
+        self.assertIsNone(generation["error"])
+        serialized = json.dumps(rows, ensure_ascii=False)
+        for private_value in (
+            "PRIVATE QUESTION",
+            "PRIVATE DOCUMENT",
+            "PRIVATE ANSWER",
+            "sk-private",
+            "private exception body",
+        ):
+            self.assertNotIn(private_value, serialized)
+
+    def test_generation_metadata_context_is_request_local(self):
+        barrier = threading.Barrier(2)
+
+        def answer_with_metadata(question, snapshot=None):
+            trace.record_generation(
+                {
+                    "model": "gpt-6-luna",
+                    "profile": "examples_answer_scope_v1",
+                    "snapshot_fingerprint": question,
+                    "status": "completed",
+                    "seconds": 0.01,
+                    "input_tokens": 2,
+                    "output_tokens": 3,
+                }
+            )
+            barrier.wait(timeout=5)
+            return question
+
+        self.answer_impl = answer_with_metadata
+        questions = ["첫 번째 질문", "두 번째 질문"]
+        with (
+            patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}),
+            ThreadPoolExecutor(max_workers=2) as pool,
+        ):
+            responses = list(pool.map(self.ask, questions))
+
+        self.assertEqual([response.status_code for response in responses], [200, 200])
+        records = {
+            record["request"]["response"]["text"]: record for record in self.records()
+        }
+        for question in questions:
+            generation = next(
+                row
+                for row in records[question]["steps"]
+                if row["stage"] == trace.GENERATION_STAGE
+            )
+            self.assertEqual(generation["snapshot_fingerprint"], question)
+            self.assertEqual(generation["status"], "completed")
 
 
 class RunnerStageTests(unittest.TestCase):

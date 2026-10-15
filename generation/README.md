@@ -1,6 +1,6 @@
 # 생성 모듈
 
-기존 LangChain 실행기와 분리해 사용자가 AI 튜터와 단계적으로 구현 중인 모듈이다. 요청에 따라 일부 검증·복원 함수와 문서 입력·CLI는 AI가 구현했다. 기본 계약·프롬프트·파싱과 Ollama/OpenAI 연결부를 구현했고, 사용자가 수행한 로컬 Ollama 문서 한 건 smoke의 저장 결과를 확인했다. 정식 품질 평가는 아니며 `/ask`, `/assistant`, 기존 평가기에 연결하지 않았다. 설치 패키지 배포 설정도 아직 추가하지 않았다.
+기존 LangChain 실행기와 분리해 사용자가 AI 튜터와 단계적으로 구현 중인 모듈이다. 요청에 따라 일부 검증·복원 함수와 문서 입력·CLI는 AI가 구현했다. 기본 계약·프롬프트·파싱과 Ollama/OpenAI 연결부를 구현했고, 사용자가 수행한 로컬 Ollama 문서 한 건 smoke의 저장 결과를 확인했다. 해당 smoke는 정식 품질 평가가 아니다. 현재 `/ask`·`/assistant`와 새 평가 실행기는 이 모듈을 사용한다. 서버 연결 구현·검증은 사용자 요청으로 AI가 수행했다. 설치 패키지 배포 설정도 아직 추가하지 않았다.
 
 ## 현재 입력과 출력
 
@@ -77,7 +77,7 @@ uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -
 
 ## 채택한 진행 방향
 
-얇은 LangChain 어댑터를 유지하고 생성 모듈·평가를 서버와 독립적으로 먼저 검증한다. 공통 생성 경로를 실제 실행 진입점에 연결하면서 필요한 계약과 검증을 확장한다. 문서 snapshot·입력 예산·구조화 출력·인용 검증이 목표이며, 별도 서버 연결과 기존 코드 아카이브는 대체 경로 검증 후 진행한다. LangGraph·검색 도입은 현재 필수로 채택하지 않았다.
+얇은 LangChain 어댑터를 유지하고 생성 모듈·평가를 서버와 독립적으로 먼저 검증한다. 공통 생성 경로를 실제 실행 진입점에 연결하면서 필요한 계약과 검증을 확장한다. 문서 snapshot·입력 예산·구조화 출력·인용 검증이 목표이며, 서버 연결은 GenerationAnswerer를 통해 수행하며 과거 실행기는 비활성 레거시로 보존한다. LangGraph·검색 도입은 현재 필수로 채택하지 않았다.
 
 ## 평가 실행과 다음 구현
 
@@ -92,7 +92,7 @@ uv run --locked python -m unittest discover -s tests -p 'test_generation_*.py' -
 
 설치 패키지 포함과 직접 사용하는 httpx/openai 의존성의 명시적 선언은 배포 구성 단계에서 정리한다. 현재 환경에는 기존 의존성 트리로 설치되어 있다.
 
-기존 `sanaebi_assistant.py`와 `answer_pipeline/`는 아직 활성 코드이며 이동하지 않았다. 목표 설계는 [서비스 아키텍처](../docs/service-architecture.md), 품질 기준은 [생성 평가](../docs/generation-evaluation.md), 이번 학습 기록은 [작업 일지](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)를 따른다.
+기존 `sanaebi_assistant.py`와 `answer_pipeline/`는 과거 독립 실행·평가 재현용으로 제자리에 보존한다. 현재 서버는 이 경로를 호출하거나 import하지 않는다. 목표 설계는 [서비스 아키텍처](../docs/service-architecture.md), 품질 기준은 [생성 평가](../docs/generation-evaluation.md), 이번 학습 기록은 [작업 일지](../docs/worklogs/2026-10-15-generation-presets-usage-policy.md)를 따른다.
 
 ## 과거 전체 문서 긴 문맥 실험 설정
 
@@ -136,7 +136,7 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 실험 도입 당시에는 기존 CLI 기본 프롬프트를 유지했다. 현재 독립 실행 기본값은 최종 scope 프로필이다. `generation.profiles.build_profile_prompt`는 기존값, 간결한 규칙, 합성 대조 예시를 선택한다. 추가 실험용 examples_coverage(필수 안내 점검), examples_conditions(조건 연결), examples_json(JSON 대조 예시)도 명시적으로 선택할 수 있다. `generation.strategies.execute_strategy`는 단일 생성 또는 근거 추출 후 생성을 실행한다. 추출된 ID·인용은 입력 문서 본문에 실제 존재해야 하며 검증 실패·잘림을 재시도나 단일 생성으로 숨기지 않는다. 원문 일치 검사는 추출의 완전성이나 답변의 사실 정확성을 보장하지 않는다. 실험 방법과 선정 기준은 [평가 안내](../generation_evaluation/README.md)를 따른다.
 
-선정 실험과 후보별 실패·권장 구성은 [모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)를 따른다. 실험 실행기는 프로필을 명시적으로 지정한다. 현재 독립 CLI 기본값 반영은 사용자 후속 요청에 따른 별도 변경이며 서버는 연결하지 않았다.
+선정 실험과 후보별 실패·권장 구성은 [모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)를 따른다. 실험 실행기는 프로필을 명시적으로 지정한다. 현재 독립 CLI 기본값 반영과 서버 연결은 사용자 후속 요청에 따른 별도 변경이다.
 
 현재 선택 모델은 **GPT-6 Luna**다. 두 후보의 상대 비교로 선정했으며 기본 설정 승격·서비스 품질 승인과는 구분한다. 후속 기준 구성과 실험 준비는 [GPT-6 Luna 프롬프트 강화 계획](../docs/generation-luna-prompt-improvement.md)을 따른다.
 
@@ -146,6 +146,6 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 설치된 SDK의 자동 parse 경로가 잘림 응답을 예외로 바꾸므로, strict 호출은 raw create 응답을 LangChain AIMessage로 변환한다. 원문·사용량·종료 사유·refusal을 보존하며 명시적 거절이 길이 판정보다 우선한다. 내부 SDK 메서드에 의존하므로 uv.lock과 전송 경로 회귀 테스트를 함께 유지한다.
 
-`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존하고 독립 CLI·generate_from_documents 기본값은 scope로 연결했다. 서버는 기존 경로를 유지한다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
+`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존하고 독립 CLI·generate_from_documents 기본값은 scope로 연결했다. 서버도 동일 프로필을 사용한다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
 
 GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.

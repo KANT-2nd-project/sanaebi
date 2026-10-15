@@ -45,7 +45,7 @@ export function QuestionPanel() {
         <Link href="/" className="chat-brand">사내<span>비</span></Link>
         <nav aria-label="대화 메뉴">
           <Link href="/admin/documents" className="chat-button header-button" onClick={event => {
-            if (!allowDocumentNavigation(event, state, message => window.confirm(message))) event.preventDefault();
+            if (!allowDocumentNavigation(event, state, message => window.confirm(message), () => session.dispose())) event.preventDefault();
           }}>문서 관리</Link>
           <button type="button" className="chat-button header-button" disabled={empty && !state.draft}
             onClick={() => { session.reset(); inputRef.current?.focus(); }}>새 대화</button>

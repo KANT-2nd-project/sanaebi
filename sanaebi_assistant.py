@@ -1,4 +1,7 @@
-"""분류 라벨과 비교 응답을 받아 LangChain으로 답변합니다.
+"""과거 독립 실행·평가 재현용 비활성 레거시 LangChain 실행기.
+
+현재 서버 /ask와 /assistant는 app.answering.adapter의 최종 generation 경로를
+사용하며 이 모듈을 import하지 않습니다. 아래 provider별 출력은 과거 계약입니다.
 
 1) 입력 규약(fastapi_main.py의 AssistantRequest 등과 동일):
 

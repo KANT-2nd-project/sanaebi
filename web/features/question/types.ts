@@ -7,6 +7,7 @@ export type AnswerResponse = {
 export type QuestionErrorKind =
   | "validation"
   | "generation"
+  | "unavailable"
   | "gateway"
   | "invalid-response"
   | "request"

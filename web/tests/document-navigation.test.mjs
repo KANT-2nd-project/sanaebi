@@ -35,3 +35,29 @@ test("새 탭·새 창·보조 클릭은 브라우저 기본 동작", () => {
   for (const change of [{ctrlKey:true},{metaKey:true},{shiftKey:true},{altKey:true},{button:1}])
     assert.equal(allowDocumentNavigation({...click,...change}, state, unused), true);
 });
+
+test("이동 확인 중 도착한 응답도 페이지 전환 전에 취소해 초안을 보존", async () => {
+  const { ChatSession } = await import("../../tmp/frontend-unit-tests/features/question/chat-session.js");
+  let resolve, signal, draft = "전송 중 질문";
+  const promise = new Promise(done => { resolve = done; });
+  const session = new ChatSession((_q, s) => { signal = s; return promise; }, {
+    initialDraft: draft, onDraftChange: value => { draft = value; },
+  });
+  const pending = session.submit();
+  const allowed = allowDocumentNavigation(click, session.state, () => {
+    resolve("확인창 뒤에 도착한 답변");
+    return true;
+  }, () => session.dispose());
+  assert.equal(allowed, true);
+  assert.equal(signal.aborted, true);
+  await pending;
+  assert.equal(draft, "전송 중 질문");
+  assert.equal(session.state.turns[0].status, "pending");
+});
+
+test("이동 거부와 새 탭 열기는 현재 요청을 취소하지 않음", () => {
+  const state = { turns: [{}], activeTurnId: "1" };
+  const noDispose = () => { throw new Error("current request must remain active"); };
+  assert.equal(allowDocumentNavigation(click, state, () => false, noDispose), false);
+  assert.equal(allowDocumentNavigation({...click, ctrlKey:true}, state, unused, noDispose), true);
+});

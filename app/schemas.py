@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 from contracts.classification import ClassificationLabel
 
@@ -26,3 +26,9 @@ class ClassificationResponse(BaseModel):
 class AssistantRequest(BaseModel):
     response: AnswerResponse  # text에 질문, ok에 앞 단계의 성공 여부
     classification_label: ClassificationLabel
+
+    @model_validator(mode="after")
+    def validate_successful_question(self):
+        if self.response.ok and not self.response.text.strip():
+            raise ValueError("성공한 앞 단계의 질문은 비어 있을 수 없습니다.")
+        return self

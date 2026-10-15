@@ -11,7 +11,7 @@
 
 [generation_evaluation 안내](../generation_evaluation/README.md)를 기준으로 GenerationRun과 run_case를 구현했다. run_case는 질문·문서를 받아 공통 generate_from_documents 경로를 실행한다. 시간은 프롬프트 구성·모델 호출·파싱 구간이며 문서 읽기와 클라이언트 초기화는 제외한다. 이전의 호출·파싱만 측정한 기록과 직접 혼합하지 않는다. 처리된 TIMEOUT은 결과로, 그 밖에 전파된 Exception은 result=None과 오류 클래스 이름으로 기록한다. 사용자 중단은 전파한다.
 
-상태별 개수, 전체 시도를 분모로 한 완료 비율, 전체/완료 실행의 평균 시간, 제공자·모델·timeout·문맥/출력 한도 설정별 그룹화를 구현했다. 빈 집계의 비율·평균은 None이며 0과 구분한다. COMPLETED 비율은 정답률이 아니다. 설정별 그룹화만으로 같은 데이터·문서·프롬프트 비교가 보장되지는 않는다. 설정별 GenerationSummary, 기록 JSONL 저장·읽기·객체 복원과 결과 일관성 검증까지 구현했다. 문서 목록·프롬프트 SHA-256과 문서 수를 기록하며, 비교 집계는 같은 문항·입력인지 검사한다. 의미 기반 품질 판정은 별도 검토다. 독립 생성 CLI와 새 평가 실행기는 같은 generate_from_documents를 사용하며 서버는 아직 기존 경로다. [학습·검증 기록](worklogs/2026-10-15-generation-presets-usage-policy.md)을 따른다.
+상태별 개수, 전체 시도를 분모로 한 완료 비율, 전체/완료 실행의 평균 시간, 제공자·모델·timeout·문맥/출력 한도 설정별 그룹화를 구현했다. 빈 집계의 비율·평균은 None이며 0과 구분한다. COMPLETED 비율은 정답률이 아니다. 설정별 그룹화만으로 같은 데이터·문서·프롬프트 비교가 보장되지는 않는다. 설정별 GenerationSummary, 기록 JSONL 저장·읽기·객체 복원과 결과 일관성 검증까지 구현했다. 문서 목록·프롬프트 SHA-256과 문서 수를 기록하며, 비교 집계는 같은 문항·입력인지 검사한다. 의미 기반 품질 판정은 별도 검토다. 독립 생성 CLI와 새 평가 실행기는 같은 generate_from_documents를 사용하며 서버도 최종 프로필을 명시하여 같은 생성 함수를 사용한다. 서버는 평가 모듈을 import하지 않으며 SQLite snapshot을 공통 렌더러로 변환한다. [학습·검증 기록](worklogs/2026-10-15-generation-presets-usage-policy.md)을 따른다.
 
 ## 현재 관측과 프롬프트 변경
 
