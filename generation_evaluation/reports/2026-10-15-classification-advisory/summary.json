@@ -1,0 +1,59 @@
+{
+  "decision": {
+    "eligible": false,
+    "stable": {
+      "A": 7,
+      "B": 6,
+      "C": 6
+    },
+    "unsafe": false
+  },
+  "calls": 64,
+  "confirmation_calls": 0,
+  "charged_usd": 0.96850775,
+  "actual_cost_usd": 0.96850775,
+  "arms": {
+    "A": {
+      "n": 16,
+      "grades": {
+        "pass": 15,
+        "partial": 1,
+        "fail": 0
+      },
+      "median_seconds": 6.286712434997753,
+      "median_cost_usd": 0.014917
+    },
+    "B": {
+      "n": 16,
+      "grades": {
+        "pass": 14,
+        "partial": 1,
+        "fail": 1
+      },
+      "median_seconds": 8.001568925003085,
+      "median_cost_usd": 0.01507275
+    },
+    "C": {
+      "n": 16,
+      "grades": {
+        "pass": 14,
+        "partial": 2,
+        "fail": 0
+      },
+      "median_seconds": 8.769318667498737,
+      "median_cost_usd": 0.015084875
+    },
+    "W": {
+      "n": 16,
+      "grades": {
+        "pass": 15,
+        "partial": 1,
+        "fail": 0
+      },
+      "median_seconds": 9.734969272001763,
+      "median_cost_usd": 0.015152875
+    }
+  },
+  "review": "same implementation AI; not independent/human/blind",
+  "default_adopted": false
+}
