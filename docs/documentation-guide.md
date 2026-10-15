@@ -24,6 +24,7 @@
 | 생성 모델 실행·로컬 GPU 프로필·TPS 측정 | [실행 설정 안내](generation-runtime.md)와 실행 스크립트 | 모듈 README에는 빠른 시작, 실측·변경 경위는 작업 일지 |
 | 생성 평가 기준·응답 검사 | [생성 평가 안내](generation-evaluation.md)와 평가 코드 | 과거 text 기록과 현재 구조화 응답을 구분하고 실모델 평가 여부를 표시 |
 | 생성 모델 비교·선정 근거 | [생성 모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)와 고정 평가 세트 | 생성 안내·Notion에는 권장 구성, 기본값 승격 여부와 게시 보고서 링크. 서로 다른 평가 세트의 점수는 합치지 않음 |
+| 서버 생성 통합·호출 및 프록시 검증 | [서버 규약](server-conventions.md)와 [통합 기록](worklogs/2026-10-15-server-generation-integration.md) | Notion 문서 안내·서비스 처리 기준·운영 규칙·[생성 개인 일지](https://www.notion.so/3f905a3cdadc8146a9bbedb690ab5ecf). 기능 연결과 품질 승인을 구분 |
 | 최종 생성 프롬프트·튜닝 종료 결정 | [최종 프롬프트 기준](generation-final-prompt.md) | 실험 당시 탈락/유지와 사용자 후속 채택을 구분. 원점수·미완료 평가·실제 기본 설정 상태는 보존 |
 | GPT-6 Luna 선택 이후 프롬프트 개선 | [후속 실험 준비](generation-luna-prompt-improvement.md) | 선택 모델·기준 구성·후보 준비/실행/검증 상태와 Notion 개인 일지 링크 |
 | GPT-6 Luna 답변 범위·strict 출력 후속 비교 | [후속 비교 안내](generation-luna-reference-followup.md)와 연결된 고정 자료·결과 | 기존 중단 실험과 별도로 후보·AI 판정·채택 여부를 요약. 서비스 기본값 변경과 구분 |

@@ -28,7 +28,7 @@ flowchart TD
 | [분류기 독립 확인](../app/classification/README.md#분류기만-직접-확인하기) | HTTP·문서 저장소 없이 로컬 저장본 추론 |
 | [분류 학습](../classification/README.md) | 데이터·그룹 분할·TF-IDF·Transformer 학습과 명시적 평가 |
 | [문서 관리](document-management.md) | 등록·개정·게시·사용 중단·이관·내보내기 |
-| [생성 모듈](../generation/README.md) · [별도 평가 실행](../generation_evaluation/README.md) | 서버와 분리한 생성·평가 |
+| [생성 모듈](../generation/README.md) · [별도 평가 실행](../generation_evaluation/README.md) | 서버와 공통 생성 모듈·독립 평가 |
 | [웹 개발](../web/README.md) · [배포](../deployment/README.md) | 프런트 개발·정적 빌드·nginx 구성 |
 
 ## 계약과 기준 찾기
@@ -39,7 +39,7 @@ flowchart TD
 | [라벨 기준](label-taxonomy.md) | 세 처리 라벨의 의미와 경계 사례 |
 | [데이터 안내](../data/README.md) | 분류 데이터와 답변용 회사 지식의 용도·검수·분할 |
 | [생성 평가 기준](generation-evaluation.md) | 응답 검사와 품질 평가 기준 |
-| [최종 생성 프롬프트](generation-final-prompt.md) · [실행 설정](generation-runtime.md) | 독립 생성·평가의 Luna 기본 구성과 서버 연결 경계 |
+| [최종 생성 프롬프트](generation-final-prompt.md) · [실행 설정](generation-runtime.md) | 서버·독립 생성·평가의 Luna 기본 구성 |
 | [문서 관리 가이드](documentation-guide.md) | 사실의 기준 위치·Notion 대응·작성 절차 |
 
 ## 결과와 과거 기록
@@ -47,6 +47,7 @@ flowchart TD
 | 문서 | 시간·용도 구분 |
 |---|---|
 | [분류 보고서 목록](../classification/reports/README.md) | 현재 학습 코드의 비교·선정 판단과 근거 |
+| [Luna 서버 통합 기록](worklogs/2026-10-15-server-generation-integration.md) | 공통 생성 경로·API 통일·검증과 한계 |
 | [서버 연결 기록](worklogs/2026-10-15-server-classifier-integration.md) | 선정 checkpoint 연결·당시 검증 결과 |
 | [서버 구조 정리 기록](worklogs/2026-10-15-server-feature-layout.md) | 기능별 재배치·호환·당시 검증 |
 | [작업 기록 폴더](worklogs/) | 작업별 변경·실행·검증 경위. 현재 사용법은 해당 기준 문서 확인 |

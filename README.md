@@ -33,7 +33,7 @@ flowchart LR
 | 역할 | 모델 | 적용 상태 | 근거 |
 |---|---|---|---|
 | 질문 분류 | KoELECTRA base | 선정·서버 적용 | [선정 기록](docs/worklogs/2026-10-15-classifier-selection.md#결정과-근거) |
-| 답변 생성 | Qwen3 4B Instruct 2507 · Ollama | 서버 기본값 | [설정](sanaebi_assistant.py) |
+| 답변 생성 | GPT-6 Luna | 서버·독립 실행 공통 기본값 | [최종 구성](docs/generation-final-prompt.md) |
 
 ## 빠른 시작
 
@@ -66,7 +66,7 @@ npm run dev
 |---|---|
 | 서버의 요청 처리와 분류 추론 | [서버 구조](app/README.md) |
 | 분류 모델 학습·평가·선정 | [분류 실험](classification/README.md) · [결과](classification/reports/README.md) |
-| 최종 Luna 독립 생성·평가 (서버 미연결) | [생성 안내](generation/README.md) · [최종 프롬프트](docs/generation-final-prompt.md) |
+| 최종 Luna 생성·평가와 서버 연결 | [생성 안내](generation/README.md) · [최종 프롬프트](docs/generation-final-prompt.md) |
 | 문서 등록·게시 | [문서 관리](docs/document-management.md) |
 | 서비스 배포 | [배포](deployment/README.md) |
 

@@ -34,7 +34,7 @@ uv run --locked uvicorn app.fastapi_main:app --host 127.0.0.1 --port 8000
 uv run --locked python scripts/local_nginx.py start
 ```
 
-브라우저로 http://127.0.0.1:8080 에 접속합니다. Next dev/start 프로세스는 필요하지 않습니다. 현재 `/api/ask`는 FastAPI `/ask`로 중계하고 서버는 질문을 분류한 뒤 선택한 LangChain 모델의 답변을 반환합니다. 분류 모델과 답변 모델을 별도로 준비해야 하며, 새 모델 경로의 브라우저 종단 검증과 답변 품질 검증은 별도입니다.
+브라우저로 http://127.0.0.1:8080 에 접속합니다. Next dev/start 프로세스는 필요하지 않습니다. 현재 `/api/ask`는 FastAPI `/ask`로 중계하고 서버는 질문을 분류한 뒤 최종 Luna 생성 모듈의 답변을 반환합니다. 분류 모델과 답변 모델을 별도로 준비해야 하며, 로컬 격리 환경의 연결 검증은 [통합 기록](../docs/worklogs/2026-10-15-server-generation-integration.md)을 따릅니다. 공개 서버 배포와 답변 품질 승인은 별도입니다.
 
 ```bash
 uv run --locked python scripts/local_nginx.py stop
@@ -59,7 +59,7 @@ nginx 종료 후 FastAPI를 실행한 터미널에서 Ctrl+C로 해당 프로세
 
 HTML·라우트 데이터에는 no-cache, 존재하는 `/_next/static/` 해시 자산에는 1년 immutable, 정상·오류 API에는 no-store를 적용합니다. upstream의 Cache-Control/Expires를 API 캐시 정책으로 교체합니다. FastAPI의 오류 상태·본문은 유지하고 nginx 자체 502/504는 HTML일 수 있습니다. 프런트가 이를 안전한 안내로 표시합니다.
 
-연결 제한은 5초, upstream 읽기 사이의 대기 제한은 30초입니다. 브라우저의 총 요청 제한은 35초이며 자동 재호출하지 않습니다. 읽기 제한은 요청 전체의 절대 실행시간 제한이 아닙니다. 실제 모델 연결 시 예산을 다시 측정해야 합니다.
+연결 제한은 5초, upstream 읽기 사이의 대기 제한은 210초입니다. 브라우저 답변 대기는 240초이며 자동 재호출하지 않습니다. 읽기 제한은 요청 전체의 절대 실행시간 제한이 아닙니다. Luna 호출 timeout은 180초이며 개발 프록시도 210초입니다. 분류·문서 처리까지 포함한 전체 요청 시간 보장이 아닙니다.
 
 ## 문제 확인
 

@@ -21,4 +21,4 @@
 
 [전체 과정·기록 점검](../generation_evaluation/reports/2026-10-15-luna-tuning-closure/README.md)과 [종료 일지](worklogs/2026-10-15-generation-prompt-tuning-closure.md)에서 실험별 결과, 중단·미판정 항목, 연구 근거, 추가4문항과 최종 결정을 확인할 수 있다.
 
-사용자의 후속 병합 요청에 따라 위 독립 런타임 구성을 main에도 통합했다. 이전 일지의 생성 브랜치 게시·main 미병합은 당시 상태로 보존한다. [통합 게시 기록](worklogs/2026-10-15-main-publication.md)을 따른다. 서버 생성 경로에는 연결하지 않았다.
+사용자의 후속 병합 요청에 따라 위 독립 런타임 구성을 main에도 통합했다. 이전 일지의 생성 브랜치 게시·main 미병합은 당시 상태로 보존한다. [통합 게시 기록](worklogs/2026-10-15-main-publication.md)을 따른다. 이후 별도 서버 통합 작업에서 `/ask`·`/assistant`도 같은 최종 구성에 연결했다. 채택한 프롬프트 본문은 수정하지 않았다. [서버 통합 검증과 한계](worklogs/2026-10-15-server-generation-integration.md)를 함께 확인한다.

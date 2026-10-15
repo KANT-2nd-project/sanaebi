@@ -1,8 +1,8 @@
 # 서비스 아키텍처와 질문 처리 흐름
 
-새 [generation 모듈](../generation/README.md)은 프레임워크와 분리된 입력·결과 계약, system/user 프롬프트 구성, 주입받은 모델 함수 호출과 JSON 응답 검사, Ollama/OpenAI 연결부를 구현한 단계다. 새 generation_evaluation과 독립 생성 CLI는 같은 generate_from_documents를 호출한다. 평가는 시간·결과·오류를 기록하고 설정별 요약·기록 저장·복원을 제공한다. 독립 CLI는 명시적 내보내기 JSONL을 받고 서버·DB를 직접 참조하지 않는다. 가짜 클라이언트 테스트와 사용자 실행의 로컬 Ollama 문서 한 건 smoke 결과를 확인했다. 새 경로는 모델 별칭·실험 설정과 사용량·종료 사유를 기록하며 출력 길이 제한은 실패로 처리한다. 전체 문서 품질·변경 프롬프트 재실행·서버 연결은 미검증이다. 서버와 평가기가 동일한 생성 경로를 사용하도록 발전시킨다. 현재 `/ask`·`/assistant`·`answer_pipeline/`는 새 모듈에 연결하지 않았으며 기존 LangChain 실행기를 계속 사용한다. 기존 코드의 아카이브 보존은 채택한 전환 방향이며 실제 이동은 대체 경로 검증 후 수행한다.
+서버와 독립 생성·평가는 같은 [generation 모듈](../generation/README.md)의 최종 Luna 설정과 프롬프트·응답 검사를 사용한다. 서버는 SQLite 게시 snapshot을, CLI는 명시적으로 내보낸 JSONL을 사용하며 같은 렌더러로 프롬프트를 구성한다. 연결 구현과 검증 결과·남은 한계는 [서버 생성 통합 기록](worklogs/2026-10-15-server-generation-integration.md)을 따른다. 과거 실행기와 평가 자료는 비활성 레거시 재현용으로 보존한다.
 
-- 기준일: 2026-10-14
+- 기준일: 2026-10-15
 - 상태: 현재 API 동작과 아직 연결되지 않은 목표 설계를 구분한다.
 - 질문 처리 기준: [요청 처리 분류·라벨링 기준 v1.0](label-taxonomy.md)
 - 서버 코드 구성과 변경 기준: [서버 구성 규약](server-conventions.md)
@@ -20,21 +20,21 @@
 |---|---|
 | `GET /` | FastAPI 서버 실행 메시지를 반환한다. |
 | `POST /ask` | 현재 질문을 KoELECTRA Base로 분류하고 질문 서비스의 라벨 정책에 따라 고정 안내 또는 생성 답변을 AnswerResponse로 반환한다. |
-| `POST /assistant` | 이미 분류한 response·classification_label을 LangChain 실행기에 전달하고 기존 출력 형식을 그대로 반환한다. |
+| `POST /assistant` | 기존 response·classification_label 입력을 공통 라벨 정책에 전달하고 `{ok,text,reason}`를 반환한다. 재분류·두 모델 비교는 수행하지 않는다. |
 | `POST /regist-docs` | doc 문자열을 검증해 SQLite 초안을 생성한다. 성공 응답은 유지하며 중복은 409다. |
 | 기존 질문·레거시 HTTP 응답 | AnswerResponse는 ok, text, reason을 가진다. 요청 검증 오류는 같은 응답 형태로 HTTP 422를 반환한다. |
 | `/documents` | SQLite 초안·개정·게시·중단을 관리하며 문서 전용 오류 계약을 사용한다. [상세 계약](document-management.md)을 따른다. |
 | 질문 처리 분류 | `/classify/koelectra-base`에서 분류만 확인하거나 `/ask`에서 분류 후 답변 생성을 실행한다. |
 | 질문 서비스 | `handle_question`은 활성 /ask 처리 서비스다. dependencies가 앱별 분류기·snapshot reader·답변 어댑터를 조립한다. `/ask/langchain`은 제거했다. |
-| 문서 답변 | /ask의 라벨별 정책과 snapshot 전달을 검증했다. 기존 LangChain 실행기는 유지하며 실제 LLM 답변 품질은 별도 검증 대상이다. |
+| 문서 답변 | /ask의 라벨별 정책과 snapshot 전달을 검증했다. 최종 generation 모듈을 사용하며 실제 LLM 답변 품질 승인은 별도다. 과거 실행기는 오프라인 재현용으로 보존한다. |
 
-앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/questions/router.py)와 [문서 라우터](../app/documents/registration.py), SQLite 저장은 [문서 저장소](../app/documents/repository.py)에서 확인한다. 현재 `POST /ask`는 질문 서비스를 거쳐 검색 라벨·유효 문서가 있는 경우에만 LangChain을 호출한다. SANAEBI_ANSWER_PROVIDER로 Ollama 또는 OpenAI 하나를 선택하고, 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
+앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/questions/router.py)와 [문서 라우터](../app/documents/registration.py), SQLite 저장은 [문서 저장소](../app/documents/repository.py)에서 확인한다. 현재 `POST /ask`는 질문 서비스를 거쳐 검색 라벨·유효 문서가 있는 경우에만 LangChain을 호출한다. 최종 Luna만 사용하며 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
 
 등록 요청은 기존 `{"doc":"본문"}` 형식을 유지하며 50,000자·512KiB 제한을 적용한다. 게시 전에는 답변에 사용하지 않는다. 원본 JSONL은 최초 이관·과거 평가를 위해 보존한다.
 
-[LangChain 실행기](../sanaebi_assistant.py)는 `/assistant`·`/ask`·독립 실행에서 공통 SQLite provider를 사용한다. 검색 질문마다 snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 모델을 호출한다. `/assistant`의 provider별 기록에는 `model_called`가 포함된다. 빈 게시 목록은 모델 호출 없이 자료 없음 안내를 반환한다. DB 오류는 HTTP 503, 모델 호출 실패는 기존 502다. 명시적인 평가용 `documents_path`만 JSONL을 읽는다.
+`/ask`와 `/assistant`는 공통 라벨 정책을 사용한다. CLARIFY·UNSUPPORTED는 고정 안내로 종료하고 문서·LLM을 호출하지 않는다. 검색 질문은 SQLite snapshot을 한 번 확보하고 읽기 트랜잭션을 닫은 뒤 앱별 `GenerationAnswerer`를 호출한다. 빈 게시 목록은 정상 안내, 분류·DB 장애는 503, 생성 결과·제공자 오류는 502, 예상 밖 코드 오류는 500이다. 앞 단계 실패 입력은 생성하지 않는다.
 
-`/ask`는 SANAEBI_ANSWER_PROVIDER로 선택한 한 모델의 답변을 AnswerResponse로 변환한다. 실행기의 기본 실행은 두 모델을 비교한다. /ask의 CLARIFY·UNSUPPORTED는 서비스의 고정 안내로 종료하며 문서·LLM을 호출하지 않는다. /assistant는 기존 실행기 계약을 유지한다. 2026-10-15 사용자 결정으로 KoELECTRA base를 현 단계 서버 분류기로 채택했다. [선정 근거와 연결 절차](worklogs/2026-10-15-classifier-selection.md)를 따른다. 기존 연동 코드의 존재와 이번에 선정한 checkpoint의 연결 완료는 구분하며, 이번 저장본은 공통 Transformer 추론기로 연결한다. 검증 결과는 [연결 작업 기록](worklogs/2026-10-15-server-classifier-integration.md)을 따른다.
+2026-10-15 사용자 결정으로 KoELECTRA base를 현 단계 서버 분류기로 채택했다. [선정 근거와 연결 절차](worklogs/2026-10-15-classifier-selection.md)를 따른다. 기존 연동 코드의 존재와 이번에 선정한 checkpoint의 연결 완료는 구분하며, 이번 저장본은 공통 Transformer 추론기로 연결한다. 검증 결과는 [연결 작업 기록](worklogs/2026-10-15-server-classifier-integration.md)을 따른다.
 
 ## 목표 질문 처리 흐름
 
@@ -58,7 +58,7 @@ flowchart TD
     C -->|"UNSUPPORTED"| U["지원 범위 안내"]
 ```
 
-문서 답변은 SQLite의 현재 유효한 게시본 전체를 사용한다. 기존 71건 JSONL은 최초 이관 원본으로 보존하며 서비스는 파일과 DB를 합치지 않는다. 관리 화면의 게시·사용 중단은 다음 검색 질문에 적용된다. 요청 단위 snapshot을 모델 호출 전에 확보하며 두 provider도 같은 문서를 사용한다. 명시적 평가 JSONL은 재현용으로 유지한다. 저장·이관 기준은 [문서 관리](document-management.md), 원본 이력은 [회사 정책 데이터](../data/README.md#답변용-회사-지식)를 따른다. RAG는 후속 검토 범위다.
+문서 답변은 SQLite의 현재 유효한 게시본 전체를 사용한다. 기존 71건 JSONL은 최초 이관 원본으로 보존하며 서비스는 파일과 DB를 합치지 않는다. 관리 화면의 게시·사용 중단은 다음 검색 질문에 적용된다. 요청 단위 snapshot을 모델 호출 전에 확보하고 Luna 단일 호출에 전달한다. 명시적 평가 JSONL은 재현용으로 유지한다. 저장·이관 기준은 [문서 관리](document-management.md), 원본 이력은 [회사 정책 데이터](../data/README.md#답변용-회사-지식)를 따른다. RAG는 후속 검토 범위다.
 
 ## 답변 규칙과 경계
 

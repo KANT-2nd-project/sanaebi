@@ -1,0 +1,392 @@
+{
+  "purpose": "Server wiring verification, not a quality benchmark or tuning run",
+  "base_commit": "b21d4ef5455d9a164be7382a7dd4ff326ed6df80",
+  "implementation_commit": "9e60c4e045cf0fd10673f02fb316c5225b70447b",
+  "code_sha256": {
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "generation/profiles.py": "200582ffe247487ad04d12d9b8dd7bf1a797680ae111999a47ab94e8fbea0d75",
+    "generation/models.json": "dd831eda3eb721e02758dc07f341099a70a83851207ec2513f9e5a3393baf2e4",
+    "generation/experiments.json": "542473b042ab7e9e5fe5c2590ff322832a00ca369cb337e364eedfca44b6d06b",
+    "generation/documents.py": "6de589ec6c2813ae465e13a7ef9623cae3c4b314a33d2f2b8622907f25466209",
+    "generation/presets.py": "8b3d9d80508b09cba778d677da300fe31c0b3a1e2c1677f50da279c974804369",
+    "generation/providers.py": "c4a11af28bbab3046a57b26ff34310c881a385171763e0a106551b56b92d4fc0",
+    "app/answering/adapter.py": "90db5f05e85374a4163b74a7aa88b59caad110027a1e98e8772e80ae4875e12b",
+    "app/answering/router.py": "6eea1992bf6f13392a94153c74b12a27d48a64952db38122cd875dc56188e7ac",
+    "app/questions/service.py": "4b05954055d5129ddb04f32ca8157a1ace63e302aa8c8a0fd16a39ad3b2b0b67",
+    "app/diagnostics/trace.py": "f492baf5b0491bd70092ea448f44ea1a7a71a3563d6c2951c34d5a78e6debbaf",
+    "uv.lock": "f3add2980cd37234847c8b9401403685cc63f53896db82db15042a5c05d94758"
+  },
+  "classifier": {
+    "checkpoint": "artifacts/experiments/learning-comparison-2026-10-15/koelectra_base/model",
+    "model_id": "9f51682d82d4455d8296077c339afd58",
+    "validation_artifact": "artifacts/experiments/learning-comparison-2026-10-15/koelectra_base/results/validation/predictions.json",
+    "validation_sha256": "5e8cfa87cdd2c4a9b490b963638fbc6da16b405be72975ac7f94f10f744e4dd5",
+    "rows": 133,
+    "matching_predictions": 133,
+    "mismatches": [],
+    "expected_label_counts": {
+      "SEARCH_KNOWLEDGE": 47,
+      "CLARIFY": 42,
+      "UNSUPPORTED": 44
+    },
+    "actual_label_counts": {
+      "SEARCH_KNOWLEDGE": 47,
+      "CLARIFY": 42,
+      "UNSUPPORTED": 44
+    },
+    "seconds": 3.617
+  },
+  "proxy_checks": [
+    {
+      "name": "next_40_second_delayed_upstream",
+      "status": 200,
+      "elapsed_ms": 40021,
+      "body": {
+        "ok": true,
+        "text": "delayed 40 seconds",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "nginx_40_second_delayed_upstream",
+      "status": 200,
+      "elapsed_ms": 40027,
+      "body": {
+        "ok": true,
+        "text": "delayed 40 seconds",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "next_preserves_502",
+      "status": 502,
+      "content_type": "application/json",
+      "body": {
+        "ok": false,
+        "text": "",
+        "reason": "fake upstream 502"
+      },
+      "passed": true
+    },
+    {
+      "name": "next_preserves_503",
+      "status": 503,
+      "content_type": "application/json",
+      "body": {
+        "ok": false,
+        "text": "",
+        "reason": "fake upstream 503"
+      },
+      "passed": true
+    },
+    {
+      "name": "nginx_preserves_502",
+      "status": 502,
+      "content_type": "application/json",
+      "body": {
+        "ok": false,
+        "text": "",
+        "reason": "fake upstream 502"
+      },
+      "passed": true
+    },
+    {
+      "name": "nginx_preserves_503",
+      "status": 503,
+      "content_type": "application/json",
+      "body": {
+        "ok": false,
+        "text": "",
+        "reason": "fake upstream 503"
+      },
+      "passed": true
+    },
+    {
+      "name": "next_client_cancellation_cleanup",
+      "client_error": "AbortError",
+      "upstream_response_closed": true,
+      "upstream_response_ended": false,
+      "timer_fired_after_cancel": false,
+      "passed": true
+    },
+    {
+      "name": "nginx_client_cancellation_cleanup",
+      "client_error": "AbortError",
+      "upstream_response_closed": true,
+      "upstream_response_ended": false,
+      "timer_fired_after_cancel": false,
+      "passed": true
+    }
+  ],
+  "live_calls": [
+    {
+      "case_id": "R01",
+      "route": "/ask",
+      "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+      "label": "SEARCH_KNOWLEDGE",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "profile": "examples_answer_scope_v1",
+      "document_count": 71,
+      "snapshot_fingerprint": "36a8ed60beccbaffe52899c20c19110c004b0a230fd6324572c4bd3e434aa51e",
+      "attempted": true,
+      "prompt_roles_sha256": "1e3d54db9183a55817b8c5f30fe71fa9aa7171e0aae4b7dae3b506aeb98deee5",
+      "model_response": {
+        "raw_text": "{\"answer\":\"이음 포털 **재무 > 경비 정산**에서 결제일 기준 10영업일 안에 거래별 업무 목적과 출장 기록 번호를 연결해 제출하세요. 마지막 이동 구간 영수증을 찾지 못했다면 누락 사실을 그대로 알리고 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다.\\n\\n반려되면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하세요. 문서에는 별도의 사유 확인 메뉴나 화면은 안내되어 있지 않습니다.\"}",
+        "input_tokens": 57505,
+        "output_tokens": 1686,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "cost_estimate_usd": 0.01564075,
+      "generation": {
+        "model": "gpt-6-luna",
+        "profile": "examples_answer_scope_v1",
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "context_window": null,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "temperature": null,
+          "output_mode": "prompt_json"
+        },
+        "snapshot_fingerprint": "36a8ed60beccbaffe52899c20c19110c004b0a230fd6324572c4bd3e434aa51e",
+        "prompt_roles_sha256": "1e3d54db9183a55817b8c5f30fe71fa9aa7171e0aae4b7dae3b506aeb98deee5",
+        "status": "completed",
+        "input_tokens": 57505,
+        "output_tokens": 1686,
+        "finish_reason": "stop",
+        "seconds": 13.258916431997932
+      },
+      "status_code": 200,
+      "response": {
+        "ok": true,
+        "text": "이음 포털 **재무 > 경비 정산**에서 결제일 기준 10영업일 안에 거래별 업무 목적과 출장 기록 번호를 연결해 제출하세요. 마지막 이동 구간 영수증을 찾지 못했다면 누락 사실을 그대로 알리고 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다.\n\n반려되면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하세요. 문서에는 별도의 사유 확인 메뉴나 화면은 안내되어 있지 않습니다.",
+        "reason": ""
+      },
+      "elapsed_seconds": 13.290693279999687
+    },
+    {
+      "case_id": "R02",
+      "route": "/assistant",
+      "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+      "label": "SEARCH_KNOWLEDGE",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "profile": "examples_answer_scope_v1",
+      "document_count": 71,
+      "snapshot_fingerprint": "36a8ed60beccbaffe52899c20c19110c004b0a230fd6324572c4bd3e434aa51e",
+      "attempted": true,
+      "prompt_roles_sha256": "1e3d54db9183a55817b8c5f30fe71fa9aa7171e0aae4b7dae3b506aeb98deee5",
+      "model_response": {
+        "raw_text": "{\"answer\":\"영수증을 못 찾으셨다면 해당 지출을 사실대로 적고 증빙을 분실했다고 표시한 뒤, 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 증빙을 제출합니다. 반려되면 같은 메뉴의 기존 신청 건에서 사유와 부족한 항목을 확인해 그 건에 보완하세요. 문서에는 반려 사유를 확인하는 별도 화면명은 안내되어 있지 않습니다.\"}",
+        "input_tokens": 57505,
+        "output_tokens": 1521,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "cost_estimate_usd": 0.015517,
+      "generation": {
+        "model": "gpt-6-luna",
+        "profile": "examples_answer_scope_v1",
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "context_window": null,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "temperature": null,
+          "output_mode": "prompt_json"
+        },
+        "snapshot_fingerprint": "36a8ed60beccbaffe52899c20c19110c004b0a230fd6324572c4bd3e434aa51e",
+        "prompt_roles_sha256": "1e3d54db9183a55817b8c5f30fe71fa9aa7171e0aae4b7dae3b506aeb98deee5",
+        "status": "completed",
+        "input_tokens": 57505,
+        "output_tokens": 1521,
+        "finish_reason": "stop",
+        "seconds": 12.163852154000779
+      },
+      "status_code": 200,
+      "response": {
+        "ok": true,
+        "text": "영수증을 못 찾으셨다면 해당 지출을 사실대로 적고 증빙을 분실했다고 표시한 뒤, 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 증빙을 제출합니다. 반려되면 같은 메뉴의 기존 신청 건에서 사유와 부족한 항목을 확인해 그 건에 보완하세요. 문서에는 반려 사유를 확인하는 별도 화면명은 안내되어 있지 않습니다.",
+        "reason": ""
+      },
+      "elapsed_seconds": 12.17764635200001
+    },
+    {
+      "case_id": "R03",
+      "route": "/ask",
+      "question": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.",
+      "label": "SEARCH_KNOWLEDGE",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "profile": "examples_answer_scope_v1",
+      "document_count": 71,
+      "snapshot_fingerprint": "36a8ed60beccbaffe52899c20c19110c004b0a230fd6324572c4bd3e434aa51e",
+      "attempted": true,
+      "prompt_roles_sha256": "8eec9b7dff0019f8d1e0189fb42f5d77a070bb282eba8272c6b27e4f0927185c",
+      "model_response": {
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 조회하는 별도 메뉴·경로는 안내되어 있지 않습니다. 다만 신고를 받은 당직 담당자는 목표로 15분 안에 신고를 확인하고 대응 책임자와 다음 연락 경로를 명시하도록 되어 있습니다. 처리 기록에는 접수·대응·후속 단계와 담당 역할, 조치 결과 및 미확인 사항을 남깁니다. 15분 안에 확인이나 명시적인 인수가 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 이 15분은 인계 목표이지 사고 해결 시간이 아닙니다.\"}",
+        "input_tokens": 57477,
+        "output_tokens": 882,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "cost_estimate_usd": 0.01503075,
+      "generation": {
+        "model": "gpt-6-luna",
+        "profile": "examples_answer_scope_v1",
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "context_window": null,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "temperature": null,
+          "output_mode": "prompt_json"
+        },
+        "snapshot_fingerprint": "36a8ed60beccbaffe52899c20c19110c004b0a230fd6324572c4bd3e434aa51e",
+        "prompt_roles_sha256": "8eec9b7dff0019f8d1e0189fb42f5d77a070bb282eba8272c6b27e4f0927185c",
+        "status": "completed",
+        "input_tokens": 57477,
+        "output_tokens": 882,
+        "finish_reason": "stop",
+        "seconds": 8.474176007999631
+      },
+      "status_code": 200,
+      "response": {
+        "ok": true,
+        "text": "문서에는 신고자가 담당자나 처리 상태를 조회하는 별도 메뉴·경로는 안내되어 있지 않습니다. 다만 신고를 받은 당직 담당자는 목표로 15분 안에 신고를 확인하고 대응 책임자와 다음 연락 경로를 명시하도록 되어 있습니다. 처리 기록에는 접수·대응·후속 단계와 담당 역할, 조치 결과 및 미확인 사항을 남깁니다. 15분 안에 확인이나 명시적인 인수가 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 이 15분은 인계 목표이지 사고 해결 시간이 아닙니다.",
+        "reason": ""
+      },
+      "elapsed_seconds": 8.501508952998847
+    },
+    {
+      "case_id": "R04",
+      "route": "/assistant",
+      "question": "통합 검증용 별빛 자료실의 이용 가능 시간과 담당 부서는 무엇인가요?",
+      "label": "SEARCH_KNOWLEDGE",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "profile": "examples_answer_scope_v1",
+      "document_count": 72,
+      "snapshot_fingerprint": "895478826d9f315a25c5d1d28c1e5dfa29d464d86dfbbd37dcf5d6e413a052df",
+      "attempted": true,
+      "prompt_roles_sha256": "bc861d9be41a03f4155a2521a630acf4ee4815b93a1f15b81f7f0ffefcf4a8f0",
+      "model_response": {
+        "raw_text": "{\"answer\":\"통합 검증용 별빛 자료실은 매주 수요일 오후 2시부터 4시까지 이용할 수 있으며, 담당 부서는 자료지원팀입니다.\"}",
+        "input_tokens": 57569,
+        "output_tokens": 116,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "cost_estimate_usd": 0.01447925,
+      "generation": {
+        "model": "gpt-6-luna",
+        "profile": "examples_answer_scope_v1",
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "context_window": null,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "temperature": null,
+          "output_mode": "prompt_json"
+        },
+        "snapshot_fingerprint": "895478826d9f315a25c5d1d28c1e5dfa29d464d86dfbbd37dcf5d6e413a052df",
+        "prompt_roles_sha256": "bc861d9be41a03f4155a2521a630acf4ee4815b93a1f15b81f7f0ffefcf4a8f0",
+        "status": "completed",
+        "input_tokens": 57569,
+        "output_tokens": 116,
+        "finish_reason": "stop",
+        "seconds": 2.907424015997094
+      },
+      "status_code": 200,
+      "response": {
+        "ok": true,
+        "text": "통합 검증용 별빛 자료실은 매주 수요일 오후 2시부터 4시까지 이용할 수 있으며, 담당 부서는 자료지원팀입니다.",
+        "reason": ""
+      },
+      "elapsed_seconds": 2.9112931290001143
+    }
+  ],
+  "client_lifecycle": {
+    "closed": true,
+    "unique_clients": 1,
+    "generation_calls": 4
+  },
+  "live_summary": {
+    "calls": 4,
+    "http200": 4,
+    "completed": 4,
+    "input_tokens": 230056,
+    "output_tokens_including_reasoning": 4205,
+    "median_seconds": 10.339577652499429,
+    "max_seconds": 13.290693279999687,
+    "estimated_cost_usd": 0.06066775,
+    "cost_method": "Existing generation_evaluation.budget.actual_cost conservative estimate; cache detail unavailable; not billed cost",
+    "latency_scope": "TestClient HTTP wall time, classifier warmed by label preflight; R01 includes lazy generation client initialization"
+  },
+  "published_change": {
+    "before_fingerprint": "36a8ed60beccbaffe52899c20c19110c004b0a230fd6324572c4bd3e434aa51e",
+    "after_fingerprint": "895478826d9f315a25c5d1d28c1e5dfa29d464d86dfbbd37dcf5d6e413a052df",
+    "count_before": 71,
+    "count_after": 72
+  },
+  "verification": {
+    "python_tests": 585,
+    "python_result": "passed, no skips",
+    "ruff": "check and format passed; 280 files",
+    "web_tests": 69,
+    "web_checks": [
+      "unit tests",
+      "lint",
+      "typecheck",
+      "production static build"
+    ],
+    "browser": "passed: publish and next answer, 502/503, manual retry, confirmed navigation cancels before delayed response; draft retained after delayed completion",
+    "real_llm_call_limit": 4,
+    "real_llm_calls": 4,
+    "web_commit": "e8f1bd0"
+  }
+}
