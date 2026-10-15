@@ -1,0 +1,78 @@
+{
+  "scope": "RAG follow-up runtime readiness verification",
+  "tests": {
+    "focused_command": "uv run --locked python -m unittest tests.runtime.test_rag_followup_readiness -v",
+    "focused_result": "4 tests passed",
+    "combined_command": "uv run --locked python -m unittest tests.runtime.test_rag_followup_readiness tests.runtime.test_public_limits tests.runtime.test_rag_http tests.runtime.test_knowledge_runtime tests.runtime.test_document_maintenance_api tests.runtime.test_production_maintenance tests.runtime.test_rag_commands tests.runtime.test_deploy_release tests.retrieval.test_service tests.retrieval.test_baseline",
+    "combined_result": "95 tests passed",
+    "static_checks": [
+      "uv run --locked ruff check tests/runtime/test_rag_followup_readiness.py: passed",
+      "uv run --locked ruff format --check tests/runtime/test_rag_followup_readiness.py: passed",
+      "git diff --check -- tests/runtime/test_rag_followup_readiness.py: passed"
+    ]
+  },
+  "added_test_coverage": [
+    "HTTP maintenance clear followed by ask: empty snapshot returns the fixed no-documents answer without retrieval, generation, or reservation.",
+    "HTTP restore creates a new revision; ask stays 503 without a ready current-revision index and reserves no generation; a separate worker configured with the matching baseline reconciles with zero document encoding; current retrieval contains only the new revision.",
+    "When the API restore source differs from the configured baseline, the worker encodes changed content rather than reusing stale baseline vectors; retrieval and mocked answer contain current content only.",
+    "An in-flight RAG request retains its captured old retrieved context while a concurrent document publish and worker reconciliation index a newer revision; later retrieval returns only the newer revision.",
+    "Mock-provider HTTP requests at concurrency 1, 2, and 4 all complete, with measured provider overlap matching each concurrency level."
+  ],
+  "existing_coverage_reused": [
+    "Public-demo in-flight cap rejects excess asks without waiting.",
+    "Cancellation holds the slot until the synchronous worker finishes.",
+    "Readiness checks do not retrieve or reserve; retrieval failure and missing readiness do not reserve generation.",
+    "Reset preflight, model-free baseline mapping, source-preserving recovery, and worker restart behavior."
+  ],
+  "environment_limits": {
+    "docker_version_command": "docker version",
+    "docker_result": "unavailable: Docker CLI is not installed/accessible in this WSL 2 distro; Docker Desktop WSL integration is required.",
+    "container_candidate_and_schema_rollback": "unverified",
+    "production_ssh_or_access": "not attempted; no production SSH/access in this verification task",
+    "actual_tiny_encoder": "not exercised by the focused HTTP tests; deterministic FakeEmbedder used",
+    "real_llm": "not called"
+  },
+  "logs": [
+    "tmp/readiness-focused-tests.log",
+    "tmp/readiness-runtime-tests.log",
+    "tmp/readiness-targeted-tests.log",
+    "tmp/readiness-deploy-tests.log",
+    "tmp/readiness-docker-version.log",
+    "tmp/readiness-actual-tiny.log"
+  ],
+  "actual_tiny_maintenance_smoke": {
+    "command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 uv run --locked python tmp/rag-actual-tiny-maintenance-smoke.py",
+    "result": "passed",
+    "evidence_json": "tmp/readiness-actual-tiny.json",
+    "script": "tmp/rag-actual-tiny-maintenance-smoke.py",
+    "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "model_revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+    "source_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+    "spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529",
+    "actual_tiny_loaded_on": "cpu",
+    "restored_documents": 71,
+    "matching_baseline_document_encode_calls": 0,
+    "clear_ask": {
+      "http_status": 200,
+      "retrieval_calls": 0,
+      "provider_calls": 0,
+      "reservations": 0
+    },
+    "restored_but_unindexed_ask": {
+      "http_status": 503,
+      "provider_calls": 0,
+      "reservations": 0
+    },
+    "post_reconcile": {
+      "index_ready": true,
+      "evidence_count": 5,
+      "current_revisions_only": true,
+      "ask_http_status": 200,
+      "fake_generation_calls": 2,
+      "reservations": 2
+    },
+    "real_llm_calls": 0,
+    "source_and_bundle_read_only": true,
+    "initial_harness_issue": "An earlier smoke attempt used a nonexistent status field in the report formatter; maintenance API returns action/count fields. Corrected formatter; no product-code issue and no API request was repeated due to that formatting issue."
+  }
+}
