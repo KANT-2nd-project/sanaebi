@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
-  createDocument, DocumentApiError, getDocument, getDocumentCapabilities, listDocuments,
+  createDocument, DocumentApiError, getDocument, listDocuments,
   publishDocument, updateDocument, withdrawDocument,
-  type DocumentCapabilities, type DocumentDetail, type DocumentListResponse, type DocumentPayload,
+  type DocumentDetail, type DocumentListResponse, type DocumentPayload,
   type DocumentStatus,
 } from "../../lib/api/documents";
 import {
@@ -50,15 +50,13 @@ export function DocumentPanel() {
   const routeUrl = `${pathname ?? "/admin/documents"}${search ? `?${search}` : ""}`;
   const [routeState] = useState(() => new DocumentRouteState(routeUrl));
 
-  const [capabilities, setCapabilities] = useState<DocumentCapabilities | null>(null);
-  const [capabilityError, setCapabilityError] = useState("");
   const [searchInput, setSearchInput] = useState(view.q);
+  const [statusInput, setStatusInput] = useState(view.status);
   const [list, setList] = useState<DocumentListResponse | null>(null);
   const [listQueryKey, setListQueryKey] = useState("");
   const queryKey = JSON.stringify([view.q, view.status, view.page]);
   const [listBusy, setListBusy] = useState(true);
   const [listError, setListError] = useState("");
-  const [listErrorKind, setListErrorKind] = useState("");
   const [listRefresh, setListRefresh] = useState(0);
 
   const [detail, setDetail] = useState<DocumentDetail | null>(null);
@@ -152,19 +150,11 @@ export function DocumentPanel() {
     return () => window.removeEventListener("beforeunload", warn);
   }, [editorDirty, pendingWrite]);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    getDocumentCapabilities({ signal: controller.signal }).then(setCapabilities).catch(error => {
-      if (error instanceof DocumentApiError && error.kind === "aborted") return;
-      setCapabilityError(errorMessage(error, "관리 기능 상태를 불러오지 못했습니다.").message);
-    });
-    return () => controller.abort();
-  }, []);
-
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setSearchInput(view.q);
-  }, [view.q]);
+    setStatusInput(view.status);
+  }, [routeUrl, view.q, view.status]);
 
   useEffect(() => {
     const canonical = documentViewUrl(view);
@@ -187,7 +177,6 @@ export function DocumentPanel() {
         if (error instanceof DocumentApiError && error.kind === "aborted") return;
         const issue = errorMessage(error, "문서 목록을 불러오지 못했습니다.");
         setListError(issue.message);
-        setListErrorKind(issue.kind);
         setList(null);
         setListBusy(false);
       });
@@ -461,7 +450,13 @@ export function DocumentPanel() {
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    navigate(documentViewUrl({ ...view, q: searchInput, page: 1 }));
+    navigate(documentViewUrl({ ...view, q: searchInput, status: statusInput, page: 1 }));
+  }
+
+  function resetSearch() {
+    setSearchInput("");
+    setStatusInput("all");
+    navigate(documentViewUrl({ ...view, q: "", status: "all", page: 1 }));
   }
 
   function openNewDocument() {
@@ -470,7 +465,6 @@ export function DocumentPanel() {
 
   const pageNumber = Math.floor(filters.offset / PAGE_SIZE) + 1;
   const totalPages = Math.max(1, Math.ceil((list?.total ?? 0) / PAGE_SIZE));
-  const answerIntegration = capabilities?.answer_integration ?? null;
   const effectiveFrom = detail?.draft.effective_from ?? null;
   const retryableWrite = pendingWrite && isTransient(writeFailureKind) ? pendingWrite : null;
 
@@ -487,8 +481,8 @@ export function DocumentPanel() {
     }
   }
 
-  const pagination = list && <nav className="documents-pagination" aria-label="문서 목록 페이지">
-    <span>{list.total === 0 ? "0건" : `전체 ${list.total}건 중 ${filters.offset + 1}–${Math.min(filters.offset + PAGE_SIZE, list.total)}`}</span>
+  const pagination = list && totalPages > 1 && <nav className="documents-pagination" aria-label="문서 목록 페이지">
+
     <div><button type="button" className="documents-button documents-button-secondary" disabled={pageNumber <= 1 || listBusy}
       onClick={() => navigate(documentViewUrl({ ...view, page: pageNumber - 1 }))}>이전</button>
       <span> {pageNumber} / {totalPages} 페이지 </span>
@@ -510,7 +504,6 @@ export function DocumentPanel() {
       </header>
       <section className="documents-intro documents-intro-compact" aria-labelledby="documents-title">
         <h1 id="documents-title">문서 관리</h1><p>답변에 사용할 자료를 확인하고 게시합니다.</p>
-        <p className="documents-connection" role="status">{capabilityError ? "문서 연결 상태를 확인할 수 없습니다." : !capabilities ? "문서 연결 상태 확인 중…" : answerIntegration === "connected" ? "게시본 공급 연결됨 · 실제 답변 생성 가능 여부와는 별개입니다." : "문서 공급이 답변에 연결되지 않았습니다."}</p>
       </section>
       {detailOpen ? <section className="documents-editor-panel" aria-labelledby="document-editor-title">
         <div className="documents-editor-toolbar"><button type="button" className="documents-text-button" disabled={writePending} onClick={() => navigate(listUrl)}>← 검색 결과로</button>
@@ -526,7 +519,7 @@ export function DocumentPanel() {
           {editorOpen ? <>
             <h2 id="document-editor-title" tabIndex={-1}>{isNew ? "새 문서 초안" : "초안 편집"}</h2>
             <p className="documents-help">{detail?.published && !detail.withdrawn ? `현재 답변 대상은 게시본 v${detail.published.revision_number}입니다. 초안 저장만으로 바뀌지 않습니다.` : "초안은 게시하기 전까지 답변에 사용되지 않습니다."} 수정한 개정은 미검수로 저장됩니다.</p>
-            <form ref={editorFormRef} onSubmit={saveDraft} noValidate>
+            <form className="documents-editor-form" ref={editorFormRef} onSubmit={saveDraft} noValidate>
               <DocumentEditor form={form} errors={formErrors} onChange={editField} disabled={writePending} idPrefix="managed-document" errorSummaryRef={errorSummaryRef} />
               <div className="documents-editor-actions"><button type="button" className="documents-button documents-button-secondary" disabled={writePending} onClick={() => navigate(detail ? detailUrl(detail.id) : listUrl)}>취소</button>
                 <button type="submit" className="documents-button documents-button-primary" disabled={writePending}>{writePending ? "초안 저장 중…" : "초안 저장"}</button></div>
@@ -543,25 +536,32 @@ export function DocumentPanel() {
         {retryableWrite && <button type="button" className="documents-button documents-button-secondary" disabled={writePending} onClick={() => void executeWrite(retryableWrite)}>같은 요청 수동 재시도</button>}
       </section> : <section className="documents-list-panel" aria-labelledby="documents-list-title">
         <div className="documents-list-heading"><h2 id="documents-list-title">등록 문서</h2><p className="documents-help">최근 수정순 · 20건씩 표시</p></div>
-        <form className="documents-search" onSubmit={submitSearch} role="search"><label htmlFor="documents-search-input">제목 검색</label>
-          <input id="documents-search-input" type="search" value={searchInput} maxLength={200} onChange={event => setSearchInput(event.target.value)} placeholder="문서 제목을 검색하세요" />
-          <label htmlFor="documents-status-filter">상태</label><select id="documents-status-filter" value={view.status} onChange={event => navigate(documentViewUrl({ ...view, status: event.target.value as DocumentStatus | "all", page: 1 }))}>
-            <option value="all">전체</option><option value="draft">초안</option><option value="published">게시됨</option><option value="withdrawn">사용 중단</option></select>
-          <button type="submit" className="documents-button documents-button-primary">검색</button>
-          {(view.q || view.status !== "all") && <button type="button" className="documents-button documents-button-secondary" onClick={() => navigate(documentViewUrl({ ...view, q: "", status: "all", page: 1 }))}>조건 초기화</button>}
+        <form className="documents-search" onSubmit={submitSearch} role="search" aria-describedby="documents-search-help">
+          <div className="documents-search-field"><label htmlFor="documents-search-input">제목 검색</label>
+            <input id="documents-search-input" type="search" value={searchInput} maxLength={200} onChange={event => setSearchInput(event.target.value)} placeholder="초안 제목을 검색하세요" /></div>
+          <div className="documents-search-field"><label htmlFor="documents-status-filter">상태</label>
+            <select id="documents-status-filter" value={statusInput} onChange={event => setStatusInput(event.target.value as DocumentStatus | "all")}>
+              <option value="all">전체</option><option value="draft">초안</option><option value="published">게시됨</option><option value="withdrawn">사용 중단</option>
+            </select></div>
+          <div className="documents-search-actions"><button type="submit" className="documents-button documents-button-primary">검색</button>
+            <button type="button" className="documents-button documents-button-secondary" disabled={!searchInput && statusInput === "all" && !view.q && view.status === "all"} onClick={resetSearch}>조건 초기화</button></div>
         </form>
+        <p id="documents-search-help" className="documents-help">초안 제목을 검색합니다. 제목과 상태를 선택한 뒤 검색을 눌러 함께 적용하세요.</p>
+        <div className="documents-results-summary" role="status">
+          <p>{listBusy ? "결과 확인 중" : listError ? "결과를 확인할 수 없습니다." : list ? `전체 ${list.total}건${list.total ? ` 중 ${filters.offset + 1}–${Math.min(filters.offset + list.items.length, list.total)}` : ""}` : ""}</p>
+          <p className="documents-help">적용 조건: {view.q ? `초안 제목 ‘${view.q}’ · ` : ""}{{ all: "전체", draft: "초안", published: "게시됨", withdrawn: "사용 중단" }[view.status]}</p>
+        </div>
         {listBusy ? <p role="status">문서 목록을 불러오는 중…</p> : listError ? <div role="alert"><p>{listError}</p><button type="button" className="documents-button documents-button-secondary" onClick={() => void refreshList()}>다시 불러오기</button>
-          {listErrorKind === "permission" && <p>관리자 인증과 권한 확인은 아직 구성되지 않았습니다.</p>}</div> : list?.items.length ? <>
-          {pagination}<DocumentListView items={list.items} hrefFor={id => detailUrl(id)} onOpen={id => { returnPosition.current = { id, y: window.scrollY }; navigate(detailUrl(id)); }} />{pagination}
+          </div> : list?.items.length ? <>
+          <DocumentListView items={list.items} hrefFor={id => detailUrl(id)} onOpen={id => { returnPosition.current = { id, y: window.scrollY }; navigate(detailUrl(id)); }} />{pagination}
         </> : <div className="documents-empty-state"><h3>{view.q || view.status !== "all" ? "조건에 맞는 문서가 없습니다." : "등록된 문서가 없습니다."}</h3>
           <p>{view.q || view.status !== "all" ? "검색어나 상태 조건을 바꿔보세요." : "첫 문서를 초안으로 등록하고 검토한 뒤 게시하세요."}</p>
-          {view.q || view.status !== "all" ? <button type="button" className="documents-button documents-button-secondary" onClick={() => navigate(documentViewUrl({ ...view, q: "", status: "all", page: 1 }))}>조건 초기화</button>
+          {view.q || view.status !== "all" ? <button type="button" className="documents-button documents-button-secondary" onClick={resetSearch}>조건 초기화</button>
             : <button type="button" className="documents-button documents-button-primary" onClick={openNewDocument}>첫 문서 초안 만들기</button>}</div>}
       </section>}
-      <footer className="documents-footer"><p>로컬 시연용 공통 자료입니다. 관리자 인증·권한 검증은 아직 제공하지 않습니다.</p></footer>
       {detail && actionDialog && <DocumentActionDialog action={actionDialog} title={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).title} revision={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).revision_number}
         previousRevision={detail.published?.revision_number ?? null} reviewStatus={detail.draft.metadata?.review_status}
-        effectiveFrom={effectiveFrom} answerIntegration={answerIntegration} busy={actionBusy} onCancel={() => setActionDialog(null)} onConfirm={confirmAction} />}
+        effectiveFrom={effectiveFrom} busy={actionBusy} onCancel={() => setActionDialog(null)} onConfirm={confirmAction} />}
     </main>
   );
 }

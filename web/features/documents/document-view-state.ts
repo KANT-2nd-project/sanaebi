@@ -44,3 +44,8 @@ export function eligibilityLabel(value: DocumentSummary["eligibility"]) {
 export function reviewLabel(value?: string) {
   return value === "ai_reviewed" ? "AI 검수" : value === "unreviewed" ? "미검수" : value || "검수 정보 없음";
 }
+
+/** The list opens the same revision as the default reader. */
+export function listRevision(document: DocumentSummary) {
+  return document.published ?? document.draft;
+}

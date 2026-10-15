@@ -26,3 +26,16 @@ test("기본 읽기는 게시본이고 초안 탭은 해당 개정만 선택한�
   assert.equal(eligibilityLabel("scheduled"), "시행일 대기");
   assert.equal(eligibilityLabel("withdrawn"), "사용 중단 · 답변 제외");
 });
+
+test("목록 표시 개정은 초안만·게시·변경 초안·사용 중단 모두 기본 읽기와 일치한다", async () => {
+  const { listRevision } = await import("../../tmp/frontend-unit-tests/features/documents/document-view-state.js");
+  const draft = { id: "v2", title: "새 초안 제목", owner_department: "새 부서" };
+  const published = { id: "v1", title: "게시 제목", owner_department: "게시 부서" };
+  for (const item of [
+    { draft, published: null }, { draft: published, published },
+    { draft, published }, { draft, published, withdrawn: true },
+  ]) {
+    assert.equal(listRevision(item), selectedRevision(item, null));
+    assert.equal(listRevision(item), item.published ?? item.draft);
+  }
+});
