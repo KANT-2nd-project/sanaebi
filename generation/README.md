@@ -155,3 +155,7 @@ GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판�
 ## 설치 범위와 선택 provider
 
 서버·평가기는 소스 checkout에서 실행한다. 독립 wheel 배포는 지원 범위가 아니다. 기본 운영 의존성은 `uv sync --locked --no-dev`로 설치하며 분류 추론의 torch·transformers를 포함한다. Ollama와 과거 답변기 사용 시 `uv sync --locked --extra ollama`로 선택 의존성을 설치한다. 전체 테스트에도 이 extra가 필요하다. `sanaebi`·`sanaebi-train`은 기존 보관 분류 CLI를 유지한다.
+
+### 가독성 후보 v6
+
+`examples_answer_scope_v6`는 v5에 문단·불릿·번호 목록 선택 지침을 추가한 명시적 실험 프로필이다. [16회 비교](../generation_evaluation/reports/2026-10-15-readability-v6/README.md)에서 도움 소개의 목록화 미충족과 일부 필수 안내 퇴행이 있어 채택을 보류했다. 기본 CLI·평가·서버는 계속 v5를 사용한다. 기존 프로필과 JSON 계약은 변경하지 않았다.
