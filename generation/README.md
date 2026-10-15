@@ -77,7 +77,7 @@ uv run --locked python -m unittest discover -s tests -t . -p 'test_generation_*.
 
 ## 채택한 진행 방향
 
-얇은 LangChain 어댑터를 유지하고 생성 모듈·평가를 서버와 독립적으로 먼저 검증한다. 공통 생성 경로를 실제 실행 진입점에 연결하면서 필요한 계약과 검증을 확장한다. 문서 snapshot·입력 예산·구조화 출력·인용 검증이 목표이며, 서버 연결은 GenerationAnswerer를 통해 수행하며 과거 실행기는 비활성 레거시로 보존한다. LangGraph·검색 도입은 현재 필수로 채택하지 않았다.
+얇은 LangChain 어댑터를 유지하고 생성 모듈·평가를 서버와 독립적으로 먼저 검증한다. 공통 생성 경로를 실제 실행 진입점에 연결하면서 필요한 계약과 검증을 확장한다. 문서 snapshot·입력 예산·구조화 출력·인용 검증이 목표이며, 서버 연결은 GenerationAnswerer를 통해 수행하며 과거 실행기는 비활성 레거시로 보존한다. LangGraph는 채택하지 않았다. 선택적 검색은 서버의 `app/retrieval`에서 구현하며 generation은 full의 전체 문서 또는 rag의 선택 근거를 입력받는다. 기본은 full이고 [RAG 실행·검증 범위](../docs/rag-runtime.md)는 별도로 관리한다.
 
 ## 평가 실행과 다음 구현
 
