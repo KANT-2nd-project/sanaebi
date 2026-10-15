@@ -11,7 +11,6 @@ from pathlib import Path
 
 from contracts.classification import LABELS
 
-ROOT = Path(__file__).resolve().parents[1]
 COMMAND = Path(sys.executable).parent / (
     "sanaebi.exe" if os.name == "nt" else "sanaebi"
 )

@@ -21,8 +21,7 @@ from generation.documents import load_documents
 from generation.presets import load_runtime_settings
 from generation.profiles import build_profile_prompt
 from generation.types import ModelResponse
-
-ROOT = Path(__file__).resolve().parent.parent
+from tests.support.paths import ROOT
 
 
 def snapshot(body="인사 포털에서 신청합니다.", revision=3):

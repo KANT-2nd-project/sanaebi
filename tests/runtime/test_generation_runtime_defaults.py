@@ -19,8 +19,7 @@ from generation_evaluation import __main__ as batch
 from generation_evaluation.metrics import group_by_config, summarize_runs
 from generation_evaluation.reporting import run_from_dict, run_to_dict
 from generation_evaluation.runner import run_case
-
-ROOT = Path(__file__).resolve().parent.parent
+from tests.support.paths import ROOT
 
 
 class RuntimeDefaultsTests(unittest.TestCase):

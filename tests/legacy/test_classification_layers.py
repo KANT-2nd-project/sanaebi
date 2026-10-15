@@ -23,8 +23,7 @@ from archive.classification_v1.types import (
 from archive.classification_v1.workflows.evaluate import evaluate_questions
 from archive.classification_v1.workflows.train import train
 from contracts.classification import LABELS
-
-ROOT = Path(__file__).resolve().parents[1]
+from tests.support.paths import ROOT
 
 
 def example_splits():

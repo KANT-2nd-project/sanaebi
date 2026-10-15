@@ -30,8 +30,8 @@ from archive.classification_v1.models import tfidf
 from archive.classification_v1.models import transformer as inference
 from archive.classification_v1.models import transformer as training
 from archive.classification_v1.models.tfidf import TfidfConfig, select_tfidf
+from tests.support.paths import ROOT
 
-ROOT = Path(__file__).resolve().parents[1]
 ENTRYPOINTS = [
     p.stem for p in (ROOT / "archive/classification_v1/experiments").glob("train_*.py")
 ]
@@ -459,7 +459,7 @@ class EntrypointTests(unittest.TestCase):
                 sys.executable,
                 "-c",
                 (
-                    "from test_classification_refactor import EntrypointTests; "
+                    "from tests.legacy.test_classification_refactor import EntrypointTests; "
                     "EntrypointTests()._check_import_side_effects()"
                 ),
             ],

@@ -11,7 +11,7 @@ from archive.answering_v1.answer_pipeline.checks import (
     parse_answer,
     summarize,
 )
-from tests.answer_pipeline_support import (
+from tests.support.answer_pipeline import (
     CONDITIONS,
     DOCUMENTS,
     GOOD_ANSWER_TEXT,

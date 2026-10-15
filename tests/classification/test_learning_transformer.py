@@ -3,18 +3,18 @@
 import unittest
 from unittest.mock import patch
 
-import test_learning_classification
 import torch
 from transformers import BertConfig, BertForSequenceClassification, BertTokenizer
 
 from classification import transformer
 from classification.evaluate import evaluate_bundle
 from contracts.classification import LABELS
+from tests.support.learning import prepare_learning_evaluation
 
 
 class TransformerTests(unittest.TestCase):
     def setUp(self):
-        test_learning_classification.LearningEvaluationTests.setUp(self)
+        prepare_learning_evaluation(self)
         self.old_threads = torch.get_num_threads()
         torch.set_num_threads(1)
         self.addCleanup(torch.set_num_threads, self.old_threads)

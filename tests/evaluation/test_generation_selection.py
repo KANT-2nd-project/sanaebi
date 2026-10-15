@@ -48,6 +48,9 @@ class SelectionTests(unittest.TestCase):
         for name in (
             "generation_evaluation/strategies.py",
             "generation_evaluation/experiment_support.py",
+            "generation_evaluation/selection_validation.py",
+            "generation_evaluation/selection_report_validation.py",
+            "generation/optional_providers.py",
             "generation/config.py",
             "generation/types.py",
             "generation/validation.py",

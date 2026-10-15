@@ -16,7 +16,7 @@ from archive.answering_v1.answer_pipeline.judge import (
     run_judge,
 )
 from archive.answering_v1.answer_pipeline.run import record_key
-from tests.answer_pipeline_support import (
+from tests.support.answer_pipeline import (
     GOOD_ANSWER_TEXT,
     LEAVE_DOC,
     ROOM_DOC,
