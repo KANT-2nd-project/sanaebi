@@ -132,7 +132,7 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 ### 선택형 프롬프트·근거 추출 실험
 
-기존 CLI 기본 프롬프트는 유지한다. `generation.profiles.build_profile_prompt`는 기존값, 간결한 규칙, 합성 대조 예시를 선택한다. `generation.strategies.execute_strategy`는 단일 생성 또는 근거 추출 후 생성을 실행한다. 추출된 ID·인용은 입력 문서 본문에 실제 존재해야 하며 검증 실패·잘림을 재시도나 단일 생성으로 숨기지 않는다. 원문 일치 검사는 추출의 완전성이나 답변의 사실 정확성을 보장하지 않는다. 실험 방법과 선정 기준은 [평가 안내](../generation_evaluation/README.md)를 따른다.
+기존 CLI 기본 프롬프트는 유지한다. `generation.profiles.build_profile_prompt`는 기존값, 간결한 규칙, 합성 대조 예시를 선택한다. 추가 실험용 examples_coverage(필수 안내 점검), examples_conditions(조건 연결), examples_json(JSON 대조 예시)도 명시적으로 선택할 수 있다. `generation.strategies.execute_strategy`는 단일 생성 또는 근거 추출 후 생성을 실행한다. 추출된 ID·인용은 입력 문서 본문에 실제 존재해야 하며 검증 실패·잘림을 재시도나 단일 생성으로 숨기지 않는다. 원문 일치 검사는 추출의 완전성이나 답변의 사실 정확성을 보장하지 않는다. 실험 방법과 선정 기준은 [평가 안내](../generation_evaluation/README.md)를 따른다.
 
 선정 실험과 후보별 실패·권장 구성은 [모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)를 따른다. 선택형 프로필은 실험 실행기에서 명시적으로 지정하며 기존 CLI 기본값과 서버 연결을 자동 변경하지 않는다.
 

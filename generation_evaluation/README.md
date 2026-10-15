@@ -129,7 +129,7 @@ uv run --locked --env-file /path/to/local/.env python -m generation_evaluation.s
   --ledger tmp/selection/budget.json --output tmp/selection/dev-gpt-baseline
 ```
 
-모든 후보는 같은 ledger를 사용한다. 프로필은 baseline/concise/examples, 전략은 single/evidence_first이다. `--start-repeat 2`와 새 output 경로로 선택 후보의 두 번째 회차를 실행한다. 같은 실행 명령의 재개는 이미 저장한 항목을 건너뛰며 입력·설정·코드 hash가 달라지면 거부한다. 시작 이벤트만 남은 호출은 비용/완료 여부를 수동 확인하기 전 자동 재호출하지 않는다. 재개는 원장의 고정 식별자와 기존 호출의 예약 이력도 확인하므로 새 원장으로 예산을 초기화할 수 없다. 원장을 옮길 때는 기존 실행을 멈추고 식별자·전체 이력을 함께 보존한다. 코드 hash가 다른 과거 실행은 당시 코드에서 재개한다.
+모든 후보는 같은 ledger를 사용한다. `--total-dollars`, `--dev-dollars`, `--total-seconds`, `--dev-seconds`로 실행 한도를 지정하며 기본값은 각각5달러·3달러·7200초·4200초다. 한도는 manifest와 공용 원장에 고정되므로 새 output에서도 다른 한도로 재개할 수 없다. 이미 시작한 원장의 시간·예약 이력을 지우지 않는다. 프로필은 baseline/concise/examples와 GPT 강화 실험용 examples_coverage/examples_conditions/examples_json, 전략은 single/evidence_first이다. `--start-repeat 2`와 새 output 경로로 선택 후보의 두 번째 회차를 실행한다. 같은 실행 명령의 재개는 이미 저장한 항목을 건너뛰며 입력·설정·코드 hash가 달라지면 거부한다. 시작 이벤트만 남은 호출은 비용/완료 여부를 수동 확인하기 전 자동 재호출하지 않는다. 재개는 원장의 고정 식별자와 기존 호출의 예약 이력도 확인하므로 새 원장으로 예산을 초기화할 수 없다. 원장을 옮길 때는 기존 실행을 멈추고 식별자·전체 이력을 함께 보존한다. 코드 hash가 다른 과거 실행은 당시 코드에서 재개한다.
 
 API 키와 실제 환경 파일, 원문 응답 전체는 `tmp/` 또는 별도 비공개 경로에 보관한다. 결과 보고서에는 필요한 응답 비교·판정·설정·hash·집계만 남긴다. 실험 결과를 기본 설정에 자동 적용하지 않는다.
 
