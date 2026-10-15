@@ -1,10 +1,10 @@
 """명령줄 실행. 저장소 루트에서 실행한다 (PowerShell 예시).
 
-  uv run python -m answer_pipeline.cli run    --eval-set EVAL.jsonl|EVAL.csv --documents DOCS.jsonl --models MODELS.json --run-dir RUN
+  uv run python -m archive.answering_v1.answer_pipeline.cli run    --eval-set EVAL.jsonl|EVAL.csv --documents DOCS.jsonl --models MODELS.json --run-dir RUN
                                               [--split dev] [--repeats 2] [--dry-run]
-  uv run python -m answer_pipeline.cli judge  --run-dir RUN [--judge-model gpt-5.6-luna] [--dry-run]
+  uv run python -m archive.answering_v1.answer_pipeline.cli judge  --run-dir RUN [--judge-model gpt-5.6-luna] [--dry-run]
   (RUN\\human_check.csv의 human_ 칸에 통과·실패 기록)
-  uv run python -m answer_pipeline.cli report --run-dir RUN [--prices PRICES.json] [--copy-limit 100]
+  uv run python -m archive.answering_v1.answer_pipeline.cli report --run-dir RUN [--prices PRICES.json] [--copy-limit 100]
 
 run은 평가 세트를 회사 문서와 대조한 뒤 질문을 main의 LangChain 실행기(sanaebi_assistant.py)로
 모델마다 실행한다. --dry-run은 대조와 호출 수 확인만 한다.
@@ -24,8 +24,8 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-import sanaebi_assistant as assistant
 from app.settings import PROJECT_ROOT
+from archive.answering_v1 import assistant
 
 from .checks import COPY_LIMIT_CHARS, evaluate_records, summarize
 from .judge import (
@@ -307,7 +307,7 @@ def cmd_report(args):
 
 def build_parser():
     parser = argparse.ArgumentParser(
-        prog="python -m answer_pipeline.cli",
+        prog="python -m archive.answering_v1.answer_pipeline.cli",
         description="평가 세트를 LangChain 실행기로 모델마다 실행하고 채점·비교한다.",
     )
     sub = parser.add_subparsers(dest="command", required=True)

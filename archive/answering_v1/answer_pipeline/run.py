@@ -30,7 +30,7 @@ from pathlib import Path
 
 from langchain_core.callbacks import BaseCallbackHandler
 
-import sanaebi_assistant as assistant
+from archive.answering_v1 import assistant
 from contracts.classification import LABELS, SEARCH_KNOWLEDGE
 
 # 요청 처리 분류기의 세 경로 (docs/service-architecture.md "질문 처리 라벨 세 가지")

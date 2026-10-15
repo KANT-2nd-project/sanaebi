@@ -5,9 +5,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from answer_pipeline.checks import JUDGE_GUIDELINES, evaluate_record
-from answer_pipeline.run import record_key
-from answer_pipeline.scoring import (
+from archive.answering_v1.answer_pipeline.checks import (
+    JUDGE_GUIDELINES,
+    evaluate_record,
+)
+from archive.answering_v1.answer_pipeline.run import record_key
+from archive.answering_v1.answer_pipeline.scoring import (
     CHECK_KEY,
     CHECK_SHEET,
     agreement,

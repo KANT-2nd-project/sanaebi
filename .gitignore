@@ -46,6 +46,7 @@ logs/
 
 # Generation evaluation runs (questions and model responses)
 /answer_pipeline/runs/
+/archive/answering_v1/answer_pipeline/runs/
 
 # Operating system files
 .DS_Store

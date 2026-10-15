@@ -7,7 +7,7 @@
 
 import json
 
-from answer_pipeline.run import ModelConfig, make_record
+from archive.answering_v1.answer_pipeline.run import ModelConfig, make_record
 
 LEAVE_DOC = {
     "document_id": "1",

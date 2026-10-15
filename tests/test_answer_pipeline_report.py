@@ -5,10 +5,18 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from answer_pipeline.checks import JUDGE_GUIDELINES, evaluate_record, summarize
-from answer_pipeline.report import estimate_costs, load_prices, render_report
-from answer_pipeline.run import record_key
-from answer_pipeline.scoring import agreement, verdicts_by_key
+from archive.answering_v1.answer_pipeline.checks import (
+    JUDGE_GUIDELINES,
+    evaluate_record,
+    summarize,
+)
+from archive.answering_v1.answer_pipeline.report import (
+    estimate_costs,
+    load_prices,
+    render_report,
+)
+from archive.answering_v1.answer_pipeline.run import record_key
+from archive.answering_v1.answer_pipeline.scoring import agreement, verdicts_by_key
 from tests.answer_pipeline_support import (
     GOOD_ANSWER_TEXT,
     LEAVE_DOC,
@@ -92,6 +100,8 @@ class PriceFileTests(unittest.TestCase):
     def test_example_price_file_must_be_filled_before_use(self):
         example = (
             Path(__file__).resolve().parents[1]
+            / "archive"
+            / "answering_v1"
             / "answer_pipeline"
             / "examples"
             / "prices.example.json"

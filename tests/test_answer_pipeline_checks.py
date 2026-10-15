@@ -3,7 +3,7 @@
 import json
 import unittest
 
-from answer_pipeline.checks import (
+from archive.answering_v1.answer_pipeline.checks import (
     answer_text,
     call_status,
     evaluate_record,
