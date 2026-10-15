@@ -124,6 +124,7 @@ class RagHttpTests(unittest.TestCase):
         self.assertEqual(self.provider.prompts, [])
 
     def test_ready_checks_index_without_retrieving_or_reserving(self):
+        fastapi_main.app.state.retrieval_sync = Mock()
         with (
             patch.dict(os.environ, {"OPENAI_API_KEY": "test"}),
             patch.object(

@@ -37,6 +37,8 @@ def ready(request: Request):
             and not application.state.retriever.status(snapshot)["ready"]
         ):
             raise RetrievalNotReady("Retrieval is not ready")
+        if application.state.retriever is not None:
+            application.state.retrieval_sync.preflight_restore()
         with application.state.classifier_warm_lock:
             if not application.state.classifier_warmed:
                 application.state.classifier.predict("서비스 준비 상태 확인")

@@ -145,6 +145,15 @@ class RagFollowupReadinessTests(unittest.TestCase):
         self.reserve = Mock()
         fastapi_main.app.state.answerer.reserve_generation = self.reserve
 
+    def test_readiness_requires_restore_bundle_even_when_documents_empty(self):
+        fastapi_main.app.state.classifier = self.classifier
+        self.assertEqual(self.client.get("/health/ready").status_code, 200)
+        self.bundle.unlink()
+        response = self.client.get("/health/ready")
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.json(), {"status": "not_ready"})
+        self.reserve.assert_not_called()
+
     def test_below_threshold_returns_notice_without_generation_or_reservation(self):
         self._maintain("restore")
         snapshot = fastapi_main.app.state.document_provider.snapshot()
