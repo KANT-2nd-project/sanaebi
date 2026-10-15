@@ -1,4 +1,5 @@
 from collections.abc import Callable
+from inspect import isawaitable
 
 from httpx import TimeoutException
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
@@ -6,9 +7,17 @@ from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 from openai import APITimeoutError
 
-from generation.config import GenerationConfig, GenerationOutputMode
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 from generation.output_schema import OPENAI_ANSWER_RESPONSE_FORMAT
 from generation.types import GenerationPrompt, ModelResponse
+
+
+class GenerationProviderResponseError(TypeError):
+    """A provider returned a response that violates the generation contract."""
 
 
 def to_messages(prompt: GenerationPrompt) -> list[BaseMessage]:
@@ -20,7 +29,7 @@ def to_messages(prompt: GenerationPrompt) -> list[BaseMessage]:
 
 def extract_text(content: object) -> str:
     if not isinstance(content, str):
-        raise TypeError("모델 응답 내용은 문자열이여야 합니다.")
+        raise GenerationProviderResponseError("모델 응답 내용은 문자열이어야 합니다.")
 
     return content
 
@@ -35,13 +44,28 @@ def invoke_model(
     except (TimeoutException, APITimeoutError) as exc:
         raise TimeoutError("모델 응답 대기 시간이 초과되었습니다.") from exc
 
-    raw_refusal = response.additional_kwargs.get("refusal")
+    if not isinstance(response, AIMessage):
+        raise GenerationProviderResponseError("모델 응답은 AIMessage여야 합니다.")
+
+    additional_kwargs = response.additional_kwargs
+    if not isinstance(additional_kwargs, dict):
+        raise GenerationProviderResponseError(
+            "모델 응답 메타데이터가 올바르지 않습니다."
+        )
+
+    raw_refusal = additional_kwargs.get("refusal")
     if raw_refusal is not None and not isinstance(raw_refusal, str):
-        raise TypeError("모델 거절 정보는 문자열이어야 합니다.")
+        raise GenerationProviderResponseError("모델 거절 정보는 문자열이어야 합니다.")
     refusal = raw_refusal if raw_refusal else None
 
-    usage = response.usage_metadata or {}
+    usage = response.usage_metadata
     metadata = response.response_metadata
+    if usage is None:
+        usage = {}
+    if not isinstance(usage, dict) or not isinstance(metadata, dict):
+        raise GenerationProviderResponseError(
+            "모델 응답 메타데이터가 올바르지 않습니다."
+        )
     if isinstance(response.content, str):
         raw_text = response.content
     elif refusal is not None:
@@ -166,3 +190,45 @@ def build_model_call(
         return build_openai_call(config)
 
     raise ValueError("provider는 (ollama, openai) 중 하나입니다.")
+
+
+class ManagedGenerationClient:
+    """Callable OpenAI generation client with an explicit async close path."""
+
+    def __init__(self, config: GenerationConfig) -> None:
+        if config.provider is not GenerationProvider.OPENAI:
+            raise ValueError("서버 생성 클라이언트는 OpenAI provider만 지원합니다.")
+
+        self._model = build_openai_model(config)
+        self._invoke = lambda messages: invoke_openai_message(
+            config, self._model, messages
+        )
+        self._closed = False
+
+    def __call__(self, prompt: GenerationPrompt) -> ModelResponse:
+        if self._closed:
+            raise RuntimeError("이미 종료된 생성 클라이언트입니다.")
+        return invoke_model(prompt, self._invoke)
+
+    async def aclose(self) -> None:
+        if self._closed:
+            return
+        self._closed = True
+
+        sync_close = getattr(self._model.root_client, "close", None)
+        async_close = getattr(self._model.root_async_client, "close", None)
+        try:
+            if callable(sync_close):
+                result = sync_close()
+                if isawaitable(result):
+                    await result
+        finally:
+            if callable(async_close):
+                result = async_close()
+                if isawaitable(result):
+                    await result
+
+
+def build_managed_model_call(config: GenerationConfig) -> ManagedGenerationClient:
+    """Build the server-owned OpenAI client; Ollama remains CLI-only."""
+    return ManagedGenerationClient(config)
