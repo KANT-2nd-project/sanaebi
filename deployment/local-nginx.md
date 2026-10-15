@@ -87,20 +87,24 @@ curl -i http://127.0.0.1:8080/api/ask \
 
 ## 시연 문서 자정 초기화 (systemd)
 
-별도 상시 Linux 서버의 systemd에서 실행한다. 저장소에는 템플릿만 제공하며 **현재 서버 예약 활성화는 수행하지 않았다.** 매일 `Asia/Seoul` 00:00에 실행하며 서버가 꺼져 놓친 실행은 기동 직후 보충하지 않는다. 서버·타이머를 자정 이후 켰다면 다음 자정이 첫 실행이다. 초기화 의미와 복구 절차는 [문서 관리 안내](../docs/document-management.md#공용-시연-문서-자정-초기화)를 따른다.
+별도 상시 Linux 서버의 systemd에서 실행한다. 저장소에는 템플릿만 제공하며 **이 로컬 템플릿의 예약 활성화는 수행하지 않았다.** 운영 전용 타이머와 구분한다. 매일 `Asia/Seoul` 00:00에 실행하며 서버가 꺼져 놓친 실행은 기동 직후 보충하지 않는다. 서버·타이머를 자정 이후 켰다면 다음 자정이 첫 실행이다. 초기화 의미와 복구 절차는 [문서 관리 안내](../docs/document-management.md#공용-시연-문서-자정-초기화)를 따른다.
 
 1. 서버의 프로젝트와 `.venv`를 `uv sync --locked`로 준비한다. 전용 비-root 실행 계정에 프로젝트·원본 읽기 권한과 시연 DB 디렉터리 쓰기 권한을 부여한다. 서버 시간 동기화와 `Asia/Seoul` 시간대 지원을 확인한다.
-2. 아래 서비스 템플릿을 설치 전에 편집한다. `@RUN_USER@`는 실행 계정, `@PROJECT_ROOT@`, `@BASELINE_SOURCE@`, `@DEMO_DATABASE@`는 각각 프로젝트·원본 JSONL·전용 시연 DB의 절대 경로다. 이 예시는 공백·개행·`%`가 없는 경로를 사용한다. 실제 값이 들어간 파일은 서버에만 보관한다.
-3. FastAPI의 실행 환경에도 같은 `SANAEBI_DOCUMENT_DB` 절대 경로를 지정한다. 실제 FastAPI 실행 설정과 서비스의 `--database` 값을 대조한다. 다른 로컬 DB를 초기화 대상으로 지정하지 않는다. DB가 없다면 해당 경로에 최초 이관 후 dry-run을 수행한다.
+2. 아래 서비스 템플릿을 설치 전에 편집한다. `@RUN_USER@`는 실행 계정, `@PROJECT_ROOT@`, `@UV_BIN@`, `@RUNTIME_ENV@`는 각각 프로젝트·uv 실행 파일·서버와 공유하는 환경 파일의 절대 경로다. 이 예시는 공백·개행·`%`가 없는 경로를 사용한다. 실제 값이 들어간 파일은 서버에만 보관한다.
+3. 공유 환경 파일에 `SANAEBI_DOCUMENT_DB`, `SANAEBI_RETRIEVAL_SOURCE`, `SANAEBI_RETRIEVAL_ROOT`, `SANAEBI_RETRIEVAL_BASELINE`의 절대 경로와 `SANAEBI_RETRIEVAL_MODE`를 지정한다. 서버와 예약 작업은 같은 파일을 `uv run --no-sync --env-file`로 읽는다. 상속 환경변수는 env 파일보다 우선하므로 중복 override도 대조한다. 다른 로컬 DB를 초기화 대상으로 지정하지 않는다. DB가 없다면 해당 경로에 최초 이관 후 dry-run을 수행한다.
 
 ```bash
 # 서버에서 프로젝트 루트 기준. 실제 설치 전에 경로·계정을 편집한다.
 cp deployment/systemd/sanaebi-demo-reset.service /tmp/sanaebi-demo-reset.service
 editor /tmp/sanaebi-demo-reset.service
-# 아래 세 경로는 편집한 서비스와 반드시 동일하게 교체한다.
-/absolute/project/.venv/bin/python /absolute/project/scripts/reset_demo_documents.py \
-  --source /absolute/project/data/company-knowledge/documents.jsonl \
-  --database /absolute/demo/documents.sqlite3
+# 서비스와 같은 계정·프로젝트·uv·환경 파일을 사용한다. --apply 없이는 dry-run이다.
+/absolute/uv run --no-sync --env-file /absolute/server.env \
+  python -m scripts.reset_demo_documents
+# RAG 묶음까지 사전 검증한다. 아래 경로는 공유 환경의 유효 경로와 같아야 한다.
+/absolute/uv run --no-sync --env-file /absolute/server.env \
+  python -m scripts.reset_demo_retrieval --check \
+  --source /absolute/source/documents.jsonl \
+  --database /absolute/demo/documents.sqlite3 --bundle /absolute/baseline.sqlite3
 
 systemd-analyze verify /tmp/sanaebi-demo-reset.service deployment/systemd/sanaebi-demo-reset.timer
 systemd-analyze calendar --iterations=2 '*-*-* 00:00:00 Asia/Seoul'
@@ -127,4 +131,6 @@ sudo systemctl start sanaebi-demo-reset.service
 sudo systemctl disable --now sanaebi-demo-reset.timer
 ```
 
-최초 실제 실행 후 journal의 `status=success`, 백업 존재, 기준 문서 수·게시 snapshot, 제거된 시연 문서와 오래된 편집 요청의 동작을 확인한다. 서비스 설치와 무관하게 프런트에는 자정 초기화 안내가 표시되므로, 공개 시연 전에 타이머 활성화까지 완료한다.
+최초 실제 실행 후 journal의 full `status=success` 또는 rag `status=ready`·`documents_reset=true`·`retrieval_ready=true`·`missing=0`, 백업 존재, 기준 문서 수·게시 snapshot, 제거된 시연 문서와 오래된 편집 요청의 동작을 확인한다. 서비스 설치와 무관하게 프런트에는 자정 초기화 안내가 표시되므로, 공개 시연 전에 타이머 활성화까지 완료한다.
+
+RAG 초기화는 두 CLI가 같은 애플리케이션 처리를 사용한다. 실행 중 의존성을 설치하지 않고 자동 재시도하지 않는다. 문서 변경 후 연결 실패 시 출력의 `recovery_environment`를 적용하고 같은 uv·환경 파일로 `python -m scripts.index_documents --restore-baseline`만 실행한다. `--apply`를 반복하지 않는다. [공통 처리와 검증 기록](../docs/worklogs/2026-10-16-reset-unification.md)을 참조한다.
