@@ -1,0 +1,17 @@
+{
+  "reset": {
+    "documents_reset": true,
+    "retrieval_ready": true,
+    "ready": true,
+    "expected": 71,
+    "ready_count": 71,
+    "missing": 0,
+    "status": "ready"
+  },
+  "model_loads_during_reset": 0,
+  "new_revision_mapping": true,
+  "ask_status": 200,
+  "assistant_status": 200,
+  "mock_llm_calls": 2,
+  "actual_llm_calls": 0
+}

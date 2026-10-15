@@ -20,9 +20,11 @@ from scripts.deploy_release import (
     _check_path_chain,
     _pointer_target,
     _term_as_interrupt,
+    load_release_inputs,
     parse_release_manifest,
     safe_extract_web_archive,
 )
+from scripts.package_release import package as package_release
 from scripts.production_maintenance import (
     HostPaths,
     MaintenanceError,
@@ -71,6 +73,104 @@ class ReleaseInputTests(unittest.TestCase):
 
         with self.assertRaises(DeploymentError):
             release.verify_payload_hashes(files)
+
+    def test_schema_v1_remains_full_only_without_retrieval_descriptor(self):
+        raw, _ = self.manifest()
+
+        release = parse_release_manifest(raw, "a" * 40 + "-12345")
+
+        self.assertEqual(release.schema_version, 1)
+        self.assertIsNone(release.retrieval_manifest)
+        self.assertIsNone(release.retrieval_manifest_sha256)
+
+    def test_schema_v2_accepts_an_optional_retrieval_descriptor_pair(self):
+        raw, files = self.manifest(schema_version=2)
+
+        release_without_rag = parse_release_manifest(raw, "a" * 40 + "-12345")
+        self.assertIsNone(release_without_rag.retrieval_manifest)
+
+        retrieval_manifest = b'{"schema_version":1}'
+        files["retrieval-release.json"] = retrieval_manifest
+        value = json.loads(raw)
+        value["retrieval_manifest"] = "retrieval-release.json"
+        value["retrieval_manifest_sha256"] = hashlib.sha256(
+            retrieval_manifest
+        ).hexdigest()
+        raw_with_rag = json.dumps(value).encode()
+
+        release_with_rag = parse_release_manifest(raw_with_rag, "a" * 40 + "-12345")
+        self.assertEqual(release_with_rag.schema_version, 2)
+        self.assertEqual(release_with_rag.retrieval_manifest, "retrieval-release.json")
+        release_with_rag.verify_payload_hashes(files)
+
+    def test_schema_v2_rejects_a_partial_retrieval_descriptor(self):
+        raw, _ = self.manifest(
+            schema_version=2,
+            retrieval_manifest="retrieval-release.json",
+        )
+
+        with self.assertRaises(DeploymentError):
+            parse_release_manifest(raw, "a" * 40 + "-12345")
+
+    def test_load_release_inputs_hashes_and_parses_retrieval_descriptor(self):
+        release_id = "a" * 40 + "-12345"
+        with tempfile.TemporaryDirectory() as directory:
+            incoming = Path(directory) / "incoming"
+            release_dir = incoming / release_id
+            release_dir.mkdir(parents=True)
+            web = b"web archive"
+            model = json.dumps(
+                {"schema_version": 1, "model_id": "1" * 32, "revision": "2" * 40}
+            ).encode()
+            retrieval = (
+                Path(__file__).resolve().parents[2]
+                / "deployment/retrieval-release.json"
+            ).read_bytes()
+            (release_dir / "web.tar.gz").write_bytes(web)
+            (release_dir / "model-release.json").write_bytes(model)
+            (release_dir / "retrieval-release.json").write_bytes(retrieval)
+            release_json = {
+                "schema_version": 2,
+                "release_id": release_id,
+                "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:" + "b" * 64,
+                "web_archive": "web.tar.gz",
+                "web_sha256": hashlib.sha256(web).hexdigest(),
+                "model_manifest": "model-release.json",
+                "model_manifest_sha256": hashlib.sha256(model).hexdigest(),
+                "retrieval_manifest": "retrieval-release.json",
+                "retrieval_manifest_sha256": hashlib.sha256(retrieval).hexdigest(),
+            }
+            (release_dir / "release.json").write_text(json.dumps(release_json))
+
+            inputs, payload = load_release_inputs(incoming, release_id)
+
+            self.assertEqual(inputs.release.schema_version, 2)
+            self.assertEqual(
+                inputs.retrieval_release.model.model_id,
+                "exp-models/dragonkue-KoEn-E5-Tiny",
+            )
+            self.assertEqual(payload["retrieval-release.json"], retrieval)
+
+    def test_release_packager_publishes_hashed_v2_descriptor(self):
+        with tempfile.TemporaryDirectory() as directory:
+            release_dir = Path(directory)
+            (release_dir / "web.tar.gz").write_bytes(b"web")
+
+            manifest = package_release(
+                release_dir,
+                "a" * 40,
+                "12345",
+                "sha256:" + "b" * 64,
+            )
+
+            self.assertEqual(manifest["schema_version"], 2)
+            self.assertEqual(manifest["retrieval_manifest"], "retrieval-release.json")
+            self.assertEqual(
+                manifest["retrieval_manifest_sha256"],
+                hashlib.sha256(
+                    (release_dir / "retrieval-release.json").read_bytes()
+                ).hexdigest(),
+            )
 
     def make_archive(self, root, name, content=b"content", kind=tarfile.REGTYPE):
         archive = io.BytesIO()
@@ -186,7 +286,9 @@ class SqliteBackupTests(unittest.TestCase):
             release_dir.mkdir(parents=True)
             image = "ghcr.io/kant-2nd-project/sanaebi-api@sha256:" + "b" * 64
             (release_dir / "release.json").write_text(
-                json.dumps({"release_id": release_id, "image": image}),
+                json.dumps(
+                    {"schema_version": 1, "release_id": release_id, "image": image}
+                ),
                 encoding="utf-8",
             )
             (paths.root / "current").symlink_to(f"releases/{release_id}")
@@ -272,6 +374,76 @@ class SqliteBackupTests(unittest.TestCase):
 
 
 class HostPathTests(unittest.TestCase):
+    def test_previous_runtime_mode_comes_from_running_api_container(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "srv" / "sanaebi"
+            config = Path(directory) / "etc" / "sanaebi"
+            config.mkdir(parents=True)
+            (config / "api.env").write_text(
+                "SANAEBI_RETRIEVAL_MODE=rag\n", encoding="utf-8"
+            )
+
+            def runner(command, **_kwargs):
+                self.assertEqual(command[1:3], ["inspect", "--format"])
+                return SimpleNamespace(
+                    returncode=0,
+                    stdout=json.dumps(
+                        ["SANAEBI_RETRIEVAL_MODE=full", "SANAEBI_PUBLIC_DEMO=1"]
+                    ),
+                    stderr="",
+                )
+
+            engine = DeploymentEngine(
+                HostPaths(root=root, config=config), runner=runner
+            )
+
+            self.assertEqual(engine._active_api_retrieval_mode(), "full")
+
+    def test_force_mode_reconstructs_prior_mode_after_env_file_change(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "srv" / "sanaebi"
+            config = Path(directory) / "etc" / "sanaebi"
+            release_id = "a" * 40 + "-12345"
+            release_dir = root / "releases" / release_id
+            release_dir.mkdir(parents=True)
+            config.mkdir(parents=True)
+            (config / "api.env").write_text(
+                "SANAEBI_RETRIEVAL_MODE=rag\n", encoding="utf-8"
+            )
+            retrieval = (
+                Path(__file__).resolve().parents[2]
+                / "deployment/retrieval-release.json"
+            ).read_bytes()
+            (release_dir / "retrieval-release.json").write_bytes(retrieval)
+            (release_dir / "release.json").write_text(
+                json.dumps(
+                    {
+                        "schema_version": 2,
+                        "release_id": release_id,
+                        "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:"
+                        + "b" * 64,
+                        "web_archive": "web.tar.gz",
+                        "web_sha256": "1" * 64,
+                        "model_manifest": "model-release.json",
+                        "model_manifest_sha256": "2" * 64,
+                        "retrieval_manifest": "retrieval-release.json",
+                        "retrieval_manifest_sha256": hashlib.sha256(
+                            retrieval
+                        ).hexdigest(),
+                    }
+                ),
+                encoding="utf-8",
+            )
+            engine = DeploymentEngine(HostPaths(root=root, config=config))
+
+            mode, overrides, binding = engine._runtime_overrides(
+                release_id, force_mode="full"
+            )
+
+            self.assertEqual(mode, "full")
+            self.assertEqual(overrides["SANAEBI_RETRIEVAL_MODE"], "full")
+            self.assertIsNone(binding)
+
     def test_path_chain_rejects_symlink_and_file_components(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -342,13 +514,223 @@ class HostPathTests(unittest.TestCase):
             self.assertFalse((root / "maintenance").exists())
             self.assertEqual(
                 calls[0][0],
-                ["docker", "ps", "--quiet", "--filter", "name=^/sanaebi-api$"],
+                [
+                    "docker",
+                    "ps",
+                    "--quiet",
+                    "--filter",
+                    "name=^/sanaebi-retrieval-indexer$",
+                ],
             )
             self.assertEqual(
-                calls[1][0], ["docker", "stop", "--time", "240", "sanaebi-api"]
+                calls[1][0],
+                [
+                    "docker",
+                    "stop",
+                    "--time",
+                    "240",
+                    "sanaebi-retrieval-indexer",
+                ],
+            )
+            self.assertIn(
+                ["docker", "stop", "--time", "240", "sanaebi-api"],
+                [call[0] for call in calls],
             )
             journal = json.loads((root / "deployment-journal.json").read_text())
             self.assertEqual(journal["phase"], "rolled_back")
+
+    def test_candidate_index_failure_removes_preflight_directory_for_retry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "srv" / "sanaebi"
+            paths = HostPaths(
+                root=root,
+                data=Path(directory) / "var/lib/sanaebi/runtime",
+                config=Path(directory) / "etc/sanaebi",
+                operation_lock=Path(directory) / "run/operation.lock",
+            )
+            paths.data.mkdir(parents=True)
+            release_id = "b" * 40 + "-12345"
+            calls = []
+
+            def runner(command, **_kwargs):
+                calls.append(command)
+                return SimpleNamespace(returncode=0, stdout="", stderr="")
+
+            engine = DeploymentEngine(paths, runner=runner, uid=os.geteuid())
+            image = "ghcr.io/kant-2nd-project/sanaebi-api@sha256:" + "b" * 64
+            model = root / "embeddings"
+            model.mkdir(parents=True)
+            binding = {
+                "bundle_path": paths.data / "baseline.sqlite3",
+                "embedding_path": model,
+            }
+
+            with (
+                patch("scripts.deploy_release.os.chown"),
+                patch.object(
+                    engine,
+                    "_preflight_candidate_index",
+                    side_effect=DeploymentError("index failed"),
+                ),
+                self.assertRaisesRegex(DeploymentError, "index failed"),
+            ):
+                engine._preflight_candidate(
+                    image,
+                    model,
+                    release_id,
+                    retrieval_binding=binding,
+                )
+
+            self.assertFalse((paths.data / f".preflight-{release_id}").exists())
+            self.assertTrue(
+                any(command[:3] == ["docker", "rm", "--force"] for command in calls)
+            )
+
+    def test_first_rag_deploy_copies_host_baseline_before_preparing_bundle(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "srv" / "sanaebi"
+            models = root / "models"
+            models.mkdir(parents=True)
+            new_id = "b" * 40 + "-12345"
+            old_id = "a" * 40 + "-111"
+            model_id = "9" * 32
+            new_revision = "8" * 40
+            old_revision = "7" * 40
+            old_model = f"{model_id}/{old_revision}"
+            new_image = "ghcr.io/kant-2nd-project/sanaebi-api@sha256:" + "b" * 64
+            old_image = "ghcr.io/kant-2nd-project/sanaebi-api@sha256:" + "d" * 64
+            (root / "current").symlink_to(f"releases/{old_id}")
+            (models / "current").symlink_to(old_model)
+            retrieval_raw = (
+                Path(__file__).resolve().parents[2]
+                / "deployment/retrieval-release.json"
+            ).read_bytes()
+            from scripts.deployment_embedding import parse_manifest
+
+            retrieval = parse_manifest(retrieval_raw)
+            release = Release(
+                release_id=new_id,
+                image=new_image,
+                web_archive="web.tar.gz",
+                web_sha256="1" * 64,
+                model_manifest="model-release.json",
+                model_manifest_sha256="2" * 64,
+                schema_version=2,
+                retrieval_manifest="retrieval-release.json",
+                retrieval_manifest_sha256=hashlib.sha256(retrieval_raw).hexdigest(),
+            )
+            inputs = ReleaseInputs(
+                release=release,
+                model_id=model_id,
+                model_revision=new_revision,
+                manifest_raw=b"{}",
+                retrieval_release=retrieval,
+                retrieval_raw=retrieval_raw,
+            )
+            data = root.parent.parent / "var" / "lib" / "sanaebi" / "runtime"
+            paths = HostPaths(
+                root=root,
+                data=data,
+                config=root / "etc",
+                operation_lock=root / "run" / "operation.lock",
+            )
+            call_order = []
+
+            def runner(_command, **_kwargs):
+                return SimpleNamespace(returncode=0, stdout="", stderr="")
+
+            class ReadyResponse:
+                status = 200
+
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *_args):
+                    return False
+
+            engine = DeploymentEngine(
+                paths,
+                runner=runner,
+                urlopen=lambda *_args, **_kwargs: ReadyResponse(),
+                sleep=lambda _seconds: None,
+                uid=0,
+            )
+
+            def copy_host_baseline(_image):
+                call_order.append("copy-baseline")
+                paths.baseline.parent.mkdir(parents=True, exist_ok=True)
+                paths.baseline.write_text('{"id":"host-baseline"}\\n')
+
+            def prepare_baseline(_image, _release_id, _retrieval, embedding):
+                call_order.append("prepare-retrieval")
+                self.assertTrue(paths.baseline.is_file())
+                return {
+                    "release_id": new_id,
+                    "bundle_path": paths.root / "baseline.sqlite3",
+                    "embedding_path": embedding,
+                }
+
+            def runtime_overrides(release_id, *, prepared=None, force_mode=None):
+                if release_id == old_id:
+                    self.assertEqual(force_mode, "full")
+                    return "full", {"SANAEBI_RETRIEVAL_MODE": "full"}, None
+                self.assertIsNotNone(prepared)
+                return "rag", {"SANAEBI_RETRIEVAL_MODE": "rag"}, prepared
+
+            def compose(image, *arguments, **_kwargs):
+                if (
+                    image == new_image
+                    and arguments[0] == "up"
+                    and arguments[-1] == "api"
+                ):
+                    signal.raise_signal(signal.SIGTERM)
+
+            with (
+                patch(
+                    "scripts.deploy_release.load_release_inputs",
+                    return_value=(inputs, {}),
+                ),
+                patch.object(engine, "_require_root_and_trusted_inputs"),
+                patch.object(engine, "_check_no_incomplete_journal"),
+                patch.object(engine, "_copy_incoming_to_stage", return_value=root),
+                patch.object(
+                    engine, "_active_release", return_value=(old_id, old_image)
+                ),
+                patch.object(
+                    engine, "_active_api_retrieval_mode", return_value="full"
+                ) as active_mode,
+                patch.object(engine, "_download_model", return_value=models),
+                patch.object(engine, "_download_embedding", return_value=models),
+                patch.object(
+                    engine, "_copy_baseline_from_image", side_effect=copy_host_baseline
+                ),
+                patch.object(
+                    engine, "_prepare_retrieval_baseline", side_effect=prepare_baseline
+                ),
+                patch.object(
+                    engine, "_runtime_overrides", side_effect=runtime_overrides
+                ),
+                patch.object(
+                    engine, "_initialize_database_if_missing", return_value=False
+                ),
+                patch.object(engine, "_preflight_candidate"),
+                patch.object(engine, "_index_current_documents_once"),
+                patch.object(engine, "_stop_indexer_if_running"),
+                patch.object(engine, "_publish_static_assets"),
+                patch.object(engine, "_wait_ready"),
+                patch.object(engine, "_compose", side_effect=compose),
+            ):
+                previous_handler = _term_as_interrupt()
+                try:
+                    with self.assertRaises(KeyboardInterrupt):
+                        engine.deploy(new_id)
+                finally:
+                    signal.signal(signal.SIGTERM, previous_handler)
+
+            self.assertEqual(call_order[:2], ["copy-baseline", "prepare-retrieval"])
+            active_mode.assert_called_once_with()
+            journal = json.loads((root / "deployment-journal.json").read_text())
+            self.assertEqual(journal["old_retrieval_mode"], "full")
 
     def test_failed_update_restores_release_model_and_web_pointers(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -395,6 +777,7 @@ class HostPathTests(unittest.TestCase):
                 old_previous=f"releases/{prior_id}",
                 old_model=old_model,
                 release_id=new_id,
+                old_runtime_overrides={"SANAEBI_RETRIEVAL_MODE": "full"},
             )
 
             self.assertTrue(recovered)
@@ -402,7 +785,9 @@ class HostPathTests(unittest.TestCase):
             self.assertEqual(os.readlink(root / "previous"), f"releases/{prior_id}")
             self.assertEqual(os.readlink(models / "current"), old_model)
             self.assertFalse((root / "maintenance").exists())
-            compose_call, compose_kwargs = calls[0]
+            compose_call, compose_kwargs = next(
+                call for call in calls if call[0][:2] == ["docker", "compose"]
+            )
             self.assertEqual(compose_call[:2], ["docker", "compose"])
             self.assertEqual(compose_kwargs["env"]["SANAEBI_IMAGE"], old_image)
 
@@ -469,6 +854,10 @@ class HostPathTests(unittest.TestCase):
                 patch.object(
                     engine, "_active_release", return_value=(old_id, old_image)
                 ),
+                patch.object(engine, "_active_api_retrieval_mode", return_value="full"),
+                patch.object(
+                    engine, "_release_retrieval", return_value=(release, None)
+                ),
                 patch.object(engine, "_download_model", side_effect=download_model),
                 patch.object(
                     engine, "_initialize_database_if_missing", return_value=False
@@ -515,7 +904,17 @@ class InterruptedDeploymentRecoveryTests(unittest.TestCase):
         directory = root / "releases" / release_id
         directory.mkdir(parents=True)
         (directory / "release.json").write_text(
-            json.dumps({"release_id": release_id, "image": image}),
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "release_id": release_id,
+                    "image": image,
+                    "web_archive": "web.tar.gz",
+                    "web_sha256": "0" * 64,
+                    "model_manifest": "model-release.json",
+                    "model_manifest_sha256": "1" * 64,
+                }
+            ),
             encoding="utf-8",
         )
 
@@ -574,6 +973,7 @@ class InterruptedDeploymentRecoveryTests(unittest.TestCase):
                 "old_previous_target": old_previous_target,
                 "old_model_target": old_model_target,
                 "old_release_image": old_release_image,
+                "old_retrieval_mode": "full",
             },
         )
 
@@ -610,6 +1010,9 @@ class InterruptedDeploymentRecoveryTests(unittest.TestCase):
             (paths.root / "previous").symlink_to(f"releases/{old_id}")
             (paths.root / "models" / "current").symlink_to(candidate_model)
             (paths.root / "maintenance").write_text("deployment\n", encoding="ascii")
+            (paths.config / "api.env").write_text(
+                "SANAEBI_RETRIEVAL_MODE=rag\n", encoding="utf-8"
+            )
             with sqlite3.connect(paths.database) as connection:
                 connection.execute("CREATE TABLE records(value TEXT)")
                 connection.execute("INSERT INTO records VALUES ('preserve user edits')")
@@ -629,6 +1032,9 @@ class InterruptedDeploymentRecoveryTests(unittest.TestCase):
             with (
                 patch.object(engine, "_require_recovery_inputs"),
                 patch.object(engine, "_wait_ready") as wait_ready,
+                patch.object(
+                    engine, "_runtime_overrides", wraps=engine._runtime_overrides
+                ) as runtime_overrides,
             ):
                 self.assertEqual(engine.recover(), "rolled_back")
 
@@ -643,6 +1049,7 @@ class InterruptedDeploymentRecoveryTests(unittest.TestCase):
             )
             self.assertIn(old_image, compose_images)
             wait_ready.assert_called_once_with("http://127.0.0.1:18000/health/ready")
+            runtime_overrides.assert_called_once_with(old_id, force_mode="full")
             with sqlite3.connect(paths.database) as connection:
                 self.assertEqual(
                     connection.execute("SELECT value FROM records").fetchone()[0],

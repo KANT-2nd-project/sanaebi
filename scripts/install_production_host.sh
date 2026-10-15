@@ -4,7 +4,8 @@ set -euo pipefail
 test "$(id -u)" = 0
 cd "$(dirname "$0")/.."
 install -d -m 700 /etc/sanaebi /etc/sanaebi/docker-auth
-install -d -m 755 /usr/local/libexec/sanaebi/scripts /srv/sanaebi/releases /srv/sanaebi/models /srv/sanaebi/assets
+install -d -m 755 /usr/local/libexec/sanaebi/scripts /srv/sanaebi/releases /srv/sanaebi/models /srv/sanaebi/embeddings /srv/sanaebi/retrieval-bindings /srv/sanaebi/assets
+install -d -m 750 -o 10001 -g 10001 /srv/sanaebi/retrieval-baselines
 install -d -m 755 -o root -g root /var/lib/sanaebi
 install -d -m 750 -o 10001 -g 10001 /var/lib/sanaebi/runtime
 install -d -m 700 -o root -g root /var/lib/sanaebi/backups
@@ -13,7 +14,7 @@ for name in api.env hf-download.env; do
         install -m 600 /dev/null "/etc/sanaebi/$name"
     fi
 done
-for name in deploy_release.py production_maintenance.py; do
+for name in deploy_release.py production_maintenance.py deployment_embedding.py; do
     install -o root -g root -m 750 "scripts/$name" "/usr/local/libexec/sanaebi/scripts/$name"
 done
 install -m 600 deployment/compose.production.yaml /etc/sanaebi/compose.yaml

@@ -30,6 +30,7 @@
 | GPT-6 Luna 답변 범위·strict 출력 후속 비교 | [후속 비교 안내](generation-luna-reference-followup.md)와 연결된 고정 자료·결과 | 기존 중단 실험과 별도로 후보·AI 판정·채택 여부를 요약. 서비스 기본값 변경과 구분 |
 | 새 생성 모듈 계약·학습 구현 범위 | [생성 모듈 안내](../generation/README.md)와 코드 | 서비스 설계·Notion 문서 안내에는 연결 여부와 요약 링크, 개인 일지에는 기여·검증·다음 단계 |
 | 분류 실험 결과·해석·선정 판단 | [새 분류 실험 보고서](../classification/reports/README.md)와 [과거 보고서](../archive/classification_v1/reports/README.md). 실행 원자료는 각 보고서의 artifact-root·model_id로 연결하며 MLflow를 사용한 실행은 run도 연결 | Notion에는 짧은 결론과 게시된 보고서 링크. 과거 결과는 당시 출처로 보존 |
+| RAG 실행·색인·자정 벡터 복원 | [RAG 실행 안내](rag-runtime.md), 서버 규약·배포 안내 | 로컬 구현 검증과 운영 전환·답변 품질을 구분. 외부 반영은 요청된 범위만 수행 |
 | 문서 검색 임베딩 실험·선정 | [검색 기록](../retrieval/README.md)과 연결된 reports | Notion 문서 안내·서비스 처리 기준·데이터 절차에 선정과 연결 상태를 구분해 요약. 가중치·벡터·가상환경은 로컬 원자료로 유지 |
 | 담당자·기한·작업 상태 | 기존 Notion 작업 항목 | 관련 작업 링크 |
 | 회의·개인 일지·결정 배경 | 기존 Notion 기록 | 채택된 기술 문서의 결정 근거 링크 |

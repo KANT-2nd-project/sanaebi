@@ -50,3 +50,38 @@ def get_routing_mode() -> str:
     if mode not in {"gate", "shadow"}:
         raise ValueError("SANAEBI_ROUTING_MODE must be gate or shadow")
     return mode
+
+
+def get_retrieval_mode() -> str:
+    mode = os.getenv("SANAEBI_RETRIEVAL_MODE", "full")
+    if mode not in {"full", "rag"}:
+        raise ValueError("SANAEBI_RETRIEVAL_MODE must be full or rag")
+    return mode
+
+
+def _root_path(name: str, default: str) -> Path:
+    path = Path(os.getenv(name, default)).expanduser()
+    return path if path.is_absolute() else PROJECT_ROOT / path
+
+
+def get_embedding_path() -> Path:
+    return _root_path(
+        "SANAEBI_EMBEDDING_PATH",
+        "artifacts/embeddings/koen-e5-tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+    )
+
+
+def get_retrieval_root() -> Path:
+    return _root_path("SANAEBI_RETRIEVAL_ROOT", "var/retrieval")
+
+
+def get_retrieval_baseline() -> Path | None:
+    if not os.getenv("SANAEBI_RETRIEVAL_BASELINE"):
+        return None
+    return _root_path("SANAEBI_RETRIEVAL_BASELINE", "")
+
+
+def get_retrieval_source() -> Path:
+    return _root_path(
+        "SANAEBI_RETRIEVAL_SOURCE", "data/company-knowledge/documents.jsonl"
+    )

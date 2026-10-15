@@ -58,7 +58,7 @@ flowchart TD
     C -->|"UNSUPPORTED"| U["지원 범위 안내"]
 ```
 
-문서 답변은 SQLite의 현재 유효한 게시본 전체를 사용한다. 기존 71건 JSONL은 최초 이관 원본으로 보존하며 서비스는 파일과 DB를 합치지 않는다. 관리 화면의 게시·사용 중단은 다음 검색 질문에 적용된다. 요청 단위 snapshot을 모델 호출 전에 확보하고 Luna 단일 호출에 전달한다. 명시적 평가 JSONL은 재현용으로 유지한다. 저장·이관 기준은 [문서 관리](document-management.md), 원본 이력은 [회사 정책 데이터](../data/README.md#답변용-회사-지식)를 따른다. 후속 RAG의 임베딩은 사용자 결정으로 KoEn-E5-Tiny를 선정했다. [16종 비교와 선정 계약](../retrieval/reports/2026-10-15-cpu-embedding-comparison/selection.md)을 따른다. 벡터 저장소·서버 검색 연결·게시 개정 동기화는 아직 구현하지 않았으며 현재 전체 게시본 공급을 이번 선정으로 변경하지 않는다.
+기본 full 경로는 SQLite의 현재 유효한 게시본 전체를 사용한다. 기존 71건 JSONL은 최초 이관 원본으로 보존하며 서비스는 파일과 DB를 합치지 않는다. 관리 화면의 게시·사용 중단은 다음 검색 질문에 적용된다. 요청 단위 snapshot을 모델 호출 전에 확보하고 Luna 단일 호출에 전달한다. 명시적 평가 JSONL은 재현용으로 유지한다. 저장·이관 기준은 [문서 관리](document-management.md), 원본 이력은 [회사 정책 데이터](../data/README.md#답변용-회사-지식)를 따른다. 선택적 RAG의 임베딩은 사용자 결정으로 KoEn-E5-Tiny를 선정했다. [16종 비교와 선정 계약](../retrieval/reports/2026-10-15-cpu-embedding-comparison/selection.md)을 따른다. 별도 SQLite 벡터 저장소·서버 검색 연결·게시 개정 동기화를 구현했다. 기본 full은 유지하며 rag를 명시하면 선택 근거만 전달한다. 준비 중 요청은503이며 운영 전환·품질 검증과 구분한다. [실행 계약](rag-runtime.md)을 따른다.
 
 ## 답변 규칙과 경계
 
@@ -122,6 +122,10 @@ flowchart TD
 
 
 사용자용 말투·범위 구분 보완 이후 현재 공통 기본 프로필은 **examples_answer_scope_v5**다. 자료 부족과 회사 업무 범위 밖을 구분하고, 작성 규칙 선언 대신 질문에 직접 답한다. 사내 기술 문서·부분 답변·명시적 출처 설명은 유지한다. [v5 채택과 남은 품질 한계](generation-final-prompt.md#후속-채택-사용자용-말투서비스-범위-v5)를 따른다.
+
+## 선택적 검색 근거 구성
+
+현재 기본 full 경로에 더해 `SANAEBI_RETRIEVAL_MODE=rag`로 게시 개정별 검색을 연결할 수 있다. shadow/gate 정책은 유지하며 원본 snapshot 한 번 → 유효 색인 확인 → 선택 근거 → 기존 생성기 순서다. 색인 미준비는503이고 전체 문서 자동 fallback은 없다. [RAG 실행 계약](rag-runtime.md)을 따른다. 운영 기본값 승격과 실제 답변 품질 확인은 별도다.
 
 ## 분류 참고 정보 비교 결과
 

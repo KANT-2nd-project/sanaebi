@@ -24,6 +24,9 @@ services:
       SANAEBI_DAILY_GENERATION_LIMIT: "1000"
       SANAEBI_DOCUMENT_DB: /data/documents.sqlite3
       SANAEBI_CLASSIFIER_PATH: /models/classifier
+      SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-full}
+      SANAEBI_RETRIEVAL_ROOT: /data/retrieval
+      SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9}
       TRACE_DIR: ""
       TRACE_FULL_PROMPT: "0"
     volumes:
@@ -33,6 +36,10 @@ services:
       - type: bind
         source: /srv/sanaebi/models/current
         target: /models/classifier
+        read_only: true
+      - type: bind
+        source: /srv/sanaebi/embeddings
+        target: /models/embeddings
         read_only: true
     command:
       - python
@@ -51,3 +58,50 @@ services:
       - --no-access-log
       - --timeout-graceful-shutdown
       - "240"
+
+  retrieval-indexer:
+    profiles: [rag]
+    image: ${SANAEBI_IMAGE:?SANAEBI_IMAGE must be set to a digest-pinned image}
+    container_name: sanaebi-retrieval-indexer
+    user: "10001:10001"
+    init: true
+    network_mode: none
+    restart: unless-stopped
+    stop_grace_period: 240s
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=128m,mode=1777
+    environment:
+      SANAEBI_RETRIEVAL_MODE: ${SANAEBI_RETRIEVAL_MODE:-full}
+      SANAEBI_DOCUMENT_DB: /data/documents.sqlite3
+      SANAEBI_RETRIEVAL_ROOT: /data/retrieval
+      SANAEBI_EMBEDDING_PATH: ${SANAEBI_EMBEDDING_PATH:-/models/embeddings/exp-models--dragonkue-KoEn-E5-Tiny/292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9}
+      SANAEBI_RETRIEVAL_BASELINE: /retrieval-baseline/baseline.sqlite3
+      SANAEBI_RETRIEVAL_SOURCE: /retrieval-source/documents.jsonl
+      SANAEBI_RETRIEVAL_BUNDLE_HOST_PATH: ${SANAEBI_RETRIEVAL_BUNDLE_HOST_PATH:-/srv/sanaebi/retrieval-baselines/not-ready.sqlite3}
+      SANAEBI_RETRIEVAL_SOURCE_HOST_PATH: ${SANAEBI_RETRIEVAL_SOURCE_HOST_PATH:-/var/lib/sanaebi/baseline/documents.jsonl}
+    volumes:
+      - type: bind
+        source: /var/lib/sanaebi/runtime
+        target: /data
+      - type: bind
+        source: /srv/sanaebi/embeddings
+        target: /models/embeddings
+        read_only: true
+      - type: bind
+        source: ${SANAEBI_RETRIEVAL_BUNDLE_HOST_PATH:-/srv/sanaebi/retrieval-baselines/not-ready.sqlite3}
+        target: /retrieval-baseline/baseline.sqlite3
+        read_only: true
+      - type: bind
+        source: ${SANAEBI_RETRIEVAL_SOURCE_HOST_PATH:-/var/lib/sanaebi/baseline/documents.jsonl}
+        target: /retrieval-source/documents.jsonl
+        read_only: true
+    command:
+      - python
+      - -m
+      - scripts.index_documents
+      - --watch

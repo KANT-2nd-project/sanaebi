@@ -10,6 +10,7 @@ from app.classification.predictor import (
     ClassificationUnavailable,
 )
 from app.documents.context import DocumentStorageError
+from app.retrieval.types import RetrievalNotReady, RetrievalUnavailable
 from app.settings import PROJECT_ROOT, get_answer_provider
 from generation.presets import load_runtime_settings
 
@@ -30,7 +31,12 @@ def ready(request: Request):
             raise ValueError("generation credentials are not configured")
 
         application = request.app
-        application.state.document_provider.snapshot()
+        snapshot = application.state.document_provider.snapshot()
+        if (
+            application.state.retriever is not None
+            and not application.state.retriever.status(snapshot)["ready"]
+        ):
+            raise RetrievalNotReady("Retrieval is not ready")
         with application.state.classifier_warm_lock:
             if not application.state.classifier_warmed:
                 application.state.classifier.predict("서비스 준비 상태 확인")
@@ -43,6 +49,8 @@ def ready(request: Request):
         ClassificationUnavailable,
         ClassificationInferenceError,
         DocumentStorageError,
+        RetrievalUnavailable,
+        RetrievalNotReady,
     ):
         return JSONResponse(
             status_code=503,

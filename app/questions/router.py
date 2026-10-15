@@ -43,7 +43,7 @@ async def _run_handler_and_release_slot(handle, question: str, slots):
         502: {"model": AnswerResponse, "description": "답변 생성 오류"},
         503: {
             "model": AnswerResponse,
-            "description": "분류 모델 또는 문서 저장소 사용 불가",
+            "description": "분류 모델, 문서 저장소 또는 검색 사용 불가",
         },
     },
 )
