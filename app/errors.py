@@ -21,6 +21,11 @@ from app.public_limits import (
     GenerationBudgetExceeded,
     GenerationBudgetUnavailable,
 )
+from app.retrieval.types import (
+    RetrievalInputTooLong,
+    RetrievalNotReady,
+    RetrievalUnavailable,
+)
 from app.schemas import AnswerResponse
 
 
@@ -140,6 +145,9 @@ async def handle_generation_budget_unavailable(
 
 
 def register_error_handlers(app: FastAPI) -> None:
+    app.add_exception_handler(RetrievalUnavailable, handle_retrieval_error)
+    app.add_exception_handler(RetrievalNotReady, handle_retrieval_error)
+    app.add_exception_handler(RetrievalInputTooLong, handle_retrieval_error)
     app.add_exception_handler(RequestValidationError, handle_validation_error)
     app.add_exception_handler(LLMResponseError, handle_llm_response_error)
     app.add_exception_handler(DocumentServiceError, handle_document_service_error)
@@ -154,4 +162,24 @@ def register_error_handlers(app: FastAPI) -> None:
     )
     app.add_exception_handler(
         GenerationBudgetUnavailable, handle_generation_budget_unavailable
+    )
+
+
+async def handle_retrieval_error(request: Request, exc: Exception):
+    too_long = isinstance(exc, RetrievalInputTooLong)
+    headers = {"Cache-Control": "no-store"}
+    if isinstance(exc, RetrievalNotReady):
+        headers["Retry-After"] = "3"
+    return JSONResponse(
+        status_code=422 if too_long else 503,
+        content=AnswerResponse(
+            ok=False,
+            text="",
+            reason=(
+                "질문이 너무 깁니다. 조건을 나누어 질문해주세요."
+                if too_long
+                else "문서 검색을 준비 중이거나 사용할 수 없습니다. 잠시 후 다시 시도해주세요."
+            ),
+        ).model_dump(),
+        headers=headers,
     )

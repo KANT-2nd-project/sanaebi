@@ -101,6 +101,7 @@ _PROCESSING_PATHS = frozenset(
         "clarify",
         "unsupported",
         "document_lookup",
+        "retrieval",
         "empty_documents",
         "generation",
     }
@@ -212,6 +213,7 @@ class TraceCallback(BaseCallbackHandler):
         self._classification_seconds: float | None = None
         self._generation: dict[str, Any] | None = None
         self._routing: dict[str, Any] = {}
+        self._retrieval: dict[str, Any] | None = None
         self._lock = threading.Lock()
 
     def _now(self) -> float:
@@ -441,6 +443,7 @@ class TraceCallback(BaseCallbackHandler):
                 dict(self._generation) if self._generation is not None else None
             )
             routing = dict(self._routing)
+            retrieval = dict(self._retrieval) if self._retrieval is not None else None
         if label is None and roots and isinstance(roots[0]["input"], dict):
             label = roots[0]["input"].get("classification_label")
         stopped = label is None and not roots and (status or 0) >= 400
@@ -483,6 +486,18 @@ class TraceCallback(BaseCallbackHandler):
             **routing,
         }
         result_rows = [classification, *rows]
+        if retrieval is not None:
+            result_rows.append(
+                {
+                    "trace_id": self.trace_id,
+                    "seq": None,
+                    "stage": "검색",
+                    "input": None,
+                    "output": None,
+                    "error": None,
+                    **retrieval,
+                }
+            )
         if generation is not None:
             seconds = generation.get("seconds")
             result_rows.append(
@@ -656,3 +671,22 @@ class TraceMiddleware:
                 logger.warning(
                     "디버깅 기록을 쓰지 못했습니다: %s", directory, exc_info=True
                 )
+
+
+def record_retrieval(*, status: str, seconds: float, selected_count: int) -> None:
+    """Content-free summary; no user or model-provided strings are accepted."""
+    if status not in {"ok", "failed"}:
+        return
+    safe = {
+        "status": status,
+        "seconds": round(max(seconds, 0.0), 6),
+        "selected_count": max(int(selected_count), 0),
+    }
+    try:
+        callback = _current_trace.get()
+        if callback is not None:
+            with callback._lock:
+                callback._retrieval = safe
+        logger.info("%s", json.dumps({"event": "retrieval_result", **safe}))
+    except Exception:  # noqa: BLE001 - observability never changes a response
+        logger.warning("retrieval_result_log_failed")
