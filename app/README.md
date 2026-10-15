@@ -1,6 +1,56 @@
 # 서버 요청 흐름 읽기
 
-서버는 질문을 받아 처리 방향을 분류하고, 필요한 경우 게시된 회사 문서로 답변을 생성한다. 분류기는 FastAPI 프로세스 안에서 실행하며 별도 HTTP 서버가 아니다. 설치·실행·첫 분류 확인은 [프로젝트 빠른 시작](../README.md#빠른-시작)을 따른다.
+서버는 질문을 받아 처리 방향을 분류하고, 필요한 경우 게시된 회사 문서로 답변을 생성한다. 분류기는 FastAPI 프로세스 안에서 실행하며 별도 HTTP 서버가 아니다. 서비스 소개와 공통 설치는 [프로젝트 README](../README.md#빠른-시작)를, 서버 준비와 API 확인은 아래 절차를 따른다.
+
+## 실행 준비와 API 확인
+
+### 모델 준비
+
+분류를 확인하려면 저장된 모델이 필요합니다. 기본 경로는 `artifacts/experiments/learning-comparison-2026-10-15/koelectra_base/model/`이며 **가중치는 Git에 포함되지 않습니다.** 다른 환경에서는 모델 가중치·config·tokenizer·metadata.json을 함께 준비하고 `SANAEBI_CLASSIFIER_PATH`를 지정하세요. 상대 경로는 저장소 루트 기준입니다.
+
+```bash
+# 기본 경로를 사용하지 않을 때만 준비한 모델 폴더 지정
+export SANAEBI_CLASSIFIER_PATH=/absolute/path/to/model
+```
+
+서버는 로컬 모델만 읽으며 자동 다운로드·학습하지 않습니다. 첫 분류 요청에서 CPU로 로딩하고 재사용하므로 모델 경로·파일을 바꾼 뒤에는 서버를 재시작합니다. 저장본 계약은 [추론 안내](classification/README.md), 상세 설정은 [서버 규약](../docs/server-conventions.md)을 따릅니다. 아카이브 저장본을 새 서버 경로에 그대로 지정하지 않습니다.
+
+### 서버 실행과 연결 확인
+
+[공통 설치](../README.md#빠른-시작)를 마친 뒤 저장소 루트에서 실행한다.
+
+```bash
+npm run dev:api
+```
+
+API는 http://127.0.0.1:8000, API 문서는 http://127.0.0.1:8000/docs 에서 확인한다. 웹과 함께 실행하려면 [웹 실행 절차](../web/README.md#개발)를 따른다.
+
+다른 터미널에서 순서대로 확인합니다.
+
+```bash
+curl http://127.0.0.1:8000/
+curl -X POST http://127.0.0.1:8000/classify/koelectra-base \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"출장비 정산 절차 알려줘"}'
+```
+
+`GET /`는 `{"message":"FastAPI 서버가 실행 중입니다."}`로 HTTP 실행을 확인합니다. 모델 로딩 확인은 두 번째 요청입니다. 분류 응답은 `{"category":"UNSUPPORTED"}` 형태이며 실제 라벨은 모델 결과에 따라 달라집니다. 질문별 문서 조회·LLM 호출 없이 분류만 확인하지만, 서버 시작 시에는 SQLite 저장소를 초기화합니다.
+
+모델 부재·잘못된 저장본·추론 실패는 503과 `분류 모델을 사용할 수 없습니다.`라는 오류 안내를 반환합니다. 모델을 준비하지 않았다면 서버 응답 확인까지만 가능하며, 분류 성공으로 간주하지 않습니다.
+
+### 문서 기반 답변 확인
+
+검색 라벨의 실제 답변에는 게시된 회사 문서와 생성 제공자 준비가 추가로 필요합니다. 새 환경에서 기존 회사 지식 71건을 사용하려면 [문서 이관 안내](../docs/document-management.md#회사-지식-이관내보내기)의 dry-run 후 명시적으로 적용·게시합니다. 이후 문서는 `/admin/documents`에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 게시는 사람 검수 승인을 의미하지 않습니다.
+
+`SANAEBI_ANSWER_PROVIDER`는 `ollama`(기본) 또는 `openai`입니다. Ollama는 실행 중인 서버와 모델이, OpenAI는 `OPENAI_API_KEY`가 필요하며 API 비용이 발생합니다. 필요한 환경변수는 실행 프로세스에 전달합니다. 위 명령이 `.env`를 자동으로 읽는다고 가정하지 않습니다. 실제 생성 모델의 입력 한도와 문서 준비를 확인한 뒤 호출하세요.
+
+```bash
+curl -X POST http://127.0.0.1:8000/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"휴가 신청 방법 알려줘"}'
+```
+
+성공 응답은 `{"ok":true,"text":"안내 또는 생성된 답변","reason":""}` 형태입니다. CLARIFY·UNSUPPORTED는 고정 안내, SEARCH_KNOWLEDGE라도 문서가 없으면 자료 없음 안내를 반환합니다. 생성 실패는 502이며 빈 문서의 정상 안내와 다릅니다. 이 요청은 준비 상태 확인 예시이며 실제 답변 품질 검증을 대신하지 않습니다.
 
 ## 서버 시작과 첫 요청
 
@@ -105,3 +155,15 @@ uv run --locked python -m scripts.inspect_document_context
 ```
 
 [진단 trace](diagnostics/trace.py)는 선택적 요청·LangChain 기록이다. `TRACE_DIR`을 지정했을 때 기록하며 `TRACE_MAX_CHARS`·`TRACE_FULL_PROMPT`로 기록 길이를 조절한다. 상세 기록 형식은 해당 모듈의 설명을, 변경 기준은 [서버 규약](../docs/server-conventions.md)을 따른다. 문서를 수정하거나 이관하려면 [문서 관리 절차](../docs/document-management.md)를, 전체 문서 탐색은 [문서 색인](../docs/README.md)을 이용한다.
+
+## 개발 검사
+
+저장소 루트에서 수행한다. 문서 변경은 링크·설명·렌더링을 확인하며 모델 테스트를 다시 실행한 것으로 기록하지 않는다. 코드 변경에 필요한 회귀 범위는 [서버 규약](../docs/server-conventions.md)을 따른다.
+
+```bash
+uv lock --check
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv run --locked python scripts/validate_dataset.py
+uv run --locked python -m unittest discover -s tests -v
+```

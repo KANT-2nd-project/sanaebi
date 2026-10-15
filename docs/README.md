@@ -1,6 +1,6 @@
 # 문서 찾아보기
 
-[프로젝트 README](../README.md)는 공통 준비·실행의 진입점이다. 이 색인은 목적별 상세 문서를 안내한다. 서버 코드를 이해하려면 [서버 요청 흐름](../app/README.md)으로 바로 이동해도 된다.
+[프로젝트 README](../README.md)는 서비스 목적·사용 모습·현재 구성과 공통 시작을 소개하는 진입점이다. 이 색인은 목적별 상세 문서를 안내한다. 서버 코드를 이해하려면 [서버 요청 흐름](../app/README.md)으로 바로 이동해도 된다.
 
 ```mermaid
 flowchart TD
@@ -23,7 +23,9 @@ flowchart TD
 
 | 문서 | 작업 |
 |---|---|
-| [프로젝트 빠른 시작](../README.md#빠른-시작) | 설치·통합 실행·첫 분류 확인 |
+| [프로젝트 빠른 시작](../README.md#빠른-시작) | 설치·통합 실행 |
+| [서버 준비·API 확인](../app/README.md#실행-준비와-api-확인) | 모델·문서·제공자 준비, HTTP 확인과 선택적 답변 요청 |
+| [분류기 독립 확인](../app/classification/README.md#분류기만-직접-확인하기) | HTTP·문서 저장소 없이 로컬 저장본 추론 |
 | [분류 학습](../classification/README.md) | 데이터·그룹 분할·TF-IDF·Transformer 학습과 명시적 평가 |
 | [문서 관리](document-management.md) | 등록·개정·게시·사용 중단·이관·내보내기 |
 | [생성 모듈](../generation/README.md) · [별도 평가 실행](../generation_evaluation/README.md) | 서버와 분리한 생성·평가 |

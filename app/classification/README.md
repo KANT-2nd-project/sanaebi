@@ -50,8 +50,24 @@ flowchart LR
 
 모델 경로는 `SANAEBI_CLASSIFIER_PATH`로 지정한다. 기본 경로·상대 경로 해석과 교체 검증 기준은 [서버 규약의 모델 설정](../../docs/server-conventions.md#모델-설정과-수명주기)을 따른다. 같은 저장 형식·메타데이터·라벨 계약을 만족하는 Transformer를 경로로 주입할 수 있으며 TF-IDF나 모든 아카이브 저장본을 지원하는 범용 로더는 아니다.
 
-교체할 때는 저장본 준비 → 라벨·예측 회귀 검증 → 경로 설정 → 서버 재시작 → 분류 API 확인 순서로 진행한다. 공통 실행·요청 예시는 [빠른 시작](../../README.md#빠른-시작)에 있다. 가중치는 Git에 없으며 학습이나 자동 다운로드를 서버 실행의 일부로 취급하지 않는다.
+교체할 때는 저장본 준비 → 라벨·예측 회귀 검증 → 경로 설정 → 서버 재시작 → 분류 API 확인 순서로 진행한다. 서버 준비·HTTP 요청 예시는 [서버 실행 안내](../README.md#실행-준비와-api-확인)에 있다. 가중치는 Git에 없으며 학습이나 자동 다운로드를 서버 실행의 일부로 취급하지 않는다.
 
 파일·메타데이터·라벨 매핑 문제는 `ClassificationUnavailable`, 로딩 후 추론 실패는 `ClassificationInferenceError`로 구분한다. [오류 핸들러](../errors.py)는 두 오류를 안전한 503 응답으로 변환하고 내부 경로·원문 예외를 노출하지 않는다. 일반 프로그래밍 오류까지 모델 부재로 설명하지 않는다.
 
 기존 선정 checkpoint의 연결 검증은 [서버 연결 기록](../../docs/worklogs/2026-10-15-server-classifier-integration.md)에 있다. 모델 선정·서버 예측 일치·실서비스 답변 품질은 서로 다른 검증이다. 학습 방법은 [학습 안내](../../classification/README.md), 정책은 [라벨 기준](../../docs/label-taxonomy.md)을 이어서 읽는다.
+
+## 분류기만 직접 확인하기
+
+[모델 준비](../README.md#모델-준비)를 마친 뒤 저장소 루트에서 실행한다. 서버와 SQLite를 시작하지 않고 같은 추론 클래스를 직접 호출한다. 모델 로딩·CPU 추론은 실제로 실행하므로 준비된 로컬 저장본이 필요하다.
+
+```bash
+uv run --locked python - <<'PYTHON'
+from app.classification.predictor import TransformerClassifier
+from app.settings import get_classifier_path
+
+classifier = TransformerClassifier(get_classifier_path())
+print(classifier.predict("휴가 신청 방법 알려줘"))
+PYTHON
+```
+
+출력은 세 라벨 중 하나이며 이 예문에 대한 정답이나 성공 결과를 미리 확정하지 않는다. 이 절차는 학습·문서 조회·LLM 호출을 하지 않는다. HTTP 연결과 오류 응답까지 확인하려면 [서버 API 확인](../README.md#서버-실행과-연결-확인)을 사용한다. 모델 비교와 선정 근거는 [실험 보고서](../../classification/reports/README.md)에 둔다.
