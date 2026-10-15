@@ -1,0 +1,44 @@
+{
+  "case_id": "V14",
+  "question": "승인된 개발환경에서 잠금파일에 선언된 프로젝트 패키지를 설치할 때마다 IT 승인을 받아야 해? 관리자 권한이나 자료를 외부로 보내는 확장 기능은?",
+  "omitted_passage": {
+    "chunk_id": "0e35480c6bebe92beabc9b3f348d9df1dad11e1ed93f8c42f582a5bc7c2e0156",
+    "document_id": "ieum-037",
+    "revision_id": "a27e2aed-3158-4745-b1be-fe70f8501a53",
+    "title": "회사 기기 소프트웨어 설치",
+    "heading": "별도 검토가 필요한 설치",
+    "text": "## 별도 검토가 필요한 설치\n\n아래는 일반 의존성 갱신과 달리 IT운영팀 및 보안·개인정보 담당자의 검토를 거친다.\n\n- 관리자 권한, 기기 설정 변경, 시스템 서비스 설치가 필요한 프로그램\n- 브라우저 확장·플러그인 또는 계정·페이지 내용을 읽거나 외부로 보내는 도구\n- 소스·고객·기밀 자료를 외부에 업로드하거나 외부 계정에 연결하는 기능\n- 새 유료 서비스, 새 클라우드, 코드 호스팅·빌드·배포 도구\n- 라이선스 조건을 확인할 수 없거나 출처가 불분명한 바이너리\n\n이음 포털의 IT > 소프트웨어 요청에 제품·게시자·공식 배포 주소, 업무 목적, 필요한 권한·자료 접근, 비용을 적는다. IT운영팀은 운영·라이선스를, 보안·개인정보 담당자는 데이터·보안 위험을 검토한다. 검토가 기록되기 전 설치하거나 실제 자료를 연결하지 않는다.\n",
+    "spans": [
+      {
+        "start": 462,
+        "end": 877,
+        "kind": "body"
+      }
+    ]
+  },
+  "ranking": {
+    "rank": 15,
+    "chunk_id": "0e35480c6bebe92beabc9b3f348d9df1dad11e1ed93f8c42f582a5bc7c2e0156",
+    "document_id": "ieum-037",
+    "revision_id": "a27e2aed-3158-4745-b1be-fe70f8501a53",
+    "spans": [
+      {
+        "start": 462,
+        "end": 877,
+        "kind": "body"
+      }
+    ],
+    "cosine_score": 0.4747525453567505
+  },
+  "selected_by": {
+    "adjacent_top12": false,
+    "C_unlimited": true
+  },
+  "cause": "rank 15 outside top12; distinct upper section prevents immediate-neighbor expansion",
+  "not_caused_by": [
+    "cosine below0.35",
+    "character budget",
+    "context token budget"
+  ],
+  "rerun_or_tuning_after_confirmation": false
+}

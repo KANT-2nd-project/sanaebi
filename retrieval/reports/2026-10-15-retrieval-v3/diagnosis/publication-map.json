@@ -1,0 +1,17 @@
+{
+  "oracle-ablation.json": "oracle-ablation.json",
+  "query-probe.json": "query-probe.json",
+  "minimal-sensitivity-results.json": "minimal-sensitivity-results.json",
+  "qrels-minimal-sensitivity.json": "qrels-minimal-sensitivity.json",
+  "independent-review.md": "independent-review.md",
+  "query_probe.py": "query_probe.py.txt",
+  "verification.json": "verification.json",
+  "diagnose.py": "diagnose.py.txt",
+  "sensitivity.py": "sensitivity.py.txt",
+  "qrels-sensitivity.json": "qrels-sensitivity.json",
+  "report.md": "report.md",
+  "distribution.json": "distribution.json",
+  "summary.json": "summary.json",
+  "focus.json": "focus.json",
+  "sensitivity-results.json": "sensitivity-results.json"
+}

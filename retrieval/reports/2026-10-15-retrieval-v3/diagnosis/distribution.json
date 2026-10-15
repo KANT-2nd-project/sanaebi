@@ -1,0 +1,722 @@
+[
+  {
+    "case_id": "R01",
+    "answerable": true,
+    "top1": 0.5149709582328796,
+    "selected": 57,
+    "judgment_missing": 17,
+    "precision_grade2": null,
+    "grades": {
+      "0": 25,
+      "1": 11,
+      "2": 3,
+      "3": 1
+    },
+    "all_claim_rank": 3
+  },
+  {
+    "case_id": "R02",
+    "answerable": true,
+    "top1": 0.6620734930038452,
+    "selected": 55,
+    "judgment_missing": 15,
+    "precision_grade2": null,
+    "grades": {
+      "0": 25,
+      "1": 12,
+      "2": 2,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R03",
+    "answerable": true,
+    "top1": 0.4980192482471466,
+    "selected": 89,
+    "judgment_missing": 49,
+    "precision_grade2": null,
+    "grades": {
+      "0": 29,
+      "1": 5,
+      "2": 4,
+      "3": 2
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R04",
+    "answerable": true,
+    "top1": 0.5568662881851196,
+    "selected": 56,
+    "judgment_missing": 16,
+    "precision_grade2": null,
+    "grades": {
+      "0": 29,
+      "1": 5,
+      "2": 5,
+      "3": 1
+    },
+    "all_claim_rank": 3
+  },
+  {
+    "case_id": "R05",
+    "answerable": true,
+    "top1": 0.4771781265735626,
+    "selected": 26,
+    "judgment_missing": 0,
+    "precision_grade2": 0.15384615384615385,
+    "grades": {
+      "0": 19,
+      "1": 3,
+      "2": 3,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R06",
+    "answerable": true,
+    "top1": 0.6105961203575134,
+    "selected": 30,
+    "judgment_missing": 0,
+    "precision_grade2": 0.1,
+    "grades": {
+      "0": 19,
+      "1": 8,
+      "2": 2,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R07",
+    "answerable": true,
+    "top1": 0.6247935891151428,
+    "selected": 166,
+    "judgment_missing": 126,
+    "precision_grade2": null,
+    "grades": {
+      "0": 29,
+      "1": 9,
+      "2": 1,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R08",
+    "answerable": true,
+    "top1": 0.4904739260673523,
+    "selected": 26,
+    "judgment_missing": 0,
+    "precision_grade2": 0.07692307692307693,
+    "grades": {
+      "0": 18,
+      "1": 6,
+      "2": 1,
+      "3": 1
+    },
+    "all_claim_rank": 15
+  },
+  {
+    "case_id": "R09",
+    "answerable": true,
+    "top1": 0.5517978072166443,
+    "selected": 42,
+    "judgment_missing": 2,
+    "precision_grade2": null,
+    "grades": {
+      "0": 26,
+      "1": 11,
+      "2": 2,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R10",
+    "answerable": true,
+    "top1": 0.5669691562652588,
+    "selected": 50,
+    "judgment_missing": 10,
+    "precision_grade2": null,
+    "grades": {
+      "0": 25,
+      "1": 7,
+      "2": 7,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R11",
+    "answerable": true,
+    "top1": 0.6223580241203308,
+    "selected": 128,
+    "judgment_missing": 88,
+    "precision_grade2": null,
+    "grades": {
+      "0": 26,
+      "1": 11,
+      "2": 2,
+      "3": 1
+    },
+    "all_claim_rank": 2
+  },
+  {
+    "case_id": "R12",
+    "answerable": true,
+    "top1": 0.5318080186843872,
+    "selected": 140,
+    "judgment_missing": 100,
+    "precision_grade2": null,
+    "grades": {
+      "0": 24,
+      "1": 13,
+      "2": 0,
+      "3": 3
+    },
+    "all_claim_rank": 3
+  },
+  {
+    "case_id": "R13",
+    "answerable": true,
+    "top1": 0.5832169651985168,
+    "selected": 80,
+    "judgment_missing": 40,
+    "precision_grade2": null,
+    "grades": {
+      "0": 22,
+      "1": 12,
+      "2": 5,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R14",
+    "answerable": true,
+    "top1": 0.4561654031276703,
+    "selected": 44,
+    "judgment_missing": 4,
+    "precision_grade2": null,
+    "grades": {
+      "0": 30,
+      "1": 2,
+      "2": 4,
+      "3": 4
+    },
+    "all_claim_rank": 25
+  },
+  {
+    "case_id": "R15",
+    "answerable": true,
+    "top1": 0.5333566665649414,
+    "selected": 73,
+    "judgment_missing": 33,
+    "precision_grade2": null,
+    "grades": {
+      "0": 24,
+      "1": 10,
+      "2": 5,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R16",
+    "answerable": true,
+    "top1": 0.5157950520515442,
+    "selected": 21,
+    "judgment_missing": 0,
+    "precision_grade2": 0.23809523809523808,
+    "grades": {
+      "0": 10,
+      "1": 6,
+      "2": 3,
+      "3": 2
+    },
+    "all_claim_rank": 39
+  },
+  {
+    "case_id": "R17",
+    "answerable": true,
+    "top1": 0.5479685068130493,
+    "selected": 6,
+    "judgment_missing": 0,
+    "precision_grade2": 1.0,
+    "grades": {
+      "0": 0,
+      "1": 0,
+      "2": 5,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "R18",
+    "answerable": true,
+    "top1": 0.6406278610229492,
+    "selected": 20,
+    "judgment_missing": 0,
+    "precision_grade2": 0.2,
+    "grades": {
+      "0": 14,
+      "1": 2,
+      "2": 2,
+      "3": 2
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D01",
+    "answerable": true,
+    "top1": 0.6510345935821533,
+    "selected": 77,
+    "judgment_missing": 37,
+    "precision_grade2": null,
+    "grades": {
+      "0": 30,
+      "1": 7,
+      "2": 2,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D02",
+    "answerable": true,
+    "top1": 0.5470561981201172,
+    "selected": 28,
+    "judgment_missing": 0,
+    "precision_grade2": 0.14285714285714285,
+    "grades": {
+      "0": 20,
+      "1": 4,
+      "2": 4,
+      "3": 0
+    },
+    "all_claim_rank": 2
+  },
+  {
+    "case_id": "D03",
+    "answerable": true,
+    "top1": 0.638157844543457,
+    "selected": 26,
+    "judgment_missing": 0,
+    "precision_grade2": 0.11538461538461539,
+    "grades": {
+      "0": 19,
+      "1": 4,
+      "2": 2,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D04",
+    "answerable": true,
+    "top1": 0.6474921703338623,
+    "selected": 71,
+    "judgment_missing": 31,
+    "precision_grade2": null,
+    "grades": {
+      "0": 25,
+      "1": 8,
+      "2": 6,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D05",
+    "answerable": true,
+    "top1": 0.5757529735565186,
+    "selected": 28,
+    "judgment_missing": 0,
+    "precision_grade2": 0.32142857142857145,
+    "grades": {
+      "0": 10,
+      "1": 9,
+      "2": 5,
+      "3": 4
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D06",
+    "answerable": true,
+    "top1": 0.6144614219665527,
+    "selected": 27,
+    "judgment_missing": 0,
+    "precision_grade2": 0.1111111111111111,
+    "grades": {
+      "0": 18,
+      "1": 6,
+      "2": 3,
+      "3": 0
+    },
+    "all_claim_rank": 3
+  },
+  {
+    "case_id": "D07",
+    "answerable": true,
+    "top1": 0.4697118103504181,
+    "selected": 38,
+    "judgment_missing": 0,
+    "precision_grade2": 0.10526315789473684,
+    "grades": {
+      "0": 16,
+      "1": 18,
+      "2": 3,
+      "3": 1
+    },
+    "all_claim_rank": 6
+  },
+  {
+    "case_id": "D08",
+    "answerable": true,
+    "top1": 0.736314058303833,
+    "selected": 68,
+    "judgment_missing": 28,
+    "precision_grade2": null,
+    "grades": {
+      "0": 30,
+      "1": 9,
+      "2": 0,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D09",
+    "answerable": true,
+    "top1": 0.6203854084014893,
+    "selected": 72,
+    "judgment_missing": 32,
+    "precision_grade2": null,
+    "grades": {
+      "0": 15,
+      "1": 15,
+      "2": 9,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D10",
+    "answerable": true,
+    "top1": 0.5568779110908508,
+    "selected": 94,
+    "judgment_missing": 54,
+    "precision_grade2": null,
+    "grades": {
+      "0": 21,
+      "1": 18,
+      "2": 0,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D11",
+    "answerable": true,
+    "top1": 0.6292942762374878,
+    "selected": 44,
+    "judgment_missing": 4,
+    "precision_grade2": null,
+    "grades": {
+      "0": 27,
+      "1": 11,
+      "2": 1,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D12",
+    "answerable": true,
+    "top1": 0.5630858540534973,
+    "selected": 137,
+    "judgment_missing": 97,
+    "precision_grade2": null,
+    "grades": {
+      "0": 20,
+      "1": 15,
+      "2": 4,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D13",
+    "answerable": true,
+    "top1": 0.5800637602806091,
+    "selected": 145,
+    "judgment_missing": 105,
+    "precision_grade2": null,
+    "grades": {
+      "0": 22,
+      "1": 11,
+      "2": 6,
+      "3": 1
+    },
+    "all_claim_rank": 2
+  },
+  {
+    "case_id": "D14",
+    "answerable": true,
+    "top1": 0.5752134919166565,
+    "selected": 143,
+    "judgment_missing": 103,
+    "precision_grade2": null,
+    "grades": {
+      "0": 16,
+      "1": 13,
+      "2": 4,
+      "3": 7
+    },
+    "all_claim_rank": 2
+  },
+  {
+    "case_id": "D15",
+    "answerable": true,
+    "top1": 0.6734978556632996,
+    "selected": 141,
+    "judgment_missing": 101,
+    "precision_grade2": null,
+    "grades": {
+      "0": 23,
+      "1": 13,
+      "2": 3,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D16",
+    "answerable": true,
+    "top1": 0.6183668971061707,
+    "selected": 59,
+    "judgment_missing": 19,
+    "precision_grade2": null,
+    "grades": {
+      "0": 23,
+      "1": 13,
+      "2": 3,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D17",
+    "answerable": true,
+    "top1": 0.8306605815887451,
+    "selected": 143,
+    "judgment_missing": 103,
+    "precision_grade2": null,
+    "grades": {
+      "0": 23,
+      "1": 12,
+      "2": 4,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D18",
+    "answerable": true,
+    "top1": 0.6262874603271484,
+    "selected": 60,
+    "judgment_missing": 20,
+    "precision_grade2": null,
+    "grades": {
+      "0": 15,
+      "1": 23,
+      "2": 1,
+      "3": 1
+    },
+    "all_claim_rank": 1
+  },
+  {
+    "case_id": "D19",
+    "answerable": true,
+    "top1": 0.6520713567733765,
+    "selected": 161,
+    "judgment_missing": 121,
+    "precision_grade2": null,
+    "grades": {
+      "0": 17,
+      "1": 13,
+      "2": 8,
+      "3": 2
+    },
+    "all_claim_rank": 5
+  },
+  {
+    "case_id": "D20",
+    "answerable": true,
+    "top1": 0.5718029141426086,
+    "selected": 128,
+    "judgment_missing": 88,
+    "precision_grade2": null,
+    "grades": {
+      "0": 12,
+      "1": 20,
+      "2": 6,
+      "3": 2
+    },
+    "all_claim_rank": 4
+  },
+  {
+    "case_id": "U01",
+    "answerable": false,
+    "top1": 0.3244342505931854,
+    "selected": 0,
+    "judgment_missing": 0,
+    "precision_grade2": null,
+    "grades": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U02",
+    "answerable": false,
+    "top1": 0.369429349899292,
+    "selected": 1,
+    "judgment_missing": 0,
+    "precision_grade2": 0.0,
+    "grades": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U03",
+    "answerable": false,
+    "top1": 0.43984454870224,
+    "selected": 53,
+    "judgment_missing": 13,
+    "precision_grade2": null,
+    "grades": {
+      "0": 34,
+      "1": 6,
+      "2": 0,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U04",
+    "answerable": false,
+    "top1": 0.5316523313522339,
+    "selected": 32,
+    "judgment_missing": 0,
+    "precision_grade2": 0.125,
+    "grades": {
+      "0": 12,
+      "1": 16,
+      "2": 4,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U05",
+    "answerable": false,
+    "top1": 0.332221657037735,
+    "selected": 0,
+    "judgment_missing": 0,
+    "precision_grade2": null,
+    "grades": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U06",
+    "answerable": false,
+    "top1": 0.641450047492981,
+    "selected": 150,
+    "judgment_missing": 110,
+    "precision_grade2": null,
+    "grades": {
+      "0": 22,
+      "1": 16,
+      "2": 2,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U07",
+    "answerable": false,
+    "top1": 0.600614070892334,
+    "selected": 38,
+    "judgment_missing": 0,
+    "precision_grade2": 0.07894736842105263,
+    "grades": {
+      "0": 0,
+      "1": 35,
+      "2": 3,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U08",
+    "answerable": false,
+    "top1": 0.4390987157821655,
+    "selected": 4,
+    "judgment_missing": 0,
+    "precision_grade2": 0.5,
+    "grades": {
+      "0": 0,
+      "1": 2,
+      "2": 2,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U09",
+    "answerable": false,
+    "top1": 0.5594047904014587,
+    "selected": 95,
+    "judgment_missing": 55,
+    "precision_grade2": null,
+    "grades": {
+      "0": 15,
+      "1": 22,
+      "2": 3,
+      "3": 0
+    },
+    "all_claim_rank": null
+  },
+  {
+    "case_id": "U10",
+    "answerable": false,
+    "top1": 0.575248122215271,
+    "selected": 170,
+    "judgment_missing": 130,
+    "precision_grade2": null,
+    "grades": {
+      "0": 27,
+      "1": 11,
+      "2": 2,
+      "3": 0
+    },
+    "all_claim_rank": null
+  }
+]

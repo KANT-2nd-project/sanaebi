@@ -1,0 +1,22 @@
+[
+  {
+    "path": "development-search.json.gz",
+    "uncompressed_sha256": "6018f6b45961f4029516e3fb4304e349351a55fc606d275c7938a66518588d75",
+    "bytes": 19253502
+  },
+  {
+    "path": "development-rerank-scores.json.gz",
+    "uncompressed_sha256": "2a19ec95328b820a6809e7ee35c8bf0fa32f804c4a2336ea39e3ad71f7cb428a",
+    "bytes": 18933942
+  },
+  {
+    "path": "development-relevance-packet.json.gz",
+    "uncompressed_sha256": "fa08ad652154f2908a3a604c61f0062b1d623ccf9cb4ec9d14e286a320878d29",
+    "bytes": 4954310
+  },
+  {
+    "path": "development-manifest.json.gz",
+    "uncompressed_sha256": "6bd3a7e9828acf6787b7a395234e49f0bbc97b7d1229273d797eddcee3113c75",
+    "bytes": 2063
+  }
+]

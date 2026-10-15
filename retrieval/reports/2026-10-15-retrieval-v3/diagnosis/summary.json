@@ -1,0 +1,9 @@
+{
+  "selected_query_chunk_pairs": 3342,
+  "judged_pairs": 1591,
+  "unjudged_pairs": 1751,
+  "fully_judged_queries": 17,
+  "fully_judged_nonempty_queries": 15,
+  "fully_judged_subset_macro_precision_grade2": 0.2179237623974466,
+  "warning": "Subset selected by availability of prior AI judgments; not representative overall C precision."
+}

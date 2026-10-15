@@ -1,0 +1,4223 @@
+[
+  {
+    "source": "tmp/context-limit-comparison/search/search.json",
+    "summaries": [
+      {
+        "variant": "A_existing",
+        "original": 36,
+        "sensitivity": 37,
+        "changed": [
+          "R14"
+        ]
+      },
+      {
+        "variant": "B_tokens_only",
+        "original": 36,
+        "sensitivity": 37,
+        "changed": [
+          "R14"
+        ]
+      },
+      {
+        "variant": "C_unlimited",
+        "original": 37,
+        "sensitivity": 37,
+        "changed": []
+      }
+    ],
+    "ranks": [
+      {
+        "case_id": "R08",
+        "original_rank": 15,
+        "sensitivity_rank": 5
+      },
+      {
+        "case_id": "R14",
+        "original_rank": 25,
+        "sensitivity_rank": 11
+      },
+      {
+        "case_id": "R16",
+        "original_rank": 39,
+        "sensitivity_rank": 39
+      },
+      {
+        "case_id": "D07",
+        "original_rank": 6,
+        "sensitivity_rank": 6
+      }
+    ],
+    "rows": [
+      {
+        "case_id": "R01",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "A_existing",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "B_tokens_only",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "A_existing",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "B_tokens_only",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "C_unlimited",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "A_existing",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "B_tokens_only",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "C_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      }
+    ]
+  },
+  {
+    "source": "tmp/calibration/development-search-validated/search.json",
+    "summaries": [
+      {
+        "variant": "baseline",
+        "original": 34,
+        "sensitivity": 35,
+        "changed": [
+          "R08"
+        ]
+      },
+      {
+        "variant": "baseline_proxy1000",
+        "original": 34,
+        "sensitivity": 34,
+        "changed": []
+      },
+      {
+        "variant": "baseline_proxy2000",
+        "original": 34,
+        "sensitivity": 35,
+        "changed": [
+          "R08"
+        ]
+      },
+      {
+        "variant": "baseline_proxy4000",
+        "original": 34,
+        "sensitivity": 35,
+        "changed": [
+          "R08"
+        ]
+      },
+      {
+        "variant": "score040_max8",
+        "original": 35,
+        "sensitivity": 36,
+        "changed": [
+          "R08"
+        ]
+      },
+      {
+        "variant": "score040_max8_proxy1000",
+        "original": 35,
+        "sensitivity": 35,
+        "changed": []
+      },
+      {
+        "variant": "score040_max8_proxy2000",
+        "original": 35,
+        "sensitivity": 36,
+        "changed": [
+          "R08"
+        ]
+      },
+      {
+        "variant": "score040_max8_proxy4000",
+        "original": 35,
+        "sensitivity": 36,
+        "changed": [
+          "R08"
+        ]
+      },
+      {
+        "variant": "score035_unlimited",
+        "original": 37,
+        "sensitivity": 37,
+        "changed": []
+      },
+      {
+        "variant": "score035_unlimited_proxy1000",
+        "original": 35,
+        "sensitivity": 35,
+        "changed": []
+      },
+      {
+        "variant": "score035_unlimited_proxy2000",
+        "original": 35,
+        "sensitivity": 37,
+        "changed": [
+          "R08",
+          "R14"
+        ]
+      },
+      {
+        "variant": "score035_unlimited_proxy4000",
+        "original": 36,
+        "sensitivity": 37,
+        "changed": [
+          "R14"
+        ]
+      }
+    ],
+    "ranks": [
+      {
+        "case_id": "R08",
+        "original_rank": 15,
+        "sensitivity_rank": 5
+      },
+      {
+        "case_id": "R14",
+        "original_rank": 25,
+        "sensitivity_rank": 11
+      },
+      {
+        "case_id": "R16",
+        "original_rank": 39,
+        "sensitivity_rank": 39
+      },
+      {
+        "case_id": "D07",
+        "original_rank": 6,
+        "sensitivity_rank": 6
+      }
+    ],
+    "rows": [
+      {
+        "case_id": "R01",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R01",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R02",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R03",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R04",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R05",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R06",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R07",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "baseline",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R08-r01"
+        ]
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score040_max8",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R08-r01"
+        ]
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R08-r01"
+        ]
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R08",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R09",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R10",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R11",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R12",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R13",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "baseline",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score040_max8",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R14-r01"
+        ]
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R14",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R15",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "baseline",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score040_max8",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score035_unlimited",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R16",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "R16-r02"
+        ]
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R17",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "R18",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D01",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D02",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D03",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D04",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D05",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D06",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "baseline",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "D07-r01"
+        ]
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "D07-r01"
+        ]
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "D07-r01"
+        ]
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": false,
+        "sensitivity_complete": false,
+        "missing_claims": [
+          "D07-r01"
+        ]
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D07",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D08",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D09",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D10",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D11",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D12",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D13",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D14",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D15",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D16",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D17",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D18",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D19",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "baseline",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "baseline_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "baseline_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "baseline_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score040_max8",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score040_max8_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score040_max8_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score040_max8_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score035_unlimited",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score035_unlimited_proxy1000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score035_unlimited_proxy2000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      },
+      {
+        "case_id": "D20",
+        "variant_id": "score035_unlimited_proxy4000",
+        "original_complete": true,
+        "sensitivity_complete": true,
+        "missing_claims": []
+      }
+    ]
+  }
+]

@@ -24,6 +24,7 @@ RAG의 검색 모델 선정과 실험 근거를 관리한다. 서버 검색 코�
 
 | 기록 | 목적·결론 |
 |---|---|
+| [v3 평가 보완·검색 최적화](reports/2026-10-15-retrieval-v3/README.md) | 동등 근거 정정, 인접 확장·CPU 재정렬 비교, 신규 확인 손실에 따른 C 유지 |
 | [최종 C 채택](reports/2026-10-15-c-adoption/README.md) | 사용자 선택, 현재 서버 설정·검증과 운영 미전환 |
 | [근거 점수·개수](reports/2026-10-15-evidence-threshold/README.md) | 임계값과 최대 근거 수 비교 |
 | [점수만 사용한 선택](reports/2026-10-15-evidence-score-only/README.md) | 최대 개수를 제외한 비교 |

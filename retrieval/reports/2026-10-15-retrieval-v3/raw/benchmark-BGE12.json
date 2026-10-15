@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "qrels_sha256": "ec17b4b96162602984ddf58282c2caa30ab38d9276c407acf65efd8df2d3d33c",
+  "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+  "source_index_sha256": "dbe6a08423a0548362fd2be6aa8c6b1f5d0d0bb29c98a2fbb21faaba0c950578",
+  "retrieval_spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529",
+  "tiny_model_revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+  "reranker_model_id": "BAAI/bge-reranker-v2-m3",
+  "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+  "variant": "bge_rerank_top12",
+  "rounds": 1,
+  "questions_per_round": 48,
+  "reranker_batch_size": 8,
+  "query_cache_used": false,
+  "rerank_cache_used": false,
+  "concurrency_results": [
+    {
+      "concurrency": 1,
+      "variant": "bge_rerank_top12",
+      "rounds": 1,
+      "request_count": 3,
+      "planned_request_count": 48,
+      "completed_full_measurement": false,
+      "early_rejected": true,
+      "fixed_pool_p95_lower_bound_ms": 22508.109035101683,
+      "cache_policy": {
+        "query_cache": false,
+        "rerank_cache": false
+      },
+      "executor_inflight_limit": 1,
+      "reranker_batch_size": 8,
+      "cold_model_load_ms": {
+        "tiny": 3008.7319099984597,
+        "bge_reranker": 6078.184046997194,
+        "total": 9086.915956995654
+      },
+      "rss_after_model_load_mib": 3681.8203125,
+      "max_rss_mib": 3681.8203125,
+      "cpu_affinity": [
+        2,
+        3
+      ],
+      "latency": {
+        "request_count": 3,
+        "queue_wait_ms": {
+          "p50": 0.03724699854501523,
+          "p95": 0.13342550009838305,
+          "max": 0.14411200027097948
+        },
+        "service_ms": {
+          "p50": 36121.39304200173,
+          "p95": 37002.71743899939,
+          "max": 37100.64237199913
+        },
+        "response_ms": {
+          "p50": 36121.43028900027,
+          "p95": 37002.753346799,
+          "max": 37100.67813099886
+        },
+        "stages_ms": {
+          "index_and_cosine_ms": {
+            "p50": 16.07570700070937,
+            "p95": 16.35699659891543,
+            "max": 16.388250998716103
+          },
+          "query_embedding_ms": {
+            "p50": 17.459196998970583,
+            "p95": 21.94424439840077,
+            "max": 22.442582998337457
+          },
+          "rerank_ms": {
+            "p50": 36088.09900000051,
+            "p95": 36964.068415901056,
+            "max": 37061.39835100112
+          },
+          "selection_ms": {
+            "p50": 0.4437440002220683,
+            "p95": 0.826338501428836,
+            "max": 0.8688490015629213
+          }
+        }
+      },
+      "latency_target_ms": 3000.0,
+      "latency_target_met": false,
+      "measurements": [
+        {
+          "round": 1,
+          "case_id": "R01",
+          "queue_wait_ms": 0.14411200027097948,
+          "service_ms": 34627.715942002396,
+          "response_ms": 34627.86005400267,
+          "query_embedding_ms": 17.459196998970583,
+          "index_and_cosine_ms": 16.07570700070937,
+          "rerank_ms": 34593.30783500263,
+          "selection_ms": 0.8688490015629213,
+          "candidate_count": 298,
+          "selected_count": 12,
+          "rerank_pair_count": 40
+        },
+        {
+          "round": 1,
+          "case_id": "R02",
+          "queue_wait_ms": 0.03575899972929619,
+          "service_ms": 37100.64237199913,
+          "response_ms": 37100.67813099886,
+          "query_embedding_ms": 22.442582998337457,
+          "index_and_cosine_ms": 16.388250998716103,
+          "rerank_ms": 37061.39835100112,
+          "selection_ms": 0.41084899930865504,
+          "candidate_count": 298,
+          "selected_count": 12,
+          "rerank_pair_count": 40
+        },
+        {
+          "round": 1,
+          "case_id": "R03",
+          "queue_wait_ms": 0.03724699854501523,
+          "service_ms": 36121.39304200173,
+          "response_ms": 36121.43028900027,
+          "query_embedding_ms": 17.42904099955922,
+          "index_and_cosine_ms": 15.418530998431379,
+          "rerank_ms": 36088.09900000051,
+          "selection_ms": 0.4437440002220683,
+          "candidate_count": 298,
+          "selected_count": 12,
+          "rerank_pair_count": 40
+        }
+      ]
+    },
+    {
+      "concurrency": 2,
+      "variant": "bge_rerank_top12",
+      "rounds": 1,
+      "request_count": 4,
+      "planned_request_count": 48,
+      "completed_full_measurement": false,
+      "early_rejected": true,
+      "fixed_pool_p95_lower_bound_ms": 35364.42808699867,
+      "cache_policy": {
+        "query_cache": false,
+        "rerank_cache": false
+      },
+      "executor_inflight_limit": 2,
+      "reranker_batch_size": 8,
+      "cold_model_load_ms": {
+        "tiny": 3020.605188998161,
+        "bge_reranker": 3070.360643996537,
+        "total": 6090.965832994698
+      },
+      "rss_after_model_load_mib": 3681.75,
+      "max_rss_mib": 3681.75,
+      "cpu_affinity": [
+        2,
+        3
+      ],
+      "latency": {
+        "request_count": 4,
+        "queue_wait_ms": {
+          "p50": 0.13674500041815918,
+          "p95": 0.17896284953167194,
+          "max": 0.18597099915496074
+        },
+        "service_ms": {
+          "p50": 53569.80981349807,
+          "p95": 71928.95493499964,
+          "max": 72065.4274640001
+        },
+        "response_ms": {
+          "p50": 53569.90616349867,
+          "p95": 71929.08992649917,
+          "max": 72065.56170399926
+        },
+        "stages_ms": {
+          "index_and_cosine_ms": {
+            "p50": 20.518658999208128,
+            "p95": 30.551414401452345,
+            "max": 32.16307800175855
+          },
+          "query_embedding_ms": {
+            "p50": 33.10093300024164,
+            "p95": 68.01239235046522,
+            "max": 71.65358400015975
+          },
+          "rerank_ms": {
+            "p50": 53500.26515599893,
+            "p95": 71858.2211819492,
+            "max": 72000.60772299912
+          },
+          "selection_ms": {
+            "p50": 0.4159159998380346,
+            "p95": 0.4361111012258334,
+            "max": 0.43766900125774555
+          }
+        }
+      },
+      "latency_target_ms": 3000.0,
+      "latency_target_met": false,
+      "measurements": [
+        {
+          "round": 1,
+          "case_id": "R01",
+          "queue_wait_ms": 0.18597099915496074,
+          "service_ms": 34213.492541999585,
+          "response_ms": 34213.67851299874,
+          "query_embedding_ms": 18.82289299828699,
+          "index_and_cosine_ms": 21.418653999717208,
+          "rerank_ms": 34172.80921899874,
+          "selection_ms": 0.43766900125774555,
+          "candidate_count": 298,
+          "selected_count": 12,
+          "rerank_pair_count": 40
+        },
+        {
+          "round": 1,
+          "case_id": "R02",
+          "queue_wait_ms": 0.13925000166636892,
+          "service_ms": 71155.61060399705,
+          "response_ms": 71155.74985399871,
+          "query_embedding_ms": 71.65358400015975,
+          "index_and_cosine_ms": 32.16307800175855,
+          "rerank_ms": 71051.3641159996,
+          "selection_ms": 0.42728300104499795,
+          "candidate_count": 298,
+          "selected_count": 12,
+          "rerank_pair_count": 40
+        },
+        {
+          "round": 1,
+          "case_id": "R03",
+          "queue_wait_ms": 0.053449999541044235,
+          "service_ms": 35984.00902299909,
+          "response_ms": 35984.06247299863,
+          "query_embedding_ms": 14.820501000940567,
+          "index_and_cosine_ms": 19.61866399869905,
+          "rerank_ms": 35949.16619599826,
+          "selection_ms": 0.40148400148609653,
+          "candidate_count": 298,
+          "selected_count": 12,
+          "rerank_pair_count": 40
+        },
+        {
+          "round": 1,
+          "case_id": "R04",
+          "queue_wait_ms": 0.13423999916994944,
+          "service_ms": 72065.4274640001,
+          "response_ms": 72065.56170399926,
+          "query_embedding_ms": 47.37897300219629,
+          "index_and_cosine_ms": 17.033587999321753,
+          "rerank_ms": 72000.60772299912,
+          "selection_ms": 0.4045489986310713,
+          "candidate_count": 298,
+          "selected_count": 12,
+          "rerank_pair_count": 40
+        }
+      ]
+    }
+  ]
+}

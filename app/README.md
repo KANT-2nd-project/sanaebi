@@ -188,3 +188,5 @@ uv run --locked python -m unittest discover -s tests -t . -v
 `SANAEBI_RETRIEVAL_MODE=rag`가 기본이다. C 설정으로 동일 게시 snapshot의 점수0.35 이상 근거를 개수·문자·별도 문맥 토큰 제한 없이 전달한다. `full`은 명시적으로 전체 게시본을 전달하는 수동 복구 경로다. [모델·색인 준비와 자정 복구](../docs/rag-runtime.md)를 따른다. 기존 shadow/gate 정책과 생성 한도는 유지한다.
 
 문서 게시·사용 중단·전체 삭제·기본 복원은 rag에서 검색 준비까지 확인한 뒤 성공 응답한다. 초안은 임베딩하지 않는다. 저장 후 색인 실패와 동일 요청 재시도는 [문서 관리 계약](../docs/document-management.md#rag-색인과-자정-초기화)을 따른다.
+
+검색 설정의 선정 근거와 한계는 [v3 검색 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)에 기록했다. 기본 rag+C 유지와 실제 운영 활성화는 별개다. 0.35는 코사인 점수이며 관련 확률·답변 정확도가 아니다.

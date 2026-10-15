@@ -97,4 +97,5 @@ RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklog
 - [Full·RAG 실제 답변 비교와 문서 초기화 연동](../retrieval/reports/2026-10-15-rag-answer-comparison/README.md): 형식 오류에 따른 중단·승격 보류와 격리 검증.
 - [전체 프롬프트 v7 독립 보강108회 비교](../generation_evaluation/reports/2026-10-15-prompt-v7/README.md): 가독성·완전성 분리,3회 반복과 v5 유지, 재부팅 뒤 증거 복구·미복구 범위. [일지](worklogs/2026-10-15-prompt-v7.md).
 
+- [RAG 평가 기준 보완·검색 최적화](../retrieval/reports/2026-10-15-retrieval-v3/README.md): qrel v3·CPU 비교와 신규 확인 후 C 유지.
 - [RAG C 채택·인자 및 문맥 비교](../retrieval/reports/2026-10-15-c-adoption/README.md): 검색 근거 누락 최소화에 따른 사용자 선택, rag 코드 기본값과 운영 미전환 구분.

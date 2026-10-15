@@ -1,0 +1,15 @@
+{
+  "http_status": 200,
+  "snapshot_reads": 1,
+  "generation_reservations": 1,
+  "mock_generation_calls": 1,
+  "paid_api_calls": 0,
+  "real_tiny_embedding": true,
+  "temporary_document_and_index_db": true,
+  "policy": "C_unlimited",
+  "response": {
+    "ok": true,
+    "text": "가상 생성 답변",
+    "reason": ""
+  }
+}
