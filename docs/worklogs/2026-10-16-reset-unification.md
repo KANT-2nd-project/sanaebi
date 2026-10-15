@@ -28,7 +28,19 @@
 
 환경 검사 보강 후 관련15개도 통과했다. 실제 템플릿 ExecStart를 full/rag 각각 임시 DB에서 실행하여 서버 설정 로더의 source/DB/root/bundle 해석과 복원 본문을 확인했다. 부분 실패 출력의 recovery_environment를 실제 적용한 색인 전용 복구도 확인했다. 렌더링한 로컬 unit의 systemd-analyze verify는 통과했으며 설치·활성화하지 않았다.
 
-CI·운영 이미지 검증·Git/Notion 반영의 최종 결과는 아래 완료 기록에 추가한다.
+## 게시·운영 검증
+
+기능별 커밋 `e12090b`(HTTP 회귀7개), `59c390f`(공통 처리·원본 선택·복구), `8609bfb`(예약 환경·CLI 회귀8개), `b87d22e`(QA 정정·문서)를 main에 푸시하고 원격 SHA 일치를 확인했다.
+
+[Delivery 38818411112](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38818411112)의 Python·웹·ARM64 이미지·배포가 모두 성공했다. CI는 Python1062개(103.51초), 웹124개, Ruff608파일, 웹 lint/typecheck/build, ARM64 CPU runtime import를 통과했다. 운영 활성 릴리스는 `b87d22eeffaea0b62cb9ae674c6265fcdd9ccb64-38818411112`, 이미지 digest는 `sha256:b4ba708c789b2c68362a34c096e68798975e5e7f0b3870fe1873b5d973171f29`다. 이전 `d7f7ed16fca9296074f919eb3ab6acbf98898f6a-38812507761`은 previous로 보존했다.
+
+새 운영 이미지로 네트워크 없음·CPU1·메모리3GiB·기존 볼륨 읽기 전용·복사 DB 전용 컨테이너를 실행했다. 일반/전용 CLI 각각71문서·ready=true·missing0, 실제 KURE 검색20개가 모두 최신 개정이며 구개정이 제외됐다. 전체 검사 시간은 모델 로딩 포함11.07초/1.73초다. 원본 운영 DB 논리 SHA는 배포 전후 및 격리 실행 전후 모두 `9aa0d7b1fe80f973b30dd9681843c2a95fccd3ec745322f0438da26ceead925b`로 같았다. API ready, 검색 worker 실행 및 실제 운영 색인71개·missing0을 확인했다. 격리 컨테이너는 종료됐다.
+
+공개 `/chat`은200, `/api/docs`는404다. 실제 Chromium에서 채팅 화면·입력창·메뉴 표시와 콘솔 오류/경고0을 확인하고 브라우저를 종료했다. 질문은 전송하지 않았다. 새 동작의 문서 쓰기는 격리 DB에서만 수행했다.
+
+운영 `sanaebi-production-reset.timer`는 기존 enabled/active 상태이며 `production_maintenance.py reset` 경로와 다음 예약2026-10-17 00:00 KST를 유지했다. 로컬 system/user 및 운영 legacy timer는 inactive다. 로컬 예약 신규 활성화, 실제 운영 문서 전체 초기화와 추가 LLM 호출은 없었다.
+
+실행 자료: `production-results.json`, `production-before.log`, `production-after.log`, `production-final.log`, `production-db-before.sha256`, `production-db-after.sha256`, `delivery.log`, `public-chat.png`, `browser-console.log`. 원래 QA 원자료·이전 점수·기존 데이터는 보존했다. 최종 별도 AI 보고서 검수에서 CI·배포·해시·KURE·정정 주장의 근거가 일치하며 추가 차단 사항이 없음을 확인했다. Notion 반영은 아래 동기화 기록으로 구분한다.
 
 ## 한계
 
