@@ -4,7 +4,11 @@ import unittest
 from dataclasses import asdict
 from pathlib import Path
 
-from generation.profiles import build_profile_prompt
+from generation.profiles import (
+    DEFAULT_PROMPT_PROFILE,
+    RAG_PROMPT_PROFILE,
+    build_profile_prompt,
+)
 
 
 class ProfileCompatibilityTests(unittest.TestCase):
@@ -86,3 +90,13 @@ class ProfileCompatibilityTests(unittest.TestCase):
     def test_profile_must_be_explicit(self):
         with self.assertRaises(TypeError):
             build_profile_prompt("Q42", ["D17"])
+
+    def test_rag_service_profile_extends_v5_without_changing_default(self):
+        v5 = build_profile_prompt("질문", ["문서"], "examples_answer_scope_v5")
+        rag = build_profile_prompt("질문", ["문서"], RAG_PROMPT_PROFILE)
+
+        self.assertEqual(DEFAULT_PROMPT_PROFILE, "examples_answer_scope_v5")
+        self.assertEqual(RAG_PROMPT_PROFILE, "examples_answer_scope_v5_rag_service_v1")
+        self.assertEqual(rag.user, v5.user)
+        self.assertTrue(rag.system.startswith(v5.system.rstrip() + "\n\n"))
+        self.assertIn("검색 결과 없음이나 게시 문서 없음", rag.system)

@@ -8,11 +8,11 @@ from dataclasses import dataclass
 
 from app.retrieval.config import (
     DEFAULT_SPEC,
-    MAX_INPUT_TOKENS,
     OVERLAP_TOKENS,
     TARGET_BODY_TOKENS,
     RetrievalSpec,
     retrieval_spec_id,
+    validate_chunk_geometry,
 )
 from app.retrieval.types import Chunk, RetrievalUnavailable, SourceSpan
 
@@ -20,6 +20,7 @@ _HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*#*\s*$")
 _TABLE_LINE = re.compile(r"^\s*\|.*\|\s*$")
 _FENCE = re.compile(r"^\s*(```|~~~)")
 _TOKEN_HEADER_BUDGET = 120
+MAX_INPUT_TOKENS = DEFAULT_SPEC.max_document_tokens
 
 
 @dataclass(frozen=True)
@@ -172,6 +173,7 @@ def chunk_document(
     document, tokenizer, *, spec: RetrievalSpec = DEFAULT_SPEC
 ) -> tuple[Chunk, ...]:
     """Split one published document; every span points to source-body characters."""
+    validate_chunk_geometry(spec)
     body = document.body
     if not isinstance(body, str) or not body.strip():
         return ()
@@ -197,10 +199,10 @@ def chunk_document(
         offsets = token_offsets(tokenizer, value)
         if not offsets:
             return
-        step = max(1, TARGET_BODY_TOKENS - OVERLAP_TOKENS)
+        step = spec.target_body_tokens - spec.overlap_tokens
         token_start = 0
         while token_start < len(offsets):
-            token_end = min(len(offsets), token_start + TARGET_BODY_TOKENS)
+            token_end = min(len(offsets), token_start + spec.target_body_tokens)
             span_start = start + offsets[token_start][0]
             span_end = start + offsets[token_end - 1][1]
             raw_chunks.append(((SourceSpan(span_start, span_end, kind),), heading))
@@ -211,17 +213,24 @@ def chunk_document(
     for block in _blocks(body):
         block_text = body[block.start : block.end]
         count = token_count(tokenizer, block_text, special_tokens=False)
-        if block.kind == "table" and count > TARGET_BODY_TOKENS:
+        if block.kind == "table" and count > spec.target_body_tokens:
             flush_pending()
-            _split_table(body, block, tokenizer, raw_chunks)
+            _split_table(
+                body,
+                block,
+                tokenizer,
+                raw_chunks,
+                target_tokens=spec.target_body_tokens,
+                overlap_tokens=spec.overlap_tokens,
+            )
             continue
-        if count > TARGET_BODY_TOKENS:
+        if count > spec.target_body_tokens:
             flush_pending()
             split_span(block.start, block.end, block.heading, block.kind)
             continue
         if pending_start is not None and (
             pending_heading != block.heading
-            or pending_tokens + count > TARGET_BODY_TOKENS
+            or pending_tokens + count > spec.target_body_tokens
         ):
             flush_pending()
         if pending_start is None:
@@ -237,10 +246,11 @@ def chunk_document(
         base_header = _clip_header(document.title, heading, tokenizer)
         header = base_header
         encoded_text = embedding_input(header, "", text, spec=spec)
-        # The header budget reserves room for a 360-token body and model specials.
+        # The header budget reserves room for the configured body and model specials.
         # Keep this as a checked invariant so tokenizer behavior changes fail closed.
         while (
-            token_count(tokenizer, encoded_text, special_tokens=True) > MAX_INPUT_TOKENS
+            token_count(tokenizer, encoded_text, special_tokens=True)
+            > spec.max_document_tokens
         ):
             header_offsets = token_offsets(tokenizer, base_header)
             if len(header_offsets) > 1:
@@ -275,10 +285,25 @@ def chunk_document(
     return tuple(chunks)
 
 
-def _split_table(body: str, block: _Block, tokenizer, raw_chunks):
+def _split_table(
+    body: str,
+    block: _Block,
+    tokenizer,
+    raw_chunks,
+    *,
+    target_tokens: int = TARGET_BODY_TOKENS,
+    overlap_tokens: int = OVERLAP_TOKENS,
+):
     table_lines = [line for line in _lines(body[block.start : block.end])]
     if len(table_lines) < 2:
-        _split_table_fallback(body, block, tokenizer, raw_chunks)
+        _split_table_fallback(
+            body,
+            block,
+            tokenizer,
+            raw_chunks,
+            target_tokens=target_tokens,
+            overlap_tokens=overlap_tokens,
+        )
         return
     absolute = [
         (block.start + start, block.start + end, text)
@@ -291,11 +316,18 @@ def _split_table(body: str, block: _Block, tokenizer, raw_chunks):
     header_tokens = token_count(
         tokenizer, body[header_start:header_end], special_tokens=False
     )
-    if header_tokens >= TARGET_BODY_TOKENS - OVERLAP_TOKENS:
-        _split_table_fallback(body, block, tokenizer, raw_chunks)
+    if header_tokens >= target_tokens - overlap_tokens:
+        _split_table_fallback(
+            body,
+            block,
+            tokenizer,
+            raw_chunks,
+            target_tokens=target_tokens,
+            overlap_tokens=overlap_tokens,
+        )
         return
     header_span = SourceSpan(header_start, header_end, "table_header")
-    row_capacity = TARGET_BODY_TOKENS - header_tokens
+    row_capacity = target_tokens - header_tokens
     rows = absolute[header_end_index:]
     current: list[tuple[int, int, str]] = []
     current_tokens = 0
@@ -319,6 +351,8 @@ def _split_table(body: str, block: _Block, tokenizer, raw_chunks):
                 header_span,
                 tokenizer,
                 local_chunks,
+                target_tokens=target_tokens,
+                overlap_tokens=overlap_tokens,
             )
             raw_chunks.extend(local_chunks)
             continue
@@ -343,18 +377,27 @@ def _split_table(body: str, block: _Block, tokenizer, raw_chunks):
 
 
 def _split_span_with_header(
-    body, start, end, heading, header_span, tokenizer, raw_chunks
+    body,
+    start,
+    end,
+    heading,
+    header_span,
+    tokenizer,
+    raw_chunks,
+    *,
+    target_tokens: int = TARGET_BODY_TOKENS,
+    overlap_tokens: int = OVERLAP_TOKENS,
 ):
     value = body[start:end]
     offsets = token_offsets(tokenizer, value)
     capacity = max(
         1,
-        TARGET_BODY_TOKENS
+        target_tokens
         - token_count(
             tokenizer, body[header_span.start : header_span.end], special_tokens=False
         ),
     )
-    step = max(1, capacity - OVERLAP_TOKENS)
+    step = max(1, capacity - overlap_tokens)
     token_start = 0
     while token_start < len(offsets):
         token_end = min(len(offsets), token_start + capacity)
@@ -375,13 +418,21 @@ def _split_span_with_header(
         token_start += step
 
 
-def _split_table_fallback(body, block, tokenizer, raw_chunks):
+def _split_table_fallback(
+    body,
+    block,
+    tokenizer,
+    raw_chunks,
+    *,
+    target_tokens: int = TARGET_BODY_TOKENS,
+    overlap_tokens: int = OVERLAP_TOKENS,
+):
     value = body[block.start : block.end]
     offsets = token_offsets(tokenizer, value)
-    step = max(1, TARGET_BODY_TOKENS - OVERLAP_TOKENS)
+    step = max(1, target_tokens - overlap_tokens)
     token_start = 0
     while token_start < len(offsets):
-        token_end = min(len(offsets), token_start + TARGET_BODY_TOKENS)
+        token_end = min(len(offsets), token_start + target_tokens)
         raw_chunks.append(
             (
                 (

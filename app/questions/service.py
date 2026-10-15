@@ -1,4 +1,4 @@
-"""HTTP·모델 구현과 독립적인 라벨별 질문 처리 정책."""
+"""Classification policy around explicitly assembled document answer flows."""
 
 from __future__ import annotations
 
@@ -7,26 +7,29 @@ from dataclasses import dataclass
 from time import perf_counter
 from typing import TYPE_CHECKING, Literal, Protocol
 
+from langchain_core.runnables import RunnableLambda
+
 from app.classification.errors import (
     ClassificationInferenceError,
     ClassificationUnavailable,
 )
 from app.diagnostics.trace import (
+    named_trace_config,
     record_classification,
-    record_retrieval,
     record_routing,
 )
 from app.documents.context import DocumentContextSnapshot
-from contracts.classification import ClassificationLabel
+from app.questions.pipeline import build_legacy_flow
+from contracts.classification import LABELS, ClassificationLabel
 from generation.advisory import ClassificationContext
 
 if TYPE_CHECKING:
     from app.retrieval.types import RetrievedContext
 
 Retriever = Callable[[str, DocumentContextSnapshot], "RetrievedContext"]
-
 Classifier = Callable[[str], ClassificationLabel]
 DocumentReader = Callable[[], DocumentContextSnapshot]
+RoutingMode = Literal["gate", "shadow", "advisory"]
 
 
 class Answerer(Protocol):
@@ -39,99 +42,90 @@ class Answerer(Protocol):
     ) -> str: ...
 
 
-RoutingMode = Literal["gate", "shadow", "advisory"]
-_VALID_LABELS = frozenset({"SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED"})
-
-
 @dataclass(frozen=True)
 class QuestionResult:
     text: str
+
+
+@dataclass(frozen=True)
+class ClassificationOutcome:
+    label: ClassificationLabel | None
+    status: str
+    source: Literal["model", "client"]
+    elapsed_seconds: float | None
+
+    def record(self, routing_mode, processing_path=None):
+        fields = {
+            "routing_mode": routing_mode,
+            "label_source": self.source,
+            "classification_status": self.status,
+            "classification_elapsed_seconds": self.elapsed_seconds,
+            "generation_attempted": False,
+        }
+        if processing_path is not None:
+            fields["processing_path"] = processing_path
+        record_routing(fields)
+        if self.label is not None:
+            record_classification(self.label)
 
 
 def handle_question(
     question: str,
     *,
     classify: Classifier,
-    read_documents: DocumentReader,
-    answer: Answerer,
+    read_documents: DocumentReader | None = None,
+    answer: Answerer | None = None,
     retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
+    document_flow=None,
+    allow_empty_retrieval=False,
 ) -> QuestionResult:
     _validate_routing_mode(routing_mode)
-    record_routing(
-        {
-            "routing_mode": routing_mode,
-            "label_source": "model",
-            "classification_status": "running",
-            "classification_elapsed_seconds": None,
-            "processing_path": "classification",
-            "generation_attempted": False,
-        }
+    ClassificationOutcome(None, "running", "model", None).record(
+        routing_mode, "classification"
     )
     started = perf_counter()
+    classifier = RunnableLambda(classify).with_config(
+        **named_trace_config(run_name="classify", stage="classification", role="chain")
+    )
     try:
-        label = classify(question)
+        label = classifier.invoke(question)
     except (ClassificationUnavailable, ClassificationInferenceError) as error:
-        seconds = perf_counter() - started
         status = (
             "unavailable"
             if isinstance(error, ClassificationUnavailable)
             else "inference_error"
         )
-        record_routing(
-            {
-                "classification_status": status,
-                "classification_elapsed_seconds": seconds,
-                "processing_path": (
-                    f"classification_error_{routing_mode}"
-                    if routing_mode in {"shadow", "advisory"}
-                    else "classification_failed"
-                ),
-            }
+        outcome = ClassificationOutcome(None, status, "model", perf_counter() - started)
+        outcome.record(
+            routing_mode,
+            "classification_failed"
+            if routing_mode == "gate"
+            else f"classification_error_{routing_mode}",
         )
         if routing_mode == "gate":
             raise
-        return answer_question_with_documents(
-            question,
-            read_documents=read_documents,
-            answer=answer,
-            retrieve=retrieve,
-            routing_mode=routing_mode,
-            label_source="model",
-            classification_status=status,
-            classification_elapsed_seconds=seconds,
-        )
     except Exception:
-        record_routing(
-            {
-                "classification_status": "unexpected_error",
-                "classification_elapsed_seconds": perf_counter() - started,
-                "processing_path": "classification_failed",
-            }
-        )
+        ClassificationOutcome(
+            None, "unexpected_error", "model", perf_counter() - started
+        ).record(routing_mode, "classification_failed")
         raise
-
-    seconds = perf_counter() - started
-    if not isinstance(label, str) or label not in _VALID_LABELS:
-        record_routing(
-            {
-                "classification_status": "invalid_label",
-                "classification_elapsed_seconds": seconds,
-                "processing_path": "invalid_label",
-            }
-        )
-        raise ValueError("분류기가 허용되지 않은 라벨을 반환했습니다.")
-
-    return _handle_validated_label(
+    else:
+        if not isinstance(label, str) or label not in LABELS:
+            ClassificationOutcome(
+                None, "invalid_label", "model", perf_counter() - started
+            ).record(routing_mode, "invalid_label")
+            raise ValueError("분류기가 허용되지 않은 라벨을 반환했습니다.")
+        outcome = ClassificationOutcome(label, "ok", "model", perf_counter() - started)
+    return _handle_outcome(
         question,
-        label,
+        outcome,
         read_documents=read_documents,
         answer=answer,
         retrieve=retrieve,
         routing_mode=routing_mode,
-        label_source="model",
-        classification_status="ok",
-        classification_elapsed_seconds=seconds,
+        document_flow=document_flow,
+        allow_empty_retrieval=allow_empty_retrieval,
     )
 
 
@@ -139,51 +133,88 @@ def handle_classified_question(
     question: str,
     label: ClassificationLabel,
     *,
-    read_documents: DocumentReader,
-    answer: Answerer,
+    read_documents: DocumentReader | None = None,
+    answer: Answerer | None = None,
     retrieve: Retriever | None = None,
     routing_mode: RoutingMode = "gate",
+    document_flow=None,
+    allow_empty_retrieval=False,
 ) -> QuestionResult:
     _validate_routing_mode(routing_mode)
-    if not isinstance(label, str) or label not in _VALID_LABELS:
-        record_routing(
-            {
-                "routing_mode": routing_mode,
-                "label_source": "client",
-                "classification_status": "invalid_label",
-                "classification_elapsed_seconds": None,
-                "processing_path": "invalid_label",
-                "generation_attempted": False,
-            }
+    if not isinstance(label, str) or label not in LABELS:
+        ClassificationOutcome(None, "invalid_label", "client", None).record(
+            routing_mode, "invalid_label"
         )
         raise ValueError("분류기가 허용되지 않은 라벨을 반환했습니다.")
-
-    return _handle_validated_label(
+    return _handle_outcome(
         question,
-        label,
+        ClassificationOutcome(label, "provided", "client", None),
         read_documents=read_documents,
         answer=answer,
         retrieve=retrieve,
         routing_mode=routing_mode,
-        label_source="client",
-        classification_status="provided",
-        classification_elapsed_seconds=None,
+        document_flow=document_flow,
+        allow_empty_retrieval=allow_empty_retrieval,
     )
 
 
-def _handle_validated_label(
-    question: str,
-    label: ClassificationLabel,
+def _handle_outcome(
+    question,
+    outcome,
     *,
-    read_documents: DocumentReader,
-    answer: Answerer,
+    read_documents,
+    answer,
+    retrieve,
+    routing_mode,
+    document_flow,
+    allow_empty_retrieval,
+):
+    outcome.record(routing_mode)
+    if routing_mode == "gate" and outcome.label == "CLARIFY":
+        record_routing({"processing_path": "clarify"})
+        return QuestionResult(
+            "어떤 대상에 대해 어떤 도움이 필요한지 조금 더 알려주세요."
+        )
+    if routing_mode == "gate" and outcome.label == "UNSUPPORTED":
+        record_routing({"processing_path": "unsupported"})
+        return QuestionResult("지원 범위 밖의 요청 혹은 질문입니다.")
+    advisory = (
+        ClassificationContext(outcome.label)
+        if routing_mode == "advisory"
+        and outcome.source == "model"
+        and outcome.status == "ok"
+        else None
+    )
+    return answer_question_with_documents(
+        question,
+        read_documents=read_documents,
+        answer=answer,
+        retrieve=retrieve,
+        routing_mode=routing_mode,
+        label_source=outcome.source,
+        classification_status=outcome.status,
+        classification_elapsed_seconds=outcome.elapsed_seconds,
+        classification_context=advisory,
+        document_flow=document_flow,
+        allow_empty_retrieval=allow_empty_retrieval,
+    )
+
+
+def answer_question_with_documents(
+    question: str,
+    *,
+    read_documents: DocumentReader | None = None,
+    answer: Answerer | None = None,
     retrieve: Retriever | None = None,
-    routing_mode: RoutingMode,
-    label_source: Literal["model", "client"],
-    classification_status: str,
-    classification_elapsed_seconds: float | None,
+    routing_mode: RoutingMode = "gate",
+    label_source=None,
+    classification_status=None,
+    classification_elapsed_seconds=None,
+    classification_context: ClassificationContext | None = None,
+    document_flow=None,
+    allow_empty_retrieval=False,
 ) -> QuestionResult:
-    record_classification(label)
+    """Direct-call compatibility; HTTP injects a complete full or RAG flow."""
     record_routing(
         {
             "routing_mode": routing_mode,
@@ -193,95 +224,22 @@ def _handle_validated_label(
             "generation_attempted": False,
         }
     )
-
-    if routing_mode == "gate" and label == "CLARIFY":
-        record_routing({"processing_path": "clarify"})
-        return QuestionResult(
-            text="어떤 대상에 대해 어떤 도움이 필요한지 조금 더 알려주세요."
+    if document_flow is None:
+        if read_documents is None or answer is None:
+            raise TypeError(
+                "A document flow or document reader and answerer is required"
+            )
+        document_flow = build_legacy_flow(
+            read_documents,
+            answer,
+            retrieve,
+            allow_empty_retrieval=allow_empty_retrieval,
         )
-    if routing_mode == "gate" and label == "UNSUPPORTED":
-        record_routing({"processing_path": "unsupported"})
-        return QuestionResult(text="지원 범위 밖의 요청 혹은 질문입니다.")
-
-    return answer_question_with_documents(
-        question,
-        read_documents=read_documents,
-        answer=answer,
-        retrieve=retrieve,
-        routing_mode=routing_mode,
-        label_source=label_source,
-        classification_status=classification_status,
-        classification_elapsed_seconds=classification_elapsed_seconds,
-        classification_context=(
-            ClassificationContext(label)
-            if routing_mode == "advisory" and label_source == "model"
-            else None
-        ),
+    return QuestionResult(
+        document_flow.invoke(
+            {"question": question, "classification_context": classification_context}
+        )
     )
-
-
-def answer_question_with_documents(
-    question: str,
-    *,
-    read_documents: DocumentReader,
-    answer: Answerer,
-    retrieve: Retriever | None = None,
-    routing_mode: RoutingMode = "gate",
-    label_source: Literal["model", "client"] | None = None,
-    classification_status: str | None = None,
-    classification_elapsed_seconds: float | None = None,
-    classification_context: ClassificationContext | None = None,
-) -> QuestionResult:
-    """한 번 스냅샷을 읽고, 문서가 있을 때만 답변기를 호출한다."""
-    trace_fields = {
-        "routing_mode": routing_mode,
-        "label_source": label_source,
-        "classification_status": classification_status,
-        "classification_elapsed_seconds": classification_elapsed_seconds,
-        "generation_attempted": False,
-        "processing_path": "document_lookup",
-    }
-    record_routing(trace_fields)
-    documents = read_documents()
-    if not documents.documents:
-        record_routing({"processing_path": "empty_documents"})
-        return QuestionResult(
-            text="현재 확인 가능한 회사 문서가 없어 답변하기 어렵습니다."
-        )
-
-    context = documents
-    if retrieve is not None:
-        record_routing({"processing_path": "retrieval", "generation_attempted": False})
-        started = perf_counter()
-        try:
-            context = retrieve(question, documents)
-        except Exception:
-            record_retrieval(
-                status="failed", seconds=perf_counter() - started, selected_count=0
-            )
-            raise
-        else:
-            record_retrieval(
-                status="ok",
-                seconds=perf_counter() - started,
-                selected_count=len(getattr(context, "evidence", ())),
-            )
-        if not context.evidence:
-            record_routing(
-                {"processing_path": "empty_retrieval", "generation_attempted": False}
-            )
-            return QuestionResult(
-                text="관련 문서에서 답변에 필요한 근거를 찾지 못했습니다."
-            )
-    record_routing({"processing_path": "generation", "generation_attempted": True})
-    if classification_context is None:
-        answer_text = answer(question, context)
-    else:
-        answer_text = answer(
-            question, context, classification_context=classification_context
-        )
-
-    return QuestionResult(text=answer_text)
 
 
 def _validate_routing_mode(routing_mode: str) -> None:

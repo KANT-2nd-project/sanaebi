@@ -189,7 +189,7 @@ class RetrievalWriterLockTests(unittest.TestCase):
                 index_documents, "DocumentContextProvider", return_value=FakeProvider()
             ),
             patch.object(index_documents, "create_embedder", return_value=object()),
-            patch.object(index_documents, "RetrievalService", FakeService),
+            patch.object(index_documents, "RetrievalIndexer", FakeService),
             patch.object(index_documents, "writer_lock", tracked_lock),
             patch.object(index_documents, "Event", return_value=fake_event),
             patch.object(index_documents.signal, "signal", side_effect=fake_signal),

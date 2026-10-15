@@ -10,8 +10,8 @@ from app.documents.transfer import import_knowledge
 from app.retrieval.baseline import prepare_baseline, validate_baseline
 from app.retrieval.config import SERVER_SPEC
 from app.retrieval.embedding import create_embedder
+from app.retrieval.indexer import RetrievalIndexer
 from app.retrieval.repository import IndexRepository
-from app.retrieval.service import RetrievalService
 from app.retrieval.sync import writer_lock
 from app.settings import (
     PROJECT_ROOT,
@@ -82,12 +82,12 @@ def prepare(*, init_documents=False):
                     staged.unlink()
         snapshot = DocumentContextProvider(database_path=database).snapshot()
         if mode == "rag":
-            service = RetrievalService(
+            indexer = RetrievalIndexer(
                 IndexRepository(get_retrieval_root(), spec=SERVER_SPEC),
                 embedder,
                 baseline_path=baseline,
             )
-            service.reconcile(snapshot)
+            indexer.reconcile(snapshot)
     return diagnose()
 
 

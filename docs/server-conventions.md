@@ -72,7 +72,7 @@ app/
 |---|---|
 | 분류 | 질문 문자열 → ClassificationLabel |
 | 문서 조회 | 인자 없음 → DocumentContextSnapshot |
-| 답변 생성 | 질문·snapshot 또는 검색 근거·선택적 ClassificationContext → 검증된 답변 문자열 |
+| 답변 생성 | AnswerInput(질문·렌더링 문서·snapshot fingerprint·선택적 분류 참고) → 검증된 답변 문자열 |
 | 질문 처리 | 질문·의존 함수 → QuestionResult(text) |
 | HTTP | 요청 → 서비스 결과 → AnswerResponse(ok, text, reason) |
 
@@ -147,10 +147,20 @@ trace는 모드·라벨 출처·분류 상태·단계 경과 시간·처리 경�
 
 ## 선택적 RAG 경계
 
-`SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 rag를 사용한다. KURE는 현재 게시 개정의 최고 코사인이0.42882221937179565 이상이면 상위20청크를 선택하고 겹친 원문 구간을 병합한다. 개별 청크 하한·추가 본문 문자·전달 토큰 제한은 없다. 상위20은 병합 전 수량이다. 질문512·문서8192토큰과 제공자 입력 한계는 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 GenerationAnswerer의 retrieved 입구로 보낸다. full 입구는 기존 snapshot 계약을 유지한다. 두 입구의 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
+`SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 rag를 사용한다. KURE는 현재 게시 개정의 최고 코사인이0.42882221937179565 이상이면 상위20청크를 선택하고 겹친 원문 구간을 병합한다. 개별 청크 하한·추가 본문 문자·전달 토큰 제한은 없다. 상위20은 병합 전 수량이다. 질문512·문서8192토큰과 제공자 입력 한계는 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 공통 AnswerInput으로 렌더링해 GenerationAnswerer에 보낸다. full도 snapshot 전체 문서를 같은 입력으로 변환한다. 기존 answer/answer_retrieved 메서드는 호환 입구로 유지하며 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
 
 검색은 현재 문서/개정/digest를 검증한 청크만 대상으로 한다. 예전 개정을 top-k 이후 거르는 방식은 허용하지 않는다. 빈 원본은 정상 안내, 미완성 색인은503, 검색 입력 초과는422, 일반 코드 오류는500이다. 검색 실패에서 생성기/예산 예약0회를 회귀 검증한다. startup KURE 준비·ready 조회와 생성 API 호출을 분리한다.
 
 기본 벡터 묶음은 실제 host 초기화 원본으로 준비하고, 자정 reset은 원본 복원 후 새 revision mapping만 연결한다. 원본 commit 뒤 실패를 다시 reset으로 복구하지 않는다. 단일 writer lock과 worker 중지/재개의 운영 경계는 [RAG 실행 안내](rag-runtime.md)·[배포 안내](../deployment/README.md)를 따른다. 직접 운영 전환과 서비스 품질 검증은 별도다.
 
 검색 설정 변경은 벡터 입력 변경과 구분한다. KURE 채택은 모델·차원·접두사 변경이므로 별도 vector spec·색인·기본 복원 묶음을 사용한다. 분할용 Tiny tokenizer와360/60 규칙은 유지한다. 기존 Tiny spec·과거 실험과 릴리스 복구는 보존하고 묶음 혼용은 거부한다. [KURE 채택·검증](../retrieval/reports/2026-10-16-kure-adoption/README.md)을 따른다.
+
+## Runnable 조립과 내부 입력
+
+질문 정책은 `questions/service.py`, 문서 흐름 조립은 `questions/pipeline.py`가 담당한다. 분류는 명명된 RunnableLambda로 연결하되 HF 추론과 잠금은 분류기에 남긴다. HTTP 의존성 조립은 full 또는 rag 흐름을 선택하고, 두 흐름 모두 렌더링한 불변 `AnswerInput`을 답변기로 전달한다. 기존 질문 서비스의 함수 주입 인자는 직접 호출·회귀 검증용 호환 경로다.
+
+snapshot은 요청마다 한 번 읽는다. `RunnablePassthrough.assign`은 입력과 snapshot/검색 문맥을 연결하고, 빈 문서·빈 근거는 명시적 분기로 처리한다. 분류·검색·생성의 의존 순서를 유지하며 서로 병렬 실행하지 않는다. HTTP admission, 취소 후 worker 종료까지의 slot 유지, SQLite 트랜잭션과 생성 예산 예약은 체인 밖의 기존 경계를 따른다.
+
+생성 체인은 profile/advisory 구성 → ChatPromptTemplate → 모델 → 응답 정규화 → 결과 검증이다. 문자열만 추출하지 않고 finish_reason·거절·usage를 보존한다. 프로필 본문과 등록 목록을 분리하되 기존 프로필 이름과 문구를 유지한다. 기본 모델은 ChatOpenAI Runnable이며 strict JSON은 공개 SDK adapter를 사용한다.
+
+진단은 callback·단계 이벤트·HTTP middleware·파일 저장으로 분리한다. `diagnostics/trace.py`는 archive와 기존 소비자를 위한 import 경계를 유지한다. 단계 이름·역할은 명시적 metadata로 연결하고, generic chain 입력/출력은 허용된 진단 필드만 기록한다. 전체 snapshot의 객체 표현을 저장하지 않는다.

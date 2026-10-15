@@ -60,7 +60,8 @@ class DocumentIndexSynchronizer:
         self,
         *,
         repository,
-        retrieval_service,
+        retrieval_service=None,
+        retrieval_indexer=None,
         document_provider,
         baseline_path: str | Path | None,
         source_path: str | Path,
@@ -68,6 +69,9 @@ class DocumentIndexSynchronizer:
     ):
         self.repository = repository
         self.retrieval_service = retrieval_service
+        self.indexer = retrieval_indexer or retrieval_service
+        if self.indexer is None:
+            raise ValueError("a retrieval indexer is required")
         self.document_provider = document_provider
         self.baseline_path = Path(baseline_path) if baseline_path is not None else None
         self.source_path = Path(source_path)
@@ -82,7 +86,7 @@ class DocumentIndexSynchronizer:
 
     def reconcile_current(self):
         snapshot = self.document_provider.snapshot()
-        status = self.retrieval_service.reconcile(snapshot)
+        status = self.indexer.reconcile(snapshot)
         if status.get("ready") is not True:
             raise RetrievalNotReady("현재 게시 문서의 검색 색인이 준비되지 않았습니다.")
         return status

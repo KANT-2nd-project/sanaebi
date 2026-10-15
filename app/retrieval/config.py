@@ -53,6 +53,30 @@ def _legacy_model_contract(
     )
 
 
+MODEL_CONTRACT_FIELDS = (
+    "model_id",
+    "model_revision",
+    "dimension",
+    "dtype",
+    "pooling",
+    "normalization",
+    "query_prefix",
+    "passage_prefix",
+    "max_query_tokens",
+    "max_document_tokens",
+    "splitter_model_id",
+    "splitter_model_revision",
+    "splitter_directory",
+)
+
+
+def same_model_contract(left: RetrievalSpec, right: RetrievalSpec) -> bool:
+    """Compare embedding contracts while allowing a different chunk geometry."""
+    return all(
+        getattr(left, field) == getattr(right, field) for field in MODEL_CONTRACT_FIELDS
+    )
+
+
 @dataclass(frozen=True)
 class RetrievalSpec:
     """Immutable model and chunking inputs that identify one vector index."""
@@ -88,6 +112,12 @@ class RetrievalSpec:
             self.passage_prefix,
             self.max_query_tokens,
             self.max_document_tokens,
+        ) and (
+            self.target_body_tokens == TARGET_BODY_TOKENS
+            and self.overlap_tokens == OVERLAP_TOKENS
+            and self.splitter_model_id == MODEL_ID
+            and self.splitter_model_revision == MODEL_REVISION
+            and self.splitter_directory == "splitter"
         ):
             return {
                 "chunker_version": self.chunker_version,
@@ -147,6 +177,36 @@ KURE_SPEC = RetrievalSpec(
     splitter_directory="splitter",
 )
 SERVER_SPEC = KURE_SPEC
+
+
+def validate_runtime_spec(spec: RetrievalSpec) -> None:
+    """Reject runtime specs unsupported by the pinned local encoders/chunker."""
+    if not isinstance(spec, RetrievalSpec):
+        raise TypeError("retrieval spec must be a RetrievalSpec")
+    if spec.chunker_version != CHUNKER_VERSION:
+        raise ValueError("retrieval chunker version is not supported")
+    validate_chunk_geometry(spec)
+    if spec.model_id == MODEL_ID and same_model_contract(spec, DEFAULT_SPEC):
+        return
+    if spec.model_id == KURE_MODEL_ID and same_model_contract(spec, KURE_SPEC):
+        return
+    raise ValueError("retrieval model contract is not supported")
+
+
+def validate_chunk_geometry(spec: RetrievalSpec) -> None:
+    """Validate generic chunk-window values, including experiment chunkers."""
+    if not isinstance(spec, RetrievalSpec):
+        raise TypeError("retrieval spec must be a RetrievalSpec")
+    if (
+        type(spec.target_body_tokens) is not int
+        or type(spec.overlap_tokens) is not int
+        or type(spec.max_document_tokens) is not int
+        or spec.target_body_tokens <= 0
+        or spec.target_body_tokens >= spec.max_document_tokens
+        or spec.overlap_tokens < 0
+        or spec.overlap_tokens >= spec.target_body_tokens
+    ):
+        raise ValueError("retrieval chunk geometry is invalid")
 
 
 def canonical_retrieval_spec(spec: RetrievalSpec = DEFAULT_SPEC) -> str:

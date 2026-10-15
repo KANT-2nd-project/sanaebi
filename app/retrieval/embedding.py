@@ -13,11 +13,11 @@ from app.retrieval.config import (
     KURE_MODEL_ID,
     KURE_SPEC,
     MODEL_ID,
-    PASSAGE_PREFIX,
-    QUERY_PREFIX,
     SERVER_SPEC,
     VECTOR_DIMENSION,
     RetrievalSpec,
+    same_model_contract,
+    validate_runtime_spec,
 )
 from app.retrieval.types import RetrievalInputTooLong, RetrievalUnavailable
 
@@ -57,9 +57,12 @@ MODEL_MANIFEST = model_manifest(DEFAULT_SPEC)
 class TinyEmbedder:
     """Lazily load the selected model from a verified local artifact directory."""
 
-    def __init__(self, path: str | Path):
+    def __init__(self, path: str | Path, *, spec: RetrievalSpec = DEFAULT_SPEC):
         self.path = Path(path)
-        self.spec = DEFAULT_SPEC
+        validate_runtime_spec(spec)
+        if not same_model_contract(spec, DEFAULT_SPEC):
+            raise RetrievalUnavailable("Tiny 모델 spec이 지원 계약과 다릅니다.")
+        self.spec = spec
         self._lock = threading.RLock()
         self._tokenizer = None
         self._model = None
@@ -91,7 +94,7 @@ class TinyEmbedder:
                     trust_remote_code=False,
                 )
                 hidden_size = getattr(model.config, "hidden_size", None)
-                if hidden_size != DEFAULT_SPEC.dimension:
+                if hidden_size != self.spec.dimension:
                     raise RetrievalUnavailable("임베딩 모델 차원이 계약과 다릅니다.")
                 model.to("cpu")
                 model.eval()
@@ -106,10 +109,12 @@ class TinyEmbedder:
             self._model = model
 
     def encode_queries(self, texts: list[str]) -> np.ndarray:
-        return self._encode(texts, prefix=QUERY_PREFIX)
+        return self._encode(texts, prefix=self.spec.query_prefix)
 
     def encode_documents(self, texts: list[str]) -> np.ndarray:
-        return self._encode(texts, prefix=PASSAGE_PREFIX, already_prefixed=True)
+        return self._encode(
+            texts, prefix=self.spec.passage_prefix, already_prefixed=True
+        )
 
     def _validate_manifest(self):
         manifest_path = self.path / MODEL_MANIFEST_FILENAME
@@ -121,8 +126,9 @@ class TinyEmbedder:
             raise RetrievalUnavailable(
                 "임베딩 모델 식별 자료를 읽을 수 없습니다."
             ) from exc
+        expected_manifest = model_manifest(self.spec)
         if not isinstance(manifest, dict) or any(
-            manifest.get(key) != value for key, value in MODEL_MANIFEST.items()
+            manifest.get(key) != value for key, value in expected_manifest.items()
         ):
             raise RetrievalUnavailable("임베딩 모델 식별 정보가 계약과 다릅니다.")
 
@@ -132,7 +138,7 @@ class TinyEmbedder:
         ):
             raise TypeError("임베딩 입력은 문자열 목록이어야 합니다.")
         if not texts:
-            return np.empty((0, DEFAULT_SPEC.dimension), dtype=np.float32)
+            return np.empty((0, self.spec.dimension), dtype=np.float32)
 
         prepared = [
             text if already_prefixed and text.startswith(prefix) else f"{prefix}{text}"
@@ -153,7 +159,12 @@ class TinyEmbedder:
                     raise RetrievalUnavailable(
                         "질문 토큰 길이를 확인할 수 없습니다."
                     ) from exc
-                if token_count > 512:
+                maximum = (
+                    self.spec.max_query_tokens
+                    if prefix == self.spec.query_prefix
+                    else self.spec.max_document_tokens
+                )
+                if token_count > maximum:
                     raise RetrievalInputTooLong(
                         "검색 입력이 임베딩 모델의 길이 제한을 넘습니다."
                     )
@@ -177,7 +188,7 @@ class TinyEmbedder:
             except (OSError, RuntimeError, ValueError) as exc:
                 raise RetrievalUnavailable("임베딩 계산에 실패했습니다.") from exc
         _validate_vectors(
-            result, expected_rows=len(prepared), dimension=DEFAULT_SPEC.dimension
+            result, expected_rows=len(prepared), dimension=self.spec.dimension
         )
         return result
 
@@ -193,6 +204,7 @@ class KureEmbedder:
         spec: RetrievalSpec = KURE_SPEC,
     ):
         self.path = Path(path)
+        validate_runtime_spec(spec)
         if not _same_model_contract(spec, KURE_SPEC):
             raise RetrievalUnavailable("KURE 모델 spec이 지원 계약과 다릅니다.")
         self.spec = spec
@@ -244,7 +256,7 @@ class KureEmbedder:
                     trust_remote_code=False,
                 )
                 hidden_size = getattr(model.config, "hidden_size", None)
-                if hidden_size != KURE_SPEC.dimension:
+                if hidden_size != self.spec.dimension:
                     raise RetrievalUnavailable("임베딩 모델 차원이 계약과 다릅니다.")
                 model.float()
                 model.to("cpu")
@@ -311,7 +323,7 @@ class KureEmbedder:
         ):
             raise TypeError("임베딩 입력은 문자열 목록이어야 합니다.")
         if not texts:
-            return np.empty((0, KURE_SPEC.dimension), dtype=np.float32)
+            return np.empty((0, self.spec.dimension), dtype=np.float32)
 
         with self._lock:
             self.warmup()
@@ -370,27 +382,12 @@ def create_embedder(
     if spec.model_id == MODEL_ID and _same_model_contract(spec, DEFAULT_SPEC):
         if splitter_path is not None:
             raise ValueError("the Tiny profile does not accept a splitter path")
-        return TinyEmbedder(path)
+        return TinyEmbedder(path, spec=spec)
     raise RetrievalUnavailable("요청한 임베딩 모델 spec을 지원하지 않습니다.")
 
 
 def _same_model_contract(left: RetrievalSpec, right: RetrievalSpec) -> bool:
-    fields = (
-        "model_id",
-        "model_revision",
-        "dimension",
-        "dtype",
-        "pooling",
-        "normalization",
-        "query_prefix",
-        "passage_prefix",
-        "max_query_tokens",
-        "max_document_tokens",
-        "splitter_model_id",
-        "splitter_model_revision",
-        "splitter_directory",
-    )
-    return all(getattr(left, field) == getattr(right, field) for field in fields)
+    return same_model_contract(left, right)
 
 
 def _validate_vectors(vectors, *, expected_rows=None, dimension=VECTOR_DIMENSION):

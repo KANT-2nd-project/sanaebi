@@ -1,17 +1,22 @@
-"""Serve the adopted generation pipeline from one immutable published snapshot."""
+"""Serve generated answers from one immutable full or retrieved input."""
 
 import hashlib
 import json
 import logging
 from collections.abc import Callable
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
+from functools import partial
+from inspect import getattr_static
 from threading import Lock
 from time import perf_counter
 from typing import TYPE_CHECKING
 
 from httpx import HTTPError
+from langchain_core.prompt_values import PromptValue
+from langchain_core.runnables import RunnableLambda
 from openai import OpenAIError
 
+from app.answering.input import AnswerInput
 from app.answering.output import LLMResponseError
 from app.diagnostics.trace import record_generation
 from app.documents.context import DocumentContextSnapshot
@@ -20,19 +25,61 @@ from app.public_limits import (
     GenerationBudgetUnavailable,
 )
 from generation.advisory import ClassificationContext
-from generation.documents import render_document
 from generation.presets import RuntimeSettings
+from generation.profiles import RAG_PROMPT_PROFILE
 from generation.providers import (
     GenerationProviderResponseError,
+    ManagedGenerationClient,
     build_managed_model_call,
 )
-from generation.service import generate_from_documents
-from generation.types import GenerationPrompt, GenerationStatus
+from generation.service import (
+    CallableModelAdapter,
+    run_generation_pipeline,
+)
+from generation.types import GenerationStatus
 
 if TYPE_CHECKING:
     from app.retrieval.types import RetrievedContext
 
 logger = logging.getLogger("uvicorn.error")
+
+
+@dataclass
+class _GenerationAttempt:
+    metadata: dict[str, object]
+    reserve_generation: Callable[[], None] | None
+    provider_attempted: bool = False
+
+
+def _prepare_model_call(
+    prompt_value: PromptValue, attempt: _GenerationAttempt
+) -> PromptValue:
+    messages = prompt_value.to_messages()
+    if (
+        len(messages) != 2
+        or not isinstance(messages[0].content, str)
+        or not isinstance(messages[1].content, str)
+    ):
+        raise TypeError("생성 프롬프트는 system/user 문자열 메시지여야 합니다.")
+    attempt.metadata["prompt_roles_sha256"] = hashlib.sha256(
+        json.dumps(
+            {"system": messages[0].content, "user": messages[1].content},
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode()
+    ).hexdigest()
+    if attempt.reserve_generation is not None:
+        attempt.reserve_generation()
+    attempt.provider_attempted = True
+    return prompt_value
+
+
+def _client_runnable(client):
+    try:
+        getattr_static(client, "runnable")
+    except AttributeError:
+        return RunnableLambda(CallableModelAdapter(client))
+    return client.runnable
 
 
 class GenerationAnswerer:
@@ -43,9 +90,13 @@ class GenerationAnswerer:
     ):
         self.settings = settings
         self.reserve_generation = reserve_generation
-        self._client = None
+        self._client: ManagedGenerationClient | None = None
         self._lock = Lock()
         self._closed = False
+
+    @property
+    def supports_empty_retrieval(self):
+        return self.settings.prompt_profile == RAG_PROMPT_PROFILE
 
     def _get_client(self):
         with self._lock:
@@ -69,20 +120,14 @@ class GenerationAnswerer:
         *,
         classification_context: ClassificationContext | None = None,
     ) -> str:
-        # Keep the full snapshot at this boundary. Render only once, in order.
-        documents = [
-            render_document(d.knowledge_id, d.title, d.body, d.revision)
-            for d in snapshot.documents
-        ]
-
-        if not documents:
-            raise ValueError("The question service must handle empty snapshots")
-        return self._generate(
+        answer_input = AnswerInput.from_snapshot(
             question,
-            documents,
-            snapshot.fingerprint,
+            snapshot,
             classification_context=classification_context,
         )
+        if not answer_input.documents:
+            raise ValueError("The question service must handle empty snapshots")
+        return self.answer_input(answer_input)
 
     def answer_retrieved(
         self,
@@ -91,59 +136,52 @@ class GenerationAnswerer:
         *,
         classification_context: ClassificationContext | None = None,
     ) -> str:
-        documents = [
-            render_document(e.knowledge_id, e.title, e.text, e.revision)
-            for e in context.evidence
-        ]
-        if not documents:
-            raise ValueError("Retrieval must provide at least one evidence item")
-        documents = ["[현재 게시 문서의 발췌 근거]\n" + text for text in documents]
-        return self._generate(
+        answer_input = AnswerInput.from_retrieved(
             question,
-            documents,
-            context.snapshot_fingerprint,
+            context,
             classification_context=classification_context,
         )
+        if not answer_input.documents and not self.supports_empty_retrieval:
+            raise ValueError("Retrieval must provide at least one evidence item")
+        evidence_state = (
+            answer_input.evidence_state if self.supports_empty_retrieval else None
+        )
+        return self._generate(answer_input, evidence_state=evidence_state)
+
+    def answer_input(self, answer_input: AnswerInput) -> str:
+        if not answer_input.documents and not self.supports_empty_retrieval:
+            raise ValueError("The question service must handle empty evidence")
+        evidence_state = (
+            answer_input.evidence_state if self.supports_empty_retrieval else None
+        )
+        return self._generate(answer_input, evidence_state=evidence_state)
 
     def _generate(
         self,
-        question: str,
-        documents: list[str],
-        fingerprint: str,
+        answer_input: AnswerInput,
         *,
-        classification_context: ClassificationContext | None = None,
+        evidence_state: str | None = None,
     ) -> str:
         started = perf_counter()
-        metadata = {
+        metadata: dict[str, object] = {
             "model": self.settings.config.model_name,
             "profile": self.settings.prompt_profile,
             "config": asdict(self.settings.config),
-            "snapshot_fingerprint": fingerprint,
+            "snapshot_fingerprint": answer_input.snapshot_fingerprint,
+            "evidence_state": evidence_state,
         }
-        provider_attempted = False
-
-        def call(prompt: GenerationPrompt):
-            nonlocal provider_attempted
-            metadata["prompt_roles_sha256"] = hashlib.sha256(
-                json.dumps(
-                    {"system": prompt.system, "user": prompt.user},
-                    ensure_ascii=False,
-                    separators=(",", ":"),
-                ).encode()
-            ).hexdigest()
-            provider = self._get_client()
-            if self.reserve_generation is not None:
-                self.reserve_generation()
-            provider_attempted = True
-            return provider(prompt)
+        attempt = _GenerationAttempt(metadata, self.reserve_generation)
 
         try:
-            result = generate_from_documents(
-                question,
-                documents,
-                call,
+            client = self._get_client()
+            result = run_generation_pipeline(
+                question=answer_input.question,
+                documents=answer_input.documents,
+                model=_client_runnable(client),
                 prompt_profile=self.settings.prompt_profile,
-                classification_context=classification_context,
+                classification_context=answer_input.classification_context,
+                evidence_state=evidence_state,
+                before_model=partial(_prepare_model_call, attempt=attempt),
             )
         except (OpenAIError, HTTPError, GenerationProviderResponseError) as exc:
             metadata.update(status="execution_error", error_type=type(exc).__name__)
@@ -174,7 +212,7 @@ class GenerationAnswerer:
             safe_log = {
                 "event": "generation_result",
                 "status": metadata.get("status", "internal_error"),
-                "provider_attempted": provider_attempted,
+                "provider_attempted": attempt.provider_attempted,
                 "input_tokens": metadata.get("input_tokens"),
                 "output_tokens": metadata.get("output_tokens"),
                 "seconds": metadata["seconds"],

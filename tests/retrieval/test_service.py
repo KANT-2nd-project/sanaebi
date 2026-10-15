@@ -5,12 +5,14 @@ import numpy as np
 
 from app.retrieval.chunking import chunk_document
 from app.retrieval.config import DEFAULT_SPEC
+from app.retrieval.indexer import RetrievalIndexer
 from app.retrieval.repository import IndexRepository
-from app.retrieval.search import search_config_id
+from app.retrieval.search import SearchPolicy, search_config_id
 from app.retrieval.service import RetrievalService, _ranked_hits
 from app.retrieval.types import (
     Chunk,
     RetrievalInputTooLong,
+    RetrievalNotReady,
     RetrievalUnavailable,
     SourceSpan,
 )
@@ -23,6 +25,89 @@ from tests.retrieval.helpers import (
 
 
 class RetrievalServiceTests(RetrievalTestCase):
+    def test_retrieve_reads_and_validates_current_chunks_once_before_query_encode(self):
+        class CountingRepository:
+            spec = DEFAULT_SPEC
+
+            def __init__(self, current):
+                self.current = current
+                self.status_calls = 0
+                self.current_chunk_calls = 0
+
+            def status(self, _snapshot):
+                self.status_calls += 1
+                return {"ready": True}
+
+            def current_chunks(self, _snapshot):
+                self.current_chunk_calls += 1
+                return self.current
+
+        embedder = FakeEmbedder()
+        document = make_document(body="현재 문서 내용")
+        snapshot = make_snapshot(document)
+        chunk = self._chunk(document, 0, [SourceSpan(0, len(document.body))])
+        vector = np.zeros(DEFAULT_SPEC.dimension, dtype=np.float32)
+        vector[0] = 1.0
+        repository = CountingRepository([(chunk, vector)])
+        service = RetrievalService(repository, embedder)
+
+        service.retrieve("질문", snapshot)
+
+        self.assertEqual(repository.status_calls, 0)
+        self.assertEqual(repository.current_chunk_calls, 1)
+        self.assertEqual(len(embedder.query_batches), 1)
+
+    def test_unready_index_is_rejected_before_query_encoding(self):
+        class UnreadyRepository:
+            spec = DEFAULT_SPEC
+
+            def current_chunks(self, _snapshot):
+                raise RetrievalNotReady("not ready")
+
+        embedder = FakeEmbedder()
+        service = RetrievalService(UnreadyRepository(), embedder)
+
+        with self.assertRaises(RetrievalNotReady):
+            service.retrieve("질문", make_snapshot(make_document()))
+
+        self.assertEqual(embedder.query_batches, [])
+
+    def test_injected_search_policy_controls_selection_and_result_identity(self):
+        class ReadyRepository:
+            spec = DEFAULT_SPEC
+
+            def __init__(self, current):
+                self.current = current
+
+            def current_chunks(self, _snapshot):
+                return self.current
+
+        document = make_document(body="현재 문서")
+        snapshot = make_snapshot(document)
+        chunk = self._chunk(document, 0, [SourceSpan(0, len(document.body))])
+        vector = np.zeros(DEFAULT_SPEC.dimension, dtype=np.float32)
+        vector[0] = 1.0
+        embedder = FakeEmbedder()
+        policy = SearchPolicy(
+            selection="vector_score_threshold",
+            minimum_similarity_score=0.6,
+        )
+        service = RetrievalService(
+            ReadyRepository([(chunk, vector)]),
+            embedder,
+            search_policy=policy,
+        )
+        query = np.zeros((1, DEFAULT_SPEC.dimension), dtype=np.float32)
+        query[0, 0] = 0.5
+        query[0, 1] = np.sqrt(1 - 0.5**2)
+
+        with patch.object(embedder, "encode_queries", return_value=query):
+            result = service.retrieve("질문", snapshot)
+
+        self.assertEqual(result.candidate_count, 0)
+        self.assertEqual(result.search_config_id, search_config_id(policy))
+        self.assertEqual(result.source_document_count, 1)
+
     @staticmethod
     def _chunk(document, ordinal, spans):
         return Chunk(
@@ -189,6 +274,18 @@ class RetrievalServiceTests(RetrievalTestCase):
 
         service.reconcile(snapshot)
         self.assertEqual(sum(map(len, embedder.document_batches)), first_batch_count)
+        self.assertEqual(service.status(snapshot)["missing"], 0)
+
+    def test_indexer_can_be_injected_as_a_separate_write_side_component(self):
+        embedder = FakeEmbedder()
+        repository = IndexRepository(self.tmp_path)
+        indexer = RetrievalIndexer(repository, embedder)
+        snapshot = make_snapshot(make_document())
+
+        result = indexer.reconcile(snapshot)
+        service = RetrievalService(repository, embedder, indexer=indexer)
+
+        self.assertIs(result["ready"], True)
         self.assertEqual(service.status(snapshot)["missing"], 0)
 
     def test_retrieval_filters_old_revision_and_returns_snapshot_provenance(self):

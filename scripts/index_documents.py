@@ -10,8 +10,8 @@ from app.documents.context import DocumentContextProvider
 from app.retrieval.baseline import restore_baseline
 from app.retrieval.config import SERVER_SPEC
 from app.retrieval.embedding import create_embedder
+from app.retrieval.indexer import RetrievalIndexer
 from app.retrieval.repository import IndexRepository
-from app.retrieval.service import RetrievalService
 from app.retrieval.sync import writer_lock
 from app.settings import (
     get_embedding_path,
@@ -32,7 +32,7 @@ def main(argv=None):
         repository = IndexRepository(root, spec=SERVER_SPEC)
         provider = DocumentContextProvider()
         if args.status:
-            result = RetrievalService(repository, None).status(provider.snapshot())
+            result = repository.status(provider.snapshot())
             print(json.dumps(result))
             return 0 if result["ready"] else 2
         if args.restore_baseline:
@@ -42,18 +42,18 @@ def main(argv=None):
             with writer_lock(root, spec=SERVER_SPEC):
                 snapshot = provider.snapshot()
                 restore_baseline(repository, bundle, get_retrieval_source(), snapshot)
-                result = RetrievalService(repository, None).status(snapshot)
+                result = repository.status(snapshot)
                 print(json.dumps(result))
                 return 0 if result["ready"] else 2
         embedder = create_embedder(get_embedding_path(), spec=SERVER_SPEC)
-        service = RetrievalService(
+        indexer = RetrievalIndexer(
             repository, embedder, baseline_path=get_retrieval_baseline()
         )
         if args.once:
             with writer_lock(root, spec=SERVER_SPEC):
                 snapshot = provider.snapshot()
-                service.reconcile(snapshot)
-                result = service.status(snapshot)
+                indexer.reconcile(snapshot)
+                result = indexer.status(snapshot)
                 print(json.dumps(result))
                 return 0 if result["ready"] else 1
         stopped = Event()
@@ -66,8 +66,8 @@ def main(argv=None):
                 try:
                     with writer_lock(root, spec=SERVER_SPEC):
                         snapshot = provider.snapshot()
-                        service.reconcile(snapshot)
-                        result = service.status(snapshot)
+                        indexer.reconcile(snapshot)
+                        result = indexer.status(snapshot)
                     print(json.dumps(result), flush=True)
                     delay = 3
                 except Exception as exc:  # noqa: BLE001 - safe worker diagnostics
