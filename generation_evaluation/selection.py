@@ -11,9 +11,8 @@ from contextlib import contextmanager
 from dataclasses import asdict
 from pathlib import Path
 
-from langchain_ollama import ChatOllama
-
 from generation.documents import load_documents
+from generation.optional_providers import load_ollama_chat_model
 from generation.profiles import build_profile_prompt
 from generation.providers import (
     build_openai_model,
@@ -41,6 +40,7 @@ FOLLOWUP_MAX_CALLS = 166
 MANIFEST_SOURCE_PATHS = (
     "generation/prompts.py",
     "generation/providers.py",
+    "generation/optional_providers.py",
     "generation/service.py",
     "generation/config.py",
     "generation/types.py",
@@ -431,7 +431,7 @@ def run(args):
                     if provider == "openai":
                         model = build_openai_model(config_from_dict(config))
                     else:
-                        model = ChatOllama(
+                        model = load_ollama_chat_model()(
                             base_url="http://127.0.0.1:11435",
                             model=config["model_name"],
                             num_ctx=config["context_window"],
