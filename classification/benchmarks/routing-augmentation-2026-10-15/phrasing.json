@@ -1,0 +1,194 @@
+[
+  {
+    "id": "PAIR001",
+    "group_id": "연차 신청 절차",
+    "question": "연차 신청 절차 알려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR002",
+    "group_id": "연차 신청 절차",
+    "question": "연차 신청 절차 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR003",
+    "group_id": "연차 신청 절차",
+    "question": "연차 신청 절차를 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR004",
+    "group_id": "연차 신청 절차",
+    "question": "연차 신청 절차가 어떻게 되나요?",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR005",
+    "group_id": "연차 신청 절차",
+    "question": "연차 신청 절차에 대해 설명해줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR006",
+    "group_id": "연차 신청 절차",
+    "question": "연차 신청 절차에 대해 설명해주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR007",
+    "group_id": "출장비 정산 절차",
+    "question": "출장비 정산 절차 알려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR008",
+    "group_id": "출장비 정산 절차",
+    "question": "출장비 정산 절차 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR009",
+    "group_id": "출장비 정산 절차",
+    "question": "출장비 정산 절차를 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR010",
+    "group_id": "출장비 정산 절차",
+    "question": "출장비 정산 절차가 어떻게 되나요?",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR011",
+    "group_id": "출장비 정산 절차",
+    "question": "출장비 정산 절차에 대해 설명해줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR012",
+    "group_id": "출장비 정산 절차",
+    "question": "출장비 정산 절차에 대해 설명해주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR013",
+    "group_id": "개인정보 사고 신고 절차",
+    "question": "개인정보 사고 신고 절차 알려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR014",
+    "group_id": "개인정보 사고 신고 절차",
+    "question": "개인정보 사고 신고 절차 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR015",
+    "group_id": "개인정보 사고 신고 절차",
+    "question": "개인정보 사고 신고 절차를 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR016",
+    "group_id": "개인정보 사고 신고 절차",
+    "question": "개인정보 사고 신고 절차가 어떻게 되나요?",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR017",
+    "group_id": "개인정보 사고 신고 절차",
+    "question": "개인정보 사고 신고 절차에 대해 설명해줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR018",
+    "group_id": "개인정보 사고 신고 절차",
+    "question": "개인정보 사고 신고 절차에 대해 설명해주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR019",
+    "group_id": "회사 계정 비밀번호 변경 절차",
+    "question": "회사 계정 비밀번호 변경 절차 알려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR020",
+    "group_id": "회사 계정 비밀번호 변경 절차",
+    "question": "회사 계정 비밀번호 변경 절차 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR021",
+    "group_id": "회사 계정 비밀번호 변경 절차",
+    "question": "회사 계정 비밀번호 변경 절차를 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR022",
+    "group_id": "회사 계정 비밀번호 변경 절차",
+    "question": "회사 계정 비밀번호 변경 절차가 어떻게 되나요?",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR023",
+    "group_id": "회사 계정 비밀번호 변경 절차",
+    "question": "회사 계정 비밀번호 변경 절차에 대해 설명해줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "PAIR024",
+    "group_id": "회사 계정 비밀번호 변경 절차",
+    "question": "회사 계정 비밀번호 변경 절차에 대해 설명해주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "prior observed phrasing diagnosis",
+    "pure_lookup_execution": false
+  }
+]

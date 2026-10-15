@@ -1,0 +1,16 @@
+{
+  "reviewer": "same implementing AI; no independent or human review",
+  "method": "Read taxonomy, check every authored intent, retain existing train group IDs; scan original corpus for fresh topics. Same intent phrasing grouped.",
+  "augmentation_count": 90,
+  "fresh_count": 30,
+  "augmentation_group_count": 17,
+  "fresh_group_count": 10,
+  "exact_duplicate_train_questions": 0,
+  "validation_test_order_preserved": true,
+  "known_limitations": [
+    "Fresh groups are only 10 groups with 3 phrasings each.",
+    "AI review is not human approval.",
+    "Existing group IDs may imperfectly capture semantic overlap; no claim of semantic independence across all 900 rows.",
+    "Observed regression questions informed augmentation intent design."
+  ]
+}

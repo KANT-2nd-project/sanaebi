@@ -1,0 +1,11 @@
+{
+  "validation_macro_f1_max_drop": 0.01,
+  "regression_min_correct": 42,
+  "regression_max_search_to_unsupported": 4,
+  "regression_min_clarify_correct": 6,
+  "fresh_min_correct": 27,
+  "fresh_min_per_label_recall": 0.8,
+  "pure_lookup_execution_max_search": 0,
+  "max_training_runs": 1,
+  "max_epochs": 3
+}

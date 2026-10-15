@@ -1,0 +1,91 @@
+﻿question_id,question,label,group_id,source,review_status,intent,rationale
+AUG0001,회사 연차 발생 규정 알려줘,SEARCH_KNOWLEDGE,RG0181,synthetic:routing-augmentation-2026-10-15,ai_reviewed,연차 발생·촉진 기준,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0002,연차 이월 기준 알려주세요.,SEARCH_KNOWLEDGE,RG0181,synthetic:routing-augmentation-2026-10-15,ai_reviewed,연차 발생·촉진 기준,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0003,연차 촉진 절차 설명해줘,SEARCH_KNOWLEDGE,RG0181,synthetic:routing-augmentation-2026-10-15,ai_reviewed,연차 발생·촉진 기준,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0004,휴가 종류별 사용 조건 알려줘,SEARCH_KNOWLEDGE,RG0177,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 코드 안내,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0005,휴가 코드 선택 기준 알려주세요.,SEARCH_KNOWLEDGE,RG0177,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 코드 안내,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0006,휴가 항목 뜻을 설명해줘,SEARCH_KNOWLEDGE,RG0177,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 코드 안내,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0007,회사 메일 비번 재설정 방법 알려줘,SEARCH_KNOWLEDGE,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회사 메일 비밀번호 재설정 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0008,메일 비밀번호를 잊었을 때 본인 확인 절차 알려주세요.,SEARCH_KNOWLEDGE,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회사 메일 비밀번호 재설정 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0009,회사 메일 비밀번호 바꾸는 법 설명해줘,SEARCH_KNOWLEDGE,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회사 메일 비밀번호 재설정 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0010,회의실 예약 연장 방법 알려줘,SEARCH_KNOWLEDGE,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 예약 연장 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0011,회의실 예약 시간을 늘리는 절차 알려주세요.,SEARCH_KNOWLEDGE,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 예약 연장 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0012,회의실 예약 연장 규칙 설명해줘,SEARCH_KNOWLEDGE,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 예약 연장 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0013,회의실 카메라 추가 방법 알려주고 내 예약에도 추가해줘,SEARCH_KNOWLEDGE,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 카메라 추가 안내와 실행 혼합,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0014,회의실 화상 장비 신청 절차 알려주시고 제 예약도 수정해 주세요.,SEARCH_KNOWLEDGE,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 카메라 추가 안내와 실행 혼합,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0015,카메라 장비 추가 규정 설명하고 예약에 넣어줘,SEARCH_KNOWLEDGE,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 카메라 추가 안내와 실행 혼합,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0016,회사 사물함 배정 규정 알려줘,SEARCH_KNOWLEDGE,RG0078,synthetic:routing-augmentation-2026-10-15,ai_reviewed,좌석·사물함 배정 안내,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0017,사무실 좌석 신청 절차 알려주세요.,SEARCH_KNOWLEDGE,RG0078,synthetic:routing-augmentation-2026-10-15,ai_reviewed,좌석·사물함 배정 안내,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0018,개인 사물함 신청 기준 설명해줘,SEARCH_KNOWLEDGE,RG0078,synthetic:routing-augmentation-2026-10-15,ai_reviewed,좌석·사물함 배정 안내,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0019,회의실 프로젝터 고장 신고 방법 알려주고 대신 접수해줘,SEARCH_KNOWLEDGE,RG0007,synthetic:routing-augmentation-2026-10-15,ai_reviewed,프로젝터 장애 접수 안내와 실행 혼합,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0020,프로젝터 장애 접수 때 적을 항목 알려주시고 신고도 넣어 주세요.,SEARCH_KNOWLEDGE,RG0007,synthetic:routing-augmentation-2026-10-15,ai_reviewed,프로젝터 장애 접수 안내와 실행 혼합,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0021,회의실 화면 고장 접수 절차 설명하고 신고해줘,SEARCH_KNOWLEDGE,RG0007,synthetic:routing-augmentation-2026-10-15,ai_reviewed,프로젝터 장애 접수 안내와 실행 혼합,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0022,지급 노트북 사용자 정보 정정 방법 알려줘,SEARCH_KNOWLEDGE,RG0275,synthetic:routing-augmentation-2026-10-15,ai_reviewed,자산 사용자 정정 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0023,장비 등록 사용자가 바뀌면 수정하는 절차 알려주세요.,SEARCH_KNOWLEDGE,RG0275,synthetic:routing-augmentation-2026-10-15,ai_reviewed,자산 사용자 정정 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0024,자산 사용자 등록 규칙 설명해줘,SEARCH_KNOWLEDGE,RG0275,synthetic:routing-augmentation-2026-10-15,ai_reviewed,자산 사용자 정정 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0025,장비 반납 회수 시간 어디서 확인하는지 알려줘,SEARCH_KNOWLEDGE,RG0266,synthetic:routing-augmentation-2026-10-15,ai_reviewed,장비 반납 일정 조회 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0026,반납 장비 방문 일정 조회 방법 알려주세요.,SEARCH_KNOWLEDGE,RG0266,synthetic:routing-augmentation-2026-10-15,ai_reviewed,장비 반납 일정 조회 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0027,장비 회수 날짜를 확인하는 절차 설명해줘,SEARCH_KNOWLEDGE,RG0266,synthetic:routing-augmentation-2026-10-15,ai_reviewed,장비 반납 일정 조회 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0028,내 VPN 신청 승인 여부 확인하는 방법 알려줘,SEARCH_KNOWLEDGE,RG0317,synthetic:routing-augmentation-2026-10-15,ai_reviewed,VPN 승인 상태 조회 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0029,VPN 승인 상태를 볼 수 있는 경로 알려주세요.,SEARCH_KNOWLEDGE,RG0317,synthetic:routing-augmentation-2026-10-15,ai_reviewed,VPN 승인 상태 조회 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0030,VPN 신청 결과 확인 절차 설명해줘,SEARCH_KNOWLEDGE,RG0317,synthetic:routing-augmentation-2026-10-15,ai_reviewed,VPN 승인 상태 조회 방법,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0031,고장 난 모니터 교체 구매 품의 규정 알려줘,SEARCH_KNOWLEDGE,RG0003,synthetic:routing-augmentation-2026-10-15,ai_reviewed,고장 모니터 구매 품의,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0032,업무 모니터 구매 승인 절차 알려주세요.,SEARCH_KNOWLEDGE,RG0003,synthetic:routing-augmentation-2026-10-15,ai_reviewed,고장 모니터 구매 품의,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0033,모니터 구매 요청 전에 필요한 승인 설명해줘,SEARCH_KNOWLEDGE,RG0003,synthetic:routing-augmentation-2026-10-15,ai_reviewed,고장 모니터 구매 품의,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0034,최신 휴가 공지 확인하는 곳 알려줘,SEARCH_KNOWLEDGE,RG0169,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 최신 규정 확인,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0035,휴가 규정 개정 공지 경로 알려주세요.,SEARCH_KNOWLEDGE,RG0169,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 최신 규정 확인,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0036,메일과 포털의 휴가 안내가 다를 때 확인 절차 설명해줘,SEARCH_KNOWLEDGE,RG0169,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 최신 규정 확인,회사 정보 또는 절차 안내를 명시적으로 요청한다. 혼합 요청은 안내 가능한 부분만 답한다.
+AUG0037,내일 하루 연차를 등록해줘,UNSUPPORTED,RG0181,synthetic:routing-augmentation-2026-10-15,ai_reviewed,연차 신청 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0038,제 연차 신청서를 제출해 주세요.,UNSUPPORTED,RG0181,synthetic:routing-augmentation-2026-10-15,ai_reviewed,연차 신청 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0039,다음 월요일 연차 신청해,UNSUPPORTED,RG0181,synthetic:routing-augmentation-2026-10-15,ai_reviewed,연차 신청 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0040,내 휴가 신청 승인됐는지 조회해줘,UNSUPPORTED,RG0198,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 승인 조회·취소,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0041,제가 올린 휴가 신청을 취소해 주세요.,UNSUPPORTED,RG0198,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 승인 조회·취소,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0042,내일 휴가 승인 상태 확인해,UNSUPPORTED,RG0198,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 승인 조회·취소,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0043,내 회사 메일 비밀번호 바꿔줘,UNSUPPORTED,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,메일 비밀번호 변경 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0044,제 메일 비밀번호를 재설정해 주세요.,UNSUPPORTED,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,메일 비밀번호 변경 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0045,회사 메일 암호 초기화해,UNSUPPORTED,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,메일 비밀번호 변경 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0046,내 회의실 예약 30분 늘려줘,UNSUPPORTED,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 예약 연장 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0047,제 회의실 예약을 한 시간 연장해 주세요.,UNSUPPORTED,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 예약 연장 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0048,현재 회의실 예약 종료 시간 변경해,UNSUPPORTED,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의실 예약 연장 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0049,내 회의실 예약에 카메라 추가해줘,UNSUPPORTED,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,카메라 추가 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0050,화상 장비를 제 회의실 예약에 넣어 주세요.,UNSUPPORTED,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,카메라 추가 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0051,예약에 회의용 카메라 등록해,UNSUPPORTED,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,카메라 추가 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0052,회의실 프로젝터 고장 신고 접수해줘,UNSUPPORTED,RG0007,synthetic:routing-augmentation-2026-10-15,ai_reviewed,프로젝터 장애 신고 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0053,회의실 화면 장애를 시설팀에 신고해 주세요.,UNSUPPORTED,RG0007,synthetic:routing-augmentation-2026-10-15,ai_reviewed,프로젝터 장애 신고 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0054,프로젝터 고장 건 접수해,UNSUPPORTED,RG0007,synthetic:routing-augmentation-2026-10-15,ai_reviewed,프로젝터 장애 신고 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0055,겹친 회의실 예약 하나 취소해줘,UNSUPPORTED,RG0066,synthetic:routing-augmentation-2026-10-15,ai_reviewed,중복 예약 취소·상태 조회,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0056,제 회의실 중복 예약 취소가 완료됐는지 조회해 주세요.,UNSUPPORTED,RG0066,synthetic:routing-augmentation-2026-10-15,ai_reviewed,중복 예약 취소·상태 조회,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0057,두 번째 회의실 예약 취소 처리해,UNSUPPORTED,RG0066,synthetic:routing-augmentation-2026-10-15,ai_reviewed,중복 예약 취소·상태 조회,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0058,내 업무 노트북 교체 신청해줘,UNSUPPORTED,RG0251,synthetic:routing-augmentation-2026-10-15,ai_reviewed,노트북 교체 신청 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0059,제 노트북을 새 장비로 교체 요청해 주세요.,UNSUPPORTED,RG0251,synthetic:routing-augmentation-2026-10-15,ai_reviewed,노트북 교체 신청 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0060,내 노트북 교체 신청 등록해,UNSUPPORTED,RG0251,synthetic:routing-augmentation-2026-10-15,ai_reviewed,노트북 교체 신청 실행,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0061,내 새 팀 이름 조직도에 반영해줘,UNSUPPORTED,RG0308,synthetic:routing-augmentation-2026-10-15,ai_reviewed,소속 팀 기록 변경,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0062,제 소속 부서를 포털에서 변경해 주세요.,UNSUPPORTED,RG0308,synthetic:routing-augmentation-2026-10-15,ai_reviewed,소속 팀 기록 변경,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0063,내 팀 이동 기록 수정해,UNSUPPORTED,RG0308,synthetic:routing-augmentation-2026-10-15,ai_reviewed,소속 팀 기록 변경,정보 안내 없이 실제 기록 조회·변경·실행만 요청한다.
+AUG0064,휴가 신청 화면 좀 도와줘,CLARIFY,RG0198,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 신청 화면 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0065,휴가 신청 화면 때문에 도움 부탁드려요.,CLARIFY,RG0198,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 신청 화면 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0066,휴가 화면 관련해서 좀 봐줘,CLARIFY,RG0198,synthetic:routing-augmentation-2026-10-15,ai_reviewed,휴가 신청 화면 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0067,메일 비번 그거 좀 도와줘,CLARIFY,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,메일 비밀번호 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0068,메일 비밀번호 관련해서 도와주세요.,CLARIFY,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,메일 비밀번호 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0069,그 메일 비번 건 좀 봐줘,CLARIFY,RG0243,synthetic:routing-augmentation-2026-10-15,ai_reviewed,메일 비밀번호 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0070,VPN 쪽 좀 도와줘,CLARIFY,RG0317,synthetic:routing-augmentation-2026-10-15,ai_reviewed,VPN 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0071,VPN 건으로 도움 부탁드립니다.,CLARIFY,RG0317,synthetic:routing-augmentation-2026-10-15,ai_reviewed,VPN 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0072,VPN 관련해서 좀 봐줘,CLARIFY,RG0317,synthetic:routing-augmentation-2026-10-15,ai_reviewed,VPN 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0073,회의실 예약 연장 화면에서 이거 골라도 돼?,CLARIFY,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,예약 연장 선택 항목 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0074,예약 연장 화면의 그 선택지 좀 봐주세요.,CLARIFY,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,예약 연장 선택 항목 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0075,회의실 연장할 때 둘 중 어느 거야?,CLARIFY,RG0063,synthetic:routing-augmentation-2026-10-15,ai_reviewed,예약 연장 선택 항목 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0076,사물함 신청서 이 번호 맞아?,CLARIFY,RG0078,synthetic:routing-augmentation-2026-10-15,ai_reviewed,사물함 신청 번호 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0077,사물함 신청에 그 번호 적으면 되는지 봐주세요.,CLARIFY,RG0078,synthetic:routing-augmentation-2026-10-15,ai_reviewed,사물함 신청 번호 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0078,사물함 번호 둘 중 어느 거야?,CLARIFY,RG0078,synthetic:routing-augmentation-2026-10-15,ai_reviewed,사물함 신청 번호 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0079,회의실에 그 장비 넣으면 돼?,CLARIFY,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의 장비 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0080,말씀하신 회의 장비가 이건지 봐주세요.,CLARIFY,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의 장비 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0081,회의실 장비 그거 맞아?,CLARIFY,RG0071,synthetic:routing-augmentation-2026-10-15,ai_reviewed,회의 장비 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0082,장비 반납 연락 왔는데 어느 시간에 맞춰?,CLARIFY,RG0266,synthetic:routing-augmentation-2026-10-15,ai_reviewed,반납 일정의 지시 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0083,반납 안내 두 개 중 어느 쪽인지 봐주세요.,CLARIFY,RG0266,synthetic:routing-augmentation-2026-10-15,ai_reviewed,반납 일정의 지시 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0084,장비 회수 그 일정대로 하면 돼?,CLARIFY,RG0266,synthetic:routing-augmentation-2026-10-15,ai_reviewed,반납 일정의 지시 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0085,사용자 정정할 노트북 둘 중 어느 거야?,CLARIFY,RG0275,synthetic:routing-augmentation-2026-10-15,ai_reviewed,자산 정정 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0086,등록 사용자 수정 안내가 어느 장비 건인지 봐주세요.,CLARIFY,RG0275,synthetic:routing-augmentation-2026-10-15,ai_reviewed,자산 정정 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0087,그 노트북 사용자 정보 말하는 거야?,CLARIFY,RG0275,synthetic:routing-augmentation-2026-10-15,ai_reviewed,자산 정정 대상 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0088,구매 요청 초안 좀 도와줘,CLARIFY,RG0099,synthetic:routing-augmentation-2026-10-15,ai_reviewed,구매 초안 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0089,구매 초안 관련해서 도움 부탁드립니다.,CLARIFY,RG0099,synthetic:routing-augmentation-2026-10-15,ai_reviewed,구매 초안 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.
+AUG0090,이 구매 초안 좀 봐줘,CLARIFY,RG0099,synthetic:routing-augmentation-2026-10-15,ai_reviewed,구매 초안 도움의 의도 불명,지시 대상·선택지 또는 원하는 도움의 종류를 현재 발화만으로 정할 수 없다.

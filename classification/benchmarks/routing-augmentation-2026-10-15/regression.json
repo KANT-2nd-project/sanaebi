@@ -1,0 +1,386 @@
+[
+  {
+    "id": "leave_policy-1",
+    "group_id": "leave_policy",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "우리 회사 연차 규정에 대해 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "leave_policy-2",
+    "group_id": "leave_policy",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "우리 회사 연차 규정에 대해 알려주세요.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "leave_policy-3",
+    "group_id": "leave_policy",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "연차 규정이 어떻게 되나요?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "leave_policy-4",
+    "group_id": "leave_policy",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "우리 회사 연차 사용 기준과 신청 절차를 알려주세요.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "leave_method-1",
+    "group_id": "leave_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "연차 신청 절차 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "leave_method-2",
+    "group_id": "leave_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "연차는 어디에서 신청하나요?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "leave_method-3",
+    "group_id": "leave_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "휴가 신청 방법 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "leave_method-4",
+    "group_id": "leave_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "휴가를 어떻게 써?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "expense-1",
+    "group_id": "expense",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "출장비 규정 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "expense-2",
+    "group_id": "expense",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "출장비 정산은 어떻게 하나요?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "expense-3",
+    "group_id": "expense",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "법인카드 사용 규정 알려주세요.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "expense-4",
+    "group_id": "expense",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "법인카드 사용 시 지켜야 할 기준은 무엇인가요?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "security-1",
+    "group_id": "security",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "개인정보 사고 신고 절차 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "security-2",
+    "group_id": "security",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "고객 정보가 든 메일을 잘못 보냈을 때 개인정보 사고 신고와 수신자 대응 절차를 알려주세요.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "security-3",
+    "group_id": "security",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "비밀번호 변경 방법 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "security-4",
+    "group_id": "security",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "회사 계정 비밀번호는 어디에서 변경하나요?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "lookup_method-1",
+    "group_id": "lookup_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "내 연차 잔여일은 어디서 확인해?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "lookup_method-2",
+    "group_id": "lookup_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "내 출장비 지급 상태를 확인하는 방법을 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "lookup_method-3",
+    "group_id": "lookup_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "내 휴가 승인 여부는 어디에서 확인하나요?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "lookup_method-4",
+    "group_id": "lookup_method",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "개인정보 사고 신고 내역 확인 절차를 알려주세요.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "mixed-1",
+    "group_id": "mixed",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "휴가 규정 알려주고 내 잔여일도 조회해줘.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "mixed-2",
+    "group_id": "mixed",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "휴가 신청 방법 알려주고 다음 주로 등록해줘.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "mixed-3",
+    "group_id": "mixed",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "출장비 정산 절차를 알려주고 내 지급 상태도 조회해줘.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "mixed-4",
+    "group_id": "mixed",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "개인정보 사고 신고 절차를 설명하고 대신 신고도 접수해줘.",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "personal-1",
+    "group_id": "personal",
+    "expected_label": "UNSUPPORTED",
+    "question": "내 연차가 며칠 남았어?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "personal-2",
+    "group_id": "personal",
+    "expected_label": "UNSUPPORTED",
+    "question": "내 연차 잔여 일수를 조회해줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "personal-3",
+    "group_id": "personal",
+    "expected_label": "UNSUPPORTED",
+    "question": "내 출장비가 지급됐는지 조회해줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "personal-4",
+    "group_id": "personal",
+    "expected_label": "UNSUPPORTED",
+    "question": "내 휴가 신청이 승인됐는지 확인해줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "execute-1",
+    "group_id": "execute",
+    "expected_label": "UNSUPPORTED",
+    "question": "내일 연차 신청해줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "execute-2",
+    "group_id": "execute",
+    "expected_label": "UNSUPPORTED",
+    "question": "연차 신청해줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "execute-3",
+    "group_id": "execute",
+    "expected_label": "UNSUPPORTED",
+    "question": "내 휴가 신청을 취소해줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "execute-4",
+    "group_id": "execute",
+    "expected_label": "UNSUPPORTED",
+    "question": "개인정보 사고 신고를 대신 접수해줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "unrelated-1",
+    "group_id": "unrelated",
+    "expected_label": "UNSUPPORTED",
+    "question": "김치찌개 만드는 법 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "unrelated-2",
+    "group_id": "unrelated",
+    "expected_label": "UNSUPPORTED",
+    "question": "오늘 야구 경기 결과 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "unrelated-3",
+    "group_id": "unrelated",
+    "expected_label": "UNSUPPORTED",
+    "question": "연애 운세 봐줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "unrelated-4",
+    "group_id": "unrelated",
+    "expected_label": "UNSUPPORTED",
+    "question": "여행 사진을 고양이 그림으로 바꿔줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "unclear-1",
+    "group_id": "unclear",
+    "expected_label": "CLARIFY",
+    "question": "그거 어떻게 해?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "unclear-2",
+    "group_id": "unclear",
+    "expected_label": "CLARIFY",
+    "question": "이거 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "unclear-3",
+    "group_id": "unclear",
+    "expected_label": "CLARIFY",
+    "question": "이 제도를 어떻게 적용하면 될까?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "unclear-4",
+    "group_id": "unclear",
+    "expected_label": "CLARIFY",
+    "question": "이 요청 좀 도와줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "ambiguous_help-1",
+    "group_id": "ambiguous_help",
+    "expected_label": "CLARIFY",
+    "question": "휴가 신청 도와줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "ambiguous_help-2",
+    "group_id": "ambiguous_help",
+    "expected_label": "CLARIFY",
+    "question": "출장비 처리 도와줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "ambiguous_help-3",
+    "group_id": "ambiguous_help",
+    "expected_label": "CLARIFY",
+    "question": "계정 관련해서 도와줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "ambiguous_help-4",
+    "group_id": "ambiguous_help",
+    "expected_label": "CLARIFY",
+    "question": "신고 관련해서 도와줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "given_situation-1",
+    "group_id": "given_situation",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "내가 입사한 지 8개월 됐어. 회사 휴가 발생 기준을 내 상황에 적용하면 어떻게 돼?",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "given_situation-2",
+    "group_id": "given_situation",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "입사 8개월 차인데 연차 발생 기준 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "given_situation-3",
+    "group_id": "given_situation",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "블루데이 제도 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "given_situation-4",
+    "group_id": "given_situation",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "question": "미등록된 장기근속 포상 기준 알려줘",
+    "source": "AI-authored diagnostic including reported and taxonomy examples",
+    "pure_lookup_execution": false
+  }
+]

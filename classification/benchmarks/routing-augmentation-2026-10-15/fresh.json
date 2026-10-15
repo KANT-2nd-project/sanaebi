@@ -1,0 +1,272 @@
+[
+  {
+    "id": "FRESH001",
+    "group_id": "FRESH-SIGN",
+    "question": "사내 수어 통역 지원 기준 알려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 수어 통역 신청 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH002",
+    "group_id": "FRESH-SIGN",
+    "question": "회의에 수어 통역을 요청하려면 어떻게 하나요?",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 수어 통역 신청 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH003",
+    "group_id": "FRESH-SIGN",
+    "question": "사내 수어 통역 신청 절차 설명해주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 수어 통역 신청 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH004",
+    "group_id": "FRESH-STUDIO",
+    "question": "사내 녹음실 사용 규정 알려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 녹음실 이용 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH005",
+    "group_id": "FRESH-STUDIO",
+    "question": "회사 녹음실을 쓰려면 어떤 절차가 필요한가요?",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 녹음실 이용 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH006",
+    "group_id": "FRESH-STUDIO",
+    "question": "사내 녹음실 이용 방법 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 녹음실 이용 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH007",
+    "group_id": "FRESH-BRAILLE",
+    "question": "점자 명함 신청 방법 알려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "점자 명함 제작 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH008",
+    "group_id": "FRESH-BRAILLE",
+    "question": "직원이 점자 명함을 만들 때 따를 회사 기준은 뭐야?",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "점자 명함 제작 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH009",
+    "group_id": "FRESH-BRAILLE",
+    "question": "점자 명함 제작 절차 알려주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "점자 명함 제작 안내",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH010",
+    "group_id": "FRESH-EBOOK",
+    "question": "업무용 전자책 대여 규정 알려주고 책도 빌려줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "업무 전자책 이용 안내와 실행 혼합",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH011",
+    "group_id": "FRESH-EBOOK",
+    "question": "회사 전자책 이용 방법을 설명하고 내 계정에 대여도 해주세요.",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "업무 전자책 이용 안내와 실행 혼합",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH012",
+    "group_id": "FRESH-EBOOK",
+    "question": "업무 전자책 대여 절차 안내하고 대신 대여 처리해줘",
+    "expected_label": "SEARCH_KNOWLEDGE",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "업무 전자책 이용 안내와 실행 혼합",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH013",
+    "group_id": "FRESH-CLUB",
+    "question": "내 사내 동호회 가입 상태 조회해줘",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "동호회 가입 기록 조회",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH014",
+    "group_id": "FRESH-CLUB",
+    "question": "제가 가입한 사내 동호회 목록을 확인해 주세요.",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "동호회 가입 기록 조회",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH015",
+    "group_id": "FRESH-CLUB",
+    "question": "내 동호회 가입 승인됐어?",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "동호회 가입 기록 조회",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH016",
+    "group_id": "FRESH-SHOWER",
+    "question": "내일 회사 샤워실 예약해줘",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "샤워실 예약 실행",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH017",
+    "group_id": "FRESH-SHOWER",
+    "question": "사내 샤워실을 제 이름으로 예약해 주세요.",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "샤워실 예약 실행",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH018",
+    "group_id": "FRESH-SHOWER",
+    "question": "내 샤워실 예약 시간을 오후로 바꿔줘",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "샤워실 예약 실행",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH019",
+    "group_id": "FRESH-BOOKDELETE",
+    "question": "내가 올린 사내 도서 나눔 글 지워줘",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 도서 나눔 글 삭제",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH020",
+    "group_id": "FRESH-BOOKDELETE",
+    "question": "제 도서 나눔 게시물을 삭제해 주세요.",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 도서 나눔 글 삭제",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH021",
+    "group_id": "FRESH-BOOKDELETE",
+    "question": "내 중고책 나눔 글 삭제 처리해",
+    "expected_label": "UNSUPPORTED",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 도서 나눔 글 삭제",
+    "pure_lookup_execution": true
+  },
+  {
+    "id": "FRESH022",
+    "group_id": "FRESH-DONATION",
+    "question": "기부 매칭 안내에서 그 조건이 이거야?",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "기부 매칭 안내 지시 대상 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH023",
+    "group_id": "FRESH-DONATION",
+    "question": "사내 기부 매칭의 그 항목 좀 봐주세요.",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "기부 매칭 안내 지시 대상 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH024",
+    "group_id": "FRESH-DONATION",
+    "question": "기부 매칭에서 아까 말한 기준 그대로야?",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "기부 매칭 안내 지시 대상 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH025",
+    "group_id": "FRESH-GARDEN",
+    "question": "사내 옥상 텃밭 건 좀 도와줘",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "옥상 텃밭 도움의 의도 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH026",
+    "group_id": "FRESH-GARDEN",
+    "question": "회사 텃밭 관련해서 도움 부탁드립니다.",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "옥상 텃밭 도움의 의도 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH027",
+    "group_id": "FRESH-GARDEN",
+    "question": "옥상 텃밭 쪽 좀 봐줘",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "옥상 텃밭 도움의 의도 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH028",
+    "group_id": "FRESH-RADIO",
+    "question": "사내 라디오 건 좀 도와줘",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 라디오 도움의 의도 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH029",
+    "group_id": "FRESH-RADIO",
+    "question": "회사 라디오 관련해서 도와주세요.",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 라디오 도움의 의도 불명",
+    "pure_lookup_execution": false
+  },
+  {
+    "id": "FRESH030",
+    "group_id": "FRESH-RADIO",
+    "question": "사내 라디오 그 일 좀 봐줘",
+    "expected_label": "CLARIFY",
+    "source": "AI-authored fresh intent diagnostic; not human approved",
+    "intent": "사내 라디오 도움의 의도 불명",
+    "pure_lookup_execution": false
+  }
+]
