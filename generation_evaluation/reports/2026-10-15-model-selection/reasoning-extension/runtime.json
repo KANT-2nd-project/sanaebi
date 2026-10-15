@@ -1,0 +1,36 @@
+{
+  "initial_environment_reference": {
+    "timestamp": "2026-10-14T23:32:18Z",
+    "git_head": "0b6c990f5eca7d24ad8210ced0a1f9b6b1ddc8cd",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU, 8151 MiB, 592.01",
+    "runtime_profile": "scripts/serve_generation_ollama.sh; dedicated loopback11435; GPU37/37;KV3888MiB;FA;q4_0;parallel1;fit256",
+    "budget_start": "first reservation; setup not included",
+    "review": "independent AI review, no human approval"
+  },
+  "actual_final_runtime": {
+    "observed_at": "2026-10-15T00:41:08.555322+00:00",
+    "dedicated_server_pid": 164347,
+    "dedicated_runner_pid": 171932,
+    "system_server_pid": 202,
+    "other_runner_pid": 169273,
+    "dedicated_gpu_layers": "35/37",
+    "initial_final_gpu_layers": "37/37",
+    "dedicated_context": 98304,
+    "other_context": 40960,
+    "dedicated_cache": "q4_0",
+    "action": "Preserve other process and all current responses; no timing-only winner claim across nonisolated environment. Keep current loaded model for both repeats.",
+    "nvidia_smi": "name, memory.used [MiB], power.draw [W], temperature.gpu, utilization.gpu [%], clocks.current.graphics [MHz]\nNVIDIA GeForce RTX 5060 Laptop GPU, 7766 MiB, 34.68 W, 63, 40 %, 180 MHz\n",
+    "later_observation": {
+      "at": "2026-10-15T00:46:07.383022+00:00",
+      "compute_pids": [
+        171932
+      ],
+      "note": "Other runner no longer listed; root did not stop it. Current own model remains loaded with 35/37 GPU layers."
+    }
+  },
+  "final_qwen_decode_tps_samples": 37,
+  "final_qwen_decode_tps_median": 8.52486038317246,
+  "final_qwen_decode_tps_min": 5.033043565110001,
+  "final_qwen_decode_tps_max": 10.947493391593662,
+  "note": "Decode TPS excludes load/prefill. Full request latency includes client initialization and stages; do not mix with old run_case timing."
+}

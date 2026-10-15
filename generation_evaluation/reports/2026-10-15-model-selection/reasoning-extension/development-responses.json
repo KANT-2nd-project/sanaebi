@@ -1,0 +1,898 @@
+[
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"마지막 이동 구간 영수증을 찾지 못했다면, 이음 포털 **재무 > 경비 정산**에서 사실대로 표시하고 재무팀에 대체 증빙이 가능한지 문의하세요. 영수증이 없다고 증빙이 자동 면제되지는 않습니다. 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 경비 신청 건에서 포털에 표시된 사유와 누락 항목을 확인해 보완하세요. 새 신청을 중복으로 만들지 마세요.\"}",
+      "answer": "마지막 이동 구간 영수증을 찾지 못했다면, 이음 포털 **재무 > 경비 정산**에서 사실대로 표시하고 재무팀에 대체 증빙이 가능한지 문의하세요. 영수증이 없다고 증빙이 자동 면제되지는 않습니다. 결제일로부터 10영업일 안에 제출해야 합니다.\n\n반려되거나 보완 요청을 받으면 같은 경비 신청 건에서 포털에 표시된 사유와 누락 항목을 확인해 보완하세요. 새 신청을 중복으로 만들지 마세요.",
+      "input_tokens": 57356,
+      "output_tokens": 333,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 5.117586377000407,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"담당자는 신고를 확인한 뒤 목표로 15분 안에 대응 책임자, 다음 연락 경로와 시각을 명시해 인수하며, 접수 시각과 인수 여부도 사건 기록에 남깁니다. 다만 신고자가 처리 단계를 조회하는 구체적인 메뉴나 경로는 문서에 안내되어 있지 않습니다. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 합니다. 15분은 운영 목표이지 응답 보장은 아닙니다.\"}",
+      "answer": "담당자는 신고를 확인한 뒤 목표로 15분 안에 대응 책임자, 다음 연락 경로와 시각을 명시해 인수하며, 접수 시각과 인수 여부도 사건 기록에 남깁니다. 다만 신고자가 처리 단계를 조회하는 구체적인 메뉴나 경로는 문서에 안내되어 있지 않습니다. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 합니다. 15분은 운영 목표이지 응답 보장은 아닙니다.",
+      "input_tokens": 57328,
+      "output_tokens": 434,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 5.991860944999644,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 포털을 모두 사용할 수 없으면 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 60,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.317840874000467,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 문서상 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}",
+      "answer": "네. 문서상 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.",
+      "input_tokens": 57337,
+      "output_tokens": 82,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.1803535470007773,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 본인 경비 정산의 지급 계좌 정보가 잘못된 경우라면 기존 신청 번호로 재무팀에 문의하시면 됩니다. 제가 계좌를 직접 변경하거나 재지급을 처리할 수는 없습니다.\"}",
+      "answer": "참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 본인 경비 정산의 지급 계좌 정보가 잘못된 경우라면 기존 신청 번호로 재무팀에 문의하시면 됩니다. 제가 계좌를 직접 변경하거나 재지급을 처리할 수는 없습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 253,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.8936185059992567,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 44,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.7000475830009236,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 급여 입금 계좌를 변경하는 메뉴나 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. People팀이 급여 기록을 확인하므로, 이음 포털 인사 메뉴 또는 #people-help로 문의해 반영 시점을 확인해 주세요.\"}",
+      "answer": "참고 문서에는 급여 입금 계좌를 변경하는 메뉴나 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. People팀이 급여 기록을 확인하므로, 이음 포털 인사 메뉴 또는 #people-help로 문의해 반영 시점을 확인해 주세요.",
+      "input_tokens": 57334,
+      "output_tokens": 213,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.946377896998456,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-medium",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당하는지도 확인할 수 없습니다. 구체적인 확인 방법은 IT운영팀에 문의해 주세요. 일반 계정·권한 문의 창구는 이음 포털의 IT 메뉴 또는 #it-helpdesk입니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당하는지도 확인할 수 없습니다. 구체적인 확인 방법은 IT운영팀에 문의해 주세요. 일반 계정·권한 문의 창구는 이음 포털의 IT 메뉴 또는 #it-helpdesk입니다.",
+      "input_tokens": 57330,
+      "output_tokens": 368,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 5.7088522169997304,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"출장 경비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 제출하세요. 마지막 이동 구간의 영수증을 찾지 못했다면 누락 사실을 그대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하시면 됩니다. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려 또는 보완 요청을 받으면 포털의 기존 경비 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 팀장은 접수 후 2영업일 안에 승인하거나 보완을 요청합니다. 승인이나 증빙이 없으면 지급이 보장되지 않습니다.\"}",
+      "answer": "출장 경비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 제출하세요. 마지막 이동 구간의 영수증을 찾지 못했다면 누락 사실을 그대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하시면 됩니다. 증빙이 자동 면제되는 것은 아닙니다.\n\n반려 또는 보완 요청을 받으면 포털의 기존 경비 신청 건에서 사유와 부족한 항목을 확인해 같은 건에 보완하세요. 팀장은 접수 후 2영업일 안에 승인하거나 보완을 요청합니다. 승인이나 증빙이 없으면 지급이 보장되지 않습니다.",
+      "input_tokens": 57356,
+      "output_tokens": 511,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 7.409690372000114,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 당직 담당자가 신고를 확인하고 대응 책임자, 다음 연락 경로, 인수 시각을 사건 기록에 남기도록 되어 있습니다. 다만 신고자가 배정이나 처리 단계를 직접 조회하는 메뉴나 권한은 안내되어 있지 않습니다. 신고 후 15분 안에 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다. 15분은 인계 목표이지 보장 시간은 아닙니다.\"}",
+      "answer": "문서에는 당직 담당자가 신고를 확인하고 대응 책임자, 다음 연락 경로, 인수 시각을 사건 기록에 남기도록 되어 있습니다. 다만 신고자가 배정이나 처리 단계를 직접 조회하는 메뉴나 권한은 안내되어 있지 않습니다. 신고 후 15분 안에 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다. 15분은 인계 목표이지 보장 시간은 아닙니다.",
+      "input_tokens": 57328,
+      "output_tokens": 586,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.412352368999564,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 문서에는 실제 연락처가 기재되어 있지 않습니다.\"}",
+      "answer": "Slack과 포털이 모두 작동하지 않으면 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 문서에는 실제 연락처가 기재되어 있지 않습니다.",
+      "input_tokens": 57328,
+      "output_tokens": 199,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.624708654000642,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때 동료 계정을 대신 사용하는 것도 금지되어 있습니다. 팀장에게 첫날 진행할 대체 업무를 요청하고, IT운영팀의 정상 문의 창구를 이용해 주세요.\"}",
+      "answer": "문서상 다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때 동료 계정을 대신 사용하는 것도 금지되어 있습니다. 팀장에게 첫날 진행할 대체 업무를 요청하고, IT운영팀의 정상 문의 창구를 이용해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 313,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 5.182777641999564,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 개인 경비 정산의 지급 계좌 정보가 잘못된 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(문서 ieum-019). 제가 계좌를 직접 변경하거나 재지급을 처리할 수는 없습니다.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 개인 경비 정산의 지급 계좌 정보가 잘못된 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(문서 ieum-019). 제가 계좌를 직접 변경하거나 재지급을 처리할 수는 없습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 517,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.949760990000868,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 113,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.618845438999415,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 입금 계좌를 수정하는 메뉴나 다음 급여 반영 마감일이 안내되어 있지 않습니다. People팀에 이음 포털의 인사 메뉴 또는 #people-help로 변경 방법과 마감일을 문의해 주세요. 이는 문의 경로이며, 계좌 변경 메뉴로 확인된 것은 아닙니다.\"}",
+      "answer": "제공된 문서에는 급여 입금 계좌를 수정하는 메뉴나 다음 급여 반영 마감일이 안내되어 있지 않습니다. People팀에 이음 포털의 인사 메뉴 또는 #people-help로 변경 방법과 마감일을 문의해 주세요. 이는 문의 경로이며, 계좌 변경 메뉴로 확인된 것은 아닙니다.",
+      "input_tokens": 57334,
+      "output_tokens": 517,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 7.193765772999541,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청 전용 절차는 확인할 수 없습니다. 확인이 필요하시면 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 문의하실 수 있습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청 전용 절차는 확인할 수 없습니다. 확인이 필요하시면 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 문의하실 수 있습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 307,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 6.2403906020008435,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 0.7727061259993206,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 0.6652942230011831,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 0.6232650780002587,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 0.886248289998548,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 1.0374524250000832,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 1.0880480489995534,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 1.0125958410008025,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-max",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": null,
+    "elapsed_seconds": 0.6737158819996694,
+    "format_pass": false,
+    "error_type": "OpenAIInvalidRequestError",
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "truncated",
+      "raw_text": "",
+      "answer": null,
+      "input_tokens": 57356,
+      "output_tokens": 1024,
+      "finish_reason": "length"
+    },
+    "elapsed_seconds": 12.152831940000397,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "truncated",
+      "raw_text": "",
+      "answer": null,
+      "input_tokens": 57328,
+      "output_tokens": 1024,
+      "finish_reason": "length"
+    },
+    "elapsed_seconds": 13.424739157999284,
+    "format_pass": false,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마시고, 사고는 인지 즉시 신고해 주세요.\"}",
+      "answer": "Slack과 이음 포털을 모두 사용할 수 없으면 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마시고, 사고는 인지 즉시 신고해 주세요.",
+      "input_tokens": 57328,
+      "output_tokens": 215,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.034363105000011,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하지 마시고, 팀장에게 첫날 진행할 대체 업무를 요청한 뒤 IT운영팀의 정상 문의 창구를 이용해 주세요.\"}",
+      "answer": "문서상 다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템과 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하지 마시고, 팀장에게 첫날 진행할 대체 업무를 요청한 뒤 IT운영팀의 정상 문의 창구를 이용해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 373,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.726149797999824,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 제가 실제로 계좌를 변경하거나 재지급을 처리할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 다만 등록 계좌를 변경하는 구체적인 절차는 문서에 명시되어 있지 않습니다.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 제가 실제로 계좌를 변경하거나 재지급을 처리할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 다만 등록 계좌를 변경하는 구체적인 절차는 문서에 명시되어 있지 않습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 788,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 9.156601983000655,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 115,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.0605350799996813,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 급여 계좌를 수정하는 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인하므로, 수정 경로와 반영 가능 시점을 People팀에 확인해 주세요.\"}",
+      "answer": "참고 문서에는 급여 계좌를 수정하는 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인하므로, 수정 경로와 반영 가능 시점을 People팀에 확인해 주세요.",
+      "input_tokens": 57334,
+      "output_tokens": 558,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 9.2933956880006,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의 창구로 이음 포털의 IT 메뉴 또는 #it-helpdesk가 안내되어 있지만, 이를 VPN 신청 상태 조회 경로라고 단정할 수는 없습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의 창구로 이음 포털의 IT 메뉴 또는 #it-helpdesk가 안내되어 있지만, 이를 VPN 신청 상태 조회 경로라고 단정할 수는 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 524,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 7.283225041999685,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"마지막 이동 구간 영수증을 찾지 못했다면, 이음 포털 **재무 > 경비 정산**의 해당 건에 누락 사실을 그대로 표시하고 재무팀에 대체 증빙을 인정할 수 있는지 문의하세요. 예를 들어 “마지막 이동 구간 영수증 분실, 대체 증빙 가능 여부 확인 요청”이라고 적을 수 있습니다. 증빙이 자동 면제되는 것은 아니며, 문서에는 별도의 입력란 이름은 안내되어 있지 않습니다. 출장 기록 번호와 거래별 업무 목적 등도 함께 기재하고, 결제일부터 10영업일 안에 제출해야 합니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 사유와 부족한 항목을 확인하고, 그 건에 보완하세요. 새 신청을 중복으로 만들지 마세요. 이미 검토가 끝난 뒤 누락을 발견했다면 기존 신청 번호와 수정 사유를 재무팀에 보내 문의하세요.\"}",
+      "answer": "마지막 이동 구간 영수증을 찾지 못했다면, 이음 포털 **재무 > 경비 정산**의 해당 건에 누락 사실을 그대로 표시하고 재무팀에 대체 증빙을 인정할 수 있는지 문의하세요. 예를 들어 “마지막 이동 구간 영수증 분실, 대체 증빙 가능 여부 확인 요청”이라고 적을 수 있습니다. 증빙이 자동 면제되는 것은 아니며, 문서에는 별도의 입력란 이름은 안내되어 있지 않습니다. 출장 기록 번호와 거래별 업무 목적 등도 함께 기재하고, 결제일부터 10영업일 안에 제출해야 합니다.\n\n반려되면 같은 경비 정산 신청 건에서 사유와 부족한 항목을 확인하고, 그 건에 보완하세요. 새 신청을 중복으로 만들지 마세요. 이미 검토가 끝난 뒤 누락을 발견했다면 기존 신청 번호와 수정 사유를 재무팀에 보내 문의하세요.",
+      "input_tokens": 57356,
+      "output_tokens": 1650,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 16.960544802001095,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 직접 상태를 조회하는 별도 메뉴나 조회 권한은 안내되어 있지 않습니다. 담당자는 신고 접수 후 목표로 15분 안에 확인하고 대응 책임자를 지정하며, 사건 기록에 인수 담당자·다음 연락 경로·시각을 남깁니다. 처리 단계에는 수행 주체, 승인, 조치 결과와 미확인 사항, 후속 작업을 기록합니다. 기록에서 다음 연락 경로가 확인되면 그 경로를 따르시면 됩니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 해당 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 되어 있습니다. 신고 접수만으로 처리가 완료된 것은 아닙니다.\"}",
+      "answer": "문서에는 신고자가 직접 상태를 조회하는 별도 메뉴나 조회 권한은 안내되어 있지 않습니다. 담당자는 신고 접수 후 목표로 15분 안에 확인하고 대응 책임자를 지정하며, 사건 기록에 인수 담당자·다음 연락 경로·시각을 남깁니다. 처리 단계에는 수행 주체, 승인, 조치 결과와 미확인 사항, 후속 작업을 기록합니다. 기록에서 다음 연락 경로가 확인되면 그 경로를 따르시면 됩니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 해당 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 되어 있습니다. 신고 접수만으로 처리가 완료된 것은 아닙니다.",
+      "input_tokens": 57328,
+      "output_tokens": 1239,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 17.57282597199992,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "POS02",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 찾아 사용하지 마시고, 시스템이 복구되면 포털 신고 기록을 보완해 주세요.\"}",
+      "answer": "Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 찾아 사용하지 마시고, 시스템이 복구되면 포털 신고 기록을 보완해 주세요.",
+      "input_tokens": 57328,
+      "output_tokens": 214,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 13.294411622999178,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "POS03",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"첫 로그인 과정에서 다중 인증(MFA) 등록을 완료해야 합니다. 등록 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때 동료 계정을 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 문의 창구를 이용해 주세요.\"}",
+      "answer": "첫 로그인 과정에서 다중 인증(MFA) 등록을 완료해야 합니다. 등록 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때 동료 계정을 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 문의 창구를 이용해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 231,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.365522746000352,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌는 제가 직접 변경할 수 없습니다. 문서에는 지급 상태나 계좌 정보에 오류가 있을 경우 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 다만 계좌를 변경하는 별도 절차나 메뉴는 명시되어 있지 않습니다.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌는 제가 직접 변경할 수 없습니다. 문서에는 지급 상태나 계좌 정보에 오류가 있을 경우 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 다만 계좌를 변경하는 별도 절차나 메뉴는 명시되어 있지 않습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 651,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 7.688011969999934,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "POS01",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 162,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 5.373338752999189,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공 문서에는 급여 계좌 변경의 마감 시점이나 수정 메뉴가 안내되어 있지 않아, 다음 급여 전에 반영 가능한지는 확인할 수 없습니다. People팀에 이음 포털 인사 메뉴 또는 #people-help로 문의해 확인해 주세요. 경비 정산의 계좌 정보 문의 절차는 급여 계좌 변경에 적용된다고 볼 수 없습니다.\"}",
+      "answer": "제공 문서에는 급여 계좌 변경의 마감 시점이나 수정 메뉴가 안내되어 있지 않아, 다음 급여 전에 반영 가능한지는 확인할 수 없습니다. People팀에 이음 포털 인사 메뉴 또는 #people-help로 문의해 확인해 주세요. 경비 정산의 계좌 정보 문의 절차는 급여 계좌 변경에 적용된다고 볼 수 없습니다.",
+      "input_tokens": 57334,
+      "output_tokens": 603,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 9.417947700001605,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 확인 경로나 별도 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 신청이라면 이음 포털의 **IT > 접근 권한**에서 처리 결과를 확인하며, 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남깁니다. 다만 이 절차가 VPN 신청에 적용되는지, 승인 알림이 따로 발송되는지는 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 확인 경로나 별도 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 신청이라면 이음 포털의 **IT > 접근 권한**에서 처리 결과를 확인하며, 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남깁니다. 다만 이 절차가 VPN 신청에 적용되는지, 승인 알림이 따로 발송되는지는 확인할 수 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 605,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.93252923,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0007",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"마지막 이동 구간 영수증을 분실하셨다면, 이음 포털 **재무 > 경비 정산**에 결제일 기준 10영업일 이내로 정산을 제출하면서 증빙을 분실한 사실을 그대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되거나 보완 요청을 받으면 같은 경비 신청 건에서 사유와 부족한 항목을 확인해 보완하시면 됩니다. 확인 경로는 **재무 > 경비 정산**의 해당 신청 건입니다. 문서에는 반려 사유가 표시되는 구체적인 화면명까지는 안내되어 있지 않습니다.\"}",
+      "answer": "마지막 이동 구간 영수증을 분실하셨다면, 이음 포털 **재무 > 경비 정산**에 결제일 기준 10영업일 이내로 정산을 제출하면서 증빙을 분실한 사실을 그대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\n\n반려되거나 보완 요청을 받으면 같은 경비 신청 건에서 사유와 부족한 항목을 확인해 보완하시면 됩니다. 확인 경로는 **재무 > 경비 정산**의 해당 신청 건입니다. 문서에는 반려 사유가 표시되는 구체적인 화면명까지는 안내되어 있지 않습니다.",
+      "input_tokens": 57356,
+      "output_tokens": 861,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 9.440252727999905,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0009",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 직접 상태를 조회하는 메뉴나 권한은 안내되어 있지 않습니다. 다만 사건 기록에는 담당자 인수 여부, 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 진행 단계는 발견 → 접수 → 대응 → 후속 순입니다. 당직 담당자의 확인·인수는 15분 이내가 목표이며, 그 안에 응답이나 명시적 인수가 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 기록을 남기는 절차는 명시되어 있지만, 본인의 조회 경로는 문서만으로 확인할 수 없습니다.\"}",
+      "answer": "문서에는 신고자가 직접 상태를 조회하는 메뉴나 권한은 안내되어 있지 않습니다. 다만 사건 기록에는 담당자 인수 여부, 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 진행 단계는 발견 → 접수 → 대응 → 후속 순입니다. 당직 담당자의 확인·인수는 15분 이내가 목표이며, 그 안에 응답이나 명시적 인수가 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 기록을 남기는 절차는 명시되어 있지만, 본인의 조회 경로는 문서만으로 확인할 수 없습니다.",
+      "input_tokens": 57328,
+      "output_tokens": 999,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 11.40534542900059,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "POS02",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 118,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.642629883999689,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "POS03",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때 동료 계정을 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 경로를 이용해 주세요.\"}",
+      "answer": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때 동료 계정을 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 경로를 이용해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 200,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 3.0691385610007273,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0006",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 다만 계좌 변경 절차 자체는 문서에서 확인할 수 없습니다.\"}",
+      "answer": "참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 다만 계좌 변경 절차 자체는 문서에서 확인할 수 없습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 266,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 4.451672897999742,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "POS01",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 129,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 2.5774481409989676,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0001",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 등 개인별 기록과 적용 기준은 People팀이 확인하므로, People팀에 문의해 확인해 주세요.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 등 개인별 기록과 적용 기준은 People팀이 확인하므로, People팀에 문의해 확인해 주세요.",
+      "input_tokens": 57334,
+      "output_tokens": 434,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 7.73112244100048,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-high",
+    "case_id": "RQ0004",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 별도 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 신청에 해당한다면 이음 포털의 **IT > 접근 권한** 요청 결과를 확인하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남깁니다. 이는 VPN 신청에 그대로 적용된다고 확인된 내용은 아니며, VPN 관련 확인은 #it-helpdesk에 문의해 주세요.\"}",
+      "answer": "제공 문서에는 VPN 신청의 승인 여부를 확인하는 경로나 별도 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 신청에 해당한다면 이음 포털의 **IT > 접근 권한** 요청 결과를 확인하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남깁니다. 이는 VPN 신청에 그대로 적용된다고 확인된 내용은 아니며, VPN 관련 확인은 #it-helpdesk에 문의해 주세요.",
+      "input_tokens": 57330,
+      "output_tokens": 674,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.168218466000326,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0007",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"개인 결제한 출장비라면 이음 포털 **재무 > 경비 정산**에서 해당 이동 구간의 금액과 업무 목적을 적고, 영수증을 분실한 사실을 그대로 표시하세요. 증빙이 자동 면제되는 것은 아니므로 재무팀에 대체 증빙이 가능한지 확인해야 합니다. 제출은 결제일로부터 10영업일 이내입니다. 반려·보완 사유는 포털의 같은 경비 신청 건에서 부족한 항목과 함께 확인하고, 그 신청 건에 보완하시면 됩니다.\"}",
+      "answer": "개인 결제한 출장비라면 이음 포털 **재무 > 경비 정산**에서 해당 이동 구간의 금액과 업무 목적을 적고, 영수증을 분실한 사실을 그대로 표시하세요. 증빙이 자동 면제되는 것은 아니므로 재무팀에 대체 증빙이 가능한지 확인해야 합니다. 제출은 결제일로부터 10영업일 이내입니다. 반려·보완 사유는 포털의 같은 경비 신청 건에서 부족한 항목과 함께 확인하고, 그 신청 건에 보완하시면 됩니다.",
+      "input_tokens": 57356,
+      "output_tokens": 1890,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 29.812331264000022,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0009",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 단계를 직접 조회하는 메뉴·경로 또는 조회 권한은 안내되어 있지 않습니다. 다만 사건 기록에는 접수 시 인수 담당자·다음 연락 경로·시각을, 대응·후속 단계에는 조치 결과와 미확인 사항·미완료 작업·다음 확인 시점을 남기도록 되어 있습니다. 담당자 인수 확인은 15분 이내가 운영 목표이며, 해결 시간 보장은 아닙니다. 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기세요.\"}",
+      "answer": "문서에는 신고자가 담당자나 처리 단계를 직접 조회하는 메뉴·경로 또는 조회 권한은 안내되어 있지 않습니다. 다만 사건 기록에는 접수 시 인수 담당자·다음 연락 경로·시각을, 대응·후속 단계에는 조치 결과와 미확인 사항·미완료 작업·다음 확인 시점을 남기도록 되어 있습니다. 담당자 인수 확인은 15분 이내가 운영 목표이며, 해결 시간 보장은 아닙니다. 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기세요.",
+      "input_tokens": 57328,
+      "output_tokens": 1510,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 21.25984477900056,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "POS02",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 연결되지 않거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 개인 연락처를 추측해 사용하지 마세요.\"}",
+      "answer": "Slack과 포털이 모두 작동하지 않으면 입사 때 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 연결되지 않거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요. 개인 연락처를 추측해 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 399,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 17.57793392900021,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "POS03",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정을 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 이용해 주세요.\"}",
+      "answer": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정을 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 문의 창구를 이용해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 229,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 8.508603505999417,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0006",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 참고 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수 없습니다. 경비 정산의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 다만 계좌 변경 방법 자체는 문서에 명시되어 있지 않습니다.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 참고 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수 없습니다. 경비 정산의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 다만 계좌 변경 방법 자체는 문서에 명시되어 있지 않습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 469,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 12.636797622000813,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "POS01",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 138,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 6.8143942579990835,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0001",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴나 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. People팀에 확인해 주세요. 문의 창구는 이음 포털의 인사 메뉴 또는 #people-help입니다.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경 메뉴나 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. People팀에 확인해 주세요. 문의 창구는 이음 포털의 인사 메뉴 또는 #people-help입니다.",
+      "input_tokens": 57334,
+      "output_tokens": 392,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 20.468233725001483,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40"
+  },
+  {
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "case_id": "RQ0004",
+    "repeat": 2,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의 창구는 이음 포털 IT 메뉴 또는 #it-helpdesk이지만, 이를 VPN 신청 상태 조회 경로라고 단정할 수는 없습니다.\"}",
+      "answer": "참고 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의 창구는 이음 포털 IT 메뉴 또는 #it-helpdesk이지만, 이를 VPN 신청 상태 조회 경로라고 단정할 수는 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 447,
+      "finish_reason": "stop"
+    },
+    "elapsed_seconds": 13.80019811999955,
+    "format_pass": true,
+    "error_type": null,
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "purpose": "diagnose max HTTP400, not a quality response",
+  "config": {
+    "provider": "openai",
+    "model_name": "gpt-6-luna",
+    "timeout_seconds": 30,
+    "max_output_tokens": 1024,
+    "reasoning_effort": "max"
+  },
+  "reserved_dollars": 0.00090825,
+  "error_type": "OpenAIInvalidRequestError",
+  "status_code": 400,
+  "diagnostic_keywords": [
+    "reasoning_effort",
+    "unsupported",
+    "invalid",
+    "none",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+  ],
+  "param": "reasoning_effort",
+  "code": "unsupported_value",
+  "type": "invalid_request_error",
+  "estimated_dollars": null,
+  "elapsed_seconds": 0.7145204544067383
+}

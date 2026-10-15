@@ -1,0 +1,8 @@
+{
+  "provisional_recommended_candidate": "gpt-examples-xhigh-4096",
+  "default_promoted": false,
+  "service_quality_approved": false,
+  "reason": "stable both-pass 11/20 below 18/20; critical cases 0 vs 5",
+  "final_set": "reasoning-final.json",
+  "no_post_final_tuning": true
+}
