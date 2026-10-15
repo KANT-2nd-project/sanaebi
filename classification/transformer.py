@@ -12,7 +12,11 @@ import torch
 from sklearn.metrics import f1_score
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-from classification.dataset import DATASET_PATH, prepare_data
+from classification.dataset import (
+    DATASET_PATH,
+    prepare_data,
+    prepare_data_from_manifest,
+)
 from classification.persistence import file_sha, new_destination, split_id, write_json
 from contracts.classification import LABELS
 
@@ -201,6 +205,9 @@ def main(argv=None):
         description="Transformer 학습/validation 선택. test 예측 없음."
     )
     parser.add_argument("--dataset", type=Path, default=DATASET_PATH)
+    parser.add_argument(
+        "--split-manifest", type=Path, help="고정 분할 JSON; 생략 시 기존 그룹 분할"
+    )
     parser.add_argument("--model", default=MODEL_NAME)
     parser.add_argument("--revision")
     parser.add_argument("--learning-rates", type=float, nargs="+", default=[2e-5])
@@ -216,7 +223,12 @@ def main(argv=None):
     if args.output is not None and args.output.exists():
         parser.error(f"기존 경로를 보존합니다: {args.output}")
     sha = file_sha(args.dataset)
-    splits = prepare_data(args.dataset, args.seed)
+    manifest_sha = file_sha(args.split_manifest) if args.split_manifest else None
+    splits = (
+        prepare_data_from_manifest(args.dataset, args.split_manifest)
+        if args.split_manifest
+        else prepare_data(args.dataset, args.seed)
+    )
     fitted, selection = select_model(
         splits["train"],
         splits["validation"],
@@ -231,6 +243,8 @@ def main(argv=None):
     )
     if file_sha(args.dataset) != sha:
         raise ValueError("실행 중 데이터가 변경되었습니다. 저장하지 않습니다.")
+    if args.split_manifest and file_sha(args.split_manifest) != manifest_sha:
+        raise ValueError("실행 중 분할 manifest가 변경되었습니다. 저장하지 않습니다.")
     if args.output is not None:
         ids = {name: [r["question_id"] for r in rows] for name, rows in splits.items()}
         metadata = {
@@ -242,6 +256,7 @@ def main(argv=None):
             "dataset_sha256": sha,
             "question_ids": ids,
             "split_id": split_id(ids),
+            "split_manifest_sha256": manifest_sha,
             "seed": args.seed,
             "config": {
                 "pretrained_model": args.model,
