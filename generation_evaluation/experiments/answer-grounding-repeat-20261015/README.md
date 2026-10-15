@@ -18,3 +18,7 @@ PYTHONPATH=. uv run --locked python generation_evaluation/experiments/answer-gro
 원응답·설정·해시·사용량·지연·오류·예약 원장은 `tmp/`에 남긴다. 공개 보고서에는 합성 문서 기반 답변과 판정·해시를 보존한다. 실제 DB·비공개 문서·인증정보는 사용하거나 게시하지 않는다. 서비스 기본값 승격은 이 반복 비교의 자동 결과가 아니다.
 
 방법 참고: [NIST 비율 신뢰구간](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm).
+
+## 실제 종료
+
+사용자의 중간 중단 요청으로51개 응답 저장 후 중단했다. 신고 각25회가 주 비교이며 추가 v3 1회와 취소 v1 1회를 분리했다. 출처 문항은 실행하지 않았다. [결과와 중단 한계](../../reports/2026-10-15-answer-grounding-repeat/README.md)를 따른다. `analyze.py`는 실제 중단 결과51개를 검증·집계하는 후처리이며 호출 전 프로토콜은 수정하지 않았다.

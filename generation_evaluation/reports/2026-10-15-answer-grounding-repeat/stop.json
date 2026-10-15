@@ -1,0 +1,19 @@
+{
+  "reason": "User requested stopping after sufficient repetitions; process interrupted via SIGINT. No further calls.",
+  "completed": 51,
+  "attempts": 52,
+  "primary_balanced_repeats": 25,
+  "extra_saved": "v3 repetition 26, retained separately, witness/contact absent",
+  "unsettled": {
+    "repeat-DEV-FU-09-examples_answer_scope_v1-prompt_json-r26": {
+      "actual_dollars": null,
+      "charged_dollars": 0.06280425,
+      "phase": "final",
+      "reserved_at": 1792043086.5529993,
+      "reserved_dollars": 0.06280425,
+      "status": "reserved"
+    }
+  },
+  "source_case_executed": false,
+  "inference": "Early stopping after observed interim responses; intervals and p values descriptive, not fixed-design confirmatory inference."
+}

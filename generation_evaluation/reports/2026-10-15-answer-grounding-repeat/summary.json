@@ -1,0 +1,63 @@
+{
+  "completed_records": 51,
+  "attempts": 52,
+  "user_interrupted_without_response": 1,
+  "estimated_dollars": 0.75131825,
+  "errors_among_saved_responses": 0,
+  "profiles": {
+    "v1": {
+      "n": 25,
+      "strict_complete": 15,
+      "either_complete": 17,
+      "missing_fields": {
+        "time": 1,
+        "place": 1,
+        "act": 1,
+        "roles": 2,
+        "witness": 6,
+        "evidence": 6,
+        "protection": 1,
+        "contact": 9
+      },
+      "id_exposure": null,
+      "source_n": 0,
+      "strict_complete_wilson95": [
+        0.40739457358967,
+        0.7659669762225203
+      ],
+      "either_complete_wilson95": [
+        0.48410269273102247,
+        0.8279480969309202
+      ]
+    },
+    "v3": {
+      "n": 25,
+      "strict_complete": 20,
+      "either_complete": 22,
+      "missing_fields": {
+        "time": 1,
+        "place": 1,
+        "act": 1,
+        "roles": 1,
+        "witness": 3,
+        "evidence": 1,
+        "protection": 1,
+        "contact": 4
+      },
+      "id_exposure": null,
+      "source_n": 0,
+      "strict_complete_wilson95": [
+        0.6086904963045967,
+        0.9113941531319742
+      ],
+      "either_complete_wilson95": [
+        0.7004420607907267,
+        0.9583318284955964
+      ]
+    }
+  },
+  "strict_complete_fisher_two_sided_p": 0.21653421943063633,
+  "strict_complete_difference_v3_minus_v1": 0.2,
+  "either_complete_fisher_two_sided_p": 0.17062235280180307,
+  "either_complete_difference_v3_minus_v1": 0.2
+}

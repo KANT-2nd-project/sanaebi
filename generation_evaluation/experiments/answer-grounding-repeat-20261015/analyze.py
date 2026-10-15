@@ -44,7 +44,7 @@ def main():
     args = parser.parse_args()
     grades = json.loads((args.report / "adjudication.json").read_text())
     index = {(g["case_id"], g["profile"], g["repeat"]): g for g in grades}
-    assert len(index) == len(grades) == 90
+    assert len(index) == len(grades) == 51
     records = []
     for path in sorted(args.runs.glob("repeat-*.json")):
         raw = path.read_bytes()
@@ -67,11 +67,13 @@ def main():
                 and not {"protection", "contact"} <= set(g["missing"])
             )
         records.append(r)
-    assert not index and len(records) == 90
+    assert not index and len(records) == 51
     summary = {
-        "attempts": 90,
+        "completed_records": 51,
+        "attempts": 52,
+        "user_interrupted_without_response": 1,
         "estimated_dollars": sum(r["estimated_dollars"] or 0 for r in records),
-        "errors": sum(
+        "errors_among_saved_responses": sum(
             (r.get("result") or {}).get("status") != "completed" for r in records
         ),
         "profiles": {},
@@ -80,14 +82,16 @@ def main():
         rows = [
             r
             for r in records
-            if r["prompt_profile"].endswith(v) and r["case_id"] == "DEV-FU-09"
+            if r["prompt_profile"].endswith(v)
+            and r["case_id"] == "DEV-FU-09"
+            and r["repeat"] <= 25
         ]
         sources = [
             r
             for r in records
             if r["prompt_profile"].endswith(v) and r["case_id"] == "G11"
         ]
-        assert len(rows) == 40 and len(sources) == 5
+        assert len(rows) == 25 and len(sources) == 0
         summary["profiles"][v] = {
             "n": len(rows),
             "strict_complete": sum(r["strict_complete"] for r in rows),
@@ -95,17 +99,21 @@ def main():
             "missing_fields": {
                 f: sum(f in r["adjudication"]["missing"] for r in rows) for f in FIELDS
             },
-            "id_exposure": sum(r["adjudication"]["id_exposure"] for r in sources),
+            "id_exposure": (
+                sum(r["adjudication"]["id_exposure"] for r in sources)
+                if sources
+                else None
+            ),
             "source_n": len(sources),
         }
         for metric in ["strict_complete", "either_complete"]:
             summary["profiles"][v][metric + "_wilson95"] = wilson(
-                summary["profiles"][v][metric], 40
+                summary["profiles"][v][metric], 25
             )
     for metric in ["strict_complete", "either_complete"]:
         a, c = [summary["profiles"][v][metric] for v in ["v1", "v3"]]
-        summary[metric + "_fisher_two_sided_p"] = fisher(a, 40 - a, c, 40 - c)
-        summary[metric + "_difference_v3_minus_v1"] = (c - a) / 40
+        summary[metric + "_fisher_two_sided_p"] = fisher(a, 25 - a, c, 25 - c)
+        summary[metric + "_difference_v3_minus_v1"] = (c - a) / 25
     (args.report / "records.json").write_text(
         json.dumps(records, ensure_ascii=False, indent=2) + "\n"
     )

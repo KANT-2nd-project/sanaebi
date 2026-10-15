@@ -60,3 +60,5 @@ flowchart TD
 - [답변 출처 표시·문서 충실성 검증](../generation_evaluation/reports/2026-10-15-answer-grounding/README.md): v2 후보의 실제82회 비교, 기본값 미승격과 남은 한계.
 
 - [v3 최소 프롬프트 변경 검증](../generation_evaluation/reports/2026-10-15-answer-grounding-v3/README.md): 두 규칙 추가·초기24회 비교, 신고 정보 누락에 따른 확대 평가·승격 보류.
+
+- [v1·v3 반복 비교](../generation_evaluation/reports/2026-10-15-answer-grounding-repeat/README.md): 각25회·사용자 요청 중단, 소표본 해석 재검토와 기준 민감도.
