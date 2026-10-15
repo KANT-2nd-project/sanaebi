@@ -127,9 +127,9 @@ textarea:focus-visible {
 .question-composer textarea { display: block; width: 100%; min-height: 60px; max-height: 200px; border: 0; padding: 0; border-radius: 0; background: transparent; box-shadow: none; resize: none; font-size: 16px; line-height: 1.7; }
 .question-composer textarea:focus-visible { outline: none; box-shadow: none; }
 .question-composer textarea::placeholder { color: var(--muted); opacity: 1; }
-.composer-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
-.keyboard-help { font-size: 12px; color: var(--muted); word-break: keep-all; }
-.send-button { background: var(--action); color: white; min-height: 44px; padding: 8px 12px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.composer-actions { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.keyboard-help { flex: 1; min-width: 0; font-size: 12px; line-height: 1.4; color: var(--muted); word-break: keep-all; }
+.send-button { flex-shrink: 0; background: var(--action); color: white; min-height: 36px; padding: 6px 12px; font-size: 14px; line-height: 20px; font-weight: 600; white-space: nowrap; }
 .input-error { margin-top: 8px; color: var(--danger); font-size: 14px; }
 .question-examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 22px 0 12px; }
 .example-button { border-radius: var(--chat-radius-pill); background: var(--subtle); font-size: 14px; }
@@ -151,11 +151,6 @@ button.send-button:enabled:active { background: var(--action-pressed); }
   .keyboard-help { font-size: 11px; }
   .user-message { max-width: 90%; }
   .chat-viewport { padding-top: 16px; }
-}
-@media (max-width: 520px) {
-  .composer-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
-  .keyboard-help { grid-column: 1 / -1; }
-  .send-button { grid-column: 2; justify-self: end; }
 }
 @media (prefers-reduced-motion: reduce) {
   .chat-button { transition: none; }
