@@ -60,7 +60,7 @@ GitHub `production` environment는 main만 허용한다. 환경 secret은 `DEPLO
 
 배포 helper는 공통 flock 아래 이미지·모델·격리 후보 readiness를 먼저 준비한다. 준비 실패 시 기존 서비스를 유지한다. 실제 교체는 점검 응답, 요청 종료 대기, SQLite 백업, API·웹 교체, readiness 확인 순서다. 실패하면 이전 이미지·웹·모델을 복원하며 사용자 변경이 생긴 DB를 자동 덮어쓰지 않는다. 강제 종료로 점검 표식이 남으면 다음 배포를 거부한다. 운영자가 journal·활성 포인터·컨테이너를 확인한 뒤 root 전용 `sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/deploy_release.py recover`를 실행한다. journal에 저장된 이전 포인터·이미지를 검증해 복원하고 readiness 성공 후 점검을 해제한다. DB는 덮어쓰지 않으며 CI 계정에는 recover 권한을 부여하지 않는다.
 
-릴리스는 기존 schema v1을 계속 지원하며, 검색 descriptor가 포함된 schema v2도 만들 수 있다. v1은 항상 기존 `full` 문서 흐름을 사용한다. v2도 기본값은 `full`이며 `/etc/sanaebi/api.env`에 `SANAEBI_RETRIEVAL_MODE=rag`를 명시한 경우에만 검색 worker와 RAG 요청 경로를 켠다. 설정을 바꾼 뒤에는 해당 릴리스를 다시 배포해야 API와 worker가 같은 모드로 시작한다. 배포 helper는 실제 실행 중인 API의 이전 모드를 기록해 실패·중단 복구에서 그 모드를 다시 적용한다.
+릴리스는 기존 schema v1을 계속 지원하며, 검색 descriptor가 포함된 schema v2도 만들 수 있다. v1은 항상 기존 `full` 문서 흐름을 사용한다. 신규 v2 descriptor 기본값은 `rag`이며 검색 worker와 C 검색 경로를 준비한다. `/etc/sanaebi/api.env`의 명시적 `SANAEBI_RETRIEVAL_MODE`가 우선하며, 과거 descriptor의 `full` 기본값과 descriptor 없는 v1의 full 동작은 유지한다. 운영 설정은 이번 코드 게시로 변경하지 않는다. 설정을 바꾼 뒤에는 해당 릴리스를 다시 배포해야 API와 worker가 같은 모드로 시작한다. 배포 helper는 실제 실행 중인 API의 이전 모드를 기록해 실패·중단 복구에서 그 모드를 다시 적용한다.
 
 RAG 릴리스 준비 때 배포 helper는 공개 KoEn-E5-Tiny의 고정 revision과 파일 SHA를 검증해 `/srv/sanaebi/embeddings/`에 준비한다. API와 indexer에는 Hugging Face 자격 증명을 전달하지 않는다. 최초 host baseline은 컨테이너 이미지에서 한 번 복사하고 이후에는 이 host 파일을 기준 원본으로 보존한다. 각 RAG 릴리스는 그 원본과 릴리스가 선언한 schema를 사용해 기본 벡터 묶음을 만들고, 임시 DB에서 후보 검색 색인이 준비되는지 확인한다. 검색 번들과 활성 문서 DB의 연결값은 release별 binding에 보관하므로 schema가 바뀌어도 이전 묶음을 삭제하거나 새 묶음으로 덮어쓰지 않는다.
 

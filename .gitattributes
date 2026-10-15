@@ -3,3 +3,6 @@
 *.cmd text eol=crlf
 # Preserve CSV bytes, including embedded newlines and UTF-8 BOM.
 data/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve recorded experiment CSV bytes and their artifact hashes.
+retrieval/reports/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

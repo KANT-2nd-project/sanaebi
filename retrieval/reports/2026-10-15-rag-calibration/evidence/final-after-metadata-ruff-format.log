@@ -1,0 +1,6 @@
+COMMAND: uv run --locked ruff format --check .
+EXIT_CODE: 0
+--- STDOUT ---
+487 files already formatted
+
+--- STDERR ---

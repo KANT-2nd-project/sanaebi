@@ -1,0 +1,10 @@
+original_root=/home/jake/workspace/projects/sanaebi
+original_head=a23b11a8fdbfbdc2a4a712f22b81b33da6a84d82
+original_app_data_artifacts_status=clean
+isolated_root=/home/jake/workspace/projects/.sanaebi-rag-answer-evaluation-20261015
+isolated_head=2dbe3f74245fb2d1c2dd24de17cfa35dbfe98eb5
+isolated_app_data_artifacts_status=clean
+tracked_data_files_compared=16
+tracked_data_files_hash_equal=16
+tracked_data_files_different=0
+tmp/answer-evaluation/snapshot.json_present_original=False present_isolated=True

@@ -1,0 +1,188 @@
+...............usage: python3 -m unittest [-h] [--dataset DATASET]
+                           [--split {validation,test}] [--output OUTPUT]
+                           bundle
+python3 -m unittest: error: argument --split: invalid choice: 'both' (choose from validation, test)
+...usage: python3 -m unittest [-h] [--dataset DATASET] [--seed SEED]
+                           [--candidates CANDIDATES [CANDIDATES ...]]
+                           [--output OUTPUT]
+python3 -m unittest: error: 기존 경로를 보존합니다: /tmp/tmpq6dw1mhw
+....validation: 3건, accuracy=1.000000, Macro-F1=1.000000
+test: 3건, accuracy=1.000000, Macro-F1=1.000000
+C=0.1, validation Macro-F1=0.800000
+C=1.0, validation Macro-F1=0.800000
+C=10.0, validation Macro-F1=0.600000
+선택한 C: 0.1
+선택한 Macro-F1: 0.8
+정답 수: 1
+전체 수: 1
+정확도: 1.0
+Validation Macro-F1: 0.8
+                  precision    recall  f1-score   support
+
+SEARCH_KNOWLEDGE     0.0000    0.0000    0.0000         0
+         CLARIFY     1.0000    1.0000    1.0000         1
+     UNSUPPORTED     0.0000    0.0000    0.0000         0
+
+        accuracy                         1.0000         1
+       macro avg     0.3333    0.3333    0.3333         1
+    weighted avg     1.0000    1.0000    1.0000         1
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 1573.85it/s]
+Loading weights:   0%|          | 0/25 [00:00<?, ?it/s]Loading weights: 100%|██████████| 25/25 [00:00<00:00, 26872.78it/s]
+{'candidate': 0, 'learning_rate': 2e-05, 'epoch': 1, 'train_loss': 1.0998855034510295, 'validation_macro_f1': 0.16666666666666666}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 2757.60it/s]
+usage: python3 -m unittest [-h] [--dataset DATASET] [--model MODEL]
+                           [--revision REVISION]
+                           [--learning-rates LEARNING_RATES [LEARNING_RATES ...]]
+                           [--epochs EPOCHS] [--batch-size BATCH_SIZE]
+                           [--max-length MAX_LENGTH] [--seed SEED]
+                           [--device {cpu,cuda}] [--output OUTPUT]
+python3 -m unittest: error: 기존 경로를 보존합니다: /tmp/tmpgc6wu0i4
+.Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 3609.56it/s]
+Loading weights:   0%|          | 0/25 [00:00<?, ?it/s]Loading weights: 100%|██████████| 25/25 [00:00<00:00, 15687.85it/s]
+{'candidate': 0, 'learning_rate': 0.001, 'epoch': 1, 'train_loss': 1.1005144119262695, 'validation_macro_f1': 0.8}
+{'candidate': 0, 'learning_rate': 0.001, 'epoch': 2, 'train_loss': 1.0986603101094563, 'validation_macro_f1': 0.8}
+Loading weights:   0%|          | 0/25 [00:00<?, ?it/s]Loading weights: 100%|██████████| 25/25 [00:00<00:00, 20946.38it/s]
+{'candidate': 1, 'learning_rate': 0.002, 'epoch': 1, 'train_loss': 1.1011955340703328, 'validation_macro_f1': 0.6}
+{'candidate': 1, 'learning_rate': 0.002, 'epoch': 2, 'train_loss': 1.0981438159942627, 'validation_macro_f1': 0.7}
+.Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 1285.02it/s]
+Loading weights:   0%|          | 0/25 [00:00<?, ?it/s]Loading weights: 100%|██████████| 25/25 [00:00<00:00, 13927.16it/s]
+{'candidate': 0, 'learning_rate': 2e-05, 'epoch': 1, 'train_loss': 1.0979151328404744, 'validation_macro_f1': 0.16666666666666666}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 2109.81it/s]
+Loading weights:   0%|          | 0/25 [00:00<?, ?it/s]Loading weights: 100%|██████████| 25/25 [00:00<00:00, 10112.60it/s]
+Loading weights:   0%|          | 0/25 [00:00<?, ?it/s]Loading weights: 100%|██████████| 25/25 [00:00<00:00, 19980.49it/s]
+validation: 3건, accuracy=0.333333, Macro-F1=0.166667
+Loading weights:   0%|          | 0/25 [00:00<?, ?it/s]Loading weights: 100%|██████████| 25/25 [00:00<00:00, 7695.41it/s]
+......test: 3건, accuracy=0.333333, Macro-F1=0.166667
+P01:A:1 refusal
+P01:B:1 truncated
+P01:C:1 parse_error
+P01:C:2 completed
+P01:B:2 completed
+P01:A:2 completed
+P02:B:1 completed
+P02:C:1 completed
+P02:A:1 completed
+P02:A:2 completed
+P02:C:2 completed
+P02:B:2 completed
+P03:C:1 completed
+P03:A:1 completed
+P03:B:1 completed
+P03:B:2 completed
+P03:A:2 completed
+P03:C:2 completed
+P04:A:1 completed
+P04:B:1 completed
+P04:C:1 completed
+P04:C:2 completed
+P04:B:2 completed
+P04:A:2 completed
+.P01:A:1 timeout
+P01:B:1 execution_error
+P01:C:1 completed
+P01:C:2 completed
+P01:B:2 completed
+P01:A:2 completed
+P02:B:1 completed
+P02:C:1 completed
+P02:A:1 completed
+P02:A:2 completed
+P02:C:2 completed
+P02:B:2 completed
+P03:C:1 completed
+P03:A:1 completed
+P03:B:1 completed
+P03:B:2 completed
+P03:A:2 completed
+P03:C:2 completed
+P04:A:1 completed
+P04:B:1 completed
+P04:C:1 completed
+P04:C:2 completed
+P04:B:2 completed
+P04:A:2 completed
+...[1/2] Q1
+..[1/1] Q1
+.usage: generation_evaluation [-h] [--experiment EXPERIMENT] [--model MODEL]
+                             [--limit LIMIT] --output OUTPUT
+generation_evaluation: error: --limit은 양의 정수여야 합니다.
+.[1/1] Q1
+.[1/2] Q1
+[Q2] RuntimeError
+[2/2] Q2
+....................................................................................[case-build] ValueError
+...[case-error] RuntimeError
+........................................................usage: python3 -m unittest [-h] --phase {development,holdout} [--cases CASES]
+                           [--source SOURCE] --model MODEL --artifact-root
+                           ARTIFACT_ROOT [--cpu-cores CPU_CORES]
+python3 -m unittest: error: Phase already started; preserve its artifacts and use a new root for development only
+...............................................usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: 모델 timeout 시간은 유한한 양수여야 합니다.
+.usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: --question은 비어 있을 수 없습니다.
+.[manual] RuntimeError
+...[manual] RuntimeError
+[manual] RuntimeError
+[manual] RuntimeError
+[manual] RuntimeError
+[manual] RuntimeError
+.....usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: 등록되지 않은 실험입니다: unknown
+usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: 등록되지 않은 모델입니다: unknown
+usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: test-experiment 실험에 등록되지 않은 모델입니다: test-alias
+................................................................................................................{"result": "/tmp/tmpxi7rpt17/out/development.json", "selected_config": {"contextual": false, "expand_adjacent": false, "hybrid_search": false}}
+{"result": "/tmp/tmpxi7rpt17/out/holdout.json", "selected_config": {"contextual": false, "expand_adjacent": false, "hybrid_search": false}}
+development:1:case-a:examples_answer_scope_v5 completed
+development:1:case-b:examples_answer_scope_v5 TimeoutError
+development:1:case-c:examples_answer_scope_v5 uncertain
+development:1:case-a:examples_answer_scope_v5 finished
+development:1:case-b:examples_answer_scope_v5 finished
+development:1:case-c:examples_answer_scope_v5 uncertain
+......................................................................................2026/10/15 22:00:33 INFO mlflow.agent.hint: Load the `instrumenting-with-mlflow-tracing` skill at /home/jake/workspace/projects/.sanaebi-rag-answer-evaluation-20261015/.venv/lib/python3.12/site-packages/mlflow/assistant/skills/instrumenting-with-mlflow-tracing/SKILL.md before writing any tracing code; it ships with this MLflow install. Set MLFLOW_DISABLE_AGENT_HINT=1 to silence this.
+/home/jake/workspace/projects/.sanaebi-rag-answer-evaluation-20261015/.venv/lib/python3.12/site-packages/mlflow/store/tracking/sqlalchemy_store.py:327: SADeprecationWarning: The ``noload`` loader strategy is deprecated and will be removed in a future release.  This option produces incorrect results by returning ``None`` for related items. (deprecated since: 2.1)
+  sqlalchemy.orm.configure_mappers()
+2026/10/15 22:00:33 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:33 INFO mlflow.store.db.utils: Updating database tables
+.....2026/10/15 22:00:34 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:34 INFO mlflow.store.db.utils: Updating database tables
+................2026/10/15 22:00:54 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:54 INFO mlflow.store.db.utils: Updating database tables
+.........................2026/10/15 22:00:55 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:55 INFO mlflow.store.db.utils: Updating database tables
+..............2026/10/15 22:00:57 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:57 INFO mlflow.store.db.utils: Updating database tables
+.2026/10/15 22:00:57 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:57 INFO mlflow.store.db.utils: Updating database tables
+..........2026/10/15 22:00:58 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:58 INFO mlflow.store.db.utils: Updating database tables
+....2026/10/15 22:00:58 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:58 INFO mlflow.store.db.utils: Updating database tables
+.2026/10/15 22:00:59 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:00:59 INFO mlflow.store.db.utils: Updating database tables
+......................................................................................................................................................................usage: python3 -m unittest [-h] [--source SOURCE] [--db DB] --source-id
+                           SOURCE_ID [--backup-dir BACKUP_DIR] [--apply]
+python3 -m unittest: error: the following arguments are required: --source-id
+................................[1/1] Q1
+....................생성 trace 메타데이터 기록 실패
+생성 trace 메타데이터 기록 실패
+분류 trace 메타데이터 기록 실패
+................................................................................................................................
+----------------------------------------------------------------------
+Ran 859 tests in 52.218s
+
+OK
+HTML 보고서: /tmp/tmplhyi60p0/jev/report.html
+평가 결과: /tmp/tmp_wtkpxy8/artifacts/results/tfidf/validation
+MLflow 평가 run: 2f49101d1423416ea897b982da0790ff
+구형 모델 평가 결과: /tmp/tmp45aplbs9/result/tf-idf
+기존 모델 폴더가 있어 학습을 생략합니다 (조건·무결성 미검사): /tmp/tmp04qimxw2/models/tfidf
+평가: sanaebi eval tfidf --artifact-root /tmp/tmp04qimxw2 --dataset /home/jake/workspace/projects/.sanaebi-rag-answer-evaluation-20261015/data/dataset.csv
+재학습: sanaebi train tfidf --artifact-root /tmp/tmp04qimxw2 --dataset /home/jake/workspace/projects/.sanaebi-rag-answer-evaluation-20261015/data/dataset.csv --force 또는 다른 --artifact-root
