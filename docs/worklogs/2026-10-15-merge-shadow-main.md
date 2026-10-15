@@ -23,3 +23,5 @@
 - 최종 로그: /tmp/sanaebi-shadow-merge-tests-final.log. 환경은 프로젝트 tmp/merge-venv, 임시 테스트 파일은 tmp/merge-tests에 격리했다.
 - 병합 충돌0건, 새 수정의 diff 검사 통과. 전체 staged diff에는 원래 기능 브랜치 보고서 case-results.md와 Notion 증거 JSON의 EOF 빈 줄2건이 남는다. 역사 자료 바이트 보존을 위해 수정하지 않았다.
 - 웹 코드·공개 응답 계약 변경 없음. 브라우저·실모델 품질 실험·실행 중 서버 재시작·공개 배포는 이번에 수행하지 않았다.
+
+병합 커밋0d82056ca9d65e68a8592ad082bdb09a1f16c3c9를 main에 푸시하고 원격 해시 일치를 확인했다. Notion 서비스 처리 기준(3f805a3cdadc81d7b909fc71ed78381b), 라벨 기준(3f805a3cdadc813485e4d94773974acc), 분류 개인 일지(3f905a3cdadc81a19d1bfa4ea41c9e98)에 main 통합 완료 구역을 추가하고 저장 후 제목·고정 커밋 링크·643개 검증 결과를 재조회했다. 기존 기록과 다른 작업의 기록을 보존했다.
