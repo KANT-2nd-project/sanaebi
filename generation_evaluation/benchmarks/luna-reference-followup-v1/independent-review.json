@@ -1,0 +1,57 @@
+{
+  "review_id": "luna-reference-followup-v1-independent-review",
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "reviewer": "/root/followup_benchmark_review",
+  "review_mode": "read-only independent AI review; no human approval",
+  "review_scope": {
+    "dev_cases": 12,
+    "holdout_cases": 20,
+    "holdout_categories": {
+      "normal": 8,
+      "partial_missing": 4,
+      "conditions": 4,
+      "authority": 2,
+      "false_premise": 2
+    },
+    "snapshot_documents": 71,
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74"
+  },
+  "verified": {
+    "evidence_items": 58,
+    "evidence_checks": [
+      "document ID and title",
+      "revision and content hash",
+      "snapshot hash",
+      "exact quote and character offsets",
+      "line start/end location"
+    ],
+    "references": "all required/forbidden evidence references and absence references resolve",
+    "source_questions": {
+      "count": 6,
+      "question_text_group_and_provenance": "matches the original SEARCH_KNOWLEDGE rows"
+    },
+    "intent_overlap": {
+      "dev_vs_holdout_groups": 0,
+      "prior_benchmarks_groups": 0,
+      "manual_semantic_and_prompt_profile_review": "no unresolved concrete-intent overlap found"
+    },
+    "material_findings_remaining": []
+  },
+  "limitations": [
+    "26 of 32 cases are synthetic supplements.",
+    "The review did not exhaustively prove that no suitable alternative exists among all 214 unused source rows.",
+    "Several cases exercise related policies in the same fixed corpus; 32 cases do not establish 32 independent policy domains.",
+    "Review was performed by AI and is not human approval."
+  ],
+  "case_revisions": [
+    "Dev: corrected answer/evidence alignment, removed question-external mandatory claims, and made alternate reporting path acceptable.",
+    "Holdout: replaced semantic duplicates with distinct intents; narrowed snapshot-absence claims; made optional target/SLA context non-mandatory; merged repeated escalation claims; repaired references and direct evidence."
+  ],
+  "reviewed_file_sha256": {
+    "dev.json": "0cd5cb00ce85f0a493ee8a6e8643d9fc854efb8f4e675b6e304c80d4b04474c3",
+    "holdout.json": "087731244f545d09d70d40d84ec8536f34d5ab06ade2e4b296df80bf4b464dbe",
+    "rubric.json_before_status_finalization": "350a667d99c4d8795a200d70693bf5dc2e9e12460d16c80ec43221bc1c94ddbd",
+    "README.md_before_status_finalization": "2144686f8ffafae8a9d8455eec0437ea8bfa2deb00077024c9d3dfe276ec516f"
+  },
+  "status_finalization": "After the verdict, only rubric status/review_gate and README execution status were updated. No dev or holdout case content changed."
+}

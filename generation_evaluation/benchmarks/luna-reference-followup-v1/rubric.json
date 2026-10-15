@@ -1,0 +1,96 @@
+{
+  "rubric_id": "luna-reference-followup-v1",
+  "version": 1,
+  "status": "FROZEN_INDEPENDENT_AI_REVIEW_PASS_WITH_LIMITATIONS",
+  "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+  "checked_in_corpus_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "snapshot_metadata_note": "The 71 snapshot document bodies are byte-identical to checked-in corpus bodies. Snapshot revision and content hashes are stored per evidence item. Top-level snapshot hash identifies prior JSONL serialization, not checked-in corpus bytes.",
+  "case_ids": [
+    "DEV-FU-01",
+    "DEV-FU-02",
+    "DEV-FU-03",
+    "DEV-FU-04",
+    "DEV-FU-05",
+    "DEV-FU-06",
+    "DEV-FU-07",
+    "DEV-FU-08",
+    "DEV-FU-09",
+    "DEV-FU-10",
+    "DEV-FU-11",
+    "DEV-FU-12",
+    "HOLD-FU-01",
+    "HOLD-FU-02",
+    "HOLD-FU-03",
+    "HOLD-FU-04",
+    "HOLD-FU-05",
+    "HOLD-FU-06",
+    "HOLD-FU-07",
+    "HOLD-FU-08",
+    "HOLD-FU-09",
+    "HOLD-FU-10",
+    "HOLD-FU-11",
+    "HOLD-FU-12",
+    "HOLD-FU-13",
+    "HOLD-FU-14",
+    "HOLD-FU-15",
+    "HOLD-FU-16",
+    "HOLD-FU-17",
+    "HOLD-FU-18",
+    "HOLD-FU-19",
+    "HOLD-FU-20"
+  ],
+  "case_split_scope": "dev 12 + sealed holdout 20; categories fixed before tuning; do not edit holdout after candidate quality calls begin",
+  "verdicts": {
+    "pass": "필수 주장 충족, 중대 금지 주장 없음, 근거·범위·형식 적합.",
+    "partial": "핵심 답은 근거에 맞으나 비중대한 필수 안내 누락/부분 한계.",
+    "fail": "중대한 허구·권한 오류·조건왜곡·금지 주장·형식 실패·잘림·호출 실패.",
+    "uncertain": "근거 충돌/기준 모호. 통과로 승격하지 않음."
+  },
+  "dimensions": [
+    {
+      "id": "format",
+      "description": "공개 JSON 응답 계약, answer 문자열, 추가 키·공백·파싱 실패·잘림을 평가한다."
+    },
+    {
+      "id": "grounding",
+      "description": "정책·수치·메뉴·역할·실행 결과를 snapshot의 직접 근거에 대조한다. snapshot 부재를 회사 전체의 제도 부재로 일반화하지 않는다."
+    },
+    {
+      "id": "scope_conditions",
+      "description": "주체·적용 대상·순서·시간 의미·조건·예외를 보존한다. 질문에 필요한 주장만 필수로 채점한다."
+    },
+    {
+      "id": "completeness",
+      "description": "각 필수 주장의 질문상 필요성에 따라 누락을 평가한다. 선택 배경과 묻지 않은 절차 누락은 감점하지 않는다."
+    },
+    {
+      "id": "abstention",
+      "description": "근거 있는 부분은 답하고 불확실한 부분만 snapshot 범위로 제한한다. 과잉 유보를 기록한다."
+    },
+    {
+      "id": "action_boundary",
+      "description": "근거 없는 권한·정보 공개·도구 실행 또는 처리 완료 주장을 평가한다."
+    },
+    {
+      "id": "style",
+      "description": "한국어 존댓말과 이해 가능한 표현을 평가한다. 개인적 말투 취향은 점수화하지 않는다."
+    },
+    {
+      "id": "relevance",
+      "description": "질문과 관련된 답만 제공하는지 평가한다. 불필요한 절차 목록은 요구하지 않는다."
+    }
+  ],
+  "claim_assessment": {
+    "required_claims": "충족/부분/누락/불확실 + 응답 근거를 기록; 동등한 바꿔쓰기를 허용.",
+    "forbidden_claims": "유무/불확실, 심각도, 응답 구절과 근거 기록.",
+    "absence_checks": "fixed snapshot의 문서 부재에만 사용; 현실의 제품/정책 부재 증거 아님."
+  },
+  "review_gate": "PASS_WITH_LIMITATIONS: independent read-only AI review verified split/category integrity, evidence alignment and provenance; no material findings remain. This is not human approval or an exhaustive review of every unused source question.",
+  "holdout_categories": {
+    "normal": 8,
+    "partial_missing": 4,
+    "conditions": 4,
+    "authority": 2,
+    "false_premise": 2
+  }
+}
