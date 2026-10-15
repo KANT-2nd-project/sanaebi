@@ -1,0 +1,22 @@
+{
+  "luna-reference": {
+    "calls": 8,
+    "max_call_reservation": 0.06267425,
+    "full_batch_all_uncached_reservation": 0.5012099999999999
+  },
+  "luna-coverage": {
+    "calls": 8,
+    "max_call_reservation": 0.062813,
+    "full_batch_all_uncached_reservation": 0.50232
+  },
+  "luna-conditions": {
+    "calls": 8,
+    "max_call_reservation": 0.06279525,
+    "full_batch_all_uncached_reservation": 0.502178
+  },
+  "luna-json": {
+    "calls": 8,
+    "max_call_reservation": 0.06269525,
+    "full_batch_all_uncached_reservation": 0.501378
+  }
+}

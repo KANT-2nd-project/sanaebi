@@ -1,0 +1,2541 @@
+[
+  {
+    "blind_id": "e28dad6f3ca1",
+    "case_id": "RQ0007",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response: “누락 사실을 그대로 표시하고 ... 재무팀에 대체 증빙이 가능한지 문의하세요”; “결제일로부터 10영업일”; “같은 신청 건에 보완”. ieum-019: “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”; “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”; “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.”",
+        "reason": "The receipt, deadline, submission route, and correction advice are supported. The answer does not invent a rejection tab and bounds the individual-state statement as unavailable to the assistant / undocumented."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "Response identifies a missing receipt and directs the user to the existing expense application. ieum-019 limits this procedure to personally paid work expenses and specifies the expense-settlement route.",
+        "reason": "No other expense type or approval step is substituted; the deadline is correctly measured from payment date."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "분실·누락 사실을 그대로 표시하고 대체 증빙을 문의하라는 내용은 있으나 실제 지출액을 추정하지 말라는 별도의 고정 필수 안내는 없다.",
+        "reason": "같은 의미의 두 응답에 같은 기준 적용. frozen required_claim을 결과 확인 후 삭제하지 않는다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "Response: “안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.”",
+        "reason": "It distinguishes what the guidance documents from unavailable personal-state lookup, without inventing a screen."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "Response explicitly says “개인별 신청 상태는 제가 조회할 수 없습니다.” It does not claim to have inspected or changed the application.",
+        "reason": "The user asks for a portal route; the answer keeps the assistant’s access boundary clear."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses polite Korean forms such as “문의하세요”, “만들지 마세요”, and “조회할 수 없습니다.”",
+        "reason": "Clear, professional 존댓말; no blame or alarming language."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "Response covers missing-receipt handling, deadline, rejection correction, and the requested portal/status boundary.",
+        "reason": "The additional note about an undocumented tab directly addresses the requested location."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "실제 지출액을 추정하지 말라는 안내 누락",
+        "document_id": "ieum-019",
+        "reason": "고정 개발 필수 주장에는 실제 지출 추정 금지가 있다. 원문은 분실 사실 표시·대체 증빙을 명시하며 이보다 강한 필수 기준이라는 한계는 별도 보고한다."
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "016d0c1d9503",
+    "case_id": "RQ0009",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response: “목표로 15분 안에 ... 확인하고 대응 책임자를 명시해 인수”; “인수 담당자와 다음 연락 경로·시각을 남깁니다”; “팀장에게 대체 인계를 요청하세요.” ieum-035: the 15-minute interval is an “인계 목표”; record includes “인수 담당, 다음 연락 경로, 시각”; if the on-call person does not respond, request alternate handoff from the team lead. ieum-058 further states that if no response or explicit handoff is confirmed within 15 minutes, do not wait and request alternate handoff.",
+        "reason": "Preserves the target (not a resolution guarantee), records the correct handoff details, and gives the documented escalation."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "Response says the 15 minutes is a target and conditions escalation on absent response or explicit handoff. ieum-035: “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다.”",
+        "reason": "The answer does not convert an intake/handoff target into a guaranteed resolution time."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "Includes responsible-person assignment and next contact/time record; clarifies the 15-minute target and the team-lead fallback; says no self-service status menu or permission is documented.",
+        "reason": "All listed required claims are covered in equivalent language."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "Response: “문서에는 ... 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다.”",
+        "reason": "It bounds the answer to the supplied documentation and does not invent a lookup screen."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "Response does not claim to look up this report; it says the self-service menu/permission is not documented and gives a documented handoff path.",
+        "reason": "No private-state lookup or completed action is claimed."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses polite, direct Korean such as “요청하세요” and “연결합니다.”",
+        "reason": "Professional 존댓말 without blame or unnecessary alarm."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "All statements address how intake is handed off, what can be checked, and what to do if no handoff is confirmed.",
+        "reason": "The response answers the status-route question while separating internal incident records from employee self-service."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "19b006eda777",
+    "case_id": "POS02",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response: “Slack과 포털이 모두 작동하지 않으면 ... 비상연락카드”; “개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.” ieum-035: “두 경로가 모두 작동하지 않을 때는 입사 시 오프라인으로 받은 비상연락카드를 따른다” and “개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 않는다.”",
+        "reason": "Both directions closely match the source."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "The answer makes card use conditional on both Slack and portal being unavailable.",
+        "reason": "It preserves the dual-channel failure condition and does not skip a still-working route."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "Includes the offline card fallback and prohibition on guessing or seeking private phone numbers.",
+        "reason": "Both required claims are present."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "The answer gives only the documented fallback and does not supply a phone number.",
+        "reason": "No unsupported contact details are inferred."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "No lookup, contact, submission, or completed action is claimed.",
+        "reason": "The question asks for guidance and the answer stays within guidance."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses polite imperatives “따르세요” and “사용하지 마세요.”",
+        "reason": "Clear professional 존댓말."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "Both sentences directly answer the fallback-contact question.",
+        "reason": "No unrelated policy is added."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "c95a632d5200",
+    "case_id": "POS03",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response: “첫 로그인 과정에서 등록”; “등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다”; “동료 계정으로 대신 사용하면 안 됩니다”; “팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.” ieum-026 supports official-login registration when required and says borrowing another account is not a recovery method; ieum-057 says complete MFA at first login and do not access systems/materials before registration; ieum-050 says if account/device/approval is unready, do not use another person’s account, ask the team leader for alternative work, and use normal IT support.",
+        "reason": "All substantive instructions, including the extra fallback, are supported by the frozen source documents."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "Response distinguishes registration during the first-login flow from completing a separate registration before the first login.",
+        "reason": "It preserves the timing condition and does not claim a pre-login requirement."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "Answers the before-first-login question, states no access before MFA registration, and rejects account borrowing.",
+        "reason": "All required claims are present."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "The answer does not invent a workaround or suggest access before MFA registration.",
+        "reason": "It stays within the documented steps."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "It does not claim to sign in, register MFA, grant access, or use another account.",
+        "reason": "No action or access has been falsely represented as completed."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses polite forms “안 됩니다”, “요청하고”, and “이용하세요.”",
+        "reason": "Professional Korean without blame."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "The fallback instruction addresses the unready-account context raised in the question.",
+        "reason": "The additional guidance is directly relevant and source-backed."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "596437f9bb42",
+    "case_id": "RQ0006",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response says vendor account correction/reissue procedures are not in the references, then separately identifies an expense-settlement account error path. ieum-019 says it applies to expenses “업무를 위해 개인이 먼저 결제한 비용을 정산할 때” and says to contact Finance using the existing request number for an expense-settlement account error.",
+        "reason": "The personal-expense procedure is clearly labeled as such and is not presented as the vendor reissue process."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "Response separates the vendor’s account/reissue question from the individual’s registered payout account and the personal-prepayment expense workflow.",
+        "reason": "It does not transfer an expense procedure to a supplier payment."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "States vendor correction/reissue details are not documented, does not apply employee expense settlement to vendor payment, and says it cannot change the user’s account or process payment.",
+        "reason": "All required claims are covered; no change completion or private lookup is claimed."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "Response uses bounded phrases “절차가 안내되어 있지 않습니다” and “별도 절차는 확인되지 않습니다.”",
+        "reason": "It distinguishes missing documentation from a prohibition or assertion that the process cannot exist."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "Response: “제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.” It does not claim to have inspected or edited the registered account.",
+        "reason": "The requested account change/payment is not represented as completed."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses polite Korean and a clear action-boundary sentence.",
+        "reason": "Professional and non-alarming."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "The personal-expense note is explicitly scoped to an expense-settlement account error, while the vendor procedure remains unknown.",
+        "reason": "The related note clarifies the distinction requested by the benchmark rather than applying it to vendor payment."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "b23aa86908f1",
+    "case_id": "POS01",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response: “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”. ieum-019 gives the same deadline and portal path.",
+        "reason": "The provided deadline and menu are accurate."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "The deadline is measured from the payment date, as required by ieum-019.",
+        "reason": "No travel-return date or corporate-card rule is substituted."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "The response omits the requested supporting fields. ieum-019 requires “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증” in the submission.",
+        "reason": "The menu and deadline are present, but the second required claim also asks for purpose, project, and receipt information."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "The answer provides supported deadline and route without refusing or speculating.",
+        "reason": "The evidence is sufficient and the response answers the supported part."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "The response gives submission instructions and does not claim to submit or approve an expense.",
+        "reason": "No private lookup or completed action is asserted."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses concise polite Korean: “제출하시면 됩니다.”",
+        "reason": "Clear and professional."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "The answer gives the requested deadline and route.",
+        "reason": "No unrelated guidance is added; the issue is only the missing required submission details."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "Include transaction-level purpose, cost-bearing project, and receipt information with the expense submission.",
+        "document_id": "ieum-019",
+        "reason": "The response names only the deadline and portal menu; the source says to submit “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증”."
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "17979d57b6ee",
+    "case_id": "RQ0001",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response says no salary-account menu or payroll cutoff is documented and directs the user to People. ieum-052 says People checks personal records and applicable criteria for pay-related settlement; ieum-053 identifies People as the contact for employment matters.",
+        "reason": "The answer stays bounded to documented roles and does not invent a menu or date."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "The response does not apply the offboarding workflow to an active employee’s account-change question.",
+        "reason": "It sends the user to People for the actual process and timing."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "States that the menu and next-payroll deadline are not documented and asks People to confirm the applicable route and timing.",
+        "reason": "Both required claims are communicated."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "Response: “제공된 문서에는 ... 안내되어 있지 않습니다”; “People팀이 ... 확인한다고 되어 있으므로 ... 확인해 주세요.”",
+        "reason": "It does not infer a menu or date from offboarding guidance."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "No personal payroll record is claimed to have been accessed or changed.",
+        "reason": "The answer gives the appropriate contact for the requested individualized process."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses polite Korean “확인해 주세요.”",
+        "reason": "Clear and professional."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "Only discusses the missing menu/deadline and People-team confirmation.",
+        "reason": "Directly answers the requested procedure and timing."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "28a31e19c881",
+    "case_id": "RQ0004",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+        "reason": "Meets the response contract."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "Response states no VPN-specific status screen or notification criteria are documented. It separately labels the IT access-request flow as general and says applicability to VPN cannot be confirmed. ieum-027: requests go through “이음 포털의 IT > 접근 권한”; after required checks IT has two business days to process or record a delay reason; requesters check the result. ieum-055 says if a screen/function cannot be confirmed, do not write as if it exists.",
+        "reason": "General access-request guidance is supported and is not mislabeled as VPN approval lookup."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "Response explicitly says whether the general access flow applies to VPN “문서에서 확인할 수 없습니다.”",
+        "reason": "Preserves the distinction between general access rights and VPN-specific approval status."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "States that the employee-facing VPN approval route and notification standard are not documented; does not present the general IT access menu as the actual VPN lookup screen.",
+        "reason": "Both required claims are present."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "Response bounds the unknown: “다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.”",
+        "reason": "It offers only adjacent documented guidance and does not infer VPN applicability."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 확인 경로·알림 기준을 묻고 실제 개인 상태 조회 실행을 요구하지 않으며 응답도 조회를 수행했다고 주장하지 않는다.",
+        "reason": "행위 경계 검사의 적용 대상이 없다. 전체pass유지."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "Uses polite Korean “명시되어 있지 않습니다” and “확인할 수 없습니다.”",
+        "reason": "Professional and non-alarming."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "The general access flow is clearly separated from the requested VPN-specific status and notification guidance.",
+        "reason": "It supplies bounded adjacent context without changing the practical advice."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "c3e1d777d3a4",
+    "case_id": "RQ0007",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답: “재무 > 경비 정산”, “결제일로부터 10영업일”, “분실한 사실을 그대로 표시”, “재무팀에 문의”, “같은 경비 신청 건”. ieum-019: “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”; “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”; “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.”",
+        "reason": "경로·기한·분실 증빙·보완 안내가 근거와 일치하며 자동 면제라고 하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "결제일을 기준으로 10영업일이라고 했고 기존 신청 건에 보완하라고 안내했습니다. ieum-019도 개인 선결제 경비에 대해 이 기한을 두고 같은 신청 건에 보완하도록 합니다.",
+        "reason": "출장 정산 맥락을 보존했고 다른 비용 유형의 규칙을 적용하지 않았습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "분실·누락 사실을 그대로 표시하고 대체 증빙을 문의하라는 내용은 있으나 실제 지출액을 추정하지 말라는 별도의 고정 필수 안내는 없다.",
+        "reason": "같은 의미의 두 응답에 같은 기준 적용. frozen required_claim을 결과 확인 후 삭제하지 않는다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 대체 증빙 여부를 재무팀에 문의하라고 하고 자동 면제가 아니라고 명시합니다. ieum-019는 재무팀이 확인하는 대체 증빙을 따르도록 합니다.",
+        "reason": "문서가 정하지 않은 대체 증빙을 추측하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 포털에서 처리하는 방법을 묻고, 응답은 조회·신청 처리를 완료했다고 주장하지 않습니다.",
+        "reason": "사용자가 포털에서 할 절차 안내일 뿐, 모델에게 실제 조회나 변경을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“표시해 주세요”, “문의해야 하며”, “보완해 주세요” 등 존댓말을 사용합니다.",
+        "reason": "명확하고 정중합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "모든 문장이 영수증 누락 처리, 제출 경로·기한, 반려 보완에 관한 내용입니다.",
+        "reason": "요청한 포털 안내와 직접 관련됩니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "실제 지출액을 추정하지 말라는 안내 누락",
+        "document_id": "ieum-019",
+        "reason": "고정 개발 필수 주장에는 실제 지출 추정 금지가 있다. 원문은 분실 사실 표시·대체 증빙을 명시하며 이보다 강한 필수 기준이라는 한계는 별도 보고한다."
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "ae89ad986d7e",
+    "case_id": "RQ0009",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 “15분은 인수 목표 시간”, “인수 담당자·다음 연락 경로·시각”, “팀장에게 대체 인계”, “연결 시도와 인수 여부를 ... 기록”은 ieum-035의 “이 시간은 인계 목표”, “인수 담당, 다음 연락 경로, 시각”, 무응답 시 팀장에게 대체 인계, 사건 기록에 연결 시도와 인수 여부를 남긴다는 내용과 일치합니다.",
+        "reason": "담당자, 기록 항목, 15분 조건, 대체 연결을 정확히 안내합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 15분을 “인수 목표 시간”이라고 하며, 응답이나 명시적 인수가 확인되지 않을 때 팀장 대체 인계를 요청하라고 합니다. ieum-035는 이 시간이 사고 해결 시간이 아니라고 구분합니다.",
+        "reason": "인계 목표를 해결 보증으로 바꾸지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "당직 확인·책임자 지정·연락 경로와 시각 기록, 목표 시간과 대체 인계, self-service 조회 화면·권한이 문서화되지 않았다는 세 주장 모두 포함합니다.",
+        "reason": "필수 주장 의미가 모두 반영됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 직접 조회 메뉴·권한이 안내되지 않았다고 하고 내부 사건 기록과 대체 인계 절차만 설명합니다.",
+        "reason": "직원용 상태 화면을 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 확인 방법을 요청할 뿐 모델에게 신고 기록 조회나 변경을 요청하지 않았고, 응답도 조회했다고 주장하지 않습니다.",
+        "reason": "실제 private-state 조회나 실행 요청이 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“요청하세요”, “연결하고”, “남깁니다” 등 정중하고 차분한 표현을 사용합니다.",
+        "reason": "명확한 존댓말이며 비난·과도한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "응답은 상태 확인 가능 범위, 인계 기록, 무응답 시 대체 연결만 설명합니다.",
+        "reason": "질문과 직접 관련된 안내입니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "ef2edb06d439",
+    "case_id": "POS02",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 두 경로 모두 불가할 때 오프라인 비상연락카드를 따르고 개인 연락처를 임의로 찾지 말라고 합니다. ieum-035는 같은 두 조건과 개인 전화번호 추측 금지를 명시합니다. 응답의 팀장 대체 인계 및 보안·개인정보 담당자 연결도 ieum-035에 있습니다.",
+        "reason": "기본 연락 경로와 추가 대체 인계가 모두 근거에 맞습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“Slack과 이음 포털이 모두 작동하지 않으면”이라는 조건을 유지했습니다.",
+        "reason": "한 경로만 실패해도 바로 우회하라는 식으로 바꾸지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "오프라인 카드 사용과 개인 연락처 추측·임의 사용 금지 주장이 포함되어 있습니다.",
+        "reason": "두 필수 주장을 모두 전달합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 문서에 없는 전화번호를 제공하지 않습니다.",
+        "reason": "연락처를 만들어내지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 연락 경로를 묻고 응답은 절차만 안내하며, 모델이 실제로 신고하거나 연결했다고 주장하지 않습니다.",
+        "reason": "실제 접수·연결 작업을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“따르세요”, “사용하지 마세요”, “연결하세요”의 정중한 표현을 사용합니다.",
+        "reason": "간결하고 전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "추가 팀장 대체 인계는 당직 연결도 되지 않는 상황을 위한 문서화된 다음 단계입니다.",
+        "reason": "질문의 연락 경로와 관련된 추가 정보입니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "efcc258f9c76",
+    "case_id": "POS03",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 첫 로그인 과정에서 등록하고, 완료 전 시스템·자료에 접근하지 않으며, 동료 계정을 쓰지 말라고 합니다. ieum-050은 첫 로그인 과정의 MFA 등록, 등록 전 접근 금지, 준비되지 않은 계정에서 타인 계정 우회 금지와 팀장에게 대체 업무 요청·IT 정상 지원을 안내합니다. ieum-026은 등록 요구 시 공식 로그인 화면에서 등록하라고 합니다.",
+        "reason": "주요 지침과 대체 경로가 문서에 뒷받침됩니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서”라고 하여 등록 시점을 구분합니다.",
+        "reason": "별도 사전 등록 의무를 만들지 않고 첫 로그인 시점에 맞춥니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "첫 로그인 전 사전 등록이 아니라는 점, 등록 완료 전 접근 금지, 동료 계정 우회 금지를 포함합니다.",
+        "reason": "모든 필수 주장이 반영됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "계정 준비 전 대체 업무와 IT 정상 지원만 안내하고, 동료 계정이나 다른 MFA 우회 방법을 제안하지 않습니다.",
+        "reason": "문서에 없는 우회책을 채우지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "응답은 동료 계정 사용을 허용하거나 접근 권한을 부여했다고 하지 않습니다.",
+        "reason": "계정 공유·접근 권한에 관한 경계를 유지합니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“이용해 주세요”, “요청한 뒤” 등 정중하고 비난 없는 표현입니다.",
+        "reason": "전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "팀장 대체 업무와 IT 지원 안내는 계정이 준비되지 않은 경우라는 질문 조건에 직접 연결됩니다.",
+        "reason": "추가 안내가 질문에 관련되고 근거도 있습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "a6f68d2ae144",
+    "case_id": "RQ0006",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 vendor 계좌 정정·재지급 절차를 문서에서 확인할 수 없다고 합니다. ieum-019는 개인이 먼저 결제한 업무 비용의 정산에만 적용한다고 밝히고, 경비 정산 계좌 정보 오류는 기존 신청 번호로 재무팀에 문의하도록 합니다.",
+        "reason": "경비 정산 경로는 경비 정산으로 명시적으로 한정되어 있고 vendor 지급에 적용하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 거래처 절차, 본인 계좌 변경, 경비 정산 지급 계좌 오류를 별도로 구분합니다.",
+        "reason": "개인 선결제 경비 절차를 거래처 재지급으로 전이하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "거래처 절차가 문서에 없음을 말하고, 본인 계좌 변경을 대신할 수 없다고 밝히며, 변경 완료나 조회를 주장하지 않습니다.",
+        "reason": "필수 claims를 충족하고 private state 조회·수정 완료 주장이 없습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“제공된 문서에서 확인할 수 없습니다”, “절차는 문서에 명시되어 있지 않습니다”로 범위를 한정합니다.",
+        "reason": "자료에 없는 절차를 금지 또는 불가능으로 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "응답: “본인 계좌를 대신 변경할 수도 없습니다.” 계좌를 조회·변경하거나 지급했다고 하지 않습니다.",
+        "reason": "사용자가 요청한 변경 작업을 실행했다고 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 설명과 명확한 거절 경계를 사용합니다.",
+        "reason": "전문적이고 비난이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "경비 정산의 오류 문의는 별도 경로로 분리되어 설명되고 거래처 procedure와 혼합되지 않습니다.",
+        "reason": "관련된 경비 절차가 범위 구분을 돕습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "98e928f70b83",
+    "case_id": "POS01",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 10영업일, 재무 > 경비 정산, 거래별 금액·업무 목적·비용 부담 프로젝트·영수증 안내는 ieum-019의 제출 기준과 일치합니다.",
+        "reason": "기한, 메뉴, 제출 정보가 모두 근거와 맞습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 결제일 기준으로 10영업일이라고 합니다.",
+        "reason": "귀환일이나 달력일 기준을 적용하지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "기한·메뉴와 거래별 금액, 업무 목적, 비용 부담 프로젝트, 영수증 정보를 모두 포함합니다.",
+        "reason": "두 필수 주장이 충족됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "답변은 문서에 규정된 경로와 제출 정보만 안내합니다.",
+        "reason": "근거가 충분한 요청에 답변했고 불필요하게 거절하지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 사용자가 제출할 기한·메뉴를 묻고 응답도 직접 제출이나 승인 완료를 주장하지 않습니다.",
+        "reason": "assistant에게 실제 제출을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“제출하시면 됩니다”, “등록해 주세요” 등 정중한 표현입니다.",
+        "reason": "간결하고 전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "모든 내용이 경비 제출 기한·경로·정보에 집중되어 있습니다.",
+        "reason": "질문에 직접 답합니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "3d6518493b52",
+    "case_id": "RQ0001",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 급여 계좌 변경 메뉴와 마감일이 문서에 없다고 하고 People팀 및 #people-help 문의를 제시합니다. ieum-040은 “#people-help | 인사 절차의 일반 문의”; ieum-052는 퇴사 절차에서 급여 관련 개인 기록과 기준을 People팀이 확인한다고 합니다.",
+        "reason": "절차와 기한을 창작하지 않고 People 문의를 안내하며 다음 급여 반영도 보장하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 퇴사 절차를 재직자 변경에 적용하지 않고 People팀에 확인하라고 안내합니다.",
+        "reason": "일반 재직자 계좌 변경과 퇴사 정산을 혼동하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "메뉴·마감일이 확인되지 않음을 말하고 People팀에 실제 경로와 시점을 확인하도록 하며, 다음 급여 반영 여부는 확인할 수 없다고 합니다.",
+        "reason": "필수 주장들을 담고 다음 지급을 보장하지 않습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답: “문서만으로 확인할 수 없습니다.”",
+        "reason": "급여 반영일을 추정하거나 보장하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 사용자가 수정할 메뉴와 마감을 묻고, 응답은 개인 급여 기록을 조회·수정했다고 주장하지 않습니다.",
+        "reason": "assistant에게 실제 계좌 조회나 변경 작업을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“문의하시고”, “확인해 주세요”를 사용하는 정중한 표현입니다.",
+        "reason": "명확한 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "People팀 문의 경로와 다음 급여 반영 미확인 사실은 질문에 직접 관련됩니다.",
+        "reason": "불필요한 절차나 추측을 더하지 않습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "a38f44dc5eea",
+    "case_id": "RQ0004",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+        "reason": "응답 형식 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 VPN 전용 상태 경로·알림 기준이 없다고 말합니다. 일반 권한 신청에 조건부로 한해 제시한 IT > 접근 권한과 처리 결과 확인은 ieum-027의 “구성원은 ... IT > 접근 권한” 신청 및 “신청자는 처리 결과를 확인한다”에 근거합니다. 2영업일·지연 사유는 같은 원문에 있습니다. #it-helpdesk와 IT 메뉴 문의 경로는 ieum-053의 계정·권한 문의 첫 창구로 안내됩니다.",
+        "reason": "일반 권한 신청 절차를 VPN 전용 승인 화면처럼 단정하지 않고 조건부로 구분합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 “VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면”이라고 한정하고 승인 알림 기준은 별도 미확인이라고 합니다.",
+        "reason": "VPN과 일반 시스템 권한의 적용 여부를 조건으로 분리했습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "VPN 신청 전용 직원 조회 경로와 알림 기준이 문서에 없다고 밝히며, 일반 IT 문의를 실제 승인 조회 메뉴라고 표현하지 않습니다.",
+        "reason": "benchmark의 두 필수 주장이 충족됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다”라고 하고, 일반 권한 신청 경로는 조건부로만 제시합니다.",
+        "reason": "VPN-specific 알림이나 현재 신청 상태를 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 직원이 확인할 경로·기준을 묻고, 응답은 신청 상태를 직접 조회하거나 변경했다고 주장하지 않습니다.",
+        "reason": "assistant에게 실제 private-state 조회나 승인 작업을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“안내되어 있지 않습니다”, “확인할 수 없습니다”, “문의하실 수 있습니다” 등 존댓말을 사용합니다.",
+        "reason": "전문적이고 차분합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "VPN 전용 절차와 일반 권한 요청 절차를 분리해 안내하고 알림 기준의 미확인을 명시합니다.",
+        "reason": "조건부 일반 흐름은 요청과 관련된 제한된 참고 정보이며 조언을 바꾸지 않습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "fa613d36179b",
+    "case_id": "RQ0007",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 “영수증을 찾지 못한 사실을 그대로 표시”와 “10영업일 안에 ... **재무 > 경비 정산**” 안내는 ieum-019 및 출장 기준에 맞습니다.",
+        "reason": "대체 증빙, 제출 기한, 보완 절차와 포털 위치가 근거에 부합합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "출장비에 결제일 기준 10영업일을 적용하고 반려·보완은 같은 신청 건으로 안내합니다.",
+        "reason": "다른 제출 기한이나 새 신청 절차로 바꾸지 않았습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 “영수증을 찾지 못한 사실을 그대로 표시”하고 “거래별 금액”을 등록하라고 하지만, 실제 지출액을 추정하지 말라는 의미는 전달하지 않습니다. ieum-018은 “출장자는 실제 지출만 제출”한다고 정합니다.",
+        "reason": "분실 사실 표시와 대체 증빙 문의는 포함했으나, 고정 required_claim의 별도 필수 요소인 실제 지출 추정 금지가 빠졌습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.”라고 한계를 구분합니다.",
+        "reason": "화면을 창작하지 않으면서 확인 가능한 보완 절차를 제공합니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 포털 안내를 묻고 개인 신청 조회나 처리를 요청하지 않습니다.",
+        "reason": "실제 조회·변경 요청 경계가 적용되지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "명확한 한국어 존댓말을 사용합니다.",
+        "reason": "비난·모욕·과도한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "영수증 누락, 제출 기한, 반려 사유 확인 범위를 직접 답합니다.",
+        "reason": "추가 설명도 정산 질문에 관련됩니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "실제 지출액을 추정하지 말고 사실대로 기록한다는 별도 안내가 없습니다.",
+        "document_id": "ieum-018",
+        "reason": "응답은 분실 사실 표시와 대체 증빙 문의만 명시합니다. 문서는 “출장자는 실제 지출만 제출”한다고 하며, benchmark의 필수 의미를 충족할 추정 금지 안내는 응답에 없습니다."
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "a8dc25cf0672",
+    "case_id": "RQ0009",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "ieum-035는 15분 인수를 목표로 하고 대응 책임자·다음 연락 경로·시각 및 조치 결과를 기록하도록 하며, 팀장 대체 인계와 보안 담당 연결도 안내합니다.",
+        "reason": "응답이 신고 처리 흐름과 조회 화면 부재를 문서 범위 안에서 설명합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 “15분 안을 목표”로 표현하고 인수 미확인 시 대체 인계를 안내합니다.",
+        "reason": "목표를 해결·응답 보장으로 바꾸지 않고 조건과 역할을 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "담당자·다음 경로·시각 기록, 15분 목표와 미인수 시 팀장 경로, 신고자 조회 화면·권한 미확인을 모두 말합니다.",
+        "reason": "세 필수 주장을 모두 포함합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "신고자용 조회 경로·권한은 확인할 수 없다고 한정하면서 기록·인계 절차를 제공합니다.",
+        "reason": "없는 화면을 만들지 않고 확인 가능한 정보를 답합니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 확인 방법을 묻고 특정 신고의 실제 조회를 요청하지 않습니다.",
+        "reason": "개별 상태 조회 요청이 아닙니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 명확한 한국어로 안내합니다.",
+        "reason": "비난이나 불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "신고 접수 이후 인수·진행 확인과 대체 연결을 설명합니다.",
+        "reason": "응답이 질문에 직접 답합니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "6fae9fc6db1e",
+    "case_id": "POS02",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "ieum-035: “두 경로가 모두 작동하지 않을 때는 입사 시 오프라인으로 받은 비상연락카드를 따른다” 및 “개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 않는다.”",
+        "reason": "응답의 카드 대체 경로와 개인 연락처 금지가 정확히 뒷받침됩니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 “Slack과 이음 포털이 모두 작동하지 않으면”이라고 조건을 명시합니다.",
+        "reason": "두 경로 모두 사용할 수 없는 경우로 한정합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "오프라인 카드 사용과 개인 연락처를 추측·탐색하지 말라는 두 필수 내용을 포함합니다.",
+        "reason": "모든 필수 주장을 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "고정 문서에 있는 대체 연락 경로만 안내합니다.",
+        "reason": "번호나 다른 연락 경로를 만들어내지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 연락 방법 안내를 요청하며 실제 신고나 개인 상태 조회를 요청하지 않습니다.",
+        "reason": "실제 행동 경계가 적용되지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결한 한국어 존댓말입니다.",
+        "reason": "비난이나 모욕 표현이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "두 신고 경로 장애 시의 연락법만 답합니다.",
+        "reason": "응답이 질문에 직접 맞습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "638787f59d3e",
+    "case_id": "POS03",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "ieum-026은 첫 로그인 과정에서 공식 화면으로 MFA를 등록하도록 하고, ieum-057은 등록 전 시스템 접근 금지와 동료 계정 금지를 안내합니다.",
+        "reason": "대체 업무와 IT 지원 권고까지 입사 안내에 부합합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“첫 로그인 과정에서” 등록하고 등록 전에는 업무 시스템·자료에 접근하지 않는다고 설명합니다.",
+        "reason": "등록을 첫 로그인 이전의 별도 선행 절차로 바꾸지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "사전 등록을 요구하지 않는 점, 등록 전 업무 접근 금지, 동료 계정 우회 금지를 모두 포함합니다.",
+        "reason": "필수 주장을 모두 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "첫 로그인 절차를 답하고 계정 미준비 시 지원 가능한 대체 행동을 안내합니다.",
+        "reason": "근거 있는 답변을 불필요하게 거부하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 MFA 절차와 계정 공유 가능 여부를 묻고 실제 계정 조작을 요청하지 않습니다.",
+        "reason": "개별 조회·변경 요청이 아닙니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "차분한 한국어 존댓말입니다.",
+        "reason": "비난이나 모욕 표현이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "두 질문에 각각 등록 시점과 우회 금지를 답합니다.",
+        "reason": "대체 업무 안내도 계정 미준비 상황에 관련됩니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "1128a1a6be68",
+    "case_id": "RQ0006",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "ieum-019은 개인 선결제 경비 정산에 적용된다고 한정하고, 지급 계좌 오류는 기존 신청 번호로 재무팀에 문의하도록 합니다.",
+        "reason": "거래처 재지급과 개인 경비 지급 절차를 구분합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "경비 정산 안내를 사용자의 경비 건에 오류가 있는 경우로 한정합니다.",
+        "reason": "개인 경비 흐름을 거래처 계좌 정정에 전용하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "거래처 절차가 문서에서 확인되지 않는 점, 개인 경비와 구분, 계좌를 직접 변경하지 않는 점을 모두 포함합니다.",
+        "reason": "세 필수 주장을 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "거래처 계좌 처리법은 모른다고 한정하고 관련 있는 경비 지급 문의만 별도로 안내합니다.",
+        "reason": "자료 부재를 금지로 바꾸거나 다른 절차로 채우지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "응답 문구: “등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다.”",
+        "reason": "요청된 계좌 변경을 했다고 주장하지 않고 행동 한계를 밝힙니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 분명한 한국어입니다.",
+        "reason": "비난이나 모욕 표현이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "거래처 절차와 사용자의 계좌 변경 요청을 각각 다룹니다.",
+        "reason": "각 안내가 질문의 해당 부분에 답합니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "0b7af748033f",
+    "case_id": "POS01",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 “결제일로부터 10영업일 안에” 및 “재무 > 경비 정산”이라고 안내합니다. ieum-019가 같은 기한과 경로를 정합니다.",
+        "reason": "제시한 기한과 메뉴는 근거가 있습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "결제일을 기준으로 개인 선결제 경비의 일반 제출 기한을 안내합니다.",
+        "reason": "귀환일이나 법인카드 기한으로 바꾸지 않습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 기한과 메뉴만 말하고 거래별 목적·비용 부담 프로젝트·영수증 정보를 빠뜨립니다.",
+        "reason": "필수 주장 중 제출 정보가 누락되었습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "질문에 필요한 기한·경로를 직접 안내합니다.",
+        "reason": "불필요하게 답변을 거부하지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 제출 절차를 묻고 실제 제출이나 개인 상태 조회를 요청하지 않습니다.",
+        "reason": "개별 행동 경계가 적용되지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결하고 정중한 한국어입니다.",
+        "reason": "비난이나 모욕 표현이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "경비 정산 제출 기한과 메뉴를 직접 답합니다.",
+        "reason": "응답은 질문에 맞으나 필수 세부 정보가 부족합니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "거래별 목적·비용 부담 프로젝트·영수증 정보를 함께 제출한다.",
+        "document_id": "ieum-019",
+        "reason": "응답은 “결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출”한다고만 답합니다. 근거(ieum-019): “결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다.”"
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "a0c88d8c2e31",
+    "case_id": "RQ0001",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 “급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다”라고 한정하고 People팀 문의 경로를 제안합니다.",
+        "reason": "문서에 없는 급여 변경 메뉴·기한을 만들지 않고 담당 부서에 확인하도록 합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차”라고 급여와 경비 절차를 구분합니다.",
+        "reason": "퇴사 정산이나 개인 경비 절차를 재직자 급여 계좌 변경에 적용하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "급여 변경 메뉴·기한을 모른다고 하고 People팀에 실제 절차·시점을 문의하도록 안내하며 경비 절차를 구분합니다.",
+        "reason": "두 필수 주장의 의미를 모두 전달합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“인사 메뉴 또는 #people-help로 문의해 주세요”라고 지원 가능한 문의 창구만 제시합니다.",
+        "reason": "변경 방법은 모른다고 분리하고 확인 가능한 다음 단계를 안내합니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 사용자가 직접 수정할 메뉴와 시점을 묻고 개인 계좌를 조회·변경해 달라고 요청하지 않습니다.",
+        "reason": "실제 변경 요청 경계가 적용되지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 간결한 한국어입니다.",
+        "reason": "비난이나 모욕 표현이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "급여 계좌 변경 정보의 부재와 확인 창구를 답합니다.",
+        "reason": "경비 안내는 혼동을 막는 범위에서만 덧붙였습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "b9ffdd2fd297",
+    "case_id": "RQ0004",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 성공: answer 키만 있는 비어 있지 않은 JSON 객체; status=completed, format_pass=true.",
+        "reason": "응답 계약을 충족합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "ieum-053은 계정·권한 문의 창구로 이음 포털 IT 메뉴와 #it-helpdesk를 제시하고, ieum-055는 확인하지 못한 화면 기능을 있다고 쓰지 말라고 합니다.",
+        "reason": "일반 문의 창구를 안내하되 VPN 조회 화면이나 알림 정책을 단정하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 IT 메뉴와 #it-helpdesk를 “확인” 창구로만 제시합니다.",
+        "reason": "일반 문의 창구를 실제 승인 상태 조회 경로로 바꾸지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "신청별 화면·알림 기준이 문서에 없다는 점을 말하고 일반 IT 문의와 상태 조회를 구분합니다.",
+        "reason": "두 필수 주장을 모두 포함합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“제공된 문서에는 ... 경로나 승인·알림 기준이 안내되어 있지 않습니다”라고 범위를 한정합니다.",
+        "reason": "확인되지 않은 시스템 상태나 기능을 추측하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 직원이 확인하는 방법을 묻고 특정 VPN 신청 상태의 실제 조회를 요청하지 않습니다.",
+        "reason": "개별 상태 조회 요청이 아닙니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 명확한 한국어 존댓말입니다.",
+        "reason": "비난이나 모욕 표현이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "조회 화면·알림 기준의 부재와 문의 경로를 직접 답합니다.",
+        "reason": "일반 지원을 승인 화면으로 오인하지 않도록 설명합니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-conditions"
+  },
+  {
+    "blind_id": "b36f5e032163",
+    "case_id": "RQ0007",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 Finance > Expense Settlement, 결제일 기준 10영업일, 분실 사실을 표시하고 Finance에 대체 증빙 문의, 기존 신청 건 보완은 ieum-019의 “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”, “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”, “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다”에 근거합니다.",
+        "reason": "자동 면제나 새 신청을 안내하지 않았고, 포털 처리 완료나 개인 상태 조회를 주장하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "결제일을 제출 기한의 기준으로 유지하고, 기존 신청 건에서 사유·부족 항목을 확인해 보완하라고 합니다.",
+        "reason": "경비정산 절차의 책임·기한·기존 신청 조건을 왜곡하지 않았습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 “해당 거래를 사실대로 표시”하라고 하지만, 실제 지출을 추정하지 말라는 별도 필수 의미는 명시하지 않습니다.",
+        "reason": "분실 사실을 사실대로 표시하는 것은 포함하지만, benchmark의 별도 필수 조건인 실제 지출액 추정 금지는 빠졌습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 대체 증빙이 자동 면제되는 것이 아니며 재무팀에 문의해야 한다고 안내합니다. ieum-019는 재무팀이 확인하는 대체 증빙을 따르도록 합니다.",
+        "reason": "대체 증빙을 임의로 결정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "사용자는 포털 절차 안내를 요청했고, 응답은 개인 신청을 조회하거나 처리했다고 주장하지 않습니다.",
+        "reason": "assistant에게 실제 조회나 제출을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“문의하세요”, “제출하세요”, “만들지 마세요” 등 정중한 표현을 씁니다.",
+        "reason": "명확하고 전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "각 문장은 영수증 누락, 제출 기한·경로, 반려·보완 절차에 관한 내용입니다.",
+        "reason": "질문과 직접 관련됩니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "실제 지출액을 추정하지 말고 영수증 분실 사실을 표시한다.",
+        "document_id": "ieum-019",
+        "reason": "응답은 분실 사실을 사실대로 표시하라고 하지만 실제 지출 추정 금지를 따로 명시하지 않습니다. 원문은 “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”고 합니다."
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "5d85c4b4b018",
+    "case_id": "RQ0009",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 당직 담당자 확인·책임자 지정, 사건 기록의 인수 담당·다음 연락 경로·시각, 팀장 대체 인계, 보안·개인정보 위험 시 직접 연결은 ieum-035에 있습니다. 연결 시도와 인수 여부 기록도 ieum-035에 명시됩니다.",
+        "reason": "절차와 기록 항목이 출처에 부합합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 15분 안에 응답이나 인수가 확인되지 않으면 팀장에게 대체 인계하라고 합니다. ieum-058은 15분 내 명시적 인수가 없으면 기다리지 말고 대체 인계를 요청하도록 합니다.",
+        "reason": "무응답 시 대체 인계 조건은 보존했습니다. 15분을 해결 완료 시한이라고 주장하지는 않습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 “15분 안에 응답이나 인수 확인이 없으면”이라고 하지만 15분이 인수 목표이며 사고 해결을 보장하지 않는다는 설명을 포함하지 않습니다. ieum-035: “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다.”",
+        "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 직원용 직접 조회 메뉴·권한이 문서에 없다고 제한하고, 사건 기록과 대체 인계 절차만 제시합니다.",
+        "reason": "셀프서비스 화면을 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 확인 방법을 요청할 뿐 assistant에게 신고 상태 조회나 사건 처리를 요청하지 않았고, 응답도 이를 실행했다고 하지 않습니다.",
+        "reason": "실제 private-state 조회·처리 요청이 아닙니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“요청하세요”, “직접 연결하고” 등 정중하고 차분한 표현입니다.",
+        "reason": "비난이나 불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "조회 가능 여부, 내부 인수 기록, 응답 부재 시 대체 연결만 안내합니다.",
+        "reason": "질문과 직접 관련됩니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "15분 인수 시간의 운영 목표 성격 누락",
+        "document_id": "ieum-035",
+        "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "b5c2866c7ab1",
+    "case_id": "POS02",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 두 경로가 모두 불가하면 입사 시 받은 오프라인 비상연락카드를 사용하고 개인 연락처를 추측하거나 찾지 말라고 합니다. ieum-035의 해당 문구와 일치합니다.",
+        "reason": "연락 경로와 개인 연락처 금지가 모두 근거에 맞습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“Slack과 이음 포털을 모두 사용할 수 없으면”으로 두 경로 모두 불가 조건을 유지합니다.",
+        "reason": "한 경로만 실패한 경우로 조건을 넓히지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "비상연락카드와 개인 연락처 추측·탐색 금지를 모두 안내합니다.",
+        "reason": "두 필수 주장이 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "문서에 없는 번호나 연락처를 만들지 않습니다.",
+        "reason": "불확실한 연락처를 추측하지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "사용자는 연락 방법을 묻고, 응답은 실제 신고·연결을 완료했다고 주장하지 않습니다.",
+        "reason": "assistant에게 실제 신고 처리를 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“따르세요”, “사용하지 마세요” 등 정중한 존댓말입니다.",
+        "reason": "명확하고 전문적입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "두 문장이 보안 신고의 대체 연락 경로와 금지된 개인 연락처 사용을 다룹니다.",
+        "reason": "질문에 직접 답합니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "988a781e3d18",
+    "case_id": "POS03",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 MFA 등록 후에만 접근하고 동료 계정으로 우회하지 말라고 합니다. ieum-057은 첫 로그인에서 MFA 등록, 등록 전 시스템·자료 접근 금지를 말하고, ieum-026은 다른 사람 계정 대여가 복구 수단이 아니라고 합니다. 팀장 대체 업무와 IT 정상 지원은 ieum-050에 명시됩니다.",
+        "reason": "각 행동 안내가 근거에 맞습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 “첫 로그인 과정에서” 등록한다고 하고 “첫 로그인 이전에” 별도 등록하라고 하지 않습니다.",
+        "reason": "등록 시점의 조건을 왜곡하지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "첫 로그인 시점의 MFA, 등록 전 접근 금지, 타인 계정 우회 금지가 모두 포함됩니다.",
+        "reason": "필수 주장 세 가지가 반영됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "준비되지 않은 경우 대체 업무와 IT 정상 지원만 안내하며 우회 방법을 추가하지 않습니다.",
+        "reason": "문서에 없는 인증 우회책을 만들지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "응답은 동료 계정 접근을 허가하거나 실제 MFA·계정 처리를 완료했다고 하지 않습니다.",
+        "reason": "계정 사용 권한 경계를 지킵니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“이용해 주세요”를 포함한 정중한 표현이며 비난이 없습니다.",
+        "reason": "전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "대체 업무와 IT 지원은 계정 미준비 상황에 관한 사용자의 질문과 연결됩니다.",
+        "reason": "관련 있고 근거 있는 후속 안내입니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "255ed3eedb01",
+    "case_id": "RQ0006",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 거래처 계좌 정정·재지급 방법을 문서에서 확인할 수 없다고 하고, 개인 경비 정산의 계좌 오류에만 기존 신청 번호를 재무팀에 전달하라고 구분합니다. ieum-019는 개인 선결제 경비에 적용되며 해당 계좌 오류는 기존 신청 번호로 재무팀에 문의하도록 합니다.",
+        "reason": "경비 처리 절차를 거래처 지급 절차라고 제시하지 않았습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 vendor 계좌 처리와 본인 경비 정산의 지급 계좌 오류를 조건부로 분리합니다.",
+        "reason": "개인 경비 정산 범위를 거래처에 전이하지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "vendor 절차 미확인, 개인 계좌 직접 변경 불가, 경비 정산의 계좌 오류 문의 경로가 구분되어 있습니다. 개인 계좌를 조회하거나 변경 완료했다고 하지 않습니다.",
+        "reason": "요구된 적용 범위와 행동 경계를 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“참고 문서에서 확인할 수 없습니다”, “별도의 ... 절차는 명시되어 있지 않습니다”라고 범위를 한정합니다.",
+        "reason": "문서상 절차 부재를 금지나 절대 불가능으로 바꾸지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "응답: “제가 계좌를 직접 변경할 수도 없습니다.” 조회·변경 완료 주장이 없습니다.",
+        "reason": "사용자가 요청한 계좌 변경을 실행했다고 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결하고 정중하며 사용자에게 책임을 돌리지 않습니다.",
+        "reason": "스타일 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "경비 정산 경로를 별도 조건으로 한정해 거래처 문의와 구별합니다.",
+        "reason": "범위 구분에 필요한 내용입니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "62ac21524ff2",
+    "case_id": "POS01",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 결제일 기준 10영업일과 이음 포털 재무 > 경비 정산 경로는 ieum-019와 일치합니다.",
+        "reason": "기한과 경로가 정확합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "제출 기한을 결제일 기준으로 안내합니다.",
+        "reason": "기준일을 바꾸지 않았습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 기한과 메뉴만 말하며 거래별 목적·프로젝트·영수증 정보를 빠뜨립니다. ieum-019: “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다.”",
+        "reason": "required claim에는 제출 정보 안내도 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "충분한 근거가 있는 기한·메뉴에 답했습니다.",
+        "reason": "불필요한 거절이나 추측이 없습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 사용자가 제출할 경로·기한을 묻고 응답은 제출·승인을 완료했다고 하지 않습니다.",
+        "reason": "assistant에게 실제 제출 처리를 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“제출하시면 됩니다”라는 정중한 표현입니다.",
+        "reason": "간결하고 전문적입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "응답은 제출 기한과 메뉴를 직접 다룹니다.",
+        "reason": "누락된 세부 항목 외에는 관련성 문제가 없습니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "경비 신청에 거래별 업무 목적, 비용 부담 프로젝트, 영수증 정보를 포함한다.",
+        "document_id": "ieum-019",
+        "reason": "응답은 제출 메뉴·기한만 안내하고 필수 제출 정보를 안내하지 않았습니다."
+      }
+    ],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "682986e058c6",
+    "case_id": "RQ0001",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 급여 계좌 메뉴·마감일을 문서에서 확인할 수 없다고 하고 People팀 문의를 안내합니다. ieum-040은 “#people-help | 인사 절차의 일반 문의”로 규정합니다.",
+        "reason": "개인별 절차나 반영 시점을 창작하지 않았습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "퇴사 정산 절차를 재직자 계좌 변경 절차로 제시하지 않고, #people-help는 일반 문의 채널이라고 별도 설명합니다.",
+        "reason": "퇴사 절차와 일반 계좌 변경을 혼동하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "변경 메뉴·다음 급여 반영 마감일 미확인과 People팀 문의가 포함됩니다.",
+        "reason": "두 필수 주장에 답합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 “제공된 문서에서 확인할 수 없습니다”라고 말하고, #people-help를 계좌 변경 메뉴와 구별합니다.",
+        "reason": "일반 문의 채널을 실제 처리 메뉴라고 과장하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 직원이 이용할 메뉴와 시점을 묻고, 응답은 개인 급여 기록을 조회·변경했다고 주장하지 않습니다.",
+        "reason": "assistant에게 개인 계좌를 실제 조회하거나 변경해 달라는 요청은 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“확인해 주세요”를 사용한 정중한 표현입니다.",
+        "reason": "명확하고 전문적입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "#people-help에 대한 한정은 문의 채널이 처리 메뉴가 아님을 설명합니다.",
+        "reason": "일반 채널과 계좌 변경 메뉴의 구분은 질문에 직접 관련됩니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "d5c6dcccc87d",
+    "case_id": "RQ0004",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 VPN 승인 경로·알림 기준이 문서화되지 않았다고 하고 일반 IT 메뉴와 #it-helpdesk를 별도 일반 문의 경로로 제시합니다. ieum-053은 계정·권한 문의에 이음 포털 IT 메뉴와 #it-helpdesk를 안내하고, ieum-055는 확인하지 못한 화면·기능을 있다고 쓰지 말라고 합니다.",
+        "reason": "일반 문의 경로를 VPN 승인 조회 메뉴라고 표현하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 일반 IT 문의 경로가 VPN 상태 확인에 적용되는지 문서에서 확인할 수 없다고 분명히 한정합니다.",
+        "reason": "일반 채널과 VPN별 처리 절차를 구분합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "VPN별 승인 상태 경로와 알림 기준이 확인되지 않음을 밝히고, 일반 IT 문의를 실제 VPN 승인 조회 메뉴로 표현하지 않습니다.",
+        "reason": "두 필수 주장을 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.”",
+        "reason": "일반 경로를 VPN에 임의로 적용하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 직원이 확인할 경로를 묻고, 응답은 신청 상태를 직접 조회하거나 승인했다고 하지 않습니다.",
+        "reason": "assistant에게 실제 private-state 조회나 신청 변경을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“안내되어 있지 않습니다”, “확인할 수 없습니다” 등 차분한 존댓말입니다.",
+        "reason": "전문적이고 명확합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "일반 문의 경로와 VPN 상태 조회 미확인을 구분해 제시합니다.",
+        "reason": "질문에 관련되며 실제 조회 메뉴로 오인시키지 않습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 1,
+    "candidate_id": "luna-json"
+  },
+  {
+    "blind_id": "1af06f15dcbd",
+    "case_id": "RQ0007",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 “예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결”하되 대체 영수증 인정 여부는 재무팀에 확인하라고 합니다. ieum-016은 “예약 뒤 확인서와 결제 증빙을 출장 기록에 연결”한다고 하고, ieum-019는 분실 영수증의 대체 증빙을 재무팀 확인에 따르도록 합니다.",
+        "reason": "제안된 자료의 연결은 출장 예약 문서에 근거하고 대체증빙 인정 여부를 단정하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“결제일로부터 10영업일 안에”와 “재무 > 경비 정산”을 안내합니다. ieum-019는 개인 선결제 경비에 결제일 기준 10영업일 및 해당 포털 경로를 정합니다.",
+        "reason": "출장 정산의 결제일 기준과 제출 경로를 보존합니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 “분실 사실을 그대로 표시”하고 대체 증빙을 문의하라고 하지만, 실제 지출액을 추정하지 말라는 뜻은 직접 전달하지 않습니다. ieum-018은 “출장자는 실제 지출만 제출”한다고 정합니다.",
+        "reason": "고정 필수 주장 중 실제 지출 추정 금지라는 개별 의미가 누락되었습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“대체 증빙을 제출할 수 있는지 재무팀에 문의”하고 별도 반려 사유 조회 메뉴가 명시되지 않았다고 합니다.",
+        "reason": "문서가 정하지 않은 대체 증빙 인정 여부나 화면을 확정하지 않고 확인 경로를 제시합니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 포털 안내를 요청하며 개인 신청 상태 조회나 실제 제출을 요청하지 않습니다.",
+        "reason": "개인 상태 조회·처리를 주장하지 않았고 실제 action 요청도 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“문의하세요”, “제출합니다”, “확인해 주세요” 등 존댓말을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "답변은 영수증 분실, 정산 경로와 기한, 반려·보완 확인, 화면 위치를 다룹니다.",
+        "reason": "추가 설명도 해당 정산 절차에 관련됩니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "실제 지출액을 추정하지 말고 사실대로 기록한다는 안내가 없습니다.",
+        "document_id": "ieum-018",
+        "reason": "응답은 영수증 분실 사실을 그대로 표시하고 대체 증빙을 문의하라고 하지만, 실제 지출만 제출하라는 원문 의미를 명시하지 않습니다."
+      }
+    ],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "725dfd5b1d45",
+    "case_id": "RQ0009",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "당직 인수 기록, 15분 내 미확인 시 대체 인계, self-service 상태 조회 안내 부재는 ieum-035·ieum-058의 운영 내용에 부합합니다.",
+        "reason": "조치·담당자·연락 경로·시각 기록 및 팀장 대체 인계 안내가 원문에 근거합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 “15분 안에 ... 확인되지 않으면 기다리지 말고” 팀장에게 요청하라고 하며, ieum-058도 15분 내 미응답·미인수 시 기다리지 말고 대체 인계를 요청하도록 합니다.",
+        "reason": "보고를 보류하지 않고 대체 인계를 요청하는 조건을 보존합니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 15분 조건을 제시하지만, ieum-035의 “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다”는 구분을 담지 않습니다.",
+        "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.”",
+        "reason": "확인되지 않은 조회 화면이나 권한을 창작하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 처리 단계 확인 방법을 묻고 모델에게 개인 신고 상태를 실제 조회해 달라고 요청하지 않습니다.",
+        "reason": "실제 개인 상태 조회·변경 요청이 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 안내 표현을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "담당 인계, 상태 조회 부재, 지연 시 대체 경로를 직접 답합니다.",
+        "reason": "불필요한 정책을 덧붙이지 않습니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "15분 인수 시간의 운영 목표 성격 누락",
+        "document_id": "ieum-035",
+        "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+      }
+    ],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "cd8bffae61e0",
+    "case_id": "POS02",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 “Slack과 포털을 모두 사용할 수 없으면” 오프라인 비상연락카드를 따르도록 하며 개인 연락처를 찾지 말라고 합니다. ieum-035는 두 경로가 모두 작동하지 않을 때 카드 사용 및 사적 연락처 추측 금지를 명시합니다.",
+        "reason": "두 경로 모두 불가 조건과 개인 연락처 금지를 보존합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 Slack과 포털 모두 사용할 수 없을 때로 조건을 한정합니다.",
+        "reason": "한 경로만 실패한 상황까지 확대하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "오프라인 카드와 개인 연락처 추측·사용 금지를 모두 안내합니다.",
+        "reason": "모든 필수 의미를 포함합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "문서가 정한 카드로 연결하도록 하고 번호를 만들지 않습니다.",
+        "reason": "확인되지 않은 연락처 정보를 만들어내지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 연락 절차를 묻고 신고를 대신 제출하라고 요청하지 않습니다.",
+        "reason": "실제 개인 상태 조회·처리 요청이 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 한국어 존댓말을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "연락 수단과 사적 연락처 사용 금지를 직접 답합니다.",
+        "reason": "질문과 관련된 내용만 포함합니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "d1e2e3a4e153",
+    "case_id": "POS03",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "첫 로그인 MFA 등록과 등록 전 업무 시스템·자료 접근 금지는 ieum-026·ieum-057에, 타인 계정 사용 금지는 ieum-026에 근거합니다.",
+        "reason": "회사 절차와 계정 우회 금지 안내가 원문에 부합합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“첫 로그인 과정에서 등록”이라고 하여 첫 로그인 이전에 별도 등록을 완료해야 한다고 말하지 않습니다.",
+        "reason": "질문의 사전 등록 전제를 바로잡고 등록 전 접근 제한을 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "첫 로그인 등록, 등록 전 접근 금지, 동료 계정 사용 금지를 모두 담았습니다.",
+        "reason": "요구된 핵심 행동을 빠짐없이 안내합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "계정이 준비되지 않았을 때 동료 계정 우회를 허용하지 않고 팀장과 IT 지원을 권합니다.",
+        "reason": "지원 방식과 접근 제한을 넘어선 미확인 예외를 만들지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "계정 등록이나 접근 권한을 모델이 처리해 달라는 요청이 없습니다.",
+        "reason": "실제 계정 변경·접근 action 요청이 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 존댓말을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "첫 로그인 등록 시점, 접근 제한, 동료 계정 사용 여부를 직접 답합니다.",
+        "reason": "답변이 질문에 집중되어 있습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "852a7b8a46f4",
+    "case_id": "RQ0006",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "ieum-019는 개인 선결제 경비에 적용한다고 범위를 한정하며 지급 계좌 오류는 기존 신청 번호로 재무팀에 문의하도록 합니다. 응답은 거래처 절차를 확인할 수 없다고 구분하고 재무팀 문의만 제안합니다.",
+        "reason": "개인 경비 절차를 거래처 재지급에 적용하지 않고 확인되지 않은 거래처 절차를 만들지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "개인 경비의 계좌 오류와 거래처 계좌 정정·재지급을 분리합니다.",
+        "reason": "서로 다른 지급 유형에 같은 절차를 전용하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "거래처 절차가 문서에 없다는 점, 개인 경비 절차와의 범위 차이, 직접 변경·지급 처리 불가를 모두 답합니다.",
+        "reason": "세 필수 주장을 모두 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "등록 계좌 변경 방법을 확인할 수 없다고 밝히고 재무팀에 확인하도록 합니다.",
+        "reason": "알 수 없는 절차를 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "“제가 계좌를 바꾸거나 지급을 처리할 수는 없습니다”라고 실제 변경·지급 처리 경계를 분명히 합니다.",
+        "reason": "개인 계좌 변경을 완료했다고 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 명확한 존댓말을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "거래처 계좌 정정, 재지급, 요청된 개인 계좌 변경에 직접 답합니다.",
+        "reason": "관련 없는 절차를 추가하지 않습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "775eeb64d1ae",
+    "case_id": "POS01",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "“결제일로부터 10영업일 안에”와 “재무 > 경비 정산”은 ieum-019와 일치합니다.",
+        "reason": "기한과 메뉴가 원문에 근거합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "기한을 결제일 기준 10영업일로 안내합니다.",
+        "reason": "귀환일이나 달력일, 법인카드 규칙과 혼동하지 않습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 기한과 메뉴만 말하며, ieum-019의 “업무 목적, 비용 부담 프로젝트와 영수증”을 안내하지 않습니다.",
+        "reason": "고정 required_claim에서 요청한 거래별 목적·프로젝트·영수증 정보가 누락되었습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "충분히 근거가 있는 기한과 경로에 답합니다.",
+        "reason": "불필요한 거절이나 미확인 정보 추가가 없습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 제출 방법을 묻고 모델에게 실제로 신청을 제출하라고 하지 않습니다.",
+        "reason": "개인별 신청 상태 조회·처리 요청이 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 한국어 존댓말을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "제출 기한과 메뉴를 직접 답합니다.",
+        "reason": "답변은 짧지만 질문에 관련됩니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "거래별 업무 목적·비용 부담 프로젝트·영수증을 제출 정보로 안내하지 않았습니다.",
+        "document_id": "ieum-019",
+        "reason": "응답에는 기한과 포털 메뉴만 있고, 고정 required_claim의 제출 정보가 빠졌습니다."
+      }
+    ],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "db2fb54beefb",
+    "case_id": "RQ0001",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "급여 계좌 변경 메뉴·마감이 문서에 없다는 점을 밝히고 People팀에 확인하도록 합니다. ieum-053은 People팀이 입사·이동·퇴사 및 일반 상담을 담당한다고 하고, ieum-052는 퇴사 정산 절차에서만 개인 정산 기록 확인을 명시합니다.",
+        "reason": "답변은 급여 계좌 수정 경로나 다음 급여 반영을 만들어내지 않고 실제 절차 확인을 요청합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "퇴사 절차의 메뉴·기한·정산 규칙을 일반 재직자의 계좌 변경에 적용하지 않습니다.",
+        "reason": "정산 정보와 일반 계좌 변경을 혼동하지 않고 문의 단계에 머뭅니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "메뉴와 다음 급여 반영 마감이 불명확하다고 하고 People팀에 변경 방법과 시점을 확인하도록 합니다.",
+        "reason": "요구된 직접 답변의 한계와 다음 확인 경로를 포함합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "확인되지 않은 급여 계좌 메뉴나 마감일을 추정하지 않습니다.",
+        "reason": "문서상 미확인 사항을 그대로 구분합니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 절차·시점 안내를 요청하며 실제 계좌 변경을 수행하라고 하지 않습니다.",
+        "reason": "개인 계좌 조회·수정 action 요청이 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 존댓말을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "급여 계좌 변경 메뉴·시점 및 문의할 담당자를 답합니다.",
+        "reason": "질문과 직접 관련된 내용입니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "66bcae09ac28",
+    "case_id": "RQ0004",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+        "reason": "응답 형식이 유효합니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 문서에 VPN 신청 상태·알림 기준이 없다고 하고 일반 IT 문의 창구(ieum-053)와 구분합니다. 제공된 71개 원문에서 VPN 신청별 화면이나 알림 기준은 확인되지 않았고, ieum-055는 확인하지 못한 기능을 있다고 쓰지 말라고 합니다.",
+        "reason": "VPN 특화 경로·기준을 만들지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "IT 메뉴와 #it-helpdesk를 일반 문의 창구로만 한정하고 VPN 신청 상태 조회 경로라고 하지 않습니다.",
+        "reason": "일반 IT 문의와 승인 상태 화면을 분리합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "승인 상태 경로와 알림 기준이 문서에 없다는 점, 일반 IT 창구가 상태 조회 화면은 아니라는 점을 답합니다.",
+        "reason": "두 필수 의미를 모두 포함합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "문서에 없는 VPN 신청별 조회나 알림 기준을 추정하지 않습니다.",
+        "reason": "불충분한 근거의 범위를 명확히 합니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 조회 경로를 묻고 개인 VPN 신청 상태를 실제로 조회하라고 하지 않습니다.",
+        "reason": "실제 개인 상태 조회 요청이 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 명확한 존댓말을 사용합니다.",
+        "reason": "비난·모욕·불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "VPN 상태 경로 및 알림 기준 부재와 문의 창구 범위를 직접 답합니다.",
+        "reason": "답변이 질문에 집중되어 있습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-reference"
+  },
+  {
+    "blind_id": "3ddd57d24dc0",
+    "case_id": "RQ0007",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 재무 > 경비 정산, 결제일로부터 10영업일, 분실 사실 표시와 재무팀 대체 증빙 확인, 같은 신청 건 보완을 안내합니다. ieum-019: “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”; “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”; “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.”",
+        "reason": "경로·기한·대체 증빙·반려 보완 안내는 근거와 맞고 자동 면제를 말하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 결제일을 제출 기한 기준으로 쓰고 기존 신청 건에 보완하라고 합니다.",
+        "reason": "경비정산 기한과 같은 신청 건이라는 절차 조건을 유지합니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "“증빙을 분실한 사실을 그대로 표시”하라고 하지만 실제 지출액을 추정하지 말라는 별도 조건은 나오지 않습니다.",
+        "reason": "필수 주장에는 분실 사실 표시와 구별되는 실제 지출 추정 금지가 포함되어 있어 누락입니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "대체 증빙 가능 여부는 재무팀에 문의하고 자동 면제는 아니라고 합니다. ieum-019는 재무팀이 확인하는 대체 증빙을 따르도록 합니다.",
+        "reason": "구체적인 대체 증빙을 임의로 채우지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "응답은 절차 안내만 하며 포털 상태 조회나 신청 처리를 완료했다고 하지 않습니다.",
+        "reason": "사용자는 안내를 요청했으며 assistant에게 실제 조회·처리를 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“제출하시면 됩니다”, “문의하세요”, “보완하시면 됩니다” 등 정중한 표현입니다.",
+        "reason": "명확하고 전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "모든 문장은 영수증 누락, 제출 시한, 반려 사유 확인 및 보완과 관련됩니다.",
+        "reason": "질문에 직접 답합니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "실제 지출액을 추정하지 말고 영수증 분실 사실을 표시한다.",
+        "document_id": "ieum-019",
+        "reason": "응답에는 분실 사실을 그대로 표시하라는 내용은 있지만 실제 지출 추정 금지를 별도로 명시하지 않았습니다. 원문은 “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”고 합니다."
+      }
+    ],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "d60baf671c8e",
+    "case_id": "RQ0009",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 담당자·다음 연락 경로·시각·조치 결과·미확인 사항의 사건 기록, 15분 인수 목표, 팀장 대체 인계 및 보안·개인정보 담당자 연결을 설명합니다. ieum-035는 “인수 담당, 다음 연락 경로, 시각”과 “수행 주체, 승인, 조치 결과와 미확인 사항”을 기록하고, 15분 인계 목표와 대체 인계 절차를 둡니다.",
+        "reason": "사건 처리 주체와 기록 항목이 원문과 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“15분 안에 담당자가 인수하는 것은 운영 목표”라고 했고, 응답·명시 인수 부재 시 기다리지 말고 팀장에게 넘기도록 합니다. ieum-035는 15분을 인계 목표로 규정하며 해결 시간이 아니라고 구분합니다.",
+        "reason": "목표를 해결 보증으로 바꾸지 않고 무응답 조건을 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "직접 조회 메뉴·권한이 문서화되지 않았다는 점, 기록되는 담당·연락·시각과 조치 결과, 15분 목표와 대체 인계가 모두 포함됩니다.",
+        "reason": "필수 주장의 의미를 모두 전달합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 self-service 조회 메뉴·권한이 안내되지 않았다고 한정하고, 내부 사건 기록과 절차만 제시합니다.",
+        "reason": "신고자에게 기록 접근 권한이 있다고 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 확인 방법을 묻고 응답은 현재 신고 건을 조회·처리했다고 주장하지 않습니다.",
+        "reason": "assistant의 실제 조회나 사건 처리 요청은 없습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“요청하세요”, “직접 연결하고” 등의 정중하고 차분한 표현입니다.",
+        "reason": "비난이나 불필요한 경고가 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "응답은 조회 범위와 담당자 인계·사건 기록 절차에 집중합니다.",
+        "reason": "질문과 직접 관련됩니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "f88c023f9fb2",
+    "case_id": "POS02",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 두 경로 모두 불가할 때 오프라인 비상연락카드를 사용하고 개인 전화번호를 추측하거나 사적 연락처를 찾지 말라고 합니다. ieum-035는 같은 조건과 금지를 명시합니다. 무응답 시 팀장 대체 인계와 팀장 조정 실패·보안 위험 시 담당자 연결도 ieum-035에 있습니다.",
+        "reason": "기본 연락 경로 및 추가 에스컬레이션이 근거에 부합합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“Slack과 포털이 모두 작동하지 않으면” 카드 사용을 안내합니다.",
+        "reason": "두 경로가 함께 불가한 조건을 유지합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "비상연락카드 사용과 개인 연락처 추측·탐색 금지를 안내합니다.",
+        "reason": "두 필수 주장이 충족됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 문서에 없는 전화번호나 연락처를 제공하지 않습니다.",
+        "reason": "연락처를 만들어내거나 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "응답은 신고 경로를 안내할 뿐 실제 신고 접수·연결을 완료했다고 하지 않습니다.",
+        "reason": "assistant의 실제 신고 작업 요청이 아닙니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“따르세요”, “사용하지 마세요”, “요청하고” 등 정중한 표현입니다.",
+        "reason": "명확하고 전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "추가 대체 인계 경로는 비상연락카드 사용 뒤 담당자 응답이 없는 경우에 해당합니다.",
+        "reason": "질문 상황과 관련된 후속 절차입니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "6254ec31dad7",
+    "case_id": "POS03",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 MFA 등록 후 접근, 동료 계정 금지, 대체 업무 요청과 IT 문의를 안내합니다. ieum-050은 첫 로그인 MFA와 등록 전 접근 금지, 타인 계정 우회 금지, 팀장에게 대체 업무 요청 및 IT 정상 문의를 명시합니다. ieum-026은 서비스가 등록을 요구하면 공식 로그인 화면에서 등록하라고 합니다.",
+        "reason": "주요 지침과 계정 미준비 대안이 문서에 근거합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 등록이 첫 로그인 과정에서 완료된다고 하며 그 전에 미리 등록하라고 하지 않습니다.",
+        "reason": "사용자가 물은 사전 등록과 첫 로그인 중 등록을 구분합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "첫 로그인 중 MFA 등록, 등록 전 업무 시스템 접근 금지, 동료 계정으로 우회 금지를 포함합니다.",
+        "reason": "필수 주장 세 가지가 의미상 반영됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "계정 준비 전 대체 업무와 IT 문의를 안내하고 다른 계정 사용은 허용하지 않습니다.",
+        "reason": "문서에 없는 우회 방식을 제안하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "응답은 동료 계정 사용을 허용하거나 계정·권한 설정을 완료했다고 주장하지 않습니다.",
+        "reason": "계정 접근 경계를 유지합니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“요청하고”, “문의해 주세요” 등 정중한 표현입니다.",
+        "reason": "전문적이고 비난이 없습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "대체 업무와 IT 문의는 계정 미준비라는 질문 상황을 다룹니다.",
+        "reason": "추가 안내가 관련 있고 근거 있습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "2aeaa5725527",
+    "case_id": "RQ0006",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 거래처 절차를 문서에서 확인할 수 없다고 하고, 경비 정산의 상태·계좌 정보 오류는 기존 신청 번호로 재무팀에 문의한다고 별도 안내합니다. ieum-019는 업무를 위해 개인이 먼저 결제한 비용 정산에 적용되며, 지급 상태·계좌 정보 오류는 기존 신청 번호로 문의한다고 합니다.",
+        "reason": "개인 경비 흐름을 거래처 지급 절차와 분리합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 거래처 계좌 정정과 본인의 지급 계좌 변경을 별도로 언급하고, 재무팀 경로는 경비 정산 건의 오류로 한정합니다.",
+        "reason": "개인 선결제 경비 정산 절차를 거래처 지급에 적용하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "거래처 절차 미확인, 개인 계좌 직접 변경 불가, 경비정산 문의 경로의 적용 범위를 포함합니다. 조회·변경 완료를 주장하지 않습니다.",
+        "reason": "필수 주장 세 가지를 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“제공된 문서에서 확인할 수 없습니다”, “문서에 명시되어 있지 않습니다”라고 범위를 한정합니다.",
+        "reason": "누락된 절차를 금지 또는 불가능으로 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "응답은 “제가 직접 변경할 수는 없습니다”라고 하며 조회·수정·지급 완료를 주장하지 않습니다.",
+        "reason": "요청된 실제 계좌 변경을 완료했다고 표현하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 설명적인 표현이며 비난이 없습니다.",
+        "reason": "스타일 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "경비정산 계좌 오류 절차는 별도 사례로 명확히 한정되어 있습니다.",
+        "reason": "거래처 절차와 개인 계좌 변경을 구분하는 데 관련됩니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "8c340145c8f6",
+    "case_id": "POS01",
+    "verdict": "partial",
+    "severity": "omission",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 결제일 기준 10영업일과 이음 포털 재무 > 경비 정산 경로는 ieum-019와 일치합니다.",
+        "reason": "안내한 기한과 경로가 정확합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "제출 기한을 결제일로부터 계산합니다.",
+        "reason": "기준 시점을 바꾸지 않았습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "응답은 기한과 메뉴만 말하고 필수 거래별 목적·비용 부담 프로젝트·영수증 정보를 빠뜨립니다. ieum-019: “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 제출한다.”",
+        "reason": "required claim에 제출 시 함께 안내해야 할 정보가 포함되어 있습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "근거가 충분한 제출 기한과 메뉴에 직접 답했습니다.",
+        "reason": "불필요한 거절이나 추측이 없습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "응답은 사용자가 제출할 경로·기한을 말하며 실제 제출이나 승인을 완료했다고 주장하지 않습니다.",
+        "reason": "assistant에게 제출 처리를 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“제출하시면 됩니다”라는 정중한 표현입니다.",
+        "reason": "간결하고 전문적입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "응답은 제출 기한과 포털 메뉴만 설명합니다.",
+        "reason": "누락된 정보 외에 관련성 문제는 없습니다."
+      }
+    },
+    "issues": [
+      {
+        "kind": "required_omission",
+        "claim": "거래별 업무 목적, 비용 부담 프로젝트, 영수증 정보를 안내한다.",
+        "document_id": "ieum-019",
+        "reason": "응답에는 제출 기한과 메뉴만 있고 필수 제출 정보가 없습니다."
+      }
+    ],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "10ca8bdb7266",
+    "case_id": "RQ0001",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 변경 메뉴·마감 시점을 문서에서 찾을 수 없다고 하고 People팀에 문의하라고 합니다. ieum-052는 급여·퇴직급여 등 개인 기록과 기준을 People팀이 확인한다고 하며, ieum-053은 People팀이 인사·회사 제도·일반 상담을 담당한다고 합니다.",
+        "reason": "메뉴나 급여 반영일을 만들어내지 않고 People팀 문의를 안내합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 퇴사 정산 절차를 재직자 계좌 변경에 적용하지 않고 People팀에 다음 급여 반영 시점을 문의하라고 합니다.",
+        "reason": "일반 계좌 변경과 퇴사 정산을 혼동하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "메뉴와 마감 시점 미확인, People팀에 다음 급여 반영 시점을 포함해 문의하라는 내용이 있습니다.",
+        "reason": "요구된 절차 확인 지침을 모두 전달합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "응답은 변경 메뉴와 마감 시점을 문서에서 확인할 수 없다고 합니다.",
+        "reason": "다음 급여 반영을 보장하거나 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 본인이 사용할 메뉴와 시점을 묻고, 응답은 급여 계좌를 조회·변경했다고 주장하지 않습니다.",
+        "reason": "assistant에게 실제 계좌 조회나 변경을 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“문의해 주세요”를 포함한 정중한 표현입니다.",
+        "reason": "명확하고 전문적입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "People팀에 다음 급여 반영 시점을 묻는 안내는 질문의 핵심을 다룹니다.",
+        "reason": "관련 없는 절차를 추가하지 않습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  },
+  {
+    "blind_id": "a0b2289d151b",
+    "case_id": "RQ0004",
+    "verdict": "pass",
+    "severity": "none",
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+        "reason": "응답 형식 계약에 맞습니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답은 VPN-specific 승인 경로·알림 기준이 명시되지 않았다고 합니다. 일반 시스템 권한 절차는 ieum-027의 “이음 포털의 IT > 접근 권한” 신청, 필수 확인 이후 2영업일 내 처리 또는 지연 사유 기록, 신청자의 처리 결과 확인에 근거합니다.",
+        "reason": "일반 절차를 명시된 조건 아래서만 안내합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "응답은 VPN 신청이 일반 시스템 접근 권한 신청에 해당하는 경우에만 결과 확인 절차를 말하고, 적용 여부와 별도 알림 유무는 알 수 없다고 덧붙입니다.",
+        "reason": "VPN 절차의 적용 범위를 조건부로 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "VPN별 상태 조회 경로와 알림 기준이 없다는 점을 밝히고, 일반 권한 요청 흐름을 VPN 전용 화면이라고 부르지 않습니다.",
+        "reason": "benchmark의 required claims를 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "“VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.”",
+        "reason": "알 수 없는 VPN 신청 상태·알림 기준을 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "na",
+        "evidence": "질문은 직원이 확인할 경로와 기준을 묻고, 응답은 개인 신청 상태를 조회하거나 변경했다고 하지 않습니다.",
+        "reason": "assistant에게 실제 상태 조회나 신청 처리를 요청하지 않았습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "“명시되어 있지 않습니다”, “확인할 수 없습니다” 등 정중하고 차분한 표현입니다.",
+        "reason": "전문적인 존댓말입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "일반 권한 신청과 VPN-specific 승인 조회·알림의 차이를 설명합니다.",
+        "reason": "조건부 흐름은 직접 관련되고 답변을 과장하지 않습니다."
+      }
+    },
+    "issues": [],
+    "repeat": 2,
+    "candidate_id": "luna-coverage"
+  }
+]
