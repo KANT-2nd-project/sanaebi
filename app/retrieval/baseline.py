@@ -72,6 +72,7 @@ def prepare_baseline(
     embedder,
     *,
     spec: RetrievalSpec = DEFAULT_SPEC,
+    chunker=chunk_document,
 ) -> Path:
     """Build a source-bound immutable bundle and publish it without overwriting."""
     source_path = Path(source_path)
@@ -101,7 +102,7 @@ def prepare_baseline(
                 body=row["document"],
                 source_reference=f"document:{row['document_id']}",
             )
-            chunks = chunk_document(document, embedder.tokenizer, spec=spec)
+            chunks = chunker(document, embedder.tokenizer, spec=spec)
             if row["document"].strip() and not chunks:
                 raise RetrievalUnavailable(
                     "기본 문서에서 검색 청크를 만들지 못했습니다."

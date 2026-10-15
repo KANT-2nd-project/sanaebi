@@ -6,10 +6,12 @@ from app.retrieval.baseline import (
     restore_baseline,
     validate_baseline,
 )
-from app.retrieval.config import CONTEXTUAL_SPEC, DEFAULT_SPEC
+from app.retrieval.config import DEFAULT_SPEC
 from app.retrieval.repository import IndexRepository
-from app.retrieval.service import RetrievalService
 from app.retrieval.types import RetrievalUnavailable
+from retrieval.experiments.contextual_chunking import contextual_chunk_document
+from retrieval.experiments.contextual_config import CONTEXTUAL_SPEC
+from retrieval.experiments.legacy_service import LegacyRetrievalService
 from tests.retrieval.helpers import (
     FakeEmbedder,
     RetrievalTestCase,
@@ -41,7 +43,11 @@ class BaselineTests(RetrievalTestCase):
 
         legacy_bundle = prepare_baseline(source, artifacts, embedder, spec=DEFAULT_SPEC)
         contextual_bundle = prepare_baseline(
-            source, artifacts, embedder, spec=CONTEXTUAL_SPEC
+            source,
+            artifacts,
+            embedder,
+            spec=CONTEXTUAL_SPEC,
+            chunker=contextual_chunk_document,
         )
         self.assertNotEqual(legacy_bundle, contextual_bundle)
         self.assertNotEqual(
@@ -76,14 +82,22 @@ class BaselineTests(RetrievalTestCase):
             spec=CONTEXTUAL_SPEC,
         )
         self.assertIs(restored["ready"], True)
-        service = RetrievalService(
-            contextual_repository,
+        self.assertIs(contextual_repository.status(snapshot)["ready"], True)
+        self.assertEqual(len(embedder.document_batches), before_mapping)
+
+        experiment_repository = IndexRepository(
+            self.tmp_path / "experiment-runtime", spec=CONTEXTUAL_SPEC
+        )
+        experiment_service = LegacyRetrievalService(
+            experiment_repository,
             embedder,
             contextual_bundle,
             spec=CONTEXTUAL_SPEC,
+            chunker=contextual_chunk_document,
         )
-        self.assertIs(service.status(snapshot)["ready"], True)
-        self.assertEqual(len(embedder.document_batches), before_mapping)
+        before_reconcile = len(embedder.document_batches)
+        self.assertIs(experiment_service.reconcile(snapshot)["ready"], True)
+        self.assertEqual(len(embedder.document_batches), before_reconcile)
 
     def test_bundle_is_source_bound_and_has_no_runtime_revision_ids(self):
         source = self.tmp_path / "documents.jsonl"

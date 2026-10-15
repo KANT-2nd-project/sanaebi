@@ -26,12 +26,9 @@ class RetrievalSpec:
     """Immutable inputs that affect document chunking or passage vectors."""
 
     chunker_version: str = CHUNKER_VERSION
-    embedding_context_tokens: int = 0
-    context_before_tokens: int = 0
-    context_after_tokens: int = 0
 
     def to_dict(self) -> dict:
-        value = {
+        return {
             "chunker_version": self.chunker_version,
             "dimension": VECTOR_DIMENSION,
             "dtype": VECTOR_DTYPE,
@@ -45,22 +42,9 @@ class RetrievalSpec:
             "target_body_tokens": TARGET_BODY_TOKENS,
             "overlap_tokens": OVERLAP_TOKENS,
         }
-        if self.embedding_context_tokens:
-            value["embedding_context"] = {
-                "max_tokens": self.embedding_context_tokens,
-                "before_tokens": self.context_before_tokens,
-                "after_tokens": self.context_after_tokens,
-            }
-        return value
 
 
 DEFAULT_SPEC = RetrievalSpec()
-CONTEXTUAL_SPEC = RetrievalSpec(
-    chunker_version="markdown-source-spans-v2-embedding-context",
-    embedding_context_tokens=60,
-    context_before_tokens=30,
-    context_after_tokens=30,
-)
 
 
 def canonical_retrieval_spec(spec: RetrievalSpec = DEFAULT_SPEC) -> str:

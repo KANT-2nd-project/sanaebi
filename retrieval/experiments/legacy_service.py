@@ -48,11 +48,13 @@ class LegacyRetrievalService:
         *,
         spec: RetrievalSpec | None = None,
         search_config: SearchConfig = DEFAULT_SEARCH_CONFIG,
+        chunker=chunk_document,
     ):
         self.repository = repository
         self.embedder = embedder
         self.baseline_path = Path(baseline_path) if baseline_path is not None else None
         self.spec = repository.spec if spec is None else spec
+        self.chunker = chunker
         if self.spec != repository.spec:
             raise ValueError("retrieval service and repository specs must match")
         self.search_config = search_config
@@ -74,7 +76,7 @@ class LegacyRetrievalService:
             single_snapshot = type(snapshot)((document,))
             if self.repository.status(single_snapshot)["ready"]:
                 continue
-            chunks = chunk_document(document, self.embedder.tokenizer, spec=self.spec)
+            chunks = self.chunker(document, self.embedder.tokenizer, spec=self.spec)
             baseline_vectors = self._baseline_vectors(chunks)
             keys = [chunk.input_key for chunk in chunks]
             reusable = self.repository.reusable_vectors(keys)
