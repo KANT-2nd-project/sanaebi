@@ -69,3 +69,4 @@ class RetrievedContext:
     observed_at: datetime
     candidate_chunk_ids: tuple[str, ...] = ()
     search_config_id: str = ""
+    source_document_count: int | None = None

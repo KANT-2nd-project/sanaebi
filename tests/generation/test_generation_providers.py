@@ -1,11 +1,11 @@
 import json
 import unittest
+from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
 import httpx
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
-from langchain_core.outputs import ChatGeneration, ChatResult
-from openai import APIConnectionError, APITimeoutError
+from openai import APIConnectionError, APITimeoutError, OpenAI
 
 from generation.config import (
     GenerationConfig,
@@ -14,6 +14,7 @@ from generation.config import (
 )
 from generation.output_schema import OPENAI_ANSWER_RESPONSE_FORMAT
 from generation.providers import (
+    StrictOpenAIChatModel,
     build_model_call,
     build_ollama_call,
     build_ollama_model,
@@ -128,18 +129,16 @@ class GenerationProviderTests(unittest.TestCase):
             30,
             output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
         )
-        with patch("generation.providers.ChatOpenAI") as constructor:
+        with (
+            patch("generation.providers.ChatOpenAI") as constructor,
+            patch("generation.providers.OpenAI") as sdk_constructor,
+        ):
             model = build_openai_model(config)
-            constructor.assert_called_once_with(
-                model="model",
-                timeout=30,
-                max_retries=0,
-                model_kwargs={"response_format": OPENAI_ANSWER_RESPONSE_FORMAT},
-                use_responses_api=False,
-            )
-            self.assertIs(model, constructor.return_value)
+            constructor.assert_not_called()
+            sdk_constructor.assert_called_once_with(timeout=30, max_retries=0)
+        self.assertEqual(model.config, config)
 
-    def test_installed_sdk_builds_strict_chat_completions_payload_without_network(self):
+    def test_strict_openai_adapter_builds_public_sdk_payload_without_network(self):
         config = GenerationConfig(
             GenerationProvider.OPENAI,
             "gpt-6-luna",
@@ -149,8 +148,7 @@ class GenerationProviderTests(unittest.TestCase):
         prompt = GenerationPrompt("규칙", "질문")
         with patch.dict("os.environ", {"OPENAI_API_KEY": "test-key"}):
             model = build_openai_model(config)
-            payload = model._get_request_payload(to_messages(prompt))
-        self.assertFalse(model.use_responses_api)
+        payload = model.build_payload(to_messages(prompt))
         self.assertEqual(payload["response_format"], OPENAI_ANSWER_RESPONSE_FORMAT)
         self.assertEqual(
             payload["messages"],
@@ -159,6 +157,7 @@ class GenerationProviderTests(unittest.TestCase):
                 {"content": "질문", "role": "user"},
             ],
         )
+        model.close()
 
     def test_strict_openai_create_path_preserves_length_truncation(self):
         config = GenerationConfig(
@@ -168,46 +167,70 @@ class GenerationProviderTests(unittest.TestCase):
             output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
         )
         prompt = GenerationPrompt("규칙", "질문")
-        payload = {
-            "model": "gpt-6-luna",
-            "stream": False,
-            "response_format": OPENAI_ANSWER_RESPONSE_FORMAT,
-            "messages": to_messages(prompt),
-        }
-        with patch("generation.providers.ChatOpenAI") as constructor:
+        message = Mock(
+            content='{"answer":',
+            refusal=None,
+        )
+        completion = Mock(
+            id="chatcmpl-test",
+            model="gpt-6-luna",
+            choices=[Mock(message=message, finish_reason="length")],
+            usage=Mock(prompt_tokens=12, completion_tokens=512, total_tokens=524),
+        )
+        with patch("generation.providers.OpenAI") as constructor:
             model = constructor.return_value
-            model._get_request_payload.return_value = payload
-            raw_response = (
-                model.root_client.chat.completions.with_raw_response.create.return_value
-            )
-            raw_response.parse.return_value = object()
-            model._create_chat_result.return_value = ChatResult(
-                generations=[
-                    ChatGeneration(
-                        message=AIMessage(
-                            content='{"answer":',
-                            usage_metadata={
-                                "input_tokens": 12,
-                                "output_tokens": 512,
-                                "total_tokens": 524,
-                            },
-                        ),
-                        generation_info={"finish_reason": "length"},
-                    )
-                ],
-                llm_output={"model_name": "gpt-6-luna", "id": "chatcmpl-test"},
-            )
-
+            model.chat.completions.create.return_value = completion
             result = generate(prompt, build_openai_call(config))
 
-        model.root_client.chat.completions.with_raw_response.create.assert_called_once_with(
-            **payload
+        model.chat.completions.create.assert_called_once()
+        payload = model.chat.completions.create.call_args.kwargs
+        self.assertEqual(payload["model"], "gpt-6-luna")
+        self.assertEqual(payload["response_format"], OPENAI_ANSWER_RESPONSE_FORMAT)
+        self.assertEqual(
+            payload["messages"],
+            [
+                {"role": "system", "content": "규칙"},
+                {"role": "user", "content": "질문"},
+            ],
         )
-        model.invoke.assert_not_called()
         self.assertEqual(result.status, GenerationStatus.TRUNCATED)
         self.assertEqual(result.raw_text, '{"answer":')
         self.assertEqual((result.input_tokens, result.output_tokens), (12, 512))
         self.assertEqual(result.finish_reason, "length")
+
+    def test_strict_openai_adapter_preserves_refusal_and_usage(self):
+        config = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "gpt-6-luna",
+            30,
+            output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
+        )
+        prompt = GenerationPrompt("규칙", "질문")
+        client = Mock()
+        client.chat.completions.create.return_value = SimpleNamespace(
+            id="chatcmpl-refusal",
+            model="gpt-6-luna",
+            choices=[
+                SimpleNamespace(
+                    message=SimpleNamespace(
+                        content=None, refusal="요청을 처리할 수 없습니다."
+                    ),
+                    finish_reason="stop",
+                )
+            ],
+            usage=SimpleNamespace(
+                prompt_tokens=8, completion_tokens=3, total_tokens=11
+            ),
+        )
+        model = StrictOpenAIChatModel(config, client=client)
+
+        result = invoke_model(prompt, model.invoke)
+
+        self.assertIsNone(result.raw_text)
+        self.assertEqual(result.refusal, "요청을 처리할 수 없습니다.")
+        self.assertEqual((result.input_tokens, result.output_tokens), (8, 3))
+        self.assertEqual(result.finish_reason, "stop")
+        client.chat.completions.create.assert_called_once()
 
     def test_installed_sdk_handles_complete_json_with_length_finish_reason(self):
         config = GenerationConfig(
@@ -246,21 +269,24 @@ class GenerationProviderTests(unittest.TestCase):
             return httpx.Response(200, json=body, request=request)
 
         model_messages = []
-        with patch.dict("os.environ", {"OPENAI_API_KEY": "test-key"}):
-            model = build_openai_model(config)
-            model.root_client._client = httpx.Client(
-                transport=httpx.MockTransport(response_for)
-            )
-            try:
+        http_client = httpx.Client(transport=httpx.MockTransport(response_for))
+        client = OpenAI(
+            api_key="test-key",
+            timeout=config.timeout_seconds,
+            max_retries=0,
+            http_client=http_client,
+        )
+        model = StrictOpenAIChatModel(config, client=client)
+        try:
 
-                def invoke(messages):
-                    message = invoke_openai_message(config, model, messages)
-                    model_messages.append(message)
-                    return message
+            def invoke(messages):
+                message = invoke_openai_message(config, model, messages)
+                model_messages.append(message)
+                return message
 
-                result = generate(prompt, make_model_call(invoke))
-            finally:
-                model.root_client._client.close()
+            result = generate(prompt, make_model_call(invoke))
+        finally:
+            model.close()
 
         self.assertEqual(len(requests), 1)
         self.assertEqual(requests[0].url.path, "/v1/chat/completions")

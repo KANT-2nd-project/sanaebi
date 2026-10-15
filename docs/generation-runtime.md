@@ -62,3 +62,11 @@ uv run --locked --env-file .env python -m generation \
 ## 서버의 RAG 입력
 
 서버의 기본 rag 모드는 선택한 발췌 근거를 기존 생성 서비스에 전달한다. Luna·실행 프롬프트·출력 검사·예산 예약은 같은 경로를 사용한다. [RAG 준비 안내](rag-runtime.md)를 참고한다. 이번 검색 연결은 프롬프트 튜닝이나 생성 품질 승인으로 기록하지 않는다.
+
+## 생성 체인과 제공자 경계
+
+`generation/service.py`는 profile/advisory → ChatPromptTemplate → 모델 → 응답 정규화 → 검증을 명명된 Runnable로 연결한다. 완성된 system/user 문자열을 템플릿 변수로 전달하므로 JSON 예시의 중괄호와 기존 메시지 내용을 보존한다. profile 본문은 `profile_texts.py`, 등록 목록은 `profile_registry.py`에서 관리하며 `profiles.py`의 기존 생성 API를 유지한다.
+
+기본 prompt_json은 ChatOpenAI Runnable을 사용한다. 선택적 strict JSON은 공개 OpenAI SDK의 Chat Completions 응답을 공통 메시지 계약으로 변환하며 LangChain 비공개 메서드를 호출하지 않는다. 정상 JSON처럼 보이더라도 종료 사유가 length이면 truncated다. 거절·사용량·빈 응답·파싱 실패의 구분을 유지한다.
+
+서버의 full/rag 입력은 불변 `AnswerInput`으로 모이며, 클라이언트는 앱별로 지연 생성·재사용·종료한다. 예산은 실제 제공자 시도 직전에 한 번 예약하고 자동 재시도하지 않는다. 기존 callable 주입은 CLI·평가·대체 제공자의 호환 경계로 남긴다.

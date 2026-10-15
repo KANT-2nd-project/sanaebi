@@ -144,3 +144,7 @@ flowchart TD
 초기 탐색은 기준 미달로 미채택했고 KURE 최소 비교도 개선을 입증하지 못했다. 이후 사용자가 프로젝트 설계 의도에 따라 공통 지침+라벨 C를 채택했다. 현재 미설정 기본값은 advisory이며 기존 shadow/gate와 HTTP 계약은 유지한다. 품질 기준 통과로 소급 기록하지 않는다. [후속 채택·검증 기록](worklogs/2026-10-16-adopt-advisory.md)을 따른다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
 
 문서 변경의 완료 경계는 [문서 관리 계약](document-management.md#rag-색인과-자정-초기화)을 따른다. rag의 게시·철회·전체 삭제·기본 복원은 현재 게시 snapshot의 검색 준비 확인 후 성공 응답한다. 문서 저장 후 검색 반영 실패는 자료를 보존하고 같은 요청으로 복구한다. 초안 저장은 임베딩하지 않는다.
+
+## 질문 파이프라인의 실행 구성
+
+핵심 검색·생성 단계는 LangChain Runnable로 조립한다. 분류의 gate/shadow/advisory 정책과 HTTP·DB·예산의 책임은 기존 Python 계층에 유지한다. full/rag는 같은 불변 답변 입력과 생성 체인을 공유하며, 검색기는 요청의 snapshot을 재조회하지 않는다. 검색과 색인 쓰기를 분리하고 검색 정책을 벡터 spec과 별도로 식별한다. 상세 모듈 책임은 [서버 규약](server-conventions.md#runnable-조립과-내부-입력), 설정 정합성은 [RAG 실행](rag-runtime.md#검색-실행과-색인-책임), 제공자 계약은 [생성 실행](generation-runtime.md#생성-체인과-제공자-경계)에 둔다. 이 구조 변경 자체가 답변 품질 향상을 입증하지는 않는다.

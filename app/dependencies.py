@@ -7,6 +7,7 @@ from typing import Annotated
 from fastapi import Depends, Request
 
 from app.classification.predictor import TransformerClassifier
+from app.questions.pipeline import build_full_flow, build_rag_flow
 from app.questions.service import (
     QuestionResult,
     handle_classified_question,
@@ -43,11 +44,14 @@ def get_assistant_handler(request: Request) -> AssistantHandler:
 def _document_answer_dependencies(request: Request) -> dict:
     state = request.app.state
     retriever = state.retriever
-    return {
-        "read_documents": state.document_provider.snapshot,
-        "answer": state.answerer.answer_retrieved
-        if retriever is not None
-        else state.answerer.answer,
-        "retrieve": retriever.retrieve if retriever is not None else None,
-        "routing_mode": state.routing_mode,
-    }
+    flow = (
+        build_full_flow(state.document_provider.snapshot, state.answerer.answer_input)
+        if retriever is None
+        else build_rag_flow(
+            state.document_provider.snapshot,
+            retriever.retrieve,
+            state.answerer.answer_input,
+            allow_empty_retrieval=state.answerer.supports_empty_retrieval,
+        )
+    )
+    return {"document_flow": flow, "routing_mode": state.routing_mode}

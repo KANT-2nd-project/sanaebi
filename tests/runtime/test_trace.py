@@ -23,7 +23,7 @@ from langchain_core.runnables import RunnableLambda
 from app import fastapi_main
 from app.dependencies import get_assistant_handler
 from app.diagnostics import trace
-from app.documents.context import DocumentContextSnapshot
+from app.documents.context import DocumentContext, DocumentContextSnapshot
 from app.questions.service import handle_classified_question
 
 LABEL = "SEARCH_KNOWLEDGE"
@@ -119,6 +119,50 @@ class TraceTests(unittest.TestCase):
             ("RunnableLambda", False),
         )
 
+    def test_named_runnable_trace_config_records_explicit_stage_and_role(self):
+        callback = trace.TraceCallback()
+        config = trace.named_trace_config(
+            run_name="rag.retrieve",
+            stage="검색",
+            role="retriever",
+        )
+
+        runnable = RunnableLambda(
+            lambda _: {"selected_count": 2, "documents": ["PRIVATE DOCUMENT"]}
+        ).with_config(**config)
+        runnable.invoke(
+            {"selected_count": 2, "selected_chunk_ids": ["chunk-a", "chunk-b"]},
+            config={
+                "callbacks": [callback],
+                "metadata": {"search_config_id": "kure-v1"},
+            },
+        )
+
+        [row] = callback.stage_rows()
+        self.assertEqual(row["name"], "rag.retrieve")
+        self.assertEqual(row["stage"], "검색")
+        self.assertEqual(row["role"], "retriever")
+        self.assertEqual(row["metadata"], {"search_config_id": "kure-v1"})
+        self.assertEqual(
+            row["input"],
+            {"selected_count": 2, "selected_chunk_ids": ["chunk-a", "chunk-b"]},
+        )
+        self.assertEqual(row["output"], {"selected_count": 2})
+        self.assertNotIn("PRIVATE DOCUMENT", json.dumps(row, ensure_ascii=False))
+
+    def test_empty_retrieval_is_an_allowed_processing_path(self):
+        callback = trace.TraceCallback()
+        callback.record_routing(
+            {
+                "processing_path": "empty_retrieval",
+                "generation_attempted": False,
+            }
+        )
+
+        [classification] = callback.record_rows("/ask", {"question": "q"}, 200)
+        self.assertEqual(classification["processing_path"], "empty_retrieval")
+        self.assertFalse(classification["generation_attempted"])
+
     def test_no_trace_dir_writes_nothing_and_keeps_response(self):
         response = self.ask()
         self.assertEqual(response.status_code, 200)
@@ -148,36 +192,35 @@ class TraceTests(unittest.TestCase):
         self.assertEqual({s["status"] for s in steps}, {"ok"})
         self.assertTrue(all(s["seconds"] is not None for s in steps))
 
-        # 분류 라벨과 질문은 첫 단계(실행기 전체) 입력에 그대로 남는다
         # 맨 앞은 분류 행: /assistant는 요청에 들어온 라벨을 쓴다
         self.assertEqual(steps[0]["stage"], "분류")
         self.assertEqual(steps[0]["output"], LABEL)
         self.assertEqual(steps[0]["source"], "요청 값")
         self.assertEqual(steps[0]["input"], "연차는 어디서 신청해?")
-        self.assertEqual(steps[1]["stage"], trace.ROOT_STAGE)
-        self.assertEqual(steps[1]["input"]["text"], "연차는 어디서 신청해?")
+        self.assertEqual(steps[1]["stage"], "answer_flow")
+        # 질문은 HTTP request와 모델 prompt 경로에 기록하며, 일반 Runnable
+        # 상태에는 복제하지 않는다.
+        self.assertEqual(steps[1]["input"], {})
 
-        # 모델 호출은 시작·끝이 한 행: 입력은 프롬프트, 출력은 원문 응답
+        # 모델 호출은 시작·끝이 한 행: 입력은 기존 opt-in prompt 경로에 남는다
         [model] = model_rows(record)
         self.assertIn(f"라벨: {LABEL}", model["input"]["head"])
         self.assertGreater(model["prompt_chars"], trace.DEFAULT_MAX_CHARS)
         self.assertEqual(len(model["input"]["head"]), trace.DEFAULT_MAX_CHARS)
         self.assertEqual(model["output"], "가상 답변")
 
-    def test_active_trace_keeps_generic_runnable_names(self):
+    def test_active_trace_keeps_named_flow_and_nested_runnable_names(self):
         with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):
             self.ask()
 
         [record] = self.records()
         stages = [step["stage"] for step in record["steps"]]
-        self.assertEqual(stages[1], trace.ROOT_STAGE)
+        self.assertEqual(stages[1], "answer_flow")
         self.assertIn("RunnableLambda", stages)
         self.assertIn("프롬프트 만들기", stages)
         self.assertNotIn("문서 문맥 추가", stages)
-        self.assertNotIn("입력 정리", stages)
-        self.assertNotIn("경로 선택", stages)
 
-    def test_two_model_calls_share_trace_id_and_split_by_root_run(self):
+    def test_two_model_calls_share_the_named_answer_flow_run(self):
         def generate_twice(question, snapshot=None):
             # 실행기처럼 한 요청에서 두 모델을 차례로 부른다
             fake_generate({"text": question}, LABEL)
@@ -191,19 +234,18 @@ class TraceTests(unittest.TestCase):
         [record] = self.records()
         steps = record["steps"]
         self.assertEqual({step["trace_id"] for step in steps}, {record["trace_id"]})
-        roots = [s["root_run_id"] for s in model_rows(record)]
+        model_steps = model_rows(record)
+        roots = [s["root_run_id"] for s in model_steps]
         self.assertEqual(len(roots), 2)
-        self.assertNotEqual(roots[0], roots[1])
-        # 각 모델 호출의 단계는 자기 체인 실행(root_run_id)에만 속한다
-        for root in roots:
-            tops = [
-                s
-                for s in steps
-                if s.get("root_run_id") == root and s.get("parent_run_id") is None
-            ]
-            self.assertEqual(len(tops), 1)
-            self.assertEqual(tops[0]["run_id"], root)
-            self.assertEqual(tops[0]["stage"], trace.ROOT_STAGE)
+        self.assertEqual(roots[0], roots[1])
+        tops = [
+            s
+            for s in steps
+            if s.get("root_run_id") == roots[0] and s.get("parent_run_id") is None
+        ]
+        self.assertEqual(len(tops), 1)
+        self.assertEqual(tops[0]["run_id"], roots[0])
+        self.assertEqual(tops[0]["stage"], "answer_flow")
 
     def test_response_header_points_to_the_trace_line(self):
         with patch.dict(os.environ, {"TRACE_DIR": str(self.trace_dir)}):
@@ -230,7 +272,8 @@ class TraceTests(unittest.TestCase):
         [record] = self.records()
         [model] = model_rows(record)
         self.assertEqual(model["status"], "error")
-        self.assertEqual(model["error"], "ConnectionError: 모델 서버 없음")
+        self.assertEqual(model["error"], "ConnectionError")
+        self.assertNotIn("모델 서버 없음", json.dumps(record, ensure_ascii=False))
         # 같은 오류를 이어받은 바깥 단계(실행기 전체)도 error로 남는다
         self.assertEqual(record["steps"][1]["status"], "error")
 
@@ -277,10 +320,28 @@ class TraceTests(unittest.TestCase):
             patch.object(
                 fastapi_main.app.state.document_provider,
                 "snapshot",
-                return_value=DocumentContextSnapshot((object(),)),
+                return_value=DocumentContextSnapshot(
+                    (
+                        DocumentContext(
+                            document_id="doc-1",
+                            knowledge_id="knowledge-1",
+                            revision_id="revision-1",
+                            revision=1,
+                            title="정책",
+                            body="연차 신청 절차",
+                            source_reference="document:knowledge-1",
+                            content_hash="content-hash",
+                            metadata={},
+                        ),
+                    )
+                ),
             ),
             patch.object(
-                fastapi_main.app.state.answerer, "answer", side_effect=fake_answer
+                fastapi_main.app.state.answerer,
+                "answer_input",
+                side_effect=lambda value: fake_generate(
+                    {"text": value.question}, LABEL
+                )["ollama"]["answer"],
             ),
         ):
             response = self.client.post("/ask", json={"question": "연차 신청"})
@@ -310,9 +371,10 @@ class TraceTests(unittest.TestCase):
             response = self.ask()
         self.assertEqual(response.status_code, 500)
         [record] = self.records()
-        self.assertEqual(record["error"], "RuntimeError: 실행기 실패")
+        self.assertEqual(record["error"], "RuntimeError")
+        self.assertNotIn("실행기 실패", json.dumps(record, ensure_ascii=False))
         self.assertEqual(record["status"], 500)
-        [classification] = record["steps"]
+        classification = next(row for row in record["steps"] if row["stage"] == "분류")
         self.assertEqual(classification["stage"], "분류")
         self.assertEqual(classification["status"], "ok")
 
@@ -358,6 +420,7 @@ class TraceTests(unittest.TestCase):
                 "seconds": 1.25,
                 "input_tokens": 120,
                 "output_tokens": 16,
+                "finish_reason": "length",
                 "error_type": "JSONDecodeError",
                 "question": "PRIVATE QUESTION",
                 "documents": "PRIVATE DOCUMENT",
@@ -376,7 +439,7 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(generation["profile"], "examples_answer_scope_v1")
         self.assertEqual(generation["snapshot_fingerprint"], "snapshot-hash")
         self.assertEqual(generation["input_tokens"], 120)
-        self.assertNotIn("finish_reason", generation)
+        self.assertEqual(generation["finish_reason"], "length")
         self.assertIsNone(generation["output"])
         self.assertIsNone(generation["error"])
         serialized = json.dumps(rows, ensure_ascii=False)
@@ -439,6 +502,38 @@ class ToRecordTests(unittest.TestCase):
     def test_unknown_objects_become_text(self):
         self.assertEqual(trace.to_record({"a": (1, None)}), {"a": [1, None]})
         self.assertIsInstance(trace.to_record(object()), str)
+
+    def test_runnable_callback_does_not_repr_unselected_snapshot_documents(self):
+        snapshot = DocumentContextSnapshot(
+            (
+                DocumentContext(
+                    document_id="doc-1",
+                    knowledge_id="knowledge-1",
+                    revision_id="revision-1",
+                    revision=1,
+                    title="Internal policy",
+                    body="PRIVATE UNSELECTED DOCUMENT MARKER",
+                    source_reference="document:knowledge-1",
+                    content_hash="content-hash",
+                    metadata={},
+                ),
+            )
+        )
+        callback = trace.TraceCallback()
+        callback.on_chain_start(
+            {"name": "RunnableLambda"},
+            {"question": "private question", "snapshot": snapshot},
+            run_id="snapshot-run",
+        )
+        callback.on_chain_end(
+            {"answer": "private answer", "snapshot": snapshot},
+            run_id="snapshot-run",
+        )
+
+        serialized = json.dumps(callback.stage_rows(), ensure_ascii=False)
+        self.assertNotIn("PRIVATE UNSELECTED DOCUMENT MARKER", serialized)
+        self.assertNotIn("private question", serialized)
+        self.assertNotIn("private answer", serialized)
 
 
 if __name__ == "__main__":

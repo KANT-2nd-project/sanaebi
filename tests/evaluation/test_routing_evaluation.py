@@ -1,6 +1,7 @@
 """Focused checks for routing-policy evaluation integrity and accounting."""
 
 import fcntl
+import hashlib
 import json
 import subprocess
 import sys
@@ -22,6 +23,7 @@ from scripts.evaluate_routing_policy import (
     EXPECTED_COUNTS,
     EXPECTED_QUESTIONS,
     EvaluationError,
+    _budgeted_answer_input,
     _check_generation_reservation_join,
     _check_trace_integrity,
     _load_trace,
@@ -295,6 +297,85 @@ class RoutingEvaluationIntegrityTests(unittest.TestCase):
 
 
 class RoutingEvaluationWorkerTests(unittest.TestCase):
+    def test_budgeted_answer_input_hashes_runtime_prompt_and_profile_gated_evidence(
+        self,
+    ):
+        from app.answering.input import AnswerInput
+        from generation.advisory import ClassificationContext, compose_advisory
+        from generation.evidence import compose_evidence_state
+        from generation.profiles import (
+            DEFAULT_PROMPT_PROFILE,
+            RAG_PROMPT_PROFILE,
+            build_profile_prompt,
+        )
+        from generation.providers import to_messages
+
+        answer_input = AnswerInput(
+            question="추출된 근거로 확인해 주세요.",
+            documents=("[현재 게시 문서의 발췌 근거]\n서버가 전달한 문서 문자열",),
+            snapshot_fingerprint="fixed-snapshot",
+            classification_context=ClassificationContext("SEARCH_KNOWLEDGE"),
+            evidence_state="available",
+        )
+        pricing = {
+            "input_usd_per_million": 0.25,
+            "output_usd_per_million": 0.75,
+        }
+
+        for profile in (DEFAULT_PROMPT_PROFILE, RAG_PROMPT_PROFILE):
+            with self.subTest(profile=profile), tempfile.TemporaryDirectory() as temp:
+                from generation_evaluation.budget import BudgetLedger
+
+                ledger = BudgetLedger(Path(temp) / "budget.json", max_calls=1)
+                active = {
+                    "slot_id": f"{profile}:slot",
+                    "deadline_epoch": time.time() + 300,
+                    "experiment_started_at_epoch": time.time(),
+                }
+                answer_calls = []
+                settings = SimpleNamespace(
+                    prompt_profile=profile,
+                    config=SimpleNamespace(max_output_tokens=128),
+                )
+
+                def answer(value, *, calls=answer_calls):
+                    calls.append(value)
+                    return "평가 답변"
+
+                self.assertEqual(
+                    _budgeted_answer_input(
+                        answer_input,
+                        answer=answer,
+                        active=active,
+                        ledger=ledger,
+                        settings=settings,
+                        pricing=pricing,
+                    ),
+                    "평가 답변",
+                )
+                self.assertEqual(answer_calls, [answer_input])
+                self.assertTrue(active["generation_reserved"])
+                self.assertEqual(len(ledger.snapshot()["reservations"]), 1)
+
+                prompt = build_profile_prompt(
+                    answer_input.question, answer_input.documents, profile
+                )
+                prompt = compose_advisory(prompt, answer_input.classification_context)
+                if profile == RAG_PROMPT_PROFILE:
+                    prompt = compose_evidence_state(prompt, answer_input.evidence_state)
+                messages = to_messages(prompt)
+                expected_hash = hashlib.sha256(
+                    json.dumps(
+                        {
+                            "system": messages[0].content,
+                            "user": messages[1].content,
+                        },
+                        ensure_ascii=False,
+                        separators=(",", ":"),
+                    ).encode("utf-8")
+                ).hexdigest()
+                self.assertEqual(active["prompt_sha256"], expected_hash)
+
     def _run_worker(self, mode, *, max_dollars=5.0):
         from app import fastapi_main
         from scripts import evaluate_routing_policy as runner
@@ -366,8 +447,8 @@ class RoutingEvaluationWorkerTests(unittest.TestCase):
                 return "UNSUPPORTED"
 
         class FakeAnswerer:
-            def answer(self, question, snapshot):
-                calls.append((question, snapshot))
+            def answer_input(self, answer_input):
+                calls.append(answer_input)
                 ledger = BudgetLedger(ledger_path)
                 self_slot_reservations = ledger.snapshot()["reservations"]
                 if slot_id not in self_slot_reservations:
@@ -438,10 +519,7 @@ class RoutingEvaluationWorkerTests(unittest.TestCase):
         self.assertEqual(result["http_status"], 200)
         self.assertTrue(result["generation_reserved"])
         self.assertEqual(len(calls), 1)
-        self.assertEqual(calls[0][0], slot["case"]["question"])
-        self.assertEqual(
-            calls[0][1].documents[0].knowledge_id, document["knowledge_id"]
-        )
+        self.assertEqual(calls[0].question, slot["case"]["question"])
 
         from generation.presets import load_runtime_settings
 
@@ -452,6 +530,7 @@ class RoutingEvaluationWorkerTests(unittest.TestCase):
             document["body"],
             document["revision"],
         )
+        self.assertEqual(calls[0].documents, (rendered,))
         prompt = build_profile_prompt(
             slot["case"]["question"], [rendered], settings.prompt_profile
         )

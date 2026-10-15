@@ -89,42 +89,39 @@ class GenerationServerSharedTests(unittest.TestCase):
             max_output_tokens=4096,
             reasoning_effort="xhigh",
         )
-        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}):
-            managed = ManagedGenerationClient(config)
-
-        sync_client = managed._model.root_client
-        async_client = managed._model.root_async_client
-        self.assertIsInstance(sync_client, OpenAI)
-        self.assertIsInstance(async_client, AsyncOpenAI)
-
         prompt = GenerationPrompt("최종 시스템 지침", "문서\n\n질문")
-        payload = managed._model._get_request_payload(to_messages(prompt))
-        self.assertEqual(payload["model"], "gpt-6-luna")
-        self.assertEqual(payload["reasoning_effort"], "xhigh")
-        self.assertEqual(payload["max_completion_tokens"], 4096)
-        self.assertNotIn("temperature", payload)
-
         raw = '{"answer":"안내합니다."}'
         with patch(
             "generation.providers.invoke_openai_message",
             return_value=AIMessage(content=raw),
         ) as invoke:
-            self.assertEqual(managed(prompt), ModelResponse(raw))
-        invoke.assert_called_once_with(config, managed._model, to_messages(prompt))
+            with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}):
+                managed = ManagedGenerationClient(config)
 
-        self.assertFalse(sync_client._client.is_closed)
-        self.assertFalse(async_client._client.is_closed)
-        asyncio.run(managed.aclose())
-        self.assertTrue(sync_client._client.is_closed)
-        self.assertTrue(async_client._client.is_closed)
-        asyncio.run(managed.aclose())
-        with self.assertRaisesRegex(RuntimeError, "종료된"):
-            managed(prompt)
+            sync_client = managed._model.root_client
+            async_client = managed._model.root_async_client
+            self.assertIsInstance(sync_client, OpenAI)
+            self.assertIsInstance(async_client, AsyncOpenAI)
+            self.assertIs(managed.runnable, managed._model)
+
+            model = managed._model
+            self.assertEqual(model.model_name, "gpt-6-luna")
+            self.assertEqual(model.max_tokens, 4096)
+            self.assertEqual(model.reasoning_effort, "xhigh")
+            self.assertIsNone(model.temperature)
+            self.assertEqual(managed(prompt), ModelResponse(raw))
+            invoke.assert_called_once_with(config, managed._model, to_messages(prompt))
+            self.assertFalse(sync_client.is_closed())
+            self.assertFalse(async_client.is_closed())
+            asyncio.run(managed.aclose())
+            self.assertTrue(sync_client.is_closed())
+            self.assertTrue(async_client.is_closed())
+            asyncio.run(managed.aclose())
+            with self.assertRaisesRegex(RuntimeError, "종료된"):
+                managed(prompt)
 
     def test_managed_generation_surfaces_provider_response_error(self):
         config = GenerationConfig(GenerationProvider.OPENAI, "gpt-6-luna", 30)
-        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}):
-            managed = ManagedGenerationClient(config)
         with (
             patch(
                 "generation.providers.invoke_openai_message",
@@ -132,6 +129,8 @@ class GenerationServerSharedTests(unittest.TestCase):
             ),
             self.assertRaises(GenerationProviderResponseError),
         ):
+            with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}):
+                managed = ManagedGenerationClient(config)
             managed(GenerationPrompt("규칙", "질문"))
         asyncio.run(managed.aclose())
 
