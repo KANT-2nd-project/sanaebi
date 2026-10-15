@@ -27,6 +27,7 @@ async def _run_handler_and_release_slot(handle, question: str, slots):
         raise
 
     worker.add_done_callback(lambda _: slots.release())
+
     try:
         return await asyncio.wrap_future(worker)
     except asyncio.CancelledError:
@@ -65,7 +66,9 @@ async def ask(
                 ).model_dump(),
                 headers={"Retry-After": "1", "Cache-Control": "no-store"},
             )
+
     result = await _run_handler_and_release_slot(
         handle, payload.question.strip(), slots
     )
+
     return AnswerResponse(ok=True, text=result.text)
