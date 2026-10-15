@@ -74,5 +74,6 @@
     "real_llm_calls": 0,
     "source_and_bundle_read_only": true,
     "initial_harness_issue": "An earlier smoke attempt used a nonexistent status field in the report formatter; maintenance API returns action/count fields. Corrected formatter; no product-code issue and no API request was repeated due to that formatting issue."
-  }
+  },
+  "concurrency_scope": "The new 1/2/4 overlap test disables public-demo admission limits. Existing public-limit tests separately verify rejection above the two-slot cap and cancellation lifetime. This is not a production throughput measurement."
 }

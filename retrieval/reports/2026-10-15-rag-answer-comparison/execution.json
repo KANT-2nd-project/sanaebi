@@ -1,0 +1,16 @@
+{
+  "api_calls_started": 5,
+  "blinding": "A/B labels only; mode mapping is in private/blind-map.json",
+  "budget_limits": {
+    "dev_dollars": 5.0,
+    "max_calls": 40,
+    "total_dollars": 5.0
+  },
+  "case_count": 20,
+  "completed_pairs": 2,
+  "finished_at": "2026-10-15T11:12:59.627401+00:00",
+  "ledger_path": "ledger.json",
+  "recorded_pairs": 3,
+  "started_at": "2026-10-15T11:12:30.228853+00:00",
+  "status": "stopped_generation_error"
+}

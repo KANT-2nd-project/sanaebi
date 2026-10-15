@@ -1,0 +1,52 @@
+{
+  "planned_cases": 20,
+  "planned_calls": 40,
+  "actual_calls": 5,
+  "completed_pairs": 2,
+  "completed_responses": 4,
+  "failed_responses": 1,
+  "not_called_peer_error": 1,
+  "not_started_cases": 17,
+  "unanswerable_cases_executed": 0,
+  "status": "stopped_generation_error",
+  "failure_case_id": "R08",
+  "failure_mode": "rag",
+  "failure_reason": "Plain text instead of required JSON; GenerationAnswerer raised LLMResponseError. No prompt repair or retry.",
+  "estimated_total_usd": 0.0332125,
+  "mode_counts": {
+    "full": {
+      "calls": 2,
+      "completed": 2,
+      "estimated_usd": 0.02990925
+    },
+    "rag": {
+      "calls": 3,
+      "completed": 2,
+      "estimated_usd": 0.0033032499999999998
+    }
+  },
+  "matched_pair_required_complete": {
+    "full": 1,
+    "rag": 1,
+    "denominator": 2
+  },
+  "mode_promotion": "withheld; incomplete evaluation and response contract failure",
+  "ai_judgment_disagreements": [
+    {
+      "case_id": "R04",
+      "mode": "full",
+      "criterion": "People team compares original attendance and approval history",
+      "primary": "partial",
+      "secondary": "missing",
+      "effect": "Neither counts as complete; judgments preserved."
+    },
+    {
+      "case_id": "R08",
+      "mode": "rag",
+      "claim": "Sanaebi cannot check individual payment status",
+      "primary": "unsupported in corpus",
+      "secondary": "No unsupported claim observed; does not assert live lookup",
+      "effect": "Failed raw diagnostic only, excluded from successful answer scores; disagreement preserved."
+    }
+  ]
+}

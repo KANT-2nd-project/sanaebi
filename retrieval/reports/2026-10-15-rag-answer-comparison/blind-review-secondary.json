@@ -1,0 +1,97 @@
+{
+  "reviewer": "independent_second_ai_reviewer",
+  "status": "locked_before_mode_disclosure",
+  "human_review": false,
+  "transcription": "Parent saved reviewer returned judgments; rationale shortened without changing findings.",
+  "results": [
+    {
+      "review_id": "Q01",
+      "variant": "A",
+      "generation_status": "completed",
+      "criteria": [
+        "exact",
+        "missing"
+      ],
+      "all_required_complete": false,
+      "severe_error": false,
+      "unsupported_claims": [],
+      "rationale": "3영업일 경과 시 지연 사유와 People팀 제출 조건은 정확하다. People팀이 원본 근태와 승인 이력을 대조한다는 필수 정보는 없다. 달력상 일주일과 영업일 구분은 조건 확인이다."
+    },
+    {
+      "review_id": "Q01",
+      "variant": "B",
+      "generation_status": "completed",
+      "criteria": [
+        "exact",
+        "missing"
+      ],
+      "all_required_complete": false,
+      "severe_error": false,
+      "unsupported_claims": [],
+      "rationale": "지연 사유·People팀 제출 조건은 정확하다. 팀장 확인과 승인된 수정 반영은 원본 근태·승인 이력 대조를 대신하지 않는다. 추가 제출 정보와 담당 역할은 ieum-006에 근거한다."
+    },
+    {
+      "review_id": "Q02",
+      "variant": "A",
+      "generation_status": "completed",
+      "criteria": [
+        "exact",
+        "exact",
+        "exact"
+      ],
+      "all_required_complete": true,
+      "severe_error": false,
+      "unsupported_claims": [],
+      "rationale": "해외 근무 별도 절차,10영업일 전 신청,각각의 검토·팀장 승인·포털 기록,미승인 시작 금지를 포함한다."
+    },
+    {
+      "review_id": "Q02",
+      "variant": "B",
+      "generation_status": "completed",
+      "criteria": [
+        "exact",
+        "exact",
+        "exact"
+      ],
+      "all_required_complete": true,
+      "severe_error": false,
+      "unsupported_claims": [],
+      "rationale": "해외 근무 별도 절차와 기한,검토·최종승인·포털기록,승인없이 시작불가 조건을 포함한다."
+    },
+    {
+      "review_id": "Q03",
+      "variant": "A",
+      "generation_status": "generation_error",
+      "criteria": null,
+      "all_required_complete": null,
+      "severe_error": null,
+      "unsupported_claims": null,
+      "rationale": "생성 실패로 정상 답변 품질과 거절 성공 집계에서 제외한다.",
+      "raw_text_diagnostic_only": {
+        "criteria": [
+          "exact",
+          "missing"
+        ],
+        "severe_error_observed": false,
+        "unsupported_claims_observed": [],
+        "rationale": "다음달15일 규칙은 정확하지만 보완요청 후 최종검토완료월 재산정이 빠졌다. 은행휴무일·검토기한은 ieum-019,교육개인결제예외는 ieum-049에 근거한다. 개인상태 조회 단정은 없다."
+      }
+    },
+    {
+      "review_id": "Q03",
+      "variant": "B",
+      "generation_status": "not_called_peer_error",
+      "criteria": null,
+      "all_required_complete": null,
+      "severe_error": null,
+      "unsupported_claims": null,
+      "rationale": "상대 조건 오류로 미실행. 내용오류·거절 성공으로 집계하지 않는다."
+    }
+  ],
+  "limits": [
+    "Only two completed pairs",
+    "No unanswerable case observed",
+    "Failed raw text diagnostic is not a successful answer",
+    "No mode mapping, usage, execution logs read before locking"
+  ]
+}

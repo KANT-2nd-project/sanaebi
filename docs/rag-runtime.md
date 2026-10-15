@@ -55,3 +55,16 @@ sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.
 ## 검색 개선 후보와 현재 구성
 
 [단계별 비교](../retrieval/reports/2026-10-15-rag-quality-improvement/README.md)에서 제목 경계 문맥·인접 근거 확장·BM25 결합을 검증했다. 인접 확장은 기존18문항15→17건을 회복했지만 신규개발20문항은19건 동률로 사전 기준에 미달해 자동 채택하지 않았다. 서버·worker·자정 기본 묶음은 기존 vector spec과 벡터 검색을 유지한다. 후보는 명시적인 실험 옵션으로만 사용하며 새로운 런타임 환경변수를 추가하지 않았다.
+
+## 전체 문서 삭제·기본 복원 API와 검색
+
+`POST /documents/maintenance`의 clear/restore 계약은 [문서 전체 관리](document-management.md#문서-전체-관리)를 따른다. API는 원본 문서 작업만 수행하고 검색 색인 준비 완료를 응답하지 않는다.
+
+- clear 이후 새 요청은 자료 없음 안내로 종료한다. 이전 벡터가 디스크에 남아 있어도 삭제된 문서를 검색하지 않는다.
+- restore 이후 새 개정의 색인이 준비되기 전에는503이며 LLM·생성 예약은0회다. worker가 현재 게시본을 대조한 뒤 준비 상태가 바뀐다.
+- 기본 원문이 기존 입력과 같으면 벡터를 재사용한다. API 기본 JSONL과 자정 host 원본이 다른 경우에는 다른 입력만 새로 계산한다. 자정 복원의 모델 추론0회와 별개다.
+- 이미 진행 중인 요청은 확보한 snapshot으로 완료한다. 복원 후 시작한 요청이 과거 revision을 새 자료로 사용하는 것은 허용하지 않는다.
+
+## 실제 답변 비교 상태
+
+[Full·RAG 비교](../retrieval/reports/2026-10-15-rag-answer-comparison/README.md)는 20문항을 준비했지만 5번째 실제 호출의 JSON 형식 오류로 중단했다. 두 쌍만 완료됐으며 재시도·프롬프트 변경은 하지 않았다. 검색 구현과 답변 품질·운영 승격은 별개이며 full 기본값을 유지한다. 전체 비교 재개, 사람 검수, 실제2vCPU 및 컨테이너 운영 검증은 후속이다.

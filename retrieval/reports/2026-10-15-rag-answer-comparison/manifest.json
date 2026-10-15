@@ -1,0 +1,92 @@
+{
+  "answerable_count": 16,
+  "case_count": 20,
+  "cases_sha256": "91a33e3128beeb00c81dcddac7c97a9285e172d087fa9a0ba5b1b0e694372574",
+  "code_commit": "da5e01ec52ae2e5c20a5bea1b4ff8bb1f2ed426f",
+  "code_files": {
+    "app/answering/adapter.py": "cb9ae011a085a5e45acb833f006fcbc883ce8b67f8aaea0fcd15c791ab86077c",
+    "app/documents/context.py": "157d8045e6aec68c42e0f582fd8fe657546a4dff340866dd901f7b220775e1f3",
+    "app/documents/metadata.py": "e446ef2036f96a6e1bc71a9c22b1d406727560d424e54b090d2e13885e1a7d11",
+    "app/documents/repository.py": "5354e5804555862deb655fa9d7168c1aff803c71255ad17ff65e4562271e5024",
+    "app/documents/schemas.py": "67751cd90b0aedaf020b8a88fb64cb0755d3dd7fe0962ec9180a559dfae02e76",
+    "app/documents/transfer.py": "3ac07d2de55e95d96bde1f06e7b71575953a6d3dbbbffab3262a663a8d158aaf",
+    "app/retrieval/baseline.py": "e2b5c3f48d7869da4b0b70e03f175f50512a42b3881b7ad45ff2f3db5ee9f154",
+    "app/retrieval/chunking.py": "d32429e5448535809a505f731019e6bf3ef1f956a1b232f7a564ed2ec02ab242",
+    "app/retrieval/config.py": "28fce2097417327d8fd2a237d3dc53fa286b14779a89fac865eec96520bd9021",
+    "app/retrieval/embedding.py": "5ec608de3ad93b8daff636217c8c6576d0a9b6bb271885621b96ca0fc74107ea",
+    "app/retrieval/repository.py": "a6f93e2577e05c977586df03d0ce8fb7b37bffff1ac367ed975fb9c304c9f91c",
+    "app/retrieval/search.py": "fbb3e293c3b19b64a8de9fc83a34dcceab2c23488f34458f08b501d88bdbcf3d",
+    "app/retrieval/service.py": "cfc1cdd3861f550583cb3d86ded1b0a6196bf124313ee7881f9a6e121c1d48b9",
+    "app/retrieval/types.py": "99717578d0f24c3bc9be3c98e38e24821de39fd192d78d7d97894e7fb02c63df",
+    "generation/config.py": "e114cea1ceca6b7129f09e92cae9854ffa2fec5616d790a799881832a3bb5319",
+    "generation/documents.py": "6de589ec6c2813ae465e13a7ef9623cae3c4b314a33d2f2b8622907f25466209",
+    "generation/experiments.json": "060f28a092ef16a023dbb03a9d4f375a33f0455d91d69c790e3a5d02c64b6168",
+    "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3",
+    "generation/presets.py": "8b3d9d80508b09cba778d677da300fe31c0b3a1e2c1677f50da279c974804369",
+    "generation/profiles.py": "75c31254c40ee210829acf24c8efef85d398be2d1a98758d99a1c16570360412",
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "generation/providers.py": "c3892d4064a1c9127c4b0dc5a1dfbf54fc85f9391cca17ac85c84b1a6f9c6c45",
+    "generation/service.py": "42ba68643cc515c8356800600b58c68701300bd3edf3d506a900551be8bfa16f",
+    "generation/types.py": "c48fa38a382b4c45ebffef7869f90d82fa1800beb4d556e521e194d8f7e2ca27",
+    "generation/validation.py": "37b096eeed05b8b9654ae563223ac6c2a297ca2e078109f79fc7c6e9b3bd68cb",
+    "generation_evaluation/budget.py": "f112616c39ae049bfa7851b423cf773dc625da42a56ed68b680ee35a36a3e42e",
+    "retrieval/experiments/answers.py": "47a288a0b7a7bd6fca58c632f8754239957986f93c3971c9696a4162f434920e",
+    "uv.lock": "d3d7346024ffbc890761ec08049d725a83003448bd7089f42d025543df58fe62"
+  },
+  "created_at": "2026-10-15T11:12:03.611270+00:00",
+  "embedding_model": {
+    "local_only": true,
+    "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
+    "revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9"
+  },
+  "frozen_source_files_sha256": {
+    "cases.json": "91a33e3128beeb00c81dcddac7c97a9285e172d087fa9a0ba5b1b0e694372574",
+    "freeze.json": "58423d6397cbe6e7e738686d46506cda4b9f03c491db52a811d84ec30bc4ffa6",
+    "pricing.json": "cb970b95a51224209dbca1b13f7b10926b5d743b4a770ae8f161e773cd95d36e",
+    "rubric.md": "a8801f9d50ca795308e8fd4101072f02387ce3196ffa54b7e9ec594bbc77f8e5"
+  },
+  "prepared_files_sha256": {
+    "inputs.json": "4fef937cf137fa88ea73a5c3b6f4ffb2948cc232f778e616e1712c4089c4f83c",
+    "private/blind-map.json": "2c3172fc7a7e789a0a138505d7b8cb0c8c3537d7cd56b2c436169c6ac3ba689b",
+    "snapshot.json": "6b25a8d54d10374c2a5e93fbc4b3fc1d35fe3a7abc33845fa49432e11a2c01ed"
+  },
+  "python": "3.12.14",
+  "runtime": {
+    "api_calls_made": 0,
+    "api_calls_planned": 40,
+    "max_api_calls": 40,
+    "max_cost_usd": 5.0,
+    "max_output_tokens": 16384,
+    "model_name": "gpt-6-luna",
+    "output_mode": "prompt_json",
+    "prompt_profile": "examples_answer_scope_v5",
+    "provider": "openai",
+    "reasoning_effort": "xhigh"
+  },
+  "schema_version": 1,
+  "source": {
+    "isolated_retrieval_root": "retrieval",
+    "published_database": "source/documents.sqlite3",
+    "retrieval_spec": {
+      "chunker_version": "markdown-source-spans-v1",
+      "dimension": 384,
+      "dtype": "float32",
+      "max_input_tokens": 512,
+      "model_id": "exp-models/dragonkue-KoEn-E5-Tiny",
+      "model_revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+      "normalization": "l2",
+      "overlap_tokens": 60,
+      "passage_prefix": "passage: ",
+      "pooling": "attention-mask-mean",
+      "query_prefix": "query: ",
+      "target_body_tokens": 360
+    },
+    "retrieval_spec_id": "d08dee58d2ef8e7ad5c41141fece619e49de0a6b701aec0d284d5eeef58f1529",
+    "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62",
+    "snapshot_sha256": "6b25a8d54d10374c2a5e93fbc4b3fc1d35fe3a7abc33845fa49432e11a2c01ed",
+    "source_document_count": 71,
+    "source_sha256": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4"
+  },
+  "status": "prepared",
+  "unanswerable_count": 4
+}

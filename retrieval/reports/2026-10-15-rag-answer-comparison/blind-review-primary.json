@@ -1,0 +1,222 @@
+{
+  "review_id": "primary-blind-answer-review-2026-10-15-v1",
+  "reviewer_type": "independent_ai_primary_assessment",
+  "mode_blindness": "The source packet withheld mode mapping. No mode was inferred or guessed.",
+  "review_basis": "Only the mode-hidden observed packet, the fixed rubric, and the relevant full source-corpus documents were used.",
+  "cases": [
+    {
+      "review_id": "Q01",
+      "question": "근태 오류를 발견한 지 일주일 지났는데 수정 못 해?",
+      "answerable": true,
+      "source_facts": [
+        "ieum-006, “출퇴근 기록 정정”, “3영업일이 지난 오류”: 3영업일이 지난 건은 지연 사유를 적어 People팀에 제출하고, People팀은 원본 근태와 승인 이력을 대조한다."
+      ],
+      "answers": {
+        "A": {
+          "delivery_status": "completed",
+          "required_criteria": [
+            {
+              "criterion": "오류 발견 후 3영업일이 지난 건은 지연 사유를 적어 People팀에 제출한다.",
+              "status": "exact",
+              "rationale": "“3영업일이 지난 경우에는 지연 사유를 적어 People팀에 제출”한다고 답해 핵심 경로와 조건을 모두 담았다."
+            },
+            {
+              "criterion": "People팀은 원본 근태와 승인 이력을 대조한다.",
+              "status": "missing",
+              "rationale": "People팀의 원본 근태·승인 이력 대조 절차를 언급하지 않았다."
+            }
+          ],
+          "optional_correctness_checks": [],
+          "severe_error": {
+            "present": false,
+            "rationale": "정정 결과가 보장된다고 말하지 않았고, 지연 제출 절차와 상충하는 기한·승인 안내가 없다."
+          },
+          "unsupported_claims": [],
+          "other_claims": [
+            {
+              "claim": "일주일이 달력 기준이면 실제 3영업일 경과 여부를 확인하라는 안내.",
+              "assessment": "The source rule is based on business days; asking the user to verify elapsed business days is a cautious, non-contradictory clarification."
+            }
+          ],
+          "concise_assessment": "핵심 제출 절차는 정확하지만 People팀의 대조 절차를 빠뜨렸다."
+        },
+        "B": {
+          "delivery_status": "completed",
+          "required_criteria": [
+            {
+              "criterion": "오류 발견 후 3영업일이 지난 건은 지연 사유를 적어 People팀에 제출한다.",
+              "status": "exact",
+              "rationale": "3영업일이 지난 경우 지연 사유를 적어 People팀에 제출한다고 답했다."
+            },
+            {
+              "criterion": "People팀은 원본 근태와 승인 이력을 대조한다.",
+              "status": "partial",
+              "rationale": "People팀이 승인된 수정만 반영한다고 말해 People팀의 역할은 언급했으나, 원본 근태와 승인 이력을 대조한다는 필수 사실은 밝히지 않았다."
+            }
+          ],
+          "optional_correctness_checks": [],
+          "severe_error": {
+            "present": false,
+            "rationale": "제시한 근태 정정 절차는 원문과 충돌하지 않으며 잘못된 날짜·권한·행동을 단정하지 않았다."
+          },
+          "unsupported_claims": [],
+          "other_claims": [
+            {
+              "claim": "날짜·실제 시작 및 종료 시각·휴게 시간·정정 사유를 준비하고 팀장이 실제 근무 사실을 확인한다.",
+              "assessment": "These details and the team lead verification role are stated in ieum-006. The answer does not promise approval."
+            }
+          ],
+          "concise_assessment": "두 기준 모두 다뤘지만 People팀의 별도 대조 절차 대신 승인 수정 반영 역할만 설명했다."
+        }
+      }
+    },
+    {
+      "review_id": "Q02",
+      "question": "외국에 머물면서 재택으로 일해도 일반 재택 신청이면 돼?",
+      "answerable": true,
+      "source_facts": [
+        "ieum-010, “재택근무 신청과 변경”, “해외 근무와 장소 변경”: 해외 근무는 일반 재택 승인에 포함되지 않으며, 10영업일 전 신청, People팀·보안/개인정보 담당자 각각의 검토, 팀장 최종 승인 기록 후 시작한다. 필요한 승인 전에는 해외에서 시작하지 않는다."
+      ],
+      "answers": {
+        "A": {
+          "delivery_status": "completed",
+          "required_criteria": [
+            {
+              "criterion": "해외 근무는 일반 재택 승인에 포함되지 않는다.",
+              "status": "exact",
+              "rationale": "해외 근무는 일반 재택 승인에 포함되지 않는다고 분명히 말했다."
+            },
+            {
+              "criterion": "예정일 10영업일 전까지 신청하고 People팀과 보안·개인정보 담당자의 각각 검토 및 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작한다.",
+              "status": "exact",
+              "rationale": "10영업일 전 신청, 두 담당의 각각의 검토, 팀장의 최종 승인, 포털 기록 후 시작 조건을 모두 말했다."
+            },
+            {
+              "criterion": "검토 중이거나 필요한 승인이 없으면 해외 장소에서 업무를 시작하지 않는다.",
+              "status": "exact",
+              "rationale": "검토 중이거나 필요한 승인이 기록되지 않으면 시작하지 말라고 했다."
+            }
+          ],
+          "optional_correctness_checks": [],
+          "severe_error": {
+            "present": false,
+            "rationale": "날짜·승인자·시작 조건을 원문과 반대로 말하지 않았다."
+          },
+          "unsupported_claims": [],
+          "other_claims": [],
+          "concise_assessment": "필수 기준 세 가지를 모두 정확히 전달했다."
+        },
+        "B": {
+          "delivery_status": "completed",
+          "required_criteria": [
+            {
+              "criterion": "해외 근무는 일반 재택 승인에 포함되지 않는다.",
+              "status": "exact",
+              "rationale": "해외 근무는 일반 재택 승인에 포함되지 않는다고 분명히 말했다."
+            },
+            {
+              "criterion": "예정일 10영업일 전까지 신청하고 People팀과 보안·개인정보 담당자의 각각 검토 및 소속 팀장의 최종 승인이 포털에 기록된 뒤에만 시작한다.",
+              "status": "exact",
+              "rationale": "10영업일 전 신청, 두 담당의 각각의 검토, 팀장의 최종 승인, 포털 기록 후 시작 조건을 모두 말했다."
+            },
+            {
+              "criterion": "검토 중이거나 필요한 승인이 없으면 해외 장소에서 업무를 시작하지 않는다.",
+              "status": "exact",
+              "rationale": "검토 중이거나 필요한 승인이 없으면 시작하지 말라고 했다."
+            }
+          ],
+          "optional_correctness_checks": [],
+          "severe_error": {
+            "present": false,
+            "rationale": "날짜·승인자·시작 조건을 원문과 반대로 말하지 않았다."
+          },
+          "unsupported_claims": [],
+          "other_claims": [],
+          "concise_assessment": "필수 기준 세 가지를 모두 정확히 전달했다."
+        }
+      }
+    },
+    {
+      "review_id": "Q03",
+      "question": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "answerable": true,
+      "source_facts": [
+        "ieum-019, “경비 정산 제출과 지급”, “검토·보완·지급”: 지급일은 재무팀 최종 검토 완료 월의 다음 달 15일이며, 보완 요청이 있으면 보완 자료 제출 후 최종 검토가 완료된 월을 기준으로 정한다. 15일 은행 휴무 시 다음 은행 영업일 지급.",
+        "ieum-049, “직무 교육 신청과 비용 지원”, “한도와 결제·정산”: 직무 교육비는 회사 직접 결제가 원칙이고 개인 결제는 사전 팀장·재무팀 예외 승인이 있을 때만 가능하다."
+      ],
+      "answers": {
+        "A": {
+          "delivery_status": "generation_failure",
+          "delivered_answer": false,
+          "required_criteria": null,
+          "optional_correctness_checks": [],
+          "severe_error": {
+            "present": null,
+            "rationale": "No completed answer was delivered. Do not count the raw generation-error payload as a successful answer or as a user-visible severe error."
+          },
+          "unsupported_claims": [],
+          "raw_content_review": {
+            "delivered_as_answer": false,
+            "required_criteria": [
+              {
+                "criterion": "지급일은 재무팀 최종 검토가 끝난 달의 다음 달 15일이다.",
+                "status": "exact",
+                "rationale": "원문과 같은 지급월·일 규칙을 서술했다."
+              },
+              {
+                "criterion": "보완 요청이 있으면 보완 자료 제출 후 재무팀 최종 검토 완료 월을 기준으로 지급일을 정한다.",
+                "status": "missing",
+                "rationale": "일반적인 최종 검토 완료 월만 언급하고, 보완 자료 제출 뒤 완료된 최종 검토 월로 기준이 바뀐다는 조건은 말하지 않았다."
+              }
+            ],
+            "optional_correctness_checks": [],
+            "severe_error": {
+              "present": false,
+              "rationale": "원문상 다음 달 15일 및 은행 휴무일 다음 영업일 규칙을 반대로 말하지 않았다. 개인별 실제 입금일을 알아냈다고 주장하지 않았다."
+            },
+            "unsupported_claims": [
+              {
+                "claim": "“현재 사내비에서는 개인별 지급 상태를 확인하기 어렵습니다.”",
+                "rationale": "The company corpus states that payout status is recorded in the portal and directs users to Finance for status/account errors; it does not establish this assistant application’s lookup capability. The statement is not supported by the allowed source facts."
+              }
+            ],
+            "other_claims": [
+              {
+                "claim": "은행 휴무일에는 다음 은행 영업일에 지급, 팀장 2영업일 검토, 재무팀 3영업일 증빙 검토.",
+                "assessment": "These claims are supported by ieum-019, though the bank-holiday point and review durations were not required by this question’s criteria."
+              },
+              {
+                "claim": "직무 교육비의 기본 직접 결제와 개인 결제 사전 예외 승인.",
+                "assessment": "This is supported by ieum-049, but the question does not identify the expense as education-related; it is a tangential conditional detail, not an error."
+              }
+            ],
+            "concise_assessment": "Raw text contains the standard payout schedule but misses the supplemental-review condition and adds an application-capability assertion unsupported by the corpus. This is diagnostic only because delivery status is generation_failure."
+          },
+          "concise_assessment": "Generation failure; no successful answer to score. Raw content is reviewed separately below."
+        },
+        "B": {
+          "delivery_status": "not_called_peer_error",
+          "delivered_answer": false,
+          "required_criteria": null,
+          "optional_correctness_checks": [],
+          "severe_error": {
+            "present": null,
+            "rationale": "No answer was generated because the peer call failed; this is not a correct answer or refusal."
+          },
+          "unsupported_claims": [],
+          "concise_assessment": "Peer error; not assessable as answer content."
+        }
+      },
+      "pair_assessment": "Incomplete pair: one generation failure and one peer-call error. No full/RAG quality comparison or mode attribution is possible for this question."
+    }
+  ],
+  "summary": {
+    "completed_answer_variants_assessed": 4,
+    "completed_pairs": 2,
+    "incomplete_pairs": 1,
+    "generation_failures": 1,
+    "peer_errors": 1,
+    "mode_comparison": "Not performed; no mode mapping was accessed or inferred.",
+    "human_review": "Not performed; this is an AI assessment."
+  }
+}
