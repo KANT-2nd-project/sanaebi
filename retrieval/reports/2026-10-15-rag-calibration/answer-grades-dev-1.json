@@ -1,0 +1,609 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "R03",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정정 경로, 날짜·실제 출퇴근 시각·휴게·사유를 모두 안내합니다. 첨부 자료와 처리 기한 추가 정보도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R03",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "본문에 정정 경로와 날짜·실제 시각·휴게·사유가 모두 있습니다. 처리 절차와 실제 기록 안내도 원문에 부합합니다."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "본문에 정정 경로와 날짜·실제 시각·휴게·사유가 모두 있습니다. 처리 절차와 실제 기록 안내도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R03",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정정 경로, 날짜·실제 출퇴근 시각·휴게·사유를 모두 안내합니다. 기한과 확인 절차 추가 정보도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R04",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지난 오류의 지연 사유·People팀 제출과 기한 내 정정 경로를 구분합니다. 필수 사실이 모두 전달됐습니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R04",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "일주일이 지나도 불가능하다고 단정하지 않고, 지연 사유·People팀 제출 기준을 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R06",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "해외 근무의 구분, 신청 기한·각 검토·최종 승인·시작 제한을 모두 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R06",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "해외 근무 구분, 신청 기한·검토·최종 승인·기록 후 시작 기준을 모두 안내합니다. 문서 제목 인용도 정확합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차의 시작일 기준 3영업일 전과 인사 > 휴가 경로를 모두 안내합니다. 경조 휴가 추가 안내도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정기 국내 재택의 기한·경로와 승인 상태가 기록되기 전 미확정이라는 점을 안내합니다."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정기 국내 재택의 기한·경로와 승인 상태가 기록되기 전 미확정이라는 점을 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R02",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "중복 신청 금지와 기존 신청 번호를 이용한 정정 요청을 안내합니다. 취소 상태 확인 추가 안내도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R04",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유와 People팀 제출을 안내하며 실제 정정 정보 및 대조 절차 추가 내용도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정기 재택의 기한·경로를 답하고 승인 전 확정 아님을 설명합니다. 주간 한도와 일회성 변경 정보도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R02",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "새 신청을 중복 생성하지 말고 기존 신청 번호로 People팀에 정정을 요청하라고 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R06",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "해외 근무의 일반 재택 제외, 10영업일 전 신청·검토·최종 승인·시작 제한을 모두 안내합니다. 문서 항목 인용도 정확합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연차와 경조 휴가의 신청 기한·경로를 구분해 안내하고, 다른 휴가 종류는 확인 질문으로 남깁니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R06",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "해외 근무 제외, 신청 기한과 검토·최종 승인, 승인 전 시작 금지를 모두 원문대로 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정기 재택의 기한·경로를 답하고, 일회성 국내 장소 변경 절차를 별도 구분합니다. 추가 정보도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비JSON 본문에도 정기 국내 재택의 신청 기한과 경로가 모두 있습니다. 필수 사실은 충족합니다."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비JSON 본문에도 정기 국내 재택의 신청 기한과 경로가 모두 있습니다. 필수 사실은 충족합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R06",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "해외 근무의 예외와 신청·검토·승인·시작 기준을 모두 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R02",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "새 신청 금지와 기존 신청 번호를 통한 취소 정정 요청을 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차의 시작일 기준 기한과 신청 경로를 모두 안내합니다. 경조 휴가 추가 안내도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R03",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정정 경로와 날짜·실제 시각·휴게·사유를 안내합니다. 지난 기한의 People팀 제출 안내도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R04",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "3영업일이 지난 오류의 지연 사유와 People팀 제출을 안내하고, 기한 내 정정 경로도 구분합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연차·경조 휴가의 기한과 경로를 구분하고, 급박한 사정의 알림·복귀일까지 보완 기준도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R04",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유·People팀 제출과 원본 기록 대조·승인 반영을 안내합니다. 모두 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R06",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "해외 근무와 일반 재택의 구분, 10영업일 전 신청·각 검토·최종 승인, 승인 전 업무 시작 금지를 모두 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R02",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "새 요청을 만들지 않고 기존 신청 번호로 People팀에 정정을 요청하라고 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R03",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비JSON 본문에도 정정 경로와 날짜·실제 시각·휴게·사유가 모두 있습니다. 확인 자료 및 처리 기한도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연차의 기한·경로를 답하고 경조 휴가를 별도 구분합니다. 각 안내가 원문과 일치합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R01",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연차의 기한과 경로를 답하고 휴가 종류가 다를 때 확인 질문으로 안내합니다. 경조 휴가 추가 정보도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R03",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정정 경로와 필수 날짜·시각·휴게·사유를 안내합니다. 제출 기한과 처리 절차도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정기 재택의 기한과 경로를 안내합니다. 승인 상태 및 일회성 장소 변경 추가 정보도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R02",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "중복 새 신청을 하지 말고 기존 신청 번호로 People팀에 정정을 요청하라고 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R05",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "정기 국내 재택의 전 영업일 15:00 기한과 신청 경로를 안내합니다. 회신 시각과 일회성 변경 추가 정보도 원문에 부합합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R02",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "중복 신청 금지와 잠긴 취소의 기존 신청 번호 기반 People팀 정정 요청을 모두 안내합니다."
+        }
+      ]
+    },
+    {
+      "case_id": "R04",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "3영업일이 지난 뒤에도 불가하다고 단정하지 않고 지연 사유를 적어 People팀에 제출하라고 안내합니다."
+        }
+      ]
+    }
+  ]
+}

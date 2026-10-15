@@ -310,7 +310,13 @@ class DemoDocumentResetTests(unittest.TestCase):
         from app.fastapi_main import app
 
         with (
-            patch.dict("os.environ", {"SANAEBI_DOCUMENT_DB": str(self.db)}),
+            patch.dict(
+                "os.environ",
+                {
+                    "SANAEBI_DOCUMENT_DB": str(self.db),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
+                },
+            ),
             TestClient(app) as client,
         ):
             key = str(uuid.uuid4())

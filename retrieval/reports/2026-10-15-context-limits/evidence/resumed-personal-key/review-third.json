@@ -1,0 +1,324 @@
+{
+  "review_kind": "mode_score_cost_blinded_ai",
+  "cases": [
+    {
+      "case_id": "R14",
+      "question": "내 PR은 내가 승인해서 머지해도 돼?",
+      "intent_group": "pull_request_independent_review",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "R14-r01",
+          "claim": "PR 작성자와 다른 사람이 최소 한 명 독립적으로 검토해야 한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-067",
+              "spans": [
+                {
+                  "start": 821,
+                  "end": 853,
+                  "text": "PR 작성자와 다른 사람이 최소 1명 독립적으로 검토한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "R14-o01",
+          "claim": "저장소의 필수 자동 검사도 모두 통과해야 한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-067",
+              "spans": [
+                {
+                  "start": 854,
+                  "end": 880,
+                  "text": "저장소의 필수 자동 검사도 모두 통과해야 한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "R16",
+      "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+      "intent_group": "git_secret_exposure_response",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "R16-r01",
+          "claim": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 비밀값이 제거된다고 보장되지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-071",
+              "spans": [
+                {
+                  "start": 2194,
+                  "end": 2275,
+                  "text": "비밀값을 현재 파일에서 지우거나 커밋을 새로 올리는 것만으로 과거 Git 기록, 다른 사람의 복제본, 캐시와 로그에서 제거됐다고 보장할 수 없다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "R16-r02",
+          "claim": "자격정보 담당자 또는 권한 있는 운영자가 즉시 자격정보를 폐기·회전한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-071",
+              "spans": [
+                {
+                  "start": 1794,
+                  "end": 1841,
+                  "text": "해당 자격정보를 소유한 서비스 담당자 또는 권한이 있는 운영자가 즉시 폐기·회전한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "D07",
+      "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+      "intent_group": "software_purchase_vs_service_access",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "D07-r01",
+          "claim": "구매 검토가 끝났다는 사실만으로 서비스 계정·권한이 자동 발급되지는 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-021",
+              "spans": [
+                {
+                  "start": 605,
+                  "end": 647,
+                  "text": "구매 검토가 끝났다는 사실만으로 서비스 계정·권한이 자동 발급되지는 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "D07-o01",
+          "claim": "소프트웨어·클라우드 등은 계약·결제 전에 IT운영팀 및 보안·개인정보 담당자 검토를 받는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-021",
+              "spans": [
+                {
+                  "start": 418,
+                  "end": 499,
+                  "text": "소프트웨어, 클라우드 서비스, 네트워크 장비 또는 고객 정보를 다루는 서비스는 계약·결제 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    }
+  ],
+  "responses": [
+    {
+      "case_id": "D07",
+      "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "아니요. 구매 승인이 나도 SaaS 계정이나 접근 권한이 자동으로 발급되지는 않습니다. 필요한 권한은 이음 포털의 **IT > 접근 권한**에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 별도로 신청해야 합니다. 팀장이 업무 필요를 확인하고 시스템 담당자가 역할 범위와 기술 조건을 검토하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자와 보안·개인정보 담당자의 확인도 필요합니다. 권한이 실제로 부여된 것을 확인하기 전에는 접근을 시도하지 마세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 구매 승인이 나도 SaaS 계정이나 접근 권한이 자동으로 발급되지는 않습니다. 필요한 권한은 이음 포털의 **IT > 접근 권한**에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 별도로 신청해야 합니다. 팀장이 업무 필요를 확인하고 시스템 담당자가 역할 범위와 기술 조건을 검토하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자와 보안·개인정보 담당자의 확인도 필요합니다. 권한이 실제로 부여된 것을 확인하기 전에는 접근을 시도하지 마세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 구매 승인이 나도 SaaS 계정이나 접근 권한이 자동으로 발급되지는 않습니다. 필요한 권한은 이음 포털의 **IT > 접근 권한**에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 별도로 신청해야 합니다. 팀장이 업무 필요를 확인하고 시스템 담당자가 역할 범위와 기술 조건을 검토하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자와 보안·개인정보 담당자의 확인도 필요합니다. 권한이 실제로 부여된 것을 확인하기 전에는 접근을 시도하지 마세요.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R16",
+      "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "파일에서 토큰을 지우는 것만으로는 끝나지 않습니다. 과거 Git 기록, 다른 사람의 복제본, 캐시나 로그에 남아 있을 수 있습니다. 토큰이 코드나 Git 기록에 들어갔다면 즉시 #security-incident에 신고하고 저장소 접근과 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤 저장소 담당자와 Git 기록 정리 범위와 협업 영향을 조율해야 합니다. 기록 재작성이나 강제 푸시는 혼자 실행하지 마세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"파일에서 토큰을 지우는 것만으로는 끝나지 않습니다. 과거 Git 기록, 다른 사람의 복제본, 캐시나 로그에 남아 있을 수 있습니다. 토큰이 코드나 Git 기록에 들어갔다면 즉시 #security-incident에 신고하고 저장소 접근과 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤 저장소 담당자와 Git 기록 정리 범위와 협업 영향을 조율해야 합니다. 기록 재작성이나 강제 푸시는 혼자 실행하지 마세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"파일에서 토큰을 지우는 것만으로는 끝나지 않습니다. 과거 Git 기록, 다른 사람의 복제본, 캐시나 로그에 남아 있을 수 있습니다. 토큰이 코드나 Git 기록에 들어갔다면 즉시 #security-incident에 신고하고 저장소 접근과 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤 저장소 담당자와 Git 기록 정리 범위와 협업 영향을 조율해야 합니다. 기록 재작성이나 강제 푸시는 혼자 실행하지 마세요.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "D07",
+      "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "아니요. 업무용 구매 승인이 났더라도 SaaS 계정이나 권한이 자동으로 발급되지는 않습니다. 접근이 필요하면 이음 포털의 IT > 접근 권한에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 신청하세요. 팀장과 시스템 담당자의 확인이 필요하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자 및 보안·개인정보 담당자의 확인도 필요합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 업무용 구매 승인이 났더라도 SaaS 계정이나 권한이 자동으로 발급되지는 않습니다. 접근이 필요하면 이음 포털의 IT > 접근 권한에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 신청하세요. 팀장과 시스템 담당자의 확인이 필요하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자 및 보안·개인정보 담당자의 확인도 필요합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 업무용 구매 승인이 났더라도 SaaS 계정이나 권한이 자동으로 발급되지는 않습니다. 접근이 필요하면 이음 포털의 IT > 접근 권한에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 신청하세요. 팀장과 시스템 담당자의 확인이 필요하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자 및 보안·개인정보 담당자의 확인도 필요합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R16",
+      "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "아니요. 파일에서 토큰을 지우는 것만으로는 끝나지 않습니다. 토큰이 코드나 Git 기록에 들어갔다면 즉시 #security-incident에 신고하고, 저장소 접근과 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤 저장소 담당자와 Git 기록 정리 범위 및 협업 영향을 조율해야 합니다. 기록 삭제·재작성이나 강제 푸시는 혼자 진행하지 마세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 파일에서 토큰을 지우는 것만으로는 끝나지 않습니다. 토큰이 코드나 Git 기록에 들어갔다면 즉시 #security-incident에 신고하고, 저장소 접근과 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤 저장소 담당자와 Git 기록 정리 범위 및 협업 영향을 조율해야 합니다. 기록 삭제·재작성이나 강제 푸시는 혼자 진행하지 마세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 파일에서 토큰을 지우는 것만으로는 끝나지 않습니다. 토큰이 코드나 Git 기록에 들어갔다면 즉시 #security-incident에 신고하고, 저장소 접근과 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤 저장소 담당자와 Git 기록 정리 범위 및 협업 영향을 조율해야 합니다. 기록 삭제·재작성이나 강제 푸시는 혼자 진행하지 마세요.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R16",
+      "question": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "아니요. 파일에서 지우거나 새 커밋을 올려도 과거 Git 기록, 다른 사람의 복제본, 캐시·로그에서 토큰이 제거된다고 보장할 수 없습니다. 토큰이 코드나 Git 기록에 올라갔다면 즉시 #security-incident에 신고하고 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤, 저장소 담당자와 보안 담당자가 기록 정리 범위와 협업 영향을 조율해 승인된 절차로 진행해야 합니다. 직접 Git 기록을 재작성하거나 강제 푸시하지 마세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 파일에서 지우거나 새 커밋을 올려도 과거 Git 기록, 다른 사람의 복제본, 캐시·로그에서 토큰이 제거된다고 보장할 수 없습니다. 토큰이 코드나 Git 기록에 올라갔다면 즉시 #security-incident에 신고하고 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤, 저장소 담당자와 보안 담당자가 기록 정리 범위와 협업 영향을 조율해 승인된 절차로 진행해야 합니다. 직접 Git 기록을 재작성하거나 강제 푸시하지 마세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 파일에서 지우거나 새 커밋을 올려도 과거 Git 기록, 다른 사람의 복제본, 캐시·로그에서 토큰이 제거된다고 보장할 수 없습니다. 토큰이 코드나 Git 기록에 올라갔다면 즉시 #security-incident에 신고하고 추가 노출을 막으세요. 권한 있는 담당자가 토큰을 폐기·교체한 뒤, 저장소 담당자와 보안 담당자가 기록 정리 범위와 협업 영향을 조율해 승인된 절차로 진행해야 합니다. 직접 Git 기록을 재작성하거나 강제 푸시하지 마세요.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R14",
+      "question": "내 PR은 내가 승인해서 머지해도 돼?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "본인이 자기 PR을 승인해도 독립 승인으로 계산되지 않으므로, 그 승인만으로는 머지할 수 없습니다. `main`에 머지하려면 독립 승인 1건과 저장소의 필수 검사 통과가 모두 필요하며, 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. (「개발 변경과 코드 리뷰」)",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"본인이 자기 PR을 승인해도 독립 승인으로 계산되지 않으므로, 그 승인만으로는 머지할 수 없습니다. `main`에 머지하려면 독립 승인 1건과 저장소의 필수 검사 통과가 모두 필요하며, 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. (「개발 변경과 코드 리뷰」)\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"본인이 자기 PR을 승인해도 독립 승인으로 계산되지 않으므로, 그 승인만으로는 머지할 수 없습니다. `main`에 머지하려면 독립 승인 1건과 저장소의 필수 검사 통과가 모두 필요하며, 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. (「개발 변경과 코드 리뷰」)\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R14",
+      "question": "내 PR은 내가 승인해서 머지해도 돼?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "본인 승인만으로는 머지할 수 없습니다. `main`에 머지하려면 PR 작성자와 다른 사람의 독립 승인 1건 이상과 저장소의 필수 검사 통과가 모두 필요합니다. 위험 변경이면 서비스 책임자의 추가 확인도 받아야 합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"본인 승인만으로는 머지할 수 없습니다. `main`에 머지하려면 PR 작성자와 다른 사람의 독립 승인 1건 이상과 저장소의 필수 검사 통과가 모두 필요합니다. 위험 변경이면 서비스 책임자의 추가 확인도 받아야 합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"본인 승인만으로는 머지할 수 없습니다. `main`에 머지하려면 PR 작성자와 다른 사람의 독립 승인 1건 이상과 저장소의 필수 검사 통과가 모두 필요합니다. 위험 변경이면 서비스 책임자의 추가 확인도 받아야 합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "D07",
+      "question": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "아니요. 새 SaaS 구매 승인이 나도 서비스 계정이나 접근 권한이 자동으로 발급되지는 않습니다. 이음 포털의 **IT > 접근 권한**에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 신청하세요. 팀장과 시스템 담당자의 확인이 필요하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자와 보안·개인정보 담당자의 확인도 필요합니다. 권한이 실제로 부여된 것을 확인하기 전에는 접근을 시도하지 마세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 새 SaaS 구매 승인이 나도 서비스 계정이나 접근 권한이 자동으로 발급되지는 않습니다. 이음 포털의 **IT > 접근 권한**에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 신청하세요. 팀장과 시스템 담당자의 확인이 필요하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자와 보안·개인정보 담당자의 확인도 필요합니다. 권한이 실제로 부여된 것을 확인하기 전에는 접근을 시도하지 마세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 새 SaaS 구매 승인이 나도 서비스 계정이나 접근 권한이 자동으로 발급되지는 않습니다. 이음 포털의 **IT > 접근 권한**에서 시스템명, 필요한 역할, 업무 사유, 시작일과 종료일을 적어 신청하세요. 팀장과 시스템 담당자의 확인이 필요하며, 고객 운영 환경·기밀 자료·개인정보 접근에는 자료 소유자와 보안·개인정보 담당자의 확인도 필요합니다. 권한이 실제로 부여된 것을 확인하기 전에는 접근을 시도하지 마세요.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "R14",
+      "question": "내 PR은 내가 승인해서 머지해도 돼?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "아니요. PR 작성자의 자기 승인은 필수 독립 승인으로 인정되지 않습니다. `main`에 머지하려면 독립 승인 1건 이상과 저장소의 필수 검사 통과가 모두 필요하며, 위험 변경이면 서비스 책임자의 추가 확인도 필요합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. PR 작성자의 자기 승인은 필수 독립 승인으로 인정되지 않습니다. `main`에 머지하려면 독립 승인 1건 이상과 저장소의 필수 검사 통과가 모두 필요하며, 위험 변경이면 서비스 책임자의 추가 확인도 필요합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. PR 작성자의 자기 승인은 필수 독립 승인으로 인정되지 않습니다. `main`에 머지하려면 독립 승인 1건 이상과 저장소의 필수 검사 통과가 모두 필요하며, 위험 변경이면 서비스 책임자의 추가 확인도 필요합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    }
+  ]
+}

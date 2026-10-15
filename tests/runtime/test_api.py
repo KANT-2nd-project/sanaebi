@@ -26,6 +26,7 @@ class ApiTests(unittest.TestCase):
                 os.environ,
                 {
                     "SANAEBI_DOCUMENT_DB": str(Path(directory) / "managed.sqlite3"),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
                     "SANAEBI_ROUTING_MODE": "gate",
                 },
             )

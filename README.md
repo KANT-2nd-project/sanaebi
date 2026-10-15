@@ -37,7 +37,7 @@ flowchart LR
 |---|---|---|---|
 | 질문 분류 | KoELECTRA base | 선정·서버 적용 | [선정 기록](docs/worklogs/2026-10-15-classifier-selection.md#결정과-근거) |
 | 답변 생성 | GPT-6 Luna | 서버·독립 실행 공통 기본값 | [최종 구성](docs/generation-final-prompt.md) |
-| 선택적 문서 검색 | KoEn-E5-Tiny | RAG 구현, 기본은 전체 문서 `full` 유지 | [RAG 실행·검증 범위](docs/rag-runtime.md) |
+| 문서 검색 | KoEn-E5-Tiny | 코드 기본값 `rag`, C 검색 설정 채택·운영 전환 별도 | [RAG 실행·검증 범위](docs/rag-runtime.md) |
 
 ## 로컬 개발 시작
 
@@ -58,7 +58,7 @@ uv run --locked python scripts/import_company_knowledge.py \
 
 로컬에서 실제 답변을 생성하려면 `OPENAI_API_KEY`가 필요하며 API 사용 요금이 발생합니다. [키 설정·답변 준비](app/README.md#문서-기반-답변-확인)
 
-[분류 저장본과 답변 제공자](app/README.md#실행-준비와-api-확인)를 준비한 뒤 웹과 API를 실행합니다. [상세 절차](web/README.md#개발)
+[분류 저장본과 답변 제공자](app/README.md#실행-준비와-api-확인), [RAG 모델·색인·worker](docs/rag-runtime.md#준비와-실행)를 준비한 뒤 웹과 API를 실행합니다. [상세 절차](web/README.md#개발)
 
 ```bash
 npm run dev

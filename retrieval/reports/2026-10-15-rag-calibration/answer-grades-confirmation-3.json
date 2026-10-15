@@ -1,0 +1,545 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "N17",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "N17-r01",
+            "N17-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "신고·조사 협조에 따른 불이익 금지와 보복 우려/추가 사건을 기존 신고에 추가하는 기준을 모두 누락했다. 보안 문제 발생 시 별도 신고하라는 안내는 해당 필수 사실을 충족하지 않는다."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [
+            "N17-r01",
+            "N17-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "신고·조사 협조에 따른 불이익 금지와 보복 우려/추가 사건을 기존 신고에 추가하는 기준을 모두 누락했다. 보안 문제 발생 시 별도 신고하라는 안내는 해당 필수 사실을 충족하지 않는다."
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N17",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보복 우려의 보호 경로와 추가 사건을 기존 신고에 덧붙이는 필수 안내를 확인했다. 보안 문제에 대한 별도 신고 안내만으로는 이 두 사실을 대신하지 못한다."
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N17",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "보복 우려의 보호 경로와 추가 사건을 기존 신고에 덧붙이는 필수 안내를 확인했다. 보안 문제에 대한 별도 신고 안내만으로는 이 두 사실을 대신하지 못한다."
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N17",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "N17-r01",
+            "N17-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "신고·조사 협조에 따른 불이익 금지와 보복 우려/추가 사건을 기존 신고에 추가하는 기준을 모두 누락했다. 보안 문제 발생 시 별도 신고하라는 안내는 해당 필수 사실을 충족하지 않는다."
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+        }
+      ]
+    }
+  ]
+}

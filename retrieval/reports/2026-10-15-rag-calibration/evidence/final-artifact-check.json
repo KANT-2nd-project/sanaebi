@@ -1,0 +1,9 @@
+{
+  "checked_at": "2026-10-15T13:26:32.343590+00:00",
+  "local_markdown_links": 38,
+  "json_files": 56,
+  "problems": [],
+  "credential_pattern_hits": [],
+  "scope": "new calibration code/tests/reports including gzip inputs; empty logs permitted; pattern scan only, not full secret-history audit",
+  "browser_rendering_performed": false
+}

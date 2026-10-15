@@ -1,10 +1,17 @@
 # 문서 검색 RAG 실행과 초기화
 
-RAG는 현재 게시된 SQLite 문서를 검색해 선택한 발췌를 기존 Luna 생성기에 전달한다. 기본값은 `SANAEBI_RETRIEVAL_MODE=full`이며 운영 자동 전환은 없다. 실제 LLM 품질과 운영 배포 검증은 로컬 연결 검증과 구분한다.
+RAG는 현재 게시된 SQLite 문서를 검색해 선택한 발췌를 기존 Luna 생성기에 전달한다. 코드 기본값은 `SANAEBI_RETRIEVAL_MODE=rag`이며 검색은 C로 고정한다. 이번 게시에서는 운영 설정·배포를 변경하지 않는다. 실제 LLM 품질과 운영 배포 검증은 로컬 연결 검증과 구분한다.
 
 ## 준비와 실행
 
-선정 모델은 `exp-models/dragonkue-KoEn-E5-Tiny`, revision `292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9`다. 배포 준비 도구가 검증한 모델 파일과 `retrieval-model.json`을 같은 디렉터리에 둔다. API/worker는 로컬 전용 로딩을 하며 요청 중 다운로드하지 않는다.
+선정 모델은 `exp-models/dragonkue-KoEn-E5-Tiny`, revision `292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9`다. 배포 준비 도구가 검증한 모델 파일과 `retrieval-model.json`을 같은 디렉터리에 둔다. API/worker는 로컬 전용 로딩을 하며 요청 중 다운로드하지 않는다. 새 환경의 모델 준비는 다음 명령으로 수행한다. 이 명령은 최초에 고정 모델 파일을 다운로드하며, 서버 요청과는 별도다.
+
+```bash
+uv run --locked python scripts/deployment_embedding.py \
+  --manifest deployment/retrieval-release.json --root artifacts/embeddings
+```
+
+명령이 출력한 검증된 모델 경로를 아래 `SANAEBI_EMBEDDING_PATH`에 지정한다. 문서 DB는 [최초 구성](document-management.md#새-환경의-db-최초-구성)으로 먼저 준비한다.
 
 ```bash
 export SANAEBI_DOCUMENT_DB=/absolute/path/documents.sqlite3
@@ -16,17 +23,17 @@ uv run --locked python -m scripts.index_documents --status
 uv run --locked python -m scripts.index_documents --watch
 ```
 
-API에 같은 경로와 `SANAEBI_RETRIEVAL_MODE=rag`를 지정하고 기존 서버 명령으로 시작한다. worker와 API는 같은 spec의 색인을 사용해야 한다. `--status`는 모델을 로딩하지 않는다. 종료 코드는 준비0·미준비2·오류1이며, `--once`는 준비0·실패1이다. 원본 DB는 기존 [초기 구성](document-management.md) 절차로 준비하며 검색 명령이 원본을 생성하지 않는다.
+API에 같은 경로를 지정하고(기본 `SANAEBI_RETRIEVAL_MODE=rag`) 기존 서버 명령으로 시작한다. worker와 API는 같은 spec의 색인을 사용해야 한다. `--status`는 모델을 로딩하지 않는다. 종료 코드는 준비0·미준비2·오류1이며, `--once`는 준비0·실패1이다. 원본 DB는 기존 [초기 구성](document-management.md) 절차로 준비하며 검색 명령이 원본을 생성하지 않는다.
 
-검색의 초기 설정은 본문360토큰·중첩60, 전체 임베딩 입력512 이하, 후보10개·최대5개 근거, 전달 본문 합계8,000자·근거당2,000자다. 문자 예산은 생성 토큰 한도가 아니다. 같은 개정의 겹친 근거는 합치고 source span을 보존한다. schema/spec별 파생 DB를 `SANAEBI_RETRIEVAL_ROOT/schema-v1/<spec>/index.sqlite3`에 둔다.
+분할은 본문360토큰·중첩60, 전체 임베딩 입력512 이하를 유지한다. C는 현재 유효 청크 전체의 벡터 점수에서0.35 이상을 선택한다. 후보·최종 근거 개수, 병합·근거당·총 본문 문자, 별도 전달 문맥 토큰 제한은 없다. 임베딩 입력512와 생성 제공자의 입력 한계는 유지하며 입력 초과 시 자동 절단·전체 문서 전환을 하지 않는다. 같은 개정의 겹친 근거는 합치고 source span을 보존한다. schema/spec별 파생 DB를 `SANAEBI_RETRIEVAL_ROOT/schema-v1/<spec>/index.sqlite3`에 둔다.
 
 ## 요청·오류 계약
 
 shadow 기본 모드에서는 세 분류 라벨 모두 검색 경로로 진행한다. gate의 비검색 라벨, assistant의 upstream 실패, 빈 snapshot은 기존 안내를 반환하며 검색·생성하지 않는다. 문서는 요청마다 한 번 읽고 생성 전에 DB 연결을 닫는다.
 
-현재 유효 개정 하나라도 색인이 누락되면503이다. 부분 색인으로 정책이 없다고 답하지 않는다. query 접두사·특수 토큰 포함512를 넘으면422로 나누어 질문하도록 안내한다. 문서·모델·검색 장애는503, 생성 오류는502, 일일 예산은 기존429, 예상 밖 코드 오류는500으로 구분한다. 검색 실패 때 생성 예약은 소비하지 않는다. rag 장애를 full로 자동 전환하지 않는다.
+현재 유효 개정 하나라도 색인이 누락되면503이다. 부분 색인으로 정책이 없다고 답하지 않는다. query 접두사·특수 토큰 포함512를 넘으면422로 나누어 질문하도록 안내한다. 문서·모델·검색 장애는503, 생성 오류는502, 일일 예산은 기존429, 예상 밖 코드 오류는500으로 구분한다. 검색 실패 때 생성 예약은 소비하지 않는다. 준비된 색인에서 점수0.35 이상 근거가 없으면 “관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.” 안내로 종료하고 생성·예약하지 않는다. rag 장애를 full로 자동 전환하지 않는다.
 
-`/health/ready`는 rag에서 현재 색인 준비도 검사한다. Tiny는 startup에서 준비하며 health가 외부 LLM을 호출하거나 색인을 만들지 않는다. full에서는 Tiny 없이 기존 서버를 실행할 수 있다. 원복은 full 지정 후 서버 재시작으로 명시한다.
+`/health/ready`는 rag에서 현재 색인 준비도 검사한다. Tiny는 startup에서 준비하며 health가 외부 LLM을 호출하거나 색인을 만들지 않는다. full에서는 Tiny 없이 기존 서버를 실행할 수 있다. 수동 복구는 `export SANAEBI_RETRIEVAL_MODE=full` 지정 후 서버를 재시작한다. rag의 모델·색인이 준비되지 않은 상태를 정상 준비로 표시하지 않는다.
 
 ## 자정 초기화용 벡터
 
@@ -54,7 +61,7 @@ sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.
 
 ## 검색 개선 후보와 현재 구성
 
-[단계별 비교](../retrieval/reports/2026-10-15-rag-quality-improvement/README.md)에서 제목 경계 문맥·인접 근거 확장·BM25 결합을 검증했다. 인접 확장은 기존18문항15→17건을 회복했지만 신규개발20문항은19건 동률로 사전 기준에 미달해 자동 채택하지 않았다. 서버·worker·자정 기본 묶음은 기존 vector spec과 벡터 검색을 유지한다. 후보는 명시적인 실험 옵션으로만 사용하며 새로운 런타임 환경변수를 추가하지 않았다.
+[단계별 비교](../retrieval/reports/2026-10-15-rag-quality-improvement/README.md)에서 제목 경계 문맥·인접 근거 확장·BM25 결합을 검증했다. 인접 확장은 기존18문항15→17건을 회복했지만 신규개발20문항은19건 동률로 사전 기준에 미달해 자동 채택하지 않았다. 서버·worker·자정 기본 묶음은 기존 vector spec과 벡터 검색을 유지한다. 이후 사용자 결정으로 C를 채택했다. BM25·인접 확장·과거 예산 후보는 실험 전용 구현으로 보관하며 서버에는 선택 분기를 두지 않는다. 벡터 spec은 동일해 이번 검색 변경만으로 색인을 재생성하지 않는다.
 
 ## 전체 문서 삭제·기본 복원 API와 검색
 
@@ -67,4 +74,6 @@ sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.
 
 ## 실제 답변 비교 상태
 
-[Full·RAG 비교](../retrieval/reports/2026-10-15-rag-answer-comparison/README.md)는 20문항을 준비했지만 5번째 실제 호출의 JSON 형식 오류로 중단했다. 두 쌍만 완료됐으며 재시도·프롬프트 변경은 하지 않았다. 검색 구현과 답변 품질·운영 승격은 별개이며 full 기본값을 유지한다. 전체 비교 재개, 사람 검수, 실제2vCPU 및 컨테이너 운영 검증은 후속이다.
+[Full·RAG 비교](../retrieval/reports/2026-10-15-rag-answer-comparison/README.md)는 20문항을 준비했지만 5번째 실제 호출의 JSON 형식 오류로 중단했다. 두 쌍만 완료됐으며 재시도·프롬프트 변경은 하지 않았다. 이는 당시 full 기본값에서의 과거 실행이다. 현재 코드 기본값은 rag+C지만 검색 구현과 답변 품질·운영 승격은 별개다. 전체 비교 재개, 사람 검수, 실제2vCPU 및 컨테이너 운영 검증은 후속이다.
+
+[후속 인자·문맥 비교와 C 채택](../retrieval/reports/2026-10-15-c-adoption/README.md)은 검색의 근거 누락 최소화를 우선한 사용자 결정이다. 12문항 답변 비교의 품질 동률과 비용 증가를 보존하며 사람 승인이나 운영 품질 검증으로 표현하지 않는다.

@@ -1,0 +1,644 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "D03",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "영수증만으로 지급이 확정되지 않으며 지연 사유·영수증과 팀장·재무팀 예외 승인이 필요하다고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D03",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "영수증만으로 지급이 확정되지 않으며 지연 사유·영수증과 팀장·재무팀 예외 승인이 필요하다고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D03",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "영수증만으로 지급이 확정되지 않으며 지연 사유·영수증과 팀장·재무팀 예외 승인이 필요하다고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D04",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D04-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "분실 신고 경로와 총무 담당자의 카드 차단은 맞지만 재발급 이력을 기록한다는 필수 내용이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D04",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D04-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "분실 신고 경로와 총무 담당자의 카드 차단은 맞지만 재발급 이력을 기록한다는 필수 내용이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D06",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "임의 차감·사후 정산을 허용하지 않고 이미 결제된 경우 재무팀에 분리 방법을 문의하라고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D06",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "임의 차감·사후 정산을 허용하지 않고 이미 결제된 경우 재무팀에 분리 방법을 문의하라고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D01",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "국내 재택 승인과 해외 근무를 구분하고 10영업일 전 신청, 두 담당자 검토, 팀장 최종 승인을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D05",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "한도 초과 시 결제 전 두 담당자의 포털 승인과 미승인 객실을 먼저 예약하지 말라는 조건을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D02",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D02-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "기한·지급일·휴일 규칙은 정확하지만 거래별 금액·목적·프로젝트와 영수증 제출 요건이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D04",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D04-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "분실 신고 경로와 총무 담당자의 카드 차단은 맞지만 재발급 이력을 기록한다는 필수 내용이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D05",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "한도 초과 시 결제 전 두 담당자의 포털 승인과 미승인 객실을 먼저 예약하지 말라는 조건을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D02",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D02-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "기한·지급일·휴일 규칙은 정확하지만 거래별 금액·목적·프로젝트와 영수증 제출 요건이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D06",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "임의 차감·사후 정산을 허용하지 않고 이미 결제된 경우 재무팀에 분리 방법을 문의하라고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D01",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "국내 재택 승인과 해외 근무를 구분하고 10영업일 전 신청, 두 담당자 검토, 팀장 최종 승인을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D06",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "임의 차감·사후 정산을 허용하지 않고 이미 결제된 경우 재무팀에 분리 방법을 문의하라고 안내함."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "임의 차감·사후 정산을 허용하지 않고 이미 결제된 경우 재무팀에 분리 방법을 문의하라고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D05",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "한도 초과 시 결제 전 두 담당자의 포털 승인과 미승인 객실을 먼저 예약하지 말라는 조건을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D05",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "한도 초과 시 결제 전 두 담당자의 포털 승인과 미승인 객실을 먼저 예약하지 말라는 조건을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D06",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "임의 차감·사후 정산을 허용하지 않고 이미 결제된 경우 재무팀에 분리 방법을 문의하라고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D02",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D02-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "기한·지급일·휴일 규칙은 정확하지만 거래별 금액·목적·프로젝트와 영수증 제출 요건이 빠짐."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지급 일정과 제출기한에 더해 거래별 금액·목적·프로젝트 및 영수증 요건까지 모두 전달함."
+        }
+      ]
+    },
+    {
+      "case_id": "D01",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "국내 재택 승인과 해외 근무를 구분하고 10영업일 전 신청, 두 담당자 검토, 팀장 최종 승인을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D03",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "영수증만으로 지급이 확정되지 않으며 지연 사유·영수증과 팀장·재무팀 예외 승인이 필요하다고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D04",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D04-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "분실 신고 경로와 총무 담당자의 카드 차단은 맞지만 재발급 이력을 기록한다는 필수 내용이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D01",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "국내 재택 승인과 해외 근무를 구분하고 10영업일 전 신청, 두 담당자 검토, 팀장 최종 승인을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D04",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D04-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "분실 신고 경로와 총무 담당자의 카드 차단은 맞지만 재발급 이력을 기록한다는 필수 내용이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D06",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "임의 차감·사후 정산을 허용하지 않고 이미 결제된 경우 재무팀에 분리 방법을 문의하라고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D02",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D02-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "기한·지급일·휴일 규칙은 정확하지만 거래별 금액·목적·프로젝트와 영수증 제출 요건이 빠짐."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지급 일정과 제출기한에 더해 거래별 금액·목적·프로젝트 및 영수증 요건까지 모두 전달함."
+        }
+      ]
+    },
+    {
+      "case_id": "D03",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "영수증만으로 지급이 확정되지 않으며 지연 사유·영수증과 팀장·재무팀 예외 승인이 필요하다고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D01",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "국내 재택 승인과 해외 근무를 구분하고 10영업일 전 신청, 두 담당자 검토, 팀장 최종 승인을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D01",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "국내 재택 승인과 해외 근무를 구분하고 10영업일 전 신청, 두 담당자 검토, 팀장 최종 승인을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D03",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "영수증만으로 지급이 확정되지 않으며 지연 사유·영수증과 팀장·재무팀 예외 승인이 필요하다고 안내함."
+        }
+      ]
+    },
+    {
+      "case_id": "D05",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "한도 초과 시 결제 전 두 담당자의 포털 승인과 미승인 객실을 먼저 예약하지 말라는 조건을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D02",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D02-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "기한·지급일·휴일 규칙은 정확하지만 거래별 금액·목적·프로젝트와 영수증 제출 요건이 빠짐."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [
+            "D02-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "기한·지급일·휴일 규칙은 정확하지만 거래별 금액·목적·프로젝트와 영수증 제출 요건이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D05",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "한도 초과 시 결제 전 두 담당자의 포털 승인과 미승인 객실을 먼저 예약하지 말라는 조건을 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "D02",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D02-r01"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "기한·지급일·휴일 규칙은 정확하지만 거래별 금액·목적·프로젝트와 영수증 제출 요건이 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "D04",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "D04-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "분실 신고 경로와 총무 담당자의 카드 차단은 맞지만 재발급 이력을 기록한다는 필수 내용이 빠짐."
+        }
+      ]
+    }
+  ]
+}

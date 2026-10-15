@@ -1,0 +1,23 @@
+{
+  "config": {
+    "context_window": null,
+    "max_output_tokens": 16384,
+    "model_name": "gpt-6-luna",
+    "output_mode": "prompt_json",
+    "provider": "openai",
+    "reasoning_effort": "xhigh",
+    "temperature": null,
+    "timeout_seconds": 180
+  },
+  "cost_known": true,
+  "elapsed_seconds": 0.9441318650005996,
+  "error_code": "credit_balance_exhausted",
+  "error_type": "OpenAIRateLimitError",
+  "estimated_cost_usd": 0.0,
+  "http_status": 429,
+  "purpose": "User-authorized one-call availability check; not a comparison sample",
+  "request_id": "availability-20261015T135017Z",
+  "safe_provider_message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+  "started_at": "2026-10-15T13:50:17.700274+00:00",
+  "status": "provider_rejected"
+}

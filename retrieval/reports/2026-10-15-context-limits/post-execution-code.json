@@ -1,0 +1,7 @@
+{
+  "captured_at": "2026-10-15T13:45:02.675141+00:00",
+  "changed_after_execution": {
+    "retrieval/experiments/calibration_answer_summary.py": "f4108b82df670e05b945cb92e13ad6ef570d8d6e87fb26752479a6c2826b2aed"
+  },
+  "note": "Only rejected-call cost summary compatibility changed after provider rejection. Provider runner/generation code unchanged during execution. No API retries after stop."
+}

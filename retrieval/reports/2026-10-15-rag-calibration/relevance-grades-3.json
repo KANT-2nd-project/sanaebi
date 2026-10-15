@@ -1,0 +1,2467 @@
+{
+  "reviewer": "independent_ai:qrel_independent",
+  "human_review": false,
+  "review_method": "각 질문의40개 본문을 직접 검토한 독립 검토자의 index 판정을 부모가 chunk_id에 연결. 사유는 등급별 요약이며 자동 키워드 점수 아님.",
+  "cases": [
+    {
+      "case_id": "D07",
+      "grades": [
+        {
+          "chunk_id": "035aef72d16ad9d706845e40b9472812ed8c5b7d4622092fe7da60d874248af3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "0727fcac286ef07ad97abf0750f3997455792a32be480c3b83047227ea29c48c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "0e06ddeb02b7c9a394c64d63235c50536aee41dbcff6251eccf4f2f470d65b0f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1252caaec75ace55a966676f033e0996318d915687d80b7e131a200cf8a617dd",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1e0f53b17c93714252dc145e01ecc7f6db9def6bc41952aea7482e72e9b97bf5",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2459749c6b429e956717e3812559654897f27fc3eac2b50cf811295ce75ceb63",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "34f9645a84a07b4d58efa4030330af23159b073ae23e84c8e22ee09608d7c1c2",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "3cb860cf5e8923c35325b974326ef1956ad20b591b894ccd5b2e05c8e5b4dcc3",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "3f9d6b4471ff119494f731cd531b356f66714c08b4fba64426f70bb2089143ae",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "46ebdeb51e7764e62b8af52a252f0def5816f541ef0567e1a456bd596aa8e82b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "4b71542495b8c177215f5f80897b4e6e6b57b04e8c05fa6346850a564e747e21",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "5b17d55eb9caa3b325c5db76ca8a187ff21c9ea7bd6964040c81178b812dd9ec",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "614e6fdeae9ef357a95e36f414beafc9c2e2f018ac97ed58717af1070bd79c15",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "6aeca7c94f9033509c867fa52db4abc6a60426e71c7809ec933c706d47f141e1",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6dfb75261e2d390a2c32baa301c1db29147cc063b7e5a0efebc662ffae76c4ae",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "6f4a7377a9f19cab0dcbff79f8087c801d494db5b84b3cb9de2ff202f8393f9f",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "750b68efb2c65607b74449fdb3094ba583bff80db9c84a843eebaa8d4b86ab8a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7f2134e566e3b4025ada30ab64ec93e1938f954d60c07c794960ce3bfbd71e1c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "801bd4e4b95586ec3f8d43f5102cb1c86e741098129f712fedabb7662a15e75a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "845783cf64a5f3428c87acc286629ca93bb4aebaedf25f37cf85b885b385ae0a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "9438e3ebaad299edeed84b07eb5295201e6c8b9bb42480a501960a90bc1abe23",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "997fba76adde54001f21cf5251c5bbf9669dca1508df7958ac7c5ff2e98e1c8e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a8cdc6bf42c1a0198b7f0a4cc0343429126b3d995875fe2234ee5062b851a31c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "abf95415ed31c94dadfa865ee84eaa27d44763457a5ace6a96d535252403ce14",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d020f9c15777cf7a7d5912073fb59b706f77fc9290dc2ecc307a200e48ade164",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "da979564063f28f5401e0c04492a9091fe452046d6820f7ab9b8d7e094c3265e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "df6afdd7c728a381021da4df75bd759f5a2b1d645ba84469a35b70cdc635c4d0",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "e5ae52fb2ead45cc7a04d81d458b37e37d18e03d7f237b28ad70c0972c481fe1",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e80428383a1b153e2d6777376de8b918261bf18287f6916da6961b836ab7c1b3",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fa5e9d9c11e3d269d637fa5f4c650a3684a159a9df0136aa607f303996c4f9f5",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fb1baa57236434e2df3136236e897cf4376b962bd2bb77aedf0f4ac1da65c38e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fda97f7e6fbd794ab5341b567d89e9e29d6bd1ac1428ecff2cdd7729d052f6ae",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D08",
+      "grades": [
+        {
+          "chunk_id": "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0db7506fc9087bb425c122efc2afc03e0356baf7ffa70c2b426a3edf8e059d72",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "136a0addffa42f89e4fc88aa85b9f64de3372cdbb916edd32353b09ddeeb2ad3",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "26e125699ac3c4254b6b9b94b3b6b946d99817b5d91423b74e3beb11bf9bcd93",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "33a57c8fadfdf404b0a2c352d8ddfa9c3e4eb4da6fbabb97ea58cd2cfd69c9bb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "352e426adaab7113798d49ee31a02e0d82900ed5af7db7d0770d25052be2d07f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "41302b022592ca83968112fcb22a76f25af4954a6065912d1e553fdb507cb855",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "41c37a831d609df88da1d17c9e85dfd4af11b8131d758ad813ea049ede36f064",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "41e9c05a66f5ce0d32f3b918b56e9fac9301f7c2d245f9d6c9623dcadb7f516b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "504cd64ba2fcf26ea95f0b721eb1d7170136d529205cbfbf4cb6c412970573b7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5692f3679217f1d926c71ce5ffa54e37897e5c982efdc6a57bae0ce32ca45229",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5af755f55f054439bd082b0861aa95d2dff755aa53d364cb4cc03e279bbe8786",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5f1f9cb2cec6cd99e7cc4f645ec9d987ef540d22a5937ae19cd26f38dcf212ca",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5fd51c2d0335d316944fbcf1216d686136f03f35b9ed5cad15f029efa120bdfa",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "642bb98d7f0ba5b986a1b80cdc1a578377fcfabb2fd02e13e96492b3fdd56111",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6c1e2e657e09360a7b67bf530cfdfaccf2bdeab2fcbc99aa67c3e7b0c884c1dd",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "72b4f15646f4c42d859ef3a8e38170434f89f7d629ac821d88740355eafb5155",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "72c63b96160abf77a2ad6fa6c1e8ce5fe4dc6d722b3c846e66572199fa98fadb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "735a29ce43ca1bf4a2289f739511a361c88394c7130ce22b6a30f140fd9d02d9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "73e71d4a9a25dc96ffee9cf4353ef6ac8df780ae14a79ab3818ab44701e6611f",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "742490342448ed58c73fed51a26f9a592de44348e95aa5cdd8a9222b7bf5ce81",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "79265936324936d06c663cb529c4671584c2c938287437e95527968911b5057b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "905a6358eb92f61faf3469e104aa5581e324784d6f33c80d8aa1b0ab4365b17d",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "922b744d8920d06be509cd21966aa0bd2810c34a94f8bdbf03e89126454dc309",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b7909f8034e95349dc09d7a9f96b02fe1be2e8d7e9f65e6f55870dd6ec966014",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ba4d29e30e17ed181b9a801a7dd348b630aa6de5ffe9e543418be9ef634ce083",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "ba4edf25045118eb3c58e6732e550250b59f532621a4efcd7650c8bd206bc875",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bf76f8d7037df57bf0e9d86ef360038af9f4ac42762aec240538b80866fce21b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "c6a7afac833062d39760eb9c1c618d77463424a13a6d5ab7484be64fbd0e85d4",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "cde24b55f6aef902743721fe43911adceb3f01e7cb1b8f1e23a15442434cbded",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "d020f9c15777cf7a7d5912073fb59b706f77fc9290dc2ecc307a200e48ade164",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d270a5668d0d62035d266c0463151cff7519f60cef06a248361f6ec3a56ad79b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d3cea24b1071861ef85c7ee3d43597e7f992a28a895d58dc8db936930126fc89",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d438174eb8e672ea44d05a851d8d1b25d8a26bc67815fa696a82d2073bce9b1e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e0eba9a3b0d3b66b4dc4bcbc549ce117a7e919ddb28f5827c90b3a0d29554c46",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "e7771931736a47bd6deee76d77858a62cd8afbd2e872683bb85c3dd07f0d96af",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f1950266f4b386a0a8b103f5c406584b1e2e0ff372cbc9ea9d5986c410880e70",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fe9ede057bd3d171662bd156d4bfac3b4b7e75e70f60e1e1a7d2058dbe3cdd4e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D09",
+      "grades": [
+        {
+          "chunk_id": "035aef72d16ad9d706845e40b9472812ed8c5b7d4622092fe7da60d874248af3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "0e06ddeb02b7c9a394c64d63235c50536aee41dbcff6251eccf4f2f470d65b0f",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "0e35480c6bebe92beabc9b3f348d9df1dad11e1ed93f8c42f582a5bc7c2e0156",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1252caaec75ace55a966676f033e0996318d915687d80b7e131a200cf8a617dd",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2c15455278291b9a88148a4162e1482c92a5d5bea94ada1765878fed5aa68a21",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "45d1badbce47ad7ee4bce45d2a1c06ad11d32acb1aefb4b7d74dd94d0cfb02d6",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "46ebdeb51e7764e62b8af52a252f0def5816f541ef0567e1a456bd596aa8e82b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "4cc0aa7c04857e6c4c55f6c162d4f773c6d115b3849332cc0fecfff98e6b445d",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "647409e02fed50c565964a1cd52f7be6b115be22db5431a9ebf208dd8e7b91ee",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6c1e2e657e09360a7b67bf530cfdfaccf2bdeab2fcbc99aa67c3e7b0c884c1dd",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "6f2336b62b7eacc2588aa0cad209a2da0f824ac94a76d8e9af632f2174f01140",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "7f2134e566e3b4025ada30ab64ec93e1938f954d60c07c794960ce3bfbd71e1c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "845783cf64a5f3428c87acc286629ca93bb4aebaedf25f37cf85b885b385ae0a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "9438e3ebaad299edeed84b07eb5295201e6c8b9bb42480a501960a90bc1abe23",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "990c774d7f04c2660cae0242c78b32e5be856900f5fbfa03ed9a99018b3d284a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "997fba76adde54001f21cf5251c5bbf9669dca1508df7958ac7c5ff2e98e1c8e",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "a8cdc6bf42c1a0198b7f0a4cc0343429126b3d995875fe2234ee5062b851a31c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "abf95415ed31c94dadfa865ee84eaa27d44763457a5ace6a96d535252403ce14",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "ba4d29e30e17ed181b9a801a7dd348b630aa6de5ffe9e543418be9ef634ce083",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bba007821c13a050afd93e05656072deb427f1e6dd637bbd0c334b2337418938",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bd754390e30bd696dede82b71b4a76fe8a2cb8827e9b19e55b2ba0ef53d43099",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "c3d65f33ea58fce3289ec9554ae8a3fccc0ffb19b57b4254596035504e650224",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "ce0d54cd85f28e1af34dc2a8c2b5ed6b4f27c11e2a5f0fc83e0bf91a58b40772",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "d020f9c15777cf7a7d5912073fb59b706f77fc9290dc2ecc307a200e48ade164",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e0eba9a3b0d3b66b4dc4bcbc549ce117a7e919ddb28f5827c90b3a0d29554c46",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e80428383a1b153e2d6777376de8b918261bf18287f6916da6961b836ab7c1b3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "ef41dfc97a2efc12a2ee4819256c9c41daf4e2d6e91c241519b4c8773d9016ad",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f115c1a391ad9d66e4fe01a828022ff3bb67bb6684c23fd1691cf10dda1928f7",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "f1950266f4b386a0a8b103f5c406584b1e2e0ff372cbc9ea9d5986c410880e70",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fdfd398d04386f7016982148b5128a0970a72a635cbc1cd14cbf51780675fe45",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "fe592958b804a58a19ec33722cd9cbac36920a5004b0a7ff49ba29998ec31b28",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "grades": [
+        {
+          "chunk_id": "0111b1b05cf4899dbabf91a8d6522cce69e70304389ea9421d059b336bf123aa",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0d5bca0a41aba66891ccf71c0bbad064e4c048818600aa041267f1e28e048ea1",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0fdbe369e1ec304e9239bff95245fc937ba8bc46e9b3e4469d0490b8a4ff61e4",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "1908e721ec601d7f70e76b5687ffe99ddf52fb487d44d7eb46983c0f1d8d9b43",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2371ff78a586337ead16d219aecd76993e38731e3a4da9397e1ece696a72bdd7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "26daa2fa4f20613146281a503e895cd17c85199b9808240ffcda5602824534c7",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2c15455278291b9a88148a4162e1482c92a5d5bea94ada1765878fed5aa68a21",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "34f9645a84a07b4d58efa4030330af23159b073ae23e84c8e22ee09608d7c1c2",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "37316cec092abcf54e13776c8340551fff2e032156ce917fb2178450d4960fcb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "422b4673849a2ffeb3196f613b0184d3ba241fa02096232390da7940b5357e2e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5692f3679217f1d926c71ce5ffa54e37897e5c982efdc6a57bae0ce32ca45229",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "73e71d4a9a25dc96ffee9cf4353ef6ac8df780ae14a79ab3818ab44701e6611f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "750b68efb2c65607b74449fdb3094ba583bff80db9c84a843eebaa8d4b86ab8a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "84c759c26d569d219a467ab4fcd22a3f8d2103bdfa9ddffd83baf77323104b5e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "905a6358eb92f61faf3469e104aa5581e324784d6f33c80d8aa1b0ab4365b17d",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "a1412699aca67dae0090af824f3f0d8b32e7c749e33dc2e56b0bb80160c00712",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a2beac635b1650fe855df0aad91596d738a015deb7cfd47aa240257771e9d2d1",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a49a15a8ad17d6d2f5961ebe473372fd1017294f84014491973e77469e59e3df",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ac71222c98cd7e93991b25f203cb8a10c28c576e8f86711d27f234753e3417f9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b41c63d00efbf54903653ac02700d7022bfac54ee477b56ec005792fceb2b0b8",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bcd86afedb3a9e95873468a658d4d0fcbbb315cd04136a713475fc31f0665250",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "cde24b55f6aef902743721fe43911adceb3f01e7cb1b8f1e23a15442434cbded",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d2a0c4e7b28f91b9f877e866a8d3173f2691696d3e2ef3836554f6810bd36513",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "da979564063f28f5401e0c04492a9091fe452046d6820f7ab9b8d7e094c3265e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "dadc1b2663a61cc8632bfa38c3840785a022602980d76caeaec81f5af1d03d1f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "df40ab942e8748e819c90bffedb2d52942c9f5c54ad85a70fd2db47679e3fe26",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "e0eba9a3b0d3b66b4dc4bcbc549ce117a7e919ddb28f5827c90b3a0d29554c46",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ecabe53c6dfd34678698c79d977b832fd38049d88b38e7ec1d3b03fb7955ddc9",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "f04e2426bdf261b949ec86b68249f55d0c890ac4347bfa291e3529c398e0a328",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f711f5131beeeab30690c0c31cde4944f6122dd3b5302d73c04741d1e0fea846",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fa5e9d9c11e3d269d637fa5f4c650a3684a159a9df0136aa607f303996c4f9f5",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fb70824b519383cca373a22b1847ee41b7622b97210ab3de79bde9499b766cc4",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fe6ad5ecc68e4032d37d444168dcc4809d2f4b65b889f54a9f6033c9780ce20c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fe9fc85c142e5eccc012af8dad87a347e32ff5feb3a64fe95aa5f4b98ca7bc03",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "grades": [
+        {
+          "chunk_id": "05d2aa5cd4aef3122dc227a0abdbf647232fb0e2710e97afe793a3750db899f7",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0d1328280be67fed8cca964d4ae560a57e65bd22963df44ebb57263225d1ef09",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0e4e1ac51b1c8133020c587553e9356da9d168272f44485464a4baac9481b198",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "14d7dbc8abe3511b30a34077d26d6ef6c2907e65eeff3c8a13f92a64142a2252",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "26e125699ac3c4254b6b9b94b3b6b946d99817b5d91423b74e3beb11bf9bcd93",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2acd7819c08f565724fdad03f24eed4ebd78496ad32b819a75b8168635efeb51",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "321f8769295bdbad5edbfa114f2502c952e872bcbb72a3280c57e0fc62ee1206",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "41e9c05a66f5ce0d32f3b918b56e9fac9301f7c2d245f9d6c9623dcadb7f516b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "46185b3c500e37d46c27095d2dd2e37229153682945e2389d4857d25cc0be7ac",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "49baea6c805b61fa57716887e6d686b3215bd41cf78c396cb11c33c08fdccc72",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "4d4c11c39d53a0098d4cf11038233fd37f969ece9269627818b154a8840fca17",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "504cd64ba2fcf26ea95f0b721eb1d7170136d529205cbfbf4cb6c412970573b7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5af755f55f054439bd082b0861aa95d2dff755aa53d364cb4cc03e279bbe8786",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "666d33de09e972bfd4dc1558089f75553f60b2d37b29283ddf23165100e93122",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "72c63b96160abf77a2ad6fa6c1e8ce5fe4dc6d722b3c846e66572199fa98fadb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "735a29ce43ca1bf4a2289f739511a361c88394c7130ce22b6a30f140fd9d02d9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7a7c1b95dcd3d32c35b2034abad45fc2f8c233280805727c865e91c6c6de3b77",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7de6ac480a593924f9ec34032631f42cd0adb7529e5569931b3933919b889500",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "8e300d8e0e59238a5e6054bd09b3a5761dbd0bbabdad84c91bc2b6b10ec4c382",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "98cd2d71552a6969579ed9dfd33122f65136e51f0a10727700bc0aa02ac57cdb",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "9de8f374a5cb53feefd2d69d6aab746324a454fefa33d52652733d1e404b2013",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a22f06f918c09f040433b497d12cf2ef4ff3421cb34f86fd3fddb27cb6f5e255",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b0d578209c3dda2f4bbf068c238c3b8e28e2d873b6510470d3f5864f158eddc4",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b628a794787e54b3347a193727fc48937bf549bb16cccd59e0bae4c8d9591ed5",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "b76099f026d72665cc6a8559ae9ba0aa684b5976a92fff7ca734c732e6e1f226",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "becafdb1fbc3448f730348c52a1f6d9c45b495321b5c09a89966f5722efd6f13",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e186886829864b2e913f59604dc268a1065c74a283706bfd37e0a058bdedffbe",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e7771931736a47bd6deee76d77858a62cd8afbd2e872683bb85c3dd07f0d96af",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ee4af5ce29ddc230cd93dd6e7d077cbb9bf9fbefd3e0f1eb8a10e7df11c56f57",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "f05be4f1ebd758680faf5d94d4f70512778ff32fabde0b4e1a7e4cca138d23b6",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "f44c97c0623f67b28d04d57b8e68373b34a7c15386256c1c26d38a0aab3ed42c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f71e952c77917afd9648210d8331c7f4325d27c7d79b8967ec4ff8b39bf48a30",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fa91e004ef748a817c33e9904cde9e2a0fedefe1126d9be2f45d51ab97022065",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fc1e2a0480c99eddcfc92cbaa34058b35e669bf7590dfb441722a80847a2dc25",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fda1a0a59123ef438264f71ddfde6553645b8c6ac676a580aab319c7688cfd5c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fe9ede057bd3d171662bd156d4bfac3b4b7e75e70f60e1e1a7d2058dbe3cdd4e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "grades": [
+        {
+          "chunk_id": "035aef72d16ad9d706845e40b9472812ed8c5b7d4622092fe7da60d874248af3",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "06d67aca91baafaddfb9983c14fb1705d8b93a4f25a02f1ff5328868cecfd00a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "0e06ddeb02b7c9a394c64d63235c50536aee41dbcff6251eccf4f2f470d65b0f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "136a0addffa42f89e4fc88aa85b9f64de3372cdbb916edd32353b09ddeeb2ad3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "26e125699ac3c4254b6b9b94b3b6b946d99817b5d91423b74e3beb11bf9bcd93",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "33f2e5b94d50c54e2b4bbaefe824474e0524f7ea0f0acbc96902a196b57e2aad",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "3cb860cf5e8923c35325b974326ef1956ad20b591b894ccd5b2e05c8e5b4dcc3",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "46ebdeb51e7764e62b8af52a252f0def5816f541ef0567e1a456bd596aa8e82b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "4cc0aa7c04857e6c4c55f6c162d4f773c6d115b3849332cc0fecfff98e6b445d",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "642bb98d7f0ba5b986a1b80cdc1a578377fcfabb2fd02e13e96492b3fdd56111",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6dfb75261e2d390a2c32baa301c1db29147cc063b7e5a0efebc662ffae76c4ae",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "72c63b96160abf77a2ad6fa6c1e8ce5fe4dc6d722b3c846e66572199fa98fadb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "750b68efb2c65607b74449fdb3094ba583bff80db9c84a843eebaa8d4b86ab8a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "75752c54c87bf26cbbb373bad978c604df3d6fe82aed99b58b1b1b26a227ca04",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7f2134e566e3b4025ada30ab64ec93e1938f954d60c07c794960ce3bfbd71e1c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "845783cf64a5f3428c87acc286629ca93bb4aebaedf25f37cf85b885b385ae0a",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "8797767681762616fc5233fda7d9e3b50cde8f91eab4faa3000e9b5dbdcb617e",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "8b3f85c5a764a23cb070a2b9a98a06ebc878c7d6840b6dcccd1b23db7029b98d",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "990c774d7f04c2660cae0242c78b32e5be856900f5fbfa03ed9a99018b3d284a",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "997fba76adde54001f21cf5251c5bbf9669dca1508df7958ac7c5ff2e98e1c8e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a8cdc6bf42c1a0198b7f0a4cc0343429126b3d995875fe2234ee5062b851a31c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "abf95415ed31c94dadfa865ee84eaa27d44763457a5ace6a96d535252403ce14",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "b19df54cea30dfbcf1bd8c6b531af1b2ba30b5b5800171d24caa1d308a5e9ac1",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "ba9d274595731a5090648f44a6d06ac5135f99399e4ae3a58ae1096395639604",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "bc5cb4fb2a79897b37f231244e43e363efa52ca78a0bcbf249968d8d5c839ad6",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bf76f8d7037df57bf0e9d86ef360038af9f4ac42762aec240538b80866fce21b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "c3d65f33ea58fce3289ec9554ae8a3fccc0ffb19b57b4254596035504e650224",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "c85f2d46586b6ab127ce9718302e6586fbbcaabb2793e2245a13732274d66fc7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d020f9c15777cf7a7d5912073fb59b706f77fc9290dc2ecc307a200e48ade164",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "d270a5668d0d62035d266c0463151cff7519f60cef06a248361f6ec3a56ad79b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "d438174eb8e672ea44d05a851d8d1b25d8a26bc67815fa696a82d2073bce9b1e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e0eba9a3b0d3b66b4dc4bcbc549ce117a7e919ddb28f5827c90b3a0d29554c46",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ef41dfc97a2efc12a2ee4819256c9c41daf4e2d6e91c241519b4c8773d9016ad",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f711f5131beeeab30690c0c31cde4944f6122dd3b5302d73c04741d1e0fea846",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fe592958b804a58a19ec33722cd9cbac36920a5004b0a7ff49ba29998ec31b28",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        }
+      ]
+    },
+    {
+      "case_id": "D13",
+      "grades": [
+        {
+          "chunk_id": "035aef72d16ad9d706845e40b9472812ed8c5b7d4622092fe7da60d874248af3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "0e06ddeb02b7c9a394c64d63235c50536aee41dbcff6251eccf4f2f470d65b0f",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "1252caaec75ace55a966676f033e0996318d915687d80b7e131a200cf8a617dd",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "26e125699ac3c4254b6b9b94b3b6b946d99817b5d91423b74e3beb11bf9bcd93",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2c150868b01fc84d96fa37c2d21b325c6d10e8c7113bf952013b359eb83d69f3",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "3ca002120d1706af69dab8c20a8de501b225cd6b9890f8efe7fab0b0cd6487a0",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "46ebdeb51e7764e62b8af52a252f0def5816f541ef0567e1a456bd596aa8e82b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "4e7bc254c255a3025c6fecd14a5410eb0cd90e031e76abdb8a8a3242f9c9de70",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "614e6fdeae9ef357a95e36f414beafc9c2e2f018ac97ed58717af1070bd79c15",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "6dfb75261e2d390a2c32baa301c1db29147cc063b7e5a0efebc662ffae76c4ae",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "72c63b96160abf77a2ad6fa6c1e8ce5fe4dc6d722b3c846e66572199fa98fadb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "750b68efb2c65607b74449fdb3094ba583bff80db9c84a843eebaa8d4b86ab8a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "7f2134e566e3b4025ada30ab64ec93e1938f954d60c07c794960ce3bfbd71e1c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "845783cf64a5f3428c87acc286629ca93bb4aebaedf25f37cf85b885b385ae0a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "8b3f85c5a764a23cb070a2b9a98a06ebc878c7d6840b6dcccd1b23db7029b98d",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "984b9928ec8b991d356c12004f8e72c61839d3057d6f553d4fd52bbf3001f0cf",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "997fba76adde54001f21cf5251c5bbf9669dca1508df7958ac7c5ff2e98e1c8e",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "a8cdc6bf42c1a0198b7f0a4cc0343429126b3d995875fe2234ee5062b851a31c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "abf95415ed31c94dadfa865ee84eaa27d44763457a5ace6a96d535252403ce14",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "bc5cb4fb2a79897b37f231244e43e363efa52ca78a0bcbf249968d8d5c839ad6",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bf76f8d7037df57bf0e9d86ef360038af9f4ac42762aec240538b80866fce21b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d020f9c15777cf7a7d5912073fb59b706f77fc9290dc2ecc307a200e48ade164",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d438174eb8e672ea44d05a851d8d1b25d8a26bc67815fa696a82d2073bce9b1e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "da979564063f28f5401e0c04492a9091fe452046d6820f7ab9b8d7e094c3265e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "e5ae52fb2ead45cc7a04d81d458b37e37d18e03d7f237b28ad70c0972c481fe1",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "e7771931736a47bd6deee76d77858a62cd8afbd2e872683bb85c3dd07f0d96af",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e80428383a1b153e2d6777376de8b918261bf18287f6916da6961b836ab7c1b3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "f115c1a391ad9d66e4fe01a828022ff3bb67bb6684c23fd1691cf10dda1928f7",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "f44c97c0623f67b28d04d57b8e68373b34a7c15386256c1c26d38a0aab3ed42c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f71e952c77917afd9648210d8331c7f4325d27c7d79b8967ec4ff8b39bf48a30",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fdfd398d04386f7016982148b5128a0970a72a635cbc1cd14cbf51780675fe45",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "fe592958b804a58a19ec33722cd9cbac36920a5004b0a7ff49ba29998ec31b28",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D14",
+      "grades": [
+        {
+          "chunk_id": "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "067d264f57a660e30f3002a509d27ab472939a2970f6fcdf3753fad0e643a71a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0fdbe369e1ec304e9239bff95245fc937ba8bc46e9b3e4469d0490b8a4ff61e4",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "170e9ead5c7942b13aba7ee3fd9850ca35dce9343b92866994cacafff72e4211",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2371ff78a586337ead16d219aecd76993e38731e3a4da9397e1ece696a72bdd7",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "26daa2fa4f20613146281a503e895cd17c85199b9808240ffcda5602824534c7",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2bdabc9fbf39f8c14ebb54d2a96ddc9e86f4ac7f321c8dcde8439f4001c301fe",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2c15455278291b9a88148a4162e1482c92a5d5bea94ada1765878fed5aa68a21",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "3571791e2c2b72c61d53a2885719cc2f1c07a9a4b8273258b11da32f2260f6b3",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "37316cec092abcf54e13776c8340551fff2e032156ce917fb2178450d4960fcb",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "41302b022592ca83968112fcb22a76f25af4954a6065912d1e553fdb507cb855",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "445a34836d9a1b153db833d1c600db02635c9ebc95d1352c4231ebf721f2a789",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "46185b3c500e37d46c27095d2dd2e37229153682945e2389d4857d25cc0be7ac",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "5692f3679217f1d926c71ce5ffa54e37897e5c982efdc6a57bae0ce32ca45229",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "5af755f55f054439bd082b0861aa95d2dff755aa53d364cb4cc03e279bbe8786",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "60981be33b6500be4b07d77451f2008c74b4caca280f6aa44cc999d75e902967",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "614e6fdeae9ef357a95e36f414beafc9c2e2f018ac97ed58717af1070bd79c15",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6343fbfae63199af562874b89addb5efdac4685d303832ea4012359462b1cb85",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "671d17a72e9e8bbfc6452c48a3fde144de05dca97dcf500e3747a35767607618",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "6a055671f492c9bc195a87362daefb6afdc6b929479864adb9126ac07bc90867",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "6c1e2e657e09360a7b67bf530cfdfaccf2bdeab2fcbc99aa67c3e7b0c884c1dd",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "72a472633fe397e7b3cba6d5abccc7f559a8628116109a2f6811de44f6f74bf6",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "72c63b96160abf77a2ad6fa6c1e8ce5fe4dc6d722b3c846e66572199fa98fadb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "73e71d4a9a25dc96ffee9cf4353ef6ac8df780ae14a79ab3818ab44701e6611f",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "988bc22270e59bfe02d4a049e56ee4ae8bbc9b674af9d7311269bd737e4ae07e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a1412699aca67dae0090af824f3f0d8b32e7c749e33dc2e56b0bb80160c00712",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "a2beac635b1650fe855df0aad91596d738a015deb7cfd47aa240257771e9d2d1",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bba007821c13a050afd93e05656072deb427f1e6dd637bbd0c334b2337418938",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bcd86afedb3a9e95873468a658d4d0fcbbb315cd04136a713475fc31f0665250",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "dadc1b2663a61cc8632bfa38c3840785a022602980d76caeaec81f5af1d03d1f",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "e0eba9a3b0d3b66b4dc4bcbc549ce117a7e919ddb28f5827c90b3a0d29554c46",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "e186886829864b2e913f59604dc268a1065c74a283706bfd37e0a058bdedffbe",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ec657c5df17850d5949ac453cfec4b5f459528658cae32356bfc5a62eacdf2c5",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "ecabe53c6dfd34678698c79d977b832fd38049d88b38e7ec1d3b03fb7955ddc9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "f1950266f4b386a0a8b103f5c406584b1e2e0ff372cbc9ea9d5986c410880e70",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "f71e952c77917afd9648210d8331c7f4325d27c7d79b8967ec4ff8b39bf48a30",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fe9fc85c142e5eccc012af8dad87a347e32ff5feb3a64fe95aa5f4b98ca7bc03",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D15",
+      "grades": [
+        {
+          "chunk_id": "07e73db6207e3f0dc82db9e2e9917b386bc7b10191e0a8fe55012d1dc0aa7921",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "136a0addffa42f89e4fc88aa85b9f64de3372cdbb916edd32353b09ddeeb2ad3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "1730f2fa4bca3c7253dcbf49a8e1632f0cff4f3eac3aab230b2f9cd8ec7585eb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1f96216f18a54876792fb687481363cb4d764afb7fd42ddbc33a2f50da020476",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2536abc35845de1680e0ab2f2fffad9359dcff9728ef16f4cf2fc3d3f3d90c1b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2c150868b01fc84d96fa37c2d21b325c6d10e8c7113bf952013b359eb83d69f3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "42e7c00631b2f6015842b8bf9edcd70ccee5c20c6a2e6f693667ba721ddc7c94",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "45ab6e4b4cfa44dcc698353ffc9685e9deac8217e391691c0ec1f715373e29d4",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5b17d55eb9caa3b325c5db76ca8a187ff21c9ea7bd6964040c81178b812dd9ec",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6dfb75261e2d390a2c32baa301c1db29147cc063b7e5a0efebc662ffae76c4ae",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "7748d5cf18b389acab3976f6f2fcb2c69fbad0678bff83221ec67c1e96747933",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "7a0ae83903667eb0df4828daf633522e65d8f9ea491be2a1ff52ab2c7cdf6eab",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7a24809848244153908a40867e3ffe81a4b3ab29e541126f88ec78efb7180951",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "87d94669b87e18025a8f460d1584f494e8a16160dd9b0cce75d80126374ac448",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "8b2a2096c4776250a1399da2a08b7e1407ae83528aa3d12f83de0c55b15eaf96",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "988bc22270e59bfe02d4a049e56ee4ae8bbc9b674af9d7311269bd737e4ae07e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "9f26c35c0f71488c930eb36f388aae8c5825e5f060970ac55a65e25c9c50230a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a2cfaf3d85ce709682d391d4fb2d21d3716dbce0c28f716f0d830890914d5dcd",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a8cdc6bf42c1a0198b7f0a4cc0343429126b3d995875fe2234ee5062b851a31c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b11390d8b44348babe9eac38fdc708c23269bc309eb4542fceea8a8d49f0be3f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "b7909f8034e95349dc09d7a9f96b02fe1be2e8d7e9f65e6f55870dd6ec966014",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "ba4d29e30e17ed181b9a801a7dd348b630aa6de5ffe9e543418be9ef634ce083",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "c3ecb37f6f768466dc239540b47c397adead5eb593965bb89daea04c568e04a9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "cde24b55f6aef902743721fe43911adceb3f01e7cb1b8f1e23a15442434cbded",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ce0d54cd85f28e1af34dc2a8c2b5ed6b4f27c11e2a5f0fc83e0bf91a58b40772",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "d270a5668d0d62035d266c0463151cff7519f60cef06a248361f6ec3a56ad79b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "da979564063f28f5401e0c04492a9091fe452046d6820f7ab9b8d7e094c3265e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ef41dfc97a2efc12a2ee4819256c9c41daf4e2d6e91c241519b4c8773d9016ad",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "f1316f102c9e5262aa903bb2ac0b05035fab5857d76521f6ac9b8d9df769a5dc",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "f4d450d566877a586e3df6cd7870e7f40bdc49cfdaaf151abdb699daffaf5dce",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "fa5e9d9c11e3d269d637fa5f4c650a3684a159a9df0136aa607f303996c4f9f5",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fb1baa57236434e2df3136236e897cf4376b962bd2bb77aedf0f4ac1da65c38e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fb70824b519383cca373a22b1847ee41b7622b97210ab3de79bde9499b766cc4",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fdfd398d04386f7016982148b5128a0970a72a635cbc1cd14cbf51780675fe45",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D16",
+      "grades": [
+        {
+          "chunk_id": "004ba0257c11db5c24ea2bf740b2916108d47be754e92d9d16802eab366f6fec",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "0459fa3678c06730ebeba52f8773b42ae0c8cb1434530b085dfa8eb061db2590",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "05d2aa5cd4aef3122dc227a0abdbf647232fb0e2710e97afe793a3750db899f7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "06d67aca91baafaddfb9983c14fb1705d8b93a4f25a02f1ff5328868cecfd00a",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "0e4e1ac51b1c8133020c587553e9356da9d168272f44485464a4baac9481b198",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "10e1d51eab85b39ccfcfc50d584878a78df6ff810a3264d546a4fcf7fc1aff99",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "128e3eff7df2cd786d725fa4bbb6d053d32911a238eac74ef2dc330645fa6b7e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1ab8335e35e4becd3e4e9ed45b6f473534e24a91bdd0c97c8d9196297c9f49b5",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1e5af7a231e6153045080ff3b539a56ff35aab3931a02406a86b3718fa4ef07c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "1f96216f18a54876792fb687481363cb4d764afb7fd42ddbc33a2f50da020476",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "217e6d916fd361c12f834401253ce023be6a2282fb3ee320bed2fa7e66deeabe",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "2379afbeb225048c26309702e4e284475072522247b71ca5d43e3fd27c5d4050",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2b8aa5171b5117efeaccc74aa6ba1d6d90b6e697e0e81d7076dc7c866f9d81eb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "3e23709274b6dd92ed220c8e27e4813b373e03a3fda4a27c29eb8e18b731985f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "3fbd19fac418323fb3ab7228badbac6d1e9345677ae4bf571fa4e7676b08b31c",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "402adaf34b6515eabe55ea2d73c0990394c16265c3429668ff8112620e44d51b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "481b83b4da86bb9a7d5339260ed4994f9a13f005d1f2e5fe11e6c8267cacba35",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "4d4c11c39d53a0098d4cf11038233fd37f969ece9269627818b154a8840fca17",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "504cd64ba2fcf26ea95f0b721eb1d7170136d529205cbfbf4cb6c412970573b7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "59520d0fc0e9e67a2279840e27781832c69c8fffca33331fc57026c9e88e7fea",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5fd51c2d0335d316944fbcf1216d686136f03f35b9ed5cad15f029efa120bdfa",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "708fb71e464bc04b9f923f3716dd7e73be07963e1b9c740cd88baebe2c3bf744",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "73c24a0f54b46262b263be36e4d06865e6b16302bce16be175619f5a3a1c3b0b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "75752c54c87bf26cbbb373bad978c604df3d6fe82aed99b58b1b1b26a227ca04",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "77f3e9b2b96f148bbe306e6e8c7a283c594979fc051f6f8d34df0dd4bb25bb02",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "7a7c1b95dcd3d32c35b2034abad45fc2f8c233280805727c865e91c6c6de3b77",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "860711104fa6d6a793b9f324401cec28facbe39ddae8bac089314d42a31c59e1",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "9101195f37aba90701ff9d67442c72c073c352d9fb33edd1eccd3d597ad395d9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "9674b246ae5452bb2e6d3689a5a7ab46af68cfc53200126d3011fa14f7c8cc7f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a2beac635b1650fe855df0aad91596d738a015deb7cfd47aa240257771e9d2d1",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "a49a15a8ad17d6d2f5961ebe473372fd1017294f84014491973e77469e59e3df",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "b76099f026d72665cc6a8559ae9ba0aa684b5976a92fff7ca734c732e6e1f226",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "ba4d29e30e17ed181b9a801a7dd348b630aa6de5ffe9e543418be9ef634ce083",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "bdd22fadcf4d7005371885e705d0397858a672299ef8306fc84f709a311e5eb1",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ced5a8aec0b7c8d4185c7abbfb7ccbec1f0a9a66a5db6503de8500f85b0f63b1",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "e196def84a9c9f04ccc2ebca7073126cb3636e2bf23690762cbe89665b7648b8",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f04e2426bdf261b949ec86b68249f55d0c890ac4347bfa291e3529c398e0a328",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fe6ad5ecc68e4032d37d444168dcc4809d2f4b65b889f54a9f6033c9780ce20c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fe9fc85c142e5eccc012af8dad87a347e32ff5feb3a64fe95aa5f4b98ca7bc03",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        }
+      ]
+    },
+    {
+      "case_id": "D17",
+      "grades": [
+        {
+          "chunk_id": "05d2aa5cd4aef3122dc227a0abdbf647232fb0e2710e97afe793a3750db899f7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0727fcac286ef07ad97abf0750f3997455792a32be480c3b83047227ea29c48c",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "07e73db6207e3f0dc82db9e2e9917b386bc7b10191e0a8fe55012d1dc0aa7921",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "0e35480c6bebe92beabc9b3f348d9df1dad11e1ed93f8c42f582a5bc7c2e0156",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "121bb925b75301fc8062267ebedc8d4cbf45d49434285c93ffbde955fd5b454a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "136a0addffa42f89e4fc88aa85b9f64de3372cdbb916edd32353b09ddeeb2ad3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "1f67b422692d7a3581f3c2772de2b8b7536d89ec4e91513f38a9f2865e035b94",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "1f96216f18a54876792fb687481363cb4d764afb7fd42ddbc33a2f50da020476",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "26daa2fa4f20613146281a503e895cd17c85199b9808240ffcda5602824534c7",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2c15455278291b9a88148a4162e1482c92a5d5bea94ada1765878fed5aa68a21",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "3ccb59fb20b7a0c8d8626fd8da2dba93c1a1bfb8b9e79c4b5b60d114d49a1bf3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "46185b3c500e37d46c27095d2dd2e37229153682945e2389d4857d25cc0be7ac",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "498a368c2ecf7298df09ea173af1c76e4ffadb19a6f118505bdc2b8b81ec5227",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "5af755f55f054439bd082b0861aa95d2dff755aa53d364cb4cc03e279bbe8786",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "614e6fdeae9ef357a95e36f414beafc9c2e2f018ac97ed58717af1070bd79c15",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6dfb75261e2d390a2c32baa301c1db29147cc063b7e5a0efebc662ffae76c4ae",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "73e71d4a9a25dc96ffee9cf4353ef6ac8df780ae14a79ab3818ab44701e6611f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7748d5cf18b389acab3976f6f2fcb2c69fbad0678bff83221ec67c1e96747933",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "7a7e39cdfa90a96b66d22c621a3da6d0150837a61c487ab9add7a2ddc05626bf",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "827bc37e1f0122cf9423b6bee5a893ad64f8c3802af229f7c6fa990ad42f9b33",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "8714d43e5d89fa1f5af1f8bf7d53e9d9ae0a6d4324ac592424e667933a35ad0f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "87d94669b87e18025a8f460d1584f494e8a16160dd9b0cce75d80126374ac448",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "8e300d8e0e59238a5e6054bd09b3a5761dbd0bbabdad84c91bc2b6b10ec4c382",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a2cfaf3d85ce709682d391d4fb2d21d3716dbce0c28f716f0d830890914d5dcd",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "a505a4b8e08e774e90c07d5e6a5bd85007bf26e2cc7aa2ccaf7d1dd0c7e556ab",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "abf95415ed31c94dadfa865ee84eaa27d44763457a5ace6a96d535252403ce14",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "b7909f8034e95349dc09d7a9f96b02fe1be2e8d7e9f65e6f55870dd6ec966014",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "ba4edf25045118eb3c58e6732e550250b59f532621a4efcd7650c8bd206bc875",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "c3ecb37f6f768466dc239540b47c397adead5eb593965bb89daea04c568e04a9",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "d270a5668d0d62035d266c0463151cff7519f60cef06a248361f6ec3a56ad79b",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "d438174eb8e672ea44d05a851d8d1b25d8a26bc67815fa696a82d2073bce9b1e",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "e80428383a1b153e2d6777376de8b918261bf18287f6916da6961b836ab7c1b3",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "ef41dfc97a2efc12a2ee4819256c9c41daf4e2d6e91c241519b4c8773d9016ad",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "f1316f102c9e5262aa903bb2ac0b05035fab5857d76521f6ac9b8d9df769a5dc",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "f4d450d566877a586e3df6cd7870e7f40bdc49cfdaaf151abdb699daffaf5dce",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "fa5e9d9c11e3d269d637fa5f4c650a3684a159a9df0136aa607f303996c4f9f5",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fb1baa57236434e2df3136236e897cf4376b962bd2bb77aedf0f4ac1da65c38e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fb70824b519383cca373a22b1847ee41b7622b97210ab3de79bde9499b766cc4",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        }
+      ]
+    },
+    {
+      "case_id": "D18",
+      "grades": [
+        {
+          "chunk_id": "0111b1b05cf4899dbabf91a8d6522cce69e70304389ea9421d059b336bf123aa",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "06054d4972c7fa5e03b28d267e478ebf4c8d863f4e449a95a4f9f5d98505fa8f",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "0d5bca0a41aba66891ccf71c0bbad064e4c048818600aa041267f1e28e048ea1",
+          "grade": 2,
+          "reason": "질문의 일부 조치·조건 또는 확인 경로에 직접적인 근거."
+        },
+        {
+          "chunk_id": "0fdbe369e1ec304e9239bff95245fc937ba8bc46e9b3e4469d0490b8a4ff61e4",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "10e1d51eab85b39ccfcfc50d584878a78df6ff810a3264d546a4fcf7fc1aff99",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2371ff78a586337ead16d219aecd76993e38731e3a4da9397e1ece696a72bdd7",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "26daa2fa4f20613146281a503e895cd17c85199b9808240ffcda5602824534c7",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "2acd7819c08f565724fdad03f24eed4ebd78496ad32b819a75b8168635efeb51",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2b8aa5171b5117efeaccc74aa6ba1d6d90b6e697e0e81d7076dc7c866f9d81eb",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "2c15455278291b9a88148a4162e1482c92a5d5bea94ada1765878fed5aa68a21",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "41302b022592ca83968112fcb22a76f25af4954a6065912d1e553fdb507cb855",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "45d1badbce47ad7ee4bce45d2a1c06ad11d32acb1aefb4b7d74dd94d0cfb02d6",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "46bb37f264128f6708a3a0f967031c37f6af886df5485278b6cc687f387dac0b",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "4d653e6df3a6292a999bf1156b00088480c07480a97f51d1697e3ff300b70b27",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "5692f3679217f1d926c71ce5ffa54e37897e5c982efdc6a57bae0ce32ca45229",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "5b30da3e6b17c1529cc88fb44cfcbcdbea8adf1736330ddcbf7046b08b372093",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "60981be33b6500be4b07d77451f2008c74b4caca280f6aa44cc999d75e902967",
+          "grade": 3,
+          "reason": "질문에 필요한 핵심 조치·조건을 직접 명시한 근거."
+        },
+        {
+          "chunk_id": "647409e02fed50c565964a1cd52f7be6b115be22db5431a9ebf208dd8e7b91ee",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "6b195f29bcb7f1a7d4256a6c227bae05842f62371ec39a0d644499da81989ec9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "6c1e2e657e09360a7b67bf530cfdfaccf2bdeab2fcbc99aa67c3e7b0c884c1dd",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "6d4d664f4a098f4d1bc6c8d085b9f71b46e9dcf1b67c5c3e5dd1bf2d7e31f062",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "750b68efb2c65607b74449fdb3094ba583bff80db9c84a843eebaa8d4b86ab8a",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "7aa0a5bbc2a0fa31258638f65e60ed2ebe2878f88174035041d365430c7ffaf9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "7fa0e43fa512ebeb8d86d7b2c8068d9b6da323291de6b6a4bc148d9a1e333ccd",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "905a6358eb92f61faf3469e104aa5581e324784d6f33c80d8aa1b0ab4365b17d",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "946db8be364618213ade0c1486c2757ecb23cd4954f24aab26934dc76b8691a9",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "a2beac635b1650fe855df0aad91596d738a015deb7cfd47aa240257771e9d2d1",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "af9e6c62b1f715e879fb185a6dfcb84e2fa62165799c01cefc72cbc65016358d",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "b19df54cea30dfbcf1bd8c6b531af1b2ba30b5b5800171d24caa1d308a5e9ac1",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "b707d47047fde68f8e24d4481799283bce01888066c7d612596ce1037fec82f5",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "bba007821c13a050afd93e05656072deb427f1e6dd637bbd0c334b2337418938",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "d2a0c4e7b28f91b9f877e866a8d3173f2691696d3e2ef3836554f6810bd36513",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "da979564063f28f5401e0c04492a9091fe452046d6820f7ab9b8d7e094c3265e",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "dedfa121cff351e3600ecc5e265adda06b0c09b957eb8d2cb2ffbee0d3ee23f3",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "df40ab942e8748e819c90bffedb2d52942c9f5c54ad85a70fd2db47679e3fe26",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "e186886829864b2e913f59604dc268a1065c74a283706bfd37e0a058bdedffbe",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "f711f5131beeeab30690c0c31cde4944f6122dd3b5302d73c04741d1e0fea846",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        },
+        {
+          "chunk_id": "fa91e004ef748a817c33e9904cde9e2a0fedefe1126d9be2f45d51ab97022065",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fc1e2a0480c99eddcfc92cbaa34058b35e669bf7590dfb441722a80847a2dc25",
+          "grade": 0,
+          "reason": "질문의 요청 결과를 다루지 않는 별도 업무 절차."
+        },
+        {
+          "chunk_id": "fe9fc85c142e5eccc012af8dad87a347e32ff5feb3a64fe95aa5f4b98ca7bc03",
+          "grade": 1,
+          "reason": "주변 주제·담당·예방 또는 후속 절차만 관련되며 질문의 핵심 사실 근거는 부족."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-10-15T13:46:15.826063+00:00",
+  "local_links": 15,
+  "json_files": 12,
+  "problems": [],
+  "previous_report_files_unchanged": 82,
+  "original_server_data_artifacts_git_clean": true,
+  "secret_scan_scope": "new report including compressed prompt inputs; pattern check only",
+  "browser_rendering": false
+}

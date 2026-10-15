@@ -1,0 +1,111 @@
+{
+  "human_review": false,
+  "judge": "independent AI resumed_blind_review",
+  "answers": [
+    {
+      "case_id": "R11",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "시작하지 않은 인증 알림을 승인하지 말고 반복 시 계정 보호 조치 후 즉시 신고하라고 안내했다. 추가 신고 정보와 비밀정보 금지 안내도 회사 문서에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급이라는 기한을 정확히 안내했다. 은행 휴무일 조정과 제출일·결제일이 기준이 아니라는 설명도 근거가 있다."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "최종 검토 완료 월의 다음 달 15일 지급을 정확히 안내했다. 은행 휴무일 예외, 보완 자료 제출 후 최종 검토 월 기준이라는 설명도 회사 문서에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "승인 거부, 반복 시 공식 계정 보호 조치 및 즉시 신고를 정확히 안내했다. 계정 상태·반복 여부 기록, 포털 보완, 비밀정보 제외와 IT운영팀의 세션 조치도 회사 문서와 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "시작하지 않은 인증 알림을 승인하지 말고 반복 시 계정 보호 조치 후 즉시 신고하라고 안내했다. 신고 정보와 IT운영팀의 세션 조치 관련 추가 설명도 근거가 있다."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "비JSON 최초 본문도 재무팀 최종 검토 완료 월의 다음 달 15일 지급과 은행 휴무일 조정을 정확히 안내했다. 팀장 승인, 보완 자료 기준, 정산 메뉴와 신청 번호 문의 경로도 회사 문서에 부합한다."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급을 정확히 안내했다. 개인별 상태를 조회할 수 없다는 한계도 질문에 대한 일반 기준 안내와 충돌하지 않는다."
+        }
+      ]
+    }
+  ]
+}

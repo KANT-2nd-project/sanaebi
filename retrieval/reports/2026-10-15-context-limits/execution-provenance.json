@@ -1,0 +1,31 @@
+{
+  "captured_before_calls": "2026-10-15T13:36:49.820966+00:00",
+  "fixed36slots_verified": true,
+  "code_files": {
+    "retrieval/experiments/calibration_answer_summary.py": "1763ce2564cb2bc7a933019051b8dc274bea74da335d9a480b54d9e947d6bf3c",
+    "retrieval/experiments/calibration_summary.py": "2998760a09c009ba693dbcda027d526cd0fb04223bd3c79da91eee360ad9db90",
+    "retrieval/experiments/calibration_search.py": "9dd9f5431447d0f98c405f48379028b2d92f6219b5eb68df42bbd7e9d23f0938",
+    "retrieval/experiments/calibration_metrics.py": "bfbd292b748a14ac189819350300de340c5466362d4c7d9e0c5c5bf9af845eca",
+    "retrieval/experiments/calibration_review_packet.py": "a24acd96f37b58cdb20b6aa79f45dd4f2bc924e0237c04b3e4bdc95bf6f9ffae",
+    "retrieval/experiments/calibration_trace.py": "4009f4f1c0b036fe2851d20e1c892a7b95ef34fdbcf222ae814021de02a7264b",
+    "retrieval/experiments/calibration_answers.py": "9049cbee98b53247d92b3772691d4dd96ce02131ad921b57178ebd8fda09ee27",
+    "retrieval/experiments/calibration_prepare.py": "e018dc53431025be1a6b7d00518a34936188e8a084259702b905c9162ad93eca",
+    "retrieval/experiments/context_limit_prepare.py": "edadeaecafb8ed5838c90da0893ccb46916a35384f6b6ccf10ee8c956b761165",
+    "generation/documents.py": "6de589ec6c2813ae465e13a7ef9623cae3c4b314a33d2f2b8622907f25466209",
+    "generation/types.py": "c48fa38a382b4c45ebffef7869f90d82fa1800beb4d556e521e194d8f7e2ca27",
+    "generation/optional_providers.py": "5fa9e8002209cfa7e1d072dfd1749940bf056823236ace65a3d69c8446bcf883",
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "generation/__main__.py": "3fc72eb8346cdac1fc9a439241118abc7fead0b1ab3c7335c90211dc5d39c9c2",
+    "generation/presets.py": "8b3d9d80508b09cba778d677da300fe31c0b3a1e2c1677f50da279c974804369",
+    "generation/validation.py": "37b096eeed05b8b9654ae563223ac6c2a297ca2e078109f79fc7c6e9b3bd68cb",
+    "generation/providers.py": "c3892d4064a1c9127c4b0dc5a1dfbf54fc85f9391cca17ac85c84b1a6f9c6c45",
+    "generation/output_schema.py": "daebca83f5bdf16c3bd9462ab7a964b7bb27beca74cd763db1952026ee7a0ad3",
+    "generation/service.py": "42ba68643cc515c8356800600b58c68701300bd3edf3d506a900551be8bfa16f",
+    "generation/config.py": "e114cea1ceca6b7129f09e92cae9854ffa2fec5616d790a799881832a3bb5319",
+    "generation/profiles.py": "efd1678c404ee6fda7686c3c5c23bc20be18dbad1db493e1e386166479e7d4aa",
+    "generation/advisory.py": "82d1c19d36e5c2869e55d74898690c2fe6b1f126b3fe5730622c9ba828311c8d",
+    "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3"
+  },
+  "input_sha": "25cc39a3f01787ef17ae688d4517717b922c8d93f861163bb60cdd4aff2ae219",
+  "review": "context_safety_review:22 targeted tests passed, no blocking defect; experimental single-process patches only"
+}

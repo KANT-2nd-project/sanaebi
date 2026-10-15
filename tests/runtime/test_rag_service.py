@@ -12,7 +12,7 @@ class RagQuestionServiceTests(unittest.TestCase):
     def setUp(self):
         self.snapshot = DocumentContextSnapshot((Mock(),))
         self.read = Mock(return_value=self.snapshot)
-        self.context = object()
+        self.context = Mock(evidence=(Mock(),))
         self.retrieve = Mock(return_value=self.context)
         self.answer = Mock(return_value="선택 근거 답변")
 

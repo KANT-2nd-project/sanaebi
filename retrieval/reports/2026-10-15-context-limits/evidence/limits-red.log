@@ -1,0 +1,13 @@
+..F
+======================================================================
+FAIL: test_unlimited_removes_merge_per_item_total_and_count_caps (tests.retrieval.test_calibration_search.ContextBudgetTests.test_unlimited_removes_merge_per_item_total_and_count_caps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jake/workspace/projects/.sanaebi-rag-answer-evaluation-20261015/tests/retrieval/test_calibration_search.py", line 60, in test_unlimited_removes_merge_per_item_total_and_count_caps
+    self.assertEqual(len(full), 6)
+AssertionError: 4 != 6
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+FAILED (failures=1)

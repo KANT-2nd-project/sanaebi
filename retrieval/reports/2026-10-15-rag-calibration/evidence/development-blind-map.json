@@ -1,0 +1,242 @@
+{
+  "D01": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D02": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D03": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D04": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "D05": {
+    "baseline": "B",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "D06": {
+    "baseline": "B",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D07": {
+    "baseline": "B",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "D08": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "D09": {
+    "baseline": "B",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D10": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "D11": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "D12": {
+    "baseline": "B",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D13": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D14": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "D15": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D16": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "D17": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D18": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "D19": {
+    "baseline": "B",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "D20": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R01": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "R02": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "R03": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R04": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R05": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R06": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R07": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "R08": {
+    "baseline": "B",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "R09": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R10": {
+    "baseline": "B",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "R11": {
+    "baseline": "B",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "R12": {
+    "baseline": "B",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "R13": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R14": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R15": {
+    "baseline": "A",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "R16": {
+    "baseline": "B",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "R17": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "R18": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "U01": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "U02": {
+    "baseline": "B",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "U03": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "U04": {
+    "baseline": "B",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "U05": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "U06": {
+    "baseline": "C",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "U07": {
+    "baseline": "B",
+    "score035_unlimited": "C",
+    "score035_unlimited_proxy4000": "A"
+  },
+  "U08": {
+    "baseline": "A",
+    "score035_unlimited": "B",
+    "score035_unlimited_proxy4000": "C"
+  },
+  "U09": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  },
+  "U10": {
+    "baseline": "C",
+    "score035_unlimited": "A",
+    "score035_unlimited_proxy4000": "B"
+  }
+}

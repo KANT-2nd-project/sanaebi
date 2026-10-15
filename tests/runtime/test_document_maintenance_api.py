@@ -14,7 +14,11 @@ class MaintenanceApiTests(unittest.TestCase):
         root = Path(self.enterContext(tempfile.TemporaryDirectory()))
         self.enterContext(
             patch.dict(
-                "os.environ", {"SANAEBI_DOCUMENT_DB": str(root / "docs.sqlite3")}
+                "os.environ",
+                {
+                    "SANAEBI_DOCUMENT_DB": str(root / "docs.sqlite3"),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
+                },
             )
         )
         self.client = self.enterContext(TestClient(app, raise_server_exceptions=False))

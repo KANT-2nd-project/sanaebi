@@ -22,7 +22,13 @@ class ManagedDocumentsApiTests(unittest.TestCase):
         directory = self.enterContext(tempfile.TemporaryDirectory())
         self.db_path = Path(directory) / "documents.sqlite3"
         self.enterContext(
-            patch.dict("os.environ", {"SANAEBI_DOCUMENT_DB": str(self.db_path)})
+            patch.dict(
+                "os.environ",
+                {
+                    "SANAEBI_DOCUMENT_DB": str(self.db_path),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
+                },
+            )
         )
         self.client = self.enterContext(TestClient(app, raise_server_exceptions=False))
 

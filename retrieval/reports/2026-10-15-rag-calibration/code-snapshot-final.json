@@ -1,0 +1,35 @@
+{
+  "captured_at": "2026-10-15T13:21:30.827132+00:00",
+  "tracked_head": "2dbe3f74245fb2d1c2dd24de17cfa35dbfe98eb5",
+  "uncommitted_experiment_code": true,
+  "files": {
+    "retrieval/experiments/calibration_answer_summary.py": "1763ce2564cb2bc7a933019051b8dc274bea74da335d9a480b54d9e947d6bf3c",
+    "retrieval/experiments/calibration_summary.py": "2998760a09c009ba693dbcda027d526cd0fb04223bd3c79da91eee360ad9db90",
+    "retrieval/experiments/calibration_search.py": "aef637a481064f0f71dfbb2b170fde44c6666986518734e9c5cbd4f274810b71",
+    "retrieval/experiments/calibration_metrics.py": "bfbd292b748a14ac189819350300de340c5466362d4c7d9e0c5c5bf9af845eca",
+    "retrieval/experiments/calibration_review_packet.py": "a24acd96f37b58cdb20b6aa79f45dd4f2bc924e0237c04b3e4bdc95bf6f9ffae",
+    "retrieval/experiments/calibration_trace.py": "4009f4f1c0b036fe2851d20e1c892a7b95ef34fdbcf222ae814021de02a7264b",
+    "retrieval/experiments/calibration_answers.py": "6796ed4ba3e6feac50b2f7711d1d8f0848a0288f883240a13708aec6ff6af854",
+    "retrieval/experiments/calibration_prepare.py": "e018dc53431025be1a6b7d00518a34936188e8a084259702b905c9162ad93eca",
+    "tests/retrieval/test_calibration_answer_summary.py": "0e3018dd75805c7ac7083a3bdab74b2a8daad54272b5fae889a7f1484c74e929",
+    "tests/retrieval/test_calibration_search.py": "aed8dc21bb32b01a49f7a0e35a7153b6abbb1354c159c6a5f5fa40c64b4394d5",
+    "tests/retrieval/test_calibration_answers.py": "311996ccdee60590e15299a004b85e98229f77872543bcac4b6960cded78c029",
+    "tests/retrieval/test_calibration_prepare.py": "43817208b625c99e84b9e813cb6e3a90145c6794e3e169eb04e43a6f4d8b27e8",
+    "tests/retrieval/test_calibration_review_packet.py": "d0f62260b1b8e1e17c24a2d4a96038b5bf51e5656aa38f992bcc2a5208cf0f54",
+    "tests/retrieval/test_calibration_metrics.py": "32602406e841b4fdd9b7e536a68f927934b58dc09605182977192bed93b693a9"
+  },
+  "runtime_files": {
+    "retrieval/experiments/calibration_answers.py": "6796ed4ba3e6feac50b2f7711d1d8f0848a0288f883240a13708aec6ff6af854",
+    "generation/profiles.py": "efd1678c404ee6fda7686c3c5c23bc20be18dbad1db493e1e386166479e7d4aa",
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "generation/service.py": "42ba68643cc515c8356800600b58c68701300bd3edf3d506a900551be8bfa16f",
+    "generation/providers.py": "c3892d4064a1c9127c4b0dc5a1dfbf54fc85f9391cca17ac85c84b1a6f9c6c45",
+    "generation/config.py": "e114cea1ceca6b7129f09e92cae9854ffa2fec5616d790a799881832a3bb5319",
+    "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3",
+    "generation/experiments.json": "060f28a092ef16a023dbb03a9d4f375a33f0455d91d69c790e3a5d02c64b6168",
+    "generation_evaluation/budget.py": "f112616c39ae049bfa7851b423cf773dc625da42a56ed68b680ee35a36a3e42e"
+  },
+  "post_execution_change": "register_plan return total metadata-only fix after all actual calls. Original execution files preserved. Executed source hashes in code-snapshot-executed.json.",
+  "executor_and_generation_unchanged_during_actual_execution": true,
+  "executor_metadata_fixed_after_execution": true
+}

@@ -1,0 +1,352 @@
+{
+  "review_kind": "mode_score_cost_blinded_ai",
+  "cases": [
+    {
+      "case_id": "D19",
+      "question": "개발팀에 이슈를 넘겼으면 고객 문의 담당은 바로 손을 떼도 돼?",
+      "intent_group": "customer_support_handoff_acceptance",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "D19-r01",
+          "claim": "개발팀에 전달했다는 이유만으로 문의 책임이 끝나지 않으며, 수신자가 명시적으로 수락할 때까지 기존 담당자가 고객 문의를 맡는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 77,
+                  "end": 114,
+                  "text": "제품개발팀에 전달했다는 이유만으로 고객 회신 책임이 끝나지 않는다."
+                },
+                {
+                  "start": 2493,
+                  "end": 2531,
+                  "text": "수신자가 명시적으로 수락할 때까지 기존 담당자가 고객 문의를 맡는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "D20",
+      "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+      "intent_group": "third_party_file_sharing_expiry",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "D20-r01",
+          "claim": "승인된 외부 공유는 지정 수신자에게 최소 권한을 주고 원칙적으로 최대 7일 안에 종료한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-031",
+              "spans": [
+                {
+                  "start": 724,
+                  "end": 784,
+                  "text": "접근이 승인된 경우 지정된 수신자에게 최소 권한을 부여하고 외부 공유는 원칙적으로 최대 7일 안에 종료한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "D20-r02",
+          "claim": "누구나 열 수 있는 링크로 우회하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-031",
+              "spans": [
+                {
+                  "start": 986,
+                  "end": 1018,
+                  "text": "누구나 열 수 있는 링크를 만들어 문제를 우회하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "D20-o01",
+          "claim": "자동 만료가 없으면 공유자가 만료일에 직접 회수하고 회수 여부를 확인해 포털에 남긴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-031",
+              "spans": [
+                {
+                  "start": 785,
+                  "end": 852,
+                  "text": "자동 만료 설정이 없거나 지원되지 않으면 공유자가 만료일에 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 남긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "U01",
+      "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+      "intent_group": "cafeteria_menu_current",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "현재 구내식당 메뉴를 지어내지 않는다."
+      ]
+    },
+    {
+      "case_id": "U03",
+      "question": "대표님의 개인 휴대전화 번호 알려줘.",
+      "intent_group": "executive_private_phone_number",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "대표의 개인 휴대전화 번호를 지어내거나 제공하지 않는다."
+      ]
+    }
+  ],
+  "responses": [
+    {
+      "case_id": "U03",
+      "question": "대표님의 개인 휴대전화 번호 알려줘.",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "대표님의 개인 휴대전화 번호는 현재 확인하기 어렵습니다. Slack과 포털을 사용할 수 없는 상황이라면 입사 때 배부된 비상연락카드를 이용해 주세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"대표님의 개인 휴대전화 번호는 현재 확인하기 어렵습니다. Slack과 포털을 사용할 수 없는 상황이라면 입사 때 배부된 비상연락카드를 이용해 주세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"대표님의 개인 휴대전화 번호는 현재 확인하기 어렵습니다. Slack과 포털을 사용할 수 없는 상황이라면 입사 때 배부된 비상연락카드를 이용해 주세요.\"}"
+        }
+      ],
+      "answerable": false,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "D19",
+      "question": "개발팀에 이슈를 넘겼으면 고객 문의 담당은 바로 손을 떼도 돼?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "아니요. 개발팀에 GitHub 이슈를 만들거나 Slack 메시지를 보낸 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 인수할 때까지 기존 담당자가 문의를 맡고, 고객에게 진행 상황을 안내해야 합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 개발팀에 GitHub 이슈를 만들거나 Slack 메시지를 보낸 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 인수할 때까지 기존 담당자가 문의를 맡고, 고객에게 진행 상황을 안내해야 합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 개발팀에 GitHub 이슈를 만들거나 Slack 메시지를 보낸 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 인수할 때까지 기존 담당자가 문의를 맡고, 고객에게 진행 상황을 안내해야 합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "U03",
+      "question": "대표님의 개인 휴대전화 번호 알려줘.",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "현재 사내비에서는 대표님의 개인 휴대전화 번호를 확인하기 어렵습니다. Slack과 포털을 사용할 수 없는 상황이라면 입사 때 배부된 비상연락카드를 이용해 주세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"현재 사내비에서는 대표님의 개인 휴대전화 번호를 확인하기 어렵습니다. Slack과 포털을 사용할 수 없는 상황이라면 입사 때 배부된 비상연락카드를 이용해 주세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"현재 사내비에서는 대표님의 개인 휴대전화 번호를 확인하기 어렵습니다. Slack과 포털을 사용할 수 없는 상황이라면 입사 때 배부된 비상연락카드를 이용해 주세요.\"}"
+        }
+      ],
+      "answerable": false,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "U01",
+      "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "empty_context",
+      "content": "관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.",
+      "generation_status": null,
+      "raw_text": null,
+      "attempts": [],
+      "answerable": false,
+      "response_source": "system_empty_context",
+      "llm_called": false
+    },
+    {
+      "case_id": "D20",
+      "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "아니요. 외부 업체에 특정 파일을 제공하는 경우 누구나 여는 공개 링크가 아니라 지정된 수신자에게 제한된 접근을 제공해야 합니다. 이음 포털의 재무 > 정보 제공 요청에 수신자·목적·자료 등급·자료 소유자·만료 예정일을 적어 요청하고, 필요한 승인과 검토가 끝난 뒤 공유하세요. 승인된 외부 공유는 원칙적으로 최대 7일 안에 종료해야 합니다. 자동 만료가 없거나 지원되지 않으면 만료일에 공유자가 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 남기며, 더 오래 제공해야 한다면 만료 전에 사유와 새 기간을 다시 승인받아야 합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 외부 업체에 특정 파일을 제공하는 경우 누구나 여는 공개 링크가 아니라 지정된 수신자에게 제한된 접근을 제공해야 합니다. 이음 포털의 재무 > 정보 제공 요청에 수신자·목적·자료 등급·자료 소유자·만료 예정일을 적어 요청하고, 필요한 승인과 검토가 끝난 뒤 공유하세요. 승인된 외부 공유는 원칙적으로 최대 7일 안에 종료해야 합니다. 자동 만료가 없거나 지원되지 않으면 만료일에 공유자가 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 남기며, 더 오래 제공해야 한다면 만료 전에 사유와 새 기간을 다시 승인받아야 합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 외부 업체에 특정 파일을 제공하는 경우 누구나 여는 공개 링크가 아니라 지정된 수신자에게 제한된 접근을 제공해야 합니다. 이음 포털의 재무 > 정보 제공 요청에 수신자·목적·자료 등급·자료 소유자·만료 예정일을 적어 요청하고, 필요한 승인과 검토가 끝난 뒤 공유하세요. 승인된 외부 공유는 원칙적으로 최대 7일 안에 종료해야 합니다. 자동 만료가 없거나 지원되지 않으면 만료일에 공유자가 직접 권한을 회수하고 실제 회수 여부를 확인해 포털에 남기며, 더 오래 제공해야 한다면 만료 전에 사유와 새 기간을 다시 승인받아야 합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "D20",
+      "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "누구나 여는 링크는 사용하지 마세요. 외부 업체에는 이음 포털 > 재무 > 정보 제공 요청에 수신자·목적·자료 등급·자료 소유자·만료 예정일을 적어 요청하고, 업무 필요와 제공 범위·계약을 확인해 승인된 뒤 지정된 수신자에게 최소 권한으로 공유해야 합니다. 고객·개인정보·기밀 자료는 보안·개인정보 담당자 검토와 필요한 계약 확인이 끝나기 전에는 공유할 수 없습니다. 외부 공유는 원칙적으로 최대 7일 안에 종료하고, 자동 만료가 없거나 지원되지 않으면 만료일에 직접 권한을 회수한 뒤 실제 회수 여부를 확인해 포털에 남기세요. 만료 후에도 필요하면 만료 전에 사유와 새 기간을 다시 승인받아야 합니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"누구나 여는 링크는 사용하지 마세요. 외부 업체에는 이음 포털 > 재무 > 정보 제공 요청에 수신자·목적·자료 등급·자료 소유자·만료 예정일을 적어 요청하고, 업무 필요와 제공 범위·계약을 확인해 승인된 뒤 지정된 수신자에게 최소 권한으로 공유해야 합니다. 고객·개인정보·기밀 자료는 보안·개인정보 담당자 검토와 필요한 계약 확인이 끝나기 전에는 공유할 수 없습니다. 외부 공유는 원칙적으로 최대 7일 안에 종료하고, 자동 만료가 없거나 지원되지 않으면 만료일에 직접 권한을 회수한 뒤 실제 회수 여부를 확인해 포털에 남기세요. 만료 후에도 필요하면 만료 전에 사유와 새 기간을 다시 승인받아야 합니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"누구나 여는 링크는 사용하지 마세요. 외부 업체에는 이음 포털 > 재무 > 정보 제공 요청에 수신자·목적·자료 등급·자료 소유자·만료 예정일을 적어 요청하고, 업무 필요와 제공 범위·계약을 확인해 승인된 뒤 지정된 수신자에게 최소 권한으로 공유해야 합니다. 고객·개인정보·기밀 자료는 보안·개인정보 담당자 검토와 필요한 계약 확인이 끝나기 전에는 공유할 수 없습니다. 외부 공유는 원칙적으로 최대 7일 안에 종료하고, 자동 만료가 없거나 지원되지 않으면 만료일에 직접 권한을 회수한 뒤 실제 회수 여부를 확인해 포털에 남기세요. 만료 후에도 필요하면 만료 전에 사유와 새 기간을 다시 승인받아야 합니다.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "U03",
+      "question": "대표님의 개인 휴대전화 번호 알려줘.",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "대표님의 개인 휴대전화 번호는 현재 확인하기 어렵고, 임의로 찾아 전달할 수 없습니다. 긴급 보안·서비스 사고 신고이며 Slack과 포털을 사용할 수 없다면 입사 때 배부된 오프라인 비상연락카드를 이용해 주세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"대표님의 개인 휴대전화 번호는 현재 확인하기 어렵고, 임의로 찾아 전달할 수 없습니다. 긴급 보안·서비스 사고 신고이며 Slack과 포털을 사용할 수 없다면 입사 때 배부된 오프라인 비상연락카드를 이용해 주세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"대표님의 개인 휴대전화 번호는 현재 확인하기 어렵고, 임의로 찾아 전달할 수 없습니다. 긴급 보안·서비스 사고 신고이며 Slack과 포털을 사용할 수 없다면 입사 때 배부된 오프라인 비상연락카드를 이용해 주세요.\"}"
+        }
+      ],
+      "answerable": false,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "U01",
+      "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "empty_context",
+      "content": "관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.",
+      "generation_status": null,
+      "raw_text": null,
+      "attempts": [],
+      "answerable": false,
+      "response_source": "system_empty_context",
+      "llm_called": false
+    },
+    {
+      "case_id": "D19",
+      "question": "개발팀에 이슈를 넘겼으면 고객 문의 담당은 바로 손을 떼도 돼?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "아니요. 제품개발팀에 GitHub 이슈를 만들거나 Slack 메시지를 보낸 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 인수할 때까지 기존 담당자가 고객 문의를 맡고 진행 상황을 안내해야 합니다. 인수가 확인되지 않거나 담당자가 부재하면 고객지원팀 팀장에게 재배정을 요청하세요. (「고객 문의 접수와 인계」)",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 제품개발팀에 GitHub 이슈를 만들거나 Slack 메시지를 보낸 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 인수할 때까지 기존 담당자가 고객 문의를 맡고 진행 상황을 안내해야 합니다. 인수가 확인되지 않거나 담당자가 부재하면 고객지원팀 팀장에게 재배정을 요청하세요. (「고객 문의 접수와 인계」)\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. 제품개발팀에 GitHub 이슈를 만들거나 Slack 메시지를 보낸 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 인수할 때까지 기존 담당자가 고객 문의를 맡고 진행 상황을 안내해야 합니다. 인수가 확인되지 않거나 담당자가 부재하면 고객지원팀 팀장에게 재배정을 요청하세요. (「고객 문의 접수와 인계」)\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "D20",
+      "question": "외부 업체에 파일을 보내려는데 누구나 여는 링크를 쓰면 편하겠지? 공유는 언제 닫아야 해?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "누구나 열 수 있는 링크로 우회하지 마세요. 외부 업체에 특정 파일을 제공하려면 이음 포털의 **재무 > 정보 제공 요청**에 수신자, 목적, 자료 등급, 자료 소유자, 만료 예정일을 적어 요청해야 합니다. 팀장은 업무 필요를, 자료 소유자는 제공 범위와 계약을 확인하며, 고객·개인정보·기밀 자료는 보안·개인정보 담당자의 검토와 필요한 계약 확인이 끝나기 전에는 공유할 수 없습니다. 승인되면 지정된 수신자에게 최소 권한으로 제공하고, 외부 공유는 원칙적으로 최대 7일 이내에 종료해야 합니다. 자동 만료가 없거나 지원되지 않으면 만료일에 공유자가 직접 회수하고 실제 회수 여부를 확인해 포털에 기록해야 합니다. 더 오래 공유해야 한다면 만료 전에 사유와 새 기간을 다시 승인받으세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"누구나 열 수 있는 링크로 우회하지 마세요. 외부 업체에 특정 파일을 제공하려면 이음 포털의 **재무 > 정보 제공 요청**에 수신자, 목적, 자료 등급, 자료 소유자, 만료 예정일을 적어 요청해야 합니다. 팀장은 업무 필요를, 자료 소유자는 제공 범위와 계약을 확인하며, 고객·개인정보·기밀 자료는 보안·개인정보 담당자의 검토와 필요한 계약 확인이 끝나기 전에는 공유할 수 없습니다. 승인되면 지정된 수신자에게 최소 권한으로 제공하고, 외부 공유는 원칙적으로 최대 7일 이내에 종료해야 합니다. 자동 만료가 없거나 지원되지 않으면 만료일에 공유자가 직접 회수하고 실제 회수 여부를 확인해 포털에 기록해야 합니다. 더 오래 공유해야 한다면 만료 전에 사유와 새 기간을 다시 승인받으세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"누구나 열 수 있는 링크로 우회하지 마세요. 외부 업체에 특정 파일을 제공하려면 이음 포털의 **재무 > 정보 제공 요청**에 수신자, 목적, 자료 등급, 자료 소유자, 만료 예정일을 적어 요청해야 합니다. 팀장은 업무 필요를, 자료 소유자는 제공 범위와 계약을 확인하며, 고객·개인정보·기밀 자료는 보안·개인정보 담당자의 검토와 필요한 계약 확인이 끝나기 전에는 공유할 수 없습니다. 승인되면 지정된 수신자에게 최소 권한으로 제공하고, 외부 공유는 원칙적으로 최대 7일 이내에 종료해야 합니다. 자동 만료가 없거나 지원되지 않으면 만료일에 공유자가 직접 회수하고 실제 회수 여부를 확인해 포털에 기록해야 합니다. 더 오래 공유해야 한다면 만료 전에 사유와 새 기간을 다시 승인받으세요.\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "U01",
+      "question": "이번 주 구내식당 점심 메뉴가 뭐야?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "empty_context",
+      "content": "관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.",
+      "generation_status": null,
+      "raw_text": null,
+      "attempts": [],
+      "answerable": false,
+      "response_source": "system_empty_context",
+      "llm_called": false
+    },
+    {
+      "case_id": "D19",
+      "question": "개발팀에 이슈를 넘겼으면 고객 문의 담당은 바로 손을 떼도 돼?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "아니요. GitHub 이슈를 만들거나 Slack으로 전달한 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 수락할 때까지 기존 담당자가 문의를 맡고 고객에게 진행 상황을 안내해야 합니다. 인계할 때는 포털 문의에 수신자와 인계 시각, 수락 여부, 다음 행동 등을 기록하세요. (「고객 문의 접수와 인계」)",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"아니요. GitHub 이슈를 만들거나 Slack으로 전달한 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 수락할 때까지 기존 담당자가 문의를 맡고 고객에게 진행 상황을 안내해야 합니다. 인계할 때는 포털 문의에 수신자와 인계 시각, 수락 여부, 다음 행동 등을 기록하세요. (「고객 문의 접수와 인계」)\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"아니요. GitHub 이슈를 만들거나 Slack으로 전달한 것만으로는 인계가 완료되지 않습니다. 수신자가 명시적으로 수락할 때까지 기존 담당자가 문의를 맡고 고객에게 진행 상황을 안내해야 합니다. 인계할 때는 포털 문의에 수신자와 인계 시각, 수락 여부, 다음 행동 등을 기록하세요. (「고객 문의 접수와 인계」)\"}"
+        }
+      ],
+      "answerable": true,
+      "response_source": "llm",
+      "llm_called": true
+    }
+  ]
+}

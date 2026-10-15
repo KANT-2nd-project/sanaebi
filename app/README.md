@@ -15,6 +15,8 @@ export SANAEBI_CLASSIFIER_PATH=/absolute/path/to/model
 
 서버는 로컬 모델만 읽으며 자동 다운로드·학습하지 않습니다. 첫 분류 요청에서 CPU로 로딩하고 재사용하므로 모델 경로·파일을 바꾼 뒤에는 서버를 재시작합니다. 저장본 계약은 [추론 안내](classification/README.md), 상세 설정은 [서버 규약](../docs/server-conventions.md)을 따릅니다. 아카이브 저장본을 새 서버 경로에 그대로 지정하지 않습니다.
 
+기본 문서 전달 모드는 `rag`이므로 시작 전에 [Tiny 모델·색인·worker 준비](../docs/rag-runtime.md#준비와-실행)를 완료합니다. 분류만 확인하거나 전체 문서 방식으로 수동 복구할 때는 `SANAEBI_RETRIEVAL_MODE=full`을 명시할 수 있습니다.
+
 ### 서버 실행과 연결 확인
 
 [공통 설치](../README.md#로컬-개발-시작)를 마친 뒤 저장소 루트에서 실행한다.
@@ -54,7 +56,7 @@ curl -X POST http://127.0.0.1:8000/ask \
 
 ## 서버 시작과 첫 요청
 
-[fastapi_main.py](fastapi_main.py)의 `lifespan`은 SQLite 저장소를 초기화하고 문서 provider·분류기 객체·앱별 GenerationAnswerer를 `app.state`에 준비한다. 분류 가중치는 첫 `predict()`에서 읽고, 생성 클라이언트는 첫 생성 요청에서 생성해 재사용한다. `routing_mode`와 `retrieval_mode`도 시작 시 고정한다. rag를 선택한 경우 로컬 Tiny와 retriever를 준비하며 full에서는 Tiny가 필요하지 않다. 앱 종료 시 생성 클라이언트를 닫는다. `GET /` 성공은 서버 응답 확인이며 모델 로딩 성공을 증명하지 않는다.
+[fastapi_main.py](fastapi_main.py)의 `lifespan`은 SQLite 저장소를 초기화하고 문서 provider·분류기 객체·앱별 GenerationAnswerer를 `app.state`에 준비한다. 분류 가중치는 첫 `predict()`에서 읽고, 생성 클라이언트는 첫 생성 요청에서 생성해 재사용한다. `routing_mode`와 `retrieval_mode`도 시작 시 고정한다. 기본 rag에서는 로컬 Tiny와 retriever를 준비하며 full에서는 Tiny가 필요하지 않다. 앱 종료 시 생성 클라이언트를 닫는다. `GET /` 성공은 서버 응답 확인이며 모델 로딩 성공을 증명하지 않는다.
 
 ```mermaid
 sequenceDiagram
@@ -135,7 +137,7 @@ def handle(question):
 
 ### 문서는 한 번 확보해서 전달한다
 
-`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 같은 snapshot을 답변기에 전달한다. rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택 근거를 `answer_retrieved`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 검색 입력 한도 초과는 422다.
+`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 같은 snapshot을 답변기에 전달한다. rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택 근거를 `answer_retrieved`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 준비된 색인에서 점수0.35 이상 근거가 없으면 고정 안내로 종료하며 생성·예약하지 않는다. 검색 입력 한도 초과는 422다.
 
 `GenerationAnswerer`는 full의 snapshot 또는 rag의 선택 근거를 렌더링하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다. 생성 경계에는 질문·렌더링한 문서·프로필만 전달하며 분류 라벨은 전달하지 않는다. 라벨 보조 전달 helper는 [미채택 실험](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)용이다.
 
@@ -181,6 +183,6 @@ uv run --locked python -m unittest discover -s tests -t . -v
 
 기본은 `SANAEBI_ROUTING_MODE=shadow`다. `gate`를 명시하면 기존 라벨 차단으로 원복한다. `shadow`는 분류 라벨을 기록하고 게시된 문서를 바탕으로 답변을 시도하는 채택한 기본 경로다. 회사 문서 밖 일반 지식을 허용하는 설정이 아니다. 적용에는 해당 앱 재시작이 필요하며 실행 중인 운영 서버를 실험용으로 전환하지 않는다. 오류·기록·호환 경계는 [서버 규약](../docs/server-conventions.md#분류-관찰-모드와-비교-경계)을 따른다.
 
-## 선택적 RAG 연결
+## RAG 연결
 
-`SANAEBI_RETRIEVAL_MODE=full`이 기본이다. `rag`는 동일 게시 snapshot에서 검색한 근거를 답변기에 전달한다. [모델·색인 준비와 자정 복구](../docs/rag-runtime.md)를 따른다. 기존 shadow/gate 정책과 생성 한도는 유지한다.
+`SANAEBI_RETRIEVAL_MODE=rag`가 기본이다. C 설정으로 동일 게시 snapshot의 점수0.35 이상 근거를 개수·문자·별도 문맥 토큰 제한 없이 전달한다. `full`은 명시적으로 전체 게시본을 전달하는 수동 복구 경로다. [모델·색인 준비와 자정 복구](../docs/rag-runtime.md)를 따른다. 기존 shadow/gate 정책과 생성 한도는 유지한다.

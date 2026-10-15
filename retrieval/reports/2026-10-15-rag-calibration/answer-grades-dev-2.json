@@ -1,0 +1,602 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "R09",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유·영수증 제출, 팀장·재무팀 예외 승인, 승인 전 지급 미확정 안내를 담음."
+        }
+      ]
+    },
+    {
+      "case_id": "R09",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유·영수증 제출, 팀장·재무팀 예외 승인, 승인 전 지급 미확정 안내를 담음."
+        }
+      ]
+    },
+    {
+      "case_id": "R09",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유·영수증 제출, 팀장·재무팀 예외 승인, 승인 전 지급 미확정 안내를 담음."
+        }
+      ]
+    },
+    {
+      "case_id": "R10",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "타인 계정 우회 금지와 포털 복구, 접근 불가 시 민감 인증정보를 제외한 접수 경로를 제시함."
+        }
+      ]
+    },
+    {
+      "case_id": "R10",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "타인 계정 우회 금지와 포털 복구, 접근 불가 시 민감 인증정보를 제외한 접수 경로를 제시함."
+        }
+      ]
+    },
+    {
+      "case_id": "R12",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 계정이어도 고객 자료·지원 티켓은 금지되고 식별자 제거로 허용되지 않는다고 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "R12",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 계정이어도 고객 자료·지원 티켓은 금지되고 식별자 제거로 허용되지 않는다고 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "R07",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "포털 불가 시 총무 담당자에게 #office-help로 연락하라는 경로를 담았고, 조건부 보안 안내도 원문과 일치함."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "미요청 인증 알림 승인 금지와 반복 시 계정 보호 조치·즉시 보안 신고를 전달함."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        }
+      ]
+    },
+    {
+      "case_id": "R10",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "타인 계정 우회 금지와 포털 복구, 접근 불가 시 민감 인증정보를 제외한 접수 경로를 제시함."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "미요청 인증 알림 승인 금지와 반복 시 계정 보호 조치·즉시 보안 신고를 전달함."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        }
+      ]
+    },
+    {
+      "case_id": "R12",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 계정이어도 고객 자료·지원 티켓은 금지되고 식별자 제거로 허용되지 않는다고 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "R07",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "포털 불가 시 총무 담당자에게 #office-help로 연락하라는 경로를 담았고, 조건부 보안 안내도 원문과 일치함."
+        }
+      ]
+    },
+    {
+      "case_id": "R12",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 계정이어도 고객 자료·지원 티켓은 금지되고 식별자 제거로 허용되지 않는다고 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "미요청 인증 알림 승인 금지와 반복 시 계정 보호 조치·즉시 보안 신고를 전달함."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "미요청 인증 알림 승인 금지와 반복 시 계정 보호 조치·즉시 보안 신고를 전달함."
+        }
+      ]
+    },
+    {
+      "case_id": "R12",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 계정이어도 고객 자료·지원 티켓은 금지되고 식별자 제거로 허용되지 않는다고 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        }
+      ]
+    },
+    {
+      "case_id": "R07",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "포털 불가 시 총무 담당자에게 #office-help로 연락하라는 경로를 담았고, 조건부 보안 안내도 원문과 일치함."
+        }
+      ]
+    },
+    {
+      "case_id": "R09",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유·영수증 제출, 팀장·재무팀 예외 승인, 승인 전 지급 미확정 안내를 담음."
+        }
+      ]
+    },
+    {
+      "case_id": "R10",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "타인 계정 우회 금지와 포털 복구, 접근 불가 시 민감 인증정보를 제외한 접수 경로를 제시함."
+        }
+      ]
+    },
+    {
+      "case_id": "R07",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "포털 불가 시 총무 담당자에게 #office-help로 연락하라는 경로를 담았고, 조건부 보안 안내도 원문과 일치함."
+        }
+      ]
+    },
+    {
+      "case_id": "R10",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "타인 계정 우회 금지와 포털 복구, 접근 불가 시 민감 인증정보를 제외한 접수 경로를 제시함."
+        }
+      ]
+    },
+    {
+      "case_id": "R12",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "회사 계정이어도 고객 자료·지원 티켓은 금지되고 식별자 제거로 허용되지 않는다고 설명함."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        }
+      ]
+    },
+    {
+      "case_id": "R09",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유·영수증 제출, 팀장·재무팀 예외 승인, 승인 전 지급 미확정 안내를 담음."
+        }
+      ]
+    },
+    {
+      "case_id": "R07",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "포털 불가 시 총무 담당자에게 #office-help로 연락하라는 경로를 담았고, 조건부 보안 안내도 원문과 일치함."
+        }
+      ]
+    },
+    {
+      "case_id": "R07",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "포털 불가 시 총무 담당자에게 #office-help로 연락하라는 경로를 담았고, 조건부 보안 안내도 원문과 일치함."
+        }
+      ]
+    },
+    {
+      "case_id": "R09",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "지연 사유·영수증 제출, 팀장·재무팀 예외 승인, 승인 전 지급 미확정 안내를 담음."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "미요청 인증 알림 승인 금지와 반복 시 계정 보호 조치·즉시 보안 신고를 전달함."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        }
+      ]
+    },
+    {
+      "case_id": "R11",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "R11-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": false,
+          "reason": "반복 시 즉시 신고는 안내했지만 가능한 공식 계정 보호 조치를 먼저 하라는 필수 단계가 빠짐."
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        },
+        {
+          "attempt": 2,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "재무팀 최종 검토 완료 월의 다음 달 15일 지급 기준을 전달했고, 휴일·개별 상태 설명도 원문에 맞음."
+        }
+      ]
+    },
+    {
+      "case_id": "R10",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "타인 계정 우회 금지와 포털 복구, 접근 불가 시 민감 인증정보를 제외한 접수 경로를 제시함."
+        }
+      ]
+    }
+  ]
+}

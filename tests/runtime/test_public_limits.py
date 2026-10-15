@@ -80,6 +80,7 @@ class PublicDemoApiTests(unittest.TestCase):
                     ),
                     "SANAEBI_DAILY_GENERATION_LIMIT": "1",
                     "SANAEBI_DOCUMENT_DB": str(self.directory / "documents.sqlite3"),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
                     "SANAEBI_ANSWER_PROVIDER": "openai",
                     "OPENAI_API_KEY": "test-key",
                     "TRACE_DIR": "",

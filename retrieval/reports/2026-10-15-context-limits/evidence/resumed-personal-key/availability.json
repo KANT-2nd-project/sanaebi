@@ -1,0 +1,26 @@
+{
+  "config": {
+    "context_window": null,
+    "max_output_tokens": 16384,
+    "model_name": "gpt-6-luna",
+    "output_mode": "prompt_json",
+    "provider": "openai",
+    "reasoning_effort": "xhigh",
+    "temperature": null,
+    "timeout_seconds": 180
+  },
+  "cost_known": true,
+  "elapsed_seconds": 8.693660296999951,
+  "estimated_cost_usd": 0.00185075,
+  "purpose": "User-authorized one-call availability check; not a comparison sample",
+  "request_id": "availability-20261015T135739Z",
+  "response": {
+    "finish_reason": "stop",
+    "input_tokens": 6377,
+    "output_tokens": 342,
+    "raw_text": "{\"answer\":\"연차라면 이음 포털의 **인사 > 휴가**에서 사용 시작일 기준 3영업일 전까지 신청하시면 됩니다. 경조사 휴가를 말씀하신 거라면 **인사 > 경조 휴가**에 가능하면 행사일 3영업일 전까지 등록하시면 됩니다.\"}",
+    "refusal": null
+  },
+  "started_at": "2026-10-15T13:57:39.071515+00:00",
+  "status": "response_received"
+}

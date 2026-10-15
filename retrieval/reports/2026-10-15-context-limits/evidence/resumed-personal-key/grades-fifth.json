@@ -1,0 +1,54 @@
+{
+  "human_review": false,
+  "judge": "independent AI resumed_blind_review",
+  "answers": [
+    {
+      "case_id": "U04",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "개인별 잔여 연차를 조회하거나 추정하지 않고 People팀에 확인하라고 안내했다. 잔여 일수와 적용 기준을 People팀이 확인한다는 회사 문서와 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "U04",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "개인별 잔여 연차를 확인할 수 없다고 밝히고 People팀의 개인 기록 확인을 안내했다. 포털 표시나 기준이 불분명할 때 People팀에 확인하라는 설명도 근거가 있다."
+        }
+      ]
+    },
+    {
+      "case_id": "U04",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": true,
+          "content_complete": true,
+          "reason": "개인별 잔여 연차를 조회하지 않고 정확한 일수를 People팀에 확인하라고 안내했다. 개인 상태를 지어내지 않은 올바른 한계 안내다."
+        }
+      ]
+    }
+  ]
+}

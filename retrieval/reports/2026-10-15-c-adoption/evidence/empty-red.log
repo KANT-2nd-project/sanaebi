@@ -1,0 +1,16 @@
+F
+======================================================================
+FAIL: test_empty_retrieval_returns_notice_without_answer_or_reservation (tests.runtime.test_question_service.QuestionServiceTests.test_empty_retrieval_returns_notice_without_answer_or_reservation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jake/workspace/projects/.sanaebi-rag-c-publication-20261015/tests/runtime/test_question_service.py", line 73, in test_empty_retrieval_returns_notice_without_answer_or_reservation
+    self.assertEqual(result.text, "관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.")
+AssertionError: '사내 시스템에서 신청하세요.' != '관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.'
+- 사내 시스템에서 신청하세요.
++ 관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

@@ -1,0 +1,1453 @@
+{
+  "schema_version": 2,
+  "status": "frozen_independent_ai_reviewed",
+  "cases": [
+    {
+      "case_id": "N01",
+      "question": "거래처 방문을 다음 주에 초대하려면 언제까지 어디에 어떤 정보를 등록해야 해?",
+      "intent_group": "visitor_pre_registration",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N01-r01",
+          "claim": "방문 주관자는 방문일 1영업일 전까지 이음 포털 총무 > 방문객 등록에 이름, 소속, 목적, 예정 시간, 동행자를 입력한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-014",
+              "spans": [
+                {
+                  "start": 58,
+                  "end": 128,
+                  "text": "방문일 1영업일 전까지 이음 포털의 **총무 > 방문객 등록**에 방문객 이름, 소속, 목적, 예정 시간과 동행자를 입력한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N02",
+      "question": "아직 등록 확인이 안 된 방문객이 서버실을 보고 싶대. 내 출입카드를 빌려주고 같이 들어가면 될까?",
+      "intent_group": "visitor_access_requirements",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N02-r01",
+          "claim": "등록이나 확인을 마치지 못한 방문객은 제한 구역에 들어갈 수 없다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-014",
+              "spans": [
+                {
+                  "start": 234,
+                  "end": 271,
+                  "text": "등록이나 확인을 마치지 못한 방문객은 제한 구역에 들어갈 수 없다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N02-r02",
+          "claim": "구성원 출입 카드를 빌려주거나 방문객을 동행 없이 입장시키지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-014",
+              "spans": [
+                {
+                  "start": 272,
+                  "end": 321,
+                  "text": "사업 일정이 급하다는 이유로 구성원 출입 카드를 빌려주거나 동행 없이 입장시키지 않는다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N02-r03",
+          "claim": "서버실 출입은 별도 승인을 받아야 한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-014",
+              "spans": [
+                {
+                  "start": 472,
+                  "end": 509,
+                  "text": "촬영·녹음·서버실·문서 보관 구역 출입은 별도 승인을 받아야 한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N03",
+      "question": "외부 방문이 끝난 뒤 주관자가 확인할 일과 출입 기록의 보관 기간은?",
+      "intent_group": "visitor_closeout_and_log_retention",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N03-r01",
+          "claim": "주관자는 방문용 표식 반납을 확인하고 총무 담당자에게 방문 종료를 알린다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-014",
+              "spans": [
+                {
+                  "start": 546,
+                  "end": 589,
+                  "text": "주관자는 방문용 표식 반납을 확인하고 총무 담당자에게 방문이 끝났음을 알린다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N03-r02",
+          "claim": "총무 담당자는 방문 시간·주관자·출입 구역을 기록하고 90일 후 삭제한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-014",
+              "spans": [
+                {
+                  "start": 590,
+                  "end": 631,
+                  "text": "총무 담당자는 방문 시간·주관자·출입 구역을 기록하고 90일 후 삭제한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N04",
+      "question": "계약이 남아 있다는 이유만으로 계약에 딸린 개인정보를 계속 보관해도 돼?",
+      "intent_group": "personal_data_retention_basis",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N04-r01",
+          "claim": "계약이 존재한다는 사실만으로 개인정보를 보존할 수 있다고 판단하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-039",
+              "spans": [
+                {
+                  "start": 410,
+                  "end": 449,
+                  "text": "계약이 존재한다는 사실만으로 개인정보를 보존할 수 있다고 판단하지 말고"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N04-r02",
+          "claim": "보안·개인정보 담당자에게 적용 근거와 보존 범위를 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-039",
+              "spans": [
+                {
+                  "start": 451,
+                  "end": 481,
+                  "text": "보안·개인정보 담당자에게 적용 근거와 범위를 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N05",
+      "question": "기록의 보존 근거가 아직 불분명해 보류 중이면 범위와 다음 검토를 어떻게 관리해야 해?",
+      "intent_group": "record_hold_scope_and_review",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N05-r01",
+          "claim": "확인할 기록의 범위, 책임자와 검토 기한을 포털에 남기고 필요한 기록만 분리해 제한적으로 보류한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-039",
+              "spans": [
+                {
+                  "start": 482,
+                  "end": 537,
+                  "text": "확인할 기록의 범위, 책임자와 검토 기한을 포털에 남기고 필요한 기록만 분리해 제한적으로 보류한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N05-r02",
+          "claim": "미결 보류가 계속되면 30일마다 사유·범위·다음 결정 시점을 재검토한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-039",
+              "spans": [
+                {
+                  "start": 696,
+                  "end": 741,
+                  "text": "미결 보류가 이어지는 동안에는 30일마다 사유·범위·다음 결정 시점을 재검토한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N06",
+      "question": "단순 정보 전달이나 검토 의견 수렴만 필요할 때도 회의를 잡아야 해?",
+      "intent_group": "meeting_vs_async_work",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N06-r01",
+          "claim": "정보 전달이나 검토 의견만 필요하면 Google 문서나 프로젝트 이슈에 정리하고 Slack에서 비동기 의견을 모을 수 있다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-041",
+              "spans": [
+                {
+                  "start": 80,
+                  "end": 159,
+                  "text": "정보를 전달하거나 검토 의견을 받는 일만으로 충분하다면 Google 문서·프로젝트 이슈에 정리하고 Slack에서 비동기 의견을 모을 수 있다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "N06-o01",
+          "claim": "결정, 빠른 상호 조율 또는 민감한 논의처럼 대화가 필요한 경우 회의를 잡는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-041",
+              "spans": [
+                {
+                  "start": 160,
+                  "end": 203,
+                  "text": "결정, 빠른 상호 조율, 민감한 논의처럼 대화가 필요한 경우에 회의를 잡는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N07",
+      "question": "회의 초대에는 무엇을 적고 참석자는 어떤 기준으로 정해야 해?",
+      "intent_group": "meeting_invitation_design",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N07-r01",
+          "claim": "초대에는 목적, 안건, 필요한 결정, 참석 역할, 사전 자료 링크, 회의 종료 시 남길 결과를 적는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-041",
+              "spans": [
+                {
+                  "start": 205,
+                  "end": 262,
+                  "text": "초대에는 목적, 안건, 필요한 결정, 참석 역할, 사전 자료 링크, 회의 종료 시 남길 결과를 적는다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N07-r02",
+          "claim": "참석자는 안건에 기여하거나 결정을 맡는 사람으로 제한한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-041",
+              "spans": [
+                {
+                  "start": 263,
+                  "end": 295,
+                  "text": "참석자는 안건에 기여하거나 결정을 맡는 사람으로 제한한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N08",
+      "question": "회의 자료가 준비되지 않았거나 결정권자가 못 온다면 예정대로 결론을 내도 돼?",
+      "intent_group": "meeting_readiness_and_rescheduling",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N08-r01",
+          "claim": "안건 자료가 준비되지 않았거나 결정권자가 불참하면 주최자는 논의 범위를 줄이거나 일정을 다시 잡는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-041",
+              "spans": [
+                {
+                  "start": 341,
+                  "end": 394,
+                  "text": "안건 자료가 준비되지 않았거나 결정권자가 불참하면 주최자는 범위를 줄이거나 일정을 다시 잡는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N09",
+      "question": "회사 절차 문서의 원본과 개발 결함 이슈의 기준 위치는 각각 어디야?",
+      "intent_group": "canonical_record_location",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N09-r01",
+          "claim": "회사 절차·공통 양식·정책은 Google Workspace 회사 공유드라이브를 기준 위치로 둔다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-055",
+              "spans": [
+                {
+                  "start": 126,
+                  "end": 170,
+                  "text": "회사 절차·공통 양식·정책 | Google Workspace의 회사 공유드라이브"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N09-r02",
+          "claim": "소스 코드·결함·개발 변경은 GitHub 비공개 조직을 기준 위치로 둔다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-055",
+              "spans": [
+                {
+                  "start": 274,
+                  "end": 304,
+                  "text": "소스 코드·결함·개발 변경 | GitHub 비공개 조직"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N10",
+      "question": "고객 정보가 든 메일이나 링크를 잘못 보냈을 때 회수 버튼만 누르면 끝이야?",
+      "intent_group": "misdirected_message_containment",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N10-r01",
+          "claim": "가능한 회수 조치를 시도하고 실제 회수 여부를 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-040",
+              "spans": [
+                {
+                  "start": 989,
+                  "end": 1040,
+                  "text": "잘못 보낸 메시지나 링크를 발견하면 가능한 회수 조치를 시도하고 실제 회수 여부를 확인한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N10-r02",
+          "claim": "민감 정보가 포함됐다면 상대가 열람하지 않았다고 추정하지 말고 즉시 보안 신고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-040",
+              "spans": [
+                {
+                  "start": 1041,
+                  "end": 1087,
+                  "text": "상대가 이미 열람·복사하지 않았다고 추정하지 말고 민감 정보면 즉시 보안 신고한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N11",
+      "question": "가족 관계가 업체 선정에 영향을 줄 수 있지만 실제 편향이 확인되진 않았어. 그래도 신고해야 해?",
+      "intent_group": "conflict_disclosure_trigger",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N11-r01",
+          "claim": "구매·계약 등 회사 결정에 영향을 주거나 그렇게 보일 수 있는 관계는 실제 편향이 확인되기 전에도 공개한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 14,
+                  "end": 104,
+                  "text": "개인적 관계, 외부 활동, 경제적 이해가 이음웍스의 구매·채용·계약·제품 결정에 영향을 주거나 그렇게 보일 수 있으면 실제 편향이 확인되기 전에도 먼저 공개한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N12",
+      "question": "회사 고객과 겹칠 수 있는 외부 자문 일을 시작하려면 언제 어디에 무엇을 신고해?",
+      "intent_group": "external_activity_pre_disclosure",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N12-r01",
+          "claim": "외부 활동이 회사 고객 관계와 겹칠 수 있으면 활동 시작 전에 이음 포털 인사 > 이해 상충 신고에 신고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 105,
+                  "end": 167,
+                  "text": "부업·자문·강연·개인 프로젝트가 회사 근무시간, 장비·계정, 기밀, 고객 관계와 겹칠 수 있는 경우도 포함한다."
+                },
+                {
+                  "start": 238,
+                  "end": 283,
+                  "text": "해당 결정이나 활동이 시작되기 전에 이음 포털의 **인사 > 이해 상충 신고**에"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N12-r02",
+          "claim": "신고에는 관련 회사·사람, 관계의 종류, 맡은 업무, 예정된 결정과 필요한 시점을 적는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 284,
+                  "end": 329,
+                  "text": "관련 회사·사람, 관계의 종류, 맡은 업무, 예정된 결정과 필요한 시점을 적는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N13",
+      "question": "이해관계가 있는 공급업체 결정의 검토가 끝나기 전까지 내가 승인에 계속 참여해도 돼?",
+      "intent_group": "conflict_recusal_during_review",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N13-r01",
+          "claim": "검토 중에는 관계된 결정을 단독으로 승인하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 532,
+                  "end": 566,
+                  "text": "검토 중에는 관계된 결정이나 거래를 단독으로 승인하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "N13-o01",
+          "claim": "팀장은 해당 기간의 대체 의사결정자를 정한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 394,
+                  "end": 417,
+                  "text": "팀장은 그 기간에 대체 의사결정자를 정하고"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N13-o02",
+          "claim": "신고자는 관계된 평가·선정·협상·승인에 단독 참여하거나 관련 자료에 새로 접근하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 419,
+                  "end": 475,
+                  "text": "신고자는 자신과 관계된 평가·선정·협상·승인에 단독으로 참여하거나 관련 자료에 새로 접근하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N14",
+      "question": "업체 선정을 끝낸 뒤에 이해관계가 있다는 걸 알았어. 기록을 지우고 넘어가면 돼?",
+      "intent_group": "late_conflict_discovery",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N14-r01",
+          "claim": "결과나 원본 기록을 지우지 말고 People팀에 알려 독립 검토를 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 733,
+                  "end": 801,
+                  "text": "이미 결정에 참여했음을 나중에 알게 되면 결과나 원본 기록을 지우지 말고 즉시 People팀에 알려 독립 검토를 요청한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N14-r02",
+          "claim": "승인 결과가 나오기 전에는 기존 업무를 중단·위임하고 필요한 자료를 보존한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 802,
+                  "end": 845,
+                  "text": "승인 결과가 나오기 전에는 기존 업무를 중단·위임하고 필요한 자료를 보존한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N15",
+      "question": "괴롭힘인지 확신이 없으면 상담만 먼저 해도 돼? 상담 요청만으로 사실 여부가 확정되는 거야?",
+      "intent_group": "harassment_consultation_vs_formal_report",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N15-r01",
+          "claim": "상담은 정식 신고와 다를 수 있다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-063",
+              "spans": [
+                {
+                  "start": 86,
+                  "end": 104,
+                  "text": "상담은 정식 신고와 다를 수 있고"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N15-r02",
+          "claim": "상담만으로 사건의 사실 여부가 확정되지는 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-063",
+              "spans": [
+                {
+                  "start": 106,
+                  "end": 133,
+                  "text": "상담만으로 사건의 사실 여부가 확정되지는 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N16",
+      "question": "괴롭힘 신고 내용을 공개 Slack에 올려 동료들에게 조사 경위를 물어봐도 될까?",
+      "intent_group": "harassment_report_confidentiality",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N16-r01",
+          "claim": "이음 포털 인사 > 상담·신고나 People팀의 제한된 접수 경로를 이용한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-063",
+              "spans": [
+                {
+                  "start": 257,
+                  "end": 345,
+                  "text": "이음 포털의 인사 > 상담·신고에서 상담 요청 또는 공식 신고를 선택하거나 #people-help를 통해 People팀의 제한된 접수 경로를 요청할 수 있다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N16-r02",
+          "claim": "공개 채널에 당사자 이름·사건 상세·증거 원본을 올리지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-063",
+              "spans": [
+                {
+                  "start": 346,
+                  "end": 382,
+                  "text": "공개 채널에는 당사자 이름·사건 상세·증거 원본을 올리지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N17",
+      "question": "신고 뒤 불이익이나 보복이 걱정되거나 추가 일이 생기면 어떻게 해?",
+      "intent_group": "harassment_nonretaliation_and_followup",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N17-r01",
+          "claim": "신고·질문·조사 협조를 이유로 불이익을 주어서는 안 된다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-046",
+              "spans": [
+                {
+                  "start": 839,
+                  "end": 882,
+                  "text": "신고·질문·조사 협조를 이유로 근무 배제, 위협, 불이익을 주어서는 안 된다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N17-r02",
+          "claim": "보복 우려나 추가 사건이 생기면 기존 건에 추가로 신고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-046",
+              "spans": [
+                {
+                  "start": 883,
+                  "end": 916,
+                  "text": "보복 우려나 추가 사건이 생기면 기존 건에 추가로 신고한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N18",
+      "question": "화재 경보가 오작동처럼 느껴져도 소방관이 오기 전에는 사무실에 있어도 돼?",
+      "intent_group": "fire_alarm_evacuation_response",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N18-r01",
+          "claim": "경보가 오작동처럼 느껴져도 소방관 또는 실제 건물 관리자가 안전을 확인하기 전까지 대피 안내를 따른다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-048",
+              "spans": [
+                {
+                  "start": 24,
+                  "end": 107,
+                  "text": "화재 경보·연기·불꽃·대피 방송을 듣거나 보면 경보가 오작동처럼 느껴져도 소방관 또는 실제 건물 관리자가 안전을 확인하기 전까지 대피 안내를 따른다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N19",
+      "question": "대피 경보가 울리면 노트북을 챙기고 엘리베이터를 타고 내려가도 될까?",
+      "intent_group": "fire_evacuation_priority_and_elevator",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N19-r01",
+          "claim": "개인 물품을 챙기느라 대피를 지체하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-048",
+              "spans": [
+                {
+                  "start": 108,
+                  "end": 137,
+                  "text": "주변에 알리고 개인 물품을 챙기느라 지체하지 않는다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N19-r02",
+          "claim": "화재가 의심되는 상황에서 엘리베이터를 사용하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-048",
+              "spans": [
+                {
+                  "start": 138,
+                  "end": 168,
+                  "text": "화재가 의심되는 상황에서 엘리베이터를 사용하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N20",
+      "question": "출구가 연기와 열기로 막혔다면 무리하게 통과하지 말고 어떻게 해야 해?",
+      "intent_group": "fire_blocked_exit_response",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N20-r01",
+          "claim": "위험하거나 막힌 출구를 무리하게 통과하지 말고 문을 닫을 수 있는 안전한 공간에서 구조를 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-048",
+              "spans": [
+                {
+                  "start": 223,
+                  "end": 290,
+                  "text": "연기·열기 때문에 출구가 위험하거나 막혔으면 무리하게 통과하지 말고 문을 닫을 수 있는 안전한 공간에서 구조를 요청한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N21",
+      "question": "대피 후 동료가 안 보이면 찾으러 다시 들어가도 돼? 건물에는 언제 돌아갈 수 있어?",
+      "intent_group": "fire_headcount_and_reentry",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N21-r01",
+          "claim": "확인되지 않은 사람이 있으면 마지막으로 알려진 위치를 구조자에게 알리고 사람을 찾으러 건물 안으로 되돌아가지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-048",
+              "spans": [
+                {
+                  "start": 434,
+                  "end": 474,
+                  "text": "확인되지 않은 사람이 있으면 마지막으로 알려진 위치를 구조자에게 알린다."
+                },
+                {
+                  "start": 475,
+                  "end": 500,
+                  "text": "사람을 찾으러 건물 안으로 되돌아가지 않는다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N21-r02",
+          "claim": "소방관 또는 실제 건물 관리자가 안전을 확인하고 재입장을 명시적으로 안내하기 전에는 돌아가지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-048",
+              "spans": [
+                {
+                  "start": 542,
+                  "end": 602,
+                  "text": "소방관 또는 실제 건물 관리자가 안전을 확인하고 재입장을 명시적으로 안내하기 전에는 건물로 돌아가지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N22",
+      "question": "퇴사 예정일을 알릴 때 회사가 업무 계획상 목표로 두는 통지 기간은 얼마고, 개인 계약도 그 기준으로 확정돼?",
+      "intent_group": "resignation_notice_planning_target",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N22-r01",
+          "claim": "퇴사 예정일 30일 전 통지는 회사의 업무 계획 목표다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-052",
+              "spans": [
+                {
+                  "start": 79,
+                  "end": 118,
+                  "text": "업무 계획을 위한 회사의 목표 통지 기간은 퇴사 예정일 30일 전이다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N22-r02",
+          "claim": "그 목표가 법적 권리나 개인 계약 조건을 대신하지 않으며 People팀이 개인별 기준을 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-052",
+              "spans": [
+                {
+                  "start": 119,
+                  "end": 151,
+                  "text": "이 목표는 법적 권리나 개인 계약 조건을 대신하지 않는다."
+                },
+                {
+                  "start": 152,
+                  "end": 181,
+                  "text": "People팀이 개인별 계약과 적용 기준을 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N23",
+      "question": "퇴사 업무 인계 목록에는 진행 중인 일과 다음 담당자 외에 무엇을 남겨야 해?",
+      "intent_group": "offboarding_handover_contents",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N23-r01",
+          "claim": "진행 중인 업무, 완료한 내용, 남은 의사결정, 다음 기한, 저장 위치와 접근 권한을 기록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-052",
+              "spans": [
+                {
+                  "start": 236,
+                  "end": 300,
+                  "text": "인계 문서에는 진행 중인 업무, 완료한 내용, 남은 의사결정, 다음 기한, 관련 저장 위치와 접근 권한을 기록한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N23-r02",
+          "claim": "비밀번호·인증 코드는 인계 문서나 메시지에 적지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-052",
+              "spans": [
+                {
+                  "start": 301,
+                  "end": 353,
+                  "text": "비밀번호·인증 코드를 인계 문서나 메시지에 적지 않고 계정 소유권·권한 변경 절차를 사용한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N24",
+      "question": "일반 회사 계정은 퇴사 당일 언제 종료되고, 예외로 유지하려면 누가 승인해야 해?",
+      "intent_group": "offboarding_account_shutdown",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N24-r01",
+          "claim": "IT운영팀은 확정된 마지막 근무일 18:00에 일반 회사 계정을 종료한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-052",
+              "spans": [
+                {
+                  "start": 618,
+                  "end": 652,
+                  "text": "People팀은 확정된 마지막 근무일을 IT운영팀에 전달한다."
+                },
+                {
+                  "start": 653,
+                  "end": 685,
+                  "text": "IT운영팀은 그날 18:00에 일반 회사 계정을 종료한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N24-r02",
+          "claim": "예외 접근은 해당 시스템 담당자와 보안·개인정보 담당자의 승인 및 만료 시각 기록이 있을 때만 유지한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-052",
+              "spans": [
+                {
+                  "start": 686,
+                  "end": 762,
+                  "text": "인계·보존에 필요한 예외 접근은 IT운영팀의 해당 시스템 담당자와 보안·개인정보 담당자가 승인하고 만료 시각을 기록한 경우에만 유지한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N25",
+      "question": "서로 다른 두 문서가 기준을 다르게 설명하면 최신 날짜를 보고 하나를 골라 덮어써도 돼?",
+      "intent_group": "conflicting_document_resolution",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N25-r01",
+          "claim": "문서가 오래되거나 서로 충돌하면 최신성만 추측해 하나를 덮어쓰지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-055",
+              "spans": [
+                {
+                  "start": 932,
+                  "end": 970,
+                  "text": "문서가 오래되거나 서로 충돌하면 최신성만 추측해 하나를 덮어쓰지 말고"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N25-r02",
+          "claim": "두 링크와 충돌 구역을 자료 소유 팀에 보낸다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-055",
+              "spans": [
+                {
+                  "start": 971,
+                  "end": 994,
+                  "text": "두 링크와 충돌 구역을 소유 팀에 보낸다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N26",
+      "question": "공식 문서 링크를 열 수 없으면 동료 계정으로 접속해 복사하면 돼?",
+      "intent_group": "document_access_denial_resolution",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N26-r01",
+          "claim": "접근이 거부되면 다른 사람 계정을 빌리지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-055",
+              "spans": [
+                {
+                  "start": 874,
+                  "end": 899,
+                  "text": "접근이 거부되면 다른 사람 계정을 빌리지 말고"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N26-r02",
+          "claim": "Google 계정과 요청 역할을 확인해 권한을 신청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-055",
+              "spans": [
+                {
+                  "start": 900,
+                  "end": 931,
+                  "text": "Google 계정과 요청 역할을 확인해 권한을 신청한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N27",
+      "question": "현재 동작은 고장 나지 않았지만 고객이 다른 업무 흐름을 원해. 버그로 열어야 해, 기능 요청으로 열어야 해?",
+      "intent_group": "bug_vs_feature_request_classification",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N27-r01",
+          "claim": "현재 동작이 고장 난 것이 아니고 추가 기능이나 다른 업무 흐름을 원하는 경우 기능 요청으로 분류한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 322,
+                  "end": 382,
+                  "text": "**기능 요청:** 현재 동작 자체가 고장 난 것은 아니지만 고객이 추가 기능이나 다른 업무 흐름을 원한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "N27-o01",
+          "claim": "고객의 목적, 현재 우회 방법, 막히는 지점을 기록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 383,
+                  "end": 414,
+                  "text": "고객의 목적, 현재 우회 방법, 막히는 지점을 기록한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N28",
+      "question": "오류를 재현하지 못했으면 개발팀에 전달하면 안 되나? 아직 버그로 확인되지 않았다는 점은 어떻게 적어?",
+      "intent_group": "suspected_bug_uncertainty_labeling",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N28-r01",
+          "claim": "재현되지 않았더라도 근거가 있으면 버그 의심 상태로 전달할 수 있고 확인된 버그라고 단정하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 269,
+                  "end": 319,
+                  "text": "재현되지 않았더라도 근거가 있으면 ‘확인된 버그’라고 단정하지 말고 의심 상태로 전달한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N29",
+      "question": "GitHub 이슈에 고객의 원본 로그와 실제 이메일 주소를 붙이면 개발자가 재현하기 쉽지 않을까?",
+      "intent_group": "safe_bug_issue_content",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N29-r01",
+          "claim": "암호, 인증 코드, 토큰, 쿠키, 전체 요청·응답, 고객 원본 데이터, 실제 이메일·전화번호를 GitHub 이슈에 넣지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 1091,
+                  "end": 1176,
+                  "text": "암호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 개인의 실제 이메일 주소나 전화번호를 GitHub 이슈에 넣지 않는다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N29-r02",
+          "claim": "필요한 오류 문구는 비밀정보와 개인 식별값을 제거한 뒤 필요한 부분만 옮긴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 753,
+                  "end": 792,
+                  "text": "오류 문구는 비밀정보와 개인 식별값을 제거한 뒤 필요한 부분만 옮긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "N30",
+      "question": "기능 제안을 개발팀에 넘겼는데 채택 여부와 출시일을 고객에게 미리 약속해도 돼?",
+      "intent_group": "feature_request_commitment_limits",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "N30-r01",
+          "claim": "기능 요청에는 채택 여부와 출시일을 미리 약속하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 2231,
+                  "end": 2263,
+                  "text": "기능 요청에는 채택 여부와 출시일을 미리 약속하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "N30-o01",
+          "claim": "제품개발팀은 요청의 영향, 범위, 위험 등을 검토해 우선순위를 정한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 2178,
+                  "end": 2230,
+                  "text": "제품개발팀은 재현 여부, 영향, 범위, 위험과 다른 작업의 영향을 검토해 우선순위를 결정한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "N30-o02",
+          "claim": "고객지원팀은 확인된 결정과 다음 안내를 전달하고, 보류 중이면 이유와 다시 확인할 시점을 알린다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 2264,
+                  "end": 2330,
+                  "text": "고객지원팀은 확인된 결정과 다음 안내를 고객에게 설명하고, 결정이 보류 중이면 보류 이유와 다시 확인할 시점을 알린다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "P01",
+      "question": "방문 시간이나 동행자가 바뀌면 절차상 어디에 무엇을 갱신하고 누구에게 알려? 오늘 내 거래처 일정 변경이 실제 반영됐는지도 확인해줘.",
+      "intent_group": "visitor_registration_live_status",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "P01-r01",
+          "claim": "방문 시간이 바뀌거나 동행자가 교체되면 포털 기록을 갱신해 총무 담당자에게 알린다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-014",
+              "spans": [
+                {
+                  "start": 706,
+                  "end": 752,
+                  "text": "방문 시간이 바뀌거나 동행자가 교체되면 포털 기록을 갱신해 총무 담당자에게 알린다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "특정 방문 시간이나 동행자 변경이 실제 포털 기록에 반영됐다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "P02",
+      "question": "이해 상충 검토가 끝나면 허용·회피 범위와 재검토 시점을 어디에 남겨야 해? 내 신고 결과도 알려줘.",
+      "intent_group": "personal_conflict_review_scope",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "P02-r01",
+          "claim": "검토 뒤 허용 범위, 회피할 업무, 독립 확인과 재검토 시점을 포털에 기록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-044",
+              "spans": [
+                {
+                  "start": 477,
+                  "end": 531,
+                  "text": "검토가 끝나면 허용 범위, 회피해야 할 업무, 필요한 독립 확인과 재검토 시점을 포털에 기록한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "해당 사용자의 실제 검토 결과나 허용 범위를 확인했다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "P03",
+      "question": "괴롭힘 신고의 사실 확인과 검토가 끝나면 당사자에게 어떤 결과를 안내해? 내 신고 결과가 나왔는지도 확인해줘.",
+      "intent_group": "personal_harassment_case_result",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "P03-r01",
+          "claim": "결정 담당자는 확인한 사실, 검토 범위, 결과와 후속 조치를 필요한 당사자에게 개별 안내한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-063",
+              "spans": [
+                {
+                  "start": 1320,
+                  "end": 1372,
+                  "text": "결정 담당자는 확인한 사실, 검토 범위, 결과와 후속 조치를 필요한 당사자에게 개별 안내한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "특정 신고의 실제 조사 결과나 후속 조치가 완료됐다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "P04",
+      "question": "문서 개정 때 승인 책임과 적용 시점을 어떻게 남기고, 내 제안은 실제 승인·적용됐어?",
+      "intent_group": "personal_document_revision_approval_status",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "P04-r01",
+          "claim": "문서 변경에는 변경 이유, 승인 책임, 적용 시점, 이전 버전 위치를 남긴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-055",
+              "spans": [
+                {
+                  "start": 1046,
+                  "end": 1081,
+                  "text": "변경 이유, 승인 책임, 적용 시점, 이전 버전 위치를 남긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "특정 개정안의 실제 검토·승인·적용 상태를 확인했다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "P05",
+      "question": "퇴사 인계에서 새 담당자가 원본 문서와 다음 행동을 어떻게 확인해야 해? 내 업무도 실제 인계 수락됐는지 확인해줘.",
+      "intent_group": "personal_handover_acceptance",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "P05-r01",
+          "claim": "새 담당자가 원본 링크를 열고 다음 행동을 이해했는지 확인하고 인수 시점을 기록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-064",
+              "spans": [
+                {
+                  "start": 992,
+                  "end": 1064,
+                  "text": "새 담당자가 원본 링크를 열고 다음 행동을 이해했는지 확인하고, 기존 담당자가 떠나는 시점과 새 담당자가 인수한 시점을 기록한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "특정 사용자의 실제 인계가 수락되거나 완료됐다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "X01",
+      "question": "이번 분기 사무실에서 실제로 등록된 방문객은 몇 명이야?",
+      "intent_group": "current_visitor_log_count",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "현재 분기의 실제 방문객 수를 추정하거나 지어내지 않는다."
+      ]
+    },
+    {
+      "case_id": "X02",
+      "question": "다음 달 우리 층 화재 대피 훈련이 몇 월 며칠 몇 시에 시작해?",
+      "intent_group": "future_fire_drill_schedule",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "문서에 없는 대피 훈련의 날짜나 시간을 지어내지 않는다."
+      ]
+    },
+    {
+      "case_id": "X03",
+      "question": "올해 회사에 접수된 괴롭힘 신고 건수와 사실 확인 완료 건수는 각각 얼마야?",
+      "intent_group": "company_harassment_case_aggregate",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "회사 전체 신고 건수나 조사 완료 건수를 추정하거나 지어내지 않는다."
+      ]
+    },
+    {
+      "case_id": "X04",
+      "question": "내일 오후 프로젝트 회의가 예약된 회의실과 시작 시각을 알려줘.",
+      "intent_group": "live_meeting_room_booking",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "현재 회의실 예약이나 시작 시각을 확인했다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "X05",
+      "question": "GitHub 이슈 #4821의 현재 담당자와 우선순위가 어떻게 돼?",
+      "intent_group": "live_bug_issue_assignment",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "특정 GitHub 이슈의 현재 담당자나 우선순위를 확인했다고 단정하지 않는다."
+      ]
+    }
+  ],
+  "review": {
+    "reviewer": "independent AI qrel_independent",
+    "human_review": false,
+    "blind_to_search_results": true,
+    "findings": "66 spans checked; no repeated intent versus original48 and oldholdout20; partial queries and minimum claims corrected"
+  }
+}
