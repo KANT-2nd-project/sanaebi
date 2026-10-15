@@ -64,3 +64,68 @@ test("새 대화는 요청을 취소하고 늦은 응답이 새 턴을 변경하
   next.resolve("새 답변"); await newRun;
   assert.equal(chat.state.turns[0].answer, "새 답변");
 });
+
+test("페이지 세션을 교체해도 공백과 줄바꿈을 포함한 초안만 복원한다", () => {
+  let draft = "";
+  const options = () => ({ initialDraft: draft, onDraftChange: value => { draft = value; } });
+  const first = new ChatSession(undefined, options());
+  first.changeDraft("  작성 중\n질문  ");
+  first.dispose();
+  const next = new ChatSession(undefined, options());
+  assert.equal(next.state.draft, "  작성 중\n질문  ");
+  assert.equal(next.getServerSnapshot().draft, next.state.draft);
+  assert.deepEqual(next.state.turns, []);
+  next.reset();
+  assert.equal(draft, "");
+});
+
+test("보존 초안은 실패에 유지되고 성공에만 지워진다", async () => {
+  let draft = "질문";
+  let fail = true;
+  const chat = new ChatSession(async () => { if (fail) throw Error("failed"); return "답변"; }, {
+    initialDraft: draft, onDraftChange: value => { draft = value; },
+  });
+  await chat.submit();
+  assert.equal(draft, "질문");
+  fail = false;
+  await chat.retry(chat.state.turns[0].id);
+  assert.equal(draft, "");
+});
+
+test("이전 질문 재시도 성공은 새로 작성한 보존 초안을 지우지 않는다", async () => {
+  let draft = "";
+  let fail = true;
+  const chat = new ChatSession(async () => { if (fail) throw Error("failed"); return "답변"; }, {
+    onDraftChange: value => { draft = value; },
+  });
+  chat.changeDraft("이전 질문"); await chat.submit();
+  chat.changeDraft("새 질문"); fail = false;
+  await chat.retry(chat.state.turns[0].id);
+  assert.equal(draft, "새 질문");
+});
+
+test("페이지 이탈 뒤 늦은 응답이 새 페이지의 보존 초안을 지우지 않는다", async () => {
+  let draft = "";
+  let signal;
+  const d = deferred();
+  const options = () => ({ initialDraft: draft, onDraftChange: value => { draft = value; } });
+  const first = new ChatSession((_q, s) => { signal = s; return d.promise; }, options());
+  first.changeDraft("전송 중 질문");
+  const pending = first.submit(); first.dispose();
+  assert.equal(signal.aborted, true);
+  assert.equal(draft, "전송 중 질문");
+  const next = new ChatSession(undefined, options()); next.changeDraft("새 페이지 입력");
+  d.resolve("늦은 답변"); await pending;
+  assert.equal(draft, "새 페이지 입력");
+  assert.equal(next.state.activeTurnId, null);
+});
+
+test("독립 저장소와 기본 세션은 초안을 공유하지 않는다", () => {
+  let a = "A", b = "B";
+  const first = new ChatSession(undefined, { initialDraft: a, onDraftChange: value => { a = value; } });
+  const second = new ChatSession(undefined, { initialDraft: b, onDraftChange: value => { b = value; } });
+  first.reset();
+  assert.equal(a, ""); assert.equal(b, "B");
+  assert.equal(second.state.draft, "B");
+  assert.equal(new ChatSession().state.draft, "");
+});

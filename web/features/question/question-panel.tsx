@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { useChatDraft } from "./chat-draft-provider";
 import { ChatSession } from "./chat-session";
 import { MessageList } from "./message-list";
 import { QuestionForm } from "./question-form";
@@ -16,7 +17,10 @@ const subscribeTouch = (notify: () => void) => {
 };
 
 export function QuestionPanel() {
-  const [session] = useState(() => new ChatSession());
+  const draftStore = useChatDraft();
+  const [session] = useState(() => new ChatSession(undefined, {
+    initialDraft: draftStore.read(), onDraftChange: draftStore.write,
+  }));
   const state = useSyncExternalStore(session.subscribe, session.getSnapshot, session.getServerSnapshot);
   const touchEnter = useSyncExternalStore(subscribeTouch, () => window.matchMedia(touchQuery).matches, () => false);
   const [showGuide, setShowGuide] = useState(false);
@@ -60,7 +64,7 @@ export function QuestionPanel() {
           <h2 id="usage-title">사용 안내</h2>
           <p>질문을 분류해 처리하며, 문서 기반 답변에는 유효한 게시본을 사용합니다. 실제 답변 생성에는 분류·답변 모델 준비가 필요합니다.</p>
           <p>화면의 이전 메시지는 답변에 반영되지 않습니다. 대상과 상황을 함께 적어주세요.</p>
-          <p>대화는 현재 화면에서만 유지되며 새로고침·새 대화 시 초기화됩니다. 실제 신청·승인·개인 기록 조회는 지원하지 않습니다.</p>
+          <p>이전 대화는 페이지를 벗어나거나 새로고침하면 사라집니다. 작성 중인 질문은 앱 안에서 이동하는 동안 유지됩니다. 답변을 기다리는 중 페이지를 벗어나면 요청이 취소됩니다. 실제 신청·승인·개인 기록 조회는 지원하지 않습니다.</p>
         </section>
         <MessageList turns={state.turns} pending={pending} onRetry={id => { void session.retry(id); }} />
       </main>
@@ -71,7 +75,7 @@ export function QuestionPanel() {
             touchEnter={touchEnter} inputRef={inputRef} registerButtonRef={registrationButtonRef} onChange={value => session.changeDraft(value)}
             onRegister={() => { setRegistrationAnnouncement(""); setRegistrationOpen(true); }}
             onExample={value => { session.changeDraft(value); inputRef.current?.focus(); }} onSubmit={submit} />
-          <p id="chat-disclosure" className="chat-disclosure">이전 메시지는 답변에 반영되지 않으며 새로고침하면 대화가 초기화됩니다.</p>
+          <p id="chat-disclosure" className="chat-disclosure">이전 메시지는 답변에 반영되지 않습니다. 작성 중인 질문은 앱 안에서 이동해도 유지되며, 새로고침·새 대화 시 지워집니다.</p>
           {registrationAnnouncement && <p className="chat-registration-status" role="status" aria-live="polite">
             {registrationAnnouncement} <Link href="/admin/documents">문서 관리에서 검토하고 게시하세요.</Link>
           </p>}

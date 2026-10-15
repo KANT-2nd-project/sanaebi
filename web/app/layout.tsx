@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ChatDraftProvider } from "../features/question/chat-draft-provider";
 
 export const metadata: Metadata = {
   title: "사내비 | 사내 지식 안내",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ko" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col"><ChatDraftProvider>{children}</ChatDraftProvider></body>
     </html>
   );
 }

@@ -17,6 +17,11 @@ export type ChatSnapshot = {
 };
 export type SendQuestion = (question: string, signal: AbortSignal) => Promise<string>;
 
+export type ChatSessionOptions = {
+  initialDraft?: string;
+  onDraftChange?: (value: string) => void;
+};
+
 const emptySnapshot = (): ChatSnapshot => ({
   draft: "", turns: [], activeTurnId: null, inputError: "", announcement: "",
 });
@@ -29,7 +34,13 @@ export class ChatSession {
   private active: AbortController | null = null;
   private sequence = 0;
 
-  constructor(private readonly send: SendQuestion = askQuestion) {}
+  constructor(
+    private readonly send: SendQuestion = askQuestion,
+    private readonly options: ChatSessionOptions = {},
+  ) {
+    this.state = { ...emptySnapshot(), draft: options.initialDraft ?? "" };
+    this.initialState = this.state;
+  }
 
   getSnapshot = () => this.state;
   getServerSnapshot = () => this.initialState;
@@ -39,7 +50,9 @@ export class ChatSession {
   };
 
   private publish(next: ChatSnapshot) {
+    const draftChanged = next.draft !== this.state.draft;
     this.state = next;
+    if (draftChanged) this.options.onDraftChange?.(next.draft);
     this.listeners.forEach(listener => listener());
   }
 
