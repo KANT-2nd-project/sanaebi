@@ -6,7 +6,9 @@ from app.retrieval.baseline import (
     restore_baseline,
     validate_baseline,
 )
+from app.retrieval.config import CONTEXTUAL_SPEC, DEFAULT_SPEC
 from app.retrieval.repository import IndexRepository
+from app.retrieval.service import RetrievalService
 from app.retrieval.types import RetrievalUnavailable
 from tests.retrieval.helpers import (
     FakeEmbedder,
@@ -28,6 +30,61 @@ def source_row(document_id="ieum-001", title="휴가", body="포털에서 휴가
 
 
 class BaselineTests(RetrievalTestCase):
+    def test_contextual_baseline_and_index_coexist_with_legacy_default(self):
+        source = self.tmp_path / "documents.jsonl"
+        write_source(
+            source,
+            [source_row(body="앞 문맥이다.\n\n## 지급\n\n다음 달 15일 지급한다.")],
+        )
+        artifacts = self.tmp_path / "artifacts"
+        embedder = FakeEmbedder()
+
+        legacy_bundle = prepare_baseline(source, artifacts, embedder, spec=DEFAULT_SPEC)
+        contextual_bundle = prepare_baseline(
+            source, artifacts, embedder, spec=CONTEXTUAL_SPEC
+        )
+        self.assertNotEqual(legacy_bundle, contextual_bundle)
+        self.assertNotEqual(
+            validate_baseline(legacy_bundle, source, spec=DEFAULT_SPEC)["spec_id"],
+            validate_baseline(contextual_bundle, source, spec=CONTEXTUAL_SPEC)[
+                "spec_id"
+            ],
+        )
+
+        document = make_document(
+            knowledge_id="ieum-001",
+            revision_id="contextual-revision",
+            title="휴가",
+            body="앞 문맥이다.\n\n## 지급\n\n다음 달 15일 지급한다.",
+        )
+        snapshot = make_snapshot(document)
+        legacy_repository = IndexRepository(
+            self.tmp_path / "runtime", spec=DEFAULT_SPEC
+        )
+        contextual_repository = IndexRepository(
+            self.tmp_path / "runtime", spec=CONTEXTUAL_SPEC
+        )
+        self.assertNotEqual(
+            legacy_repository.database_path, contextual_repository.database_path
+        )
+        before_mapping = len(embedder.document_batches)
+        restored = restore_baseline(
+            contextual_repository,
+            contextual_bundle,
+            source,
+            snapshot,
+            spec=CONTEXTUAL_SPEC,
+        )
+        self.assertIs(restored["ready"], True)
+        service = RetrievalService(
+            contextual_repository,
+            embedder,
+            contextual_bundle,
+            spec=CONTEXTUAL_SPEC,
+        )
+        self.assertIs(service.status(snapshot)["ready"], True)
+        self.assertEqual(len(embedder.document_batches), before_mapping)
+
     def test_bundle_is_source_bound_and_has_no_runtime_revision_ids(self):
         source = self.tmp_path / "documents.jsonl"
         write_source(source, [source_row()])

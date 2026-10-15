@@ -7,11 +7,13 @@ import re
 from dataclasses import dataclass
 
 from app.retrieval.config import (
+    DEFAULT_SPEC,
     MAX_INPUT_TOKENS,
     OVERLAP_TOKENS,
     PASSAGE_PREFIX,
-    SPEC_ID,
     TARGET_BODY_TOKENS,
+    RetrievalSpec,
+    retrieval_spec_id,
 )
 from app.retrieval.types import Chunk, RetrievalUnavailable, SourceSpan
 
@@ -64,12 +66,22 @@ def embedding_input(title: str, heading: str, text: str) -> str:
     )
 
 
-def embedding_input_key(value: str) -> str:
-    return hashlib.sha256(f"{SPEC_ID}\0{value}".encode()).hexdigest()
+def embedding_input_key(value: str, *, spec: RetrievalSpec = DEFAULT_SPEC) -> str:
+    return hashlib.sha256(f"{retrieval_spec_id(spec)}\0{value}".encode()).hexdigest()
 
 
-def chunk_identifier(document_id: str, revision_id: str, ordinal: int, input_key: str):
-    value = f"{SPEC_ID}\0{document_id}\0{revision_id}\0{ordinal}\0{input_key}"
+def chunk_identifier(
+    document_id: str,
+    revision_id: str,
+    ordinal: int,
+    input_key: str,
+    *,
+    spec: RetrievalSpec = DEFAULT_SPEC,
+):
+    value = (
+        f"{retrieval_spec_id(spec)}\0{document_id}\0{revision_id}\0"
+        f"{ordinal}\0{input_key}"
+    )
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
@@ -152,7 +164,9 @@ def _render(body: str, spans: tuple[SourceSpan, ...]) -> str:
     return "\n".join(body[span.start : span.end] for span in spans)
 
 
-def chunk_document(document, tokenizer) -> tuple[Chunk, ...]:
+def chunk_document(
+    document, tokenizer, *, spec: RetrievalSpec = DEFAULT_SPEC
+) -> tuple[Chunk, ...]:
     """Split one published document; every span points to source-body characters."""
     body = document.body
     if not isinstance(body, str) or not body.strip():
@@ -216,20 +230,63 @@ def chunk_document(document, tokenizer) -> tuple[Chunk, ...]:
     chunks = []
     for ordinal, (spans, heading) in enumerate(raw_chunks):
         text = _render(body, spans)
-        header = _clip_header(document.title, heading, tokenizer)
-        encoded_text = embedding_input(header, "", text)
+        base_header = _clip_header(document.title, heading, tokenizer)
+        before_window, after_window = _adjacent_context_windows(
+            body,
+            spans,
+            tokenizer,
+            spec.embedding_context_tokens,
+        )
+
+        header, encoded_text = _compose_contextual_input(
+            base_header,
+            text,
+            tokenizer,
+            spec,
+            before_window,
+            after_window,
+            spec.embedding_context_tokens,
+        )
         # The header budget reserves room for a 360-token body and model specials.
         # Keep this as a checked invariant so tokenizer behavior changes fail closed.
         while (
             token_count(tokenizer, encoded_text, special_tokens=True) > MAX_INPUT_TOKENS
         ):
-            header_offsets = token_offsets(tokenizer, header)
+            if spec.embedding_context_tokens:
+                low, high = 0, spec.embedding_context_tokens
+                best = None
+                while low <= high:
+                    middle = (low + high) // 2
+                    candidate_header, candidate_text = _compose_contextual_input(
+                        base_header,
+                        text,
+                        tokenizer,
+                        spec,
+                        before_window,
+                        after_window,
+                        middle,
+                    )
+                    if (
+                        token_count(tokenizer, candidate_text, special_tokens=True)
+                        <= MAX_INPUT_TOKENS
+                    ):
+                        best = (candidate_header, candidate_text)
+                        low = middle + 1
+                    else:
+                        high = middle - 1
+                if best is not None:
+                    header, encoded_text = best
+                    break
+
+            header_offsets = token_offsets(tokenizer, base_header)
             if len(header_offsets) > 1:
-                header = header[: header_offsets[-2][1]].rstrip() + "…"
-                encoded_text = embedding_input(header, "", text)
+                base_header = base_header[: header_offsets[-2][1]].rstrip() + "…"
+                header, encoded_text = _compose_contextual_input(
+                    base_header, text, tokenizer, spec, before_window, after_window, 0
+                )
                 continue
             raise RetrievalUnavailable("청크가 임베딩 입력 한도를 넘습니다.")
-        input_key = embedding_input_key(encoded_text)
+        input_key = embedding_input_key(encoded_text, spec=spec)
         chunks.append(
             Chunk(
                 document_id=document.document_id,
@@ -242,13 +299,106 @@ def chunk_document(document, tokenizer) -> tuple[Chunk, ...]:
                 embedding_text=encoded_text,
                 input_key=input_key,
                 chunk_id=chunk_identifier(
-                    document.document_id, document.revision_id, ordinal, input_key
+                    document.document_id,
+                    document.revision_id,
+                    ordinal,
+                    input_key,
+                    spec=spec,
                 ),
             )
         )
 
     _verify_coverage(body, chunks)
     return tuple(chunks)
+
+
+def _adjacent_context_windows(body, spans, tokenizer, max_side_tokens):
+    if not max_side_tokens:
+        return ("", ()), ("", ())
+    start = min(span.start for span in spans)
+    end = max(span.end for span in spans)
+    before = _boundary_window(body, 0, start, tokenizer, max_side_tokens, from_end=True)
+    after = _boundary_window(
+        body, end, len(body), tokenizer, max_side_tokens, from_end=False
+    )
+    return before, after
+
+
+def _compose_contextual_input(
+    base_header, text, tokenizer, spec, before_window, after_window, context_limit
+):
+    before, after = _bounded_adjacent_context(
+        before_window,
+        after_window,
+        tokenizer,
+        spec,
+        context_limit,
+    )
+    header = _contextual_header(base_header, before, after)
+    return header, embedding_input(header, "", text)
+
+
+def _boundary_window(body, start, end, tokenizer, max_tokens, *, from_end):
+    """Tokenize only a growing edge window, avoiding repeated whole-body scans."""
+    if start >= end:
+        return "", ()
+    window_size = min(end - start, max(256, max_tokens * 8))
+    while True:
+        window_start = end - window_size if from_end else start
+        window_end = end if from_end else start + window_size
+        value = body[window_start:window_end]
+        offsets = token_offsets(tokenizer, value)
+        if len(offsets) >= max_tokens or window_size >= end - start:
+            if from_end:
+                offsets = offsets[-max_tokens:]
+                value = value[offsets[0][0] :] if offsets else ""
+                offsets = tuple(
+                    (
+                        a - (offsets[0][0] if offsets else 0),
+                        b - (offsets[0][0] if offsets else 0),
+                    )
+                    for a, b in offsets
+                )
+            else:
+                offsets = offsets[:max_tokens]
+                value = value[: offsets[-1][1]] if offsets else ""
+            return value, tuple(offsets)
+        window_size = min(end - start, window_size * 2)
+
+
+def _bounded_adjacent_context(before_window, after_window, tokenizer, spec, limit):
+    before_text, before_offsets = before_window
+    after_text, after_offsets = after_window
+    limit = max(0, limit)
+    left_target = min(spec.context_before_tokens, (limit + 1) // 2)
+    right_target = min(spec.context_after_tokens, limit // 2)
+    left_count = min(left_target, len(before_offsets))
+    right_count = min(right_target, len(after_offsets))
+    remaining = limit - left_count - right_count
+    if remaining:
+        left_extra = min(remaining, len(before_offsets) - left_count)
+        left_count += left_extra
+        remaining -= left_extra
+        right_count += min(remaining, len(after_offsets) - right_count)
+    before = _slice_token_window(before_text, before_offsets, left_count, from_end=True)
+    after = _slice_token_window(after_text, after_offsets, right_count, from_end=False)
+    return before, after
+
+
+def _slice_token_window(value, offsets, count, *, from_end):
+    if not count:
+        return ""
+    selected = offsets[-count:] if from_end else offsets[:count]
+    return value[selected[0][0] : selected[-1][1]].strip()
+
+
+def _contextual_header(header, before, after):
+    parts = [header]
+    if before:
+        parts.extend(("[인접 이전 문맥]", before))
+    if after:
+        parts.extend(("[인접 다음 문맥]", after))
+    return "\n".join(part for part in parts if part)
 
 
 def _split_table(body: str, block: _Block, tokenizer, raw_chunks):

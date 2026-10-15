@@ -19,7 +19,12 @@ from app.retrieval.chunking import (
     embedding_input,
     embedding_input_key,
 )
-from app.retrieval.config import CANONICAL_SPEC, SPEC_ID
+from app.retrieval.config import (
+    DEFAULT_SPEC,
+    RetrievalSpec,
+    canonical_retrieval_spec,
+    retrieval_spec_id,
+)
 from app.retrieval.repository import (
     IndexRepository,
     _validated_matrix,
@@ -62,17 +67,23 @@ CREATE INDEX baseline_chunks_input_key ON baseline_chunks(input_key);
 
 
 def prepare_baseline(
-    source_path: str | Path, output_root: str | Path, embedder
+    source_path: str | Path,
+    output_root: str | Path,
+    embedder,
+    *,
+    spec: RetrievalSpec = DEFAULT_SPEC,
 ) -> Path:
     """Build a source-bound immutable bundle and publish it without overwriting."""
     source_path = Path(source_path)
     source_raw, rows = _read_source(source_path)
     source_sha = hashlib.sha256(source_raw).hexdigest()
-    target_dir = Path(output_root) / "schema-v1" / SPEC_ID / source_sha
+    spec_id = retrieval_spec_id(spec)
+    canonical_spec = canonical_retrieval_spec(spec)
+    target_dir = Path(output_root) / "schema-v1" / spec_id / source_sha
     target = target_dir / "baseline.sqlite3"
     target_dir.mkdir(parents=True, exist_ok=True)
     if target.exists():
-        validate_baseline(target, source_path)
+        validate_baseline(target, source_path, spec=spec)
         return target
     if embedder is None:
         raise RetrievalUnavailable("기본 벡터를 만들 로컬 임베딩 모델이 없습니다.")
@@ -90,7 +101,7 @@ def prepare_baseline(
                 body=row["document"],
                 source_reference=f"document:{row['document_id']}",
             )
-            chunks = chunk_document(document, embedder.tokenizer)
+            chunks = chunk_document(document, embedder.tokenizer, spec=spec)
             if row["document"].strip() and not chunks:
                 raise RetrievalUnavailable(
                     "기본 문서에서 검색 청크를 만들지 못했습니다."
@@ -118,8 +129,8 @@ def prepare_baseline(
                 "INSERT INTO bundle_metadata VALUES (1, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     ARTIFACT_SCHEMA_VERSION,
-                    SPEC_ID,
-                    CANONICAL_SPEC,
+                    spec_id,
+                    canonical_spec,
                     source_sha,
                     len(rows),
                     len(all_chunks),
@@ -162,11 +173,11 @@ def prepare_baseline(
         finally:
             connection.close()
 
-        validate_baseline(staged, source_path)
+        validate_baseline(staged, source_path, spec=spec)
         try:
             os.link(staged, target)
         except FileExistsError:
-            validate_baseline(target, source_path)
+            validate_baseline(target, source_path, spec=spec)
         staged.unlink(missing_ok=True)
         return target
     except RetrievalUnavailable:
@@ -177,10 +188,17 @@ def prepare_baseline(
         raise RetrievalUnavailable("기본 벡터 묶음을 준비하지 못했습니다.") from exc
 
 
-def validate_baseline(bundle_path: str | Path, source_path: str | Path) -> dict:
+def validate_baseline(
+    bundle_path: str | Path,
+    source_path: str | Path,
+    *,
+    spec: RetrievalSpec = DEFAULT_SPEC,
+) -> dict:
     """Verify source identity, spec, spans, complete chunk counts and vectors."""
     source_raw, source_rows = _read_source(Path(source_path))
     source_sha = hashlib.sha256(source_raw).hexdigest()
+    spec_id = retrieval_spec_id(spec)
+    canonical_spec = canonical_retrieval_spec(spec)
     connection = _connect_bundle(Path(bundle_path))
     try:
         metadata = connection.execute(
@@ -188,8 +206,8 @@ def validate_baseline(bundle_path: str | Path, source_path: str | Path) -> dict:
         ).fetchone()
         if metadata is None or (
             metadata["artifact_schema_version"] != ARTIFACT_SCHEMA_VERSION
-            or metadata["spec_id"] != SPEC_ID
-            or metadata["canonical_spec"] != CANONICAL_SPEC
+            or metadata["spec_id"] != spec_id
+            or metadata["canonical_spec"] != canonical_spec
             or metadata["source_sha256"] != source_sha
             or metadata["source_document_count"] != len(source_rows)
         ):
@@ -228,7 +246,9 @@ def validate_baseline(bundle_path: str | Path, source_path: str | Path) -> dict:
                 raise RetrievalUnavailable(
                     "기본 벡터 묶음의 청크 순서가 올바르지 않습니다."
                 )
-            _validate_bundle_chunks(source_row["title"], source_row["document"], chunks)
+            _validate_bundle_chunks(
+                source_row["title"], source_row["document"], chunks, spec=spec
+            )
             total_chunks += len(chunks)
         if total_chunks != metadata["chunk_count"]:
             raise RetrievalUnavailable(
@@ -237,7 +257,7 @@ def validate_baseline(bundle_path: str | Path, source_path: str | Path) -> dict:
         return {
             "valid": True,
             "source_sha256": source_sha,
-            "spec_id": SPEC_ID,
+            "spec_id": spec_id,
             "source_document_count": len(source_rows),
             "chunk_count": total_chunks,
         }
@@ -256,9 +276,14 @@ def restore_baseline(
     bundle_path: str | Path,
     source_path: str | Path,
     snapshot,
+    *,
+    spec: RetrievalSpec | None = None,
 ) -> dict:
     """Map precomputed vectors onto current revision IDs without loading a model."""
-    validate_baseline(bundle_path, source_path)
+    spec = repository.spec if spec is None else spec
+    if spec != repository.spec:
+        raise RetrievalUnavailable("복원 대상 색인과 기본 벡터 spec이 다릅니다.")
+    validate_baseline(bundle_path, source_path, spec=spec)
     source_rows = {
         row["document_id"]: row for row in _read_source(Path(source_path))[1]
     }
@@ -283,7 +308,7 @@ def restore_baseline(
                 spans = _read_spans(row["spans_json"])
                 text = "\n".join(document.body[span.start : span.end] for span in spans)
                 embedding_text = embedding_input(row["embedding_header"], "", text)
-                if embedding_input_key(embedding_text) != row["input_key"]:
+                if embedding_input_key(embedding_text, spec=spec) != row["input_key"]:
                     raise RetrievalUnavailable(
                         "기본 벡터 입력이 source와 일치하지 않습니다."
                     )
@@ -303,6 +328,7 @@ def restore_baseline(
                             document.revision_id,
                             row["ordinal"],
                             row["input_key"],
+                            spec=spec,
                         ),
                     )
                 )
@@ -370,7 +396,7 @@ def _connect_bundle(path: Path):
         raise RetrievalUnavailable("기본 벡터 묶음을 열 수 없습니다.") from exc
 
 
-def _validate_bundle_chunks(title, body, rows):
+def _validate_bundle_chunks(title, body, rows, *, spec=DEFAULT_SPEC):
     covered = bytearray(len(body))
     for row in rows:
         spans = _read_spans(row["spans_json"])
@@ -384,7 +410,7 @@ def _validate_bundle_chunks(title, body, rows):
             covered[span.start : span.end] = b"\x01" * (span.end - span.start)
         text = "\n".join(body[span.start : span.end] for span in spans)
         embedding_text = embedding_input(row["embedding_header"], "", text)
-        if embedding_input_key(embedding_text) != row["input_key"]:
+        if embedding_input_key(embedding_text, spec=spec) != row["input_key"]:
             raise RetrievalUnavailable("기본 벡터 입력 식별값이 일치하지 않습니다.")
         if not row["embedding_header"].strip():
             raise RetrievalUnavailable("기본 벡터 청크의 임베딩 헤더가 비었습니다.")

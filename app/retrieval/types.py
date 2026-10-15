@@ -56,6 +56,7 @@ class Evidence:
     chunk_ids: tuple[str, ...]
     score: float
     rank: int
+    expanded_chunk_ids: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -66,3 +67,5 @@ class RetrievedContext:
     candidate_count: int
     selected_count: int
     observed_at: datetime
+    candidate_chunk_ids: tuple[str, ...] = ()
+    search_config_id: str = ""

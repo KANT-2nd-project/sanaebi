@@ -28,6 +28,8 @@ class Tokenized:
 class WordTokenizer:
     """Small deterministic tokenizer with Hugging Face's offset API shape."""
 
+    all_special_tokens = ()
+
     def __call__(
         self, text, *, add_special_tokens=False, return_offsets_mapping=False, **_
     ):
@@ -39,6 +41,9 @@ class WordTokenizer:
 
     def encode(self, text, *, add_special_tokens=False):
         return self(text, add_special_tokens=add_special_tokens)["input_ids"]
+
+    def tokenize(self, text):
+        return [match.group(0) for match in re.finditer(r"\S+", text)]
 
 
 class FakeEmbedder:

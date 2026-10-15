@@ -16,10 +16,12 @@ from app.retrieval.chunking import (
     embedding_input_key,
 )
 from app.retrieval.config import (
-    CANONICAL_SPEC,
+    DEFAULT_SPEC,
     SCHEMA_VERSION,
-    SPEC_ID,
     VECTOR_DIMENSION,
+    RetrievalSpec,
+    canonical_retrieval_spec,
+    retrieval_spec_id,
 )
 from app.retrieval.types import (
     Chunk,
@@ -39,9 +41,12 @@ def document_digest(title: str, body: str) -> str:
 class IndexRepository:
     """Read-only on construction; writers initialize only when explicitly invoked."""
 
-    def __init__(self, root: str | Path):
+    def __init__(self, root: str | Path, *, spec: RetrievalSpec = DEFAULT_SPEC):
         self.root = Path(root)
-        self.spec_root = self.root / "schema-v1" / SPEC_ID
+        self.spec = spec
+        self.canonical_spec = canonical_retrieval_spec(spec)
+        self.spec_id = retrieval_spec_id(spec)
+        self.spec_root = self.root / "schema-v1" / self.spec_id
         self.database_path = self.spec_root / "index.sqlite3"
         self.lock_path = self.spec_root / "writer.lock"
 
@@ -117,12 +122,12 @@ class IndexRepository:
             if row is None:
                 connection.execute(
                     "INSERT INTO index_spec VALUES (1, ?, ?, ?)",
-                    (SCHEMA_VERSION, SPEC_ID, CANONICAL_SPEC),
+                    (SCHEMA_VERSION, self.spec_id, self.canonical_spec),
                 )
             elif (
                 row["schema_version"] != SCHEMA_VERSION
-                or row["spec_id"] != SPEC_ID
-                or row["canonical_spec"] != CANONICAL_SPEC
+                or row["spec_id"] != self.spec_id
+                or row["canonical_spec"] != self.canonical_spec
             ):
                 raise RetrievalUnavailable(
                     "검색 색인 모델 spec이 현재 설정과 다릅니다."
@@ -360,13 +365,17 @@ class IndexRepository:
                     )
             text = "\n".join(document.body[span.start : span.end] for span in spans)
             embedding_text = embedding_input(stored["embedding_header"], "", text)
-            if embedding_input_key(embedding_text) != stored["input_key"]:
+            if (
+                embedding_input_key(embedding_text, spec=self.spec)
+                != stored["input_key"]
+            ):
                 raise RetrievalUnavailable("검색 청크 입력이 현재 문서와 다릅니다.")
             expected_id = chunk_identifier(
                 document.document_id,
                 document.revision_id,
                 ordinal,
                 stored["input_key"],
+                spec=self.spec,
             )
             if expected_id != stored["chunk_id"]:
                 raise RetrievalUnavailable("검색 청크 식별 정보가 손상됐습니다.")
@@ -415,15 +424,14 @@ class IndexRepository:
             version != SCHEMA_VERSION
             or row is None
             or row["schema_version"] != SCHEMA_VERSION
-            or row["spec_id"] != SPEC_ID
-            or row["canonical_spec"] != CANONICAL_SPEC
+            or row["spec_id"] != self.spec_id
+            or row["canonical_spec"] != self.canonical_spec
         ):
             raise RetrievalUnavailable(
                 "검색 색인 schema 또는 spec이 일치하지 않습니다."
             )
 
-    @staticmethod
-    def _validate_chunk_against_source(document, chunk):
+    def _validate_chunk_against_source(self, document, chunk):
         if not chunk.text.strip() or not chunk.embedding_header.strip():
             raise RetrievalUnavailable("검색 청크가 비어 있습니다.")
         for span in chunk.spans:
@@ -440,13 +448,15 @@ class IndexRepository:
         if (
             source_text != chunk.text
             or expected_embedding != chunk.embedding_text
-            or embedding_input_key(expected_embedding) != chunk.input_key
+            or embedding_input_key(expected_embedding, spec=self.spec)
+            != chunk.input_key
             or chunk.chunk_id
             != chunk_identifier(
                 document.document_id,
                 document.revision_id,
                 chunk.ordinal,
                 chunk.input_key,
+                spec=self.spec,
             )
         ):
             raise RetrievalUnavailable("검색 청크가 원문과 일치하지 않습니다.")
