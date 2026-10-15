@@ -212,8 +212,12 @@
     "sha256": "740ef7eb557fe48e148bdab2017199e0269da38fe3b577ef03188458693cf411"
   },
   "development-review-3.md": {
-    "bytes": 26411,
-    "sha256": "e5fb42c6403c5712bf1807c864b7bac3b9d74156feb26a8f33f9a350fb0b0a9e"
+    "bytes": 26407,
+    "sha256": "64042b32474c8aef7e1a3432a2faade4191369ae92003186a4d7ba6d4a28c0c0"
+  },
+  "development-review-3.original.md.gz": {
+    "bytes": 10178,
+    "sha256": "bbf352f67068d45c6da8f6880e89092f16f5722a5e008dac43d7e03ca35b7361"
   },
   "development-review-3b.md": {
     "bytes": 947,
