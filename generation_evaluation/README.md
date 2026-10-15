@@ -134,3 +134,5 @@ uv run --locked --env-file /path/to/local/.env python -m generation_evaluation.s
 API 키와 실제 환경 파일, 원문 응답 전체는 `tmp/` 또는 별도 비공개 경로에 보관한다. 결과 보고서에는 필요한 응답 비교·판정·설정·hash·집계만 남긴다. 실험 결과를 기본 설정에 자동 적용하지 않는다.
 
 실제 후보 비교와 두 차례의 별도20문항 선정 결과는 [모델 선정 보고서](reports/2026-10-15-model-selection/README.md)에 모은다. 원응답·문항별 판정·근거·비용·반복 변동을 함께 보고, 기본값 승격 여부를 일반적인 서비스 정확도와 구분한다.
+
+현재 선택 모델은 **GPT-6 Luna**다. 두 후보의 상대 비교로 선정했으며 기본 설정 승격·서비스 품질 승인과는 구분한다. 후속 기준 구성과 실험 준비는 [GPT-6 Luna 프롬프트 강화 계획](../docs/generation-luna-prompt-improvement.md)을 따른다.

@@ -21,6 +21,7 @@
 | 생성 모델 실행·로컬 GPU 프로필·TPS 측정 | [실행 설정 안내](generation-runtime.md)와 실행 스크립트 | 모듈 README에는 빠른 시작, 실측·변경 경위는 작업 일지 |
 | 생성 평가 기준·응답 검사 | [생성 평가 안내](generation-evaluation.md)와 평가 코드 | 과거 text 기록과 현재 구조화 응답을 구분하고 실모델 평가 여부를 표시 |
 | 생성 모델 비교·선정 근거 | [생성 모델 선정 보고서](../generation_evaluation/reports/2026-10-15-model-selection/README.md)와 고정 평가 세트 | 생성 안내·Notion에는 권장 구성, 기본값 승격 여부와 게시 보고서 링크. 서로 다른 평가 세트의 점수는 합치지 않음 |
+| GPT-6 Luna 선택 이후 프롬프트 개선 | [후속 실험 준비](generation-luna-prompt-improvement.md) | 선택 모델·기준 구성·후보 준비/실행/검증 상태와 Notion 개인 일지 링크 |
 | 새 생성 모듈 계약·학습 구현 범위 | [생성 모듈 안내](../generation/README.md)와 코드 | 서비스 설계·Notion 문서 안내에는 연결 여부와 요약 링크, 개인 일지에는 기여·검증·다음 단계 |
 | 분류 실험 결과·해석·선정 판단 | [새 분류 실험 보고서](../classification/reports/README.md)와 [과거 보고서](../archive/classification_v1/reports/README.md). 실행 원자료는 각 보고서의 artifact-root·model_id로 연결하며 MLflow를 사용한 실행은 run도 연결 | Notion에는 짧은 결론과 게시된 보고서 링크. 과거 결과는 당시 출처로 보존 |
 | 담당자·기한·작업 상태 | 기존 Notion 작업 항목 | 관련 작업 링크 |
