@@ -27,4 +27,9 @@
 
 ## 게시 확인
 
-PR과최종main·Notion 저장후재조회 결과는 게시 완료 후 이 절에 추가한다. 과거작업일지는 덮어쓰지 않는다.
+- [PR #9](https://github.com/KANT-2nd-project/sanaebi/pull/9)의 최종 HEAD `14546ee`에서 [Python·웹·이미지 CI](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38712275112)가 모두 통과했다. PR deploy는 skipped였다.
+- 최종 독립 AI 검토에서 원문 구간으로 지표를 재계산하고 CSV 172행·JSON·동결 SHA 일치를 확인했다. 유지보수·평가기 13개 테스트를 직접 실행해 통과했으며 게시 차단 지적은 없었다.
+- main 병합 SHA는 `4620e324a685410740a01b0e0ec4f254b42de50b`다. 병합 제목에 `[skip ci]`를 적용했고 해당 SHA의 Actions 실행 목록이 비어 있음을 확인했다. 자동 배포 설정은 변경하지 않았다. GitHub API로 게시 보고서 경로와 내용을 확인했다.
+- Notion [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7), [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b), [데이터·실험 절차](https://www.notion.so/3f805a3cdadc81d59dc9fec6e4fcca1d), [운영·개발 규칙](https://www.notion.so/3f805a3cdadc81aa9f48d8445d372b80)에 이번 요약·고정 Git 링크를 추가하고 네 본문을 재조회했다. 과거 기록과 다른 작업의 상태는 유지했다.
+- 제목·담당자 중복 조회 결과 0건을 확인한 뒤 [새 개인 일지](https://www.notion.so/3fa05a3cdadc814caf5bd2541620cc4e)를 생성했다. 최재선·검색/생성·2026-10-15 속성, 사용자 결정과 AI 수행, 미채택 이유, 운영 미배포를 기록했다. 본문·링크·속성을 재조회하고 완료 상태로 변경한 뒤 다시 확인했다.
+- 이 게시 확인만 후속 문서 커밋으로 남긴다. 기존 가중치·DB·환경 파일은 게시하지 않았고 원래 작업 공간의 미커밋 변경은 수정하지 않았다. 실제 LLM·실제 2vCPU 운영·이번 RAG 운영 배포는 후속이다.
