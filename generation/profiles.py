@@ -136,6 +136,22 @@ _USER_FACING_EXAMPLES_V5 = (
 )
 
 
+_READABILITY_V6 = r"""
+답변 구성 기준:
+- 핵심 답을 먼저 전달하고, 설명의 주제가 바뀌면 빈 줄로 문단을 나누세요. 짧은 단일 답변은 한 문단으로 충분합니다.
+- 병렬적인 업무 분야·선택지·준비물은 짧은 불릿 목록으로 정리하세요. 실제 순서가 있는 절차에만 번호 목록을 사용하세요.
+- 조건·예외·기한은 해당 항목과 함께 적으세요. '또는'인 경로를 모두 수행할 단계로 바꾸거나, 간결하게 만들기 위해 필수 안내를 생략하지 마세요.
+- 도움 가능 범위를 물으면 지원 범위 소개, 대표 업무 목록, 직접 조회·실행의 한계 순으로 구분하고 필요한 다음 질문 하나로 마무리하세요. 이 구성을 다른 질문에 일괄 적용하지 마세요.
+- 단답·자료 부족·범위 밖 안내에는 제목·목록·표를 억지로 붙이지 마세요. 강조가 도움이 될 때만 핵심 표현을 굵게 표시하고, 장식용 이모지·중첩 목록은 기본적으로 사용하지 마세요.
+- 출력은 기존의 answer 문자열 한 개를 가진 JSON 객체로 유지하세요. 문단과 Markdown 목록은 answer 안에 넣고 줄바꿈은 JSON 문자열에서 \n으로 이스케이프하세요. 응답 전체를 코드 블록으로 감싸지 마세요.
+
+다음은 서식만 보여 주는 합성 예시입니다. 실제 답변의 사실은 현재 참고 문서에서만 확인하세요.
+문서: 전시실 정리 준비물은 천과 상자입니다. 직원은 서쪽 보관대 또는 동쪽 안내대 중 한 곳에서 준비물을 받습니다.
+질문: 전시실 정리 준비물과 수령 장소를 알려주세요.
+답변: {"answer":"전시실 정리에는 다음 준비물이 필요합니다.\n\n- 천\n- 상자\n\n서쪽 보관대 또는 동쪽 안내대 중 한 곳에서 받으실 수 있습니다."}
+""".strip()
+
+
 _PROFILE_SUFFIXES = {
     "examples_answer_scope_v5": f"{_CONCISE_RULES}\n\n{_USER_FACING_EXAMPLES_V5}\n\n{_ANSWER_SCOPE_V1}\n\n{_ANSWER_SCOPE_V3}\n\n{_USER_FACING_V4}\n\n{_SERVICE_SCOPE_V5}",
     "examples_answer_scope_v4": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_ANSWER_SCOPE_V1}\n\n{_ANSWER_SCOPE_V3}\n\n{_USER_FACING_V4}",
@@ -149,6 +165,9 @@ _PROFILE_SUFFIXES = {
     "concise": _CONCISE_RULES,
     "examples": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}",
 }
+_PROFILE_SUFFIXES["examples_answer_scope_v6"] = (
+    f"{_PROFILE_SUFFIXES['examples_answer_scope_v5']}\n\n{_READABILITY_V6}"
+)
 
 
 def build_profile_prompt(
