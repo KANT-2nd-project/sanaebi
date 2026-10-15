@@ -37,7 +37,7 @@ flowchart LR
 |---|---|---|---|
 | 질문 분류 | KoELECTRA base | 선정·서버 적용 | [선정 기록](docs/worklogs/2026-10-15-classifier-selection.md#결정과-근거) |
 | 답변 생성 | GPT-6 Luna | 서버·독립 실행 공통 기본값 | [최종 구성](docs/generation-final-prompt.md) |
-| 문서 검색 | KoEn-E5-Tiny | 코드 기본값 `rag`, C 유지·운영 전환 별도 | [RAG 실행·검증 범위](docs/rag-runtime.md) |
+| 문서 검색 | KURE-v1 | 코드 기본값 `rag`, 질문 게이트·상위20·운영 전환 별도 | [RAG 실행·검증 범위](docs/rag-runtime.md) |
 
 ## 로컬 개발 시작
 

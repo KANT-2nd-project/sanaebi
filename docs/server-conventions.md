@@ -145,10 +145,10 @@ trace는 모드·라벨 출처·분류 상태·단계 경과 시간·처리 경�
 
 ## 선택적 RAG 경계
 
-`SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 rag를 사용한다. C는 현재 게시 개정의 벡터 점수0.35 이상 청크 전체를 대상으로 겹친 구간을 병합하며, 후보·근거 개수·본문 문자·별도 전달 토큰 제한을 두지 않는다. 임베딩 입력512와 제공자 입력 한계는 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 GenerationAnswerer의 retrieved 입구로 보낸다. full 입구는 기존 snapshot 계약을 유지한다. 두 입구의 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
+`SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 rag를 사용한다. KURE는 현재 게시 개정의 최고 코사인이0.42882221937179565 이상이면 상위20청크를 선택하고 겹친 원문 구간을 병합한다. 개별 청크 하한·추가 본문 문자·전달 토큰 제한은 없다. 상위20은 병합 전 수량이다. 질문512·문서8192토큰과 제공자 입력 한계는 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 GenerationAnswerer의 retrieved 입구로 보낸다. full 입구는 기존 snapshot 계약을 유지한다. 두 입구의 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
 
-검색은 현재 문서/개정/digest를 검증한 청크만 대상으로 한다. 예전 개정을 top-k 이후 거르는 방식은 허용하지 않는다. 빈 원본은 정상 안내, 미완성 색인은503, 검색 입력 초과는422, 일반 코드 오류는500이다. 검색 실패에서 생성기/예산 예약0회를 회귀 검증한다. startup Tiny 준비·ready 조회와 생성 API 호출을 분리한다.
+검색은 현재 문서/개정/digest를 검증한 청크만 대상으로 한다. 예전 개정을 top-k 이후 거르는 방식은 허용하지 않는다. 빈 원본은 정상 안내, 미완성 색인은503, 검색 입력 초과는422, 일반 코드 오류는500이다. 검색 실패에서 생성기/예산 예약0회를 회귀 검증한다. startup KURE 준비·ready 조회와 생성 API 호출을 분리한다.
 
 기본 벡터 묶음은 실제 host 초기화 원본으로 준비하고, 자정 reset은 원본 복원 후 새 revision mapping만 연결한다. 원본 commit 뒤 실패를 다시 reset으로 복구하지 않는다. 단일 writer lock과 worker 중지/재개의 운영 경계는 [RAG 실행 안내](rag-runtime.md)·[배포 안내](../deployment/README.md)를 따른다. 직접 운영 전환과 서비스 품질 검증은 별도다.
 
-검색 설정 변경은 벡터 입력 변경과 구분한다. 동일 Tiny revision·분할·벡터를 유지하는 선택 정책 비교만으로 색인·자정 기본 벡터를 재생성하지 않는다. [v3 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)는 C 유지로 끝났으므로 활성 검색 정책·공개 API·생성 설정은 유지한다.
+검색 설정 변경은 벡터 입력 변경과 구분한다. KURE 채택은 모델·차원·접두사 변경이므로 별도 vector spec·색인·기본 복원 묶음을 사용한다. 분할용 Tiny tokenizer와360/60 규칙은 유지한다. 기존 Tiny spec·과거 실험과 릴리스 복구는 보존하고 묶음 혼용은 거부한다. [KURE 채택·검증](../retrieval/reports/2026-10-16-kure-adoption/README.md)을 따른다.

@@ -1,0 +1,16 @@
+{
+  "python_tests": 965,
+  "seconds": 64.057,
+  "ruff_check": "passed",
+  "ruff_format_files": 562,
+  "git_diff_check": "passed",
+  "local_links": 325,
+  "link_failures": 0,
+  "independent_review": "findings addressed; no material findings remaining",
+  "post_cleanup_cli_commands": 5,
+  "old_worktrees_removed": 16,
+  "stale_registrations_pruned": 12,
+  "production_deployed": false,
+  "paid_api_calls": 0,
+  "llm_quality_verified": false
+}

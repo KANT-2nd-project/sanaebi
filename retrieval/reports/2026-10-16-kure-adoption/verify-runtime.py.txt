@@ -1,0 +1,104 @@
+"""Implementation equivalence and local smoke, not a new model-selection trial."""
+import os
+os.environ['HF_HUB_OFFLINE']='1'
+os.environ['TRANSFORMERS_OFFLINE']='1'
+os.environ['TOKENIZERS_PARALLELISM']='false'
+import argparse,json,gzip,hashlib,shutil,time,resource,uuid
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+from unittest.mock import patch,Mock
+import numpy as np
+from app.documents.context import DocumentContextProvider
+from app.retrieval.config import KURE_SPEC,DEFAULT_SPEC,retrieval_spec_id
+from app.retrieval.embedding import create_embedder
+from app.retrieval.repository import IndexRepository
+from app.retrieval.baseline import restore_baseline
+from app.retrieval.service import RetrievalService
+from scripts.reset_demo_retrieval import reset_with_retrieval
+
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def canonical(evidence):
+    return [(e.knowledge_id,e.text,[(s.start,s.end,s.kind) for s in e.spans]) for e in evidence]
+def oldcanonical(evidence):
+    return [(e['knowledge_id'],e['text'],[(s['start'],s['end'],s['kind']) for s in e['spans']]) for e in evidence]
+
+p=argparse.ArgumentParser();p.add_argument('--model',type=Path,required=True);p.add_argument('--bundle',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+assert not a.output.exists();a.output.mkdir(parents=True)
+source=Path('data/company-knowledge/documents.jsonl').resolve()
+ref=Path('artifacts/retrieval-reference/answer-evaluation')
+reference_db=ref/'source/documents.sqlite3';db=a.output/'documents.sqlite3';shutil.copy2(reference_db,db)
+reference_sha=sha(reference_db);report={'source_sha':sha(source),'reference_db_sha':reference_sha,'spec':KURE_SPEC.to_dict(),'source':str(source),'model':str(a.model),'bundle':str(a.bundle),'cpu_affinity':[]}
+if hasattr(os,'sched_setaffinity'):
+    os.sched_setaffinity(0,sorted(os.sched_getaffinity(0))[:2]);report['cpu_affinity']=sorted(os.sched_getaffinity(0))
+started=time.perf_counter();encoder=create_embedder(a.model,spec=KURE_SPEC);encoder.warmup();report['load_seconds']=time.perf_counter()-started
+provider=DocumentContextProvider(database_path=db);snapshot=provider.snapshot();index=IndexRepository(a.output/'index',spec=KURE_SPEC)
+with patch.object(encoder,'encode_documents',side_effect=AssertionError('restore must not infer')):
+    restore_baseline(index,a.bundle,source,snapshot)
+service=RetrievalService(index,encoder,baseline_path=a.bundle)
+assert service.status(snapshot)['ready']
+# Compare native model vectors against independently recorded pilot vectors and geometry.
+tiny=IndexRepository(ref/'retrieval',spec=DEFAULT_SPEC);old=tiny.current_chunks(snapshot);new=index.current_chunks(snapshot)
+assert len(new)==len(old)==298
+for (x,_),(y,_) in zip(old,new,strict=True):
+    assert (x.document_id,x.revision_id,x.ordinal,x.spans,x.text)==(y.document_id,y.revision_id,y.ordinal,y.spans,y.text)
+pilot=np.load('artifacts/retrieval-reference/pilot/kure/vectors.npy',allow_pickle=False)
+actual=np.stack([v for _,v in new]);report['vector_max_abs_difference']=float(np.max(np.abs(actual-pilot)));assert np.allclose(actual,pilot,atol=2e-5,rtol=2e-5)
+print('geometry/vector comparison passed', flush=True)
+comparison=[];reportdir=Path('retrieval/reports/2026-10-16-kure-gate')
+for phase in ['development','confirmation']:
+    with gzip.open(reportdir/f'{phase}-kure.json.gz','rt') as f:prior=json.load(f)
+    for row in prior['rows']:
+        context=service.retrieve(row['question'],snapshot)
+        expected=[] if row['maximum']<0.42882221937179565 else oldcanonical(row['evidence'])
+        assert canonical(context.evidence)==expected,(phase,row['case_id'])
+        scores=[abs(e.score-o['score']) for e,o in zip(context.evidence,row['evidence'],strict=True)] if context.evidence else []
+        assert all(d<2e-5 for d in scores),(phase,row['case_id'],scores)
+        comparison.append({'max_score_delta':max(scores,default=0),'phase':phase,'case_id':row['case_id'],'matched':True,'selected_chunks':context.candidate_count,'evidence_groups':context.selected_count,'chars':sum(len(e.text) for e in context.evidence)})
+report['equivalence']=comparison
+print('108 prior cases implementation-equivalent',flush=True)
+# Full public retrieval path: SQLite status/read + encode/rank/merge; no question cache.
+with gzip.open(reportdir/'development-kure.json.gz','rt') as f:questions=[x['question'] for x in json.load(f)['rows'][:48]]
+report['benchmark']=[]
+for concurrency in (1,2):
+    durations=[]
+    def request(q):
+        t=time.perf_counter();service.retrieve(q,provider.snapshot());return (time.perf_counter()-t)*1000
+    with ThreadPoolExecutor(max_workers=concurrency) as pool:
+        for _ in range(3):
+            for start in range(0,len(questions),concurrency):
+                durations.extend(list(pool.map(request,questions[start:start+concurrency])))
+    report['benchmark'].append({'concurrency':concurrency,'count':len(durations),'p95_ms':float(np.percentile(durations,95)),'max_rss_mib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024,'durations_ms':durations})
+print('benchmark completed',report['benchmark'][0]['p95_ms'],report['benchmark'][1]['p95_ms'],flush=True)
+# Actual KURE with mock generation HTTP, reuse same encoder to avoid duplicate model residency.
+from fastapi.testclient import TestClient
+from app import fastapi_main
+from app.dependencies import get_classifier
+from tests.runtime.test_server_generation import FakeManagedGenerationClient
+clientmodel=FakeManagedGenerationClient();classifier=Mock();classifier.predict.return_value='SEARCH_KNOWLEDGE'
+env={'SANAEBI_DOCUMENT_DB':str(db.resolve()),'SANAEBI_RETRIEVAL_ROOT':str(index.root.resolve()),'SANAEBI_RETRIEVAL_BASELINE':str(a.bundle.resolve()),'SANAEBI_RETRIEVAL_SOURCE':str(source),'SANAEBI_RETRIEVAL_MODE':'rag','SANAEBI_PUBLIC_DEMO':'0','SANAEBI_ROUTING_MODE':'shadow','SANAEBI_ANSWER_PROVIDER':'openai','OPENAI_API_KEY':'test-key','TRACE_DIR':''}
+previous=fastapi_main.app.dependency_overrides.copy();fastapi_main.app.dependency_overrides[get_classifier]=lambda:classifier
+try:
+    with patch.dict(os.environ,env),patch('app.retrieval.embedding.create_embedder',return_value=encoder),patch('app.answering.adapter.build_managed_model_call',return_value=clientmodel),TestClient(fastapi_main.app) as client:
+        reserve=Mock();fastapi_main.app.state.answerer.reserve_generation=reserve
+        live=fastapi_main.app.state.document_provider
+        for question,should_call in [(questions[0],True),('미분에서 연쇄법칙을 간단한 예제로 설명해줘.',False)]:
+            count=reserve.call_count
+            with patch.object(live,'snapshot',wraps=live.snapshot) as spy:
+                response=client.post('/ask',json={'question':question});assert response.status_code==200,response.text;assert spy.call_count==1
+            assert reserve.call_count-count==int(should_call)
+        for action in ('clear','restore'):
+            preview=client.get('/documents/maintenance-preview',params={'action':action});assert preview.status_code==200
+            with patch.object(encoder,'encode_documents',side_effect=AssertionError('restore/clear must not infer')):
+                result=client.post('/documents/maintenance',json={'action':action,'expected_state':preview.json()['expected_state']},headers={'Idempotency-Key':str(uuid.uuid4())});assert result.status_code==200,result.text
+        fresh=live.snapshot();assert fresh.fingerprint!=snapshot.fingerprint
+        retrieved=fastapi_main.app.state.retriever.retrieve(questions[0],fresh)
+        valid={d.revision_id for d in fresh.documents};assert all(e.revision_id in valid for e in retrieved.evidence)
+        report['http']={'snapshot_once':True,'gate_reservation_zero':True,'clear_restore_inference_zero':True,'fresh_revisions':True,'mock_generation_calls':len(clientmodel.prompts)}
+finally:fastapi_main.app.dependency_overrides.clear();fastapi_main.app.dependency_overrides.update(previous)
+with patch.object(encoder,'encode_documents',side_effect=AssertionError('reset must not infer')):
+    reset=reset_with_retrieval(source,db,a.bundle,index.root,spec=KURE_SPEC);assert reset['retrieval_ready'],reset
+report['reset']=reset
+before=sha(db);mapping=IndexRepository(a.output/'mapping-only',spec=KURE_SPEC);restore_baseline(mapping,a.bundle,source,provider.snapshot());assert sha(db)==before
+report['mapping_source_writes_zero']=True;assert sha(reference_db)==reference_sha
+report['resource_passed']=all(r['count']==144 and r['p95_ms']<=3000 and r['max_rss_mib']<=6144 for r in report['benchmark'])
+(a.output/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k not in ('equivalence','benchmark')},ensure_ascii=False));assert report['resource_passed']

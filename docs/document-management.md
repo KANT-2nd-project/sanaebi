@@ -188,7 +188,7 @@ with closing(
 
 ## RAG 색인과 자정 초기화
 
-기본 rag(C)는 문서 SQLite의 현재 게시 snapshot과 별도 벡터 색인을 사용한다. 초안 등록·수정은 임베딩하지 않는다. 게시·사용 중단·전체 삭제·기본 복원은 검색 반영 확인까지 기다린 뒤 기존 형식의 성공 응답을 반환한다. full 모드는 색인 없이 기존 저장 계약을 유지한다.
+기본 rag(KURE)는 문서 SQLite의 현재 게시 snapshot과 별도 벡터 색인을 사용한다. 초안 등록·수정은 임베딩하지 않는다. 게시·사용 중단·전체 삭제·기본 복원은 검색 반영 확인까지 기다린 뒤 기존 형식의 성공 응답을 반환한다. full 모드는 색인 없이 기존 저장 계약을 유지한다.
 
 문서 저장 후 색인에 실패하면 `retrieval_sync_failed` 503의 `details.document_saved=true`로 부분 실패를 알린다. 저장된 문서는 보존하며 같은 요청 본문과 Idempotency-Key로 재시도한다. 멱등성 기록이 있더라도 현재 검색 준비 확인을 생략하지 않는다. 잠금 시간 초과는 `retrieval_sync_busy`와 `document_saved=false`로 구분한다. 웹에서는 완료까지 제출을 막고, 실패 후 원래 요청으로 재시도한다.
 
@@ -196,4 +196,4 @@ with closing(
 
 자정 복원 역시 모델 추론 없이 기본 벡터를 연결한다. API·worker·관리 명령은 공통 작업 잠금을 사용하며 worker는 실패·누락·시행일 도래를 복구한다. 준비 절차와 오류 계약은 [RAG 실행 안내](rag-runtime.md#문서-변경-응답과-검색-반영), 구현·검증 근거는 [작업 기록](worklogs/2026-10-16-document-rag-sync.md)을 따른다. 운영 배포 여부는 코드 변경과 구분한다.
 
-검색 설정의 후속 [v3 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)에서는 C를 유지했다. 기본 문서 최초 구성·전체 삭제·기본 복원과 자정 mapping 복구 절차는 그대로이며 이번 검색 비교 때문에 문서 DB나 기본 벡터를 다시 초기화하지 않는다.
+과거 [v3 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)에서는 C를 유지했고, 이후 사용자 결정으로 [KURE를 채택](../retrieval/reports/2026-10-16-kure-adoption/README.md)했다. 문서 DB는 보존하고 KURE spec의 별도 색인·기본 벡터를 준비한다. Tiny 묶음을 KURE에 혼용하지 않는다. 전체 삭제·기본 복원과 자정 mapping 복구 계약은 유지한다.

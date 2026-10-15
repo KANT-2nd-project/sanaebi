@@ -2,15 +2,15 @@
 
 RAG의 검색 모델 선정과 실험 근거를 관리한다. 서버 검색 코드는 `app/retrieval/`에서 관리한다. 분류 학습은 [classification](../classification/README.md), 답변 생성은 [generation](../generation/README.md)에서 관리한다.
 
-- **선정:** KoEn-E5-Tiny. [16종 CPU 비교·채택 보고서](reports/2026-10-15-cpu-embedding-comparison/README.md)와 [모델 계약·후속 작업](reports/2026-10-15-cpu-embedding-comparison/selection.md).
-- **연결 상태:** 서버 기본값은 rag+C다. 점수0.35 이상 근거를 개수·문자·별도 전달 토큰 제한 없이 전달한다. 운영 설정 변경·배포·사람 검수는 별도다.
+- **선정:** KURE-v1. [채택·서버 연결 기록](reports/2026-10-16-kure-adoption/README.md). [과거 Tiny 선정](reports/2026-10-15-cpu-embedding-comparison/README.md)은 당시 기록으로 보존한다.
+- **연결 상태:** 서버 기본값은 rag+KURE다. 질문 최고 코사인이0.42882221937179565 이상이면 상위20청크를 선택하고 원문 중복을 병합한다. 개별 청크 하한·추가 문자·전달 토큰 제한은 없다. 운영 설정 변경·배포·사람 검수는 별도다.
 - **기록 기준:** 결론·작은 비교표·검토 가능한 증거는 reports, 큰 벡터·가중치·가상환경은 로컬 원자료에 둔다. 실험 당시 관측과 이후 사용자 결정을 구분하며 기존 기록을 덮어쓰지 않는다.
 
 전체 연결 정책은 [서비스 설계](../docs/service-architecture.md), 문서 게시·개정은 [문서 관리](../docs/document-management.md)를 따른다.
 
 ## 서버 검색 구현
 
-[RAG 실행](../docs/rag-runtime.md)은 기본 rag와 명시적 full 복구를 제공하면서 로컬 Tiny·SQLite exact 검색과 자정 기본 벡터 복원을 연결한다. 모델 선정 결과와 실제 운영 품질은 구분한다. 런타임 코드는 app/retrieval, 과거 실험 기록은 이 폴더의 reports에 둔다.
+[RAG 실행](../docs/rag-runtime.md)은 기본 rag와 명시적 full 복구를 제공하면서 로컬 KURE·SQLite exact 검색과 자정 기본 벡터 복원을 연결한다. 모델 선정 결과와 실제 운영 품질은 구분한다. 런타임 코드는 app/retrieval, 과거 실험 기록은 이 폴더의 reports에 둔다.
 
 [로컬 RAG 검증](reports/2026-10-15-rag-local-validation/README.md)은 검색 순위·최종 근거와 자정 복원을 구분해 기록한다.
 
@@ -18,7 +18,7 @@ RAG의 검색 모델 선정과 실험 근거를 관리한다. 서버 검색 코�
 
 [Full·RAG 실제 답변 비교](reports/2026-10-15-rag-answer-comparison/README.md): 5호출 후 JSON 계약 위반으로 중단, 미완료 항목·비용·두 AI 판정과 삭제/기본복원 연동 검증.
 
-[KURE 상위20·질문 게이트 검증](reports/2026-10-16-kure-gate/README.md)은 신규 확인에서 근거를 유지하고 전달량을 줄였으나 무관 질문 차단 기준에 미달해 전환을 보류했다. 현재 Tiny C와 준비 절차는 유지한다.
+[KURE 상위20·질문 게이트 검증](reports/2026-10-16-kure-gate/README.md)은 신규 확인에서 근거를 유지하고 전달량을 줄였으나 무관 질문 차단 기준에 미달해 전환을 보류했다. 이후 사용자는 근거 유지·전달량 감소를 근거로 [KURE 채택](reports/2026-10-16-kure-adoption/README.md)을 결정했다. 무관 질문 판별 한계는 남은 과제로 구분한다.
 
 ## 검색 인자·문맥 실험과 최종 결정
 

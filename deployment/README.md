@@ -17,7 +17,7 @@
 | `/srv/sanaebi/releases/<sha>-<run>/` | release manifest·웹·모델 manifest |
 | `/srv/sanaebi/current`, `previous` | 활성·이전 release 포인터 |
 | `/srv/sanaebi/models/` | 검증 모델·활성 포인터 |
-| `/srv/sanaebi/embeddings/` | 고정 revision으로 검증한 KoEn-E5-Tiny 저장본 |
+| `/srv/sanaebi/embeddings/` | 고정 revision으로 검증한 모델별 저장본과 KURE 분할 tokenizer |
 | `/srv/sanaebi/retrieval-baselines/schema-vN/` | 릴리스별 schema와 host 기준 문서에서 만든 읽기 전용 기본 벡터 묶음 |
 | `/srv/sanaebi/retrieval-bindings/` | release ID와 모델·schema·기준 원본을 연결하는 descriptor |
 | `/srv/sanaebi/assets/_next/static/` | 이전 페이지에서도 사용할 해시 자산 |
@@ -60,11 +60,11 @@ GitHub `production` environment는 main만 허용한다. 환경 secret은 `DEPLO
 
 배포 helper는 공통 flock 아래 이미지·모델·격리 후보 readiness를 먼저 준비한다. 준비 실패 시 기존 서비스를 유지한다. 실제 교체는 점검 응답, 요청 종료 대기, SQLite 백업, API·웹 교체, readiness 확인 순서다. 실패하면 이전 이미지·웹·모델을 복원하며 사용자 변경이 생긴 DB를 자동 덮어쓰지 않는다. 강제 종료로 점검 표식이 남으면 다음 배포를 거부한다. 운영자가 journal·활성 포인터·컨테이너를 확인한 뒤 root 전용 `sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/deploy_release.py recover`를 실행한다. journal에 저장된 이전 포인터·이미지를 검증해 복원하고 readiness 성공 후 점검을 해제한다. DB는 덮어쓰지 않으며 CI 계정에는 recover 권한을 부여하지 않는다.
 
-릴리스는 기존 schema v1을 계속 지원하며, 검색 descriptor가 포함된 schema v2도 만들 수 있다. v1은 항상 기존 `full` 문서 흐름을 사용한다. 신규 v2 descriptor 기본값은 `rag`이며 검색 worker와 C 검색 경로를 준비한다. `/etc/sanaebi/api.env`의 명시적 `SANAEBI_RETRIEVAL_MODE`가 우선하며, 과거 descriptor의 `full` 기본값과 descriptor 없는 v1의 full 동작은 유지한다. 운영 설정은 이번 코드 게시로 변경하지 않는다. 설정을 바꾼 뒤에는 해당 릴리스를 다시 배포해야 API와 worker가 같은 모드로 시작한다. 배포 helper는 실제 실행 중인 API의 이전 모드를 기록해 실패·중단 복구에서 그 모드를 다시 적용한다.
+릴리스는 기존 schema v1을 계속 지원하며, 검색 descriptor가 포함된 schema v2도 만들 수 있다. v1은 항상 기존 `full` 문서 흐름을 사용한다. 신규 v2 descriptor 기본값은 `rag`이며 검색 worker와 KURE 검색 경로를 준비한다. `/etc/sanaebi/api.env`의 명시적 `SANAEBI_RETRIEVAL_MODE`가 우선하며, 과거 descriptor의 `full` 기본값과 descriptor 없는 v1의 full 동작은 유지한다. 운영 설정은 이번 코드 게시로 변경하지 않는다. 설정을 바꾼 뒤에는 해당 릴리스를 다시 배포해야 API와 worker가 같은 모드로 시작한다. 배포 helper는 실제 실행 중인 API의 이전 모드를 기록해 실패·중단 복구에서 그 모드를 다시 적용한다.
 
 [v3 검색 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)는 C를 유지했다. 이번 비교로 새 재정렬 모델이나 새 벡터 묶음을 배포 준비에 추가하지 않는다. 로컬 CPU2 검증은 실제 운영 2vCPU 승인과 다르며 운영 전환은 별도다.
 
-RAG 릴리스 준비 때 배포 helper는 공개 KoEn-E5-Tiny의 고정 revision과 파일 SHA를 검증해 `/srv/sanaebi/embeddings/`에 준비한다. API와 indexer에는 Hugging Face 자격 증명을 전달하지 않는다. 최초 host baseline은 컨테이너 이미지에서 한 번 복사하고 이후에는 이 host 파일을 기준 원본으로 보존한다. 각 RAG 릴리스는 그 원본과 릴리스가 선언한 schema를 사용해 기본 벡터 묶음을 만들고, 임시 DB에서 후보 검색 색인이 준비되는지 확인한다. 검색 번들과 활성 문서 DB의 연결값은 release별 binding에 보관하므로 schema가 바뀌어도 이전 묶음을 삭제하거나 새 묶음으로 덮어쓰지 않는다.
+RAG 릴리스 준비 때 배포 helper는 공개 KURE-v1과 분할용 Tiny tokenizer의 고정 revision·파일 SHA를 검증해 `/srv/sanaebi/embeddings/`에 준비한다. API와 indexer에는 Hugging Face 자격 증명을 전달하지 않는다. 최초 host baseline은 컨테이너 이미지에서 한 번 복사하고 이후에는 이 host 파일을 기준 원본으로 보존한다. 각 RAG 릴리스는 그 원본과 릴리스가 선언한 schema를 사용해 기본 벡터 묶음을 만들고, 임시 DB에서 후보 검색 색인이 준비되는지 확인한다. 검색 번들과 활성 문서 DB의 연결값은 release별 binding에 보관하므로 schema가 바뀌어도 이전 묶음을 삭제하거나 새 묶음으로 덮어쓰지 않는다.
 
 RAG의 문서 변경 API도 색인 준비까지 기다리므로 API와 indexer에 같은 기본 원본·벡터 묶음을 읽기 전용으로 연결한다. 원본은 `SANAEBI_RETRIEVAL_SOURCE`, 묶음은 `SANAEBI_RETRIEVAL_BASELINE`을 사용한다. 기본 복원 요청 전에 묶음의 원본·spec 일치를 확인하며 이미지의 원본으로 host 자료를 덮어쓰지 않는다. API·worker·복원 CLI의 색인 잠금은 작업 단위다. 부분 실패의 동일 요청 재시도는 [RAG 실행 계약](../docs/rag-runtime.md#문서-변경-응답과-검색-반영)을 따른다. 이 변경의 코드 게시와 운영 배포는 별개다.
 
@@ -92,6 +92,6 @@ health·Swagger·분류 진단·레거시 API는 외부에서 허용하지 않�
 
 수동 DB 복원은 점검 전환·요청 종료·현재 DB 별도 백업 후 검증된 백업을 복사하는 운영자 작업이다. 생성 카운터를 문서 백업으로 덮어쓰지 않는다. 자동 롤백은 코드·모델·웹만 복원한다. 백업 manifest와 SQLite integrity_check를 확인하고 별도 임시 경로에서 복원 검증한다.
 
-## KURE 후보 검증 이후 준비 상태
+## KURE 채택 이후 준비 상태
 
-[KURE 상위20·게이트 평가](../retrieval/reports/2026-10-16-kure-gate/README.md)는 무관 질문 차단 기준 미달로 전환을 보류했다. 릴리스 descriptor·Compose·기본 벡터·모델 준비 명령은 기존 Tiny 계약을 유지한다. KURE용 운영 자산을 생성하거나 배포하지 않았다.
+[KURE 채택·연결](../retrieval/reports/2026-10-16-kure-adoption/README.md)에 따라 신규 descriptor·Compose·모델 준비의 기본값은 KURE다. 모델 디렉터리의 `splitter/`에 고정 Tiny tokenizer만 포함하며 Tiny 가중치는 요구하지 않는다. 새 spec의 색인·기본 벡터를 준비하고 기존 Tiny/full 릴리스 복구 자료는 보존한다. 코드 게시와 로컬 검증은 운영 host 원본 확인·실제 배포를 뜻하지 않는다.
