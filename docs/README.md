@@ -56,3 +56,8 @@ flowchart TD
 | [과거 문서 주제 분류](../data/archive/document-topics-v0.2/README.md) · [과거 질문 주제 분류](../data/archive/question-topics/README.md) | 현재 처리 라벨과 구별되는 이전 자료 |
 
 과거 결과를 현재 실행 결과로 옮겨 쓰지 않는다. 학습·모델 선정·서버 연결·실서비스 품질은 별도로 확인한다. 실행 원자료와 가중치의 로컬 위치는 각 보고서에 있으며 공개 다운로드 링크가 아니다.
+
+## 채택 방향과 구현 전 계획
+
+- [분류 관찰·문서 기반 Luna 처리 결정](plans/routing-policy-2026-10-15/decision.md): 기존 강제 차단과 관찰 모드 비교 방향. 구현·실험·기본값 전환은 미완료.
+- [구체 구현 계획](plans/routing-policy-2026-10-15/implementation-plan.md) · [계획 검수](plans/routing-policy-2026-10-15/review.md).
