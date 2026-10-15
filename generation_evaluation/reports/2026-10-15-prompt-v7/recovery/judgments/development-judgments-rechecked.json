@@ -1,0 +1,1210 @@
+{
+  "reviewer": "development_independent_blind_judge",
+  "method": "익명 packet의 문항별 필수·금지·evidence·공통 가독성·구조 기준에 따라 개별 판정. 제공된 frozen snapshot의 72개 문서를 확인하고 메뉴·절차·부재 주장 등 관련 근거를 전체 문서에서 대조함. 후보 정체 정보는 추론하거나 사용하지 않음.",
+  "responses": [
+    {
+      "anonymous_id": "development-A001",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "이음 포털 인사 > 휴가 경로와 시작일 기준 3영업일 전 기한을 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "개인 잔여 일수를 조회하거나 계산하지 않고 한계를 설명함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "잔여 일수나 적용 기준이 불분명할 때 People팀에 확인하도록 안내함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A002",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "결정 내용·이유·담당자·기한·남은 위험을 기록해 참석자와 확인하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "회의 결과와 후속 작업을 프로젝트·팀 기준 문서에 두고 Slack에 링크를 공유함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "미해결 질문에 담당자와 다음 확인 시점을 지정하고 미기록 논의를 완료 결정으로 취급하지 않음."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "검토가 필요한 항목을 검토 전 결정 완료로 보지 않는 조건이 없음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "회의 중 필수 결정 항목과 기록 위치, 후속 담당은 있으나 법률·보안·개인정보 검토 전 완료 금지 조건이 빠짐."
+    },
+    {
+      "anonymous_id": "development-A003",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "추가 편집·이동·삭제를 중단하도록 안내함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "이름·링크, 정상 확인/발견 시각, 위치, 영향 사용자, 시도한 조치를 기록하도록 함."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "소유자·IT에 즉시 알리고 복구 범위를 요청하지만, 기간/날짜 범위가 제한될 수 있다는 설명은 없음."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "소유자 검증과 복구 결과·누락 기록 후에만 완료로 알리도록 함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "중단·기록·소유자/IT 통지와 소유자 검증은 충족. 복구 가능 기간·날짜 범위의 제한 가능성이 빠짐."
+    },
+    {
+      "anonymous_id": "development-A004",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "링크가 없을 때 재무팀 문의와 개인 계정 임의 구매 금지를 구분해 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "승인 총액보다 20% 초과 예상 시 예약 변경/추가 지출 전에 팀장과 재무팀 재승인을 요구함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "서로 독립된 두 조건을 별도 조건으로 표현함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A005",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "서비스 범위를 이음웍스 내부 업무 정보·절차와 회사 문서의 도구 사용 안내로 한정함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "일반 천문학 질문이 범위 밖임을 밝히고 사내 업무 질문을 초대함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A006",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "링크가 없을 때 재무팀 문의와 개인 계정 임의 구매 금지를 구분해 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "승인 총액보다 20% 초과 예상 시 예약 변경/추가 지출 전에 팀장과 재무팀 재승인을 요구함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "서로 독립된 두 조건을 별도 조건으로 표현함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A007",
+      "content": "fail",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "추가 전송/처리를 멈추고 가능한 회수·접근 제한을 시도하며 결과를 확인하고 증거를 보존하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "즉시 신고, Slack 또는 포털 경로, 30분 목표가 대기 시간이 아님, 24시간 체계를 설명함."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "정보 종류·등급과 영향은 적지만 대상 시스템 및 현재 연락 가능한 회사 계정을 적으라는 항목은 빠짐."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "15분 인수 목표, 응답 부재 시 팀장 대체 인계, 위험 시 담당자 직접 연결이 없음."
+        },
+        {
+          "index": 4,
+          "status": "missing",
+          "rationale": "수신자와 전송 자료·회수 결과는 언급하지만 전송 시각을 기록하라는 항목은 없음."
+        },
+        {
+          "index": 5,
+          "status": "met",
+          "rationale": "수신자 대응과 추가 조치는 보안·개인정보 담당자 안내를 받도록 하고 외부 통지도 담당자 검토로 넘김."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "신고 경로·30분/24시간, 중단·회수·증거 보존은 정확하지만 15분 인수와 대체 인계가 빠졌고 신고 기록의 시스템/연락 계정/전송 시각도 불완전함. 15분 대체 경로 누락은 중대한 절차 누락으로 판단."
+    },
+    {
+      "anonymous_id": "development-A008",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "이음 포털 인사 > 휴가 경로를 정확히 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "사용 시작일 기준 3영업일 전까지라는 기한을 정확히 제시함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A009",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "이음 포털 인사 > 휴가 경로를 정확히 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "사용 시작일 기준 3영업일 전까지라는 기한을 정확히 제시함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A010",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "결정 항목은 기록하지만 그 기록을 참석자와 확인하라는 단계는 없음."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "회의 결과와 후속 작업을 프로젝트·팀 기준 문서에 두고 Slack에 링크를 공유함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "미해결 질문에 담당자와 다음 확인 시점을 지정하고 미기록 논의를 완료 결정으로 취급하지 않음."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "침묵 승인 금지는 있으나 필요한 법률·보안·개인정보 검토가 끝나기 전 완료로 보지 않는다는 점은 없음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "기준 문서·Slack 기록, 후속 담당과 확인 시점은 제시하지만 참석자 확인 및 검토 전 완료 금지 조건이 빠짐."
+    },
+    {
+      "anonymous_id": "development-A011",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "이음 포털 인사 > 휴가 경로를 정확히 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "사용 시작일 기준 3영업일 전까지라는 기한을 정확히 제시함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A012",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "링크가 없을 때 재무팀 문의와 개인 계정 임의 구매 금지를 구분해 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "승인 총액보다 20% 초과 예상 시 예약 변경/추가 지출 전에 팀장과 재무팀 재승인을 요구함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "서로 독립된 두 조건을 별도 조건으로 표현함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A013",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "추가 편집·이동·삭제를 중단하도록 안내함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "이름·링크, 정상 확인/발견 시각, 위치, 영향 사용자, 시도한 조치를 기록하도록 함."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "소유자·IT 통지는 즉시 요구하지만 복구 기간/날짜 범위가 제한될 수 있다는 이유는 제시하지 않음."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "소유자의 내용·권한 확인은 있으나 복구 결과와 빠진 부분을 기록한 뒤 완료로 알리라는 조건은 없음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "초기 중단·기록·통지 및 소유자 검증은 있으나 복구 창 제한과 복구 결과/누락 기록 조건이 빠짐."
+    },
+    {
+      "anonymous_id": "development-A014",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "사내 업무 정보·규정/절차 및 회사 문서에 설명된 도구 사용 안내 범위를 설명함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "휴가/출장/계정/보안/고객지원 등 문서에 있는 여러 대표 업무 영역을 제시함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "신청·변경·취소·승인이나 개인별 실시간 상태를 직접 처리하지 않는다고 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "사용자가 필요한 업무 주제를 말하도록 초대함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "도움 범위·대표 영역·직접 처리 한계·후속 질문은 충족. 대표 영역을 요청된 간결한 병렬 목록 대신 한 문장에 넣음."
+    },
+    {
+      "anonymous_id": "development-A015",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "출발 2영업일 전까지 지정 포털 경로와 목적·일정·방문지·예상 교통/숙박비·프로젝트를 제출하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "팀장과 재무팀 승인이 모두 기록되기 전에는 예약하지 않도록 함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "승인 뒤 재무팀 링크를 사용하고 링크가 없으면 재무팀에 문의하도록 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "개인 계정 구매를 금지하고 승인만으로 환급을 보장한다고 주장하지 않음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A016",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "추가 전송/처리를 멈추고 가능한 회수·접근 제한을 시도하며 결과를 확인하고 증거를 보존하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "missing",
+          "rationale": "즉시 신고와 30분 목표 및 오프라인 비상연락카드 대체는 안내하지만, 업무시간 밖을 포함한 24시간 신고·당직 커버리지는 명시하지 않음."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "시간·수신자·자료·영향·조치는 제시하지만 신고 때 현재 연락 가능한 회사 계정을 적으라는 항목은 없음."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "15분 인수 목표와 대기하지 않는 팀장 대체 경로, 위험 시 보안·개인정보 담당자 연결을 설명함."
+        },
+        {
+          "index": 4,
+          "status": "missing",
+          "rationale": "수신자·메일·발견 시각과 회수 시도/결과는 기록하지만, 전송 시각을 기록하라는 항목은 없음."
+        },
+        {
+          "index": 5,
+          "status": "met",
+          "rationale": "수신자 삭제·안내의 구체 절차는 만들지 않고, 외부 통지는 보안·개인정보 담당자 안내를 따르도록 하여 후속 판단을 넘김."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "즉시 신고·30분 목표, 15분 대체 인계, 위험 시 담당자 연결과 수신자 대응 경계는 충족. 24시간 커버리지, 현재 회사 계정, 전송 시각이 빠짐."
+    },
+    {
+      "anonymous_id": "development-A017",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 관리 ChatGPT Business 워크스페이스만 사용하도록 안내함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "공개 여부와 이용 조건이 확인된 자료만 입력하고 내부/고객/개인/코드/자격정보를 금지함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "불확실한 자료는 입력하지 않고 개인 계정·다른 AI로 우회하지 않도록 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "결과를 원자료와 대조하고 출처·권리·기밀 분류 및 필요한 검토를 확인하도록 함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A018",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "서비스 범위를 이음웍스 내부 업무 정보·절차와 회사 문서의 도구 사용 안내로 한정함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "일반 천문학 질문이 범위 밖임을 밝히고 사내 업무 질문을 초대함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A019",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "출발 2영업일 전까지 지정 포털 경로와 목적·일정·방문지·예상 교통/숙박비·프로젝트를 제출하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "팀장과 재무팀 승인이 모두 기록되기 전에는 예약하지 않도록 함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "승인 뒤 재무팀 링크를 사용하고 링크가 없으면 재무팀에 문의하도록 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "개인 계정 구매를 금지하고 승인만으로 환급을 보장한다고 주장하지 않음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A020",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "추가 전송 중단과 회수 시도, 결과 기록 및 과장 금지는 있으나 실제 회수 여부를 확인하라는 지시는 명시되지 않음."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "즉시 신고, Slack 또는 포털 경로, 30분 목표가 대기 시간이 아님, 24시간 체계를 설명함."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "대상 메일·자료와 정보 유형, 영향/조치는 있으나 현재 연락 가능한 회사 계정을 적으라는 항목은 없음."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "15분 인수 목표와 대기하지 않는 팀장 대체 경로, 위험 시 보안·개인정보 담당자 연결을 설명함."
+        },
+        {
+          "index": 4,
+          "status": "met",
+          "rationale": "수신자·자료/메시지·전송 시각·회수 결과를 기록하되 외부 사본 삭제를 단정하지 않도록 함."
+        },
+        {
+          "index": 5,
+          "status": "met",
+          "rationale": "수신자에게 보낼 구체 절차를 만들지 않고, 필요한 통지와 대응을 보안·개인정보 담당자가 검토하도록 연결함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "즉시 신고·24시간 경로, 15분 대체 인계, 담당자 검토와 전송 시각 기록은 명확. 실제 회수 여부 확인 지시와 신고 연락용 회사 계정은 빠짐."
+    },
+    {
+      "anonymous_id": "development-A021",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "어떤 종류의 트리 또는 어떤 업무 맥락인지 먼저 묻고 답변을 보류함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "조직도·파일/폴더 구조·자료구조 등을 인라인 예시로만 제시함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A022",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "어떤 종류의 트리 또는 어떤 업무 맥락인지 먼저 묻고 답변을 보류함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "조직도·파일/폴더 구조·자료구조 등을 인라인 예시로만 제시함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A023",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 관리 ChatGPT Business 워크스페이스만 사용하도록 안내함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "공개 여부와 이용 조건이 확인된 자료만 입력하고 내부/고객/개인/코드/자격정보를 금지함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "불확실한 자료는 입력하지 않고 개인 계정·다른 AI로 우회하지 않도록 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "결과를 원자료와 대조하고 출처·권리·기밀 분류 및 필요한 검토를 확인하도록 함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A024",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "회사 관리 ChatGPT Business 워크스페이스만 사용하도록 안내함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "공개 여부와 이용 조건이 확인된 자료만 입력하고 내부/고객/개인/코드/자격정보를 금지함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "불확실한 자료는 입력하지 않고 개인 계정·다른 AI로 우회하지 않도록 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "결과를 원자료와 대조하고 출처·권리·기밀 분류 및 필요한 검토를 확인하도록 함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A025",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "서비스 범위를 이음웍스 내부 업무 정보·절차와 회사 문서의 도구 사용 안내로 한정함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "일반 천문학 질문이 범위 밖임을 밝히고 사내 업무 질문을 초대함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A026",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "출발 2영업일 전까지 지정 포털 경로와 목적·일정·방문지·예상 교통/숙박비·프로젝트를 제출하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "팀장과 재무팀 승인이 모두 기록되기 전에는 예약하지 않도록 함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "승인 뒤 재무팀 링크를 사용하고 링크가 없으면 재무팀에 문의하도록 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "개인 계정 구매를 금지하고 승인만으로 환급을 보장한다고 주장하지 않음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A027",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "어떤 종류의 트리 또는 어떤 업무 맥락인지 먼저 묻고 답변을 보류함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "조직도·파일/폴더 구조·자료구조 등을 인라인 예시로만 제시함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A028",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "고객의 목표·관찰된 영향·시각/시간대·기대/실제 동작 및 가능한 최소 재현을 기록하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "비밀번호·토큰·고객 원본을 GitHub에서 금지함. 인증 목적의 세션 쿠키는 토큰/자격정보의 의미 범위에 포함된다고 판단함; 문구 일치만 요구하지 않음."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "수신자의 명시적 수락을 인계 완료 기준으로 하고 수락 전 기존 담당자의 고객 책임을 유지함."
+        },
+        {
+          "index": 3,
+          "status": "uncertain",
+          "rationale": "다음 안내 목표를 포털에 기록하고 기존 담당자의 진행 안내를 유지하지만, 고객에게 확인 사실과 다음 시점을 직접 알리라는 지시는 암시적임."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "고객 목표·영향·재현 정보와 명시적 인수 기준 및 기존 담당 책임은 분명함. 토큰 금지는 세션 자격 토큰을 포함하는 의미로 판단했으며, 다음 안내 목표를 고객에게 실제 전달하라는 지시는 암시적임."
+    },
+    {
+      "anonymous_id": "development-A029",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "사내 업무 정보·규정/절차 및 회사 문서에 설명된 도구 사용 안내 범위를 설명함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "휴가/출장/계정/보안/고객지원 등 문서에 있는 여러 대표 업무 영역을 제시함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "신청·변경·취소·승인이나 개인별 실시간 상태를 직접 처리하지 않는다고 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "사용자가 필요한 업무 주제를 말하도록 초대함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "문항의 필수 항목을 충족하며 근거와 요청된 구조에 맞게 직접 답함."
+    },
+    {
+      "anonymous_id": "development-A030",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "고객의 목표·관찰된 영향·시각/시간대·기대/실제 동작 및 가능한 최소 재현을 기록하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "비밀번호·토큰·고객 원본을 GitHub에서 금지함. 인증 목적의 세션 쿠키는 토큰/자격정보의 의미 범위에 포함된다고 판단함; 문구 일치만 요구하지 않음."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "수신자의 명시적 수락을 인계 완료 기준으로 하고 수락 전 기존 담당자의 고객 책임을 유지함."
+        },
+        {
+          "index": 3,
+          "status": "uncertain",
+          "rationale": "다음 안내 목표를 기록하도록 하지만 고객에게 확인 사실과 다음 시점을 실제 전달하라는 지시는 암시적임."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "접수 정보와 안전한 자료 제한, 수신 수락 및 기존 담당자 책임은 충족. 토큰 금지는 세션 자격 토큰을 포함하는 의미로 판단했으며, 고객에게 다음 안내 목표를 실제 전달하라는 지시는 암시적임."
+    },
+    {
+      "anonymous_id": "development-A031",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "missing",
+          "rationale": "결정 내용·이유·담당·기한·위험 기록은 있으나 참석자 확인 단계가 없음."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "회의 결과와 후속 작업을 프로젝트·팀 기준 문서에 두고 Slack에 링크를 공유함."
+        },
+        {
+          "index": 2,
+          "status": "missing",
+          "rationale": "미해결 질문의 담당자·다음 확인 시점 및 미기록 논의 처리 기준이 없음."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "침묵을 승인으로 보지 않지만 필수 검토 전 완료 금지 조건은 없음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "기준 문서 기록과 Slack 링크, 침묵 승인 금지는 정확. 참석자 확인, 미해결 후속 담당/시점, 법률·보안·개인정보 검토 조건이 빠짐."
+    },
+    {
+      "anonymous_id": "development-A032",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "사내 업무 정보·규정/절차 및 회사 문서에 설명된 도구 사용 안내 범위를 설명함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "휴가/출장/계정/보안/고객지원 등 문서에 있는 여러 대표 업무 영역을 제시함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "신청·변경·취소·승인이나 개인별 실시간 상태를 직접 처리하지 않는다고 함."
+        },
+        {
+          "index": 3,
+          "status": "met",
+          "rationale": "사용자가 필요한 업무 주제를 말하도록 초대함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "partial",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "범위·대표 업무·직접 처리 한계·초대는 충족. 병렬 업무 영역을 요청된 compact bullet list 대신 인라인 예시로 제시함."
+    },
+    {
+      "anonymous_id": "development-A033",
+      "content": "partial",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "고객의 목표·관찰된 영향·시각/시간대·기대/실제 동작 및 가능한 최소 재현을 기록하도록 함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "비밀번호·토큰·고객 원본을 GitHub에서 금지함. 인증 목적의 세션 쿠키는 토큰/자격정보의 의미 범위에 포함된다고 판단함; 문구 일치만 요구하지 않음."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "수신자의 명시적 수락을 인계 완료 기준으로 하고 수락 전 기존 담당자의 고객 책임을 유지함."
+        },
+        {
+          "index": 3,
+          "status": "uncertain",
+          "rationale": "고객에게 한 안내와 다음 목표를 포털에 기록하도록 하지만 실제 고객 안내 지시는 암시적임."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "필수 재현 정보와 수락/기존 담당 책임은 잘 분리됨. 토큰 금지는 세션 자격 토큰을 포함하는 의미로 판단했으며, 확인 사실·다음 안내 목표를 고객에게 실제 전달하라는 지시는 암시적임."
+    },
+    {
+      "anonymous_id": "development-A034",
+      "content": "fail",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "추가 편집·이동·삭제를 중단하도록 안내함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "이름·링크, 정상 확인/발견 시각, 위치, 영향 사용자, 시도한 조치를 기록하도록 함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "혼자 복원하거나 공유 범위를 바꾸지 않고 소유자와 IT에 신속히 알리도록 함."
+        },
+        {
+          "index": 3,
+          "status": "missing",
+          "rationale": "IT 확인 전 완료를 단정하지 말라고만 하고 소유자의 복구 내용·권한 검증과 결과/누락 기록을 요구하지 않음."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "중단·기록·소유자/IT 통지와 제한된 복구 기간은 정확하지만 완료 전 소유자 검증 및 복구 누락 기록이라는 핵심 완료 조건이 빠짐."
+    },
+    {
+      "anonymous_id": "development-A035",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "이음 포털 인사 > 휴가 경로와 시작일 기준 3영업일 전 기한을 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "개인 잔여 일수를 조회하거나 계산하지 않고 한계를 설명함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "잔여 일수나 적용 기준이 불분명할 때 People팀에 확인하도록 안내함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "신청 경로/기한과 잔여 일수 조회 불가, People팀 확인을 간결하게 분리함."
+    },
+    {
+      "anonymous_id": "development-A036",
+      "content": "pass",
+      "required_checks": [
+        {
+          "index": 0,
+          "status": "met",
+          "rationale": "이음 포털 인사 > 휴가 경로와 시작일 기준 3영업일 전 기한을 제시함."
+        },
+        {
+          "index": 1,
+          "status": "met",
+          "rationale": "개인 잔여 일수를 조회하거나 계산하지 않고 한계를 설명함."
+        },
+        {
+          "index": 2,
+          "status": "met",
+          "rationale": "잔여 일수나 적용 기준이 불분명할 때 People팀에 확인하도록 안내함."
+        }
+      ],
+      "major_grounded_or_authority_error": false,
+      "common_readability": "pass",
+      "structure": "pass",
+      "unnecessary_guidance": false,
+      "unnecessary_formatting": false,
+      "conditional_sequence_error": false,
+      "rationale": "신청 경로/기한을 답하고 개인 잔여 일수는 조회·계산하지 않으며 포털 표시/기준이 불분명할 때 People팀 확인을 안내함."
+    }
+  ],
+  "boundary_review": [
+    "development-A028, development-A030, development-A033: snapshot의 금지 목록은 토큰과 세션 쿠키를 따로 열거하지만, 답변의 비밀번호·인증 코드·토큰·고객 원본 금지를 자격정보 제한으로 읽어 세션 토큰을 의미상 포함한다고 판정함. 이 판정은 단어 일치가 아닌 보안 의미 범위에 근거함."
+  ],
+  "change_log": [
+    {
+      "anonymous_id": "development-A007",
+      "rechecked": [
+        {
+          "index": 1,
+          "status": "met",
+          "reason": "답변에 24시간 신고·당직 체계가 명시됨."
+        },
+        {
+          "index": 5,
+          "status": "met",
+          "reason": "수신자 후속 대응을 보안·개인정보 담당자 안내에 맡김."
+        }
+      ]
+    },
+    {
+      "anonymous_id": "development-A016",
+      "changes": [
+        {
+          "index": 1,
+          "from": "met",
+          "to": "missing",
+          "reason": "24시간 커버리지 문구가 없음."
+        },
+        {
+          "index": 4,
+          "from": "met",
+          "to": "missing",
+          "reason": "전송 시각 기록이 없음."
+        }
+      ],
+      "rechecked": [
+        {
+          "index": 5,
+          "status": "met",
+          "reason": "보안·개인정보 담당자 안내를 따르는 의미상 후속 인계가 있음."
+        }
+      ]
+    },
+    {
+      "anonymous_id": "development-A020",
+      "changes": [
+        {
+          "index": 0,
+          "from": "met",
+          "to": "missing",
+          "reason": "회수 시도/결과 기록은 있으나 실제 회수 여부 확인 지시가 없음."
+        },
+        {
+          "index": 5,
+          "from": "uncertain",
+          "to": "met",
+          "reason": "필요한 통지와 대응을 보안·개인정보 담당자가 검토하도록 명시함."
+        }
+      ],
+      "rechecked": [
+        {
+          "index": 1,
+          "status": "met",
+          "reason": "업무시간과 관계없이 경로를 이용할 수 있다고 명시함."
+        },
+        {
+          "index": 4,
+          "status": "met",
+          "reason": "전송 시각을 기록하도록 명시함."
+        }
+      ]
+    },
+    {
+      "anonymous_id": "development-A028",
+      "changes": [
+        {
+          "index": 1,
+          "from": "missing",
+          "to": "met",
+          "reason": "토큰 제외가 세션 자격 토큰을 의미상 포함한다고 판정함."
+        }
+      ]
+    },
+    {
+      "anonymous_id": "development-A030",
+      "changes": [
+        {
+          "index": 1,
+          "from": "missing",
+          "to": "met",
+          "reason": "토큰 제외가 세션 자격 토큰을 의미상 포함한다고 판정함."
+        }
+      ]
+    },
+    {
+      "anonymous_id": "development-A033",
+      "changes": [
+        {
+          "index": 1,
+          "from": "missing",
+          "to": "met",
+          "reason": "토큰 제외가 세션 자격 토큰을 의미상 포함한다고 판정함."
+        }
+      ]
+    }
+  ]
+}

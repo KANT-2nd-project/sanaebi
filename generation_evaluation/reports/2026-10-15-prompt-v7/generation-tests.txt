@@ -1,0 +1,37 @@
+Using CPython 3.12.14
+Creating virtual environment at: .venv
+   Building sanaebi @ file:///home/jake/workspace/projects/.sanaebi-prompt-v7-recovery-20261015
+      Built sanaebi @ file:///home/jake/workspace/projects/.sanaebi-prompt-v7-recovery-20261015
+Installed 172 packages in 384ms
+...............usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: 모델 timeout 시간은 유한한 양수여야 합니다.
+.usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: --question은 비어 있을 수 없습니다.
+.[manual] RuntimeError
+...[manual] RuntimeError
+[manual] RuntimeError
+[manual] RuntimeError
+[manual] RuntimeError
+[manual] RuntimeError
+.....usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: 등록되지 않은 실험입니다: unknown
+usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: 등록되지 않은 모델입니다: unknown
+usage: generation [-h] [--experiment EXPERIMENT] [--model MODEL] --question
+                  QUESTION
+generation: error: test-experiment 실험에 등록되지 않은 모델입니다: test-alias
+................................................................................................................development:1:case-a:examples_answer_scope_v5 completed
+development:1:case-b:examples_answer_scope_v5 TimeoutError
+development:1:case-c:examples_answer_scope_v5 uncertain
+development:1:case-a:examples_answer_scope_v5 finished
+development:1:case-b:examples_answer_scope_v5 finished
+development:1:case-c:examples_answer_scope_v5 uncertain
+..
+----------------------------------------------------------------------
+Ran 139 tests in 0.269s
+
+OK

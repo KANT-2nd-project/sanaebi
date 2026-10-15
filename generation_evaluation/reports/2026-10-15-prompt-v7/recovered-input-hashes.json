@@ -1,0 +1,11 @@
+{
+  "note": "New hashes measured on recovered files; not a restored original manifest",
+  "sha256": {
+    "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3",
+    "generation/experiments.json": "060f28a092ef16a023dbb03a9d4f375a33f0455d91d69c790e3a5d02c64b6168",
+    "generation/profiles.py": "efd1678c404ee6fda7686c3c5c23bc20be18dbad1db493e1e386166479e7d4aa",
+    "generation_evaluation/experiments/prompt-v7-20261015/development.json": "467602a730696c11d54836b2f0f98606c71f9054194850a2392534b95b99aaf0",
+    "generation_evaluation/experiments/prompt-v7-20261015/selection.json": "9d35e4906a1f85030fb0473883ac146909a60b62159e1b9780f446a157b59152",
+    "snapshot_sha256": "1cb0891c174267a2ae7b450a9654e40309eaaab7656e8c2ca0cec2e71bd26e72"
+  }
+}

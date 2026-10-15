@@ -1,0 +1,70 @@
+.....P01:A:1 refusal
+P01:B:1 truncated
+P01:C:1 parse_error
+P01:C:2 completed
+P01:B:2 completed
+P01:A:2 completed
+P02:B:1 completed
+P02:C:1 completed
+P02:A:1 completed
+P02:A:2 completed
+P02:C:2 completed
+P02:B:2 completed
+P03:C:1 completed
+P03:A:1 completed
+P03:B:1 completed
+P03:B:2 completed
+P03:A:2 completed
+P03:C:2 completed
+P04:A:1 completed
+P04:B:1 completed
+P04:C:1 completed
+P04:C:2 completed
+P04:B:2 completed
+P04:A:2 completed
+.P01:A:1 timeout
+P01:B:1 execution_error
+P01:C:1 completed
+P01:C:2 completed
+P01:B:2 completed
+P01:A:2 completed
+P02:B:1 completed
+P02:C:1 completed
+P02:A:1 completed
+P02:A:2 completed
+P02:C:2 completed
+P02:B:2 completed
+P03:C:1 completed
+P03:A:1 completed
+P03:B:1 completed
+P03:B:2 completed
+P03:A:2 completed
+P03:C:2 completed
+P04:A:1 completed
+P04:B:1 completed
+P04:C:1 completed
+P04:C:2 completed
+P04:B:2 completed
+P04:A:2 completed
+...[1/2] Q1
+..[1/1] Q1
+.usage: generation_evaluation [-h] [--experiment EXPERIMENT] [--model MODEL]
+                             [--limit LIMIT] --output OUTPUT
+generation_evaluation: error: --limit은 양의 정수여야 합니다.
+.[1/1] Q1
+.[1/2] Q1
+[Q2] RuntimeError
+[2/2] Q2
+....................................................................................[case-build] ValueError
+...[case-error] RuntimeError
+........................................................usage: python3 -m unittest [-h] --phase {development,holdout} [--cases CASES]
+                           [--source SOURCE] --model MODEL --artifact-root
+                           ARTIFACT_ROOT [--cpu-cores CPU_CORES]
+python3 -m unittest: error: Phase already started; preserve its artifacts and use a new root for development only
+................................
+----------------------------------------------------------------------
+Ran 189 tests in 8.739s
+
+OK
+{"result": "/tmp/tmphri3dwt3/out/development.json", "selected_config": {"contextual": false, "expand_adjacent": false, "hybrid_search": false}}
+{"result": "/tmp/tmphri3dwt3/out/holdout.json", "selected_config": {"contextual": false, "expand_adjacent": false, "hybrid_search": false}}

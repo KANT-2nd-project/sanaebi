@@ -163,3 +163,5 @@ GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판�
 ## 분류 보조 정보 후보 — 미채택
 
 `advisory.py`는 명시적 ClassificationContext를 받는 순수 실험 조합 함수다. 현재 답변기·CLI에는 연결하지 않았다. 라벨 없음·분류 실패·client 출처는 기존 프롬프트로 정확히 복귀한다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
+
+v7 가독성·완전성 후보는 [108회 비교](../generation_evaluation/reports/2026-10-15-prompt-v7/README.md) 후 기본값으로 채택하지 않았다. v5를 유지하고 후보는 명시적 실험용으로 남긴다. 원자료 복구 한계와 별도 RAG 평가와의 차이는 보고서를 따른다.
