@@ -1,0 +1,22 @@
+{
+  "baseline": "examples_answer_scope_v1",
+  "candidate": "examples_answer_scope_v3",
+  "focus": [
+    "G02",
+    "G11",
+    "G04",
+    "DEV-FU-09",
+    "DEV-FU-07",
+    "H02"
+  ],
+  "focus_repeats_each": 2,
+  "strict_if": "Any v3 prompt_json format failure; freeze prompt and repeat same focus cases twice with only output_mode changed",
+  "focus_gate": "All candidate focus responses must preserve required claims and no IDs, unsupported doubts, or format errors. Compare baseline but do not exempt a known missing required field. Do not continue broad evaluation on semantic failure.",
+  "broad": "existing dev12 both baseline and selected candidate once; remaining G01/G03/G05/G06/G07/G08/G10/G12 selected candidate twice; four expression variants candidate twice",
+  "broad_gate": "No new missing required claims against baseline; all targeted display, grounding, conditions and conflict checks pass; no candidate JSON failures. G09 opinion-generation feature is excluded before execution, not dropped after seeing results.",
+  "api_calls": 2,
+  "max_calls": 90,
+  "max_estimated_dollars": 5,
+  "review": "Implementing AI nonblind semantic review; known synthetic/regression cases, not independent holdout",
+  "policy": "No retries, same-prompt repeats predeclared, no output repair, no changing fixture or prompt after output inspection"
+}
