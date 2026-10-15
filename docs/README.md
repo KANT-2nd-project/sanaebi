@@ -10,6 +10,8 @@ flowchart TD
     R --> H["근거: 실험 보고서·과거 기록"]
 ```
 
+**[사내비 바로 사용하기](https://sanaebi.29232923.xyz/chat)** — 공용 문서·자정 초기화 등 이용 조건은 [배포 안내](../deployment/README.md#공개-시연-제한)를 따른다.
+
 ## 이해하기
 
 | 문서 | 읽는 목적 |
@@ -23,7 +25,7 @@ flowchart TD
 
 | 문서 | 작업 |
 |---|---|
-| [프로젝트 빠른 시작](../README.md#빠른-시작) | 설치·통합 실행 |
+| [로컬 개발 시작](../README.md#로컬-개발-시작) | 설치·통합 실행 |
 | [서버 준비·API 확인](../app/README.md#실행-준비와-api-확인) | 모델·문서·제공자 준비, HTTP 확인과 선택적 답변 요청 |
 | [분류기 독립 확인](../app/classification/README.md#분류기만-직접-확인하기) | HTTP·문서 저장소 없이 로컬 저장본 추론 |
 | [분류 학습](../classification/README.md) | 데이터·그룹 분할·TF-IDF·Transformer 학습과 명시적 평가 |

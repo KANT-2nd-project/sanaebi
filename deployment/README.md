@@ -1,8 +1,12 @@
-# 공개 시연 배포와 CI/CD
+# 공개 데모 운영과 CI/CD
 
-`sanaebi.29232923.xyz`의 기존 nginx·HTTPS에서 정적 웹과 `/api/`를 함께 제공한다. API는 ARM64 CPU Docker 컨테이너, Uvicorn 1 worker이며 `127.0.0.1:18000`만 수신한다. 웹에 필요한 질문·문서 API만 공개한다. 기존 로컬 실행은 [로컬 nginx](local-nginx.md)를 따른다.
+**[사내비 바로 사용하기](https://sanaebi.29232923.xyz/chat)**
 
-구성 파일과 실제 운영 검증 상태는 구분한다. 실행 결과는 [작업 기록](../docs/worklogs/2026-10-15-deployment-cicd.md)을 따른다.
+상시 운영하는 공개 데모입니다. 공용 가상 문서를 사용하며 누구나 익명으로 문서를 편집·게시할 수 있습니다. 문서는 매일 한국시간 자정에 기준 가상 문서로 초기화됩니다. 실제 사내 자료나 개인정보는 입력하지 마세요.
+
+공개 도메인의 nginx·HTTPS에서 정적 웹과 `/api/`를 함께 제공한다. API는 ARM64 CPU Docker 컨테이너, Uvicorn 1 worker이며 `127.0.0.1:18000`만 수신한다. 웹에 필요한 질문·문서 API만 공개한다. 기존 로컬 실행은 [로컬 nginx](local-nginx.md)를 따른다.
+
+구성 파일과 실제 운영 검증 상태는 구분한다. 최초 배포는 [초기 기록](../docs/worklogs/2026-10-15-deployment-cicd.md), 후속 배포와 실제 shadow + full 설정 확인은 [main 배포 기록](../docs/worklogs/2026-10-15-main-deploy-doc-sync.md)을 따른다. 배포 성공은 전체 답변 품질 승인이나 무중단 운영 보장을 뜻하지 않는다.
 
 ## 모델과 영속 데이터
 
