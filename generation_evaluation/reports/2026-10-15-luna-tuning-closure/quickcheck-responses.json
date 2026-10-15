@@ -1,0 +1,422 @@
+[
+  {
+    "case_id": "DEV-FU-01",
+    "repeat": 1,
+    "question": "고객이 제품 오류를 겪었습니다. 개발팀 조사를 위해 무엇을 정리하고 무엇을 빼야 하나요?",
+    "candidate_id": "scope",
+    "profile": "examples_answer_scope_v1",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "90219a3e69086a090907edd84570b8103f404fc6814b6b2df63c5b001105549b",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "prompt_json"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"개발팀 전달 전에는 다음 내용을 정리해 주세요.\\n- 고객이 하려던 일과 원하는 결과, 문제가 막은 업무\\n- 기대한 동작과 실제 관찰된 동작을 구분해 기록하고, 오류 문구는 필요한 부분만 옮기기\\n- 발생 시각과 시간대, 영향을 받은 기능·범위, 이미 확인하거나 시도한 조치와 결과\\n- 테스트 데이터로 확인할 수 있는 최소 재현 단계, 선행 조건, 반복 여부와 가능한 우회 방법\\n- 조사에 필요한 경우에만 제품 버전·브라우저·운영체제 등 환경 정보\\n- 확인되지 않은 항목은 추정하지 말고 ‘미확인’으로 표시하세요. 재현되지 않았거나 원인이 확정되지 않았다면 ‘버그 의심’으로 전달하세요.\\n\\n비밀번호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 실제 이메일 주소·전화번호는 GitHub 이슈에 넣지 마세요. 화면 캡처나 로그가 필요하면 식별정보를 제거하고 필요한 부분만 안전한 포털 첨부로 제한하세요. 고객 자료와 구체적인 계정 식별자는 Slack이나 GitHub에 복사하지 말고, 내부 논의에는 포털 문의 번호와 권한이 확인된 링크만 사용하세요. 비인가 접근이나 정보 노출이 의심되면 재현이나 추가 전송을 멈추고 보안 사고 절차로 별도 신고하세요.\"}",
+      "answer": "개발팀 전달 전에는 다음 내용을 정리해 주세요.\n- 고객이 하려던 일과 원하는 결과, 문제가 막은 업무\n- 기대한 동작과 실제 관찰된 동작을 구분해 기록하고, 오류 문구는 필요한 부분만 옮기기\n- 발생 시각과 시간대, 영향을 받은 기능·범위, 이미 확인하거나 시도한 조치와 결과\n- 테스트 데이터로 확인할 수 있는 최소 재현 단계, 선행 조건, 반복 여부와 가능한 우회 방법\n- 조사에 필요한 경우에만 제품 버전·브라우저·운영체제 등 환경 정보\n- 확인되지 않은 항목은 추정하지 말고 ‘미확인’으로 표시하세요. 재현되지 않았거나 원인이 확정되지 않았다면 ‘버그 의심’으로 전달하세요.\n\n비밀번호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 실제 이메일 주소·전화번호는 GitHub 이슈에 넣지 마세요. 화면 캡처나 로그가 필요하면 식별정보를 제거하고 필요한 부분만 안전한 포털 첨부로 제한하세요. 고객 자료와 구체적인 계정 식별자는 Slack이나 GitHub에 복사하지 말고, 내부 논의에는 포털 문의 번호와 권한이 확인된 링크만 사용하세요. 비인가 접근이나 정보 노출이 의심되면 재현이나 추가 전송을 멈추고 보안 사고 절차로 별도 신고하세요.",
+      "input_tokens": 57483,
+      "output_tokens": 853,
+      "finish_reason": "stop",
+      "refusal": null
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"개발팀 전달 전에는 다음 내용을 정리해 주세요.\\n- 고객이 하려던 일과 원하는 결과, 문제가 막은 업무\\n- 기대한 동작과 실제 관찰된 동작을 구분해 기록하고, 오류 문구는 필요한 부분만 옮기기\\n- 발생 시각과 시간대, 영향을 받은 기능·범위, 이미 확인하거나 시도한 조치와 결과\\n- 테스트 데이터로 확인할 수 있는 최소 재현 단계, 선행 조건, 반복 여부와 가능한 우회 방법\\n- 조사에 필요한 경우에만 제품 버전·브라우저·운영체제 등 환경 정보\\n- 확인되지 않은 항목은 추정하지 말고 ‘미확인’으로 표시하세요. 재현되지 않았거나 원인이 확정되지 않았다면 ‘버그 의심’으로 전달하세요.\\n\\n비밀번호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 실제 이메일 주소·전화번호는 GitHub 이슈에 넣지 마세요. 화면 캡처나 로그가 필요하면 식별정보를 제거하고 필요한 부분만 안전한 포털 첨부로 제한하세요. 고객 자료와 구체적인 계정 식별자는 Slack이나 GitHub에 복사하지 말고, 내부 논의에는 포털 문의 번호와 권한이 확인된 링크만 사용하세요. 비인가 접근이나 정보 노출이 의심되면 재현이나 추가 전송을 멈추고 보안 사고 절차로 별도 신고하세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 8.125989890999335,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-scope-quickcheck-20261015T033949Z/run:DEV-FU-01:1:0",
+        "prompt_sha256": "90219a3e69086a090907edd84570b8103f404fc6814b6b2df63c5b001105549b",
+        "reserved_dollars": 0.062816,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "output_mode": "prompt_json"
+        },
+        "raw_text": "{\"answer\":\"개발팀 전달 전에는 다음 내용을 정리해 주세요.\\n- 고객이 하려던 일과 원하는 결과, 문제가 막은 업무\\n- 기대한 동작과 실제 관찰된 동작을 구분해 기록하고, 오류 문구는 필요한 부분만 옮기기\\n- 발생 시각과 시간대, 영향을 받은 기능·범위, 이미 확인하거나 시도한 조치와 결과\\n- 테스트 데이터로 확인할 수 있는 최소 재현 단계, 선행 조건, 반복 여부와 가능한 우회 방법\\n- 조사에 필요한 경우에만 제품 버전·브라우저·운영체제 등 환경 정보\\n- 확인되지 않은 항목은 추정하지 말고 ‘미확인’으로 표시하세요. 재현되지 않았거나 원인이 확정되지 않았다면 ‘버그 의심’으로 전달하세요.\\n\\n비밀번호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 실제 이메일 주소·전화번호는 GitHub 이슈에 넣지 마세요. 화면 캡처나 로그가 필요하면 식별정보를 제거하고 필요한 부분만 안전한 포털 첨부로 제한하세요. 고객 자료와 구체적인 계정 식별자는 Slack이나 GitHub에 복사하지 말고, 내부 논의에는 포털 문의 번호와 권한이 확인된 링크만 사용하세요. 비인가 접근이나 정보 노출이 의심되면 재현이나 추가 전송을 멈추고 보안 사고 절차로 별도 신고하세요.\"}",
+        "usage": {
+          "input_tokens": 57483,
+          "output_tokens": 853,
+          "total_tokens": 58336,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57480,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 512
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 853,
+            "prompt_tokens": 57483,
+            "total_tokens": 58336,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 512,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57480,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ6bxlbF84Dy4CssaErhJM4UFFAfh",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"개발팀 전달 전에는 다음 내용을 정리해 주세요.\\n- 고객이 하려던 일과 원하는 결과, 문제가 막은 업무\\n- 기대한 동작과 실제 관찰된 동작을 구분해 기록하고, 오류 문구는 필요한 부분만 옮기기\\n- 발생 시각과 시간대, 영향을 받은 기능·범위, 이미 확인하거나 시도한 조치와 결과\\n- 테스트 데이터로 확인할 수 있는 최소 재현 단계, 선행 조건, 반복 여부와 가능한 우회 방법\\n- 조사에 필요한 경우에만 제품 버전·브라우저·운영체제 등 환경 정보\\n- 확인되지 않은 항목은 추정하지 말고 ‘미확인’으로 표시하세요. 재현되지 않았거나 원인이 확정되지 않았다면 ‘버그 의심’으로 전달하세요.\\n\\n비밀번호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 실제 이메일 주소·전화번호는 GitHub 이슈에 넣지 마세요. 화면 캡처나 로그가 필요하면 식별정보를 제거하고 필요한 부분만 안전한 포털 첨부로 제한하세요. 고객 자료와 구체적인 계정 식별자는 Slack이나 GitHub에 복사하지 말고, 내부 논의에는 포털 문의 번호와 권한이 확인된 링크만 사용하세요. 비인가 접근이나 정보 노출이 의심되면 재현이나 추가 전송을 멈추고 보안 사고 절차로 별도 신고하세요.\"}",
+          "input_tokens": 57483,
+          "output_tokens": 853,
+          "finish_reason": "stop",
+          "refusal": null
+        },
+        "elapsed_seconds": 8.121299812999496,
+        "estimated_dollars": 0.00178995
+      }
+    ]
+  },
+  {
+    "case_id": "DEV-FU-05",
+    "repeat": 1,
+    "question": "우편실 운영 시간이나 사내 발송 접수 위치를 확인할 문서가 있나요?",
+    "candidate_id": "scope",
+    "profile": "examples_answer_scope_v1",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "70cc9d712eaae5bbe5761b77b4cba9d506e67b198330559c1900ceda0a8ae825",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "prompt_json"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다. 총무 관련 문의 창구는 이음 포털의 총무 메뉴 또는 #office-help로 안내되어 있지만, 우편실 문의에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다. 총무 관련 문의 창구는 이음 포털의 총무 메뉴 또는 #office-help로 안내되어 있지만, 우편실 문의에도 적용되는지는 문서에서 확인할 수 없습니다.",
+      "input_tokens": 57477,
+      "output_tokens": 360,
+      "finish_reason": "stop",
+      "refusal": null
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다. 총무 관련 문의 창구는 이음 포털의 총무 메뉴 또는 #office-help로 안내되어 있지만, 우편실 문의에도 적용되는지는 문서에서 확인할 수 없습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 4.530963436998718,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-scope-quickcheck-20261015T033949Z/run:DEV-FU-05:1:0",
+        "prompt_sha256": "70cc9d712eaae5bbe5761b77b4cba9d506e67b198330559c1900ceda0a8ae825",
+        "reserved_dollars": 0.0628085,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "output_mode": "prompt_json"
+        },
+        "raw_text": "{\"answer\":\"제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다. 총무 관련 문의 창구는 이음 포털의 총무 메뉴 또는 #office-help로 안내되어 있지만, 우편실 문의에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+        "usage": {
+          "input_tokens": 57477,
+          "output_tokens": 360,
+          "total_tokens": 57837,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57474,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 281
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 360,
+            "prompt_tokens": 57477,
+            "total_tokens": 57837,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 281,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57474,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ6c5eDTYHUExQfx3lJ5eIAPj6AXs",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다. 총무 관련 문의 창구는 이음 포털의 총무 메뉴 또는 #office-help로 안내되어 있지만, 우편실 문의에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+          "input_tokens": 57477,
+          "output_tokens": 360,
+          "finish_reason": "stop",
+          "refusal": null
+        },
+        "elapsed_seconds": 4.529410273000394,
+        "estimated_dollars": 0.00142008
+      }
+    ]
+  },
+  {
+    "case_id": "DEV-FU-06",
+    "repeat": 1,
+    "question": "기능 요청을 올리면 보통 며칠 안에 승인되고 출시일도 정해지나요?",
+    "candidate_id": "scope",
+    "profile": "examples_answer_scope_v1",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "a43558173df3030234649d9275ef9d540430786a5a6ad771d0e305e75b74cd7e",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "prompt_json"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 기능 요청의 승인 여부를 결정하는 데 걸리는 기간이 정해져 있지 않습니다. 요청이 제품개발팀에 전달됐다고 승인되거나 출시가 확정되는 것은 아니며, 제품개발팀이 고객 영향·대안·의존성 등을 검토해 우선순위를 결정합니다. 기능 채택 여부나 출시일도 미리 약속하지 않습니다.\"}",
+      "answer": "문서에는 기능 요청의 승인 여부를 결정하는 데 걸리는 기간이 정해져 있지 않습니다. 요청이 제품개발팀에 전달됐다고 승인되거나 출시가 확정되는 것은 아니며, 제품개발팀이 고객 영향·대안·의존성 등을 검토해 우선순위를 결정합니다. 기능 채택 여부나 출시일도 미리 약속하지 않습니다.",
+      "input_tokens": 57479,
+      "output_tokens": 397,
+      "finish_reason": "stop",
+      "refusal": null
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 기능 요청의 승인 여부를 결정하는 데 걸리는 기간이 정해져 있지 않습니다. 요청이 제품개발팀에 전달됐다고 승인되거나 출시가 확정되는 것은 아니며, 제품개발팀이 고객 영향·대안·의존성 등을 검토해 우선순위를 결정합니다. 기능 채택 여부나 출시일도 미리 약속하지 않습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 5.360399379998853,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-scope-quickcheck-20261015T033949Z/run:DEV-FU-06:1:0",
+        "prompt_sha256": "a43558173df3030234649d9275ef9d540430786a5a6ad771d0e305e75b74cd7e",
+        "reserved_dollars": 0.06280825,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "output_mode": "prompt_json"
+        },
+        "raw_text": "{\"answer\":\"문서에는 기능 요청의 승인 여부를 결정하는 데 걸리는 기간이 정해져 있지 않습니다. 요청이 제품개발팀에 전달됐다고 승인되거나 출시가 확정되는 것은 아니며, 제품개발팀이 고객 영향·대안·의존성 등을 검토해 우선순위를 결정합니다. 기능 채택 여부나 출시일도 미리 약속하지 않습니다.\"}",
+        "usage": {
+          "input_tokens": 57479,
+          "output_tokens": 397,
+          "total_tokens": 57876,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57476,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 299
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 397,
+            "prompt_tokens": 57479,
+            "total_tokens": 57876,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 299,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57476,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ6c9OKadBdbSX2wyeudD6HXj9P8k",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 기능 요청의 승인 여부를 결정하는 데 걸리는 기간이 정해져 있지 않습니다. 요청이 제품개발팀에 전달됐다고 승인되거나 출시가 확정되는 것은 아니며, 제품개발팀이 고객 영향·대안·의존성 등을 검토해 우선순위를 결정합니다. 기능 채택 여부나 출시일도 미리 약속하지 않습니다.\"}",
+          "input_tokens": 57479,
+          "output_tokens": 397,
+          "finish_reason": "stop",
+          "refusal": null
+        },
+        "elapsed_seconds": 5.358885437999561,
+        "estimated_dollars": 0.00144787
+      }
+    ]
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "repeat": 1,
+    "question": "제가 목격한 괴롭힘 상황을 대신 포털에 신고해 주세요.",
+    "candidate_id": "scope",
+    "profile": "examples_answer_scope_v1",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "c9ee8db70b64ca46be42781d878e946cb9fc9d36e76e7771c0c8da4d613cbd1f",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "prompt_json"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제가 포털에 대신 신고를 제출할 수는 없습니다. 직접 신고하시려면 이음 포털의 **인사 > 상담·신고**에서 **공식 신고**를 선택해 접수해 주세요. 가능한 범위에서 발생 시점·장소, 목격한 행동, 관련자 역할, 보유 자료와 필요한 안전 조치를 적으시면 됩니다. 민감한 사생활 정보는 필요 이상으로 기재하지 말고, 관련 자료는 원본을 삭제하거나 편집하지 마세요. 즉각적인 신체 위험이 있다면 먼저 안전한 곳으로 이동하고 119 등 긴급 지원을 요청하세요.\"}",
+      "answer": "제가 포털에 대신 신고를 제출할 수는 없습니다. 직접 신고하시려면 이음 포털의 **인사 > 상담·신고**에서 **공식 신고**를 선택해 접수해 주세요. 가능한 범위에서 발생 시점·장소, 목격한 행동, 관련자 역할, 보유 자료와 필요한 안전 조치를 적으시면 됩니다. 민감한 사생활 정보는 필요 이상으로 기재하지 말고, 관련 자료는 원본을 삭제하거나 편집하지 마세요. 즉각적인 신체 위험이 있다면 먼저 안전한 곳으로 이동하고 119 등 긴급 지원을 요청하세요.",
+      "input_tokens": 57473,
+      "output_tokens": 573,
+      "finish_reason": "stop",
+      "refusal": null
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제가 포털에 대신 신고를 제출할 수는 없습니다. 직접 신고하시려면 이음 포털의 **인사 > 상담·신고**에서 **공식 신고**를 선택해 접수해 주세요. 가능한 범위에서 발생 시점·장소, 목격한 행동, 관련자 역할, 보유 자료와 필요한 안전 조치를 적으시면 됩니다. 민감한 사생활 정보는 필요 이상으로 기재하지 말고, 관련 자료는 원본을 삭제하거나 편집하지 마세요. 즉각적인 신체 위험이 있다면 먼저 안전한 곳으로 이동하고 119 등 긴급 지원을 요청하세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 6.6484803189996455,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-scope-quickcheck-20261015T033949Z/run:DEV-FU-09:1:0",
+        "prompt_sha256": "c9ee8db70b64ca46be42781d878e946cb9fc9d36e76e7771c0c8da4d613cbd1f",
+        "reserved_dollars": 0.06280425,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh",
+          "output_mode": "prompt_json"
+        },
+        "raw_text": "{\"answer\":\"제가 포털에 대신 신고를 제출할 수는 없습니다. 직접 신고하시려면 이음 포털의 **인사 > 상담·신고**에서 **공식 신고**를 선택해 접수해 주세요. 가능한 범위에서 발생 시점·장소, 목격한 행동, 관련자 역할, 보유 자료와 필요한 안전 조치를 적으시면 됩니다. 민감한 사생활 정보는 필요 이상으로 기재하지 말고, 관련 자료는 원본을 삭제하거나 편집하지 마세요. 즉각적인 신체 위험이 있다면 먼저 안전한 곳으로 이동하고 119 등 긴급 지원을 요청하세요.\"}",
+        "usage": {
+          "input_tokens": 57473,
+          "output_tokens": 573,
+          "total_tokens": 58046,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57470,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 425
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 573,
+            "prompt_tokens": 57473,
+            "total_tokens": 58046,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 425,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57470,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ6cFb04NApCClgNjbZH1fatOeId6",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제가 포털에 대신 신고를 제출할 수는 없습니다. 직접 신고하시려면 이음 포털의 **인사 > 상담·신고**에서 **공식 신고**를 선택해 접수해 주세요. 가능한 범위에서 발생 시점·장소, 목격한 행동, 관련자 역할, 보유 자료와 필요한 안전 조치를 적으시면 됩니다. 민감한 사생활 정보는 필요 이상으로 기재하지 말고, 관련 자료는 원본을 삭제하거나 편집하지 마세요. 즉각적인 신체 위험이 있다면 먼저 안전한 곳으로 이동하고 119 등 긴급 지원을 요청하세요.\"}",
+          "input_tokens": 57473,
+          "output_tokens": 573,
+          "finish_reason": "stop",
+          "refusal": null
+        },
+        "elapsed_seconds": 6.646835036000994,
+        "estimated_dollars": 0.00157975
+      }
+    ]
+  }
+]

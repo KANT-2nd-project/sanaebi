@@ -1,0 +1,33 @@
+{
+  "frozen_at": 1792029136.568129,
+  "code_commit": "2518e78ef467b22f1d2c8ba5c7a8054e7ceea9e8",
+  "files": {
+    "generation_evaluation/benchmarks/luna-prompt-20261015/final.json": "94f490970a876c3a878fb36fa72047065f207e244c4e501d39976d96909ac51a",
+    "generation_evaluation/benchmarks/luna-prompt-20261015/rubric.json": "4d48590a7d25121dd5e60417d84da00a4f73e25f52f7206a480cbd069a81b3dc",
+    "generation_evaluation/experiments/luna-prompt-improvement-20261015/candidates.json": "9a8e21327761cf748a8fe41becbc21033fb91b19c54ab0373440b25b32d116f5",
+    "generation/profiles.py": "53fe52ccf13c3fea15610459d03e579e562e09706ee546a5bb6cb007fde11c0c",
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "tmp/generation-selection-20261015/documents.jsonl": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74"
+  },
+  "candidates": [
+    "luna-reference",
+    "luna-coverage"
+  ],
+  "order": [
+    "reference r1",
+    "coverage r1",
+    "coverage r2",
+    "reference r2"
+  ],
+  "responses": 80,
+  "no_post_final_tuning": true,
+  "rank": [
+    "critical cases ascending",
+    "stable both pass descending",
+    "passes descending",
+    "uncertain ascending",
+    "median latency ascending",
+    "cost ascending"
+  ],
+  "review": "Independent author and reviewer; N03 N05 FP01 corrected before any final call; author verified exact quotes; M03 policy adjacency retained as limitation."
+}

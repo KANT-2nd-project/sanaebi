@@ -1,0 +1,14 @@
+{
+  "environment": {
+    "timestamp": "2026-10-14T23:32:18Z",
+    "git_head": "0b6c990f5eca7d24ad8210ced0a1f9b6b1ddc8cd",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU, 8151 MiB, 592.01",
+    "runtime_profile": "scripts/serve_generation_ollama.sh; dedicated loopback11435; GPU37/37;KV3888MiB;FA;q4_0;parallel1;fit256",
+    "budget_start": "first reservation; setup not included",
+    "review": "independent AI review, no human approval"
+  },
+  "final_qwen_decode_tps_median": 18.155875231624915,
+  "final_qwen_decode_tps_min": 17.170236394382286,
+  "final_qwen_decode_tps_max": 18.84481296523132,
+  "note": "Decode TPS excludes load/prefill. Full request latency includes client initialization and stages; do not mix with old run_case timing."
+}

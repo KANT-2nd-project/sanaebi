@@ -1,0 +1,21 @@
+{
+  "status": "final_user_selection_tuning_closed",
+  "selected_model": "gpt-6-luna",
+  "selected_profile": "examples_answer_scope_v1",
+  "output_mode": "prompt_json",
+  "decision_authority": "explicit user choice after seeing known omissions and the four-question exploratory run",
+  "historical_gate_result": "scope excluded under frozen regression gate; unchanged",
+  "selection_is_gate_pass": false,
+  "service_quality_approved": false,
+  "runtime_defaults_changed": false,
+  "further_prompt_experiments_planned": false,
+  "unexecuted_followup_holdout20": true,
+  "old_incomplete_regression": "closed without further execution or fabricated judgments",
+  "system_prompt_sha256": "22bef6d89333956d7376fc6fd2a5024540d4abed358dbfdaf57dd0f793f756e6",
+  "quickcheck_calls": 4,
+  "quickcheck_verdicts": {
+    "pass": 2,
+    "partial": 2
+  },
+  "decision_note": "Current adoption supersedes prior recommendation, not the historical scores or gate verdict."
+}

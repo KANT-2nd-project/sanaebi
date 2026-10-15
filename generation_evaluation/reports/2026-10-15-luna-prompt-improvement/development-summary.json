@@ -1,0 +1,460 @@
+{
+  "denominator": {
+    "attempt_count": 48,
+    "judgment_count": 48,
+    "candidate_count": 4,
+    "case_count": 8,
+    "all_attempts_retained": true
+  },
+  "final_evaluation": false,
+  "candidates": [
+    {
+      "candidate_id": "luna-coverage",
+      "case_count": 8,
+      "response_count": 16,
+      "verdict_counts": {
+        "pass": 13,
+        "partial": 3,
+        "fail": 0,
+        "uncertain": 0
+      },
+      "pass_count": 13,
+      "partial_count": 3,
+      "fail_count": 0,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 6,
+      "repeat_disagreement_case_count": 1,
+      "format_fail_count": 0,
+      "median_elapsed_seconds": 10.631022418499924,
+      "max_elapsed_seconds": 17.262248461000127,
+      "total_input_tokens": 919348,
+      "total_output_tokens": 10321,
+      "total_reasoning_tokens": 8409,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.13020398999999996,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 3,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 3,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 13,
+          "fail": 3,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 2,
+          "fail": 0,
+          "na": 14,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 0,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 16
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        -6,
+        -13,
+        0,
+        10.631022418499924,
+        0,
+        0.13020398999999996
+      ],
+      "rank": 1
+    },
+    {
+      "candidate_id": "luna-reference",
+      "case_count": 8,
+      "response_count": 16,
+      "verdict_counts": {
+        "pass": 11,
+        "partial": 5,
+        "fail": 0,
+        "uncertain": 0
+      },
+      "pass_count": 11,
+      "partial_count": 5,
+      "fail_count": 0,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 5,
+      "repeat_disagreement_case_count": 1,
+      "format_fail_count": 0,
+      "median_elapsed_seconds": 8.517641106001065,
+      "max_elapsed_seconds": 19.699675985000795,
+      "total_input_tokens": 917348,
+      "total_output_tokens": 9520,
+      "total_reasoning_tokens": 7791,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.1309851,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 5,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 5,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 11,
+          "fail": 5,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 3,
+          "fail": 0,
+          "na": 13,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 16,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 0,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 16
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        -5,
+        -11,
+        0,
+        8.517641106001065,
+        0,
+        0.1309851
+      ],
+      "rank": 2
+    },
+    {
+      "candidate_id": "luna-conditions",
+      "case_count": 8,
+      "response_count": 8,
+      "verdict_counts": {
+        "pass": 6,
+        "partial": 2,
+        "fail": 0,
+        "uncertain": 0
+      },
+      "pass_count": 6,
+      "partial_count": 2,
+      "fail_count": 0,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 0,
+      "repeat_disagreement_case_count": 0,
+      "format_fail_count": 0,
+      "median_elapsed_seconds": 10.569694435998827,
+      "max_elapsed_seconds": 21.26099269900078,
+      "total_input_tokens": 459618,
+      "total_output_tokens": 4415,
+      "total_reasoning_tokens": 3560,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.11821455,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 2,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 2,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 6,
+          "fail": 2,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 1,
+          "fail": 0,
+          "na": 7,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 0,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 8
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        0,
+        -6,
+        0,
+        10.569694435998827,
+        0,
+        0.11821455
+      ],
+      "rank": 3
+    },
+    {
+      "candidate_id": "luna-json",
+      "case_count": 8,
+      "response_count": 8,
+      "verdict_counts": {
+        "pass": 5,
+        "partial": 3,
+        "fail": 0,
+        "uncertain": 0
+      },
+      "pass_count": 5,
+      "partial_count": 3,
+      "fail_count": 0,
+      "uncertain_count": 0,
+      "critical_case_count": 0,
+      "critical_response_count": 0,
+      "stable_both_pass_case_count": 0,
+      "repeat_disagreement_case_count": 0,
+      "format_fail_count": 0,
+      "median_elapsed_seconds": 7.691762759000994,
+      "max_elapsed_seconds": 11.974985759999981,
+      "total_input_tokens": 458914,
+      "total_output_tokens": 4061,
+      "total_reasoning_tokens": 3278,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "unknown_reasoning_token_calls": 0,
+      "estimated_cost_dollars": 0.11777305,
+      "estimated_cost_unknown_count": 0,
+      "issue_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 3,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "issue_response_counts": {
+        "critical_error": 0,
+        "material_error": 0,
+        "required_omission": 3,
+        "over_abstention": 0,
+        "format_error": 0,
+        "style_relevance": 0
+      },
+      "dimension_counts": {
+        "format": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "grounding": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "scope_conditions": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "completeness": {
+          "pass": 5,
+          "fail": 3,
+          "na": 0,
+          "uncertain": 0
+        },
+        "abstention": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "action_boundary": {
+          "pass": 1,
+          "fail": 0,
+          "na": 7,
+          "uncertain": 0
+        },
+        "style": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        },
+        "relevance": {
+          "pass": 8,
+          "fail": 0,
+          "na": 0,
+          "uncertain": 0
+        }
+      },
+      "generation_failure_count": 0,
+      "timeout_count": 0,
+      "result_status_counts": {
+        "completed": 8
+      },
+      "default_promotable": false,
+      "rank_key": [
+        0,
+        0,
+        -5,
+        0,
+        7.691762759000994,
+        0,
+        0.11777305
+      ],
+      "rank": 4
+    }
+  ]
+}

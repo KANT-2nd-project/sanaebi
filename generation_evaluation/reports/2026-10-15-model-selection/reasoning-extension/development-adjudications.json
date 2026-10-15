@@ -1,0 +1,129 @@
+[
+  {
+    "before": {
+      "blind_id": "be8c841e501e",
+      "case_id": "POS03",
+      "verdict": "fail",
+      "severity": "critical",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed as one valid JSON object with only a non-empty string answer; format_pass=true.",
+          "reason": "Response contract is satisfied."
+        },
+        "grounding": {
+          "status": "fail",
+          "evidence": "응답은 질문의 \"첫 로그인 전에\"에 \"네\"라고 답한 뒤 \"첫 로그인 과정에서 다중 인증 등록을 완료해야\"라고 합니다. ieum-026: \"계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다.\" ieum-057: \"첫 로그인 | 입사자·IT운영팀 | 다중 인증 등록을 완료하고, 등록 전에는 업무 시스템·자료에 접근하지 않음\"",
+          "reason": "문두의 긍정이 별도 사전 등록을 단정하는 의미로 읽혀, 원문의 서비스 요구 시 공식 로그인 화면에서 등록한다는 조건·순서를 뒤집습니다."
+        },
+        "scope_conditions": {
+          "status": "fail",
+          "evidence": "응답: \"네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 하며\". ieum-026은 \"계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다\"고 조건을 둡니다.",
+          "reason": "질문에 포함된 첫 로그인 이전 완료라는 조건을 긍정해, 등록이 요구될 때 첫 로그인 흐름에서 마치는 순서를 흐립니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 \"첫 로그인 과정에서 다중 인증 등록을 완료\"한다고만 하고 서비스가 등록을 요구하는 조건이나 공식 로그인 화면을 언급하지 않습니다. ieum-026: \"계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다.\"",
+          "reason": "첫 필수 주장에 포함된 조건과 공식 등록 경로가 빠졌고, 앞의 ‘네’는 질문의 사전 등록 전제를 승인합니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 실제 인증 상태를 조회했다고 주장하지 않습니다.",
+          "reason": "개인 계정 상태에 대해 근거 없는 조회 주장을 하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답: \"동료 계정을 대신 사용해서는 안 됩니다.\" ieum-026: \"인증을 우회하거나 다른 사람의 계정을 빌리는 방법은 복구 수단이 아니다.\"",
+          "reason": "동료 계정 사용을 허용하지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "응답이 한국어 존댓말이며 비난 표현이 없습니다.",
+          "reason": "표현 방식은 적절합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "응답은 MFA 등록과 동료 계정 사용에 답합니다.",
+          "reason": "질문과 관련됩니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "critical_error",
+          "claim": "첫 로그인 이전에 별도 MFA 등록을 완료해야 한다고 단정",
+          "document_id": "ieum-026; ieum-057",
+          "reason": "응답의 \"네\"가 질문의 사전 등록 시점을 긍정합니다. 원문은 서비스가 등록을 요구할 때 공식 로그인 화면에서 등록하며, 온보딩 체크리스트는 첫 로그인 시점으로 정합니다."
+        },
+        {
+          "kind": "required_omission",
+          "claim": "서비스가 요구할 때 공식 로그인 화면에서 MFA 등록",
+          "document_id": "ieum-026",
+          "reason": "응답은 서비스의 요구 조건과 공식 화면을 생략했습니다."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "be8c841e501e",
+      "case_id": "POS03",
+      "verdict": "uncertain",
+      "severity": "material",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed as one valid JSON object with only a non-empty string answer; format_pass=true.",
+          "reason": "Response contract is satisfied."
+        },
+        "grounding": {
+          "status": "uncertain",
+          "evidence": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 / ieum-026: 계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다.",
+          "reason": "첫 긍정과 로그인 과정이라는 구체 시점이 엇갈려 읽힌다. 기존 동일 의미 응답과 같은 불확실 판정이며 명확한 사전등록 의무 단정으로 확대하지 않는다."
+        },
+        "scope_conditions": {
+          "status": "uncertain",
+          "evidence": "네. 첫 로그인 과정에서 다중 인증 등록을 완료해야 / ieum-026: 계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다.",
+          "reason": "첫 긍정과 로그인 과정이라는 구체 시점이 엇갈려 읽힌다. 기존 동일 의미 응답과 같은 불확실 판정이며 명확한 사전등록 의무 단정으로 확대하지 않는다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 \"첫 로그인 과정에서 다중 인증 등록을 완료\"한다고만 하고 서비스가 등록을 요구하는 조건이나 공식 로그인 화면을 언급하지 않습니다. ieum-026: \"계정이 다중 인증 등록을 요구하면 공식 로그인 화면에서 등록을 마친다.\"",
+          "reason": "첫 필수 주장에 포함된 조건과 공식 등록 경로가 빠졌고, 앞의 ‘네’는 질문의 사전 등록 전제를 승인합니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 실제 인증 상태를 조회했다고 주장하지 않습니다.",
+          "reason": "개인 계정 상태에 대해 근거 없는 조회 주장을 하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답: \"동료 계정을 대신 사용해서는 안 됩니다.\" ieum-026: \"인증을 우회하거나 다른 사람의 계정을 빌리는 방법은 복구 수단이 아니다.\"",
+          "reason": "동료 계정 사용을 허용하지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "응답이 한국어 존댓말이며 비난 표현이 없습니다.",
+          "reason": "표현 방식은 적절합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "응답은 MFA 등록과 동료 계정 사용에 답합니다.",
+          "reason": "질문과 관련됩니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "material_error",
+          "claim": "첫 로그인 이전에 별도 MFA 등록을 완료해야 한다고 단정",
+          "document_id": "ieum-026; ieum-057",
+          "reason": "첫 네와 첫 로그인 과정의 시점 표현이 모호하다. 기존 dev-b3/b6와 의미상 같은 응답에는 같은 불확실 판정을 적용한다."
+        },
+        {
+          "kind": "required_omission",
+          "claim": "서비스가 요구할 때 공식 로그인 화면에서 MFA 등록",
+          "document_id": "ieum-026",
+          "reason": "응답은 서비스의 요구 조건과 공식 화면을 생략했습니다."
+        }
+      ]
+    },
+    "reason": "Maintain preexisting interpretation for semantically equivalent ambiguous affirmation; no required claim changed."
+  }
+]

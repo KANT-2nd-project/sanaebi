@@ -1,0 +1,37 @@
+{
+  "experiment_id": "luna-reference-followup-v1",
+  "status": "candidates_frozen_before_new_dataset_review",
+  "selected_model": "gpt-6-luna",
+  "reference": "reference",
+  "max_calls": 166,
+  "monetary_limit": null,
+  "wall_clock_limit": null,
+  "per_call_timeout_seconds": 180,
+  "no_automatic_retry": true,
+  "candidate_text_source": "tmp/prompt-reference-review-2026-10-15/proposals/minimal-delta.txt",
+  "candidate_config_sha256": "0acd8d065eee7a3373a2b637d0f729a5946d9419edd9e6571fc413b628a70c0f",
+  "preexisting_experiments": "preserved; not resumed",
+  "selection_order": [
+    "critical_error_case_count ascending",
+    "both_repeats_pass descending",
+    "total_pass descending",
+    "uncertain ascending",
+    "median_latency ascending",
+    "cost ascending"
+  ],
+  "development_gate": {
+    "exclude": "increased critical errors, clear regression in mandatory claims or format compared with paired reference",
+    "repeat": "reference and best eligible candidate",
+    "combination": "only if scope and strict each retain value without clear regression",
+    "stop": "no candidate improvement after repeated comparison"
+  },
+  "promotion": {
+    "stable_pass_minimum": 18,
+    "holdout_cases": 20,
+    "critical_errors": 0,
+    "service_defaults_changed": false
+  },
+  "adjudication": "blinded independent AI with source-grounded boundary audit, not human approval",
+  "raw_artifacts": "tmp/luna-reference-followup-v1",
+  "rubric_not_sent_to_model": true
+}

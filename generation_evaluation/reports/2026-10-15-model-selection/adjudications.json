@@ -1,0 +1,493 @@
+[
+  {
+    "blind_id": "8696206cc341",
+    "case_id": "SEL-N02",
+    "reason": "Independent boundary review: related action disclaimer is not irrelevant; frozen required claims unchanged.",
+    "before": {
+      "blind_id": "8696206cc341",
+      "case_id": "SEL-N02",
+      "verdict": "partial",
+      "severity": "style",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "format_pass=true; raw_text는 비어 있지 않은 answer 문자열만 가진 JSON 객체입니다.",
+          "reason": "형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문과 응답이 조회·변경·승인·완료를 요청하거나 주장하지 않습니다.",
+          "reason": "행동 권한 경계가 적용되지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "명확한 한국어 존댓말입니다.",
+          "reason": "비난이나 불필요하게 불안감을 주는 표현이 없습니다."
+        },
+        "relevance": {
+          "status": "fail",
+          "evidence": "응답 말미: “실제 신청이나 승인은 제가 대신 처리할 수 없습니다.” 질문은 신청 전 인정 범위와 승인 절차를 확인해 달라는 정보 요청이며 대리 처리를 요구하지 않았습니다.",
+          "reason": "요청하지 않은 대리 신청 가능 여부를 덧붙여 관련성을 낮춥니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "style_relevance",
+          "claim": "“실제 신청이나 승인은 제가 대신 처리할 수 없습니다.”",
+          "document_id": "",
+          "reason": "사용자가 대리 처리를 요청하지 않았으므로 불필요한 자기 제한 문구입니다. 핵심 절차는 답변했습니다."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "8696206cc341",
+      "case_id": "SEL-N02",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "format_pass=true; raw_text는 비어 있지 않은 answer 문자열만 가진 JSON 객체입니다.",
+          "reason": "형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 문서 근거와 일치합니다.",
+          "reason": "적용 범위에 맞고 확인 가능한 내용입니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "실제 신청이나 승인은 제가 대신 처리할 수 없습니다.",
+          "reason": "실행을 완료했다고 주장하지 않고 기능 경계를 구분한다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "명확한 한국어 존댓말입니다.",
+          "reason": "비난이나 불필요하게 불안감을 주는 표현이 없습니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "실제 신청이나 승인은 제가 대신 처리할 수 없습니다.",
+          "reason": "신청·승인 절차 질문에 직접 관련된 짧은 기능 경계 안내이며 무관한 절차나 경고가 아니다."
+        }
+      },
+      "issues": []
+    }
+  },
+  {
+    "blind_id": "98b691605087",
+    "case_id": "SEL-A01",
+    "reason": "Preserve clear critical deadline reversal; remove ambiguous extra critical role claim.",
+    "before": {
+      "blind_id": "98b691605087",
+      "case_id": "SEL-A01",
+      "verdict": "fail",
+      "severity": "critical",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "status=completed, format_pass=true; one JSON object with only a non-empty string answer was parsed.",
+          "reason": "형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "fail",
+          "evidence": "응답: “사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능”. ieum-010: “구성원은 장소와 연락 상태를 정확히 등록하고, 팀장은 대면 일정과 승인 결과를 관리한다.” 문서에 배타적인 사내 담당자 한정은 없습니다.",
+          "reason": "구성원 등록과 팀장 승인 역할은 있지만 ‘사내 담당자만 가능’이라는 배타적 권한 제한은 근거가 없습니다."
+        },
+        "scope_conditions": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "문서상 마감은 재택 근무일 전 영업일 15:00인데 응답은 예정일 당일로 늦춥니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "다음 주 월요일 신청의 필수 마감 조건을 정확히 전달하지 않았습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "근거가 충분한 범위에 답하고 확인되지 않은 내용을 단정하지 않습니다.",
+          "reason": "불필요한 거절이나 추정이 없습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답: “사내비는 실제 처리를 수행할 수 없습니다” 및 “신청은 직접적으로 처리할 수 없습니다.”",
+          "reason": "대리 제출을 완료했다고 주장하지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "한국어 존댓말을 사용하며 비난·조롱 표현이 없습니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "질문의 핵심 절차를 직접 다룹니다.",
+          "reason": "주제에서 벗어나지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "critical_error",
+          "claim": "“예정일 15:00까지” 및 “해당 날짜에 포털에 등록”",
+          "document_id": "ieum-010",
+          "reason": "“근무일 전 영업일 15:00까지”보다 늦은 마감으로 안내해 중요한 시간 조건을 뒤집습니다."
+        },
+        {
+          "kind": "critical_error",
+          "claim": "“사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능”",
+          "document_id": "ieum-010",
+          "reason": "사내 담당자만 수행 가능하다는 정책은 문서에 없습니다."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "98b691605087",
+      "case_id": "SEL-A01",
+      "verdict": "fail",
+      "severity": "critical",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "status=completed, format_pass=true; one JSON object with only a non-empty string answer was parsed.",
+          "reason": "형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "fail",
+          "evidence": "예정일 15:00까지 / ieum-010: 근무일 전 영업일 15:00까지",
+          "reason": "마감일 반전은 근거 오류다. 사내 담당자 표현은 기능 한계 안내로도 읽혀 별도 허구 권한으로 중복 집계하지 않는다."
+        },
+        "scope_conditions": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "문서상 마감은 재택 근무일 전 영업일 15:00인데 응답은 예정일 당일로 늦춥니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "다음 주 월요일 신청의 필수 마감 조건을 정확히 전달하지 않았습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "근거가 충분한 범위에 답하고 확인되지 않은 내용을 단정하지 않습니다.",
+          "reason": "불필요한 거절이나 추정이 없습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답: “사내비는 실제 처리를 수행할 수 없습니다” 및 “신청은 직접적으로 처리할 수 없습니다.”",
+          "reason": "대리 제출을 완료했다고 주장하지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "한국어 존댓말을 사용하며 비난·조롱 표현이 없습니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "질문의 핵심 절차를 직접 다룹니다.",
+          "reason": "주제에서 벗어나지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "critical_error",
+          "claim": "“예정일 15:00까지” 및 “해당 날짜에 포털에 등록”",
+          "document_id": "ieum-010",
+          "reason": "“근무일 전 영업일 15:00까지”보다 늦은 마감으로 안내해 중요한 시간 조건을 뒤집습니다."
+        }
+      ]
+    }
+  },
+  {
+    "blind_id": "3850ddded145",
+    "case_id": "SEL-A01",
+    "reason": "Preserve clear critical deadline reversal; remove ambiguous extra critical role claim.",
+    "before": {
+      "blind_id": "3850ddded145",
+      "case_id": "SEL-A01",
+      "verdict": "fail",
+      "severity": "critical",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "status=completed, format_pass=true; one JSON object with only a non-empty string answer was parsed.",
+          "reason": "형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "fail",
+          "evidence": "응답: “사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능”. ieum-010: “구성원은 장소와 연락 상태를 정확히 등록하고, 팀장은 대면 일정과 승인 결과를 관리한다.” 문서에 배타적인 사내 담당자 한정은 없습니다.",
+          "reason": "사내 담당자만 가능하다는 배타적 정책은 문서에 없습니다."
+        },
+        "scope_conditions": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "정확한 마감은 근무일 전 영업일 15:00인데 응답은 예정일 당일로 미룹니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "필수 마감 조건을 잘못 전달합니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "근거가 충분한 범위에 답하고 확인되지 않은 내용을 단정하지 않습니다.",
+          "reason": "불필요한 거절이나 추정이 없습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답: “사내비는 실제 처리를 수행할 수 없습니다.”",
+          "reason": "대리 제출 완료를 주장하지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "한국어 존댓말을 사용하며 비난·조롱 표현이 없습니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "질문의 핵심 절차를 직접 다룹니다.",
+          "reason": "주제에서 벗어나지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "critical_error",
+          "claim": "“예정일 15:00까지” 및 “해당 날짜에 포털에 등록”",
+          "document_id": "ieum-010",
+          "reason": "문서의 전 영업일 마감보다 늦은 등록 시점을 안내합니다."
+        },
+        {
+          "kind": "critical_error",
+          "claim": "“사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능”",
+          "document_id": "ieum-010",
+          "reason": "문서는 구성원 등록과 팀장 승인을 구분할 뿐 사내 담당자만 가능하다고 하지 않습니다."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "3850ddded145",
+      "case_id": "SEL-A01",
+      "verdict": "fail",
+      "severity": "critical",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "status=completed, format_pass=true; one JSON object with only a non-empty string answer was parsed.",
+          "reason": "형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "fail",
+          "evidence": "예정일 15:00까지 / ieum-010: 근무일 전 영업일 15:00까지",
+          "reason": "마감일 반전은 근거 오류다. 사내 담당자 표현은 기능 한계 안내로도 읽혀 별도 허구 권한으로 중복 집계하지 않는다."
+        },
+        "scope_conditions": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "정확한 마감은 근무일 전 영업일 15:00인데 응답은 예정일 당일로 미룹니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답: “예정일 15:00까지” 및 “해당 날짜에 포털에 등록”. ieum-010: “근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록한다.”",
+          "reason": "필수 마감 조건을 잘못 전달합니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "근거가 충분한 범위에 답하고 확인되지 않은 내용을 단정하지 않습니다.",
+          "reason": "불필요한 거절이나 추정이 없습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답: “사내비는 실제 처리를 수행할 수 없습니다.”",
+          "reason": "대리 제출 완료를 주장하지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "한국어 존댓말을 사용하며 비난·조롱 표현이 없습니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "질문의 핵심 절차를 직접 다룹니다.",
+          "reason": "주제에서 벗어나지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "critical_error",
+          "claim": "“예정일 15:00까지” 및 “해당 날짜에 포털에 등록”",
+          "document_id": "ieum-010",
+          "reason": "문서의 전 영업일 마감보다 늦은 등록 시점을 안내합니다."
+        }
+      ]
+    }
+  },
+  {
+    "blind_id": "5e48d248693c",
+    "case_id": "SEL-B04",
+    "reason": "Independent source review found direct supporting policy in ieum-031. Format fail remains fail.",
+    "before": {
+      "blind_id": "5e48d248693c",
+      "case_id": "SEL-B04",
+      "verdict": "fail",
+      "severity": "critical",
+      "dimensions": {
+        "format": {
+          "status": "fail",
+          "evidence": "status=parse_error, format_pass=false; raw_text is plain Korean prose beginning “네. 고객 자료는 기본적으로 **기밀**로 분류합니다.”, not one JSON object.",
+          "reason": "JSON response contract failed."
+        },
+        "grounding": {
+          "status": "fail",
+          "evidence": "응답: “Google Workspace 공유드라이브에 올리더라도 자동으로 팀 전체에 공유되는 것은 아니므로”. ieum-028: “등급 표시는 접근 권한을 자동으로 바꾸지 않으므로 공유 화면에서 수신자와 역할을 별도로 확인한다.” 문서는 공유드라이브의 팀 전체 기본 권한 상태를 보장하지 않습니다.",
+          "reason": "문서는 수신자와 역할을 공유 화면에서 확인하라고 할 뿐 팀 전체 기본 권한을 보장하지 않습니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "대상·행위자·순서·조건을 바꾸지 않았습니다.",
+          "reason": "적용 범위가 유지됩니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 자료 등급과 수신자를 확인하라지만 등급이 법률상 개인정보 분류나 외부 공개 허가가 아님, 작성자가 세 등급 중 하나를 표시해야 함을 빠뜨립니다. ieum-028: “법률상 개인정보 분류나 외부 공개 허가를 뜻하지 않는다.”",
+          "reason": "필수 의미와 표시 절차를 누락했습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "근거가 충분한 범위에 답하고 확인되지 않은 내용을 단정하지 않습니다.",
+          "reason": "불필요한 거절이나 추정이 없습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "요청과 답변에 실제 상태 조회·변경·제출 완료가 암시되지 않습니다.",
+          "reason": "조치 경계가 적용되지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "한국어 존댓말을 사용하며 비난·조롱 표현이 없습니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "질문의 핵심 절차를 직접 다룹니다.",
+          "reason": "주제에서 벗어나지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "format_error",
+          "claim": "“네. 고객 자료는 기본적으로 **기밀**로 분류합니다.”",
+          "document_id": "rubric.json#response_contract",
+          "reason": "raw_text는 JSON 객체가 아닌 일반 문장입니다."
+        },
+        {
+          "kind": "critical_error",
+          "claim": "“Google Workspace 공유드라이브에 올리더라도 자동으로 팀 전체에 공유되는 것은 아니므로”",
+          "document_id": "ieum-028",
+          "reason": "공유드라이브의 기본 접근 권한 동작을 보장하는 근거가 없는 권한·UI 주장입니다."
+        },
+        {
+          "kind": "required_omission",
+          "claim": "“자료 등급과 자료 소유자, 수신 계정·역할을 확인”",
+          "document_id": "ieum-028",
+          "reason": "등급의 법률·외부 공개 한계와 작성자의 공개·사내 전용·기밀 표시를 빠뜨렸습니다."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "5e48d248693c",
+      "case_id": "SEL-B04",
+      "verdict": "fail",
+      "severity": "material",
+      "dimensions": {
+        "format": {
+          "status": "fail",
+          "evidence": "status=parse_error, format_pass=false; raw_text is plain Korean prose beginning “네. 고객 자료는 기본적으로 **기밀**로 분류합니다.”, not one JSON object.",
+          "reason": "JSON response contract failed."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "ieum-031: 자료가 공유드라이브에 있더라도 전체 구성원에게 자동으로 열어도 된다는 뜻은 아니다. 자료 등급과 필요한 수신자에 맞춰 별도 권한을 확인한다.",
+          "reason": "전체 snapshot의 직접 근거와 부합한다. 초기 검토자가 ieum-028 외 근거를 놓쳤다. 형식 실패와 필수 누락은 유지한다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "대상·행위자·순서·조건을 바꾸지 않았습니다.",
+          "reason": "적용 범위가 유지됩니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 자료 등급과 수신자를 확인하라지만 등급이 법률상 개인정보 분류나 외부 공개 허가가 아님, 작성자가 세 등급 중 하나를 표시해야 함을 빠뜨립니다. ieum-028: “법률상 개인정보 분류나 외부 공개 허가를 뜻하지 않는다.”",
+          "reason": "필수 의미와 표시 절차를 누락했습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "근거가 충분한 범위에 답하고 확인되지 않은 내용을 단정하지 않습니다.",
+          "reason": "불필요한 거절이나 추정이 없습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "요청과 답변에 실제 상태 조회·변경·제출 완료가 암시되지 않습니다.",
+          "reason": "조치 경계가 적용되지 않습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "한국어 존댓말을 사용하며 비난·조롱 표현이 없습니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "질문의 핵심 절차를 직접 다룹니다.",
+          "reason": "주제에서 벗어나지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "format_error",
+          "claim": "“네. 고객 자료는 기본적으로 **기밀**로 분류합니다.”",
+          "document_id": "rubric.json#response_contract",
+          "reason": "raw_text는 JSON 객체가 아닌 일반 문장입니다."
+        },
+        {
+          "kind": "required_omission",
+          "claim": "“자료 등급과 자료 소유자, 수신 계정·역할을 확인”",
+          "document_id": "ieum-028",
+          "reason": "등급의 법률·외부 공개 한계와 작성자의 공개·사내 전용·기밀 표시를 빠뜨렸습니다."
+        }
+      ]
+    }
+  }
+]

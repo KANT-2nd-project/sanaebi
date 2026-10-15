@@ -1,0 +1,21 @@
+{
+  "reviewer": "independent AI decision reviewer",
+  "verdict": "both_candidates_ineligible",
+  "human_approved": false,
+  "evidence": {
+    "case_id": "DEV-FU-09",
+    "document_id": "ieum-063",
+    "reference": "explicitly includes related-party roles, witnesses, and available materials",
+    "scope": "omits instruction to record witness information; observed scope is not equivalent",
+    "reference-strict": "omits related-party roles, witnesses, and available materials"
+  },
+  "interpretation": "The frozen gate excludes clear regressions in mandatory claims even when aggregate pass count improves. Only eligible candidates can receive a repeat.",
+  "criterion_corrections": [
+    "One of the portal or people-help routes is sufficient; removing a mistaken second-route omission does not change the partial verdict."
+  ],
+  "measurement_limitations": [
+    "DEV-FU-10 frozen claim asks for counseling/formal-report distinction beyond merely rejecting the false premise. Preserve the predeclared score but do not overstate practical improvement.",
+    "Protection or contact method may permit alternatives; the strict candidate independently omits three other required reporting fields.",
+    "One generation repeat does not measure stable degradation or establish a general prompt ranking."
+  ]
+}

@@ -1,18 +1,34 @@
 import unittest
+from contextlib import redirect_stderr
+from io import StringIO
 from unittest.mock import Mock, patch
 
 from generation.config import GenerationConfig, GenerationProvider
-from generation.prompts import build_prompt
+from generation.profiles import DEFAULT_PROMPT_PROFILE, build_profile_prompt
 from generation.types import GenerationResult, GenerationStatus, ModelResponse
 from generation_evaluation.runner import run_case
 
 
 class GenerationRunnerTests(unittest.TestCase):
+    def test_execution_error_message_is_not_exposed(self):
+        stderr = StringIO()
+        with redirect_stderr(stderr):
+            run = run_case(
+                "diagnostic",
+                self.config,
+                self.question,
+                self.documents,
+                Mock(side_effect=RuntimeError("credential=secret-test-value")),
+            )
+        self.assertEqual(run.error_type, "RuntimeError")
+        self.assertIsNone(run.result)
+        self.assertEqual(stderr.getvalue(), "[diagnostic] RuntimeError\n")
+
     def test_prompt_build_failure_is_recorded_without_model_call(self):
         model_call = Mock()
         with (
             patch(
-                "generation.service.build_prompt",
+                "generation.service.build_profile_prompt",
                 side_effect=ValueError("invalid input"),
             ),
             patch("generation_evaluation.runner.perf_counter", side_effect=(1.0, 1.25)),
@@ -24,12 +40,17 @@ class GenerationRunnerTests(unittest.TestCase):
         self.assertEqual(run.error_type, "ValueError")
         self.assertEqual(run.elapsed_seconds, 0.25)
         model_call.assert_not_called()
+        self.assertIsNone(run.prompt_sha256)
+        self.assertRegex(run.documents_sha256, r"^[0-9a-f]{64}$")
+        self.assertEqual(run.document_count, 1)
 
     def setUp(self):
         self.config = GenerationConfig(GenerationProvider.OLLAMA, "test-model", 30.0)
         self.question = "예약은 어디에서 하나요?"
         self.documents = ["예약은 사내 포털에서 합니다."]
-        self.prompt = build_prompt(self.question, self.documents)
+        self.prompt = build_profile_prompt(
+            self.question, self.documents, DEFAULT_PROMPT_PROFILE
+        )
 
     def test_records_case_config_response_and_elapsed_time(self):
         events = []
@@ -46,15 +67,15 @@ class GenerationRunnerTests(unittest.TestCase):
             self.assertEqual(prompt, self.prompt)
             return ModelResponse(raw)
 
-        def record_build(question, documents):
+        def record_build(question, documents, profile):
             events.append("prompt")
             self.assertEqual(question, self.question)
             self.assertIs(documents, self.documents)
-            return build_prompt(question, documents)
+            return build_profile_prompt(question, documents, profile)
 
         with (
             patch("generation_evaluation.runner.perf_counter", side_effect=clock),
-            patch("generation.service.build_prompt", side_effect=record_build),
+            patch("generation.service.build_profile_prompt", side_effect=record_build),
         ):
             run = run_case(
                 "case-001", self.config, self.question, self.documents, model_call
@@ -78,6 +99,7 @@ class GenerationRunnerTests(unittest.TestCase):
                 "case-timeout", self.config, self.question, self.documents, model_call
             )
         model_call.assert_called_once_with(self.prompt)
+        self.assertRegex(run.prompt_sha256, r"^[0-9a-f]{64}$")
         self.assertEqual(run.elapsed_seconds, 2.5)
         self.assertIsNone(run.error_type)
         self.assertEqual(

@@ -1,0 +1,25 @@
+{
+  "stage": "before new final calls",
+  "reviewer": "independent AI, no prior responses read",
+  "findings": [
+    "N03 general mail lock must not inherit authentication-device loss procedure",
+    "N07 record lookup not documented; ask responsible actor and completion checks",
+    "N08 equipment identifier fields absent; narrow to supported support-request fields",
+    "A01 payment/account-error request number must not become cancellation procedure",
+    "M03 distinguish general training policy from unconfirmed exam fees",
+    "N04 and B03 remove optional background from required claims",
+    "unify claim tags with rubric"
+  ],
+  "action": "All pre-call findings corrected; independent focused re-review approved N03 N05 FP01 before any final call",
+  "additional_findings": [
+    "Different dataset group IDs can still contain near-duplicate expense/purchase questions; replace those with unused work topics before calls.",
+    "N04 narrow to confidential-folder access configuration so normal sufficient has an explicit source-backed answer."
+  ],
+  "final_sha256": "94f490970a876c3a878fb36fa72047065f207e244c4e501d39976d96909ac51a",
+  "final_findings": [
+    "N03 required actor/deadline official record; decision/defer optional",
+    "N05 max7days and manual revocation/verification/record required",
+    "FP01 external review only conditional optional for later external publication"
+  ],
+  "limitation": "M03 remains adjacent to prior training-support policy; same-document heldout questions, not unseen-policy generalization."
+}

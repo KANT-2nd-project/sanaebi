@@ -1,0 +1,24 @@
+{
+  "development_summary_matches": true,
+  "final_summary_matches": true,
+  "selected_prompt_matches_code": true,
+  "reference_sources": 30,
+  "json_files_valid": 29,
+  "links_valid": true,
+  "generation_calls_during_audit": 0,
+  "historical_regression_incomplete": true,
+  "independent_record_review": "Completed: raw run count230, old188/followup38/quick4, publication gaps and historical-state contradictions confirmed.",
+  "ruff_check": "pass",
+  "ruff_format_checked_files": 258,
+  "publication": {
+    "report_commit": "d6122d254fd2aa5f10d3b01337202d4b4c3f88c4",
+    "remote_verified": true,
+    "branch": "feat/generation-evidence-20261015",
+    "notion_readback_verified": true,
+    "notion_pages": [
+      "3f805a3cdadc81e1a70bfe82c89cebe7",
+      "3f905a3cdadc8146a9bbedb690ab5ecf"
+    ],
+    "verified_at": "2026-10-15T03:52:24.515659+00:00"
+  }
+}

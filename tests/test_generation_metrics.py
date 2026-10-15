@@ -1,6 +1,11 @@
 import unittest
+from dataclasses import replace
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.metrics import (
     completion_rate,
@@ -14,6 +19,61 @@ from generation_evaluation.types import GenerationRun
 
 
 class GenerationMetricsTests(unittest.TestCase):
+    def comparison_runs(self):
+        other = GenerationConfig(GenerationProvider.OLLAMA, "other", 30)
+        return [
+            GenerationRun(
+                case,
+                config,
+                None,
+                0.2,
+                "ConnectError",
+                documents_sha256="a" * 64,
+                document_count=2,
+                prompt_sha256=prompt * 64,
+            )
+            for config in (self.config, other)
+            for case, prompt in (("case-a", "b"), ("case-b", "c"))
+        ]
+
+    def test_comparable_summary_accepts_multiple_questions_and_keeps_failures(self):
+        from generation_evaluation import metrics
+
+        runs = self.comparison_runs()
+        summaries = metrics.summarize_comparable_runs(runs)
+        self.assertEqual(summaries, summarize_runs(runs))
+        self.assertEqual([s.counts["execution_error"] for s in summaries], [2, 2])
+        self.assertEqual(metrics.summarize_comparable_runs([]), [])
+
+    def test_comparable_summary_rejects_mixed_or_unknown_identity(self):
+        from generation_evaluation import metrics
+
+        for updates in (
+            {"documents_sha256": "d" * 64},
+            {"document_count": 3},
+            {"prompt_sha256": "d" * 64},
+            {"documents_sha256": None},
+            {"document_count": None},
+            {"prompt_sha256": None},
+            {"case_id": " "},
+        ):
+            runs = self.comparison_runs()
+            runs[-1] = replace(runs[-1], **updates)
+            with self.subTest(updates=updates), self.assertRaises(ValueError):
+                metrics.summarize_comparable_runs(runs)
+
+    def test_comparable_summary_rejects_missing_cases_and_unbalanced_attempts(self):
+        from generation_evaluation import metrics
+
+        runs = self.comparison_runs()
+        for mismatched in (runs[:-1], runs + [runs[0]]):
+            with self.subTest(runs=mismatched), self.assertRaises(ValueError):
+                metrics.summarize_comparable_runs(mismatched)
+        repeated = runs + runs
+        self.assertEqual(
+            metrics.summarize_comparable_runs(repeated), summarize_runs(repeated)
+        )
+
     def test_truncated_is_counted_as_attempt_but_not_completion(self):
         runs = [
             GenerationRun(
@@ -30,12 +90,24 @@ class GenerationMetricsTests(unittest.TestCase):
                 ),
                 4,
             ),
+            GenerationRun(
+                "refusal",
+                self.config,
+                GenerationResult(
+                    GenerationStatus.REFUSAL,
+                    None,
+                    None,
+                    refusal="요청을 처리할 수 없습니다.",
+                ),
+                3,
+            ),
         ]
         counts = count_outcomes(runs)
-        self.assertEqual(counts["total"], 2)
+        self.assertEqual(counts["total"], 3)
         self.assertEqual(counts["truncated"], 1)
+        self.assertEqual(counts["refusal"], 1)
         self.assertEqual(counts["completed"], 1)
-        self.assertEqual(completion_rate(runs), 0.5)
+        self.assertAlmostEqual(completion_rate(runs), 1 / 3)
         self.assertEqual(mean_attempt_seconds(runs), 3)
         self.assertEqual(mean_completed_seconds(runs), 2)
 
@@ -96,6 +168,25 @@ class GenerationMetricsTests(unittest.TestCase):
         self.assertEqual(len(groups), 4)
         for run in runs:
             self.assertEqual(groups[run.config], [run])
+
+    def test_grouping_separates_output_modes(self):
+        prompt_json = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "test-model",
+            30.0,
+            output_mode=GenerationOutputMode.PROMPT_JSON,
+        )
+        strict = replace(
+            prompt_json, output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA
+        )
+        runs = [
+            GenerationRun("prompt", prompt_json, None, 0.1, "ConnectError"),
+            GenerationRun("strict", strict, None, 0.1, "ConnectError"),
+        ]
+        groups = group_by_config(runs)
+        self.assertEqual(len(groups), 2)
+        self.assertEqual(groups[prompt_json], [runs[0]])
+        self.assertEqual(groups[strict], [runs[1]])
 
     def test_completed_mean_excludes_failed_runs(self):
         completed = GenerationResult(
@@ -209,6 +300,7 @@ class GenerationMetricsTests(unittest.TestCase):
                 "timeout": 0,
                 "execution_error": 0,
                 "truncated": 0,
+                "refusal": 0,
             },
         )
 
@@ -221,6 +313,11 @@ class GenerationMetricsTests(unittest.TestCase):
                     status,
                     None if status is GenerationStatus.TIMEOUT else "raw",
                     "답" if status is GenerationStatus.COMPLETED else None,
+                    refusal=(
+                        "요청을 처리할 수 없습니다."
+                        if status is GenerationStatus.REFUSAL
+                        else None
+                    ),
                 ),
                 0.25,
             )
@@ -231,6 +328,7 @@ class GenerationMetricsTests(unittest.TestCase):
                     GenerationStatus.PARSE_ERROR,
                     GenerationStatus.EMPTY_ANSWER,
                     GenerationStatus.TIMEOUT,
+                    GenerationStatus.REFUSAL,
                 ]
             )
         ]
@@ -239,13 +337,14 @@ class GenerationMetricsTests(unittest.TestCase):
         self.assertEqual(
             counts,
             {
-                "total": 6,
+                "total": 7,
                 "completed": 2,
                 "parse_error": 1,
                 "empty_answer": 1,
                 "timeout": 1,
                 "execution_error": 1,
                 "truncated": 0,
+                "refusal": 1,
             },
         )
         self.assertEqual(

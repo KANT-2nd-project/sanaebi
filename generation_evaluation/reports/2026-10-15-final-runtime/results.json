@@ -1,0 +1,81 @@
+[
+  {
+    "entrypoint": "single",
+    "exit_code": 0,
+    "record": {
+      "case_id": "manual",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "result": {
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴나 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않아 확인할 수 없습니다. People팀에 변경 경로와 반영 시점을 문의해 주세요. 일반 인사 문의 창구는 이음 포털의 인사 메뉴 또는 #people-help입니다.\"}",
+        "answer": "제공된 문서에는 급여 계좌 변경 메뉴나 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않아 확인할 수 없습니다. People팀에 변경 경로와 반영 시점을 문의해 주세요. 일반 인사 문의 창구는 이음 포털의 인사 메뉴 또는 #people-help입니다.",
+        "input_tokens": 57483,
+        "output_tokens": 687,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "elapsed_seconds": 14.038675460997183,
+      "error_type": null,
+      "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+      "document_count": 71,
+      "prompt_sha256": "c787d3eb7d828cbb3de8fdd5b6236010130513ef5253bf8bae8997a24fea4c1c",
+      "prompt_profile": "examples_answer_scope_v1",
+      "experiment": "company-final-v1",
+      "model_alias": "gpt-6-luna",
+      "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?"
+    },
+    "estimated_cost_usd": 0.014886,
+    "cost_basis": "existing conservative budget.actual_cost; not invoice"
+  },
+  {
+    "entrypoint": "batch",
+    "exit_code": 1,
+    "record": {
+      "case_id": "RQ0001",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "result": {
+        "status": "parse_error",
+        "raw_text": "급여 계좌 변경의 제출 마감일이나 포털 메뉴는 제공된 문서에서 확인할 수 없습니다. 다음 급여에 반영되는 시점도 안내되어 있지 않습니다. People팀에 처리 방법과 마감일을 확인해 주세요. 일반 문의는 #people-help로 할 수 있지만, 계좌번호나 급여 자료는 Slack에 올리지 마세요.",
+        "answer": null,
+        "input_tokens": 57483,
+        "output_tokens": 602,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "elapsed_seconds": 7.023606775997905,
+      "error_type": null,
+      "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+      "document_count": 71,
+      "prompt_sha256": "c787d3eb7d828cbb3de8fdd5b6236010130513ef5253bf8bae8997a24fea4c1c",
+      "prompt_profile": "examples_answer_scope_v1",
+      "experiment": "company-final-v1",
+      "model_alias": "gpt-6-luna",
+      "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
+      "dataset_sha256": "a7d65d3556899a529278f69d5e4d177722fc73fa71c23bbfc006149b0c551c98",
+      "selection_label": "SEARCH_KNOWLEDGE",
+      "available_cases": 300,
+      "planned_cases": 1,
+      "attempt_index": 1
+    },
+    "estimated_cost_usd": 0.01482225,
+    "cost_basis": "existing conservative budget.actual_cost; not invoice"
+  }
+]

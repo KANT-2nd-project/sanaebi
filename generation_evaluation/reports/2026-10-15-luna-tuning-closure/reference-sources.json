@@ -1,0 +1,303 @@
+[
+  {
+    "id": "O01",
+    "organization": "OpenAI",
+    "title": "Prompt engineering",
+    "type": "가이드",
+    "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+    "finding": "역할·지침·예시·문맥을 논리적으로 구획하고 재사용 가능한 프롬프트를 관리한다.",
+    "limitation": "별도 API 역할이나 여러 호출로 나눠야 한다는 뜻은 아니다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "O02",
+    "organization": "OpenAI",
+    "title": "Retrieval answer synthesis",
+    "type": "공개 코드 예시",
+    "url": "https://developers.openai.com/api/docs/guides/retrieval",
+    "finding": "제공된 sources를 바탕으로 간결하게 답하는 합성 프롬프트를 보여 준다.",
+    "limitation": "검색과 vector store를 전제로 하는 샘플이다. 현재 사내비의 검색 구현 근거가 아니다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "O03",
+    "organization": "OpenAI",
+    "title": "Reasoning best practices",
+    "type": "가이드",
+    "url": "https://developers.openai.com/api/docs/guides/reasoning-best-practices",
+    "finding": "명확하고 직접적인 지시, 구분자, 필요한 경우에만 정렬된 예시를 권장한다.",
+    "limitation": "생각 과정을 장황하게 출력시키는 지시를 추가할 필요는 없다. 과거 모델 사례를 Luna 설정으로 그대로 옮기지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "O04",
+    "organization": "OpenAI",
+    "title": "GPT-6 model guide",
+    "type": "모델 가이드",
+    "url": "https://developers.openai.com/api/docs/guides/latest-model",
+    "finding": "모델과 실제 작업에 맞춰 프롬프트를 평가해야 한다.",
+    "limitation": "Astra 중심의 관찰과 에이전트 자율 실행 지시를 Luna 안내 서비스의 검증된 규칙으로 간주하지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "O05",
+    "organization": "OpenAI",
+    "title": "Structured outputs",
+    "type": "API 기능 문서",
+    "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+    "finding": "JSON Schema에 맞춘 출력과 일반 JSON 출력을 구분한다. 구조가 맞아도 의미 오류는 가능하다.",
+    "limitation": "거절·잘림 등 예외 처리가 필요하다. 현재 어댑터에 이 기능이 연결됐다는 의미는 아니다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "O06",
+    "organization": "OpenAI",
+    "title": "GPT-6 Luna",
+    "type": "모델 기능 문서",
+    "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "finding": "Structured outputs 지원 여부를 확인하는 모델별 기준 자료다.",
+    "limitation": "실제 계정·엔드포인트·LangChain 설정 조합의 동작은 이 조사에서 호출 검증하지 않았다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "O07",
+    "organization": "OpenAI",
+    "title": "Evaluation best practices",
+    "type": "평가 가이드",
+    "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+    "finding": "구체적인 평가 기준과 비교 평가, 판정자 편향 및 사람과의 일치도 확인을 다룬다.",
+    "limitation": "독립 AI 판정을 사람 승인이나 운영 신뢰성 검증으로 표현하지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "M01",
+    "organization": "Microsoft",
+    "title": "Azure Architecture Center RAG prompt engineering",
+    "type": "설계 가이드 및 템플릿",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-prompt-engineering",
+    "finding": "역할·근거·자료 부족·출력·업무 지침을 구분하고 부분 답변과 문서 충돌을 다룬다. 문맥 뒤에 질문을 두며 문서 식별자를 권한다.",
+    "limitation": "검색된 조각을 전제한다. 상담원 연결 같은 샘플 행동은 사내비에 없는 권한이다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "M02",
+    "organization": "Microsoft",
+    "title": "Azure Search OpenAI demo system prompt",
+    "type": "공개 애플리케이션 샘플",
+    "url": "https://github.com/Azure-Samples/azure-search-openai-demo/blob/558ffd397eddcfe4da5c85ebc285796b367eb9b2/app/backend/approaches/prompts/chat_answer.system.jinja2",
+    "finding": "내부 문서 QA, 간결성, 근거 부족 처리, 사용자 언어, 출처 인용을 포함한다.",
+    "limitation": "공개 샘플이며 실제 기업 배포 프롬프트라는 증거는 없다. Jinja·citation·이미지·후속 질문 기능은 현재 계약과 다르다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "M03",
+    "organization": "Microsoft",
+    "title": "Prompt engineering techniques",
+    "type": "가이드",
+    "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+    "finding": "제공 텍스트에 근거하도록 지시하는 예시를 제시한다.",
+    "limitation": "문서의 GPT-4 영어 실험을 Luna 한국어 성능 증거로 쓰지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "A01",
+    "organization": "AWS",
+    "title": "Bedrock Knowledge Bases prompt configuration",
+    "type": "서비스 설정 문서",
+    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html",
+    "finding": "검색 결과와 출력 형식 placeholder가 런타임 기능에 연동된다.",
+    "limitation": "Bedrock 전용 placeholder와 citation 기능을 텍스트 복사만으로 이식할 수 없다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "A02",
+    "organization": "AWS",
+    "title": "Prompt templates and examples",
+    "type": "공개 템플릿",
+    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-templates-and-examples.html",
+    "finding": "문맥 다음 질문을 배치하는 QA 및 모델별 템플릿을 제공한다.",
+    "limitation": "Bedrock 모델의 권고이며 Luna에 대한 효과 검증은 아니다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "A03",
+    "organization": "AWS",
+    "title": "S3 vectors RAG pipeline build_prompt",
+    "type": "공개 샘플 코드",
+    "url": "https://github.com/aws-samples/sample-s3-vectors-rag-pipeline/blob/decec6b9ab0a5965ae7ba2309c0783e5b72fe5b9/query.py",
+    "finding": "제공 문맥만 사용하고 가정하지 않으며 답이 없으면 없다고 알린다. 번호가 있는 문맥 뒤에 질문을 둔다.",
+    "limitation": "교육용 샘플이다. 출력은 일반 텍스트이며 비어 있는 검색 결과의 호출 경로도 사내비와 다르다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "G01",
+    "organization": "Google",
+    "title": "Prompt design strategies",
+    "type": "가이드",
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-design-strategies",
+    "finding": "목적·지침·제약·문맥·출력·예시와 예외 처리를 구조화한다.",
+    "limitation": "섹션 구획 자체가 Luna 성능을 높인다는 증거는 아니다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "G02",
+    "organization": "Google",
+    "title": "Gemini long context",
+    "type": "모델 가이드",
+    "url": "https://ai.google.dev/gemini-api/docs/long-context",
+    "finding": "긴 문맥 뒤에 질문을 배치하는 방법과 여러 위치의 정보를 사용하는 작업을 설명한다.",
+    "limitation": "사내비는 이미 문서 뒤에 질문을 둔다. Gemini 결과를 Luna로 일반화하지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "G03",
+    "organization": "Google",
+    "title": "Skin care questions",
+    "type": "공개 프롬프트 갤러리",
+    "url": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/prompt-gallery/samples/answer_question_skin_care_questions",
+    "finding": "제공된 내용만으로 직접적이고 간결하게 답하는 실제 예시다.",
+    "limitation": "업무 영역이 다르며 Gemini 예시다. JSON 출력 계약은 별도로 필요하다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "G04",
+    "organization": "Google",
+    "title": "Hedge unanswerable question",
+    "type": "공개 입출력 예시",
+    "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/prompt-gallery/samples/extract_hedge_unanswerable_question",
+    "finding": "질문에 필요한 비용이 자료에 없을 때 언급되지 않았다고 답하는 사례다.",
+    "limitation": "완성된 시스템 프롬프트보다 부족 정보 평가 사례로 참고한다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "G05",
+    "organization": "Google",
+    "title": "Financial QA extractive",
+    "type": "공개 프롬프트 갤러리",
+    "url": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/prompt-gallery/samples/answer_question_financial_qa_-_extractive",
+    "finding": "문서의 수치와 위치를 근거로 답하는 예시다.",
+    "limitation": "현재 계약에 출처 필드를 추가하는 근거로 바로 쓰지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "H01",
+    "organization": "Anthropic",
+    "title": "Claude prompting best practices",
+    "type": "가이드",
+    "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+    "finding": "긴 문서의 구획과 답변 전 관련 원문 구절 확인을 안내한다.",
+    "limitation": "Claude 권고다. 인용을 찾으라는 지시만으로 실제 원문 일치나 충분한 근거 확보가 보장되지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "H02",
+    "organization": "Anthropic",
+    "title": "claude-for-legal tabular-review",
+    "type": "공개 도구 스킬",
+    "url": "https://github.com/anthropics/claude-for-legal/blob/main/corporate-legal/skills/tabular-review/SKILL.md",
+    "finding": "값·상태·원문·위치를 분리하고 원문 대조 및 사람 검토를 요구하는 문서 검토 패턴이다.",
+    "limitation": "법률 검토 도구 스킬이며 사내 QA 프롬프트가 아니다. main 링크는 가변이다. 실행 지침으로 채택하지 않았다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "F01",
+    "organization": "LangChain",
+    "title": "RAG code sample",
+    "type": "공식 코드 샘플",
+    "url": "https://github.com/langchain-ai/docs/blob/5e54b356d9a04bdc64b2bca4a257da2c167ff245/src/code-samples/langchain/rag.py",
+    "finding": "문맥 기반 답변, 모를 때의 처리, 문서 속 지시 무시와 짧은 응답 예시를 제공한다.",
+    "limitation": "세 문장 제한은 예제 선택이다. 필수 절차가 많은 사내비에 고정 적용하지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "F02",
+    "organization": "LlamaIndex",
+    "title": "Default QA prompts",
+    "type": "프레임워크 기본 템플릿",
+    "url": "https://github.com/run-llama/llama_index/blob/a8ed07a7699b3ac9de83dd24ec0d2413e225efb9/llama-index-core/llama_index/core/prompts/default_prompts.py",
+    "finding": "문맥만으로 답하는 기본 QA와 refine용 템플릿을 제공한다.",
+    "limitation": "기본 템플릿은 서비스 품질 보장이 아니다. refine은 단순 문구 추가가 아니다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "F03",
+    "organization": "LlamaIndex",
+    "title": "Response synthesizers",
+    "type": "응답 합성 문서",
+    "url": "https://developers.llamaindex.ai/python/framework/module_guides/querying/response_synthesizers/",
+    "finding": "refine은 다음 조각을 받아 답을 순차 수정하며 compact는 호출을 줄이도록 묶는다.",
+    "limitation": "이전 v0.10.20 주소가 개요 페이지로 이동해 현재 공식 상세 문서로 재확인했다. 사내비 설치 환경의 기본값이나 기능 구현을 증명하지 않는다.",
+    "accessed": "2026-10-15",
+    "previous_url": "https://docs.llamaindex.ai/en/v0.10.20/module_guides/querying/response_synthesizers/root.html"
+  },
+  {
+    "id": "F04",
+    "organization": "Haystack",
+    "title": "PromptBuilder",
+    "type": "컴포넌트 문서",
+    "url": "https://docs.haystack.deepset.ai/docs/promptbuilder",
+    "finding": "문서와 질문을 채우는 템플릿과 필수 변수 검사를 보여 준다.",
+    "limitation": "입력 변수가 존재하는지 검사하는 것과 답변 품질을 검사하는 것은 다르다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "C01",
+    "organization": "Cohere",
+    "title": "RAG v2",
+    "type": "API 기능 문서",
+    "url": "https://docs.cohere.com/v2/docs/retrieval-augmented-generation-rag",
+    "finding": "documents 입력 및 답변 구간과 연결된 인용 기능을 설명한다.",
+    "limitation": "모델/API 고유 기능이다. Luna에 텍스트 지시만 복사해 같은 기능을 얻을 수 없다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "N01",
+    "organization": "NVIDIA",
+    "title": "RAG Blueprint prompt.yaml",
+    "type": "공개 Blueprint 기본 설정",
+    "url": "https://github.com/NVIDIA-AI-Blueprints/rag/blob/0f216e182b4caa88d14f5a1d4f454944386ee9b7/src/nvidia_rag/rag_server/prompt.yaml",
+    "finding": "문맥 기반 답변과 정확한 값 보존, 별도의 관련성·근거성·재생성 프롬프트를 둔다.",
+    "limitation": "관련 정보가 있으면 적극적으로 답하는 규칙은 충분한 근거와 부분 근거를 구별하도록 조정해야 한다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "N02",
+    "organization": "NVIDIA",
+    "title": "Prompt customization",
+    "type": "설정 가이드",
+    "url": "https://docs.nvidia.com/rag/latest/prompt-customization.html",
+    "finding": "목적별 템플릿을 설정하는 공개 Blueprint 구조다.",
+    "limitation": "별도 판정·재생성 단계는 호출 비용과 실패 처리가 필요한 구현이다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "V01",
+    "organization": "NAVER Cloud",
+    "title": "RAG service model test",
+    "type": "서비스 설정 문서",
+    "url": "https://guide.ncloud-docs.com/docs/rag-services-testmodel",
+    "finding": "서비스에서 프롬프트를 설정하고 검색 연계 응답을 시험하는 기능을 설명한다.",
+    "limitation": "확인한 본문에서 사내 QA용 기본 프롬프트 전문은 확보하지 못했다. 템플릿 근거로 세지 않는다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "V02",
+    "organization": "NAVER Cloud",
+    "title": "CLOVA Studio prompt samples",
+    "type": "갤러리 사용 가이드",
+    "url": "https://guide.ncloud-docs.com/docs/clovastudio-promptsample",
+    "finding": "예제를 Playground에서 불러와 수정하는 사용 흐름을 설명한다.",
+    "limitation": "확인한 페이지에 특정 사내 QA 시스템 프롬프트 전문이나 운영 성능 증거는 없다.",
+    "accessed": "2026-10-15"
+  },
+  {
+    "id": "R01",
+    "organization": "Research",
+    "title": "Lost in the Middle",
+    "type": "연구 논문",
+    "url": "https://arxiv.org/abs/2307.03172v3",
+    "finding": "장문 QA에서 관련 정보의 위치에 따른 성능 차이를 연구한다.",
+    "limitation": "이전 모델들의 실험이다. 현재 Luna 실패의 원인이 위치라고 단정하지 않고 위치 변경 시험의 동기로만 쓴다.",
+    "accessed": "2026-10-15"
+  }
+]

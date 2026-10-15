@@ -66,7 +66,7 @@ npm run dev
 |---|---|
 | 서버의 요청 처리와 분류 추론 | [서버 구조](app/README.md) |
 | 분류 모델 학습·평가·선정 | [분류 실험](classification/README.md) · [결과](classification/reports/README.md) |
-| 생성 모델 실험 | [생성 안내](generation/README.md) |
+| 최종 Luna 독립 생성·평가 (서버 미연결) | [생성 안내](generation/README.md) · [최종 프롬프트](docs/generation-final-prompt.md) |
 | 문서 등록·게시 | [문서 관리](docs/document-management.md) |
 | 서비스 배포 | [배포](deployment/README.md) |
 

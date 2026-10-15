@@ -1,0 +1,697 @@
+{
+  "dev-gpt-baseline": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-baseline",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "none",
+        "temperature": 0
+      },
+      "profile": "baseline",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-gpt-best-repeat2": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "none",
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 2,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-gpt-concise": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-concise",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "none",
+        "temperature": 0
+      },
+      "profile": "concise",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-gpt-examples": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "none",
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-gpt-examples-evidence": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-evidence",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "none",
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "evidence_first",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-gpt-examples-low": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-low",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "low"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-qwen-baseline": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "qwen-baseline",
+    "candidate": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "baseline",
+      "strategy": "single",
+      "seed": 42
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-qwen-best-repeat2": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "qwen-examples",
+    "candidate": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": 42
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 2,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-qwen-concise": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "qwen-concise",
+    "candidate": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "concise",
+      "strategy": "single",
+      "seed": 42
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-qwen-examples": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "qwen-examples",
+    "candidate": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": 42
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "dev-qwen-examples-evidence": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "qwen-examples-evidence",
+    "candidate": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "evidence_first",
+      "seed": 42
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "ext-gpt-high": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-high",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "high"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "ext-gpt-high-repeat2": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-high",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "high"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 2,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "ext-gpt-max": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-max",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "max"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "ext-gpt-medium": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-medium",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "medium"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "ext-gpt-xhigh": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-xhigh",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "xhigh"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "ext-gpt-xhigh-4096": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 1,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "ext-gpt-xhigh-4096-repeat2": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "dev",
+    "repeats": 1,
+    "start_repeat": 2,
+    "cases_sha256": "a2861a95de0d61b9e4119218e71c7a0d5323ed2eada707fd9f1c6a11c08542fb",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "final-gpt": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "none",
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "final",
+    "repeats": 2,
+    "start_repeat": 1,
+    "cases_sha256": "8df35da0b3d2132dc7a1c46b3a920e962713c98a895e4c55effa5575263404bc",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "final-qwen": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "qwen-examples",
+    "candidate": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": 42
+    },
+    "phase": "final",
+    "repeats": 2,
+    "start_repeat": 1,
+    "cases_sha256": "8df35da0b3d2132dc7a1c46b3a920e962713c98a895e4c55effa5575263404bc",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "reasoning-final-gpt": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "gpt-examples-xhigh-4096",
+    "candidate": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh"
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "phase": "final",
+    "repeats": 2,
+    "start_repeat": 1,
+    "cases_sha256": "6eb591a89fd6f2ad8b45dc411a12a1bf91ce3f525a5f071896563ba4fea2dc7d",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  },
+  "reasoning-final-qwen": {
+    "schema_version": 1,
+    "code_sha256": {
+      "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+      "generation/providers.py": "c5f783aae4dedd90f0c8f0431bda78fc412857fee0545dca6f0fd8831a26f310",
+      "generation/service.py": "370bd77a13637c60632e6db7a60f6c0c2c09a74205a5ef52d879c37299dbca48",
+      "generation_evaluation/selection.py": "8de5e4fd485ab8606c31cdf76d29da86f30621f28af267c4745764f651b38119",
+      "generation_evaluation/budget.py": "97acd1fedcf5f71edd3cebf55b1efd71e108dadcde13474af888f6f385db5dee"
+    },
+    "candidate_id": "qwen-examples",
+    "candidate": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": 42
+    },
+    "phase": "final",
+    "repeats": 2,
+    "start_repeat": 1,
+    "cases_sha256": "6eb591a89fd6f2ad8b45dc411a12a1bf91ce3f525a5f071896563ba4fea2dc7d",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "document_count": 71,
+    "profile_code_sha256": "190c1e4d558d160b60a643cac454645da054103bee1a42af83a86c33cef644b1",
+    "strategy_code_sha256": "e6a9278ce528f18e72524cf72baddbc8ceaa8178d8e6a7e2189feca49034a507"
+  }
+}

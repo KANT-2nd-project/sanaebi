@@ -1,0 +1,4850 @@
+[
+  {
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\\n\\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.\"}",
+      "answer": "영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\n\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.",
+      "input_tokens": 57356,
+      "output_tokens": 1413,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\\n\\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 19.34948232700117,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:RQ0007:1:0",
+        "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2",
+        "reserved_dollars": 0.06267425,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\\n\\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.\"}",
+        "usage": {
+          "input_tokens": 57356,
+          "output_tokens": 1413,
+          "total_tokens": 58769,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57353
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 1231
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1413,
+            "prompt_tokens": 57356,
+            "total_tokens": 58769,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 1231,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57353,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4a8Ln3Rtyy7S0jN9NdQyDaSkppJ",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 찾지 못한 경우에는 누락 사실을 그대로 표시하고, 이음 포털 **재무 > 경비 정산**에서 재무팀에 대체 증빙이 가능한지 문의하세요. 증빙이 자동 면제되지는 않습니다. 정산은 결제일로부터 10영업일 안에 제출하는 것이 원칙입니다.\\n\\n반려·보완 사유는 **재무 > 경비 정산**의 기존 신청 건에서 확인하고, 부족한 항목은 같은 신청 건에 보완하세요. 중복으로 새 신청을 만들지 마세요. 안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.\"}",
+          "input_tokens": 57356,
+          "output_tokens": 1413,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 19.348020555000403,
+        "estimated_dollars": 0.0153986
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "question": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\"}",
+      "answer": "문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.",
+      "input_tokens": 57328,
+      "output_tokens": 1161,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 16.818235705000916,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:RQ0009:1:0",
+        "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373",
+        "reserved_dollars": 0.062647,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\"}",
+        "usage": {
+          "input_tokens": 57328,
+          "output_tokens": 1161,
+          "total_tokens": 58489,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57325
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 993
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1161,
+            "prompt_tokens": 57328,
+            "total_tokens": 58489,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 993,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57325,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4aSD2siS5Ghx7c7yKw42uK3IYb8",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 포털에서 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다. 절차상 24시간 당직 담당자는 신고를 받은 뒤 목표로 15분 안에 접수 여부를 확인하고 대응 책임자를 명시해 인수하며, 사건 기록에 인수 담당자와 다음 연락 경로·시각을 남깁니다. 15분 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결합니다.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 1161,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 16.815929989001233,
+        "estimated_dollars": 0.0152026
+      }
+    ]
+  },
+  {
+    "case_id": "POS02",
+    "repeat": 1,
+    "question": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 어떻게 연락해야 하나요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 266,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 5.948685735998879,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:POS02:1:0",
+        "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da",
+        "reserved_dollars": 0.062647,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+        "usage": {
+          "input_tokens": 57328,
+          "output_tokens": 266,
+          "total_tokens": 57594,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57325
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 200
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 266,
+            "prompt_tokens": 57328,
+            "total_tokens": 57594,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 200,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57325,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4amqfwIrUVuwIZD0B7lQlpi4TRB",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 266,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 5.945857535998584,
+        "estimated_dollars": 0.01453135
+      }
+    ]
+  },
+  {
+    "case_id": "POS03",
+    "repeat": 1,
+    "question": "첫 로그인 전에 다중 인증을 꼭 등록해야 하나요? 계정이 준비되지 않았을 때 동료 계정을 써도 되나요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}",
+      "answer": "문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.",
+      "input_tokens": 57337,
+      "output_tokens": 320,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 5.35591694499999,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:POS03:1:0",
+        "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709",
+        "reserved_dollars": 0.0626545,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}",
+        "usage": {
+          "input_tokens": 57337,
+          "output_tokens": 320,
+          "total_tokens": 57657,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57334
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 218
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 320,
+            "prompt_tokens": 57337,
+            "total_tokens": 57657,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 218,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57334,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4arEJJpDbX3Meq9yvivnYISf6wT",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 첫 로그인 전에 등록해야 한다고 명시된 것은 아닙니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하면 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 320,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 5.354111619999458,
+        "estimated_dollars": 0.0145741
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "question": "거래처 계좌 정정과 재지급 절차를 알려주시고, 제가 등록한 지급 계좌도 바꿔 주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.\"}",
+      "answer": "참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.",
+      "input_tokens": 57337,
+      "output_tokens": 365,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 7.512266094001461,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:RQ0006:1:0",
+        "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d",
+        "reserved_dollars": 0.062649,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.\"}",
+        "usage": {
+          "input_tokens": 57337,
+          "output_tokens": 365,
+          "total_tokens": 57702,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57334
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 264
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 365,
+            "prompt_tokens": 57337,
+            "total_tokens": 57702,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 264,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57334,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4a1PJiXj7s2a42vDuB2fZlvvt8n",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌를 정정하고 재지급하는 절차가 안내되어 있지 않습니다. 등록하신 지급 계좌 변경도 별도 절차는 확인되지 않습니다. 다만 경비 정산의 계좌 정보에 오류가 있는 경우에는 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다. 제가 계좌를 직접 변경하거나 지급을 처리할 수는 없습니다.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 365,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 7.51104706499973,
+        "estimated_dollars": 0.01460785
+      }
+    ]
+  },
+  {
+    "case_id": "POS01",
+    "repeat": 1,
+    "question": "경비 정산은 결제 후 언제까지 어떤 메뉴로 제출해야 하나요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 107,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 2.9783826410002803,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:POS01:1:0",
+        "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba",
+        "reserved_dollars": 0.0626405,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57324,
+          "output_tokens": 107,
+          "total_tokens": 57431,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57321
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 62
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 107,
+            "prompt_tokens": 57324,
+            "total_tokens": 57431,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 62,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57321,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4aiXl1l81XnGcEowxFLnfprBWxb",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57324,
+          "output_tokens": 107,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 2.9754819969984965,
+        "estimated_dollars": 0.0144111
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.",
+      "input_tokens": 57334,
+      "output_tokens": 460,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 8.54416143600065,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:RQ0001:1:0",
+        "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40",
+        "reserved_dollars": 0.062651,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57334,
+          "output_tokens": 460,
+          "total_tokens": 57794,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57331
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 385
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 460,
+            "prompt_tokens": 57334,
+            "total_tokens": 57794,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 385,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57331,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4ZjNCYeVABF9V9q1LyVBIhfZep2",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록과 적용 기준은 People팀이 확인한다고 되어 있으므로, 변경 기한과 처리 경로를 People팀에 확인해 주세요.\"}",
+          "input_tokens": 57334,
+          "output_tokens": 460,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 8.542867676998867,
+        "estimated_dollars": 0.01467835
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "question": "제출한 VPN 신청이 승인됐는지 직원이 확인하는 경로와 알림 기준을 알려주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+      "answer": "참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 596,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 9.821690777000185,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference:RQ0004:1:0",
+        "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971",
+        "reserved_dollars": 0.06264675,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+        "usage": {
+          "input_tokens": 57330,
+          "output_tokens": 596,
+          "total_tokens": 57926,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57327
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 473
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 596,
+            "prompt_tokens": 57330,
+            "total_tokens": 57926,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 473,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57327,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4ZrA7XphIZb0EJuzwO77yHL2oGU",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"참고 문서에는 VPN 신청의 승인 여부를 확인하는 경로와 알림 기준이 명시되어 있지 않습니다. 일반 시스템 접근 권한 요청은 이음 포털의 IT > 접근 권한에서 제출하며, IT운영팀은 필수 확인이 끝난 뒤 2영업일 안에 처리하거나 지연 사유를 포털에 남기고 신청자는 처리 결과를 확인하도록 되어 있습니다. 다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+          "input_tokens": 57330,
+          "output_tokens": 596,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 9.820428541999718,
+        "estimated_dollars": 0.01477935
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "735baffeb518f38402980f79316b83cc09411f5717c955e0013dd51f2a85f558",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.\"}",
+      "answer": "영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.",
+      "input_tokens": 57481,
+      "output_tokens": 1143,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 17.262248461000127,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:RQ0007:1:0",
+        "prompt_sha256": "735baffeb518f38402980f79316b83cc09411f5717c955e0013dd51f2a85f558",
+        "reserved_dollars": 0.062813,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57481,
+          "output_tokens": 1143,
+          "total_tokens": 58624,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 1026,
+            "cache_creation": 56452
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 993
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1143,
+            "prompt_tokens": 57481,
+            "total_tokens": 58624,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 993,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 56452,
+              "cached_tokens": 1026,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4ftzmqyrGYy2Mvk3BhMvtOyQ98R",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 잃어버렸다면 이음 포털 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 거래별 금액, 업무 목적, 비용 부담 프로젝트를 제출하고, 증빙을 분실한 사실을 그대로 표시해 주세요. 대체 증빙이 가능한지는 재무팀에 문의해야 하며, 증빙이 자동 면제되는 것은 아닙니다. 반려되면 같은 경비 신청 건에서 반려 사유와 부족한 항목을 확인하고, 새 신청을 만들지 말고 그 신청 건에 보완해 주세요.\"}",
+          "input_tokens": 57481,
+          "output_tokens": 1143,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 17.260548002002906,
+        "estimated_dollars": 0.01499137
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "question": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "bcef90c50d25d879c9538883c7546bf0a1353e44851b03418201082460b7b5f6",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.\"}",
+      "answer": "문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.",
+      "input_tokens": 57453,
+      "output_tokens": 892,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 12.125074932999269,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:RQ0009:1:0",
+        "prompt_sha256": "bcef90c50d25d879c9538883c7546bf0a1353e44851b03418201082460b7b5f6",
+        "reserved_dollars": 0.06278575,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.\"}",
+        "usage": {
+          "input_tokens": 57453,
+          "output_tokens": 892,
+          "total_tokens": 58345,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 1026,
+            "cache_creation": 56424
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 720
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 892,
+            "prompt_tokens": 57453,
+            "total_tokens": 58345,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 720,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 56424,
+              "cached_tokens": 1026,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4gAwjK0kGQCPUoDbvu2h3dS6PHH",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 처리 단계를 직접 조회하는 별도 메뉴나 조회 권한이 안내되어 있지 않습니다. 절차상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 인수 담당자·다음 연락 경로·시각을 사건 기록에 남깁니다. 15분은 인수 목표 시간이며, 그 안에 응답이나 명시적 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남깁니다.\"}",
+          "input_tokens": 57453,
+          "output_tokens": 892,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 12.123561552001775,
+        "estimated_dollars": 0.014796120000000001
+      }
+    ]
+  },
+  {
+    "case_id": "POS02",
+    "repeat": 1,
+    "question": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 어떻게 연락해야 하나요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4c761122aa84d8eea784ba9ed8fbb24641f0420611635e5f35360ae4e99cc04a",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+      "answer": "Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.",
+      "input_tokens": 57453,
+      "output_tokens": 359,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 5.870230368000193,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:POS02:1:0",
+        "prompt_sha256": "4c761122aa84d8eea784ba9ed8fbb24641f0420611635e5f35360ae4e99cc04a",
+        "reserved_dollars": 0.06278575,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+        "usage": {
+          "input_tokens": 57453,
+          "output_tokens": 359,
+          "total_tokens": 57812,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 1026,
+            "cache_creation": 56424
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 243
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 359,
+            "prompt_tokens": 57453,
+            "total_tokens": 57812,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 243,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 56424,
+              "cached_tokens": 1026,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4gRTIyyttLhfiRu3YUyZyZhMeP0",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면 입사 시 받은 오프라인 비상연락카드의 보안 연락 안내를 따르세요. 개인 연락처를 추측하거나 임의로 찾아 사용하지 마세요. 당직 담당자와 연결되지 않으면 팀장에게 대체 인계를 요청하고, 팀장도 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+          "input_tokens": 57453,
+          "output_tokens": 359,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 5.868695072000264,
+        "estimated_dollars": 0.01439637
+      }
+    ]
+  },
+  {
+    "case_id": "POS03",
+    "repeat": 1,
+    "question": "첫 로그인 전에 다중 인증을 꼭 등록해야 하나요? 계정이 준비되지 않았을 때 동료 계정을 써도 되나요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "79c6b3f7ab36e57d8fac3ab52022337866a3fdba60f6919e9cac0715ceb9bddd",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+      "answer": "첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.",
+      "input_tokens": 57462,
+      "output_tokens": 329,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 11.76073931800056,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:POS03:1:0",
+        "prompt_sha256": "79c6b3f7ab36e57d8fac3ab52022337866a3fdba60f6919e9cac0715ceb9bddd",
+        "reserved_dollars": 0.06279325,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57462,
+          "output_tokens": 329,
+          "total_tokens": 57791,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 1026,
+            "cache_creation": 56433
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 233
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 329,
+            "prompt_tokens": 57462,
+            "total_tokens": 57791,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 233,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 56433,
+              "cached_tokens": 1026,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4gXaONrPyF4lDJ2weDjSPCmAa5F",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서 다중 인증 등록을 완료해야 합니다. 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았을 때는 동료 계정을 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 329,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 11.75913459399817,
+        "estimated_dollars": 0.014376120000000001
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "question": "거래처 계좌 정정과 재지급 절차를 알려주시고, 제가 등록한 지급 계좌도 바꿔 주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "5756e2cd4589ebc60f49d7625b04446e49ac84a4cb1f97e67fcf35d581f009e4",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.",
+      "input_tokens": 57462,
+      "output_tokens": 775,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 10.96322486400095,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:RQ0006:1:0",
+        "prompt_sha256": "5756e2cd4589ebc60f49d7625b04446e49ac84a4cb1f97e67fcf35d581f009e4",
+        "reserved_dollars": 0.06278775,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.\"}",
+        "usage": {
+          "input_tokens": 57462,
+          "output_tokens": 775,
+          "total_tokens": 58237,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 1026,
+            "cache_creation": 56433
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 672
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 775,
+            "prompt_tokens": 57462,
+            "total_tokens": 58237,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 672,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 56433,
+              "cached_tokens": 1026,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4fibzmIVspnsLZ09P7Ro6BL7usS",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 본인 계좌를 대신 변경할 수도 없습니다. 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 포함해 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 자체의 절차는 문서에 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 775,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 10.961539659001573,
+        "estimated_dollars": 0.01471062
+      }
+    ]
+  },
+  {
+    "case_id": "POS01",
+    "repeat": 1,
+    "question": "경비 정산은 결제 후 언제까지 어떤 메뉴로 제출해야 하나요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "56297989444a782ab8620971967750d1fb404daae52c75b3af7fdc04d6c95fad",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.",
+      "input_tokens": 57449,
+      "output_tokens": 196,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 5.057140503999108,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:POS01:1:0",
+        "prompt_sha256": "56297989444a782ab8620971967750d1fb404daae52c75b3af7fdc04d6c95fad",
+        "reserved_dollars": 0.06277925,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57449,
+          "output_tokens": 196,
+          "total_tokens": 57645,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 1026,
+            "cache_creation": 56420
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 131
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 196,
+            "prompt_tokens": 57449,
+            "total_tokens": 57645,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 131,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 56420,
+              "cached_tokens": 1026,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4gMUqAuggPRzX5koBbxdJopuJIE",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다. 거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증을 등록해 주세요.\"}",
+          "input_tokens": 57449,
+          "output_tokens": 196,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 5.055546346997289,
+        "estimated_dollars": 0.01427312
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "219791e6335e3a2432265a071d95dc2737d100b8b49b67789b9b8cae92daff32",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.",
+      "input_tokens": 57459,
+      "output_tokens": 649,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 9.132024135000393,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:RQ0001:1:0",
+        "prompt_sha256": "219791e6335e3a2432265a071d95dc2737d100b8b49b67789b9b8cae92daff32",
+        "reserved_dollars": 0.06278975,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.\"}",
+        "usage": {
+          "input_tokens": 57459,
+          "output_tokens": 649,
+          "total_tokens": 58108,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57456
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 543
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 649,
+            "prompt_tokens": 57459,
+            "total_tokens": 58108,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 543,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57456,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4fK7L5hM4VBUS5SWj3SVh2IvCMo",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌를 변경하는 메뉴나 다음 급여 반영을 위한 마감일이 안내되어 있지 않습니다. 급여 기록 관련 확인은 People팀에 문의하시고, 일반 인사 절차 문의 창구인 #people-help로 처리 경로와 마감일을 확인해 주세요. 다음 급여에 반영될지는 문서만으로 확인할 수 없습니다.\"}",
+          "input_tokens": 57459,
+          "output_tokens": 649,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 9.130614417001198,
+        "estimated_dollars": 0.014851350000000001
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "question": "제출한 VPN 신청이 승인됐는지 직원이 확인하는 경로와 알림 기준을 알려주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "f88b47192e76f6ac58186079b18e63bb4e27af507f8afe7632bd10576884b3e3",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.",
+      "input_tokens": 57455,
+      "output_tokens": 999,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 14.681205749002402,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage:RQ0004:1:0",
+        "prompt_sha256": "f88b47192e76f6ac58186079b18e63bb4e27af507f8afe7632bd10576884b3e3",
+        "reserved_dollars": 0.0627855,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.\"}",
+        "usage": {
+          "input_tokens": 57455,
+          "output_tokens": 999,
+          "total_tokens": 58454,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 1026,
+            "cache_creation": 56426
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 834
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 999,
+            "prompt_tokens": 57455,
+            "total_tokens": 58454,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 834,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 56426,
+              "cached_tokens": 1026,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4fT2Kmaqee9Xrvow58wj08gkjqj",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청 전용 승인 상태 확인 경로나 알림 기준이 안내되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청으로 접수된 건이라면 이음 포털 **IT > 접근 권한**에서 처리 결과를 확인할 수 있습니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기지만, 승인 알림을 보내는 방식이나 시점은 문서에서 확인할 수 없습니다. 진행 상태가 불분명하면 일반 권한 문의 창구인 **#it-helpdesk** 또는 포털 IT 메뉴에 문의하실 수 있습니다.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 999,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 14.67954069299958,
+        "estimated_dollars": 0.01487687
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "bb83bcdce215698cb07ddeac17e3e63d8c7a0283275308f53e9d72b1e4972807",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.\"}",
+      "answer": "영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.",
+      "input_tokens": 57474,
+      "output_tokens": 673,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 11.976633089001552,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:RQ0007:1:0",
+        "prompt_sha256": "bb83bcdce215698cb07ddeac17e3e63d8c7a0283275308f53e9d72b1e4972807",
+        "reserved_dollars": 0.06279525,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.\"}",
+        "usage": {
+          "input_tokens": 57474,
+          "output_tokens": 673,
+          "total_tokens": 58147,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57471
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 512
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 673,
+            "prompt_tokens": 57474,
+            "total_tokens": 58147,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 512,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57471,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4hKboEhgVGa48jfZZny1drSxP9s",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 찾지 못한 사실을 그대로 표시하고, 재무팀에 대체 증빙을 제출할 수 있는지 문의해 주세요. 증빙이 자동 면제되는 것은 아닙니다. 출장비는 결제일로부터 10영업일 안에 이음 포털 **재무 > 경비 정산**에서 거래별 금액·업무 목적·출장 기록 번호와 영수증을 등록합니다. 반려되거나 보완 요청을 받으면 같은 신청 건에서 부족한 항목과 사유를 확인해 보완하시면 됩니다. 문서에는 반려 사유가 표시되는 구체적인 포털 화면 위치까지는 안내되어 있지 않습니다.\"}",
+          "input_tokens": 57474,
+          "output_tokens": 673,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 11.97403757199936,
+        "estimated_dollars": 0.0148731
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "question": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "f2a8332a64df1685b9772c1cdbf2acf5b50877ce03c38f004ae22d756451e3c7",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\\n\\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.\"}",
+      "answer": "문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\n\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.",
+      "input_tokens": 57446,
+      "output_tokens": 1286,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\\n\\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 21.26099269900078,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:RQ0009:1:0",
+        "prompt_sha256": "f2a8332a64df1685b9772c1cdbf2acf5b50877ce03c38f004ae22d756451e3c7",
+        "reserved_dollars": 0.062768,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\\n\\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.\"}",
+        "usage": {
+          "input_tokens": 57446,
+          "output_tokens": 1286,
+          "total_tokens": 58732,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57443
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 1076
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1286,
+            "prompt_tokens": 57446,
+            "total_tokens": 58732,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 1076,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57443,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4hWdGf0paDUpWXduGpdBg7pZ6ag",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 단계를 직접 조회하는 별도 화면·경로가 안내되어 있지 않습니다. 담당자가 신고를 인수하면 대응 책임자, 다음 연락 경로와 시각을 기록하고, 대응 조치와 결과도 사건 기록에 남기도록 되어 있지만, 신고자의 조회 권한이나 확인 방법은 확인할 수 없습니다.\\n\\n당직 담당자의 신고 확인·인수는 15분 안을 목표로 합니다(해결 시간이나 응답 보장은 아닙니다). 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하도록 안내되어 있습니다. 연결 시도와 인수 여부는 사건 기록에 남깁니다.\"}",
+          "input_tokens": 57446,
+          "output_tokens": 1286,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 21.25927158900231,
+        "estimated_dollars": 0.01532585
+      }
+    ]
+  },
+  {
+    "case_id": "POS02",
+    "repeat": 1,
+    "question": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 어떻게 연락해야 하나요?",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "889bf4daafdceffbeaecd5acb0cdb3dc319fa1e00b38428599b84488681fad47",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.\"}",
+      "answer": "Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.",
+      "input_tokens": 57446,
+      "output_tokens": 180,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 4.760885004001466,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:POS02:1:0",
+        "prompt_sha256": "889bf4daafdceffbeaecd5acb0cdb3dc319fa1e00b38428599b84488681fad47",
+        "reserved_dollars": 0.062768,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.\"}",
+        "usage": {
+          "input_tokens": 57446,
+          "output_tokens": 180,
+          "total_tokens": 57626,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57443
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 116
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 180,
+            "prompt_tokens": 57446,
+            "total_tokens": 57626,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 116,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57443,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4hvwto2P7SQWjci3cv5WvWucEJ7",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 이음 포털이 모두 작동하지 않으면, 입사 시 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 찾아 연락하지 마세요.\"}",
+          "input_tokens": 57446,
+          "output_tokens": 180,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 4.758712725997611,
+        "estimated_dollars": 0.01449635
+      }
+    ]
+  },
+  {
+    "case_id": "POS03",
+    "repeat": 1,
+    "question": "첫 로그인 전에 다중 인증을 꼭 등록해야 하나요? 계정이 준비되지 않았을 때 동료 계정을 써도 되나요?",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "5b125041ef82490348ff99c304001c85c3468ff51d8938869519614699c86c57",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.\"}",
+      "answer": "첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.",
+      "input_tokens": 57455,
+      "output_tokens": 331,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 7.8269744380013435,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:POS03:1:0",
+        "prompt_sha256": "5b125041ef82490348ff99c304001c85c3468ff51d8938869519614699c86c57",
+        "reserved_dollars": 0.0627755,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57455,
+          "output_tokens": 331,
+          "total_tokens": 57786,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57452
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 228
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 331,
+            "prompt_tokens": 57455,
+            "total_tokens": 57786,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 228,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57452,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4i0eU42ACM6ePL8jcZqnwD46QTE",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"첫 로그인 전에 미리 등록해야 하는 것은 아닙니다. 문서에는 첫 로그인 과정에서 다중 인증 등록을 완료하고, 등록이 끝나기 전에는 업무 시스템과 자료에 접근하지 않도록 안내되어 있습니다. 계정이 준비되지 않았더라도 동료 계정을 사용하면 안 됩니다. 팀장에게 첫날 대체 업무를 요청하고 IT운영팀의 일반 지원 창구를 이용해 주세요.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 331,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 7.824295219998021,
+        "estimated_dollars": 0.014611850000000001
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "question": "거래처 계좌 정정과 재지급 절차를 알려주시고, 제가 등록한 지급 계좌도 바꿔 주세요.",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "2030b14383f894e020d6185b5ed279185371374cebc12ff3b955b182560cb146",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.",
+      "input_tokens": 57455,
+      "output_tokens": 706,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 12.046831114999804,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:RQ0006:1:0",
+        "prompt_sha256": "2030b14383f894e020d6185b5ed279185371374cebc12ff3b955b182560cb146",
+        "reserved_dollars": 0.06277,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.\"}",
+        "usage": {
+          "input_tokens": 57455,
+          "output_tokens": 706,
+          "total_tokens": 58161,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57452
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 592
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 706,
+            "prompt_tokens": 57455,
+            "total_tokens": 58161,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 592,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57452,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4h88KlGQY5VbHTtrfXNgFgepdNF",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌를 제가 직접 변경할 수도 없습니다. 경비 정산 건의 지급 계좌 정보에 오류가 있는 경우라면, 기존 신청 번호로 재무팀에 문의하도록 안내되어 있습니다(ieum-019). 별도 등록 계좌의 변경 절차는 문서에 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 706,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 12.045228338000015,
+        "estimated_dollars": 0.014893100000000001
+      }
+    ]
+  },
+  {
+    "case_id": "POS01",
+    "repeat": 1,
+    "question": "경비 정산은 결제 후 언제까지 어떤 메뉴로 제출해야 하나요?",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e0b47d326b36adb43ec2da7f4d3b18a5ffe9074e4a2dc15fb2b2ccb80dfa99aa",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57442,
+      "output_tokens": 119,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 4.0567117069986125,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:POS01:1:0",
+        "prompt_sha256": "e0b47d326b36adb43ec2da7f4d3b18a5ffe9074e4a2dc15fb2b2ccb80dfa99aa",
+        "reserved_dollars": 0.0627615,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57442,
+          "output_tokens": 119,
+          "total_tokens": 57561,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57439
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 74
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 119,
+            "prompt_tokens": 57442,
+            "total_tokens": 57561,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 74,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57439,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4hsKc7QJ34tcMJn6HB0Oz8FhMxS",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57442,
+          "output_tokens": 119,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 4.054728274000809,
+        "estimated_dollars": 0.0144496
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "cc64de2c2b036ef53d3c57dddeb29da7db05b51abad9487e56f177b9492243ba",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.\"}",
+      "answer": "급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.",
+      "input_tokens": 57452,
+      "output_tokens": 599,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 11.22376006400009,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:RQ0001:1:0",
+        "prompt_sha256": "cc64de2c2b036ef53d3c57dddeb29da7db05b51abad9487e56f177b9492243ba",
+        "reserved_dollars": 0.062772,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.\"}",
+        "usage": {
+          "input_tokens": 57452,
+          "output_tokens": 599,
+          "total_tokens": 58051,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57449
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 512
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 599,
+            "prompt_tokens": 57452,
+            "total_tokens": 58051,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 512,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57449,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4gny9QCt6UXFih0o8I5baERq08W",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"급여 계좌 변경의 마감 시점과 수정 메뉴는 제공 문서에서 확인할 수 없습니다. 급여 등 개인 기록은 People팀이 확인한다고 안내되어 있으니, 인사 메뉴 또는 #people-help로 문의해 주세요. 재무 > 경비 정산의 계좌 정보 안내는 경비 지급 건에 관한 절차입니다.\"}",
+          "input_tokens": 57452,
+          "output_tokens": 599,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 11.222173300000577,
+        "estimated_dollars": 0.0148121
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "question": "제출한 VPN 신청이 승인됐는지 직원이 확인하는 경로와 알림 기준을 알려주세요.",
+    "candidate_id": "luna-conditions",
+    "profile": "examples_conditions",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4c9ae34d542cf274680497bbbf9117119f4e0d4c2a94771a08794c37b7999ed8",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.",
+      "input_tokens": 57448,
+      "output_tokens": 521,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 9.915628807997564,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-conditions:RQ0004:1:0",
+        "prompt_sha256": "4c9ae34d542cf274680497bbbf9117119f4e0d4c2a94771a08794c37b7999ed8",
+        "reserved_dollars": 0.06276775,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57448,
+          "output_tokens": 521,
+          "total_tokens": 57969,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57445
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 450
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 521,
+            "prompt_tokens": 57448,
+            "total_tokens": 57969,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 450,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57445,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4gzps9ujcRO5ReDKQguiZBbSwKL",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. VPN 관련 문의는 일반 계정·권한 문의 창구인 이음 포털 IT 메뉴 또는 #it-helpdesk에 확인해 주세요.\"}",
+          "input_tokens": 57448,
+          "output_tokens": 521,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 9.913995883998723,
+        "estimated_dollars": 0.014752600000000001
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0007",
+    "repeat": 1,
+    "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "b243876282c64df2e92fb0db4b600194035b920297a22cf82fb35c1c7a66a136",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.\"}",
+      "answer": "증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\n\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.",
+      "input_tokens": 57386,
+      "output_tokens": 949,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 11.974985759999981,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:RQ0007:1:0",
+        "prompt_sha256": "b243876282c64df2e92fb0db4b600194035b920297a22cf82fb35c1c7a66a136",
+        "reserved_dollars": 0.06269525,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.\"}",
+        "usage": {
+          "input_tokens": 57386,
+          "output_tokens": 949,
+          "total_tokens": 58335,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57383
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 795
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 949,
+            "prompt_tokens": 57386,
+            "total_tokens": 58335,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 795,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57383,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4kPSRPgHKTdTr9ShlCQqC4xFClB",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"증빙을 분실한 경우에는 이음 포털 **재무 > 경비 정산**에서 해당 거래를 사실대로 표시하고, 재무팀에 대체 증빙이 가능한지 문의하세요. 대체 증빙이 자동으로 면제되는 것은 아닙니다. 출장 정산은 결제일로부터 10영업일 안에 제출해야 합니다.\\n\\n반려되거나 보완 요청을 받으면 같은 메뉴에서 기존 신청 건의 처리 상태와 사유·부족한 항목을 확인하고, 그 신청 건에 보완 자료를 제출하세요. 새 신청을 중복으로 만들지 마세요.\"}",
+          "input_tokens": 57386,
+          "output_tokens": 949,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 11.973030645000108,
+        "estimated_dollars": 0.0150581
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0009",
+    "repeat": 1,
+    "question": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "843d3ee20d34227cd3d22694c9d51014e341ae31bd455e5f014597f3d63654eb",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.\"}",
+      "answer": "문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.",
+      "input_tokens": 57358,
+      "output_tokens": 767,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 11.055437877999793,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:RQ0009:1:0",
+        "prompt_sha256": "843d3ee20d34227cd3d22694c9d51014e341ae31bd455e5f014597f3d63654eb",
+        "reserved_dollars": 0.062668,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.\"}",
+        "usage": {
+          "input_tokens": 57358,
+          "output_tokens": 767,
+          "total_tokens": 58125,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57355
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 605
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 767,
+            "prompt_tokens": 57358,
+            "total_tokens": 58125,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 605,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57355,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4kcjWb1Un0rUTN3EGhl6AXgtm30",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 담당자나 처리 상태를 직접 조회하는 메뉴·권한은 별도로 안내되어 있지 않습니다. 처리 흐름상 당직 담당자는 신고를 확인하고 대응 책임자를 지정하며, 인수 담당자와 다음 연락 경로·시각을 사건 기록에 남깁니다. 15분 안에 응답이나 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다.\"}",
+          "input_tokens": 57358,
+          "output_tokens": 767,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 11.052893493000738,
+        "estimated_dollars": 0.0149146
+      }
+    ]
+  },
+  {
+    "case_id": "POS02",
+    "repeat": 1,
+    "question": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 어떻게 연락해야 하나요?",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "5658f427ad21555a1c1e39d1b1fc8c82560c7f3a8bd433d79e05a2677ea2ebe9",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57358,
+      "output_tokens": 185,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 3.8671336850020452,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:POS02:1:0",
+        "prompt_sha256": "5658f427ad21555a1c1e39d1b1fc8c82560c7f3a8bd433d79e05a2677ea2ebe9",
+        "reserved_dollars": 0.062668,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+        "usage": {
+          "input_tokens": 57358,
+          "output_tokens": 185,
+          "total_tokens": 57543,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57355
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 118
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 185,
+            "prompt_tokens": 57358,
+            "total_tokens": 57543,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 118,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57355,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4kqeTA9ZBoYTjQOYIQZ405LGqpR",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 이음 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+          "input_tokens": 57358,
+          "output_tokens": 185,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 3.8654019679997873,
+        "estimated_dollars": 0.0144781
+      }
+    ]
+  },
+  {
+    "case_id": "POS03",
+    "repeat": 1,
+    "question": "첫 로그인 전에 다중 인증을 꼭 등록해야 하나요? 계정이 준비되지 않았을 때 동료 계정을 써도 되나요?",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4603be4b4eb4c3aeac1a65de89dc1074f32bd717ae27cfaaffbe95999ac9d413",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+      "answer": "다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.",
+      "input_tokens": 57367,
+      "output_tokens": 340,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 6.83552249299828,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:POS03:1:0",
+        "prompt_sha256": "4603be4b4eb4c3aeac1a65de89dc1074f32bd717ae27cfaaffbe95999ac9d413",
+        "reserved_dollars": 0.0626755,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57367,
+          "output_tokens": 340,
+          "total_tokens": 57707,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57364
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 251
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 340,
+            "prompt_tokens": 57367,
+            "total_tokens": 57707,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 251,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57364,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4kugn4a78JIhdeEc1ljmHzL4VBY",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 하며, 설정이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이나 권한이 준비되지 않았더라도 동료 계정을 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀의 일반 지원 경로를 이용해 주세요.\"}",
+          "input_tokens": 57367,
+          "output_tokens": 340,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 6.83388117800132,
+        "estimated_dollars": 0.0145966
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0006",
+    "repeat": 1,
+    "question": "거래처 계좌 정정과 재지급 절차를 알려주시고, 제가 등록한 지급 계좌도 바꿔 주세요.",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "6e477e4165b176c19038e9c16e960db2215afcea0f601a8579502d1abd5eb42d",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.\"}",
+      "answer": "거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.",
+      "input_tokens": 57367,
+      "output_tokens": 583,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 7.892270385000302,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:RQ0006:1:0",
+        "prompt_sha256": "6e477e4165b176c19038e9c16e960db2215afcea0f601a8579502d1abd5eb42d",
+        "reserved_dollars": 0.06267,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.\"}",
+        "usage": {
+          "input_tokens": 57367,
+          "output_tokens": 583,
+          "total_tokens": 57950,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57364
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 481
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 583,
+            "prompt_tokens": 57367,
+            "total_tokens": 57950,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 481,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57364,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4kIMlDM3cHFNVg7QsPAdZ7l3vNM",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정과 재지급 절차는 참고 문서에서 확인할 수 없습니다. 제가 계좌를 직접 변경할 수도 없습니다. 본인 경비 정산의 지급 계좌 정보에 오류가 있는 경우라면, 문서에는 기존 신청 번호를 적어 재무팀에 문의하라고 안내되어 있습니다. 별도의 계좌 변경 메뉴나 절차는 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57367,
+          "output_tokens": 583,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 7.8896565299983195,
+        "estimated_dollars": 0.01477885
+      }
+    ]
+  },
+  {
+    "case_id": "POS01",
+    "repeat": 1,
+    "question": "경비 정산은 결제 후 언제까지 어떤 메뉴로 제출해야 하나요?",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "c478289cc8957b15a6f44b29a6d1b8b23aeb25ee92469a9e9674b8b4c774600e",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57354,
+      "output_tokens": 123,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 2.773200850999274,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:POS01:1:0",
+        "prompt_sha256": "c478289cc8957b15a6f44b29a6d1b8b23aeb25ee92469a9e9674b8b4c774600e",
+        "reserved_dollars": 0.0626615,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57354,
+          "output_tokens": 123,
+          "total_tokens": 57477,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57351
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 78
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 123,
+            "prompt_tokens": 57354,
+            "total_tokens": 57477,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 78,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57351,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4kn2skf2TlcMwctFQHHrshDuQD5",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57354,
+          "output_tokens": 123,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 2.7707135979981103,
+        "estimated_dollars": 0.0144306
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0001",
+    "repeat": 1,
+    "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "8f9bb9a3fe69d2f25d75705f236d34eea4c2dec47d497aaa87df0f0b6d0344ac",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.\"}",
+      "answer": "급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.",
+      "input_tokens": 57364,
+      "output_tokens": 583,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 9.455213520999678,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:RQ0001:1:0",
+        "prompt_sha256": "8f9bb9a3fe69d2f25d75705f236d34eea4c2dec47d497aaa87df0f0b6d0344ac",
+        "reserved_dollars": 0.062672,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.\"}",
+        "usage": {
+          "input_tokens": 57364,
+          "output_tokens": 583,
+          "total_tokens": 57947,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57361
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 506
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 583,
+            "prompt_tokens": 57364,
+            "total_tokens": 57947,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 506,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57361,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4k1TD5nWlrXiuRck73dG4W13evr",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감 시점은 제공된 문서에서 확인할 수 없습니다. People팀에 확인해 주세요. 일반 문의 채널로는 #people-help가 안내되어 있지만, 이는 계좌 변경 메뉴라는 뜻은 아닙니다.\"}",
+          "input_tokens": 57364,
+          "output_tokens": 583,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 9.453519607002818,
+        "estimated_dollars": 0.0147781
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0004",
+    "repeat": 1,
+    "question": "제출한 VPN 신청이 승인됐는지 직원이 확인하는 경로와 알림 기준을 알려주세요.",
+    "candidate_id": "luna-json",
+    "profile": "examples_json",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "f1358d73a36fe14e365abf619cae721fdf33ad055e75d6ddc5270c4a62c46295",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.",
+      "input_tokens": 57360,
+      "output_tokens": 531,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 7.491255133001687,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-json:RQ0004:1:0",
+        "prompt_sha256": "f1358d73a36fe14e365abf619cae721fdf33ad055e75d6ddc5270c4a62c46295",
+        "reserved_dollars": 0.06266775,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+        "usage": {
+          "input_tokens": 57360,
+          "output_tokens": 531,
+          "total_tokens": 57891,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57357
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 444
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 531,
+            "prompt_tokens": 57360,
+            "total_tokens": 57891,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 444,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 57357,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4kALwvaMGaZnd3Tw8k9SQCOYN4A",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인 알림 기준이 안내되어 있지 않습니다. 일반 계정·권한 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk에서 확인하실 수 있지만, 이 경로가 VPN 신청 상태 확인에도 적용되는지는 문서에서 확인할 수 없습니다.\"}",
+          "input_tokens": 57360,
+          "output_tokens": 531,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 7.48865091100015,
+        "estimated_dollars": 0.0147381
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0007",
+    "repeat": 2,
+    "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\\n\\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.\"}",
+      "answer": "영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\n\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.",
+      "input_tokens": 57356,
+      "output_tokens": 1507,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\\n\\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 19.699675985000795,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:RQ0007:2:0",
+        "prompt_sha256": "a7b0a77c091053d71e902a6623033112a08d7807e5582041cdb5da319f80e2e2",
+        "reserved_dollars": 0.06267425,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\\n\\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57356,
+          "output_tokens": 1507,
+          "total_tokens": 58863,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57353,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 1285
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1507,
+            "prompt_tokens": 57356,
+            "total_tokens": 58863,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 1285,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57353,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4lXjMoKOj0KUV5JrcPQd3e2H8ny",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"영수증을 찾지 못했다면 분실 사실을 그대로 표시하고, 대체 증빙을 제출할 수 있는지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다. 출장 예약 확인서나 결제 증빙이 별도로 있다면 출장 기록에 연결할 수 있지만, 영수증 대체로 인정되는지는 재무팀에 확인해야 합니다. 경비 정산은 결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출합니다.\\n\\n반려되거나 보완 요청을 받으면 기존 신청 건에서 부족한 항목과 사유를 확인해 같은 건에 보완하세요. 문서에는 별도의 반려 사유 조회 메뉴가 따로 명시되어 있지 않습니다. 상태나 사유를 찾기 어렵다면 신청 번호를 적어 재무팀에 문의하시면 됩니다.\"}",
+          "input_tokens": 57356,
+          "output_tokens": 1507,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 19.697472274001484,
+        "estimated_dollars": 0.0022779099999999997
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0009",
+    "repeat": 2,
+    "question": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\\n\\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.\"}",
+      "answer": "문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\n\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.",
+      "input_tokens": 57328,
+      "output_tokens": 1047,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\\n\\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 14.61949486100275,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:RQ0009:2:0",
+        "prompt_sha256": "f87f8bde119029ec9c30f5795ea60c514cf3f6c6771d587d013d21aebb74a373",
+        "reserved_dollars": 0.062647,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\\n\\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57328,
+          "output_tokens": 1047,
+          "total_tokens": 58375,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57325,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 877
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1047,
+            "prompt_tokens": 57328,
+            "total_tokens": 58375,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 877,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57325,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4lr0HnSrmn6tV9BgJASArj0MkeA",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서상 당직 담당자는 신고를 확인하고 대응 책임자를 지정해 인수하며, 담당 역할·다음 연락 경로·시각을 사건 기록에 남깁니다. 다만 신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.\\n\\n신고 후 인수 확인과 담당자, 다음 연락 경로를 확인해 주세요. 15분 안에 응답이나 명시적인 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하기 어렵거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하시면 됩니다.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 1047,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 14.617658488001325,
+        "estimated_dollars": 0.00193235
+      }
+    ]
+  },
+  {
+    "case_id": "POS02",
+    "repeat": 2,
+    "question": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 어떻게 연락해야 하나요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+      "answer": "Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.",
+      "input_tokens": 57328,
+      "output_tokens": 140,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 3.86503628599894,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:POS02:2:0",
+        "prompt_sha256": "b031729dd7c6e14b4b87e5be685f8b1cfd9bacee63eb67f2f75a69d3a85684da",
+        "reserved_dollars": 0.062647,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+        "usage": {
+          "input_tokens": 57328,
+          "output_tokens": 140,
+          "total_tokens": 57468,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57325,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 74
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 140,
+            "prompt_tokens": 57328,
+            "total_tokens": 57468,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 74,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57325,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4m8rI7HoL8na4p1GNIJLyv1Iars",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 포털을 모두 사용할 수 없으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르시면 됩니다. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.\"}",
+          "input_tokens": 57328,
+          "output_tokens": 140,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 3.862996192998253,
+        "estimated_dollars": 0.0012521
+      }
+    ]
+  },
+  {
+    "case_id": "POS03",
+    "repeat": 2,
+    "question": "첫 로그인 전에 다중 인증을 꼭 등록해야 하나요? 계정이 준비되지 않았을 때 동료 계정을 써도 되나요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.\"}",
+      "answer": "문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 273,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 5.911978247000661,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:POS03:2:0",
+        "prompt_sha256": "2577add15e91f290047347a9785d200fbcad0acf1bf58a506dc948c8be2c6709",
+        "reserved_dollars": 0.0626545,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57337,
+          "output_tokens": 273,
+          "total_tokens": 57610,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57334,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 186
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 273,
+            "prompt_tokens": 57337,
+            "total_tokens": 57610,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 186,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57334,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4mDjt05gaZlHk9BYzdUqLUFSmTS",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서상 다중 인증은 첫 로그인 과정에서 등록해야 하며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용하지 마시고, 팀장에게 대체 업무를 요청한 뒤 IT운영팀의 지원을 이용해 주세요.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 273,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 5.910090960998787,
+        "estimated_dollars": 0.00135203
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0006",
+    "repeat": 2,
+    "question": "거래처 계좌 정정과 재지급 절차를 알려주시고, 제가 등록한 지급 계좌도 바꿔 주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.\"}",
+      "answer": "참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.",
+      "input_tokens": 57337,
+      "output_tokens": 613,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 8.545163236998633,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:RQ0006:2:0",
+        "prompt_sha256": "5475e4816c699439d14e1dbd7f0326a7e36cd3d673f42147f2ae186b1ece2c8d",
+        "reserved_dollars": 0.062649,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57337,
+          "output_tokens": 613,
+          "total_tokens": 57950,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57334,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 495
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 613,
+            "prompt_tokens": 57337,
+            "total_tokens": 57950,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 495,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57334,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4lOEeetEdLYC8fXpOWEAYbtR8x2",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"참고 문서에는 거래처 계좌 정정 및 재지급 절차가 안내되어 있지 않습니다. 개인 경비 정산의 지급 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 되어 있지만, 등록 계좌를 변경하는 절차는 확인할 수 없습니다. 제가 계좌를 바꾸거나 지급을 처리할 수는 없으므로, 해당 건의 기존 신청 번호와 함께 재무팀에 변경 방법을 문의해 주세요.\"}",
+          "input_tokens": 57337,
+          "output_tokens": 613,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 8.542956647997926,
+        "estimated_dollars": 0.00160703
+      }
+    ]
+  },
+  {
+    "case_id": "POS01",
+    "repeat": 2,
+    "question": "경비 정산은 결제 후 언제까지 어떤 메뉴로 제출해야 하나요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57324,
+      "output_tokens": 114,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 2.9863103740026418,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:POS01:2:0",
+        "prompt_sha256": "7abadd884b6589c7774788cb15e1a17dccb3a2f0db634adbb4b52fa66d5be1ba",
+        "reserved_dollars": 0.0626405,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57324,
+          "output_tokens": 114,
+          "total_tokens": 57438,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57321,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 69
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 114,
+            "prompt_tokens": 57324,
+            "total_tokens": 57438,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 69,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57321,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4m5rLvqFYpkZ0RI9Uw693HiUjLL",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57324,
+          "output_tokens": 114,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 2.983942996001133,
+        "estimated_dollars": 0.00123252
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0001",
+    "repeat": 2,
+    "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.\"}",
+      "answer": "제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.",
+      "input_tokens": 57334,
+      "output_tokens": 492,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 8.49112077600148,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:RQ0001:2:0",
+        "prompt_sha256": "07d81afa27ca27cd087143c0f3095f2feab6c194b25a2b8670889a1347390e40",
+        "reserved_dollars": 0.062651,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57334,
+          "output_tokens": 492,
+          "total_tokens": 57826,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57331,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 418
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 492,
+            "prompt_tokens": 57334,
+            "total_tokens": 57826,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 418,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57331,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4l6avY7q6Aim5VnjC6hnEqR0KiS",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공된 문서에는 급여 계좌 변경 메뉴와 다음 급여에 반영되기 위한 마감일이 안내되어 있지 않습니다. 급여 관련 개인 기록은 People팀이 확인한다고 되어 있으니, People팀에 변경 방법과 반영 시점을 확인해 주세요.\"}",
+          "input_tokens": 57334,
+          "output_tokens": 492,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 8.489361521998944,
+        "estimated_dollars": 0.00151622
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0004",
+    "repeat": 2,
+    "question": "제출한 VPN 신청이 승인됐는지 직원이 확인하는 경로와 알림 기준을 알려주세요.",
+    "candidate_id": "luna-reference",
+    "profile": "examples",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.\"}",
+      "answer": "제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.",
+      "input_tokens": 57330,
+      "output_tokens": 646,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 10.114435999003035,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-reference-r2:RQ0004:2:0",
+        "prompt_sha256": "6dde6fda6137ee9a6857491aa959a61a822e206695373c4862f5603d7f1d1971",
+        "reserved_dollars": 0.06264675,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.\"}",
+        "usage": {
+          "input_tokens": 57330,
+          "output_tokens": 646,
+          "total_tokens": 57976,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57327,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 561
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 646,
+            "prompt_tokens": 57330,
+            "total_tokens": 57976,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 561,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57327,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4lF4iTVhQ3Md5CxUN14vyLrgzFR",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 상태를 확인하는 경로나 승인·알림 기준이 안내되어 있지 않습니다. IT 관련 일반 문의 창구로 이음 포털의 IT 메뉴와 #it-helpdesk가 안내되어 있지만, VPN 신청 상태 확인 경로라고 명시된 것은 아닙니다.\"}",
+          "input_tokens": 57330,
+          "output_tokens": 646,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 10.112396232998435,
+        "estimated_dollars": 0.00163164
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0007",
+    "repeat": 2,
+    "question": "신입이라 출장 정산서를 쓰다가 마지막 이동 구간 영수증을 못 찾았어요. 증빙 누락은 어떻게 적고, 반려 사유는 어디서 확인하는지 사내 포털 안내를 알려주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "735baffeb518f38402980f79316b83cc09411f5717c955e0013dd51f2a85f558",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.\"}",
+      "answer": "출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\n\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.",
+      "input_tokens": 57481,
+      "output_tokens": 1019,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 14.82306601000164,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:RQ0007:2:0",
+        "prompt_sha256": "735baffeb518f38402980f79316b83cc09411f5717c955e0013dd51f2a85f558",
+        "reserved_dollars": 0.062813,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57481,
+          "output_tokens": 1019,
+          "total_tokens": 58500,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57478,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 865
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1019,
+            "prompt_tokens": 57481,
+            "total_tokens": 58500,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 865,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57478,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4nIx4nbKfAV9GPAZVS2gibTbWCt",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"출장비 정산은 이음 포털의 **재무 > 경비 정산**에서 결제일로부터 10영업일 안에 제출하시면 됩니다. 마지막 이동 구간 영수증을 찾지 못했다면 증빙을 분실한 사실을 그대로 표시하고, 대체 증빙이 가능한지 재무팀에 문의하세요. 증빙이 자동 면제되는 것은 아닙니다.\\n\\n반려되면 같은 경비 정산 신청 건에서 부족한 항목과 반려 사유를 확인해 보완하세요. 새 신청 건을 만들지 말고 기존 신청에 보완하시면 됩니다.\"}",
+          "input_tokens": 57481,
+          "output_tokens": 1019,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 14.820538747997489,
+        "estimated_dollars": 0.0019144099999999999
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0009",
+    "repeat": 2,
+    "question": "보안 신고를 올린 뒤 담당자 배정이나 처리 단계를 확인하는 방법을 알려주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "bcef90c50d25d879c9538883c7546bf0a1353e44851b03418201082460b7b5f6",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)\"}",
+      "answer": "문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)",
+      "input_tokens": 57453,
+      "output_tokens": 1171,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 15.671422898001765,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:RQ0009:2:0",
+        "prompt_sha256": "bcef90c50d25d879c9538883c7546bf0a1353e44851b03418201082460b7b5f6",
+        "reserved_dollars": 0.06278575,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)\"}",
+        "usage": {
+          "input_tokens": 57453,
+          "output_tokens": 1171,
+          "total_tokens": 58624,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57450,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 988
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 1171,
+            "prompt_tokens": 57453,
+            "total_tokens": 58624,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 988,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57450,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4nXFbQXYXr47Gxgb5ZnN6euP4Vm",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"문서에는 신고자가 담당자 배정이나 처리 상태를 직접 조회하는 메뉴·권한은 명시되어 있지 않습니다. 다만 사건 기록에는 인수 담당자, 다음 연락 경로와 시각, 조치 결과 및 미확인 사항을 남기도록 되어 있습니다. 최초 신고 후 15분 안에 담당자가 인수하는 것은 운영 목표이며, 그 안에 응답이나 명시적인 인수 확인이 없으면 기다리지 말고 팀장에게 대체 인계를 요청하세요. 팀장이 조정하지 못하거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하고, 연결 시도와 인수 여부를 사건 기록에 남기도록 안내되어 있습니다. (문서 ieum-035)\"}",
+          "input_tokens": 57453,
+          "output_tokens": 1171,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 15.667237726000167,
+        "estimated_dollars": 0.00202785
+      }
+    ]
+  },
+  {
+    "case_id": "POS02",
+    "repeat": 2,
+    "question": "보안 사고 신고 때 Slack과 포털이 모두 작동하지 않으면 어떻게 연락해야 하나요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4c761122aa84d8eea784ba9ed8fbb24641f0420611635e5f35360ae4e99cc04a",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+      "answer": "Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.",
+      "input_tokens": 57453,
+      "output_tokens": 489,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 7.297288461999415,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:POS02:2:0",
+        "prompt_sha256": "4c761122aa84d8eea784ba9ed8fbb24641f0420611635e5f35360ae4e99cc04a",
+        "reserved_dollars": 0.06278575,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+        "usage": {
+          "input_tokens": 57453,
+          "output_tokens": 489,
+          "total_tokens": 57942,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57450,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 365
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 489,
+            "prompt_tokens": 57453,
+            "total_tokens": 57942,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 365,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57450,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4nqv12ap7fY5lRaCPYKm6hKBkxu",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"Slack과 포털이 모두 작동하지 않으면 입사 때 오프라인으로 받은 비상연락카드의 보안 연락 안내를 따르세요. 개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요. 당직 담당자의 응답이나 인수가 확인되지 않으면 기다리지 말고 팀장에게 대체 인계를 요청하고, 팀장이 조정할 수 없거나 보안·개인정보 위험이 있으면 보안·개인정보 담당자에게 직접 연결하세요.\"}",
+          "input_tokens": 57453,
+          "output_tokens": 489,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 7.29475520699998,
+        "estimated_dollars": 0.0015163499999999999
+      }
+    ]
+  },
+  {
+    "case_id": "POS03",
+    "repeat": 2,
+    "question": "첫 로그인 전에 다중 인증을 꼭 등록해야 하나요? 계정이 준비되지 않았을 때 동료 계정을 써도 되나요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "79c6b3f7ab36e57d8fac3ab52022337866a3fdba60f6919e9cac0715ceb9bddd",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}",
+      "answer": "다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.",
+      "input_tokens": 57462,
+      "output_tokens": 192,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 5.449187792000885,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:POS03:2:0",
+        "prompt_sha256": "79c6b3f7ab36e57d8fac3ab52022337866a3fdba60f6919e9cac0715ceb9bddd",
+        "reserved_dollars": 0.06279325,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57462,
+          "output_tokens": 192,
+          "total_tokens": 57654,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57459,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 99
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 192,
+            "prompt_tokens": 57462,
+            "total_tokens": 57654,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 99,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57459,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4nxuZhoHHRgCSXq1ytkcvOvgxWA",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"다중 인증은 첫 로그인 과정에서 등록을 완료해야 합니다. 다만 첫 로그인 전에 등록하는 것은 아니며, 등록이 끝나기 전에는 업무 시스템이나 자료에 접근할 수 없습니다. 계정이 준비되지 않았더라도 동료 계정으로 대신 사용해서는 안 됩니다. 팀장에게 대체 업무를 요청하고 IT운영팀에 문의해 주세요.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 192,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 5.446368588000041,
+        "estimated_dollars": 0.00129378
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0006",
+    "repeat": 2,
+    "question": "거래처 계좌 정정과 재지급 절차를 알려주시고, 제가 등록한 지급 계좌도 바꿔 주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "5756e2cd4589ebc60f49d7625b04446e49ac84a4cb1f97e67fcf35d581f009e4",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.\"}",
+      "answer": "거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.",
+      "input_tokens": 57462,
+      "output_tokens": 676,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 9.394182310003089,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:RQ0006:2:0",
+        "prompt_sha256": "5756e2cd4589ebc60f49d7625b04446e49ac84a4cb1f97e67fcf35d581f009e4",
+        "reserved_dollars": 0.06278775,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.\"}",
+        "usage": {
+          "input_tokens": 57462,
+          "output_tokens": 676,
+          "total_tokens": 58138,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57459,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 561
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 676,
+            "prompt_tokens": 57462,
+            "total_tokens": 58138,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 561,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57459,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4n8EtToa4IZJE0Z6gOiadXOOoBz",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"거래처 계좌 정정 및 재지급 절차는 제공된 문서에서 확인할 수 없습니다. 등록하신 지급 계좌도 제가 직접 변경할 수는 없습니다. 참고로 경비 정산 건의 지급 상태나 계좌 정보에 오류가 있는 경우에는 기존 신청 번호를 적어 재무팀에 문의하도록 안내되어 있습니다. 계좌 변경 경로나 재지급 절차는 문서에 명시되어 있지 않습니다.\"}",
+          "input_tokens": 57462,
+          "output_tokens": 676,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 9.39226590799808,
+        "estimated_dollars": 0.00165678
+      }
+    ]
+  },
+  {
+    "case_id": "POS01",
+    "repeat": 2,
+    "question": "경비 정산은 결제 후 언제까지 어떤 메뉴로 제출해야 하나요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "56297989444a782ab8620971967750d1fb404daae52c75b3af7fdc04d6c95fad",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+      "answer": "결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.",
+      "input_tokens": 57449,
+      "output_tokens": 138,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 4.214716479000344,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:POS01:2:0",
+        "prompt_sha256": "56297989444a782ab8620971967750d1fb404daae52c75b3af7fdc04d6c95fad",
+        "reserved_dollars": 0.06277925,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+        "usage": {
+          "input_tokens": 57449,
+          "output_tokens": 138,
+          "total_tokens": 57587,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57446,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 93
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 138,
+            "prompt_tokens": 57449,
+            "total_tokens": 57587,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 93,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57446,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4nmq3X15nyfQ07QEoSto0mXVpfA",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"결제일로부터 10영업일 안에 이음 포털의 **재무 > 경비 정산**에서 제출하시면 됩니다.\"}",
+          "input_tokens": 57449,
+          "output_tokens": 138,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 4.212419060000684,
+        "estimated_dollars": 0.00125302
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0001",
+    "repeat": 2,
+    "question": "은행 계좌가 바뀌었는데 다음 급여 전에 반영되려면 언제까지 어느 메뉴에서 수정해야 해요?",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "219791e6335e3a2432265a071d95dc2737d100b8b49b67789b9b8cae92daff32",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.\"}",
+      "answer": "은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.",
+      "input_tokens": 57459,
+      "output_tokens": 583,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 13.160149662999174,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:RQ0001:2:0",
+        "prompt_sha256": "219791e6335e3a2432265a071d95dc2737d100b8b49b67789b9b8cae92daff32",
+        "reserved_dollars": 0.06278975,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.\"}",
+        "usage": {
+          "input_tokens": 57459,
+          "output_tokens": 583,
+          "total_tokens": 58042,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57456,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 512
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 583,
+            "prompt_tokens": 57459,
+            "total_tokens": 58042,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 512,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57456,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4mlKC1zk13SXiigwAz41eT2DtGV",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"은행 계좌 변경의 마감 시점과 수정 메뉴는 문서에 안내되어 있지 않아 확인할 수 없습니다. 급여와 개인별 기록은 People팀이 확인한다고 되어 있으니, 다음 급여 반영 시점을 포함해 People팀에 문의해 주세요.\"}",
+          "input_tokens": 57459,
+          "output_tokens": 583,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 13.15826100599952,
+        "estimated_dollars": 0.00158697
+      }
+    ]
+  },
+  {
+    "case_id": "RQ0004",
+    "repeat": 2,
+    "question": "제출한 VPN 신청이 승인됐는지 직원이 확인하는 경로와 알림 기준을 알려주세요.",
+    "candidate_id": "luna-coverage",
+    "profile": "examples_coverage",
+    "strategy": "single",
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "f88b47192e76f6ac58186079b18e63bb4e27af507f8afe7632bd10576884b3e3",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.\"}",
+      "answer": "제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.",
+      "input_tokens": 57455,
+      "output_tokens": 711,
+      "finish_reason": "stop"
+    },
+    "error_type": null,
+    "document_count": 71,
+    "stages": [
+      {
+        "name": "answer",
+        "status": "completed",
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.\"}"
+      }
+    ],
+    "format_pass": true,
+    "elapsed_seconds": 10.2988199729989,
+    "calls": [
+      {
+        "request_id": "/tmp/sanaebi-generation-publication-20261015/tmp/luna-prompt-20261015/dev-coverage-r2:RQ0004:2:0",
+        "prompt_sha256": "f88b47192e76f6ac58186079b18e63bb4e27af507f8afe7632bd10576884b3e3",
+        "reserved_dollars": 0.0627855,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 4096,
+          "reasoning_effort": "xhigh"
+        },
+        "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.\"}",
+        "usage": {
+          "input_tokens": 57455,
+          "output_tokens": 711,
+          "total_tokens": 58166,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57452,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 557
+          }
+        },
+        "metadata": {
+          "token_usage": {
+            "completion_tokens": 711,
+            "prompt_tokens": 57455,
+            "total_tokens": 58166,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 557,
+              "rejected_prediction_tokens": 0,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cache_write_tokens": 0,
+              "cached_tokens": 57452,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "model_provider": "openai",
+          "model_name": "gpt-6-luna",
+          "system_fingerprint": null,
+          "id": "chatcmpl-EZ4my2mztaoLSLip3JmV6ZaLdqgHS",
+          "service_tier": "default",
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "response": {
+          "raw_text": "{\"answer\":\"제공 문서에는 VPN 신청의 승인 여부를 확인하는 별도 경로나 알림 방식·기준이 명시되어 있지 않습니다. VPN 신청이 일반 시스템 접근 권한 신청에 해당한다면, 이음 포털 **IT > 접근 권한**에서 요청 결과를 확인합니다. 필수 확인이 끝난 뒤 IT운영팀은 2영업일 안에 처리하거나 지연 사유를 포털에 남기며, 신청자가 처리 결과를 확인하도록 안내되어 있습니다. VPN 신청에 이 절차가 적용되는지 또는 별도 알림이 있는지는 문서만으로 확인할 수 없습니다.\"}",
+          "input_tokens": 57455,
+          "output_tokens": 711,
+          "finish_reason": "stop"
+        },
+        "elapsed_seconds": 10.296836459001497,
+        "estimated_dollars": 0.0016828899999999998
+      }
+    ]
+  }
+]

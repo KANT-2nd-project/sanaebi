@@ -1,0 +1,2707 @@
+[
+  {
+    "blind_id": "906a5feafedd4e10",
+    "case_id": "DEV-FU-03",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D03a",
+        "claim": "분기 종료 후 10영업일 안에 면담을 잡는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e05"
+        ],
+        "assessment": "met",
+        "response_evidence": "“분기 종료 후 10영업일 안에 30분 면담을 잡습니다.”",
+        "reason": "ieum-051 일정 조항의 10영업일 기준과 일치합니다."
+      },
+      {
+        "claim_id": "D03b",
+        "claim": "우선순위는 최대 3개이며 지원·담당자·확인 날짜를 둔다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e06"
+        ],
+        "assessment": "met",
+        "response_evidence": "“우선순위는 최대 3개로 정하고, 각 항목에 필요한 지원 내용, 담당자, 확인 날짜를 적습니다.”",
+        "reason": "ieum-051의 개수와 기록 항목을 모두 전달합니다."
+      },
+      {
+        "claim_id": "D03c",
+        "claim": "공식 성과등급 판정 절차가 아니다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e07"
+        ],
+        "assessment": "met",
+        "response_evidence": "“공식 성과등급을 정하는 절차가 아닙니다.”",
+        "reason": "ieum-051은 공식 성과 등급 판정 절차가 아니라고 명시합니다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "“10영업일 안에”, “최대 3개”, “공식 성과등급을 정하는 절차가 아닙니다.”",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "면담 길이 30분도 ieum-051과 일치하며, 성격을 성과등급 절차가 아니라고 정확히 한정합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "세 필수 주장 모두 응답에 있습니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "답변은 문서에 있는 일정·개수·성격만 말합니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "면담을 실제 예약했다고 주장하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "세부 질문인 일정, 목표 개수·기록 항목, 공식 등급 여부를 모두 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "faa6bb1507e64831",
+    "case_id": "DEV-FU-02",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D02a",
+        "claim": "피드백은 구체적인 행동과 업무 결과에 연결하고 정체성이나 사생활을 깎아내리지 않는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e03"
+        ],
+        "assessment": "met",
+        "response_evidence": "“구체적으로 관찰한 행동과 업무 결과에 연결”",
+        "reason": "ieum-046의 피드백 원칙과 일치하며 정체성·사생활을 깎아내리지 말라고 구분합니다."
+      },
+      {
+        "claim_id": "D02b",
+        "claim": "불편함을 표현한 사람에게 설명을 강요하지 않는다.",
+        "necessity": "decision_condition",
+        "evidence_refs": [
+          "e04"
+        ],
+        "assessment": "met",
+        "response_evidence": "“설명을 강요하지 말고”",
+        "reason": "ieum-046은 불편함을 표현한 사람에게 설명을 강요하지 말라고 명시합니다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "“관찰한 행동과 업무 결과”, “설명을 강요하지 말고”는 ieum-046의 표현과 부합합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "중단할 행동과 제한된 신고·상담 경로를 조건부로 제시하며, 신고 전 사실을 단정하지 않습니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "피드백 원칙과 불편함 표현 후의 대처를 모두 답합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "문서에 없는 징계나 결과를 약속하지 않습니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "상담·신고 경로를 안내할 수 있다고 했을 뿐, 접수나 조사를 완료했다고 하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "덧붙인 사적 접근 중단 및 보호 경로도 질문의 불편함 대응과 직접 관련됩니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "076142304fa0495b",
+    "case_id": "DEV-FU-06",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D06a",
+        "claim": "승인 처리 기간이나 확정 출시일은 문서에 제시되지 않는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [],
+        "assessment": "met",
+        "response_evidence": "“승인까지 걸리는 기간이 정해져 있지 않습니다.”",
+        "reason": "배치의 전체 문서 부재 확인과 부합하며 승인 기한을 만들어내지 않았습니다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "승인 일수·채택·출시일을 보장한다.",
+        "severity": "critical",
+        "evidence_refs": [
+          "e11"
+        ],
+        "assessment": "not_present",
+        "response_evidence": "“채택이나 출시일을 미리 보장하지 않으며”라고 명시합니다.",
+        "reason": "금지된 보장·확정 주장을 하지 않았습니다."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "“기간이 정해져 있지 않습니다”라고 문서 범위에서 답하고, 채택·출시일 사전 보장 금지 원칙과도 일치합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "기간이 정해져 있지 않다는 문서 범위로 한정하고, 출시일 보장을 부정합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "승인까지의 기간과 출시일 보장 여부를 모두 다룹니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "승인 SLA나 출시일을 추정하지 않고, 선택적으로 우선순위 및 보류 안내 원칙만 덧붙입니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "요청 처리나 출시가 이미 승인·완료됐다고 말하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "승인 시점과 출시일 질문에 직접 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "efce1c506bb148a0",
+    "case_id": "DEV-FU-10",
+    "verdict": "partial",
+    "severity": "omission",
+    "reason": "필수 항목 하나가 빠져 부분 충족입니다.",
+    "required_claims": [
+      {
+        "claim_id": "D10a",
+        "claim": "상담은 정식 신고와 다를 수 있고 상담만으로 사건 사실이 확정되지 않는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e17"
+        ],
+        "assessment": "partial",
+        "response_evidence": "“상담 요청만으로 ... 공식 인정되거나 사건의 사실 여부가 확정되지는 않습니다.”",
+        "reason": "핵심 결론은 바로잡지만, ieum-063의 필수 구분인 “상담은 정식 신고와 다를 수 있고”를 명시하지 않았습니다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "상담만으로 위반이 공식 인정됐다고 동의한다.",
+        "severity": "critical",
+        "evidence_refs": [
+          "e17"
+        ],
+        "assessment": "not_present",
+        "response_evidence": "“상담 요청만으로 ... 공식 인정되거나 ... 확정되지는 않습니다.”",
+        "reason": "금지된 보장·확정 주장을 하지 않았습니다."
+      }
+    ],
+    "issues": [
+      {
+        "kind": "required_omission",
+        "evidence": "“상담 요청만으로 ... 공식 인정되거나 사건의 사실 여부가 확정되지는 않습니다.”",
+        "reason": "핵심 결론은 바로잡지만, ieum-063의 필수 구분인 “상담은 정식 신고와 다를 수 있고”를 명시하지 않았습니다."
+      }
+    ],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "상담만으로 사실이 확정되지 않는다는 부분은 ieum-063과 일치합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "상담 요청만으로 사실 확정이 되지 않는다고 범위를 정확히 한정합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "핵심 결론은 맞지만 “상담은 정식 신고와 다를 수 있다”는 필수 구분이 빠졌습니다. ieum-063: “상담은 정식 신고와 다를 수 있고, 상담만으로 사건의 사실 여부가 확정되지는 않는다.”",
+        "reason": "필수 주장을 모두 충족하지 못했습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "실제 조사 결과를 단정하지 않고, 확인 절차가 진행된다고만 말합니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "조사가 실제로 끝났거나 특정 결론이 났다고 주장하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "공식 인정 여부를 부정하고 사실 확정과 구분해 직접 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "d5d4cff975b84787",
+    "case_id": "DEV-FU-06",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D06a",
+        "claim": "승인 처리 기간이나 확정 출시일은 문서에 제시되지 않는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [],
+        "assessment": "met",
+        "response_evidence": "“기능 요청이 며칠 안에 승인되거나 출시일이 정해진다는 기준이 없습니다.”",
+        "reason": "전체 문서 부재 확인 및 ieum-066의 사전 보장 금지 원칙과 일치합니다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "승인 일수·채택·출시일을 보장한다.",
+        "severity": "critical",
+        "evidence_refs": [
+          "e11"
+        ],
+        "assessment": "not_present",
+        "response_evidence": "“채택이나 출시일을 미리 보장하지 않으며”라고 명시합니다.",
+        "reason": "금지된 보장·확정 주장을 하지 않았습니다."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "기간 기준이 없다고 답하고, 요청 전달은 채택·출시 약속이 아니라는 ieum-066의 원칙을 지킵니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "4영업시간 안내 목표를 승인·출시 결정 기한과 명확히 구분합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "승인 기간, 출시 보장 여부, 언급한 안내 목표의 성격을 구분해 답합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "승인·출시 날짜를 추정하지 않습니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "요청 승인이나 출시 완료를 주장하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문의 승인·출시 일정과 혼동하기 쉬운 고객지원 안내 목표를 구분해 설명합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "a6c9c50b065e4ece",
+    "case_id": "DEV-FU-12",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D12a",
+        "claim": "서비스를 소유한 제품개발팀이 회고를 책임진다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e20"
+        ],
+        "assessment": "met",
+        "response_evidence": "“해당 서비스를 소유한 제품개발팀이 책임집니다.”",
+        "reason": "ieum-070은 서비스를 소유한 제품개발팀이 회고를 책임진다고 명시합니다."
+      },
+      {
+        "claim_id": "D12b",
+        "claim": "영향·경과·탐지/대응·원인/기여 요인·판단·개선 작업·검토/미해결 사항을 사실/가설/미확인으로 구분해 기록한다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e21-list"
+        ],
+        "assessment": "met",
+        "response_evidence": "“장애 요약과 확인된 고객 영향, 발견부터 안정화까지의 시간순 경과, 탐지·대응 과정, 확인된 원인과 기여 요인, 대응 판단과 그 결과, 개선 작업, 검토 의견과 미해결 사항” 및 “사실·가설·미확인 사항을 구분”",
+        "reason": "ieum-070의 핵심 기록 항목과 사실·가설·미확인 구분을 포괄합니다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "책임 주체와 기록 목록이 ieum-070의 작성·검토 역할 및 회고 내용과 맞습니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "P1의 초안·검토 목표 시점을 목표라고 표현하고, 미해결 사항에는 담당과 다음 확인일을 둡니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "책임자와 질문한 핵심 기록 범주를 모두 제시합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "원인·영향을 확인된 사실, 가설, 미확인으로 나눠 추정 사실화를 피합니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "회고를 작성하거나 검토 완료했다고 주장하지 않고 절차를 설명합니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "P1 안정화 뒤 회고의 책임과 기록 내용을 직접 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "53807cc3ef0e436a",
+    "case_id": "DEV-FU-12",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D12a",
+        "claim": "서비스를 소유한 제품개발팀이 회고를 책임진다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e20"
+        ],
+        "assessment": "met",
+        "response_evidence": "“해당 서비스를 소유한 제품개발팀이 회고를 책임집니다.”",
+        "reason": "ieum-070은 서비스를 소유한 제품개발팀이 회고를 책임진다고 명시합니다."
+      },
+      {
+        "claim_id": "D12b",
+        "claim": "영향·경과·탐지/대응·원인/기여 요인·판단·개선 작업·검토/미해결 사항을 사실/가설/미확인으로 구분해 기록한다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e21-list"
+        ],
+        "assessment": "met",
+        "response_evidence": "“확인된 고객·데이터 영향과 미확인 사항, 발견부터 안정화까지의 시각별 경과, 탐지·대응 과정, 확인된 원인과 기여 요인 및 가설, 대응 판단과 결과, 재발 방지·탐지 개선 작업, 검토 의견과 미해결 사항” 및 “사실·가설·미확인 사항은 구분”",
+        "reason": "ieum-070의 핵심 기록 항목과 사실·가설·미확인 구분을 포괄합니다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "책임 주체와 P1 회고 항목이 ieum-070과 일치합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "P1 초안 및 검토 기한을 완료 목표로 표현하고, 원인 사실과 가설을 구분합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "책임 주체와 요청한 핵심 기록 범주를 모두 제시합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "원인 및 미확인 사항을 단정하지 않고 구분합니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "회고가 실제로 작성·검토 완료됐다고 주장하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "P1 회고의 책임과 기록 내용을 직접 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "a6df6f8afd904078",
+    "case_id": "DEV-FU-04",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D04a",
+        "claim": "snapshot에서 특정 발신자 메일 자동 분류의 화면별 단계는 확인되지 않는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [],
+        "assessment": "met",
+        "response_evidence": "“제공된 문서에는 ... 규칙 설정 방법이 안내되어 있지 않습니다.”",
+        "reason": "A04의 전체 스냅샷 부재 확인에 맞게 문서에 단계가 없다고만 말합니다."
+      },
+      {
+        "claim_id": "D04b",
+        "claim": "일반 도구 기능은 포털 IT 메뉴 또는 #it-helpdesk로 확인한다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e08"
+        ],
+        "assessment": "met",
+        "response_evidence": "“이음 포털의 IT 메뉴 또는 #it-helpdesk에서 IT운영팀에 문의”",
+        "reason": "ieum-053의 일반 도구 문의 경로와 일치합니다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "확인되지 않은 메뉴/버튼/화면 절차를 만들어 낸다.",
+        "severity": "critical",
+        "evidence_refs": [
+          "e09"
+        ],
+        "assessment": "not_present",
+        "response_evidence": "응답에서 해당 금지 주장은 발견되지 않았습니다.",
+        "reason": "금지된 보장·확정 주장을 하지 않았습니다."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "ieum-053의 IT 메뉴·#it-helpdesk 경로를 정확히 안내하고, ieum-055의 확인되지 않은 화면 기능은 쓰지 말라는 원칙을 지킵니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "문서에서 설정 절차를 찾지 못했다고 했을 뿐 실제 메일 기능이 없다고 단정하지 않습니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "세부 설정 방법의 문서 부재와 문의 경로를 모두 제시합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "확인되지 않은 버튼·메뉴 절차를 만들지 않았습니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "IT에 문의하라고 안내하며 설정을 실제로 변경했다고 말하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "특정 발신자 메일 자동 분류 방법과 다음 문의처를 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "31658108106145f1",
+    "case_id": "DEV-FU-06",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D06a",
+        "claim": "승인 처리 기간이나 확정 출시일은 문서에 제시되지 않는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [],
+        "assessment": "met",
+        "response_evidence": "“승인·채택 여부를 며칠 안에 결정한다는 기준이 없습니다.”",
+        "reason": "전체 문서 부재 확인 및 ieum-066의 사전 보장 금지 원칙과 일치합니다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "승인 일수·채택·출시일을 보장한다.",
+        "severity": "critical",
+        "evidence_refs": [
+          "e11"
+        ],
+        "assessment": "not_present",
+        "response_evidence": "“채택이나 출시일을 미리 보장하지 않으며”라고 명시합니다.",
+        "reason": "금지된 보장·확정 주장을 하지 않았습니다."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "기간 기준이 없다고 답하고, 채택·출시일의 사전 약속을 부정합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "보류 시 고객지원 안내를 덧붙이되 승인·출시 결정 시점과 혼동하지 않습니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "승인 일정과 출시일 보장 여부를 모두 답합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "기한을 만들어내지 않고 보류 안내 원칙을 설명합니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "요청 승인이나 출시가 완료됐다고 주장하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "승인·출시 일정 질문에 직접 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "f27c4d3987224cbe",
+    "case_id": "DEV-FU-01",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D01a",
+        "claim": "기대/실제 동작, 재현 단계·선행 조건, 시간·환경, 영향·우회, 조치와 요청 유형 등 조사에 필요한 정보를 확인 가능한 범위에서 정리한다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e01",
+          "e01-fields"
+        ],
+        "assessment": "met",
+        "response_evidence": "“기대 동작과 실제로 관찰한 동작”, “최소 단계와 선행 조건”, “발생 시각과 시간대 ... 환경”, “업무 영향 ... 우회 방법”, “이미 시도한 조치와 결과”, “요청 유형”",
+        "reason": "ieum-066의 조사 정보 필드를 확인 가능한 범위에서 포괄합니다."
+      },
+      {
+        "claim_id": "D01b",
+        "claim": "확인하지 못한 내용은 추정하지 않는다.",
+        "necessity": "mandatory_action",
+        "evidence_refs": [
+          "e01"
+        ],
+        "assessment": "met",
+        "response_evidence": "“확인되지 않은 항목은 추측하지 말고 ‘미확인’으로 표시”",
+        "reason": "ieum-066은 확인하지 못한 항목을 추정하지 말라고 명시합니다."
+      },
+      {
+        "claim_id": "D01c",
+        "claim": "암호·토큰·세션 쿠키·고객 원본 등 민감한 원문을 GitHub 이슈에 넣지 않는다.",
+        "necessity": "mandatory_action",
+        "evidence_refs": [
+          "e02"
+        ],
+        "assessment": "met",
+        "response_evidence": "“비밀번호·인증 코드·토큰·세션 쿠키·전체 요청/응답 본문·고객 원본 데이터·실제 이메일 주소나 전화번호는 포함하지 않습니다.”",
+        "reason": "ieum-066의 GitHub 이슈 금지 항목과 일치합니다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "수집 항목과 제외 항목이 ieum-066의 전달 전 준비 및 GitHub 이슈 지침과 일치합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "자료를 고객지원 포털과 GitHub 이슈에 구분하고, 민감한 자료는 안전한 포털 첨부로 제한합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "필수 조사 정보, 미확인 사항 처리, GitHub에서 제외할 민감 원문을 답합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "미확인 정보는 추측하지 말고 미확인으로 표시하라고 합니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "고객 자료를 실제 이슈에 첨부·전달했다고 주장하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "개발 조사에 정리할 정보와 빼야 할 내용을 모두 구체적으로 답합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "5617d2c5d14b4882",
+    "case_id": "DEV-FU-05",
+    "verdict": "partial",
+    "severity": "omission",
+    "reason": "필수 항목 하나가 빠져 부분 충족입니다.",
+    "required_claims": [
+      {
+        "claim_id": "D05a",
+        "claim": "snapshot은 우편실 운영 시간이나 발송 접수 위치를 특정하지 않는다.",
+        "necessity": "direct_request",
+        "evidence_refs": [],
+        "assessment": "met",
+        "response_evidence": "“제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다.”",
+        "reason": "전체 스냅샷 부재 확인과 부합하며 운영시간·위치를 추정하지 않았습니다."
+      },
+      {
+        "claim_id": "D05b",
+        "claim": "사무실 문의는 포털 총무 메뉴 또는 #office-help를 이용한다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e10"
+        ],
+        "assessment": "missing",
+        "response_evidence": "응답 전체: “제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다.”",
+        "reason": "ieum-053은 사무실·방문·자산·출입 문의 경로로 이음 포털 총무 메뉴 또는 #office-help를 안내하지만, 응답에는 해당 경로가 없습니다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [
+      {
+        "kind": "required_omission",
+        "evidence": "응답 전체: “제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다.”",
+        "reason": "ieum-053은 사무실·방문·자산·출입 문의 경로로 이음 포털 총무 메뉴 또는 #office-help를 안내하지만, 응답에는 해당 경로가 없습니다."
+      }
+    ],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "우편실 시간과 접수 위치를 문서에서 찾지 못했다는 표현은 A05 부재 확인과 부합합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "실제 운영시간·위치가 없다고 단정하지 않고 제공 문서 범위로 한정합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "문서에 세부 정보가 없다는 답은 맞지만, 필수 후속 문의 경로가 빠졌습니다. ieum-053: “사무실·방문·자산·출입 | 이음 포털의 총무 메뉴, #office-help”.",
+        "reason": "필수 주장을 모두 충족하지 못했습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "운영 시간과 위치를 추측하지 않습니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "우편실 정보를 확인하거나 발송을 완료했다고 주장하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "문서 유무에는 답했지만 명시된 다음 문의 경로를 제공하지 않았습니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "cd637c6a9ac24d95",
+    "case_id": "DEV-FU-11",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필수 요청을 근거에 맞게 충족하며 금지 주장이 없습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D11a",
+        "claim": "15분은 인계 수락 목표이지 계약상 응답 SLA 보증이 아니다.",
+        "necessity": "direct_request",
+        "evidence_refs": [
+          "e18",
+          "e19"
+        ],
+        "assessment": "met",
+        "response_evidence": "“15분은 서비스 당직의 인수 목표이며, 응답 SLA 보증이 아닙니다.”",
+        "reason": "ieum-069의 15분 인계 목표와 SLA 비보증 문구를 정확히 반영합니다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "15분 내 수락이나 복구가 계약상 보장된다고 한다.",
+        "severity": "critical",
+        "evidence_refs": [
+          "e19"
+        ],
+        "assessment": "not_present",
+        "response_evidence": "“응답 SLA 보증이 아닙니다.”",
+        "reason": "금지된 보장·확정 주장을 하지 않았습니다."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text는 answer 문자열 하나를 가진 JSON 객체로 파싱되고 result.answer와 일치합니다.",
+        "reason": "정해진 답변 전용 JSON 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "15분 인계 목표와 SLA 비보증 구분이 ieum-069와 일치합니다.",
+        "reason": "필수 응답 내용이 고정 스냅샷의 해당 문서 근거와 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "계약별 별도 약정이 있을 수 있다는 범위로 SLA 판단을 한정합니다.",
+        "reason": "문서의 조건과 적용 범위를 보존합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "15분 목표의 성격과 계약상 SLA 여부를 확인할 조건을 모두 답합니다.",
+        "reason": "질문에서 요구한 필수 내용이 모두 포함됩니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "고객 계약 내용을 모른 채 위반이라고 단정하지 않습니다.",
+        "reason": "문서에 없는 세부사항이나 결과를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "인수나 복구가 이미 완료됐다고 말하지 않습니다.",
+        "reason": "안내와 실제 처리 완료를 혼동하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "한국어 존댓말로 간결하고 이해 가능한 문장을 사용합니다.",
+        "reason": "관찰 가능한 문체 기준을 충족합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문의 SLA 전제를 바로잡고 확인할 계약 기준을 제시합니다.",
+        "reason": "응답 내용이 질문의 주제와 직접 연결됩니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "99c77f5fc2a0473a",
+    "case_id": "DEV-FU-04",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "문서에서 자동 분류 UI 단계를 찾지 못한 범위를 정확히 한정하고, 근거가 있는 IT 문의 경로를 안내했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D04a",
+        "status": "met",
+        "response_evidence": "‘제공된 문서에는 ... 방법이 안내되어 있지 않습니다.’",
+        "source_evidence": "A04: 관련 UI 단계/메뉴는 71개 문서 snapshot에서 찾지 못함. e09: ‘기능을 확인하지 못한 경우 존재한다고 쓰지 않는다.’"
+      },
+      {
+        "claim_id": "D04b",
+        "status": "met",
+        "response_evidence": "‘이음 포털의 IT 메뉴 또는 #it-helpdesk에 문의’",
+        "source_evidence": "ieum-053 e08: ‘계정·권한·기기·일반 도구 오류 | 이음 포털의 IT 메뉴, #it-helpdesk’"
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "확인되지 않은 메뉴/버튼/화면 절차를 만들어 낸다.",
+        "status": "absent",
+        "response_evidence": "자동 분류 설정 절차나 메뉴를 제시하지 않았습니다.",
+        "source_evidence": "ieum-055 e09: 확인하지 못한 기능은 존재한다고 쓰지 않음."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 요청된 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "‘제공된 문서에는 ... 안내되어 있지 않습니다’; ‘IT 메뉴 또는 #it-helpdesk’",
+        "reason": "부재는 A04 검색 범위로 한정했고 문의 경로는 ieum-053에 있습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "실제 메일 기능이 없다고 단정하지 않고 문서에 절차가 없다고 했습니다.",
+        "reason": "문서 부재와 기능 부재를 구분했습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "D04a와 D04b에 모두 답했습니다.",
+        "reason": "확인 불가한 UI 질문에 허용된 안내 한계와 문의 경로를 제시했습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "구체적 화면 단계는 안내되어 있지 않다고 했습니다.",
+        "reason": "snapshot에 없는 조작 단계를 추측하지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "실행 또는 설정 완료를 주장하지 않았습니다.",
+        "reason": "외부 도구 작업을 수행했다고 암시하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결한 존댓말로 답했습니다.",
+        "reason": "표현이 명확하고 정중합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "메일 자동 분류 질문과 IT 문의처만 다뤘습니다.",
+        "reason": "질문 범위에 맞습니다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "af522a3f810b442c",
+    "case_id": "DEV-FU-03",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "일정, 목표 개수와 기록 항목, 공식 평가등급 여부를 모두 정확히 답했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D03a",
+        "status": "met",
+        "response_evidence": "‘분기 종료 후 10영업일 안에 ... 면담’",
+        "source_evidence": "ieum-051 e05: ‘분기 종료 후 10영업일 안에 30분 면담을 잡는다.’"
+      },
+      {
+        "claim_id": "D03b",
+        "status": "met",
+        "response_evidence": "‘최대 3개 ... 지원 내용, 담당자와 확인 날짜’",
+        "source_evidence": "ieum-051 e06: 다음 분기 우선순위 최대 3개와 지원 내용·담당자·확인 날짜를 기록."
+      },
+      {
+        "claim_id": "D03c",
+        "status": "met",
+        "response_evidence": "‘공식 성과등급을 판정하는 절차가 아닙니다.’",
+        "source_evidence": "ieum-051 e07: 면담은 공식 성과 등급 판정 절차가 아님."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "10영업일, 최대 3개 및 지원·담당자·확인 날짜, 성과등급 비판정이 각각 e05-e07에 있습니다.",
+        "reason": "핵심 주장이 snapshot과 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "일정과 다음 분기 목표의 범위를 그대로 설명했습니다.",
+        "reason": "조건이나 정책 성격을 왜곡하지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "세 가지 질문에 모두 답했습니다.",
+        "reason": "문항의 필수 항목이 충족됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "확정되지 않은 절차를 덧붙이지 않았습니다.",
+        "reason": "충분히 답할 수 있는 항목을 과도하게 유보하지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "면담 예약이나 기록을 대신 수행했다고 말하지 않았습니다.",
+        "reason": "행동 완료를 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결하고 정중한 한국어입니다.",
+        "reason": "읽기 쉽고 어조가 적절합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "면담 일정·목표·성과등급에 집중했습니다.",
+        "reason": "질문에 직접 관련됩니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "51adaae0746241a6",
+    "case_id": "DEV-FU-09",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "대신 접수할 수 없음을 밝히고 직접 선택할 경로와 신고 정보 항목을 안내했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D09a",
+        "status": "met",
+        "response_evidence": "‘제가 대신 포털에 신고를 접수할 수는 없습니다.’",
+        "source_evidence": "criteria execution_context: 평가 대상에는 포털 제출 기능이 없음. e16-route는 사용자가 포털 또는 #people-help 경로를 선택하도록 설명."
+      },
+      {
+        "claim_id": "D09b",
+        "status": "met",
+        "response_evidence": "‘이음 포털의 인사 > 상담·신고에서 공식 신고를 선택’",
+        "source_evidence": "ieum-063 e16-route: 상담 요청 또는 공식 신고 선택 가능. #people-help 제한 접수 경로도 허용되나 한 경로만 안내해도 충분."
+      },
+      {
+        "claim_id": "D09c",
+        "status": "met",
+        "response_evidence": "‘발생 시점·장소·관찰한 행동, 관련자 역할, 목격자, 보유 자료와 원하는 보호·연락 방식’",
+        "source_evidence": "ieum-063 e16: 가능한 범위에서 시점·장소·내용, 관련자 역할, 목격자, 보유 자료, 원하는 보호/연락 방식 기록."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고를 제출했다고 말한다.",
+        "status": "absent",
+        "response_evidence": "대신 접수할 수 없다고 명시했습니다.",
+        "source_evidence": "e16-route는 사용자가 직접 경로를 선택하게 하며 평가 환경에 제출 기능이 없습니다."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "포털 경로와 신고 항목은 ieum-063 e16/e16-route에 있고, 보존·공개 채널 주의와 긴급 안전 조언은 ieum-046에 있습니다.",
+        "reason": "핵심 절차와 추가 안전 안내가 snapshot 근거에 맞습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘가능한 범위에서’라고 하고 공개 채널에 사건 상세나 증거 원본을 올리지 말라고 안내했습니다.",
+        "reason": "문서에 적힌 정보 범위와 비밀 보호를 반영합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "직접 접수 경로와 시점·장소·행동·역할·목격자·자료·보호/연락 방식이 포함됐습니다.",
+        "reason": "D09 필수 항목을 충족했습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "신고 제출을 대신할 수 없다고 말하고 직접 경로를 제시했습니다.",
+        "reason": "할 수 없는 실행을 제한하면서 안내 가능한 내용을 답했습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "‘대신 ... 접수할 수는 없습니다.’",
+        "reason": "접수 완료를 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 한국어로 짧은 단계와 주의점을 설명합니다.",
+        "reason": "정서적으로 민감한 요청에 적절한 표현입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "신고 경로, 필요한 정보, 공개 주의와 즉각 위험 시 안전 행동을 안내했습니다.",
+        "reason": "요청을 돕는 관련 정보입니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "8e084e5e91a84b0e",
+    "case_id": "DEV-FU-10",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "상담과 정식 신고를 구분하고 상담만으로 사실이 확정되지 않는다고 정확히 바로잡았습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D10a",
+        "status": "met",
+        "response_evidence": "‘상담 요청은 정식 신고와 다를 수 있으며, 상담만으로 ... 확정되거나 공식 인정되는 것은 아닙니다.’",
+        "source_evidence": "ieum-063 e17: 상담은 정식 신고와 다를 수 있고, 상담만으로 사실 여부가 확정되지 않음."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "상담만으로 위반이 공식 인정됐다고 동의한다.",
+        "status": "absent",
+        "response_evidence": "상담만으로 공식 인정되는 것은 아니라고 부정했습니다.",
+        "source_evidence": "ieum-063 e17: 상담만으로 사건 사실 여부가 확정되지 않음."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "상담/정식 신고 구분과 별도 사실 확인 설명이 e17과 일치합니다.",
+        "reason": "상담으로 사실 인정이 끝났다는 주장을 하지 않습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘상담만으로’ 사건 사실이 확정되지 않는다고 한정했습니다.",
+        "reason": "상담과 사실 확인의 관계를 정확히 구분합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "공식 인정이라는 전제에 직접 답하고 사실 확인 절차를 언급했습니다.",
+        "reason": "필수 교정이 들어 있습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "실제 조사 결과를 안다고 주장하지 않았습니다.",
+        "reason": "확인되지 않은 사건 결론을 유보했습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "조사나 공식 판단을 수행했다고 말하지 않았습니다.",
+        "reason": "권한 밖 결과를 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "짧고 정중한 한국어입니다.",
+        "reason": "명료합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "상담 요청이 위반 인정인지에 답했습니다.",
+        "reason": "질문과 직접 관련됩니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "54c12ab4e16b442c",
+    "case_id": "DEV-FU-10",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "상담만으로 사실이 확정되지 않는다는 핵심을 정확히 답하고 별도 확인이 필요하다고 설명했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D10a",
+        "status": "met",
+        "response_evidence": "‘상담이 정식 신고와 다를 수 있고, 상담만으로 사건의 사실 여부가 확정되지는 않는다.’",
+        "source_evidence": "ieum-063 e17: 상담은 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않음."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "상담만으로 위반이 공식 인정됐다고 동의한다.",
+        "status": "absent",
+        "response_evidence": "문서상 상담만으로 사건 사실이 확정되지 않는다고 부정했습니다.",
+        "source_evidence": "ieum-063 e17."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "상담/정식 신고 구분과 별도 사실 확인 설명이 e17과 일치합니다.",
+        "reason": "근거가 있는 사실만 설명했습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘상담만으로’ 확정되지 않는다고 명시했습니다.",
+        "reason": "상담 자체와 사실 확인의 범위를 분리했습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "공식 인정이라는 전제를 교정했습니다.",
+        "reason": "필수 답변을 포함합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "조사 결과를 확정적으로 예측하지 않았습니다.",
+        "reason": "알 수 없는 사건 결론을 유보합니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "공식 판단을 수행했다고 주장하지 않았습니다.",
+        "reason": "권한 경계를 지킵니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 간결한 한국어입니다.",
+        "reason": "명료합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "상담 요청과 위반 사실 인정의 관계에 답했습니다.",
+        "reason": "질문에 직접 맞습니다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "8c91f53db826463d",
+    "case_id": "DEV-FU-04",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "자동 분류와 메일 서비스 설정 절차가 문서에 없다고 한정하고, 올바른 문의 경로를 제시했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D04a",
+        "status": "met",
+        "response_evidence": "‘구체적인 절차는 확인할 수 없습니다.’",
+        "source_evidence": "A04: 71개 문서 검색에서 자동 분류 UI 단계/메뉴를 찾지 못함. e09는 확인되지 않은 기능을 존재한다고 쓰지 않도록 안내."
+      },
+      {
+        "claim_id": "D04b",
+        "status": "met",
+        "response_evidence": "‘이음 포털 IT 메뉴 또는 #it-helpdesk’",
+        "source_evidence": "ieum-053 e08: 일반 도구 오류 문의 창구는 IT 메뉴 또는 #it-helpdesk."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "확인되지 않은 메뉴/버튼/화면 절차를 만들어 낸다.",
+        "status": "absent",
+        "response_evidence": "구체적 설정 절차나 메뉴를 발명하지 않았습니다.",
+        "source_evidence": "ieum-055 e09."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "문서에서 설정법/메일 서비스를 찾지 못했다는 제한과 IT 문의 경로를 제시했습니다.",
+        "reason": "부재 진술은 A04의 대상 범위이며 연락 경로는 e08에 있습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘제공 문서에는 ... 안내되어 있지 않아’라고 했습니다.",
+        "reason": "제품이나 실제 기능 부재로 확장하지 않았습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "UI 절차 부재와 문의 경로를 모두 안내했습니다.",
+        "reason": "D04의 필수 내용을 채웠습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "구체 절차는 확인할 수 없다고 했습니다.",
+        "reason": "없는 근거를 보충하지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "설정하거나 문의를 대신했다고 말하지 않았습니다.",
+        "reason": "외부 행동 완료를 암시하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결한 존댓말입니다.",
+        "reason": "표현이 이해하기 쉽습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문의 자동 분류 설정과 문의 경로에 집중했습니다.",
+        "reason": "관련 없는 정보가 없습니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "db14dea9aa804e71",
+    "case_id": "DEV-FU-08",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "모든 P2가 자동 회고 대상은 아니라고 바로잡고, 회고 조건을 모두 제시했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D08a",
+        "status": "met",
+        "response_evidence": "‘같은 원인의 반복, 여러 팀 간 인계 문제, 큰 고객 영향 ... 팀장이 요청한 경우’",
+        "source_evidence": "ieum-070 e15: P2는 같은 원인 반복, 복수 팀 인계 문제, 큰 고객 영향 또는 팀장 요청 시 회고."
+      },
+      {
+        "claim_id": "D08b",
+        "status": "met",
+        "response_evidence": "‘모든 P2가 반드시 회고 대상은 아닙니다.’",
+        "source_evidence": "ieum-070 e15의 조건부 기준."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "모든 P2에 무조건 회고가 필요하다고 단정한다.",
+        "status": "absent",
+        "response_evidence": "모든 P2가 자동 대상은 아니라고 답했습니다.",
+        "source_evidence": "ieum-070 e15는 여러 조건에 한정합니다."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "열거된 P2 조건이 ieum-070 e15와 일치합니다.",
+        "reason": "근거를 왜곡하지 않았습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘주어진 사실만으로 ... 필수라고 볼 수 없으며 나머지 조건 ... 확인’",
+        "reason": "제한된 영향과 1회 발생만으로 다른 조건을 추정하지 않습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "자동 회고 여부와 조건을 모두 설명했습니다.",
+        "reason": "필수 답변을 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "나머지 조건 충족 여부와 팀장 요청 여부는 확인해야 한다고 했습니다.",
+        "reason": "주어진 사실 밖의 조건을 단정하지 않았습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "회고를 실제로 열거나 요청했다고 말하지 않았습니다.",
+        "reason": "행동 완료를 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 명확한 한국어입니다.",
+        "reason": "조건 목록이 이해하기 쉽습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "P2 회고 의무 질문에 직접 답했습니다.",
+        "reason": "질문 범위에 맞습니다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "6ccecd5484b244e3",
+    "case_id": "DEV-FU-11",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "15분을 인계 목표로 구분하고 별도 계약 약정 가능성과 대체 연락 경로를 정확히 설명했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D11a",
+        "status": "met",
+        "response_evidence": "‘15분 내 수락 확인은 인계 목표이지 응답 SLA 보증은 아니므로 ... 계약상 SLA 위반이라고 단정할 수 없습니다.’",
+        "source_evidence": "ieum-069 e18/e19: 15분 내 수락 확인은 인계 목표이며 응답 SLA 보증이 아님."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "15분 내 수락이나 복구가 계약상 보장된다고 한다.",
+        "status": "absent",
+        "response_evidence": "응답 SLA 보증이 아니라고 명시했습니다.",
+        "source_evidence": "ieum-069 e19."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "15분 목표와 SLA 비보증이 e18/e19와 일치합니다.",
+        "reason": "계약 위반을 이 목표만으로 단정하지 않았습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘계약에 별도 응답 약정이 있는지는 ... 확인’",
+        "reason": "별도 계약 약정 가능성을 남겼습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "15분 목표의 성격과 계약상 위반 판단 한계를 설명했습니다.",
+        "reason": "핵심 오해를 교정했습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "해당 고객 계약을 확인해야 한다고 했습니다.",
+        "reason": "실제 계약 내용을 추정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "인계 완료나 계약 검토를 대신 수행했다고 말하지 않았습니다.",
+        "reason": "외부 행동을 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결한 정중체입니다.",
+        "reason": "대비가 분명합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "SLA 전제와 15분 미수락 시 경로에 답했습니다.",
+        "reason": "관련 내용을 벗어나지 않습니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "dd40dc3d02924294",
+    "case_id": "DEV-FU-09",
+    "verdict": "partial",
+    "severity": "omission",
+    "reason": "대신 접수할 수 없음을 밝히고 신고 경로와 대부분의 필수 정보를 안내했지만, 신고에 포함할 목격자 정보를 명시하지 않았습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D09a",
+        "status": "met",
+        "response_evidence": "‘제가 포털에 대신 신고를 접수할 수는 없습니다.’",
+        "source_evidence": "criteria execution_context: 포털 제출 기능이 없음. e16-route는 사용자가 직접 경로를 선택하도록 설명."
+      },
+      {
+        "claim_id": "D09b",
+        "status": "met",
+        "response_evidence": "‘이음 포털의 인사 > 상담·신고에서 상담 요청 또는 공식 신고를 선택’",
+        "source_evidence": "ieum-063 e16-route: 해당 포털 선택 경로를 제공. 평가 기준상 이 포털 경로 하나로 충분."
+      },
+      {
+        "claim_id": "D09c",
+        "status": "partial",
+        "response_evidence": "‘목격한 범위에서 발생 시점·장소·행동, 관련자 역할, 보유 자료와 필요한 보호나 연락 방식’에는 목격자 정보 항목이 명시되지 않았습니다.",
+        "source_evidence": "ieum-063 e16: ‘관련자 역할, 목격자, 보유 자료’ 등을 가능한 범위에서 기록."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고를 제출했다고 말한다.",
+        "status": "absent",
+        "response_evidence": "대신 접수할 수 없다고 말하고 사용자가 직접 선택할 경로를 안내했습니다.",
+        "source_evidence": "e16-route 및 평가 execution_context에는 실제 제출이 없음을 명시."
+      }
+    ],
+    "issues": [
+      {
+        "kind": "required_omission",
+        "evidence": "‘목격한 범위에서 발생 시점·장소·행동, 관련자 역할, 보유 자료와 필요한 보호나 연락 방식을’",
+        "reason": "D09c 및 ieum-063 e16은 목격자도 신고 정보에 포함하도록 명시합니다. ‘목격한 범위’는 사용자의 관찰을 가리키지만, 목격자 정보 기재를 분명히 안내하지 않아 비중대 누락으로 평가했습니다."
+      }
+    ],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "포털 경로와 신고 내용이 ieum-063에 맞고, 자료 보존·공개 금지 안내는 ieum-046에 있습니다.",
+        "reason": "핵심 안내가 근거에 맞습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘목격한 범위에서’와 직접 신고 경로를 안내했습니다.",
+        "reason": "사용자의 목격자 상황과 실행 한계를 반영했습니다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "신고 정보 예시에 ‘목격자’를 별도 항목으로 열거하지 않았습니다.",
+        "reason": "ieum-063 e16과 D09c가 요구하는 한 가지 정보 항목이 불분명합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "대신 신고를 제출할 수 없다고 알렸습니다.",
+        "reason": "불가능한 외부 실행을 적절히 유보했습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "‘제가 포털에 대신 신고를 접수할 수는 없습니다.’",
+        "reason": "신고 완료를 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 한국어로 신고 항목과 공개 주의사항을 안내했습니다.",
+        "reason": "표현이 적절합니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "신고 경로와 준비 정보를 제공했습니다.",
+        "reason": "목격한 괴롭힘 신고 요청에 직접 관련됩니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "ed79a9b373f94020",
+    "case_id": "DEV-FU-07",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "시작 전 공개 항목과 검토 중 단독 참여·자료 접근 제한을 정확히 안내했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D07a",
+        "status": "met",
+        "response_evidence": "‘평가가 시작되기 전에 ... 자문하는 회사, 관계의 종류, 맡은 업무, 예정된 평가·결정과 필요한 시점을 ... 공개’",
+        "source_evidence": "ieum-044 e13: 결정 전 포털의 인사 > 이해 상충 신고에 회사/사람, 관계, 업무, 예정 결정 및 필요 시점을 기재."
+      },
+      {
+        "claim_id": "D07b",
+        "status": "met",
+        "response_evidence": "‘관련된 평가·선정·협상·승인에 단독으로 참여하거나 관련 자료에 새로 접근하지 말고’",
+        "source_evidence": "ieum-044 e14: 관계된 평가·선정·협상·승인 단독 참여 및 새 자료 접근 금지."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고했으니 계속 단독 참여해도 된다고 말한다.",
+        "status": "absent",
+        "response_evidence": "단독 참여와 새 자료 접근을 하지 말라고 안내했습니다.",
+        "source_evidence": "ieum-044 e14."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "사전 공개와 검토 역할·제한이 ieum-044 e13/e14 및 본문에 있습니다.",
+        "reason": "절차를 근거와 맞게 전달했습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘평가가 시작되기 전에’, ‘결과가 나올 때까지’ 제한을 구분했습니다.",
+        "reason": "시점 조건을 반영합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "사전 공개 항목과 검토 중 행위 제한을 모두 포함했습니다.",
+        "reason": "D07a와 D07b를 충족합니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "개인적 사생활 정보는 요구하지 않았습니다.",
+        "reason": "주어진 업무 관계 범위에서 안내했습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "신고를 실제 제출했다고 말하지 않았습니다.",
+        "reason": "실행 완료를 암시하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "순서와 제한을 명확한 존댓말로 설명했습니다.",
+        "reason": "읽기 쉽고 적절한 어조입니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "공급업체 평가와 자문 관계에 필요한 조치만 답했습니다.",
+        "reason": "질문에 부합합니다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "9c4a97d75e574e44",
+    "case_id": "DEV-FU-11",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "15분을 당직 인계 목표로 구분하고 계약 위반 여부는 별도 약정 확인이 필요하다고 했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D11a",
+        "status": "met",
+        "response_evidence": "‘15분은 당직 인수 목표이지 계약상 응답 SLA 보증이 아닙니다.’",
+        "source_evidence": "ieum-069 e18/e19: 15분 내 수락 확인은 인계 목표이며 응답 SLA 보증이 아님."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "15분 내 수락이나 복구가 계약상 보장된다고 한다.",
+        "status": "absent",
+        "response_evidence": "15분 수락 목표와 계약상 SLA를 분리했습니다.",
+        "source_evidence": "ieum-069 e19."
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "목표의 성격과 SLA 비보증은 e18/e19에 있습니다.",
+        "reason": "핵심 주장이 snapshot과 일치합니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "‘해당 고객 계약의 별도 약정’을 확인해야 한다고 한정했습니다.",
+        "reason": "별도 계약 조건 가능성을 반영합니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "SLA 오해를 바로잡고 미수락 시 대체 경로를 안내했습니다.",
+        "reason": "질문에 필요한 설명이 포함됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "계약 담당자와 별도 약정을 확인하라고 했습니다.",
+        "reason": "계약 조항을 모른 채 위반 여부를 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "팀장 연락이나 계약 확인을 대신 수행했다고 하지 않았습니다.",
+        "reason": "실제 조치 완료를 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 간결한 설명입니다.",
+        "reason": "읽기 쉽습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "15분 인수 목표와 계약상 SLA 판단을 다뤘습니다.",
+        "reason": "질문에 직접 맞습니다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "8b995ee5c76844ef",
+    "case_id": "DEV-FU-12",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "회고 책임 주체와 핵심 기록 범주, 사실·가설·미확인 구분을 모두 정확히 설명했습니다.",
+    "required_claims": [
+      {
+        "claim_id": "D12a",
+        "status": "met",
+        "response_evidence": "‘해당 서비스를 소유한 제품개발팀’이 회고 책임이라고 했습니다.",
+        "source_evidence": "ieum-070 e20: 서비스를 소유한 제품개발팀이 회고를 책임짐."
+      },
+      {
+        "claim_id": "D12b",
+        "status": "met",
+        "response_evidence": "영향, 시간순 경과, 탐지·대응, 원인·기여 요인, 판단, 후속 작업, 검토·미해결 사항을 열거하고 ‘사실·가설·미확인 사항을 구분’했습니다.",
+        "source_evidence": "ieum-070 e21-list: 7개 회고 기록 범주와 미확인 사항 구분."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "raw_text는 answer 키만 있는 JSON이며 status=completed입니다.",
+        "reason": "파싱 가능하고 answer-only 형식입니다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "역할과 회고 기록 항목이 ieum-070 e20/e21-list와 일치합니다.",
+        "reason": "추측을 사실로 제시하지 않았습니다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "P1은 안정화 뒤 회고하며, 시한은 완료 목표로 표현했습니다.",
+        "reason": "문서의 대상 및 목표 조건과 맞습니다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "책임자와 핵심 기록 범주를 모두 설명했습니다.",
+        "reason": "질문에 필요한 내용이 포함됐습니다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "확인된 영향과 미확인 가설을 구분하라고 했습니다.",
+        "reason": "미확인 사항을 단정하지 않습니다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "회고 작성이나 검토를 대신 수행했다고 말하지 않았습니다.",
+        "reason": "실제 작업 완료를 주장하지 않습니다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "구조화된 한국어 목록과 설명을 사용했습니다.",
+        "reason": "긴 답변이지만 항목별로 읽기 쉽습니다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "P1 회고 책임과 기록 항목에 집중했습니다.",
+        "reason": "질문의 범위에 맞습니다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "20c3a9925e00428e",
+    "case_id": "DEV-FU-05",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "두 세부정보가 문서에서 확인되지 않는다고 범위를 한정하고 문서화된 총무 문의 경로를 안내한다.",
+    "required_claims": [
+      {
+        "claim_id": "D05a",
+        "assessment": "met",
+        "response_evidence": "“제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않아, 별도 안내 문서가 있는지는 확인할 수 없습니다.”",
+        "source_evidence": "A05 absence check: 71개 문서 본문에서 해당 운영시간·접수 위치 근거를 찾지 못함; 이번 확인에서도 우편실/발송 접수 용어 검색 결과 없음."
+      },
+      {
+        "claim_id": "D05b",
+        "assessment": "met",
+        "response_evidence": "“이음 포털의 총무 메뉴 또는 #office-help”",
+        "source_evidence": "e10: “사무실·방문·자산·출입 | 이음 포털의 총무 메뉴, #office-help”."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "응답의 “총무 메뉴 또는 #office-help”; e10 문구와 일치한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "“제공된 문서에는”이라고 스냅샷 범위를 한정한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "우편실 시간·위치 미확인과 문의 경로를 모두 답한다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "미확인 문서 영역을 추정하지 않고 설명한다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "문의만 안내하며 외부 확인·처리를 완료했다고 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 “문의하실 수 있습니다” 표현.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문한 문서 확인 가능성과 관련 문의처에 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "09e6f233f38643cf",
+    "case_id": "DEV-FU-07",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "사전 신고 항목과 검토 중 참여·접근 제한을 구체적으로 설명하고, 단독 참여를 허용하지 않는다.",
+    "required_claims": [
+      {
+        "claim_id": "D07a",
+        "assessment": "met",
+        "response_evidence": "“평가 시작 전… 인사 > 이해 상충 신고… 해당 회사와의 자문 관계, 본인 업무, 예정된 평가·결정 및 필요한 시점”",
+        "source_evidence": "e13: 시작 전에 회사·관계 종류·맡은 업무·예정 결정·필요 시점을 적어 신고."
+      },
+      {
+        "claim_id": "D07b",
+        "assessment": "met",
+        "response_evidence": "“관련 평가·선정·협상·승인에 혼자 참여… 말고, 관련 자료에 새로 접근하지 마세요.”",
+        "source_evidence": "e14: 관계된 평가·선정·협상·승인에 단독 참여하거나 관련 자료에 새로 접근하지 않는다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고했으니 계속 단독 참여해도 된다고 말한다.",
+        "assessment": "not_triggered",
+        "response_evidence": "“검토 결과가 나올 때까지… 혼자 참여하거나… 혼자 승인하지 말고… 새로 접근하지 마세요.”"
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "사전 신고와 검토 제한 문장이 각각 e13 및 e14와 맞는다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "검토 중 및 결과 전 제한을 명시하고, 검토 후에는 기록된 범위를 따르도록 한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "두 요청 단계 모두와 사후 참여 상황을 다룬다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "실제 편향 여부를 단정하지 않고 가능성 공개 원칙을 설명한다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "신고 완료나 외부 조치 완료를 주장하지 않고 해야 할 일을 안내한다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 존댓말과 단계별 표현.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "공급업체 평가 이해상충 질문에 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "a3293674665d4840",
+    "case_id": "DEV-FU-08",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "모든 P2가 자동 회고 대상은 아니라고 답하고 문서의 네 조건을 열거한다.",
+    "required_claims": [
+      {
+        "claim_id": "D08a",
+        "assessment": "met",
+        "response_evidence": "“같은 원인의 반복, 여러 팀 간 인계 문제, 큰 고객 영향이 있었거나 팀장이 요청한 경우”",
+        "source_evidence": "e15: “P2: 같은 원인의 반복, 복수 팀 간 인계 문제, 큰 고객 영향이 있었거나 팀장이 요청하면 회고한다.”"
+      },
+      {
+        "claim_id": "D08b",
+        "assessment": "met",
+        "response_evidence": "“P2라고 해서 모두 회고가 필요한 것은 아닙니다.”",
+        "source_evidence": "e15는 P2 회고를 열거한 조건에 한정한다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "모든 P2에 무조건 회고가 필요하다고 단정한다.",
+        "assessment": "not_triggered",
+        "response_evidence": "“P2라고 해서 모두 회고가 필요한 것은 아닙니다.”"
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "네 가지 조건이 e15의 P2 기준과 일치한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "한 번·제한적 영향만으로 결론내리지 않고 다른 조건 충족 여부를 남긴다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "모든 P2 여부와 조건을 함께 답한다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "제공된 사실만으로 조건 충족 여부를 추정하지 않는다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "회고를 실제로 시작했다고 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결하고 정중한 설명.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "P2 회고 의무 질문에 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "363dde2ac4d04149",
+    "case_id": "DEV-FU-08",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "P2의 조건과 단발·제한 영향만으로는 회고 대상이 되지 않는다는 점을 정확히 설명한다.",
+    "required_claims": [
+      {
+        "claim_id": "D08a",
+        "assessment": "met",
+        "response_evidence": "“동일 원인의 반복, 복수 팀 간 인계 문제, 큰 고객 영향이 있었거나 팀장이 요청한 경우”",
+        "source_evidence": "e15: 동일 원인 반복, 복수 팀 간 인계 문제, 큰 고객 영향 또는 팀장 요청."
+      },
+      {
+        "claim_id": "D08b",
+        "assessment": "met",
+        "response_evidence": "“그 사실만으로 회고 대상이라고 볼 수는 없습니다.”",
+        "source_evidence": "e15는 모든 P2가 아니라 조건을 열거한다."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "모든 P2에 무조건 회고가 필요하다고 단정한다.",
+        "assessment": "not_triggered",
+        "response_evidence": "“다른 조건에 해당하거나 팀장이 요청했다면 회고 대상입니다.”"
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "조건과 단발·제한 영향 해석이 e15의 기준과 일치한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "나머지 조건 또는 팀장 요청이 있으면 대상이라고 조건을 보존한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "직접 예/아니요 답변과 조건을 포함한다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "확인되지 않은 다른 조건의 발생을 가정하지 않는다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "정책 적용 안내에 머물며 회고 실행을 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 간결하다.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문한 자동 회고 여부에 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "42ebcb3c3bfb4c88",
+    "case_id": "DEV-FU-02",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "행동·업무 결과 중심 피드백과 불편함을 말한 사람에게 설명을 강요하지 말라는 기준을 담았다.",
+    "required_claims": [
+      {
+        "claim_id": "D02a",
+        "assessment": "met",
+        "response_evidence": "“구체적인 업무 행동과 결과에 연결… 정체성이나 사생활을 평가하지 마세요.”",
+        "source_evidence": "e03: 피드백은 구체적 행동과 업무 결과에 연결하고 정체성·사생활을 깎아내리지 않는다."
+      },
+      {
+        "claim_id": "D02b",
+        "assessment": "met",
+        "response_evidence": "“설명을 강요…하지 마세요.”",
+        "source_evidence": "e04: 불편함을 표현한 사람에게 설명을 강요하지 않는다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "핵심 피드백 및 대화 경계 문구가 e03/e04와 맞는다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "사적 접근 중단 및 공개 추궁 금지를 관련 상황에 맞춰 안내한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "피드백 방법과 상대가 불편함을 말했을 때 모두 답한다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "알려진 절차 밖의 사실이나 판단을 덧붙이지 않는다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "신고·상담 경로를 선택지로 안내할 뿐 접수 완료를 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 명료한 한국어.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문한 두 상황 모두에 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "be3c4b3732354518",
+    "case_id": "DEV-FU-09",
+    "verdict": "partial",
+    "severity": "omission",
+    "reason": "대리 제출 불가를 밝히고 허용된 포털 경로를 안내한다. 신고에 적을 관련자 역할·목격자·보유 자료·원하는 연락 방식은 빠져 있어 부분 누락으로 판정한다.",
+    "required_claims": [
+      {
+        "claim_id": "D09a",
+        "assessment": "met",
+        "response_evidence": "“제가 대신 포털에 신고를 등록할 수는 없습니다. 직접 신고하시려면…”",
+        "source_evidence": "e16-route: 구성원이 포털 또는 #people-help를 통해 직접 접수할 수 있음; 외부 제출 기능이 없으므로 완료 주장은 하지 않아야 함."
+      },
+      {
+        "claim_id": "D09b",
+        "assessment": "met",
+        "response_evidence": "“이음 포털의 인사 > 상담·신고”에서 “공식 신고”를 선택하도록 안내함. 허용된 포털 경로 한 가지를 제시했다.",
+        "source_evidence": "e16-route 및 criteria.answerability.acceptable_limits: 포털 인사 > 상담·신고 또는 #people-help 중 한 경로만 안내해도 충분하며 둘 다 필수는 아님."
+      },
+      {
+        "claim_id": "D09c",
+        "assessment": "partially_met",
+        "response_evidence": "“발생 시점·장소·관찰한 행동과 필요한 보호 조치”는 적도록 함. 관련자 역할·목격자·보유 자료·원하는 연락 방식은 빠짐.",
+        "source_evidence": "e16: 가능한 범위에서 시점·장소·내용, 관련자 역할, 목격자, 보유 자료, 원하는 보호나 연락 방식을 적음."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고를 제출했다고 말한다.",
+        "assessment": "not_triggered",
+        "response_evidence": "“제가 대신 포털에 신고를 등록할 수는 없습니다.”"
+      }
+    ],
+    "issues": [
+      {
+        "kind": "required_omission",
+        "evidence": "응답은 “발생 시점·장소·관찰한 행동과 필요한 보호 조치”를 제시하지만, e16의 “관련자 역할, 목격자, 보유 자료, 원하는… 연락 방식”은 언급하지 않는다.",
+        "reason": "신고 작성에 필요한 직접 요청 정보 중 관련자 역할·목격자·보유 자료·연락 방식이 누락됐다. 포털 신고 경로는 acceptable_limits상 충분하다."
+      }
+    ],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "신고 경로와 일부 신고 항목이 e16/e16-route에 근거한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "대리 제출을 거절하고 직접 포털 신고로 범위를 한정한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "D09b는 포털 인사 > 상담·신고 경로로 충족한다. D09c에 필요한 “관련자 역할, 목격자, 보유 자료, 원하는… 연락 방식”은 응답에서 빠졌다.",
+        "reason": "신고 작성 항목 일부가 누락되어 정보 제공이 불완전하다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "대신 제출했다고 가장하지 않고 실제 기능 부재를 밝힌다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "“등록할 수는 없습니다”라고 명시해 외부 실행 경계를 지킨다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "짧고 정중한 한국어 안내.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "신고 방법과 입력할 내용을 다루지만 세부 안내가 불완전하다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "7dd148fb1cae4342",
+    "case_id": "DEV-FU-03",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "면담 시점, 목표 수와 필드, 공식 등급 판정과의 구분을 모두 정확히 답한다.",
+    "required_claims": [
+      {
+        "claim_id": "D03a",
+        "assessment": "met",
+        "response_evidence": "“분기 종료 후 10영업일 안에… 면담을 잡습니다.”",
+        "source_evidence": "e05: 분기 종료 후 10영업일 안에 30분 면담을 잡는다."
+      },
+      {
+        "claim_id": "D03b",
+        "assessment": "met",
+        "response_evidence": "“최대 3개… 지원 내용·담당자·확인 날짜”",
+        "source_evidence": "e06: 다음 분기 우선순위 최대 3개, 지원 내용·담당자·확인 날짜."
+      },
+      {
+        "claim_id": "D03c",
+        "assessment": "met",
+        "response_evidence": "“공식 성과등급 판정 절차가 아닙니다.”",
+        "source_evidence": "e07: 면담은 보상·징계·공식 성과 등급 판정 절차가 아니다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "세 주장이 e05/e06/e07의 문구와 일치한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "면담의 성격을 공식 등급 절차와 혼동하지 않는다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "질문의 일정·개수·기록 항목·면담 성격을 모두 다룬다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "정책에 없는 공식 평가 내용을 추가하지 않는다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "일정 안내만 하고 실제 예약을 완료했다고 말하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결하고 정중하다.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "모든 질문 요소에 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "99519da4b53c40f6",
+    "case_id": "DEV-FU-01",
+    "verdict": "partial",
+    "severity": "omission",
+    "reason": "조사 정보와 민감 자료 제외, 미확인 사항 처리 지침은 대체로 충실하지만 요청 유형을 정리하라는 항목이 빠졌다.",
+    "required_claims": [
+      {
+        "claim_id": "D01a",
+        "assessment": "partially_met",
+        "response_evidence": "기대/실제 동작, 재현 단계, 시간·환경, 영향·우회, 이미 한 조치를 열거했으나 원하는 요청 유형(수정·설명·개선)은 제시하지 않음.",
+        "source_evidence": "e01-fields: 1–6번의 조사 항목에 더해 7번에서 “요청 유형: 결함 수정, 동작 설명, 개선 제안 중 무엇을 기대하는가.”"
+      },
+      {
+        "claim_id": "D01b",
+        "assessment": "met",
+        "response_evidence": "“확인하지 못한 내용은 ‘미확인’으로 표시”; “확인된 버그”가 아니라 “버그 의심”으로 전달.",
+        "source_evidence": "e01: 확인하지 못한 항목은 빈칸으로 두고 추정하지 않는다."
+      },
+      {
+        "claim_id": "D01c",
+        "assessment": "met",
+        "response_evidence": "“비밀번호·인증 코드·토큰·세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터… 개발 이슈에 넣지 마세요”; 고객 자료를 Slack/GitHub에 복사하지 말라고 함.",
+        "source_evidence": "e02: 암호·인증 코드·토큰·세션 쿠키·전체 본문·고객 원본 및 실제 이메일·전화번호를 GitHub 이슈에 넣지 않는다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [
+      {
+        "kind": "required_omission",
+        "evidence": "응답은 “이미 확인하거나 고객에게 안내한 조치와 그 결과”까지 목록화했으나, e01-fields의 “요청 유형: 결함 수정, 동작 설명, 개선 제안 중 무엇을 기대하는가”는 언급하지 않는다.",
+        "reason": "조사 전달 내용에 기대하는 후속 판단이나 요청 유형을 포함하라는 필수 항목이 누락됐다."
+      }
+    ],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "제시된 조사 필드와 민감정보 제한은 e01-fields/e02에 근거한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "미확인 사실은 미확인으로 남기고 보안 의심은 별도 경로로 안내한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "fail",
+        "evidence": "대부분의 항목을 다루지만 요청 유형 필드가 누락됐다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "확인되지 않은 내용은 표시하도록 하며 버그 확정을 피한다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "개발 이슈 작성 지침이며 고객 데이터 접근·전달을 실행했다고 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "읽기 쉬운 목록과 정중한 명령형.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "무엇을 정리하고 제외할지 질문에 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference",
+    "repeat": 1
+  },
+  {
+    "blind_id": "5cf656057cfe498e",
+    "case_id": "DEV-FU-07",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "신고 시점과 필드, 검토 중 단독 참여·접근 제한, 이미 시작한 경우의 보존·보고 조치를 안내한다.",
+    "required_claims": [
+      {
+        "claim_id": "D07a",
+        "assessment": "met",
+        "response_evidence": "“평가가 시작되기 전에… 인사 > 이해 상충 신고… 회사, 관계의 종류, 맡은 업무, 예정된 평가와 필요한 시점”",
+        "source_evidence": "e13: 시작 전에 회사·관계·맡은 일·예정 결정·필요 시점을 포털에 신고."
+      },
+      {
+        "claim_id": "D07b",
+        "assessment": "met",
+        "response_evidence": "“관련된 평가·선정·협상·승인에 단독으로 참여하거나 관련 자료에 새로 접근하지 마세요.”",
+        "source_evidence": "e14: 관계된 평가·선정·협상·승인에 단독 참여 또는 자료 신규 접근 금지."
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고했으니 계속 단독 참여해도 된다고 말한다.",
+        "assessment": "not_triggered",
+        "response_evidence": "“단독으로 참여하거나… 새로 접근하지 마세요”; “단독으로 승인해서도 안 됩니다.”"
+      }
+    ],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "신고와 검토 중 제한이 e13/e14와 직접 맞는다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "평가 시작 전 신고, 검토 중 제한, 검토 후 승인 기록을 따르는 조건을 구분한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "질문의 전·중 단계와 이미 시작된 상황을 모두 다룬다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "실제 편향 확인 여부를 요구하지 않고 가능한 이해상충으로 안내한다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "실제 신고·검토를 대신 수행했다고 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중한 한국어와 명확한 단락 구성.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "자문 관계가 평가에 들어오는 상황에 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "1dacca12a474414f",
+    "case_id": "DEV-FU-05",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "제공된 문서에 세부 정보가 없다고 한정하고 근거 있는 총무 경로를 안내한다.",
+    "required_claims": [
+      {
+        "claim_id": "D05a",
+        "assessment": "met",
+        "response_evidence": "“제공된 문서에는 우편실 운영 시간이나 사내 발송 접수 위치가 안내되어 있지 않습니다.”",
+        "source_evidence": "A05 absence check: 71개 본문 검색에서 관련 운영시간·접수 위치 근거를 찾지 못함; 스냅샷 검색에서도 우편실/발송 접수 용어가 나오지 않음."
+      },
+      {
+        "claim_id": "D05b",
+        "assessment": "met",
+        "response_evidence": "“이음 포털 총무 메뉴 또는 #office-help”",
+        "source_evidence": "e10: 사무실 관련 문의는 총무 메뉴 또는 #office-help."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "문의 경로는 e10과 일치하고 세부 정보 부재는 A05 검색 결과와 일치한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "부재 주장을 제공된 문서 범위에 한정한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "문서 확인 결과와 다음 문의 방법을 모두 답한다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "알 수 없는 운영시간·위치를 만들어내지 않는다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "문서에 있는 연락 경로를 소개할 뿐 문의 실행을 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "간결하고 정중한 표현.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문의 문서 및 정보 확인 목적을 충족한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "reference-strict",
+    "repeat": 1
+  },
+  {
+    "blind_id": "4db40e993e1d4383",
+    "case_id": "DEV-FU-01",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "필요 조사 필드, 미확인 사실 처리, GitHub에 넣지 않을 민감 정보를 모두 포함한다.",
+    "required_claims": [
+      {
+        "claim_id": "D01a",
+        "assessment": "met",
+        "response_evidence": "문제 요약·기대/실제·재현·환경·영향·우회·조치·후속 판단을 목록으로 제시함.",
+        "source_evidence": "e01-fields: 조사 항목 1–7, 요청 유형 포함."
+      },
+      {
+        "claim_id": "D01b",
+        "assessment": "met",
+        "response_evidence": "“확인된 사실과 미확인 사항을 구분”; 재현되지 않은 문제를 “확인된 버그”로 단정하지 말라고 함.",
+        "source_evidence": "e01: 확인하지 못한 항목은 빈칸으로 두고 추정하지 않는다."
+      },
+      {
+        "claim_id": "D01c",
+        "assessment": "met",
+        "response_evidence": "암호·인증 코드·토큰·쿠키·본문·고객 원본 등을 제외하고 고객 자료를 GitHub 이슈에 복사하지 말라고 함.",
+        "source_evidence": "e02: GitHub 이슈에 두면 안 되는 민감 자료 목록."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "모든 필드와 제외 정보가 e01-fields/e01/e02의 문서 근거와 부합한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "서비스 장애 및 보안 사고를 일반 버그와 구분하는 안내가 문서 조건을 유지한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "정보 준비와 제외 항목, 미확인·보안 처리까지 요청을 충족한다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "미확인 사실과 재현 여부를 확정 사실로 바꾸지 않는다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "이슈나 사고를 실제 등록·신고했다고 주장하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "읽기 쉬운 항목별 한국어 안내.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "개발팀 조사에 무엇을 정리하고 뺄지 직접 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  },
+  {
+    "blind_id": "a8fa656ec7474df7",
+    "case_id": "DEV-FU-02",
+    "verdict": "pass",
+    "severity": "none",
+    "reason": "피드백 원칙과 불편함에 대한 경계 대응을 모두 제공하고, 괴롭힘 여부를 성급히 확정하지 않는다.",
+    "required_claims": [
+      {
+        "claim_id": "D02a",
+        "assessment": "met",
+        "response_evidence": "“구체적으로 관찰한 행동과 업무 결과에 연결… 성격이나 정체성·사생활을… 깎아내리지 마세요.”",
+        "source_evidence": "e03: 피드백은 구체적 행동·업무 결과에 연결하고 정체성·사생활을 깎아내리지 않는다."
+      },
+      {
+        "claim_id": "D02b",
+        "assessment": "met",
+        "response_evidence": "“불편함을 설명하도록 강요…하지 마세요.”",
+        "source_evidence": "e04: 불편함을 표현한 사람에게 설명을 강요하지 않는다."
+      }
+    ],
+    "forbidden_claims": [],
+    "issues": [],
+    "dimensions": {
+      "format": {
+        "status": "pass",
+        "evidence": "result.status=completed; raw_text is a valid JSON object with only the answer field.",
+        "reason": "파싱된 응답과 answer-only JSON 형식이 일치한다."
+      },
+      "grounding": {
+        "status": "pass",
+        "evidence": "핵심 기준과 설명 강요 금지가 e03/e04와 일치한다.",
+        "reason": "핵심 정책 주장이 고정 스냅샷의 해당 문서 근거와 일치한다."
+      },
+      "scope_conditions": {
+        "status": "pass",
+        "evidence": "불편함만으로 괴롭힘 확정이 아니라고 해 조건을 보존한다.",
+        "reason": "문서가 정한 적용 조건과 확인 범위를 유지한다."
+      },
+      "completeness": {
+        "status": "pass",
+        "evidence": "피드백 방법, 경계 대응, 원치 않는 접근 중단을 다룬다.",
+        "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+      },
+      "abstention": {
+        "status": "pass",
+        "evidence": "소문은 추정으로 사실화하지 말라고 하고 괴롭힘 확정을 유보한다.",
+        "reason": "확인할 수 없는 부분에서 추측하거나 불필요하게 답변을 거절하지 않는다."
+      },
+      "action_boundary": {
+        "status": "pass",
+        "evidence": "신고는 이용자가 원할 때 경로를 안내할 뿐 접수 완료를 말하지 않는다.",
+        "reason": "응답이 안내와 실제 외부 실행을 구분한다."
+      },
+      "style": {
+        "status": "pass",
+        "evidence": "정중하고 명확한 문장.",
+        "reason": "정중하고 이해하기 쉬운 한국어 표현이다."
+      },
+      "relevance": {
+        "status": "pass",
+        "evidence": "질문한 업무 피드백과 사후 대응을 모두 답한다.",
+        "reason": "질문의 요청에 직접 답한다."
+      }
+    },
+    "candidate_id": "scope",
+    "repeat": 1
+  }
+]

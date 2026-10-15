@@ -1,0 +1,4500 @@
+[
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N05",
+    "repeat": 2,
+    "question": "개발 도구를 회사 노트북에 설치할 때 필요한 권한과 보안 검토 절차가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 21.898754755000482,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"예, 개발 도구를 회사 노트북에 설치할 때는 다음의 권한과 보안 검토 절차가 필요합니다.\\n\\n1. **권한**: 회사 기기와 회사 자료에 접근하는 프로그램, 브라우저 확장, 플러그인, 개발 패키지를 안전하게 관리하기 위해, 관리자 권한, 기기 설정 변경, 시스템 서비스 설치가 필요한 프로그램은 별도의 승인을 받습니다.\\n\\n2. **보안 검토 절차**: \\n   - 설치가 필요한 프로그램은 회사 관리자 권한이 필요하며, 이는 이음 포털의 **IT > 소프트웨어 요청**을 통해 승인됩니다.\\n   - 프로그램이 고객·협력사 자료를 외부에 업로드하거나 외부 계정에 연결하는 경우, 보안·개인정보 담당자의 검토가 필요합니다.\\n   - 새 유료 서비스, 새 클라우드, 코드 호스팅·빌드·배포 도구는 IT운영팀과 보안·개인정보 담당자의 검토를 거칩니다.\\n   - 라이선스 조건을 확인할 수 없거나 출처가 불분명한 바이너리는 설치를 멈추고 코드 리뷰에서 문제를 알립니다.\\n\\n이 절차는 회사 기준에 따라 운영되며, 설치 전에 반드시 이음 포털의 IT > 소프트웨어 요청을 통해 승인을 받고, 보안·개인정보 담당자의 검토를 받는 것이 원칙입니다.\"}",
+      "answer": "예, 개발 도구를 회사 노트북에 설치할 때는 다음의 권한과 보안 검토 절차가 필요합니다.\n\n1. **권한**: 회사 기기와 회사 자료에 접근하는 프로그램, 브라우저 확장, 플러그인, 개발 패키지를 안전하게 관리하기 위해, 관리자 권한, 기기 설정 변경, 시스템 서비스 설치가 필요한 프로그램은 별도의 승인을 받습니다.\n\n2. **보안 검토 절차**: \n   - 설치가 필요한 프로그램은 회사 관리자 권한이 필요하며, 이는 이음 포털의 **IT > 소프트웨어 요청**을 통해 승인됩니다.\n   - 프로그램이 고객·협력사 자료를 외부에 업로드하거나 외부 계정에 연결하는 경우, 보안·개인정보 담당자의 검토가 필요합니다.\n   - 새 유료 서비스, 새 클라우드, 코드 호스팅·빌드·배포 도구는 IT운영팀과 보안·개인정보 담당자의 검토를 거칩니다.\n   - 라이선스 조건을 확인할 수 없거나 출처가 불분명한 바이너리는 설치를 멈추고 코드 리뷰에서 문제를 알립니다.\n\n이 절차는 회사 기준에 따라 운영되며, 설치 전에 반드시 이음 포털의 IT > 소프트웨어 요청을 통해 승인을 받고, 보안·개인정보 담당자의 검토를 받는 것이 원칙입니다.",
+      "input_tokens": 68416,
+      "output_tokens": 390,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+        "elapsed_seconds": 21.891991922999296,
+        "usage": {
+          "input_tokens": 68416,
+          "output_tokens": 390,
+          "total_tokens": 68806
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N01",
+    "repeat": 2,
+    "question": "오늘 출근 체크를 깜빡했는데 근태 기록 정정은 그룹웨어 어디에서 신청하고, 사유는 어떤 식으로 적는지 안내된 곳이 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.0387872279989097,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "네. 출퇴근 기록이 누락된 경우, 오류를 발견한 뒤 3영업일 안에 이음 포털 **인사 > 근태 정정**에서 정정을 요청하시면 됩니다. 날짜, 실제 시작·종료 시각, 휴게 시간과 정정 사유를 적으세요. 사유는 실제 상황을 사실대로 간단히 설명하시면 됩니다. 3영업일이 지났다면 지연 사유를 적어 People팀에 제출하도록 안내되어 있습니다.",
+      "answer": null,
+      "input_tokens": 57346,
+      "output_tokens": 112,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+        "elapsed_seconds": 3.0320079079992865,
+        "usage": {
+          "input_tokens": 57346,
+          "output_tokens": 112,
+          "total_tokens": 57458,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57343,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00123146,
+        "reserved_dollars": 0.06035825,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N05",
+    "repeat": 1,
+    "question": "개발 도구를 회사 노트북에 설치할 때 필요한 권한과 보안 검토 절차가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 22.42721327000072,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"예, 개발 도구를 회사 노트북에 설치할 때는 다음의 권한과 보안 검토 절차가 필요합니다.\\n\\n1. **권한**: 회사 기기와 회사 자료에 접근하는 프로그램, 브라우저 확장, 플러그인, 개발 패키지를 안전하게 관리하기 위해, 관리자 권한, 기기 설정 변경, 시스템 서비스 설치가 필요한 프로그램은 별도의 승인을 받습니다.\\n\\n2. **보안 검토 절차**: \\n   - 설치가 필요한 프로그램은 회사 관리자 권한이 필요하며, 이는 이음 포털의 **IT > 소프트웨어 요청**을 통해 승인됩니다.\\n   - 프로그램이 고객·협력사 자료를 외부에 업로드하거나 외부 계정에 연결하는 경우, 보안·개인정보 담당자의 검토가 필요합니다.\\n   - 새 유료 서비스, 새 클라우드, 코드 호스팅·빌드·배포 도구는 IT운영팀과 보안·개인정보 담당자의 검토를 거칩니다.\\n   - 라이선스 조건을 확인할 수 없거나 출처가 불분명한 바이너리는 설치를 멈추고 코드 리뷰에서 문제를 알립니다.\\n\\n이 절차는 회사 기준에 따라 운영되며, 설치 전에 반드시 이음 포털의 IT > 소프트웨어 요청을 통해 승인을 받고, 보안·개인정보 담당자의 검토를 받는 것이 원칙입니다.\"}",
+      "answer": "예, 개발 도구를 회사 노트북에 설치할 때는 다음의 권한과 보안 검토 절차가 필요합니다.\n\n1. **권한**: 회사 기기와 회사 자료에 접근하는 프로그램, 브라우저 확장, 플러그인, 개발 패키지를 안전하게 관리하기 위해, 관리자 권한, 기기 설정 변경, 시스템 서비스 설치가 필요한 프로그램은 별도의 승인을 받습니다.\n\n2. **보안 검토 절차**: \n   - 설치가 필요한 프로그램은 회사 관리자 권한이 필요하며, 이는 이음 포털의 **IT > 소프트웨어 요청**을 통해 승인됩니다.\n   - 프로그램이 고객·협력사 자료를 외부에 업로드하거나 외부 계정에 연결하는 경우, 보안·개인정보 담당자의 검토가 필요합니다.\n   - 새 유료 서비스, 새 클라우드, 코드 호스팅·빌드·배포 도구는 IT운영팀과 보안·개인정보 담당자의 검토를 거칩니다.\n   - 라이선스 조건을 확인할 수 없거나 출처가 불분명한 바이너리는 설치를 멈추고 코드 리뷰에서 문제를 알립니다.\n\n이 절차는 회사 기준에 따라 운영되며, 설치 전에 반드시 이음 포털의 IT > 소프트웨어 요청을 통해 승인을 받고, 보안·개인정보 담당자의 검토를 받는 것이 원칙입니다.",
+      "input_tokens": 68416,
+      "output_tokens": 390,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+        "elapsed_seconds": 22.423904310999205,
+        "usage": {
+          "input_tokens": 68416,
+          "output_tokens": 390,
+          "total_tokens": 68806
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N05",
+    "repeat": 1,
+    "question": "개발 도구를 회사 노트북에 설치할 때 필요한 권한과 보안 검토 절차가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.1568477920009173,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "네. 설치 유형에 따라 다릅니다.\n\n- 승인된 개발환경에서 프로젝트의 의존성을 추가·갱신하는 경우, 프로젝트 선언 파일과 lockfile을 변경해 PR로 제출하고 독립 리뷰와 필수 검사를 거칩니다. 매번 별도 IT 신청이 필요한 것은 아닙니다.\n- 관리자 권한이나 기기 설정 변경이 필요한 설치, 브라우저 확장·플러그인, 새 외부 서비스·클라우드·자료 전송 기능 등은 설치 전에 IT운영팀과 보안·개인정보 담당자의 검토를 받아야 합니다. 포털의 **IT > 소프트웨어 요청**에 목적, 필요한 권한·자료 접근, 비용 등을 적고, 검토가 기록되기 전에는 설치하거나 실제 자료를 연결하지 마세요.\n- 고객자료·개인정보·기밀을 처리하거나 외부로 전송하는 경우에는 **보안 > 검토 요청**도 별도로 받아야 합니다. 한쪽 검토가 다른 쪽을 대신하지 않습니다.\n\n개발환경이 관리 대상인지 또는 설치에 필요한 권한이 불분명하면 설치를 보류하고 IT운영팀에 확인하세요.",
+      "answer": null,
+      "input_tokens": 57333,
+      "output_tokens": 255,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+        "elapsed_seconds": 3.154436243999953,
+        "usage": {
+          "input_tokens": 57333,
+          "output_tokens": 255,
+          "total_tokens": 57588,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57330
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01452435,
+        "reserved_dollars": 0.0603425,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N05",
+    "repeat": 2,
+    "question": "개발 도구를 회사 노트북에 설치할 때 필요한 권한과 보안 검토 절차가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 8.42559992600036,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "네. 설치 유형에 따라 다릅니다.\n\n- 승인된 개발환경에서 프로젝트의 의존성을 추가·갱신하는 경우, 프로젝트 선언 파일과 lockfile을 변경해 PR로 제출하고 독립 리뷰와 필수 검사를 거칩니다. 매번 별도 IT 신청이 필요한 것은 아닙니다.\n- 관리자 권한이나 기기 설정 변경이 필요한 프로그램, 브라우저 확장·플러그인, 외부 서비스·클라우드 연결 등은 설치 전에 이음 포털의 **IT > 소프트웨어 요청**으로 검토를 요청해야 합니다. IT운영팀은 운영·기술 조건을, 보안·개인정보 담당자는 데이터 처리와 보안 위험을 검토합니다. 검토가 기록되기 전에는 설치하거나 실제 자료를 연결하지 마세요.\n- 개발환경이 관리 대상인지, 필요한 권한이나 자료의 외부 전송 여부가 불분명하면 설치를 보류하고 IT운영팀에 확인하세요. IT 설치 권한과 프로젝트 의존성 변경 권한, 외부 서비스에 자료를 보낼 권한은 서로 별개입니다.",
+      "answer": null,
+      "input_tokens": 57333,
+      "output_tokens": 242,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11a9b4b5ea878e2ba9dc29d3c1d79286fa0c29a1be37eb5db785ced1a07c082c",
+        "elapsed_seconds": 8.422694126000351,
+        "usage": {
+          "input_tokens": 57333,
+          "output_tokens": 242,
+          "total_tokens": 57575,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57330,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0013287000000000002,
+        "reserved_dollars": 0.0603425,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N04",
+    "repeat": 1,
+    "question": "업무에 생성형 AI 도구를 쓸 때 고객 정보나 내부 문서를 입력해도 되는지 확인할 사내 보안 기준이 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 6.365122548999352,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"사내 보안 기준에 따르면, 생성형 AI 도구를 사용할 때 고객 정보나 내부 문서를 입력할 수 없습니다. 생성형 AI 도구의 사용 범위는 공개된 정보에 한정되며, 고객 정보, 개인정보, 기밀 정보, 내부 문서 등 민감한 자료는 입력 금지입니다. 관련 문서: 생성형 AI 업무 사용 (문서 ID: ieum-033)\"}",
+      "answer": "사내 보안 기준에 따르면, 생성형 AI 도구를 사용할 때 고객 정보나 내부 문서를 입력할 수 없습니다. 생성형 AI 도구의 사용 범위는 공개된 정보에 한정되며, 고객 정보, 개인정보, 기밀 정보, 내부 문서 등 민감한 자료는 입력 금지입니다. 관련 문서: 생성형 AI 업무 사용 (문서 ID: ieum-033)",
+      "input_tokens": 68426,
+      "output_tokens": 107,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+        "elapsed_seconds": 6.361886806000257,
+        "usage": {
+          "input_tokens": 68426,
+          "output_tokens": 107,
+          "total_tokens": 68533
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N01",
+    "repeat": 2,
+    "question": "오늘 출근 체크를 깜빡했는데 근태 기록 정정은 그룹웨어 어디에서 신청하고, 사유는 어떤 식으로 적는지 안내된 곳이 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 10.759351284999866,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 근태 기록 정정 절차에 대한 안내가 없습니다. 출근 체크를 깜빡한 경우, 실제 출근 시각을 근태 시스템에 입력하고, 기록이 잘못된 경우에만 이음 포털의 \\\"인사 > 근태 정정\\\"에서 신청해야 합니다. 사유는 실제 출근 시각과 차이가 나는 이유를 간단히 설명하며, 예를 들어 \\\"대중교통 지연\\\", \\\"건강 문제\\\" 등과 같은 구체적인 사유를 적는 것이 원칙입니다. 정정 사유는 개인의 사정을 기록하는 것이며, 진단명이나 상세한 사정은 팀 채널에 공개하지 않습니다.\"}",
+      "answer": "문서에 근태 기록 정정 절차에 대한 안내가 없습니다. 출근 체크를 깜빡한 경우, 실제 출근 시각을 근태 시스템에 입력하고, 기록이 잘못된 경우에만 이음 포털의 \"인사 > 근태 정정\"에서 신청해야 합니다. 사유는 실제 출근 시각과 차이가 나는 이유를 간단히 설명하며, 예를 들어 \"대중교통 지연\", \"건강 문제\" 등과 같은 구체적인 사유를 적는 것이 원칙입니다. 정정 사유는 개인의 사정을 기록하는 것이며, 진단명이나 상세한 사정은 팀 채널에 공개하지 않습니다.",
+      "input_tokens": 68438,
+      "output_tokens": 177,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+        "elapsed_seconds": 10.747702650000065,
+        "usage": {
+          "input_tokens": 68438,
+          "output_tokens": 177,
+          "total_tokens": 68615
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N04",
+    "repeat": 2,
+    "question": "업무에 생성형 AI 도구를 쓸 때 고객 정보나 내부 문서를 입력해도 되는지 확인할 사내 보안 기준이 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 6.512029581999741,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"사내 보안 기준에 따르면, 생성형 AI 도구를 사용할 때 고객 정보나 내부 문서를 입력할 수 없습니다. 생성형 AI 도구의 사용 범위는 공개된 정보에 한정되며, 고객 정보, 개인정보, 기밀 정보, 내부 문서 등 민감한 자료는 입력 금지입니다. 관련 문서: 생성형 AI 업무 사용 (문서 ID: ieum-033)\"}",
+      "answer": "사내 보안 기준에 따르면, 생성형 AI 도구를 사용할 때 고객 정보나 내부 문서를 입력할 수 없습니다. 생성형 AI 도구의 사용 범위는 공개된 정보에 한정되며, 고객 정보, 개인정보, 기밀 정보, 내부 문서 등 민감한 자료는 입력 금지입니다. 관련 문서: 생성형 AI 업무 사용 (문서 ID: ieum-033)",
+      "input_tokens": 68426,
+      "output_tokens": 107,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+        "elapsed_seconds": 6.50429873900066,
+        "usage": {
+          "input_tokens": 68426,
+          "output_tokens": 107,
+          "total_tokens": 68533
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N02",
+    "repeat": 2,
+    "question": "직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차를 볼 수 있을까요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 6.566377510000166,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 직무 교육비 지원은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육이 대상입니다. 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다.\\n\\n교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록해야 합니다. 등록 전에 팀장과 People팀의 승인을 모두 받아야 합니다. 비용이 드는 구매에는 별도로 **업무용 구매와 공급업체 선택**의 금액별 승인·견적·기술 검토도 적용됩니다. 회사 지원 한도는 회계연도별 1인 최대 500,000원이며, 세부 기준은 직무 교육 신청과 비용 지원(ieum-049)에서 확인하실 수 있습니다.\"}",
+      "answer": "네. 직무 교육비 지원은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육이 대상입니다. 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다.\n\n교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록해야 합니다. 등록 전에 팀장과 People팀의 승인을 모두 받아야 합니다. 비용이 드는 구매에는 별도로 **업무용 구매와 공급업체 선택**의 금액별 승인·견적·기술 검토도 적용됩니다. 회사 지원 한도는 회계연도별 1인 최대 500,000원이며, 세부 기준은 직무 교육 신청과 비용 지원(ieum-049)에서 확인하실 수 있습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 213,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+        "elapsed_seconds": 6.563667697999335,
+        "usage": {
+          "input_tokens": 57330,
+          "output_tokens": 213,
+          "total_tokens": 57543,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57327,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0013068899999999998,
+        "reserved_dollars": 0.060345,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N03",
+    "repeat": 1,
+    "question": "새 기능에서 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준과 준비 자료를 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.3205742049995024,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 명시된 개인정보 검토 절차는 없습니다. 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준이나 준비 자료에 대한 정보는 제공된 문서에서 확인할 수 없습니다.\"}",
+      "answer": "문서에 명시된 개인정보 검토 절차는 없습니다. 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준이나 준비 자료에 대한 정보는 제공된 문서에서 확인할 수 없습니다.",
+      "input_tokens": 68415,
+      "output_tokens": 54,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+        "elapsed_seconds": 3.3173622280010022,
+        "usage": {
+          "input_tokens": 68415,
+          "output_tokens": 54,
+          "total_tokens": 68469
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N03",
+    "repeat": 2,
+    "question": "새 기능에서 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준과 준비 자료를 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.2475073450004857,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 명시된 개인정보 검토 절차는 없습니다. 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준이나 준비 자료에 대한 정보는 제공된 문서에서 확인할 수 없습니다.\"}",
+      "answer": "문서에 명시된 개인정보 검토 절차는 없습니다. 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준이나 준비 자료에 대한 정보는 제공된 문서에서 확인할 수 없습니다.",
+      "input_tokens": 68415,
+      "output_tokens": 54,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+        "elapsed_seconds": 3.2439379329989606,
+        "usage": {
+          "input_tokens": 68415,
+          "output_tokens": 54,
+          "total_tokens": 68469
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N01",
+    "repeat": 1,
+    "question": "오늘 출근 체크를 깜빡했는데 근태 기록 정정은 그룹웨어 어디에서 신청하고, 사유는 어떤 식으로 적는지 안내된 곳이 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 87.6768900499992,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면, 근태 기록 정정은 이음 포털의 **인사 > 근태 정정**에서 신청합니다. 사유는 실제 출퇴근 기록과 일치하는 내용만으로, 예를 들어 \\\"대중교통 지연\\\", \\\"건강 문제\\\" 등과 같은 사유를 적습니다. 진단명이나 상세한 사정은 팀 채널에 공개하지 않습니다.\"}",
+      "answer": "문서에 따르면, 근태 기록 정정은 이음 포털의 **인사 > 근태 정정**에서 신청합니다. 사유는 실제 출퇴근 기록과 일치하는 내용만으로, 예를 들어 \"대중교통 지연\", \"건강 문제\" 등과 같은 사유를 적습니다. 진단명이나 상세한 사정은 팀 채널에 공개하지 않습니다.",
+      "input_tokens": 68438,
+      "output_tokens": 105,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+        "elapsed_seconds": 87.67390376799995,
+        "usage": {
+          "input_tokens": 68438,
+          "output_tokens": 105,
+          "total_tokens": 68543
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N02",
+    "repeat": 1,
+    "question": "직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차를 볼 수 있을까요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.578400383999906,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 직무 교육비 지원은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육이 대상입니다. 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다. 교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록해야 합니다. 등록 전에 팀장과 People팀의 승인이 모두 완료되어야 하며, 유료 교육은 업무용 구매의 금액별 승인·견적·기술 검토도 함께 받아야 합니다. 회사 지원 한도는 회계연도별 1인 최대 500,000원입니다. 실제 신청이나 승인은 제가 대신 처리할 수 없습니다.\"}",
+      "answer": "네. 직무 교육비 지원은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육이 대상입니다. 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다. 교육 시작일 5영업일 전까지 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록해야 합니다. 등록 전에 팀장과 People팀의 승인이 모두 완료되어야 하며, 유료 교육은 업무용 구매의 금액별 승인·견적·기술 검토도 함께 받아야 합니다. 회사 지원 한도는 회계연도별 1인 최대 500,000원입니다. 실제 신청이나 승인은 제가 대신 처리할 수 없습니다.",
+      "input_tokens": 57330,
+      "output_tokens": 191,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+        "elapsed_seconds": 3.5751970389992493,
+        "usage": {
+          "input_tokens": 57330,
+          "output_tokens": 191,
+          "total_tokens": 57521,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57327
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0144756,
+        "reserved_dollars": 0.060345,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N02",
+    "repeat": 1,
+    "question": "직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차를 볼 수 있을까요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 17.662931434999336,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차는 다음과 같습니다.\\n\\n- 교육은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육에 한정됩니다.\\n- 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다.\\n- 교육 신청은 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록합니다.\\n- 팀장은 직무 관련성과 일정 대체 가능성을 검토하고, People팀은 연간 잔액과 교육 기록 항목을 확인합니다.\\n- 승인은 팀장과 People팀의 승인을 모두 받은 후에 이루어지며, 등록 전에 두 승인 모두 완료되어야 합니다.\\n- 교육 시작일 5영업일 전까지 신청을 제출해야 합니다.\\n\\n이 절차는 교육 자격 취득에 따른 급여 인상이나 합격 포상 약속을 포함하지 않습니다.\"}",
+      "answer": "직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차는 다음과 같습니다.\n\n- 교육은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육에 한정됩니다.\n- 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다.\n- 교육 신청은 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록합니다.\n- 팀장은 직무 관련성과 일정 대체 가능성을 검토하고, People팀은 연간 잔액과 교육 기록 항목을 확인합니다.\n- 승인은 팀장과 People팀의 승인을 모두 받은 후에 이루어지며, 등록 전에 두 승인 모두 완료되어야 합니다.\n- 교육 시작일 5영업일 전까지 신청을 제출해야 합니다.\n\n이 절차는 교육 자격 취득에 따른 급여 인상이나 합격 포상 약속을 포함하지 않습니다.",
+      "input_tokens": 68420,
+      "output_tokens": 308,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+        "elapsed_seconds": 17.65986173499914,
+        "usage": {
+          "input_tokens": 68420,
+          "output_tokens": 308,
+          "total_tokens": 68728
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N03",
+    "repeat": 1,
+    "question": "새 기능에서 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준과 준비 자료를 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.329704888001288,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "새 기능에서 고객 정보를 수집하려면 **수집을 시작하기 전에** 업무 책임자가 개인정보 처리 목적, 필요한 항목, 이용 역할, 저장 위치, 외부 제공 여부와 문의 책임자를 정리해 보안·개인정보 담당자에게 검토를 요청해야 합니다. 처리 근거, 안내 내용 또는 적용되는 보유 기준이 확인되지 않으면 수집을 시작하지 않습니다.\n\n준비할 자료는 다음과 같습니다.\n\n- 수집 목적과 필요한 정보 항목\n- 정보를 이용할 역할\n- 저장 위치\n- 외부 제공 여부\n- 문의 책임자\n- 처리 근거, 이용자 안내 내용, 보유 기준\n\n새 양식이나 업무 흐름을 만드는 경우에도 수집 전에 검토를 요청해야 합니다. 이미 승인된 흐름이라도 목적과 다른 항목을 추가하거나 수신자를 넓히려면 다시 검토가 필요합니다. 문서에는 별도의 신청 메뉴나 제출 양식이 명시되어 있지 않으므로, 구체적인 접수 경로는 보안·개인정보 담당자에게 확인해 주세요.",
+      "answer": null,
+      "input_tokens": 57329,
+      "output_tokens": 235,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+        "elapsed_seconds": 3.326309449001201,
+        "usage": {
+          "input_tokens": 57329,
+          "output_tokens": 235,
+          "total_tokens": 57564,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57326
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01450835,
+        "reserved_dollars": 0.0603495,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N02",
+    "repeat": 2,
+    "question": "직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차를 볼 수 있을까요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 17.157214062001003,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차는 다음과 같습니다.\\n\\n- 교육은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육에 한정됩니다.\\n- 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다.\\n- 교육 신청은 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록합니다.\\n- 팀장은 직무 관련성과 일정 대체 가능성을 검토하고, People팀은 연간 잔액과 교육 기록 항목을 확인합니다.\\n- 승인은 팀장과 People팀의 승인을 모두 받은 후에 이루어지며, 등록 전에 두 승인 모두 완료되어야 합니다.\\n- 교육 시작일 5영업일 전까지 신청을 제출해야 합니다.\\n\\n이 절차는 교육 자격 취득에 따른 급여 인상이나 합격 포상 약속을 포함하지 않습니다.\"}",
+      "answer": "직무 교육비 지원을 신청하기 전에 인정되는 교육 범위와 승인 절차는 다음과 같습니다.\n\n- 교육은 현재 직무 수행이나 합의된 업무 목표에 필요한 외부 교육에 한정됩니다.\n- 정규 학위 과정 등록금, 개인 취미 과정, 승인 전 결제는 지원 대상이 아닙니다.\n- 교육 신청은 이음 포털의 **인사 > 직무 교육**에 과정명, 주최기관, 일정, 총비용, 업무 연관성, 업무 공백 계획과 교육 뒤 적용 계획을 등록합니다.\n- 팀장은 직무 관련성과 일정 대체 가능성을 검토하고, People팀은 연간 잔액과 교육 기록 항목을 확인합니다.\n- 승인은 팀장과 People팀의 승인을 모두 받은 후에 이루어지며, 등록 전에 두 승인 모두 완료되어야 합니다.\n- 교육 시작일 5영업일 전까지 신청을 제출해야 합니다.\n\n이 절차는 교육 자격 취득에 따른 급여 인상이나 합격 포상 약속을 포함하지 않습니다.",
+      "input_tokens": 68420,
+      "output_tokens": 308,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "fb26181c045951a9a80c643c5743ce8c6f14b55b715bffc38b0f0c1c5160328b",
+        "elapsed_seconds": 17.15265257200008,
+        "usage": {
+          "input_tokens": 68420,
+          "output_tokens": 308,
+          "total_tokens": 68728
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N03",
+    "repeat": 2,
+    "question": "새 기능에서 고객 정보를 수집하기 전에 개인정보 검토를 신청하는 기준과 준비 자료를 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 10.6256696190012,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "새 기능에서 고객 정보를 수집하려면 수집을 시작하기 전에 개인정보 처리 근거와 안내 내용, 적용되는 보유 기준을 확인해야 합니다. 확인되지 않았다면 수집을 시작하지 말고, 업무 책임자가 보안·개인정보 담당자에게 검토를 요청하세요.\n\n검토를 위해 다음 내용을 정리합니다.\n- 수집 목적과 필요한 정보 항목\n- 정보를 이용할 역할과 저장 위치\n- 외부 제공 여부\n- 문의 책임자\n\n새 양식이나 업무 흐름을 만드는 경우에도 같은 사전 검토 기준이 적용됩니다. 이미 승인된 흐름이라도 목적과 다른 항목을 추가하거나 수신자를 넓히려면 다시 검토해야 합니다. 문서에는 별도 신청 메뉴나 추가 증빙 자료가 명시되어 있지 않습니다.",
+      "answer": null,
+      "input_tokens": 57329,
+      "output_tokens": 176,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e7d8f2f4d2f6da2776a54e0c7508e7caa9f1e48fb37f69763ed882d5de4a36f2",
+        "elapsed_seconds": 10.622507609999957,
+        "usage": {
+          "input_tokens": 57329,
+          "output_tokens": 176,
+          "total_tokens": 57505,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57326,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00127912,
+        "reserved_dollars": 0.0603495,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N04",
+    "repeat": 2,
+    "question": "업무에 생성형 AI 도구를 쓸 때 고객 정보나 내부 문서를 입력해도 되는지 확인할 사내 보안 기준이 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 7.7924381510001695,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 생성형 AI 업무 사용 기준은 문서에 있습니다. 업무용으로는 회사 관리 계정의 ChatGPT Business 회사 워크스페이스만 사용할 수 있고, 입력 자료는 공개된 정보로 제한됩니다. 고객 자료와 개인정보는 식별자를 지워도 입력할 수 없으며, 사내 전용 문서·회의록·출시 전 제품 정보, 소스 코드와 기밀정보도 입력 금지입니다. 공개 여부나 이용 조건이 확실하지 않으면 입력하지 마세요. 자세한 기준은 「생성형 AI 업무 사용」(ieum-033)을 확인하시면 됩니다.\"}",
+      "answer": "네. 생성형 AI 업무 사용 기준은 문서에 있습니다. 업무용으로는 회사 관리 계정의 ChatGPT Business 회사 워크스페이스만 사용할 수 있고, 입력 자료는 공개된 정보로 제한됩니다. 고객 자료와 개인정보는 식별자를 지워도 입력할 수 없으며, 사내 전용 문서·회의록·출시 전 제품 정보, 소스 코드와 기밀정보도 입력 금지입니다. 공개 여부나 이용 조건이 확실하지 않으면 입력하지 마세요. 자세한 기준은 「생성형 AI 업무 사용」(ieum-033)을 확인하시면 됩니다.",
+      "input_tokens": 57340,
+      "output_tokens": 139,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+        "elapsed_seconds": 7.788594698000452,
+        "usage": {
+          "input_tokens": 57340,
+          "output_tokens": 139,
+          "total_tokens": 57479,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57337,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00125159,
+        "reserved_dollars": 0.06035175,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N01",
+    "repeat": 1,
+    "question": "오늘 출근 체크를 깜빡했는데 근태 기록 정정은 그룹웨어 어디에서 신청하고, 사유는 어떤 식으로 적는지 안내된 곳이 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.240857695000159,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "네. 출퇴근 기록이 누락된 경우, 오류를 발견한 뒤 3영업일 안에 이음 포털 **인사 > 근태 정정**에서 정정을 요청하시면 됩니다. 날짜, 실제 시작·종료 시각, 휴게 시간과 정정 사유를 적으세요. 사유는 실제 기록과 다른 이유를 사실대로 간단히 작성하시면 됩니다. 3영업일이 지났다면 지연 사유를 적어 People팀에 제출하도록 안내되어 있습니다.",
+      "answer": null,
+      "input_tokens": 57346,
+      "output_tokens": 115,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "1943f7e793e1ff3003ee4192478e5a445ea73d131e529aa0e82ef32b68462a11",
+        "elapsed_seconds": 3.238342141999965,
+        "usage": {
+          "input_tokens": 57346,
+          "output_tokens": 115,
+          "total_tokens": 57461,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57343
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0144226,
+        "reserved_dollars": 0.06035825,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N04",
+    "repeat": 1,
+    "question": "업무에 생성형 AI 도구를 쓸 때 고객 정보나 내부 문서를 입력해도 되는지 확인할 사내 보안 기준이 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.8379643900007068,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 문서에는 생성형 AI 업무 사용 기준이 있습니다. 업무용 생성형 AI는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용할 수 있고, 입력 자료는 공개된 정보로 제한됩니다. 고객 자료·개인정보·기밀정보·소스 코드·사내 전용 문서는 입력할 수 없으며, 식별자를 지운 자료나 요약도 허용되지 않습니다. 공개 여부나 이용 조건이 불확실하면 입력하지 마세요. 기준은 「생성형 AI 업무 사용」(ieum-033)과 「승인된 업무 도구와 데이터 범위」(ieum-054)에 안내되어 있습니다.\"}",
+      "answer": "네. 문서에는 생성형 AI 업무 사용 기준이 있습니다. 업무용 생성형 AI는 회사 관리 계정으로 접속하는 ChatGPT Business 회사 워크스페이스만 사용할 수 있고, 입력 자료는 공개된 정보로 제한됩니다. 고객 자료·개인정보·기밀정보·소스 코드·사내 전용 문서는 입력할 수 없으며, 식별자를 지운 자료나 요약도 허용되지 않습니다. 공개 여부나 이용 조건이 불확실하면 입력하지 마세요. 기준은 「생성형 AI 업무 사용」(ieum-033)과 「승인된 업무 도구와 데이터 범위」(ieum-054)에 안내되어 있습니다.",
+      "input_tokens": 57340,
+      "output_tokens": 155,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "e95c06e8e7d96b508bc4c967c67a2f0b9f9391337db5760164d3ed0d71785327",
+        "elapsed_seconds": 2.8350548520011216,
+        "usage": {
+          "input_tokens": 57340,
+          "output_tokens": 155,
+          "total_tokens": 57495,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57337
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0144511,
+        "reserved_dollars": 0.06035175,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M01",
+    "repeat": 2,
+    "question": "merge request 리뷰 요청을 올린 뒤 승인 상태를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.163827839000078,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "문서에는 GitHub Pull request(PR) 리뷰 절차가 안내되어 있지만, “merge request”라는 별도 절차는 확인되지 않습니다. PR을 올린 뒤에는 GitHub에서 리뷰 상태를 확인하세요. `Comment`는 승인 여부를 결정하지 않은 상태이고, `Approve`는 병합 가능하다는 검토 의견이며, `Request changes`는 병합 전에 해결할 문제가 있다는 뜻입니다. 병합하려면 작성자와 다른 사람의 독립 승인 1건과 필수 자동 검사 통과가 필요하며, 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. 실제 저장소의 병합 보호 설정은 별도로 확인해야 합니다.",
+      "answer": null,
+      "input_tokens": 57325,
+      "output_tokens": 145,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+        "elapsed_seconds": 3.156256891999874,
+        "usage": {
+          "input_tokens": 57325,
+          "output_tokens": 145,
+          "total_tokens": 57470,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57322,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00125579,
+        "reserved_dollars": 0.06033925,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M01",
+    "repeat": 1,
+    "question": "merge request 리뷰 요청을 올린 뒤 승인 상태를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 15.256566489999386,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"answer: \"문서에 명시된 'merge request 리뷰 요청' 또는 '병합 요청'에 대한 절차는 없습니다. 관련된 내용은 '개발 변경과 코드 리뷰' 문서(문서 ID: ieum-067)에서 다루고 있으며, 이 문서는 Pull Request(PR)를 작성한 후 독립적인 리뷰와 검사를 거쳐야 하며, 병합 전에 최소 1건의 독립 승인과 저장소에서 지정한 필수 검사가 통과되어야 합니다. PR 작성자와 다른 사람이 최소 1명 독립적으로 검토하고, 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. 병합은 코드 변경이 기준 브랜치에 들어갔다는 의미이며, 고객이 사용하는 환경에 배포됐거나 문제가 해결됐다는 뜻은 아닙니다. 배포·실패·롤백 절차(문서 ID: ieum-068)와 연결해 실제 적용 결과를 확인해야 합니다. 따라서, '리뷰 요청을 올린 뒤 승인 상태를 확인하는 절차'는 문서에 명시되어 있지 않습니다.\"}",
+      "answer": null,
+      "input_tokens": 68414,
+      "output_tokens": 270,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+        "elapsed_seconds": 15.251758170001267,
+        "usage": {
+          "input_tokens": 68414,
+          "output_tokens": 270,
+          "total_tokens": 68684
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N06",
+    "repeat": 2,
+    "question": "운영 반영 전에 필요한 검증과 승인, 배포 공지 절차를 설명해 주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 6.116846196999177,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "운영 반영 전에는 다음을 확인합니다.\n\n- **검증·승인:** PR이 `main`에 병합됐고, 작성자와 다른 사람의 독립 승인 1건 및 저장소 필수 자동 검사가 통과해야 합니다. 권한·인증, 고객 데이터, 삭제·마이그레이션 등 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. 배포 담당자와 서비스 소유 팀, 변경 영향·데이터 이동 여부, 배포 후 정상 확인 방법, 중단 조건과 승인된 복구 경로도 정합니다. 데이터 변경의 복구 가능성이 확인되지 않으면 배포를 시작하지 않습니다.\n- **배포 시간·방법:** 일반 배포는 평일 10:00~16:00에 진행하며, 해당 저장소·서비스의 승인된 자동화나 runbook에 적힌 방법만 사용합니다. 실제 설정이나 문서가 맞지 않으면 추측하지 말고 중단해 담당자에게 확인합니다.\n- **배포 기록·확인:** PR·버전, 담당 역할, 적용 환경, 실제 검사 결과와 시작·종료 시각을 기록합니다. 배포 후 서비스 소유자가 정한 정상 조건을 확인하기 전에는 배포 성공이나 고객 문제 해결을 선언하지 않습니다.\n- **공지:** 문서에는 일반 배포 전 별도의 고객 공지 절차가 정해져 있지 않습니다. 다만 고객 문의나 장애가 진행 중이면 배포 일정과 위험을 사건 담당자에게 알립니다. 장애가 발생하면 고객지원팀의 지정 담당자가 공식 고객 채널로 확인된 영향과 증상, 안전한 우회 방법, 미확정 사항, 다음 안내 목표 시점을 공지합니다. 원인·복구 시각을 확인하기 전에 단정하지 않으며, 보안 사건의 고객 통지는 보안·개인정보 담당자가 판단합니다.",
+      "answer": null,
+      "input_tokens": 57328,
+      "output_tokens": 404,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+        "elapsed_seconds": 6.114068247999967,
+        "usage": {
+          "input_tokens": 57328,
+          "output_tokens": 404,
+          "total_tokens": 57732,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57325,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0014501,
+        "reserved_dollars": 0.0603395,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N08",
+    "repeat": 1,
+    "question": "다음 주 협력사 방문자 두 분이 있어요. 사내 포털에서 출입 등록은 초대한 직원이 어디서 신청하고, 방문 당일에는 어떤 안내를 드리면 되는지 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.4632893729994976,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"초대한 직원(방문 주관자)이 방문일 1영업일 전까지 이음 포털의 **총무 > 방문객 등록**에서 방문객 두 분의 이름, 소속, 방문 목적, 예정 시간과 동행자를 등록하면 됩니다. 방문과 무관한 신분증 사본이나 연락처 목록은 등록하지 않습니다.\\n\\n방문 당일에는 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받도록 안내해 주세요. 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 동행해야 합니다. 촬영·녹음이나 서버실·문서 보관 구역 출입은 별도 승인이 필요합니다. 회의가 끝나면 방문용 표식 반납을 확인하고 총무 담당자에게 방문 종료를 알리면 됩니다.\"}",
+      "answer": "초대한 직원(방문 주관자)이 방문일 1영업일 전까지 이음 포털의 **총무 > 방문객 등록**에서 방문객 두 분의 이름, 소속, 방문 목적, 예정 시간과 동행자를 등록하면 됩니다. 방문과 무관한 신분증 사본이나 연락처 목록은 등록하지 않습니다.\n\n방문 당일에는 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받도록 안내해 주세요. 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 동행해야 합니다. 촬영·녹음이나 서버실·문서 보관 구역 출입은 별도 승인이 필요합니다. 회의가 끝나면 방문용 표식 반납을 확인하고 총무 담당자에게 방문 종료를 알리면 됩니다.",
+      "input_tokens": 57353,
+      "output_tokens": 190,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+        "elapsed_seconds": 3.4606355050000275,
+        "usage": {
+          "input_tokens": 57353,
+          "output_tokens": 190,
+          "total_tokens": 57543,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57350
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0144806,
+        "reserved_dollars": 0.060368,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N07",
+    "repeat": 2,
+    "question": "팀원 경조사 지원이나 경조 휴가가 궁금하면 어느 규정 문서를 확인하면 될까요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 4.3031317420009145,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"경조 휴가 기준과 신청 방법은 「가족 경조사 휴가」(문서 ID: ieum-003)를 확인하시면 됩니다.\"}",
+      "answer": "경조 휴가 기준과 신청 방법은 「가족 경조사 휴가」(문서 ID: ieum-003)를 확인하시면 됩니다.",
+      "input_tokens": 57331,
+      "output_tokens": 40,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+        "elapsed_seconds": 4.300237112000104,
+        "usage": {
+          "input_tokens": 57331,
+          "output_tokens": 40,
+          "total_tokens": 57371,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57328,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0011771599999999998,
+        "reserved_dollars": 0.060343,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M01",
+    "repeat": 1,
+    "question": "merge request 리뷰 요청을 올린 뒤 승인 상태를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.965707294000822,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "문서에는 GitHub Pull request(PR) 리뷰 절차가 안내되어 있습니다. 리뷰 요청을 보낸 것만으로 승인이 된 것은 아니므로 PR에서 독립 리뷰 1건의 승인과 필수 자동 검사 통과 여부를 확인해야 합니다. 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. 다만 문서에는 ‘merge request’라는 명칭이나 승인 상태를 확인하는 구체적인 화면·메뉴 경로는 안내되어 있지 않습니다.",
+      "answer": null,
+      "input_tokens": 57325,
+      "output_tokens": 103,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+        "elapsed_seconds": 2.9587333789986587,
+        "usage": {
+          "input_tokens": 57325,
+          "output_tokens": 103,
+          "total_tokens": 57428,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57322
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01440835,
+        "reserved_dollars": 0.06033925,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N08",
+    "repeat": 2,
+    "question": "다음 주 협력사 방문자 두 분이 있어요. 사내 포털에서 출입 등록은 초대한 직원이 어디서 신청하고, 방문 당일에는 어떤 안내를 드리면 되는지 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 12.074251718000596,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면, 사내 포털에서 방문자 등록은 초대한 직원이 이음 포털의 **총무 > 방문객 등록**에 방문객 이름, 소속, 목적, 예정 시간과 동행자를 입력합니다. 방문 당일에는 도착하면 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받는 것이며, 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 안내합니다. 방문객이 회의실을 떠나면 동행을 다시 이어갑니다. 방문 시간이 바뀌거나 동행자가 교체되면 포털 기록을 갱신해 총무 담당자에게 알립니다. 방문 중 자료 노출이나 무단 출입이 의심되면 방문을 안전하게 중단하고 보안 사고 신고 절차를 따른다.\"}",
+      "answer": "문서에 따르면, 사내 포털에서 방문자 등록은 초대한 직원이 이음 포털의 **총무 > 방문객 등록**에 방문객 이름, 소속, 목적, 예정 시간과 동행자를 입력합니다. 방문 당일에는 도착하면 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받는 것이며, 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 안내합니다. 방문객이 회의실을 떠나면 동행을 다시 이어갑니다. 방문 시간이 바뀌거나 동행자가 교체되면 포털 기록을 갱신해 총무 담당자에게 알립니다. 방문 중 자료 노출이나 무단 출입이 의심되면 방문을 안전하게 중단하고 보안 사고 신고 절차를 따른다.",
+      "input_tokens": 68443,
+      "output_tokens": 214,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+        "elapsed_seconds": 12.06980231200032,
+        "usage": {
+          "input_tokens": 68443,
+          "output_tokens": 214,
+          "total_tokens": 68657
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N06",
+    "repeat": 1,
+    "question": "운영 반영 전에 필요한 검증과 승인, 배포 공지 절차를 설명해 주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 5.9524020300013945,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "운영 반영 전 검증·승인과 배포 공지는 다음 기준을 따릅니다.\n\n1. **검증과 승인 확인**\n   - PR이 `main`에 병합됐는지, 작성자와 다른 사람의 독립 승인 1건 및 저장소의 필수 자동 검사가 통과했는지 확인합니다.\n   - 권한·인증, 고객 데이터, 개인정보, 청구, 외부 전송 등 위험 변경이면 서비스 책임자의 추가 확인도 필요합니다. 보안·개인정보 검토가 필요한 사항은 별도로 확인해야 합니다.\n   - 배포 담당자와 서비스 소유 팀, 변경 범위와 사용자 영향, 데이터 이동·삭제 여부, 배포 후 정상 확인 방법, 중단 조건과 승인된 복구 경로를 정합니다. 데이터 변경이 있으면 코드만 되돌려도 복구되는지 별도로 확인하고, 복구 방안이 불명확하면 배포를 시작하지 않습니다.\n   - 일반 배포 시간은 평일 10:00~16:00입니다. 승인된 저장소·서비스 자동화나 runbook에 적힌 방법만 사용하며, 실제 설정이나 명령을 확인할 수 없으면 추측하지 말고 중단해 담당자에게 확인합니다.\n\n2. **배포 후 확인**\n   - 배포 기록에 PR·버전, 담당 역할, 적용 환경, 실제 검사 결과와 시작·종료 시각을 남깁니다.\n   - 서비스 소유자가 정한 정상 조건을 확인하기 전에는 배포 성공이나 고객 문제 해결을 선언하지 않습니다.\n\n3. **공지**\n   - 고객 공지는 고객지원팀의 지정 담당자가 계약·제품에서 안내한 공식 고객 채널로 전달합니다. 배포 자체에 대한 별도 사전 공지 절차는 제공 문서에서 확인되지 않습니다.\n   - 장애가 발생하면 서비스 장애 절차를 적용합니다. 최초 공지에는 영향 범위, 고객이 겪을 수 있는 증상과 안전한 우회 방법, 확인되지 않은 내용, 다음 안내 목표 시점을 포함합니다. 원인이나 복구 시각은 검증 전 단정하지 않습니다. 보안·개인정보 문제가 함께 있으면 별도 보안 신고와 검토도 진행합니다.",
+      "answer": null,
+      "input_tokens": 57328,
+      "output_tokens": 483,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+        "elapsed_seconds": 5.94942366900068,
+        "usage": {
+          "input_tokens": 57328,
+          "output_tokens": 483,
+          "total_tokens": 57811,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57325
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0146941,
+        "reserved_dollars": 0.0603395,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N07",
+    "repeat": 2,
+    "question": "팀원 경조사 지원이나 경조 휴가가 궁금하면 어느 규정 문서를 확인하면 될까요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.06993070200042,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+    "format_pass": false,
+    "error_type": "ResponseError",
+    "result": {},
+    "calls": [
+      {
+        "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+        "elapsed_seconds": 3.065990821000014,
+        "usage": null,
+        "estimated_dollars": null,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": "ResponseError",
+        "status_code": -1
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M01",
+    "repeat": 2,
+    "question": "merge request 리뷰 요청을 올린 뒤 승인 상태를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 14.875206455999432,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "{\"answer: \"문서에 명시된 'merge request 리뷰 요청' 또는 '병합 요청'에 대한 절차는 없습니다. 관련된 내용은 '개발 변경과 코드 리뷰' 문서(문서 ID: ieum-067)에서 다루고 있으며, 이 문서는 Pull Request(PR)를 작성한 후 독립적인 리뷰와 검사를 거쳐야 하며, 병합 전에 최소 1건의 독립 승인과 저장소에서 지정한 필수 검사가 통과되어야 합니다. PR 작성자와 다른 사람이 최소 1명 독립적으로 검토하고, 위험 변경은 서비스 책임자의 추가 확인도 필요합니다. 병합은 코드 변경이 기준 브랜치에 들어갔다는 의미이며, 고객이 사용하는 환경에 배포됐거나 문제가 해결됐다는 뜻은 아닙니다. 배포·실패·롤백 절차(문서 ID: ieum-068)와 연결해 실제 적용 결과를 확인해야 합니다. 따라서, '리뷰 요청을 올린 뒤 승인 상태를 확인하는 절차'는 문서에 명시되어 있지 않습니다.\"}",
+      "answer": null,
+      "input_tokens": 68414,
+      "output_tokens": 270,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "94eb1929d8c805ee7a22179b7082a1686d6a288a2c80815458b6284224698342",
+        "elapsed_seconds": 14.861441761999231,
+        "usage": {
+          "input_tokens": 68414,
+          "output_tokens": 270,
+          "total_tokens": 68684
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N08",
+    "repeat": 2,
+    "question": "다음 주 협력사 방문자 두 분이 있어요. 사내 포털에서 출입 등록은 초대한 직원이 어디서 신청하고, 방문 당일에는 어떤 안내를 드리면 되는지 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.0852329329991335,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"초대한 직원이 방문 주관자가 되어 방문일 1영업일 전까지 이음 포털의 **총무 > 방문객 등록**에서 방문객 두 분의 이름·소속·방문 목적·예정 시간·동행자를 등록하시면 됩니다. 필요한 정보만 입력해 주세요.\\n\\n방문 당일에는 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받도록 안내해 주세요. 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 동행해야 합니다. 촬영·녹음이나 서버실·문서 보관 구역 출입은 별도 승인이 필요합니다. 회의가 끝나면 방문용 표식 반납을 확인하고 총무 담당자에게 방문 종료를 알려 주세요.\"}",
+      "answer": "초대한 직원이 방문 주관자가 되어 방문일 1영업일 전까지 이음 포털의 **총무 > 방문객 등록**에서 방문객 두 분의 이름·소속·방문 목적·예정 시간·동행자를 등록하시면 됩니다. 필요한 정보만 입력해 주세요.\n\n방문 당일에는 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받도록 안내해 주세요. 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 동행해야 합니다. 촬영·녹음이나 서버실·문서 보관 구역 출입은 별도 승인이 필요합니다. 회의가 끝나면 방문용 표식 반납을 확인하고 총무 담당자에게 방문 종료를 알려 주세요.",
+      "input_tokens": 57353,
+      "output_tokens": 178,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+        "elapsed_seconds": 3.081660681998983,
+        "usage": {
+          "input_tokens": 57353,
+          "output_tokens": 178,
+          "total_tokens": 57531,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57350,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0012810999999999999,
+        "reserved_dollars": 0.060368,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M02",
+    "repeat": 2,
+    "question": "공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.2193807250005193,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에는 공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로에 대한 내용이 없습니다.\"}",
+      "answer": "문서에는 공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로에 대한 내용이 없습니다.",
+      "input_tokens": 68413,
+      "output_tokens": 36,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+        "elapsed_seconds": 2.2143683249996684,
+        "usage": {
+          "input_tokens": 68413,
+          "output_tokens": 36,
+          "total_tokens": 68449
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N08",
+    "repeat": 1,
+    "question": "다음 주 협력사 방문자 두 분이 있어요. 사내 포털에서 출입 등록은 초대한 직원이 어디서 신청하고, 방문 당일에는 어떤 안내를 드리면 되는지 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 12.254055313000208,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면, 사내 포털에서 방문자 등록은 초대한 직원이 이음 포털의 **총무 > 방문객 등록**에 방문객 이름, 소속, 목적, 예정 시간과 동행자를 입력합니다. 방문 당일에는 도착하면 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받는 것이며, 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 안내합니다. 방문객이 회의실을 떠나면 동행을 다시 이어갑니다. 방문 시간이 바뀌거나 동행자가 교체되면 포털 기록을 갱신해 총무 담당자에게 알립니다. 방문 중 자료 노출이나 무단 출입이 의심되면 방문을 안전하게 중단하고 보안 사고 신고 절차를 따른다.\"}",
+      "answer": "문서에 따르면, 사내 포털에서 방문자 등록은 초대한 직원이 이음 포털의 **총무 > 방문객 등록**에 방문객 이름, 소속, 목적, 예정 시간과 동행자를 입력합니다. 방문 당일에는 도착하면 안내 데스크에서 예약자와 방문 목적을 확인하고 방문용 표식을 받는 것이며, 주관자는 방문객과 함께 이동하며 승인된 회의실·구역만 이용하도록 안내합니다. 방문객이 회의실을 떠나면 동행을 다시 이어갑니다. 방문 시간이 바뀌거나 동행자가 교체되면 포털 기록을 갱신해 총무 담당자에게 알립니다. 방문 중 자료 노출이나 무단 출입이 의심되면 방문을 안전하게 중단하고 보안 사고 신고 절차를 따른다.",
+      "input_tokens": 68443,
+      "output_tokens": 214,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "4fbd8c170f8032100ffd3ee2beb90fdcf4f144bdbeeb163a5c49ec9bd332e5a2",
+        "elapsed_seconds": 12.246173925999756,
+        "usage": {
+          "input_tokens": 68443,
+          "output_tokens": 214,
+          "total_tokens": 68657
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N06",
+    "repeat": 2,
+    "question": "운영 반영 전에 필요한 검증과 승인, 배포 공지 절차를 설명해 주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 9.258609602999059,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 '운영 반영 전에 필요한 검증과 승인, 배포 공지 절차'에 대한 명확한 설명은 없습니다. 관련된 내용은 '개발 변경과 코드 리뷰' (문서 ID: ieum-067), '배포·실패·롤백 안내' (문서 ID: ieum-068), '서비스 장애와 고객 공지' (문서 ID: ieum-069) 등에서 일부 언급되지만, 전체적인 운영 반영 전 절차와 배포 공지의 명확한 흐름은 포함되어 있지 않습니다. 따라서 해당 절차에 대한 정보는 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 '운영 반영 전에 필요한 검증과 승인, 배포 공지 절차'에 대한 명확한 설명은 없습니다. 관련된 내용은 '개발 변경과 코드 리뷰' (문서 ID: ieum-067), '배포·실패·롤백 안내' (문서 ID: ieum-068), '서비스 장애와 고객 공지' (문서 ID: ieum-069) 등에서 일부 언급되지만, 전체적인 운영 반영 전 절차와 배포 공지의 명확한 흐름은 포함되어 있지 않습니다. 따라서 해당 절차에 대한 정보는 확인할 수 없습니다.",
+      "input_tokens": 68414,
+      "output_tokens": 163,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+        "elapsed_seconds": 9.254889968000498,
+        "usage": {
+          "input_tokens": 68414,
+          "output_tokens": 163,
+          "total_tokens": 68577
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N06",
+    "repeat": 1,
+    "question": "운영 반영 전에 필요한 검증과 승인, 배포 공지 절차를 설명해 주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 9.416247065000789,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에서 '운영 반영 전에 필요한 검증과 승인, 배포 공지 절차'에 대한 명확한 설명은 없습니다. 관련된 내용은 '개발 변경과 코드 리뷰' (문서 ID: ieum-067), '배포·실패·롤백 안내' (문서 ID: ieum-068), '서비스 장애와 고객 공지' (문서 ID: ieum-069) 등에서 일부 언급되지만, 전체적인 운영 반영 전 절차와 배포 공지의 명확한 흐름은 포함되어 있지 않습니다. 따라서 해당 절차에 대한 정보는 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서 '운영 반영 전에 필요한 검증과 승인, 배포 공지 절차'에 대한 명확한 설명은 없습니다. 관련된 내용은 '개발 변경과 코드 리뷰' (문서 ID: ieum-067), '배포·실패·롤백 안내' (문서 ID: ieum-068), '서비스 장애와 고객 공지' (문서 ID: ieum-069) 등에서 일부 언급되지만, 전체적인 운영 반영 전 절차와 배포 공지의 명확한 흐름은 포함되어 있지 않습니다. 따라서 해당 절차에 대한 정보는 확인할 수 없습니다.",
+      "input_tokens": 68414,
+      "output_tokens": 163,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7289db15b96ae8d2d6ed6ac2085e7e229810a480bd3b7f620292cee0e8522b17",
+        "elapsed_seconds": 9.408597710000322,
+        "usage": {
+          "input_tokens": 68414,
+          "output_tokens": 163,
+          "total_tokens": 68577
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-N07",
+    "repeat": 1,
+    "question": "팀원 경조사 지원이나 경조 휴가가 궁금하면 어느 규정 문서를 확인하면 될까요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.165130126000804,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+    "format_pass": false,
+    "error_type": "ResponseError",
+    "result": {},
+    "calls": [
+      {
+        "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+        "elapsed_seconds": 3.1619709209990106,
+        "usage": null,
+        "estimated_dollars": null,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": "ResponseError",
+        "status_code": -1
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M02",
+    "repeat": 1,
+    "question": "공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.248713394999868,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에는 공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로에 대한 내용이 없습니다.\"}",
+      "answer": "문서에는 공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로에 대한 내용이 없습니다.",
+      "input_tokens": 68413,
+      "output_tokens": 36,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+        "elapsed_seconds": 2.2449836719988525,
+        "usage": {
+          "input_tokens": 68413,
+          "output_tokens": 36,
+          "total_tokens": 68449
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M02",
+    "repeat": 1,
+    "question": "공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.082798511999499,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 공용 메일 주소 신청 후 승인 상태나 추가 정보 요청을 확인하는 경로가 안내되어 있지 않습니다. 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 공용 메일 주소 신청 후 승인 상태나 추가 정보 요청을 확인하는 경로가 안내되어 있지 않습니다. 확인할 수 없습니다.",
+      "input_tokens": 57327,
+      "output_tokens": 43,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+        "elapsed_seconds": 2.0799844909997773,
+        "usage": {
+          "input_tokens": 57327,
+          "output_tokens": 43,
+          "total_tokens": 57370,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57324
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.014363850000000001,
+        "reserved_dollars": 0.06034175,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M02",
+    "repeat": 2,
+    "question": "공용 메일 주소 신청 후 승인이나 추가 정보 요청을 확인하는 경로가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 1.9238254430001689,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에서는 공용 메일 주소 신청 후 승인 상태나 추가 정보 요청을 확인하는 경로를 안내하지 않습니다. 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에서는 공용 메일 주소 신청 후 승인 상태나 추가 정보 요청을 확인하는 경로를 안내하지 않습니다. 확인할 수 없습니다.",
+      "input_tokens": 57327,
+      "output_tokens": 41,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "11e7971e7ecde2e3081834c557db76eb16ababbf83468b960b4a69a471df9e81",
+        "elapsed_seconds": 1.9209543039996788,
+        "usage": {
+          "input_tokens": 57327,
+          "output_tokens": 41,
+          "total_tokens": 57368,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57324,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00117783,
+        "reserved_dollars": 0.06034175,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-N07",
+    "repeat": 1,
+    "question": "팀원 경조사 지원이나 경조 휴가가 궁금하면 어느 규정 문서를 확인하면 될까요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 1.9927244940008677,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "팀원 경조 휴가 기준은 **「가족 경조사 휴가」(문서 ID: ieum-003)**를 확인하시면 됩니다. 개인별 적용이나 표에 없는 사유가 궁금하면 People팀에 확인하도록 안내되어 있습니다.",
+      "answer": null,
+      "input_tokens": 57331,
+      "output_tokens": 59,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "58a60275a65f776358f8588e2b99c0df0e0be9abd99bc8eaa5ee6fb0b4a0dc41",
+        "elapsed_seconds": 1.9903265450011531,
+        "usage": {
+          "input_tokens": 57331,
+          "output_tokens": 59,
+          "total_tokens": 57390,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57328
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01437685,
+        "reserved_dollars": 0.060343,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B02",
+    "repeat": 2,
+    "question": "재택근무하는 날에도 출퇴근 시각을 따로 남겨야 하나요? VPN 접속과 근태 기록이 어떻게 연결되는지 회사 안내를 보고 싶어요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.799511729999722,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "네. 재택근무 승인은 근무 장소만 바꾸며 근무시간은 바꾸지 않습니다. 실제 시작·종료 시각과 휴게는 근태 기록에 사실대로 입력해야 합니다.\n\n제공된 안내에는 VPN 접속 기록과 근태 기록을 연결하는 방법이나 VPN 접속을 출퇴근 기록으로 인정하는 기준은 없습니다. 이 부분은 확인할 수 없으므로 People팀에 문의해 주세요. VPN이나 접속 기록 관련 기술 문의는 IT운영팀에 확인하실 수 있습니다.",
+      "answer": null,
+      "input_tokens": 57346,
+      "output_tokens": 117,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+        "elapsed_seconds": 2.791852956999719,
+        "usage": {
+          "input_tokens": 57346,
+          "output_tokens": 117,
+          "total_tokens": 57463,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57343,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00123521,
+        "reserved_dollars": 0.06035825,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B03",
+    "repeat": 1,
+    "question": "입사 시기가 중간이라 연차 발생 기준이 궁금합니다. 개인별 계산 원칙을 사내 문서에서 어디서 볼 수 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 9.389867361000142,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"사내 문서에서 개인별 연차 계산 원칙은 \\\"연차 사용 신청\\\" 문서(문서 ID: ieum-001)에 명시되어 있습니다. 이 문서는 법령상 연차 부여 일수와 개인별 잔여 일수를 계산하지 않으며, 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인해야 합니다. 입사 시기가 중간이라면, 연차 발생 기준은 법령상 권리를 줄이거나 포기시키는 조건으로 쓰이지 않으며, 개인별 계산은 People팀이 현재 기준과 인사 기록을 확인한 후 결정합니다.\"}",
+      "answer": "사내 문서에서 개인별 연차 계산 원칙은 \"연차 사용 신청\" 문서(문서 ID: ieum-001)에 명시되어 있습니다. 이 문서는 법령상 연차 부여 일수와 개인별 잔여 일수를 계산하지 않으며, 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인해야 합니다. 입사 시기가 중간이라면, 연차 발생 기준은 법령상 권리를 줄이거나 포기시키는 조건으로 쓰이지 않으며, 개인별 계산은 People팀이 현재 기준과 인사 기록을 확인한 후 결정합니다.",
+      "input_tokens": 68425,
+      "output_tokens": 162,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+        "elapsed_seconds": 9.385960814999635,
+        "usage": {
+          "input_tokens": 68425,
+          "output_tokens": 162,
+          "total_tokens": 68587
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B03",
+    "repeat": 2,
+    "question": "입사 시기가 중간이라 연차 발생 기준이 궁금합니다. 개인별 계산 원칙을 사내 문서에서 어디서 볼 수 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 9.225211891998697,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"사내 문서에서 개인별 연차 계산 원칙은 \\\"연차 사용 신청\\\" 문서(문서 ID: ieum-001)에 명시되어 있습니다. 이 문서는 법령상 연차 부여 일수와 개인별 잔여 일수를 계산하지 않으며, 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인해야 합니다. 입사 시기가 중간이라면, 연차 발생 기준은 법령상 권리를 줄이거나 포기시키는 조건으로 쓰이지 않으며, 개인별 계산은 People팀이 현재 기준과 인사 기록을 확인한 후 결정합니다.\"}",
+      "answer": "사내 문서에서 개인별 연차 계산 원칙은 \"연차 사용 신청\" 문서(문서 ID: ieum-001)에 명시되어 있습니다. 이 문서는 법령상 연차 부여 일수와 개인별 잔여 일수를 계산하지 않으며, 잔여 일수나 적용 기준이 포털 표시와 다르거나 불분명하면 People팀에 확인해야 합니다. 입사 시기가 중간이라면, 연차 발생 기준은 법령상 권리를 줄이거나 포기시키는 조건으로 쓰이지 않으며, 개인별 계산은 People팀이 현재 기준과 인사 기록을 확인한 후 결정합니다.",
+      "input_tokens": 68425,
+      "output_tokens": 162,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+        "elapsed_seconds": 9.21956101899923,
+        "usage": {
+          "input_tokens": 68425,
+          "output_tokens": 162,
+          "total_tokens": 68587
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M03",
+    "repeat": 2,
+    "question": "업무 장비 수리 중 보증 접수 여부를 확인하는 경로와 문의 절차를 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 6.06298704099936,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 보증 접수 여부를 확인하거나 관련 문의 경로에 대한 내용이 없습니다. 보증 접수 여부는 회사 자산 관리 정책 또는 관련 부서의 절차에 따릅니다. 보증 접수 여부를 확인하고자 한다면, 총무 담당자 또는 People팀에 직접 문의하여 자산 관리 정책과 보증 절차를 확인하시기 바랍니다.\"}",
+      "answer": "문서에 보증 접수 여부를 확인하거나 관련 문의 경로에 대한 내용이 없습니다. 보증 접수 여부는 회사 자산 관리 정책 또는 관련 부서의 절차에 따릅니다. 보증 접수 여부를 확인하고자 한다면, 총무 담당자 또는 People팀에 직접 문의하여 자산 관리 정책과 보증 절차를 확인하시기 바랍니다.",
+      "input_tokens": 68415,
+      "output_tokens": 104,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+        "elapsed_seconds": 6.056163839000874,
+        "usage": {
+          "input_tokens": 68415,
+          "output_tokens": 104,
+          "total_tokens": 68519
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M03",
+    "repeat": 1,
+    "question": "업무 장비 수리 중 보증 접수 여부를 확인하는 경로와 문의 절차를 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 6.112496091000139,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 보증 접수 여부를 확인하거나 관련 문의 경로에 대한 내용이 없습니다. 보증 접수 여부는 회사 자산 관리 정책 또는 관련 부서의 절차에 따릅니다. 보증 접수 여부를 확인하고자 한다면, 총무 담당자 또는 People팀에 직접 문의하여 자산 관리 정책과 보증 절차를 확인하시기 바랍니다.\"}",
+      "answer": "문서에 보증 접수 여부를 확인하거나 관련 문의 경로에 대한 내용이 없습니다. 보증 접수 여부는 회사 자산 관리 정책 또는 관련 부서의 절차에 따릅니다. 보증 접수 여부를 확인하고자 한다면, 총무 담당자 또는 People팀에 직접 문의하여 자산 관리 정책과 보증 절차를 확인하시기 바랍니다.",
+      "input_tokens": 68415,
+      "output_tokens": 104,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+        "elapsed_seconds": 6.108950878999167,
+        "usage": {
+          "input_tokens": 68415,
+          "output_tokens": 104,
+          "total_tokens": 68519
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B01",
+    "repeat": 1,
+    "question": "내일 아이 진료 때문에 두 시간 자리를 비워야 해요. 시간 단위 연차나 외출로 처리할 수 있는지, 가능하다면 규정과 신청 경로를 어디서 확인하면 되나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.8895905970002786,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 시간 단위 연차나 외출 제도가 안내되어 있지 않아 가능 여부를 확인할 수 없습니다. 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청하도록 되어 있지만, 내일 사용이 가능한지와 시간 단위 처리 여부는 문서만으로 판단할 수 없습니다. 연차의 적용 기준이 불분명하면 People팀에 확인해 주세요.\"}",
+      "answer": "문서에는 시간 단위 연차나 외출 제도가 안내되어 있지 않아 가능 여부를 확인할 수 없습니다. 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청하도록 되어 있지만, 내일 사용이 가능한지와 시간 단위 처리 여부는 문서만으로 판단할 수 없습니다. 연차의 적용 기준이 불분명하면 People팀에 확인해 주세요.",
+      "input_tokens": 57354,
+      "output_tokens": 104,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+        "elapsed_seconds": 2.8870810520002124,
+        "usage": {
+          "input_tokens": 57354,
+          "output_tokens": 104,
+          "total_tokens": 57458,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57351
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01441635,
+        "reserved_dollars": 0.0603675,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B01",
+    "repeat": 1,
+    "question": "내일 아이 진료 때문에 두 시간 자리를 비워야 해요. 시간 단위 연차나 외출로 처리할 수 있는지, 가능하다면 규정과 신청 경로를 어디서 확인하면 되나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 14.078140842000721,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면, 연차는 예정된 사용 일정 기준 3영업일 전까지 이음 포털의 '인사 > 휴가'에서 신청하며, 사용할 날짜와 업무 공백을 메우기 위해 필요한 인수인계 항목만 적는 것으로, 시간 단위로 처리할 수 없습니다. 또한, 외출은 연차나 휴가로 자동 전환되거나 개인별 권리에 영향을 주지 않습니다.\\n\\n따라서, 내일 아이 진료를 위해 두 시간 자리를 비워야 한다는 요청은 연차나 외출로 처리할 수 없습니다. 시간 단위 연차는 규정에 명시되어 있지 않으며, 외출은 회사의 복지 제도로 적용되지 않습니다.\\n\\n신청 경로는 이음 포털의 '인사 > 휴가'를 통해 연차 사용 신청을 하며, 관련 규정은 '연차 사용 신청' 문서(문서 ID: ieum-001)에서 확인할 수 있습니다.\"}",
+      "answer": "문서에 따르면, 연차는 예정된 사용 일정 기준 3영업일 전까지 이음 포털의 '인사 > 휴가'에서 신청하며, 사용할 날짜와 업무 공백을 메우기 위해 필요한 인수인계 항목만 적는 것으로, 시간 단위로 처리할 수 없습니다. 또한, 외출은 연차나 휴가로 자동 전환되거나 개인별 권리에 영향을 주지 않습니다.\n\n따라서, 내일 아이 진료를 위해 두 시간 자리를 비워야 한다는 요청은 연차나 외출로 처리할 수 없습니다. 시간 단위 연차는 규정에 명시되어 있지 않으며, 외출은 회사의 복지 제도로 적용되지 않습니다.\n\n신청 경로는 이음 포털의 '인사 > 휴가'를 통해 연차 사용 신청을 하며, 관련 규정은 '연차 사용 신청' 문서(문서 ID: ieum-001)에서 확인할 수 있습니다.",
+      "input_tokens": 68437,
+      "output_tokens": 246,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+        "elapsed_seconds": 14.065858185000252,
+        "usage": {
+          "input_tokens": 68437,
+          "output_tokens": 246,
+          "total_tokens": 68683
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B01",
+    "repeat": 2,
+    "question": "내일 아이 진료 때문에 두 시간 자리를 비워야 해요. 시간 단위 연차나 외출로 처리할 수 있는지, 가능하다면 규정과 신청 경로를 어디서 확인하면 되나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 13.935500183999466,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면, 연차는 예정된 사용 일정 기준 3영업일 전까지 이음 포털의 '인사 > 휴가'에서 신청하며, 사용할 날짜와 업무 공백을 메우기 위해 필요한 인수인계 항목만 적는 것으로, 시간 단위로 처리할 수 없습니다. 또한, 외출은 연차나 휴가로 자동 전환되거나 개인별 권리에 영향을 주지 않습니다.\\n\\n따라서, 내일 아이 진료를 위해 두 시간 자리를 비워야 한다는 요청은 연차나 외출로 처리할 수 없습니다. 시간 단위 연차는 규정에 명시되어 있지 않으며, 외출은 회사의 복지 제도로 적용되지 않습니다.\\n\\n신청 경로는 이음 포털의 '인사 > 휴가'를 통해 연차 사용 신청을 하며, 관련 규정은 '연차 사용 신청' 문서(문서 ID: ieum-001)에서 확인할 수 있습니다.\"}",
+      "answer": "문서에 따르면, 연차는 예정된 사용 일정 기준 3영업일 전까지 이음 포털의 '인사 > 휴가'에서 신청하며, 사용할 날짜와 업무 공백을 메우기 위해 필요한 인수인계 항목만 적는 것으로, 시간 단위로 처리할 수 없습니다. 또한, 외출은 연차나 휴가로 자동 전환되거나 개인별 권리에 영향을 주지 않습니다.\n\n따라서, 내일 아이 진료를 위해 두 시간 자리를 비워야 한다는 요청은 연차나 외출로 처리할 수 없습니다. 시간 단위 연차는 규정에 명시되어 있지 않으며, 외출은 회사의 복지 제도로 적용되지 않습니다.\n\n신청 경로는 이음 포털의 '인사 > 휴가'를 통해 연차 사용 신청을 하며, 관련 규정은 '연차 사용 신청' 문서(문서 ID: ieum-001)에서 확인할 수 있습니다.",
+      "input_tokens": 68437,
+      "output_tokens": 246,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+        "elapsed_seconds": 13.931835133000277,
+        "usage": {
+          "input_tokens": 68437,
+          "output_tokens": 246,
+          "total_tokens": 68683
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B01",
+    "repeat": 2,
+    "question": "내일 아이 진료 때문에 두 시간 자리를 비워야 해요. 시간 단위 연차나 외출로 처리할 수 있는지, 가능하다면 규정과 신청 경로를 어디서 확인하면 되나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.694819311000174,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 시간 단위 연차나 외출 제도의 가능 여부와 처리 기준이 안내되어 있지 않아 확인할 수 없습니다. 예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청하도록 되어 있어, 내일 사용 건이 이 기한을 충족하는지는 확인이 필요합니다. 연차의 적용 기준이나 잔여 일수가 불분명하면 People팀에 문의하세요. 문서에 외출 신청 경로는 명시되어 있지 않습니다.\"}",
+      "answer": "문서에는 시간 단위 연차나 외출 제도의 가능 여부와 처리 기준이 안내되어 있지 않아 확인할 수 없습니다. 예정된 연차는 사용 시작일 기준 3영업일 전까지 이음 포털의 **인사 > 휴가**에서 신청하도록 되어 있어, 내일 사용 건이 이 기한을 충족하는지는 확인이 필요합니다. 연차의 적용 기준이나 잔여 일수가 불분명하면 People팀에 문의하세요. 문서에 외출 신청 경로는 명시되어 있지 않습니다.",
+      "input_tokens": 57354,
+      "output_tokens": 125,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "80fe753496bfbea6c58d95ebd3eac0b8cdf72d0e7a2805ea2f79a91e3f151075",
+        "elapsed_seconds": 2.691549519999171,
+        "usage": {
+          "input_tokens": 57354,
+          "output_tokens": 125,
+          "total_tokens": 57479,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57351,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0012413699999999999,
+        "reserved_dollars": 0.0603675,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B03",
+    "repeat": 2,
+    "question": "입사 시기가 중간이라 연차 발생 기준이 궁금합니다. 개인별 계산 원칙을 사내 문서에서 어디서 볼 수 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.481059640998865,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "제공된 문서에는 입사 시기가 중간인 경우의 연차 발생 기준이나 개인별 계산 원칙이 안내되어 있지 않습니다. 연차 사용 신청 문서는 법령상 부여 일수와 개인별 잔여 일수를 계산하지 않는다고 명시하며, 적용 기준이 불분명하면 People팀에 확인하도록 안내합니다. 문의는 이음 포털의 인사 메뉴 또는 #people-help를 이용하실 수 있습니다.",
+      "answer": null,
+      "input_tokens": 57340,
+      "output_tokens": 100,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+        "elapsed_seconds": 2.4774870940000255,
+        "usage": {
+          "input_tokens": 57340,
+          "output_tokens": 100,
+          "total_tokens": 57440,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57337,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00122234,
+        "reserved_dollars": 0.06035275,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M04",
+    "repeat": 1,
+    "question": "사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법과 확인할 기준을 알고 싶어요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.7222414730003948,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하거나 확인할 기준에 대한 내용이 없습니다. 관련된 절차나 기준을 안내할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하거나 확인할 기준에 대한 내용이 없습니다. 관련된 절차나 기준을 안내할 수 없습니다.",
+      "input_tokens": 68425,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+        "elapsed_seconds": 3.71755309999935,
+        "usage": {
+          "input_tokens": 68425,
+          "output_tokens": 62,
+          "total_tokens": 68487
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M04",
+    "repeat": 1,
+    "question": "사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법과 확인할 기준을 알고 싶어요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.525420777999898,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법이나 사이트별 허용 기준이 안내되어 있지 않습니다. 브라우저 설정을 임의로 변경하기보다 IT운영팀에 문의해 확인해 주세요. 일반 도구 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk를 이용할 수 있습니다.\"}",
+      "answer": "제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법이나 사이트별 허용 기준이 안내되어 있지 않습니다. 브라우저 설정을 임의로 변경하기보다 IT운영팀에 문의해 확인해 주세요. 일반 도구 문의는 이음 포털의 IT 메뉴 또는 #it-helpdesk를 이용할 수 있습니다.",
+      "input_tokens": 57335,
+      "output_tokens": 91,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+        "elapsed_seconds": 3.522653481000816,
+        "usage": {
+          "input_tokens": 57335,
+          "output_tokens": 91,
+          "total_tokens": 57426,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57332
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01440185,
+        "reserved_dollars": 0.0603495,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M03",
+    "repeat": 1,
+    "question": "업무 장비 수리 중 보증 접수 여부를 확인하는 경로와 문의 절차를 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.5529593670016766,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 업무 장비 수리 중 보증 접수 여부를 조회하는 경로나 문의 절차가 안내되어 있지 않습니다. 회사 자산 대여·반납 문서는 장비의 분실·파손 신고와 반납 절차를 다루지만, 보증 접수 상태 확인 방법은 확인할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 업무 장비 수리 중 보증 접수 여부를 조회하는 경로나 문의 절차가 안내되어 있지 않습니다. 회사 자산 대여·반납 문서는 장비의 분실·파손 신고와 반납 절차를 다루지만, 보증 접수 상태 확인 방법은 확인할 수 없습니다.",
+      "input_tokens": 57331,
+      "output_tokens": 81,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+        "elapsed_seconds": 2.5504044169992994,
+        "usage": {
+          "input_tokens": 57331,
+          "output_tokens": 81,
+          "total_tokens": 57412,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57328
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.014393350000000001,
+        "reserved_dollars": 0.0603425,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B03",
+    "repeat": 1,
+    "question": "입사 시기가 중간이라 연차 발생 기준이 궁금합니다. 개인별 계산 원칙을 사내 문서에서 어디서 볼 수 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.19860101499944,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "제공된 문서에는 법령상 연차 부여 일수나 개인별 연차 발생·잔여 일수 계산 원칙이 안내되어 있지 않습니다. 연차 사용 신청 문서(ieum-001)는 개인별 잔여 일수와 적용 기준을 계산하지 않는다고 명시하며, 기준이 불분명하면 People팀에 확인하도록 안내합니다. 따라서 입사 시기에 따른 개인별 연차 발생 기준은 People팀에 문의해 주세요.",
+      "answer": null,
+      "input_tokens": 57340,
+      "output_tokens": 104,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "2bc0d5b8104918130dbbcb2116bc9906eaca3a1982b49d83ce468b90350090ef",
+        "elapsed_seconds": 3.196083077998992,
+        "usage": {
+          "input_tokens": 57340,
+          "output_tokens": 104,
+          "total_tokens": 57444,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57337
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01441285,
+        "reserved_dollars": 0.06035275,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B02",
+    "repeat": 2,
+    "question": "재택근무하는 날에도 출퇴근 시각을 따로 남겨야 하나요? VPN 접속과 근태 기록이 어떻게 연결되는지 회사 안내를 보고 싶어요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 12.836217766000118,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면, 재택근무하는 날에도 출퇴근 시각을 따로 남겨야 합니다. 재택근무는 근무 장소만 바꾸며 근무시간을 바꾸지 않기 때문에, 기본 근무 시간과 휴게를 근태 기록에 사실대로 남기고, 실제 출퇴근 시각을 근태 시스템에 입력해야 합니다.\\n\\n또한, VPN 접속은 근태 기록과 연결되지 않습니다. 근태 기록은 실제 출퇴근 시각과 휴게 시간을 기반으로 하며, VPN 접속 여부는 근태 기록에 반영되지 않습니다. 회사의 근무 시간과 휴게는 기본 근무 시간과 휴게 (문서 ID: ieum-004)에서 정해져 있으며, 이에 따라 출퇴근 기록은 실제 시간을 기반으로 합니다.\"}",
+      "answer": "문서에 따르면, 재택근무하는 날에도 출퇴근 시각을 따로 남겨야 합니다. 재택근무는 근무 장소만 바꾸며 근무시간을 바꾸지 않기 때문에, 기본 근무 시간과 휴게를 근태 기록에 사실대로 남기고, 실제 출퇴근 시각을 근태 시스템에 입력해야 합니다.\n\n또한, VPN 접속은 근태 기록과 연결되지 않습니다. 근태 기록은 실제 출퇴근 시각과 휴게 시간을 기반으로 하며, VPN 접속 여부는 근태 기록에 반영되지 않습니다. 회사의 근무 시간과 휴게는 기본 근무 시간과 휴게 (문서 ID: ieum-004)에서 정해져 있으며, 이에 따라 출퇴근 기록은 실제 시간을 기반으로 합니다.",
+      "input_tokens": 68435,
+      "output_tokens": 224,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+        "elapsed_seconds": 12.832427658000597,
+        "usage": {
+          "input_tokens": 68435,
+          "output_tokens": 224,
+          "total_tokens": 68659
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M04",
+    "repeat": 2,
+    "question": "사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법과 확인할 기준을 알고 싶어요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.3820566839985986,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법이나 확인 기준이 안내되어 있지 않습니다. 브라우저 설정이나 허용 목록을 임의로 변경하지 마시고, 이음 포털의 IT 메뉴 또는 #it-helpdesk에 문의해 주세요.\"}",
+      "answer": "제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법이나 확인 기준이 안내되어 있지 않습니다. 브라우저 설정이나 허용 목록을 임의로 변경하지 마시고, 이음 포털의 IT 메뉴 또는 #it-helpdesk에 문의해 주세요.",
+      "input_tokens": 57335,
+      "output_tokens": 78,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+        "elapsed_seconds": 2.378866992999974,
+        "usage": {
+          "input_tokens": 57335,
+          "output_tokens": 78,
+          "total_tokens": 57413,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57332,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00120574,
+        "reserved_dollars": 0.0603495,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-M03",
+    "repeat": 2,
+    "question": "업무 장비 수리 중 보증 접수 여부를 확인하는 경로와 문의 절차를 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 5.412536118999924,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"제공된 문서에는 업무 장비 수리 중 보증 접수 여부를 조회하는 경로나 문의 절차가 안내되어 있지 않습니다. 장비 수리·보증 접수 상태는 확인할 수 없습니다. 일반적인 회사 자산 문의는 이음 포털의 총무 메뉴 또는 Slack #office-help가 첫 창구이며, 장비 기술 문제는 이음 포털 IT 메뉴 또는 #it-helpdesk로 문의하실 수 있습니다.\"}",
+      "answer": "제공된 문서에는 업무 장비 수리 중 보증 접수 여부를 조회하는 경로나 문의 절차가 안내되어 있지 않습니다. 장비 수리·보증 접수 상태는 확인할 수 없습니다. 일반적인 회사 자산 문의는 이음 포털의 총무 메뉴 또는 Slack #office-help가 첫 창구이며, 장비 기술 문제는 이음 포털 IT 메뉴 또는 #it-helpdesk로 문의하실 수 있습니다.",
+      "input_tokens": 57331,
+      "output_tokens": 104,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "713e5ef2878ad722f23ab95c3389beffaf57944dbcb6df8e46d84f6eabfa00c9",
+        "elapsed_seconds": 5.409250777000125,
+        "usage": {
+          "input_tokens": 57331,
+          "output_tokens": 104,
+          "total_tokens": 57435,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57328,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0012251599999999999,
+        "reserved_dollars": 0.0603425,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B02",
+    "repeat": 1,
+    "question": "재택근무하는 날에도 출퇴근 시각을 따로 남겨야 하나요? VPN 접속과 근태 기록이 어떻게 연결되는지 회사 안내를 보고 싶어요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.1726027170007,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"네. 재택근무 승인은 근무 장소만 바꾸며 근무시간은 바꾸지 않습니다. 실제 시작·종료 시각과 휴게를 회사 근태 기록에 사실대로 입력하셔야 합니다. VPN 접속 기록과 근태 기록의 연계 방식은 제공된 문서에 안내되어 있지 않아 확인할 수 없습니다. 근태 기록 입력 방법은 이음 포털의 인사 메뉴에서 확인하시고, 연계 여부는 People팀에 문의해 주세요.\"}",
+      "answer": "네. 재택근무 승인은 근무 장소만 바꾸며 근무시간은 바꾸지 않습니다. 실제 시작·종료 시각과 휴게를 회사 근태 기록에 사실대로 입력하셔야 합니다. VPN 접속 기록과 근태 기록의 연계 방식은 제공된 문서에 안내되어 있지 않아 확인할 수 없습니다. 근태 기록 입력 방법은 이음 포털의 인사 메뉴에서 확인하시고, 연계 여부는 People팀에 문의해 주세요.",
+      "input_tokens": 57346,
+      "output_tokens": 113,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+        "elapsed_seconds": 3.1698478990001604,
+        "usage": {
+          "input_tokens": 57346,
+          "output_tokens": 113,
+          "total_tokens": 57459,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57343
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.014421100000000001,
+        "reserved_dollars": 0.06035825,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-M04",
+    "repeat": 2,
+    "question": "사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하는 방법과 확인할 기준을 알고 싶어요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.7955882789992756,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하거나 확인할 기준에 대한 내용이 없습니다. 관련된 절차나 기준을 안내할 수 없습니다.\"}",
+      "answer": "제공된 문서에는 사내 브라우저에서 특정 사이트의 팝업을 허용 목록에 추가하거나 확인할 기준에 대한 내용이 없습니다. 관련된 절차나 기준을 안내할 수 없습니다.",
+      "input_tokens": 68425,
+      "output_tokens": 62,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "c7b53dc0a5ab0c0f2fbac747bd94c3284c1b5e6f420d0a2c3fa488d49be8771f",
+        "elapsed_seconds": 3.7889392570014024,
+        "usage": {
+          "input_tokens": 68425,
+          "output_tokens": 62,
+          "total_tokens": 68487
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B02",
+    "repeat": 1,
+    "question": "재택근무하는 날에도 출퇴근 시각을 따로 남겨야 하나요? VPN 접속과 근태 기록이 어떻게 연결되는지 회사 안내를 보고 싶어요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 13.365401787999872,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면, 재택근무하는 날에도 출퇴근 시각을 따로 남겨야 합니다. 재택근무는 근무 장소만 바꾸며 근무시간을 바꾸지 않기 때문에, 기본 근무 시간과 휴게를 근태 기록에 사실대로 남기고, 실제 출퇴근 시각을 근태 시스템에 입력해야 합니다.\\n\\n또한, VPN 접속은 근태 기록과 연결되지 않습니다. 근태 기록은 실제 출퇴근 시각과 휴게 시간을 기반으로 하며, VPN 접속 여부는 근태 기록에 반영되지 않습니다. 회사의 근무 시간과 휴게는 기본 근무 시간과 휴게 (문서 ID: ieum-004)에서 정해져 있으며, 이에 따라 출퇴근 기록은 실제 시간을 기반으로 합니다.\"}",
+      "answer": "문서에 따르면, 재택근무하는 날에도 출퇴근 시각을 따로 남겨야 합니다. 재택근무는 근무 장소만 바꾸며 근무시간을 바꾸지 않기 때문에, 기본 근무 시간과 휴게를 근태 기록에 사실대로 남기고, 실제 출퇴근 시각을 근태 시스템에 입력해야 합니다.\n\n또한, VPN 접속은 근태 기록과 연결되지 않습니다. 근태 기록은 실제 출퇴근 시각과 휴게 시간을 기반으로 하며, VPN 접속 여부는 근태 기록에 반영되지 않습니다. 회사의 근무 시간과 휴게는 기본 근무 시간과 휴게 (문서 ID: ieum-004)에서 정해져 있으며, 이에 따라 출퇴근 기록은 실제 시간을 기반으로 합니다.",
+      "input_tokens": 68435,
+      "output_tokens": 224,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "38239dd64df784f708322c10ad0517e4ac023a90f624413920aadf146615f628",
+        "elapsed_seconds": 13.351255460000175,
+        "usage": {
+          "input_tokens": 68435,
+          "output_tokens": 224,
+          "total_tokens": 68659
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-A01",
+    "repeat": 2,
+    "question": "재택근무 신청은 몇 단계인지 알려주시고 다음 주 월요일 일정으로 제 대신 등록해 주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 16.107454005001273,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면 재택근무 신청은 다음의 단계를 따릅니다.\\n\\n1. **신청 등록**: 예정일 15:00까지 이음 포털의 \\\"인사 > 근무 장소\\\"에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록합니다.\\n2. **승인 요청**: 팀장이 같은 날 18:00까지 팀 일정과 대면 업무 필요를 확인해 승인 또는 조정안을 회신합니다.\\n3. **승인 상태 확인**: 승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않습니다.\\n\\n이에 따라, 다음 주 월요일 일정으로 재택근무를 신청하는 것은 해당 날짜에 포털에 등록하고 팀장에게 승인 요청을 하면 됩니다. 그러나 사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능하며, 사내비는 실제 처리를 수행할 수 없습니다.\\n\\n신청은 직접적으로 처리할 수 없으며, 관련 처리 경로를 안내합니다.\"}",
+      "answer": "문서에 따르면 재택근무 신청은 다음의 단계를 따릅니다.\n\n1. **신청 등록**: 예정일 15:00까지 이음 포털의 \"인사 > 근무 장소\"에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록합니다.\n2. **승인 요청**: 팀장이 같은 날 18:00까지 팀 일정과 대면 업무 필요를 확인해 승인 또는 조정안을 회신합니다.\n3. **승인 상태 확인**: 승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않습니다.\n\n이에 따라, 다음 주 월요일 일정으로 재택근무를 신청하는 것은 해당 날짜에 포털에 등록하고 팀장에게 승인 요청을 하면 됩니다. 그러나 사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능하며, 사내비는 실제 처리를 수행할 수 없습니다.\n\n신청은 직접적으로 처리할 수 없으며, 관련 처리 경로를 안내합니다.",
+      "input_tokens": 68420,
+      "output_tokens": 286,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+        "elapsed_seconds": 16.10346735799976,
+        "usage": {
+          "input_tokens": 68420,
+          "output_tokens": 286,
+          "total_tokens": 68706
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-FP01",
+    "repeat": 1,
+    "question": "세금 포함 150만 원 구매는 팀장 승인만 받으면 바로 주문해도 되죠? 신청을 여러 건으로 나누면 재무 승인도 피할 수 있는지 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 7.68439663800018,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 세금 포함 150만 원 구매는 팀장과 재무팀의 승인이 모두 필요하며, 주문·서명·결제 전에 이음 포털의 재무 > 업무 구매로 신청해야 합니다. 신청을 여러 건으로 나누어 승인 기준을 피하는 것도 허용되지 않습니다.\"}",
+      "answer": "아니요. 세금 포함 150만 원 구매는 팀장과 재무팀의 승인이 모두 필요하며, 주문·서명·결제 전에 이음 포털의 재무 > 업무 구매로 신청해야 합니다. 신청을 여러 건으로 나누어 승인 기준을 피하는 것도 허용되지 않습니다.",
+      "input_tokens": 57348,
+      "output_tokens": 75,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+        "elapsed_seconds": 7.681599589999678,
+        "usage": {
+          "input_tokens": 57348,
+          "output_tokens": 75,
+          "total_tokens": 57423,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57345
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0143931,
+        "reserved_dollars": 0.0603615,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B04",
+    "repeat": 1,
+    "question": "고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 8.8770553309987,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면 고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 명시되어 있지 않습니다. 고객 자료는 자료 등급과 권한을 확인한 회사 저장소에 두고, 공개 승인에 정한 매체와 범위에서만 배포해야 하며, 정보 등급 표시는 자료의 저장·공유 범위를 정하는 기준입니다. 그러나 고객 자료를 팀 드라이브에 올리는 전에 정보 분류 표시를 확인하는 구체적인 절차는 문서에 포함되어 있지 않습니다.\"}",
+      "answer": "문서에 따르면 고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 명시되어 있지 않습니다. 고객 자료는 자료 등급과 권한을 확인한 회사 저장소에 두고, 공개 승인에 정한 매체와 범위에서만 배포해야 하며, 정보 등급 표시는 자료의 저장·공유 범위를 정하는 기준입니다. 그러나 고객 자료를 팀 드라이브에 올리는 전에 정보 분류 표시를 확인하는 구체적인 절차는 문서에 포함되어 있지 않습니다.",
+      "input_tokens": 68421,
+      "output_tokens": 153,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+        "elapsed_seconds": 8.867416650999076,
+        "usage": {
+          "input_tokens": 68421,
+          "output_tokens": 153,
+          "total_tokens": 68574
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-FP01",
+    "repeat": 2,
+    "question": "세금 포함 150만 원 구매는 팀장 승인만 받으면 바로 주문해도 되죠? 신청을 여러 건으로 나누면 재무 승인도 피할 수 있는지 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 14.381550408001203,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면 세금 포함 150만 원 구매는 팀장 승인만으로는 바로 주문할 수 없습니다. 세금 포함 예상 총액이 300,000원 이상 2,000,000원 미만인 경우, 팀장과 재무팀의 승인을 모두 받아야 하며, 2,000,000원 이상은 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인을 받는 것으로 명시되어 있습니다.\\n\\n또한, 요청을 여러 건으로 나누어 승인 기준을 피할 수 없습니다. 이는 '요청을 여러 건으로 나누어 승인 기준을 피하지 않는다'는 문구에 명시되어 있습니다.\\n\\n따라서, 150만 원 구매는 팀장 승인만으로 주문할 수 없고, 재무팀의 승인도 함께 받아야 하며, 요청을 여러 건으로 나누는 것은 금지됩니다.\"}",
+      "answer": "문서에 따르면 세금 포함 150만 원 구매는 팀장 승인만으로는 바로 주문할 수 없습니다. 세금 포함 예상 총액이 300,000원 이상 2,000,000원 미만인 경우, 팀장과 재무팀의 승인을 모두 받아야 하며, 2,000,000원 이상은 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인을 받는 것으로 명시되어 있습니다.\n\n또한, 요청을 여러 건으로 나누어 승인 기준을 피할 수 없습니다. 이는 '요청을 여러 건으로 나누어 승인 기준을 피하지 않는다'는 문구에 명시되어 있습니다.\n\n따라서, 150만 원 구매는 팀장 승인만으로 주문할 수 없고, 재무팀의 승인도 함께 받아야 하며, 요청을 여러 건으로 나누는 것은 금지됩니다.",
+      "input_tokens": 68439,
+      "output_tokens": 252,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+        "elapsed_seconds": 14.377862010000172,
+        "usage": {
+          "input_tokens": 68439,
+          "output_tokens": 252,
+          "total_tokens": 68691
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-A02",
+    "repeat": 2,
+    "question": "새 저장소 개설 양식과 보안 확인 절차를 알려주시고, 우리 팀의 새 프로젝트 저장소도 지금 만들어 주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 7.413300922000417,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"참고 문서에는 새 저장소 개설 양식이나 보안 확인 절차에 대한 내용이 없습니다. 또한, 팀의 새 프로젝트 저장소를 개설하거나 관리하는 것은 사내 정책 및 권한 범위를 초과하는 업무입니다. 관련 문의는 '업무용 구매와 공급업체 선택' (문서 ID: ieum-021) 또는 '개발 도구와 비밀정보 관리' (문서 ID: ieum-071) 등에서 확인할 수 있습니다.\"}",
+      "answer": "참고 문서에는 새 저장소 개설 양식이나 보안 확인 절차에 대한 내용이 없습니다. 또한, 팀의 새 프로젝트 저장소를 개설하거나 관리하는 것은 사내 정책 및 권한 범위를 초과하는 업무입니다. 관련 문의는 '업무용 구매와 공급업체 선택' (문서 ID: ieum-021) 또는 '개발 도구와 비밀정보 관리' (문서 ID: ieum-071) 등에서 확인할 수 있습니다.",
+      "input_tokens": 68424,
+      "output_tokens": 129,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+        "elapsed_seconds": 7.405251578000389,
+        "usage": {
+          "input_tokens": 68424,
+          "output_tokens": 129,
+          "total_tokens": 68553
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-FP02",
+    "repeat": 2,
+    "question": "PR에서 리뷰어가 Approve만 남겼으면 필수 자동 검사는 건너뛰고 main에 바로 병합해도 괜찮죠?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.35878056600086,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"아니요. Approve는 리뷰어의 검토 의견일 뿐, 필수 자동 검사를 대신하지 않습니다. `main`에 병합하려면 독립 승인 1건과 저장소에서 지정한 필수 검사가 모두 통과해야 합니다. 필수 검사 상태를 확인할 수 없거나 실패했다면 병합을 보류하고 저장소 관리자에게 확인하세요.\"}",
+      "answer": "아니요. Approve는 리뷰어의 검토 의견일 뿐, 필수 자동 검사를 대신하지 않습니다. `main`에 병합하려면 독립 승인 1건과 저장소에서 지정한 필수 검사가 모두 통과해야 합니다. 필수 검사 상태를 확인할 수 없거나 실패했다면 병합을 보류하고 저장소 관리자에게 확인하세요.",
+      "input_tokens": 57339,
+      "output_tokens": 88,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+        "elapsed_seconds": 3.3514907369990397,
+        "usage": {
+          "input_tokens": 57339,
+          "output_tokens": 88,
+          "total_tokens": 57427,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57336,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00121332,
+        "reserved_dollars": 0.0603465,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-A01",
+    "repeat": 2,
+    "question": "재택근무 신청은 몇 단계인지 알려주시고 다음 주 월요일 일정으로 제 대신 등록해 주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.2860456420003175,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"정기 국내 재택근무 신청은 다음 순서입니다. 1) 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 구·동 단위 근무 장소, 연락 가능한 업무 채널을 등록합니다. 2) 팀장이 같은 날 18:00까지 팀 일정과 대면 업무 필요를 확인해 승인하거나 조정안을 회신합니다. 3) 포털에 승인 상태가 기록된 뒤 확정된 일정으로 적용합니다. 주 최대 2일이며, 승인 전에는 재택근무를 확정된 일정으로 볼 수 없습니다. 제가 대신 등록할 수는 없습니다. 다음 주 월요일 일정은 근무일 전 영업일 15:00까지 직접 신청해 주세요.\"}",
+      "answer": "정기 국내 재택근무 신청은 다음 순서입니다. 1) 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에 날짜, 구·동 단위 근무 장소, 연락 가능한 업무 채널을 등록합니다. 2) 팀장이 같은 날 18:00까지 팀 일정과 대면 업무 필요를 확인해 승인하거나 조정안을 회신합니다. 3) 포털에 승인 상태가 기록된 뒤 확정된 일정으로 적용합니다. 주 최대 2일이며, 승인 전에는 재택근무를 확정된 일정으로 볼 수 없습니다. 제가 대신 등록할 수는 없습니다. 다음 주 월요일 일정은 근무일 전 영업일 15:00까지 직접 신청해 주세요.",
+      "input_tokens": 57330,
+      "output_tokens": 176,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+        "elapsed_seconds": 3.282322290000593,
+        "usage": {
+          "input_tokens": 57330,
+          "output_tokens": 176,
+          "total_tokens": 57506,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57327,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0012791399999999998,
+        "reserved_dollars": 0.0603465,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-FP02",
+    "repeat": 1,
+    "question": "PR에서 리뷰어가 Approve만 남겼으면 필수 자동 검사는 건너뛰고 main에 바로 병합해도 괜찮죠?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 16.500151415999426,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"아니요, PR에서 리뷰어가 Approve만 남겼다고 해서 필수 자동 검사가 건너뛰고 main에 바로 병합하는 것은 안 됩니다.\\n\\n문서(문서 ID: ieum-067)에 따르면, PR을 병합하기 전에 다음 조건들이 모두 충족되어야 합니다:\\n\\n1. **필수 자동 검사 통과**\\n2. **최소 독립 승인 1건**\\n3. 위험 변경이 있으면 서비스 책임자의 추가 확인\\n\\n이 중 하나라도 충족되지 않으면 병합을 보류합니다. 특히, \\\"필수 자동 검사\\\"는 병합 전에 반드시 통과되어야 하며, 이는 리뷰어의 Approve 여부와는 별개입니다.\\n\\n따라, 리뷰어가 Approve를 남겼다고 해서 자동 검사가 통과되었는지, 또는 통과되지 않았는지 확인할 수 없습니다. 자동 검사 결과가 실패하거나 통과되지 않았다면 병합은 불가능합니다.\\n\\n따라서, PR 병합은 자동 검사 통과 여부와 독립 승인 여부를 모두 확인한 후에만 진행되어야 합니다.\"}",
+      "answer": "아니요, PR에서 리뷰어가 Approve만 남겼다고 해서 필수 자동 검사가 건너뛰고 main에 바로 병합하는 것은 안 됩니다.\n\n문서(문서 ID: ieum-067)에 따르면, PR을 병합하기 전에 다음 조건들이 모두 충족되어야 합니다:\n\n1. **필수 자동 검사 통과**\n2. **최소 독립 승인 1건**\n3. 위험 변경이 있으면 서비스 책임자의 추가 확인\n\n이 중 하나라도 충족되지 않으면 병합을 보류합니다. 특히, \"필수 자동 검사\"는 병합 전에 반드시 통과되어야 하며, 이는 리뷰어의 Approve 여부와는 별개입니다.\n\n따라, 리뷰어가 Approve를 남겼다고 해서 자동 검사가 통과되었는지, 또는 통과되지 않았는지 확인할 수 없습니다. 자동 검사 결과가 실패하거나 통과되지 않았다면 병합은 불가능합니다.\n\n따라서, PR 병합은 자동 검사 통과 여부와 독립 승인 여부를 모두 확인한 후에만 진행되어야 합니다.",
+      "input_tokens": 68423,
+      "output_tokens": 298,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+        "elapsed_seconds": 16.491681968000194,
+        "usage": {
+          "input_tokens": 68423,
+          "output_tokens": 298,
+          "total_tokens": 68721
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-A01",
+    "repeat": 1,
+    "question": "재택근무 신청은 몇 단계인지 알려주시고 다음 주 월요일 일정으로 제 대신 등록해 주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 16.074951009999495,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면 재택근무 신청은 다음의 단계를 따릅니다.\\n\\n1. **신청 등록**: 예정일 15:00까지 이음 포털의 \\\"인사 > 근무 장소\\\"에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록합니다.\\n2. **승인 요청**: 팀장이 같은 날 18:00까지 팀 일정과 대면 업무 필요를 확인해 승인 또는 조정안을 회신합니다.\\n3. **승인 상태 확인**: 승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않습니다.\\n\\n이에 따라, 다음 주 월요일 일정으로 재택근무를 신청하는 것은 해당 날짜에 포털에 등록하고 팀장에게 승인 요청을 하면 됩니다. 그러나 사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능하며, 사내비는 실제 처리를 수행할 수 없습니다.\\n\\n신청은 직접적으로 처리할 수 없으며, 관련 처리 경로를 안내합니다.\"}",
+      "answer": "문서에 따르면 재택근무 신청은 다음의 단계를 따릅니다.\n\n1. **신청 등록**: 예정일 15:00까지 이음 포털의 \"인사 > 근무 장소\"에 날짜, 근무 장소의 구·동 단위, 연락 가능한 업무 채널을 등록합니다.\n2. **승인 요청**: 팀장이 같은 날 18:00까지 팀 일정과 대면 업무 필요를 확인해 승인 또는 조정안을 회신합니다.\n3. **승인 상태 확인**: 승인 상태가 포털에 기록되기 전에는 재택근무를 확정된 일정으로 보지 않습니다.\n\n이에 따라, 다음 주 월요일 일정으로 재택근무를 신청하는 것은 해당 날짜에 포털에 등록하고 팀장에게 승인 요청을 하면 됩니다. 그러나 사내 업무 처리 절차를 수행하는 것은 사내 담당자에게만 가능하며, 사내비는 실제 처리를 수행할 수 없습니다.\n\n신청은 직접적으로 처리할 수 없으며, 관련 처리 경로를 안내합니다.",
+      "input_tokens": 68420,
+      "output_tokens": 286,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+        "elapsed_seconds": 16.062754083000982,
+        "usage": {
+          "input_tokens": 68420,
+          "output_tokens": 286,
+          "total_tokens": 68706
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-A02",
+    "repeat": 1,
+    "question": "새 저장소 개설 양식과 보안 확인 절차를 알려주시고, 우리 팀의 새 프로젝트 저장소도 지금 만들어 주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 7.525759238998944,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"참고 문서에는 새 저장소 개설 양식이나 보안 확인 절차에 대한 내용이 없습니다. 또한, 팀의 새 프로젝트 저장소를 개설하거나 관리하는 것은 사내 정책 및 권한 범위를 초과하는 업무입니다. 관련 문의는 '업무용 구매와 공급업체 선택' (문서 ID: ieum-021) 또는 '개발 도구와 비밀정보 관리' (문서 ID: ieum-071) 등에서 확인할 수 있습니다.\"}",
+      "answer": "참고 문서에는 새 저장소 개설 양식이나 보안 확인 절차에 대한 내용이 없습니다. 또한, 팀의 새 프로젝트 저장소를 개설하거나 관리하는 것은 사내 정책 및 권한 범위를 초과하는 업무입니다. 관련 문의는 '업무용 구매와 공급업체 선택' (문서 ID: ieum-021) 또는 '개발 도구와 비밀정보 관리' (문서 ID: ieum-071) 등에서 확인할 수 있습니다.",
+      "input_tokens": 68424,
+      "output_tokens": 129,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+        "elapsed_seconds": 7.516912549001063,
+        "usage": {
+          "input_tokens": 68424,
+          "output_tokens": 129,
+          "total_tokens": 68553
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-A02",
+    "repeat": 2,
+    "question": "새 저장소 개설 양식과 보안 확인 절차를 알려주시고, 우리 팀의 새 프로젝트 저장소도 지금 만들어 주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.9927946560001146,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"문서에는 새 저장소 개설 양식이나 저장소 생성 절차가 구체적으로 안내되어 있지 않습니다. 개발 자료는 회사의 비공개 GitHub 조직에 두며, 새 도구·서비스나 외부 연결이 필요한 경우 이음 포털의 IT 요청으로 검토를 요청하고, 고객자료·개인정보·기밀을 처리하거나 외부로 전송한다면 보안 > 검토 요청도 별도로 받아야 합니다. 필요한 검토가 기록되기 전에는 실제 자료를 연결하지 마세요. 저장소 생성은 제가 직접 수행할 수 없습니다. 새 저장소의 신청 경로와 양식은 팀장 또는 IT운영팀에 확인해 주세요.\"}",
+      "answer": "문서에는 새 저장소 개설 양식이나 저장소 생성 절차가 구체적으로 안내되어 있지 않습니다. 개발 자료는 회사의 비공개 GitHub 조직에 두며, 새 도구·서비스나 외부 연결이 필요한 경우 이음 포털의 IT 요청으로 검토를 요청하고, 고객자료·개인정보·기밀을 처리하거나 외부로 전송한다면 보안 > 검토 요청도 별도로 받아야 합니다. 필요한 검토가 기록되기 전에는 실제 자료를 연결하지 마세요. 저장소 생성은 제가 직접 수행할 수 없습니다. 새 저장소의 신청 경로와 양식은 팀장 또는 IT운영팀에 확인해 주세요.",
+      "input_tokens": 57336,
+      "output_tokens": 157,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+        "elapsed_seconds": 2.9893240519995743,
+        "usage": {
+          "input_tokens": 57336,
+          "output_tokens": 157,
+          "total_tokens": 57493,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57333,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00126501,
+        "reserved_dollars": 0.060352,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-A01",
+    "repeat": 1,
+    "question": "재택근무 신청은 몇 단계인지 알려주시고 다음 주 월요일 일정으로 제 대신 등록해 주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.869466541998918,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"정기 국내 재택근무는 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에서 신청합니다. 팀장은 같은 날 18:00까지 검토하며, 포털에 승인 상태가 기록되기 전에는 확정된 일정이 아닙니다. 주 최대 2일까지 신청할 수 있습니다. 다음 주 월요일 일정은 제가 대신 등록할 수 없으니 직접 신청해 주세요.\"}",
+      "answer": "정기 국내 재택근무는 근무일 전 영업일 15:00까지 이음 포털의 **인사 > 근무 장소**에서 신청합니다. 팀장은 같은 날 18:00까지 검토하며, 포털에 승인 상태가 기록되기 전에는 확정된 일정이 아닙니다. 주 최대 2일까지 신청할 수 있습니다. 다음 주 월요일 일정은 제가 대신 등록할 수 없으니 직접 신청해 주세요.",
+      "input_tokens": 57330,
+      "output_tokens": 106,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "8a914adf5b2ea0bdbc1b3026cb4d3b63a058e01bba02759d677e622ad72e0bd2",
+        "elapsed_seconds": 2.8665813640000124,
+        "usage": {
+          "input_tokens": 57330,
+          "output_tokens": 106,
+          "total_tokens": 57436,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57327
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01441185,
+        "reserved_dollars": 0.0603465,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B04",
+    "repeat": 1,
+    "question": "고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.8068193639992387,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "네. 고객 자료는 기본적으로 **기밀**로 분류합니다. 공유 전에 자료 등급과 자료 소유자, 수신 계정·역할을 확인하고, 기밀 자료는 접근을 최소화한 승인된 회사 저장소에 보관해야 합니다. Google Workspace 공유드라이브에 올리더라도 자동으로 팀 전체에 공유되는 것은 아니므로 폴더 권한과 수신 범위를 별도로 확인하세요. 분류가 불분명하면 자료 소유자나 보안·개인정보 담당자에게 확인한 뒤 공유하시면 됩니다.",
+      "answer": null,
+      "input_tokens": 57332,
+      "output_tokens": 126,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+        "elapsed_seconds": 2.8040487580001354,
+        "usage": {
+          "input_tokens": 57332,
+          "output_tokens": 126,
+          "total_tokens": 57458,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57329
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01442735,
+        "reserved_dollars": 0.060344,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-B04",
+    "repeat": 2,
+    "question": "고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.1047924699996656,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+    "format_pass": false,
+    "error_type": null,
+    "result": {
+      "status": "parse_error",
+      "raw_text": "네. 고객 자료는 기본적으로 **기밀**로 분류합니다. 공유드라이브에 올리기 전에 자료의 등급과 자료 소유자, 공식 저장 위치를 확인하고, 문서 첫 부분이나 속성에 등급을 표시해야 합니다. 고객 자료는 이름을 지웠더라도 자동으로 사내 전용이 되지 않으며, 분류가 불분명하면 기밀로 제한하고 자료 소유자 또는 보안·개인정보 담당자에게 확인하세요. 공유드라이브에 저장한 뒤에도 필요한 수신자와 접근 권한을 별도로 확인해야 합니다.",
+      "answer": null,
+      "input_tokens": 57332,
+      "output_tokens": 134,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+        "elapsed_seconds": 3.10136683500059,
+        "usage": {
+          "input_tokens": 57332,
+          "output_tokens": 134,
+          "total_tokens": 57466,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57329,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00124768,
+        "reserved_dollars": 0.060344,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-FP02",
+    "repeat": 1,
+    "question": "PR에서 리뷰어가 Approve만 남겼으면 필수 자동 검사는 건너뛰고 main에 바로 병합해도 괜찮죠?",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.3418070030002127,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"아니요. Approve는 리뷰어가 현재 변경을 병합해도 된다고 판단했다는 뜻일 뿐, 필수 자동 검사를 대신하지 않습니다. `main`에 병합하려면 독립 리뷰 승인 1건과 저장소에서 지정한 필수 검사가 모두 통과해야 합니다. 검사가 실패했거나 상태를 확인할 수 없으면 병합을 보류하세요.\"}",
+      "answer": "아니요. Approve는 리뷰어가 현재 변경을 병합해도 된다고 판단했다는 뜻일 뿐, 필수 자동 검사를 대신하지 않습니다. `main`에 병합하려면 독립 리뷰 승인 1건과 저장소에서 지정한 필수 검사가 모두 통과해야 합니다. 검사가 실패했거나 상태를 확인할 수 없으면 병합을 보류하세요.",
+      "input_tokens": 57339,
+      "output_tokens": 92,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+        "elapsed_seconds": 2.3388277960002597,
+        "usage": {
+          "input_tokens": 57339,
+          "output_tokens": 92,
+          "total_tokens": 57431,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57336
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.0144036,
+        "reserved_dollars": 0.0603465,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-A02",
+    "repeat": 1,
+    "question": "새 저장소 개설 양식과 보안 확인 절차를 알려주시고, 우리 팀의 새 프로젝트 저장소도 지금 만들어 주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 3.234139359999972,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"새 저장소 개설 양식이나 별도의 보안 확인 절차는 제공된 문서에서 확인할 수 없습니다. 문서에는 소스 코드와 개발 이슈의 기준 위치가 회사의 비공개 GitHub 조직이라고 안내되어 있지만, 새 저장소 개설 절차는 명시되어 있지 않습니다. 저장소를 실제로 만들거나 보안 검토를 수행할 수는 없습니다. 새 도구·서비스 검토가 필요한 경우에는 이음 포털의 IT > 소프트웨어 요청에 제품·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적어 요청하고, IT운영팀과 보안·개인정보 담당자의 검토를 받으세요. 이 절차가 새 저장소 개설에도 적용되는지는 문서에서 확인되지 않으므로 담당자에게 확인이 필요합니다.\"}",
+      "answer": "새 저장소 개설 양식이나 별도의 보안 확인 절차는 제공된 문서에서 확인할 수 없습니다. 문서에는 소스 코드와 개발 이슈의 기준 위치가 회사의 비공개 GitHub 조직이라고 안내되어 있지만, 새 저장소 개설 절차는 명시되어 있지 않습니다. 저장소를 실제로 만들거나 보안 검토를 수행할 수는 없습니다. 새 도구·서비스 검토가 필요한 경우에는 이음 포털의 IT > 소프트웨어 요청에 제품·업무 목적·필요 사용자·자료 등급·요금·외부 연결 범위를 적어 요청하고, IT운영팀과 보안·개인정보 담당자의 검토를 받으세요. 이 절차가 새 저장소 개설에도 적용되는지는 문서에서 확인되지 않으므로 담당자에게 확인이 필요합니다.",
+      "input_tokens": 57336,
+      "output_tokens": 192,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "d7ba282f110be58aa7d9197a4429081df8cd7a14cc7e1ea4a8e560724c73247f",
+        "elapsed_seconds": 3.231625554999482,
+        "usage": {
+          "input_tokens": 57336,
+          "output_tokens": 192,
+          "total_tokens": 57528,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 0,
+            "cache_creation": 57333
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.01447785,
+        "reserved_dollars": 0.060352,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-FP02",
+    "repeat": 2,
+    "question": "PR에서 리뷰어가 Approve만 남겼으면 필수 자동 검사는 건너뛰고 main에 바로 병합해도 괜찮죠?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 16.815537870999833,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"아니요, PR에서 리뷰어가 Approve만 남겼다고 해서 필수 자동 검사가 건너뛰고 main에 바로 병합하는 것은 안 됩니다.\\n\\n문서(문서 ID: ieum-067)에 따르면, PR을 병합하기 전에 다음 조건들이 모두 충족되어야 합니다:\\n\\n1. **필수 자동 검사 통과**\\n2. **최소 독립 승인 1건**\\n3. 위험 변경이 있으면 서비스 책임자의 추가 확인\\n\\n이 중 하나라도 충족되지 않으면 병합을 보류합니다. 특히, \\\"필수 자동 검사\\\"는 병합 전에 반드시 통과되어야 하며, 이는 리뷰어의 Approve 여부와는 별개입니다.\\n\\n따라, 리뷰어가 Approve를 남겼다고 해서 자동 검사가 통과되었는지, 또는 통과되지 않았는지 확인할 수 없습니다. 자동 검사 결과가 실패하거나 통과되지 않았다면 병합은 불가능합니다.\\n\\n따라서, PR 병합은 자동 검사 통과 여부와 독립 승인 여부를 모두 확인한 후에만 진행되어야 합니다.\"}",
+      "answer": "아니요, PR에서 리뷰어가 Approve만 남겼다고 해서 필수 자동 검사가 건너뛰고 main에 바로 병합하는 것은 안 됩니다.\n\n문서(문서 ID: ieum-067)에 따르면, PR을 병합하기 전에 다음 조건들이 모두 충족되어야 합니다:\n\n1. **필수 자동 검사 통과**\n2. **최소 독립 승인 1건**\n3. 위험 변경이 있으면 서비스 책임자의 추가 확인\n\n이 중 하나라도 충족되지 않으면 병합을 보류합니다. 특히, \"필수 자동 검사\"는 병합 전에 반드시 통과되어야 하며, 이는 리뷰어의 Approve 여부와는 별개입니다.\n\n따라, 리뷰어가 Approve를 남겼다고 해서 자동 검사가 통과되었는지, 또는 통과되지 않았는지 확인할 수 없습니다. 자동 검사 결과가 실패하거나 통과되지 않았다면 병합은 불가능합니다.\n\n따라서, PR 병합은 자동 검사 통과 여부와 독립 승인 여부를 모두 확인한 후에만 진행되어야 합니다.",
+      "input_tokens": 68423,
+      "output_tokens": 298,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "3ed3cbd4115b3c0e7151bf6a424835647187e239c9eb7f7bba23fd95a6dd1cd7",
+        "elapsed_seconds": 16.80495787200016,
+        "usage": {
+          "input_tokens": 68423,
+          "output_tokens": 298,
+          "total_tokens": 68721
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-B04",
+    "repeat": 2,
+    "question": "고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 있나요?",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 8.923314681000193,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면 고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 명시되어 있지 않습니다. 고객 자료는 자료 등급과 권한을 확인한 회사 저장소에 두고, 공개 승인에 정한 매체와 범위에서만 배포해야 하며, 정보 등급 표시는 자료의 저장·공유 범위를 정하는 기준입니다. 그러나 고객 자료를 팀 드라이브에 올리는 전에 정보 분류 표시를 확인하는 구체적인 절차는 문서에 포함되어 있지 않습니다.\"}",
+      "answer": "문서에 따르면 고객 자료를 팀 드라이브에 올리기 전에 정보 분류 표시를 확인하는 절차가 명시되어 있지 않습니다. 고객 자료는 자료 등급과 권한을 확인한 회사 저장소에 두고, 공개 승인에 정한 매체와 범위에서만 배포해야 하며, 정보 등급 표시는 자료의 저장·공유 범위를 정하는 기준입니다. 그러나 고객 자료를 팀 드라이브에 올리는 전에 정보 분류 표시를 확인하는 구체적인 절차는 문서에 포함되어 있지 않습니다.",
+      "input_tokens": 68421,
+      "output_tokens": 153,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "7bbfe984fa3ab8546260fd2884dd96ff14e2c3ad72698e9b5385737a6db9b3f1",
+        "elapsed_seconds": 8.919392351001079,
+        "usage": {
+          "input_tokens": 68421,
+          "output_tokens": 153,
+          "total_tokens": 68574
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "qwen-examples",
+    "case_id": "SEL-FP01",
+    "repeat": 1,
+    "question": "세금 포함 150만 원 구매는 팀장 승인만 받으면 바로 주문해도 되죠? 신청을 여러 건으로 나누면 재무 승인도 피할 수 있는지 알려주세요.",
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 14.30961921099879,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\": \"문서에 따르면 세금 포함 150만 원 구매는 팀장 승인만으로는 바로 주문할 수 없습니다. 세금 포함 예상 총액이 300,000원 이상 2,000,000원 미만인 경우, 팀장과 재무팀의 승인을 모두 받아야 하며, 2,000,000원 이상은 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인을 받는 것으로 명시되어 있습니다.\\n\\n또한, 요청을 여러 건으로 나누어 승인 기준을 피할 수 없습니다. 이는 '요청을 여러 건으로 나누어 승인 기준을 피하지 않는다'는 문구에 명시되어 있습니다.\\n\\n따라서, 150만 원 구매는 팀장 승인만으로 주문할 수 없고, 재무팀의 승인도 함께 받아야 하며, 요청을 여러 건으로 나누는 것은 금지됩니다.\"}",
+      "answer": "문서에 따르면 세금 포함 150만 원 구매는 팀장 승인만으로는 바로 주문할 수 없습니다. 세금 포함 예상 총액이 300,000원 이상 2,000,000원 미만인 경우, 팀장과 재무팀의 승인을 모두 받아야 하며, 2,000,000원 이상은 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인을 받는 것으로 명시되어 있습니다.\n\n또한, 요청을 여러 건으로 나누어 승인 기준을 피할 수 없습니다. 이는 '요청을 여러 건으로 나누어 승인 기준을 피하지 않는다'는 문구에 명시되어 있습니다.\n\n따라서, 150만 원 구매는 팀장 승인만으로 주문할 수 없고, 재무팀의 승인도 함께 받아야 하며, 요청을 여러 건으로 나누는 것은 금지됩니다.",
+      "input_tokens": 68439,
+      "output_tokens": 252,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+        "elapsed_seconds": 14.305667437000011,
+        "usage": {
+          "input_tokens": 68439,
+          "output_tokens": 252,
+          "total_tokens": 68691
+        },
+        "estimated_dollars": 0.0,
+        "reserved_dollars": 0.0,
+        "effective_config": {
+          "provider": "ollama",
+          "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+          "timeout_seconds": 300.0,
+          "context_window": 98304,
+          "max_output_tokens": 1024,
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  },
+  {
+    "candidate_id": "gpt-examples",
+    "case_id": "SEL-FP01",
+    "repeat": 2,
+    "question": "세금 포함 150만 원 구매는 팀장 승인만 받으면 바로 주문해도 되죠? 신청을 여러 건으로 나누면 재무 승인도 피할 수 있는지 알려주세요.",
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "elapsed_seconds": 2.6326581239991356,
+    "documents_sha256": "8e46034c2e4a0552e1739e6033667813c5a68e83b5d2cd5792d879398b703d69",
+    "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+    "format_pass": true,
+    "error_type": null,
+    "result": {
+      "status": "completed",
+      "raw_text": "{\"answer\":\"아니요. 세금 포함 150만 원 구매는 300,000원 이상 2,000,000원 미만 구간이므로 팀장과 재무팀의 승인을 모두 받아야 합니다. 주문·서명·결제 전에 이음 포털의 재무 > 업무 구매로 신청하고, 두 승인이 기록되기 전에는 주문하지 마세요. 신청을 여러 건으로 나누어 승인 기준을 피하는 것도 금지되어 있습니다.\"}",
+      "answer": "아니요. 세금 포함 150만 원 구매는 300,000원 이상 2,000,000원 미만 구간이므로 팀장과 재무팀의 승인을 모두 받아야 합니다. 주문·서명·결제 전에 이음 포털의 재무 > 업무 구매로 신청하고, 두 승인이 기록되기 전에는 주문하지 마세요. 신청을 여러 건으로 나누어 승인 기준을 피하는 것도 금지되어 있습니다.",
+      "input_tokens": 57348,
+      "output_tokens": 107,
+      "finish_reason": "stop"
+    },
+    "calls": [
+      {
+        "prompt_sha256": "605d6b5741c816598fadeb8bd040caec96ae8071bc090017a579bea75fe56b07",
+        "elapsed_seconds": 2.6296420810012933,
+        "usage": {
+          "input_tokens": 57348,
+          "output_tokens": 107,
+          "total_tokens": 57455,
+          "input_token_details": {
+            "audio": 0,
+            "cache_read": 57345,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+          }
+        },
+        "estimated_dollars": 0.00122775,
+        "reserved_dollars": 0.0603615,
+        "effective_config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180.0,
+          "max_output_tokens": 1024,
+          "reasoning_effort": "none",
+          "temperature": 0
+        },
+        "error_type": null,
+        "status_code": null
+      }
+    ]
+  }
+]

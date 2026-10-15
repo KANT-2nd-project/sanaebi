@@ -1,0 +1,118 @@
+{
+  "qwen-baseline": {
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "baseline",
+    "strategy": "single",
+    "seed": 42
+  },
+  "qwen-concise": {
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "concise",
+    "strategy": "single",
+    "seed": 42
+  },
+  "qwen-examples": {
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": 42
+  },
+  "gpt-baseline": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "baseline",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-concise": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "concise",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-examples": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-examples-low": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "low"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-examples-evidence": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "none",
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "evidence_first",
+    "seed": null
+  },
+  "qwen-examples-evidence": {
+    "config": {
+      "provider": "ollama",
+      "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+      "timeout_seconds": 300,
+      "context_window": 98304,
+      "max_output_tokens": 1024,
+      "temperature": 0
+    },
+    "profile": "examples",
+    "strategy": "evidence_first",
+    "seed": 42
+  }
+}

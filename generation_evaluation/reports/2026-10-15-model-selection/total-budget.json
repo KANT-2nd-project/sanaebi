@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-10-15T01:08:45.269906+00:00",
+  "total_limit_dollars": 5,
+  "total_limit_active_minutes": 120,
+  "active_minutes_through_last_call": 82.88398384253183,
+  "explicit_pause_excluded": [
+    {
+      "active_seconds_before_pause": 953.027506351471,
+      "original_started_at": 1792020588.7686942,
+      "paused_at": "2026-10-14T23:45:41.799668+00:00",
+      "reason": "explicit user pause and resume; preserve all prior reservations and charges",
+      "resumed_at": 1792022491.2968805
+    }
+  ],
+  "response_attempts": 304,
+  "quality_internal_calls": 308,
+  "openai_quality_calls": 188,
+  "additional_max_diagnostic_calls": 1,
+  "openai_total_calls_including_diagnostic": 189,
+  "usage_based_standard_price_subtotal_dollars": 0.76882616,
+  "unknown_usage_quality_calls": 8,
+  "unknown_usage_diagnostic_calls": 1,
+  "conservative_ledger_total_dollars": 2.00352582,
+  "unsettled_reservations": 0,
+  "notes": [
+    "Usage subtotal is not invoice cost; unknown calls are not counted as zero cost.",
+    "Unreported cache_creation estimated as all uncached input at cache-write rate. All observed inputs below272k.",
+    "Ledger conservatively uses long-context rates and retains full reservation for unknown usage.",
+    "Local Ollama API dollars zero; hardware/electricity not priced.",
+    "Time includes intervening work/reviews, excludes only explicit user pause."
+  ],
+  "ledger_continuity": {
+    "previous_reservations_retained": true,
+    "source": "resume-accounting.json"
+  }
+}

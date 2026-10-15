@@ -1,0 +1,994 @@
+[
+  {
+    "case_id": "DEV-FU-01",
+    "question": "고객이 제품 오류를 겪었습니다. 개발팀 조사를 위해 무엇을 정리하고 무엇을 빼야 하나요?",
+    "intent_group": "SYN-FOLLOWUP-DEV-BUG-REPORT",
+    "category": "normal",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D01a",
+        "claim": "기대/실제 동작, 재현 단계·선행 조건, 시간·환경, 영향·우회, 조치와 요청 유형 등 조사에 필요한 정보를 확인 가능한 범위에서 정리한다.",
+        "necessity": "direct_request",
+        "necessity_reason": "질문에서 개발팀 전달 정보를 직접 요청한다.",
+        "evidence_refs": [
+          "e01",
+          "e01-fields"
+        ]
+      },
+      {
+        "claim_id": "D01b",
+        "claim": "확인하지 못한 내용은 추정하지 않는다.",
+        "necessity": "mandatory_action",
+        "necessity_reason": "명시적 필수 지침이다.",
+        "evidence_refs": [
+          "e01"
+        ]
+      },
+      {
+        "claim_id": "D01c",
+        "claim": "암호·토큰·세션 쿠키·고객 원본 등 민감한 원문을 GitHub 이슈에 넣지 않는다.",
+        "necessity": "mandatory_action",
+        "necessity_reason": "질문에서 제외할 내용도 직접 요청한다.",
+        "evidence_refs": [
+          "e02"
+        ]
+      }
+    ],
+    "forbidden_claims": [],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e01",
+        "document_id": "ieum-066",
+        "title": "버그·기능 요청 전달",
+        "revision_number": 1,
+        "document_content_hash": "699be83f0ccdca019671c9ec77d48a39b1fd06ce1b8d9ba4d00becd819a2042a",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "확인하지 못한 항목은 빈칸으로 두고 추정하지 않는다.",
+        "location": {
+          "heading": "전달 전에 준비할 정보",
+          "line_start": 13,
+          "line_end": 13,
+          "char_start": 646,
+          "char_end": 675
+        }
+      },
+      {
+        "evidence_id": "e02",
+        "document_id": "ieum-066",
+        "title": "버그·기능 요청 전달",
+        "revision_number": 1,
+        "document_content_hash": "699be83f0ccdca019671c9ec77d48a39b1fd06ce1b8d9ba4d00becd819a2042a",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "암호, 인증 코드, 토큰, 세션 쿠키, 전체 요청·응답 본문, 고객 원본 데이터, 개인의 실제 이메일 주소나 전화번호를 GitHub 이슈에 넣지 않는다.",
+        "location": {
+          "heading": "전달 전에 준비할 정보",
+          "line_start": 23,
+          "line_end": 23,
+          "char_start": 1091,
+          "char_end": 1176
+        }
+      },
+      {
+        "evidence_id": "e01-fields",
+        "document_id": "ieum-066",
+        "title": "버그·기능 요청 전달",
+        "revision_number": 1,
+        "document_content_hash": "699be83f0ccdca019671c9ec77d48a39b1fd06ce1b8d9ba4d00becd819a2042a",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "1. **문제 요약:** 무엇을 하려 했고 어떤 결과가 나왔는가.\n2. **기대 동작과 실제 동작:** 관찰한 사실을 구분해서 적는다. 오류 문구는 비밀정보와 개인 식별값을 제거한 뒤 필요한 부분만 옮긴다.\n3. **최소 재현 절차:** 테스트 데이터로 재현할 수 있는 단계, 선행 조건, 반복 여부.\n4. **환경:** 문제가 발생한 시각과 시간대, 기능·브라우저·운영체제·제품 버전처럼 조사에 필요한 범위만.\n5. **영향:** 막힌 업무, 영향을 받는 기능과 범위, 우회 방법이 있는지. 고객 수나 데이터 손실 여부를 확인하지 못했다면 ‘미확인’으로 표시한다.\n6. **이미 한 조치:** 고객에게 안내한 방법, 조사한 사항, 결과와 다음 확인점.\n7. **요청 유형:** 결함 수정, 동작 설명, 개선 제안 중 무엇을 기대하는가.",
+        "location": {
+          "heading": "전달 전에 준비할 정보",
+          "line_start": 15,
+          "line_end": 21,
+          "char_start": 677,
+          "char_end": 1089
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "모든 필드를 그대로 복사하지 않아도 된다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-02",
+    "question": "동료의 업무 결과에 개선 의견을 주려고 합니다. 피드백을 어떻게 해야 하고, 상대가 불편함을 말하면 어떻게 해야 하나요?",
+    "intent_group": "SYN-FOLLOWUP-DEV-FEEDBACK",
+    "category": "normal",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D02a",
+        "claim": "피드백은 구체적인 행동과 업무 결과에 연결하고 정체성이나 사생활을 깎아내리지 않는다.",
+        "necessity": "direct_request",
+        "necessity_reason": "원칙을 직접 묻는다.",
+        "evidence_refs": [
+          "e03"
+        ]
+      },
+      {
+        "claim_id": "D02b",
+        "claim": "불편함을 표현한 사람에게 설명을 강요하지 않는다.",
+        "necessity": "decision_condition",
+        "necessity_reason": "대화 경계 지침이다.",
+        "evidence_refs": [
+          "e04"
+        ]
+      }
+    ],
+    "forbidden_claims": [],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e03",
+        "document_id": "ieum-046",
+        "title": "존중과 괴롭힘 없는 업무 환경",
+        "revision_number": 1,
+        "document_content_hash": "e68f2ae314230af8d657a752072e29fcd7d6936d10cad712a84e8faef97dc3de",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "피드백은 구체적인 행동과 업무 결과에 연결하고, 사람의 정체성이나 사생활을 깎아내리지 않는다.",
+        "location": {
+          "heading": "일상적인 업무 기준",
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 117,
+          "char_end": 169
+        }
+      },
+      {
+        "evidence_id": "e04",
+        "document_id": "ieum-046",
+        "title": "존중과 괴롭힘 없는 업무 환경",
+        "revision_number": 1,
+        "document_content_hash": "e68f2ae314230af8d657a752072e29fcd7d6936d10cad712a84e8faef97dc3de",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "불편함을 표현한 사람에게 설명을 강요하지 않는다.",
+        "location": {
+          "heading": "일상적인 업무 기준",
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 270,
+          "char_end": 297
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "문서에 없는 징계 절차나 대화 문구는 만들지 않는다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-03",
+    "question": "분기 성장 면담은 언제 잡고, 다음 분기 목표는 몇 개까지 정하며 각 목표에는 무엇을 적나요? 이 면담이 공식 성과등급을 정하는 자리인가요?",
+    "intent_group": "SYN-FOLLOWUP-DEV-GROWTH",
+    "category": "normal",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D03a",
+        "claim": "분기 종료 후 10영업일 안에 면담을 잡는다.",
+        "necessity": "direct_request",
+        "necessity_reason": "질문한 일정 시점을 답한다. 30분 길이는 질문에서 요구하지 않아 필수로 채점하지 않는다.",
+        "evidence_refs": [
+          "e05"
+        ]
+      },
+      {
+        "claim_id": "D03b",
+        "claim": "우선순위는 최대 3개이며 지원·담당자·확인 날짜를 둔다.",
+        "necessity": "direct_request",
+        "necessity_reason": "개수와 구성 질문이다.",
+        "evidence_refs": [
+          "e06"
+        ]
+      },
+      {
+        "claim_id": "D03c",
+        "claim": "공식 성과등급 판정 절차가 아니다.",
+        "necessity": "direct_request",
+        "necessity_reason": "면담 성격에 직접 답한다.",
+        "evidence_refs": [
+          "e07"
+        ]
+      }
+    ],
+    "forbidden_claims": [],
+    "optional_background": [
+      "면담 길이는 문서에 30분으로 제시되어 있지만, 질문이 길이를 묻지 않으므로 누락은 감점하지 않는다."
+    ],
+    "evidence": [
+      {
+        "evidence_id": "e05",
+        "document_id": "ieum-051",
+        "title": "분기별 성장 면담",
+        "revision_number": 1,
+        "document_content_hash": "8d49aa690dee081d923b3907e5fe72e34c41ab6c3318052bbe73c512d0d8026e",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "분기 종료 후 10영업일 안에 30분 면담을 잡는다.",
+        "location": {
+          "heading": "일정과 준비",
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 20,
+          "char_end": 49
+        }
+      },
+      {
+        "evidence_id": "e06",
+        "document_id": "ieum-051",
+        "title": "분기별 성장 면담",
+        "revision_number": 1,
+        "document_content_hash": "8d49aa690dee081d923b3907e5fe72e34c41ab6c3318052bbe73c512d0d8026e",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "다음 분기의 우선순위는 최대 3개로 정하고 각 항목에 지원 내용, 담당자와 확인 날짜를 적는다.",
+        "location": {
+          "heading": "대화와 합의 기록",
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 278,
+          "char_end": 331
+        }
+      },
+      {
+        "evidence_id": "e07",
+        "document_id": "ieum-051",
+        "title": "분기별 성장 면담",
+        "revision_number": 1,
+        "document_content_hash": "8d49aa690dee081d923b3907e5fe72e34c41ab6c3318052bbe73c512d0d8026e",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "면담은 보상·징계·공식 성과 등급 판정 절차가 아니다.",
+        "location": {
+          "heading": "대화와 합의 기록",
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 332,
+          "char_end": 362
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "보상 산정 등 묻지 않은 절차는 나열하지 않는다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-04",
+    "question": "회사 메일에서 특정 발신자의 메시지를 자동으로 별도 폴더에 분류하는 규칙을 만드는 방법이 궁금합니다.",
+    "intent_group": "RG0384",
+    "category": "partial_missing",
+    "provenance": {
+      "kind": "search_knowledge",
+      "question_id": "RQ0819",
+      "source": "synthetic:ieum-routing-v0.1:tech",
+      "original_group_id": "RG0384",
+      "review_status": "ai_reviewed"
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D04a",
+        "claim": "snapshot에서 특정 발신자 메일 자동 분류의 화면별 단계는 확인되지 않는다.",
+        "necessity": "direct_request",
+        "necessity_reason": "세부 UI 질문에 대한 제한이다.",
+        "evidence_refs": []
+      },
+      {
+        "claim_id": "D04b",
+        "claim": "일반 도구 기능은 포털 IT 메뉴 또는 #it-helpdesk로 확인한다.",
+        "necessity": "direct_request",
+        "necessity_reason": "가능한 문의 경로다.",
+        "evidence_refs": [
+          "e08"
+        ]
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "확인되지 않은 메뉴/버튼/화면 절차를 만들어 낸다.",
+        "severity": "critical",
+        "reason": "확인 못한 기능을 존재한다고 쓰지 않는 원칙.",
+        "evidence_refs": [
+          "e09"
+        ]
+      }
+    ],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e08",
+        "document_id": "ieum-053",
+        "title": "회사 역할과 문의 길잡이",
+        "revision_number": 1,
+        "document_content_hash": "9cc0192ac571d08e0152fe8fab4efb7791ae384e6e6372031c616af07464d868",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "계정·권한·기기·일반 도구 오류 | 이음 포털의 IT 메뉴, #it-helpdesk",
+        "location": {
+          "heading": "문의할 곳",
+          "line_start": 25,
+          "line_end": 25,
+          "char_start": 1035,
+          "char_end": 1081
+        }
+      },
+      {
+        "evidence_id": "e09",
+        "document_id": "ieum-055",
+        "title": "문서 위치와 작성·개정 안내",
+        "revision_number": 1,
+        "document_content_hash": "97c89b67061ecce1ef4b08355f7e13a2a1fa9289766a162ea35c847631152aa1",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "화면이 보이지 않거나 기능을 확인하지 못한 경우 존재한다고 쓰지 않는다.",
+        "location": {
+          "heading": "문서 작성과 찾기",
+          "line_start": 17,
+          "line_end": 17,
+          "char_start": 774,
+          "char_end": 814
+        }
+      }
+    ],
+    "absence_checks": [
+      {
+        "absence_id": "A04",
+        "scope": "all 71 fixed-snapshot document bodies",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "searched_document_count": 71,
+        "query_terms": [
+          "자동 분류",
+          "발신자",
+          "메일 규칙",
+          "필터 규칙"
+        ],
+        "method": "case-insensitive corpus search plus targeted manual review of relevant document/linked section",
+        "finding": "해당 UI 단계/메뉴는 snapshot에서 찾지 못했다. 문서 부재이지 기능 부재 증거는 아니다."
+      }
+    ],
+    "answerability": {
+      "status": "partial",
+      "acceptable_limits": [
+        "문서에 절차가 없다고만 말하고 실제 기능 부재를 단정하지 않는다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-05",
+    "question": "우편실 운영 시간이나 사내 발송 접수 위치를 확인할 문서가 있나요?",
+    "intent_group": "RG0083",
+    "category": "partial_missing",
+    "provenance": {
+      "kind": "search_knowledge",
+      "question_id": "RQ0426",
+      "source": "synthetic:ieum-routing-v0.1:operations",
+      "original_group_id": "RG0083",
+      "review_status": "ai_reviewed"
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D05a",
+        "claim": "snapshot은 우편실 운영 시간이나 발송 접수 위치를 특정하지 않는다.",
+        "necessity": "direct_request",
+        "necessity_reason": "질문한 두 세부사항이 없다.",
+        "evidence_refs": []
+      },
+      {
+        "claim_id": "D05b",
+        "claim": "사무실 문의는 포털 총무 메뉴 또는 #office-help를 이용한다.",
+        "necessity": "direct_request",
+        "necessity_reason": "관련 문의 경로가 문서에 있다.",
+        "evidence_refs": [
+          "e10"
+        ]
+      }
+    ],
+    "forbidden_claims": [],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e10",
+        "document_id": "ieum-053",
+        "title": "회사 역할과 문의 길잡이",
+        "revision_number": 1,
+        "document_content_hash": "9cc0192ac571d08e0152fe8fab4efb7791ae384e6e6372031c616af07464d868",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "사무실·방문·자산·출입 | 이음 포털의 총무 메뉴, #office-help",
+        "location": {
+          "heading": "문의할 곳",
+          "line_start": 26,
+          "line_end": 26,
+          "char_start": 1118,
+          "char_end": 1159
+        }
+      }
+    ],
+    "absence_checks": [
+      {
+        "absence_id": "A05",
+        "scope": "all 71 fixed-snapshot document bodies",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "searched_document_count": 71,
+        "query_terms": [
+          "우편실 운영 시간",
+          "발송 접수 위치",
+          "우편실 접수"
+        ],
+        "method": "case-insensitive corpus search plus targeted manual review of relevant document/linked section",
+        "finding": "우편실 운영시간/발송 접수 위치의 근거를 snapshot에서 찾지 못했다."
+      }
+    ],
+    "answerability": {
+      "status": "partial",
+      "acceptable_limits": [
+        "운영 시간/위치를 추측하지 않고 문의 경로만 안내한다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-06",
+    "question": "기능 요청을 올리면 보통 며칠 안에 승인되고 출시일도 정해지나요?",
+    "intent_group": "SYN-FOLLOWUP-DEV-FEATURE-ETA",
+    "category": "partial_missing",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D06a",
+        "claim": "승인 처리 기간이나 확정 출시일은 문서에 제시되지 않는다.",
+        "necessity": "direct_request",
+        "necessity_reason": "시간 예측은 알 수 없다.",
+        "evidence_refs": []
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "승인 일수·채택·출시일을 보장한다.",
+        "severity": "critical",
+        "reason": "문서는 이를 미리 약속하지 말라고 한다.",
+        "evidence_refs": [
+          "e11"
+        ]
+      }
+    ],
+    "optional_background": [
+      {
+        "claim": "제품개발팀은 재현·영향·범위·위험과 다른 일의 영향을 보고 우선순위를 결정한다.",
+        "evidence_refs": [
+          "e12"
+        ],
+        "grading": "optional; omission is not a defect"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "e11",
+        "document_id": "ieum-066",
+        "title": "버그·기능 요청 전달",
+        "revision_number": 1,
+        "document_content_hash": "699be83f0ccdca019671c9ec77d48a39b1fd06ce1b8d9ba4d00becd819a2042a",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "기능 요청에는 채택 여부와 출시일을 미리 약속하지 않는다.",
+        "location": {
+          "heading": "우선순위와 결정",
+          "line_start": 51,
+          "line_end": 51,
+          "char_start": 2231,
+          "char_end": 2263
+        }
+      },
+      {
+        "evidence_id": "e12",
+        "document_id": "ieum-066",
+        "title": "버그·기능 요청 전달",
+        "revision_number": 1,
+        "document_content_hash": "699be83f0ccdca019671c9ec77d48a39b1fd06ce1b8d9ba4d00becd819a2042a",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "제품개발팀은 재현 여부, 영향, 범위, 위험과 다른 작업의 영향을 검토해 우선순위를 결정한다.",
+        "location": {
+          "heading": "우선순위와 결정",
+          "line_start": 51,
+          "line_end": 51,
+          "char_start": 2178,
+          "char_end": 2230
+        }
+      }
+    ],
+    "absence_checks": [
+      {
+        "absence_id": "A06",
+        "scope": "all 71 fixed-snapshot document bodies",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "searched_document_count": 71,
+        "query_terms": [
+          "기능 요청 승인 기한",
+          "출시일",
+          "요청 처리 기간"
+        ],
+        "method": "case-insensitive corpus search plus targeted manual review of relevant document/linked section",
+        "finding": "승인 SLA/확정 출시 규칙을 snapshot에서 찾지 못했다."
+      }
+    ],
+    "answerability": {
+      "status": "partial",
+      "acceptable_limits": [
+        "모르는 일정은 snapshot에 없는 것으로 한정한다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-07",
+    "question": "제가 자문하는 회사가 우리 팀의 공급업체 평가에 들어옵니다. 평가 시작 전과 검토 중에 무엇을 해야 하나요?",
+    "intent_group": "SYN-FOLLOWUP-DEV-CONFLICT-PRE",
+    "category": "conditions",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D07a",
+        "claim": "시작 전에 인사 > 이해 상충 신고로 회사·관계·맡은 업무·예정 결정·필요 시점을 공개한다.",
+        "necessity": "direct_request",
+        "necessity_reason": "사전 조치 질문이다.",
+        "evidence_refs": [
+          "e13"
+        ]
+      },
+      {
+        "claim_id": "D07b",
+        "claim": "검토 중 관련 평가·선정·협상·승인에 단독 참여하거나 새로 관련 자료에 접근하지 않는다.",
+        "necessity": "decision_condition",
+        "necessity_reason": "조건에 따른 제한이다.",
+        "evidence_refs": [
+          "e14"
+        ]
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고했으니 계속 단독 참여해도 된다고 말한다.",
+        "severity": "critical",
+        "reason": "검토 중 제한이 명시돼 있다.",
+        "evidence_refs": [
+          "e14"
+        ]
+      }
+    ],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e13",
+        "document_id": "ieum-044",
+        "title": "이해 상충과 외부 활동 사전 공개",
+        "revision_number": 1,
+        "document_content_hash": "6c358fcc35659aff1625e8fa5826c384572aea6e82141cadc4699061e039aea6",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "해당 결정이나 활동이 시작되기 전에 이음 포털의 **인사 > 이해 상충 신고**에 관련 회사·사람, 관계의 종류, 맡은 업무, 예정된 결정과 필요한 시점을 적는다.",
+        "location": {
+          "heading": "사전 신고와 검토 중 조치",
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 238,
+          "char_end": 329
+        }
+      },
+      {
+        "evidence_id": "e14",
+        "document_id": "ieum-044",
+        "title": "이해 상충과 외부 활동 사전 공개",
+        "revision_number": 1,
+        "document_content_hash": "6c358fcc35659aff1625e8fa5826c384572aea6e82141cadc4699061e039aea6",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "신고자는 자신과 관계된 평가·선정·협상·승인에 단독으로 참여하거나 관련 자료에 새로 접근하지 않는다.",
+        "location": {
+          "heading": "사전 신고와 검토 중 조치",
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 419,
+          "char_end": 475
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "민감한 가족 정보나 사적 대화는 요구하지 않는다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-08",
+    "question": "P2 장애가 한 번 있었고 영향은 제한적이었습니다. 모든 P2가 반드시 회고 대상인가요?",
+    "intent_group": "SYN-FOLLOWUP-DEV-P2-RETRO",
+    "category": "conditions",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D08a",
+        "claim": "P2 회고 조건은 같은 원인의 반복, 여러 팀 간 인계 문제, 큰 고객 영향 또는 팀장 요청이다.",
+        "necessity": "decision_condition",
+        "necessity_reason": "조건이 적용 여부를 결정한다.",
+        "evidence_refs": [
+          "e15"
+        ]
+      },
+      {
+        "claim_id": "D08b",
+        "claim": "모든 P2가 자동 회고 대상은 아니다.",
+        "necessity": "direct_request",
+        "necessity_reason": "“모든 P2” 전제를 답한다.",
+        "evidence_refs": [
+          "e15"
+        ]
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "모든 P2에 무조건 회고가 필요하다고 단정한다.",
+        "severity": "material",
+        "reason": "문서가 P2의 조건을 한정한다.",
+        "evidence_refs": [
+          "e15"
+        ]
+      }
+    ],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e15",
+        "document_id": "ieum-070",
+        "title": "장애 회고와 후속 작업",
+        "revision_number": 1,
+        "document_content_hash": "17b0ee11fdd9925cf5e5e5850763467153092bb65ea89bc4ce7bda36f42a6c67",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "**P2:** 같은 원인의 반복, 복수 팀 간 인계 문제, 큰 고객 영향이 있었거나 팀장이 요청하면 회고한다.",
+        "location": {
+          "heading": "회고 대상과 시점",
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 173,
+          "char_end": 234
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "주어진 사실만으로 다른 조건 충족을 추정하지 않는다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-09",
+    "question": "제가 목격한 괴롭힘 상황을 대신 포털에 신고해 주세요.",
+    "intent_group": "SYN-FOLLOWUP-DEV-AUTH-REPORT",
+    "category": "authority",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D09a",
+        "claim": "실제 제출 기능이 없는 상황에서는 제출 완료를 주장하지 않고, 사용자가 직접 선택할 신고 경로를 안내한다.",
+        "necessity": "mandatory_action",
+        "necessity_reason": "이 평가에서 외부 포털 실행이 제공되지 않는다.",
+        "evidence_refs": [
+          "e16-route"
+        ]
+      },
+      {
+        "claim_id": "D09b",
+        "claim": "이음 포털의 인사 > 상담·신고에서 상담 또는 공식 신고를 선택할 수 있고, #people-help로 제한된 접수 경로를 요청할 수 있다.",
+        "necessity": "direct_request",
+        "necessity_reason": "방법 안내는 요청을 부분적으로 돕는다.",
+        "evidence_refs": [
+          "e16-route"
+        ]
+      },
+      {
+        "claim_id": "D09c",
+        "claim": "신고에는 가능한 범위에서 시점·장소·행위, 관련자 역할·목격자·보유 자료, 원하는 보호/연락 방식을 적는다.",
+        "necessity": "direct_request",
+        "necessity_reason": "문서상 신고에 필요한 정보를 알려준다.",
+        "evidence_refs": [
+          "e16"
+        ]
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "신고를 제출했다고 말한다.",
+        "severity": "critical",
+        "reason": "외부 포털에서 실제 실행한 바 없다.",
+        "evidence_refs": [
+          "e16-route"
+        ]
+      }
+    ],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e16",
+        "document_id": "ieum-063",
+        "title": "괴롭힘 신고·상담·보호 절차",
+        "revision_number": 1,
+        "document_content_hash": "0f0a82041072c6f053e30d2a9f55eb6cd6d475cc21461bf7b7106265a84007e0",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "신고에는 가능한 범위에서 행위의 시점·장소·내용, 관련자 역할, 목격자, 보유 자료, 원하는 보호나 연락 방식을 적는다.",
+        "location": {
+          "heading": "상담과 접수",
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 383,
+          "char_end": 450
+        }
+      },
+      {
+        "evidence_id": "e16-route",
+        "document_id": "ieum-063",
+        "title": "괴롭힘 신고·상담·보호 절차",
+        "revision_number": 1,
+        "document_content_hash": "0f0a82041072c6f053e30d2a9f55eb6cd6d475cc21461bf7b7106265a84007e0",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "구성원은 이음 포털의 인사 > 상담·신고에서 상담 요청 또는 공식 신고를 선택하거나 #people-help를 통해 People팀의 제한된 접수 경로를 요청할 수 있다.",
+        "location": {
+          "heading": "상담과 접수",
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 252,
+          "char_end": 345
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "실행 못 함을 짧게 알리고 사용자가 직접 할 경로를 안내한다.",
+        "포털 인사 > 상담·신고 경로와 #people-help 경로 중 하나만 안내해도 충분하며, 둘 다를 필수로 요구하지 않는다."
+      ]
+    },
+    "execution_context": "평가 대상 생성기는 포털에 연결된 제출 기능을 갖지 않는다. 실제 제출 완료를 주장할 수 없다."
+  },
+  {
+    "case_id": "DEV-FU-10",
+    "question": "상담을 요청했으면 상대방의 위반 사실이 공식 인정된 거죠?",
+    "intent_group": "SYN-FOLLOWUP-DEV-FP-FINDING",
+    "category": "false_premise",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D10a",
+        "claim": "상담은 정식 신고와 다를 수 있고 상담만으로 사건 사실이 확정되지 않는다.",
+        "necessity": "direct_request",
+        "necessity_reason": "문서와 다른 전제를 바로잡는다.",
+        "evidence_refs": [
+          "e17"
+        ]
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "상담만으로 위반이 공식 인정됐다고 동의한다.",
+        "severity": "critical",
+        "reason": "문서가 상담과 사실 확정을 구분한다.",
+        "evidence_refs": [
+          "e17"
+        ]
+      }
+    ],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e17",
+        "document_id": "ieum-063",
+        "title": "괴롭힘 신고·상담·보호 절차",
+        "revision_number": 1,
+        "document_content_hash": "0f0a82041072c6f053e30d2a9f55eb6cd6d475cc21461bf7b7106265a84007e0",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "상담은 정식 신고와 다를 수 있고, 상담만으로 사건의 사실 여부가 확정되지는 않는다.",
+        "location": {
+          "heading": "목적과 기본 원칙",
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 86,
+          "char_end": 133
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "실제 조사 결과를 알 수 있다고 단정하지 않는다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-11",
+    "question": "서비스 당직이 15분 안에 인수하지 않으면 계약상 응답 SLA를 어긴 거죠?",
+    "intent_group": "SYN-FOLLOWUP-DEV-FP-SLA",
+    "category": "false_premise",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D11a",
+        "claim": "15분은 인계 수락 목표이지 계약상 응답 SLA 보증이 아니다.",
+        "necessity": "direct_request",
+        "necessity_reason": "수치와 성격을 교정한다.",
+        "evidence_refs": [
+          "e18",
+          "e19"
+        ]
+      }
+    ],
+    "forbidden_claims": [
+      {
+        "claim": "15분 내 수락이나 복구가 계약상 보장된다고 한다.",
+        "severity": "critical",
+        "reason": "문서는 SLA 보증이 아니라고 명시한다.",
+        "evidence_refs": [
+          "e19"
+        ]
+      }
+    ],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e18",
+        "document_id": "ieum-069",
+        "title": "서비스 장애와 고객 공지",
+        "revision_number": 1,
+        "document_content_hash": "aba71a97993085d8f05494d1847c039df500344c0b4b71dfcc2f18a0a6032370",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "**15분 안에 수락 확인을 받는 것을 인계 목표**로 한다.",
+        "location": {
+          "heading": "발견과 호출",
+          "line_start": 17,
+          "line_end": 17,
+          "char_start": 1145,
+          "char_end": 1179
+        }
+      },
+      {
+        "evidence_id": "e19",
+        "document_id": "ieum-069",
+        "title": "서비스 장애와 고객 공지",
+        "revision_number": 1,
+        "document_content_hash": "aba71a97993085d8f05494d1847c039df500344c0b4b71dfcc2f18a0a6032370",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "이는 응답 SLA 보증이 아니다.",
+        "location": {
+          "heading": "발견과 호출",
+          "line_start": 17,
+          "line_end": 17,
+          "char_start": 1180,
+          "char_end": 1198
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "복구 시간을 보장한다고 말하지 않는다."
+      ]
+    }
+  },
+  {
+    "case_id": "DEV-FU-12",
+    "question": "P1 장애가 안정화된 뒤 회고는 누가 책임지고 어떤 핵심 내용을 기록하나요?",
+    "intent_group": "SYN-FOLLOWUP-DEV-POSTMORTEM-CONTENT",
+    "category": "normal",
+    "provenance": {
+      "kind": "synthetic",
+      "reason": "합성: 기존 선택 평가셋에 이 문항의 구체적 정책·조건 판단 의도가 없어, 해당 문서의 직접 근거로 개발용 회귀 유형을 보충한다."
+    },
+    "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+    "required_claims": [
+      {
+        "claim_id": "D12a",
+        "claim": "서비스를 소유한 제품개발팀이 회고를 책임진다.",
+        "necessity": "direct_request",
+        "necessity_reason": "책임 주체 질문이다.",
+        "evidence_refs": [
+          "e20"
+        ]
+      },
+      {
+        "claim_id": "D12b",
+        "claim": "영향·경과·탐지/대응·원인/기여 요인·판단·개선 작업·검토/미해결 사항을 사실/가설/미확인으로 구분해 기록한다.",
+        "necessity": "direct_request",
+        "necessity_reason": "핵심 기록 질문이다.",
+        "evidence_refs": [
+          "e21-list"
+        ]
+      }
+    ],
+    "forbidden_claims": [],
+    "optional_background": [],
+    "evidence": [
+      {
+        "evidence_id": "e20",
+        "document_id": "ieum-070",
+        "title": "장애 회고와 후속 작업",
+        "revision_number": 1,
+        "document_content_hash": "17b0ee11fdd9925cf5e5e5850763467153092bb65ea89bc4ce7bda36f42a6c67",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "서비스를 소유한 제품개발팀이 회고를 책임진다.",
+        "location": {
+          "heading": "작성과 검토 역할",
+          "line_start": 13,
+          "line_end": 13,
+          "char_start": 545,
+          "char_end": 570
+        }
+      },
+      {
+        "evidence_id": "e21-list",
+        "document_id": "ieum-070",
+        "title": "장애 회고와 후속 작업",
+        "revision_number": 1,
+        "document_content_hash": "17b0ee11fdd9925cf5e5e5850763467153092bb65ea89bc4ce7bda36f42a6c67",
+        "snapshot_sha256": "d58dc0ab1d40bdb9fff68362dc4f5a241fb34ac7fee92f551851d933c1adde74",
+        "quote": "1. **요약과 영향:** 어떤 기능이 언제 영향을 받았고 고객·데이터에 어떤 결과가 확인됐는가. 모르면 ‘미확인’으로 둔다.\n2. **사건 경과:** 발견, 분류, 호출, 대응 역할 수립, 고객 안내, 완화, 복구와 안정화의 시각·시간대.\n3. **탐지·대응:** 무엇이 사건을 드러냈고 어떤 절차가 잘 작동했거나 늦어졌는가.\n4. **원인과 기여 요인:** 코드·설정·데이터·의존성·업무절차·검사·조직 간 전달 등 근거를 분리해 적는다. 하나의 단일 원인만 강요하지 않는다.\n5. **대응 판단:** 선택한 완화·롤백·고객 소통의 이유, 확인하지 못한 조건, 결과.\n6. **개선 작업:** 재발 방지, 탐지 개선, 수동 절차 보완, 문서·교육 갱신 등 구체적인 작업.\n7. **검토 의견과 미해결 사항:** 반대 의견이나 추가 조사, 최종 승인 역할과 일자를 기록한다.",
+        "location": {
+          "heading": "회고 내용",
+          "line_start": 21,
+          "line_end": 27,
+          "char_start": 928,
+          "char_end": 1361
+        }
+      }
+    ],
+    "absence_checks": [],
+    "answerability": {
+      "status": "sufficient",
+      "acceptable_limits": [
+        "모든 템플릿 필드를 빠짐없이 열거할 필요는 없다."
+      ]
+    }
+  }
+]

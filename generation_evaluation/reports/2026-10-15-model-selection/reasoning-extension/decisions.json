@@ -1,0 +1,14 @@
+{
+  "default_promoted": false,
+  "service_quality_approved": false,
+  "reason": "GPT selected by relative ranking: critical cases 0 vs 5; stable both-pass 11 vs 0. 18/20 remains a separate default-promotion target.",
+  "final_set": "reasoning-final.json",
+  "no_post_final_tuning": true,
+  "selected_model": "gpt-6-luna",
+  "selected_candidate": "gpt-examples-xhigh-4096",
+  "selection_status": "selected",
+  "selection_basis": "relative comparison between Qwen3 4B Q4_K_M and GPT-6 Luna",
+  "decision_confirmed_by": "user",
+  "decision_date": "2026-10-15",
+  "historical_provisional_recommendation": "gpt-examples-xhigh-4096"
+}

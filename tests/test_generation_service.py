@@ -12,6 +12,37 @@ from generation.types import (
 
 
 class GenerationServiceTests(unittest.TestCase):
+    def test_explicit_refusal_precedes_truncation_and_preserves_metadata(self):
+        response = ModelResponse(
+            "원문 거절",
+            12,
+            4,
+            "length",
+            refusal="요청을 처리할 수 없습니다.",
+        )
+        self.assertEqual(
+            generate(self.prompt, Mock(return_value=response)),
+            GenerationResult(
+                GenerationStatus.REFUSAL,
+                "원문 거절",
+                None,
+                12,
+                4,
+                "length",
+                refusal="요청을 처리할 수 없습니다.",
+            ),
+        )
+
+    def test_refusal_without_raw_content_is_preserved(self):
+        response = ModelResponse(
+            None, 12, 4, "stop", refusal="요청을 처리할 수 없습니다."
+        )
+        result = generate(self.prompt, Mock(return_value=response))
+        self.assertEqual(result.status, GenerationStatus.REFUSAL)
+        self.assertIsNone(result.raw_text)
+        self.assertIsNone(result.answer)
+        self.assertEqual(result.refusal, "요청을 처리할 수 없습니다.")
+
     def test_length_stop_overrides_valid_invalid_and_empty_json(self):
         for raw in ('{"answer":"안내"}', '{"answer":', ""):
             with self.subTest(raw=raw):

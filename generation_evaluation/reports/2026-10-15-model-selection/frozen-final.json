@@ -1,0 +1,34 @@
+{
+  "frozen_at": "2026-10-15T00:04:32.321961+00:00",
+  "candidates": {
+    "gpt-examples": {
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "max_output_tokens": 1024,
+        "reasoning_effort": "none",
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": null
+    },
+    "qwen-examples": {
+      "config": {
+        "provider": "ollama",
+        "model_name": "qwen3:4b-instruct-2507-q4_K_M",
+        "timeout_seconds": 300,
+        "context_window": 98304,
+        "max_output_tokens": 1024,
+        "temperature": 0
+      },
+      "profile": "examples",
+      "strategy": "single",
+      "seed": 42
+    }
+  },
+  "final_cases_sha256": "94e6a0fe13da9855001e127e335e685b44bfd77f22ca1f5279287659238f6e1b",
+  "rubric_sha256": "7ad85447a6d41de5963090debdab4a6e60c0e63110acee1a7fd0cac65b7ba2aa",
+  "selection_reason": "Development regression screening: concise/examples improve; reasoning-low regressed; evidence-first increased omissions or technical failures; select examples single with verified repeated run, preserve remaining errors. No final results viewed."
+}

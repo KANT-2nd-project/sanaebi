@@ -8,6 +8,7 @@ class GenerationStatus(StrEnum):
     PARSE_ERROR = "parse_error"
     EMPTY_ANSWER = "empty_answer"
     TRUNCATED = "truncated"
+    REFUSAL = "refusal"
 
 
 @dataclass(frozen=True)
@@ -19,6 +20,7 @@ class GenerationResult:
     input_tokens: int | None = None
     output_tokens: int | None = None
     finish_reason: str | None = None
+    refusal: str | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.status, GenerationStatus):
@@ -30,12 +32,31 @@ class GenerationResult:
         if self.answer is not None and not isinstance(self.answer, str):
             raise TypeError("answer는 문자열 또는 None이어야 합니다.")
 
+        if self.refusal is not None and not isinstance(self.refusal, str):
+            raise TypeError("refusal은 문자열 또는 None이어야 합니다.")
+
         if self.status is GenerationStatus.TIMEOUT:
-            if self.raw_text is not None or self.answer is not None:
+            if (
+                self.raw_text is not None
+                or self.answer is not None
+                or self.refusal is not None
+            ):
                 raise ValueError(
-                    "timeout 결과의 raw_text와 answer는 None이어야 합니다."
+                    "timeout 결과의 raw_text, answer, refusal은 None이어야 합니다."
                 )
             return
+
+        if self.status is GenerationStatus.REFUSAL:
+            if self.answer is not None:
+                raise ValueError("refusal 결과의 answer는 None이어야 합니다.")
+            if self.refusal is None or not self.refusal.strip():
+                raise ValueError(
+                    "refusal 결과에는 비어 있지 않은 refusal이 필요합니다."
+                )
+            return
+
+        if self.refusal is not None:
+            raise ValueError("refusal 정보는 refusal 결과에만 설정할 수 있습니다.")
 
         if self.raw_text is None:
             raise ValueError("timeout 이외의 결과에는 raw_text가 필요합니다.")
@@ -57,7 +78,8 @@ class GenerationPrompt:
 
 @dataclass(frozen=True)
 class ModelResponse:
-    raw_text: str
+    raw_text: str | None
     input_tokens: int | None = None
     output_tokens: int | None = None
     finish_reason: str | None = None
+    refusal: str | None = None

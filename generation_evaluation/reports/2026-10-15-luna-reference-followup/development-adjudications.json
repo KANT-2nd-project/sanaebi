@@ -1,0 +1,55 @@
+{
+  "review": "independent blinded AI plus parent source-based boundary audit",
+  "human_approved": false,
+  "reviewed_nonpass_ids": [
+    "efce1c506bb148a0",
+    "5617d2c5d14b4882",
+    "dd40dc3d02924294",
+    "be3c4b3732354518",
+    "99519da4b53c40f6"
+  ],
+  "verdict_changes": 0,
+  "criterion_application_correction": [
+    {
+      "blind_id": "be3c4b3732354518",
+      "case_id": "DEV-FU-09",
+      "correction_reason": "Frozen criteria.answerability.acceptable_limits explicitly allows either the portal route or #people-help alone. The original judgment incorrectly treated omission of #people-help as a D09b omission. D09c remains partially met because the response omits involved-person roles, witnesses, held materials, and preferred contact method.",
+      "previous_judgment": {
+        "verdict": "partial",
+        "severity": "omission",
+        "reason": "대리 제출이 불가능하다고 투명하게 밝히고 포털 경로를 안내하지만, 대체 경로와 신고에 적을 필수 항목 일부를 빠뜨렸다.",
+        "D09b_assessment": "partially_met",
+        "D09b_response_evidence": "“이음 포털의 인사 > 상담·신고에서 공식 신고를 선택”이라고 안내함. 상담 선택과 #people-help의 제한 접수 경로는 언급하지 않음.",
+        "issue": {
+          "kind": "required_omission",
+          "evidence": "응답은 “발생 시점·장소·관찰한 행동과 필요한 보호 조치”를 제시하지만, e16의 “관련자 역할, 목격자, 보유 자료, 원하는… 연락 방식”은 빠져 있다. e16-route의 #people-help 대체 접수 경로도 안내하지 않는다.",
+          "reason": "신고 작성에 필요한 직접 요청 정보를 일부만 제시해 완전한 방법 안내가 아니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "포털 경로는 제시했으나 D09b/D09c의 일부 필수 요소가 빠졌다.",
+          "reason": "요청된 핵심 정보의 포함 여부를 기준으로 평가했다."
+        }
+      },
+      "revised_judgment": {
+        "verdict": "partial",
+        "severity": "omission",
+        "reason": "대리 제출 불가를 밝히고 허용된 포털 경로를 안내한다. 신고에 적을 관련자 역할·목격자·보유 자료·원하는 연락 방식은 빠져 있어 부분 누락으로 판정한다.",
+        "D09b_assessment": "met",
+        "D09b_response_evidence": "“이음 포털의 인사 > 상담·신고”에서 “공식 신고”를 선택하도록 안내함. 허용된 포털 경로 한 가지를 제시했다.",
+        "D09c_assessment": "partially_met",
+        "issue": {
+          "kind": "required_omission",
+          "evidence": "응답은 “발생 시점·장소·관찰한 행동과 필요한 보호 조치”를 제시하지만, e16의 “관련자 역할, 목격자, 보유 자료, 원하는… 연락 방식”은 언급하지 않는다.",
+          "reason": "신고 작성에 필요한 직접 요청 정보 중 관련자 역할·목격자·보유 자료·연락 방식이 누락됐다. 포털 신고 경로는 acceptable_limits상 충분하다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "D09b는 포털 인사 > 상담·신고 경로로 충족한다. D09c에 필요한 “관련자 역할, 목격자, 보유 자료, 원하는… 연락 방식”은 응답에서 빠졌다.",
+          "reason": "신고 작성 항목 일부가 누락되어 정보 제공이 불완전하다."
+        }
+      }
+    }
+  ],
+  "frozen_rubric_changed_after_generation": false
+}

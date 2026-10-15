@@ -4,7 +4,11 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.reporting import (
     config_from_dict,
@@ -18,6 +22,45 @@ from generation_evaluation.types import GenerationRun
 
 
 class GenerationReportingTests(unittest.TestCase):
+    def test_run_identity_survives_jsonl_and_legacy_records(self):
+        from generation.types import ModelResponse
+        from generation_evaluation.runner import run_case
+
+        run = run_case(
+            "identity",
+            self.config,
+            "질문",
+            ["문서"],
+            lambda prompt: ModelResponse('{"answer":"답변"}'),
+        )
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "runs.jsonl"
+            save_runs_jsonl(path, [run])
+            data = read_runs_jsonl(path)[0]
+        self.assertEqual(data["document_count"], 1)
+        for field in ("documents_sha256", "prompt_sha256"):
+            self.assertRegex(data[field], r"^[0-9a-f]{64}$")
+        self.assertEqual(run_from_dict(data), run)
+        for field in ("documents_sha256", "prompt_sha256", "document_count"):
+            del data[field]
+        legacy = run_from_dict(data)
+        self.assertIsNone(legacy.documents_sha256)
+        self.assertIsNone(legacy.prompt_sha256)
+        self.assertIsNone(legacy.document_count)
+
+    def test_restore_rejects_invalid_identity(self):
+        data = run_to_dict(GenerationRun("case", self.config, None, 0, "Error"))
+        for field in ("documents_sha256", "prompt_sha256"):
+            for value in (False, 42, "", "a" * 63, "g" * 64):
+                with (
+                    self.subTest(field=field, value=value),
+                    self.assertRaises((TypeError, ValueError)),
+                ):
+                    run_from_dict({**data, field: value})
+        for value in (True, -1, "1", 1.5):
+            with self.subTest(count=value), self.assertRaises((TypeError, ValueError)):
+                run_from_dict({**data, "document_count": value})
+
     def test_truncated_record_survives_jsonl_round_trip(self):
         run = GenerationRun(
             "cut",
@@ -76,6 +119,71 @@ class GenerationReportingTests(unittest.TestCase):
         self.assertIsNone(restored.config.context_window)
         self.assertIsNone(restored.config.max_output_tokens)
 
+    def test_openai_settings_survive_round_trip_and_old_records_load(self):
+        config = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "gpt-6-luna",
+            30,
+            max_output_tokens=1024,
+            reasoning_effort="low",
+        )
+        run = GenerationRun("case", config, None, 0.25, "Error")
+        data = run_to_dict(run)
+        self.assertEqual(run_from_dict(data), run)
+
+        del data["config"]["reasoning_effort"]
+        del data["config"]["temperature"]
+        restored = run_from_dict(data)
+        self.assertIsNone(restored.config.reasoning_effort)
+        self.assertIsNone(restored.config.temperature)
+
+    def test_output_mode_and_refusal_survive_round_trip_and_legacy_records_load(self):
+        config = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "gpt-6-luna",
+            30,
+            output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
+        )
+        result = GenerationResult(
+            GenerationStatus.REFUSAL,
+            None,
+            None,
+            10,
+            2,
+            "stop",
+            refusal="요청을 처리할 수 없습니다.",
+        )
+        run = GenerationRun("refusal", config, result, 0.25)
+        data = run_to_dict(run)
+        self.assertEqual(data["config"]["output_mode"], "strict_json_schema")
+        self.assertEqual(data["result"]["refusal"], "요청을 처리할 수 없습니다.")
+        self.assertEqual(run_from_dict(data), run)
+
+        del data["config"]["output_mode"]
+        del data["result"]["refusal"]
+        data["result"].update(
+            status="completed",
+            raw_text='{"answer":"기존 답변"}',
+            answer="기존 답변",
+        )
+        legacy = run_from_dict(data)
+        self.assertIs(legacy.config.output_mode, GenerationOutputMode.PROMPT_JSON)
+        self.assertEqual(legacy.result.status, GenerationStatus.COMPLETED)
+        self.assertIsNone(legacy.result.refusal)
+
+    def test_config_restore_validates_optional_openai_settings(self):
+        base = {"provider": "openai", "model_name": "gpt-6-luna", "timeout_seconds": 30}
+        config = config_from_dict(
+            {**base, "reasoning_effort": "none", "temperature": 0.2}
+        )
+        self.assertEqual(config.reasoning_effort, "none")
+        self.assertEqual(config.temperature, 0.2)
+
+        with self.assertRaisesRegex(ValueError, "OpenAI"):
+            config_from_dict({**base, "provider": "ollama", "reasoning_effort": "low"})
+        with self.assertRaisesRegex(ValueError, "temperature"):
+            config_from_dict({**base, "reasoning_effort": "low", "temperature": 0.2})
+
     def test_runs_restore_through_jsonl(self):
         runs = [
             GenerationRun(
@@ -104,7 +212,7 @@ class GenerationReportingTests(unittest.TestCase):
 
     def test_run_restore_requires_every_field(self):
         data = run_to_dict(GenerationRun("case", self.config, None, 0, "Error"))
-        for field in data:
+        for field in ("case_id", "config", "result", "elapsed_seconds", "error_type"):
             with self.subTest(field=field), self.assertRaisesRegex(ValueError, field):
                 run_from_dict(
                     {key: value for key, value in data.items() if key != field}
@@ -375,6 +483,9 @@ class GenerationReportingTests(unittest.TestCase):
                     "timeout_seconds": 30.0,
                     "context_window": None,
                     "max_output_tokens": None,
+                    "reasoning_effort": None,
+                    "temperature": None,
+                    "output_mode": "prompt_json",
                 },
                 "result": {
                     "status": "completed",
@@ -383,9 +494,14 @@ class GenerationReportingTests(unittest.TestCase):
                     "input_tokens": None,
                     "output_tokens": None,
                     "finish_reason": None,
+                    "refusal": None,
                 },
                 "elapsed_seconds": 0.25,
                 "error_type": None,
+                "documents_sha256": None,
+                "document_count": None,
+                "prompt_sha256": None,
+                "prompt_profile": None,
             },
         )
         self.assertEqual(json.loads(json.dumps(data, ensure_ascii=False)), data)
@@ -407,6 +523,7 @@ class GenerationReportingTests(unittest.TestCase):
                 "input_tokens": None,
                 "output_tokens": None,
                 "finish_reason": None,
+                "refusal": None,
             },
         )
         error_data = run_to_dict(error)

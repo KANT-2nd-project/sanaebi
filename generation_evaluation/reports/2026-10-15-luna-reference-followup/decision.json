@@ -1,0 +1,33 @@
+{
+  "experiment_id": "luna-reference-followup-v1",
+  "status": "complete_development_gate_rejection",
+  "selected_model": "gpt-6-luna",
+  "recommended_configuration_changed": false,
+  "retained_reference": {
+    "profile": "examples",
+    "strategy": "single",
+    "reasoning_effort": "xhigh",
+    "output_mode": "prompt_json",
+    "max_output_tokens": 4096,
+    "timeout_seconds": 180,
+    "temperature": "omitted"
+  },
+  "service_defaults_changed": false,
+  "service_quality_approved": false,
+  "default_promoted": false,
+  "eligible_candidates": [],
+  "excluded_candidates": {
+    "scope": "DEV-FU-09 mandatory witness-information omission compared with passing reference",
+    "reference-strict": "DEV-FU-09 mandatory related-party roles, witnesses, and available-material information omitted compared with passing reference"
+  },
+  "skipped": {
+    "repeat_check": "no eligible development candidate",
+    "scope_strict_combination": "both components failed mandatory-regression gate",
+    "holdout20_two_repeats": "no eligible improved candidate; frozen holdout remains unexecuted"
+  },
+  "generation_calls_used": 38,
+  "generation_calls_limit": 166,
+  "unused_call_allowance": 128,
+  "observed_improvement": "Both candidates increased frozen dev pass count from 9/12 to 11/12; this does not override the paired regression gate.",
+  "next_step": "New experiment only after explicitly revising criteria where question necessity is too broad; preserve this version and results. No new run was started."
+}

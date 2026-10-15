@@ -1,9 +1,18 @@
 import json
 from pathlib import Path
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import config_from_dict
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.types import GenerationRun
+
+__all__ = [
+    "config_from_dict",
+    "read_runs_jsonl",
+    "result_from_dict",
+    "run_from_dict",
+    "run_to_dict",
+    "save_runs_jsonl",
+]
 
 
 def run_to_dict(run: GenerationRun) -> dict[str, object]:
@@ -17,6 +26,7 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
             "input_tokens": run.result.input_tokens,
             "output_tokens": run.result.output_tokens,
             "finish_reason": run.result.finish_reason,
+            "refusal": run.result.refusal,
         }
 
     return {
@@ -27,10 +37,17 @@ def run_to_dict(run: GenerationRun) -> dict[str, object]:
             "timeout_seconds": run.config.timeout_seconds,
             "context_window": run.config.context_window,
             "max_output_tokens": run.config.max_output_tokens,
+            "reasoning_effort": run.config.reasoning_effort,
+            "temperature": run.config.temperature,
+            "output_mode": run.config.output_mode.value,
         },
         "result": result_data,
         "elapsed_seconds": run.elapsed_seconds,
         "error_type": run.error_type,
+        "documents_sha256": run.documents_sha256,
+        "document_count": run.document_count,
+        "prompt_sha256": run.prompt_sha256,
+        "prompt_profile": run.prompt_profile,
     }
 
 
@@ -70,31 +87,6 @@ def read_runs_jsonl(path: Path) -> list[dict[str, object]]:
     return records
 
 
-def config_from_dict(data: dict[str, object]) -> GenerationConfig:
-    provider_value = data.get("provider")
-    model_name = data.get("model_name")
-    timeout_seconds = data.get("timeout_seconds")
-
-    if not isinstance(provider_value, str):
-        raise TypeError("provider는 문자열이어야 합니다.")
-
-    if not isinstance(model_name, str):
-        raise TypeError("model_name은 문자열이어야 합니다.")
-
-    if isinstance(timeout_seconds, bool) or not isinstance(
-        timeout_seconds, (int, float)
-    ):
-        raise TypeError("timeout_seconds는 숫자여야 합니다.")
-
-    return GenerationConfig(
-        provider=GenerationProvider(provider_value),
-        model_name=model_name,
-        timeout_seconds=timeout_seconds,
-        context_window=data.get("context_window"),
-        max_output_tokens=data.get("max_output_tokens"),
-    )
-
-
 def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
     if data is None:
         return None
@@ -109,6 +101,7 @@ def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
     status = data["status"]
     raw_text = data["raw_text"]
     answer = data["answer"]
+    refusal = data.get("refusal")
 
     if not isinstance(status, str):
         raise TypeError("status는 문자열이어야 합니다.")
@@ -118,6 +111,8 @@ def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
 
     if answer is not None and not isinstance(answer, str):
         raise TypeError("answer는 문자열 또는 None이어야 합니다.")
+    if refusal is not None and not isinstance(refusal, str):
+        raise TypeError("refusal은 문자열 또는 None이어야 합니다.")
 
     for field in ("input_tokens", "output_tokens"):
         value = data.get(field)
@@ -138,6 +133,7 @@ def result_from_dict(data: dict[str, object] | None) -> GenerationResult | None:
         input_tokens=data.get("input_tokens"),
         output_tokens=data.get("output_tokens"),
         finish_reason=data.get("finish_reason"),
+        refusal=refusal,
     )
 
 
@@ -177,4 +173,8 @@ def run_from_dict(data: dict[str, object]) -> GenerationRun:
         result=result_from_dict(result_data),
         elapsed_seconds=elapsed_seconds,
         error_type=error_type,
+        documents_sha256=data.get("documents_sha256"),
+        document_count=data.get("document_count"),
+        prompt_sha256=data.get("prompt_sha256"),
+        prompt_profile=data.get("prompt_profile"),
     )

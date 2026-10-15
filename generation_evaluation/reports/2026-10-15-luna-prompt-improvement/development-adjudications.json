@@ -1,0 +1,1404 @@
+[
+  {
+    "blind_id": "28a31e19c881",
+    "before": {
+      "blind_id": "28a31e19c881",
+      "case_id": "RQ0004",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response states no VPN-specific status screen or notification criteria are documented. It separately labels the IT access-request flow as general and says applicability to VPN cannot be confirmed. ieum-027: requests go through “이음 포털의 IT > 접근 권한”; after required checks IT has two business days to process or record a delay reason; requesters check the result. ieum-055 says if a screen/function cannot be confirmed, do not write as if it exists.",
+          "reason": "General access-request guidance is supported and is not mislabeled as VPN approval lookup."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response explicitly says whether the general access flow applies to VPN “문서에서 확인할 수 없습니다.”",
+          "reason": "Preserves the distinction between general access rights and VPN-specific approval status."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "States that the employee-facing VPN approval route and notification standard are not documented; does not present the general IT access menu as the actual VPN lookup screen.",
+          "reason": "Both required claims are present."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response bounds the unknown: “다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.”",
+          "reason": "It offers only adjacent documented guidance and does not infer VPN applicability."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "No VPN request status is claimed to have been queried or changed.",
+          "reason": "The answer does not imply access to the user’s private request state."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite Korean “명시되어 있지 않습니다” and “확인할 수 없습니다.”",
+          "reason": "Professional and non-alarming."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "The general access flow is clearly separated from the requested VPN-specific status and notification guidance.",
+          "reason": "It supplies bounded adjacent context without changing the practical advice."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "28a31e19c881",
+      "case_id": "RQ0004",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response states no VPN-specific status screen or notification criteria are documented. It separately labels the IT access-request flow as general and says applicability to VPN cannot be confirmed. ieum-027: requests go through “이음 포털의 IT > 접근 권한”; after required checks IT has two business days to process or record a delay reason; requesters check the result. ieum-055 says if a screen/function cannot be confirmed, do not write as if it exists.",
+          "reason": "General access-request guidance is supported and is not mislabeled as VPN approval lookup."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response explicitly says whether the general access flow applies to VPN “문서에서 확인할 수 없습니다.”",
+          "reason": "Preserves the distinction between general access rights and VPN-specific approval status."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "States that the employee-facing VPN approval route and notification standard are not documented; does not present the general IT access menu as the actual VPN lookup screen.",
+          "reason": "Both required claims are present."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response bounds the unknown: “다만 이 절차가 VPN 신청에도 적용되는지는 문서에서 확인할 수 없습니다.”",
+          "reason": "It offers only adjacent documented guidance and does not infer VPN applicability."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문은 확인 경로·알림 기준을 묻고 실제 개인 상태 조회 실행을 요구하지 않으며 응답도 조회를 수행했다고 주장하지 않는다.",
+          "reason": "행위 경계 검사의 적용 대상이 없다. 전체pass유지."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite Korean “명시되어 있지 않습니다” and “확인할 수 없습니다.”",
+          "reason": "Professional and non-alarming."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "The general access flow is clearly separated from the requested VPN-specific status and notification guidance.",
+          "reason": "It supplies bounded adjacent context without changing the practical advice."
+        }
+      },
+      "issues": []
+    },
+    "reason": "Independent boundary review: action applicability correction; RQ0006 and RQ0004 overall pass retained after scope review."
+  },
+  {
+    "blind_id": "e28dad6f3ca1",
+    "before": {
+      "blind_id": "e28dad6f3ca1",
+      "case_id": "RQ0007",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “누락 사실을 그대로 표시하고 ... 재무팀에 대체 증빙이 가능한지 문의하세요”; “결제일로부터 10영업일”; “같은 신청 건에 보완”. ieum-019: “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”; “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”; “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.”",
+          "reason": "The receipt, deadline, submission route, and correction advice are supported. The answer does not invent a rejection tab and bounds the individual-state statement as unavailable to the assistant / undocumented."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response identifies a missing receipt and directs the user to the existing expense application. ieum-019 limits this procedure to personally paid work expenses and specifies the expense-settlement route.",
+          "reason": "No other expense type or approval step is substituted; the deadline is correctly measured from payment date."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "All four required meanings are present: truthfully note the missing receipt and ask Finance about substitute evidence; submit within 10 business days via Finance > Expense Settlement; correct the existing application after checking the reason; no claim of individual-state lookup or processing.",
+          "reason": "The paraphrase “누락 사실을 그대로 표시” conveys honest reporting without requiring exact benchmark wording."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response: “안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.”",
+          "reason": "It distinguishes what the guidance documents from unavailable personal-state lookup, without inventing a screen."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "Response explicitly says “개인별 신청 상태는 제가 조회할 수 없습니다.” It does not claim to have inspected or changed the application.",
+          "reason": "The user asks for a portal route; the answer keeps the assistant’s access boundary clear."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite Korean forms such as “문의하세요”, “만들지 마세요”, and “조회할 수 없습니다.”",
+          "reason": "Clear, professional 존댓말; no blame or alarming language."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "Response covers missing-receipt handling, deadline, rejection correction, and the requested portal/status boundary.",
+          "reason": "The additional note about an undocumented tab directly addresses the requested location."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "e28dad6f3ca1",
+      "case_id": "RQ0007",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “누락 사실을 그대로 표시하고 ... 재무팀에 대체 증빙이 가능한지 문의하세요”; “결제일로부터 10영업일”; “같은 신청 건에 보완”. ieum-019: “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”; “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”; “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.”",
+          "reason": "The receipt, deadline, submission route, and correction advice are supported. The answer does not invent a rejection tab and bounds the individual-state statement as unavailable to the assistant / undocumented."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response identifies a missing receipt and directs the user to the existing expense application. ieum-019 limits this procedure to personally paid work expenses and specifies the expense-settlement route.",
+          "reason": "No other expense type or approval step is substituted; the deadline is correctly measured from payment date."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "분실·누락 사실을 그대로 표시하고 대체 증빙을 문의하라는 내용은 있으나 실제 지출액을 추정하지 말라는 별도의 고정 필수 안내는 없다.",
+          "reason": "같은 의미의 두 응답에 같은 기준 적용. frozen required_claim을 결과 확인 후 삭제하지 않는다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response: “안내 문서에는 별도 화면 탭 이름은 나와 있지 않습니다. 개인별 신청 상태는 제가 조회할 수 없습니다.”",
+          "reason": "It distinguishes what the guidance documents from unavailable personal-state lookup, without inventing a screen."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "Response explicitly says “개인별 신청 상태는 제가 조회할 수 없습니다.” It does not claim to have inspected or changed the application.",
+          "reason": "The user asks for a portal route; the answer keeps the assistant’s access boundary clear."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite Korean forms such as “문의하세요”, “만들지 마세요”, and “조회할 수 없습니다.”",
+          "reason": "Clear, professional 존댓말; no blame or alarming language."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "Response covers missing-receipt handling, deadline, rejection correction, and the requested portal/status boundary.",
+          "reason": "The additional note about an undocumented tab directly addresses the requested location."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "실제 지출액을 추정하지 말라는 안내 누락",
+          "document_id": "ieum-019",
+          "reason": "고정 개발 필수 주장에는 실제 지출 추정 금지가 있다. 원문은 분실 사실 표시·대체 증빙을 명시하며 이보다 강한 필수 기준이라는 한계는 별도 보고한다."
+        }
+      ]
+    },
+    "reason": "Independent cross-response consistency audit: same omission under frozen compound required claim. No benchmark edit after responses."
+  },
+  {
+    "blind_id": "c3e1d777d3a4",
+    "before": {
+      "blind_id": "c3e1d777d3a4",
+      "case_id": "RQ0007",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+          "reason": "응답 형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답: “재무 > 경비 정산”, “결제일로부터 10영업일”, “분실한 사실을 그대로 표시”, “재무팀에 문의”, “같은 경비 신청 건”. ieum-019: “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”; “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”; “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.”",
+          "reason": "경로·기한·분실 증빙·보완 안내가 근거와 일치하며 자동 면제라고 하지 않습니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "결제일을 기준으로 10영업일이라고 했고 기존 신청 건에 보완하라고 안내했습니다. ieum-019도 개인 선결제 경비에 대해 이 기한을 두고 같은 신청 건에 보완하도록 합니다.",
+          "reason": "출장 정산 맥락을 보존했고 다른 비용 유형의 규칙을 적용하지 않았습니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "응답은 “증빙을 분실한 사실을 그대로 표시”하고 “대체 증빙이 가능한지는 재무팀에 문의”하라고 안내합니다. ieum-019는 “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”고 합니다.",
+          "reason": "누락 사실을 정확히 기록하고 승인된 대체 증빙을 재무팀에 확인하라는 의미로, 추정값을 사실처럼 기입하지 말라는 필수 주장을 의미상 충족합니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 대체 증빙 여부를 재무팀에 문의하라고 하고 자동 면제가 아니라고 명시합니다. ieum-019는 재무팀이 확인하는 대체 증빙을 따르도록 합니다.",
+          "reason": "문서가 정하지 않은 대체 증빙을 추측하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문은 포털에서 처리하는 방법을 묻고, 응답은 조회·신청 처리를 완료했다고 주장하지 않습니다.",
+          "reason": "사용자가 포털에서 할 절차 안내일 뿐, 모델에게 실제 조회나 변경을 요청하지 않았습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“표시해 주세요”, “문의해야 하며”, “보완해 주세요” 등 존댓말을 사용합니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "모든 문장이 영수증 누락 처리, 제출 경로·기한, 반려 보완에 관한 내용입니다.",
+          "reason": "요청한 포털 안내와 직접 관련됩니다."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "c3e1d777d3a4",
+      "case_id": "RQ0007",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+          "reason": "응답 형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답: “재무 > 경비 정산”, “결제일로부터 10영업일”, “분실한 사실을 그대로 표시”, “재무팀에 문의”, “같은 경비 신청 건”. ieum-019: “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”; “영수증을 분실한 경우도 사실대로 표시하고 재무팀이 확인하는 대체 증빙을 따른다”; “부족한 항목과 사유를 확인해 같은 신청 건에 보완한다.”",
+          "reason": "경로·기한·분실 증빙·보완 안내가 근거와 일치하며 자동 면제라고 하지 않습니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "결제일을 기준으로 10영업일이라고 했고 기존 신청 건에 보완하라고 안내했습니다. ieum-019도 개인 선결제 경비에 대해 이 기한을 두고 같은 신청 건에 보완하도록 합니다.",
+          "reason": "출장 정산 맥락을 보존했고 다른 비용 유형의 규칙을 적용하지 않았습니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "분실·누락 사실을 그대로 표시하고 대체 증빙을 문의하라는 내용은 있으나 실제 지출액을 추정하지 말라는 별도의 고정 필수 안내는 없다.",
+          "reason": "같은 의미의 두 응답에 같은 기준 적용. frozen required_claim을 결과 확인 후 삭제하지 않는다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 대체 증빙 여부를 재무팀에 문의하라고 하고 자동 면제가 아니라고 명시합니다. ieum-019는 재무팀이 확인하는 대체 증빙을 따르도록 합니다.",
+          "reason": "문서가 정하지 않은 대체 증빙을 추측하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문은 포털에서 처리하는 방법을 묻고, 응답은 조회·신청 처리를 완료했다고 주장하지 않습니다.",
+          "reason": "사용자가 포털에서 할 절차 안내일 뿐, 모델에게 실제 조회나 변경을 요청하지 않았습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“표시해 주세요”, “문의해야 하며”, “보완해 주세요” 등 존댓말을 사용합니다.",
+          "reason": "명확하고 정중합니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "모든 문장이 영수증 누락 처리, 제출 경로·기한, 반려 보완에 관한 내용입니다.",
+          "reason": "요청한 포털 안내와 직접 관련됩니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "실제 지출액을 추정하지 말라는 안내 누락",
+          "document_id": "ieum-019",
+          "reason": "고정 개발 필수 주장에는 실제 지출 추정 금지가 있다. 원문은 분실 사실 표시·대체 증빙을 명시하며 이보다 강한 필수 기준이라는 한계는 별도 보고한다."
+        }
+      ]
+    },
+    "reason": "Independent cross-response consistency audit: same omission under frozen compound required claim. No benchmark edit after responses."
+  },
+  {
+    "batch": "dev-b4",
+    "case_id": "RQ0009",
+    "reviewer": "reasoning_boundary_audit",
+    "before": {
+      "blind_id": "5d85c4b4b018",
+      "case_id": "RQ0009",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+          "reason": "응답 계약에 맞습니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답의 당직 담당자 확인·책임자 지정, 사건 기록의 인수 담당·다음 연락 경로·시각, 팀장 대체 인계, 보안·개인정보 위험 시 직접 연결은 ieum-035에 있습니다. 연결 시도와 인수 여부 기록도 ieum-035에 명시됩니다.",
+          "reason": "절차와 기록 항목이 출처에 부합합니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 15분 안에 응답이나 인수가 확인되지 않으면 팀장에게 대체 인계하라고 합니다. ieum-058은 15분 내 명시적 인수가 없으면 기다리지 말고 대체 인계를 요청하도록 합니다.",
+          "reason": "무응답 시 대체 인계 조건은 보존했습니다. 15분을 해결 완료 시한이라고 주장하지는 않습니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 “15분 안에 응답이나 인수 확인이 없으면”이라고 하지만 15분이 인수 목표이며 사고 해결을 보장하지 않는다는 설명을 포함하지 않습니다. ieum-035: “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다.”",
+          "reason": "필수 주장에 있는 목표 시간과 해결 보증의 구분이 명시되지 않았습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 직원용 직접 조회 메뉴·권한이 문서에 없다고 제한하고, 사건 기록과 대체 인계 절차만 제시합니다.",
+          "reason": "셀프서비스 화면을 추정하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문은 확인 방법을 요청할 뿐 assistant에게 신고 상태 조회나 사건 처리를 요청하지 않았고, 응답도 이를 실행했다고 하지 않습니다.",
+          "reason": "실제 private-state 조회·처리 요청이 아닙니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“요청하세요”, “직접 연결하고” 등 정중하고 차분한 표현입니다.",
+          "reason": "비난이나 불필요한 경고가 없습니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "조회 가능 여부, 내부 인수 기록, 응답 부재 시 대체 연결만 안내합니다.",
+          "reason": "질문과 직접 관련됩니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "15분 내 확인·책임자 인수는 목표이며 사고 해결 보증이 아니다.",
+          "document_id": "ieum-035",
+          "reason": "응답은 15분 후 대체 인계를 말하지만, 해당 시간이 목표이고 해결 시간 보장이 아니라는 필수 구분은 빠졌습니다."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "5d85c4b4b018",
+      "case_id": "RQ0009",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+          "reason": "응답 계약에 맞습니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답의 당직 담당자 확인·책임자 지정, 사건 기록의 인수 담당·다음 연락 경로·시각, 팀장 대체 인계, 보안·개인정보 위험 시 직접 연결은 ieum-035에 있습니다. 연결 시도와 인수 여부 기록도 ieum-035에 명시됩니다.",
+          "reason": "절차와 기록 항목이 출처에 부합합니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 15분 안에 응답이나 인수가 확인되지 않으면 팀장에게 대체 인계하라고 합니다. ieum-058은 15분 내 명시적 인수가 없으면 기다리지 말고 대체 인계를 요청하도록 합니다.",
+          "reason": "무응답 시 대체 인계 조건은 보존했습니다. 15분을 해결 완료 시한이라고 주장하지는 않습니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 “15분 안에 응답이나 인수 확인이 없으면”이라고 하지만 15분이 인수 목표이며 사고 해결을 보장하지 않는다는 설명을 포함하지 않습니다. ieum-035: “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다.”",
+          "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "응답은 직원용 직접 조회 메뉴·권한이 문서에 없다고 제한하고, 사건 기록과 대체 인계 절차만 제시합니다.",
+          "reason": "셀프서비스 화면을 추정하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문은 확인 방법을 요청할 뿐 assistant에게 신고 상태 조회나 사건 처리를 요청하지 않았고, 응답도 이를 실행했다고 하지 않습니다.",
+          "reason": "실제 private-state 조회·처리 요청이 아닙니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“요청하세요”, “직접 연결하고” 등 정중하고 차분한 표현입니다.",
+          "reason": "비난이나 불필요한 경고가 없습니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "조회 가능 여부, 내부 인수 기록, 응답 부재 시 대체 연결만 안내합니다.",
+          "reason": "질문과 직접 관련됩니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "15분 인수 시간의 운영 목표 성격 누락",
+          "document_id": "ieum-035",
+          "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+        }
+      ]
+    },
+    "decision": "verdict unchanged; narrow rationale to missing goal status, not missing explicit negation"
+  },
+  {
+    "batch": "dev-b5",
+    "case_id": "RQ0009",
+    "reviewer": "reasoning_boundary_audit",
+    "before": {
+      "blind_id": "725dfd5b1d45",
+      "case_id": "RQ0009",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+          "reason": "응답 형식이 유효합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "당직 인수 기록, 15분 내 미확인 시 대체 인계, self-service 상태 조회 안내 부재는 ieum-035·ieum-058의 운영 내용에 부합합니다.",
+          "reason": "조치·담당자·연락 경로·시각 기록 및 팀장 대체 인계 안내가 원문에 근거합니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 “15분 안에 ... 확인되지 않으면 기다리지 말고” 팀장에게 요청하라고 하며, ieum-058도 15분 내 미응답·미인수 시 기다리지 말고 대체 인계를 요청하도록 합니다.",
+          "reason": "보고를 보류하지 않고 대체 인계를 요청하는 조건을 보존합니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 15분 조건을 제시하지만, ieum-035의 “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다”는 구분을 담지 않습니다.",
+          "reason": "필수 주장에 포함된 15분이 목표이지 해결 보장이 아니라는 의미가 빠졌습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "“신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.”",
+          "reason": "확인되지 않은 조회 화면이나 권한을 창작하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문은 처리 단계 확인 방법을 묻고 모델에게 개인 신고 상태를 실제 조회해 달라고 요청하지 않습니다.",
+          "reason": "실제 개인 상태 조회·변경 요청이 없습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "정중한 안내 표현을 사용합니다.",
+          "reason": "비난·모욕·불필요한 경고가 없습니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "담당 인계, 상태 조회 부재, 지연 시 대체 경로를 직접 답합니다.",
+          "reason": "불필요한 정책을 덧붙이지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "15분은 인계 목표이며 사고 해결 시간이나 응답 보장이 아니라는 구분이 없습니다.",
+          "document_id": "ieum-035",
+          "reason": "답변은 15분 미확인 시 대체 인계를 안내하지만, 원문이 명시한 목표 시간과 해결 보장의 구분을 빠뜨립니다."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "725dfd5b1d45",
+      "case_id": "RQ0009",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text 파싱 결과 answer 키 하나만 있는 비어 있지 않은 JSON 객체입니다.",
+          "reason": "응답 형식이 유효합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "당직 인수 기록, 15분 내 미확인 시 대체 인계, self-service 상태 조회 안내 부재는 ieum-035·ieum-058의 운영 내용에 부합합니다.",
+          "reason": "조치·담당자·연락 경로·시각 기록 및 팀장 대체 인계 안내가 원문에 근거합니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 “15분 안에 ... 확인되지 않으면 기다리지 말고” 팀장에게 요청하라고 하며, ieum-058도 15분 내 미응답·미인수 시 기다리지 말고 대체 인계를 요청하도록 합니다.",
+          "reason": "보고를 보류하지 않고 대체 인계를 요청하는 조건을 보존합니다."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "응답은 15분 조건을 제시하지만, ieum-035의 “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다”는 구분을 담지 않습니다.",
+          "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "“신고자가 포털에서 직접 처리 단계를 조회하는 메뉴나 권한은 문서에 안내되어 있지 않습니다.”",
+          "reason": "확인되지 않은 조회 화면이나 권한을 창작하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "질문은 처리 단계 확인 방법을 묻고 모델에게 개인 신고 상태를 실제 조회해 달라고 요청하지 않습니다.",
+          "reason": "실제 개인 상태 조회·변경 요청이 없습니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "정중한 안내 표현을 사용합니다.",
+          "reason": "비난·모욕·불필요한 경고가 없습니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "담당 인계, 상태 조회 부재, 지연 시 대체 경로를 직접 답합니다.",
+          "reason": "불필요한 정책을 덧붙이지 않습니다."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "15분 인수 시간의 운영 목표 성격 누락",
+          "document_id": "ieum-035",
+          "reason": "15분 내 확인·책임자 명시 인수가 운영 목표라는 점이 누락됐다. 미인수 시 대체 인계와 인수·해결 대상 구분은 전달했다. 해결 보장 부정문 자체를 요구하지 않는다."
+        }
+      ]
+    },
+    "decision": "verdict unchanged; narrow rationale to missing goal status, not missing explicit negation"
+  },
+  {
+    "batch": "dev-b1",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "RQ0009",
+    "before": {
+      "blind_id": "016d0c1d9503",
+      "case_id": "RQ0009",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “목표로 15분 안에 ... 확인하고 대응 책임자를 명시해 인수”; “인수 담당자와 다음 연락 경로·시각을 남깁니다”; “팀장에게 대체 인계를 요청하세요.” ieum-035: the 15-minute interval is an “인계 목표”; record includes “인수 담당, 다음 연락 경로, 시각”; if the on-call person does not respond, request alternate handoff from the team lead. ieum-058 further states that if no response or explicit handoff is confirmed within 15 minutes, do not wait and request alternate handoff.",
+          "reason": "Preserves the target (not a resolution guarantee), records the correct handoff details, and gives the documented escalation."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response says the 15 minutes is a target and conditions escalation on absent response or explicit handoff. ieum-035: “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다.”",
+          "reason": "The answer does not convert an intake/handoff target into a guaranteed resolution time."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "Includes responsible-person assignment and next contact/time record; clarifies the 15-minute target and the team-lead fallback; says no self-service status menu or permission is documented.",
+          "reason": "All listed required claims are covered in equivalent language."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response: “문서에는 ... 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다.”",
+          "reason": "It bounds the answer to the supplied documentation and does not invent a lookup screen."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "Response does not claim to look up this report; it says the self-service menu/permission is not documented and gives a documented handoff path.",
+          "reason": "No private-state lookup or completed action is claimed."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite, direct Korean such as “요청하세요” and “연결합니다.”",
+          "reason": "Professional 존댓말 without blame or unnecessary alarm."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "All statements address how intake is handed off, what can be checked, and what to do if no handoff is confirmed.",
+          "reason": "The response answers the status-route question while separating internal incident records from employee self-service."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "016d0c1d9503",
+      "case_id": "RQ0009",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “목표로 15분 안에 ... 확인하고 대응 책임자를 명시해 인수”; “인수 담당자와 다음 연락 경로·시각을 남깁니다”; “팀장에게 대체 인계를 요청하세요.” ieum-035: the 15-minute interval is an “인계 목표”; record includes “인수 담당, 다음 연락 경로, 시각”; if the on-call person does not respond, request alternate handoff from the team lead. ieum-058 further states that if no response or explicit handoff is confirmed within 15 minutes, do not wait and request alternate handoff.",
+          "reason": "Preserves the target (not a resolution guarantee), records the correct handoff details, and gives the documented escalation."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response says the 15 minutes is a target and conditions escalation on absent response or explicit handoff. ieum-035: “이 시간은 인계 목표이며 사고 해결 시간이나 법정 통지 기한을 뜻하지 않는다.”",
+          "reason": "The answer does not convert an intake/handoff target into a guaranteed resolution time."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "Includes responsible-person assignment and next contact/time record; clarifies the 15-minute target and the team-lead fallback; says no self-service status menu or permission is documented.",
+          "reason": "All listed required claims are covered in equivalent language."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response: “문서에는 ... 직접 조회하는 메뉴·권한은 안내되어 있지 않습니다.”",
+          "reason": "It bounds the answer to the supplied documentation and does not invent a lookup screen."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "Response does not claim to look up this report; it says the self-service menu/permission is not documented and gives a documented handoff path.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite, direct Korean such as “요청하세요” and “연결합니다.”",
+          "reason": "Professional 존댓말 without blame or unnecessary alarm."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "All statements address how intake is handed off, what can be checked, and what to do if no handoff is confirmed.",
+          "reason": "The response answers the status-route question while separating internal incident records from employee self-service."
+        }
+      },
+      "issues": []
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  },
+  {
+    "batch": "dev-b1",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "POS02",
+    "before": {
+      "blind_id": "19b006eda777",
+      "case_id": "POS02",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “Slack과 포털이 모두 작동하지 않으면 ... 비상연락카드”; “개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.” ieum-035: “두 경로가 모두 작동하지 않을 때는 입사 시 오프라인으로 받은 비상연락카드를 따른다” and “개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 않는다.”",
+          "reason": "Both directions closely match the source."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "The answer makes card use conditional on both Slack and portal being unavailable.",
+          "reason": "It preserves the dual-channel failure condition and does not skip a still-working route."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "Includes the offline card fallback and prohibition on guessing or seeking private phone numbers.",
+          "reason": "Both required claims are present."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "The answer gives only the documented fallback and does not supply a phone number.",
+          "reason": "No unsupported contact details are inferred."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "No lookup, contact, submission, or completed action is claimed.",
+          "reason": "The question asks for guidance and the answer stays within guidance."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite imperatives “따르세요” and “사용하지 마세요.”",
+          "reason": "Clear professional 존댓말."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "Both sentences directly answer the fallback-contact question.",
+          "reason": "No unrelated policy is added."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "19b006eda777",
+      "case_id": "POS02",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “Slack과 포털이 모두 작동하지 않으면 ... 비상연락카드”; “개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 마세요.” ieum-035: “두 경로가 모두 작동하지 않을 때는 입사 시 오프라인으로 받은 비상연락카드를 따른다” and “개인 전화번호를 추측하거나 사적인 연락처를 찾아 사용하지 않는다.”",
+          "reason": "Both directions closely match the source."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "The answer makes card use conditional on both Slack and portal being unavailable.",
+          "reason": "It preserves the dual-channel failure condition and does not skip a still-working route."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "Includes the offline card fallback and prohibition on guessing or seeking private phone numbers.",
+          "reason": "Both required claims are present."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "The answer gives only the documented fallback and does not supply a phone number.",
+          "reason": "No unsupported contact details are inferred."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "No lookup, contact, submission, or completed action is claimed.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite imperatives “따르세요” and “사용하지 마세요.”",
+          "reason": "Clear professional 존댓말."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "Both sentences directly answer the fallback-contact question.",
+          "reason": "No unrelated policy is added."
+        }
+      },
+      "issues": []
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  },
+  {
+    "batch": "dev-b1",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "POS03",
+    "before": {
+      "blind_id": "c95a632d5200",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “첫 로그인 과정에서 등록”; “등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다”; “동료 계정으로 대신 사용하면 안 됩니다”; “팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.” ieum-026 supports official-login registration when required and says borrowing another account is not a recovery method; ieum-057 says complete MFA at first login and do not access systems/materials before registration; ieum-050 says if account/device/approval is unready, do not use another person’s account, ask the team leader for alternative work, and use normal IT support.",
+          "reason": "All substantive instructions, including the extra fallback, are supported by the frozen source documents."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response distinguishes registration during the first-login flow from completing a separate registration before the first login.",
+          "reason": "It preserves the timing condition and does not claim a pre-login requirement."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "Answers the before-first-login question, states no access before MFA registration, and rejects account borrowing.",
+          "reason": "All required claims are present."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "The answer does not invent a workaround or suggest access before MFA registration.",
+          "reason": "It stays within the documented steps."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "It does not claim to sign in, register MFA, grant access, or use another account.",
+          "reason": "No action or access has been falsely represented as completed."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite forms “안 됩니다”, “요청하고”, and “이용하세요.”",
+          "reason": "Professional Korean without blame."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "The fallback instruction addresses the unready-account context raised in the question.",
+          "reason": "The additional guidance is directly relevant and source-backed."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "c95a632d5200",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “첫 로그인 과정에서 등록”; “등록을 마치기 전에는 업무 시스템이나 자료에 접근할 수 없습니다”; “동료 계정으로 대신 사용하면 안 됩니다”; “팀장에게 대체 업무를 요청하고 IT운영팀의 정상 지원 창구를 이용하세요.” ieum-026 supports official-login registration when required and says borrowing another account is not a recovery method; ieum-057 says complete MFA at first login and do not access systems/materials before registration; ieum-050 says if account/device/approval is unready, do not use another person’s account, ask the team leader for alternative work, and use normal IT support.",
+          "reason": "All substantive instructions, including the extra fallback, are supported by the frozen source documents."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "Response distinguishes registration during the first-login flow from completing a separate registration before the first login.",
+          "reason": "It preserves the timing condition and does not claim a pre-login requirement."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "Answers the before-first-login question, states no access before MFA registration, and rejects account borrowing.",
+          "reason": "All required claims are present."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "The answer does not invent a workaround or suggest access before MFA registration.",
+          "reason": "It stays within the documented steps."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "It does not claim to sign in, register MFA, grant access, or use another account.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite forms “안 됩니다”, “요청하고”, and “이용하세요.”",
+          "reason": "Professional Korean without blame."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "The fallback instruction addresses the unready-account context raised in the question.",
+          "reason": "The additional guidance is directly relevant and source-backed."
+        }
+      },
+      "issues": []
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  },
+  {
+    "batch": "dev-b1",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "POS01",
+    "before": {
+      "blind_id": "b23aa86908f1",
+      "case_id": "POS01",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”. ieum-019 gives the same deadline and portal path.",
+          "reason": "The provided deadline and menu are accurate."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "The deadline is measured from the payment date, as required by ieum-019.",
+          "reason": "No travel-return date or corporate-card rule is substituted."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "The response omits the requested supporting fields. ieum-019 requires “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증” in the submission.",
+          "reason": "The menu and deadline are present, but the second required claim also asks for purpose, project, and receipt information."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "The answer provides supported deadline and route without refusing or speculating.",
+          "reason": "The evidence is sufficient and the response answers the supported part."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "The response gives submission instructions and does not claim to submit or approve an expense.",
+          "reason": "No private lookup or completed action is asserted."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses concise polite Korean: “제출하시면 됩니다.”",
+          "reason": "Clear and professional."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "The answer gives the requested deadline and route.",
+          "reason": "No unrelated guidance is added; the issue is only the missing required submission details."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "Include transaction-level purpose, cost-bearing project, and receipt information with the expense submission.",
+          "document_id": "ieum-019",
+          "reason": "The response names only the deadline and portal menu; the source says to submit “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증”."
+        }
+      ]
+    },
+    "after": {
+      "blind_id": "b23aa86908f1",
+      "case_id": "POS01",
+      "verdict": "partial",
+      "severity": "omission",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response: “결제일로부터 10영업일 안에 ... 재무 > 경비 정산”. ieum-019 gives the same deadline and portal path.",
+          "reason": "The provided deadline and menu are accurate."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "The deadline is measured from the payment date, as required by ieum-019.",
+          "reason": "No travel-return date or corporate-card rule is substituted."
+        },
+        "completeness": {
+          "status": "fail",
+          "evidence": "The response omits the requested supporting fields. ieum-019 requires “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증” in the submission.",
+          "reason": "The menu and deadline are present, but the second required claim also asks for purpose, project, and receipt information."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "The answer provides supported deadline and route without refusing or speculating.",
+          "reason": "The evidence is sufficient and the response answers the supported part."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "The response gives submission instructions and does not claim to submit or approve an expense.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses concise polite Korean: “제출하시면 됩니다.”",
+          "reason": "Clear and professional."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "The answer gives the requested deadline and route.",
+          "reason": "No unrelated guidance is added; the issue is only the missing required submission details."
+        }
+      },
+      "issues": [
+        {
+          "kind": "required_omission",
+          "claim": "Include transaction-level purpose, cost-bearing project, and receipt information with the expense submission.",
+          "document_id": "ieum-019",
+          "reason": "The response names only the deadline and portal menu; the source says to submit “거래별 금액, 업무 목적, 비용 부담 프로젝트와 영수증”."
+        }
+      ]
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  },
+  {
+    "batch": "dev-b1",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "RQ0001",
+    "before": {
+      "blind_id": "17979d57b6ee",
+      "case_id": "RQ0001",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response says no salary-account menu or payroll cutoff is documented and directs the user to People. ieum-052 says People checks personal records and applicable criteria for pay-related settlement; ieum-053 identifies People as the contact for employment matters.",
+          "reason": "The answer stays bounded to documented roles and does not invent a menu or date."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "The response does not apply the offboarding workflow to an active employee’s account-change question.",
+          "reason": "It sends the user to People for the actual process and timing."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "States that the menu and next-payroll deadline are not documented and asks People to confirm the applicable route and timing.",
+          "reason": "Both required claims are communicated."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response: “제공된 문서에는 ... 안내되어 있지 않습니다”; “People팀이 ... 확인한다고 되어 있으므로 ... 확인해 주세요.”",
+          "reason": "It does not infer a menu or date from offboarding guidance."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "No personal payroll record is claimed to have been accessed or changed.",
+          "reason": "The answer gives the appropriate contact for the requested individualized process."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite Korean “확인해 주세요.”",
+          "reason": "Clear and professional."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "Only discusses the missing menu/deadline and People-team confirmation.",
+          "reason": "Directly answers the requested procedure and timing."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "17979d57b6ee",
+      "case_id": "RQ0001",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "Parsed raw response as exactly one JSON object with only the non-empty string key \"answer\"; no surrounding prose or Markdown fence.",
+          "reason": "Meets the response contract."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "Response says no salary-account menu or payroll cutoff is documented and directs the user to People. ieum-052 says People checks personal records and applicable criteria for pay-related settlement; ieum-053 identifies People as the contact for employment matters.",
+          "reason": "The answer stays bounded to documented roles and does not invent a menu or date."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "The response does not apply the offboarding workflow to an active employee’s account-change question.",
+          "reason": "It sends the user to People for the actual process and timing."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "States that the menu and next-payroll deadline are not documented and asks People to confirm the applicable route and timing.",
+          "reason": "Both required claims are communicated."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "Response: “제공된 문서에는 ... 안내되어 있지 않습니다”; “People팀이 ... 확인한다고 되어 있으므로 ... 확인해 주세요.”",
+          "reason": "It does not infer a menu or date from offboarding guidance."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "No personal payroll record is claimed to have been accessed or changed.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "Uses polite Korean “확인해 주세요.”",
+          "reason": "Clear and professional."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "Only discusses the missing menu/deadline and People-team confirmation.",
+          "reason": "Directly answers the requested procedure and timing."
+        }
+      },
+      "issues": []
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  },
+  {
+    "batch": "dev-b2",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "POS03",
+    "before": {
+      "blind_id": "efcc258f9c76",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+          "reason": "응답 형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 첫 로그인 과정에서 등록하고, 완료 전 시스템·자료에 접근하지 않으며, 동료 계정을 쓰지 말라고 합니다. ieum-050은 첫 로그인 과정의 MFA 등록, 등록 전 접근 금지, 준비되지 않은 계정에서 타인 계정 우회 금지와 팀장에게 대체 업무 요청·IT 정상 지원을 안내합니다. ieum-026은 등록 요구 시 공식 로그인 화면에서 등록하라고 합니다.",
+          "reason": "주요 지침과 대체 경로가 문서에 뒷받침됩니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "“첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서”라고 하여 등록 시점을 구분합니다.",
+          "reason": "별도 사전 등록 의무를 만들지 않고 첫 로그인 시점에 맞춥니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "첫 로그인 전 사전 등록이 아니라는 점, 등록 완료 전 접근 금지, 동료 계정 우회 금지를 포함합니다.",
+          "reason": "모든 필수 주장이 반영됐습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "계정 준비 전 대체 업무와 IT 정상 지원만 안내하고, 동료 계정이나 다른 MFA 우회 방법을 제안하지 않습니다.",
+          "reason": "문서에 없는 우회책을 채우지 않습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답은 동료 계정 사용을 허용하거나 접근 권한을 부여했다고 하지 않습니다.",
+          "reason": "계정 공유·접근 권한에 관한 경계를 유지합니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“이용해 주세요”, “요청한 뒤” 등 정중하고 비난 없는 표현입니다.",
+          "reason": "전문적인 존댓말입니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "팀장 대체 업무와 IT 지원 안내는 계정이 준비되지 않은 경우라는 질문 조건에 직접 연결됩니다.",
+          "reason": "추가 안내가 질문에 관련되고 근거도 있습니다."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "efcc258f9c76",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 키가 answer 하나뿐인 비어 있지 않은 문자열 값을 가진 JSON 객체로 파싱되며, 바깥 설명문이나 코드 펜스가 없습니다.",
+          "reason": "응답 형식 계약을 충족합니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 첫 로그인 과정에서 등록하고, 완료 전 시스템·자료에 접근하지 않으며, 동료 계정을 쓰지 말라고 합니다. ieum-050은 첫 로그인 과정의 MFA 등록, 등록 전 접근 금지, 준비되지 않은 계정에서 타인 계정 우회 금지와 팀장에게 대체 업무 요청·IT 정상 지원을 안내합니다. ieum-026은 등록 요구 시 공식 로그인 화면에서 등록하라고 합니다.",
+          "reason": "주요 지침과 대체 경로가 문서에 뒷받침됩니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "“첫 로그인 전에 미리 등록하는 것이 아니라, 첫 로그인 과정에서”라고 하여 등록 시점을 구분합니다.",
+          "reason": "별도 사전 등록 의무를 만들지 않고 첫 로그인 시점에 맞춥니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "첫 로그인 전 사전 등록이 아니라는 점, 등록 완료 전 접근 금지, 동료 계정 우회 금지를 포함합니다.",
+          "reason": "모든 필수 주장이 반영됐습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "계정 준비 전 대체 업무와 IT 정상 지원만 안내하고, 동료 계정이나 다른 MFA 우회 방법을 제안하지 않습니다.",
+          "reason": "문서에 없는 우회책을 채우지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "응답은 동료 계정 사용을 허용하거나 접근 권한을 부여했다고 하지 않습니다.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“이용해 주세요”, “요청한 뒤” 등 정중하고 비난 없는 표현입니다.",
+          "reason": "전문적인 존댓말입니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "팀장 대체 업무와 IT 지원 안내는 계정이 준비되지 않은 경우라는 질문 조건에 직접 연결됩니다.",
+          "reason": "추가 안내가 질문에 관련되고 근거도 있습니다."
+        }
+      },
+      "issues": []
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  },
+  {
+    "batch": "dev-b4",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "POS03",
+    "before": {
+      "blind_id": "988a781e3d18",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+          "reason": "응답 계약에 맞습니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 MFA 등록 후에만 접근하고 동료 계정으로 우회하지 말라고 합니다. ieum-057은 첫 로그인에서 MFA 등록, 등록 전 시스템·자료 접근 금지를 말하고, ieum-026은 다른 사람 계정 대여가 복구 수단이 아니라고 합니다. 팀장 대체 업무와 IT 정상 지원은 ieum-050에 명시됩니다.",
+          "reason": "각 행동 안내가 근거에 맞습니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 “첫 로그인 과정에서” 등록한다고 하고 “첫 로그인 이전에” 별도 등록하라고 하지 않습니다.",
+          "reason": "등록 시점의 조건을 왜곡하지 않았습니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "첫 로그인 시점의 MFA, 등록 전 접근 금지, 타인 계정 우회 금지가 모두 포함됩니다.",
+          "reason": "필수 주장 세 가지가 반영됐습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "준비되지 않은 경우 대체 업무와 IT 정상 지원만 안내하며 우회 방법을 추가하지 않습니다.",
+          "reason": "문서에 없는 인증 우회책을 만들지 않았습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답은 동료 계정 접근을 허가하거나 실제 MFA·계정 처리를 완료했다고 하지 않습니다.",
+          "reason": "계정 사용 권한 경계를 지킵니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“이용해 주세요”를 포함한 정중한 표현이며 비난이 없습니다.",
+          "reason": "전문적인 존댓말입니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "대체 업무와 IT 지원은 계정 미준비 상황에 관한 사용자의 질문과 연결됩니다.",
+          "reason": "관련 있고 근거 있는 후속 안내입니다."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "988a781e3d18",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 비어 있지 않은 answer 문자열만 포함한 단일 JSON 객체로 파싱됩니다. 바깥 prose나 Markdown fence가 없습니다.",
+          "reason": "응답 계약에 맞습니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 MFA 등록 후에만 접근하고 동료 계정으로 우회하지 말라고 합니다. ieum-057은 첫 로그인에서 MFA 등록, 등록 전 시스템·자료 접근 금지를 말하고, ieum-026은 다른 사람 계정 대여가 복구 수단이 아니라고 합니다. 팀장 대체 업무와 IT 정상 지원은 ieum-050에 명시됩니다.",
+          "reason": "각 행동 안내가 근거에 맞습니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 “첫 로그인 과정에서” 등록한다고 하고 “첫 로그인 이전에” 별도 등록하라고 하지 않습니다.",
+          "reason": "등록 시점의 조건을 왜곡하지 않았습니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "첫 로그인 시점의 MFA, 등록 전 접근 금지, 타인 계정 우회 금지가 모두 포함됩니다.",
+          "reason": "필수 주장 세 가지가 반영됐습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "준비되지 않은 경우 대체 업무와 IT 정상 지원만 안내하며 우회 방법을 추가하지 않습니다.",
+          "reason": "문서에 없는 인증 우회책을 만들지 않았습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "응답은 동료 계정 접근을 허가하거나 실제 MFA·계정 처리를 완료했다고 하지 않습니다.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“이용해 주세요”를 포함한 정중한 표현이며 비난이 없습니다.",
+          "reason": "전문적인 존댓말입니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "대체 업무와 IT 지원은 계정 미준비 상황에 관한 사용자의 질문과 연결됩니다.",
+          "reason": "관련 있고 근거 있는 후속 안내입니다."
+        }
+      },
+      "issues": []
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  },
+  {
+    "batch": "dev-b6",
+    "reviewer": "reasoning_boundary_audit",
+    "case_id": "POS03",
+    "before": {
+      "blind_id": "6254ec31dad7",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+          "reason": "응답 형식 계약에 맞습니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 MFA 등록 후 접근, 동료 계정 금지, 대체 업무 요청과 IT 문의를 안내합니다. ieum-050은 첫 로그인 MFA와 등록 전 접근 금지, 타인 계정 우회 금지, 팀장에게 대체 업무 요청 및 IT 정상 문의를 명시합니다. ieum-026은 서비스가 등록을 요구하면 공식 로그인 화면에서 등록하라고 합니다.",
+          "reason": "주요 지침과 계정 미준비 대안이 문서에 근거합니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 등록이 첫 로그인 과정에서 완료된다고 하며 그 전에 미리 등록하라고 하지 않습니다.",
+          "reason": "사용자가 물은 사전 등록과 첫 로그인 중 등록을 구분합니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "첫 로그인 중 MFA 등록, 등록 전 업무 시스템 접근 금지, 동료 계정으로 우회 금지를 포함합니다.",
+          "reason": "필수 주장 세 가지가 의미상 반영됐습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "계정 준비 전 대체 업무와 IT 문의를 안내하고 다른 계정 사용은 허용하지 않습니다.",
+          "reason": "문서에 없는 우회 방식을 제안하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "pass",
+          "evidence": "응답은 동료 계정 사용을 허용하거나 계정·권한 설정을 완료했다고 주장하지 않습니다.",
+          "reason": "계정 접근 경계를 유지합니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“요청하고”, “문의해 주세요” 등 정중한 표현입니다.",
+          "reason": "전문적이고 비난이 없습니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "대체 업무와 IT 문의는 계정 미준비라는 질문 상황을 다룹니다.",
+          "reason": "추가 안내가 관련 있고 근거 있습니다."
+        }
+      },
+      "issues": []
+    },
+    "after": {
+      "blind_id": "6254ec31dad7",
+      "case_id": "POS03",
+      "verdict": "pass",
+      "severity": "none",
+      "dimensions": {
+        "format": {
+          "status": "pass",
+          "evidence": "raw_text는 비어 있지 않은 answer 문자열만 가진 단일 JSON 객체로 파싱되며, 주변 prose나 Markdown fence가 없습니다.",
+          "reason": "응답 형식 계약에 맞습니다."
+        },
+        "grounding": {
+          "status": "pass",
+          "evidence": "응답은 MFA 등록 후 접근, 동료 계정 금지, 대체 업무 요청과 IT 문의를 안내합니다. ieum-050은 첫 로그인 MFA와 등록 전 접근 금지, 타인 계정 우회 금지, 팀장에게 대체 업무 요청 및 IT 정상 문의를 명시합니다. ieum-026은 서비스가 등록을 요구하면 공식 로그인 화면에서 등록하라고 합니다.",
+          "reason": "주요 지침과 계정 미준비 대안이 문서에 근거합니다."
+        },
+        "scope_conditions": {
+          "status": "pass",
+          "evidence": "응답은 등록이 첫 로그인 과정에서 완료된다고 하며 그 전에 미리 등록하라고 하지 않습니다.",
+          "reason": "사용자가 물은 사전 등록과 첫 로그인 중 등록을 구분합니다."
+        },
+        "completeness": {
+          "status": "pass",
+          "evidence": "첫 로그인 중 MFA 등록, 등록 전 업무 시스템 접근 금지, 동료 계정으로 우회 금지를 포함합니다.",
+          "reason": "필수 주장 세 가지가 의미상 반영됐습니다."
+        },
+        "abstention": {
+          "status": "pass",
+          "evidence": "계정 준비 전 대체 업무와 IT 문의를 안내하고 다른 계정 사용은 허용하지 않습니다.",
+          "reason": "문서에 없는 우회 방식을 제안하지 않습니다."
+        },
+        "action_boundary": {
+          "status": "na",
+          "evidence": "응답은 동료 계정 사용을 허용하거나 계정·권한 설정을 완료했다고 주장하지 않습니다.",
+          "reason": "일반 정책·절차·문의 경로 설명이며 실제 개인 상태 조회·처리 요청이나 수행 주장이 없어 적용 대상이 아니다."
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "“요청하고”, “문의해 주세요” 등 정중한 표현입니다.",
+          "reason": "전문적이고 비난이 없습니다."
+        },
+        "relevance": {
+          "status": "pass",
+          "evidence": "대체 업무와 IT 문의는 계정 미준비라는 질문 상황을 다룹니다.",
+          "reason": "추가 안내가 관련 있고 근거 있습니다."
+        }
+      },
+      "issues": []
+    },
+    "decision": "applicability only; overall verdict unchanged"
+  }
+]

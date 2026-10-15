@@ -1,0 +1,20 @@
+{
+  "development": {
+    "api_calls": 52,
+    "standard_usage_estimate_dollars": 0.240335545,
+    "unknown_usage_calls": 0,
+    "conservative_ledger_estimate_dollars": 0.47940609
+  },
+  "final": {
+    "api_calls": 40,
+    "standard_usage_estimate_dollars": 0.157707355,
+    "unknown_usage_calls": 0,
+    "conservative_ledger_estimate_dollars": 0.31396746000000003
+  },
+  "total": {
+    "api_calls": 92,
+    "standard_usage_estimate_dollars": 0.39804290000000003,
+    "unknown_usage_calls": 0,
+    "conservative_ledger_estimate_dollars": 0.79337355
+  }
+}

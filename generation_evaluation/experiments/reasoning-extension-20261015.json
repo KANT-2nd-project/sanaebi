@@ -1,0 +1,62 @@
+{
+  "gpt-examples-medium": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "medium"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-examples-high": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "high"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-examples-max": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "max"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-examples-xhigh": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 1024,
+      "reasoning_effort": "xhigh"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  },
+  "gpt-examples-xhigh-4096": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "seed": null
+  }
+}

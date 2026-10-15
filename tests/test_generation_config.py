@@ -1,6 +1,10 @@
 import unittest
 
-from generation.config import GenerationConfig, GenerationProvider
+from generation.config import (
+    GenerationConfig,
+    GenerationOutputMode,
+    GenerationProvider,
+)
 
 
 class GenerationConfigTests(unittest.TestCase):
@@ -83,6 +87,97 @@ class GenerationConfigTests(unittest.TestCase):
             with self.subTest(provider=provider):
                 config = GenerationConfig(provider, "example", 30.0)
                 self.assertIs(config.provider, provider)
+
+    def test_output_mode_defaults_to_prompt_json_and_strict_is_openai_only(self):
+        for provider in GenerationProvider:
+            config = GenerationConfig(provider, "example", 30.0)
+            self.assertIs(config.output_mode, GenerationOutputMode.PROMPT_JSON)
+
+        strict = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "example",
+            30.0,
+            output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
+        )
+        self.assertIs(strict.output_mode, GenerationOutputMode.STRICT_JSON_SCHEMA)
+
+        with self.assertRaisesRegex(ValueError, "OpenAI"):
+            GenerationConfig(
+                GenerationProvider.OLLAMA,
+                "example",
+                30.0,
+                output_mode=GenerationOutputMode.STRICT_JSON_SCHEMA,
+            )
+
+    def test_output_mode_rejects_strings_and_unknown_values(self):
+        for value in ("prompt_json", "strict_json_schema", "unknown", None, 1):
+            with self.subTest(value=value), self.assertRaises(TypeError):
+                GenerationConfig(
+                    GenerationProvider.OPENAI,
+                    "example",
+                    30.0,
+                    output_mode=value,
+                )
+
+    def test_reasoning_effort_is_openai_only_and_uses_supported_values(self):
+        for effort in ("none", "low", "medium", "high", "xhigh", "max"):
+            with self.subTest(effort=effort):
+                config = GenerationConfig(
+                    GenerationProvider.OPENAI, "example", 30, reasoning_effort=effort
+                )
+                self.assertEqual(config.reasoning_effort, effort)
+
+        for value, error in ((1, TypeError), ("", ValueError), ("minimal", ValueError)):
+            with self.subTest(value=value), self.assertRaises(error):
+                GenerationConfig(
+                    GenerationProvider.OPENAI,
+                    "example",
+                    30,
+                    reasoning_effort=value,
+                )
+
+        with self.assertRaisesRegex(ValueError, "OpenAI"):
+            GenerationConfig(
+                GenerationProvider.OLLAMA, "example", 30, reasoning_effort="none"
+            )
+
+    def test_temperature_accepts_finite_range_and_rejects_invalid_values(self):
+        for value in (0, 0.5, 2):
+            with self.subTest(value=value):
+                config = GenerationConfig(
+                    GenerationProvider.OPENAI, "example", 30, temperature=value
+                )
+                self.assertEqual(config.temperature, value)
+
+        for value in (True, False, "0.5", [], {}):
+            with self.subTest(value=value), self.assertRaises(TypeError):
+                GenerationConfig(
+                    GenerationProvider.OPENAI, "example", 30, temperature=value
+                )
+        for value in (-0.1, 2.1, float("inf"), float("-inf"), float("nan")):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                GenerationConfig(
+                    GenerationProvider.OPENAI, "example", 30, temperature=value
+                )
+
+    def test_temperature_cannot_be_combined_with_non_none_reasoning_effort(self):
+        with self.assertRaisesRegex(ValueError, "temperature"):
+            GenerationConfig(
+                GenerationProvider.OPENAI,
+                "example",
+                30,
+                reasoning_effort="low",
+                temperature=0.2,
+            )
+
+        config = GenerationConfig(
+            GenerationProvider.OPENAI,
+            "example",
+            30,
+            reasoning_effort="none",
+            temperature=0.2,
+        )
+        self.assertEqual(config.temperature, 0.2)
 
     def test_plain_strings_and_other_types_are_rejected_as_provider(self):
         for provider in ("ollama", "openai", "unknown", None, 1):

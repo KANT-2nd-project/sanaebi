@@ -1,0 +1,56 @@
+{
+  "status": "development_complete",
+  "reference": "luna-reference",
+  "ordered_candidates": [
+    "luna-coverage",
+    "luna-conditions",
+    "luna-json"
+  ],
+  "selection_order": [
+    "critical_case_count ascending",
+    "pass_count descending",
+    "partial_count descending",
+    "uncertain_count ascending",
+    "median_elapsed_seconds ascending",
+    "estimated_cost_dollars ascending"
+  ],
+  "repeat_rule": "Repeat the best candidate and reference before final freeze; reject repeated critical regression. If tied on quality, prefer reference unless a reproducible efficiency gain exists.",
+  "stop_rule": "Two successive candidate trials without improvement over best; or time cap. Do not start further tuning after final freeze.",
+  "final_order": [
+    "reference repeat1",
+    "selected repeat1",
+    "selected repeat2",
+    "reference repeat2"
+  ],
+  "final_cases": 20,
+  "final_repeats_each": 2,
+  "final_new_group_only": true,
+  "current_model_selection": "gpt-6-luna; unchanged",
+  "first_pass_counts": {
+    "luna-reference": 6,
+    "luna-coverage": 7,
+    "luna-conditions": 6,
+    "luna-json": 5
+  },
+  "tuning_stopped_reason": "conditions and json did not improve on coverage in consecutive trials",
+  "repeat_candidate": "luna-coverage",
+  "reference_repeat": "luna-reference",
+  "second_pass_counts": {
+    "luna-reference": 5,
+    "luna-coverage": 6
+  },
+  "two_repeat_counts": {
+    "luna-reference": {
+      "pass": 11,
+      "partial": 5,
+      "stable_both_pass": 5
+    },
+    "luna-coverage": {
+      "pass": 13,
+      "partial": 3,
+      "stable_both_pass": 6
+    }
+  },
+  "final_candidate": "luna-coverage",
+  "decision": "Coverage is the only improved development candidate, but repeat2 still omits POS01; no adoption before final comparison."
+}

@@ -1,0 +1,27 @@
+{
+  "company-baseline-v1": {
+    "documents": "tmp/generation-cli-documents.jsonl",
+    "models": [
+      "qwen3-4b-q4km"
+    ]
+  },
+  "company-smoke-v1": {
+    "documents": "tmp/generation-smoke-documents.jsonl",
+    "models": [
+      "qwen3-4b-q4km"
+    ]
+  },
+  "company-full-context-v1": {
+    "documents": "tmp/generation-cli-documents.jsonl",
+    "models": [
+      "qwen3-4b-q4km-96k"
+    ]
+  },
+  "company-openai-comparison-v1": {
+    "documents": "tmp/generation-cli-documents.jsonl",
+    "models": [
+      "qwen3-4b-q4km-96k",
+      "gpt-6-luna"
+    ]
+  }
+}

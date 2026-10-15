@@ -1,0 +1,30 @@
+{
+  "authorized_by": "user 2026-10-15: 최대 2시간·API 3달러",
+  "authorized_at": 1792027715.3521993,
+  "total_dollars": 3,
+  "dev_dollars": 1.2,
+  "total_seconds": 7200,
+  "dev_seconds": 4200,
+  "prior_experiment_ledger": "../generation-selection-20261015/resumed-budget.json",
+  "prior_ledger_sha256": "5b93f7ddddc2a677b77d48dd7d93d401a76f950a2720e91995f69cf7efbdf946",
+  "new_experiment": true,
+  "clock_starts": "first paid reservation",
+  "candidates": [
+    "reference",
+    "coverage",
+    "conditions",
+    "json"
+  ],
+  "stop": "two consecutive candidates without improvement or budget exhaustion; preserve selected model",
+  "no_final_tuning": true,
+  "budget_amendments": [
+    {
+      "at": 1792027881.744004,
+      "user_instruction": "예산 상관 없이 막 해도 된다.",
+      "cost_limit_waived": true,
+      "time_limit_seconds": 7200,
+      "operational_cap_currently_retained": 3,
+      "note": "No need to raise cap yet; do not silently reset ledger or timer."
+    }
+  ]
+}
