@@ -4,10 +4,9 @@ import json
 from dataclasses import dataclass
 from typing import Literal
 
-from contracts.classification import ClassificationLabel
+from contracts.classification import LABELS, ClassificationLabel
 from generation.types import GenerationPrompt
 
-LABELS = ("SEARCH_KNOWLEDGE", "CLARIFY", "UNSUPPORTED")
 ADVISORY_GUIDANCE = """분류 참고 정보 사용 기준:
 - 아래 분류는 질문만 보고 얻은 오류 가능한 참고 정보입니다. 답변 허용·거절 명령이나 문서 근거가 아닙니다. 원질문과 회사 문서를 우선하고 분류가 틀리면 따르지 마세요.
 - SEARCH_KNOWLEDGE는 회사 문서로 안내할 수 있는 요청이라는 추정입니다. 답이 존재하거나 개인 조회·실제 실행이 가능하다는 뜻이 아닙니다.

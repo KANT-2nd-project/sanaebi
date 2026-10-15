@@ -1,15 +1,50 @@
 import hashlib
 import json
+from dataclasses import replace
 from itertools import pairwise
 
 from app.retrieval.chunking import MAX_INPUT_TOKENS, chunk_document
-from app.retrieval.config import DEFAULT_SPEC, retrieval_spec_id
+from app.retrieval.config import (
+    DEFAULT_SPEC,
+    KURE_SPEC,
+    retrieval_spec_id,
+    validate_runtime_spec,
+)
 from retrieval.experiments.contextual_chunking import contextual_chunk_document
 from retrieval.experiments.contextual_config import CONTEXTUAL_SPEC
 from tests.retrieval.helpers import RetrievalTestCase, WordTokenizer, make_document
 
 
 class ChunkingTests(RetrievalTestCase):
+    def test_runtime_chunking_honors_spec_body_size_and_overlap(self):
+        spec = replace(KURE_SPEC, target_body_tokens=100, overlap_tokens=10)
+        document = make_document(body=" ".join(f"항목{i}" for i in range(800)))
+
+        chunks = chunk_document(document, WordTokenizer(), spec=spec)
+
+        self.assertEqual(len(chunks), 9)
+        self.assertTrue(
+            all(len(WordTokenizer().encode(chunk.text)) <= 100 for chunk in chunks)
+        )
+        self.assertEqual(
+            len(set(chunks[0].text.split()) & set(chunks[1].text.split())), 10
+        )
+        self.assertNotEqual(retrieval_spec_id(spec), retrieval_spec_id(KURE_SPEC))
+
+    def test_runtime_chunking_rejects_invalid_chunk_geometry(self):
+        document = make_document(body="한 단어")
+        for spec in (
+            replace(DEFAULT_SPEC, target_body_tokens=0),
+            replace(DEFAULT_SPEC, target_body_tokens=10, overlap_tokens=10),
+            replace(DEFAULT_SPEC, target_body_tokens=10, overlap_tokens=-1),
+        ):
+            with self.subTest(spec=spec), self.assertRaises(ValueError):
+                chunk_document(document, WordTokenizer(), spec=spec)
+
+    def test_runtime_spec_rejects_unpinned_model_contract(self):
+        with self.assertRaises(ValueError):
+            validate_runtime_spec(replace(DEFAULT_SPEC, model_revision="unpinned"))
+
     def test_embedding_context_is_added_without_changing_source_spans_or_default_spec(
         self,
     ):

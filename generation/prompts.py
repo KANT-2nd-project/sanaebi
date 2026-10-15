@@ -1,7 +1,9 @@
+from collections.abc import Sequence
+
 from generation.types import GenerationPrompt
 
 
-def build_prompt(question: str, documents: list[str]) -> GenerationPrompt:
+def build_prompt(question: str, documents: Sequence[str]) -> GenerationPrompt:
     context = "\n\n".join(documents) if documents else "제공된 문서 없음"
     system = """당신은 이음웍스(ieum-works) 회사 임직원의 사내 업무 질문을 돕는 '사내비' 입니다.
 당신은 항상 제공된 문서에 근거하여 질문에 답해야 하며, 확인되지 않는 정책은 추측하지 않습니다.

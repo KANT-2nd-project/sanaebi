@@ -1,6 +1,12 @@
 """Trace stage names for the archived ``sanaebi_assistant.create_chain`` flow."""
 
-from app.diagnostics.trace import MODEL_STAGE, ROOT_STAGE, StageResolver, TraceCallback
+from app.diagnostics.trace import (
+    MODEL_STAGE,
+    ROOT_STAGE,
+    StageResolver,
+    TraceCallback,
+    to_record,
+)
 
 _NAMED_STAGES = {
     "prepare_input": "입력 정리",
@@ -35,10 +41,18 @@ def stage_of(name: str | None, tags, parent_stage: str | None) -> tuple[str, boo
 
 
 class LegacyTraceCallback(TraceCallback):
-    """Use the historical stage resolver with the current trace record format."""
+    """Use historical stages and opt into its clipped raw chain outputs.
+
+    This callback is explicit to the archived answerer; the active server's
+    ``TraceCallback`` continues to retain only allowlisted chain metadata.
+    """
 
     def __init__(self):
         super().__init__(stage_resolver=stage_of)
+
+    def _chain_output_record(self, outputs):
+        """Preserve historical answer stages without widening active tracing."""
+        return to_record(outputs)
 
 
 __all__ = [

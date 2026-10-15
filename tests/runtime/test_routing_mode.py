@@ -8,6 +8,7 @@ from unittest.mock import Mock, patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
+from app.answering.input import AnswerInput
 from app.classification.predictor import (
     ClassificationInferenceError,
     ClassificationUnavailable,
@@ -16,6 +17,7 @@ from app.dependencies import get_classifier
 from app.documents.context import DocumentContextSnapshot
 from app.questions.service import handle_question
 from app.settings import get_routing_mode
+from tests.runtime.test_langchain_adapter import snapshot as fixture_snapshot
 
 
 class RoutingModeSettingsTests(unittest.TestCase):
@@ -143,14 +145,14 @@ class RoutingModeApiTests(unittest.TestCase):
         self.addCleanup(fastapi_main.app.dependency_overrides.clear)
         self.answer = self.enterContext(
             patch(
-                "app.answering.adapter.GenerationAnswerer.answer",
+                "app.answering.adapter.GenerationAnswerer.answer_input",
                 return_value="문서 기반 답변",
             )
         )
         self.client = self.enterContext(
             TestClient(fastapi_main.app, raise_server_exceptions=False)
         )
-        self.snapshot = DocumentContextSnapshot((Mock(),))
+        self.snapshot = fixture_snapshot()
         self.read_documents = self.enterContext(
             patch.object(
                 fastapi_main.app.state.document_provider,
@@ -166,7 +168,9 @@ class RoutingModeApiTests(unittest.TestCase):
         self.assertEqual(response.json()["text"], "문서 기반 답변")
         self.classifier.predict.assert_called_once_with("김치찌개 만드는 법")
         self.read_documents.assert_called_once_with()
-        self.answer.assert_called_once_with("김치찌개 만드는 법", self.snapshot)
+        self.answer.assert_called_once_with(
+            AnswerInput.from_snapshot("김치찌개 만드는 법", self.snapshot)
+        )
 
     def test_assistant_shadow_uses_client_label_without_reclassification(self):
         trace_directory = Path(self.directory) / "trace-assistant"
@@ -181,7 +185,9 @@ class RoutingModeApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["text"], "문서 기반 답변")
         self.classifier.predict.assert_not_called()
-        self.answer.assert_called_once_with("질문", self.snapshot)
+        self.answer.assert_called_once_with(
+            AnswerInput.from_snapshot("질문", self.snapshot)
+        )
         trace_path = next(trace_directory.glob("*.jsonl"))
         [record] = [
             json.loads(line) for line in trace_path.read_text("utf-8").splitlines()
@@ -233,7 +239,9 @@ class RoutingModeApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["text"], "문서 기반 답변")
         self.assertNotIn("private", response.text)
-        self.answer.assert_called_once_with("회사 안내", self.snapshot)
+        self.answer.assert_called_once_with(
+            AnswerInput.from_snapshot("회사 안내", self.snapshot)
+        )
 
     def test_shadow_unexpected_classifier_error_remains_500(self):
         self.classifier.predict.side_effect = RuntimeError("private code detail")

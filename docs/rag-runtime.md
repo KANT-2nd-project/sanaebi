@@ -97,3 +97,11 @@ API와 worker·관리 CLI는 같은 spec의 작업 단위 잠금을 사용한다
 과거 C 유지와 KURE 보류 판단은 당시 보고서에 보존한다. 이후 사용자가 근거 유지·전달량 감소를 근거로 KURE를 채택했다. 코사인은 정답 존재 확률이 아니며 회사 맥락의 무관 질문도 통과할 수 있다. [채택 근거와 한계](../retrieval/reports/2026-10-16-kure-adoption/README.md)를 따른다. 실제 생성 답변 품질·사람 검수·운영 승격은 별도다.
 
 KURE는 벡터 차원·모델·접두사가 달라 새 spec의 색인·자정 기본 벡터를 준비한다. 분할 tokenizer와360/60 원문 구간은 유지하며 과거 Tiny 자료는 보존한다. 앱·신규 descriptor·Compose·준비 코드의 rag 기본값은 이전 게시분을 유지한다. 명시적 환경변수와 과거 full 릴리스·rollback 경로가 우선하며 이번 게시로 운영 설정을 전환하지 않는다.
+
+## 검색 실행과 색인 책임
+
+`RetrievalService`는 질문 검색, `RetrievalIndexer`는 청크 생성·벡터 재사용·색인 쓰기를 담당한다. 게시 동기화는 indexer를 주입받는다. 기존 관리 명령의 `RetrievalService.reconcile()`은 indexer로 위임하는 호환 입구다. baseline 벡터 읽기는 별도 저장소, 점수 선택·원문 병합은 순수 함수로 분리한다.
+
+질문 검색은 현재 snapshot의 청크를 한 번 읽으면서 준비 상태와 무결성을 검사한 후 질의를 임베딩한다. readiness는 별도 검사를 유지한다. 캐시를 추가하거나 손상 검사를 생략하지 않는다.
+
+청크 크기·overlap은 `RetrievalSpec`에서 실제 분할기로 전달된다. 검색의 `SearchPolicy`는 벡터 spec과 분리된 불변 값이다. KURE 청크 설정 변경이 Tiny 정책으로 바뀌지 않으며, 정책과 맞지 않는 필드 조합은 거부한다. 기존 기본 Tiny/KURE의 식별자는 유지한다. 청크 설정 변경은 새 spec ID와 새 색인을 요구하며, 기존 색인을 자동 변환하지 않는다. 정책 ID는 실제 선택 정책의 식별자다.

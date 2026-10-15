@@ -457,6 +457,74 @@ def _budgeted_answer(
     """Reserve the call before entering GenerationAnswerer exactly once."""
     from generation.documents import render_document
     from generation.providers import to_messages
+
+    documents = [
+        render_document(d.knowledge_id, d.title, d.body, d.revision)
+        for d in snapshot.documents
+    ]
+    prompt = build_profile_prompt(question, documents, settings.prompt_profile)
+    _reserve_budgeted_generation(
+        to_messages(prompt),
+        active=active,
+        ledger=ledger,
+        settings=settings,
+        pricing=pricing,
+    )
+
+    return answer(question, snapshot)
+
+
+def _budgeted_answer_input(
+    answer_input: Any,
+    *,
+    answer: Any,
+    active: dict[str, Any],
+    ledger: Any,
+    settings: Any,
+    pricing: dict[str, Any],
+) -> str:
+    """Reserve against the exact common input passed into the answerer."""
+    from langchain_core.prompts import ChatPromptTemplate
+
+    from generation.profiles import RAG_PROMPT_PROFILE
+    from generation.service import _build_prompt_values
+
+    evidence_state = (
+        answer_input.evidence_state
+        if settings.prompt_profile == RAG_PROMPT_PROFILE
+        else None
+    )
+    prompt_values = _build_prompt_values(
+        {
+            "question": answer_input.question,
+            "documents": answer_input.documents,
+            "prompt_profile": settings.prompt_profile,
+            "classification_context": answer_input.classification_context,
+            "evidence_state": evidence_state,
+        }
+    )
+    prompt_value = ChatPromptTemplate.from_messages(
+        [("system", "{system}"), ("human", "{user}")]
+    ).invoke(prompt_values)
+    _reserve_budgeted_generation(
+        prompt_value.to_messages(),
+        active=active,
+        ledger=ledger,
+        settings=settings,
+        pricing=pricing,
+    )
+    return answer(answer_input)
+
+
+def _reserve_budgeted_generation(
+    messages: list[Any],
+    *,
+    active: dict[str, Any],
+    ledger: Any,
+    settings: Any,
+    pricing: dict[str, Any],
+) -> None:
+    """Apply the evaluation reservation gate once for rendered model messages."""
     from generation_evaluation.budget import BudgetExceeded
 
     slot_id = active.get("slot_id")
@@ -469,13 +537,12 @@ def _budgeted_answer(
         active["error_type"] = "time_budget_exhausted_before_generation"
         raise BudgetExceeded("실험 시간 한도 만료")
 
-    documents = [
-        render_document(d.knowledge_id, d.title, d.body, d.revision)
-        for d in snapshot.documents
-    ]
-    prompt = build_profile_prompt(question, documents, settings.prompt_profile)
+    if len(messages) != 2 or any(
+        not isinstance(message.content, str) for message in messages
+    ):
+        raise EvaluationError("생성 프롬프트는 system/user 문자열 메시지여야 합니다.")
     estimate = estimate_upper_bound(
-        to_messages(prompt), settings.config.max_output_tokens, pricing
+        messages, settings.config.max_output_tokens, pricing
     )
     try:
         ledger.reserve(slot_id, "final", estimate)
@@ -489,12 +556,11 @@ def _budgeted_answer(
     active["reserved_dollars"] = estimate
     active["prompt_sha256"] = hashlib.sha256(
         json.dumps(
-            {"system": prompt.system, "user": prompt.user},
+            {"system": messages[0].content, "user": messages[1].content},
             ensure_ascii=False,
             separators=(",", ":"),
         ).encode("utf-8")
     ).hexdigest()
-    return answer(question, snapshot)
 
 
 def build_schedule(
@@ -1158,20 +1224,19 @@ def _worker_main(args: argparse.Namespace) -> int:
             )
         fastapi_main.app.state.document_provider = FixedSnapshotProvider()
         answerer = fastapi_main.app.state.answerer
-        original_answer = answerer.answer
+        original_answer_input = answerer.answer_input
 
-        def budgeted_answer(question, snapshot):
-            return _budgeted_answer(
-                question,
-                snapshot,
-                answer=original_answer,
+        def budgeted_answer_input(answer_input):
+            return _budgeted_answer_input(
+                answer_input,
+                answer=original_answer_input,
                 active=active,
                 ledger=ledger,
                 settings=settings,
                 pricing=pricing,
             )
 
-        answerer.answer = budgeted_answer
+        answerer.answer_input = budgeted_answer_input
         print(json.dumps({"worker_ready": True, "mode": args.worker_mode}), flush=True)
         for line in sys.stdin:
             try:

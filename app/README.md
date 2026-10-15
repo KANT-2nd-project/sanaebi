@@ -103,21 +103,24 @@ FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우�
 | [questions/service.py](questions/service.py) | 질문·의존성 함수·모드 → QuestionResult | 라벨별 호출 순서 결정 |
 | [classification/predictor.py](classification/predictor.py) | 문자열 → ClassificationLabel | 저장 모델 추론 |
 | [documents/context.py](documents/context.py) | snapshot() → DocumentContextSnapshot | 유효한 게시 문서 확보 |
-| [answering/adapter.py](answering/adapter.py) | 질문·snapshot 또는 검색 근거 → 문자열 | 최종 generation 호출·답변 검증 |
+| [answering/adapter.py](answering/adapter.py) | AnswerInput → 문자열 | 최종 generation 호출·답변 검증 |
 
 ### 의존성 조립은 무엇인가
 
-`get_question_handler()`는 `partial()`로 분류·문서·답변 함수, 선택적 검색 함수와 앱의 라우팅 모드를 연결한다. 아래는 이해를 돕는 동등한 형태이며 실제 코드는 [dependencies.py](dependencies.py)에 있다.
+`get_question_handler()`는 full/rag 흐름을 선택한 뒤 `partial()`로 분류 함수와 앱의 라우팅 모드를 연결한다. 아래는 이해를 돕는 동등한 형태이며 실제 코드는 [dependencies.py](dependencies.py)에 있다.
 
 ```python
-# 개념 예제: 구현을 미리 연결하고 요청마다 question만 받는다.
+# 개념 예제: 기본 v5의 RAG 흐름. full은 build_full_flow를 사용한다.
+flow = build_rag_flow(
+    document_provider.snapshot, retriever.retrieve, answerer.answer_input
+)
+
+
 def handle(question):
     return handle_question(
         question,
         classify=classifier.predict,
-        read_documents=document_provider.snapshot,
-        answer=answerer.answer_retrieved if retriever is not None else answerer.answer,
-        retrieve=retriever.retrieve if retriever is not None else None,
+        document_flow=flow,
         routing_mode=routing_mode,  # app.state에서 주입: 기본 advisory
     )
 ```
@@ -141,7 +144,7 @@ def handle(question):
 
 ### 문서는 한 번 확보해서 전달한다
 
-`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 같은 snapshot을 답변기에 전달한다. rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택 근거를 `answer_retrieved`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 준비된 색인에서 질문 최고 점수가0.42882221937179565 미만이면 고정 안내로 종료하며 생성·예약하지 않는다. 검색 입력 한도 초과는 422다.
+`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 snapshot 전체 문서를, rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택한 근거를 공통 `AnswerInput`으로 렌더링해 `answer_input`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 준비된 색인에서 질문 최고 점수가0.42882221937179565 미만이면 고정 안내로 종료하며 생성·예약하지 않는다. 검색 입력 한도 초과는 422다.
 
 `GenerationAnswerer`는 full의 snapshot 또는 rag의 선택 근거를 렌더링하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다. 생성 경계에는 질문·렌더링한 문서·프로필과 선택적 keyword 인자 `classification_context`를 전달한다. advisory의 정상 서버 예측만 기존 공통 조합 함수로 연결한다. 라벨 없음·알려진 분류 장애·client 출처는 기존 프롬프트로 정확히 복귀한다. [채택 결정·한계](../docs/worklogs/2026-10-16-adopt-advisory.md)를 따른다.
 
@@ -194,3 +197,7 @@ uv run --locked python -m unittest discover -s tests -t . -v
 문서 게시·사용 중단·전체 삭제·기본 복원은 rag에서 검색 준비까지 확인한 뒤 성공 응답한다. 초안은 임베딩하지 않는다. 저장 후 색인 실패와 동일 요청 재시도는 [문서 관리 계약](../docs/document-management.md#rag-색인과-자정-초기화)을 따른다.
 
 검색 설정의 선정 근거와 한계는 [KURE 채택 기록](../retrieval/reports/2026-10-16-kure-adoption/README.md)에 기록했다. 코드 적용과 실제 운영 활성화는 별개다. 질문 게이트의 코사인 점수는 정답 존재 확률·답변 정확도가 아니다.
+
+## 체인 조립을 읽는 순서
+
+`dependencies.py`에서 full/rag 흐름 선택 → `questions/service.py`에서 분류 정책 → `questions/pipeline.py`에서 snapshot·검색·빈 결과 분기 → `answering/input.py`에서 공통 답변 입력 → `generation/service.py`에서 프롬프트·모델·결과 판정 순으로 읽는다. `|`로 연결한 단계에는 이름이 있으며, 분류와 검색을 병렬 실행하지 않는다. 요청 제한과 취소 보호는 라우터 경계, 예산과 클라이언트 수명은 답변 어댑터 경계에 남아 있다.

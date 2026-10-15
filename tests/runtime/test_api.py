@@ -10,12 +10,14 @@ from unittest.mock import Mock, patch
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
+from app.answering.input import AnswerInput
 from app.classification.predictor import (
     ClassificationInferenceError,
     ClassificationUnavailable,
 )
 from app.dependencies import get_classifier
 from app.documents.context import DocumentContextSnapshot, DocumentStorageError
+from tests.runtime.test_langchain_adapter import snapshot as fixture_snapshot
 
 
 class ApiTests(unittest.TestCase):
@@ -39,7 +41,7 @@ class ApiTests(unittest.TestCase):
         self.addCleanup(fastapi_main.app.dependency_overrides.clear)
         self.question_generator = self.enterContext(
             patch(
-                "app.answering.adapter.GenerationAnswerer.answer",
+                "app.answering.adapter.GenerationAnswerer.answer_input",
                 return_value="가상 답변",
             )
         )
@@ -47,7 +49,7 @@ class ApiTests(unittest.TestCase):
             TestClient(fastapi_main.app, raise_server_exceptions=False)
         )
 
-        self.snapshot = DocumentContextSnapshot((Mock(),))
+        self.snapshot = fixture_snapshot()
         self.reader = self.enterContext(
             patch.object(
                 fastapi_main.app.state.document_provider,
@@ -121,7 +123,9 @@ class ApiTests(unittest.TestCase):
             response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
         )
         self.question_classifier.assert_called_once_with("휴가 안내")
-        self.question_generator.assert_called_once_with("휴가 안내", self.snapshot)
+        self.question_generator.assert_called_once_with(
+            AnswerInput.from_snapshot("휴가 안내", self.snapshot)
+        )
         self.reader.assert_called_once_with()
         self.assertFalse(self.document_file.exists())
 
@@ -244,7 +248,7 @@ class ApiTests(unittest.TestCase):
             response.json(), {"ok": True, "text": "가상 답변", "reason": ""}
         )
         self.question_generator.assert_called_once_with(
-            "출장비 절차 알려줘", self.snapshot
+            AnswerInput.from_snapshot("출장비 절차 알려줘", self.snapshot)
         )
         self.question_classifier.assert_not_called()
         self.reader.assert_called_once_with()
