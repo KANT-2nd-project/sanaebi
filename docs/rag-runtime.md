@@ -1,31 +1,36 @@
 # 문서 검색 RAG 실행과 초기화
 
-RAG는 현재 게시된 SQLite 문서를 검색해 선택한 발췌를 기존 Luna 생성기에 전달한다. 코드 기본값은 `SANAEBI_RETRIEVAL_MODE=rag`이며 검색은 KURE 상위20·질문 게이트로 고정한다. 이번 게시에서는 운영 설정·배포를 변경하지 않는다. 실제 LLM 품질과 운영 배포 검증은 로컬 연결 검증과 구분한다.
+RAG는 현재 게시된 SQLite 문서를 검색해 선택한 발췌를 기존 Luna 생성기에 전달한다. 코드 기본값은 `SANAEBI_RETRIEVAL_MODE=rag`이며 검색은 KURE 상위20·질문 게이트로 고정한다. 실제 LLM 품질과 운영 배포 검증은 로컬 연결 검증과 구분하며 [준비 개선 기록](worklogs/2026-10-16-local-rag-startup.md)에 확인 결과를 남긴다.
 
 [KURE 채택·연결](../retrieval/reports/2026-10-16-kure-adoption/README.md)은 근거 유지·전달량 감소에 따른 사용자 결정을 반영한다. 아래 모델·색인·기본 복원은 새 KURE spec으로 준비한다. 기존 Tiny 자료는 덮어쓰지 않는다.
 
 ## 준비와 실행
 
-선정 모델은 `nlpai-lab/KURE-v1`, revision `8b418a58414668e75532ed045c22d9ca018ae2b2`다. 배포 준비 도구가 검증한 모델 파일·`retrieval-model.json`·`splitter/`의 고정 Tiny tokenizer를 같은 모델 디렉터리에 둔다. CPU FP32·CLS pooling·L2 정규화·1024차원·접두사 없음 계약이다. Tiny 가중치는 필요하지 않다. API/worker는 로컬 전용 로딩을 하며 요청 중 다운로드하지 않는다. 새 환경의 모델 준비는 다음 명령으로 수행한다. 이 명령은 최초에 고정 모델 파일을 다운로드하며, 서버 요청과는 별도다.
+의존성 설치와 분류 저장본·`.env`의 `OPENAI_API_KEY` 준비 후 저장소 루트에서 실행한다.
 
 ```bash
-uv run --locked python scripts/deployment_embedding.py \
-  --manifest deployment/retrieval-release.json --root artifacts/embeddings
+npm run setup:local -- --init-documents
+npm run check:local
+npm run dev
 ```
 
-명령이 출력한 검증된 모델 경로를 아래 `SANAEBI_EMBEDDING_PATH`에 지정한다. 문서 DB는 [최초 구성](document-management.md#새-환경의-db-최초-구성)으로 먼저 준비한다.
+- setup은 고정 KURE와 분할 tokenizer를 검증·준비하고 기본 원본의 벡터 묶음, 현재 게시 문서의 검색 색인을 구성한다. 준비된 자료는 재사용하며 변경된 입력만 임베딩한다. 최초 준비는 모델 다운로드·CPU 계산 시간이 필요하다.
+- DB가 없을 때만 `--init-documents`로 기본 문서를 등록한다. 기존 DB는 비어 있어도 자동 등록·초기화하지 않는다. 의도적으로 전체 삭제한 문서는 웹의 기본 복원으로 되돌린다.
+- dev는 읽기 전용 사전 검사 후 API·웹·3초 주기 worker를 함께 실행한다. 준비 실패 시 setup 안내로 종료하며, 준비나 reset을 자동 실행하지 않는다. Ctrl+C 또는 자식 실패 시 이번 실행의 프로세스 그룹을 정리한다. 명시적 `full`은 worker 없이 실행한다.
+- setup·check·API·worker는 같은 `.env`를 읽고 이미 셸에 지정된 환경변수가 우선한다. `SANAEBI_DOCUMENT_DB`는 기본 `var/documents.sqlite3`, 검색 색인은 `SANAEBI_RETRIEVAL_ROOT`(기본 `var/retrieval`)다. 설정 변경 후 setup을 실행하고 dev를 재시작한다.
+- 기본 묶음 경로는 현재 원본 SHA와 vector spec으로 `artifacts/retrieval-baselines/schema-v1/<spec>/<source SHA>/baseline.sqlite3`를 계산한다. 명시적 `SANAEBI_RETRIEVAL_BASELINE`이 있으면 그것만 사용하며 누락·불일치를 다른 묶음으로 대체하지 않는다. 사용자 지정 경로는 별도 준비 명령으로 먼저 준비한다.
+- check는 모델·분류 자료·키 존재·문서 DB·색인·복원 준비를 검사하며 파일 생성이나 모델 추론을 하지 않는다. 기계 판독은 `uv run --locked --env-file .env python -m scripts.local_runtime --check --json`을 사용한다. 비밀값과 문서 본문은 출력하지 않는다.
+
+선정 모델은 `nlpai-lab/KURE-v1`, revision `8b418a58414668e75532ed045c22d9ca018ae2b2`다. CPU FP32·CLS pooling·L2 정규화·1024차원·접두사 없음이며 `splitter/`에는 고정 Tiny tokenizer만 둔다. Tiny 가중치는 요구하지 않는다. 요청·worker에서 모델을 다운로드하지 않는다.
+
+기존 개별 관리 CLI는 유지한다. 같은 `.env`를 사용하며 dev가 worker를 관리하는 동안 중복 watch를 시작하지 않는다.
 
 ```bash
-export SANAEBI_DOCUMENT_DB=/absolute/path/documents.sqlite3
-export SANAEBI_EMBEDDING_PATH=/absolute/path/nlpai-lab--KURE-v1/8b418a58414668e75532ed045c22d9ca018ae2b2
-export SANAEBI_RETRIEVAL_ROOT=/absolute/path/retrieval
-uv run --locked python -m scripts.index_documents --once
-uv run --locked python -m scripts.index_documents --status
-# 별도 터미널/프로세스에서 계속 실행
-uv run --locked python -m scripts.index_documents --watch
+uv run --locked --env-file .env python -m scripts.index_documents --once
+uv run --locked --env-file .env python -m scripts.index_documents --status
 ```
 
-API에 같은 경로를 지정하고(기본 `SANAEBI_RETRIEVAL_MODE=rag`) 기존 서버 명령으로 시작한다. worker와 API는 같은 spec의 색인을 사용해야 한다. `--status`는 모델을 로딩하지 않는다. 종료 코드는 준비0·미준비2·오류1이며, `--once`는 준비0·실패1이다. 원본 DB는 기존 [초기 구성](document-management.md) 절차로 준비하며 검색 명령이 원본을 생성하지 않는다.
+`--status`는 모델을 로딩하지 않는다. 종료 코드는 준비0·미준비2·오류1이다. `--once`는 준비0·실패1이며 문서 원본은 생성하지 않는다. 모델만 준비하는 기존 `scripts/deployment_embedding.py`와 기본 묶음 준비 CLI는 배포·사용자 지정 경로에 계속 사용할 수 있다.
 
 분할은 고정 Tiny tokenizer로 본문360토큰·중첩60과 기존 원문 경계를 유지한다. 임베딩은 E5 접두사를 제거한 제목·절·본문을 KURE로 계산한다. 질문 입력은512토큰, 문서는8192토큰을 명시적으로 검사한다. 질문 최고 코사인이0.42882221937179565 이상이면 상위20청크를 선택하며 개별 청크 점수 하한은 없다. 같은 개정의 겹친 원문은 병합한다. 상위20은 병합 전 수량이며 추가 문자·전달 토큰 제한은 없다. 생성 제공자 한계는 유지하고 초과 시 자동 절단·full 전환하지 않는다. schema/spec별 파생 DB를 `SANAEBI_RETRIEVAL_ROOT/schema-v1/<spec>/index.sqlite3`에 둔다.
 
@@ -35,7 +40,7 @@ shadow 기본 모드에서는 세 분류 라벨 모두 검색 경로로 진행�
 
 현재 유효 개정 하나라도 색인이 누락되면503이다. 부분 색인으로 정책이 없다고 답하지 않는다. KURE tokenizer의 특수 토큰 포함512를 넘으면422로 나누어 질문하도록 안내한다. 문서·모델·검색 장애는503, 생성 오류는502, 일일 예산은 기존429, 예상 밖 코드 오류는500으로 구분한다. 검색 실패 때 생성 예약은 소비하지 않는다. 준비된 색인에서 질문 최고 코사인이0.42882221937179565 미만이면 “관련 문서에서 답변에 필요한 근거를 찾지 못했습니다.” 안내로 종료하고 생성·예약하지 않는다. rag 장애를 full로 자동 전환하지 않는다.
 
-`/health/ready`는 rag에서 현재 색인 준비도 검사한다. KURE는 startup에서 준비하며 health가 외부 LLM을 호출하거나 색인을 만들지 않는다. full에서는 임베딩 모델 없이 기존 서버를 실행할 수 있다. 수동 복구는 `export SANAEBI_RETRIEVAL_MODE=full` 지정 후 서버를 재시작한다. rag의 모델·색인이 준비되지 않은 상태를 정상 준비로 표시하지 않는다.
+`/health/ready`는 rag에서 현재 색인과 기본 복원 묶음의 원본·spec 유효성을 검사한다. 빈 DB도 유효한 복원 묶음이 있으면 정상이며, 묶음 누락·불일치는503이다. KURE는 startup에서 준비하며 health가 외부 LLM을 호출하거나 색인을 만들지 않는다. full에서는 임베딩 모델 없이 기존 서버를 실행할 수 있다. 수동 복구는 `export SANAEBI_RETRIEVAL_MODE=full` 지정 후 서버를 재시작한다. rag의 모델·색인이 준비되지 않은 상태를 정상 준비로 표시하지 않는다.
 
 ## 자정 초기화용 벡터
 

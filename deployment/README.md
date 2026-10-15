@@ -1,5 +1,7 @@
 # 공개 데모 운영과 CI/CD
 
+로컬 통합 준비는 `npm run setup:local -- --init-documents`, 실행은 `npm run dev`를 사용한다. 기존 DB·전체 삭제 상태는 보존하며 검색 색인과 기본 복원 묶음을 함께 준비한다. [준비·진단 상세](../docs/rag-runtime.md#준비와-실행).
+
 **[사내비 바로 사용하기](https://sanaebi.29232923.xyz/chat)**
 
 상시 운영하는 공개 데모입니다. 공용 가상 문서를 사용하며 누구나 익명으로 문서를 편집·게시할 수 있습니다. 문서는 매일 한국시간 자정에 기준 가상 문서로 초기화됩니다. 실제 사내 자료나 개인정보는 입력하지 마세요.
@@ -37,6 +39,12 @@
 - 초과 응답: 기존 `{ok,text,reason}`와 `Retry-After`를 포함한 429. 웹은 입력·안내를 보존하고 자동 재호출하지 않는다.
 - 호출 수 상한은 금액 상한이 아니다. 원문 trace는 운영에서 끄고 생성 상태·사용량·지연만 관측한다.
 
+## Host 도구 갱신과 배포 검증
+
+Delivery는 이미지·웹·릴리스 manifest를 게시하며 root 소유 host helper와 Compose를 자동 교체하지 않는다. 관련 코드가 바뀌면 병합 전에 기존 도구·Compose·timer 설정을 백업하고 검토한 checkout의 `scripts/install_production_host.sh`로 갱신한다. 실제 `api.env`, 자격증명, host 기본 원본과 운영 DB는 덮어쓰지 않는다. 설치 후 helper의 `--help`를 저장소 밖에서 확인한다.
+
+자동 배포가 켜져 있으면 main 병합으로 한 번 배포하며 별도 dispatch를 중복 실행하지 않는다. candidate 준비·readiness 후 활성 SHA, API/indexer, 복원 preview, HTTPS를 확인한다. 문서 전체 삭제·복원 시험은 격리 DB에서만 수행한다. rag readiness는 색인뿐 아니라 기본 복원 묶음도 검증하므로 기존 full readiness 성공만으로 RAG 준비를 판단하지 않는다.
+
 ## 최초 호스트 준비
 
 Docker·nginx·TLS와 배포 전용 `deploy` 계정이 필요하다. 검토한 checkout에서 root로 `bash scripts/install_production_host.sh`를 실행해 helper·Compose·sudo 범위·timer 정의를 설치한다. 기존 비밀 파일을 보존하고 nginx 활성 설정과 timer 실행은 변경하지 않는다.
@@ -60,7 +68,7 @@ GitHub `production` environment는 main만 허용한다. 환경 secret은 `DEPLO
 
 배포 helper는 공통 flock 아래 이미지·모델·격리 후보 readiness를 먼저 준비한다. 준비 실패 시 기존 서비스를 유지한다. 실제 교체는 점검 응답, 요청 종료 대기, SQLite 백업, API·웹 교체, readiness 확인 순서다. 실패하면 이전 이미지·웹·모델을 복원하며 사용자 변경이 생긴 DB를 자동 덮어쓰지 않는다. 강제 종료로 점검 표식이 남으면 다음 배포를 거부한다. 운영자가 journal·활성 포인터·컨테이너를 확인한 뒤 root 전용 `sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/deploy_release.py recover`를 실행한다. journal에 저장된 이전 포인터·이미지를 검증해 복원하고 readiness 성공 후 점검을 해제한다. DB는 덮어쓰지 않으며 CI 계정에는 recover 권한을 부여하지 않는다.
 
-릴리스는 기존 schema v1을 계속 지원하며, 검색 descriptor가 포함된 schema v2도 만들 수 있다. v1은 항상 기존 `full` 문서 흐름을 사용한다. 신규 v2 descriptor 기본값은 `rag`이며 검색 worker와 KURE 검색 경로를 준비한다. `/etc/sanaebi/api.env`의 명시적 `SANAEBI_RETRIEVAL_MODE`가 우선하며, 과거 descriptor의 `full` 기본값과 descriptor 없는 v1의 full 동작은 유지한다. 운영 설정은 이번 코드 게시로 변경하지 않는다. 설정을 바꾼 뒤에는 해당 릴리스를 다시 배포해야 API와 worker가 같은 모드로 시작한다. 배포 helper는 실제 실행 중인 API의 이전 모드를 기록해 실패·중단 복구에서 그 모드를 다시 적용한다.
+릴리스는 기존 schema v1을 계속 지원하며, 검색 descriptor가 포함된 schema v2도 만들 수 있다. v1은 항상 기존 `full` 문서 흐름을 사용한다. 신규 v2 descriptor 기본값은 `rag`이며 검색 worker와 KURE 검색 경로를 준비한다. `/etc/sanaebi/api.env`의 명시적 `SANAEBI_RETRIEVAL_MODE`가 우선하며, 과거 descriptor의 `full` 기본값과 descriptor 없는 v1의 full 동작은 유지한다. 실제 배포 모드·확인 결과는 [로컬 준비·배포 기록](../docs/worklogs/2026-10-16-local-rag-startup.md)에서 관리한다. 설정을 바꾼 뒤에는 해당 릴리스를 다시 배포해야 API와 worker가 같은 모드로 시작한다. 배포 helper는 실제 실행 중인 API의 이전 모드를 기록해 실패·중단 복구에서 그 모드를 다시 적용한다.
 
 [v3 검색 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)는 C를 유지했다. 이번 비교로 새 재정렬 모델이나 새 벡터 묶음을 배포 준비에 추가하지 않는다. 로컬 CPU2 검증은 실제 운영 2vCPU 승인과 다르며 운영 전환은 별도다.
 
