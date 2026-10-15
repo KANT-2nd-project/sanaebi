@@ -75,7 +75,7 @@ export async function askQuestion(
     if (signal.aborted) throw new QuestionError("aborted", "요청이 취소되었습니다.");
     if (timedOut) throw new QuestionError("timeout", "답변 대기 시간이 초과되었어요. 잠시 후 다시 시도해주세요.");
     if (error instanceof QuestionError) throw error;
-    throw new QuestionError("network", "연결을 확인해주세요. 입력한 질문은 그대로 남아 있습니다.");
+    throw new QuestionError("network", "연결을 확인해주세요. 질문을 수정하거나 다시 시도할 수 있습니다.");
   } finally {
     clearTimeout(timer);
     signal.removeEventListener("abort", cancel);

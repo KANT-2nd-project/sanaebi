@@ -49,7 +49,7 @@ export function QuestionForm({ question, error, pending, empty, touchEnter, inpu
         <div className={`question-composer${error ? " is-invalid" : ""}`}>
           <label htmlFor="question" className="sr-only">메시지</label>
           <textarea
-            id="question" ref={inputRef} value={question} rows={2} readOnly={pending}
+            id="question" ref={inputRef} value={question} rows={2}
             onChange={event => onChange(event.target.value)}
             onCompositionStart={() => { composing.current = true; }}
             onCompositionEnd={() => { composing.current = false; }}
@@ -66,10 +66,10 @@ export function QuestionForm({ question, error, pending, empty, touchEnter, inpu
           {error && <p id="question-error" role="alert" className="input-error">{error}</p>}
           <div className="composer-actions">
             <p id="question-help" className="keyboard-help">
-              {touchEnter ? "Enter 줄바꿈 · 버튼으로 전송" : "Enter 전송 · Shift+Enter 줄바꿈"}
+              {pending ? "다음 질문을 작성할 수 있어요. 답변 후 전송해주세요." : touchEnter ? "Enter 줄바꿈 · 버튼으로 전송" : "Enter 전송 · Shift+Enter 줄바꿈"}
             </p>
             <button type="submit" disabled={pending} className="chat-button send-button">
-              전송 <span aria-hidden="true">↑</span>
+              {pending ? "답변 생성 중…" : <>전송 <span aria-hidden="true">↑</span></>}
             </button>
           </div>
         </div>
