@@ -113,6 +113,12 @@ TF-IDF와 BERT 등 비교 모델은 동일한 분할을 사용하고 실제 문�
 
 새 비교 결과와 해석은 [분류 실험 보고서](../classification/reports/README.md), 과거 결과는 [아카이브 보고서](../archive/classification_v1/reports/README.md)에서 관리한다. 원자료는 각 보고서의 artifact-root·model_id로 연결한다. MLflow를 사용한 기존 구현·Jev 실행은 run ID도 연결하며 새 로컬 학습 구현에는 아직 MLflow가 없다.
 
+## 요청 분류 보강 학습 자료
+
+2026-10-15 [보강 자료](../classification/benchmarks/routing-augmentation-2026-10-15/README.md)는 원본 900행을 수정하지 않고 별도 합본에 90행을 추가했다. 기존 train 그룹에만 추가해 722/133/135로 고정하며 validation/test 문항과 순서는 유지한다. 문항별 의도·라벨 근거·AI 검수 상태, 회귀 48문항·표현 24문항·새 그룹 30문항을 보존한다. 같은 AI의 작성·검수이며 사람 승인이나 독립 검수가 아니다.
+
+[보강 학습 결과](../classification/reports/2026-10-15-routing-augmentation/README.md)는 회귀 개선과 퇴행을 함께 보고하며 서버 승격은 보류했다. 새 평가도 결과 확인 이후에는 노출된 자료다. 원본 데이터용 검증기의 900행 계약은 유지하고 보강 자료는 별도 고정 분할 테스트로 검사한다.
+
 ## 이전 질문 주제 분류 자료
 
 기존 다섯 업무 영역 질문 분류 데이터는 [질문 주제 분류 아카이브](archive/question-topics/README.md)에 보관한다. 현재 요청 처리 라벨 데이터와 다른 실험이므로 서로 바꾸어 사용하지 않는다.

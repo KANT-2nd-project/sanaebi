@@ -80,3 +80,11 @@ tokenizer는 질문을 `[B, L]` 토큰 번호·마스크로, 라벨 매핑은 �
 ## 실험 기록
 
 [실험 보고서 목록](reports/README.md)에서 실행 조건·지표·오분류를 확인한다. 2026-10-15 [7종 통합 비교](reports/2026-10-15-seven-model-comparison/README.md)를 완료했다. Jev는 보존된 API 실행 코드를 사용했고, 로컬 6종은 새 학습 코드로 실행했다. 상세 설정·평가·원자료 위치는 각 보고서에 있다.
+
+## 분할을 유지하는 보강 학습과 외부 진단
+
+`--split-manifest`를 지정하면 기존 문항 ID 순서와 그룹 경계를 복원한다. CSV에 문항을 추가한 뒤 같은 seed로 다시 분할하는 방식은 기존 validation/test를 보존하지 않는다. manifest에는 `schema_version: 1`, `dataset_sha256`, `question_ids`(train/validation/test)가 필요하다. 누락·중복·미배정 ID·분할 간 그룹 중복·잘못된 라벨·해시 불일치는 학습 전에 거부한다. 생략하면 기존 그룹 분할을 사용한다. 새 metadata의 `split_manifest_sha256`은 부가 기록이며 이전 저장본도 계속 읽는다.
+
+외부 질문은 `python -m classification.diagnostic_evaluation 모델폴더 --cases 질문.json --output 새결과폴더`로 평가한다. 질문은 id·group_id·question·expected_label·source·pure_lookup_execution을 가진 JSON 배열이다. 서버의 CPU 추론기를 사용하고 지표와 원문별 예측을 보존한다. 학습·재시도·기존 결과 덮어쓰기는 하지 않는다.
+
+[2026-10-15 보강 학습](reports/2026-10-15-routing-augmentation/README.md)은 1회 실행 후 회귀 40/48·새 평가 29/30을 확인했지만, 사전 기준 미달과 퇴행으로 서버 승격을 보류했다. 기존 서버 모델은 유지한다. [고정 자료와 실제 실행 명령](benchmarks/routing-augmentation-2026-10-15/README.md)을 참고하며 이미 완료한 학습을 자동 재실행하지 않는다.

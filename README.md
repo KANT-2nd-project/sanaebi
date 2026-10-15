@@ -58,6 +58,8 @@ uv run --locked python scripts/import_company_knowledge.py \
 npm run dev
 ```
 
+API 개발 프로세스는 루트 `.env`를 읽습니다. `OPENAI_API_KEY`를 준비하고 환경변수를 바꾼 뒤에는 개발 서버를 재시작합니다.
+
 브라우저에서 http://127.0.0.1:3000/chat 을 엽니다.
 
 ## 더 알아보기

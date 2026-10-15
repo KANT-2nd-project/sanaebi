@@ -4,6 +4,7 @@
 
 | 날짜 | 보고서 | 상태 |
 |---|---|---|
+| 2026-10-15 | [짧은 안내 요청 보강 학습](2026-10-15-routing-augmentation/README.md) | 회귀 개선·일부 퇴행, 사전 기준 미달로 서버 승격 보류 |
 | 2026-10-15 | [7종 통합 비교](2026-10-15-seven-model-comparison/README.md) | 로컬 6종 + Jev, 14개 분할 평가 대조 완료 |
 | 2026-10-15 | [새 학습 구현의 로컬 6종 상세](2026-10-15-learning-model-comparison/README.md) | 학습·저장·평가·CPU 속도 측정 완료 |
 | 2026-10-15 | [Jev API 상세](2026-10-15-jev-evaluation/README.md) | 실제 API 268회 완료·예측 재검증 |
