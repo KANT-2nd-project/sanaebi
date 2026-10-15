@@ -25,4 +25,4 @@ scope와 strict는 개발12문항에서 기준9통과 대비11통과였지만 �
 
 ## 기준 위치와 게시
 
-현재 구성은 [최종 프롬프트 기준](../generation-final-prompt.md), 과정·수치·미완료 범위는 [기록 점검 보고서](../../generation_evaluation/reports/2026-10-15-luna-tuning-closure/README.md)가 기준이다. 원응답과 이전 판단은 각 당시 보고서에 보존한다. Notion에는 요약·선택 이유·미완료 범위와 게시 링크를 동기화하고 재조회한다.
+현재 구성은 [최종 프롬프트 기준](../generation-final-prompt.md), 과정·수치·미완료 범위는 [기록 점검 보고서](../../generation_evaluation/reports/2026-10-15-luna-tuning-closure/README.md)가 기준이다. 원응답과 이전 판단은 각 당시 보고서에 보존한다. Notion 기술 요약·개인 일지에 요약·선택 이유·미완료 범위와 게시 링크를 추가하고 저장된 전체 추가 구역을 재조회했다. 최종 scope 선택·튜닝 종료, 이전80응답, 조사30출처, 추가4문항, 총230호출과 AI 기여가 기준 문서와 일치했다. 원격 d6122d2 게시를 확인했으며 이 확인 기록을 별도 문서 커밋으로 보존한다.
