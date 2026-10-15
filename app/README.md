@@ -17,6 +17,8 @@ export SANAEBI_CLASSIFIER_PATH=/absolute/path/to/model
 
 기본 문서 전달 모드는 `rag`이므로 시작 전에 [Tiny 모델·색인·worker 준비](../docs/rag-runtime.md#준비와-실행)를 완료합니다. 분류만 확인하거나 전체 문서 방식으로 수동 복구할 때는 `SANAEBI_RETRIEVAL_MODE=full`을 명시할 수 있습니다.
 
+KURE 후보는 [질문 게이트 검증](../retrieval/reports/2026-10-16-kure-gate/README.md)에서 전환이 보류돼 현재 서버에는 Tiny C가 연결돼 있다.
+
 ### 서버 실행과 연결 확인
 
 [공통 설치](../README.md#로컬-개발-시작)를 마친 뒤 저장소 루트에서 실행한다.

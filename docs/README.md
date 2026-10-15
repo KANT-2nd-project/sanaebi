@@ -99,3 +99,5 @@ RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklog
 
 - [RAG 평가 기준 보완·검색 최적화](../retrieval/reports/2026-10-15-retrieval-v3/README.md): qrel v3·CPU 비교와 신규 확인 후 C 유지.
 - [RAG C 채택·인자 및 문맥 비교](../retrieval/reports/2026-10-15-c-adoption/README.md): 검색 근거 누락 최소화에 따른 사용자 선택, rag 코드 기본값과 운영 미전환 구분.
+
+[KURE 검색 전환 검증](../retrieval/reports/2026-10-16-kure-gate/README.md): 소규모 비교 보존, 신규 질문 게이트 검증과 조건 미달에 따른 Tiny C 유지.

@@ -1,0 +1,40 @@
+{
+  "note": "Prior pilot preserved; no new inference. Scripts formatted after execution without behavioral edits; local vector/model/DB paths are not public downloads.",
+  "files": [
+    {
+      "source": "/home/jake/workspace/projects/sanaebi/tmp/kure-v3-pilot-2026-10-16/README.md",
+      "published": "README.md",
+      "source_sha256": "8a3641d62345e6bee7ff44671e04d3b350fef1f0a330e7d10fe5f638d429a3a3"
+    },
+    {
+      "source": "/home/jake/workspace/projects/sanaebi/tmp/kure-v3-pilot-2026-10-16/protocol.md",
+      "published": "protocol.md",
+      "source_sha256": "5b31c09c128a7ba115f62ed379e9177dfcca1619ccf1c025ffb1052034465bcf"
+    },
+    {
+      "source": "/home/jake/workspace/projects/sanaebi/tmp/kure-v3-pilot-2026-10-16/first-complete-ranks.json",
+      "published": "first-complete-ranks.json",
+      "source_sha256": "47bfaadefe4bbb240fb67d1e74ecd313f10656f811e554019bca7d0ca759e14c"
+    },
+    {
+      "source": "/home/jake/workspace/projects/sanaebi/tmp/kure-v3-pilot-2026-10-16/run.py",
+      "published": "run.py.txt",
+      "source_sha256": "8cbe00f22fafa53698600ed99b3e672491b6aa06280d5b0b16aa5d62d780c238"
+    },
+    {
+      "source": "/home/jake/workspace/projects/sanaebi/tmp/kure-v3-pilot-2026-10-16/summarize.py",
+      "published": "summarize.py.txt",
+      "source_sha256": "e13529bdd97cfcc56610e09711bb6c0edc0cb7b22c1082859903fcfb9950bd2b"
+    },
+    {
+      "source": "/home/jake/workspace/projects/sanaebi/tmp/kure-v3-pilot-2026-10-16/tiny/results.json",
+      "published": "tiny-results.json.gz",
+      "uncompressed_sha256": "6c8397b29b503d7b9d7ac0396790e19af18df5cba45830ff00f09b740aaafea6"
+    },
+    {
+      "source": "/home/jake/workspace/projects/sanaebi/tmp/kure-v3-pilot-2026-10-16/kure/results.json",
+      "published": "kure-results.json.gz",
+      "uncompressed_sha256": "7fe1134a1ef44fbf69d15ecfac6fd084a18e28bf4fb75df9c691a06e9193136b"
+    }
+  ]
+}

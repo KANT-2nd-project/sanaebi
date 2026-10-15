@@ -1,0 +1,119 @@
+import hashlib
+import json
+from pathlib import Path
+
+from app.documents.context import DocumentContextProvider
+from app.retrieval.repository import IndexRepository
+from retrieval.experiments.calibration_metrics import claim_metrics
+
+r = Path("tmp/kure-v3-pilot-2026-10-16")
+models = {m: json.loads((r / m / "results.json").read_text()) for m in ["tiny", "kure"]}
+qrels = json.loads(
+    Path("retrieval/reports/2026-10-15-retrieval-v3/qrels-v3.json").read_text()
+)
+cases = {c["case_id"]: c for c in qrels["cases"]}
+snap = DocumentContextProvider(database_path=r / "tiny/documents.sqlite3").snapshot()
+docs = {d.document_id: d.knowledge_id for d in snap.documents}
+chunks = {
+    c.chunk_id: c for c, v in IndexRepository(r / "tiny/retrieval").current_chunks(snap)
+}
+diagnostics = {}
+checks = []
+for m, data in models.items():
+    assert len(data["rows"]) == 192 and len(data["rankings"]) == 48
+    for p, h in data["source_hashes"].items():
+        assert hashlib.sha256(Path(p).read_bytes()).hexdigest() == h
+    ranks = {row["case_id"]: row["ranking"] for row in data["rankings"]}
+    diagnostics[m] = {}
+    for cid, ranking in ranks.items():
+        assert len(ranking) == len({x["chunk_id"] for x in ranking}) == 298
+        first = None
+        if cases[cid]["required_claims"]:
+            for k in range(1, 299):
+                items = [
+                    (
+                        docs[chunks[x["chunk_id"]].document_id],
+                        [(s.start, s.end) for s in chunks[x["chunk_id"]].spans],
+                    )
+                    for x in ranking[:k]
+                ]
+                if claim_metrics(items, cases[cid])["complete"]:
+                    first = k
+                    break
+        diagnostics[m][cid] = {
+            "first_complete_rank": first,
+            "boundary_score": ranking[first - 1]["score"] if first else None,
+        }
+    for row in data["rows"]:
+        metric = claim_metrics(
+            [
+                (e["knowledge_id"], [(s["start"], s["end"]) for s in e["spans"]])
+                for e in row["evidence"]
+            ],
+            cases[row["case_id"]],
+        )
+        assert (
+            row["complete"] == metric["complete"]
+            and row["included"] == metric["included"]
+        )
+    checks.append(m + " source SHA, 192 metric recomputations, 48 full rankings OK")
+lines = [
+    "# KURE-v1과 Tiny: 현재 분할·qrel v3 소규모 비교",
+    "",
+    "서버 설정을 바꾸지 않고 기존 개발48문항(답변가능38·불가10)으로 비교했다. 신규 확인40·유료 API·답변 생성·운영 연결·커밋·푸시는 수행하지 않았다. 같은298청크·원문·정답 기준을 사용했고 모델별 입력 계약만 달리했다.",
+    "",
+    "| 선택 | Tiny 완전 포함 | KURE 완전 포함 | Tiny 평균 문자 | KURE 평균 문자 |",
+    "|---|---:|---:|---:|---:|",
+]
+for a, b in zip(models["tiny"]["summary"], models["kure"]["summary"], strict=True):
+    assert a["policy"] == b["policy"]
+    lines.append(
+        f"| {a['policy']} | {a['complete']}/38 | {b['complete']}/38 | {a['mean_chars']:,.0f} | {b['mean_chars']:,.0f} |"
+    )
+lines += [
+    "",
+    "완전 포함은 qrel v3의 필수 사실 간 AND·동등 근거 간 OR를 원문 구간으로 판정한다. 평균 문자 수는 불가 질문을 포함한48개 기준이다. topK는 임계값 gate 없이 순위만 비교하며 문자·별도 토큰 제한은 없다. 0.35는 모델 간 같은 관련도를 뜻하지 않으므로 threshold035는 그대로 대입했을 때의 진단이다.",
+    "",
+    "## 누락과 개선",
+]
+for a, b in zip(models["tiny"]["summary"], models["kure"]["summary"], strict=True):
+    lines.append(
+        f"- {a['policy']}: Tiny 누락 {a['failed_ids']}; KURE 누락 {b['failed_ids']}. KURE 개선 {sorted(set(a['failed_ids']) - set(b['failed_ids']))}; 회귀 {sorted(set(b['failed_ids']) - set(a['failed_ids']))}."
+    )
+lines += [
+    "",
+    "## CPU 측정",
+    "",
+    "| 모델 | warm p50 / p95 | 모델 로딩 | 새 색인 | 최대 RSS |",
+    "|---|---:|---:|---:|---:|",
+]
+for m, d in models.items():
+    t = d["warm_encode_and_rank_ms"]
+    ix = (
+        "기존 벡터 재사용"
+        if d["index_seconds"] is None
+        else f"{d['index_seconds']:.2f}초"
+    )
+    lines.append(
+        f"| {m} | {t['p50']:.2f} / {t['p95']:.2f}ms | {d['load_seconds']:.2f}초 | {ix} | {d['peak_rss_mib']:.1f}MiB |"
+    )
+lines += [
+    "",
+    "CPU affinity0·1, threads2, FP32, 단건192회(48×4). warm 시간은 질문 임베딩+벡터 검색·정렬이며 근거 병합·HTTP·LLM을 포함하지 않는다. 모델 로딩은 라이브러리 시작 시간을 제외한다. RSS는 로딩·색인을 포함한 프로세스 최고값이다. 개발 PC CPU2 제한이며 실제 운영2vCPU·동시 요청 검증이 아니다.",
+    "",
+    f"KURE 최대 문서 입력은 {models['kure']['max_document_tokens']}토큰으로8192 이내이며 truncation=False다. Tiny는 기존 검증된 벡터를 재사용했다.",
+    "",
+    "## 검증·한계",
+    "",
+    *["- " + x for x in checks],
+    "- Tiny C 재현은 기존37/38·평균25,765.54자와 일치했다.",
+    "- 관련도 합집합의 새 독립 검수는 수행하지 않았다. 직접 관련도 precision·답변 정확도 향상을 주장하지 않는다.",
+    "- 기존에 여러 번 사용한 개발 세트다. 모델 채택·실서비스 품질·운영 승인은 별도 새 질문과 검수가 필요하다.",
+    "",
+    "원자료: `tiny/results.json`, `kure/results.json`; 전체 순위·코사인·원문 근거·질문별 지표·SHA 포함. `first-complete-ranks.json`은 각 질문의 필수 근거를 처음 모두 확보하는 순위다. 실행기 `run.py`, 조건 `protocol.md`, 고정 모델 카드 `model-card.md`. 모델·DB·벡터는 로컬 tmp에만 존재한다.",
+]
+(r / "first-complete-ranks.json").write_text(
+    json.dumps(diagnostics, ensure_ascii=False, indent=2) + "\n"
+)
+(r / "README.md").write_text("\n".join(lines) + "\n")
+print("\n".join(lines))

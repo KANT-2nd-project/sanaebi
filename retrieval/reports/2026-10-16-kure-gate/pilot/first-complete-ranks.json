@@ -1,0 +1,390 @@
+{
+  "tiny": {
+    "R01": {
+      "first_complete_rank": 3,
+      "boundary_score": 0.5036675930023193
+    },
+    "R02": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6620734930038452
+    },
+    "R03": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.4980192482471466
+    },
+    "R04": {
+      "first_complete_rank": 3,
+      "boundary_score": 0.5068470239639282
+    },
+    "R05": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.4771781265735626
+    },
+    "R06": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6105961203575134
+    },
+    "R07": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6247935891151428
+    },
+    "R08": {
+      "first_complete_rank": 5,
+      "boundary_score": 0.4433410167694092
+    },
+    "R09": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5517978072166443
+    },
+    "R10": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5669691562652588
+    },
+    "R11": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.5971742868423462
+    },
+    "R12": {
+      "first_complete_rank": 3,
+      "boundary_score": 0.5106378793716431
+    },
+    "R13": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5832169651985168
+    },
+    "R14": {
+      "first_complete_rank": 11,
+      "boundary_score": 0.4148494601249695
+    },
+    "R15": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5333566665649414
+    },
+    "R16": {
+      "first_complete_rank": 39,
+      "boundary_score": 0.32752346992492676
+    },
+    "R17": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5479685068130493
+    },
+    "R18": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6406278610229492
+    },
+    "D01": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6510345935821533
+    },
+    "D02": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.542148232460022
+    },
+    "D03": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.638157844543457
+    },
+    "D04": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6474921703338623
+    },
+    "D05": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5757529735565186
+    },
+    "D06": {
+      "first_complete_rank": 3,
+      "boundary_score": 0.5730307102203369
+    },
+    "D07": {
+      "first_complete_rank": 6,
+      "boundary_score": 0.4057052433490753
+    },
+    "D08": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.736314058303833
+    },
+    "D09": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.620385468006134
+    },
+    "D10": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5568779110908508
+    },
+    "D11": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6292942762374878
+    },
+    "D12": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5630858540534973
+    },
+    "D13": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.5095491409301758
+    },
+    "D14": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.572605311870575
+    },
+    "D15": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6734979748725891
+    },
+    "D16": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6183668971061707
+    },
+    "D17": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.8306606411933899
+    },
+    "D18": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6262874603271484
+    },
+    "D19": {
+      "first_complete_rank": 5,
+      "boundary_score": 0.5867252349853516
+    },
+    "D20": {
+      "first_complete_rank": 4,
+      "boundary_score": 0.5642221570014954
+    },
+    "U01": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U02": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U03": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U04": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U05": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U06": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U07": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U08": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U09": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U10": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    }
+  },
+  "kure": {
+    "R01": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.6140897274017334
+    },
+    "R02": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6467112898826599
+    },
+    "R03": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6600065231323242
+    },
+    "R04": {
+      "first_complete_rank": 5,
+      "boundary_score": 0.5542259812355042
+    },
+    "R05": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6655265092849731
+    },
+    "R06": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6708664298057556
+    },
+    "R07": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6678547263145447
+    },
+    "R08": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.6280245780944824
+    },
+    "R09": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6860894560813904
+    },
+    "R10": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6596481800079346
+    },
+    "R11": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.6142867803573608
+    },
+    "R12": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6285658478736877
+    },
+    "R13": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.658011257648468
+    },
+    "R14": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.5775929689407349
+    },
+    "R15": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6617403626441956
+    },
+    "R16": {
+      "first_complete_rank": 18,
+      "boundary_score": 0.48898211121559143
+    },
+    "R17": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6295047402381897
+    },
+    "R18": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6755326986312866
+    },
+    "D01": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6780996322631836
+    },
+    "D02": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.6820588707923889
+    },
+    "D03": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.7490576505661011
+    },
+    "D04": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.7706993818283081
+    },
+    "D05": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.6606460809707642
+    },
+    "D06": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.7270065546035767
+    },
+    "D07": {
+      "first_complete_rank": 4,
+      "boundary_score": 0.5498278737068176
+    },
+    "D08": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.7722052335739136
+    },
+    "D09": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6915598511695862
+    },
+    "D10": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.7070655822753906
+    },
+    "D11": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6703282594680786
+    },
+    "D12": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6714826822280884
+    },
+    "D13": {
+      "first_complete_rank": 2,
+      "boundary_score": 0.615136444568634
+    },
+    "D14": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6721224784851074
+    },
+    "D15": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6691939830780029
+    },
+    "D16": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.6515815854072571
+    },
+    "D17": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.8579416871070862
+    },
+    "D18": {
+      "first_complete_rank": 1,
+      "boundary_score": 0.7492121458053589
+    },
+    "D19": {
+      "first_complete_rank": 5,
+      "boundary_score": 0.6267800331115723
+    },
+    "D20": {
+      "first_complete_rank": 6,
+      "boundary_score": 0.6161799430847168
+    },
+    "U01": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U02": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U03": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U04": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U05": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U06": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U07": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U08": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U09": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    },
+    "U10": {
+      "first_complete_rank": null,
+      "boundary_score": null
+    }
+  }
+}
