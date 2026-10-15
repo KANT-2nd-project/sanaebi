@@ -1,0 +1,296 @@
+{
+  "cases": [
+    {
+      "case_id": "R01",
+      "matches": true,
+      "actual_evidence_count": 57,
+      "expected_evidence_count": 57
+    },
+    {
+      "case_id": "R02",
+      "matches": true,
+      "actual_evidence_count": 55,
+      "expected_evidence_count": 55
+    },
+    {
+      "case_id": "R03",
+      "matches": true,
+      "actual_evidence_count": 89,
+      "expected_evidence_count": 89
+    },
+    {
+      "case_id": "R04",
+      "matches": true,
+      "actual_evidence_count": 56,
+      "expected_evidence_count": 56
+    },
+    {
+      "case_id": "R05",
+      "matches": true,
+      "actual_evidence_count": 26,
+      "expected_evidence_count": 26
+    },
+    {
+      "case_id": "R06",
+      "matches": true,
+      "actual_evidence_count": 30,
+      "expected_evidence_count": 30
+    },
+    {
+      "case_id": "R07",
+      "matches": true,
+      "actual_evidence_count": 166,
+      "expected_evidence_count": 166
+    },
+    {
+      "case_id": "R08",
+      "matches": true,
+      "actual_evidence_count": 26,
+      "expected_evidence_count": 26
+    },
+    {
+      "case_id": "R09",
+      "matches": true,
+      "actual_evidence_count": 42,
+      "expected_evidence_count": 42
+    },
+    {
+      "case_id": "R10",
+      "matches": true,
+      "actual_evidence_count": 50,
+      "expected_evidence_count": 50
+    },
+    {
+      "case_id": "R11",
+      "matches": true,
+      "actual_evidence_count": 128,
+      "expected_evidence_count": 128
+    },
+    {
+      "case_id": "R12",
+      "matches": true,
+      "actual_evidence_count": 140,
+      "expected_evidence_count": 140
+    },
+    {
+      "case_id": "R13",
+      "matches": true,
+      "actual_evidence_count": 80,
+      "expected_evidence_count": 80
+    },
+    {
+      "case_id": "R14",
+      "matches": true,
+      "actual_evidence_count": 44,
+      "expected_evidence_count": 44
+    },
+    {
+      "case_id": "R15",
+      "matches": true,
+      "actual_evidence_count": 73,
+      "expected_evidence_count": 73
+    },
+    {
+      "case_id": "R16",
+      "matches": true,
+      "actual_evidence_count": 21,
+      "expected_evidence_count": 21
+    },
+    {
+      "case_id": "R17",
+      "matches": true,
+      "actual_evidence_count": 6,
+      "expected_evidence_count": 6
+    },
+    {
+      "case_id": "R18",
+      "matches": true,
+      "actual_evidence_count": 20,
+      "expected_evidence_count": 20
+    },
+    {
+      "case_id": "D01",
+      "matches": true,
+      "actual_evidence_count": 77,
+      "expected_evidence_count": 77
+    },
+    {
+      "case_id": "D02",
+      "matches": true,
+      "actual_evidence_count": 28,
+      "expected_evidence_count": 28
+    },
+    {
+      "case_id": "D03",
+      "matches": true,
+      "actual_evidence_count": 26,
+      "expected_evidence_count": 26
+    },
+    {
+      "case_id": "D04",
+      "matches": true,
+      "actual_evidence_count": 71,
+      "expected_evidence_count": 71
+    },
+    {
+      "case_id": "D05",
+      "matches": true,
+      "actual_evidence_count": 28,
+      "expected_evidence_count": 28
+    },
+    {
+      "case_id": "D06",
+      "matches": true,
+      "actual_evidence_count": 27,
+      "expected_evidence_count": 27
+    },
+    {
+      "case_id": "D07",
+      "matches": true,
+      "actual_evidence_count": 38,
+      "expected_evidence_count": 38
+    },
+    {
+      "case_id": "D08",
+      "matches": true,
+      "actual_evidence_count": 68,
+      "expected_evidence_count": 68
+    },
+    {
+      "case_id": "D09",
+      "matches": true,
+      "actual_evidence_count": 72,
+      "expected_evidence_count": 72
+    },
+    {
+      "case_id": "D10",
+      "matches": true,
+      "actual_evidence_count": 94,
+      "expected_evidence_count": 94
+    },
+    {
+      "case_id": "D11",
+      "matches": true,
+      "actual_evidence_count": 44,
+      "expected_evidence_count": 44
+    },
+    {
+      "case_id": "D12",
+      "matches": true,
+      "actual_evidence_count": 137,
+      "expected_evidence_count": 137
+    },
+    {
+      "case_id": "D13",
+      "matches": true,
+      "actual_evidence_count": 145,
+      "expected_evidence_count": 145
+    },
+    {
+      "case_id": "D14",
+      "matches": true,
+      "actual_evidence_count": 143,
+      "expected_evidence_count": 143
+    },
+    {
+      "case_id": "D15",
+      "matches": true,
+      "actual_evidence_count": 141,
+      "expected_evidence_count": 141
+    },
+    {
+      "case_id": "D16",
+      "matches": true,
+      "actual_evidence_count": 59,
+      "expected_evidence_count": 59
+    },
+    {
+      "case_id": "D17",
+      "matches": true,
+      "actual_evidence_count": 143,
+      "expected_evidence_count": 143
+    },
+    {
+      "case_id": "D18",
+      "matches": true,
+      "actual_evidence_count": 60,
+      "expected_evidence_count": 60
+    },
+    {
+      "case_id": "D19",
+      "matches": true,
+      "actual_evidence_count": 161,
+      "expected_evidence_count": 161
+    },
+    {
+      "case_id": "D20",
+      "matches": true,
+      "actual_evidence_count": 128,
+      "expected_evidence_count": 128
+    },
+    {
+      "case_id": "U01",
+      "matches": true,
+      "actual_evidence_count": 0,
+      "expected_evidence_count": 0
+    },
+    {
+      "case_id": "U02",
+      "matches": true,
+      "actual_evidence_count": 1,
+      "expected_evidence_count": 1
+    },
+    {
+      "case_id": "U03",
+      "matches": true,
+      "actual_evidence_count": 53,
+      "expected_evidence_count": 53
+    },
+    {
+      "case_id": "U04",
+      "matches": true,
+      "actual_evidence_count": 32,
+      "expected_evidence_count": 32
+    },
+    {
+      "case_id": "U05",
+      "matches": true,
+      "actual_evidence_count": 0,
+      "expected_evidence_count": 0
+    },
+    {
+      "case_id": "U06",
+      "matches": true,
+      "actual_evidence_count": 150,
+      "expected_evidence_count": 150
+    },
+    {
+      "case_id": "U07",
+      "matches": true,
+      "actual_evidence_count": 38,
+      "expected_evidence_count": 38
+    },
+    {
+      "case_id": "U08",
+      "matches": true,
+      "actual_evidence_count": 4,
+      "expected_evidence_count": 4
+    },
+    {
+      "case_id": "U09",
+      "matches": true,
+      "actual_evidence_count": 95,
+      "expected_evidence_count": 95
+    },
+    {
+      "case_id": "U10",
+      "matches": true,
+      "actual_evidence_count": 170,
+      "expected_evidence_count": 170
+    }
+  ],
+  "all_match": true,
+  "original_index_unchanged": true,
+  "actual_tiny_query_inference": 48,
+  "llm_calls": 0
+}

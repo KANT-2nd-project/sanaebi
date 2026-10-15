@@ -1,0 +1,1475 @@
+{
+  "source": "../2026-10-15-context-limits/evidence/search.json.gz",
+  "source_uncompressed_sha256": "f23e0cdc57fbc097d0960299fc1e8ab369fd7610f68556f3b9a0f238941ee980",
+  "qrels_v3_sha256": "ec17b4b96162602984ddf58282c2caa30ab38d9276c407acf65efd8df2d3d33c",
+  "new_model_inference": 0,
+  "summary": {
+    "A_existing": {
+      "v2_complete": 36,
+      "v3_complete": 37,
+      "changed_cases": [
+        "R14"
+      ]
+    },
+    "B_tokens_only": {
+      "v2_complete": 36,
+      "v3_complete": 37,
+      "changed_cases": [
+        "R14"
+      ]
+    },
+    "C_unlimited": {
+      "v2_complete": 37,
+      "v3_complete": 37,
+      "changed_cases": []
+    }
+  },
+  "rows": [
+    {
+      "case_id": "R01",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R01",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R01",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R02",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R02",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R02",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R03",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R03",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R03",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R04",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R04",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R04",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R05",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R05",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R05",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R06",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R06",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R06",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R07",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R07",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R07",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R08",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R08",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R08",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R09",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R09",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R09",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R10",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R10",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R10",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R11",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R11",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R11",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R12",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R12",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R12",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R13",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R13",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R13",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R14",
+      "variant_id": "A_existing",
+      "v2_complete": false,
+      "v3_complete": true,
+      "v2_included": 0,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R14",
+      "variant_id": "B_tokens_only",
+      "v2_complete": false,
+      "v3_complete": true,
+      "v2_included": 0,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R14",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R15",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R15",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R15",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R16",
+      "variant_id": "A_existing",
+      "v2_complete": false,
+      "v3_complete": false,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 2,
+      "v3_missing_claims": [
+        "R16-r02"
+      ]
+    },
+    {
+      "case_id": "R16",
+      "variant_id": "B_tokens_only",
+      "v2_complete": false,
+      "v3_complete": false,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 2,
+      "v3_missing_claims": [
+        "R16-r02"
+      ]
+    },
+    {
+      "case_id": "R16",
+      "variant_id": "C_unlimited",
+      "v2_complete": false,
+      "v3_complete": false,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 2,
+      "v3_missing_claims": [
+        "R16-r02"
+      ]
+    },
+    {
+      "case_id": "R17",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R17",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R17",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R18",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R18",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "R18",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D01",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D01",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D01",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D02",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D02",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D02",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D03",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D03",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D03",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D04",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D04",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D04",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D05",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D05",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D05",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D06",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D06",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D06",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D07",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D07",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D07",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D08",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D08",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D08",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D09",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D09",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D09",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D10",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D10",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D10",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D11",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D11",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D11",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D12",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D12",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D12",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D13",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D13",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D13",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D14",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D14",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D14",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D15",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D15",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D15",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D16",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D16",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D16",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D17",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D17",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D17",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 3,
+      "v3_included": 3,
+      "v3_required": 3,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D18",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D18",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D18",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D19",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D19",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D19",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 1,
+      "v3_included": 1,
+      "v3_required": 1,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D20",
+      "variant_id": "A_existing",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D20",
+      "variant_id": "B_tokens_only",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "D20",
+      "variant_id": "C_unlimited",
+      "v2_complete": true,
+      "v3_complete": true,
+      "v2_included": 2,
+      "v3_included": 2,
+      "v3_required": 2,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U01",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U01",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U01",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U02",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U02",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U02",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U03",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U03",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U03",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U04",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U04",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U04",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U05",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U05",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U05",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U06",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U06",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U06",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U07",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U07",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U07",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U08",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U08",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U08",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U09",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U09",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U09",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U10",
+      "variant_id": "A_existing",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U10",
+      "variant_id": "B_tokens_only",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    },
+    {
+      "case_id": "U10",
+      "variant_id": "C_unlimited",
+      "v2_complete": null,
+      "v3_complete": null,
+      "v2_included": 0,
+      "v3_included": 0,
+      "v3_required": 0,
+      "v3_missing_claims": []
+    }
+  ]
+}

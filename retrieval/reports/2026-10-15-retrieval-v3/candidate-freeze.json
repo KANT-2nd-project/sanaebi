@@ -1,0 +1,22 @@
+{
+  "frozen_at": "2026-10-15T15:52:31.922613+00:00",
+  "candidate": "adjacent_top12",
+  "baseline": "C_unlimited",
+  "development_order": [
+    "adjacent_top12",
+    "bge_rerank_top8",
+    "bge_rerank_top12",
+    "B_tokens_only",
+    "A_existing",
+    "C_unlimited"
+  ],
+  "development_summary_sha256": "805f566bf38f6b722179e21c47350bad1e08c411f416676fb6482f2d85759aff",
+  "judgments_sha256": "40fef142bb93969c0201fd45e5a617529147b4d2ab68355623e106706526028c",
+  "runtime_measured_candidate_and_baseline": {
+    "C_unlimited": 70.54569015035668,
+    "adjacent_top12": 70.33207120020961
+  },
+  "bge_excluded": "shared mandatory rerank stage exceeds 3-second gate; see bge-resource-rejection.json",
+  "confirmation_started": false,
+  "final_adoption": false
+}

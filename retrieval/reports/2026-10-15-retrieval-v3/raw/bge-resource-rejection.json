@@ -1,0 +1,28 @@
+{
+  "measured_variant": "bge_rerank_top12",
+  "excluded_variants": [
+    "bge_rerank_top5",
+    "bge_rerank_top8",
+    "bge_rerank_top12"
+  ],
+  "reason": "All three variants execute identical pinned CPU FP32 top40 reranking before changing only the final evidence count. The mandatory rerank stage alone exceeds the fixed 48-request p95 target lower bound. Other topK variants were not separately benchmarked.",
+  "target_ms": 3000,
+  "results": [
+    {
+      "concurrency": 1,
+      "observed_requests": 3,
+      "planned_requests": 48,
+      "response_p95_lower_bound_ms": 22508.109035101683,
+      "mandatory_rerank_stage_p95_lower_bound_ms": 22485.65009275166,
+      "partial_sample_only": true
+    },
+    {
+      "concurrency": 2,
+      "observed_requests": 4,
+      "planned_requests": 48,
+      "response_p95_lower_bound_ms": 35364.42808699867,
+      "mandatory_rerank_stage_p95_lower_bound_ms": 35327.441254048426,
+      "partial_sample_only": true
+    }
+  ]
+}
