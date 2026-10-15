@@ -2,6 +2,8 @@
 
 RAG는 현재 게시된 SQLite 문서를 검색해 선택한 발췌를 기존 Luna 생성기에 전달한다. 코드 기본값은 `SANAEBI_RETRIEVAL_MODE=rag`이며 검색은 C로 고정한다. 이번 게시에서는 운영 설정·배포를 변경하지 않는다. 실제 LLM 품질과 운영 배포 검증은 로컬 연결 검증과 구분한다.
 
+[KURE 전환 검증](../retrieval/reports/2026-10-16-kure-gate/README.md)은 채택 조건 미달로 보류했다. 아래 모델·색인·기본 복원 묶음은 계속 Tiny 전용이며 KURE 가중치를 이 경로에 대체하지 않는다.
+
 ## 준비와 실행
 
 선정 모델은 `exp-models/dragonkue-KoEn-E5-Tiny`, revision `292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9`다. 배포 준비 도구가 검증한 모델 파일과 `retrieval-model.json`을 같은 디렉터리에 둔다. API/worker는 로컬 전용 로딩을 하며 요청 중 다운로드하지 않는다. 새 환경의 모델 준비는 다음 명령으로 수행한다. 이 명령은 최초에 고정 모델 파일을 다운로드하며, 서버 요청과는 별도다.

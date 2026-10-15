@@ -91,3 +91,7 @@ sudo docker logs --tail 30 sanaebi-api
 health·Swagger·분류 진단·레거시 API는 외부에서 허용하지 않는다. API는 비-root·읽기 전용 파일 시스템을 사용한다. SQLite와 모델은 이미지 외부에 남으며 Docker 재기동 시 API가 자동 복구된다.
 
 수동 DB 복원은 점검 전환·요청 종료·현재 DB 별도 백업 후 검증된 백업을 복사하는 운영자 작업이다. 생성 카운터를 문서 백업으로 덮어쓰지 않는다. 자동 롤백은 코드·모델·웹만 복원한다. 백업 manifest와 SQLite integrity_check를 확인하고 별도 임시 경로에서 복원 검증한다.
+
+## KURE 후보 검증 이후 준비 상태
+
+[KURE 상위20·게이트 평가](../retrieval/reports/2026-10-16-kure-gate/README.md)는 무관 질문 차단 기준 미달로 전환을 보류했다. 릴리스 descriptor·Compose·기본 벡터·모델 준비 명령은 기존 Tiny 계약을 유지한다. KURE용 운영 자산을 생성하거나 배포하지 않았다.
