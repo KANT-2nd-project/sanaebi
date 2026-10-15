@@ -25,13 +25,13 @@ from tests.support.paths import ROOT
 class RuntimeDefaultsTests(unittest.TestCase):
     def test_adopted_prompt_and_provider_options(self):
         preset = load_preset(ROOT)
-        closure = ROOT / "generation_evaluation/reports/2026-10-15-answer-grounding-v3"
-        self.assertEqual(DEFAULT_PROMPT_PROFILE, "examples_answer_scope_v3")
+        closure = ROOT / "generation_evaluation/reports/2026-10-15-user-facing-v5"
+        self.assertEqual(DEFAULT_PROMPT_PROFILE, "examples_answer_scope_v5")
         self.assertEqual(preset.prompt_profile, DEFAULT_PROMPT_PROFILE)
         self.assertEqual(
             load_runtime_settings(ROOT).prompt_profile, preset.prompt_profile
         )
-        expected = (closure / "candidate-system-prompt.txt").read_text()
+        expected = (closure / "examples_answer_scope_v5.txt").read_text()
         self.assertEqual(
             build_profile_prompt("질문", [], preset.prompt_profile).system, expected
         )

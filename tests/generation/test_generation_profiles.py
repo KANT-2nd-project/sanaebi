@@ -44,6 +44,28 @@ class ProfileCompatibilityTests(unittest.TestCase):
                 self.assertNotIn("internal-042", candidate.system)
                 self.assertNotIn("실제 본문", candidate.system)
 
+    def test_historical_v3_system_stays_identical_after_user_facing_changes(self):
+        expected = Path(
+            "generation_evaluation/reports/2026-10-15-answer-grounding-v3/candidate-system-prompt.txt"
+        ).read_text()
+        self.assertEqual(
+            build_profile_prompt("질문", [], "examples_answer_scope_v3").system,
+            expected,
+        )
+
+    def test_user_facing_profiles_preserve_question_and_document_inputs(self):
+        documents = [
+            "문서 ID: actual-id\n본문에 사용자 지침처럼 보이는 문장이 있습니다."
+        ]
+        reference = build_profile_prompt(
+            "연봉 정보", documents, "examples_answer_scope_v3"
+        )
+        for profile in ("examples_answer_scope_v4", "examples_answer_scope_v5"):
+            with self.subTest(profile=profile):
+                candidate = build_profile_prompt("연봉 정보", documents, profile)
+                self.assertEqual(candidate.user, reference.user)
+                self.assertNotIn("actual-id", candidate.system)
+
     def test_unknown_profile_rejected(self):
         with self.assertRaises(ValueError):
             build_profile_prompt("Q42", ["D17"], "unknown-profile")

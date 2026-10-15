@@ -27,7 +27,7 @@ def _case():
 
 
 class RoutingOutputBudgetTests(unittest.TestCase):
-    def test_merged_defaults_keep_v3_with_output_budget_16384(self):
+    def test_current_defaults_keep_output_budget_16384(self):
         settings = load_runtime_settings(ROOT)
         self.assertEqual(settings.config.model_name, "gpt-6-luna")
         self.assertEqual(settings.config.max_output_tokens, 16384)
@@ -35,9 +35,9 @@ class RoutingOutputBudgetTests(unittest.TestCase):
         self.assertEqual(settings.config.timeout_seconds, 180)
         self.assertIsNone(settings.config.temperature)
         self.assertEqual(settings.config.output_mode.value, "prompt_json")
-        self.assertEqual(settings.prompt_profile, "examples_answer_scope_v3")
+        self.assertEqual(settings.prompt_profile, "examples_answer_scope_v5")
 
-    def test_historical_v1_followup_rejects_current_v3_before_calls(self):
+    def test_historical_v1_followup_rejects_current_profile_before_calls(self):
         with self.assertRaisesRegex(followup.FollowupError, "출력 한도 외 생성 설정"):
             followup._verify_final_settings()
 
