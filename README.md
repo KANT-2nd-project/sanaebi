@@ -45,12 +45,14 @@ npm ci
 npm --prefix web ci
 ```
 
-답변을 사용하기 전에 다음을 준비합니다.
+최초 1회 DB를 구성하고 기본 문서를 게시합니다. [상세 절차](docs/document-management.md#새-환경의-db-최초-구성)
 
-- 분류 저장본과 답변 제공자: [준비 안내](app/README.md#실행-준비와-api-확인)
-- 문서 DB: Git에 포함되지 않으며, 저장소의 기본 문서와 이관 스크립트로 최초 구성할 수 있습니다. [초기 구성](docs/document-management.md#새-환경의-db-최초-구성)
+```bash
+uv run --locked python scripts/import_company_knowledge.py \
+  --source data/company-knowledge/documents.jsonl --apply --publish-imported
+```
 
-준비를 마치면 웹과 API를 함께 실행합니다. [상세 절차](web/README.md#개발)
+[분류 저장본과 답변 제공자](app/README.md#실행-준비와-api-확인)를 준비한 뒤 웹과 API를 실행합니다. [상세 절차](web/README.md#개발)
 
 ```bash
 npm run dev
