@@ -502,12 +502,17 @@ export function DocumentPanel() {
         <nav aria-label="문서 관리 메뉴"><Link href="/chat" className="documents-nav-link" onClick={event => {
           if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
           event.preventDefault(); navigate("/chat");
-        }}>채팅으로 돌아가기</Link><button type="button" className="documents-button documents-button-primary" disabled={writePending} onClick={openNewDocument}>새 문서 초안</button></nav>
+        }}><span aria-hidden="true">←</span> 채팅으로 돌아가기</Link></nav>
       </header>
       <section className="documents-intro documents-intro-compact" aria-labelledby="documents-title">
         <p className="documents-callout">등록한 문서는 매일 자정(한국 시간)에 초기화됩니다.</p>
         <h1 id="documents-title">문서 관리</h1><p>답변에 사용할 자료를 확인하고 게시합니다.</p>
       </section>
+      {!detailOpen && <DocumentMaintenance onNew={openNewDocument} disabled={writePending} onBusy={busy => { requestInFlight.current = busy; setWritePending(busy); }} onComplete={() => {
+        setSearchInput(""); setStatusInput("all"); setListRefresh(n => n + 1);
+        routeState.approve("/admin/documents"); router.replace("/admin/documents");
+      }} />}
+      {detailOpen && <div className="documents-detail-actions"><button type="button" className="documents-button documents-button-primary" disabled={writePending} onClick={openNewDocument}>새 문서 초안</button></div>}
       {detailOpen ? <section className="documents-editor-panel" aria-labelledby="document-editor-title">
         <div className="documents-editor-toolbar"><button type="button" className="documents-text-button" disabled={writePending} onClick={() => navigate(listUrl)}>← 검색 결과로</button>
           <span>{isNew ? "새 초안" : editorOpen ? "초안 편집" : "문서 읽기"}</span></div>
@@ -562,10 +567,6 @@ export function DocumentPanel() {
           {view.q || view.status !== "all" ? <button type="button" className="documents-button documents-button-secondary" onClick={resetSearch}>조건 초기화</button>
             : <button type="button" className="documents-button documents-button-primary" onClick={openNewDocument}>첫 문서 초안 만들기</button>}</div>}
       </section>}
-      {!detailOpen && <DocumentMaintenance onBusy={busy => { requestInFlight.current = busy; setWritePending(busy); }} onComplete={() => {
-        setSearchInput(""); setStatusInput("all"); setListRefresh(n => n + 1);
-        routeState.approve("/admin/documents"); router.replace("/admin/documents");
-      }} />}
       {detail && actionDialog && <DocumentActionDialog action={actionDialog} title={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).title} revision={(actionDialog === "withdraw" ? detail.published ?? detail.draft : detail.draft).revision_number}
         previousRevision={detail.published?.revision_number ?? null} reviewStatus={detail.draft.metadata?.review_status}
         effectiveFrom={effectiveFrom} busy={actionBusy} onCancel={() => setActionDialog(null)} onConfirm={confirmAction} />}

@@ -4,17 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { DocumentApiError, maintainDocuments, previewDocumentMaintenance, type MaintenanceAction, type MaintenancePreview, type MaintenanceResult } from "../../lib/api/documents";
 import { newIdempotencyKey } from "./document-state";
 
-export function DocumentMaintenance({ onBusy, onComplete }: {
+export function DocumentMaintenance({ onBusy, onComplete, onNew, disabled }: {
   onBusy: (busy: boolean) => void; onComplete: (result: MaintenanceResult) => void;
+  onNew: () => void; disabled: boolean;
 }) {
   const [action, setAction] = useState<MaintenanceAction | null>(null);
   const [notice, setNotice] = useState("");
-  return <section className="documents-maintenance" aria-labelledby="maintenance-heading">
-    <h2 id="maintenance-heading">문서 전체 관리</h2>
-    <p className="documents-help">검색 조건과 관계없이 모든 문서에 적용합니다.</p>
+  return <section className="documents-maintenance" aria-label="문서 작업">
     <div className="documents-maintenance-actions">
-      <button type="button" className="documents-button documents-button-danger" onClick={() => setAction("clear")}>모든 문서 삭제</button>
-      <button type="button" className="documents-button documents-button-secondary" onClick={() => setAction("restore")}>기본 문서 세팅 및 초기화</button>
+      <button type="button" className="documents-button documents-button-primary" disabled={disabled} onClick={onNew}>새 문서 초안</button>
+      <div className="documents-maintenance-secondary" role="group" aria-label="전체 문서 관리">
+        <button type="button" className="documents-button documents-button-secondary" disabled={disabled} onClick={() => setAction("restore")}>기본 문서 복원</button>
+        <button type="button" className="documents-button documents-button-danger" disabled={disabled} onClick={() => setAction("clear")}>모든 문서 삭제</button>
+      </div>
     </div>
     {notice && <p role="status" className="documents-success">{notice}</p>}
     {action && <MaintenanceDialog action={action} onBusy={onBusy} onClose={() => setAction(null)} onComplete={result => {
