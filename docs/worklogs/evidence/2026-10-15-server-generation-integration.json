@@ -388,5 +388,61 @@
     "real_llm_call_limit": 4,
     "real_llm_calls": 4,
     "web_commit": "e8f1bd0"
+  },
+  "browser_summary": {
+    "scenarios": [
+      {
+        "name": "document_create_publish_and_following_chat",
+        "status": "passed",
+        "details": "Created and published the synthetic document through /admin/documents. The next /chat answer contained its exact synthetic body marker BROWSER_SYNTHETIC_POLICY_20261015."
+      },
+      {
+        "name": "malformed_generation_response",
+        "status": "passed",
+        "details": "Fake invalid JSON produced HTTP 502 and the UI displayed a safe generic generation error."
+      },
+      {
+        "name": "classifier_unavailable",
+        "status": "passed",
+        "details": "The fake classifier failure produced HTTP 503 and the UI displayed the safe classifier-unavailable message; no generation call was recorded for that question."
+      },
+      {
+        "name": "manual_retry",
+        "status": "passed",
+        "details": "The first fake response was malformed and showed the explicit retry button. Clicking it once caused one second call and returned the synthetic document answer. No automatic retry occurred."
+      },
+      {
+        "name": "same_tab_navigation_cancels_pending_request_preserves_draft_and_ignores_late_answer",
+        "status": "passed",
+        "timing_utc": {
+          "fake_generation_started": "2026-10-15T04:36:15.782760Z",
+          "pending_snapshot": "2026-10-15T04:36:21.785Z",
+          "confirm_dialog_snapshot": "2026-10-15T04:36:27.805Z",
+          "confirm_accept_command_started": "2026-10-15T04:36:30Z",
+          "documents_page_reached": "2026-10-15T04:36:36Z",
+          "chat_reopened": "2026-10-15T04:36:47.761Z",
+          "fake_generation_completed": "2026-10-15T04:37:15.782902Z",
+          "post_completion_snapshot": "2026-10-15T04:37:24Z"
+        },
+        "details": "After confirming same-tab navigation, the in-flight browser request is listed as net::ERR_ABORTED. The chat draft remained BROWSER_DELAY_CANCEL after returning. The fake server completed its 60-second delayed response later, and the post-completion chat still had no turn or stale answer while retaining the draft."
+      },
+      {
+        "name": "short_delay_attempt_before_build_refresh",
+        "status": "inconclusive_not_used_for_cancellation_claim",
+        "details": "The earlier 8-second response completed before the dialog result was observed. It is retained in the evidence log but excluded from cancellation validation."
+      }
+    ],
+    "cleanup": {
+      "browser_session_closed": true,
+      "isolated_nginx_and_uvicorn_stopped": true,
+      "ports_39121_and_39122_free_after_cleanup": true,
+      "preexisting_user_processes_touched": false
+    },
+    "console": {
+      "warnings": 0,
+      "errors": 1,
+      "error_details": "Expected browser console resource error for the intentional fake HTTP 502 retry-first response; see console.txt."
+    },
+    "real_llm_calls": 0
   }
 }
