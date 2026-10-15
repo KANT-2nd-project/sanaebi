@@ -67,6 +67,7 @@ class GenerationAnswerer:
             render_document(d.knowledge_id, d.title, d.body, d.revision)
             for d in snapshot.documents
         ]
+
         if not documents:
             raise ValueError("The question service must handle empty snapshots")
         return self._generate(question, documents, snapshot.fingerprint)
