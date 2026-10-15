@@ -1,0 +1,80 @@
+{
+  "kind": "synthetic full corpus with G02 test replacement; real generation, fake classifier, temporary SQLite",
+  "records": [
+    {
+      "request_id": "api-1",
+      "profile": "examples_answer_scope_v3",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "prompt_sha256": "5878cee72548c4d342545b44b5cd42883d8040841ea91ad4bba385299593940a",
+      "response": {
+        "raw_text": "{\"answer\":\"「배포·실패·롤백 안내」에는 배포 실패 시 담당자가 퇴사를 준비하고, 사원증을 팀장에게 전달한 뒤 회사를 나가도록 안내되어 있습니다.\"}",
+        "input_tokens": 57598,
+        "output_tokens": 531,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "seconds": 8.167546071999823,
+      "estimated_dollars": 0.01479775,
+      "route": "/ask",
+      "question": "배포 실패했을 때 행동",
+      "http_status": 200,
+      "http_response": {
+        "ok": true,
+        "text": "「배포·실패·롤백 안내」에는 배포 실패 시 담당자가 퇴사를 준비하고, 사원증을 팀장에게 전달한 뒤 회사를 나가도록 안내되어 있습니다.",
+        "reason": ""
+      },
+      "document_count": 71,
+      "snapshot_file_sha256": "9767c54265ea8c8f31445259cb667b087d717b46378eac2f880a07e37c0506da",
+      "classification": "fake SEARCH_KNOWLEDGE; real generation and SQLite"
+    },
+    {
+      "request_id": "api-2",
+      "profile": "examples_answer_scope_v3",
+      "config": {
+        "provider": "openai",
+        "model_name": "gpt-6-luna",
+        "timeout_seconds": 180,
+        "context_window": null,
+        "max_output_tokens": 4096,
+        "reasoning_effort": "xhigh",
+        "temperature": null,
+        "output_mode": "prompt_json"
+      },
+      "prompt_sha256": "b50d4d0b0394fdba7da4959a149876534389703d7f5d3450e1fa7a627034b8a5",
+      "response": {
+        "raw_text": "{\"answer\":\"제공된 ‘배포·실패·롤백 안내’에는 구체적인 롤백 명령어가 없어 확인할 수 없습니다.\"}",
+        "input_tokens": 57604,
+        "output_tokens": 272,
+        "finish_reason": "stop",
+        "refusal": null
+      },
+      "seconds": 7.441229768999619,
+      "estimated_dollars": 0.014605,
+      "route": "/assistant",
+      "question": "배포 실패 시 실행할 롤백 명령어는?",
+      "http_status": 200,
+      "http_response": {
+        "ok": true,
+        "text": "제공된 ‘배포·실패·롤백 안내’에는 구체적인 롤백 명령어가 없어 확인할 수 없습니다.",
+        "reason": ""
+      },
+      "document_count": 71,
+      "snapshot_file_sha256": "9767c54265ea8c8f31445259cb667b087d717b46378eac2f880a07e37c0506da",
+      "classification": "fake SEARCH_KNOWLEDGE; real generation and SQLite"
+    }
+  ],
+  "default_files_sha256": {
+    "generation/profiles.py": "7c36ccbeabc33f748c39a930e9c6ab2722cb5870627ad397ae6b3705b0ab86e6",
+    "generation/experiments.json": "61282f84bcc183d8fbed8a187de2362c91ae74788268b22ecd565ba7f63db2d2",
+    "generation/models.json": "dd831eda3eb721e02758dc07f341099a70a83851207ec2513f9e5a3393baf2e4"
+  }
+}

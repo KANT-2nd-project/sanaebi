@@ -9,7 +9,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from generation import __main__ as single
-from generation.presets import load_preset
+from generation.presets import load_preset, load_runtime_settings
 from generation.profiles import DEFAULT_PROMPT_PROFILE, build_profile_prompt
 from generation.prompts import build_prompt
 from generation.providers import build_openai_model
@@ -26,8 +26,13 @@ ROOT = Path(__file__).resolve().parent.parent
 class RuntimeDefaultsTests(unittest.TestCase):
     def test_adopted_prompt_and_provider_options(self):
         preset = load_preset(ROOT)
-        closure = ROOT / "generation_evaluation/reports/2026-10-15-luna-tuning-closure"
-        expected = (closure / "adopted-system-prompt.txt").read_text()
+        closure = ROOT / "generation_evaluation/reports/2026-10-15-answer-grounding-v3"
+        self.assertEqual(DEFAULT_PROMPT_PROFILE, "examples_answer_scope_v3")
+        self.assertEqual(preset.prompt_profile, DEFAULT_PROMPT_PROFILE)
+        self.assertEqual(
+            load_runtime_settings(ROOT).prompt_profile, preset.prompt_profile
+        )
+        expected = (closure / "candidate-system-prompt.txt").read_text()
         self.assertEqual(
             build_profile_prompt("질문", [], preset.prompt_profile).system, expected
         )
