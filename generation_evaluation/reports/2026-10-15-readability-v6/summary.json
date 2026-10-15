@@ -1,0 +1,53 @@
+{
+  "examples_answer_scope_v5": {
+    "attempts": 8,
+    "completed": 8,
+    "latency_median_seconds": 4.6848993674975645,
+    "latency_max_seconds": 27.681545070998254,
+    "input_tokens": 464336,
+    "output_tokens": 4276,
+    "cost_upper_usd": 0.11929100000000001,
+    "content": {
+      "pass": 7,
+      "partial": 0,
+      "fail": 1,
+      "uncertain": 0
+    },
+    "readability": {
+      "pass": 8,
+      "partial": 0,
+      "fail": 0,
+      "uncertain": 0
+    },
+    "major_grounded_or_authority_errors": 0
+  },
+  "examples_answer_scope_v6": {
+    "attempts": 8,
+    "completed": 8,
+    "latency_median_seconds": 5.939759106502606,
+    "latency_max_seconds": 24.313517766997393,
+    "input_tokens": 467928,
+    "output_tokens": 4175,
+    "cost_upper_usd": 0.12011325,
+    "content": {
+      "pass": 7,
+      "partial": 0,
+      "fail": 1,
+      "uncertain": 0
+    },
+    "readability": {
+      "pass": 5,
+      "partial": 3,
+      "fail": 0,
+      "uncertain": 0
+    },
+    "major_grounded_or_authority_errors": 0
+  },
+  "actual_generation_calls": 16,
+  "all_prompt_hashes_match": true,
+  "total_cost_upper_usd": 0.23940425,
+  "judgment_status": "completed_masked_AI_review_with_evidence_correction",
+  "decision": "retain_v5_default; v6_candidate_not_adopted",
+  "reason": "R01 no representative bullet list, longer dense enumeration; R03 conditional step ordering less clear; R08 loses recognition time and explicit recall verification relative to v5; both omit on-call/fallback.",
+  "runtime_changed": false
+}

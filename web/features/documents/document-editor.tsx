@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type RefObject } from "react";
 import type { DocumentForm, DocumentFormErrors } from "./document-state";
+import { MarkdownEditor } from "./markdown-editor";
 import { DocumentErrorSummary, documentFieldId } from "./document-error-summary";
 
 type DocumentEditorProps = {
@@ -27,22 +28,21 @@ export function DocumentEditor({ form, errors, onChange, disabled = false, idPre
     <>
       <DocumentErrorSummary ref={errorSummaryRef} errors={errors} idPrefix={idPrefix} />
       <div className="documents-editor-fields">
-        <div className="documents-field">
-          <label htmlFor={field("title")}>문서 제목 <span>(필수)</span></label>
-          <input id={field("title")} name="title" required value={form.title} maxLength={200} disabled={disabled}
-            aria-invalid={Boolean(errors.title)} aria-describedby={issue("title")}
-            onChange={event => onChange("title", event.target.value)} />
-          {errors.title && <p id={issue("title")} className="documents-field-error" role="alert">{errors.title}</p>}
-        </div>
-        <div className="documents-field">
-          <label htmlFor={field("body")}>문서 원문 <span>(필수)</span></label>
-          <p id={`${field("body")}-help`} className="documents-help">원문을 그대로 입력하세요. 저장한 초안은 답변에서 제외되며, 게시본만 시행 조건에 따라 답변 근거 대상이 됩니다.</p>
-          <textarea id={field("body")} name="body" required value={form.body} maxLength={50_000} rows={12} disabled={disabled}
-            aria-invalid={Boolean(errors.body)} aria-describedby={`${field("body")}-help${errors.body ? ` ${issue("body")}` : ""}`}
-            onChange={event => onChange("body", event.target.value)} />
-          {errors.body && <p id={issue("body")} className="documents-field-error" role="alert">{errors.body}</p>}
-          <p className="documents-character-count">{form.body.length.toLocaleString("ko-KR")} / 50,000자</p>
-        </div>
+        <MarkdownEditor id={field("body")} value={form.body} title={form.title} disabled={disabled}
+          error={errors.title || errors.body} describedBy={`${field("body")}-help${errors.body ? ` ${issue("body")}` : ""}`}
+          onChange={value => onChange("body", value)}
+          titleInput={<div className="documents-field">
+            <label htmlFor={field("title")}>문서 제목 <span>(필수)</span></label>
+            <input id={field("title")} name="title" required value={form.title} maxLength={200} disabled={disabled}
+              aria-invalid={Boolean(errors.title)} aria-describedby={issue("title")}
+              onChange={event => onChange("title", event.target.value)} />
+            {errors.title && <p id={issue("title")} className="documents-field-error" role="alert">{errors.title}</p>}
+          </div>}
+          bodyFeedback={<>
+            <p id={`${field("body")}-help`} className="documents-help">Markdown으로 입력하고 미리보기로 확인하세요.</p>
+            {errors.body && <p id={issue("body")} className="documents-field-error" role="alert">{errors.body}</p>}
+            <p className="documents-character-count">{form.body.length.toLocaleString("ko-KR")} / 50,000자</p>
+          </>} />
         <details ref={metadataRef} className="documents-metadata">
           <summary>추가 정보</summary>
           <div className="documents-metadata-fields">

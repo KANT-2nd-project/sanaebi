@@ -126,3 +126,7 @@ flowchart TD
 ## 선택적 검색 근거 구성
 
 현재 기본 full 경로에 더해 `SANAEBI_RETRIEVAL_MODE=rag`로 게시 개정별 검색을 연결할 수 있다. shadow/gate 정책은 유지하며 원본 snapshot 한 번 → 유효 색인 확인 → 선택 근거 → 기존 생성기 순서다. 색인 미준비는503이고 전체 문서 자동 fallback은 없다. [RAG 실행 계약](rag-runtime.md)을 따른다. 운영 기본값 승격과 실제 답변 품질 확인은 별도다.
+
+## 분류 참고 정보 비교 결과
+
+분류 라벨을 오류 가능한 생성 참고 정보로 전달하는 후보는 탐색 기준을 충족하지 못해 미채택했다. 현재 shadow/gate와 HTTP 계약은 유지하며, advisory 서버 모드는 제공하지 않는다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.

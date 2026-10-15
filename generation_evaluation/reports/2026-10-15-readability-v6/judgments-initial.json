@@ -1,0 +1,134 @@
+{
+  "reviewer": "/root/readability_blind_judge",
+  "method": "candidate-name masked AI review; packet plus selected full snapshot evidence; not human review",
+  "responses": [
+    {
+      "anonymous_id": "A01",
+      "slot": "R08:examples_answer_scope_v6",
+      "content": "fail",
+      "readability": "partial",
+      "major_grounded_or_authority_error": true,
+      "rationale": "필수 당직·15분 인수 목표·팀장 대체 인계와 직접 연결 누락. 회수 확인·발견 시각·대상 시스템·회사 연락 계정 누락. 최초 판정은 메뉴 계층 발명을 지적했으나 전체 snapshot 추가 근거로 재검토 중."
+    },
+    {
+      "anonymous_id": "A02",
+      "slot": "R05:examples_answer_scope_v6",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "신청 사실과 개인 조회 한계를 두 문단으로 분리."
+    },
+    {
+      "anonymous_id": "A03",
+      "slot": "R06:examples_answer_scope_v6",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "일반 과학 설명 대신 서비스 범위를 간결하게 안내."
+    },
+    {
+      "anonymous_id": "A04",
+      "slot": "R06:examples_answer_scope_v5",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "회사 업무 범위 밖임을 짧게 안내."
+    },
+    {
+      "anonymous_id": "A05",
+      "slot": "R05:examples_answer_scope_v5",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "신청 사실·개인 조회 한계 충족. 별도 조회 경로 부재 부연은 불필요하지만 창작 없음."
+    },
+    {
+      "anonymous_id": "A06",
+      "slot": "R08:examples_answer_scope_v5",
+      "content": "fail",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "당직·15분 인수 목표·팀장 대체 인계·담당자 직접 연결 누락. 대상 시스템·회사 연락 계정 등 일부 신고 항목 누락. 형식과 절차/한계 분리는 적절."
+    },
+    {
+      "anonymous_id": "A07",
+      "slot": "R04:examples_answer_scope_v5",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "독립 조건과 20% 초과·재승인 시점·주체를 문장별로 보존."
+    },
+    {
+      "anonymous_id": "A08",
+      "slot": "R07:examples_answer_scope_v5",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "트리 의미와 업무 맥락을 짧게 확인."
+    },
+    {
+      "anonymous_id": "A09",
+      "slot": "R01:examples_answer_scope_v6",
+      "content": "pass",
+      "readability": "partial",
+      "major_grounded_or_authority_error": false,
+      "rationale": "내용은 충족하지만 병렬 업무 영역이 긴 한 문장에 밀집. 대표 업무 불릿 없음."
+    },
+    {
+      "anonymous_id": "A10",
+      "slot": "R03:examples_answer_scope_v6",
+      "content": "pass",
+      "readability": "partial",
+      "major_grounded_or_authority_error": false,
+      "rationale": "필수 내용 충족. 4번 단계에 결제 전 대체 구매와 예약 후 기록을 함께 넣어 시간 순서가 덜 선명."
+    },
+    {
+      "anonymous_id": "A11",
+      "slot": "R03:examples_answer_scope_v5",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "실제 순서와 조건부 대체 구매를 별도 문단으로 분리."
+    },
+    {
+      "anonymous_id": "A12",
+      "slot": "R04:examples_answer_scope_v6",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "조건별 불릿과 개인 선구매 금지. 대체 구매 사전 서면 승인도 근거 있음."
+    },
+    {
+      "anonymous_id": "A13",
+      "slot": "R02:examples_answer_scope_v5",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "정확한 경로·기한을 한 문장으로 안내."
+    },
+    {
+      "anonymous_id": "A14",
+      "slot": "R02:examples_answer_scope_v6",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "정확한 기한·경로를 간단하게 안내."
+    },
+    {
+      "anonymous_id": "A15",
+      "slot": "R07:examples_answer_scope_v6",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "짧은 예시와 함께 의미·업무 맥락 확인."
+    },
+    {
+      "anonymous_id": "A16",
+      "slot": "R01:examples_answer_scope_v5",
+      "content": "pass",
+      "readability": "pass",
+      "major_grounded_or_authority_error": false,
+      "rationale": "업무·한계·다음 질문을 짧게 소개. 목록이 없어도 일반 가독성은 통과."
+    }
+  ]
+}

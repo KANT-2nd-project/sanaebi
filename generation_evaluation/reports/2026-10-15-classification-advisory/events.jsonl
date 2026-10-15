@@ -1,0 +1,128 @@
+{"slot": "P01:A:1", "event": "started", "reserved_usd": 0.072948}
+{"slot": "P01:A:1", "event": "finished"}
+{"slot": "P01:B:1", "event": "started", "reserved_usd": 0.07323975}
+{"slot": "P01:B:1", "event": "finished"}
+{"slot": "P01:C:1", "event": "started", "reserved_usd": 0.073242}
+{"slot": "P01:C:1", "event": "finished"}
+{"slot": "P01:C:2", "event": "started", "reserved_usd": 0.073242}
+{"slot": "P01:C:2", "event": "finished"}
+{"slot": "P01:B:2", "event": "started", "reserved_usd": 0.07323975}
+{"slot": "P01:B:2", "event": "finished"}
+{"slot": "P01:A:2", "event": "started", "reserved_usd": 0.072948}
+{"slot": "P01:A:2", "event": "finished"}
+{"slot": "P02:B:1", "event": "started", "reserved_usd": 0.07323375}
+{"slot": "P02:B:1", "event": "finished"}
+{"slot": "P02:C:1", "event": "started", "reserved_usd": 0.073235}
+{"slot": "P02:C:1", "event": "finished"}
+{"slot": "P02:A:1", "event": "started", "reserved_usd": 0.072942}
+{"slot": "P02:A:1", "event": "finished"}
+{"slot": "P02:A:2", "event": "started", "reserved_usd": 0.072942}
+{"slot": "P02:A:2", "event": "finished"}
+{"slot": "P02:C:2", "event": "started", "reserved_usd": 0.073235}
+{"slot": "P02:C:2", "event": "finished"}
+{"slot": "P02:B:2", "event": "started", "reserved_usd": 0.07323375}
+{"slot": "P02:B:2", "event": "finished"}
+{"slot": "P03:C:1", "event": "started", "reserved_usd": 0.073237}
+{"slot": "P03:C:1", "event": "finished"}
+{"slot": "P03:A:1", "event": "started", "reserved_usd": 0.072943}
+{"slot": "P03:A:1", "event": "finished"}
+{"slot": "P03:B:1", "event": "started", "reserved_usd": 0.07323475}
+{"slot": "P03:B:1", "event": "finished"}
+{"slot": "P03:B:2", "event": "started", "reserved_usd": 0.07323475}
+{"slot": "P03:B:2", "event": "finished"}
+{"slot": "P03:A:2", "event": "started", "reserved_usd": 0.072943}
+{"slot": "P03:A:2", "event": "finished"}
+{"slot": "P03:C:2", "event": "started", "reserved_usd": 0.073237}
+{"slot": "P03:C:2", "event": "finished"}
+{"slot": "P04:A:1", "event": "started", "reserved_usd": 0.072954}
+{"slot": "P04:A:1", "event": "finished"}
+{"slot": "P04:B:1", "event": "started", "reserved_usd": 0.07324575}
+{"slot": "P04:B:1", "event": "finished"}
+{"slot": "P04:C:1", "event": "started", "reserved_usd": 0.073248}
+{"slot": "P04:C:1", "event": "finished"}
+{"slot": "P04:C:2", "event": "started", "reserved_usd": 0.073248}
+{"slot": "P04:C:2", "event": "finished"}
+{"slot": "P04:B:2", "event": "started", "reserved_usd": 0.07324575}
+{"slot": "P04:B:2", "event": "finished"}
+{"slot": "P04:A:2", "event": "started", "reserved_usd": 0.072954}
+{"slot": "P04:A:2", "event": "finished"}
+{"slot": "P05:B:1", "event": "started", "reserved_usd": 0.07323875}
+{"slot": "P05:B:1", "event": "finished"}
+{"slot": "P05:C:1", "event": "started", "reserved_usd": 0.073241}
+{"slot": "P05:C:1", "event": "finished"}
+{"slot": "P05:A:1", "event": "started", "reserved_usd": 0.072947}
+{"slot": "P05:A:1", "event": "finished"}
+{"slot": "P05:A:2", "event": "started", "reserved_usd": 0.072947}
+{"slot": "P05:A:2", "event": "finished"}
+{"slot": "P05:C:2", "event": "started", "reserved_usd": 0.073241}
+{"slot": "P05:C:2", "event": "finished"}
+{"slot": "P05:B:2", "event": "started", "reserved_usd": 0.07323875}
+{"slot": "P05:B:2", "event": "finished"}
+{"slot": "P06:C:1", "event": "started", "reserved_usd": 0.073332}
+{"slot": "P06:C:1", "event": "finished"}
+{"slot": "P06:A:1", "event": "started", "reserved_usd": 0.07303675}
+{"slot": "P06:A:1", "event": "finished"}
+{"slot": "P06:B:1", "event": "started", "reserved_usd": 0.0733285}
+{"slot": "P06:B:1", "event": "finished"}
+{"slot": "P06:B:2", "event": "started", "reserved_usd": 0.0733285}
+{"slot": "P06:B:2", "event": "finished"}
+{"slot": "P06:A:2", "event": "started", "reserved_usd": 0.07303675}
+{"slot": "P06:A:2", "event": "finished"}
+{"slot": "P06:C:2", "event": "started", "reserved_usd": 0.073332}
+{"slot": "P06:C:2", "event": "finished"}
+{"slot": "P07:A:1", "event": "started", "reserved_usd": 0.072949}
+{"slot": "P07:A:1", "event": "finished"}
+{"slot": "P07:B:1", "event": "started", "reserved_usd": 0.07324075}
+{"slot": "P07:B:1", "event": "finished"}
+{"slot": "P07:C:1", "event": "started", "reserved_usd": 0.073243}
+{"slot": "P07:C:1", "event": "finished"}
+{"slot": "P07:C:2", "event": "started", "reserved_usd": 0.073243}
+{"slot": "P07:C:2", "event": "finished"}
+{"slot": "P07:B:2", "event": "started", "reserved_usd": 0.07324075}
+{"slot": "P07:B:2", "event": "finished"}
+{"slot": "P07:A:2", "event": "started", "reserved_usd": 0.072949}
+{"slot": "P07:A:2", "event": "finished"}
+{"slot": "P08:B:1", "event": "started", "reserved_usd": 0.07324325}
+{"slot": "P08:B:1", "event": "finished"}
+{"slot": "P08:C:1", "event": "started", "reserved_usd": 0.07324675}
+{"slot": "P08:C:1", "event": "finished"}
+{"slot": "P08:A:1", "event": "started", "reserved_usd": 0.0729515}
+{"slot": "P08:A:1", "event": "finished"}
+{"slot": "P08:A:2", "event": "started", "reserved_usd": 0.0729515}
+{"slot": "P08:A:2", "event": "finished"}
+{"slot": "P08:C:2", "event": "started", "reserved_usd": 0.07324675}
+{"slot": "P08:C:2", "event": "finished"}
+{"slot": "P08:B:2", "event": "started", "reserved_usd": 0.07324325}
+{"slot": "P08:B:2", "event": "finished"}
+{"slot": "P01:W:SEARCH_KNOWLEDGE:1", "event": "started", "reserved_usd": 0.07324325}
+{"slot": "P01:W:SEARCH_KNOWLEDGE:1", "event": "finished"}
+{"slot": "P01:W:SEARCH_KNOWLEDGE:2", "event": "started", "reserved_usd": 0.07324325}
+{"slot": "P01:W:SEARCH_KNOWLEDGE:2", "event": "finished"}
+{"slot": "P01:W:CLARIFY:1", "event": "started", "reserved_usd": 0.073241}
+{"slot": "P01:W:CLARIFY:1", "event": "finished"}
+{"slot": "P01:W:CLARIFY:2", "event": "started", "reserved_usd": 0.073241}
+{"slot": "P01:W:CLARIFY:2", "event": "finished"}
+{"slot": "P04:W:SEARCH_KNOWLEDGE:1", "event": "started", "reserved_usd": 0.07324925}
+{"slot": "P04:W:SEARCH_KNOWLEDGE:1", "event": "finished"}
+{"slot": "P04:W:SEARCH_KNOWLEDGE:2", "event": "started", "reserved_usd": 0.07324925}
+{"slot": "P04:W:SEARCH_KNOWLEDGE:2", "event": "finished"}
+{"slot": "P04:W:CLARIFY:1", "event": "started", "reserved_usd": 0.073247}
+{"slot": "P04:W:CLARIFY:1", "event": "finished"}
+{"slot": "P04:W:CLARIFY:2", "event": "started", "reserved_usd": 0.073247}
+{"slot": "P04:W:CLARIFY:2", "event": "finished"}
+{"slot": "P05:W:SEARCH_KNOWLEDGE:1", "event": "started", "reserved_usd": 0.07324225}
+{"slot": "P05:W:SEARCH_KNOWLEDGE:1", "event": "finished"}
+{"slot": "P05:W:SEARCH_KNOWLEDGE:2", "event": "started", "reserved_usd": 0.07324225}
+{"slot": "P05:W:SEARCH_KNOWLEDGE:2", "event": "finished"}
+{"slot": "P05:W:CLARIFY:1", "event": "started", "reserved_usd": 0.07324}
+{"slot": "P05:W:CLARIFY:1", "event": "finished"}
+{"slot": "P05:W:CLARIFY:2", "event": "started", "reserved_usd": 0.07324}
+{"slot": "P05:W:CLARIFY:2", "event": "finished"}
+{"slot": "P06:W:CLARIFY:1", "event": "started", "reserved_usd": 0.07332975}
+{"slot": "P06:W:CLARIFY:1", "event": "finished"}
+{"slot": "P06:W:CLARIFY:2", "event": "started", "reserved_usd": 0.07332975}
+{"slot": "P06:W:CLARIFY:2", "event": "finished"}
+{"slot": "P06:W:UNSUPPORTED:1", "event": "started", "reserved_usd": 0.07333075}
+{"slot": "P06:W:UNSUPPORTED:1", "event": "finished"}
+{"slot": "P06:W:UNSUPPORTED:2", "event": "started", "reserved_usd": 0.07333075}
+{"slot": "P06:W:UNSUPPORTED:2", "event": "finished"}

@@ -1,0 +1,588 @@
+{
+  "budget_limits": {
+    "dev_dollars": 5.0,
+    "dev_seconds": 7200.0,
+    "max_calls": 184,
+    "total_dollars": 5.0,
+    "total_seconds": 7200.0
+  },
+  "reservations": {
+    "P01:A:1": {
+      "actual_dollars": 0.01527975,
+      "charged_dollars": 0.01527975,
+      "phase": "dev",
+      "reserved_at": 1792052462.6869724,
+      "reserved_dollars": 0.072948,
+      "settled_at": 1792052482.885026,
+      "status": "settled"
+    },
+    "P01:A:2": {
+      "actual_dollars": 0.01514775,
+      "charged_dollars": 0.01514775,
+      "phase": "dev",
+      "reserved_at": 1792052532.7284174,
+      "reserved_dollars": 0.072948,
+      "settled_at": 1792052545.907204,
+      "status": "settled"
+    },
+    "P01:B:1": {
+      "actual_dollars": 0.0152345,
+      "charged_dollars": 0.0152345,
+      "phase": "dev",
+      "reserved_at": 1792052482.897063,
+      "reserved_dollars": 0.07323975,
+      "settled_at": 1792052495.3271003,
+      "status": "settled"
+    },
+    "P01:B:2": {
+      "actual_dollars": 0.01521575,
+      "charged_dollars": 0.01521575,
+      "phase": "dev",
+      "reserved_at": 1792052522.6301365,
+      "reserved_dollars": 0.07323975,
+      "settled_at": 1792052532.7221875,
+      "status": "settled"
+    },
+    "P01:C:1": {
+      "actual_dollars": 0.01515825,
+      "charged_dollars": 0.01515825,
+      "phase": "dev",
+      "reserved_at": 1792052495.3348377,
+      "reserved_dollars": 0.073242,
+      "settled_at": 1792052507.504793,
+      "status": "settled"
+    },
+    "P01:C:2": {
+      "actual_dollars": 0.0155355,
+      "charged_dollars": 0.0155355,
+      "phase": "dev",
+      "reserved_at": 1792052507.5157576,
+      "reserved_dollars": 0.073242,
+      "settled_at": 1792052522.6233375,
+      "status": "settled"
+    },
+    "P01:W:CLARIFY:1": {
+      "actual_dollars": 0.0153235,
+      "charged_dollars": 0.0153235,
+      "phase": "dev",
+      "reserved_at": 1792053037.2165964,
+      "reserved_dollars": 0.073241,
+      "settled_at": 1792053049.0736043,
+      "status": "settled"
+    },
+    "P01:W:CLARIFY:2": {
+      "actual_dollars": 0.01543375,
+      "charged_dollars": 0.01543375,
+      "phase": "dev",
+      "reserved_at": 1792053049.0824797,
+      "reserved_dollars": 0.073241,
+      "settled_at": 1792053062.8437004,
+      "status": "settled"
+    },
+    "P01:W:SEARCH_KNOWLEDGE:1": {
+      "actual_dollars": 0.01533975,
+      "charged_dollars": 0.01533975,
+      "phase": "dev",
+      "reserved_at": 1792053013.6927457,
+      "reserved_dollars": 0.07324325,
+      "settled_at": 1792053025.144697,
+      "status": "settled"
+    },
+    "P01:W:SEARCH_KNOWLEDGE:2": {
+      "actual_dollars": 0.015414,
+      "charged_dollars": 0.015414,
+      "phase": "dev",
+      "reserved_at": 1792053025.1523092,
+      "reserved_dollars": 0.07324325,
+      "settled_at": 1792053037.2086074,
+      "status": "settled"
+    },
+    "P02:A:1": {
+      "actual_dollars": 0.01468375,
+      "charged_dollars": 0.01468375,
+      "phase": "dev",
+      "reserved_at": 1792052553.832642,
+      "reserved_dollars": 0.072942,
+      "settled_at": 1792052557.4740162,
+      "status": "settled"
+    },
+    "P02:A:2": {
+      "actual_dollars": 0.01464325,
+      "charged_dollars": 0.01464325,
+      "phase": "dev",
+      "reserved_at": 1792052557.4840674,
+      "reserved_dollars": 0.072942,
+      "settled_at": 1792052559.8925986,
+      "status": "settled"
+    },
+    "P02:B:1": {
+      "actual_dollars": 0.014715,
+      "charged_dollars": 0.014715,
+      "phase": "dev",
+      "reserved_at": 1792052545.9182963,
+      "reserved_dollars": 0.07323375,
+      "settled_at": 1792052549.7150495,
+      "status": "settled"
+    },
+    "P02:B:2": {
+      "actual_dollars": 0.01474575,
+      "charged_dollars": 0.01474575,
+      "phase": "dev",
+      "reserved_at": 1792052563.735707,
+      "reserved_dollars": 0.07323375,
+      "settled_at": 1792052567.7535405,
+      "status": "settled"
+    },
+    "P02:C:1": {
+      "actual_dollars": 0.0147755,
+      "charged_dollars": 0.0147755,
+      "phase": "dev",
+      "reserved_at": 1792052549.725532,
+      "reserved_dollars": 0.073235,
+      "settled_at": 1792052553.8227167,
+      "status": "settled"
+    },
+    "P02:C:2": {
+      "actual_dollars": 0.014759,
+      "charged_dollars": 0.014759,
+      "phase": "dev",
+      "reserved_at": 1792052559.9033124,
+      "reserved_dollars": 0.073235,
+      "settled_at": 1792052563.7246065,
+      "status": "settled"
+    },
+    "P03:A:1": {
+      "actual_dollars": 0.015054,
+      "charged_dollars": 0.015054,
+      "phase": "dev",
+      "reserved_at": 1792052577.2841086,
+      "reserved_dollars": 0.072943,
+      "settled_at": 1792052586.4166405,
+      "status": "settled"
+    },
+    "P03:A:2": {
+      "actual_dollars": 0.015321,
+      "charged_dollars": 0.015321,
+      "phase": "dev",
+      "reserved_at": 1792052613.716352,
+      "reserved_dollars": 0.072943,
+      "settled_at": 1792052625.764491,
+      "status": "settled"
+    },
+    "P03:B:1": {
+      "actual_dollars": 0.0152585,
+      "charged_dollars": 0.0152585,
+      "phase": "dev",
+      "reserved_at": 1792052586.425192,
+      "reserved_dollars": 0.07323475,
+      "settled_at": 1792052598.35349,
+      "status": "settled"
+    },
+    "P03:B:2": {
+      "actual_dollars": 0.01553375,
+      "charged_dollars": 0.01553375,
+      "phase": "dev",
+      "reserved_at": 1792052598.3617032,
+      "reserved_dollars": 0.07323475,
+      "settled_at": 1792052613.70857,
+      "status": "settled"
+    },
+    "P03:C:1": {
+      "actual_dollars": 0.01511775,
+      "charged_dollars": 0.01511775,
+      "phase": "dev",
+      "reserved_at": 1792052567.7618892,
+      "reserved_dollars": 0.073237,
+      "settled_at": 1792052577.2730033,
+      "status": "settled"
+    },
+    "P03:C:2": {
+      "actual_dollars": 0.015504,
+      "charged_dollars": 0.015504,
+      "phase": "dev",
+      "reserved_at": 1792052625.7748241,
+      "reserved_dollars": 0.073237,
+      "settled_at": 1792052640.623032,
+      "status": "settled"
+    },
+    "P04:A:1": {
+      "actual_dollars": 0.01550525,
+      "charged_dollars": 0.01550525,
+      "phase": "dev",
+      "reserved_at": 1792052640.63203,
+      "reserved_dollars": 0.072954,
+      "settled_at": 1792052654.576208,
+      "status": "settled"
+    },
+    "P04:A:2": {
+      "actual_dollars": 0.01588475,
+      "charged_dollars": 0.01588475,
+      "phase": "dev",
+      "reserved_at": 1792052738.3224301,
+      "reserved_dollars": 0.072954,
+      "settled_at": 1792052758.8963187,
+      "status": "settled"
+    },
+    "P04:B:1": {
+      "actual_dollars": 0.01560175,
+      "charged_dollars": 0.01560175,
+      "phase": "dev",
+      "reserved_at": 1792052654.6005504,
+      "reserved_dollars": 0.07324575,
+      "settled_at": 1792052670.5352395,
+      "status": "settled"
+    },
+    "P04:B:2": {
+      "actual_dollars": 0.0152995,
+      "charged_dollars": 0.0152995,
+      "phase": "dev",
+      "reserved_at": 1792052726.2652493,
+      "reserved_dollars": 0.07324575,
+      "settled_at": 1792052738.3147619,
+      "status": "settled"
+    },
+    "P04:C:1": {
+      "actual_dollars": 0.01648175,
+      "charged_dollars": 0.01648175,
+      "phase": "dev",
+      "reserved_at": 1792052670.5460472,
+      "reserved_dollars": 0.073248,
+      "settled_at": 1792052702.6309566,
+      "status": "settled"
+    },
+    "P04:C:2": {
+      "actual_dollars": 0.0159485,
+      "charged_dollars": 0.0159485,
+      "phase": "dev",
+      "reserved_at": 1792052702.6415322,
+      "reserved_dollars": 0.073248,
+      "settled_at": 1792052726.2559059,
+      "status": "settled"
+    },
+    "P04:W:CLARIFY:1": {
+      "actual_dollars": 0.01554975,
+      "charged_dollars": 0.01554975,
+      "phase": "dev",
+      "reserved_at": 1792053096.6770222,
+      "reserved_dollars": 0.073247,
+      "settled_at": 1792053113.1866398,
+      "status": "settled"
+    },
+    "P04:W:CLARIFY:2": {
+      "actual_dollars": 0.0159075,
+      "charged_dollars": 0.0159075,
+      "phase": "dev",
+      "reserved_at": 1792053113.2011461,
+      "reserved_dollars": 0.073247,
+      "settled_at": 1792053134.5530849,
+      "status": "settled"
+    },
+    "P04:W:SEARCH_KNOWLEDGE:1": {
+      "actual_dollars": 0.015743,
+      "charged_dollars": 0.015743,
+      "phase": "dev",
+      "reserved_at": 1792053062.8531873,
+      "reserved_dollars": 0.07324925,
+      "settled_at": 1792053081.7144027,
+      "status": "settled"
+    },
+    "P04:W:SEARCH_KNOWLEDGE:2": {
+      "actual_dollars": 0.015578,
+      "charged_dollars": 0.015578,
+      "phase": "dev",
+      "reserved_at": 1792053081.722168,
+      "reserved_dollars": 0.07324925,
+      "settled_at": 1792053096.6697843,
+      "status": "settled"
+    },
+    "P05:A:1": {
+      "actual_dollars": 0.01483725,
+      "charged_dollars": 0.01483725,
+      "phase": "dev",
+      "reserved_at": 1792052821.2898505,
+      "reserved_dollars": 0.072947,
+      "settled_at": 1792052827.2370396,
+      "status": "settled"
+    },
+    "P05:A:2": {
+      "actual_dollars": 0.0147345,
+      "charged_dollars": 0.0147345,
+      "phase": "dev",
+      "reserved_at": 1792052827.250969,
+      "reserved_dollars": 0.072947,
+      "settled_at": 1792052830.961814,
+      "status": "settled"
+    },
+    "P05:B:1": {
+      "actual_dollars": 0.0148055,
+      "charged_dollars": 0.0148055,
+      "phase": "dev",
+      "reserved_at": 1792052809.6391149,
+      "reserved_dollars": 0.07323875,
+      "settled_at": 1792052815.0992937,
+      "status": "settled"
+    },
+    "P05:B:2": {
+      "actual_dollars": 0.01495925,
+      "charged_dollars": 0.01495925,
+      "phase": "dev",
+      "reserved_at": 1792052835.953321,
+      "reserved_dollars": 0.07323875,
+      "settled_at": 1792052843.3437114,
+      "status": "settled"
+    },
+    "P05:C:1": {
+      "actual_dollars": 0.0148665,
+      "charged_dollars": 0.0148665,
+      "phase": "dev",
+      "reserved_at": 1792052815.1073153,
+      "reserved_dollars": 0.073241,
+      "settled_at": 1792052821.2799852,
+      "status": "settled"
+    },
+    "P05:C:2": {
+      "actual_dollars": 0.01484325,
+      "charged_dollars": 0.01484325,
+      "phase": "dev",
+      "reserved_at": 1792052830.9699118,
+      "reserved_dollars": 0.073241,
+      "settled_at": 1792052835.943786,
+      "status": "settled"
+    },
+    "P05:W:CLARIFY:1": {
+      "actual_dollars": 0.014812,
+      "charged_dollars": 0.014812,
+      "phase": "dev",
+      "reserved_at": 1792053143.8681197,
+      "reserved_dollars": 0.07324,
+      "settled_at": 1792053148.0765681,
+      "status": "settled"
+    },
+    "P05:W:CLARIFY:2": {
+      "actual_dollars": 0.0148705,
+      "charged_dollars": 0.0148705,
+      "phase": "dev",
+      "reserved_at": 1792053148.084703,
+      "reserved_dollars": 0.07324,
+      "settled_at": 1792053154.3996181,
+      "status": "settled"
+    },
+    "P05:W:SEARCH_KNOWLEDGE:1": {
+      "actual_dollars": 0.01484025,
+      "charged_dollars": 0.01484025,
+      "phase": "dev",
+      "reserved_at": 1792053134.580479,
+      "reserved_dollars": 0.07324225,
+      "settled_at": 1792053139.101971,
+      "status": "settled"
+    },
+    "P05:W:SEARCH_KNOWLEDGE:2": {
+      "actual_dollars": 0.0147885,
+      "charged_dollars": 0.0147885,
+      "phase": "dev",
+      "reserved_at": 1792053139.1131525,
+      "reserved_dollars": 0.07324225,
+      "settled_at": 1792053143.859036,
+      "status": "settled"
+    },
+    "P06:A:1": {
+      "actual_dollars": 0.014859,
+      "charged_dollars": 0.014859,
+      "phase": "dev",
+      "reserved_at": 1792052847.8313541,
+      "reserved_dollars": 0.07303675,
+      "settled_at": 1792052853.9523954,
+      "status": "settled"
+    },
+    "P06:A:2": {
+      "actual_dollars": 0.0148035,
+      "charged_dollars": 0.0148035,
+      "phase": "dev",
+      "reserved_at": 1792052864.806474,
+      "reserved_dollars": 0.07303675,
+      "settled_at": 1792052869.15182,
+      "status": "settled"
+    },
+    "P06:B:1": {
+      "actual_dollars": 0.01493525,
+      "charged_dollars": 0.01493525,
+      "phase": "dev",
+      "reserved_at": 1792052853.9621713,
+      "reserved_dollars": 0.0733285,
+      "settled_at": 1792052859.8237913,
+      "status": "settled"
+    },
+    "P06:B:2": {
+      "actual_dollars": 0.0149075,
+      "charged_dollars": 0.0149075,
+      "phase": "dev",
+      "reserved_at": 1792052859.8324819,
+      "reserved_dollars": 0.0733285,
+      "settled_at": 1792052864.797668,
+      "status": "settled"
+    },
+    "P06:C:1": {
+      "actual_dollars": 0.01484925,
+      "charged_dollars": 0.01484925,
+      "phase": "dev",
+      "reserved_at": 1792052843.353631,
+      "reserved_dollars": 0.073332,
+      "settled_at": 1792052847.8218079,
+      "status": "settled"
+    },
+    "P06:C:2": {
+      "actual_dollars": 0.01488675,
+      "charged_dollars": 0.01488675,
+      "phase": "dev",
+      "reserved_at": 1792052869.165607,
+      "reserved_dollars": 0.073332,
+      "settled_at": 1792052877.2163775,
+      "status": "settled"
+    },
+    "P06:W:CLARIFY:1": {
+      "actual_dollars": 0.01498225,
+      "charged_dollars": 0.01498225,
+      "phase": "dev",
+      "reserved_at": 1792053154.4112508,
+      "reserved_dollars": 0.07332975,
+      "settled_at": 1792053161.6001384,
+      "status": "settled"
+    },
+    "P06:W:CLARIFY:2": {
+      "actual_dollars": 0.01489675,
+      "charged_dollars": 0.01489675,
+      "phase": "dev",
+      "reserved_at": 1792053161.6120887,
+      "reserved_dollars": 0.07332975,
+      "settled_at": 1792053166.994369,
+      "status": "settled"
+    },
+    "P06:W:UNSUPPORTED:1": {
+      "actual_dollars": 0.0149685,
+      "charged_dollars": 0.0149685,
+      "phase": "dev",
+      "reserved_at": 1792053167.0059361,
+      "reserved_dollars": 0.07333075,
+      "settled_at": 1792053175.060215,
+      "status": "settled"
+    },
+    "P06:W:UNSUPPORTED:2": {
+      "actual_dollars": 0.01493625,
+      "charged_dollars": 0.01493625,
+      "phase": "dev",
+      "reserved_at": 1792053175.0732577,
+      "reserved_dollars": 0.07333075,
+      "settled_at": 1792053180.2110407,
+      "status": "settled"
+    },
+    "P07:A:1": {
+      "actual_dollars": 0.01496575,
+      "charged_dollars": 0.01496575,
+      "phase": "dev",
+      "reserved_at": 1792052877.2245982,
+      "reserved_dollars": 0.072949,
+      "settled_at": 1792052883.7138338,
+      "status": "settled"
+    },
+    "P07:A:2": {
+      "actual_dollars": 0.0151885,
+      "charged_dollars": 0.0151885,
+      "phase": "dev",
+      "reserved_at": 1792052914.4475365,
+      "reserved_dollars": 0.072949,
+      "settled_at": 1792052925.3512673,
+      "status": "settled"
+    },
+    "P07:B:1": {
+      "actual_dollars": 0.0150645,
+      "charged_dollars": 0.0150645,
+      "phase": "dev",
+      "reserved_at": 1792052883.7260754,
+      "reserved_dollars": 0.07324075,
+      "settled_at": 1792052891.4663854,
+      "status": "settled"
+    },
+    "P07:B:2": {
+      "actual_dollars": 0.0147915,
+      "charged_dollars": 0.0147915,
+      "phase": "dev",
+      "reserved_at": 1792052909.6932473,
+      "reserved_dollars": 0.07324075,
+      "settled_at": 1792052914.4344702,
+      "status": "settled"
+    },
+    "P07:C:1": {
+      "actual_dollars": 0.01495,
+      "charged_dollars": 0.01495,
+      "phase": "dev",
+      "reserved_at": 1792052891.481115,
+      "reserved_dollars": 0.073243,
+      "settled_at": 1792052897.8391805,
+      "status": "settled"
+    },
+    "P07:C:2": {
+      "actual_dollars": 0.01528375,
+      "charged_dollars": 0.01528375,
+      "phase": "dev",
+      "reserved_at": 1792052897.8884058,
+      "reserved_dollars": 0.073243,
+      "settled_at": 1792052909.6713512,
+      "status": "settled"
+    },
+    "P08:A:1": {
+      "actual_dollars": 0.01486825,
+      "charged_dollars": 0.01486825,
+      "phase": "dev",
+      "reserved_at": 1792052941.0186734,
+      "reserved_dollars": 0.0729515,
+      "settled_at": 1792052946.241334,
+      "status": "settled"
+    },
+    "P08:A:2": {
+      "actual_dollars": 0.0148075,
+      "charged_dollars": 0.0148075,
+      "phase": "dev",
+      "reserved_at": 1792052946.2526956,
+      "reserved_dollars": 0.0729515,
+      "settled_at": 1792052950.7880838,
+      "status": "settled"
+    },
+    "P08:B:1": {
+      "actual_dollars": 0.015081,
+      "charged_dollars": 0.015081,
+      "phase": "dev",
+      "reserved_at": 1792052925.3645456,
+      "reserved_dollars": 0.07324325,
+      "settled_at": 1792052933.6491654,
+      "status": "settled"
+    },
+    "P08:B:2": {
+      "actual_dollars": 0.0152445,
+      "charged_dollars": 0.0152445,
+      "phase": "dev",
+      "reserved_at": 1792052962.8021088,
+      "reserved_dollars": 0.07324325,
+      "settled_at": 1792052973.548054,
+      "status": "settled"
+    },
+    "P08:C:1": {
+      "actual_dollars": 0.015052,
+      "charged_dollars": 0.015052,
+      "phase": "dev",
+      "reserved_at": 1792052933.6592975,
+      "reserved_dollars": 0.07324675,
+      "settled_at": 1792052941.007188,
+      "status": "settled"
+    },
+    "P08:C:2": {
+      "actual_dollars": 0.0151345,
+      "charged_dollars": 0.0151345,
+      "phase": "dev",
+      "reserved_at": 1792052950.799341,
+      "reserved_dollars": 0.07324675,
+      "settled_at": 1792052962.7945585,
+      "status": "settled"
+    }
+  },
+  "started_at": 1792052462.6869724
+}

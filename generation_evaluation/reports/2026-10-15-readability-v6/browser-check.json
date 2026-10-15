@@ -1,0 +1,481 @@
+{
+  "intercepted": 32,
+  "measurements": [
+    {
+      "slot": "R01:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R01:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R02:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R02:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R03:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R03:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R04:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 0,
+      "bullets": 3,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R04:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R05:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R05:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R06:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R06:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R07:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R07:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R08:examples_answer_scope_v6",
+      "viewport": 1280,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R08:examples_answer_scope_v5",
+      "viewport": 1280,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 720,
+      "scrollWidth": 720,
+      "documentWidth": 1280,
+      "documentScrollWidth": 1280,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R01:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R01:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R02:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R02:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R03:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R03:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R04:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 0,
+      "bullets": 3,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R04:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R05:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R05:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R06:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R06:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R07:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R07:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 1,
+      "bullets": 0,
+      "orderedItems": 0,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px"
+      ]
+    },
+    {
+      "slot": "R08:examples_answer_scope_v6",
+      "viewport": 360,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    },
+    {
+      "slot": "R08:examples_answer_scope_v5",
+      "viewport": 360,
+      "paragraphs": 2,
+      "bullets": 0,
+      "orderedItems": 4,
+      "width": 305,
+      "scrollWidth": 305,
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "blockMargins": [
+        "0px",
+        "12px",
+        "12px"
+      ]
+    }
+  ],
+  "horizontal_overflow_count": 0,
+  "scope": "Saved responses injected via Playwright route into existing local chat; 0 backend/model calls. Two playback passes (64 mock API responses total), final pass 32 measured views. Not production/mobile-device validation.",
+  "source_sha256": {
+    "web/features/question/message-item.tsx": "b0248042955c28ceb30622eb2389d2447373bec7e29ad0a629c947fb3b8c685e",
+    "web/components/markdown-content.tsx": "475a02b288c793586dc4f20af6a03d6b58d385c023cf40df7a3b9e78a5f8ed57",
+    "web/app/globals.css": "f25ea56a29a387da1d8de4b160742c6d362f4a1d9328cee8f933cf58f9cc4bed",
+    "web/package.json": "52926a18cafc988313afeabd6ca3040dc97cd03e81ac5e0644cddbcd07e1e3a7"
+  }
+}

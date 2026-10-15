@@ -83,3 +83,9 @@ flowchart TD
 - [선택적 RAG 실행·색인 갱신·자정 벡터 복구](rag-runtime.md): 로컬 준비와 서버 검색 계약.
 
 RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklogs/2026-10-15-rag-local-integration.md)에서 확인한다.
+
+- [답변 가독성 v5/v6 비교](../generation_evaluation/reports/2026-10-15-readability-v6/README.md): 16회 실제 응답·익명 AI 판정·화면 검증과 v5 기본값 유지 결정. [작업 일지](worklogs/2026-10-15-readability-v6.md).
+
+## 분류 라벨 보조 전달 평가
+
+기존 프롬프트·지침만 추가·실제 라벨 전달·대체 라벨 비교의 원응답, 판정과 미채택 근거. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.

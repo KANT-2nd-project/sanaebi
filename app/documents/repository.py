@@ -21,7 +21,7 @@ from app.documents.metadata import (
     read_metadata,
 )
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 IDEMPOTENCY_TTL = timedelta(hours=24)
 
 
@@ -159,9 +159,16 @@ class DocumentRepository:
             """
         if version == 0:
             execute_schema(connection, schema)
-        execute_schema(connection, SCHEMA)
-        for row in connection.execute("SELECT id FROM document_revisions").fetchall():
-            insert_metadata(connection, row["id"])
+        if version < 2:
+            execute_schema(connection, SCHEMA)
+            for row in connection.execute(
+                "SELECT id FROM document_revisions"
+            ).fetchall():
+                insert_metadata(connection, row["id"])
+        connection.execute(
+            "CREATE TABLE document_maintenance_state (id INTEGER PRIMARY KEY CHECK(id=1), version_floor INTEGER NOT NULL)"
+        )
+        connection.execute("INSERT INTO document_maintenance_state VALUES (1, 0)")
         connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
 
     def create_in_transaction(
@@ -186,12 +193,18 @@ class DocumentRepository:
             raise DuplicateDocumentError(duplicate["id"])
 
         content_hash = _content_hash(normalized)
+        version = max(
+            1,
+            connection.execute(
+                "SELECT version_floor FROM document_maintenance_state WHERE id=1"
+            ).fetchone()[0],
+        )
         connection.execute(
             """INSERT INTO documents
                (id, draft_revision_id, published_revision_id, withdrawn,
                 record_version, dedupe_hash, created_at, updated_at)
-               VALUES (?, ?, NULL, 0, 1, ?, ?, ?)""",
-            (document_id, revision_id, dedupe_hash, now, now),
+               VALUES (?, ?, NULL, 0, ?, ?, ?, ?)""",
+            (document_id, revision_id, version, dedupe_hash, now, now),
         )
         connection.execute(
             """INSERT INTO document_revisions

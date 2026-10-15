@@ -24,12 +24,12 @@ const components: Components = {
     : <>{children}</>,
   img: ({ alt }) => <>{alt || ""}</>,
   pre: ({ children }) => <pre tabIndex={0} aria-label="코드 블록">{children}</pre>,
-  table: ({ children }) => <div className="answer-table-scroll" tabIndex={0} role="region" aria-label="답변 표"><table>{children}</table></div>,
+  table: ({ children }) => <div className="markdown-table-scroll" tabIndex={0} role="region" aria-label="내용 표"><table>{children}</table></div>,
 };
 
-export function AnswerMarkdown({ text }: { text: string }) {
+export function MarkdownContent({ text }: { text: string }) {
   return (
-    <div className="answer-text">
+    <div className="markdown-content">
       <Markdown remarkPlugins={[remarkGfm, remarkBreaks]} components={components}
         skipHtml urlTransform={safeLink}>{text}</Markdown>
     </div>
