@@ -113,3 +113,22 @@ uv run --locked python -m generation_evaluation \
 일반 GenerationRun의 elapsed_seconds는 요청 경로 전체시간이다. 이번 진단 스크립트는 동일 문서 로더·프롬프트 빌더·LangChain 메시지 변환을 사용하되 provider metadata를 별도로 저장해 순수 생성 TPS를 계산했다. 이 timing metadata가 일반 JSONL 계약에 자동 추가된 것은 아니다. 문서 수동 subset이나 강화 prompt는 진단용 비교 조건이며 현재 공통 생성 프롬프트나 검색기로 자동 적용되지 않는다.
 
 GPT-6 Luna 비교 프로필은 [생성 실행 설정](../docs/generation-runtime.md)을 따른다. 실행 기록의 config에는 reasoning_effort·temperature도 보존하며, 과거 기록에 없으면 None으로 복원한다. 최신 교차 비교는 [GPT 비교 일지](../docs/worklogs/2026-10-15-generation-openai-comparison.md)에 기록한다.
+
+프롬프트의 적용 범위·조회 권한·조건 보존 강화 A/B는 [후속 일지](../docs/worklogs/2026-10-15-generation-prompt-ab.md)에 기록했다. 프롬프트 후보 간에는 prompt hash가 달라지는 것이 정상이다. `summarize_comparable_runs`의 동일 문항 prompt 검사에 서로 다른 후보를 섞지 말고 후보별 동일 입력의 모델 비교로 구분한다. 호출 구조 성공, 필수 안내 충족, 추가 주장 오류, 과잉 유보를 분리하여 평가한다.
+
+## 예산 제한이 있는 독립 비교
+
+`python -m generation_evaluation.selection`은 기존 평가 CLI와 별도의 실험 진입점이다. [고정 평가 세트](benchmarks/selection-20261015/README.md)와 [차원별 판정 기준](../docs/generation-evaluation.md)을 먼저 읽는다.
+
+```bash
+uv run --locked --env-file /path/to/local/.env python -m generation_evaluation.selection \
+  --candidates generation_evaluation/experiments/selection-20261015.json \
+  --candidate gpt-baseline \
+  --cases generation_evaluation/benchmarks/selection-20261015/dev.json \
+  --documents tmp/evaluation-documents.jsonl --phase dev \
+  --ledger tmp/selection/budget.json --output tmp/selection/dev-gpt-baseline
+```
+
+모든 후보는 같은 ledger를 사용한다. 프로필은 baseline/concise/examples, 전략은 single/evidence_first이다. `--start-repeat 2`와 새 output 경로로 선택 후보의 두 번째 회차를 실행한다. 같은 실행 명령의 재개는 이미 저장한 항목을 건너뛰며 입력·설정·코드 hash가 달라지면 거부한다. 시작 이벤트만 남은 호출은 비용/완료 여부를 수동 확인하기 전 자동 재호출하지 않는다.
+
+API 키와 실제 환경 파일, 원문 응답 전체는 `tmp/` 또는 별도 비공개 경로에 보관한다. 결과 보고서에는 필요한 응답 비교·판정·설정·hash·집계만 남긴다. 실험 결과를 기본 설정에 자동 적용하지 않는다.

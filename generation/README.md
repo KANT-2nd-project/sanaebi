@@ -124,3 +124,12 @@ OLLAMA_HOST=http://127.0.0.1:11435 uv run --locked python -m generation \
 가중치 Q4_K_M과 KV cache q4_0는 서로 다른 설정이다. 캐시 압축은 품질에도 영향을 줄 수 있으므로 기본 서비스 정책으로 일괄 채택한 것은 아니다. [실측·품질 검토 일지](../docs/worklogs/2026-10-15-generation-tps-quality.md)와 로컬 `tmp/generation-tps-quality-20261015/README.md`를 따른다.
 
 OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준은 [생성 실행 설정](../docs/generation-runtime.md)을 따른다.
+
+### 업무 범위·조회 권한 규칙 비교와 기본값 유지
+
+2026-10-15 업무 적용 대상·조회 권한·조건 보존 규칙을 추가해 두 모델을 비교했지만, Qwen의 새 오류가 늘고 GPT도 전체 통과 수가 늘지 않아 공통 기본 프롬프트는 기존 값으로 되돌렸다. 강화 후보와 원응답은 실험 자료로 보존한다. 기존 역할·직접 실행 미지원·문서 속 지시 무시·JSON 계약은 유지한다. 동일71문서에서 두 모델의 기존/강화 조건을 비교한 [후속 실험 기록](../docs/worklogs/2026-10-15-generation-prompt-ab.md)을 따른다.
+
+
+### 선택형 프롬프트·근거 추출 실험
+
+기존 CLI 기본 프롬프트는 유지한다. `generation.profiles.build_profile_prompt`는 기존값, 간결한 규칙, 합성 대조 예시를 선택한다. `generation.strategies.execute_strategy`는 단일 생성 또는 근거 추출 후 생성을 실행한다. 추출된 ID·인용은 입력 문서 본문에 실제 존재해야 하며 검증 실패·잘림을 재시도나 단일 생성으로 숨기지 않는다. 원문 일치 검사는 추출의 완전성이나 답변의 사실 정확성을 보장하지 않는다. 실험 방법과 선정 기준은 [평가 안내](../generation_evaluation/README.md)를 따른다.
