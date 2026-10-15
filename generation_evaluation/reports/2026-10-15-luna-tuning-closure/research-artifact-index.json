@@ -1,0 +1,33 @@
+{
+  "source_root": "/home/jake/workspace/projects/sanaebi/tmp/prompt-reference-review-2026-10-15",
+  "historical_status": "research and proposals complete at that time; implementation later completed by separate follow-up",
+  "adopted": "proposals/minimal-delta.txt added to examples",
+  "not_used": "proposals/consolidated-system.txt",
+  "files": {
+    "01-current-state.md": "850ad0103ca2c90f0b059d7798872e9c2a878011a82a46119a19c6ce96079e8a",
+    "02-source-catalog.md": "38f76494f36ebbaa12bf77e68091adb32cfc3d8611a1eca09cb55f1bc2e1866b",
+    "03-comparison.md": "3953c487cedd4a54cd0676d35fb8eec60c93e7988de4cbfa4076d9d0f16c5bb8",
+    "04-proposed-prompts.md": "63a68600194c2b2ab31fb63ec5e49526939dc25361124356d8388033644614ad",
+    "05-validation-plan.md": "54649e94315398827a82ec6e8302996ebdb15dcdc2d530b77f4f07a58069b8a5",
+    "06-implementation-plan.md": "e72d8881fd0b5304f3f3c1ad81934b402c93849323876d33b30e9a5ea73c216e",
+    "07-verification-runbook.md": "981bbaeca333cf160b3d30b1248e41c02648daa094349dace8ea827356866b13",
+    "README.md": "8727d29e91a2088a62b1e715b6b393582f4485fd1cb6275eca93843fe04b8576",
+    "evidence/artifact-hashes.json": "b7973d1cb831e068c9b87c360cfe044e6973bff99b392060612db00d098d4536",
+    "evidence/decision.json": "ad3157618d9cba5edc5e209ad8b545e1c558de4ec5055672c94f242f8fa6fb47",
+    "evidence/experiment-after-status.txt": "7df257720bdc2dc05a1f6096d65ad8d8c247720832dcd5c81ffbaf3e8bd45fcb",
+    "evidence/experiment-before-status.txt": "7df257720bdc2dc05a1f6096d65ad8d8c247720832dcd5c81ffbaf3e8bd45fcb",
+    "evidence/final-summary.json": "059ac544e26f88a9b23830cf5c2d8645c61261e9f9bad7d4d1df291591452ec4",
+    "evidence/implementation-plan-verification.json": "0feb3b54b4f95937a0c24797783332211bfae080aa8d61f489cb784b1620f6e9",
+    "evidence/link-checks.json": "b9eedb423c4eb7b4f04d4af4cc1f80df9b8479339715b3f276201062b562f37a",
+    "evidence/local-state.json": "8b358e6dd7bea30cd25e74bb6a3ef4401fae0dda1d40b2701bf9a9f7620c3c37",
+    "evidence/main-after-status.txt": "0fa6a974d34144846e2ae3ad6b155590d4b791c3acbb70da413077684fe0b3af",
+    "evidence/main-before-status.txt": "ad779f24217d9f4ddfbc4ff6a39c311a2e428872e9c7f59e8893cd4d9971c51e",
+    "evidence/pause-checkpoint.json": "45095212f3158c55ab69875a01dcb9876a5cb2fe01fd68ab86ff34de07517042",
+    "evidence/source-index.json": "e359736bc57e70ac9ed960e5515fbc8e3759d58426fb51a15a420174ce7dfbb1",
+    "evidence/verification.json": "2f9abd5091ece54c546e6d4e4e8ad8fcfb86abb714561d251e2c93547b560ed9",
+    "proposals/answer-schema.json": "9e3afa3811a1e241af40a70c086b2f7990c271e8b13c3a68376f4e6505098647",
+    "proposals/consolidated-system.txt": "e4fd2cf7cd44c4c2946114a3eeda1b42d8ef66a9ca76668c6b10b4b93129c653",
+    "proposals/minimal-delta.txt": "2f7495585e1314a8c54945302a754a94dcae528a1ce775ce9ff765e80cd51932"
+  },
+  "source_catalog_archived": "reference-sources.json"
+}

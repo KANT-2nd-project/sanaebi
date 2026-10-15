@@ -147,4 +147,4 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 `examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필과 CLI·서비스 기본값은 유지한다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
 
-GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 두 후보는 필수 안내 회귀로 탈락했고 기존 기준 구성을 유지합니다. 최종20문항과 반복 안정성은 미실행입니다.
+GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.

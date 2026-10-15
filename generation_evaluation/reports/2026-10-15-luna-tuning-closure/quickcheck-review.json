@@ -1,0 +1,39 @@
+{
+  "review_type": "parent AI exploratory source review; not blinded independent final evaluation",
+  "calls": 4,
+  "unchanged_profile": "examples_answer_scope_v1",
+  "verdicts": {
+    "pass": 2,
+    "partial": 2,
+    "fail": 0,
+    "uncertain": 0
+  },
+  "json_valid": 4,
+  "median_seconds": 6.004439849499249,
+  "max_seconds": 8.125989890999335,
+  "estimated_cost_dollars": 0.00623765,
+  "judgments": [
+    {
+      "case_id": "DEV-FU-01",
+      "verdict": "partial",
+      "reason": "문서 ieum-066의 요청 유형(결함 수정·동작 설명·개선 제안) 안내 누락. 고객이 원하는 결과는 제품 동작 목표이며 요청 유형과 구분된다."
+    },
+    {
+      "case_id": "DEV-FU-05",
+      "verdict": "pass",
+      "reason": "정보 부재와 총무 문의 경로를 모두 안내. 다만 우편실 적용 여부를 재차 유보하여 실용성이 약해지는 표현은 개선 여지이며 고정 필수 주장 누락으로 처리하지 않음."
+    },
+    {
+      "case_id": "DEV-FU-06",
+      "verdict": "pass",
+      "reason": "승인 기간 미기재 및 전달이 승인/출시 확정을 뜻하지 않음을 정확히 안내."
+    },
+    {
+      "case_id": "DEV-FU-09",
+      "verdict": "partial",
+      "reason": "실행 불가와 올바른 신고 경로·정보를 안내했으나 목격자 정보를 적으라는 안내 누락이 재현. 119는 snapshot ieum-046/047/048에 존재하므로 문서 밖 정보로 단정하지 않음."
+    }
+  ],
+  "prior_experiment_unchanged": true,
+  "holdout_used": false
+}

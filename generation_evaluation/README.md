@@ -145,4 +145,4 @@ API 키와 실제 환경 파일, 원문 응답 전체는 `tmp/` 또는 별도 �
 
 기록에는 `output_mode`와 거절 정보가 추가된다. 과거 설정은 prompt_json, 과거 거절 필드는 None으로 복원하며 과거 판정은 재작성하지 않는다. 추가 키 응답은 신규 파싱에서 parse_error이므로 과거 실행 완료 수치와 형식 기준의 차이를 구분한다.
 
-GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](reports/2026-10-15-luna-reference-followup/README.md)을 참조하세요. 두 후보는 필수 안내 회귀로 탈락했고 기존 기준 구성을 유지합니다. 최종20문항과 반복 안정성은 미실행입니다.
+GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](reports/2026-10-15-luna-reference-followup/README.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.

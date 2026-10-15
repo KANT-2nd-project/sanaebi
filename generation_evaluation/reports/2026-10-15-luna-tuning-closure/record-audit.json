@@ -1,0 +1,13 @@
+{
+  "development_summary_matches": true,
+  "final_summary_matches": true,
+  "selected_prompt_matches_code": true,
+  "reference_sources": 30,
+  "json_files_valid": 29,
+  "links_valid": true,
+  "generation_calls_during_audit": 0,
+  "historical_regression_incomplete": true,
+  "independent_record_review": "Completed: raw run count230, old188/followup38/quick4, publication gaps and historical-state contradictions confirmed.",
+  "ruff_check": "pass",
+  "ruff_format_checked_files": 258
+}
