@@ -14,7 +14,7 @@
 
 ## 현재 구현 상태
 
-현재 `/ask`는 질문 서비스를 통해 분류한다. 기본 `gate`는 검색 라벨·유효 문서가 있을 때만 생성한다. 선택적 `shadow`는 분류 결과를 관찰 기록으로 남기고 유효 문서가 있으면 생성한다. `/documents`와 `/regist-docs`는 같은 SQLite 저장소에 초안을 생성하고, 검색 답변은 현재 유효한 게시본만 읽는다. 게시와 사람 검수 승인은 별개다.
+현재 `/ask`는 질문 서비스를 통해 분류한다. 선택적 `gate`는 검색 라벨·유효 문서가 있을 때만 생성한다. 기본 `shadow`는 분류 결과를 관찰 기록으로 남기고 유효 문서가 있으면 생성한다. `/documents`와 `/regist-docs`는 같은 SQLite 저장소에 초안을 생성하고, 검색 답변은 현재 유효한 게시본만 읽는다. 게시와 사람 검수 승인은 별개다.
 
 | 구성 | 저장소에서 확인한 동작 |
 |---|---|
@@ -28,7 +28,7 @@
 | 질문 서비스 | `handle_question`은 활성 /ask 처리 서비스다. dependencies가 앱별 분류기·snapshot reader·답변 어댑터를 조립한다. `/ask/langchain`은 제거했다. |
 | 문서 답변 | /ask의 라벨별 정책과 snapshot 전달을 검증했다. 최종 generation 모듈을 사용하며 실제 LLM 답변 품질 승인은 별도다. 과거 실행기는 오프라인 재현용으로 보존한다. |
 
-앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/questions/router.py)와 [문서 라우터](../app/documents/registration.py), SQLite 저장은 [문서 저장소](../app/documents/repository.py)에서 확인한다. 기본 `gate`의 `POST /ask`는 검색 라벨·유효 문서가 있는 경우에만 생성한다. 최종 Luna만 사용하며 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
+앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/questions/router.py)와 [문서 라우터](../app/documents/registration.py), SQLite 저장은 [문서 저장소](../app/documents/repository.py)에서 확인한다. 원복용 `gate`의 `POST /ask`는 검색 라벨·유효 문서가 있는 경우에만 생성한다. 최종 Luna만 사용하며 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
 
 등록 요청은 기존 `{"doc":"본문"}` 형식을 유지하며 50,000자·512KiB 제한을 적용한다. 게시 전에는 답변에 사용하지 않는다. 원본 JSONL은 최초 이관·과거 평가를 위해 보존한다.
 
@@ -76,11 +76,11 @@ flowchart TD
 
 ## 분류 관찰 모드
 
-`SANAEBI_ROUTING_MODE`는 앱 시작 시 `gate`(기본값) 또는 `shadow`로 고정된다. `/ask`와 `/assistant`가 같은 정책을 사용한다. `/ask`는 모델 예측을, 재분류하지 않는 `/assistant`는 클라이언트 제공 라벨을 기록한다. `/assistant`의 앞 단계 실패는 생성하지 않는다.
+`SANAEBI_ROUTING_MODE`는 앱 시작 시 `shadow`(기본값) 또는 `gate`로 고정된다. `/ask`와 `/assistant`가 같은 정책을 사용한다. `/ask`는 모델 예측을, 재분류하지 않는 `/assistant`는 클라이언트 제공 라벨을 기록한다. `/assistant`의 앞 단계 실패는 생성하지 않는다.
 
 `shadow`는 회사 밖 질문을 자유롭게 답하도록 허용하는 설정이 아니다. 라벨을 프롬프트에 넣지 않고 기존 문서 기반 생성 지침으로 범위·자료 부족·실행 불가를 판단하게 하는 비교 경로다. 알려진 분류 로딩·추론 장애는 안전한 상태를 기록하고 계속 진행하지만, 예상 밖 오류·잘못된 내부 라벨은500으로 남긴다. 분류를 동기 실행하므로 그 지연도 포함된다. 상세 계약은 [서버 규약](server-conventions.md#분류-관찰-모드와-비교-경계)을 따른다.
 
-40문항×두 경로×두 반복 비교의 기준·실제 결과·권고는 [종단 비교 보고서](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md)에 둔다. 이 기능 브랜치의 기본값은 `gate`를 유지하며 운영 전환·main 병합·공개 배포는 별도 결정이다. 이번 비교는 고정된 v1 생성 구성의 합성 자료 평가로, 다른 프롬프트 변경의 품질이나 운영 신뢰성을 보장하지 않는다.
+40문항×두 경로×두 반복 비교의 기준·실제 결과·권고는 [종단 비교 보고서](../generation_evaluation/reports/2026-10-15-routing-shadow/README.md)에 둔다. 비교 후 사용자가 상대 개선을 근거로 이 기능 브랜치의 기본값을 `shadow`로 채택했다. 두 반복 통과는 gate 25/40, shadow 30/40으로 사전 36/40 기준에는 미달한다. main 병합·실행 중인 서버 전환·공개 배포는 아직 수행하지 않았다. [후속 채택 결정](worklogs/2026-10-15-adopt-shadow.md)에 사유와 원복 방법을 기록한다. 이번 비교는 고정된 v1 생성 구성의 합성 자료 평가로, 다른 프롬프트 변경의 품질이나 운영 신뢰성을 보장하지 않는다.
 
 ## 질문 데이터와 평가 설계
 
