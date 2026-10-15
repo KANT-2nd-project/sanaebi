@@ -1,0 +1,41 @@
+{
+  "completed_slots": 33,
+  "empty_context_slots": 3,
+  "ended_at": "2026-10-15T14:02:51.682556+00:00",
+  "identifiers": {
+    "max_output_tokens": 16384,
+    "model_name": "gpt-6-luna",
+    "model_revision": "292c09c78c71a3f00ed56ee0d1ed9f0d39182fc9",
+    "output_mode": "prompt_json",
+    "prompt_profile": "examples_answer_scope_v5",
+    "provider": "openai",
+    "qrels_sha": "4945edf39a1b4102ddf98f83542109d84a13c63508e8becf713d63e7d8ab10c4",
+    "reasoning_effort": "xhigh",
+    "runtime_config": {
+      "context_window": null,
+      "max_output_tokens": 16384,
+      "model_name": "gpt-6-luna",
+      "output_mode": "prompt_json",
+      "provider": "openai",
+      "reasoning_effort": "xhigh",
+      "temperature": null,
+      "timeout_seconds": 180
+    },
+    "search_sha": "f23e0cdc57fbc097d0960299fc1e8ab369fd7610f68556f3b9a0f238941ee980",
+    "selection_sha": "6c5794cf738bbbe2cb15589284614ba37849ed484884031af206ac1a4cc3d543",
+    "snapshot_fingerprint": "56faf39919d09dfeda31e9bd39274ca1c994ffb9568fe6c98df63be3bb9f8c62"
+  },
+  "inputs_sha256": "dba50e0624605ed8ef7916a11e9bcce5c27472b55b99ac8f2df36b6a36ab886c",
+  "ledger_calls_reserved": 34,
+  "ledger_identity": "e8151b16251847d78167ae491943bfe1",
+  "max_api_calls": 72,
+  "max_attempts": 72,
+  "phase": "quick_context",
+  "planned_calls": 36,
+  "provider_calls": 34,
+  "registered_total_planned_calls": 36,
+  "schema_version": 1,
+  "started_at": "2026-10-15T13:58:10.706833+00:00",
+  "status": "completed",
+  "stopped_reason": null
+}

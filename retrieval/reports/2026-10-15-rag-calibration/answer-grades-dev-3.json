@@ -1,0 +1,582 @@
+{
+  "judge": "independent_ai",
+  "human_review": false,
+  "answers": [
+    {
+      "case_id": "R15",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "추가 배포·반복 실행을 멈추고 동일 명령 재실행의 중복 작업·상태 변경 가능성을 먼저 확인하라고 안내했다. 사고 공유·복구 관련 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R15",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "추가 배포·반복 실행을 멈추고 동일 명령 재실행의 중복 작업·상태 변경 가능성을 먼저 확인하라고 안내했다. 사고 공유·복구 관련 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R15",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "추가 배포·반복 실행을 멈추고 동일 명령 재실행의 중복 작업·상태 변경 가능성을 먼저 확인하라고 안내했다. 사고 공유·복구 관련 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 제거를 보장할 수 없음을 설명하고, 신고 및 권한 있는 담당자의 자격정보 폐기·교체를 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 제거를 보장할 수 없음을 설명하고, 신고 및 권한 있는 담당자의 자격정보 폐기·교체를 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "R18",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "15일이 은행 휴무일이면 다음 은행 영업일 지급이라고 정확히 답했다. 최종 검토 후 지급 월에 관한 부연을 넣은 경우도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R18",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "15일이 은행 휴무일이면 다음 은행 영업일 지급이라고 정확히 답했다. 최종 검토 후 지급 월에 관한 부연을 넣은 경우도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R13",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비공개 자료 입력 시 AI 사용 중단·즉시 신고와 대화/입력 임의 삭제 금지를 모두 안내했다. 신고 정보와 비밀 본문 재첨부 금지 부연도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R17",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차 신청 경로인 이음 포털 인사 > 휴가를 안내했다. 3영업일 전 신청 기준은 선택 정보이며, 포함한 응답은 원문과 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "작성자와 다른 사람의 독립 검토 필요를 전달했다. 필수 검사·위험 변경 확인 등 추가 설명도 원문에 부합하며 선택 정보 누락은 감점하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 제거를 보장할 수 없음을 설명하고, 신고 및 권한 있는 담당자의 자격정보 폐기·교체를 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "R17",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차 신청 경로인 이음 포털 인사 > 휴가를 안내했다. 3영업일 전 신청 기준은 선택 정보이며, 포함한 응답은 원문과 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "작성자와 다른 사람의 독립 검토 필요를 전달했다. 필수 검사·위험 변경 확인 등 추가 설명도 원문에 부합하며 선택 정보 누락은 감점하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "R18",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "15일이 은행 휴무일이면 다음 은행 영업일 지급이라고 정확히 답했다. 최종 검토 후 지급 월에 관한 부연을 넣은 경우도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R13",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비공개 자료 입력 시 AI 사용 중단·즉시 신고와 대화/입력 임의 삭제 금지를 모두 안내했다. 신고 정보와 비밀 본문 재첨부 금지 부연도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R18",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "15일이 은행 휴무일이면 다음 은행 영업일 지급이라고 정확히 답했다. 최종 검토 후 지급 월에 관한 부연을 넣은 경우도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R17",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차 신청 경로인 이음 포털 인사 > 휴가를 안내했다. 3영업일 전 신청 기준은 선택 정보이며, 포함한 응답은 원문과 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R17",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차 신청 경로인 이음 포털 인사 > 휴가를 안내했다. 3영업일 전 신청 기준은 선택 정보이며, 포함한 응답은 원문과 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R18",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "15일이 은행 휴무일이면 다음 은행 영업일 지급이라고 정확히 답했다. 최종 검토 후 지급 월에 관한 부연을 넣은 경우도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "작성자와 다른 사람의 독립 검토 필요를 전달했다. 필수 검사·위험 변경 확인 등 추가 설명도 원문에 부합하며 선택 정보 누락은 감점하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "R13",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비공개 자료 입력 시 AI 사용 중단·즉시 신고와 대화/입력 임의 삭제 금지를 모두 안내했다. 신고 정보와 비밀 본문 재첨부 금지 부연도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R15",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "추가 배포·반복 실행을 멈추고 동일 명령 재실행의 중복 작업·상태 변경 가능성을 먼저 확인하라고 안내했다. 사고 공유·복구 관련 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 제거를 보장할 수 없음을 설명하고, 신고 및 권한 있는 담당자의 자격정보 폐기·교체를 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "R13",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비공개 자료 입력 시 AI 사용 중단·즉시 신고와 대화/입력 임의 삭제 금지를 모두 안내했다. 신고 정보와 비밀 본문 재첨부 금지 부연도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "B",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 제거를 보장할 수 없음을 설명하고, 신고 및 권한 있는 담당자의 자격정보 폐기·교체를 안내했다."
+        }
+      ]
+    },
+    {
+      "case_id": "R18",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "15일이 은행 휴무일이면 다음 은행 영업일 지급이라고 정확히 답했다. 최종 검토 후 지급 월에 관한 부연을 넣은 경우도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "C",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "작성자와 다른 사람의 독립 검토 필요를 전달했다. 필수 검사·위험 변경 확인 등 추가 설명도 원문에 부합하며 선택 정보 누락은 감점하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "R15",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "추가 배포·반복 실행을 멈추고 동일 명령 재실행의 중복 작업·상태 변경 가능성을 먼저 확인하라고 안내했다. 사고 공유·복구 관련 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R13",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비공개 자료 입력 시 AI 사용 중단·즉시 신고와 대화/입력 임의 삭제 금지를 모두 안내했다. 신고 정보와 비밀 본문 재첨부 금지 부연도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R13",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "비공개 자료 입력 시 AI 사용 중단·즉시 신고와 대화/입력 임의 삭제 금지를 모두 안내했다. 신고 정보와 비밀 본문 재첨부 금지 부연도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R15",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "추가 배포·반복 실행을 멈추고 동일 명령 재실행의 중복 작업·상태 변경 가능성을 먼저 확인하라고 안내했다. 사고 공유·복구 관련 부연은 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R17",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차 신청 경로인 이음 포털 인사 > 휴가를 안내했다. 3영업일 전 신청 기준은 선택 정보이며, 포함한 응답은 원문과 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "작성자와 다른 사람의 독립 검토 필요를 전달했다. 필수 검사·위험 변경 확인 등 추가 설명도 원문에 부합하며 선택 정보 누락은 감점하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "R17",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "예정 연차 신청 경로인 이음 포털 인사 > 휴가를 안내했다. 3영업일 전 신청 기준은 선택 정보이며, 포함한 응답은 원문과 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "A",
+      "repeat": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "작성자와 다른 사람의 독립 검토 필요를 전달했다. 필수 검사·위험 변경 확인 등 추가 설명도 원문에 부합하며 선택 정보 누락은 감점하지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": null,
+          "content_complete": true,
+          "reason": "파일 삭제나 새 커밋만으로 과거 기록·복제본·캐시·로그에서 제거를 보장할 수 없음을 설명하고, 신고 및 권한 있는 담당자의 자격정보 폐기·교체를 안내했다."
+        }
+      ]
+    }
+  ]
+}

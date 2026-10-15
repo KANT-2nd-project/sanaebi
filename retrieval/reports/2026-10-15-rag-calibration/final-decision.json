@@ -1,0 +1,19 @@
+{
+  "decision": "retain_existing_settings",
+  "followup_candidate": "score035_unlimited_proxy4000",
+  "production_applied": false,
+  "human_review": false,
+  "predeclared_total_missing_increase_triggered": false,
+  "basis": [
+    "confirmation factual completeness77/80 to78/80 after independent grading correction",
+    "delivered complete tied77/80 due one unrecovered JSON failure",
+    "estimated cost +71.47%, context +240.4%",
+    "limited repeated synthetic AI-judged sample and documented qrel overrequirements"
+  ],
+  "remaining": [
+    "human review of qrels and responses",
+    "JSON contract reliability investigation without hiding raw failures",
+    "actual deployment2vCPU validation",
+    "separately authorized production adoption"
+  ]
+}

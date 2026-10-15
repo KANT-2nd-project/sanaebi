@@ -1,0 +1,13 @@
+{
+  "scheduled_slots": 448,
+  "system_empty_context_slots": 8,
+  "api_slots": 440,
+  "provider_attempts": 456,
+  "retry_attempts": 16,
+  "estimated_cost_usd": 0.7265885,
+  "input_tokens": 2319674,
+  "output_tokens": 195560,
+  "all_ledger_settled": true,
+  "cost_basis": "estimated_from_provider_usage_not_invoice",
+  "registered_total_planned_calls_raw_metadata_caveat": "confirmation execution field is phase160 due return-value naming bug; shared plans correctly records448 and cap448 was enforced. Raw outputs preserved; fix after execution."
+}

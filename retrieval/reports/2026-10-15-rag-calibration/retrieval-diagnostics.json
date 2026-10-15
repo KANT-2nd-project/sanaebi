@@ -1,0 +1,90 @@
+[
+  {
+    "case_id": "R08",
+    "variant_id": "baseline",
+    "all_required_rank": 15,
+    "missing_claims": [
+      "R08-r01"
+    ],
+    "candidate_complete": false,
+    "final_complete": false,
+    "reason": "candidate_or_threshold_exclusion"
+  },
+  {
+    "case_id": "R08",
+    "variant_id": "score040_max8",
+    "all_required_rank": 15,
+    "missing_claims": [
+      "R08-r01"
+    ],
+    "candidate_complete": false,
+    "final_complete": false,
+    "reason": "candidate_or_threshold_exclusion"
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "baseline",
+    "all_required_rank": 25,
+    "missing_claims": [
+      "R14-r01"
+    ],
+    "candidate_complete": false,
+    "final_complete": false,
+    "reason": "candidate_or_threshold_exclusion"
+  },
+  {
+    "case_id": "R14",
+    "variant_id": "score040_max8",
+    "all_required_rank": 25,
+    "missing_claims": [
+      "R14-r01"
+    ],
+    "candidate_complete": false,
+    "final_complete": false,
+    "reason": "candidate_or_threshold_exclusion"
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "baseline",
+    "all_required_rank": 39,
+    "missing_claims": [
+      "R16-r02"
+    ],
+    "candidate_complete": false,
+    "final_complete": false,
+    "reason": "candidate_or_threshold_exclusion"
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score040_max8",
+    "all_required_rank": 39,
+    "missing_claims": [
+      "R16-r02"
+    ],
+    "candidate_complete": false,
+    "final_complete": false,
+    "reason": "candidate_or_threshold_exclusion"
+  },
+  {
+    "case_id": "R16",
+    "variant_id": "score035_unlimited",
+    "all_required_rank": 39,
+    "missing_claims": [
+      "R16-r02"
+    ],
+    "candidate_complete": false,
+    "final_complete": false,
+    "reason": "candidate_or_threshold_exclusion"
+  },
+  {
+    "case_id": "D07",
+    "variant_id": "baseline",
+    "all_required_rank": 6,
+    "missing_claims": [
+      "D07-r01"
+    ],
+    "candidate_complete": true,
+    "final_complete": false,
+    "reason": "selection_merge_or_budget"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "phases": {
+    "confirmation": {
+      "input_sha256": "0b57063214ae2be8fa9f6340f1e75620c03b140bedff913120a2f7bd9356cff4",
+      "max_attempts": 320,
+      "planned_calls": 160
+    },
+    "development": {
+      "input_sha256": "8845d5baae059f3834605e521319de2351a8b9d64dcf4d0925b62f4723282750",
+      "max_attempts": 576,
+      "planned_calls": 288
+    }
+  },
+  "planned_calls": 448,
+  "schema_version": 1
+}

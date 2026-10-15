@@ -1,0 +1,31 @@
+{
+  "budget_limits": {
+    "dev_dollars": null,
+    "dev_seconds": null,
+    "max_calls": 72,
+    "total_dollars": null,
+    "total_seconds": null
+  },
+  "ledger_identity": "4d1f27c3ff1948b189934e20eec62882",
+  "reservations": {
+    "cal-quick_context-dba50e062460-R01--A_existing--r1-a1": {
+      "actual_dollars": 0.0,
+      "charged_dollars": 0.0,
+      "phase": "dev",
+      "reserved_at": 1792071410.7560103,
+      "reserved_dollars": 0.01891975,
+      "settled_at": 1792071412.3482678,
+      "status": "settled"
+    },
+    "cal-quick_context-dba50e062460-R01--A_existing--r1-a2": {
+      "actual_dollars": 0.0,
+      "charged_dollars": 0.0,
+      "phase": "dev",
+      "reserved_at": 1792071413.3724232,
+      "reserved_dollars": 0.01891975,
+      "settled_at": 1792071414.886681,
+      "status": "settled"
+    }
+  },
+  "started_at": 1792071410.7560103
+}

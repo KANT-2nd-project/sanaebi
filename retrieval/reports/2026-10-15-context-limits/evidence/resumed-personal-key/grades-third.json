@@ -1,0 +1,156 @@
+{
+  "human_review": false,
+  "judge": "independent AI resumed_blind_review",
+  "answers": [
+    {
+      "case_id": "D07",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "구매 승인만으로 SaaS 계정이나 권한이 자동 발급되지 않는다고 정확히 답했다. 별도 신청 경로와 검토 역할, 권한 확인 전 접근 금지 안내도 접근 권한 문서에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "R16-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": false,
+          "reason": "파일 삭제만으로 충분하지 않으며 과거 기록·복제본·캐시·로그에 남을 수 있다는 점과 신고·조정 절차는 정확하다. 권한 있는 담당자에게 폐기·교체를 맡기지만 즉시 수행해야 한다는 시점이 명시되지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "구매 승인만으로 계정이나 권한이 자동 발급되지 않는다는 필수 내용을 전달했다. 별도 권한 신청과 필요한 검토도 원문에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "R16-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": false,
+          "reason": "파일 삭제만으로 끝나지 않으며 신고·추가 노출 방지와 기록 정리 조율을 안내했고 단독 재작성·강제 푸시도 금했다. 담당자가 토큰을 폐기·교체해야 한다고 했지만 즉시 수행해야 한다는 시점은 빠졌다."
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [
+            "R16-r02"
+          ],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": false,
+          "reason": "삭제나 새 커밋으로 과거 기록·복제본·캐시·로그가 제거된다고 보장할 수 없음을 정확히 설명했다. 신고와 승인된 기록 정리 절차도 맞지만, 담당자의 폐기·교체가 즉시 이뤄져야 한다는 시점이 명시되지 않았다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "B",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "작성자의 자기 승인은 독립 승인으로 셀 수 없고 독립 승인 및 필수 검사 통과가 필요하다고 안내했다. 위험 변경의 서비스 책임자 확인도 코드 리뷰 문서와 일치한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "C",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "본인 승인만으로는 부족하며 다른 작성자의 독립 승인과 저장소 필수 검사 통과가 필요하다고 정확히 안내했다. 위험 변경의 추가 확인도 근거가 있다."
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "구매 승인으로 서비스 계정이나 권한이 자동 발급되지 않는다고 정확히 답했다. 별도 신청과 담당자 검토, 실제 권한 확인 전 접근 금지 안내도 회사 문서에 부합한다."
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "blind_variant": "A",
+      "repeat": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "missing_claims": [],
+          "major_error": false,
+          "unsupported_assertion": false,
+          "abstention_correct": false,
+          "content_complete": true,
+          "reason": "작성자의 자기 승인은 독립 승인으로 인정되지 않고, 머지에 독립 승인 및 저장소 필수 검사 통과가 모두 필요하다고 안내했다. 위험 변경에 대한 추가 확인도 근거가 있다."
+        }
+      ]
+    }
+  ]
+}

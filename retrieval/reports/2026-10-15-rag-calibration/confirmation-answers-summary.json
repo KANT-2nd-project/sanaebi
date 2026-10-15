@@ -1,0 +1,4468 @@
+{
+  "human_review": false,
+  "summary": [
+    {
+      "variant_id": "baseline",
+      "scheduled_slots": 80,
+      "api_slots": 80,
+      "provider_attempts": 82,
+      "empty_context_slots": 0,
+      "first_format_success": 78,
+      "retries": 2,
+      "retry_recovered": 2,
+      "final_format_success": 80,
+      "first_content_complete": 76,
+      "final_content_complete": 76,
+      "final_delivered_complete": 76,
+      "first_major_errors": 0,
+      "final_major_errors": 0,
+      "final_unsupported_assertions": 0,
+      "final_missing_facts": 6,
+      "estimated_cost_usd": 0.088756,
+      "input_tokens": 260353,
+      "output_tokens": 31557,
+      "slot_latency_median_seconds": 5.15674214450064,
+      "slot_latency_p95_seconds": 11.517494779000117,
+      "request_latency_median_seconds": 5.15674214450064
+    },
+    {
+      "variant_id": "score035_unlimited_proxy4000",
+      "scheduled_slots": 80,
+      "api_slots": 80,
+      "provider_attempts": 82,
+      "empty_context_slots": 0,
+      "first_format_success": 78,
+      "retries": 2,
+      "retry_recovered": 1,
+      "final_format_success": 79,
+      "first_content_complete": 78,
+      "final_content_complete": 78,
+      "final_delivered_complete": 77,
+      "first_major_errors": 0,
+      "final_major_errors": 0,
+      "final_unsupported_assertions": 0,
+      "final_missing_facts": 2,
+      "estimated_cost_usd": 0.1521895,
+      "input_tokens": 505768,
+      "output_tokens": 34330,
+      "slot_latency_median_seconds": 5.508325307499035,
+      "slot_latency_p95_seconds": 12.3358225030006,
+      "request_latency_median_seconds": 5.566995305500313
+    }
+  ],
+  "rows": [
+    {
+      "case_id": "N01",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문일 1영업일 전, 이음 포털 총무 > 방문객 등록 경로와 이름·소속·목적·예정 시간·동행자 항목을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3128,
+            "output_tokens": 159
+          },
+          "actual_cost_usd": 0.00090125,
+          "elapsed_seconds": 5.149842153999998
+        }
+      ]
+    },
+    {
+      "case_id": "N01",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문일 1영업일 전, 이음 포털 총무 > 방문객 등록 경로와 이름·소속·목적·예정 시간·동행자 항목을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6376,
+            "output_tokens": 160
+          },
+          "actual_cost_usd": 0.001714,
+          "elapsed_seconds": 3.5554590759993516
+        }
+      ]
+    },
+    {
+      "case_id": "N01",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문일 1영업일 전, 이음 포털 총무 > 방문객 등록 경로와 이름·소속·목적·예정 시간·동행자 항목을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6376,
+            "output_tokens": 146
+          },
+          "actual_cost_usd": 0.0017035,
+          "elapsed_seconds": 3.3907547129992963
+        }
+      ]
+    },
+    {
+      "case_id": "N01",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문일 1영업일 전, 이음 포털 총무 > 방문객 등록 경로와 이름·소속·목적·예정 시간·동행자 항목을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3128,
+            "output_tokens": 214
+          },
+          "actual_cost_usd": 0.0009425,
+          "elapsed_seconds": 4.432754090999879
+        }
+      ]
+    },
+    {
+      "case_id": "N02",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "등록·확인 전 제한 구역 입장 금지, 출입카드 대여·무단 동행 입장 금지, 서버실 별도 승인 요건을 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6374,
+            "output_tokens": 608
+          },
+          "actual_cost_usd": 0.0020495,
+          "elapsed_seconds": 7.471357182999782
+        }
+      ]
+    },
+    {
+      "case_id": "N02",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "등록·확인 전 제한 구역 입장 금지, 출입카드 대여·무단 동행 입장 금지, 서버실 별도 승인 요건을 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3136,
+            "output_tokens": 288
+          },
+          "actual_cost_usd": 0.001,
+          "elapsed_seconds": 4.189432107999892
+        }
+      ]
+    },
+    {
+      "case_id": "N02",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "등록·확인 전 제한 구역 입장 금지, 출입카드 대여·무단 동행 입장 금지, 서버실 별도 승인 요건을 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3136,
+            "output_tokens": 629
+          },
+          "actual_cost_usd": 0.00125575,
+          "elapsed_seconds": 8.172544259999995
+        }
+      ]
+    },
+    {
+      "case_id": "N02",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "등록·확인 전 제한 구역 입장 금지, 출입카드 대여·무단 동행 입장 금지, 서버실 별도 승인 요건을 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6374,
+            "output_tokens": 536
+          },
+          "actual_cost_usd": 0.0019955,
+          "elapsed_seconds": 9.965223017000426
+        }
+      ]
+    },
+    {
+      "case_id": "N03",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문 표식 반납 확인 및 총무 통지, 방문 시간·주관자·출입 구역 기록과 90일 후 삭제를 모두 설명했다. 보존 예외 설명은 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3087,
+            "output_tokens": 248
+          },
+          "actual_cost_usd": 0.00095775,
+          "elapsed_seconds": 4.058311261999734
+        }
+      ]
+    },
+    {
+      "case_id": "N03",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문 표식 반납 확인 및 총무 통지, 방문 시간·주관자·출입 구역 기록과 90일 후 삭제를 모두 설명했다. 보존 예외 설명은 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6412,
+            "output_tokens": 327
+          },
+          "actual_cost_usd": 0.00184825,
+          "elapsed_seconds": 3.9995414660006645
+        }
+      ]
+    },
+    {
+      "case_id": "N03",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문 표식 반납 확인 및 총무 통지, 방문 시간·주관자·출입 구역 기록과 90일 후 삭제를 모두 설명했다. 보존 예외 설명은 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6412,
+            "output_tokens": 207
+          },
+          "actual_cost_usd": 0.00175825,
+          "elapsed_seconds": 3.3132986179998625
+        }
+      ]
+    },
+    {
+      "case_id": "N03",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "방문 표식 반납 확인 및 총무 통지, 방문 시간·주관자·출입 구역 기록과 90일 후 삭제를 모두 설명했다. 보존 예외 설명은 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3087,
+            "output_tokens": 327
+          },
+          "actual_cost_usd": 0.001017,
+          "elapsed_seconds": 6.626003189000585
+        }
+      ]
+    },
+    {
+      "case_id": "N04",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "계약 존재만으로 개인정보 보존을 정당화하지 말고 보안·개인정보 담당자에게 근거와 범위를 확인하라고 했다. 추가 보존·파기 안내도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6402,
+            "output_tokens": 365
+          },
+          "actual_cost_usd": 0.00187425,
+          "elapsed_seconds": 5.9763896260001275
+        }
+      ]
+    },
+    {
+      "case_id": "N04",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "계약 존재만으로 개인정보 보존을 정당화하지 말고 보안·개인정보 담당자에게 근거와 범위를 확인하라고 했다. 추가 보존·파기 안내도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3429,
+            "output_tokens": 284
+          },
+          "actual_cost_usd": 0.00107025,
+          "elapsed_seconds": 4.9102479210005185
+        }
+      ]
+    },
+    {
+      "case_id": "N04",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "계약 존재만으로 개인정보 보존을 정당화하지 말고 보안·개인정보 담당자에게 근거와 범위를 확인하라고 했다. 추가 보존·파기 안내도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3429,
+            "output_tokens": 246
+          },
+          "actual_cost_usd": 0.00104175,
+          "elapsed_seconds": 4.687679263999598
+        }
+      ]
+    },
+    {
+      "case_id": "N04",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "계약 존재만으로 개인정보 보존을 정당화하지 말고 보안·개인정보 담당자에게 근거와 범위를 확인하라고 했다. 추가 보존·파기 안내도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6402,
+            "output_tokens": 403
+          },
+          "actual_cost_usd": 0.00190275,
+          "elapsed_seconds": 5.961063035999359
+        }
+      ]
+    },
+    {
+      "case_id": "N05",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기록 범위·책임자·검토 기한을 포털에 남기고 필요한 기록만 제한적으로 보류하며, 미결이면 30일마다 재검토하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3338,
+            "output_tokens": 577
+          },
+          "actual_cost_usd": 0.00126725,
+          "elapsed_seconds": 7.615188373999445
+        }
+      ]
+    },
+    {
+      "case_id": "N05",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "json_error_after_retry",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "json_error_retryable",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기록 범위·책임자·검토 기한을 포털에 남기고 필요한 기록만 제한적으로 보류하며, 미결이면 30일마다 재검토하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6394,
+            "output_tokens": 692
+          },
+          "actual_cost_usd": 0.0021175,
+          "elapsed_seconds": 12.469340808999732
+        },
+        {
+          "attempt": 2,
+          "status": "parse_error",
+          "grade": {
+            "attempt": 2,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기록 범위·책임자·검토 기한을 포털에 남기고 필요한 기록만 제한적으로 보류하며, 미결이면 30일마다 재검토하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6394,
+            "output_tokens": 499
+          },
+          "actual_cost_usd": 0.00197275,
+          "elapsed_seconds": 6.268773638999846
+        }
+      ]
+    },
+    {
+      "case_id": "N05",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "json_error_retryable",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기록 범위·책임자·검토 기한을 포털에 남기고 필요한 기록만 제한적으로 보류하며, 미결이면 30일마다 재검토하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6394,
+            "output_tokens": 558
+          },
+          "actual_cost_usd": 0.002017,
+          "elapsed_seconds": 7.5078668090000065
+        },
+        {
+          "attempt": 2,
+          "status": "completed",
+          "grade": {
+            "attempt": 2,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기록 범위·책임자·검토 기한을 포털에 남기고 필요한 기록만 제한적으로 보류하며, 미결이면 30일마다 재검토하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6394,
+            "output_tokens": 380
+          },
+          "actual_cost_usd": 0.0018835,
+          "elapsed_seconds": 6.032506634999663
+        }
+      ]
+    },
+    {
+      "case_id": "N05",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기록 범위·책임자·검토 기한을 포털에 남기고 필요한 기록만 제한적으로 보류하며, 미결이면 30일마다 재검토하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3338,
+            "output_tokens": 442
+          },
+          "actual_cost_usd": 0.001166,
+          "elapsed_seconds": 7.204852881000079
+        }
+      ]
+    },
+    {
+      "case_id": "N06",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "정보 전달·의견 수렴만 필요하면 문서나 이슈와 Slack 비동기 의견으로 진행할 수 있다고 했고, 대화가 필요한 경우 회의를 잡는 기준도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6431,
+            "output_tokens": 161
+          },
+          "actual_cost_usd": 0.0017285,
+          "elapsed_seconds": 3.164778051999747
+        }
+      ]
+    },
+    {
+      "case_id": "N06",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "정보 전달·의견 수렴만 필요하면 문서나 이슈와 Slack 비동기 의견으로 진행할 수 있다고 했고, 대화가 필요한 경우 회의를 잡는 기준도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3043,
+            "output_tokens": 183
+          },
+          "actual_cost_usd": 0.000898,
+          "elapsed_seconds": 3.1508578289995057
+        }
+      ]
+    },
+    {
+      "case_id": "N06",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "정보 전달·의견 수렴만 필요하면 문서나 이슈와 Slack 비동기 의견으로 진행할 수 있다고 했고, 대화가 필요한 경우 회의를 잡는 기준도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3043,
+            "output_tokens": 201
+          },
+          "actual_cost_usd": 0.0009115,
+          "elapsed_seconds": 4.570219964999524
+        }
+      ]
+    },
+    {
+      "case_id": "N06",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "정보 전달·의견 수렴만 필요하면 문서나 이슈와 Slack 비동기 의견으로 진행할 수 있다고 했고, 대화가 필요한 경우 회의를 잡는 기준도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6431,
+            "output_tokens": 240
+          },
+          "actual_cost_usd": 0.00178775,
+          "elapsed_seconds": 4.086127429000044
+        }
+      ]
+    },
+    {
+      "case_id": "N07",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "초대의 목적·안건·결정·참석 역할·사전 자료·결과 항목과 안건 기여자/결정 담당자로 참석자를 제한하는 기준을 모두 전달했다."
+          },
+          "usage": {
+            "input_tokens": 2869,
+            "output_tokens": 199
+          },
+          "actual_cost_usd": 0.0008665,
+          "elapsed_seconds": 4.437285509999128
+        }
+      ]
+    },
+    {
+      "case_id": "N07",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "초대의 목적·안건·결정·참석 역할·사전 자료·결과 항목과 안건 기여자/결정 담당자로 참석자를 제한하는 기준을 모두 전달했다."
+          },
+          "usage": {
+            "input_tokens": 3570,
+            "output_tokens": 228
+          },
+          "actual_cost_usd": 0.0010635,
+          "elapsed_seconds": 4.3403024099989125
+        }
+      ]
+    },
+    {
+      "case_id": "N07",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "초대의 목적·안건·결정·참석 역할·사전 자료·결과 항목과 안건 기여자/결정 담당자로 참석자를 제한하는 기준을 모두 전달했다."
+          },
+          "usage": {
+            "input_tokens": 3570,
+            "output_tokens": 280
+          },
+          "actual_cost_usd": 0.0011025,
+          "elapsed_seconds": 4.84536483300144
+        }
+      ]
+    },
+    {
+      "case_id": "N07",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "초대의 목적·안건·결정·참석 역할·사전 자료·결과 항목과 안건 기여자/결정 담당자로 참석자를 제한하는 기준을 모두 전달했다."
+          },
+          "usage": {
+            "input_tokens": 2869,
+            "output_tokens": 158
+          },
+          "actual_cost_usd": 0.00083575,
+          "elapsed_seconds": 4.455920067000989
+        }
+      ]
+    },
+    {
+      "case_id": "N08",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "자료 미준비 또는 결정권자 불참 시 범위를 줄이거나 일정을 다시 잡는 기준을 전달했다. 검토 전 결정을 완료 처리하지 않는 부연도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6383,
+            "output_tokens": 348
+          },
+          "actual_cost_usd": 0.00185675,
+          "elapsed_seconds": 6.105346488999203
+        }
+      ]
+    },
+    {
+      "case_id": "N08",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "자료 미준비 또는 결정권자 불참 시 범위를 줄이거나 일정을 다시 잡는 기준을 전달했다. 검토 전 결정을 완료 처리하지 않는 부연도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 2987,
+            "output_tokens": 435
+          },
+          "actual_cost_usd": 0.001073,
+          "elapsed_seconds": 5.997968880999906
+        }
+      ]
+    },
+    {
+      "case_id": "N08",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "자료 미준비 또는 결정권자 불참 시 범위를 줄이거나 일정을 다시 잡는 기준을 전달했다. 검토 전 결정을 완료 처리하지 않는 부연도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 2987,
+            "output_tokens": 428
+          },
+          "actual_cost_usd": 0.00106775,
+          "elapsed_seconds": 5.707687390000501
+        }
+      ]
+    },
+    {
+      "case_id": "N08",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "자료 미준비 또는 결정권자 불참 시 범위를 줄이거나 일정을 다시 잡는 기준을 전달했다. 검토 전 결정을 완료 처리하지 않는 부연도 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6383,
+            "output_tokens": 361
+          },
+          "actual_cost_usd": 0.0018665,
+          "elapsed_seconds": 5.581894730001295
+        }
+      ]
+    },
+    {
+      "case_id": "N09",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3315,
+            "output_tokens": 94
+          },
+          "actual_cost_usd": 0.00089925,
+          "elapsed_seconds": 2.682288248999612
+        }
+      ]
+    },
+    {
+      "case_id": "N09",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6243,
+            "output_tokens": 142
+          },
+          "actual_cost_usd": 0.00166725,
+          "elapsed_seconds": 3.174816216000181
+        }
+      ]
+    },
+    {
+      "case_id": "N09",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6243,
+            "output_tokens": 172
+          },
+          "actual_cost_usd": 0.00168975,
+          "elapsed_seconds": 3.8439153890012676
+        }
+      ]
+    },
+    {
+      "case_id": "N09",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회사 절차의 기준 위치와 개발 결함·변경의 기준 위치를 각각 정확히 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3315,
+            "output_tokens": 139
+          },
+          "actual_cost_usd": 0.000933,
+          "elapsed_seconds": 4.481472330999168
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 6366,
+            "output_tokens": 907
+          },
+          "actual_cost_usd": 0.00227175,
+          "elapsed_seconds": 12.3358225030006
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 2893,
+            "output_tokens": 1337
+          },
+          "actual_cost_usd": 0.001726,
+          "elapsed_seconds": 18.207696920999297
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 2893,
+            "output_tokens": 722
+          },
+          "actual_cost_usd": 0.00126475,
+          "elapsed_seconds": 10.441679616000329
+        }
+      ]
+    },
+    {
+      "case_id": "N10",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "회수 조치와 실제 회수 확인을 안내하고, 이미 열람·복사되지 않았다고 추정하지 않으며 민감 정보 오발송은 즉시 신고하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 6366,
+            "output_tokens": 676
+          },
+          "actual_cost_usd": 0.0020985,
+          "elapsed_seconds": 9.062289048999446
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+          },
+          "usage": {
+            "input_tokens": 3442,
+            "output_tokens": 261
+          },
+          "actual_cost_usd": 0.00105625,
+          "elapsed_seconds": 5.125071940001362
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+          },
+          "usage": {
+            "input_tokens": 6394,
+            "output_tokens": 366
+          },
+          "actual_cost_usd": 0.001873,
+          "elapsed_seconds": 5.219472945000234
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+          },
+          "usage": {
+            "input_tokens": 6394,
+            "output_tokens": 378
+          },
+          "actual_cost_usd": 0.001882,
+          "elapsed_seconds": 5.915828126000633
+        }
+      ]
+    },
+    {
+      "case_id": "N11",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "관계가 결정에 영향을 주거나 그렇게 보일 수 있다면 편향 확인 전에도 신고해야 한다고 답합니다."
+          },
+          "usage": {
+            "input_tokens": 3442,
+            "output_tokens": 330
+          },
+          "actual_cost_usd": 0.001108,
+          "elapsed_seconds": 6.389402467999389
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+          },
+          "usage": {
+            "input_tokens": 6426,
+            "output_tokens": 857
+          },
+          "actual_cost_usd": 0.00224925,
+          "elapsed_seconds": 10.292030806000184
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+          },
+          "usage": {
+            "input_tokens": 3121,
+            "output_tokens": 583
+          },
+          "actual_cost_usd": 0.0012175,
+          "elapsed_seconds": 8.90027644699876
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+          },
+          "usage": {
+            "input_tokens": 3121,
+            "output_tokens": 434
+          },
+          "actual_cost_usd": 0.00110575,
+          "elapsed_seconds": 6.3106564760000765
+        }
+      ]
+    },
+    {
+      "case_id": "N12",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "고객 관계와 겹칠 수 있는 외부 자문을 시작하기 전 지정 경로에 신고하고, 요청된 신고 항목을 제시합니다."
+          },
+          "usage": {
+            "input_tokens": 6426,
+            "output_tokens": 993
+          },
+          "actual_cost_usd": 0.00235125,
+          "elapsed_seconds": 11.886938420999286
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+          },
+          "usage": {
+            "input_tokens": 3277,
+            "output_tokens": 915
+          },
+          "actual_cost_usd": 0.0015055,
+          "elapsed_seconds": 11.517494779000117
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+          },
+          "usage": {
+            "input_tokens": 6344,
+            "output_tokens": 568
+          },
+          "actual_cost_usd": 0.002012,
+          "elapsed_seconds": 8.213116090000767
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+          },
+          "usage": {
+            "input_tokens": 6344,
+            "output_tokens": 643
+          },
+          "actual_cost_usd": 0.00206825,
+          "elapsed_seconds": 9.459912887999963
+        }
+      ]
+    },
+    {
+      "case_id": "N13",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "검토 중 단독 승인 금지와 단독 참여·신규 자료 접근 제한을 구분하며, 전체 공동 참여 가능 여부는 단정하지 않습니다."
+          },
+          "usage": {
+            "input_tokens": 3277,
+            "output_tokens": 914
+          },
+          "actual_cost_usd": 0.00150475,
+          "elapsed_seconds": 12.670088009999745
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 6404,
+            "output_tokens": 370
+          },
+          "actual_cost_usd": 0.0018785,
+          "elapsed_seconds": 4.9715582440003345
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 3293,
+            "output_tokens": 584
+          },
+          "actual_cost_usd": 0.00126125,
+          "elapsed_seconds": 7.172876574999464
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 3293,
+            "output_tokens": 451
+          },
+          "actual_cost_usd": 0.0011615,
+          "elapsed_seconds": 6.5520093920004
+        }
+      ]
+    },
+    {
+      "case_id": "N14",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "결과·원본 기록을 보존하고 People팀의 독립 검토를 요청하며, 검토 결과 전 업무 중단·위임을 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 6404,
+            "output_tokens": 632
+          },
+          "actual_cost_usd": 0.002075,
+          "elapsed_seconds": 7.6160721970009035
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+          },
+          "usage": {
+            "input_tokens": 3116,
+            "output_tokens": 220
+          },
+          "actual_cost_usd": 0.000944,
+          "elapsed_seconds": 4.2052874640012305
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+          },
+          "usage": {
+            "input_tokens": 6439,
+            "output_tokens": 394
+          },
+          "actual_cost_usd": 0.00190525,
+          "elapsed_seconds": 5.219883137999204
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+          },
+          "usage": {
+            "input_tokens": 6439,
+            "output_tokens": 278
+          },
+          "actual_cost_usd": 0.00181825,
+          "elapsed_seconds": 4.233937308001259
+        }
+      ]
+    },
+    {
+      "case_id": "N15",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "상담이 정식 신고와 다를 수 있고 상담만으로 사실 여부가 확정되지 않는다고 정확히 설명합니다."
+          },
+          "usage": {
+            "input_tokens": 3116,
+            "output_tokens": 402
+          },
+          "actual_cost_usd": 0.0010805,
+          "elapsed_seconds": 5.876954991001185
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "공개 채널의 비밀 보호 원칙과 지정된 상담·신고 경로를 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 6351,
+            "output_tokens": 364
+          },
+          "actual_cost_usd": 0.00186075,
+          "elapsed_seconds": 5.024698700999579
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "공개 채널의 비밀 보호 원칙과 지정된 상담·신고 경로를 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 3078,
+            "output_tokens": 728
+          },
+          "actual_cost_usd": 0.0013155,
+          "elapsed_seconds": 9.095377985000596
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "공개 채널의 비밀 보호 원칙과 지정된 상담·신고 경로를 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 3078,
+            "output_tokens": 685
+          },
+          "actual_cost_usd": 0.00128325,
+          "elapsed_seconds": 8.309178958999837
+        }
+      ]
+    },
+    {
+      "case_id": "N16",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [
+              "N16-r01"
+            ],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": false,
+            "reason": "공개 Slack에 신고 내용이나 조사 경위를 올리지 말라고 하고 제한 공유 원칙은 안내하지만, 포털 또는 People팀의 제한된 접수 경로를 제시하지 않습니다. 이 누락은 별도 검토에서 N16-r01이 질문에 비해 과잉 필수일 가능성을 표시했습니다."
+          },
+          "usage": {
+            "input_tokens": 6351,
+            "output_tokens": 546
+          },
+          "actual_cost_usd": 0.00199725,
+          "elapsed_seconds": 6.211292527999831
+        }
+      ]
+    },
+    {
+      "case_id": "N17",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [
+              "N17-r01",
+              "N17-r02"
+            ],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": false,
+            "reason": "신고·조사 협조에 따른 불이익 금지와 보복 우려/추가 사건을 기존 신고에 추가하는 기준을 모두 누락했다. 보안 문제 발생 시 별도 신고하라는 안내는 해당 필수 사실을 충족하지 않는다."
+          },
+          "usage": {
+            "input_tokens": 2828,
+            "output_tokens": 726
+          },
+          "actual_cost_usd": 0.0012515,
+          "elapsed_seconds": 9.672743430000992
+        }
+      ]
+    },
+    {
+      "case_id": "N17",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "보복 우려의 보호 경로와 추가 사건을 기존 신고에 덧붙이는 필수 안내를 확인했다. 보안 문제에 대한 별도 신고 안내만으로는 이 두 사실을 대신하지 못한다."
+          },
+          "usage": {
+            "input_tokens": 6331,
+            "output_tokens": 987
+          },
+          "actual_cost_usd": 0.002323,
+          "elapsed_seconds": 10.839880600999095
+        }
+      ]
+    },
+    {
+      "case_id": "N17",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "보복 우려의 보호 경로와 추가 사건을 기존 신고에 덧붙이는 필수 안내를 확인했다. 보안 문제에 대한 별도 신고 안내만으로는 이 두 사실을 대신하지 못한다."
+          },
+          "usage": {
+            "input_tokens": 6331,
+            "output_tokens": 745
+          },
+          "actual_cost_usd": 0.0021415,
+          "elapsed_seconds": 8.199464359000558
+        }
+      ]
+    },
+    {
+      "case_id": "N17",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "json_error_retryable",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [
+              "N17-r01",
+              "N17-r02"
+            ],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": false,
+            "reason": "신고·조사 협조에 따른 불이익 금지와 보복 우려/추가 사건을 기존 신고에 추가하는 기준을 모두 누락했다. 보안 문제 발생 시 별도 신고하라는 안내는 해당 필수 사실을 충족하지 않는다."
+          },
+          "usage": {
+            "input_tokens": 2828,
+            "output_tokens": 789
+          },
+          "actual_cost_usd": 0.00129875,
+          "elapsed_seconds": 9.884313392998592
+        },
+        {
+          "attempt": 2,
+          "status": "completed",
+          "grade": {
+            "attempt": 2,
+            "missing_claims": [
+              "N17-r01",
+              "N17-r02"
+            ],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": false,
+            "reason": "신고·조사 협조에 따른 불이익 금지와 보복 우려/추가 사건을 기존 신고에 추가하는 기준을 모두 누락했다. 보안 문제 발생 시 별도 신고하라는 안내는 해당 필수 사실을 충족하지 않는다."
+          },
+          "usage": {
+            "input_tokens": 2828,
+            "output_tokens": 433
+          },
+          "actual_cost_usd": 0.00103175,
+          "elapsed_seconds": 6.534849232999477
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+          },
+          "usage": {
+            "input_tokens": 6096,
+            "output_tokens": 184
+          },
+          "actual_cost_usd": 0.001662,
+          "elapsed_seconds": 3.6333881449991168
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+          },
+          "usage": {
+            "input_tokens": 3279,
+            "output_tokens": 215
+          },
+          "actual_cost_usd": 0.000981,
+          "elapsed_seconds": 3.7956856829987373
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+          },
+          "usage": {
+            "input_tokens": 3279,
+            "output_tokens": 251
+          },
+          "actual_cost_usd": 0.001008,
+          "elapsed_seconds": 4.779917924999609
+        }
+      ]
+    },
+    {
+      "case_id": "N18",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "경보가 오작동처럼 느껴져도 대피 안내를 따르고, 소방관 또는 실제 건물 관리자가 안전을 확인하기 전에는 머무르거나 복귀하지 말라고 정확히 답했다."
+          },
+          "usage": {
+            "input_tokens": 6096,
+            "output_tokens": 249
+          },
+          "actual_cost_usd": 0.00171075,
+          "elapsed_seconds": 5.788211933000639
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3067,
+            "output_tokens": 204
+          },
+          "actual_cost_usd": 0.00091975,
+          "elapsed_seconds": 3.6482285000001866
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6398,
+            "output_tokens": 183
+          },
+          "actual_cost_usd": 0.00173675,
+          "elapsed_seconds": 3.436606238999957
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6398,
+            "output_tokens": 239
+          },
+          "actual_cost_usd": 0.00177875,
+          "elapsed_seconds": 4.038617850999799
+        }
+      ]
+    },
+    {
+      "case_id": "N19",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "개인 물품을 챙기느라 지체하지 말고 화재 의심 상황에서 엘리베이터를 쓰지 말라는 두 조치를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3067,
+            "output_tokens": 263
+          },
+          "actual_cost_usd": 0.000964,
+          "elapsed_seconds": 4.653364944999339
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6117,
+            "output_tokens": 99
+          },
+          "actual_cost_usd": 0.0016035,
+          "elapsed_seconds": 3.1629138789994613
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3240,
+            "output_tokens": 108
+          },
+          "actual_cost_usd": 0.000891,
+          "elapsed_seconds": 2.6360345800003415
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3240,
+            "output_tokens": 115
+          },
+          "actual_cost_usd": 0.00089625,
+          "elapsed_seconds": 2.7397203170003195
+        }
+      ]
+    },
+    {
+      "case_id": "N20",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "연기·열기로 출구가 위험하거나 막혔을 때 무리하게 통과하지 말고 문을 닫을 수 있는 안전 공간에서 구조를 요청하도록 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6117,
+            "output_tokens": 119
+          },
+          "actual_cost_usd": 0.0016185,
+          "elapsed_seconds": 2.8784708969997155
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+          },
+          "usage": {
+            "input_tokens": 3200,
+            "output_tokens": 212
+          },
+          "actual_cost_usd": 0.000959,
+          "elapsed_seconds": 3.5753476949994365
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+          },
+          "usage": {
+            "input_tokens": 6376,
+            "output_tokens": 247
+          },
+          "actual_cost_usd": 0.00177925,
+          "elapsed_seconds": 3.7382099909991666
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+          },
+          "usage": {
+            "input_tokens": 6376,
+            "output_tokens": 408
+          },
+          "actual_cost_usd": 0.0019,
+          "elapsed_seconds": 5.595433963000687
+        }
+      ]
+    },
+    {
+      "case_id": "N21",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "사람을 찾으러 재진입하지 말고 미확인자의 마지막 위치를 구조자에게 알리며, 안전 확인과 명시적 재입장 안내 후에만 돌아가라고 답했다."
+          },
+          "usage": {
+            "input_tokens": 3200,
+            "output_tokens": 307
+          },
+          "actual_cost_usd": 0.00103025,
+          "elapsed_seconds": 4.450664104999305
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+          },
+          "usage": {
+            "input_tokens": 6382,
+            "output_tokens": 279
+          },
+          "actual_cost_usd": 0.00180475,
+          "elapsed_seconds": 4.817787776000841
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+          },
+          "usage": {
+            "input_tokens": 2950,
+            "output_tokens": 140
+          },
+          "actual_cost_usd": 0.0008425,
+          "elapsed_seconds": 3.076084672000434
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+          },
+          "usage": {
+            "input_tokens": 2950,
+            "output_tokens": 275
+          },
+          "actual_cost_usd": 0.00094375,
+          "elapsed_seconds": 4.262152519000665
+        }
+      ]
+    },
+    {
+      "case_id": "N22",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "30일 전 통지를 업무 계획상 목표로 설명하고, 개인 계약을 대체하지 않으며 People팀이 적용 기준을 확인한다고 답했다."
+          },
+          "usage": {
+            "input_tokens": 6382,
+            "output_tokens": 196
+          },
+          "actual_cost_usd": 0.0017425,
+          "elapsed_seconds": 3.5470747290000872
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3293,
+            "output_tokens": 296
+          },
+          "actual_cost_usd": 0.00104525,
+          "elapsed_seconds": 4.826626485999441
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6356,
+            "output_tokens": 541
+          },
+          "actual_cost_usd": 0.00199475,
+          "elapsed_seconds": 6.971274235000237
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6356,
+            "output_tokens": 516
+          },
+          "actual_cost_usd": 0.001976,
+          "elapsed_seconds": 5.9935682590003125
+        }
+      ]
+    },
+    {
+      "case_id": "N23",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "json_error_retryable",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3293,
+            "output_tokens": 331
+          },
+          "actual_cost_usd": 0.0010715,
+          "elapsed_seconds": 4.609044860999347
+        },
+        {
+          "attempt": 2,
+          "status": "completed",
+          "grade": {
+            "attempt": 2,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "질문에서 이미 전제한 진행 중 업무를 되풀이하지 않아도, 요청한 추가 항목인 완료 내용·미결 결정·기한·저장 위치·접근 권한과 비밀정보 금지를 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3293,
+            "output_tokens": 358
+          },
+          "actual_cost_usd": 0.00109175,
+          "elapsed_seconds": 5.317355192999457
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6405,
+            "output_tokens": 194
+          },
+          "actual_cost_usd": 0.00174675,
+          "elapsed_seconds": 3.046958994000306
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3062,
+            "output_tokens": 212
+          },
+          "actual_cost_usd": 0.0009245,
+          "elapsed_seconds": 3.6372904620002373
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 3062,
+            "output_tokens": 229
+          },
+          "actual_cost_usd": 0.00093725,
+          "elapsed_seconds": 3.6168636829988827
+        }
+      ]
+    },
+    {
+      "case_id": "N24",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "일반 계정의 마지막 근무일 18:00 종료와 시스템 담당자·보안/개인정보 담당자의 예외 승인 및 만료 시각 기록을 모두 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6405,
+            "output_tokens": 254
+          },
+          "actual_cost_usd": 0.00179175,
+          "elapsed_seconds": 3.684595934000754
+        }
+      ]
+    },
+    {
+      "case_id": "N25",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 3107,
+            "output_tokens": 154
+          },
+          "actual_cost_usd": 0.00089225,
+          "elapsed_seconds": 3.4869181899994146
+        }
+      ]
+    },
+    {
+      "case_id": "N25",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 6395,
+            "output_tokens": 238
+          },
+          "actual_cost_usd": 0.00177725,
+          "elapsed_seconds": 3.694537733999823
+        }
+      ]
+    },
+    {
+      "case_id": "N25",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 6395,
+            "output_tokens": 268
+          },
+          "actual_cost_usd": 0.00179975,
+          "elapsed_seconds": 3.9030933600006392
+        }
+      ]
+    },
+    {
+      "case_id": "N25",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "최신 날짜만으로 기준을 추정하거나 덮어쓰지 않고, 두 문서의 링크와 충돌 구역을 소유 팀에 보내도록 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 3107,
+            "output_tokens": 175
+          },
+          "actual_cost_usd": 0.000908,
+          "elapsed_seconds": 3.493783916999746
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 6341,
+            "output_tokens": 264
+          },
+          "actual_cost_usd": 0.00178325,
+          "elapsed_seconds": 4.3418979449998005
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 2943,
+            "output_tokens": 489
+          },
+          "actual_cost_usd": 0.0011025,
+          "elapsed_seconds": 6.4197944440002175
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 2943,
+            "output_tokens": 393
+          },
+          "actual_cost_usd": 0.0010305,
+          "elapsed_seconds": 6.887898433998998
+        }
+      ]
+    },
+    {
+      "case_id": "N26",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "동료 계정을 빌리는 방식을 거부하고, 회사 계정·링크·필요 역할을 확인해 자료 소유자 또는 지정 권한 경로로 요청하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 6341,
+            "output_tokens": 402
+          },
+          "actual_cost_usd": 0.00188675,
+          "elapsed_seconds": 6.032544498000789
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+          },
+          "usage": {
+            "input_tokens": 3559,
+            "output_tokens": 150
+          },
+          "actual_cost_usd": 0.00100225,
+          "elapsed_seconds": 3.463440637999156
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+          },
+          "usage": {
+            "input_tokens": 6383,
+            "output_tokens": 178
+          },
+          "actual_cost_usd": 0.00172925,
+          "elapsed_seconds": 3.2159759450005367
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+          },
+          "usage": {
+            "input_tokens": 6383,
+            "output_tokens": 261
+          },
+          "actual_cost_usd": 0.0017915,
+          "elapsed_seconds": 4.1535133279994625
+        }
+      ]
+    },
+    {
+      "case_id": "N27",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "현재 동작이 고장 난 것이 아니라 다른 흐름을 원하는 경우 기능 요청이라고 정확히 분류합니다."
+          },
+          "usage": {
+            "input_tokens": 3559,
+            "output_tokens": 300
+          },
+          "actual_cost_usd": 0.00111475,
+          "elapsed_seconds": 4.363116467000509
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6377,
+            "output_tokens": 510
+          },
+          "actual_cost_usd": 0.00197675,
+          "elapsed_seconds": 7.032218261998423
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3333,
+            "output_tokens": 810
+          },
+          "actual_cost_usd": 0.00144075,
+          "elapsed_seconds": 9.69622236900068
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3333,
+            "output_tokens": 1052
+          },
+          "actual_cost_usd": 0.00162225,
+          "elapsed_seconds": 12.633889339000234
+        }
+      ]
+    },
+    {
+      "case_id": "N28",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "재현 성공을 전제하지 않고 버그 의심으로 전달하되, 확인된 버그라고 단정하지 않으며 확인 사실과 미확인 사항을 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6377,
+            "output_tokens": 590
+          },
+          "actual_cost_usd": 0.00203675,
+          "elapsed_seconds": 7.7295491579989175
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "고객 원본 로그와 실제 이메일을 GitHub 이슈에 넣지 말라고 하고, 안전한 재현·자료 전달 경계를 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 3379,
+            "output_tokens": 387
+          },
+          "actual_cost_usd": 0.001135,
+          "elapsed_seconds": 6.701742349001506
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [
+              "N29-r02"
+            ],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": false,
+            "reason": "원본 로그·이메일을 이슈에 넣지 말라고 하고 필요한 부분만 제한하지만, 오류 문구에서 비밀정보를 제거한다는 필수 기준은 명시하지 않습니다."
+          },
+          "usage": {
+            "input_tokens": 6223,
+            "output_tokens": 419
+          },
+          "actual_cost_usd": 0.00187,
+          "elapsed_seconds": 5.654978241000208
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "고객 원본 로그와 실제 이메일을 GitHub 이슈에 넣지 말라고 하고, 안전한 재현·자료 전달 경계를 안내합니다."
+          },
+          "usage": {
+            "input_tokens": 6223,
+            "output_tokens": 439
+          },
+          "actual_cost_usd": 0.001885,
+          "elapsed_seconds": 6.010739462000856
+        }
+      ]
+    },
+    {
+      "case_id": "N29",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [
+              "N29-r02"
+            ],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": false,
+            "reason": "원본 로그·이메일을 이슈에 넣지 말라고 하고 필요한 부분만 제한하지만, 오류 문구에서 비밀정보를 제거한다는 필수 기준은 명시하지 않습니다."
+          },
+          "usage": {
+            "input_tokens": 3379,
+            "output_tokens": 565
+          },
+          "actual_cost_usd": 0.0012685,
+          "elapsed_seconds": 8.276392131998364
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 6352,
+            "output_tokens": 208
+          },
+          "actual_cost_usd": 0.001744,
+          "elapsed_seconds": 4.4074664680010756
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 3177,
+            "output_tokens": 223
+          },
+          "actual_cost_usd": 0.0009615,
+          "elapsed_seconds": 3.9544448939996073
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 3177,
+            "output_tokens": 287
+          },
+          "actual_cost_usd": 0.0010095,
+          "elapsed_seconds": 4.106717112999831
+        }
+      ]
+    },
+    {
+      "case_id": "N30",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": null,
+            "content_complete": true,
+            "reason": "기능 요청의 채택 여부나 출시일을 미리 약속하지 말고, 확인된 결정과 보류 사유·다음 안내를 전달하도록 합니다."
+          },
+          "usage": {
+            "input_tokens": 6352,
+            "output_tokens": 180
+          },
+          "actual_cost_usd": 0.001723,
+          "elapsed_seconds": 3.6093871449993458
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3405,
+            "output_tokens": 240
+          },
+          "actual_cost_usd": 0.00103125,
+          "elapsed_seconds": 4.565286741000818
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6404,
+            "output_tokens": 593
+          },
+          "actual_cost_usd": 0.00204575,
+          "elapsed_seconds": 7.827141241999925
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6404,
+            "output_tokens": 442
+          },
+          "actual_cost_usd": 0.0019325,
+          "elapsed_seconds": 6.2743406369991135
+        }
+      ]
+    },
+    {
+      "case_id": "P01",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "방문 시간·동행자 변경 시 포털 기록 갱신과 총무 담당자 통지를 안내하면서, 실제 개인 일정 반영 여부는 확인할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3405,
+            "output_tokens": 257
+          },
+          "actual_cost_usd": 0.001044,
+          "elapsed_seconds": 5.419995258998824
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6375,
+            "output_tokens": 409
+          },
+          "actual_cost_usd": 0.0019005,
+          "elapsed_seconds": 5.552095880999332
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3452,
+            "output_tokens": 360
+          },
+          "actual_cost_usd": 0.001133,
+          "elapsed_seconds": 5.372961765000582
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 3452,
+            "output_tokens": 421
+          },
+          "actual_cost_usd": 0.00117875,
+          "elapsed_seconds": 6.164929070000653
+        }
+      ]
+    },
+    {
+      "case_id": "P02",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "검토 뒤 허용 범위·회피 업무·독립 확인·재검토 시점을 포털에 기록하도록 안내하면서, 개인 신고 결과는 조회할 수 없다고 구분합니다."
+          },
+          "usage": {
+            "input_tokens": 6375,
+            "output_tokens": 329
+          },
+          "actual_cost_usd": 0.0018405,
+          "elapsed_seconds": 6.411853457999314
+        }
+      ]
+    },
+    {
+      "case_id": "P03",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "필수 개별 결과 안내를 포함하고 개인 기록을 확인할 수 없다고 밝혔다. 지연 시 담당자에게 알려 재검토를 요청할 수 있다는 안내도 원문에 있다."
+          },
+          "usage": {
+            "input_tokens": 3007,
+            "output_tokens": 620
+          },
+          "actual_cost_usd": 0.00121675,
+          "elapsed_seconds": 7.821619987000304
+        }
+      ]
+    },
+    {
+      "case_id": "P03",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "필수 개별 결과 안내를 설명하고 개인 신고 결과 및 별도 조회 경로를 확인하지 못한다고 한계를 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 6360,
+            "output_tokens": 730
+          },
+          "actual_cost_usd": 0.0021375,
+          "elapsed_seconds": 8.678475783000977
+        }
+      ]
+    },
+    {
+      "case_id": "P03",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "필수 결과 안내 내용을 포함했다. 접수 상태와 연락 담당자 기록도 원문에 있으며, 개인 결과는 조회하지 못한다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 6360,
+            "output_tokens": 585
+          },
+          "actual_cost_usd": 0.00202875,
+          "elapsed_seconds": 7.720087455001703
+        }
+      ]
+    },
+    {
+      "case_id": "P03",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "필수 안내 사실·검토 범위·결과·후속 조치의 개별 안내를 포함하고, 개인 신고 결과는 조회할 수 없다고 한계를 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 3007,
+            "output_tokens": 394
+          },
+          "actual_cost_usd": 0.00104725,
+          "elapsed_seconds": 5.719980742000189
+        }
+      ]
+    },
+    {
+      "case_id": "P04",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "네 가지 개정 항목을 빠짐없이 제시했다. 메뉴·양식·상세 승인 절차를 문서에서 확인하지 못했다고 표현했으며 실제 제안 상태도 단정하지 않았다."
+          },
+          "usage": {
+            "input_tokens": 6343,
+            "output_tokens": 1400
+          },
+          "actual_cost_usd": 0.00263575,
+          "elapsed_seconds": 14.948899681001421
+        }
+      ]
+    },
+    {
+      "case_id": "P04",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "변경 이유·승인 책임·적용 시점·이전 버전 위치를 모두 포함하고, 제안의 실제 승인·적용 상태는 모른다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 3221,
+            "output_tokens": 333
+          },
+          "actual_cost_usd": 0.001055,
+          "elapsed_seconds": 4.8456992659994285
+        }
+      ]
+    },
+    {
+      "case_id": "P04",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "변경 이유·승인 책임·적용 시점·이전 버전 위치를 모두 제시하고, 제안의 실제 승인·적용 여부는 자료만으로 확인할 수 없다고 했다."
+          },
+          "usage": {
+            "input_tokens": 3221,
+            "output_tokens": 378
+          },
+          "actual_cost_usd": 0.00108875,
+          "elapsed_seconds": 5.855599329999677
+        }
+      ]
+    },
+    {
+      "case_id": "P04",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "네 가지 개정 기록 항목을 모두 전달하고 제안의 실제 승인·적용 상태를 조회할 수 없다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 6343,
+            "output_tokens": 398
+          },
+          "actual_cost_usd": 0.00188425,
+          "elapsed_seconds": 5.464554733998739
+        }
+      ]
+    },
+    {
+      "case_id": "P05",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [
+              "P05-r01"
+            ],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": false,
+            "reason": "원본 링크와 다음 행동 확인, 신규 담당자 인수 시점은 언급했지만 기존 담당자가 떠나는 시점의 기록을 빠뜨려 필수 사실이 완전하지 않다. 개인별 상태는 확인 불가라고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 3187,
+            "output_tokens": 399
+          },
+          "actual_cost_usd": 0.001096,
+          "elapsed_seconds": 5.163642135001282
+        }
+      ]
+    },
+    {
+      "case_id": "P05",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "원본 링크와 다음 행동 확인, 인계·인수 시점 기록을 포함하고 개인 상태는 조회할 수 없다고 한계를 안내했다."
+          },
+          "usage": {
+            "input_tokens": 6366,
+            "output_tokens": 610
+          },
+          "actual_cost_usd": 0.002049,
+          "elapsed_seconds": 7.714952626000013
+        }
+      ]
+    },
+    {
+      "case_id": "P05",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "인계 자료 작성, 원본 링크·다음 행동 확인과 양측 시점 기록을 포함한다. 개인별 실제 인수 여부는 조회할 수 없다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 6366,
+            "output_tokens": 1130
+          },
+          "actual_cost_usd": 0.002439,
+          "elapsed_seconds": 14.690804128000309
+        }
+      ]
+    },
+    {
+      "case_id": "P05",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "원본 링크·다음 행동 확인과 기존 담당자 퇴사·신규 담당자 인수 시점 기록을 포함하고, 개인 인계 상태를 조회할 수 없다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 3187,
+            "output_tokens": 857
+          },
+          "actual_cost_usd": 0.0014395,
+          "elapsed_seconds": 9.70855352900071
+        }
+      ]
+    },
+    {
+      "case_id": "X01",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "실제 방문 인원수를 제시하지 않았다. 총무의 기록 관리 역할과 집계·조회 경로 미확인을 구분했다."
+          },
+          "usage": {
+            "input_tokens": 5272,
+            "output_tokens": 436
+          },
+          "actual_cost_usd": 0.001645,
+          "elapsed_seconds": 6.119586665001407
+        }
+      ]
+    },
+    {
+      "case_id": "X01",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "90일 후 기록 삭제라는 원문 사실을 전하면서도 실제 분기 인원이나 구성원 조회 경로를 단정하지 않았다."
+          },
+          "usage": {
+            "input_tokens": 3042,
+            "output_tokens": 490
+          },
+          "actual_cost_usd": 0.001128,
+          "elapsed_seconds": 6.473585226000068
+        }
+      ]
+    },
+    {
+      "case_id": "X01",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "실제 분기 인원과 집계 경로를 추정하지 않았다. 방문 등록 위치는 원문에 있고 집계 여부는 확인되지 않는다고 한계를 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 3042,
+            "output_tokens": 421
+          },
+          "actual_cost_usd": 0.00107625,
+          "elapsed_seconds": 6.792646626001442
+        }
+      ]
+    },
+    {
+      "case_id": "X01",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "분기별 실제 방문 인원을 지어내지 않고, 등록 절차와 실제 집계·조회 경로의 한계를 구분했다."
+          },
+          "usage": {
+            "input_tokens": 5272,
+            "output_tokens": 295
+          },
+          "actual_cost_usd": 0.00153925,
+          "elapsed_seconds": 4.639944679000109
+        }
+      ]
+    },
+    {
+      "case_id": "X02",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "훈련 일정과 시작 시각을 단정하지 않고 확인할 수 없다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 3407,
+            "output_tokens": 118
+          },
+          "actual_cost_usd": 0.00094025,
+          "elapsed_seconds": 3.14034530599929
+        }
+      ]
+    },
+    {
+      "case_id": "X02",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "다음 달 훈련의 날짜나 시작 시각을 만들어내지 않고 확인 불가로 답했다."
+          },
+          "usage": {
+            "input_tokens": 2537,
+            "output_tokens": 126
+          },
+          "actual_cost_usd": 0.00072875,
+          "elapsed_seconds": 3.405406887999561
+        }
+      ]
+    },
+    {
+      "case_id": "X02",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "화재 대피 문서가 일정표를 제공한다고 주장하지 않고 요청한 날짜·시간을 확인할 수 없다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 2537,
+            "output_tokens": 199
+          },
+          "actual_cost_usd": 0.0007835,
+          "elapsed_seconds": 3.6662713480000093
+        }
+      ]
+    },
+    {
+      "case_id": "X02",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "훈련 일정과 시작 시간을 확인할 수 없다고 했고 날짜·시간을 추정하지 않았다."
+          },
+          "usage": {
+            "input_tokens": 3407,
+            "output_tokens": 108
+          },
+          "actual_cost_usd": 0.00093275,
+          "elapsed_seconds": 3.0171308779990795
+        }
+      ]
+    },
+    {
+      "case_id": "X03",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "연간 집계 수치를 만들지 않았으며, 절차 안내와 집계 정보가 없다는 한계를 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 6389,
+            "output_tokens": 276
+          },
+          "actual_cost_usd": 0.00180425,
+          "elapsed_seconds": 4.739374966999094
+        }
+      ]
+    },
+    {
+      "case_id": "X03",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "요청한 신고·사실 확인 수치를 단정하지 않고 사내 자료에서 확인할 수 없다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 2915,
+            "output_tokens": 225
+          },
+          "actual_cost_usd": 0.0008975,
+          "elapsed_seconds": 3.9930643900006544
+        }
+      ]
+    },
+    {
+      "case_id": "X03",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "회사 신고 건수와 사실 확인 완료 건수를 추정하지 않고 확인 불가로 답했다."
+          },
+          "usage": {
+            "input_tokens": 2915,
+            "output_tokens": 137
+          },
+          "actual_cost_usd": 0.0008315,
+          "elapsed_seconds": 2.83453838099922
+        }
+      ]
+    },
+    {
+      "case_id": "X03",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "연간 신고·사실 확인 건수를 단정하지 않고, 안내 문서가 절차만 다루며 집계 수치와 조회 경로는 확인되지 않는다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 6389,
+            "output_tokens": 275
+          },
+          "actual_cost_usd": 0.0018035,
+          "elapsed_seconds": 4.035916370999985
+        }
+      ]
+    },
+    {
+      "case_id": "X04",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "회의 예약 정보의 실제 값을 제시하지 않았다. 초대 등 예약 정보를 확인하라는 제안은 일정 공유 문서의 일반 절차에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3076,
+            "output_tokens": 437
+          },
+          "actual_cost_usd": 0.00109675,
+          "elapsed_seconds": 6.320088098998895
+        }
+      ]
+    },
+    {
+      "case_id": "X04",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "예약 회의실과 시작 시각을 확인했다고 주장하지 않고 확인 불가로 답했다."
+          },
+          "usage": {
+            "input_tokens": 6375,
+            "output_tokens": 143
+          },
+          "actual_cost_usd": 0.001701,
+          "elapsed_seconds": 2.4874646260013833
+        }
+      ]
+    },
+    {
+      "case_id": "X04",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "실제 예약 회의실과 시작 시각을 확인한 것처럼 말하지 않고 확인 불가로 제한했다."
+          },
+          "usage": {
+            "input_tokens": 6375,
+            "output_tokens": 248
+          },
+          "actual_cost_usd": 0.00177975,
+          "elapsed_seconds": 3.9261103579992778
+        }
+      ]
+    },
+    {
+      "case_id": "X04",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "실제 회의실·시작 시각을 만들어내지 않고 현재 확인할 수 없다고 밝혔다."
+          },
+          "usage": {
+            "input_tokens": 3076,
+            "output_tokens": 152
+          },
+          "actual_cost_usd": 0.000883,
+          "elapsed_seconds": 3.816444738999053
+        }
+      ]
+    },
+    {
+      "case_id": "X05",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "실제 이슈 담당자와 우선순위를 확인했다고 주장하지 않았다. 일반적인 보드·댓글 및 우선순위 절차는 원문과 일치한다."
+          },
+          "usage": {
+            "input_tokens": 6228,
+            "output_tokens": 802
+          },
+          "actual_cost_usd": 0.0021585,
+          "elapsed_seconds": 9.306620930999998
+        }
+      ]
+    },
+    {
+      "case_id": "X05",
+      "variant_id": "baseline",
+      "repeat": 1,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "이슈의 실제 담당자·우선순위를 단정하지 않았다. 보드·댓글 확인 절차와 우선순위 결정 기준은 문서에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3435,
+            "output_tokens": 435
+          },
+          "actual_cost_usd": 0.001185,
+          "elapsed_seconds": 5.426159690001441
+        }
+      ]
+    },
+    {
+      "case_id": "X05",
+      "variant_id": "baseline",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "현재 담당자와 우선순위를 알 수 없다고 제한했다. 팀의 우선순위 검토 기준은 원문에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 3435,
+            "output_tokens": 509
+          },
+          "actual_cost_usd": 0.0012405,
+          "elapsed_seconds": 8.499828193000212
+        }
+      ]
+    },
+    {
+      "case_id": "X05",
+      "variant_id": "score035_unlimited_proxy4000",
+      "repeat": 2,
+      "status": "completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "grade": {
+            "attempt": 1,
+            "missing_claims": [],
+            "major_error": false,
+            "unsupported_assertion": false,
+            "abstention_correct": true,
+            "content_complete": true,
+            "reason": "실제 이슈 담당자나 우선순위를 확인했다고 주장하지 않았다. 개발 이슈의 기준 위치와 우선순위 판단 절차는 문서에 부합한다."
+          },
+          "usage": {
+            "input_tokens": 6228,
+            "output_tokens": 722
+          },
+          "actual_cost_usd": 0.0020985,
+          "elapsed_seconds": 8.289627951000512
+        }
+      ]
+    }
+  ]
+}

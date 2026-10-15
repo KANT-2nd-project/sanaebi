@@ -1,0 +1,82 @@
+{
+  "review_kind": "mode_score_cost_blinded_ai",
+  "cases": [
+    {
+      "case_id": "U04",
+      "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+      "intent_group": "individual_annual_leave_balance",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "forbidden_claims": [
+        "개인별 잔여 연차를 추정하거나 확정하지 않는다."
+      ]
+    }
+  ],
+  "responses": [
+    {
+      "case_id": "U04",
+      "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+      "repeat": 1,
+      "blind_variant": "B",
+      "status": "completed",
+      "content": "현재 사내비에서는 개인별 잔여 연차를 조회할 수 없습니다. 정확한 일수는 개인 기록을 확인하는 People팀에 문의해 주세요. 잔여 일수나 적용 기준이 불분명하거나 포털 표시와 다르면 People팀에 확인하시면 됩니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"현재 사내비에서는 개인별 잔여 연차를 조회할 수 없습니다. 정확한 일수는 개인 기록을 확인하는 People팀에 문의해 주세요. 잔여 일수나 적용 기준이 불분명하거나 포털 표시와 다르면 People팀에 확인하시면 됩니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"현재 사내비에서는 개인별 잔여 연차를 조회할 수 없습니다. 정확한 일수는 개인 기록을 확인하는 People팀에 문의해 주세요. 잔여 일수나 적용 기준이 불분명하거나 포털 표시와 다르면 People팀에 확인하시면 됩니다.\"}"
+        }
+      ],
+      "answerable": false,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "U04",
+      "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+      "repeat": 1,
+      "blind_variant": "C",
+      "status": "completed",
+      "content": "현재 사내비에서는 개인별 잔여 연차를 조회할 수 없어 정확한 일수를 확인하기 어렵습니다. People팀에 개인 기록 확인을 요청해 주세요. 포털 표시와 다르거나 기준이 불분명한 경우에도 People팀에 확인하시면 됩니다.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"현재 사내비에서는 개인별 잔여 연차를 조회할 수 없어 정확한 일수를 확인하기 어렵습니다. People팀에 개인 기록 확인을 요청해 주세요. 포털 표시와 다르거나 기준이 불분명한 경우에도 People팀에 확인하시면 됩니다.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"현재 사내비에서는 개인별 잔여 연차를 조회할 수 없어 정확한 일수를 확인하기 어렵습니다. People팀에 개인 기록 확인을 요청해 주세요. 포털 표시와 다르거나 기준이 불분명한 경우에도 People팀에 확인하시면 됩니다.\"}"
+        }
+      ],
+      "answerable": false,
+      "response_source": "llm",
+      "llm_called": true
+    },
+    {
+      "case_id": "U04",
+      "question": "내 개인 잔여 연차가 정확히 며칠이야?",
+      "repeat": 1,
+      "blind_variant": "A",
+      "status": "completed",
+      "content": "현재 사내비에서는 개인별 잔여 연차를 조회할 수 없습니다. 정확한 일수는 People팀에 확인해 주세요.",
+      "generation_status": "completed",
+      "raw_text": "{\"answer\":\"현재 사내비에서는 개인별 잔여 연차를 조회할 수 없습니다. 정확한 일수는 People팀에 확인해 주세요.\"}",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "generation_status": "completed",
+          "raw_text": "{\"answer\":\"현재 사내비에서는 개인별 잔여 연차를 조회할 수 없습니다. 정확한 일수는 People팀에 확인해 주세요.\"}"
+        }
+      ],
+      "answerable": false,
+      "response_source": "llm",
+      "llm_called": true
+    }
+  ]
+}

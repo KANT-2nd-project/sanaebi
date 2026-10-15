@@ -1,0 +1,32 @@
+[
+  {
+    "variant_id": "A_existing",
+    "claim_cases": 38,
+    "complete": 36,
+    "included": 65,
+    "required": 67,
+    "empty_answerable": 0,
+    "mean_chars": 6094,
+    "mean_proxy_tokens": 3629
+  },
+  {
+    "variant_id": "B_tokens_only",
+    "claim_cases": 38,
+    "complete": 36,
+    "included": 65,
+    "required": 67,
+    "empty_answerable": 0,
+    "mean_chars": 6094,
+    "mean_proxy_tokens": 3629
+  },
+  {
+    "variant_id": "C_unlimited",
+    "claim_cases": 38,
+    "complete": 37,
+    "included": 66,
+    "required": 67,
+    "empty_answerable": 0,
+    "mean_chars": 25766,
+    "mean_proxy_tokens": 15308
+  }
+]

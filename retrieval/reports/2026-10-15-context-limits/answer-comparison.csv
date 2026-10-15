@@ -1,0 +1,4 @@
+variant_id,scheduled_slots,api_slots,provider_attempts,empty_context_slots,first_format_success,retries,retry_recovered,final_format_success,first_content_complete,final_content_complete,final_delivered_complete,first_major_errors,final_major_errors,final_unsupported_assertions,final_missing_facts,estimated_cost_usd,input_tokens,output_tokens,slot_latency_median_seconds,slot_latency_p95_seconds,request_latency_median_seconds
+A_existing,12,11,12,1,10,1,1,11,11,11,11,0,0,0,1,0.023064,76275,5327,6.852729709000414,23.323730791000344,7.136693430000378
+B_tokens_only,12,11,11,1,11,0,0,11,11,11,11,0,0,0,1,0.02159475,69909,5490,7.595795184000053,13.718346345998725,8.300867222000306
+C_unlimited,12,11,11,1,11,0,0,11,11,11,11,0,0,0,1,0.051448,189619,5391,8.12251723999998,12.566670768999757,8.698895110001104

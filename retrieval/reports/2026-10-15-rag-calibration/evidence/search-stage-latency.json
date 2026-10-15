@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "selection_ms_p50": 0.13532850016417797,
+    "selection_ms_p95": 0.18945200008602114,
+    "n": 48
+  },
+  "score035_unlimited": {
+    "selection_ms_p50": 0.351189999946655,
+    "selection_ms_p95": 1.2949269994351198,
+    "n": 48
+  },
+  "score035_unlimited_proxy4000": {
+    "selection_ms_p50": 40.94009600021309,
+    "selection_ms_p95": 47.541144999740936,
+    "n": 48
+  },
+  "query": {
+    "first_query_ms": 2464.485937000063,
+    "remaining_47_median_ms": 15.460397000424564,
+    "scope": "query embedding plus exact ranking; not HTTP latency"
+  }
+}

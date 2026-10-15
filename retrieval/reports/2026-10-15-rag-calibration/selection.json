@@ -1,0 +1,14 @@
+{
+  "status": "frozen_before_actual_answers",
+  "baseline": "baseline",
+  "candidates": [
+    "score035_unlimited",
+    "score035_unlimited_proxy4000"
+  ],
+  "rule": "기준선 성공34문항 보존 -> 충분성 -> 관련도 -> 전달량 -> 지연. 완전포함37,36인 상위두구성 선택. 0.40 계열은35로 후순위.",
+  "relevance_review": "qrel-conditioned AI; settings/scores/outcomes hidden;1920/1920 judged",
+  "token_budget": "포맷된근거 전체의Tinyproxy; 생성토큰아님",
+  "confirmation": "40 cases frozen before any development API call",
+  "chunk_alternatives": "보류: 남은R16은완전한원문조치가39위 .3275에존재하여 직접확인원인은순위/threshold. 분할손상미확인",
+  "human_review": false
+}
