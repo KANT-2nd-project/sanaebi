@@ -1,6 +1,6 @@
 # 서버 요청 흐름 읽기
 
-서버는 질문을 받아 처리 방향을 분류하고, 필요한 경우 게시된 회사 문서로 답변을 생성한다. 분류기는 FastAPI 프로세스 안에서 실행하며 별도 HTTP 서버가 아니다. 서비스 소개와 공통 설치는 [프로젝트 README](../README.md#빠른-시작)를, 서버 준비와 API 확인은 아래 절차를 따른다.
+서버는 질문을 분류하고 기본 `shadow`에서는 그 결과를 관찰 기록으로만 남긴다. 유효한 게시 문서가 있으면 문서 기반 답변을 시도하며 분류 라벨을 생성 프롬프트에 넣지 않는다. 분류기는 FastAPI 프로세스 안에서 실행하며 별도 HTTP 서버가 아니다. 서비스 소개와 공통 설치는 [프로젝트 README](../README.md#빠른-시작)를, 서버 준비와 API 확인은 아래 절차를 따른다.
 
 ## 실행 준비와 API 확인
 
@@ -36,11 +36,11 @@ curl -X POST http://127.0.0.1:8000/classify/koelectra-base \
 
 `GET /`는 `{"message":"FastAPI 서버가 실행 중입니다."}`로 HTTP 실행을 확인합니다. 모델 로딩 확인은 두 번째 요청입니다. 분류 응답은 `{"category":"UNSUPPORTED"}` 형태이며 실제 라벨은 모델 결과에 따라 달라집니다. 질문별 문서 조회·LLM 호출 없이 분류만 확인하지만, 서버 시작 시에는 SQLite 저장소를 초기화합니다.
 
-모델 부재·잘못된 저장본·추론 실패는 503과 `분류 모델을 사용할 수 없습니다.`라는 오류 안내를 반환합니다. 모델을 준비하지 않았다면 서버 응답 확인까지만 가능하며, 분류 성공으로 간주하지 않습니다.
+분류 전용 API의 모델 부재·잘못된 저장본·추론 실패는 503과 `분류 모델을 사용할 수 없습니다.`라는 오류 안내를 반환합니다. 모델을 준비하지 않았다면 분류 성공으로 간주하지 않습니다. `/ask`의 기본 shadow는 알려진 분류 장애를 기록하고 문서 기반 생성으로 계속 진행할 수 있습니다.
 
 ### 문서 기반 답변 확인
 
-검색 라벨의 실제 답변에는 게시된 회사 문서와 생성 제공자 준비가 추가로 필요합니다. 새 환경에서 기존 회사 지식 71건을 사용하려면 [DB 초기 구성](../docs/document-management.md#새-환경의-db-최초-구성)의 dry-run 후 명시적으로 적용·게시합니다. 이후 문서는 `/admin/documents`에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 게시는 사람 검수 승인을 의미하지 않습니다.
+문서 기반 실제 답변에는 게시된 회사 문서와 생성 제공자 준비가 추가로 필요합니다. 새 환경에서 기존 회사 지식 71건을 사용하려면 [DB 초기 구성](../docs/document-management.md#새-환경의-db-최초-구성)의 dry-run 후 명시적으로 적용·게시합니다. 이후 문서는 `/admin/documents`에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 게시는 사람 검수 승인을 의미하지 않습니다.
 
 `SANAEBI_ANSWER_PROVIDER`는 미설정 또는 `openai`만 허용합니다. 다른 값은 시작 시 오류입니다. 최종 GPT-6 Luna에는 `OPENAI_API_KEY`가 필요하며 API 비용이 발생합니다. 서버와 CLI는 같은 [모델·프롬프트 설정](../generation/README.md#독립-실행)을 사용합니다. 필요한 환경변수는 실행 프로세스에 전달합니다. 위 명령이 `.env`를 자동으로 읽는다고 가정하지 않습니다. 실제 생성 모델의 입력 한도와 문서 준비를 확인한 뒤 호출하세요.
 
@@ -50,11 +50,11 @@ curl -X POST http://127.0.0.1:8000/ask \
   -d '{"question":"휴가 신청 방법 알려줘"}'
 ```
 
-성공 응답은 `{"ok":true,"text":"안내 또는 생성된 답변","reason":""}` 형태입니다. CLARIFY·UNSUPPORTED는 고정 안내, SEARCH_KNOWLEDGE라도 문서가 없으면 자료 없음 안내를 반환합니다. 생성 실패는 502이며 빈 문서의 정상 안내와 다릅니다. 이 요청은 준비 상태 확인 예시이며 실제 답변 품질 검증을 대신하지 않습니다.
+성공 응답은 `{"ok":true,"text":"안내 또는 생성된 답변","reason":""}` 형태입니다. 기본 shadow에서는 세 라벨 모두 문서 기반 답변을 시도하며, 빈 문서이면 자료 없음 안내를 반환합니다. 선택적 gate에서만 CLARIFY·UNSUPPORTED가 생성 전 고정 안내로 종료합니다. 생성 실패는 502이며 빈 문서의 정상 안내와 다릅니다. 이 요청은 준비 상태 확인 예시이며 실제 답변 품질 검증을 대신하지 않습니다.
 
 ## 서버 시작과 첫 요청
 
-[fastapi_main.py](fastapi_main.py)의 `lifespan`은 SQLite 저장소를 초기화하고 문서 provider·분류기 객체·앱별 GenerationAnswerer를 `app.state`에 준비한다. 분류 가중치는 첫 `predict()`에서 읽고, 생성 클라이언트는 첫 유효 검색 요청에서 생성해 재사용한다. 앱 종료 시 생성 클라이언트를 닫는다. `GET /` 성공은 서버 응답 확인이며 모델 로딩 성공을 증명하지 않는다.
+[fastapi_main.py](fastapi_main.py)의 `lifespan`은 SQLite 저장소를 초기화하고 문서 provider·분류기 객체·앱별 GenerationAnswerer를 `app.state`에 준비한다. 분류 가중치는 첫 `predict()`에서 읽고, 생성 클라이언트는 첫 생성 요청에서 생성해 재사용한다. `routing_mode`와 `retrieval_mode`도 시작 시 고정한다. rag를 선택한 경우 로컬 Tiny와 retriever를 준비하며 full에서는 Tiny가 필요하지 않다. 앱 종료 시 생성 클라이언트를 닫는다. `GET /` 성공은 서버 응답 확인이며 모델 로딩 성공을 증명하지 않는다.
 
 ```mermaid
 sequenceDiagram
@@ -75,13 +75,16 @@ sequenceDiagram
     end
     Model->>Model: 토큰화·CPU 추론
     Model-->>Service: 세 라벨 중 하나
-    Service->>Service: 라벨별 정책 실행
+    Service->>Service: shadow 관찰 또는 gate 분기
+    opt 문서 단계 진입 및 유효 문서 있음
+        Service->>Service: full 또는 rag 근거로 생성
+    end
     Service-->>Router: QuestionResult(text)
     Router-->>HTTP: AnswerResponse
     HTTP-->>Client: JSON 응답
 ```
 
-FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우터가 DI 함수를 직접 호출하는 것은 아니다. 모델 로딩에 실패하면 정상 라벨 반환 대신 오류 경로로 종료한다. 성공한 모델은 앱 프로세스에서 재사용하며 여러 worker는 각각 별도 모델을 갖는다.
+FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우터가 DI 함수를 직접 호출하는 것은 아니다. 알려진 분류 로딩·추론 장애는 shadow에서 기록 후 문서 단계로 진행하고 gate에서는 503으로 종료한다. 예상 밖 오류와 허용 밖 라벨은 500으로 처리한다. 성공한 모델은 앱 프로세스에서 재사용하며 여러 worker는 각각 별도 모델을 갖는다.
 
 ## 질문 한 건이 지나가는 경계
 
@@ -91,14 +94,14 @@ FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우�
 |---|---|---|
 | [questions/router.py](questions/router.py) | QuestionRequest → AnswerResponse | HTTP 입력 전달·응답 변환 |
 | [dependencies.py](dependencies.py) | 앱 객체 → 질문 처리 함수 | 분류·문서·답변 함수 조립 |
-| [questions/service.py](questions/service.py) | 질문과 세 함수 → QuestionResult | 라벨별 호출 순서 결정 |
+| [questions/service.py](questions/service.py) | 질문·의존성 함수·모드 → QuestionResult | 라벨별 호출 순서 결정 |
 | [classification/predictor.py](classification/predictor.py) | 문자열 → ClassificationLabel | 저장 모델 추론 |
 | [documents/context.py](documents/context.py) | snapshot() → DocumentContextSnapshot | 유효한 게시 문서 확보 |
-| [answering/adapter.py](answering/adapter.py) | 질문·snapshot → 문자열 | 최종 generation 호출·답변 검증 |
+| [answering/adapter.py](answering/adapter.py) | 질문·snapshot 또는 검색 근거 → 문자열 | 최종 generation 호출·답변 검증 |
 
 ### 의존성 조립은 무엇인가
 
-`get_question_handler()`는 `partial()`로 서비스에 세 함수를 미리 연결한다. 아래는 이해를 돕는 동등한 형태이며 실제 코드는 [dependencies.py](dependencies.py)에 있다.
+`get_question_handler()`는 `partial()`로 분류·문서·답변 함수, 선택적 검색 함수와 앱의 라우팅 모드를 연결한다. 아래는 이해를 돕는 동등한 형태이며 실제 코드는 [dependencies.py](dependencies.py)에 있다.
 
 ```python
 # 개념 예제: 구현을 미리 연결하고 요청마다 question만 받는다.
@@ -107,13 +110,19 @@ def handle(question):
         question,
         classify=classifier.predict,
         read_documents=document_provider.snapshot,
-        answer=selected_answer_function,
+        answer=answerer.answer_retrieved if retriever is not None else answerer.answer,
+        retrieve=retriever.retrieve if retriever is not None else None,
+        routing_mode=routing_mode,  # app.state에서 주입: 기본 shadow
     )
 ```
 
 서비스는 모델 경로나 DB 접속 방법을 몰라도 된다. 테스트에서는 이 함수들을 대체해 모델·LLM 없이 정책을 확인한다. 구현 선택은 조립 계층, 처리 순서는 서비스가 맡는다.
 
-### 라벨에 따라 호출이 달라진다
+### 기본 shadow와 선택적 gate
+
+기본 shadow에서는 세 라벨과 알려진 분류 장애 모두 문서를 한 번 읽는다. 빈 snapshot이면 안내하고, 유효 문서가 있으면 full 또는 rag 근거로 생성한다. 분류가 회사 밖 지식이나 실제 조회·실행을 허용하지는 않는다.
+
+아래 표는 **gate를 명시했을 때만** 적용한다.
 
 | 분류·자료 상태 | 반환할 내용 | 요청 중 문서 조회 | 답변 생성 호출 |
 |---|---|---:|---:|
@@ -126,9 +135,9 @@ def handle(question):
 
 ### 문서는 한 번 확보해서 전달한다
 
-`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. 서비스는 같은 snapshot을 답변기에 전달하고 어댑터는 DB를 다시 읽지 않는다. 현재 이 단계는 게시 문서 공급이며 질문 유사도 기반 벡터 검색은 아니다.
+`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 같은 snapshot을 답변기에 전달한다. rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택 근거를 `answer_retrieved`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 검색 입력 한도 초과는 422다.
 
-`GenerationAnswerer`는 snapshot의 원본 ID·개정·제목·본문·순서를 CLI와 같은 렌더러로 변환하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다.
+`GenerationAnswerer`는 full의 snapshot 또는 rag의 선택 근거를 렌더링하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다. 생성 경계에는 질문·렌더링한 문서·프로필만 전달하며 분류 라벨은 전달하지 않는다. 라벨 보조 전달 helper는 [미채택 실험](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)용이다.
 
 ## API별 차이와 오류
 
@@ -136,9 +145,9 @@ def handle(question):
 |---|---|
 | `POST /ask` | 분류 → 서비스 정책 → 필요한 경우 문서·답변 생성. `ok`, `text`, `reason` 반환 |
 | `POST /classify/koelectra-base` | `/ask`와 같은 분류 객체로 라벨만 확인. `category` 반환 |
-| `POST /assistant` | 이미 분류한 `response`·`classification_label`을 공통 라벨 정책에 전달. 재분류 없이 `/ask`와 같은 `{ok,text,reason}` 응답 |
+| `POST /assistant` | 이미 분류한 `response`·`classification_label`을 공통 라벨 정책에 전달. 재분류 없이 `/ask`와 같은 `{ok,text,reason}` 응답. 라벨은 shadow에서 관찰, gate에서 분기에 사용하며 생성 프롬프트에는 미전달 |
 
-`/ask/langchain`은 없다. `/ask` 성공의 `text`는 고정 안내 또는 생성 답변이며 `reason`은 빈 문자열이다. 입력 검증은 422, 분류 모델·문서 공급 장애는 503, 답변 생성·본문 검증 실패는 502다. 빈 문서의 정상 안내와 저장소 장애를 구분한다. 상세 설정·오류·문서 관리 API 계약은 [서버 규약](../docs/server-conventions.md)과 [문서 관리](../docs/document-management.md)를 따른다.
+`/ask/langchain`은 없다. `/ask` 성공의 `text`는 고정 안내 또는 생성 답변이며 `reason`은 빈 문자열이다. 입력 검증과 rag 검색 입력 초과는 422, gate 또는 분류 전용 API의 분류 장애와 문서·색인 장애는 503, 답변 생성·본문 검증 실패는 502다. 빈 문서의 정상 안내와 저장소 장애를 구분한다. 상세 설정·오류·문서 관리 API 계약은 [서버 규약](../docs/server-conventions.md)과 [문서 관리](../docs/document-management.md)를 따른다.
 
 ## 코드 읽는 순서와 진단
 
