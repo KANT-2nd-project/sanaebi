@@ -85,9 +85,9 @@ class RetrievalServiceTests(RetrievalTestCase):
                 document_id=f"doc-{index}",
                 knowledge_id=f"knowledge-{index}",
                 revision_id=f"revision-{index}",
-                body=f"source-{index}:" + ("x" * 2_500),
+                body=f"source-{index}:" + ("word " * 1_000),
             )
-            for index in range(7)
+            for index in range(13)
         ]
         snapshot = make_snapshot(*documents)
         current = []
@@ -96,7 +96,7 @@ class RetrievalServiceTests(RetrievalTestCase):
         for index, document in enumerate(documents):
             chunk = self._chunk(document, index, [SourceSpan(0, len(document.body))])
             vector = np.zeros(384, dtype=np.float32)
-            score = 0.34 if index == 6 else 0.5
+            score = 0.34 if index == 12 else 0.5
             vector[0] = score
             vector[1] = np.sqrt(1 - score**2)
             current.append((replace(chunk, chunk_id=f"chunk-{index:02}"), vector))
@@ -107,15 +107,19 @@ class RetrievalServiceTests(RetrievalTestCase):
             result = service.retrieve("문서 질문", snapshot)
 
         self.assertEqual(
-            result.candidate_chunk_ids, tuple(f"chunk-{i:02}" for i in range(6))
+            result.candidate_chunk_ids, tuple(f"chunk-{i:02}" for i in range(12))
         )
-        self.assertEqual(result.candidate_count, 6)
-        self.assertEqual(len(result.evidence), 6)
+        self.assertEqual(result.candidate_count, 12)
+        self.assertEqual(len(result.evidence), 12)
         self.assertGreater(sum(len(item.text) for item in result.evidence), 8_000)
+        self.assertGreater(
+            sum(len(embedder.tokenizer(e.text)["input_ids"]) for e in result.evidence),
+            4_000,
+        )
         self.assertTrue(all(len(item.text) > 2_000 for item in result.evidence))
         self.assertEqual(
             [item.text for item in result.evidence],
-            [document.body for document in documents[:6]],
+            [document.body for document in documents[:12]],
         )
 
     def test_runtime_merges_large_overlapping_spans_without_truncation(self):

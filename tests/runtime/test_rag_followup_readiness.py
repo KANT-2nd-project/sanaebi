@@ -14,7 +14,6 @@ from typing import ClassVar
 from unittest.mock import Mock, patch
 
 import numpy as np
-
 from fastapi.testclient import TestClient
 
 from app import fastapi_main
