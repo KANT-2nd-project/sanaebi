@@ -22,4 +22,10 @@
 
 ## 게시·외부 기록
 
-기능별 커밋·PR CI·main 병합·Notion 저장 후 확인 결과를 이 절에 후속으로 기록한다. 병합 및 기록용 후속 커밋은 `[skip ci]`로 운영 자동 배포를 제외한다.
+[PR #13](https://github.com/KANT-2nd-project/sanaebi/pull/13)을 main `f86d88e250aaa958c42e6f1b811bcdeb7a1c2b78`에 병합했다. 진단 보존, 실험 코드·집중 테스트, 평가 결과, 현재 안내를 기능별 커밋으로 나눴다. 게시 전 들어온 main `edaa0f1`의 서버 공백 변경을 보존해 통합하고 전체 Python911개를 다시 실행해51.654초에 통과했다. 원래 작업 폴더의 HEAD 이동은 병행 작업 결과이며 이 작업에서 변경하지 않았다.
+
+[PR CI](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38768444032)는 Python1분54초·웹43초·ARM64 이미지3분8초로 통과했고 deploy는 건너뛰었다. 병합 및 이 기록용 후속 커밋에 `[skip ci]`를 적용한다. 원격 보고서·최종 C 유지 판정을 재조회했다. 문서 링크274개 실패0, 최종 게시 원자료 manifest 해시 일치, 변경 파일의 일반 인증키 패턴 검사에서 일치0을 확인했다. 이는 모든 외부 저장소·비밀값의 부재 보증은 아니다.
+
+Notion [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7), [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b), [데이터·실험 절차](https://www.notion.so/3f805a3cdadc81d59dc9fec6e4fcca1d), [운영·개발 규칙](https://www.notion.so/3f805a3cdadc81aa9f48d8445d372b80)의 해당 요약만 정정했다. 과거 답변 평가와 현재 검색 평가를 구분하고 게시된 보고서·PR 링크를 재조회했다.
+
+동일 제목·담당자의 중복0을 확인해 [개인 일지](https://www.notion.so/3fa05a3cdadc81659f7ad49f1e1b076b)를 생성했다. 최재선·검색/생성·기간2026-10-15~16·본문·게시 링크를 확인한 뒤 완료로 변경하고 재조회했다. 제목의 기본 모드 전환은 선행 PR #11에서 완료됐으며 이번에는 C 유지·기본값 확인이라는 차이를 본문에 명시했다. 다른 일지·담당·기한·상태는 수정하지 않았다.

@@ -4,7 +4,7 @@
 
 ## 코드·통합 확인
 
-- 전체 Python: `uv run --locked python -m unittest discover -s tests -t .` **911개 통과, 52.003초**.
+- 전체 Python: `uv run --locked python -m unittest discover -s tests -t .` **911개 통과, 51.654초 (최신 main `edaa0f1` 통합 후 재실행)**.
 - Ruff check 통과, format check **534파일** 통과. `git diff --check` 통과.
 - 실제 Tiny 서버/실험 C 대조 **48/48**: 원문·출처 구간·개정·청크 ID와 순서 일치, 원본 색인 SHA 유지. [근거](raw/c-server-parity.json).
 - 임시 문서·색인·실제 Tiny·모의 생성 HTTP: `/ask`200, snapshot1회, 생성 예약1회, 모의 생성1회, 유료 호출0회. [근거](raw/actual-tiny-http.json).
@@ -17,6 +17,6 @@
 
 실제 LLM 답변 품질 평가, 사람 검수, 운영2vCPU, 운영 접속·설정 변경·배포, 새 Docker 운영 candidate/rollback 실행은 이번 범위가 아니다. CI의 이미지 검사가 통과하더라도 운영 적용이나 실서비스 품질 검증으로 표현하지 않는다.
 
-문서 링크·최종 독립 결과 검토·PR CI·main 및 Notion 게시 확인은 최종 작업 기록에 연결한다.
+문서 링크·최종 독립 결과 검토·PR CI·main 및 Notion 게시 확인은 [최종 작업 기록](../../../docs/worklogs/2026-10-16-rag-evaluation-v3.md)에 연결한다.
 
 최종 현재 문서 상대 링크274개 실패0, Markdown 표를 포함한 정적 HTML 변환을 확인했다. 브라우저 시각 검수는 하지 않았으며 이번 변경에 새 Mermaid 그림은 없다. 독립 결과 검토는 최종5,034판정·입력SHA·재집계·채택 판정까지 완료했다.
