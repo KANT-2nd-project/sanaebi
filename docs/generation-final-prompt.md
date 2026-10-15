@@ -22,3 +22,7 @@
 [전체 과정·기록 점검](../generation_evaluation/reports/2026-10-15-luna-tuning-closure/README.md)과 [종료 일지](worklogs/2026-10-15-generation-prompt-tuning-closure.md)에서 실험별 결과, 중단·미판정 항목, 연구 근거, 추가4문항과 최종 결정을 확인할 수 있다.
 
 사용자의 후속 병합 요청에 따라 위 독립 런타임 구성을 main에도 통합했다. 이전 일지의 생성 브랜치 게시·main 미병합은 당시 상태로 보존한다. [통합 게시 기록](worklogs/2026-10-15-main-publication.md)을 따른다. 이후 별도 서버 통합 작업에서 `/ask`·`/assistant`도 같은 최종 구성에 연결했다. 채택한 프롬프트 본문은 수정하지 않았다. [서버 통합 검증과 한계](worklogs/2026-10-15-server-generation-integration.md)를 함께 확인한다.
+
+## 후속: 출처 표시·문서 충실성 개선 검증
+
+2026-10-15 사용자의 추가 요청으로 `examples_answer_scope_v2`를 별도 구현·평가했다. 내부 ID 대신 문서 제목·항목을 표시하고, 문서의 특이함만으로 작성 의도를 추측하지 않도록 보강한 후보다. 실제82회 평가에서 목표 사례 개선은 확인했지만 JSON 실패2건과 신고 필수 정보의 새 누락이 나와 **기본값 승격을 보류하고 v1을 유지**한다. 기존 튜닝 종료는 당시 결정이며 이번 요청에 따른 후속 검증과 구분한다. [결과·판정·한계](../generation_evaluation/reports/2026-10-15-answer-grounding/README.md)를 따른다. API 계약·모델·프런트엔드 변경이나 공개 서버 배포는 하지 않았다.
