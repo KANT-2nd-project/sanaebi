@@ -5,5 +5,6 @@
   "examples_coverage": "df77f6bea4084507ee457fc3e35970578f0da970871860adf2c205b6c2a3122c",
   "examples_conditions": "87a247e42a4bbaacde67c81d0e66c691f7a3156b8557c69409fc1b60a7b274b5",
   "examples_json": "eee5eb7686c7178bfeae11cf4546e9140740dfa933a0789bc34fcbec18997ab5",
-  "examples_answer_scope_v1": "92e37ec33dda72579b0134207622649e8663c6f6f93dd9bdec5eb70653b424e9"
+  "examples_answer_scope_v1": "92e37ec33dda72579b0134207622649e8663c6f6f93dd9bdec5eb70653b424e9",
+  "examples_answer_scope_v2": "928d106ba9e273c632ddbf673f78cbeb6a15adda98c1213d2a9ddd404cffe4a7"
 }

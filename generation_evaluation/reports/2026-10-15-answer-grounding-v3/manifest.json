@@ -1,0 +1,13 @@
+{
+  "generation_evaluation/experiments/answer-grounding-v3-20261015/run.py": "dad0e6d441af3ef818a945a22609e592d1b82522d7ba46985036c09e0b20ba74",
+  "generation_evaluation/experiments/answer-grounding-v3-20261015/protocol.json": "19bad63ea3819f2df6392b1e334d1572e305c2c92ed4d9942c89e6d99e4cd3dc",
+  "generation_evaluation/experiments/answer-grounding-20261015/cases.json": "9e54c81d4bcdd5b4367c379df7ce084bf69b5f0f6a38cc341e13c24b26442d0b",
+  "generation_evaluation/experiments/answer-grounding-20261015/holdout.json": "629654a80447146c51b93cd5651aa99dc5abb01e505d50d86859543e0e7fe8a2",
+  "generation_evaluation/experiments/answer-grounding-20261015/run.py": "22b32d92aa916cb912715cd94cee278884de31fb46079e676dec7510025f0939",
+  "generation/profiles.py": "b3ab34434d4c5f2d24d25df1caa764b6827d26a519171076735013bfb96c9d8e",
+  "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+  "generation/models.json": "dd831eda3eb721e02758dc07f341099a70a83851207ec2513f9e5a3393baf2e4",
+  "uv.lock": "f3add2980cd37234847c8b9401403685cc63f53896db82db15042a5c05d94758",
+  "data/company-knowledge/documents.jsonl": "84b44e6592e3a6bd883b7890239aada11382cbef9a369ebb0aca3b15defddfe4",
+  "generation_evaluation/benchmarks/luna-reference-followup-v1/dev.json": "0cd5cb00ce85f0a493ee8a6e8643d9fc854efb8f4e675b6e304c80d4b04474c3"
+}

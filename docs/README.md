@@ -58,3 +58,5 @@ flowchart TD
 과거 결과를 현재 실행 결과로 옮겨 쓰지 않는다. 학습·모델 선정·서버 연결·실서비스 품질은 별도로 확인한다. 실행 원자료와 가중치의 로컬 위치는 각 보고서에 있으며 공개 다운로드 링크가 아니다.
 
 - [답변 출처 표시·문서 충실성 검증](../generation_evaluation/reports/2026-10-15-answer-grounding/README.md): v2 후보의 실제82회 비교, 기본값 미승격과 남은 한계.
+
+- [v3 최소 프롬프트 변경 검증](../generation_evaluation/reports/2026-10-15-answer-grounding-v3/README.md): 두 규칙 추가·초기24회 비교, 신고 정보 누락에 따른 확대 평가·승격 보류.

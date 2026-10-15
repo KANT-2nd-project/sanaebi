@@ -1,0 +1,33 @@
+{
+  "calls": 24,
+  "estimated_dollars": 0.125989,
+  "unsettled": 0,
+  "decision": "retain_v1; v3_focus_gate_failed",
+  "format_failures": 0,
+  "stages_not_run": [
+    "strict: no v3 JSON failure, so trigger not met",
+    "broad: focus semantic gate failed",
+    "API/browser/default promotion: no eligible candidate"
+  ],
+  "review": "implementing AI nonblind; no human or independent quality approval",
+  "grading_caveat": "G11 inherited rubric requires section name even though user question only asks for source. Title-only answers meet ID-hiding objective. Keep frozen score; do not make adoption depend on this arguable criterion. DEV-FU-09 material omissions independently fail the gate.",
+  "examples_answer_scope_v1": {
+    "n": 12,
+    "grades": {
+      "pass": 9,
+      "partial": 1,
+      "fail": 2
+    },
+    "reporting_complete": 1,
+    "id_exposure_source_case": 2
+  },
+  "examples_answer_scope_v3": {
+    "n": 12,
+    "grades": {
+      "pass": 8,
+      "partial": 4
+    },
+    "reporting_complete": 0,
+    "id_exposure_source_case": 0
+  }
+}
