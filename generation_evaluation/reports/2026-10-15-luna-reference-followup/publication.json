@@ -1,0 +1,27 @@
+{
+  "report_commit": "0821522e65f728997a9e10068c69da478192f0ac",
+  "branch": "feat/generation-evidence-20261015",
+  "feature_commits": [
+    "dbaf87b572fc88fe45c074fae0042017fc4ce0e3 test(generation): freeze independently reviewed follow-up benchmark",
+    "a09a28e686c2bd5422273810b1ed63d715c30f21 feat(generation): add answer scope prompt profile",
+    "f47103585e0187b5ac611f5e6a419771d807a0de feat(generation): preserve strict JSON and refusal responses",
+    "9c876b7fad4d8f8afa0422e88e7d2ca8a96b53f8 feat(evaluation): bound resumable rubric-based comparisons",
+    "0821522e65f728997a9e10068c69da478192f0ac docs(generation): report prompt regression gate and retain reference"
+  ],
+  "remote_hash_verified": true,
+  "main_merged": false,
+  "notion_pages": [
+    {
+      "id": "3f805a3cdadc81e1a70bfe82c89cebe7",
+      "purpose": "technical summary",
+      "content_and_links_read_back": true
+    },
+    {
+      "id": "3f905a3cdadc8146a9bbedb690ab5ecf",
+      "purpose": "personal journal",
+      "content_and_links_read_back": true
+    }
+  ],
+  "verified_at_utc": "2026-10-15T03:37:44.608440+00:00",
+  "scope": "new follow-up only; preexisting paused experiment changes preserved and excluded"
+}
