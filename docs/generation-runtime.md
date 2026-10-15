@@ -8,6 +8,8 @@
 
 아래 Qwen·초기 GPT 비교는 역사 기록이다. 과거 별칭은 활성 models.json에서 제거했으며 당시 명령 재현에는 보관 설정과 당시 코드가 필요하다. 현재 Luna 명령에는 --experiment/--model을 생략한다.
 
+서버 RAG 경로만 `examples_answer_scope_v5_rag_service_v1`을 사용한다. 정상 빈 근거에서 인사·서비스 소개를 허용하고 회사 사실은 문서 근거로 제한한다. full·독립 CLI 기본값과 과거 프로필은 유지한다. [RAG 실행 안내](rag-runtime.md)에서 근거 상태·원복·8회 검증의 한계를 확인한다.
+
 ## 로컬 Qwen 긴 문맥 프로필
 
 검증 환경은 Ollama 0.33.3, RTX 5060 Laptop 8GB, Qwen3 4B Instruct 2507 Q4_K_M, 문맥 98,304, 동시 요청 1개다. 모델 파일 약2.5GB와 별개로 KV 캐시·계산 버퍼가 메모리를 사용한다.

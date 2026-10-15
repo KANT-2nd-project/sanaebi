@@ -1,6 +1,6 @@
 # 서비스 아키텍처와 질문 처리 흐름
 
-서버와 독립 생성·평가는 같은 [generation 모듈](../generation/README.md)의 최종 Luna 설정과 프롬프트·응답 검사를 사용한다. 서버는 SQLite 게시 snapshot을, CLI는 명시적으로 내보낸 JSONL을 사용하며 같은 렌더러로 프롬프트를 구성한다. 연결 구현과 검증 결과·남은 한계는 [서버 생성 통합 기록](worklogs/2026-10-15-server-generation-integration.md)을 따른다. 과거 실행기와 평가 자료는 비활성 레거시 재현용으로 보존한다.
+서버와 독립 생성·평가는 같은 [generation 모듈](../generation/README.md)의 최종 Luna 모델 설정과 응답 검사를 사용한다. 서버 RAG는 빈 근거 서비스 소개를 허용하는 v5_rag_service_v1 프로필과 문맥 보충을 사용하며, full·독립 CLI는 v5를 유지한다. 상세 정책과 원복은 [RAG 실행 안내](rag-runtime.md)를 따른다. 서버는 SQLite 게시 snapshot을, CLI는 명시적으로 내보낸 JSONL을 사용하며 같은 렌더러로 프롬프트를 구성한다. 연결 구현과 검증 결과·남은 한계는 [서버 생성 통합 기록](worklogs/2026-10-15-server-generation-integration.md)을 따른다. 과거 실행기와 평가 자료는 비활성 레거시 재현용으로 보존한다.
 
 - 기준일: 2026-10-16
 - 상태: 코드 기본값은 advisory + rag(KURE)이며 shadow·gate와 명시적 full을 선택할 수 있다. 실제 운영 적용 상태는 별도 확인한다.

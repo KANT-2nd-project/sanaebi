@@ -8,7 +8,7 @@
 
 ## 현재 흐름과 책임
 
-`라우터 → 질문 서비스 → 외부 연동`을 사용한다. 원복용 `gate` 모드에서 `/ask`는 분류 후 CLARIFY·UNSUPPORTED에 고정 안내를 반환하며 문서·LLM을 호출하지 않는다. SEARCH_KNOWLEDGE만 SQLite 게시 snapshot을 한 번 읽고, 비어 있지 않을 때 최종 Luna 생성 모듈로 답변을 생성한다. 빈 snapshot은 정상적인 자료 없음 안내다. 조회 실패를 빈 문서로 숨기지 않는다.
+`라우터 → 질문 서비스 → 외부 연동`을 사용한다. 원복용 `gate` 모드에서 `/ask`는 분류 후 CLARIFY·UNSUPPORTED에 고정 안내를 반환하며 문서·LLM을 호출하지 않는다. SEARCH_KNOWLEDGE만 SQLite 게시 snapshot을 한 번 읽고 최종 Luna 생성 모듈로 진행한다. full의 빈 snapshot은 고정 안내이며, RAG 기본 프로필은 정상 빈 자료도 근거 상태를 명시해 제한된 생성으로 전달한다. 조회 실패를 빈 문서로 숨기지 않는다.
 
 | 구성 | 책임 | 경계 |
 |---|---|---|
@@ -137,7 +137,7 @@ git diff --check
 
 `SANAEBI_ROUTING_MODE`는 `advisory`(미설정 기본값), `shadow` 또는 `gate`다. 앱 시작 시 검증해 저장하며 요청이 모드를 선택할 수 없다. 기존 모델·프롬프트는 유지한다.
 
-advisory는 정상 서버 예측을 공통 지침과 함께 전달하며 질문·문서를 우선한다. 라벨별 지침 분기는 없다. shadow는 분류 결과를 기록만 하고 세 라벨 모두 게시 snapshot으로 답변을 시도한다. advisory·shadow는 알려진 분류 저장본/추론 장애만 안전한 유형으로 기록하고 기존 프롬프트로 계속하며 예상 밖 오류와 허용 밖 라벨은 500이다. 문서 장애503·빈 문서 안내·생성 실패502는 유지한다. 동기 분류 실행·잠금 시간은 여전히 요청 지연에 포함된다.
+advisory는 정상 서버 예측을 공통 지침과 함께 전달하며 질문·문서를 우선한다. 라벨별 지침 분기는 없다. shadow는 분류 결과를 기록만 하고 세 라벨 모두 게시 snapshot으로 답변을 시도한다. advisory·shadow는 알려진 분류 저장본/추론 장애만 안전한 유형으로 기록하고 기존 프롬프트로 계속하며 예상 밖 오류와 허용 밖 라벨은 500이다. 문서 장애503·생성 실패502는 유지한다. 정상 빈 문서는 검색 모드와 프로필에 따라 처리하며 RAG 기본은 제한된 생성이다. 동기 분류 실행·잠금 시간은 여전히 요청 지연에 포함된다.
 
 `/assistant`는 전달 라벨을 client 출처로 기록하고 재분류하지 않는다. 앞 단계 ok=false는 기존처럼 생성 없이 끝난다. `/ask`는 model 출처다. 분류 전용 API의 오류 계약은 그대로이며 클라이언트 라벨이나 분류 결과가 실제 데이터 권한을 부여하지 않는다.
 
@@ -149,7 +149,7 @@ trace는 모드·라벨 출처·분류 상태·단계 경과 시간·처리 경�
 
 `SANAEBI_RETRIEVAL_MODE=full|rag`를 앱 시작 시 검증하며 기본 rag를 사용한다. KURE는 현재 게시 개정의 최고 코사인이0.42882221937179565 이상이면 상위20청크를 선택하고 겹친 원문 구간을 병합한다. 개별 청크 하한·추가 본문 문자·전달 토큰 제한은 없다. 상위20은 병합 전 수량이다. 질문512·문서8192토큰과 제공자 입력 한계는 유지한다. rag의 질문 서비스는 같은 snapshot을 retriever에 한 번 전달하고, `RetrievedContext`의 선택 근거를 공통 AnswerInput으로 렌더링해 GenerationAnswerer에 보낸다. full도 snapshot 전체 문서를 같은 입력으로 변환한다. 기존 answer/answer_retrieved 메서드는 호환 입구로 유지하며 생성 호출·예약·파싱·종료는 공통 구현을 사용한다.
 
-검색은 현재 문서/개정/digest를 검증한 청크만 대상으로 한다. 예전 개정을 top-k 이후 거르는 방식은 허용하지 않는다. 빈 원본은 정상 안내, 미완성 색인은503, 검색 입력 초과는422, 일반 코드 오류는500이다. 검색 실패에서 생성기/예산 예약0회를 회귀 검증한다. startup KURE 준비·ready 조회와 생성 API 호출을 분리한다.
+검색은 현재 문서/개정/digest를 검증한 청크만 대상으로 한다. 예전 개정을 top-k 이후 거르는 방식은 허용하지 않는다. 빈 원본은 정상 근거 상태로 제한된 생성, 미완성 색인은503, 검색 입력 초과는422, 일반 코드 오류는500이다. 검색 실패에서 생성기/예산 예약0회를 회귀 검증한다. startup KURE 준비·ready 조회와 생성 API 호출을 분리한다.
 
 기본 벡터 묶음은 실제 host 초기화 원본으로 준비하고, 자정 reset은 원본 복원 후 새 revision mapping만 연결한다. 원본 commit 뒤 실패를 다시 reset으로 복구하지 않는다. 단일 writer lock과 worker 중지/재개의 운영 경계는 [RAG 실행 안내](rag-runtime.md)·[배포 안내](../deployment/README.md)를 따른다. 직접 운영 전환과 서비스 품질 검증은 별도다.
 
@@ -164,3 +164,5 @@ snapshot은 요청마다 한 번 읽는다. `RunnablePassthrough.assign`은 입�
 생성 체인은 profile/advisory 구성 → ChatPromptTemplate → 모델 → 응답 정규화 → 결과 검증이다. 문자열만 추출하지 않고 finish_reason·거절·usage를 보존한다. 프로필 본문과 등록 목록을 분리하되 기존 프로필 이름과 문구를 유지한다. 기본 모델은 ChatOpenAI Runnable이며 strict JSON은 공개 SDK adapter를 사용한다.
 
 진단은 callback·단계 이벤트·HTTP middleware·파일 저장으로 분리한다. `diagnostics/trace.py`는 archive와 기존 소비자를 위한 import 경계를 유지한다. 단계 이름·역할은 명시적 metadata로 연결하고, generic chain 입력/출력은 허용된 진단 필드만 기록한다. 전체 snapshot의 객체 표현을 저장하지 않는다.
+
+RAG의 정상 검색 0건과 게시 문서 없음은 명시적인 근거 상태로 전달한다. 서비스 소개 예외를 가진 RAG 전용 프로필만 이를 허용하며, full·CLI와 명시적 v5 원복은 기존 제한을 유지한다. 상세 계약·원복은 [RAG 실행 안내](rag-runtime.md)를 따른다.

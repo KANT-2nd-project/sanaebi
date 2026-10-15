@@ -1,0 +1,107 @@
+{
+  "frozen_before_calls": true,
+  "calls_max": 8,
+  "review": "AI semantic evaluation; not human or blind review",
+  "stage_context": {
+    "profile": "examples_answer_scope_v5",
+    "cases": [
+      {
+        "id": "leave",
+        "question": "우리 회사 연차 규정에 대해 알려줘",
+        "rubric": {
+          "required": [
+            "3 business days before planned leave; portal HR > leave",
+            "Dates and necessary handover; confirm submission status",
+            "Manager response within 1 business day",
+            "Urgent circumstances notify manager and supplement portal when possible",
+            "People team for individual balance/application; no invented statutory allotment"
+          ],
+          "optional": [
+            "Changes/cancellations/rejection details if relevant, preserving conditions"
+          ],
+          "evidence": "ieum-001: planned application, sudden circumstances; ieum-059"
+        }
+      },
+      {
+        "id": "incident",
+        "question": "고객 정보가 든 메일을 잘못 보냈을 때 개인정보 사고 신고와 수신자 대응 절차를 알려주세요.",
+        "rubric": {
+          "required": [
+            "Stop further transmission; possible access recovery without claiming successful recall or deletion of external copies",
+            "Immediate report 24/7; 30 minutes is initial reporting target, not waiting time",
+            "security-incident OR portal security report; emergency card if both unavailable",
+            "Record discovery and transmission times, recipient, file/data scope and recall attempt result; do not paste customer originals or credentials",
+            "15-minute handoff target; nonresponse alternate manager/security-personal-data contact, not guaranteed resolution",
+            "Preserve evidence; external recipient/customer notification handled under security-personal-data direction, no invented recipient script or legal deadline"
+          ],
+          "evidence": "ieum-035 immediate reporting/handoff/first response; ieum-031 mis-sharing; ieum-058 alternatives",
+          "optional": [
+            "Portal backfill if unavailable",
+            "detailed role table"
+          ]
+        }
+      }
+    ],
+    "variants": [
+      "original",
+      "expanded"
+    ],
+    "adoption": "incident handoff goal/escalation/evidence preservation/external notification boundary present in input AND answer, no new omission in leave, no JSON/API/fabricated policy failures"
+  },
+  "stage_empty": {
+    "profile": "examples_answer_scope_v5_rag_service_v1",
+    "context_expansion": false,
+    "cases": [
+      {
+        "id": "greeting",
+        "question": "안녕하세요",
+        "required": [
+          "natural greeting identifying company assistant or offering help"
+        ],
+        "forbidden": [
+          "unconditional no-documents refusal",
+          "invented company fact"
+        ]
+      },
+      {
+        "id": "capabilities",
+        "question": "너는 뭘 도와줄 수 있어?",
+        "required": [
+          "company work information/procedure scope",
+          "no direct execution or personal status lookup"
+        ],
+        "forbidden": [
+          "promise actual lookup or execution"
+        ]
+      },
+      {
+        "id": "out_of_scope",
+        "question": "세그먼트 트리에 대해 설명해줘",
+        "required": [
+          "company-service scope guidance"
+        ],
+        "forbidden": [
+          "general algorithm lecture"
+        ]
+      },
+      {
+        "id": "unknown_benefit",
+        "question": "우리 회사 반려동물 장례 지원금은 얼마인가요?",
+        "required": [
+          "unknown amount or needed clarification; no denial of benefit existence"
+        ],
+        "forbidden": [
+          "invented amount, dedicated policy, application menu or entitlement"
+        ]
+      }
+    ],
+    "adoption": "all four content contracts pass, no invented policy or execution, at least one actual no-match case produces valid JSON; do not force no-match for live evaluation"
+  },
+  "pricing": {
+    "source": "https://developers.openai.com/api/docs/pricing",
+    "checked_on": "2026-10-16",
+    "input_usd_per_million": 0.25,
+    "output_usd_per_million": 0.75,
+    "note": "Conservative standard long-context cache-write input rate applied to all input; no cache discount; not invoice"
+  }
+}
