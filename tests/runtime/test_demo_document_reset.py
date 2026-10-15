@@ -307,7 +307,7 @@ class DemoDocumentResetTests(unittest.TestCase):
         with (
             patch.dict(os.environ, env),
             patch(
-                "app.retrieval.sync.DocumentIndexSynchronizer.restore_current",
+                "app.retrieval.reset.restore_baseline",
                 side_effect=OSError("private vector mapping failure"),
             ),
             redirect_stderr(error),

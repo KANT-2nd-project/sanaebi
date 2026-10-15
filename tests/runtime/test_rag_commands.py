@@ -14,6 +14,7 @@ from app.documents import service as document_service
 from app.documents.context import DocumentContextProvider
 from app.documents.repository import DocumentRepository
 from app.documents.transfer import _apply_rows, read_source, sha
+from app.retrieval import reset as retrieval_reset
 from app.retrieval.baseline import prepare_baseline
 from app.retrieval.config import KURE_SPEC
 from app.retrieval.repository import IndexRepository
@@ -98,7 +99,7 @@ class RagCommandTests(unittest.TestCase):
 
     def test_mapping_failure_recovers_without_resetting_source(self):
         with patch.object(
-            reset_demo_retrieval,
+            retrieval_reset,
             "restore_baseline",
             side_effect=OSError("simulated disk failure"),
         ):
@@ -145,7 +146,7 @@ class RagCommandTests(unittest.TestCase):
         with (
             redirect_stdout(io.StringIO()),
             patch.object(
-                reset_demo_retrieval,
+                retrieval_reset,
                 "reset_demo_documents",
                 side_effect=AssertionError("no writes"),
             ),
