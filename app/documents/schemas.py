@@ -196,3 +196,22 @@ class DocumentErrorDetail(BaseModel):
 class DocumentErrorResponse(BaseModel):
     ok: Literal[False] = False
     error: DocumentErrorDetail
+
+
+class MaintenanceRequest(StrictRequest):
+    action: Literal["clear", "restore"]
+    expected_state: str = Field(pattern=r"^[0-9a-f]{64}$")
+
+
+class MaintenancePreviewResponse(BaseModel):
+    action: Literal["clear", "restore"]
+    total_count: int
+    restored_count: int
+    expected_state: str
+
+
+class MaintenanceResponse(BaseModel):
+    action: Literal["clear", "restore"]
+    deleted_count: int
+    restored_count: int
+    completed_at: str
