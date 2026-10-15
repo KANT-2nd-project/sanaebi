@@ -61,7 +61,10 @@ class TraceTests(unittest.TestCase):
         self.enterContext(
             patch.dict(
                 os.environ,
-                {"SANAEBI_DOCUMENT_DB": str(directory / "managed.sqlite3")},
+                {
+                    "SANAEBI_DOCUMENT_DB": str(directory / "managed.sqlite3"),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
+                },
             )
         )
         os.environ.pop("TRACE_DIR", None)

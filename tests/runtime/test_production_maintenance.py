@@ -95,6 +95,45 @@ class RagHostMaintenanceTests(unittest.TestCase):
     def tearDown(self):
         self.temporary.cleanup()
 
+    def test_active_retrieval_runtime_uses_descriptor_default_without_env_override(
+        self,
+    ):
+        (self.paths.config / "api.env").write_text(
+            "SANAEBI_PUBLIC_DEMO=1\n", encoding="utf-8"
+        )
+
+        runtime = _active_retrieval_runtime(self.paths)
+
+        self.assertEqual(runtime["mode"], "rag")
+
+    def test_active_retrieval_runtime_honors_explicit_full_override(self):
+        (self.paths.config / "api.env").write_text(
+            "SANAEBI_RETRIEVAL_MODE=full\n", encoding="utf-8"
+        )
+
+        runtime = _active_retrieval_runtime(self.paths)
+
+        self.assertEqual(runtime["mode"], "full")
+
+    def test_legacy_full_descriptor_remains_full_without_env_override(self):
+        release_dir = self.paths.root / "releases" / RELEASE_ID
+        descriptor_path = release_dir / "retrieval-release.json"
+        descriptor = json.loads(descriptor_path.read_text(encoding="utf-8"))
+        descriptor["default_mode"] = "full"
+        raw = json.dumps(descriptor).encode()
+        descriptor_path.write_bytes(raw)
+        release_path = release_dir / "release.json"
+        release = json.loads(release_path.read_text(encoding="utf-8"))
+        release["retrieval_manifest_sha256"] = hashlib.sha256(raw).hexdigest()
+        release_path.write_text(json.dumps(release), encoding="utf-8")
+        (self.paths.config / "api.env").write_text(
+            "SANAEBI_PUBLIC_DEMO=1\n", encoding="utf-8"
+        )
+
+        runtime = _active_retrieval_runtime(self.paths)
+
+        self.assertEqual(runtime["mode"], "full")
+
     def runner_with(self, *, check_code=0, reset_code=0, restore_code=0):
         calls = []
 

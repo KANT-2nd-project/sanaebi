@@ -53,7 +53,7 @@ def get_routing_mode() -> str:
 
 
 def get_retrieval_mode() -> str:
-    mode = os.getenv("SANAEBI_RETRIEVAL_MODE", "full")
+    mode = os.getenv("SANAEBI_RETRIEVAL_MODE", "rag")
     if mode not in {"full", "rag"}:
         raise ValueError("SANAEBI_RETRIEVAL_MODE must be full or rag")
     return mode

@@ -54,6 +54,7 @@ class ServerGenerationIntegrationTests(unittest.TestCase):
                 os.environ,
                 {
                     "SANAEBI_DOCUMENT_DB": str(self.db_path),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
                     "SANAEBI_ANSWER_PROVIDER": "openai",
                     "TRACE_DIR": "",
                 },
@@ -329,6 +330,7 @@ class ServerGenerationIntegrationTests(unittest.TestCase):
             with self.subTest(provider=provider), tempfile.TemporaryDirectory() as temp:
                 env = {
                     "SANAEBI_DOCUMENT_DB": str(Path(temp) / "documents.sqlite3"),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
                     "TRACE_DIR": "",
                 }
                 if provider is not None:
@@ -343,6 +345,7 @@ class ServerGenerationIntegrationTests(unittest.TestCase):
             with self.subTest(provider=provider), tempfile.TemporaryDirectory() as temp:
                 env = {
                     "SANAEBI_DOCUMENT_DB": str(Path(temp) / "documents.sqlite3"),
+                    "SANAEBI_RETRIEVAL_MODE": "full",
                     "SANAEBI_ANSWER_PROVIDER": provider,
                     "TRACE_DIR": "",
                 }

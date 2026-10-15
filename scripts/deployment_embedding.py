@@ -100,8 +100,8 @@ def parse_manifest(raw: bytes) -> RetrievalRelease:
         raise ReleaseError("retrieval-release.json has unsupported fields")
     if type(value.get("schema_version")) is not int or value["schema_version"] != 1:
         raise ReleaseError("retrieval-release.json schema is unsupported")
-    if value.get("default_mode") != "full":
-        raise ReleaseError("retrieval default mode must preserve full retrieval")
+    if value.get("default_mode") not in {"full", "rag"}:
+        raise ReleaseError("retrieval default mode must be full or rag")
     for field in ("baseline_schema_version", "index_schema_version"):
         if type(value.get(field)) is not int or not 1 <= value[field] <= 1000:
             raise ReleaseError(f"{field} must be a supported positive version")

@@ -133,6 +133,7 @@ class RoutingModeApiTests(unittest.TestCase):
         self.directory = self.enterContext(tempfile.TemporaryDirectory())
         env = {
             "SANAEBI_DOCUMENT_DB": str(Path(self.directory) / "managed.sqlite3"),
+            "SANAEBI_RETRIEVAL_MODE": "full",
         }
         self.enterContext(patch.dict(os.environ, env))
         os.environ.pop("SANAEBI_ROUTING_MODE", None)
