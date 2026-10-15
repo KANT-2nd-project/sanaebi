@@ -1,0 +1,120 @@
+{
+  "posthoc_diagnostic_only": true,
+  "no_quality_or_adoption_claim": true,
+  "rows": [
+    {
+      "case_id": "R08",
+      "kind": "original",
+      "query": "개인 돈으로 업무 비용을 냈는데 언제 입금돼?",
+      "claims": [
+        {
+          "claim_id": "R08-r01",
+          "rank": 15,
+          "score": 0.37119653820991516
+        }
+      ]
+    },
+    {
+      "case_id": "R08",
+      "kind": "posthoc_paraphrase",
+      "query": "개인이 먼저 낸 업무 경비는 언제 정산 지급되나요?",
+      "claims": [
+        {
+          "claim_id": "R08-r01",
+          "rank": 3,
+          "score": 0.5699775815010071
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "kind": "original",
+      "query": "내 PR은 내가 승인해서 머지해도 돼?",
+      "claims": [
+        {
+          "claim_id": "R14-r01",
+          "rank": 25,
+          "score": 0.37299859523773193
+        }
+      ]
+    },
+    {
+      "case_id": "R14",
+      "kind": "posthoc_paraphrase",
+      "query": "PR 작성자 본인이 자신의 변경을 승인할 수 있나요?",
+      "claims": [
+        {
+          "claim_id": "R14-r01",
+          "rank": 5,
+          "score": 0.4999641478061676
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "kind": "original",
+      "query": "Git에 토큰을 올렸어. 파일에서 지우면 끝이야?",
+      "claims": [
+        {
+          "claim_id": "R16-r01",
+          "rank": 2,
+          "score": 0.47466737031936646
+        },
+        {
+          "claim_id": "R16-r02",
+          "rank": 39,
+          "score": 0.32752346992492676
+        }
+      ]
+    },
+    {
+      "case_id": "R16",
+      "kind": "posthoc_paraphrase",
+      "query": "Git 저장소에 비밀 토큰이 노출됐을 때 파일 삭제 외에 어떤 대응이 필요한가요?",
+      "claims": [
+        {
+          "claim_id": "R16-r01",
+          "rank": 2,
+          "score": 0.6369397640228271
+        },
+        {
+          "claim_id": "R16-r02",
+          "rank": 4,
+          "score": 0.5235655903816223
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "kind": "original",
+      "query": "새 SaaS 구매 승인은 났는데 계정 권한도 자동으로 생긴 거야?",
+      "claims": [
+        {
+          "claim_id": "D07-r01",
+          "rank": 6,
+          "score": 0.4057052433490753
+        }
+      ]
+    },
+    {
+      "case_id": "D07",
+      "kind": "posthoc_paraphrase",
+      "query": "SaaS 구매 승인과 서비스 계정 권한 발급은 별도 절차인가요?",
+      "claims": [
+        {
+          "claim_id": "D07-r01",
+          "rank": 1,
+          "score": 0.5325872302055359
+        }
+      ]
+    }
+  ],
+  "input_audit": {
+    "chunks": 298,
+    "min_tokens": 22,
+    "max_tokens": 374,
+    "over512": 0,
+    "unknown_tokens": 9,
+    "total_tokens": 55316
+  }
+}

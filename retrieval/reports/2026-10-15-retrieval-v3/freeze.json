@@ -1,0 +1,11 @@
+{
+  "frozen_at": "2026-10-15T15:06:36.147251+00:00",
+  "stage": "before_development_search",
+  "human_review": false,
+  "files": {
+    "qrels-v3.json": "ec17b4b96162602984ddf58282c2caa30ab38d9276c407acf65efd8df2d3d33c",
+    "new-confirmation.json": "72cfddbd5764b860b6c6ccc2d7343a8076e3bd7397bbdbca935595dff029559b",
+    "protocol.md": "999ea36e984e466094a17a3f3b054a63d17b3f10337c0dd890fed699f342ba07",
+    "source-review.md": "31e8ec61a9dae2f3e52ed6c67a4e9bf2e75447351b710da36c6a67fb56d42c77"
+  }
+}

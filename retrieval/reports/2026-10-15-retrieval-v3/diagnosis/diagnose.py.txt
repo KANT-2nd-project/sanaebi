@@ -1,0 +1,64 @@
+import json, hashlib, statistics, shutil, tempfile
+from pathlib import Path
+import numpy as np
+from app.documents.context import DocumentContextProvider
+from app.retrieval.repository import IndexRepository
+from app.retrieval.embedding import TinyEmbedder
+from retrieval.experiments.calibration_metrics import claim_metrics
+root=Path('tmp/retrieval-root-cause-2026-10-15')
+search=json.loads(Path('tmp/context-limit-comparison/search/search.json').read_text())
+qrels=json.loads(Path('retrieval/reports/2026-10-15-rag-calibration/qrels-v2.json').read_text())
+artifact=Path('tmp/answer-evaluation'); manifest=json.loads((artifact/'manifest.json').read_text())
+source=artifact/'source/documents.sqlite3'; index=artifact/'retrieval/schema-v1'/manifest['source']['retrieval_spec_id']/'index.sqlite3'
+digests={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in (source,index)}
+with tempfile.TemporaryDirectory() as temp:
+ t=Path(temp);shutil.copyfile(source,t/'source.sqlite3');snapshot=DocumentContextProvider(database_path=t/'source.sqlite3').snapshot()
+ dest=t/'retrieval/schema-v1'/manifest['source']['retrieval_spec_id']/'index.sqlite3';dest.parent.mkdir(parents=True);shutil.copyfile(index,dest)
+ current=IndexRepository(t/'retrieval').current_chunks(snapshot)
+assert snapshot.fingerprint==search['snapshot_fingerprint']
+chunks={c.chunk_id:c for c,_ in current};docs={d.knowledge_id:d for d in snapshot.documents};ids={d.document_id:d.knowledge_id for d in snapshot.documents}
+rankings={r['case_id']:r for r in search['ranking']}; grades={}
+for path in Path('retrieval/reports/2026-10-15-rag-calibration').glob('relevance-grades-*.json'):
+ for c in json.loads(path.read_text())['cases']:grades[c['case_id']]={r['chunk_id']:r['grade'] for r in c['grades']}
+cases=[]
+for case in qrels['cases']:
+ rank=rankings[case['case_id']]['ranking']; judged=grades[case['case_id']];selected=[r for r in rank if r['score']>=.35]
+ missing=[r['chunk_id'] for r in selected if r['chunk_id'] not in judged]
+ cases.append({'case_id':case['case_id'],'answerable':bool(case['required_claims']),'top1':rank[0]['score'],'selected':len(selected),'judgment_missing':len(missing),'precision_grade2':None if missing else sum(judged[r['chunk_id']]>=2 for r in selected)/len(selected) if selected else None,'grades':{str(g):sum(judged.get(r['chunk_id'])==g for r in selected) for g in range(4)},'all_claim_rank':rankings[case['case_id']]['all_claim_rank']})
+(root/'distribution.json').write_text(json.dumps(cases,ensure_ascii=False,indent=2))
+focus=[]
+for cid in ('R08','R14','R16','D07'):
+ case=next(c for c in qrels['cases'] if c['case_id']==cid);rank=rankings[cid]['ranking'];traces=[]
+ for cl in case['required_claims']:
+  hits=[]
+  for i,r in enumerate(rank,1):
+   if claim_metrics([(r['document_id'],[(s['start'],s['end']) for s in r['spans']])],{'required_claims':[cl]})['complete']:
+    ch=chunks[r['chunk_id']];hits.append({'rank':i,**r,'title':docs[r['document_id']].title,'embedding_text':ch.embedding_text})
+  traces.append({'claim':cl,'fully_covering_chunks':hits})
+ top=[]
+ for i,r in enumerate(rank[:10],1):
+  top.append({'rank':i,**r,'grade':grades[cid].get(r['chunk_id']),'title':docs[r['document_id']].title,'embedding_text':chunks[r['chunk_id']].embedding_text})
+ focus.append({'case_id':cid,'question':case['question'],'claims':traces,'top10':top})
+(root/'focus.json').write_text(json.dumps(focus,ensure_ascii=False,indent=2))
+embedder=TinyEmbedder(Path('tmp/tiny-model'));embedder.warmup()
+cache=np.load('tmp/calibration/development-search-validated/query-vectors.npz')
+# Re-encode same input to verify cache and service encoder.
+qtexts=[f['question'] for f in focus];qvecs=embedder.encode_queries(qtexts)
+qdiff=max(float(np.max(np.abs(v-cache[hashlib.sha256(q.encode()).hexdigest()]))) for q,v in zip(qtexts,qvecs))
+selected_ids=list(dict.fromkeys(h['chunk_id'] for f in focus for c in f['claims'] for h in c['fully_covering_chunks']))
+reencoded=embedder.encode_documents([chunks[i].embedding_text for i in selected_ids]);existing=dict((c.chunk_id,v) for c,v in current)
+pdiff=max(float(np.max(np.abs(v-existing[i]))) for i,v in zip(selected_ids,reencoded))
+# Controlled post-hoc diagnostic only: replace target text with shorter complete claim-context; not candidate evaluation.
+ablations=[]
+for f,qv in zip(focus,qvecs):
+ for cl in f['claims']:
+  for h in cl['fully_covering_chunks']:
+   ch=chunks[h['chunk_id']]; doc=docs[h['document_id']];a=next(a for a in cl['claim']['evidence_alternatives'] if a['document_id']==h['document_id']);sp=a['spans'];start=min(s['start'] for s in sp);end=max(s['end'] for s in sp)
+   texts={'original':ch.embedding_text,'body_only':'passage: '+'\n'.join(doc.body[s.start:s.end] for s in ch.spans),'oracle_fact_only':'passage: '+doc.title+'\n'+doc.body[start:end],'oracle_fact_with_120char_context':'passage: '+doc.title+'\n'+doc.body[max(0,start-120):min(len(doc.body),end+120)]}
+   vecs=embedder.encode_documents(list(texts.values()));scores={k:float(v@qv) for k,v in zip(texts,vecs)}
+   ablations.append({'case_id':f['case_id'],'claim_id':cl['claim']['claim_id'],'chunk_id':ch.chunk_id,'original_rank':h['rank'],'scores':scores,'texts':texts})
+(root/'oracle-ablation.json').write_text(json.dumps(ablations,ensure_ascii=False,indent=2))
+assert qdiff<1e-5 and pdiff<1e-5
+assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in digests.items())
+(root/'verification.json').write_text(json.dumps({'snapshot':snapshot.fingerprint,'documents':len(docs),'chunks':len(current),'query_cache_max_abs_diff':qdiff,'passage_cache_max_abs_diff':pdiff,'unchanged_files_sha256':digests,'llm_calls':0,'oracle_ablation':'post-hoc answer-informed diagnostic; not production or unbiased quality comparison'},indent=2))
+print(json.dumps({'cases':len(cases),'selected_counts':{'mean':statistics.mean(c['selected'] for c in cases),'max':max(c['selected'] for c in cases)},'unjudged':sum(c['judgment_missing'] for c in cases),'total_grades':{str(g):sum(c['grades'][str(g)] for c in cases) for g in range(4)},'qdiff':qdiff,'pdiff':pdiff,'ablations':[{'case_id':a['case_id'],'claim':a['claim_id'],'scores':a['scores']} for a in ablations]},ensure_ascii=False,indent=2))

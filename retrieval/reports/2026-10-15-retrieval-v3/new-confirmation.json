@@ -1,0 +1,1878 @@
+{
+  "schema_version": 2,
+  "status": "frozen_independent_ai_reviewed",
+  "cases": [
+    {
+      "case_id": "V01",
+      "question": "별도 근무제 승인이 없으면 기본 출근·퇴근, 점심 휴게와 실근로 기준은 어떻게 돼?",
+      "intent_group": "basic_workday_and_break",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V01-r01",
+          "claim": "별도 승인 근무제가 없으면 기본 근무일은 월요일부터 금요일까지이며, 기본 시간은 09:00–18:00, 점심 휴게는 12:00–13:00, 휴게 제외 실근로는 하루 8시간·주 40시간이다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-004",
+              "spans": [
+                {
+                  "start": 10,
+                  "end": 132,
+                  "text": "별도 근무제 승인을 받지 않은 구성원의 기본 근무일은 월요일부터 금요일까지다. 기본 근무 시간은 09:00–18:00, 휴게 시간은 12:00–13:00이며, 휴게를 제외한 기본 실근로는 하루 8시간, 주 40시간이다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V01-o01",
+          "claim": "휴게 시간에는 회의나 상시 업무를 배정하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-004",
+              "spans": [
+                {
+                  "start": 133,
+                  "end": 161,
+                  "text": "휴게 시간에는 회의나 상시 업무를 배정하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V02",
+      "question": "승인된 시차 출퇴근에서 고를 수 있는 출퇴근 시간대와 공통 협업 시간은 언제야?",
+      "intent_group": "flex_schedule_options_and_core_hours",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V02-r01",
+          "claim": "선택 가능한 일정은 08:00–17:00, 08:30–17:30, 09:00–18:00, 09:30–18:30, 10:00–19:00이다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-005",
+              "spans": [
+                {
+                  "start": 274,
+                  "end": 285,
+                  "text": "| 시작 | 종료 |"
+                },
+                {
+                  "start": 296,
+                  "end": 313,
+                  "text": "| 08:00 | 17:00 |"
+                },
+                {
+                  "start": 314,
+                  "end": 331,
+                  "text": "| 08:30 | 17:30 |"
+                },
+                {
+                  "start": 332,
+                  "end": 349,
+                  "text": "| 09:00 | 18:00 |"
+                },
+                {
+                  "start": 350,
+                  "end": 367,
+                  "text": "| 09:30 | 18:30 |"
+                },
+                {
+                  "start": 368,
+                  "end": 385,
+                  "text": "| 10:00 | 19:00 |"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V02-r02",
+          "claim": "공통 협업 시간은 10:00–12:00와 13:00–16:00이다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-005",
+              "spans": [
+                {
+                  "start": 387,
+                  "end": 425,
+                  "text": "공통 협업 시간은 10:00–12:00 및 13:00–16:00이다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V02-o01",
+          "claim": "점심 휴게인 12:00–13:00에는 회의나 상시 업무를 배정하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-005",
+              "spans": [
+                {
+                  "start": 425,
+                  "end": 467,
+                  "text": " 점심 휴게인 12:00–13:00에는 회의나 상시 업무를 배정하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V03",
+      "question": "교통 지연으로 출근 시작 시각에 늦을 것 같으면 누구에게 무엇을 알리고, 실제 출근은 어떻게 기록해야 해?",
+      "intent_group": "late_arrival_notice_and_actual_time",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V03-r01",
+          "claim": "늦을 가능성을 알면 가능하면 근무 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무를 알린다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-007",
+              "spans": [
+                {
+                  "start": 21,
+                  "end": 117,
+                  "text": "대중교통 지연, 건강 문제 등으로 예정된 시작 시각에 늦을 수 있음을 알게 되면 가능하면 시작 전에 팀장에게 Slack으로 예상 도착 시각과 영향을 받는 첫 업무만 알린다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V03-r02",
+          "claim": "도착하면 예정 시각이 아니라 실제 출근 시각을 근태 시스템에 입력한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-007",
+              "spans": [
+                {
+                  "start": 374,
+                  "end": 402,
+                  "text": "도착하면 실제 출근 시각을 근태 시스템에 입력한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V04",
+      "question": "예상된 연장 근무는 시작 전에 어디에 어떤 사유를 올려야 하고, 장애 때문에 미리 신청하기 어려우면 어떻게 해?",
+      "intent_group": "regular_overtime_preapproval_and_emergency_record",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V04-r01",
+          "claim": "예정 연장 근무는 시작 전에 이음 포털 인사 > 연장 근무에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-009",
+              "spans": [
+                {
+                  "start": 10,
+                  "end": 137,
+                  "text": "기본 근무 일정 밖에서 업무가 필요할 것으로 예상되면 팀장이 필요성과 대체 가능성을 확인한 뒤, 구성원은 근무 시작 전에 이음 포털의 **인사 > 연장 근무**에 날짜, 예상 시간, 업무 사유와 대체할 수 없는 이유를 등록한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V04-r03",
+          "claim": "사전 신청이 현실적으로 불가능한 장애·보안 긴급 업무는 팀장이 요청 전에 가능한 채널에 이유와 예상 시간을 기록하고, 서비스 장애는 #service-incident, 보안 사고는 #security-incident를 사용한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-009",
+              "spans": [
+                {
+                  "start": 346,
+                  "end": 494,
+                  "text": "서비스 장애나 긴급 보안 사고로 사전 신청이 현실적으로 불가능하면 팀장은 업무를 요청하기 전에 가능한 채널에 요청 이유와 예상 시간을 기록한다. 보안 사고는 **#security-incident**, 서비스 장애는 **#service-incident**를 사용한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V04-o01",
+          "claim": "팀장은 시작 전에 필요성과 휴게 확보 방안을 승인 또는 반려하며, 승인이 끝나기 전 예정 시간은 확정된 회사 일정이 아니다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-009",
+              "spans": [
+                {
+                  "start": 138,
+                  "end": 219,
+                  "text": "팀장은 시작 전에 업무 필요와 휴게 확보 방안을 확인해 승인 또는 반려한다. 승인이 끝나기 전에는 예정 시간을 확정된 회사 일정으로 보지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V05",
+      "question": "이번 하루만 평소 승인된 장소와 다른 국내 장소에서 일하려면 언제까지 무엇을 등록하고, 승인 전에 옮겨도 돼?",
+      "intent_group": "one_time_domestic_work_location_change",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V05-r01",
+          "claim": "일회성 국내 장소 변경은 예정일 2영업일 전까지 포털 인사 > 근무 장소 변경에 날짜, 새 장소의 시·구 수준, 연락 가능한 시간과 업무상 이유를 등록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-012",
+              "spans": [
+                {
+                  "start": 16,
+                  "end": 79,
+                  "text": "이 문서는 사무실, 자택, 고객 방문 장소처럼 평소 승인된 장소와 다른 **일회성 국내 장소 변경**에 적용한다."
+                },
+                {
+                  "start": 197,
+                  "end": 278,
+                  "text": "예정일 2영업일 전까지 이음 포털의 **인사 > 근무 장소 변경**에 날짜, 새 장소의 시·구 수준, 연락 가능한 시간과 업무상 이유를 등록한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V05-r02",
+          "claim": "승인이 기록되기 전에 장소를 바꾸지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-012",
+              "spans": [
+                {
+                  "start": 382,
+                  "end": 406,
+                  "text": "승인이 기록되기 전에 장소를 바꾸지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V05-o01",
+          "claim": "팀장은 1영업일 안에 대면 일정, 고객 정보 취급, 장비·네트워크 조건을 확인해 승인하거나 대체 일정을 제안한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-012",
+              "spans": [
+                {
+                  "start": 318,
+                  "end": 381,
+                  "text": "팀장은 1영업일 안에 대면 일정, 고객 정보 취급, 장비·네트워크 조건을 확인해 승인하거나 대체 일정을 제안한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V06",
+      "question": "업무용 장비의 세금 포함 예상 총액이 230만 원이면 어떤 구매 승인이 필요해? 한 공급업체만 가능할 때나 결재를 피하려고 주문을 나눌 때는?",
+      "intent_group": "general_purchase_approval_tiers",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V06-r01",
+          "claim": "세금 포함 예상 총액이 200만 원 이상이면 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인이 필요하다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-021",
+              "spans": [
+                {
+                  "start": 140,
+                  "end": 164,
+                  "text": "| 세금 포함 예상 총액 | 필요한 승인 |"
+                },
+                {
+                  "start": 240,
+                  "end": 287,
+                  "text": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-060",
+              "spans": [
+                {
+                  "start": 615,
+                  "end": 626,
+                  "text": "세금 포함 예상 총액"
+                },
+                {
+                  "start": 747,
+                  "end": 790,
+                  "text": "| 2,000,000원 이상 | 비교 견적 3곳과 팀장·재무팀의 서면 승인 |"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V06-r02",
+          "claim": "세 건으로 나누어 승인 기준을 피하지 않으며, 단일 공급 구매로 세 견적을 받을 수 없으면 사유와 대안을 적어 재무팀의 별도 승인을 받는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-021",
+              "spans": [
+                {
+                  "start": 289,
+                  "end": 371,
+                  "text": "요청을 여러 건으로 나누어 승인 기준을 피하지 않는다. 세 견적을 받을 수 없는 단일 공급 구매는 사유와 대안을 적고 재무팀의 별도 승인을 받는다."
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-060",
+              "spans": [
+                {
+                  "start": 792,
+                  "end": 843,
+                  "text": "비교 견적 세 곳을 받을 수 없는 공급처는 이유와 대안을 적고 재무팀의 별도 승인을 받는다."
+                },
+                {
+                  "start": 969,
+                  "end": 1006,
+                  "text": "주문을 나누거나 개인 계정으로 먼저 결제해 승인을 우회하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V07",
+      "question": "임시 시스템 권한을 90일 넘게 계속 쓰려면 언제 무엇을 다시 신청해야 해?",
+      "intent_group": "temporary_access_expiry_and_renewal",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V07-r01",
+          "claim": "임시 권한은 최대 90일이며, 더 필요하면 종료일 5영업일 전까지 새 요청을 제출한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-027",
+              "spans": [
+                {
+                  "start": 545,
+                  "end": 597,
+                  "text": "임시 권한은 최대 90일로 제한한다. 더 필요하면 종료일 5영업일 전까지 새 요청을 제출한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V08",
+      "question": "팀 이동이 예정되면 새 업무 권한과 기존 권한을 적용일 전후로 어떻게 확인하고 회수해?",
+      "intent_group": "team_transfer_access_transition",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V08-r02",
+          "claim": "예정된 이동은 적용일 전에 팀장이 기존 권한을 재검토하고, IT운영팀은 적용일에 불필요한 권한을 회수한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-027",
+              "spans": [
+                {
+                  "start": 940,
+                  "end": 1029,
+                  "text": "예정된 팀 이동, 역할 변경, 프로젝트 종료, 휴직 또는 업무 종료는 팀장이 적용일 전에 기존 권한을 재검토하고 IT운영팀이 적용일에 불필요한 권한을 회수한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V08-r03",
+          "claim": "IT운영팀은 승인된 새 역할에 따라 권한을 추가하고, 이전 역할에서 불필요한 권한을 별도로 회수한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-057",
+              "spans": [
+                {
+                  "start": 906,
+                  "end": 956,
+                  "text": "IT운영팀은 새 권한을 승인된 역할에 따라 추가하고 이전 역할의 불필요한 권한을 회수한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V08-o01",
+          "claim": "팀장은 이동 적용일과 새 역할, 인계 상대, 필요한 권한 변경을 포털에 등록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-057",
+              "spans": [
+                {
+                  "start": 809,
+                  "end": 857,
+                  "text": "팀장은 이동 적용일과 새 역할, 업무 인계 상대, 필요한 권한 변경을 포털에 등록한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V09",
+      "question": "공개 안내와 고객 자료가 한 문서에 섞여 있으면 어떤 등급을 붙여야 하고, 등급을 낮추려면 누가 무엇을 확인해야 해?",
+      "intent_group": "mixed_information_classification",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V09-r01",
+          "claim": "고객 자료는 기밀이므로 공개 안내와 한 문서에 섞이면 더 보호가 필요한 기밀 등급을 적용한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-028",
+              "spans": [
+                {
+                  "start": 143,
+                  "end": 177,
+                  "text": "여러 등급의 정보가 섞이면 더 보호가 필요한 등급을 적용한다."
+                },
+                {
+                  "start": 387,
+                  "end": 399,
+                  "text": "| 기밀 | 고객 자료"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V09-r02",
+          "claim": "자료 소유자가 등급을 낮추거나 제거할 때 변경 근거와 새 공유 범위를 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-028",
+              "spans": [
+                {
+                  "start": 938,
+                  "end": 983,
+                  "text": "등급을 낮추거나 제거할 때는 자료 소유자가 변경 근거와 새 공유 범위를 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V10",
+      "question": "동료가 기밀 파일 링크를 보냈어. 링크를 받았다는 이유만으로 열어도 되는지, 어떤 조건을 확인해야 해?",
+      "intent_group": "confidential_link_not_access_authorization",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V10-r01",
+          "claim": "기밀 자료는 업무상 필요와 승인된 접근 권한을 모두 갖춰야 열람할 수 있으며, 링크를 받았다는 사실은 허가가 아니다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-029",
+              "spans": [
+                {
+                  "start": 68,
+                  "end": 146,
+                  "text": "업무상 필요와 해당 자료에 대한 승인된 접근 권한이 모두 있어야 한다. 메신저에 우연히 보였거나 링크를 받았다는 사실은 열람 허가가 아니다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V10-o01",
+          "claim": "내부 공유도 자료 소유자와 받을 역할을 확인하고 최소 권한으로 공유를 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-029",
+              "spans": [
+                {
+                  "start": 357,
+                  "end": 372,
+                  "text": "| 상황 | 구성원 행동 |"
+                },
+                {
+                  "start": 383,
+                  "end": 436,
+                  "text": "| 업무상 필요한 내부 자료 | 자료 소유자와 수신 역할을 확인하고 최소 권한으로 공유 요청 |"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V11",
+      "question": "새 고객 입력 양식에 개인정보 항목을 받으려면 수집 전에 무엇을 정리해 누구에게 검토받아야 해?",
+      "intent_group": "new_personal_data_collection_precheck",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V11-r01",
+          "claim": "업무 책임자는 처리 목적, 필요한 항목, 이용 역할, 저장 위치, 외부 제공 여부와 문의 책임자를 정리해 보안·개인정보 담당자에게 검토를 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-030",
+              "spans": [
+                {
+                  "start": 118,
+                  "end": 217,
+                  "text": "새 양식이나 업무 흐름을 만들기 전 업무 책임자는 목적, 필요한 항목, 이용 역할, 저장 위치, 외부 제공 여부, 문의 책임자를 정리해 보안·개인정보 담당자에게 검토를 요청한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V11-r02",
+          "claim": "처리 근거, 안내 내용 또는 적용되는 보유 기준이 확인되지 않으면 새 수집을 시작하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-030",
+              "spans": [
+                {
+                  "start": 219,
+                  "end": 269,
+                  "text": "처리 근거, 안내 내용, 적용되는 보유 기준이 확인되지 않으면 새 수집을 시작하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V12",
+      "question": "이미 승인된 개인정보 양식이라도 다른 목적에 재사용하거나 항목·수신자를 늘리려면 바로 진행해도 돼?",
+      "intent_group": "personal_data_purpose_or_scope_change_review",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V12-r01",
+          "claim": "업무상 필요만으로 새 개인정보 항목을 받거나 다른 목적으로 재사용하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-030",
+              "spans": [
+                {
+                  "start": 74,
+                  "end": 117,
+                  "text": "업무상 필요하다는 이유만으로 새 항목을 받거나 다른 목적에 재사용하지 않는다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V12-r02",
+          "claim": "승인된 양식도 현재 목적과 다른 항목을 더하거나 수신자를 넓히려면 다시 검토한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-030",
+              "spans": [
+                {
+                  "start": 308,
+                  "end": 361,
+                  "text": "이미 승인된 업무 양식이라도 현재 목적과 다른 항목을 더하거나 수신자를 넓히려면 다시 검토한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V13",
+      "question": "공유드라이브를 쓸 수 없는 업무에서 이동식 저장장치가 꼭 필요하면 어떻게 승인받고, 승인 뒤 어떤 범위만 복사해야 해?",
+      "intent_group": "approved_removable_media_exception",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V13-r01",
+          "claim": "파일 전달은 공유드라이브나 승인된 비공개 GitHub를 우선하고, 그 경로를 쓸 수 없으며 업무상 필요가 있을 때만 이동식 장치를 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-036",
+              "spans": [
+                {
+                  "start": 87,
+                  "end": 199,
+                  "text": "파일 전달은 우선 회사 Google Workspace 공유드라이브나 승인된 GitHub 비공개 조직을 사용한다. 이동식 장치 사용은 해당 경로를 사용할 수 없고 업무상 필요가 확인된 경우에만 요청한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V13-r02",
+          "claim": "포털 IT > 장치 요청에 소유자, 출처, 목적, 자료 등급, 반출 필요와 예정 기간을 적고 IT운영팀 및 보안·개인정보 담당자의 검토를 받는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-036",
+              "spans": [
+                {
+                  "start": 214,
+                  "end": 340,
+                  "text": "이음 포털의 IT > 장치 요청에 장치 소유자, 출처, 사용 목적, 자료 등급, 반출 필요, 예정 기간을 적는다. IT운영팀과 보안·개인정보 담당자가 회사 관리 여부, 기술 위험과 자료 범위를 확인한 뒤 승인 여부를 기록한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V13-r03",
+          "claim": "승인된 뒤 필요한 파일만 복사하고 회사 원본이 정해진 저장소에 있는지 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-036",
+              "spans": [
+                {
+                  "start": 371,
+                  "end": 417,
+                  "text": "승인이 끝나면 필요한 파일만 복사하고 회사 원본이 정해진 저장소에 있는지 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V14",
+      "question": "승인된 개발환경에서 잠금파일에 선언된 프로젝트 패키지를 설치할 때마다 IT 승인을 받아야 해? 관리자 권한이나 자료를 외부로 보내는 확장 기능은?",
+      "intent_group": "project_dependency_install_vs_system_tool_review",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V14-r01",
+          "claim": "승인된 개발환경에서 잠금파일에 고정된 프로젝트 의존성을 설치하는 일은 매번 별도 신청 대상이 아니며 프로젝트 코드 리뷰와 저장소 절차로 관리한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-037",
+              "spans": [
+                {
+                  "start": 372,
+                  "end": 429,
+                  "text": "승인된 개발환경에서 잠금파일에 고정된 의존성을 설치하는 행위 자체에 매번 별도 신청을 요구하지 않는다."
+                },
+                {
+                  "start": 321,
+                  "end": 371,
+                  "text": "팀 코드 리뷰에서 변경 내용과 테스트 결과를 검토한 뒤 프로젝트의 승인된 절차로 반영한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V14-r02",
+          "claim": "관리자 권한·기기 설정·시스템 서비스가 필요하거나 계정 내용을 읽어 외부로 보내는 확장 기능 등은 IT운영팀과 보안·개인정보 담당자의 검토를 거쳐야 한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-037",
+              "spans": [
+                {
+                  "start": 480,
+                  "end": 527,
+                  "text": "아래는 일반 의존성 갱신과 달리 IT운영팀 및 보안·개인정보 담당자의 검토를 거친다."
+                },
+                {
+                  "start": 531,
+                  "end": 569,
+                  "text": "관리자 권한, 기기 설정 변경, 시스템 서비스 설치가 필요한 프로그램"
+                },
+                {
+                  "start": 572,
+                  "end": 613,
+                  "text": "브라우저 확장·플러그인 또는 계정·페이지 내용을 읽거나 외부로 보내는 도구"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V15",
+      "question": "회사 계정 비밀번호를 서비스마다 다르게 써야 해? 회사가 정한 공통 정기 변경 주기도 있어?",
+      "intent_group": "password_storage_and_no_global_rotation_rule",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V15-r01",
+          "claim": "서비스마다 서로 다른 비밀번호를 사용한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-025",
+              "spans": [
+                {
+                  "start": 193,
+                  "end": 216,
+                  "text": "서비스마다 서로 다른 비밀번호를 사용한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V15-r02",
+          "claim": "모든 서비스에 공통인 정기 교체 주기나 최소 길이는 이 문서가 정하지 않으며 서비스 기준과 IT 안내를 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-025",
+              "spans": [
+                {
+                  "start": 963,
+                  "end": 1036,
+                  "text": "일괄적인 정기 교체 주기나 모든 서비스에 공통인 최소 길이를 여기서 만들지 않는다. 서비스가 요구하는 기준과 IT 안내를 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V15-o01",
+          "claim": "회사 비밀번호는 회사 관리 Bitwarden Enterprise 계정에 저장한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-025",
+              "spans": [
+                {
+                  "start": 217,
+                  "end": 261,
+                  "text": "회사 비밀번호는 회사 관리 Bitwarden Enterprise 계정에 저장하고"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V16",
+      "question": "정산 문의를 #finance-help에 올릴 때 영수증에 담긴 불필요한 개인정보나 계좌 정보를 붙여도 돼? 민감한 자료는 어디에 남겨야 해?",
+      "intent_group": "finance_channel_sensitive_content_limits",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V16-r01",
+          "claim": "#finance-help에는 카드 번호, 계좌 인증정보, 영수증의 불필요한 개인정보를 남기지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-040",
+              "spans": [
+                {
+                  "start": 160,
+                  "end": 188,
+                  "text": "| 채널 | 주 사용 | 여기에 남기지 않을 것 |"
+                },
+                {
+                  "start": 260,
+                  "end": 327,
+                  "text": "| #finance-help | 비용·정산 절차 문의 | 카드 번호, 계좌 인증정보, 영수증에 포함된 불필요 개인정보 |"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V16-r02",
+          "claim": "민감한 상세자료는 해당 이음 포털 요청이나 접근이 제한된 공유드라이브에 남기고, 채널에는 담당자가 찾을 요청 식별 정보만 적는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-040",
+              "spans": [
+                {
+                  "start": 572,
+                  "end": 655,
+                  "text": "민감한 인사·재무·고객 상세자료는 이음 포털의 해당 요청이나 제한된 공유드라이브에 남기고, 채널에는 담당자가 찾을 수 있는 요청 식별 정보만 적는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V17",
+      "question": "일반 프로젝트 문서·회의 결정, 이전된 업무 안내, 임시 초안은 각각 어떤 기간을 기준으로 폐기 검토해?",
+      "intent_group": "general_record_retention_schedule",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V17-r01",
+          "claim": "일반 프로젝트 문서와 회의 결정은 프로젝트 종료 또는 대체 후 3년 기준이다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-062",
+              "spans": [
+                {
+                  "start": 266,
+                  "end": 307,
+                  "text": "| 일반 프로젝트 문서·회의 결정 | 프로젝트 종료 또는 대체 후 3년 |"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V17-r02",
+          "claim": "일반 운영 안내와 내부 양식의 이전본은 새 기준 적용 뒤 1년 기준으로 보관한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-062",
+              "spans": [
+                {
+                  "start": 377,
+                  "end": 414,
+                  "text": "| 일반 운영 안내·내부 양식 | 새 기준 적용 뒤 이전본 1년 |"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V17-r03",
+          "claim": "임시 초안과 중복 작업본은 마지막 활동 뒤 최대 90일 기준으로 검토하되 최종본과 기준 위치를 먼저 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-062",
+              "spans": [
+                {
+                  "start": 478,
+                  "end": 512,
+                  "text": "| 임시 초안·중복 작업본 | 마지막 활동 뒤 최대 90일 |"
+                },
+                {
+                  "start": 513,
+                  "end": 536,
+                  "text": "최종본과 기준 위치를 확인한 후 폐기 검토"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V17-o01",
+          "claim": "기간 만료는 자동 삭제 명령이 아니며 소유자가 종료·대체 상태와 보류 사유를 확인하고 포털 삭제 요청으로 결과를 남긴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-062",
+              "spans": [
+                {
+                  "start": 129,
+                  "end": 204,
+                  "text": "기간 만료는 자동 삭제 명령이 아니다. 소유자는 종료·대체 상태와 보류 사유를 확인하고 이음 포털의 삭제 요청으로 처리 결과를 남긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V18",
+      "question": "고객 문의의 최초 답변과 미해결 문의 후속 답변 목표는 각각 얼마야? 업무시간 밖에 들어오면 언제부터 계산하고 계약 SLA로 약속해도 돼?",
+      "intent_group": "customer_support_response_operating_target",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V18-r01",
+          "claim": "최초 답변과 미해결 문의의 후속 답변 목표는 각각 4영업시간 이내다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 1940,
+                  "end": 1989,
+                  "text": "고객지원팀의 최초 답변과 미해결 문의의 후속 답변 목표는 각각 **4영업시간 이내**다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V18-r02",
+          "claim": "업무시간 밖의 일반 문의는 다음 회사 영업시간부터 시간을 계산한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 1990,
+                  "end": 2034,
+                  "text": "영업시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V18-r03",
+          "claim": "4영업시간은 내부 운영 목표이지 고객 계약의 SLA 보증이 아니며, 별도 약정은 계약 담당자에게 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 2035,
+                  "end": 2110,
+                  "text": "이 목표는 내부 응답 운영 목표이며 고객 계약의 SLA 보증이 아니다. 계약에 별도 약정이 있는지 답변 전에 계약 담당자에게 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V19",
+      "question": "고객이 제품 오류를 신고하면 처음 접수할 때 어떤 사실을 확인해야 하고, 전체 로그나 인증정보도 받아도 돼?",
+      "intent_group": "customer_inquiry_minimal_safe_intake",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V19-r01",
+          "claim": "오류 문의는 발생 시각과 시간대, 영향을 받는 기능, 예상·실제 동작, 재현 여부를 확인하고 제품 버전·브라우저·운영체제는 필요한 경우에만 추가한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 458,
+                  "end": 559,
+                  "text": "오류라면 발생 시각과 시간대, 영향을 받는 기능, 예상 동작과 실제 동작, 재현 여부를 묻는다. 문제를 확인하는 데 필요한 경우에만 제품 버전·브라우저·운영체제 등 환경을 추가한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V19-r02",
+          "claim": "문제 해결에 필요한 최소 범위의 자료만 받고 비밀번호, 인증 코드, 토큰, 쿠키, 결제정보와 전체 데이터 덤프는 요청하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 563,
+                  "end": 668,
+                  "text": "이름, 이메일, 화면 캡처, 로그, 계정 식별자와 같은 자료는 문제 해결에 필요한 최소 범위만 받는다. 비밀번호, 인증 코드, 토큰, 쿠키, 결제정보, 전체 데이터 덤프를 요청하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V19-o01",
+          "claim": "정식 고객 문의 기록은 이음 포털 고객지원 > 문의에 두며 Slack 개인 메시지나 회의에서 받은 문의도 공식 기록으로 옮긴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 127,
+                  "end": 235,
+                  "text": "고객이 제품 안내나 계약에서 지정한 공식 창구로 연락하면 이음 포털의 **고객지원 > 문의**에 기록한다. Slack 개인 메시지, 개인 이메일, 회의에서 문의를 받았어도 공식 기록으로 옮긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V20",
+      "question": "새 GitHub 이슈를 열기 전에 어떤 중복 확인을 하고, 이미 비슷한 이슈가 있으면 고객 문의를 어떻게 연결해야 해?",
+      "intent_group": "duplicate_development_issue_check",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V20-r01",
+          "claim": "제품개발팀 소유 저장소와 접근 범위를 확인한 뒤 비슷한 제목·오류·기능 제안이 이미 있는지 검색한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 1286,
+                  "end": 1353,
+                  "text": "제품개발팀이 소유한 저장소와 접근 범위를 확인한 뒤 GitHub에서 비슷한 제목·오류·기능 제안이 이미 있는지 검색한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V20-r02",
+          "claim": "중복 이슈가 있으면 고객 문의 번호와 허용된 링크만 기존 이슈에 연결하고 고객별 정보는 추가하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-066",
+              "spans": [
+                {
+                  "start": 1354,
+                  "end": 1413,
+                  "text": "중복 이슈가 있으면 고객 문의 번호와 허용된 링크만 기존 이슈에 연결하고, 고객별 정보는 추가하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V21",
+      "question": "PR에서 권한, 고객 데이터, 데이터 삭제·이동이나 결제 흐름을 바꾸면 일반 리뷰 외에 어떤 확인이 더 필요해?",
+      "intent_group": "high_risk_pr_additional_service_owner_review",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V21-r01",
+          "claim": "권한·인증, 고객 데이터 처리·저장, 데이터 삭제·마이그레이션 또는 청구 처리에 영향을 주는 위험 변경은 해당 서비스 책임자의 추가 확인을 받는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-067",
+              "spans": [
+                {
+                  "start": 881,
+                  "end": 920,
+                  "text": "위험 변경은 이 조건에 더해 해당 서비스 책임자의 추가 확인을 받는다."
+                },
+                {
+                  "start": 929,
+                  "end": 973,
+                  "text": "권한·인증 흐름, 고객 데이터 처리·저장, 데이터 삭제·마이그레이션, 청구 처리"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V22",
+      "question": "PR 설명에서 검사 결과와 실패 시 복구에 관해 무엇을 밝혀야 해?",
+      "intent_group": "pr_description_validation_and_recovery_evidence",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V22-r01",
+          "claim": "PR 설명에는 실행한 검사와 결과, 실행하지 못한 검사와 사유, 실패 시 동작, 되돌리기 가능성과 데이터 마이그레이션 영향을 적는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-067",
+              "spans": [
+                {
+                  "start": 490,
+                  "end": 510,
+                  "text": "GitHub PR에는 다음을 적는다."
+                },
+                {
+                  "start": 572,
+                  "end": 598,
+                  "text": "실행한 검사와 결과, 실행하지 못한 검사와 사유"
+                },
+                {
+                  "start": 601,
+                  "end": 633,
+                  "text": "실패 시 동작, 되돌리기 가능성, 데이터 마이그레이션 영향"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V22-r02",
+          "claim": "실행하지 않은 검사 결과를 통과라고 표시하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-067",
+              "spans": [
+                {
+                  "start": 688,
+                  "end": 723,
+                  "text": "검사 결과를 실제 실행하지 않았다면 통과했다고 표시하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V23",
+      "question": "일반 운영 배포는 언제 할 수 있고, 시작 전에 최소 어떤 승인·검사 상태를 확인해야 해?",
+      "intent_group": "normal_deployment_window_and_preflight",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V23-r01",
+          "claim": "일반 배포 시간은 평일 10:00~16:00이다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-068",
+              "spans": [
+                {
+                  "start": 143,
+                  "end": 173,
+                  "text": "일반 배포 시간은 평일 **10:00~16:00**다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V23-r02",
+          "claim": "일반 배포 전 PR이 main에 병합됐고 독립 승인 1건과 필수 검사가 확인되어야 하며, 위험 변경에는 서비스 책임자의 추가 확인도 있어야 한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-068",
+              "spans": [
+                {
+                  "start": 203,
+                  "end": 270,
+                  "text": "PR이 `main`에 병합됐고 독립 승인 1건과 필수 검사가 확인됐다. 위험 변경이면 서비스 책임자의 추가 확인도 있다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V23-o01",
+          "claim": "배포 시작 전 정상 확인 조건, 중단 조건과 안전한 복구 경로 및 결정 권한자를 정한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-068",
+              "spans": [
+                {
+                  "start": 384,
+                  "end": 428,
+                  "text": "적용 직후 기대하는 상태와 오류·지연·데이터 이상을 확인할 방법이 정해져 있다."
+                },
+                {
+                  "start": 432,
+                  "end": 477,
+                  "text": "중단 조건, 안전한 이전 버전 또는 대체 복구 방식, 결정 권한자가 정해져 있다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V24",
+      "question": "진행 중인 장애를 줄이려는 변경은 일반 배포 시간을 기다리지 않아도 돼? 긴급 승인 뒤 어떤 리뷰와 기록을 보완해야 해?",
+      "intent_group": "emergency_change_authorization_and_followup",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V24-r01",
+          "claim": "진행 중인 서비스 장애 피해를 줄이거나 복구하기 위한 긴급 변경은 일반 시간표를 기다리지 않을 수 있고, 사고 지휘자가 사유와 범위를 승인하며 제품개발팀이 영향을 평가한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-068",
+              "spans": [
+                {
+                  "start": 1775,
+                  "end": 1890,
+                  "text": "진행 중인 서비스 장애의 피해를 줄이거나 복구하기 위한 긴급 변경은 일반 시간표를 기다리지 않을 수 있다. 이 경우 **사고 지휘자**가 긴급 사유와 범위를 확인하고 승인하며, 제품개발팀이 영향을 평가한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V24-r02",
+          "claim": "사전 기록 일부가 불가능했더라도 안정화 뒤 지체 없이 보완하고 독립 리뷰·검사, 코드 리뷰·테스트·문서화와 사후 검토를 완료한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-068",
+              "spans": [
+                {
+                  "start": 2039,
+                  "end": 2151,
+                  "text": "급박해서 일부 항목을 미리 적지 못했다면 안정화 후 지체 없이 기록하고 독립 리뷰·검사를 보완한다. 긴급 변경은 영구 예외가 아니다. 사고 종료 뒤 코드 리뷰, 테스트, 문서화와 사후 검토를 완료한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V24-o01",
+          "claim": "보안 사건이 함께 있으면 보안·개인정보 담당자의 별도 판단을 받으며 사고 지휘자 승인으로 이를 대신하지 않는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-068",
+              "spans": [
+                {
+                  "start": 1891,
+                  "end": 1970,
+                  "text": "보안 사건이 포함되면 보안·개인정보 담당자의 판단을 별도로 받는다. 팀장이나 사고 지휘자의 긴급 승인이 보안·개인정보 통제를 대신하지 않는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V25",
+      "question": "장애 심각도별로 회고를 반드시 하거나 요청에 따라 여는 기준은 어떻게 달라?",
+      "intent_group": "incident_retrospective_eligibility",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V25-r01",
+          "claim": "P1 장애는 안정화되면 반드시 회고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-070",
+              "spans": [
+                {
+                  "start": 145,
+                  "end": 170,
+                  "text": "- **P1:** 안정화되면 반드시 회고한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V25-r02",
+          "claim": "P2는 같은 원인 반복, 여러 팀 인계 문제, 큰 고객 영향이 있었거나 팀장이 요청하면 회고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-070",
+              "spans": [
+                {
+                  "start": 171,
+                  "end": 234,
+                  "text": "- **P2:** 같은 원인의 반복, 복수 팀 간 인계 문제, 큰 고객 영향이 있었거나 팀장이 요청하면 회고한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V25-r03",
+          "claim": "P3는 별도 요청이 없는 한 회고 대신 문의나 개발 이슈 후속 기록에 필요한 사실만 남긴다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-070",
+              "spans": [
+                {
+                  "start": 235,
+                  "end": 299,
+                  "text": "- **P3:** 별도 요청이 없는 한 장애 회고 대신 고객 문의나 개발 이슈의 후속 기록에 필요한 사실만 남긴다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V26",
+      "question": "P1 회고의 초안과 검토는 각각 언제까지 마치는 것을 목표로 하고, 검토자는 작성자와 같아도 돼?",
+      "intent_group": "p1_retrospective_draft_review_deadlines",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V26-r01",
+          "claim": "P1 회고 초안은 안정화 후 3영업일 이내, 검토는 초안 후 5영업일 이내 완료를 목표로 한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-070",
+              "spans": [
+                {
+                  "start": 415,
+                  "end": 473,
+                  "text": "P1 초안은 안정화 후 **3영업일 이내**, 검토는 초안 후 **5영업일 이내** 완료를 목표로 한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V26-r02",
+          "claim": "P1 회고는 초안 작성자와 별도의 검토자가 한 번 더 읽는다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-070",
+              "spans": [
+                {
+                  "start": 641,
+                  "end": 675,
+                  "text": "P1 회고는 초안 작성자와 별도의 검토자가 한 번 더 읽는다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V27",
+      "question": "서비스가 멈춘 동시에 고객 정보 노출도 의심되면 장애와 보안 신고 중 하나만 열면 돼?",
+      "intent_group": "parallel_service_and_security_incident_routing",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V27-r01",
+          "claim": "서비스 장애와 보안·개인정보 사고는 서로 대체하지 않으며 둘 다 해당하면 각 대응을 연다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-069",
+              "spans": [
+                {
+                  "start": 91,
+                  "end": 148,
+                  "text": "서비스 장애와 보안·개인정보 사고는 서로 대체하지 않으므로, 두 성격이 모두 보이면 각각 대응을 연다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V27-r02",
+          "claim": "서비스 장애는 #service-incident 및 고객지원 > 장애 기록으로 알리고, 보안 문제는 보안 사고 경로로 별도 동시 신고한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-035",
+              "spans": [
+                {
+                  "start": 180,
+                  "end": 267,
+                  "text": "서비스 장애는 이음 포털의 고객지원 > 장애 기록와 #service-incident에 알리고, 보안 문제가 함께 의심되면 보안 담당 경로에도 동시에 알린다."
+                },
+                {
+                  "start": 401,
+                  "end": 448,
+                  "text": "Slack의 #security-incident 또는 이음 포털의 보안 신고를 사용하고"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V28",
+      "question": "신규 입사 전에 팀장이 어디에 언제까지 어떤 준비를 올리고, 업무 안내 동료는 언제 지정해야 해?",
+      "intent_group": "new_hire_team_preparation_and_buddy_assignment",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V28-r01",
+          "claim": "팀장은 시작일 5영업일 전까지 포털 인사 > 입사 준비에 조직, 직무, 시작일, 필요한 시스템과 역할을 등록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-050",
+              "spans": [
+                {
+                  "start": 17,
+                  "end": 94,
+                  "text": "소속 팀장은 입사 시작일 5영업일 전까지 이음 포털의 **인사 > 입사 준비**에 조직, 직무, 시작일, 필요한 시스템과 역할을 등록한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V28-r02",
+          "claim": "팀장은 첫 근무일부터 2영업일 안에 업무 안내 동료를 지정한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-050",
+              "spans": [
+                {
+                  "start": 207,
+                  "end": 210,
+                  "text": "팀장은"
+                },
+                {
+                  "start": 232,
+                  "end": 264,
+                  "text": "첫 근무일로부터 2영업일 안에 업무 안내 동료를 지정한다."
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-057",
+              "spans": [
+                {
+                  "start": 556,
+                  "end": 591,
+                  "text": "| 첫 근무일부터 2영업일 안 | 팀장 | 업무 안내 동료 지정"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V29",
+      "question": "승인받은 국내 근무 장소가 출발 전에 바뀌거나 갑자기 시설이 닫히면 언제 누구에게 알리고 포털도 고쳐야 해?",
+      "intent_group": "approved_location_change_update",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V29-r01",
+          "claim": "승인 장소가 출발 전에 바뀌면 팀장에게 Slack으로 알리고, 변경이 하루를 넘기면 당일 포털 기록을 수정한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-012",
+              "spans": [
+                {
+                  "start": 426,
+                  "end": 490,
+                  "text": "승인된 장소가 출발 전에 달라지면 팀장에게 Slack으로 알리고, 변경이 하루를 넘기면 당일 포털 기록을 수정한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V29-r02",
+          "claim": "갑작스러운 교통 중단이나 시설 폐쇄는 가능한 즉시 알리고 업무 시작 전에 대체 장소 승인을 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-012",
+              "spans": [
+                {
+                  "start": 491,
+                  "end": 547,
+                  "text": "갑작스러운 교통 중단이나 시설 폐쇄는 가능한 즉시 알리고 업무 시작 전에 대체 장소 승인을 요청한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V30",
+      "question": "시스템 접근 요청이 반려되면 같은 범위로 다시 올리면 돼, 아니면 무엇을 바꿔야 해?",
+      "intent_group": "rejected_access_request_resubmission",
+      "answerability": "answerable",
+      "required_claims": [
+        {
+          "claim_id": "V30-r01",
+          "claim": "반려 사유를 확인한 뒤 업무 목적이나 역할 범위를 좁혀 다시 제출한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-027",
+              "spans": [
+                {
+                  "start": 598,
+                  "end": 639,
+                  "text": "요청이 반려되면 사유를 확인하고 업무 목적이나 역할을 좁혀 다시 제출한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed"
+    },
+    {
+      "case_id": "V31",
+      "question": "월중에 출근 시각을 바꾸려면 며칠 전에 신청해야 하고, 내 포털 요청도 승인됐는지 확인해줘.",
+      "intent_group": "midmonth_schedule_change_and_request_status",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "V31-r01",
+          "claim": "월중 시차 출퇴근 변경은 최소 5영업일 전에 요청한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-005",
+              "spans": [
+                {
+                  "start": 641,
+                  "end": 665,
+                  "text": "월 중간 변경은 최소 5영업일 전에 요청하고"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V31-o02",
+          "claim": "요청 중에는 기존 승인 일정대로 기록한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-005",
+              "spans": [
+                {
+                  "start": 691,
+                  "end": 714,
+                  "text": "요청 중에는 기존 승인 일정대로 기록한다."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "claim_id": "V31-o01",
+          "claim": "People팀이 근태 반영 여부를 확인한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-005",
+              "spans": [
+                {
+                  "start": 666,
+                  "end": 690,
+                  "text": "People팀이 근태 반영 여부를 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_part": "사용자의 특정 포털 요청이 현재 승인됐는지 여부는 이 지식 문서에 없고 포털 상태를 조회해야 한다.",
+      "forbidden_claims": [
+        "특정 개인의 시차 출퇴근 요청이 승인·반영됐다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V32",
+      "question": "세금 포함 230만 원짜리 사무기기에는 어떤 구매 승인 자료가 필요하고, 내가 올린 특정 주문이 통과했는지도 알려줘.",
+      "intent_group": "purchase_policy_and_specific_order_status",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "V32-r01",
+          "claim": "200만 원 이상 구매에는 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인이 필요하다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-021",
+              "spans": [
+                {
+                  "start": 140,
+                  "end": 164,
+                  "text": "| 세금 포함 예상 총액 | 필요한 승인 |"
+                },
+                {
+                  "start": 240,
+                  "end": 287,
+                  "text": "| 2,000,000원 이상 | 비교 가능한 견적 3곳과 팀장·재무팀의 서면 승인 |"
+                }
+              ]
+            },
+            {
+              "document_id": "ieum-060",
+              "spans": [
+                {
+                  "start": 615,
+                  "end": 626,
+                  "text": "세금 포함 예상 총액"
+                },
+                {
+                  "start": 747,
+                  "end": 790,
+                  "text": "| 2,000,000원 이상 | 비교 견적 3곳과 팀장·재무팀의 서면 승인 |"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_part": "특정 주문의 실제 승인·반려 상태는 이 지식 문서에 없고 해당 포털 요청 상태를 확인해야 한다.",
+      "forbidden_claims": [
+        "특정 구매 요청이 승인됐거나 주문이 완료됐다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V33",
+      "question": "회사 계정에 공통 정기 비밀번호 변경 주기가 있는지, 내 특정 서비스 비밀번호 변경이 회사 기준에 맞는지도 알려줘.",
+      "intent_group": "password_rotation_policy_and_individual_compliance",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "V33-r01",
+          "claim": "문서는 모든 서비스에 공통인 정기 교체 주기나 최소 길이를 정하지 않고, 서비스별 요구와 IT 안내를 확인하도록 한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-025",
+              "spans": [
+                {
+                  "start": 963,
+                  "end": 1036,
+                  "text": "일괄적인 정기 교체 주기나 모든 서비스에 공통인 최소 길이를 여기서 만들지 않는다. 서비스가 요구하는 기준과 IT 안내를 확인한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_part": "사용자의 특정 계정 비밀번호 변경 시각과 서비스별 현재 설정·준수 상태는 문서에 없고 계정 기록을 확인해야 한다.",
+      "forbidden_claims": [
+        "사용자의 계정이 특정 비밀번호 변경 주기를 준수한다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V34",
+      "question": "일반 고객 문의의 첫 답변 목표는 얼마고, 내 문의 번호 731의 담당자와 현재 회신 상태도 확인해줘.",
+      "intent_group": "customer_reply_target_and_specific_ticket_state",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "V34-r01",
+          "claim": "고객지원팀의 최초 답변 목표는 4영업시간 이내다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 1940,
+                  "end": 1952,
+                  "text": "고객지원팀의 최초 답변"
+                },
+                {
+                  "start": 1968,
+                  "end": 1989,
+                  "text": "목표는 각각 **4영업시간 이내**다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [
+        {
+          "claim_id": "V34-o01",
+          "claim": "업무시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-065",
+              "spans": [
+                {
+                  "start": 1990,
+                  "end": 2034,
+                  "text": "영업시간 밖에 접수된 일반 문의의 시간 계산은 다음 회사 영업시간부터 시작한다."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_part": "문의 번호 731의 실제 담당자 배정과 회신 상태는 문서에 없고 고객지원 포털의 해당 건을 조회해야 한다.",
+      "forbidden_claims": [
+        "문의 번호 731에 담당자가 배정됐거나 회신이 완료됐다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V35",
+      "question": "일반 프로젝트 회의 기록은 종료 뒤 얼마간 폐기 검토 대상이 아니고, 공유드라이브 링크 file-731이 실제 삭제됐는지도 확인해줘.",
+      "intent_group": "general_record_retention_and_specific_file_deletion_status",
+      "answerability": "partial",
+      "required_claims": [
+        {
+          "claim_id": "V35-r01",
+          "claim": "일반 프로젝트 문서와 회의 결정은 프로젝트 종료 또는 대체 후 3년 기준으로 보관한 뒤 폐기 검토한다.",
+          "evidence_alternatives": [
+            {
+              "document_id": "ieum-062",
+              "spans": [
+                {
+                  "start": 266,
+                  "end": 307,
+                  "text": "| 일반 프로젝트 문서·회의 결정 | 프로젝트 종료 또는 대체 후 3년 |"
+                },
+                {
+                  "start": 330,
+                  "end": 340,
+                  "text": "기간 뒤 폐기 검토"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_part": "공유드라이브의 특정 file-731이 실제 삭제됐는지, 다른 사본까지 처리됐는지는 문서에 없고 해당 시스템과 처리 기록을 확인해야 한다.",
+      "forbidden_claims": [
+        "file-731이 실제 삭제됐거나 모든 사본에서 제거됐다고 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V36",
+      "question": "우리 사무실 3층 동쪽 출입구에서 가장 가까운 소화기가 정확히 어디 있어?",
+      "intent_group": "specific_office_extinguisher_location",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_reason": "문서는 특정 층·출입구·소화기 위치를 지정하지 않고 실제 현장 안내를 따르도록 한다.",
+      "forbidden_claims": [
+        "특정 소화기의 위치나 거리를 추측해 안내하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V37",
+      "question": "오늘 밤 보안 사고 당직자의 이름과 직접 연락처를 알려줘.",
+      "intent_group": "current_oncall_person_and_phone",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_reason": "지식 문서에는 당직 인계 절차만 있고 현재 당직자 명단과 실제 연락처는 제한된 운영 자료에 있다.",
+      "forbidden_claims": [
+        "현재 당직자의 실명이나 전화번호를 지어내거나 공개된 것처럼 말하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V38",
+      "question": "지금 나에게 배정된 회사 노트북의 자산번호와 실제 지급일은 뭐야?",
+      "intent_group": "employee_assigned_asset_inventory",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_reason": "일반 자산 대여 절차는 있지만 개인별 현재 자산 배정 내역은 문서에 없다.",
+      "forbidden_claims": [
+        "개인별 자산번호나 지급일을 추정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V39",
+      "question": "오늘 고객 운영환경에서 실제 실행 중인 서비스 버전이나 배포 태그가 뭐야?",
+      "intent_group": "current_production_release_version",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_reason": "배포 절차와 검증 원칙은 있으나 현재 운영환경의 배포 버전 상태는 문서에 없다.",
+      "forbidden_claims": [
+        "실제 운영 버전·태그를 추정하거나 배포 완료로 단정하지 않는다."
+      ]
+    },
+    {
+      "case_id": "V40",
+      "question": "지금 처리 대기 중인 전체 고객 문의가 몇 건이고 가장 오래된 문의는 언제 들어왔어?",
+      "intent_group": "current_customer_support_queue_count",
+      "answerability": "unanswerable",
+      "required_claims": [],
+      "optional_claims": [],
+      "review_status": "independent_ai_reviewed",
+      "unanswerable_reason": "고객 문의 처리 원칙은 있으나 포털의 현재 대기 건수와 접수 시각은 문서에 없다.",
+      "forbidden_claims": [
+        "실시간 문의 건수나 대기 순서를 지어내지 않는다."
+      ]
+    }
+  ],
+  "review": {
+    "reviewer": "independent AI source reviewer",
+    "human_review": false,
+    "blind_to_search_results": true,
+    "findings": "All 40 cases, 78 claims and 108 exact source spans independently reviewed. Corrections rechecked; no remaining blocker. No search results, scores or rankings used. Some partial cases reuse policies within this new set; these are not 40 independent policies."
+  }
+}

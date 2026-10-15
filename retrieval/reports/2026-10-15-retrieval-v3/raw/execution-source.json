@@ -1,0 +1,16 @@
+{
+  "base_commit": "c7f428a972e50f3d4ff95784d26583db69888ad5",
+  "working_tree_implementation": true,
+  "files_sha256": {
+    "retrieval/experiments/optimization.py": "717a774c1d806612a18fe91a6a0cd742c867a3e15a4154feeb818c8b714295b2",
+    "retrieval/experiments/optimization_benchmark.py": "914c8350a1eb102a246ae258d23bc256e5262e85285657d34da94600cba9f77b",
+    "retrieval/experiments/optimization_report.py": "7904eae5def2d4078796f16ec061ccd39fb6616ff4b6a6f92efdcb4d74cf901c",
+    "retrieval/experiments/calibration_search.py": "88d0767fcfeb75abfb714a55731cf78a39dfdad293f7d71b66692cbdf554420f",
+    "retrieval/experiments/legacy_service.py": "82b0a7ab546d3104243cfade85ab4e62ed1049a9faf0520794ae9d6cf753fa30",
+    "app/retrieval/embedding.py": "5ec608de3ad93b8daff636217c8c6576d0a9b6bb271885621b96ca0fc74107ea",
+    "app/retrieval/service.py": "9ddeaab3ce48450192545e94db30be5f2d734c3fa14fc1ffb70523775e380d03",
+    "uv.lock": "d3d7346024ffbc890761ec08049d725a83003448bd7089f42d025543df58fe62"
+  },
+  "paid_api_calls": 0,
+  "scope": "local retrieval only; uncommitted experiment source recorded separately from base commit"
+}

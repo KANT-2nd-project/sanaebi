@@ -1,0 +1,18 @@
+{
+  "candidate": "adjacent_top12",
+  "adopted": "C_unlimited",
+  "candidate_accepted": false,
+  "lost_success_ids": [
+    "V14"
+  ],
+  "precision_regressed": false,
+  "runtime_passed": true,
+  "input_sha256": {
+    "tmp/retrieval-v3/confirmation-summary.json": "d9d52526101f661b4fa745eea9c3aea95ade580f94df7dd5d4c8c4b98b8542f9",
+    "tmp/retrieval-v3/confirmation-review/confirmation-judgments.json": "fe1f02b1b53b1c8eb4aa12f50dac3199c3a135b7b630168cc322b35b05d31285",
+    "retrieval/reports/2026-10-15-retrieval-v3/candidate-freeze.json": "61479449a04c53588d94c4f15bc91e74d624403e025ef2f6bfa3d6ccbb0975eb",
+    "retrieval/reports/2026-10-15-retrieval-v3/new-confirmation.json": "72cfddbd5764b860b6c6ccc2d7343a8076e3bd7397bbdbca935595dff029559b"
+  },
+  "runtime_evidence": "raw/benchmark-adjacent12.json",
+  "operational_activation": false
+}
