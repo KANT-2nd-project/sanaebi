@@ -55,6 +55,8 @@ app/
 
 코드를 읽을 때는 `fastapi_main.py` → `dependencies.py` → `questions/router.py` → `questions/service.py` → `classification/predictor.py` 순서로 확인한다. 문서 기능은 documents, 이후 답변 연결은 answering에서 읽는다. 루트 classification/은 학습 공간이며 app/classification/은 서버 추론 기능이다.
 
+서버는 `retrieval/experiments/`와 `archive/`를 import하지 않는다. 미채택 임베딩 문맥 확장은 실험 계층에서 재현하고, 과거 실행기 전용 trace 단계 해석은 보관 계층에서 관리한다. 현재 trace의 요청·분류·검색·생성 기록과 일반 모델 콜백은 유지한다. `/ask`와 `/assistant`는 공통 의존성 조립으로 같은 문서 provider·검색기·답변기 선택을 사용한다.
+
 기존 routers/services/infrastructure 폴더와 재수출 래퍼는 제거했다. 내부 Python import 경로는 변경했으며 외부에 배포된 Python 라이브러리 호환을 보장하지 않는다. HTTP API와 `app.fastapi_main:app` 실행 진입점은 유지한다. 과거 단독 KoELECTRA 래퍼·echo 답변 함수는 제거하고, JSONL 처리는 archive/server_legacy에 보존한다.
 
 문서 snapshot 진단은 `uv run --locked python -m scripts.inspect_document_context`로 실행한다. 읽기 전용이며 DB가 없으면 오류를 숨기지 않는다. trace는 기존 TRACE_DIR·TRACE_FULL_PROMPT·TRACE_MAX_CHARS 설정과 기록 형식을 유지한다. 모델 종료와 별개로 최종 생성 판정·설정 식별자·snapshot/프롬프트 해시·시간·사용량을 기록한다. 새 생성 요약에는 원문·키·예외 메시지를 넣지 않는다. 기존 opt-in trace의 요청·응답·콜백 원문은 민감 자료로 취급한다.

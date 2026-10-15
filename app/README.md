@@ -165,7 +165,7 @@ def handle(question):
 uv run --locked python -m scripts.inspect_document_context
 ```
 
-[진단 trace](diagnostics/trace.py)는 선택적 요청·LangChain 기록이다. `TRACE_DIR`을 지정했을 때 기록하며 `TRACE_MAX_CHARS`·`TRACE_FULL_PROMPT`로 기록 길이를 조절한다. 상세 기록 형식은 해당 모듈의 설명을, 변경 기준은 [서버 규약](../docs/server-conventions.md)을 따른다. 문서를 수정하거나 이관하려면 [문서 관리 절차](../docs/document-management.md)를, 전체 문서 탐색은 [문서 색인](../docs/README.md)을 이용한다.
+[진단 trace](diagnostics/trace.py)는 선택적 요청·분류·검색·생성 및 일반 모델 콜백 기록이다. 과거 실행기의 단계 해석은 [보관 trace](../archive/answering_v1/trace.py)에 분리하며 서버는 보관 모듈을 import하지 않는다. `TRACE_DIR`을 지정했을 때 기록하며 `TRACE_MAX_CHARS`·`TRACE_FULL_PROMPT`로 기록 길이를 조절한다. 상세 기록 형식은 해당 모듈의 설명을, 변경 기준은 [서버 규약](../docs/server-conventions.md)을 따른다. 문서를 수정하거나 이관하려면 [문서 관리 절차](../docs/document-management.md)를, 전체 문서 탐색은 [문서 색인](../docs/README.md)을 이용한다.
 
 ## 개발 검사
 
