@@ -26,3 +26,11 @@
 
 - 최신 main `d459758`의 v7 실험·기록을 보존해 통합했다. 기본 v5는 변경하지 않았다. 통합 후 전체 Python832개(49.973초)·Ruff check·format461파일 통과.
 - 개발 PC의 CPU affinity2·torch thread1에서 한 질문10회 검색 p50 44.067ms·p95 46.348ms. 실제2vCPU 운영·전체HTTP 성능과 구분한다.
+
+## 게시·외부 기록 확인
+
+[PR #10](https://github.com/KANT-2nd-project/sanaebi/pull/10)의 [CI](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38727107998)에서 Python·웹·ARM64 이미지 빌드와 runtime import 검사가 통과했다. main `dfc7ea6c56f9364db4cdbd682f12e077df401346` 병합 제목에 `[skip ci]`를 적용했고 해당 SHA의 Actions 실행0을 확인했다. 실제 운영 candidate/rollback 검증은 이 CI 검사와 별개로 미완료다.
+
+Notion 프로젝트 문서 안내·서비스 처리 기준·데이터/실험 절차·운영 규칙4개에 요약과 게시 링크를 추가하고 본문·병합SHA·링크를 재조회했다. [새 개인 일지](https://www.notion.so/3fa05a3cdadc81b6bb1ff2666216cd5b)의 담당자 최재선·영역 검색·생성·날짜2026-10-15·완료 상태를 확인했다. 완료는 이번 실행기·제한된 평가 시도·기록 게시 범위이며, 20문항 품질 평가·운영 승격의 완료가 아니다. 기존 일지는 수정하지 않았다.
+
+원래 작업 공간의 서버 수정2파일은 시작 시점 SHA256과 일치했다. 모델·DB·환경 파일을 커밋하지 않았고 원자료는 별도 작업 공간의 디스크 기반 tmp에 보존했다. 변경 문서 상대링크96개와 diff check를 확인했다.
