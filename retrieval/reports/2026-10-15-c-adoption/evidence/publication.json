@@ -1,0 +1,24 @@
+{
+  "pr": "https://github.com/KANT-2nd-project/sanaebi/pull/11",
+  "merge_sha": "3c3a8a10ab3b8072ff813348d039a6741a672eed",
+  "ci_run": 38751813453,
+  "checks": {
+    "python": "success",
+    "web": "success",
+    "image": "success",
+    "deploy": "skipped"
+  },
+  "merge_skip_ci": true,
+  "notion_pages_verified": [
+    "3f805a3cdadc81e1a70bfe82c89cebe7",
+    "3f805a3cdadc81d7b909fc71ed78381b",
+    "3f805a3cdadc81d59dc9fec6e4fcca1d",
+    "3f805a3cdadc81aa9f48d8445d372b80"
+  ],
+  "journal_verified": "3fa05a3cdadc81a6b493f48a5f3d2d84",
+  "journal_status": "완료",
+  "production_access": false,
+  "production_deployment": false,
+  "paid_llm_calls_this_implementation": 0,
+  "openapi_sha256": "543553427fad74fa5d98e3b0ab01d32b8e9d83d74070cda0ee770f5bcb7dd015"
+}

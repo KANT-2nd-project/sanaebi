@@ -27,4 +27,12 @@
 
 ## Git·외부 반영
 
-PR CI·main 병합·Notion 재조회는 진행 중이며 확인 후 후속 기록을 남긴다. 실제2vCPU·컨테이너 운영 복구·사람 검수·운영 활성화는 미완료다.
+[PR #11](https://github.com/KANT-2nd-project/sanaebi/pull/11)의 [Delivery 실행](https://github.com/KANT-2nd-project/sanaebi/actions/runs/38751813453)에서 Python·웹·ARM64 이미지가 모두 통과했고 deploy는 skipped였다. main 병합 `3c3a8a10ab3b8072ff813348d039a6741a672eed`와 원격 보고서 링크를 확인했다. 병합 제목에 `[skip ci]`를 적용해 운영 자동 배포를 제외했다. 이번 최종 기록 후속 커밋에도 같은 표시를 적용한다.
+
+- 기능별 커밋: `7becf4f` 과거 실험·증거, `f240a97` C 검색, `76e4548` rag 기본값·배포 호환, `1073235` 회귀 보강, `d51e582` 문서·원자료 게시.
+- Notion [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7), [서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b), [데이터 작성·검수·실험 절차](https://www.notion.so/3f805a3cdadc81d59dc9fec6e4fcca1d), [운영·개발 규칙](https://www.notion.so/3f805a3cdadc81aa9f48d8445d372b80)의 현재 구역을 수정하고 본문·게시 링크를 재조회했다. 기존 운영 shadow+full 기록은 당시 사실로 보존했다.
+- 제목 중복 조회 후 [새 개인 일지](https://www.notion.so/3fa05a3cdadc81a6b493f48a5f3d2d84)를 생성했다. 최재선·검색/생성·2026-10-15·완료 속성과 사용자 결정/AI 수행·검증/운영 미전환 본문을 재조회했다. 기존 일지는 수정하지 않았다.
+- OpenAPI12개 경로·스키마 전체 digest가 기준 main과 동일하다: `543553427fad74fa5d98e3b0ab01d32b8e9d83d74070cda0ee770f5bcb7dd015`. 앱 import로 확인했으며 실제 LLM을 호출하지 않았다.
+- 상대 링크349개·앵커41개, Git에 저장된 context-limits manifest55항목의 바이트 일치, 변경220파일의 키 패턴 검사 통과. 기존 가중치·DB·환경파일과 .venv는 커밋에 포함하지 않았다.
+
+실제2vCPU·운영 candidate/rollback·사람 검수·운영 RAG 활성화는 미완료다. CI 이미지 검증을 운영 배포나 전체 답변 품질 승인으로 표현하지 않는다.
