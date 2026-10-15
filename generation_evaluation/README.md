@@ -148,3 +148,13 @@ GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판�
 ## 최종 프로필 기록 호환성
 
 run_case는 기본 examples_answer_scope_v3을 사용하며 keyword-only prompt_profile로 과거 프로필을 지정할 수 있다. 새 기록은 프로필과 실제 프롬프트 해시를 함께 남긴다. 과거 누락 profile은 None이며 새 기본값으로 소급하지 않는다. summarize_runs는 모델 설정과 프로필을 함께 묶고 group_by_config는 기존 모델 설정별 인터페이스를 유지한다. 비교 집계는 각 설정·프로필 그룹의 문항과 시도 수도 검사한다. [실행 반영 기록](../docs/worklogs/2026-10-15-generation-final-runtime.md)을 참조한다.
+
+## 현재 평가 코드와 과거 실험의 경계
+
+평가 전략은 `generation_evaluation.strategies.execute_strategy`에서 선택한다. single과 evidence_first의 계약 및 실험 기본 profile인 baseline은 유지한다. 운영 생성은 이 평가 전략 모듈을 import하지 않는다. 기존 `generation.strategies` 경로의 호환 wrapper는 제공하지 않는다.
+
+현재 평가기는 `experiment_support`의 JSON digest·파일 해시 목록 생성 함수를 사용한다. 문서 renderer와 BudgetLedger는 기존 공통 구현을 사용한다. 프로필 registry는 검토 후 유지했으며 v3와 과거 프롬프트 문자열은 변경하지 않았다.
+
+새 평가 코드는 날짜별 실험 실행기에서 helper를 import하지 않는다. 보존된 날짜별 실행기와 동적 import는 당시 기록이며 수정하지 않는다. 과거 실험은 해당 보고서에 기록된 고정 커밋에서 재현한다. 이번 이동 전 구조 확인 기준은 `57fdd26`이다. 현재 코드로 과거 결과를 resume하면 manifest 불일치로 호출 전에 거부한다. 기존 manifest를 다시 쓰거나 검사를 우회하지 않는다.
+
+변경·검증·완료 상태는 [S4 작업 기록](../docs/worklogs/2026-10-15-evaluation-cleanup.md)을 따른다.
