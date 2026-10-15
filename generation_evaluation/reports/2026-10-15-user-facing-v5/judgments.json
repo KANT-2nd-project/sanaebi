@@ -1,0 +1,130 @@
+{
+  "reviewer": "independent AI reviewer, nonblind; primary AI source reconciliation",
+  "style_scope_pass": 13,
+  "full_quality": {
+    "pass": 11,
+    "partial": 2,
+    "fail": 0,
+    "uncertain": 0
+  },
+  "cases": [
+    {
+      "id": "U01",
+      "style_scope": "pass",
+      "quality": "partial",
+      "reason": "People팀의 퇴사 정산 기록 확인 책임을 일반 연봉 안내로 넓혔다. v3/v4에도 유사 표현이 있다.",
+      "evidence_ids": [
+        "ieum-052",
+        "ieum-057",
+        "ieum-062"
+      ]
+    },
+    {
+      "id": "U02",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "업무 안내·조회/실행 한계를 직접 설명하고 원하는 업무를 묻는다.",
+      "evidence_ids": [
+        "ieum-053"
+      ]
+    },
+    {
+      "id": "U03",
+      "style_scope": "pass",
+      "quality": "partial",
+      "reason": "연봉 정보 부족과 연차 안내를 분리했지만 팀장 접수 후1영업일 회신이 빠졌다. v3/v4에는 있어 이번 관측에서 완전성 회귀다.",
+      "evidence_ids": [
+        "ieum-001"
+      ]
+    },
+    {
+      "id": "U04",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "개인 조회 불가와 일반 인사 문의 창구를 구분한다.",
+      "evidence_ids": [
+        "ieum-053",
+        "ieum-040"
+      ]
+    },
+    {
+      "id": "U05",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "3영업일 전과 인사 > 휴가 경로가 일치한다.",
+      "evidence_ids": [
+        "ieum-001"
+      ]
+    },
+    {
+      "id": "U06",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "OR 경로·24시간·30분 목표·15분 인수 목표·대체 인계·회수 한계·증거 보존·통지 주체를 유지한다.",
+      "evidence_ids": [
+        "ieum-030",
+        "ieum-031",
+        "ieum-035",
+        "ieum-040"
+      ]
+    },
+    {
+      "id": "U07",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "레시피 사실 답변 대신 회사 업무 서비스 범위를 설명한다.",
+      "evidence_ids": []
+    },
+    {
+      "id": "U08",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "일반 문의 경로·시간·실제 문서 제목을 제시한다.",
+      "evidence_ids": [
+        "ieum-053",
+        "ieum-040"
+      ]
+    },
+    {
+      "id": "U09",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "메뉴 미확인과 제도 부재를 구분한다. 제도 운영 여부도 확인 어렵다는 추가 문장은 다소 과잉 유보다.",
+      "evidence_ids": [
+        "ieum-062"
+      ]
+    },
+    {
+      "id": "U10",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "일반 기술 강의는 서비스 범위로 안내하고 사내 적용 맥락은 물을 수 있게 한다.",
+      "evidence_ids": []
+    },
+    {
+      "id": "U11",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "추가 합성 문서의 업무 대시보드·말단·상위 구간 집계만 답한다.",
+      "evidence_ids": [
+        "synthetic-segment-001"
+      ]
+    },
+    {
+      "id": "U12",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "연차 안내와 일반 알고리즘 구현 요청을 분리한다.",
+      "evidence_ids": [
+        "ieum-001"
+      ]
+    },
+    {
+      "id": "U13",
+      "style_scope": "pass",
+      "quality": "pass",
+      "reason": "트리의 의미·업무 맥락을 단정하지 않고 되묻는다.",
+      "evidence_ids": []
+    }
+  ]
+}

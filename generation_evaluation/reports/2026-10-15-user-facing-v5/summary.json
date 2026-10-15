@@ -1,0 +1,43 @@
+{
+  "technical_by_profile": {
+    "examples_answer_scope_v3": {
+      "calls": 9,
+      "completed": 9,
+      "median_seconds": 7.3912102169997524,
+      "max_seconds": 20.9956148650017,
+      "input_tokens": 515179,
+      "output_tokens": 4338,
+      "cost_upper_usd": 0.13204825,
+      "usage_known": true
+    },
+    "examples_answer_scope_v4": {
+      "calls": 9,
+      "completed": 9,
+      "median_seconds": 8.046939300002123,
+      "max_seconds": 24.830769317006343,
+      "input_tokens": 518185,
+      "output_tokens": 5547,
+      "cost_upper_usd": 0.1337065,
+      "usage_known": true
+    },
+    "examples_answer_scope_v5": {
+      "calls": 13,
+      "completed": 13,
+      "median_seconds": 6.378062630996283,
+      "max_seconds": 29.07967080700473,
+      "input_tokens": 753848,
+      "output_tokens": 7028,
+      "cost_upper_usd": 0.193733,
+      "usage_known": true
+    }
+  },
+  "quality": {
+    "pass": 11,
+    "partial": 2,
+    "fail": 0,
+    "uncertain": 0
+  },
+  "scope": "v3/v4 9 each; v5 13, 4 additional scope cases; do not combine accuracy",
+  "total_calls": 31,
+  "cost_upper_usd": 0.45948775
+}

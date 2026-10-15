@@ -1,0 +1,25 @@
+{
+  "max_calls": 13,
+  "profiles": [
+    "examples_answer_scope_v5"
+  ],
+  "snapshot_sha256": "ea42f4a7d19005b6b2aab0b44bcd6bd0f19b27a67ec5d9c252eb41bd1c90c586",
+  "snapshot_fingerprint": "8043a8c0789d03424d6f88d606369392ea031cc0708763e0dc986e6f959e80f6",
+  "document_count": 71,
+  "cases_sha256": "f6846f5aac497491a839589d44c166ea76d508f31e2c07a5e321e03e0a036869",
+  "code_sha256": {
+    "generation/profiles.py": "3943e19b7ab04ba2d79178fe757a5fa29c610e69bf52b5a93520887357defa72",
+    "generation/prompts.py": "8450797430c0cbe8380cc994d8fd2ba8fc4eabc568c294ee142f43c6b319e621",
+    "generation/providers.py": "c3892d4064a1c9127c4b0dc5a1dfbf54fc85f9391cca17ac85c84b1a6f9c6c45",
+    "generation/service.py": "42ba68643cc515c8356800600b58c68701300bd3edf3d506a900551be8bfa16f",
+    "generation/validation.py": "37b096eeed05b8b9654ae563223ac6c2a297ca2e078109f79fc7c6e9b3bd68cb",
+    "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3",
+    "uv.lock": "d3d7346024ffbc890761ec08049d725a83003448bd7089f42d025543df58fe62"
+  },
+  "runner_sha256": "5b6b20572909ff2862a08adde52a7080fc8b711a3510b89e8c0a106be7f1dd10",
+  "pricing_source": "https://developers.openai.com/api/docs/pricing",
+  "pricing_checked_on": "2026-10-15",
+  "pricing_method": "Conservative Standard long-context cache-write input 0.25/M, output 0.75/M; no cache discount; not an invoice.",
+  "reserved_upper_usd": 0.9439740000000001,
+  "scope": "generate_from_documents via run_case; frozen published snapshot; no HTTP/classifier/browser; sequential, no retries."
+}
