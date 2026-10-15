@@ -249,7 +249,7 @@ def _idempotent_write(
         raise DocumentServiceError(
             409,
             "idempotency_conflict",
-            "이 Idempotency-Key는 다른 요청에 이미 사용되었습니다.",
+            "이 Idempotency-Key는 다른 요청에 사용되었거나 시연 초기화로 무효화되었습니다. 최신 문서를 확인해주세요.",
         ) from exc
     except RevisionConflictError as exc:
         raise _revision_conflict(exc.current_version) from exc

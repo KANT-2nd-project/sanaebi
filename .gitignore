@@ -80,3 +80,7 @@ Thumbs.db
 
 # Root development process runner
 /node_modules/
+
+# Demo reset locks and backups, including custom database directories.
+*.reset.lock
+**/backups/demo-reset-*/
