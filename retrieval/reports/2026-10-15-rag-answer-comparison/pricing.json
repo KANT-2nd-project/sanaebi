@@ -1,0 +1,14 @@
+{
+  "source_url": "https://developers.openai.com/api/docs/pricing",
+  "checked_on": "2026-10-15",
+  "model": "gpt-6-luna",
+  "tier": "Standard long context conservative",
+  "input_usd_per_million": 0.2,
+  "cached_input_usd_per_million": 0.02,
+  "cache_write_usd_per_million": 0.25,
+  "output_usd_per_million": 0.75,
+  "preflight": "UTF-8 bytes plus message overhead as input token upper estimate, all input at cache-write rate, max output16384",
+  "max_calls": 40,
+  "max_total_usd": 5,
+  "note": "Conservative estimate, not invoice. No automatic retry. Reserve both arms before any call in pair."
+}
