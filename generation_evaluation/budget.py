@@ -25,10 +25,11 @@ class BudgetLedger:
     def __init__(
         self,
         path: Path,
-        total_dollars: float = 5,
-        dev_dollars: float = 3,
-        total_seconds: float = 7200,
-        dev_seconds: float = 4200,
+        total_dollars: float | None = 5,
+        dev_dollars: float | None = 3,
+        total_seconds: float | None = 7200,
+        dev_seconds: float | None = 4200,
+        max_calls: int | None = None,
     ) -> None:
         self.path = Path(path)
         for name, value in (
@@ -37,13 +38,33 @@ class BudgetLedger:
             ("total_seconds", total_seconds),
             ("dev_seconds", dev_seconds),
         ):
-            self._validate_amount(value, name)
-        if dev_dollars > total_dollars or dev_seconds > total_seconds:
+            if value is not None:
+                self._validate_amount(value, name)
+        if (
+            dev_dollars is not None
+            and total_dollars is not None
+            and dev_dollars > total_dollars
+        ) or (
+            dev_seconds is not None
+            and total_seconds is not None
+            and dev_seconds > total_seconds
+        ):
             raise ValueError("개발 한도는 전체 한도 이하여야 합니다.")
-        self.total_dollars = float(total_dollars)
-        self.dev_dollars = float(dev_dollars)
-        self.total_seconds = float(total_seconds)
-        self.dev_seconds = float(dev_seconds)
+        if max_calls is not None and (
+            isinstance(max_calls, bool)
+            or not isinstance(max_calls, int)
+            or max_calls < 0
+        ):
+            raise ValueError("max_calls는 0 이상의 정수 또는 None이어야 합니다.")
+        self.total_dollars = self._as_optional_float(total_dollars)
+        self.dev_dollars = self._as_optional_float(dev_dollars)
+        self.total_seconds = self._as_optional_float(total_seconds)
+        self.dev_seconds = self._as_optional_float(dev_seconds)
+        self.max_calls = max_calls
+
+    @staticmethod
+    def _as_optional_float(value: float | None) -> float | None:
+        return None if value is None else float(value)
 
     @staticmethod
     def _validate_amount(value: float, name: str) -> None:
@@ -119,6 +140,10 @@ class BudgetLedger:
             "total_seconds": self.total_seconds,
             "dev_seconds": self.dev_seconds,
         }
+        # Keep the original four-field shape for legacy runs. A call bound is
+        # added only when a new run explicitly configures one.
+        if self.max_calls is not None:
+            limits["max_calls"] = self.max_calls
         lock_file = self._locked()
         try:
             data = self._read()
@@ -128,16 +153,34 @@ class BudgetLedger:
                 return
 
             stored_limits = data["budget_limits"]
-            if not isinstance(stored_limits, dict) or set(stored_limits) != set(limits):
-                raise ValueError("예산 ledger의 고정 한도 형식이 올바르지 않습니다.")
+            if not isinstance(stored_limits, dict):
+                raise TypeError("예산 ledger의 고정 한도 형식이 올바르지 않습니다.")
+            if set(stored_limits) != set(limits):
+                raise ValueError(
+                    "예산 ledger가 다른 한도로 고정되어 있습니다. 기존 한도를 사용하세요."
+                )
             try:
                 for name, value in stored_limits.items():
-                    self._validate_amount(value, name)
+                    if name == "max_calls":
+                        if (
+                            isinstance(value, bool)
+                            or not isinstance(value, int)
+                            or value < 0
+                        ):
+                            raise ValueError("invalid max_calls")
+                    elif value is not None:
+                        self._validate_amount(value, name)
             except (TypeError, ValueError) as exc:
                 raise ValueError(
                     "예산 ledger의 고정 한도 형식이 올바르지 않습니다."
                 ) from exc
-            if {name: float(value) for name, value in stored_limits.items()} != limits:
+            normalized_limits = {
+                name: (
+                    float(value) if value is not None and name != "max_calls" else value
+                )
+                for name, value in stored_limits.items()
+            }
+            if normalized_limits != limits:
                 raise ValueError(
                     "예산 ledger가 다른 한도로 고정되어 있습니다. 기존 한도를 사용하세요."
                 )
@@ -189,23 +232,53 @@ class BudgetLedger:
                     "이미 사용된 request_id입니다. 자동 재실행을 거부했습니다."
                 )
 
+            stored_limits = data.get("budget_limits")
+            stored_max_calls = (
+                stored_limits.get("max_calls")
+                if isinstance(stored_limits, dict)
+                else None
+            )
+            if stored_max_calls is not None and self.max_calls != stored_max_calls:
+                raise ValueError("예산 ledger의 max_calls와 설정이 다릅니다.")
+            call_limit = (
+                stored_max_calls if stored_max_calls is not None else self.max_calls
+            )
+            if call_limit is not None and len(reservations) >= call_limit:
+                raise BudgetExceeded("실험 생성 호출 상한을 초과합니다.")
+
             dev_charged = sum(
                 self._charged(item)
                 for item in reservations.values()
                 if item["phase"] == "dev"
             )
             total_charged = sum(self._charged(item) for item in reservations.values())
-            if phase == "dev" and dev_charged + dollars > self.dev_dollars + 1e-12:
+            if (
+                phase == "dev"
+                and self.dev_dollars is not None
+                and dev_charged + dollars > self.dev_dollars + 1e-12
+            ):
                 raise BudgetExceeded("개발 단계 비용 예약이 한도를 초과합니다.")
-            if total_charged + dollars > self.total_dollars + 1e-12:
+            if (
+                self.total_dollars is not None
+                and total_charged + dollars > self.total_dollars + 1e-12
+            ):
                 raise BudgetExceeded("전체 비용 예약이 한도를 초과합니다.")
 
             now = time.time()
             if data["started_at"] is None:
                 data["started_at"] = now
             elapsed = max(0.0, now - float(data["started_at"]))
-            total_remaining = max(0.0, self.total_seconds - elapsed)
-            dev_remaining = min(total_remaining, max(0.0, self.dev_seconds - elapsed))
+            total_remaining = (
+                float("inf")
+                if self.total_seconds is None
+                else max(0.0, self.total_seconds - elapsed)
+            )
+            dev_remaining = min(
+                total_remaining,
+                float("inf")
+                if self.dev_seconds is None
+                else max(0.0, self.dev_seconds - elapsed),
+            )
             if total_remaining <= 0 or (phase == "dev" and dev_remaining <= 0):
                 raise BudgetExceeded("실험 시간 한도가 만료되어 예약할 수 없습니다.")
 
@@ -258,14 +331,31 @@ class BudgetLedger:
             fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
             lock_file.close()
         if started_at is None:
-            return self.dev_seconds if phase == "dev" else self.total_seconds
+            if phase == "dev":
+                return min(
+                    self.total_seconds
+                    if self.total_seconds is not None
+                    else float("inf"),
+                    self.dev_seconds if self.dev_seconds is not None else float("inf"),
+                )
+            return (
+                self.total_seconds if self.total_seconds is not None else float("inf")
+            )
         elapsed = max(0.0, time.time() - float(started_at))
         if phase == "dev":
             return min(
-                max(0.0, self.total_seconds - elapsed),
-                max(0.0, self.dev_seconds - elapsed),
+                max(0.0, self.total_seconds - elapsed)
+                if self.total_seconds is not None
+                else float("inf"),
+                max(0.0, self.dev_seconds - elapsed)
+                if self.dev_seconds is not None
+                else float("inf"),
             )
-        return max(0.0, self.total_seconds - elapsed)
+        return (
+            max(0.0, self.total_seconds - elapsed)
+            if self.total_seconds is not None
+            else float("inf")
+        )
 
     def snapshot(self) -> dict[str, Any]:
         lock_file = self._locked()

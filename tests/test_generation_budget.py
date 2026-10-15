@@ -126,6 +126,90 @@ class BudgetLedgerTests(unittest.TestCase):
                         BudgetLedger(path, **limits).bind_limits()
                     self.assertEqual(BudgetLedger(path).snapshot(), original)
 
+    def test_unlimited_cost_and_time_caps_keep_usage_and_deadline_observable(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "budget.json"
+            ledger = BudgetLedger(
+                path,
+                total_dollars=None,
+                dev_dollars=None,
+                total_seconds=None,
+                dev_seconds=None,
+                max_calls=166,
+            )
+            ledger.bind_limits()
+            self.assertTrue(ledger.remaining_seconds("dev") == float("inf"))
+            ledger.reserve("unknown-usage", "dev", 25.0)
+            ledger.settle("unknown-usage", None)
+            snapshot = ledger.snapshot()
+            self.assertEqual(snapshot["budget_limits"]["total_dollars"], None)
+            self.assertEqual(snapshot["budget_limits"]["total_seconds"], None)
+            self.assertEqual(snapshot["budget_limits"]["max_calls"], 166)
+            reservation = snapshot["reservations"]["unknown-usage"]
+            self.assertEqual(reservation["charged_dollars"], 25.0)
+            self.assertEqual(len(snapshot["reservations"]), 1)
+
+    def test_call_limit_is_atomic_and_counts_unknown_failed_requests(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "budget.json"
+            ledger = BudgetLedger(
+                path,
+                total_dollars=None,
+                dev_dollars=None,
+                total_seconds=None,
+                dev_seconds=None,
+                max_calls=4,
+            )
+            ledger.bind_limits()
+            barrier = threading.Barrier(10)
+            outcomes: list[tuple[str, str | None]] = []
+            outcome_lock = threading.Lock()
+
+            def reserve(index: int) -> None:
+                barrier.wait()
+                request_id = f"request-{index}"
+                try:
+                    ledger.reserve(request_id, "dev", 1.0)
+                except BudgetExceeded:
+                    result = ("rejected", None)
+                else:
+                    # Unknown actual usage models a failed or uncertain call;
+                    # settling it must not free a call slot.
+                    ledger.settle(request_id, None)
+                    result = ("reserved", request_id)
+                with outcome_lock:
+                    outcomes.append(result)
+
+            threads = [threading.Thread(target=reserve, args=(i,)) for i in range(10)]
+            for thread in threads:
+                thread.start()
+            for thread in threads:
+                thread.join()
+
+            self.assertEqual(sum(state == "reserved" for state, _ in outcomes), 4)
+            snapshot = ledger.snapshot()
+            self.assertEqual(len(snapshot["reservations"]), 4)
+            for request_id, reservation in snapshot["reservations"].items():
+                self.assertEqual(reservation["status"], "settled")
+                self.assertIsNone(reservation["actual_dollars"])
+                with self.assertRaises(BudgetExceeded):
+                    ledger.reserve(f"retry-{request_id}", "final", 0.0)
+
+    def test_call_limit_binding_is_immutable_and_old_finite_ledgers_still_bind(self):
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "budget.json"
+            legacy = BudgetLedger(path, 5, 3, 7200, 4200)
+            legacy.reserve("old-request", "dev", 0.5)
+            legacy.bind_limits()
+            legacy_snapshot = legacy.snapshot()
+            self.assertEqual(
+                set(legacy_snapshot["budget_limits"]),
+                {"total_dollars", "dev_dollars", "total_seconds", "dev_seconds"},
+            )
+            with self.assertRaisesRegex(ValueError, "다른 한도"):
+                BudgetLedger(path, 5, 3, 7200, 4200, max_calls=166).bind_limits()
+            self.assertEqual(BudgetLedger(path).snapshot(), legacy_snapshot)
+
     def test_actual_settlement_releases_unused_reservation_and_is_idempotent(self):
         with TemporaryDirectory() as directory:
             ledger = BudgetLedger(Path(directory) / "budget.json", 1, 0.8)

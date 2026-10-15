@@ -10,6 +10,8 @@ from unittest.mock import Mock, patch
 from langchain_core.messages import AIMessage
 
 from generation_evaluation.selection import (
+    MANIFEST_SOURCE_PATHS,
+    _manifest_code_hashes,
     append_record,
     completed_keys,
     format_check,
@@ -41,6 +43,21 @@ class SelectionTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 completed_keys([row, row])
 
+    def test_manifest_hash_inventory_covers_runtime_validation_and_lock_sources(self):
+        hashes = _manifest_code_hashes()
+        for name in (
+            "generation/config.py",
+            "generation/types.py",
+            "generation/validation.py",
+            "generation/output_schema.py",
+            "generation_evaluation/types.py",
+            "generation_evaluation/reporting.py",
+            "generation_evaluation/metrics.py",
+            "uv.lock",
+        ):
+            self.assertIn(name, hashes)
+        self.assertEqual(set(hashes), set(MANIFEST_SOURCE_PATHS))
+
 
 class SelectionRunnerTests(unittest.TestCase):
     def setUp(self):
@@ -48,8 +65,8 @@ class SelectionRunnerTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         code_hash_patch = patch(
-            "generation_evaluation.selection.Path.read_bytes",
-            return_value=b"stable test code snapshot",
+            "generation_evaluation.selection._manifest_code_hashes",
+            return_value={"test": "stable"},
         )
         code_hash_patch.start()
         self.addCleanup(code_hash_patch.stop)
@@ -76,7 +93,18 @@ class SelectionRunnerTests(unittest.TestCase):
         cases_path = self.root / "cases.json"
         cases_path.write_text(
             json.dumps(
-                [{"case_id": "case-1", "question": "어디에서 확인하나요?"}],
+                [
+                    {
+                        "case_id": "case-1",
+                        "question": "어디에서 확인하나요?",
+                        "evidence": [
+                            {
+                                "document_id": "DOC-1",
+                                "quote": "직원은 포털에서 상태를 조회할 수 있습니다.",
+                            }
+                        ],
+                    }
+                ],
                 ensure_ascii=False,
             ),
             encoding="utf-8",
@@ -105,10 +133,13 @@ class SelectionRunnerTests(unittest.TestCase):
             start_repeat=1,
             ledger=self.root / "ledger.json",
             output=self.root / "run",
+            rubric=None,
+            unlimited_budget=False,
+            max_calls=None,
         )
 
     @staticmethod
-    def _response(raw_text):
+    def _response(raw_text, additional_kwargs=None):
         return AIMessage(
             content=raw_text,
             usage_metadata={
@@ -117,6 +148,7 @@ class SelectionRunnerTests(unittest.TestCase):
                 "total_tokens": 18,
             },
             response_metadata={"done_reason": "stop"},
+            additional_kwargs=additional_kwargs or {},
         )
 
     def _mock_ollama(self, raw_text='{"answer":"포털에서 확인하세요."}'):
@@ -452,6 +484,154 @@ class SelectionRunnerTests(unittest.TestCase):
         )
         self.assertNotIn(secret, persisted)
 
+    def test_provider_refusal_metadata_is_preserved_in_stage_evidence(self):
+        from generation_evaluation.selection import run
+
+        model = Mock()
+        model.invoke.return_value = self._response(
+            '{"answer":"요청하신 작업은 수행할 수 없습니다."}',
+            {"refusal": "요청된 작업을 수행할 수 없습니다."},
+        )
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+
+        record = self._read_jsonl(self.args.output / "runs.jsonl")[0]
+        self.assertEqual(
+            record["calls"][0]["additional_kwargs"]["refusal"],
+            "요청된 작업을 수행할 수 없습니다.",
+        )
+
+    def _enable_followup_candidate(self, rubric_case_ids=None):
+        candidate_data = json.loads(self.args.candidates.read_text(encoding="utf-8"))
+        candidate_data["candidate-a"]["requires_rubric"] = True
+        self.args.candidates.write_text(json.dumps(candidate_data), encoding="utf-8")
+        rubric_case_ids = rubric_case_ids or ["case-1"]
+        rubric_path = self.root / "rubric.json"
+        rubric_path.write_text(
+            json.dumps(
+                {
+                    "version": "test-v1",
+                    "marker": "RUBRIC_ONLY_MARKER",
+                    "case_ids": rubric_case_ids,
+                    "response_contract": {"required_keys": ["answer"]},
+                    "dimensions": [{"id": "grounding"}],
+                    "cases": {
+                        "case-1": {
+                            "evidence": [
+                                {
+                                    "document_id": "DOC-1",
+                                    "quote": "직원은 포털에서 상태를 조회할 수 있습니다.",
+                                }
+                            ]
+                        }
+                    },
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        self.args.rubric = rubric_path
+        self.args.unlimited_budget = True
+        self.args.max_calls = 166
+
+    def test_followup_requires_fixed_rubric_budget_before_creating_run_files(self):
+        from generation_evaluation.selection import run
+
+        self._enable_followup_candidate()
+        self.args.rubric = None
+        with self.assertRaisesRegex(ValueError, "--rubric"):
+            run(self.args)
+        self.assertFalse(self.args.output.exists())
+        self.assertFalse(self.args.ledger.exists())
+
+        self.args.rubric = self.root / "rubric.json"
+        self.args.max_calls = 165
+        with self.assertRaisesRegex(ValueError, "--max-calls 166"):
+            run(self.args)
+        self.assertFalse(self.args.output.exists())
+
+        self.args.max_calls = 166
+        self.args.unlimited_budget = False
+        with self.assertRaisesRegex(ValueError, "--unlimited-budget"):
+            run(self.args)
+        self.assertFalse(self.args.output.exists())
+
+    def test_rubric_case_ids_and_duplicated_evidence_are_validated(self):
+        from generation_evaluation.selection import run
+
+        self._enable_followup_candidate(rubric_case_ids=["some-other-case"])
+        with self.assertRaisesRegex(ValueError, "rubric에 평가 문항이 없습니다"):
+            run(self.args)
+        self.assertFalse(self.args.output.exists())
+
+        self._enable_followup_candidate()
+        rubric = json.loads(self.args.rubric.read_text(encoding="utf-8"))
+        rubric["cases"]["case-1"]["evidence"][0]["quote"] = "다른 근거"
+        self.args.rubric.write_text(json.dumps(rubric), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "근거가 다릅니다"):
+            run(self.args)
+        self.assertFalse(self.args.output.exists())
+
+    def test_rubric_hash_is_in_manifest_and_changed_rubric_blocks_resume(self):
+        from generation_evaluation.selection import run
+
+        self._enable_followup_candidate()
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 0)
+            manifest = json.loads(
+                (self.args.output / "manifest.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(len(manifest["rubric_sha256"]), 64)
+            self.assertEqual(manifest["budget_limits"]["max_calls"], 166)
+            self.assertIsNone(manifest["budget_limits"]["total_dollars"])
+            self.assertNotIn("RUBRIC_ONLY_MARKER", str(model.invoke.call_args))
+            self.assertEqual(run(self.args), 0)
+            rubric = json.loads(self.args.rubric.read_text(encoding="utf-8"))
+            rubric["version"] = "changed"
+            self.args.rubric.write_text(json.dumps(rubric), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "manifest differs"):
+                run(self.args)
+
+        model.invoke.assert_called_once()
+
+    def test_experiment_call_cap_stops_before_an_extra_provider_request(self):
+        from generation_evaluation.selection import run
+
+        cases = json.loads(self.args.cases.read_text(encoding="utf-8"))
+        cases.append(
+            {
+                "case_id": "case-2",
+                "question": "다른 질문은 어디서 확인하나요?",
+            }
+        )
+        self.args.cases.write_text(
+            json.dumps(cases, ensure_ascii=False), encoding="utf-8"
+        )
+        self.args.max_calls = 1
+        self.args.unlimited_budget = True
+        model = self._mock_ollama()
+        with (
+            patch("generation_evaluation.selection.ChatOllama", return_value=model),
+            redirect_stdout(StringIO()),
+        ):
+            self.assertEqual(run(self.args), 2)
+
+        model.invoke.assert_called_once()
+        reservations = json.loads(self.args.ledger.read_text(encoding="utf-8"))[
+            "reservations"
+        ]
+        self.assertEqual(len(reservations), 1)
+        records = self._read_jsonl(self.args.output / "runs.jsonl")
+        self.assertEqual(len(records), 2)
+        self.assertEqual(records[1]["error_type"], "BudgetExceeded")
+
     def test_second_stage_budget_failure_keeps_first_call_accounting(self):
         from generation_evaluation.selection import run
 
@@ -481,6 +661,10 @@ class SelectionRunnerTests(unittest.TestCase):
                 side_effect=[2.5, 1.0],
             ),
             patch("generation_evaluation.selection.actual_cost", return_value=None),
+            patch(
+                "generation_evaluation.selection.invoke_openai_message",
+                return_value=self._response(evidence),
+            ) as invoke_openai,
             redirect_stdout(StringIO()),
         ):
             self.assertEqual(run(self.args), 2)
@@ -494,4 +678,5 @@ class SelectionRunnerTests(unittest.TestCase):
         reservation = next(iter(ledger["reservations"].values()))
         self.assertEqual(reservation["status"], "settled")
         self.assertEqual(reservation["charged_dollars"], 2.5)
-        model.invoke.assert_called_once()
+        invoke_openai.assert_called_once()
+        model.invoke.assert_not_called()

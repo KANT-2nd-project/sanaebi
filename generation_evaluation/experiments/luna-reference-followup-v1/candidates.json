@@ -1,0 +1,54 @@
+{
+  "reference": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "prompt_json"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "requires_rubric": true
+  },
+  "scope": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "prompt_json"
+    },
+    "profile": "examples_answer_scope_v1",
+    "strategy": "single",
+    "requires_rubric": true
+  },
+  "reference-strict": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "strict_json_schema"
+    },
+    "profile": "examples",
+    "strategy": "single",
+    "requires_rubric": true
+  },
+  "scope-strict": {
+    "config": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "output_mode": "strict_json_schema"
+    },
+    "profile": "examples_answer_scope_v1",
+    "strategy": "single",
+    "requires_rubric": true
+  }
+}
