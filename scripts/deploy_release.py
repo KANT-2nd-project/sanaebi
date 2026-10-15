@@ -27,6 +27,15 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 # independent of the caller's working directory.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from scripts.deployment_embedding import (
+    ReleaseError as EmbeddingReleaseError,
+)
+from scripts.deployment_embedding import (
+    RetrievalRelease,
+)
+from scripts.deployment_embedding import (
+    parse_manifest as parse_retrieval_manifest,
+)
 from scripts.production_maintenance import (
     DEFAULT_PATHS,
     HostPaths,
@@ -91,11 +100,20 @@ class Release:
     web_sha256: str
     model_manifest: str
     model_manifest_sha256: str
+    schema_version: int = 1
+    retrieval_manifest: str | None = None
+    retrieval_manifest_sha256: str | None = None
 
     def verify_payload_hashes(self, payload: Mapping[str, bytes]) -> None:
         for name, expected in (
             (self.web_archive, self.web_sha256),
             (self.model_manifest, self.model_manifest_sha256),
+            *(
+                ((self.retrieval_manifest, self.retrieval_manifest_sha256),)
+                if self.retrieval_manifest is not None
+                and self.retrieval_manifest_sha256 is not None
+                else ()
+            ),
         ):
             content = payload.get(name)
             if content is None:
@@ -110,6 +128,8 @@ class ReleaseInputs:
     model_id: str
     model_revision: str
     manifest_raw: bytes
+    retrieval_release: RetrievalRelease | None = None
+    retrieval_raw: bytes | None = None
 
 
 def _reject_duplicate_json_keys(pairs):
@@ -132,7 +152,7 @@ def parse_release_manifest(raw: bytes, expected_release_id: str) -> Release:
         )
     except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         raise DeploymentError("release.json is not valid UTF-8 JSON") from error
-    required = {
+    base_fields = {
         "schema_version",
         "release_id",
         "image",
@@ -141,10 +161,20 @@ def parse_release_manifest(raw: bytes, expected_release_id: str) -> Release:
         "model_manifest",
         "model_manifest_sha256",
     }
-    if not isinstance(value, dict) or set(value) != required:
+    if not isinstance(value, dict) or not base_fields.issubset(value):
         raise DeploymentError("release.json has an unsupported shape")
-    if type(value["schema_version"]) is not int or value["schema_version"] != 1:
+    schema_version = value["schema_version"]
+    if type(schema_version) is not int or schema_version not in (1, 2):
         raise DeploymentError("unsupported release.json schema")
+    retrieval_fields = {"retrieval_manifest", "retrieval_manifest_sha256"}
+    present_retrieval_fields = set(value) & retrieval_fields
+    if schema_version == 1 and set(value) != base_fields:
+        raise DeploymentError("release.json has an unsupported shape")
+    if schema_version == 2 and set(value) not in (
+        base_fields,
+        base_fields | retrieval_fields,
+    ):
+        raise DeploymentError("release.json has an unsupported shape")
     if value["release_id"] != expected_release_id:
         raise DeploymentError("release.json identity does not match its directory")
     image = value["image"]
@@ -161,7 +191,22 @@ def parse_release_manifest(raw: bytes, expected_release_id: str) -> Release:
             raise DeploymentError(
                 f"{field} must be the approved release-local filename"
             )
-    for field in ("web_sha256", "model_manifest_sha256"):
+    retrieval_manifest = None
+    retrieval_manifest_sha256 = None
+    if present_retrieval_fields:
+        retrieval_manifest = value["retrieval_manifest"]
+        if (
+            retrieval_manifest != "retrieval-release.json"
+            or Path(retrieval_manifest).name != retrieval_manifest
+        ):
+            raise DeploymentError(
+                "retrieval_manifest must be the approved release-local filename"
+            )
+        retrieval_manifest_sha256 = value["retrieval_manifest_sha256"]
+    digest_fields = ["web_sha256", "model_manifest_sha256"]
+    if retrieval_manifest is not None:
+        digest_fields.append("retrieval_manifest_sha256")
+    for field in digest_fields:
         if not isinstance(value[field], str) or SHA256.fullmatch(value[field]) is None:
             raise DeploymentError(f"{field} must be a lowercase SHA-256 digest")
     return Release(
@@ -171,6 +216,9 @@ def parse_release_manifest(raw: bytes, expected_release_id: str) -> Release:
         web_sha256=value["web_sha256"],
         model_manifest=value["model_manifest"],
         model_manifest_sha256=value["model_manifest_sha256"],
+        schema_version=schema_version,
+        retrieval_manifest=retrieval_manifest,
+        retrieval_manifest_sha256=retrieval_manifest_sha256,
     )
 
 
@@ -361,6 +409,13 @@ def load_release_inputs(
             release.web_archive: archive,
             release.model_manifest: model_manifest,
         }
+        retrieval_raw = None
+        retrieval_release = None
+        if release.retrieval_manifest is not None:
+            retrieval_raw = _read_at(
+                directory_fd, release.retrieval_manifest, MAX_MODEL_MANIFEST
+            )
+            payload[release.retrieval_manifest] = retrieval_raw
         release.verify_payload_hashes(payload)
         try:
             model = json.loads(
@@ -376,7 +431,22 @@ def load_release_inputs(
             raise DeploymentError("model-release.json has an invalid model id")
         if not isinstance(revision, str) or MODEL_REVISION.fullmatch(revision) is None:
             raise DeploymentError("model-release.json has an invalid revision")
-        return ReleaseInputs(release, model_id, revision, model_manifest), payload
+        if retrieval_raw is not None:
+            try:
+                retrieval_release = parse_retrieval_manifest(retrieval_raw)
+            except EmbeddingReleaseError as error:
+                raise DeploymentError("retrieval-release.json is invalid") from error
+        return (
+            ReleaseInputs(
+                release,
+                model_id,
+                revision,
+                model_manifest,
+                retrieval_release,
+                retrieval_raw,
+            ),
+            payload,
+        )
     finally:
         os.close(directory_fd)
 
@@ -414,6 +484,25 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: file.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _file_digest(path: Path) -> tuple[int, str]:
+    digest = hashlib.sha256()
+    size = 0
+    try:
+        descriptor = os.open(path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+    except OSError as error:
+        raise DeploymentError("deployment payload is missing or unsafe") from error
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise DeploymentError("deployment payload is not a regular file")
+        with os.fdopen(descriptor, "rb", closefd=False) as file:
+            for chunk in iter(lambda: file.read(1024 * 1024), b""):
+                size += len(chunk)
+                digest.update(chunk)
+    finally:
+        os.close(descriptor)
+    return size, digest.hexdigest()
 
 
 def _atomic_symlink(path: Path, relative_target: str | None) -> None:
@@ -774,6 +863,8 @@ class DeploymentEngine:
             raise DeploymentError(
                 "journal lacks saved rollback pointers; keep maintenance enabled and use the host recovery procedure"
             )
+        if journal.get("old_retrieval_mode") not in (None, "full", "rag"):
+            raise DeploymentError("deployment journal prior retrieval mode is invalid")
         image = journal["candidate_image"]
         if (
             not isinstance(image, str)
@@ -928,6 +1019,7 @@ class DeploymentEngine:
                 "recovering", recovery_started_at=datetime.now(UTC).isoformat()
             )
             try:
+                self._stop_indexer_if_running()
                 errors = []
                 for path, target in (
                     (
@@ -949,6 +1041,28 @@ class DeploymentEngine:
                 old_current = journal["old_current_target"]
                 old_image = journal["old_release_image"]
                 if old_current is not None:
+                    old_release_id = old_current.removeprefix("releases/")
+                    old_mode = journal.get("old_retrieval_mode")
+                    if old_mode is None:
+                        # Older journal revisions did not save the prior runtime
+                        # mode; retain their config-based recovery compatibility.
+                        old_mode = self._configured_retrieval_mode()
+                    if old_mode not in ("full", "rag"):
+                        raise DeploymentError("journaled retrieval mode is invalid")
+                    mode, runtime_overrides, _ = self._runtime_overrides(
+                        old_release_id, force_mode=old_mode
+                    )
+                    if mode == "rag":
+                        self._compose(
+                            str(old_image),
+                            "up",
+                            "--detach",
+                            "--no-deps",
+                            "--force-recreate",
+                            "retrieval-indexer",
+                            profile="rag",
+                            env_overrides=runtime_overrides,
+                        )
                     self._compose(
                         str(old_image),
                         "up",
@@ -956,6 +1070,7 @@ class DeploymentEngine:
                         "--no-deps",
                         "--force-recreate",
                         "api",
+                        env_overrides=runtime_overrides,
                     )
                     self._wait_ready("http://127.0.0.1:18000/health/ready")
                 else:
@@ -985,26 +1100,37 @@ class DeploymentEngine:
         _check_path_chain(store)
         store.mkdir(parents=True, exist_ok=True, mode=0o755)
         destination = store / release_id
+        release_metadata = {
+            "schema_version": release.schema_version,
+            "release_id": release.release_id,
+            "image": release.image,
+            "web_archive": release.web_archive,
+            "web_sha256": release.web_sha256,
+            "model_manifest": release.model_manifest,
+            "model_manifest_sha256": release.model_manifest_sha256,
+        }
+        if release.retrieval_manifest is not None:
+            release_metadata.update(
+                retrieval_manifest=release.retrieval_manifest,
+                retrieval_manifest_sha256=release.retrieval_manifest_sha256,
+            )
         if destination.exists() or destination.is_symlink():
             if destination.is_symlink() or not destination.is_dir():
                 raise DeploymentError("existing release path is not a safe directory")
             metadata = _read_json(destination / "release.json")
-            expected_metadata = {
-                "schema_version": 1,
-                "release_id": release.release_id,
-                "image": release.image,
-                "web_archive": release.web_archive,
-                "web_sha256": release.web_sha256,
-                "model_manifest": release.model_manifest,
-                "model_manifest_sha256": release.model_manifest_sha256,
-            }
-            if metadata != expected_metadata:
+            if metadata != release_metadata:
                 raise DeploymentError(
                     "existing release directory differs from this release"
                 )
             for field, digest in (
                 (release.web_archive, release.web_sha256),
                 (release.model_manifest, release.model_manifest_sha256),
+                *(
+                    ((release.retrieval_manifest, release.retrieval_manifest_sha256),)
+                    if release.retrieval_manifest is not None
+                    and release.retrieval_manifest_sha256 is not None
+                    else ()
+                ),
             ):
                 stored = destination / field
                 if (
@@ -1022,29 +1148,22 @@ class DeploymentEngine:
         try:
             os.chmod(temporary, 0o755)
             (temporary / "release.json").write_text(
-                json.dumps(
-                    {
-                        "schema_version": 1,
-                        "release_id": release.release_id,
-                        "image": release.image,
-                        "web_archive": release.web_archive,
-                        "web_sha256": release.web_sha256,
-                        "model_manifest": release.model_manifest,
-                        "model_manifest_sha256": release.model_manifest_sha256,
-                    },
-                    sort_keys=True,
-                    indent=2,
-                )
-                + "\n",
+                json.dumps(release_metadata, sort_keys=True, indent=2) + "\n",
                 encoding="utf-8",
             )
             (temporary / release.web_archive).write_bytes(payload[release.web_archive])
             (temporary / release.model_manifest).write_bytes(
                 payload[release.model_manifest]
             )
+            if release.retrieval_manifest is not None:
+                (temporary / release.retrieval_manifest).write_bytes(
+                    payload[release.retrieval_manifest]
+                )
             os.chmod(temporary / "release.json", 0o644)
             os.chmod(temporary / release.web_archive, 0o644)
             os.chmod(temporary / release.model_manifest, 0o644)
+            if release.retrieval_manifest is not None:
+                os.chmod(temporary / release.retrieval_manifest, 0o644)
             safe_extract_web_archive(temporary / release.web_archive, temporary / "web")
             _assert_safe_tree(temporary)
             os.rename(temporary, destination)
@@ -1123,6 +1242,194 @@ class DeploymentEngine:
         self._run("Hugging Face model preparation", command, timeout=1800)
         self._validate_model_tree(model_path)
         return model_path
+
+    def _download_embedding(
+        self, release: Release, inputs: ReleaseInputs, release_dir: Path
+    ) -> Path | None:
+        if inputs.retrieval_release is None or release.retrieval_manifest is None:
+            return None
+        models = self.paths.embedding_models
+        models.mkdir(parents=True, exist_ok=True, mode=0o755)
+        _check_path_chain(models)
+        model = inputs.retrieval_release.model
+        model_path = models / model.model_id.replace("/", "--") / model.revision
+        manifest_path = release_dir / release.retrieval_manifest
+        command = [
+            "docker",
+            "run",
+            "--rm",
+            "--pull=never",
+            "--user",
+            "0:0",
+            "--mount",
+            f"type=bind,src={models},dst=/models/embeddings",
+            "--mount",
+            f"type=bind,src={manifest_path},dst=/retrieval-release.json,readonly",
+            "--entrypoint",
+            "python",
+            release.image,
+            "scripts/deployment_embedding.py",
+            "--manifest",
+            "/retrieval-release.json",
+            "--root",
+            "/models/embeddings",
+        ]
+        self._run("KoEn-E5-Tiny preparation", command, timeout=1800)
+        self._validate_embedding_tree(model_path, inputs.retrieval_release)
+        return model_path
+
+    @staticmethod
+    def _validate_embedding_tree(model_path: Path, retrieval: RetrievalRelease) -> None:
+        if model_path.is_symlink() or not model_path.is_dir():
+            raise DeploymentError("retrieval model directory is missing or unsafe")
+        expected = {record.name for record in retrieval.model.files} | {
+            "retrieval-model.json"
+        }
+        try:
+            entries = list(model_path.iterdir())
+        except OSError as error:
+            raise DeploymentError("retrieval model directory is unreadable") from error
+        if {entry.name for entry in entries} != expected:
+            raise DeploymentError("retrieval model inventory does not match its pin")
+        for record in retrieval.model.files:
+            path = model_path / record.name
+            try:
+                info = path.lstat()
+                actual_size, actual_digest = _file_digest(path)
+            except OSError as error:
+                raise DeploymentError("retrieval model file is unavailable") from error
+            if (
+                not stat.S_ISREG(info.st_mode)
+                or actual_size != record.size
+                or actual_digest != record.sha256
+            ):
+                raise DeploymentError(
+                    f"retrieval model file does not match its pin: {record.name}"
+                )
+        try:
+            sidecar = json.loads(
+                (model_path / "retrieval-model.json").read_text(encoding="utf-8")
+            )
+        except (OSError, UnicodeError, json.JSONDecodeError) as error:
+            raise DeploymentError(
+                "retrieval runtime model metadata is invalid"
+            ) from error
+        model = retrieval.model
+        expected_sidecar = {
+            "model_id": model.model_id,
+            "revision": model.revision,
+            "dimension": model.dimension,
+            "pooling": model.pooling,
+            "normalization": model.normalization,
+            "query_prefix": model.query_prefix,
+            "passage_prefix": model.passage_prefix,
+            "dtype": model.dtype,
+        }
+        if sidecar != expected_sidecar:
+            raise DeploymentError("retrieval runtime model metadata does not match")
+        for path in entries:
+            os.chmod(path, 0o444)
+        os.chmod(model_path, 0o555)
+
+    def _prepare_retrieval_baseline(
+        self,
+        image: str,
+        release_id: str,
+        retrieval: RetrievalRelease,
+        embedding_path: Path,
+    ) -> dict[str, object]:
+        source = self.paths.baseline
+        if source.is_symlink() or not source.is_file():
+            raise DeploymentError("immutable host company baseline is unavailable")
+        source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+        baseline_root = self.paths.retrieval_baselines
+        baseline_root.mkdir(parents=True, exist_ok=True, mode=0o755)
+        _check_path_chain(baseline_root)
+        os.chown(baseline_root, 10001, 10001)
+        os.chmod(baseline_root, 0o750)
+        model = retrieval.model
+        container_model = (
+            f"/models/embeddings/{model.model_id.replace('/', '--')}/{model.revision}"
+        )
+        command = [
+            "docker",
+            "run",
+            "--rm",
+            "--pull=never",
+            "--network",
+            "none",
+            "--user",
+            "10001:10001",
+            "--mount",
+            f"type=bind,src={source},dst=/retrieval-source/documents.jsonl,readonly",
+            "--mount",
+            f"type=bind,src={embedding_path},dst={container_model},readonly",
+            "--mount",
+            f"type=bind,src={baseline_root},dst=/retrieval-baselines",
+            "--env",
+            f"SANAEBI_EMBEDDING_PATH={container_model}",
+            image,
+            "python",
+            "-m",
+            "scripts.prepare_retrieval_baseline",
+            "--source",
+            "/retrieval-source/documents.jsonl",
+            "--output-root",
+            "/retrieval-baselines",
+        ]
+        result = self._run("host baseline embedding preparation", command, timeout=1800)
+        try:
+            report = json.loads(result.stdout)
+        except (TypeError, json.JSONDecodeError) as error:
+            raise DeploymentError(
+                "baseline preparation returned invalid metadata"
+            ) from error
+        if (
+            not isinstance(report, dict)
+            or report.get("status") != "ready"
+            or report.get("source_sha256") != source_sha
+            or not isinstance(report.get("spec_id"), str)
+            or SHA256.fullmatch(report["spec_id"]) is None
+            or type(report.get("source_document_count")) is not int
+            or type(report.get("chunk_count")) is not int
+        ):
+            raise DeploymentError("baseline preparation did not verify host source")
+        spec_id = report["spec_id"]
+        bundle = (
+            baseline_root
+            / f"schema-v{retrieval.baseline_schema_version}"
+            / spec_id
+            / source_sha
+            / "baseline.sqlite3"
+        )
+        bundle_in_container = (
+            f"/retrieval-baselines/schema-v{retrieval.baseline_schema_version}/"
+            f"{spec_id}/{source_sha}/baseline.sqlite3"
+        )
+        if report.get("bundle") != bundle_in_container:
+            raise DeploymentError("baseline bundle path does not match its metadata")
+        try:
+            bundle_info = bundle.lstat()
+        except OSError as error:
+            raise DeploymentError("prepared baseline bundle is unavailable") from error
+        if not stat.S_ISREG(bundle_info.st_mode):
+            raise DeploymentError("prepared baseline bundle is unsafe")
+        binding = {
+            "schema_version": 1,
+            "release_id": release_id,
+            "model_id": model.model_id,
+            "revision": model.revision,
+            "baseline_schema_version": retrieval.baseline_schema_version,
+            "index_schema_version": retrieval.index_schema_version,
+            "spec_id": spec_id,
+            "source_sha256": source_sha,
+            "source_document_count": report["source_document_count"],
+            "chunk_count": report["chunk_count"],
+        }
+        self._atomic_write_json(
+            self.paths.retrieval_bindings / f"{release_id}.json", binding
+        )
+        return {**binding, "bundle_path": bundle, "embedding_path": embedding_path}
 
     def _copy_baseline_from_image(self, image: str) -> None:
         baseline = self.paths.baseline
@@ -1235,78 +1542,103 @@ class DeploymentEngine:
             shutil.rmtree(temporary_data, ignore_errors=True)
 
     def _preflight_candidate(
-        self, image: str, model_path: Path, release_id: str
+        self,
+        image: str,
+        model_path: Path,
+        release_id: str,
+        retrieval_binding: Mapping[str, object] | None = None,
     ) -> None:
         data = self.paths.data / f".preflight-{release_id}"
         if data.exists() or data.is_symlink():
             raise DeploymentError("candidate preflight directory already exists")
         data.mkdir(mode=0o700)
-        os.chown(data, 10001, 10001)
-        candidate_database = data / "documents.sqlite3"
-        if self.paths.database.exists():
-            snapshot_sqlite_database(self.paths.database, candidate_database)
-            os.chown(candidate_database, 10001, 10001)
-            os.chmod(candidate_database, 0o660)
         container = f"sanaebi-preflight-{release_id}"
-        command = [
-            "docker",
-            "run",
-            "--detach",
-            "--name",
-            container,
-            "--pull=never",
-            "--network",
-            "host",
-            "--user",
-            "10001:10001",
-            "--read-only",
-            "--cap-drop",
-            "ALL",
-            "--security-opt",
-            "no-new-privileges:true",
-            "--tmpfs",
-            "/tmp:rw,noexec,nosuid,size=256m",
-            "--env-file",
-            str(self.paths.config / "api.env"),
-            "--env",
-            "SANAEBI_DOCUMENT_DB=/data/documents.sqlite3",
-            "--env",
-            "SANAEBI_GENERATION_BUDGET_DB=/data/generation-budget.sqlite3",
-            "--env",
-            "SANAEBI_CLASSIFIER_PATH=/models/classifier",
-            "--env",
-            "SANAEBI_PUBLIC_DEMO=1",
-            "--env",
-            "SANAEBI_DAILY_GENERATION_LIMIT=1000",
-            "--env",
-            "TRACE_DIR=",
-            "--env",
-            "TRACE_FULL_PROMPT=0",
-            "--mount",
-            f"type=bind,src={data},dst=/data",
-            "--mount",
-            f"type=bind,src={model_path},dst=/models/classifier,readonly",
-            "--entrypoint",
-            "python",
-            image,
-            "-m",
-            "uvicorn",
-            "app.fastapi_main:app",
-            "--host",
-            "127.0.0.1",
-            "--port",
-            "18001",
-            "--workers",
-            "1",
-            "--proxy-headers",
-            "--forwarded-allow-ips",
-            "127.0.0.1",
-            "--no-access-log",
-            "--timeout-graceful-shutdown",
-            "240",
-        ]
         started = False
         try:
+            os.chown(data, 10001, 10001)
+            candidate_database = data / "documents.sqlite3"
+            if self.paths.database.exists():
+                snapshot_sqlite_database(self.paths.database, candidate_database)
+                os.chown(candidate_database, 10001, 10001)
+                os.chmod(candidate_database, 0o660)
+            if retrieval_binding is not None:
+                self._preflight_candidate_index(image, data, retrieval_binding)
+            mode = "rag" if retrieval_binding is not None else "full"
+            command = [
+                "docker",
+                "run",
+                "--detach",
+                "--name",
+                container,
+                "--pull=never",
+                "--network",
+                "host",
+                "--user",
+                "10001:10001",
+                "--read-only",
+                "--cap-drop",
+                "ALL",
+                "--security-opt",
+                "no-new-privileges:true",
+                "--tmpfs",
+                "/tmp:rw,noexec,nosuid,size=256m",
+                "--env-file",
+                str(self.paths.config / "api.env"),
+                "--env",
+                "SANAEBI_DOCUMENT_DB=/data/documents.sqlite3",
+                "--env",
+                "SANAEBI_GENERATION_BUDGET_DB=/data/generation-budget.sqlite3",
+                "--env",
+                "SANAEBI_CLASSIFIER_PATH=/models/classifier",
+                "--env",
+                f"SANAEBI_RETRIEVAL_MODE={mode}",
+                "--env",
+                "SANAEBI_RETRIEVAL_ROOT=/data/retrieval",
+                "--env",
+                "SANAEBI_PUBLIC_DEMO=1",
+                "--env",
+                "SANAEBI_DAILY_GENERATION_LIMIT=1000",
+                "--env",
+                "TRACE_DIR=",
+                "--env",
+                "TRACE_FULL_PROMPT=0",
+                "--mount",
+                f"type=bind,src={data},dst=/data",
+                "--mount",
+                f"type=bind,src={model_path},dst=/models/classifier,readonly",
+            ]
+            if retrieval_binding is not None:
+                embedding_path = Path(retrieval_binding["embedding_path"])
+                command.extend(
+                    [
+                        "--env",
+                        "SANAEBI_EMBEDDING_PATH=/models/embedding",
+                        "--mount",
+                        f"type=bind,src={embedding_path},dst=/models/embedding,readonly",
+                    ]
+                )
+            command.extend(
+                [
+                    "--entrypoint",
+                    "python",
+                    image,
+                    "-m",
+                    "uvicorn",
+                    "app.fastapi_main:app",
+                    "--host",
+                    "127.0.0.1",
+                    "--port",
+                    "18001",
+                    "--workers",
+                    "1",
+                    "--proxy-headers",
+                    "--forwarded-allow-ips",
+                    "127.0.0.1",
+                    "--no-access-log",
+                    "--timeout-graceful-shutdown",
+                    "240",
+                ]
+            )
             self._run("candidate startup", command)
             started = True
             self._wait_ready("http://127.0.0.1:18001/health/ready")
@@ -1321,6 +1653,61 @@ class DeploymentEngine:
                 if started:
                     raise
             shutil.rmtree(data, ignore_errors=True)
+
+    def _preflight_candidate_index(
+        self,
+        image: str,
+        data: Path,
+        binding: Mapping[str, object],
+    ) -> None:
+        source = self.paths.baseline
+        bundle = Path(binding["bundle_path"])
+        embedding = Path(binding["embedding_path"])
+        command = [
+            "docker",
+            "run",
+            "--rm",
+            "--pull=never",
+            "--network",
+            "none",
+            "--user",
+            "10001:10001",
+            "--mount",
+            f"type=bind,src={data},dst=/data",
+            "--mount",
+            f"type=bind,src={source},dst=/retrieval-source/documents.jsonl,readonly",
+            "--mount",
+            f"type=bind,src={bundle},dst=/retrieval-baseline/baseline.sqlite3,readonly",
+            "--mount",
+            f"type=bind,src={embedding},dst=/models/embedding,readonly",
+            "--env",
+            "SANAEBI_DOCUMENT_DB=/data/documents.sqlite3",
+            "--env",
+            "SANAEBI_RETRIEVAL_ROOT=/data/retrieval",
+            "--env",
+            "SANAEBI_RETRIEVAL_BASELINE=/retrieval-baseline/baseline.sqlite3",
+            "--env",
+            "SANAEBI_RETRIEVAL_SOURCE=/retrieval-source/documents.jsonl",
+            "--env",
+            "SANAEBI_EMBEDDING_PATH=/models/embedding",
+            "--entrypoint",
+            "python",
+            image,
+            "-m",
+            "scripts.index_documents",
+            "--once",
+        ]
+        result = self._run("candidate retrieval index", command, timeout=1800)
+        try:
+            status = json.loads(result.stdout)
+        except (TypeError, json.JSONDecodeError) as error:
+            raise DeploymentError("candidate index returned invalid status") from error
+        if (
+            not isinstance(status, dict)
+            or status.get("ready") is not True
+            or status.get("missing") != 0
+        ):
+            raise DeploymentError("candidate retrieval index is not ready")
 
     def _wait_ready(self, url: str, *, timeout: int = READY_TIMEOUT_SECONDS) -> None:
         deadline = time.monotonic() + timeout
@@ -1338,7 +1725,303 @@ class DeploymentEngine:
             f"API readiness check timed out ({last_error or 'no response'})"
         )
 
-    def _compose(self, image: str, *arguments: str, timeout: int = 600) -> None:
+    def _configured_retrieval_mode(self) -> str:
+        path = self.paths.config / "api.env"
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except OSError as error:
+            raise DeploymentError("API environment file is unavailable") from error
+        configured = None
+        for line in lines:
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#") or "=" not in stripped:
+                continue
+            key, value = stripped.split("=", 1)
+            if key.strip() != "SANAEBI_RETRIEVAL_MODE":
+                continue
+            if configured is not None:
+                raise DeploymentError("retrieval mode is configured more than once")
+            value = value.strip()
+            if len(value) >= 2 and value[0] == value[-1] and value[0] in "'\"":
+                value = value[1:-1]
+            configured = value
+        mode = configured or "full"
+        if mode not in {"full", "rag"}:
+            raise DeploymentError("retrieval mode must be full or rag")
+        return mode
+
+    def _active_api_retrieval_mode(self) -> str:
+        """Read the mode from the running container, not a possibly edited env file."""
+        result = self.runner(
+            [
+                "docker",
+                "inspect",
+                "--format",
+                "{{json .Config.Env}}",
+                "sanaebi-api",
+            ],
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=30,
+            env=self._docker_env(),
+        )
+        if result.returncode:
+            raise DeploymentError("active API runtime mode could not be inspected")
+        try:
+            environment = json.loads(result.stdout)
+        except (TypeError, json.JSONDecodeError) as error:
+            raise DeploymentError("active API runtime metadata is invalid") from error
+        if not isinstance(environment, list) or any(
+            not isinstance(value, str) for value in environment
+        ):
+            raise DeploymentError("active API runtime metadata is invalid")
+        configured = [
+            value.partition("=")[2]
+            for value in environment
+            if value.startswith("SANAEBI_RETRIEVAL_MODE=")
+        ]
+        if len(configured) > 1:
+            raise DeploymentError(
+                "active API retrieval mode is configured more than once"
+            )
+        mode = configured[0] if configured else "full"
+        if mode not in {"full", "rag"}:
+            raise DeploymentError("active API retrieval mode is invalid")
+        return mode
+
+    def _release_retrieval(
+        self, release_id: str
+    ) -> tuple[Release, RetrievalRelease | None]:
+        directory = self.paths.root / "releases" / release_id
+        try:
+            release_raw = (directory / "release.json").read_bytes()
+            release = parse_release_manifest(release_raw, release_id)
+        except (OSError, DeploymentError) as error:
+            raise DeploymentError("active release metadata is invalid") from error
+        if release.retrieval_manifest is None:
+            return release, None
+        descriptor = directory / release.retrieval_manifest
+        try:
+            descriptor_raw = descriptor.read_bytes()
+        except OSError as error:
+            raise DeploymentError(
+                "active retrieval descriptor is unavailable"
+            ) from error
+        if (
+            hashlib.sha256(descriptor_raw).hexdigest()
+            != release.retrieval_manifest_sha256
+        ):
+            raise DeploymentError("active retrieval descriptor hash does not match")
+        try:
+            retrieval = parse_retrieval_manifest(descriptor_raw)
+        except EmbeddingReleaseError as error:
+            raise DeploymentError("active retrieval descriptor is invalid") from error
+        return release, retrieval
+
+    def _binding_for_release(
+        self,
+        release_id: str,
+        retrieval: RetrievalRelease,
+        *,
+        prepared: Mapping[str, object] | None = None,
+    ) -> dict[str, object]:
+        if prepared is None:
+            path = self.paths.retrieval_bindings / f"{release_id}.json"
+            try:
+                info = path.lstat()
+                if not stat.S_ISREG(info.st_mode):
+                    raise DeploymentError("retrieval binding is unsafe")
+                binding = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, json.JSONDecodeError) as error:
+                raise DeploymentError(
+                    "release retrieval binding is unavailable"
+                ) from error
+        else:
+            binding = dict(prepared)
+        model = retrieval.model
+        if (
+            not isinstance(binding, dict)
+            or binding.get("schema_version") != 1
+            or binding.get("release_id") != release_id
+            or binding.get("model_id") != model.model_id
+            or binding.get("revision") != model.revision
+            or binding.get("baseline_schema_version")
+            != retrieval.baseline_schema_version
+            or binding.get("index_schema_version") != retrieval.index_schema_version
+            or not isinstance(binding.get("spec_id"), str)
+            or SHA256.fullmatch(binding["spec_id"]) is None
+            or not isinstance(binding.get("source_sha256"), str)
+            or SHA256.fullmatch(binding["source_sha256"]) is None
+        ):
+            raise DeploymentError("release retrieval binding does not match its model")
+        try:
+            source_info = self.paths.baseline.lstat()
+            source_sha = hashlib.sha256(self.paths.baseline.read_bytes()).hexdigest()
+        except OSError as error:
+            raise DeploymentError("host baseline is unavailable") from error
+        if (
+            not stat.S_ISREG(source_info.st_mode)
+            or source_sha != binding["source_sha256"]
+        ):
+            raise DeploymentError("host baseline differs from the retrieval binding")
+        bundle = (
+            self.paths.retrieval_baselines
+            / f"schema-v{retrieval.baseline_schema_version}"
+            / str(binding["spec_id"])
+            / str(binding["source_sha256"])
+            / "baseline.sqlite3"
+        )
+        embedding = (
+            self.paths.embedding_models
+            / model.model_id.replace("/", "--")
+            / model.revision
+        )
+        for path, name in ((bundle, "baseline bundle"), (embedding, "embedding model")):
+            try:
+                info = path.lstat()
+            except OSError as error:
+                raise DeploymentError(f"release {name} is unavailable") from error
+            if (
+                stat.S_ISLNK(info.st_mode)
+                or not stat.S_ISDIR(info.st_mode)
+                and name == "embedding model"
+            ):
+                raise DeploymentError(f"release {name} is unsafe")
+            if name == "baseline bundle" and not stat.S_ISREG(info.st_mode):
+                raise DeploymentError("release baseline bundle is unsafe")
+        return {**binding, "bundle_path": bundle, "embedding_path": embedding}
+
+    def _runtime_overrides(
+        self,
+        release_id: str,
+        *,
+        prepared: Mapping[str, object] | None = None,
+        force_mode: str | None = None,
+    ) -> tuple[str, dict[str, str], dict[str, object] | None]:
+        _, retrieval = self._release_retrieval(release_id)
+        requested_mode = (
+            force_mode or self._configured_retrieval_mode()
+            if retrieval is not None
+            else "full"
+        )
+        binding = None
+        if retrieval is not None and (prepared is not None or requested_mode == "rag"):
+            binding = self._binding_for_release(
+                release_id, retrieval, prepared=prepared
+            )
+        if requested_mode == "rag" and binding is None:
+            raise DeploymentError("rag mode requires a prepared release binding")
+        model_path = "/models/embeddings/not-ready"
+        bundle_path = "/srv/sanaebi/retrieval-baselines/not-ready.sqlite3"
+        if retrieval is not None:
+            model = retrieval.model
+            model_path = f"/models/embeddings/{model.model_id.replace('/', '--')}/{model.revision}"
+        if binding is not None:
+            bundle_path = str(binding["bundle_path"])
+        overrides = {
+            "SANAEBI_RETRIEVAL_MODE": requested_mode,
+            "SANAEBI_RETRIEVAL_ROOT": "/data/retrieval",
+            "SANAEBI_EMBEDDING_PATH": model_path,
+            "SANAEBI_RETRIEVAL_BUNDLE_HOST_PATH": bundle_path,
+            "SANAEBI_RETRIEVAL_SOURCE_HOST_PATH": str(self.paths.baseline),
+        }
+        return requested_mode, overrides, binding
+
+    def _index_current_documents_once(
+        self,
+        image: str,
+        binding: Mapping[str, object],
+        overrides: Mapping[str, str],
+    ) -> None:
+        command = [
+            "docker",
+            "run",
+            "--rm",
+            "--pull=never",
+            "--network",
+            "none",
+            "--user",
+            "10001:10001",
+            "--mount",
+            f"type=bind,src={self.paths.data},dst=/data",
+            "--mount",
+            f"type=bind,src={self.paths.baseline},dst=/retrieval-source/documents.jsonl,readonly",
+            "--mount",
+            f"type=bind,src={binding['bundle_path']},dst=/retrieval-baseline/baseline.sqlite3,readonly",
+            "--mount",
+            f"type=bind,src={binding['embedding_path']},dst=/models/embedding,readonly",
+            "--env",
+            "SANAEBI_DOCUMENT_DB=/data/documents.sqlite3",
+            "--env",
+            "SANAEBI_RETRIEVAL_ROOT=/data/retrieval",
+            "--env",
+            "SANAEBI_RETRIEVAL_BASELINE=/retrieval-baseline/baseline.sqlite3",
+            "--env",
+            "SANAEBI_RETRIEVAL_SOURCE=/retrieval-source/documents.jsonl",
+            "--env",
+            "SANAEBI_EMBEDDING_PATH=/models/embedding",
+            "--entrypoint",
+            "python",
+            image,
+            "-m",
+            "scripts.index_documents",
+            "--once",
+        ]
+        result = self._run(
+            "production retrieval index preparation", command, timeout=1800
+        )
+        try:
+            status = json.loads(result.stdout)
+        except (TypeError, json.JSONDecodeError) as error:
+            raise DeploymentError("production index returned invalid status") from error
+        if (
+            not isinstance(status, dict)
+            or status.get("ready") is not True
+            or status.get("missing") != 0
+        ):
+            raise DeploymentError("production retrieval index is not ready")
+
+    def _stop_indexer_if_running(self) -> None:
+        result = self.runner(
+            [
+                "docker",
+                "ps",
+                "--quiet",
+                "--filter",
+                "name=^/sanaebi-retrieval-indexer$",
+            ],
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=30,
+            env=self._docker_env(),
+        )
+        if result.returncode:
+            raise DeploymentError("retrieval worker inspection failed")
+        if result.stdout.strip():
+            self._run(
+                "retrieval worker shutdown",
+                [
+                    "docker",
+                    "stop",
+                    "--time",
+                    str(STOP_TIMEOUT_SECONDS),
+                    "sanaebi-retrieval-indexer",
+                ],
+                timeout=STOP_TIMEOUT_SECONDS + 30,
+            )
+
+    def _compose(
+        self,
+        image: str,
+        *arguments: str,
+        timeout: int = 600,
+        profile: str | None = None,
+        env_overrides: Mapping[str, str] | None = None,
+    ) -> None:
         command = [
             "docker",
             "compose",
@@ -1346,8 +2029,10 @@ class DeploymentEngine:
             "sanaebi",
             "--file",
             str(self.paths.config / "compose.yaml"),
-            *arguments,
         ]
+        if profile is not None:
+            command.extend(["--profile", profile])
+        command.extend(arguments)
         result = self.runner(
             command,
             check=False,
@@ -1355,7 +2040,7 @@ class DeploymentEngine:
             stderr=subprocess.PIPE,
             text=True,
             timeout=timeout,
-            env=self._docker_env(SANAEBI_IMAGE=image),
+            env=self._docker_env(SANAEBI_IMAGE=image, **dict(env_overrides or {})),
         )
         if result.returncode:
             raise DeploymentError(
@@ -1473,8 +2158,21 @@ class DeploymentEngine:
         old_previous: str | None,
         old_model: str | None,
         release_id: str,
+        old_runtime_overrides: Mapping[str, str] | None = None,
     ) -> bool:
         errors = []
+        try:
+            self._stop_indexer_if_running()
+        except Exception as error:  # noqa: BLE001 - do not restore pointers under a live writer
+            errors.append(type(error).__name__)
+        if errors:
+            self._journal(
+                "recovery_required",
+                failed_release_id=release_id,
+                rollback_error_types=errors,
+                database_restored=False,
+            )
+            return False
         try:
             self._restore_pointer(self.paths.root / "models" / "current", old_model)
         except Exception as error:  # noqa: BLE001 - best effort recovery continues
@@ -1487,8 +2185,29 @@ class DeploymentEngine:
         if old_release is not None:
             try:
                 _, old_image = old_release
+                if old_runtime_overrides is None:
+                    _, old_runtime_overrides, _ = self._runtime_overrides(
+                        old_release[0]
+                    )
+                if old_runtime_overrides.get("SANAEBI_RETRIEVAL_MODE") == "rag":
+                    self._compose(
+                        old_image,
+                        "up",
+                        "--detach",
+                        "--no-deps",
+                        "--force-recreate",
+                        "retrieval-indexer",
+                        profile="rag",
+                        env_overrides=old_runtime_overrides,
+                    )
                 self._compose(
-                    old_image, "up", "--detach", "--no-deps", "--force-recreate", "api"
+                    old_image,
+                    "up",
+                    "--detach",
+                    "--no-deps",
+                    "--force-recreate",
+                    "api",
+                    env_overrides=old_runtime_overrides,
                 )
                 self._wait_ready("http://127.0.0.1:18000/health/ready")
             except Exception as error:  # noqa: BLE001 - retain outage on uncertain rollback
@@ -1533,6 +2252,13 @@ class DeploymentEngine:
             old_current = _pointer_target(self.paths.root / "current", "releases/")
             old_previous = _pointer_target(self.paths.root / "previous", "releases/")
             old_model = _pointer_target(self.paths.root / "models" / "current", "")
+            if old_release is not None:
+                active_mode = self._active_api_retrieval_mode()
+                _, old_runtime_overrides, _ = self._runtime_overrides(
+                    old_release[0], force_mode=active_mode
+                )
+            else:
+                old_runtime_overrides = None
             self._active_journal = {
                 "schema_version": 1,
                 "release_id": release_id,
@@ -1552,6 +2278,11 @@ class DeploymentEngine:
                 "old_previous_target": old_previous,
                 "old_model_target": old_model,
                 "old_release_image": old_release[1] if old_release else None,
+                "old_retrieval_mode": (
+                    old_runtime_overrides.get("SANAEBI_RETRIEVAL_MODE")
+                    if old_runtime_overrides
+                    else "full"
+                ),
                 "started_at": datetime.now(UTC).isoformat(),
             }
             self._journal("release_validated")
@@ -1560,14 +2291,41 @@ class DeploymentEngine:
                 self._journal("pulling_image")
                 self._run("API image pull", ["docker", "pull", inputs.release.image])
                 model_path = self._download_model(inputs.release, inputs, release_dir)
+                embedding_path = self._download_embedding(
+                    inputs.release, inputs, release_dir
+                )
+                retrieval_binding = None
+                if inputs.retrieval_release is not None:
+                    if embedding_path is None:
+                        raise DeploymentError(
+                            "retrieval embedding model was not prepared"
+                        )
+                    # The immutable host source is created from the image only on
+                    # first deployment. Prepare it before deriving the RAG bundle.
+                    self._copy_baseline_from_image(inputs.release.image)
+                    retrieval_binding = self._prepare_retrieval_baseline(
+                        inputs.release.image,
+                        release_id,
+                        inputs.retrieval_release,
+                        embedding_path,
+                    )
+                new_mode, new_runtime_overrides, _ = self._runtime_overrides(
+                    release_id, prepared=retrieval_binding
+                )
                 self._journal("model_ready")
                 self._initialize_database_if_missing(inputs.release.image)
-                self._preflight_candidate(inputs.release.image, model_path, release_id)
+                self._preflight_candidate(
+                    inputs.release.image,
+                    model_path,
+                    release_id,
+                    retrieval_binding=retrieval_binding,
+                )
                 # Ensure Docker Compose can render the exact root-owned production file.
                 self._compose(
                     inputs.release.image,
                     "config",
                     "--quiet",
+                    env_overrides=new_runtime_overrides,
                 )
                 self._publish_static_assets(release_dir)
                 self._journal("candidate_ready")
@@ -1583,7 +2341,9 @@ class DeploymentEngine:
                         str(STOP_TIMEOUT_SECONDS),
                         "api",
                         timeout=STOP_TIMEOUT_SECONDS + 30,
+                        env_overrides=old_runtime_overrides,
                     )
+                self._stop_indexer_if_running()
                 self._journal("previous_api_stopped")
                 if self.paths.database.exists():
                     backup = create_database_backup(
@@ -1594,6 +2354,24 @@ class DeploymentEngine:
                     self._active_journal["database_backup"] = str(backup)
                 self._journal("database_backed_up")
                 self._set_model_pointer(inputs)
+                if new_mode == "rag":
+                    if retrieval_binding is None:
+                        raise DeploymentError(
+                            "rag mode has no prepared retrieval binding"
+                        )
+                    self._index_current_documents_once(
+                        inputs.release.image, retrieval_binding, new_runtime_overrides
+                    )
+                    self._compose(
+                        inputs.release.image,
+                        "up",
+                        "--detach",
+                        "--no-deps",
+                        "--force-recreate",
+                        "retrieval-indexer",
+                        profile="rag",
+                        env_overrides=new_runtime_overrides,
+                    )
                 self._compose(
                     inputs.release.image,
                     "up",
@@ -1601,6 +2379,7 @@ class DeploymentEngine:
                     "--no-deps",
                     "--force-recreate",
                     "api",
+                    env_overrides=new_runtime_overrides,
                 )
                 self._journal("new_api_started")
                 self._wait_ready("http://127.0.0.1:18000/health/ready")
@@ -1618,6 +2397,7 @@ class DeploymentEngine:
                         old_previous=old_previous,
                         old_model=old_model,
                         release_id=release_id,
+                        old_runtime_overrides=old_runtime_overrides,
                     )
                     if not recovered:
                         raise DeploymentError(

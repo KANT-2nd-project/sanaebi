@@ -85,6 +85,7 @@ jobs:
         run: |
           docker run --rm --network none "$IMAGE" python -c 'import app.fastapi_main, torch; assert torch.version.cuda is None'
           docker run --rm --network none "$IMAGE" python scripts/deployment_model.py --help
+          docker run --rm --network none "$IMAGE" python scripts/deployment_embedding.py --help
   deploy:
     needs: [image, web]
     if: github.ref == 'refs/heads/main' && (inputs.deploy == true || (github.event_name == 'push' && vars.ENABLE_AUTO_DEPLOY == 'true'))
