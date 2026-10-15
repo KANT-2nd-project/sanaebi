@@ -88,10 +88,17 @@ _ANSWER_SCOPE_V2 = """
 """.strip()
 
 
+_ANSWER_SCOPE_V3 = """
+- 답변에는 내부 문서 ID·개정 번호를 표시하지 말고, 출처가 필요하면 제공된 문서의 제목·항목명으로 안내하세요.
+- 문서에 질문의 답이 있으면 내용을 그대로 전달하고, 일반 상식과 다르다는 이유로 작성 의도나 타당성을 추측하는 단서를 덧붙이지 마세요. 질문에 필요한 정보 부족·조건 미확인·문서 충돌 안내는 유지하세요.
+""".strip()
+
+
 DEFAULT_PROMPT_PROFILE = "examples_answer_scope_v1"
 
 
 _PROFILE_SUFFIXES = {
+    "examples_answer_scope_v3": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_ANSWER_SCOPE_V1}\n\n{_ANSWER_SCOPE_V3}",
     "examples_answer_scope_v2": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_ANSWER_SCOPE_V1}\n\n{_ANSWER_SCOPE_V2}",
     "examples_answer_scope_v1": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_ANSWER_SCOPE_V1}",
     "examples_coverage": f"{_CONCISE_RULES}\n\n{_SYNTHETIC_EXAMPLES}\n\n{_COVERAGE_CHECK}",
