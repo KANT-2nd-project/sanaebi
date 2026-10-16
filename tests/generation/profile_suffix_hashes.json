@@ -1,0 +1,18 @@
+{
+  "examples_answer_scope_v5": "1709a032db05467645c2abcb487b264e9e46a50c7c82a9fb0d7687c6a436456c",
+  "examples_answer_scope_v4": "b9b5652b4dd38a687460db117928abba1edd4e8f7257679682290b74b6e0348c",
+  "examples_answer_scope_v3": "ad30ca8a515fe37089d3c66d10984b3999db2a28850db54129edf7e2b8326d26",
+  "examples_answer_scope_v2": "621592d9f8e1156073860d2083c3af58ff0e8ecd26cbc4494b901afabed09fcf",
+  "examples_answer_scope_v1": "1c9737d9ccb89f9578d8d2131ef4795b263c34651dbb5176ea342b8f4dfe7f00",
+  "examples_coverage": "9ceab9136e5f110cd2af31adbf9ee585104be7dbd92e97c7fdf1beef810a3a61",
+  "examples_conditions": "783a22650598f00730339f2552302e8f4b97bdcb50497f77443a86368987028c",
+  "examples_json": "53d0be4bc60daff1d0b274eca7aa94d5a013052b7317b6f090a564998dbcfb62",
+  "baseline": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "concise": "46037beab00edd8dfd1b9519e78df0dbeddad6093036b8c406d3722e2f29c40a",
+  "examples": "acbb40563d9ddfb496ee63b230e9a8a8e236caff22c7f18949b2db9d0d8aac26",
+  "examples_answer_scope_v6": "20052bdd077e58609c440ff3fe7991ab4a9e1f596c0836ac7073da7219055e69",
+  "examples_answer_scope_v7_readability": "8f82e323bf71c9933ef12488dcba378d7f79058d91102bce67b0d91de0fcdae8",
+  "examples_answer_scope_v7_completeness": "40878d24c29cdb7e0d2c9ae1452ca2a3849623cf28d8c0090670e78e2752a85d",
+  "examples_answer_scope_v7_combined": "dc5fdcf6fdd4fe7452f167edc9a4294ec513648d1ca1b2b18dfb35fb3ac69285",
+  "examples_answer_scope_v5_rag_service_v1": "42bd86aba94c08c5c7f600690e8265012c3d665cd77362b8ac120a7fd32c230b"
+}
