@@ -118,16 +118,18 @@ npm run dev
 
 소스 실행과 선택 의존성은 [설치 안내](generation/README.md#설치-범위와-선택-provider)를 참고하세요. 현재 서버의 생성 제공자는 OpenAI이며, Ollama는 과거 실험·보관 실행의 선택 의존성입니다.
 
-## 함께 만든 팀
+## 팀 소개
 
-| 팀원 | 주요 참여 영역 |
-|---|---|
-| 최재선 | 프로젝트 총괄, 데이터·분류, 전반 개발·통합 |
-| 유원호 | 생성 모델 비교·답변 평가 |
-| 윤승환 | FastAPI·요청 응답 처리 |
-| 전항록 | LangChain 협업·검색·프롬프트·응답 연결 |
+| 팀원 | 역할 | GitHub |
+|---|---|---|
+| 최재선 | 프로젝트 총괄, 데이터·분류, 전반 개발·통합 | [10o0o](https://github.com/10o0o) |
+| 유원호 | 생성 모델 비교·답변 평가 | [ho-yu](https://github.com/ho-yu) |
+| 윤승환 | FastAPI·요청 응답 처리 | [yshzjq](https://github.com/yshzjq) |
+| 전항록 | LangChain 협업·검색·프롬프트·응답 연결 | [Hacilar](https://github.com/Hacilar) |
 
-역할은 협업 영역을 나타내며 단독 수행이나 정량 기여도를 의미하지 않습니다. 프로젝트의 흐름과 비교 결과는 [발표자료](docs/presentation/README.md)에서 볼 수 있습니다.
+## 발표자료
+
+[사내비 프로젝트 발표자료](docs/presentation/README.md)
 
 ## 더 알아보기
 
@@ -139,4 +141,4 @@ npm run dev
 | 생성과 평가 | [생성 `generation/`](generation/README.md) · [평가 `generation_evaluation/`](generation_evaluation/README.md) |
 | 화면·문서 관리 | [웹 `web/`](web/README.md) · [문서 관리](docs/document-management.md) |
 | 운영·검증 | [배포 `deployment/`](deployment/README.md) · [테스트 `tests/`](tests/README.md) · [CI 워크플로](.github/workflows/delivery.yml) |
-| 발표·이력 탐색 | [프로젝트 발표](docs/presentation/README.md) · [전체 문서](docs/README.md) · [보관 분류 구현](archive/classification_v1/README.md) |
+| 이력 탐색 | [전체 문서](docs/README.md) · [보관 분류 구현](archive/classification_v1/README.md) |
