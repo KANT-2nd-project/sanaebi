@@ -13,23 +13,25 @@ from app.settings import PROJECT_ROOT
 
 @unittest.skipUnless(shutil.which("node"), "Node is required for development launcher")
 class DevLauncherTests(unittest.TestCase):
-    def test_rag_has_one_worker_full_has_none_and_python_shares_dotenv(self):
+    def test_worker_is_opt_in_for_rag_and_python_shares_dotenv(self):
         result = subprocess.run(
             [
                 "node",
                 "--input-type=module",
                 "-e",
-                "import {commands} from './scripts/dev_runtime.mjs'; console.log(JSON.stringify([commands('rag'), commands('full')]));",
+                "import {commands} from './scripts/dev_runtime.mjs'; console.log(JSON.stringify([commands('rag'), commands('full'), commands('rag', true), commands('full', true)]));",
             ],
             cwd=PROJECT_ROOT,
             check=True,
             capture_output=True,
             text=True,
         )
-        rag, full = json.loads(result.stdout)
-        self.assertEqual(len(rag), 3)
+        rag, full, watched_rag, watched_full = json.loads(result.stdout)
+        self.assertEqual(len(rag), 2)
+        self.assertEqual(len(watched_rag), 3)
+        self.assertEqual(watched_full, full)
         self.assertEqual(len(full), 2)
-        for command, arguments in (rag[0], rag[2]):
+        for command, arguments in (rag[0], watched_rag[2]):
             self.assertEqual(command, "uv")
             self.assertEqual(arguments[:4], ["run", "--locked", "--env-file", ".env"])
 
@@ -96,7 +98,7 @@ if pid == 0:
     signal.signal(signal.SIGTERM, signal.SIG_IGN)
     with open(os.environ['DEV_TEST_PID_FILE'], 'a') as handle:
         handle.write(str(os.getpid()) + '\\n')
-if pid != 0 and os.environ.get('DEV_TEST_CHILD_FAIL') == '1' and '--watch' in sys.argv:
+if pid != 0 and os.environ.get('DEV_TEST_CHILD_FAIL') == '1' and 'uvicorn' in sys.argv:
     time.sleep(1); sys.exit(9)
 while True: time.sleep(1)
 """
@@ -126,10 +128,10 @@ while True: time.sleep(1)
                 while time.monotonic() < deadline:
                     if pidfile.exists():
                         pids = [int(x) for x in pidfile.read_text().splitlines()]
-                        if len(pids) == 3:
+                        if len(pids) == 2:
                             break
                     time.sleep(0.05)
-                self.assertEqual(len(pids), 3)
+                self.assertEqual(len(pids), 2)
                 if not child_failure:
                     launcher.send_signal(signal.SIGINT)
                 self.assertEqual(launcher.wait(timeout=10), 9 if child_failure else 130)

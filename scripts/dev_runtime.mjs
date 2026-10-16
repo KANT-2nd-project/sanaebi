@@ -1,14 +1,14 @@
-/** Local process owner: preflight once, then API/web/indexer with shared dotenv. */
+/** Local process owner: preflight once, then API/web and an optional indexer with shared dotenv. */
 import { spawn, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-export function commands(mode) {
+export function commands(mode, watchIndex = false) {
   const uv = ['run', '--locked', '--env-file', '.env'];
   return [
     ['uv', [...uv, 'uvicorn', 'app.fastapi_main:app', '--reload', '--reload-dir', 'app', '--reload-dir', 'generation', '--host', '127.0.0.1', '--port', '8000']],
     ['npm', ['--prefix', 'web', 'run', 'dev', '--', '--hostname', '127.0.0.1', '--port', '3000']],
-    ...(mode === 'rag' ? [['uv', [...uv, 'python', '-m', 'scripts.index_documents', '--watch']]] : []),
+    ...(mode === 'rag' && watchIndex ? [['uv', [...uv, 'python', '-m', 'scripts.index_documents', '--watch']]] : []),
   ];
 }
 
@@ -44,7 +44,7 @@ export function start() {
   }
   process.once('SIGINT', () => stop(130));
   process.once('SIGTERM', () => stop(143));
-  for (const [command, args] of commands(result.mode)) {
+  for (const [command, args] of commands(result.mode, process.argv.includes('--watch-index'))) {
     const child = spawn(command, args, { cwd, stdio: 'inherit', detached: true });
     children.add(child);
     if (child.pid) groups.add(child);

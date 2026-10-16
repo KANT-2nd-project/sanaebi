@@ -16,12 +16,14 @@ npm run dev
 
 - setup은 고정 KURE와 분할 tokenizer를 검증·준비하고 기본 원본의 벡터 묶음, 현재 게시 문서의 검색 색인을 구성한다. 준비된 자료는 재사용하며 변경된 입력만 임베딩한다. 최초 준비는 모델 다운로드·CPU 계산 시간이 필요하다.
 - DB가 없을 때만 `--init-documents`로 기본 문서를 등록한다. 기존 DB는 비어 있어도 자동 등록·초기화하지 않는다. 의도적으로 전체 삭제한 문서는 웹의 기본 복원으로 되돌린다.
-- dev는 읽기 전용 사전 검사 후 API·웹·3초 주기 worker를 함께 실행한다. 준비 실패 시 setup 안내로 종료하며, 준비나 reset을 자동 실행하지 않는다. Ctrl+C 또는 자식 실패 시 이번 실행의 프로세스 그룹을 정리한다. 명시적 `full`은 worker 없이 실행한다.
+- dev는 읽기 전용 사전 검사 후 API·웹을 실행한다. 로컬 색인 감시는 기본적으로 끄며, `npm run dev -- --watch-index`로 RAG 모드의 3초 주기 worker를 함께 실행할 수 있다. 준비 실패 시 setup 안내로 종료하며, 준비나 reset을 자동 실행하지 않는다. Ctrl+C 또는 자식 실패 시 이번 실행의 프로세스 그룹을 정리한다. 명시적 `full`은 worker 없이 실행한다.
 - setup·check·API·worker는 같은 `.env`를 읽고 이미 셸에 지정된 환경변수가 우선한다. `SANAEBI_DOCUMENT_DB`는 기본 `var/documents.sqlite3`, 검색 색인은 `SANAEBI_RETRIEVAL_ROOT`(기본 `var/retrieval`)다. 설정 변경 후 setup을 실행하고 dev를 재시작한다.
 - 기본 묶음 경로는 현재 원본 SHA와 vector spec으로 `artifacts/retrieval-baselines/schema-v1/<spec>/<source SHA>/baseline.sqlite3`를 계산한다. 명시적 `SANAEBI_RETRIEVAL_BASELINE`이 있으면 그것만 사용하며 누락·불일치를 다른 묶음으로 대체하지 않는다. 사용자 지정 경로는 별도 준비 명령으로 먼저 준비한다.
 - check는 모델·분류 자료·키 존재·문서 DB·색인·복원 준비를 검사하며 파일 생성이나 모델 추론을 하지 않는다. 기계 판독은 `uv run --locked --env-file .env python -m scripts.local_runtime --check --json`을 사용한다. 비밀값과 문서 본문은 출력하지 않는다.
 
 선정 모델은 `nlpai-lab/KURE-v1`, revision `8b418a58414668e75532ed045c22d9ca018ae2b2`다. CPU FP32·CLS pooling·L2 정규화·1024차원·접두사 없음이며 `splitter/`에는 고정 Tiny tokenizer만 둔다. Tiny 가중치는 요구하지 않는다. 요청·worker에서 모델을 다운로드하지 않는다.
+
+문서 게시·사용 중단·전체 삭제·복원은 API에서 색인을 동기화한다. 감시를 끄면 동기화 실패의 자동 재시도, API 밖 변경, 미래 시행일 도래에 따른 색인 준비는 자동 수행되지 않는다. 필요하면 감시를 켜거나 `uv run --locked --env-file .env python -m scripts.index_documents --once`로 한 번 동기화한다. 운영 Compose의 상시 worker는 유지한다.
 
 기존 개별 관리 CLI는 유지한다. 같은 `.env`를 사용하며 dev가 worker를 관리하는 동안 중복 watch를 시작하지 않는다.
 
@@ -76,7 +78,7 @@ sudo /usr/bin/python3 /usr/local/libexec/sanaebi/scripts/production_maintenance.
 
 ## 문서 변경 응답과 검색 반영
 
-RAG 모드의 게시·사용 중단·전체 삭제·기본 복원 요청은 문서 저장 뒤 현재 게시 snapshot의 검색 준비를 확인하고 성공 응답한다. 초안 등록·수정은 검색 대상을 바꾸지 않으므로 임베딩하지 않는다. 미래 시행일의 게시본은 아직 검색 대상이 아니므로 현재 snapshot 확인까지만 수행하며, 시행일 도래 시 worker가 색인을 준비한다. `full`에서는 색인 준비를 요구하지 않는다.
+RAG 모드의 게시·사용 중단·전체 삭제·기본 복원 요청은 문서 저장 뒤 현재 게시 snapshot의 검색 준비를 확인하고 성공 응답한다. 초안 등록·수정은 검색 대상을 바꾸지 않으므로 임베딩하지 않는다. 미래 시행일의 게시본은 아직 검색 대상이 아니므로 현재 snapshot 확인까지만 수행하며, 시행일 도래 시 실행 중인 worker가 색인을 준비한다. 로컬 기본 실행처럼 worker가 없으면 `--once` 동기화가 필요하다. `full`에서는 색인 준비를 요구하지 않는다.
 
 API와 worker·관리 CLI는 같은 spec의 작업 단위 잠금을 사용한다. 잠금 획득 후 최신 snapshot을 읽으며, API는 게시 상태 변경부터 색인 확인까지 직렬화한다. 임베딩 중 문서 DB 쓰기 트랜잭션은 유지하지 않는다. worker는 3초 주기 대조로 누락·실패·시행일 도래를 복구하며 실행 시간 전체를 잠그지 않는다.
 
