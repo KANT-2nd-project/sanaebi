@@ -1,0 +1,67 @@
+{
+  "purpose": "deployment_connection_check_not_quality_evaluation",
+  "max_calls": 2,
+  "actual_calls": 2,
+  "retries": 0,
+  "release": "46d22d4ad1bf7d256da37ea3717ff930dae0e418-38829379362",
+  "image_id": "sha256:cc4198da0e9102ec80fd4337be54e74a1ae802f0bbf5a4801847cce29d0ccbc5",
+  "delivery_url": "https://github.com/KANT-2nd-project/sanaebi/actions/runs/38829379362",
+  "local": {
+    "environment": "local",
+    "status": 200,
+    "body": {
+      "ok": true,
+      "text": "이음웍스의 사내 업무 정보·규정·절차와 회사 문서에 설명된 업무 도구 사용법을 안내해 드립니다. 예를 들면 휴가·근태, 구매·출장·정산, 계정·기기·시스템, 사무실·자산, 보안 사고 관련 업무를 도와드릴 수 있습니다.\n\n신청·변경·취소·승인이나 개인별 상태 조회를 직접 하지는 않습니다. 어떤 업무가 궁금하신가요?",
+      "reason": ""
+    },
+    "seconds": 3.815,
+    "metrics": {
+      "paragraphs": 2,
+      "bullets": 0,
+      "overflow": false
+    },
+    "errors": [],
+    "finished_at": "2026-10-16T00:23:02.040Z",
+    "generation": {
+      "event": "generation_result",
+      "profile": "examples_answer_scope_v7_rag_readability",
+      "prompt_roles_sha256": "fbb9b6063133ed349fc50d4d4c61f35aef326ee6a9c919015e5f0ba77d9a14c0",
+      "status": "completed",
+      "provider_attempted": true,
+      "input_tokens": 9298,
+      "output_tokens": 221,
+      "seconds": 3.308354420001706
+    },
+    "estimated_cost_usd": 0.00249025
+  },
+  "production": {
+    "environment": "production",
+    "status": 200,
+    "body": {
+      "ok": true,
+      "text": "이음웍스의 사내 업무 정보·규정·절차와 회사 문서에 설명된 업무 도구 사용법을 안내해 드립니다.\n\n- 휴가·근태·교육\n- 구매·출장·정산·법인카드\n- 계정·권한·기기·업무 도구\n- 사무실·자산·출입\n- 보안 사고·서비스 장애·고객 문의 절차\n\n신청·변경·승인이나 개인별 상태 조회를 직접 처리하지는 않습니다. 어떤 업무가 궁금하신가요?",
+      "reason": ""
+    },
+    "seconds": 4.567,
+    "metrics": {
+      "paragraphs": 2,
+      "bullets": 5,
+      "overflow": false
+    },
+    "errors": [],
+    "finished_at": "2026-10-16T00:31:28.835Z",
+    "generation": {
+      "event": "generation_result",
+      "profile": "examples_answer_scope_v7_rag_readability",
+      "prompt_roles_sha256": "fbb9b6063133ed349fc50d4d4c61f35aef326ee6a9c919015e5f0ba77d9a14c0",
+      "status": "completed",
+      "provider_attempted": true,
+      "input_tokens": 9298,
+      "output_tokens": 308,
+      "seconds": 3.9922720220056362
+    },
+    "estimated_cost_usd": 0.0025555
+  },
+  "estimated_total_usd": 0.00504575,
+  "pricing": "conservative input 0.25 USD/M, output 0.75 USD/M; not actual billing"
+}
