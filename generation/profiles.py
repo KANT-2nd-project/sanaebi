@@ -8,6 +8,12 @@ from pathlib import Path
 from generation.profile_registry import PROFILE_SUFFIXES
 from generation.profile_texts import DEFAULT_PROMPT_PROFILE, RAG_PROMPT_PROFILE
 from generation.prompts import build_prompt
+from generation.rag_readability import (
+    EXPERIMENT_PROFILE_SUFFIXES,
+    RAG_READABILITY_V6_PROFILE,
+    RAG_READABILITY_V7_PROFILE,
+    RAG_SUPPORTED_PROFILES,
+)
 from generation.types import GenerationPrompt
 
 # Retain the historical private name for in-repository experiment scripts.
@@ -16,6 +22,9 @@ _PROFILE_SUFFIXES = PROFILE_SUFFIXES
 __all__ = [
     "DEFAULT_PROMPT_PROFILE",
     "RAG_PROMPT_PROFILE",
+    "RAG_READABILITY_V6_PROFILE",
+    "RAG_READABILITY_V7_PROFILE",
+    "RAG_SUPPORTED_PROFILES",
     "build_profile_prompt",
 ]
 
@@ -30,6 +39,8 @@ def build_profile_prompt(
         suffix = (
             PROFILE_SUFFIXES[profile]
             if profile in PROFILE_SUFFIXES
+            else EXPERIMENT_PROFILE_SUFFIXES[profile]
+            if profile in EXPERIMENT_PROFILE_SUFFIXES
             else _archived_suffixes()[profile]
         )
     except (KeyError, TypeError) as exc:

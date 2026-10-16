@@ -26,7 +26,7 @@ from app.public_limits import (
 )
 from generation.advisory import ClassificationContext
 from generation.presets import RuntimeSettings
-from generation.profiles import RAG_PROMPT_PROFILE
+from generation.profiles import RAG_SUPPORTED_PROFILES
 from generation.providers import (
     GenerationProviderResponseError,
     ManagedGenerationClient,
@@ -96,7 +96,7 @@ class GenerationAnswerer:
 
     @property
     def supports_empty_retrieval(self):
-        return self.settings.prompt_profile == RAG_PROMPT_PROFILE
+        return self.settings.prompt_profile in RAG_SUPPORTED_PROFILES
 
     def _get_client(self):
         with self._lock:
