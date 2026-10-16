@@ -14,6 +14,8 @@ flowchart TD
 
 **[사내비 바로 사용하기](https://sanaebi.29232923.xyz/chat)** — 공용 문서·자정 초기화 등 이용 조건은 [배포 안내](../deployment/README.md#공개-시연-제한)를 따른다.
 
+[프로젝트 발표 PDF와 근거](presentation/README.md)에서 프로젝트 배경·구현 흐름·모델 비교를 한 번에 볼 수 있다. 회사 출시 발표 형식은 가상 회사 콘셉트다.
+
 ## 이해하기
 
 | 문서 | 읽는 목적 |
@@ -92,7 +94,7 @@ RAG 로컬 구현의 범위·검증·미검증 항목은 [구현 기록](worklog
 
 ## 분류 라벨 보조 전달 평가
 
-기존 프롬프트·지침만 추가·실제 라벨 전달·대체 라벨 비교의 원응답, 판정과 미채택 근거. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
+기존 프롬프트·지침만 추가·실제 라벨 전달·대체 라벨 비교의 원응답, 판정과 당시 미채택 근거. 현재 서버 적용은 [후속 사용자 채택](worklogs/2026-10-16-adopt-advisory.md)과 구분한다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
 
 - [RAG 단계별 검색 품질 비교](../retrieval/reports/2026-10-15-rag-quality-improvement/README.md): 기존 검색 유지 결정과 인접 확장의 관측 개선·미채택 근거. [구현·게시 기록](worklogs/2026-10-15-rag-quality-improvement.md).
 

@@ -8,6 +8,8 @@
 
 ### 모델 준비
 
+[선정 저장본 확보·새 모델 학습](../classification/model-preparation.md)에서 권한이 있는 팀원은 비공개 저장본을, 외부 사용자는 공개 사전학습 모델의 재학습 경로를 선택합니다. 준비 스크립트의 고정 revision·해시 검증과 재학습 결과의 차이를 구분합니다.
+
 분류를 확인하려면 저장된 모델이 필요합니다. 기본 경로는 `artifacts/experiments/learning-comparison-2026-10-15/koelectra_base/model/`이며 **가중치는 Git에 포함되지 않습니다.** 다른 환경에서는 모델 가중치·config·tokenizer·metadata.json을 함께 준비하고 `SANAEBI_CLASSIFIER_PATH`를 지정하세요. 상대 경로는 저장소 루트 기준입니다.
 
 ```bash
@@ -48,7 +50,7 @@ curl -X POST http://127.0.0.1:8000/classify/koelectra-base \
 
 문서 기반 실제 답변에는 게시된 회사 문서와 생성 제공자 준비가 추가로 필요합니다. 새 환경은 `npm run setup:local -- --init-documents`로 문서 DB·검색 색인·복원 묶음을 함께 준비합니다. 기존 수동 이관은 [DB 초기 구성](../docs/document-management.md#새-환경의-db-최초-구성)을 참고합니다. 이후 문서는 `/admin/documents`에서 편집·게시하며 재시작 시 자동 이관하지 않습니다. 게시는 사람 검수 승인을 의미하지 않습니다.
 
-`SANAEBI_ANSWER_PROVIDER`는 미설정 또는 `openai`만 허용합니다. 다른 값은 시작 시 오류입니다. 최종 GPT-6 Luna에는 `OPENAI_API_KEY`가 필요하며 API 비용이 발생합니다. 서버와 CLI는 같은 [모델·프롬프트 설정](../generation/README.md#독립-실행)을 사용합니다. 필요한 환경변수는 실행 프로세스에 전달합니다. 위 명령이 `.env`를 자동으로 읽는다고 가정하지 않습니다. 실제 생성 모델의 입력 한도와 문서 준비를 확인한 뒤 호출하세요.
+`SANAEBI_ANSWER_PROVIDER`는 미설정 또는 `openai`만 허용합니다. 다른 값은 시작 시 오류입니다. 최종 GPT-6 Luna에는 `OPENAI_API_KEY`가 필요하며 API 비용이 발생합니다. 서버와 CLI는 같은 [모델·프롬프트 설정](../generation/README.md#독립-실행)을 사용합니다. 루트의 [환경 예시](../.env.example)를 실제 키 없이 복사한 뒤 본인 값을 입력합니다. `npm run dev:api`와 통합 setup·check·dev는 `.env`를 읽습니다. uvicorn이나 Python을 직접 실행하면 필요한 환경변수를 별도로 전달해야 합니다. 실제 생성 모델의 입력 한도와 문서 준비를 확인한 뒤 호출하세요.
 
 ```bash
 curl -X POST http://127.0.0.1:8000/ask \
@@ -56,7 +58,7 @@ curl -X POST http://127.0.0.1:8000/ask \
   -d '{"question":"휴가 신청 방법 알려줘"}'
 ```
 
-성공 응답은 `{"ok":true,"text":"안내 또는 생성된 답변","reason":""}` 형태입니다. 기본 advisory에서는 세 라벨 모두 문서 기반 답변을 시도하며, 빈 문서이면 자료 없음 안내를 반환합니다. 선택적 gate에서만 CLARIFY·UNSUPPORTED가 생성 전 고정 안내로 종료합니다. 생성 실패는 502이며 빈 문서의 정상 안내와 다릅니다. 이 요청은 준비 상태 확인 예시이며 실제 답변 품질 검증을 대신하지 않습니다.
+성공 응답은 `{"ok":true,"text":"안내 또는 생성된 답변","reason":""}` 형태입니다. 기본 advisory에서는 세 라벨 모두 문서 단계로 진행합니다. 기본 RAG 프로필은 빈 문서·검색 근거 없음도 생성에 전달해 자료 부족이나 서비스 범위를 안내합니다. full은 빈 문서에서 고정 안내로 종료합니다. 선택적 gate에서만 CLARIFY·UNSUPPORTED가 생성 전 고정 안내로 종료합니다. 생성 실패는 502이며 빈 문서의 정상 안내와 다릅니다. 이 요청은 준비 상태 확인 예시이며 실제 답변 품질 검증을 대신하지 않습니다.
 
 ## 서버 시작과 첫 요청
 
@@ -82,7 +84,7 @@ sequenceDiagram
     Model->>Model: 토큰화·CPU 추론
     Model-->>Service: 세 라벨 중 하나
     Service->>Service: advisory 참고 전달 / shadow 관찰 / gate 분기
-    opt 문서 단계 진입 및 유효 문서 있음
+    opt 문서 단계 진입 및 프로필이 생성 허용
         Service->>Service: full 또는 rag 근거로 생성
     end
     Service-->>Router: QuestionResult(text)
@@ -110,9 +112,10 @@ FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우�
 `get_question_handler()`는 full/rag 흐름을 선택한 뒤 `partial()`로 분류 함수와 앱의 라우팅 모드를 연결한다. 아래는 이해를 돕는 동등한 형태이며 실제 코드는 [dependencies.py](dependencies.py)에 있다.
 
 ```python
-# 개념 예제: 기본 v5의 RAG 흐름. full은 build_full_flow를 사용한다.
+# 개념 예제: 현재 RAG 흐름. full은 build_full_flow를 사용한다.
 flow = build_rag_flow(
-    document_provider.snapshot, retriever.retrieve, answerer.answer_input
+    document_provider.snapshot, retriever.retrieve, answerer.answer_input,
+    allow_empty_retrieval=answerer.supports_empty_retrieval,
 )
 
 
@@ -129,7 +132,7 @@ def handle(question):
 
 ### 기본 advisory와 선택적 gate
 
-기본 advisory에서는 세 라벨과 알려진 분류 장애 모두 문서를 한 번 읽는다. 빈 snapshot이면 안내하고, 유효 문서가 있으면 full 또는 rag 근거로 생성한다. 분류가 회사 밖 지식이나 실제 조회·실행을 허용하지는 않는다.
+기본 advisory에서는 세 라벨과 알려진 분류 장애 모두 문서를 한 번 읽는다. full은 빈 snapshot에서 고정 안내한다. 기본 RAG 프로필은 빈 snapshot·검색 근거 없음 상태도 생성에 전달한다. 유효 근거가 있으면 full 또는 rag 문맥으로 생성한다. 분류가 회사 밖 지식이나 실제 조회·실행을 허용하지는 않는다.
 
 아래 표는 **gate를 명시했을 때만** 적용한다.
 
@@ -137,14 +140,14 @@ def handle(question):
 |---|---|---:|---:|
 | CLARIFY | 질문 구체화 안내 | 없음 | 없음 |
 | UNSUPPORTED | 지원 범위 안내 | 없음 | 없음 |
-| SEARCH_KNOWLEDGE, 문서 없음 | 자료 없음 안내 | 1회 | 없음 |
+| SEARCH_KNOWLEDGE, 문서 없음 | 자료 부족·지원 범위 안내 | 1회 | 기본 RAG는 있음, full은 없음 |
 | SEARCH_KNOWLEDGE, 문서 있음 | 생성한 답변 | 1회 | 있음 |
 
 라벨은 처리 방향이며 근거 존재를 보장하지 않는다. 허용되지 않은 라벨은 프로그래밍 오류로 처리한다. 비검색 요청에서 문서를 조회하지 않는다는 것은 서버 시작 시 SQLite 초기화도 없다는 뜻은 아니다. 상세 정책과 목표 설계는 [서비스 아키텍처](../docs/service-architecture.md)를 따른다.
 
 ### 문서는 한 번 확보해서 전달한다
 
-`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 snapshot 전체 문서를, rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택한 근거를 공통 `AnswerInput`으로 렌더링해 `answer_input`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 준비된 색인에서 질문 최고 점수가0.42882221937179565 미만이면 고정 안내로 종료하며 생성·예약하지 않는다. 검색 입력 한도 초과는 422다.
+`DocumentContextProvider.snapshot()`은 SQLite의 유효한 게시본을 읽는다. snapshot에는 본문 외에 문서 ID·개정·제목·출처·메타데이터가 함께 있다. full은 snapshot 전체 문서를, rag는 같은 snapshot을 retriever에 한 번 전달한 뒤 선택한 근거를 공통 `AnswerInput`으로 렌더링해 `answer_input`에 전달한다. snapshot 조회 자체와 검색은 별도 단계이며 답변 어댑터는 DB를 다시 읽지 않는다. 색인 미준비·장애는 503이고 full로 자동 전환하지 않는다. 준비된 색인에서 질문 최고 점수가0.42882221937179565 미만이면 검색 근거는 비어 있다. 현재 RAG 프로필은 이 상태도 생성·예약 대상으로 처리한다. 빈 근거 생성을 지원하지 않는 프로필을 명시한 경우에만 고정 안내로 종료한다. 검색 입력 한도 초과는 422다.
 
 `GenerationAnswerer`는 full의 snapshot 또는 rag의 선택 근거를 렌더링하고 `generation.generate_from_documents`를 호출한다. 정상 파싱된 answer 문자열만 반환한다. 거절·잘림·빈 답변·파싱 실패·timeout·제공자 오류는 안전한 502이며 자동 재시도·fallback은 없다. 서버는 평가 JSONL이나 `generation_evaluation`을 읽지 않는다. 생성 경계에는 질문·렌더링한 문서·프로필과 선택적 keyword 인자 `classification_context`를 전달한다. advisory의 정상 서버 예측만 기존 공통 조합 함수로 연결한다. 라벨 없음·알려진 분류 장애·client 출처는 기존 프롬프트로 정확히 복귀한다. [채택 결정·한계](../docs/worklogs/2026-10-16-adopt-advisory.md)를 따른다.
 
