@@ -211,6 +211,8 @@ class GenerationAnswerer:
             record_generation(metadata)
             safe_log = {
                 "event": "generation_result",
+                "profile": metadata.get("profile"),
+                "prompt_roles_sha256": metadata.get("prompt_roles_sha256"),
                 "status": metadata.get("status", "internal_error"),
                 "provider_attempted": attempt.provider_attempted,
                 "input_tokens": metadata.get("input_tokens"),

@@ -103,3 +103,7 @@ health·Swagger·분류 진단·레거시 API는 외부에서 허용하지 않�
 ## KURE 채택 이후 준비 상태
 
 [KURE 채택·연결](../retrieval/reports/2026-10-16-kure-adoption/README.md)에 따라 신규 descriptor·Compose·모델 준비의 기본값은 KURE다. 모델 디렉터리의 `splitter/`에 고정 Tiny tokenizer만 포함하며 Tiny 가중치는 요구하지 않는다. 새 spec의 색인·기본 벡터를 준비하고 기존 Tiny/full 릴리스 복구 자료는 보존한다. 코드 게시와 로컬 검증은 운영 host 원본 확인·실제 배포를 뜻하지 않는다.
+
+## v7 RAG 사용자 채택
+
+서버 RAG의 미설정 프로필은 `examples_answer_scope_v7_rag_readability`이며 명시적 환경변수가 우선한다. 독립 CLI/full은 v5다. 실험 게이트는 미달했지만 사용자가 알려진 누락을 수용해 선택했다. [릴리스·실제 호출·원복 기록](../docs/worklogs/2026-10-16-rag-v7-adoption.md)에서 코드 기본값과 운영 적용 여부를 구분한다.

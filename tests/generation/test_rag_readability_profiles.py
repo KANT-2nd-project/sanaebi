@@ -109,3 +109,31 @@ class RagReadabilityProfilesTests(unittest.TestCase):
                             "안녕하세요", (), "snapshot", evidence_state="no_matches"
                         )
                     )
+
+    def test_adopted_profile_safe_log_omits_content(self):
+        from app.answering.input import AnswerInput
+        from generation.profiles import RAG_READABILITY_V7_PROFILE
+        from generation.types import ModelResponse
+
+        settings = replace(
+            load_runtime_settings(ROOT), prompt_profile=RAG_READABILITY_V7_PROFILE
+        )
+        with (
+            patch(
+                "app.answering.adapter.build_managed_model_call",
+                return_value=lambda prompt: ModelResponse(
+                    raw_text='{"answer":"안녕하세요"}', finish_reason="stop"
+                ),
+            ),
+            self.assertLogs("uvicorn.error", level="INFO") as logs,
+        ):
+            GenerationAnswerer(settings).answer_input(
+                AnswerInput(
+                    "private-question", (), "snapshot", evidence_state="no_matches"
+                )
+            )
+        record = json.loads(logs.records[-1].getMessage())
+        self.assertEqual(record["profile"], RAG_READABILITY_V7_PROFILE)
+        self.assertEqual(len(record["prompt_roles_sha256"]), 64)
+        self.assertNotIn("private-question", logs.records[-1].getMessage())
+        self.assertNotIn("answer", record)

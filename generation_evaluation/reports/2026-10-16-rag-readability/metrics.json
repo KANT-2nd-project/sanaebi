@@ -1,0 +1,49 @@
+{
+  "actual_generation_attempts": 24,
+  "candidates": {
+    "reference": {
+      "attempts": 8,
+      "completed": 8,
+      "failed": 0,
+      "latency_median_seconds": 5.496553596499325,
+      "latency_max_seconds": 31.511245689000134,
+      "input_tokens": 57118,
+      "output_tokens": 4983,
+      "unknown_usage": 0,
+      "estimated_usd": 0.01801675,
+      "reserved_unknown_usd": 0,
+      "reasoning_tokens": 3771
+    },
+    "v6_readability": {
+      "attempts": 8,
+      "completed": 8,
+      "failed": 0,
+      "latency_median_seconds": 3.6849495405003836,
+      "latency_max_seconds": 12.619188886001211,
+      "input_tokens": 60710,
+      "output_tokens": 4838,
+      "unknown_usage": 0,
+      "estimated_usd": 0.018806,
+      "reserved_unknown_usd": 0,
+      "reasoning_tokens": 3627
+    },
+    "v7_readability": {
+      "attempts": 8,
+      "completed": 8,
+      "failed": 0,
+      "latency_median_seconds": 5.037112571500074,
+      "latency_max_seconds": 23.608939669000392,
+      "input_tokens": 61654,
+      "output_tokens": 4922,
+      "unknown_usage": 0,
+      "estimated_usd": 0.019105,
+      "reserved_unknown_usd": 0,
+      "reasoning_tokens": 3678
+    }
+  },
+  "cost_method": "Conservative USD estimate from frozen long cache-write input/output rates; not billing.",
+  "latency_scope": "GenerationAnswerer elapsed, including first client init where applicable; retrieval/classification were frozen before this measurement.",
+  "input_identical_across_candidates": true,
+  "all_prompts_match_manifest": true,
+  "all_usage_observed": true
+}

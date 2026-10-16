@@ -1,0 +1,499 @@
+[
+  {
+    "case_id": "R01",
+    "candidate": "A",
+    "content": "partial",
+    "required_claims": [
+      true,
+      false,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [
+      "required[2]: 대표 업무를 여러 개 제시하지 않음. 관련 업무 문서는 전달되어 있어 생성 누락."
+    ],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": false,
+    "readability_score": 2,
+    "readability_reason": "짧은 한 문단이라 쉽게 읽히지만 대표 업무 예시가 없어 목표 불릿 구조를 충족하지 않는다. 가독성과 구조 판정은 분리했다.",
+    "evidence_diagnosis": "ieum-053과 여러 업무 문서가 actual_documents에 전달됐다. 예시 생략은 retrieval_missing이 아니라 generation_missing이다."
+  },
+  {
+    "case_id": "R01",
+    "candidate": "B",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": false,
+    "readability_score": 2,
+    "readability_reason": "예시와 한계가 명확하고 길이도 적절하다. 예시를 문장 속 쉼표 목록으로 제시해 루브릭의 대표 업무 불릿 구조는 충족하지 않는다.",
+    "evidence_diagnosis": "ieum-053 및 휴가·재무·IT·보안·고객지원 근거가 전달됐고, 답변 예시는 해당 역할과 맞는다."
+  },
+  {
+    "case_id": "R01",
+    "candidate": "C",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "짧은 소개, 훑기 쉬운 업무 불릿, 실행·조회 한계 순서가 질문에 잘 맞는다.",
+    "evidence_diagnosis": "ieum-053과 관련 업무 문서가 전달되어 있어 업무 예시를 뒷받침한다."
+  },
+  {
+    "case_id": "R02",
+    "candidate": "A",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "동일한 짧은 한 문장으로 메뉴와 신청 기한을 바로 확인할 수 있다.",
+    "evidence_diagnosis": "연차 사용 신청 ieum-001이 전달됐고 두 필수 정보가 정확히 반영됐다."
+  },
+  {
+    "case_id": "R02",
+    "candidate": "B",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "동일한 짧은 한 문장으로 메뉴와 신청 기한을 바로 확인할 수 있다.",
+    "evidence_diagnosis": "연차 사용 신청 ieum-001이 전달됐고 두 필수 정보가 정확히 반영됐다."
+  },
+  {
+    "case_id": "R02",
+    "candidate": "C",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "동일한 짧은 한 문장으로 메뉴와 신청 기한을 바로 확인할 수 있다.",
+    "evidence_diagnosis": "연차 사용 신청 ieum-001이 전달됐고 두 필수 정보가 정확히 반영됐다."
+  },
+  {
+    "case_id": "R03",
+    "candidate": "A",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 1,
+    "readability_reason": "번호로 핵심 순서를 잘 보여주지만, 예약 뒤 조건부 대안·20% 변경 안내가 덧붙어 답변이 길고 훑는 비용이 조금 있다.",
+    "evidence_diagnosis": "ieum-015와 ieum-016이 신청 필드, 승인, 예약, 객실 기준, 증빙 연결을 모두 제공했다. “일정”을 날짜를 포함하는 출장 일정으로 해석해 날짜 필수 주장도 충족으로 판정했다."
+  },
+  {
+    "case_id": "R03",
+    "candidate": "B",
+    "content": "partial",
+    "required_claims": [
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "critical_errors": [],
+    "missing_details": [
+      "required[5]: 예약 확인서·결제 증빙을 출장 기록에 연결하고 실제 예약과 일정·프로젝트가 맞는지 확인하는 안내가 없음. ieum-016이 전달되어 있어 generation_missing."
+    ],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 1,
+    "readability_reason": "단계와 조건은 읽히지만 1단계와 2단계가 일부 반복되고, 뒤에 예외 조건이 이어져 답변이 길다.",
+    "evidence_diagnosis": "ieum-016에 사후 증빙·일정/프로젝트 일치 확인이 명시되어 actual_documents에 전달됐다. 이 단계만 답변에서 빠졌다."
+  },
+  {
+    "case_id": "R03",
+    "candidate": "C",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 1,
+    "readability_reason": "순서가 분명하지만 승인·대체 구매·사후 기록·변경 조건을 모두 담아 길고 조건이 많다.",
+    "evidence_diagnosis": "ieum-015·ieum-016이 필요한 단계와 조건을 제공했고, 답변이 모두 반영했다. 조건부 대안도 조건문으로 구별된다."
+  },
+  {
+    "case_id": "R04",
+    "candidate": "A",
+    "content": "partial",
+    "required_claims": [
+      true,
+      true,
+      false,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [
+      "required[3]: 승인 경로를 쓸 수 없어 대체 구매할 때 결제 전에 두 역할의 서면 승인을 받는 조건이 없음. ieum-016에 전달되어 있어 generation_missing."
+    ],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": false,
+    "readability_score": 2,
+    "readability_reason": "짧고 이해하기 쉽지만 두 조건을 한 문단에 붙여 목표한 조건별 불릿/문단 구분은 없다.",
+    "evidence_diagnosis": "ieum-016이 링크 미노출 시 재무팀 문의, 개인 구매 금지, 대체 구매 서면 승인, 20% 변경 재승인을 모두 제공했다. 대체 구매 조건만 생성에서 누락됐다."
+  },
+  {
+    "case_id": "R04",
+    "candidate": "B",
+    "content": "partial",
+    "required_claims": [
+      true,
+      true,
+      false,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [
+      "required[3]: 승인 경로를 사용할 수 없을 때만 적용되는 대체 구매의 서면 승인 조건을 안내하지 않음. ieum-016이 전달되어 있어 generation_missing."
+    ],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "두 독립 조건을 각 불릿으로 분리해 빠르게 훑을 수 있다.",
+    "evidence_diagnosis": "ieum-016의 대체 구매 조건이 actual_documents에 전달됐지만 답변에서 생략됐다."
+  },
+  {
+    "case_id": "R04",
+    "candidate": "C",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "독립 조건을 별도 불릿으로 구분한다. 마지막 결론은 앞 문장을 조금 반복하지만 답변은 여전히 짧고 선명하다.",
+    "evidence_diagnosis": "ieum-016의 두 예외 조건을 모두 반영했다. 근거와 일치하며 중요한 누락이 없다."
+  },
+  {
+    "case_id": "R05",
+    "candidate": "A",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "신청 안내와 개인 잔여 일수 한계를 한 문단에서 “다만”으로 명확히 구분한다.",
+    "evidence_diagnosis": "ieum-001이 신청 위치·기한과 개인 잔여 일수 계산 불가 및 People팀 확인을 모두 제공했다."
+  },
+  {
+    "case_id": "R05",
+    "candidate": "B",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "신청과 잔여 일수 안내를 문단으로 나눠 읽기 쉽다. 갑작스러운 사정의 보완 안내가 추가되지만 관련성이 있고 길이를 크게 늘리지 않는다.",
+    "evidence_diagnosis": "핵심 안내는 ieum-001에 있고, 추가한 갑작스러운 사정의 Slack 알림·포털 보완도 같은 문서에 근거가 있다."
+  },
+  {
+    "case_id": "R05",
+    "candidate": "C",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "신청 시점, 개인 조회 한계, People팀 확인 경로를 짧고 명확하게 제시한다.",
+    "evidence_diagnosis": "ieum-001의 필수 정보와 일치하며 전달된 문서로 뒷받침된다."
+  },
+  {
+    "case_id": "R06",
+    "candidate": "A",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "범위를 짧게 설명하고 회사 맥락을 요청한다.",
+    "evidence_diagnosis": "evidence_state=no_matches이고 actual_documents가 비어 있다. 일반 알고리즘 강의를 만들지 않고 사내 맥락을 요청한 것은 적절하다."
+  },
+  {
+    "case_id": "R06",
+    "candidate": "B",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "간결한 범위 안내와 자연스러운 후속 질문으로 읽기 쉽다.",
+    "evidence_diagnosis": "evidence_state=no_matches. 사내 활용 맥락이 없으므로 답변이 근거 없이 일반 설명을 만들지 않았다."
+  },
+  {
+    "case_id": "R06",
+    "candidate": "C",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "세 응답 중 가장 짧은 축에 들며 지원 범위와 질문이 분명하다.",
+    "evidence_diagnosis": "evidence_state=no_matches. 관련 사내 자료가 전달되지 않아 일반 설명을 보류한 판단이 적절하다."
+  },
+  {
+    "case_id": "R07",
+    "candidate": "A",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "짧은 재질문에 두 가지 예시를 더해 사용자가 맥락을 고르기 쉽다.",
+    "evidence_diagnosis": "전달 문서는 트리의 뜻을 정하지 못하는 비관련 자료다. 답변이 맥락을 임의 확정하지 않고 확인을 요청했다."
+  },
+  {
+    "case_id": "R07",
+    "candidate": "B",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "두 문장으로 대상과 원하는 도움을 확인한다. 간결하고 충분히 구체적이다.",
+    "evidence_diagnosis": "전달 문서만으로 트리의 의미를 확정할 수 없으며, 응답은 사실 설명 대신 필요한 맥락을 요청했다."
+  },
+  {
+    "case_id": "R07",
+    "candidate": "C",
+    "content": "pass",
+    "required_claims": [
+      true,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 2,
+    "readability_reason": "짧은 한 문장으로 트리의 업무/도구와 필요한 도움을 함께 묻는다.",
+    "evidence_diagnosis": "전달 문서는 질의를 해석할 근거가 되지 않는다. 짧은 확인 질문이 적절하며 임의 추정은 없다."
+  },
+  {
+    "case_id": "R08",
+    "candidate": "A",
+    "content": "fail",
+    "required_claims": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      true
+    ],
+    "critical_errors": [
+      "“15분 내 응답이나 명시적 인수가 확인되지 않으면”을 팀장 인계의 조건으로 둬 최대 15분을 기다릴 수 있다는 해석을 만든다. ieum-035는 15분을 인계 목표로 한정하고 응답이 없으면 신고를 보류하지 말고 팀장 대체 인계를 요청하라고 한다."
+    ],
+    "missing_details": [
+      "required[1]: 링크 공유 파일만 언급해 메일 자체의 가능한 회수 기능은 다루지 않았고, 회수로 외부 사본이 삭제됐다고 단정할 수 없다는 주의도 분명하지 않음.",
+      "required[3]: 자료 등급과 현재 연락 가능한 회사 계정 기록이 빠짐.",
+      "required[4]: 15분이 인수 목표이지 해결/통지 기한이나 기다림 의무가 아니라는 구분이 없음.",
+      "required[5]: 연결 시도와 인수 여부를 사건 기록에 남기라는 안내가 빠짐."
+    ],
+    "grounding_errors": [
+      "“#security-incident와 이음 포털 보안 메뉴로 신고”는 두 경로를 모두 의무화하는 뜻으로 읽힌다. 전달된 ieum-035는 Slack 채널 또는 포털 보안 신고를 제시한다."
+    ],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 1,
+    "readability_reason": "조치·신고·기록·인계·수신자 후속을 번호와 마지막 문단으로 나누지만, 단계마다 조건과 기록 항목이 많아 밀도가 높다.",
+    "evidence_diagnosis": "ieum-035·ieum-058·ieum-040·ieum-031이 회수 한계, 연락 계정, 신고 경로, 30분 접수 목표, 15분 인계 목표와 기록 항목을 전달했다. 빠진 내용은 retrieval_missing이 아니라 generation_missing이다."
+  },
+  {
+    "case_id": "R08",
+    "candidate": "B",
+    "content": "partial",
+    "required_claims": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [
+      "required[1]: 회수 결과 기록은 있으나 회수만으로 외부 사본이 삭제됐다고 볼 수 없다는 주의가 명시되지 않음.",
+      "required[3]: 현재 연락 가능한 회사 계정을 기록하라는 항목이 없음.",
+      "required[4]: 15분 인수 목표와 해결/통지 기한·기다림 의무가 아니라는 구분이 없음.",
+      "required[5]: 연결 시도·인수 여부의 기록 및 증거가 될 메시지·파일·로그를 임의 편집하지 말라는 안내가 없음."
+    ],
+    "grounding_errors": [],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": true,
+    "readability_score": 1,
+    "readability_reason": "불릿과 마지막 수신자 문단은 찾기 쉽지만 각 불릿이 긴급 신고 정보와 여러 기록 항목을 함께 담아 다소 밀집한다.",
+    "evidence_diagnosis": "ieum-035·ieum-058·ieum-040·ieum-031의 관련 근거가 모두 전달됐다. 빠진 연락 계정·15분 목표 설명·기록/보존 항목은 generation_missing이다."
+  },
+  {
+    "case_id": "R08",
+    "candidate": "C",
+    "content": "partial",
+    "required_claims": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      true
+    ],
+    "critical_errors": [],
+    "missing_details": [
+      "required[1]: 회수 결과 기록과 열람·복사 불확실성은 안내했지만 외부 사본 삭제를 단정할 수 없다는 구분이 빠짐.",
+      "required[3]: 현재 연락 가능한 회사 계정 기록이 빠짐.",
+      "required[4]: 15분 인수 목표와 미응답 시 즉시 대체 인계 절차가 없음.",
+      "required[5]: 연결 시도·인수 여부를 기록하라는 안내가 없음. 증거 보존 주의는 포함됨."
+    ],
+    "grounding_errors": [
+      "“#security-incident와 이음 포털 보안 신고 경로”는 두 경로 모두를 의무화하는 뜻으로 읽힌다. 전달된 ieum-035는 Slack 채널 또는 포털 신고를 선택 경로로 제시한다."
+    ],
+    "polite_korean": true,
+    "relevance": true,
+    "structure_pass": false,
+    "readability_score": 2,
+    "readability_reason": "짧은 번호 목록과 후속 문단은 쉽게 읽힌다. 다만 인계 단계가 통째로 빠져 구조 목표의 네 구분 중 하나를 제공하지 않는다.",
+    "evidence_diagnosis": "ieum-035·ieum-058·ieum-040·ieum-031이 필요한 인계·연락·기록 절차를 전달했다. 해당 누락은 retrieval_missing이 아니라 generation_missing이다."
+  }
+]

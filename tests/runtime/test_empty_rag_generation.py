@@ -171,9 +171,14 @@ class EmptyRagTests(unittest.TestCase):
         import os
 
         from app.settings import get_rag_prompt_profile
-        from generation.profiles import DEFAULT_PROMPT_PROFILE
+        from generation.profiles import (
+            DEFAULT_PROMPT_PROFILE,
+            RAG_READABILITY_V7_PROFILE,
+        )
 
         with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(get_rag_prompt_profile(), RAG_READABILITY_V7_PROFILE)
+            os.environ["SANAEBI_RAG_PROMPT_PROFILE"] = RAG_PROMPT_PROFILE
             self.assertEqual(get_rag_prompt_profile(), RAG_PROMPT_PROFILE)
             os.environ["SANAEBI_RAG_PROMPT_PROFILE"] = DEFAULT_PROMPT_PROFILE
             self.assertEqual(get_rag_prompt_profile(), DEFAULT_PROMPT_PROFILE)

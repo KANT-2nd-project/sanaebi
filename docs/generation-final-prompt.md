@@ -5,7 +5,7 @@
 | 항목 | 최종 선택 |
 |---|---|
 | 모델 | GPT-6 Luna (`gpt-6-luna`) |
-| 프로필 | `examples_answer_scope_v5` |
+| 프로필 | 서버 RAG: `examples_answer_scope_v7_rag_readability`; 독립 CLI/full: `examples_answer_scope_v5` |
 | 전략 | `single` |
 | 추론 | `xhigh` |
 | 최대 출력 | 16384토큰 |
@@ -70,3 +70,12 @@ v3/v4 비교18회 뒤 v5를13문항 각1회 검증했다. 독립 AI 검토에서
 ## RAG 전용 예외 (2026-10-16)
 
 서버 RAG는 `examples_answer_scope_v5_rag_service_v1`을 사용한다. v5에 서비스 소개·인사 예외를 추가하고 정상 빈 근거 상태를 명시한다. 회사 사실은 계속 문서에 근거하며 full·독립 CLI 기본 v5는 변경하지 않는다. [8회 검증과 후속 사용자 채택](../retrieval/reports/2026-10-16-rag-context-empty/README.md) 및 [RAG 실행 안내](rag-runtime.md)를 따른다.
+
+
+## 2026-10-16 현재 RAG 가독성 재비교
+
+현재 RAG 기준점에 보관된 v6·v7_readability 문구를 각각 추가해 총24회 비교했다. 두 후보 모두 사전 조건에 미달하여 RAG 기본값 `examples_answer_scope_v5_rag_service_v1`을 유지한다. 독립 CLI/full은 v5 그대로다. v7의 도움 소개 구조 개선과 사고 후속 안내 누락을 구분했으며, 결과와 한계는 [작업 기록](worklogs/2026-10-16-rag-readability.md)을 따른다. 이번에는 배포하거나 추가 튜닝하지 않았다.
+
+## 후속 사용자 결정: v7 RAG 채택
+
+2026-10-16 사용자가 위 실험의 미달 사유를 수용하고 v7 RAG를 서버 기본값으로 선택했다. 실험 본문은 수정하지 않았고 24회 평가 점수와 보류 판정은 보존한다. 필수 안내 누락 감소는 다음 단계다. [적용·배포·원복 기록](worklogs/2026-10-16-rag-v7-adoption.md)을 따른다.

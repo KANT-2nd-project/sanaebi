@@ -1,0 +1,121 @@
+{
+  "reference": {
+    "attempts": 8,
+    "completed": 8,
+    "failed": 0,
+    "latency_median_seconds": 5.496553596499325,
+    "latency_max_seconds": 31.511245689000134,
+    "input_tokens": 57118,
+    "output_tokens": 4983,
+    "unknown_usage": 0,
+    "estimated_usd": 0.01801675,
+    "reserved_unknown_usd": 0,
+    "reasoning_tokens": 3771,
+    "content_counts": {
+      "pass": 5,
+      "partial": 3,
+      "fail": 0,
+      "uncertain": 0
+    },
+    "critical_error_cases": [],
+    "readability_wins": [],
+    "readability_losses": [],
+    "readability_score_sum": 14,
+    "structure_passes": 6,
+    "required_regressions": [],
+    "adoption_conditions": {
+      "all_contract_pass": true,
+      "all_content_pass": false,
+      "zero_critical_errors": true,
+      "no_required_regressions": true,
+      "capability_structure": false,
+      "all_structure_targets": false,
+      "at_least_two_readability_wins": false,
+      "zero_readability_losses": true,
+      "no_uncertainty": true
+    },
+    "eligible": false
+  },
+  "v6_readability": {
+    "attempts": 8,
+    "completed": 8,
+    "failed": 0,
+    "latency_median_seconds": 3.6849495405003836,
+    "latency_max_seconds": 12.619188886001211,
+    "input_tokens": 60710,
+    "output_tokens": 4838,
+    "unknown_usage": 0,
+    "estimated_usd": 0.018806,
+    "reserved_unknown_usd": 0,
+    "reasoning_tokens": 3627,
+    "content_counts": {
+      "pass": 5,
+      "partial": 3,
+      "fail": 0,
+      "uncertain": 0
+    },
+    "critical_error_cases": [],
+    "readability_wins": [],
+    "readability_losses": [],
+    "readability_score_sum": 14,
+    "structure_passes": 7,
+    "required_regressions": [
+      {
+        "case": "R03",
+        "claim": 5,
+        "text": "예약 확인서·결제 증빙을 출장 기록에 연결하고 실제 예약과 방문 일정·프로젝트의 일치를 확인한다."
+      }
+    ],
+    "adoption_conditions": {
+      "all_contract_pass": true,
+      "all_content_pass": false,
+      "zero_critical_errors": true,
+      "no_required_regressions": false,
+      "capability_structure": false,
+      "all_structure_targets": false,
+      "at_least_two_readability_wins": false,
+      "zero_readability_losses": true,
+      "no_uncertainty": true
+    },
+    "eligible": false
+  },
+  "v7_readability": {
+    "attempts": 8,
+    "completed": 8,
+    "failed": 0,
+    "latency_median_seconds": 5.037112571500074,
+    "latency_max_seconds": 23.608939669000392,
+    "input_tokens": 61654,
+    "output_tokens": 4922,
+    "unknown_usage": 0,
+    "estimated_usd": 0.019105,
+    "reserved_unknown_usd": 0,
+    "reasoning_tokens": 3678,
+    "content_counts": {
+      "pass": 7,
+      "partial": 1,
+      "fail": 0,
+      "uncertain": 0
+    },
+    "critical_error_cases": [],
+    "readability_wins": [
+      "R08"
+    ],
+    "readability_losses": [],
+    "readability_score_sum": 15,
+    "structure_passes": 6,
+    "required_regressions": [],
+    "adoption_conditions": {
+      "all_contract_pass": true,
+      "all_content_pass": false,
+      "zero_critical_errors": true,
+      "no_required_regressions": true,
+      "capability_structure": true,
+      "all_structure_targets": false,
+      "at_least_two_readability_wins": false,
+      "zero_readability_losses": true,
+      "no_uncertainty": true
+    },
+    "eligible": false
+  }
+}

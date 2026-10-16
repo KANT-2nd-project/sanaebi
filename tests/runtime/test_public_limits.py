@@ -231,6 +231,8 @@ class PublicDemoApiTests(unittest.TestCase):
             set(metadata),
             {
                 "event",
+                "profile",
+                "prompt_roles_sha256",
                 "status",
                 "provider_attempted",
                 "input_tokens",
@@ -239,6 +241,8 @@ class PublicDemoApiTests(unittest.TestCase):
             },
         )
         self.assertEqual(metadata["event"], "generation_result")
+        self.assertIsInstance(metadata["profile"], str)
+        self.assertEqual(len(metadata["prompt_roles_sha256"]), 64)
         self.assertEqual(metadata["status"], "completed")
         self.assertTrue(metadata["provider_attempted"])
         self.assertEqual(metadata["input_tokens"], 23)

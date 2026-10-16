@@ -1,0 +1,18 @@
+{
+  "snapshot_fingerprint": "441bafd70048a25325c73651f6479d73e5d8db7776e7d3fbeb85c839c2635482",
+  "document_count": 71,
+  "status": {
+    "ready": true,
+    "expected": 71,
+    "ready_count": 71,
+    "missing": 0
+  },
+  "routing": "advisory",
+  "profile": "examples_answer_scope_v5_rag_service_v1",
+  "expand_context": true,
+  "profile_env_override": null,
+  "source_db": "/home/jake/workspace/projects/sanaebi/var/documents.sqlite3",
+  "source_index": "/home/jake/workspace/projects/sanaebi/var/retrieval/schema-v1/bca3b6b3fc1fb803856881d853a8e7f12fa922310761cd6cb1dc52f862bdfc87/index.sqlite3",
+  "db_sha256": "60831c11c1a0218056af7c60088d657bad10c7524fdabf55543d9c417e7382b9",
+  "index_sha256": "b0180bd49f87bb507fa23de0400a1245e6641ac026fe1c3d9033a90bf260e40a"
+}

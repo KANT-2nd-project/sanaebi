@@ -1,0 +1,16 @@
+{
+  "currency": "USD",
+  "input_usd_per_million_tokens": 0.25,
+  "output_usd_per_million_tokens": 0.75,
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "verified_at": "2026-10-15T23:33:38.487622+00:00",
+  "method": "Conservative Standard long-context cache-write input rate for every input token and long output rate; not actual billing; no cached-token discount.",
+  "published_standard_rates": {
+    "short_input": 0.1,
+    "short_cache_write": 0.125,
+    "short_output": 0.5,
+    "long_input": 0.2,
+    "long_cache_write": 0.25,
+    "long_output": 0.75
+  }
+}

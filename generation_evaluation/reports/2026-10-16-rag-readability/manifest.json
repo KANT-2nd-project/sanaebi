@@ -1,0 +1,367 @@
+{
+  "manifest": {
+    "format_version": 1,
+    "experiment_id": "rag-readability-20261016",
+    "model_settings": {
+      "provider": "openai",
+      "model_name": "gpt-6-luna",
+      "timeout_seconds": 180,
+      "max_output_tokens": 16384,
+      "context_window": null,
+      "reasoning_effort": "xhigh",
+      "temperature": null,
+      "output_mode": "prompt_json"
+    },
+    "candidate_profiles": [
+      {
+        "key": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1"
+      },
+      {
+        "key": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability"
+      },
+      {
+        "key": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability"
+      }
+    ],
+    "input_sha256": "2d066e33a9e95fb129a8d42f43aef9384d2fa4b8a481a72584564db3959de0f7",
+    "input_artifact_sha256": {
+      "prepare.py": "c8d1988189066f61c9793e7055581aa76116f2034928772bdf57280d391d65ef",
+      "snapshot.json": "f3472dafc8659b94fb061a2d9188474cf0ec20d8963601e308be3782a429bca5",
+      "freeze.json": "70402bf63759f0ab7a8dbcc08b59de14026f6bc4b5aff820f2eea994ba318c5c"
+    },
+    "rubric_sha256": "5f9e9bad060872b2360b4fb0488e993cd1287402cfb15a35f901b2b461dcca8e",
+    "pricing_sha256": "d747679dacf701526b5c1ae85bddf0a548de37f8358d1b5e95383ce6e120d80c",
+    "pricing": {
+      "currency": "USD",
+      "input_usd_per_million_tokens": 0.25,
+      "output_usd_per_million_tokens": 0.75,
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "verified_at": "2026-10-15T23:33:38.487622+00:00",
+      "method": "Conservative Standard long-context cache-write input rate for every input token and long output rate; not actual billing; no cached-token discount.",
+      "published_standard_rates": {
+        "short_input": 0.1,
+        "short_cache_write": 0.125,
+        "short_output": 0.5,
+        "long_input": 0.2,
+        "long_cache_write": 0.25,
+        "long_output": 0.75
+      }
+    },
+    "code_sha256": {
+      "generation_evaluation/rag_readability.py": "cba94e9b8a1758228efd4f33a414fc8e40a3d9e478ac1553e3afcb137cd5983b",
+      "generation_evaluation/budget.py": "f112616c39ae049bfa7851b423cf773dc625da42a56ed68b680ee35a36a3e42e",
+      "app/answering/adapter.py": "60e39344d5437bff43ad3b524b1810fddaf352af1c21238289f9c021f83f71e9",
+      "app/answering/input.py": "27ccf8ec5add25a9d7305435acbaba5b4c85ba3666bc20981965278f07ca67aa",
+      "app/diagnostics/trace.py": "3fdf008664adaae7785c20f6301ef929238f8230d787f42c5335d8fcd2dba8cc",
+      "contracts/classification.py": "31e546aa50f8ee65ffb8324fcea00cbd64198cb95344ed33fd96a2b1c91e29cf",
+      "generation/advisory.py": "3b7ed97a57cdd04fbda4c4d7a4be85f5bc4e6a93942d4a03df8a4ee5484d56ea",
+      "generation/config.py": "e114cea1ceca6b7129f09e92cae9854ffa2fec5616d790a799881832a3bb5319",
+      "generation/documents.py": "6de589ec6c2813ae465e13a7ef9623cae3c4b314a33d2f2b8622907f25466209",
+      "generation/evidence.py": "8b5bd06bfb97cdaedd57fee9d9ad774a48a5a2d0cbc54d7557ae99d03840d5cd",
+      "generation/output_schema.py": "daebca83f5bdf16c3bd9462ab7a964b7bb27beca74cd763db1952026ee7a0ad3",
+      "generation/presets.py": "8b3d9d80508b09cba778d677da300fe31c0b3a1e2c1677f50da279c974804369",
+      "generation/profile_registry.py": "200783e5b797e62ac228ea98aca6cecc715c71c3410b22dd0133c2fd9a97fe15",
+      "generation/profile_texts.py": "f74423658e270d149805316a71da658a0add1e8a354db37277918d009502f2e0",
+      "generation/profiles.py": "21660833a27a1a97dc61132454c6e953ab273574dc2aed61103caa6c1b585c3b",
+      "generation/prompts.py": "e78b36157b16547d8053d50d51837b76becfac80a9a314934ab83b2851c047f4",
+      "generation/providers.py": "e2787c296a66acd1611d5d6216a441fc0c04adf27e4f07868520d8708bae53a1",
+      "generation/service.py": "b276a1d7756fcb4105a6558f6ad058034a30a304a5374c00056561fb881b8bcc",
+      "generation/types.py": "c48fa38a382b4c45ebffef7869f90d82fa1800beb4d556e521e194d8f7e2ca27",
+      "generation/validation.py": "37b096eeed05b8b9654ae563223ac6c2a297ca2e078109f79fc7c6e9b3bd68cb",
+      "app/classification/predictor.py": "85923c0f981dae7856c29ff120b316b5910ceaec291de4c64473248b373d8796",
+      "app/documents/context.py": "157d8045e6aec68c42e0f582fd8fe657546a4dff340866dd901f7b220775e1f3",
+      "app/questions/service.py": "a9effb2c6f5c25a12f9a5319f2ecd857c3d3331a21a5233ac9c4d73de7c37624",
+      "app/settings.py": "4369ef0afba05060832b9cf6d948dd9820b7518d9ef2103b9300f583affb2b6b",
+      "generation/rag_readability.py": "dc78e770092eaf839caaf1866b6c1e63e4299f915f16b50820e090aad3df9c01",
+      "generation/archive/prompt_profiles.json": "d987cd8543fda11bbbc9196b4659df00ea1a8ce173c21f4f03051fe37a4332d9",
+      "generation/models.json": "7e412653189d7964ee41a0eea1d4220d9b1e4593e2a222fc407d8ae3fdbb36e3",
+      "generation/experiments.json": "060f28a092ef16a023dbb03a9d4f375a33f0455d91d69c790e3a5d02c64b6168",
+      "pyproject.toml": "765777a12e781a2e5100c0bc81434370dea31bd0b4a14e20aefdebf87ec6747d",
+      "uv.lock": "d3d7346024ffbc890761ec08049d725a83003448bd7089f42d025543df58fe62",
+      "app/answering/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/answering/output.py": "be8044da406439bf02a30708ce14977eaf05a7a10c5444da22dd653c61ab1265",
+      "app/answering/router.py": "73d2ba0628ae2e73fa8d716de6238b9c2600a25cce7c92f8a40f2850aaf90e13",
+      "app/documents/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/documents/http.py": "4a7b8f408b392b4e3bf7cd773342666ff0a6d74e6830d31c92faabd102598e0f",
+      "app/documents/maintenance.py": "4b0b07e9fa85d180422517c9bee0fed2f454ffbc0aebd8319400441239bea63d",
+      "app/documents/metadata.py": "e446ef2036f96a6e1bc71a9c22b1d406727560d424e54b090d2e13885e1a7d11",
+      "app/documents/registration.py": "48937780fa1865dce2b396c41e5f927b83160ed4e96bf23edfc47d06407e388f",
+      "app/documents/repository.py": "5354e5804555862deb655fa9d7168c1aff803c71255ad17ff65e4562271e5024",
+      "app/documents/reset.py": "926adc17ac8da9bd7a9b6f6637251e811cdb10f0222e60514ce7a9a98f17229a",
+      "app/documents/router.py": "607e7bbde900a55c091521c3cd08724553e08b2fed50d7942d32b05467e78b76",
+      "app/documents/schemas.py": "b81513cd6d6f78aff2055bf9149809187a8d039189802bb960f014efa87977ba",
+      "app/documents/service.py": "eac865bb095460578c83be8effe28bc5c703bc02d9e289674d1100bb04b215b9",
+      "app/documents/transfer.py": "3ac07d2de55e95d96bde1f06e7b71575953a6d3dbbbffab3262a663a8d158aaf",
+      "app/questions/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/questions/pipeline.py": "17b75d5b0195e805ac42e758e945f0e108a459c6d8df7e734b9acc2bc5fe4e83",
+      "app/questions/router.py": "f450f3b08fb4062a99d1e367be7bc306535dfce1f80186a73ccfd76ea292f245",
+      "app/retrieval/__init__.py": "dadfc2de27e1a8a0827186b8c894c91ca8ed201714bb6c06aa874c1eba2e0d18",
+      "app/retrieval/baseline.py": "0b86351d94dcd59ef9b6b5df6ccdf31a03144b609c9c20bc02c275c25b77542d",
+      "app/retrieval/baseline_store.py": "999a1409d3d9ced6f805cc87c206c5399a88c9b5ad1c7960e9673f25d39043cf",
+      "app/retrieval/chunking.py": "68db584472c4aba316032848e5572309d350cccf3500bdfd730513dfe7d725d1",
+      "app/retrieval/config.py": "f67b9f64290f210c225e1ebbfb8a9dd6cc300cdb5fc60e3f3f89327987c14d9d",
+      "app/retrieval/embedding.py": "8bf469a1bf67271a0b563edf50ebb51f9c2f824a66a35d6312bbd54f5132115b",
+      "app/retrieval/expansion.py": "e26a26022cf1ba8a207ca0a7c6e557b504679ff5caf89ec4f43f91052f505cf0",
+      "app/retrieval/indexer.py": "b1c40b1a6f0075827d3bcdfc3303ca6ba4c7f175dc812ece56b556f9d752a209",
+      "app/retrieval/repository.py": "535563f2e28e36cfba16d66bb12b33b8e370797e8d49a07fa8599a5aa447f205",
+      "app/retrieval/reset.py": "f668cc04733602045faa7e9d409fe9c049d607ee726b8ffffd815976e6b7da49",
+      "app/retrieval/search.py": "9b8804ee5cb4a7e36827dc98afafa75b579de70ef6df5f1e7899a6b03faa6f2c",
+      "app/retrieval/selection.py": "854126dd0b6b51604e7bb31229df5b61648da456a898bceb97adc0f601b46ba7",
+      "app/retrieval/service.py": "688179f8cbe57bb94f1f996d25981954bed01db10f085ccc7eb429d73321b9e7",
+      "app/retrieval/sync.py": "08862e5433826d61a6ad5219c8c1b23fe4e03ae5e2481e21d6f85b81fbc001e1",
+      "app/retrieval/types.py": "37e7946f5e2e3b58e393c557eacc9076d7f551c9225f4a6271a6a0618548a6a2"
+    },
+    "answer_input_sha256": {
+      "R01": "231f8e24889ba005b96fc8e7dd5094345af0c5788115210b950841583e247d5b",
+      "R02": "6942ca0c2d37cf5ebf195d7b4022e5c74e253a0918d43b876fe07bd4d1bd72a5",
+      "R03": "4bd265b6bcddcbd1c2b89c57023322e02e5e1728fb3e3d0f02f6a61f32c0d769",
+      "R04": "e6224123d6e0b0053425e09e59a6d3e3c6725d8a1c6ccd076c26ecbe6cba8f9e",
+      "R05": "bc05ab2472036668e9215d24239a3d6d86e41e037545bf54cf8463d5157c70b4",
+      "R06": "7645980f1c448481449c271b684a5533c6b2a4b2b089e8d08f7252ab60a6feaa",
+      "R07": "1080a4fc12ba09a7f19d8fefd8d93ffb3cab7c9cb4db05e0f1244eb78d1798a0",
+      "R08": "a1287dbdfca0e77ce91b31dfa80d103fd166d55f2775ac0c89b8e6e198142d70"
+    },
+    "prompt_sha256": {
+      "R01": {
+        "reference": "9982e11f1d04a827ef89520ca66b96047342bae1829070decee6358d6349add1",
+        "v6_readability": "e665f5cbab301693de7b6a19df9455804857ddc753c178346d06e7ca6aff27e6",
+        "v7_readability": "fbb9b6063133ed349fc50d4d4c61f35aef326ee6a9c919015e5f0ba77d9a14c0"
+      },
+      "R02": {
+        "reference": "3df7218268aef1b67279aa1c87beee4925528758de34c69b7097eaf588681b57",
+        "v6_readability": "cb00f27e99ed713b6b156eeb78cb209369223d699828f3c563c72115a48b4404",
+        "v7_readability": "6b3e3bae7048c903577618b974a13d49ce9915db3a27c139c22b582aab4f35dc"
+      },
+      "R03": {
+        "reference": "2fee2fd51761239df8aab9f743eae4f43fa0dc3d899e5f4149480a192a0282c3",
+        "v6_readability": "ca2e5d79598fede62c04911d5888febfe19173a81b0c781839409120bcd1edd4",
+        "v7_readability": "95b7e603760abd21f80e28352d004c1e7121eca1b5f84f0a97c951bf3593b178"
+      },
+      "R04": {
+        "reference": "70d4f2c953b1b28dd1e30516a8fe0d0a61fa9c36397ce38b54b9e01891874246",
+        "v6_readability": "2af727df75aed0e97077abafef24ee407d7b07024a8d378fb4463cea1c18b165",
+        "v7_readability": "0c29cd67de6185e8b076a76179eb21dea75fb11b6b5c961c49fe384ed889797d"
+      },
+      "R05": {
+        "reference": "aa11b2def01f8c5114625a009b5dcfa85ab4134f1f3a651e97cd6465870d169d",
+        "v6_readability": "90d7244107747dd3791bb93d106eca3bc22ba2751d2f25cb26b196198503b523",
+        "v7_readability": "d7f1db9626baa52994c4c8b8d3a8ececbdcc99506dc93ecfbc79ee643c73396c"
+      },
+      "R06": {
+        "reference": "c416d84c8453d877facb0a5f76f1ed2560d4e908e7acf4d0e571455af08cb054",
+        "v6_readability": "43a10d7a9ab6829ffdbe524be8a8387d161307f11b396c3505e6b0d85c6d2aa2",
+        "v7_readability": "a7b73e59f1d48c12761c07da112700e837a672ebcd9e479bcc779decb44b1056"
+      },
+      "R07": {
+        "reference": "c052268dd9d9dd57a88836d897e7d031b87a763130e088896b6e4b20f4fc622c",
+        "v6_readability": "0a2ff0c0f95e9b39c803cb313732895a43abe21bd23edfa23f1d8cd26f6b3b19",
+        "v7_readability": "393e79cf3dc3fb367afa3a1a2ae9c09bfa26140bd5b0e94307d38e8c73d6a1e5"
+      },
+      "R08": {
+        "reference": "618eae0a1b68759fd5f1592fc0f2d6aa9e8686d87da1a27a106959b4b1857bf7",
+        "v6_readability": "27d11611f9a1fa920bffd4321cb29daaecfec06f36e251aa35d7249794e4be1d",
+        "v7_readability": "c77b2e4b1b6524c572d3a9f8ec430709cf211547d899a5dfd69dba9a7cce95f3"
+      }
+    },
+    "schedule": [
+      {
+        "slot_id": "slot-01",
+        "case_id": "R01",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 1,
+        "prompt_sha256": "9982e11f1d04a827ef89520ca66b96047342bae1829070decee6358d6349add1"
+      },
+      {
+        "slot_id": "slot-02",
+        "case_id": "R01",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 2,
+        "prompt_sha256": "e665f5cbab301693de7b6a19df9455804857ddc753c178346d06e7ca6aff27e6"
+      },
+      {
+        "slot_id": "slot-03",
+        "case_id": "R01",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 3,
+        "prompt_sha256": "fbb9b6063133ed349fc50d4d4c61f35aef326ee6a9c919015e5f0ba77d9a14c0"
+      },
+      {
+        "slot_id": "slot-04",
+        "case_id": "R02",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 1,
+        "prompt_sha256": "cb00f27e99ed713b6b156eeb78cb209369223d699828f3c563c72115a48b4404"
+      },
+      {
+        "slot_id": "slot-05",
+        "case_id": "R02",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 2,
+        "prompt_sha256": "6b3e3bae7048c903577618b974a13d49ce9915db3a27c139c22b582aab4f35dc"
+      },
+      {
+        "slot_id": "slot-06",
+        "case_id": "R02",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 3,
+        "prompt_sha256": "3df7218268aef1b67279aa1c87beee4925528758de34c69b7097eaf588681b57"
+      },
+      {
+        "slot_id": "slot-07",
+        "case_id": "R03",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 1,
+        "prompt_sha256": "95b7e603760abd21f80e28352d004c1e7121eca1b5f84f0a97c951bf3593b178"
+      },
+      {
+        "slot_id": "slot-08",
+        "case_id": "R03",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 2,
+        "prompt_sha256": "2fee2fd51761239df8aab9f743eae4f43fa0dc3d899e5f4149480a192a0282c3"
+      },
+      {
+        "slot_id": "slot-09",
+        "case_id": "R03",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 3,
+        "prompt_sha256": "ca2e5d79598fede62c04911d5888febfe19173a81b0c781839409120bcd1edd4"
+      },
+      {
+        "slot_id": "slot-10",
+        "case_id": "R04",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 1,
+        "prompt_sha256": "70d4f2c953b1b28dd1e30516a8fe0d0a61fa9c36397ce38b54b9e01891874246"
+      },
+      {
+        "slot_id": "slot-11",
+        "case_id": "R04",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 2,
+        "prompt_sha256": "2af727df75aed0e97077abafef24ee407d7b07024a8d378fb4463cea1c18b165"
+      },
+      {
+        "slot_id": "slot-12",
+        "case_id": "R04",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 3,
+        "prompt_sha256": "0c29cd67de6185e8b076a76179eb21dea75fb11b6b5c961c49fe384ed889797d"
+      },
+      {
+        "slot_id": "slot-13",
+        "case_id": "R05",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 1,
+        "prompt_sha256": "90d7244107747dd3791bb93d106eca3bc22ba2751d2f25cb26b196198503b523"
+      },
+      {
+        "slot_id": "slot-14",
+        "case_id": "R05",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 2,
+        "prompt_sha256": "d7f1db9626baa52994c4c8b8d3a8ececbdcc99506dc93ecfbc79ee643c73396c"
+      },
+      {
+        "slot_id": "slot-15",
+        "case_id": "R05",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 3,
+        "prompt_sha256": "aa11b2def01f8c5114625a009b5dcfa85ab4134f1f3a651e97cd6465870d169d"
+      },
+      {
+        "slot_id": "slot-16",
+        "case_id": "R06",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 1,
+        "prompt_sha256": "a7b73e59f1d48c12761c07da112700e837a672ebcd9e479bcc779decb44b1056"
+      },
+      {
+        "slot_id": "slot-17",
+        "case_id": "R06",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 2,
+        "prompt_sha256": "c416d84c8453d877facb0a5f76f1ed2560d4e908e7acf4d0e571455af08cb054"
+      },
+      {
+        "slot_id": "slot-18",
+        "case_id": "R06",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 3,
+        "prompt_sha256": "43a10d7a9ab6829ffdbe524be8a8387d161307f11b396c3505e6b0d85c6d2aa2"
+      },
+      {
+        "slot_id": "slot-19",
+        "case_id": "R07",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 1,
+        "prompt_sha256": "c052268dd9d9dd57a88836d897e7d031b87a763130e088896b6e4b20f4fc622c"
+      },
+      {
+        "slot_id": "slot-20",
+        "case_id": "R07",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 2,
+        "prompt_sha256": "0a2ff0c0f95e9b39c803cb313732895a43abe21bd23edfa23f1d8cd26f6b3b19"
+      },
+      {
+        "slot_id": "slot-21",
+        "case_id": "R07",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 3,
+        "prompt_sha256": "393e79cf3dc3fb367afa3a1a2ae9c09bfa26140bd5b0e94307d38e8c73d6a1e5"
+      },
+      {
+        "slot_id": "slot-22",
+        "case_id": "R08",
+        "candidate": "v6_readability",
+        "profile": "examples_answer_scope_v6_rag_readability",
+        "candidate_order": 1,
+        "prompt_sha256": "27d11611f9a1fa920bffd4321cb29daaecfec06f36e251aa35d7249794e4be1d"
+      },
+      {
+        "slot_id": "slot-23",
+        "case_id": "R08",
+        "candidate": "v7_readability",
+        "profile": "examples_answer_scope_v7_rag_readability",
+        "candidate_order": 2,
+        "prompt_sha256": "c77b2e4b1b6524c572d3a9f8ec430709cf211547d899a5dfd69dba9a7cce95f3"
+      },
+      {
+        "slot_id": "slot-24",
+        "case_id": "R08",
+        "candidate": "reference",
+        "profile": "examples_answer_scope_v5_rag_service_v1",
+        "candidate_order": 3,
+        "prompt_sha256": "618eae0a1b68759fd5f1592fc0f2d6aa9e8686d87da1a27a106959b4b1857bf7"
+      }
+    ],
+    "max_generation_calls": 24,
+    "reservation_method": "UTF-8 byte count plus 256 input-token overhead per message; configured maximum output tokens"
+  },
+  "manifest_sha256": "a731546fb7d0fdf584f297a611e576e2df83bd912ccfc4e1cf66e2843bf991ad"
+}

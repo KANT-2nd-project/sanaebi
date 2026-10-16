@@ -146,7 +146,7 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 설치된 SDK의 자동 parse 경로가 잘림 응답을 예외로 바꾸므로, strict 호출은 raw create 응답을 LangChain AIMessage로 변환한다. 원문·사용량·종료 사유·refusal을 보존하며 명시적 거절이 길이 판정보다 우선한다. 내부 SDK 메서드에 의존하므로 uv.lock과 전송 경로 회귀 테스트를 함께 유지한다.
 
-`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존한다. 현재 독립 CLI·generate_from_documents·서버 기본값은 사용자용 말투·서비스 범위 구분을 보완한 `examples_answer_scope_v5`이며 [채택 기준](../docs/generation-final-prompt.md)을 따른다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
+`examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존한다. 현재 독립 CLI·generate_from_documents·full 서버 기본값은 사용자용 말투·서비스 범위 구분을 보완한 `examples_answer_scope_v5`이며 [채택 기준](../docs/generation-final-prompt.md)을 따른다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
 
 GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판단](../docs/generation-luna-reference-followup.md)을 참조하세요. 당시 두 후보는 필수 안내 회귀로 탈락했습니다. 이후 사용자 최종 선택은 [보강 프롬프트 확정](../docs/generation-final-prompt.md)을 따릅니다. 후속 최종20문항과 반복 안정성은 미실행입니다.
 
@@ -158,10 +158,27 @@ GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판�
 
 ### 가독성 후보 v6
 
-`examples_answer_scope_v6`는 v5에 문단·불릿·번호 목록 선택 지침을 추가한 명시적 실험 프로필이다. [16회 비교](../generation_evaluation/reports/2026-10-15-readability-v6/README.md)에서 도움 소개의 목록화 미충족과 일부 필수 안내 퇴행이 있어 채택을 보류했다. 기본 CLI·평가·서버는 계속 v5를 사용한다. 기존 프로필과 JSON 계약은 변경하지 않았다.
+`examples_answer_scope_v6`는 v5에 문단·불릿·번호 목록 선택 지침을 추가한 명시적 실험 프로필이다. [16회 비교](../generation_evaluation/reports/2026-10-15-readability-v6/README.md)에서 도움 소개의 목록화 미충족과 일부 필수 안내 퇴행이 있어 채택을 보류했다. 기본 CLI·평가·full 서버는 계속 v5를 사용하며 RAG 서버는 v5_rag_service_v1을 사용한다. 기존 프로필과 JSON 계약은 변경하지 않았다.
 
 ## 분류 보조 정보 후보 — 미채택
 
 `advisory.py`는 명시적 ClassificationContext를 받는 순수 조합 함수다. 서버 advisory와 평가기가 같은 함수를 사용하며 분류를 실행하지 않는 CLI에는 추가 정보가 없다. `generate_from_documents`와 서버 답변기의 선택적 keyword 인자 `classification_context`로 전달한다. 프로필 본문·모델 설정은 유지한다. [사용자 후속 채택](../docs/worklogs/2026-10-16-adopt-advisory.md)은 품질 개선 입증과 구분한다. 라벨 없음·분류 실패·client 출처는 기존 프롬프트로 정확히 복귀한다. [평가 결과](../generation_evaluation/reports/2026-10-15-classification-advisory/README.md)에서 분모·비용·한계를 확인할 수 있다.
 
 v7 가독성·완전성 후보는 [108회 비교](../generation_evaluation/reports/2026-10-15-prompt-v7/README.md) 후 기본값으로 채택하지 않았다. v5를 유지하고 후보는 명시적 실험용으로 남긴다. 원자료 복구 한계와 별도 RAG 평가와의 차이는 보고서를 따른다.
+
+## 활성 프로필과 보관 자료
+
+활성 레지스트리에는 `examples_answer_scope_v5`(독립 CLI/full)와 `examples_answer_scope_v5_rag_service_v1`(RAG 서버)만 둔다. 나머지 14개 과거 후보는 [보관 자료](archive/README.md)로 분리했다. 과거 실험을 명시적으로 재현하는 호출은 계속 지원하지만 새 실행 구성으로 권장하지 않는다.
+
+두 프로필 모두 `prompts.build_prompt`의 공통 시스템 JSON 출력 지침을 그대로 포함한다. `prompt_json`은 지침으로 JSON을 요청하는 설정이며 OpenAI JSON mode나 strict schema가 아니다. `strict_json_schema`는 별도 지원 옵션으로 보존하며 이번 정리에서 기본값을 바꾸지 않았다.
+
+
+### 현재 RAG 기반 가독성 재비교 (2026-10-16)
+
+`rag_readability.py`에 `examples_answer_scope_v6_rag_readability`와 `examples_answer_scope_v7_rag_readability`를 별도 실험 후보로 등록했다. 활성 기본 프로필 두 개와 과거 보관 프로필은 그대로 유지한다. 두 후보는 현재 RAG 프로필에 보관된 가독성 문구만 붙이며 공통 JSON 출력 지침을 공유한다.
+
+[24회 비교 기록](../docs/worklogs/2026-10-16-rag-readability.md)에서 두 후보 모두 채택 조건을 충족하지 못했다. RAG 기본값은 `examples_answer_scope_v5_rag_service_v1`, 독립 CLI/full 기본값은 v5를 유지한다. 실험 후보 등록을 운영 적용으로 해석하지 않는다.
+
+### 후속 사용자 채택
+
+2026-10-16 사용자가 알려진 한계를 수용해 서버 RAG 기본값을 `examples_answer_scope_v7_rag_readability`로 선택했다. 본문은 위 실험 후보와 동일하며 독립 CLI/full은 v5다. 이전 RAG 프로필은 비교·원복용으로 유지한다. 실험 보류 판정과 사용자 결정은 별개이며 [채택·검증·배포 기록](../docs/worklogs/2026-10-16-rag-v7-adoption.md)을 따른다.

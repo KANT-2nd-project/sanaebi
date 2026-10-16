@@ -96,12 +96,16 @@ def get_retrieval_source() -> Path:
 
 def get_rag_prompt_profile() -> str:
     """Adopted RAG-only profile; explicit v5 restores the no-evidence notice."""
-    from generation.profiles import DEFAULT_PROMPT_PROFILE, RAG_PROMPT_PROFILE
+    from generation.profiles import (
+        DEFAULT_PROMPT_PROFILE,
+        RAG_READABILITY_V7_PROFILE,
+        RAG_SUPPORTED_PROFILES,
+    )
 
-    value = os.getenv("SANAEBI_RAG_PROMPT_PROFILE", RAG_PROMPT_PROFILE)
-    if value not in {DEFAULT_PROMPT_PROFILE, RAG_PROMPT_PROFILE}:
+    value = os.getenv("SANAEBI_RAG_PROMPT_PROFILE", RAG_READABILITY_V7_PROFILE)
+    if value not in {DEFAULT_PROMPT_PROFILE, *RAG_SUPPORTED_PROFILES}:
         raise ValueError(
-            "SANAEBI_RAG_PROMPT_PROFILE must be v5 or v5_rag_service_v1 profile name"
+            "SANAEBI_RAG_PROMPT_PROFILE must be v5 or an explicitly registered RAG profile"
         )
     return value
 
