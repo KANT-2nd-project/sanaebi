@@ -8,11 +8,11 @@
 
 공개 도메인의 nginx·HTTPS에서 정적 웹과 `/api/`를 함께 제공한다. API는 ARM64 CPU Docker 컨테이너, Uvicorn 1 worker이며 `127.0.0.1:18000`만 수신한다. 웹에 필요한 질문·문서 API만 공개한다. 기존 로컬 실행은 [로컬 nginx](local-nginx.md)를 따른다.
 
-구성 파일과 실제 운영 검증 상태는 구분한다. 최초 배포는 [초기 기록](../docs/worklogs/2026-10-15-deployment-cicd.md), 후속 배포와 실제 shadow + full 설정 확인은 [main 배포 기록](../docs/worklogs/2026-10-15-main-deploy-doc-sync.md)을 따른다. 배포 성공은 전체 답변 품질 승인이나 무중단 운영 보장을 뜻하지 않는다.
+구성 파일과 실제 운영 검증 상태는 구분한다. 최초 배포는 [초기 기록](../docs/worklogs/2026-10-15-deployment-cicd.md), 당시 shadow + full 설정 확인은 [main 배포 기록](../docs/worklogs/2026-10-15-main-deploy-doc-sync.md)을 따른다. 2026-10-16 후속 RAG v7 배포·확인 범위는 [채택·배포 기록](../docs/worklogs/2026-10-16-rag-v7-adoption.md)을 따른다. 이 문서 편집에서 운영 설정을 새로 조회하지는 않았다. 배포 성공은 전체 답변 품질 승인이나 무중단 운영 보장을 뜻하지 않는다.
 
 ## 모델과 영속 데이터
 
-모델은 Hugging Face private `js2923/sanaebi-koelectra-base`에서 배포할 때만 내려받는다. revision `4a1d0c7964072535a52a66efe29389a6470dd6f4`와 다섯 파일의 크기·SHA-256은 [모델 manifest](model-release.json)에 고정한다. 임시 다운로드를 검증한 뒤 원자적으로 게시하고 검증된 캐시만 재사용한다. 운영 API에는 모델을 읽기 전용으로 연결하며 HF 토큰을 전달하지 않는다. 학습 환경·생성 프롬프트는 유지한다. 현재 코드의 미설정 기본값은 `advisory`이며 정상 서버 라벨을 생성 참고 정보로 전달한다. 명시적 `shadow`·`gate` 환경 설정은 우선한다. 이번 변경에서 운영 설정 변경·배포·재시작은 하지 않았다. Luna 출력 한도 16,384와 모든 실제 호출의 동일 일일 한도를 유지한다. [채택·원복 경계](../docs/worklogs/2026-10-16-adopt-advisory.md)를 따른다.
+모델은 Hugging Face private `js2923/sanaebi-koelectra-base`에서 배포할 때만 내려받는다. revision `4a1d0c7964072535a52a66efe29389a6470dd6f4`와 다섯 파일의 크기·SHA-256은 [모델 manifest](model-release.json)에 고정한다. 임시 다운로드를 검증한 뒤 원자적으로 게시하고 검증된 캐시만 재사용한다. 운영 API에는 모델을 읽기 전용으로 연결하며 HF 토큰을 전달하지 않는다. 학습 환경·생성 프롬프트는 유지한다. 현재 코드의 미설정 기본값은 `advisory`이며 정상 서버 라벨을 생성 참고 정보로 전달한다. 명시적 `shadow`·`gate` 환경 설정은 우선한다. 해당 advisory 채택 작업 당시에는 운영 설정 변경·배포·재시작을 하지 않았다. 후속 운영 상태는 위 날짜별 배포 기록을 따른다. Luna 출력 한도 16,384와 모든 실제 호출의 동일 일일 한도를 유지한다. [채택·원복 경계](../docs/worklogs/2026-10-16-adopt-advisory.md)를 따른다.
 
 | 경로 | 용도 |
 |---|---|
@@ -35,7 +35,7 @@
 
 - 질문: IP별 분당 6회, burst 3회. 진행 중 질문 2개 초과 시 대기열 없이 429. `SANAEBI_MAX_INFLIGHT_ASKS=1`로 줄일 수 있다.
 - 문서 쓰기: IP별 분당 12회, burst 5회와 기존 본문 크기 제한.
-- 실제 생성 시도: 전체 KST 하루 1,000회. provider 호출 직전 SQLite로 원자 예약하며 실패·timeout도 포함한다. `gate` 모드의 고정 안내·빈 문서 응답은 제외한다.
+- 실제 생성 시도: 전체 KST 하루 1,000회. provider 호출 직전 SQLite로 원자 예약하며 실패·timeout도 포함한다. 생성하지 않는 고정 안내는 제외하지만, 기본 RAG 프로필의 빈 근거 생성은 포함한다.
 - 초과 응답: 기존 `{ok,text,reason}`와 `Retry-After`를 포함한 429. 웹은 입력·안내를 보존하고 자동 재호출하지 않는다.
 - 호출 수 상한은 금액 상한이 아니다. 원문 trace는 운영에서 끄고 생성 상태·사용량·지연만 관측한다.
 

@@ -112,6 +112,6 @@ KURE는 벡터 차원·모델·접두사가 달라 새 spec의 색인·자정 �
 
 ## 근거 없는 요청과 문맥 보충 검증 (2026-10-16)
 
-RAG 기본 프로필은 `examples_answer_scope_v5_rag_service_v1`이다. full·독립 CLI 기본 v5는 유지한다. `SANAEBI_RAG_PROMPT_PROFILE=examples_answer_scope_v5` 지정 후 사용자가 재시작하면 빈 자료·검색 0건의 고정 안내로 원복한다. 잘못된 프로필은 시작 시 거부한다. `evidence_state`는 `available`, `no_matches`, `no_published_documents`를 구분한다. 정상 빈 결과는 장애를 숨기는 수단이 아니다.
+현재 RAG 기본 프로필은 `examples_answer_scope_v7_rag_readability`다. 빈 근거 처리 도입 당시의 `examples_answer_scope_v5_rag_service_v1`은 비교·원복용이며, 후속 선택과 배포 범위는 [v7 채택 기록](worklogs/2026-10-16-rag-v7-adoption.md)을 따른다. full·독립 CLI 기본 v5는 유지한다. `SANAEBI_RAG_PROMPT_PROFILE=examples_answer_scope_v5` 지정 후 사용자가 재시작하면 빈 자료·검색 0건의 고정 안내로 원복한다. 잘못된 프로필은 시작 시 거부한다. `evidence_state`는 `available`, `no_matches`, `no_published_documents`를 구분한다. 정상 빈 결과는 장애를 숨기는 수단이 아니다.
 
 사용자의 후속 채택 결정으로 서버 RAG는 문맥 보충을 기본 활성화한다. `SANAEBI_RAG_EXPAND_CONTEXT=0` 지정 후 재시작하면 확장 없는 검색으로 원복한다. 비교용 `RetrievalService` 직접 생성자는 False 기본값을 보존한다. 최대 3문서·4000자 이하 전체 본문·추가 6000자·긴 문서 앞뒤 1청크 정책이며 벡터 spec은 그대로이고 검색 정책 식별자만 달라진다. [8회 비교 보고서](../retrieval/reports/2026-10-16-rag-context-empty/README.md)에 따라 초기 판정은 근거 없는 요청 채택·문맥 보충 보류였고, 이후 사용자가 관측 개선을 우선하여 문맥 보충도 채택했다. 원문의 신고 경로 선택/필수 관계는 미해결이다. 결합 경로는 mock으로 검증했으며 추가 유료 호출은 하지 않았다. 배포 상태는 [게시 기록](worklogs/2026-10-16-rag-publication.md)을 따른다.

@@ -55,6 +55,8 @@ uv run --locked python -m unittest discover -s tests -t . -p test_learning_class
 
 저장·재로딩 일치, 기존 모델·결과 보존, 실패 시 미게시, 분할별 평가·결과 공존, 잘못된 데이터·분할 거부, 동점 선택을 검사한다. 실제 학습 자료·가중치·MLflow는 기존 위치에 보존하며 새 결과는 별도 실험 경로에 둔다.
 
+서버에 연결할 저장본이 필요하면 [선정 모델 확보·재학습 절차](model-preparation.md)를 따릅니다. 아래 기본 예시는 RoBERTa 학습이며 선정 KoELECTRA 저장본을 내려받는 명령이 아닙니다.
+
 ## Transformer 학습
 
 `transformer.py`는 `select_model`의 배치 학습 → epoch별 validation → 최고 상태 복원 순서로 읽는다. 학습률 후보마다 초기 모델을 다시 로딩한다. 선택 기준은 validation Macro-F1이며 동점이면 먼저 선택한 후보·epoch를 유지한다. 최고 가중치는 CPU에 복사하여 이후 학습의 영향을 받지 않게 한다.

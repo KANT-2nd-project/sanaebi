@@ -1,6 +1,6 @@
 # 서비스 아키텍처와 질문 처리 흐름
 
-서버와 독립 생성·평가는 같은 [generation 모듈](../generation/README.md)의 최종 Luna 모델 설정과 응답 검사를 사용한다. 서버 RAG는 빈 근거 서비스 소개를 허용하는 v5_rag_service_v1 프로필과 문맥 보충을 사용하며, full·독립 CLI는 v5를 유지한다. 상세 정책과 원복은 [RAG 실행 안내](rag-runtime.md)를 따른다. 서버는 SQLite 게시 snapshot을, CLI는 명시적으로 내보낸 JSONL을 사용하며 같은 렌더러로 프롬프트를 구성한다. 연결 구현과 검증 결과·남은 한계는 [서버 생성 통합 기록](worklogs/2026-10-15-server-generation-integration.md)을 따른다. 과거 실행기와 평가 자료는 비활성 레거시 재현용으로 보존한다.
+서버와 독립 생성·평가는 같은 [generation 모듈](../generation/README.md)의 최종 Luna 모델 설정과 응답 검사를 사용한다. 서버 RAG는 빈 근거 서비스 소개를 허용하는 `examples_answer_scope_v7_rag_readability` 프로필과 문맥 보충을 사용하며, full·독립 CLI는 v5를 유지한다. 상세 정책과 원복은 [RAG 실행 안내](rag-runtime.md)를 따른다. 서버는 SQLite 게시 snapshot을, CLI는 명시적으로 내보낸 JSONL을 사용하며 같은 렌더러로 프롬프트를 구성한다. 연결 구현과 검증 결과·남은 한계는 [서버 생성 통합 기록](worklogs/2026-10-15-server-generation-integration.md)을 따른다. 과거 실행기와 평가 자료는 비활성 레거시 재현용으로 보존한다.
 
 - 기준일: 2026-10-16
 - 상태: 코드 기본값은 advisory + rag(KURE)이며 shadow·gate와 명시적 full을 선택할 수 있다. 실제 운영 적용 상태는 별도 확인한다.
@@ -28,7 +28,7 @@
 | 질문 서비스 | `handle_question`은 활성 /ask 처리 서비스다. dependencies가 앱별 분류기·snapshot reader·답변 어댑터를 조립한다. `/ask/langchain`은 제거했다. |
 | 문서 답변 | /ask의 라벨별 정책과 snapshot 전달을 검증했다. 최종 generation 모듈을 사용하며 실제 LLM 답변 품질 승인은 별도다. 과거 실행기는 오프라인 재현용으로 보존한다. |
 
-앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/questions/router.py)와 [문서 라우터](../app/documents/registration.py), SQLite 저장은 [문서 저장소](../app/documents/repository.py)에서 확인한다. 원복용 `gate`의 `POST /ask`는 검색 라벨·유효 문서가 있는 경우에만 생성한다. 최종 Luna만 사용하며 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
+앱 연결과 공통 오류 처리는 [진입점](../app/fastapi_main.py), 입력·응답 형식은 [스키마](../app/schemas.py), 엔드포인트는 [질문 라우터](../app/questions/router.py)와 [문서 라우터](../app/documents/registration.py), SQLite 저장은 [문서 저장소](../app/documents/repository.py)에서 확인한다. 원복용 `gate`의 `POST /ask`는 SEARCH_KNOWLEDGE만 문서 단계로 보낸다. 이후 빈 문서의 생성 여부는 문서 공급 방식과 프로필에 따른다. 최종 Luna만 사용하며 성공 시 reason은 빈 문자열로 반환한다. `POST /regist-docs`는 doc 본문으로 SQLite 초안을 생성하며 자동 게시하지 않는다.
 
 등록 요청은 기존 `{"doc":"본문"}` 형식을 유지하며 50,000자·512KiB 제한을 적용한다. 게시 전에는 답변에 사용하지 않는다. 원본 JSONL은 최초 이관·과거 평가를 위해 보존한다.
 
@@ -47,13 +47,14 @@ flowchart TD
     M -->|"advisory / shadow: 세 라벨 모두"| D["SQLite 게시 snapshot 1회"]
     M -->|"gate: SEARCH_KNOWLEDGE"| D
     M -->|"gate: CLARIFY 또는 UNSUPPORTED"| G["고정 안내"]
-    D --> V{"게시 문서 있음"}
-    V -->|"없음"| N["자료 없음 안내"]
-    V -->|"있음"| R{"문서 공급 모드"}
-    R -->|"full: 수동 선택"| F["게시본 전체"]
+    D --> R{"문서 공급 모드"}
+    R -->|"full: 수동 선택"| V{"게시 문서 있음"}
+    V -->|"없음"| N["자료 없음 고정 안내"]
+    V -->|"있음"| F["게시본 전체"]
     R -->|"rag: KURE"| S["유효 색인에서 근거 검색"]
     F --> L["질문·문서 근거로 생성 / advisory는 공통 지침·서버 라벨 추가"]
-    S --> L
+    S --> E["검색 근거 또는 근거 없음 상태"]
+    E --> L
     L --> A["응답 형식 검사 후 답변 또는 생성 오류"]
 ```
 
@@ -66,11 +67,11 @@ flowchart TD
 | gate + full | SEARCH_KNOWLEDGE | 게시본 전체 |
 | gate + rag | SEARCH_KNOWLEDGE | 검색으로 선택한 근거 |
 
-빈 문서는 검색·생성하지 않는다. 준비된 색인에서 임계값 이상 근거가 없으면 고정 안내로 끝내며 생성 예약을 소비하지 않는다. rag 색인 미준비·장애는 503이며 full로 자동 fallback하지 않는다. 검색 입력 초과는 422다. 코드 기본값은 실행 중 서버의 실효 설정이나 배포 완료를 증명하지 않는다.
+full은 빈 문서에서 고정 안내로 종료한다. 기본 RAG 프로필은 빈 게시 snapshot 또는 임계값 이상 검색 근거가 없는 상태도 생성에 전달하므로 생성 예약을 소비한다. 빈 근거를 지원하지 않는 프로필을 명시하면 고정 안내로 종료한다. 근거 없음은 회사 밖 지식이나 실제 업무 처리를 허용하는 상태가 아니다. rag 색인 미준비·장애는 503이며 full로 자동 fallback하지 않는다. 검색 입력 초과는 422다. 코드 기본값은 실행 중 서버의 실효 설정이나 배포 완료를 증명하지 않는다.
 
 명시적 full 경로는 SQLite의 현재 유효한 게시본 전체를 사용한다. 기존 71건 JSONL은 최초 이관 원본으로 보존하며 서비스는 파일과 DB를 합치지 않는다. 관리 화면의 게시·사용 중단은 다음 검색 질문에 적용된다. 요청 단위 snapshot을 모델 호출 전에 확보하고 Luna 단일 호출에 전달한다. 명시적 평가 JSONL은 재현용으로 유지한다. 저장·이관 기준은 [문서 관리](document-management.md), 원본 이력은 [회사 정책 데이터](../data/README.md#답변용-회사-지식)를 따른다. RAG의 임베딩은 사용자 결정으로 KURE-v1을 채택했다. [채택·연결 기록](../retrieval/reports/2026-10-16-kure-adoption/README.md)을 따른다. 별도 SQLite 벡터 저장소·서버 검색 연결·게시 개정 동기화를 구현했다. 기본 rag는 질문 최고 코사인이0.42882221937179565 이상이면 KURE 상위20청크를 선택하고 원문 중복을 병합한다. 개별 청크 하한·추가 문자·전달 토큰 제한은 없다. 준비 중 요청은503이며 운영 전환·품질 검증과 구분한다. [실행 계약](rag-runtime.md)을 따른다.
 
-검색 구성의 후속 판단은 [평가 기준 보완·최적화 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)를 따른다. 신규 확인에서 근거 손실이 발생해 C를 유지했으며 검색 최적성·생성 품질·운영 승인을 뜻하지 않는다.
+검색 구성의 후속 판단은 [평가 기준 보완·최적화 비교](../retrieval/reports/2026-10-15-retrieval-v3/README.md)를 따른다. 당시 신규 확인에서 근거 손실이 발생해 C를 유지했다. 이후 KURE 채택은 위 후속 기록을 따르며, 과거 결과를 검색 최적성·생성 품질·운영 승인으로 해석하지 않는다.
 
 ## 답변 규칙과 경계
 
