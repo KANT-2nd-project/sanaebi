@@ -114,7 +114,9 @@ FastAPI가 의존성을 해결한 뒤 라우터 본문을 호출한다. 라우�
 ```python
 # 개념 예제: 현재 RAG 흐름. full은 build_full_flow를 사용한다.
 flow = build_rag_flow(
-    document_provider.snapshot, retriever.retrieve, answerer.answer_input,
+    document_provider.snapshot,
+    retriever.retrieve,
+    answerer.answer_input,
     allow_empty_retrieval=answerer.supports_empty_retrieval,
 )
 
