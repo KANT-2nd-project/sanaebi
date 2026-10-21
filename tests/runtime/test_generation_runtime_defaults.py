@@ -12,9 +12,9 @@ from generation import __main__ as single
 from generation.presets import load_preset, load_runtime_settings
 from generation.profiles import DEFAULT_PROMPT_PROFILE, build_profile_prompt
 from generation.prompts import build_prompt
-from generation.providers import build_openai_model
+from generation.providers import build_openai_model, to_messages
 from generation.service import generate_from_documents
-from generation.types import ModelResponse
+from generation.types import GenerationPrompt, ModelResponse
 from generation_evaluation import __main__ as batch
 from generation_evaluation.metrics import group_by_config, summarize_runs
 from generation_evaluation.reporting import run_from_dict, run_to_dict
@@ -35,18 +35,19 @@ class RuntimeDefaultsTests(unittest.TestCase):
         self.assertEqual(
             build_profile_prompt("질문", [], preset.prompt_profile).system, expected
         )
-        with patch("generation.providers.ChatOpenAI") as client:
-            build_openai_model(preset.config)
+        with patch("generation.providers.OpenAI") as client:
+            model = build_openai_model(preset.config)
+            payload = model.build_payload(to_messages(GenerationPrompt("규칙", "질문")))
+            model.close()
         self.assertEqual(
             client.call_args.kwargs,
-            {
-                "model": "gpt-6-luna",
-                "timeout": 180,
-                "max_retries": 0,
-                "max_completion_tokens": 16384,
-                "reasoning_effort": "xhigh",
-            },
+            {"timeout": 180, "max_retries": 0},
         )
+        self.assertEqual(payload["model"], "gpt-6-luna")
+        self.assertEqual(payload["max_completion_tokens"], 16384)
+        self.assertEqual(payload["reasoning_effort"], "xhigh")
+        self.assertNotIn("temperature", payload)
+        self.assertTrue(payload["response_format"]["json_schema"]["strict"])
 
     def test_default_and_historical_profile_are_separate(self):
         seen = []

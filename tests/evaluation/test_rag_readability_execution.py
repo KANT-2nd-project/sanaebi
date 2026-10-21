@@ -9,7 +9,10 @@ from unittest.mock import patch
 from langchain_core.messages import AIMessage
 from langchain_core.runnables import RunnableLambda
 
+from generation.presets import load_runtime_settings
 from generation_evaluation import rag_readability as runner
+from tests.support.generation_settings import historical_prompt_json_settings
+from tests.support.paths import ROOT
 
 
 class FakeClient:
@@ -22,6 +25,13 @@ class FakeClient:
 
 class RagReadabilityExecutionTests(unittest.TestCase):
     def setUp(self):
+        self.enterContext(
+            patch.object(
+                runner,
+                "load_runtime_settings",
+                side_effect=historical_prompt_json_settings,
+            )
+        )
         self.directory = Path(self.enterContext(tempfile.TemporaryDirectory()))
         self.calls = []
         self.write(
@@ -55,6 +65,11 @@ class RagReadabilityExecutionTests(unittest.TestCase):
                 "verified_at": "2026-10-16T09:00:00+09:00",
             },
         )
+
+    def test_frozen_runner_rejects_active_strict_output(self):
+        with self.assertRaisesRegex(runner.ReadabilityExperimentError, "고정된 실험"):
+            runner._validate_settings(load_runtime_settings(ROOT))
+        self.assertEqual(self.calls, [])
 
     def write(self, name, value):
         (self.directory / name).write_text(json.dumps(value, ensure_ascii=False))

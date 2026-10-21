@@ -5,6 +5,6 @@
     "timeout_seconds": 180,
     "max_output_tokens": 16384,
     "reasoning_effort": "xhigh",
-    "output_mode": "prompt_json"
+    "output_mode": "strict_json_schema"
   }
 }

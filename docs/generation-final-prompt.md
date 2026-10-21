@@ -10,12 +10,18 @@
 | 추론 | `xhigh` |
 | 최대 출력 | 16384토큰 |
 | 호출 timeout | 180초 |
-| 출력 모드 | `prompt_json` |
+| 출력 모드 | `strict_json_schema` (2026-10-21 후속 채택) |
 | temperature | 전달하지 않음 |
 
 최초 v1 채택 당시의 [기계 판독 설정](../generation_evaluation/reports/2026-10-15-luna-tuning-closure/adopted-config.json)과 [최종 system 프롬프트](../generation_evaluation/reports/2026-10-15-luna-tuning-closure/adopted-system-prompt.txt)를 보존했다. 실제 프롬프트는 `generation/prompts.py`의 공통 규칙에 `generation/profiles.py`의 보강 프로필을 더해 구성한다. 사용자 질문과 문서는 호출별 user 메시지에 포함된다.
 
-이번 선택은 알려진 누락과 평가 한계를 본 뒤 사용자가 내린 최종 구성 결정이다. **과거 회귀 게이트 통과나 서비스 품질 승인으로 바꿔 기록하지 않는다.** 보강안의 신고 목격자 정보 누락은 추가 확인에서도 재현됐다. 신규 선정20문항·반복 안정성은 미측정이며, strict 출력은 선택하지 않는다.
+최초 선택은 알려진 누락과 평가 한계를 본 뒤 사용자가 내린 최종 구성 결정이다. **과거 회귀 게이트 통과나 서비스 품질 승인으로 바꿔 기록하지 않는다.** 보강안의 신고 목격자 정보 누락은 추가 확인에서도 재현됐다. 당시 신규 선정20문항·반복 안정성은 미측정이었고 strict 출력은 선택하지 않았다. 출력 형식의 후속 변경은 아래 2026-10-21 결정을 따른다.
+
+## 2026-10-21 후속: JSON 출력 형식 고정
+
+운영 문의의 `parse_error`와 같은 입력의 실제 재현을 확인한 뒤, 사용자 요청으로 활성 Luna 설정을 `strict_json_schema`로 전환한다. 기존 공개 SDK 어댑터가 Chat Completions에 `answer` 문자열 하나의 strict JSON 스키마를 전달한다. 서버·CLI·평가기는 같은 활성 모델 설정을 읽으며 구형 설정의 `prompt_json` 기본 해석은 보존한다.
+
+프롬프트 본문·모델·검색·추론·출력 한도·timeout과 공개 HTTP 계약은 유지한다. 거절·잘림·timeout은 기존처럼 구분하며 자동 재시도나 일반 모드 fallback은 없다. 형식 보장은 답변 내용의 정확도·완전성 보장이 아니다. 검증과 실제 배포 완료 여부는 [작업 기록](worklogs/2026-10-21-strict-json-output.md)을 따른다.
 
 최초 결정·기록 정리에서는 실행 코드를 변경하지 않았다. 이후 사용자 요청으로 독립 generation·generation_evaluation 및 generate_from_documents/run_case의 기본값을 당시 v1 구성에 연결했다. models.json에는 Luna 하나만 두고 company-final-v1을 기본 프리셋으로 사용한다. 서버 연결·서비스 품질 승인은 별도이며 추가 튜닝은 수행하지 않았다. [실행 반영·검증 기록](worklogs/2026-10-15-generation-final-runtime.md)을 따른다.
 

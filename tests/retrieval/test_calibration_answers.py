@@ -10,11 +10,11 @@ from unittest.mock import patch
 import httpx
 from openai import AuthenticationError, RateLimitError
 
-from generation.presets import load_runtime_settings
 from generation.profiles import build_profile_prompt
 from generation.types import ModelResponse
 from generation_evaluation.budget import BudgetExceeded, BudgetLedger
 from retrieval.experiments import calibration_answers as runner
+from tests.support.generation_settings import historical_prompt_json_settings
 
 
 class FakeProvider:
@@ -38,6 +38,13 @@ def _openai_error(error_type, status_code):
 
 class CalibrationAnswerRunnerTests(unittest.TestCase):
     def setUp(self):
+        self.enterContext(
+            patch.object(
+                runner.paired_answers,
+                "load_runtime_settings",
+                side_effect=historical_prompt_json_settings,
+            )
+        )
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
@@ -91,7 +98,9 @@ class CalibrationAnswerRunnerTests(unittest.TestCase):
                 "reasoning_effort": "xhigh",
                 "max_output_tokens": 16_384,
                 "output_mode": "prompt_json",
-                "runtime_config": asdict(load_runtime_settings(runner.ROOT).config),
+                "runtime_config": asdict(
+                    historical_prompt_json_settings(runner.ROOT).config
+                ),
                 "snapshot_sha256": "a" * 64,
             },
             "cases": cases,

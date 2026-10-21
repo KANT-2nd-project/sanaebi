@@ -8,8 +8,10 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from unittest.mock import patch
 
+from generation.presets import load_runtime_settings
 from generation.types import GenerationResult, GenerationStatus
 from generation_evaluation.types import GenerationRun
+from tests.support.generation_settings import historical_prompt_json_settings
 
 RUNNER_PATH = Path(
     "generation_evaluation/experiments/prompt-v7-20261015/run.py"
@@ -23,11 +25,29 @@ SPEC.loader.exec_module(runner)
 
 class PromptV7LedgerTests(unittest.TestCase):
     def setUp(self):
+        self.enterContext(
+            patch.object(
+                runner,
+                "load_runtime_settings",
+                side_effect=historical_prompt_json_settings,
+            )
+        )
         self.temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp_dir.cleanup)
         self.ledger_path = Path(self.temp_dir.name) / "ledger.sqlite3"
         self.ledger = runner.AttemptLedger(self.ledger_path)
         self.ledger.initialize("global-fingerprint")
+
+    def test_frozen_runner_rejects_active_strict_output(self):
+        with (
+            patch.object(
+                runner,
+                "load_runtime_settings",
+                return_value=load_runtime_settings(runner.ROOT),
+            ),
+            self.assertRaisesRegex(runner.ExperimentError, "고정 실험 설정"),
+        ):
+            runner.validate_settings(runner.ROOT)
 
     def test_concurrent_reservations_never_exceed_global_limit(self):
         def reserve(index):
