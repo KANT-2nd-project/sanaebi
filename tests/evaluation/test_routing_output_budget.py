@@ -8,6 +8,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
+from generation.config import GenerationOutputMode
 from generation.presets import load_runtime_settings
 from generation_evaluation.budget import BudgetLedger
 from scripts import evaluate_routing_policy as routing
@@ -34,7 +35,7 @@ class RoutingOutputBudgetTests(unittest.TestCase):
         self.assertEqual(settings.config.reasoning_effort, "xhigh")
         self.assertEqual(settings.config.timeout_seconds, 180)
         self.assertIsNone(settings.config.temperature)
-        self.assertEqual(settings.config.output_mode.value, "prompt_json")
+        self.assertEqual(settings.config.output_mode.value, "strict_json_schema")
         self.assertEqual(settings.prompt_profile, "examples_answer_scope_v5")
 
     def test_historical_v1_followup_rejects_current_profile_before_calls(self):
@@ -45,7 +46,9 @@ class RoutingOutputBudgetTests(unittest.TestCase):
         baseline = load_runtime_settings(ROOT)
         maxed = SimpleNamespace(
             config=replace(
-                baseline.config, max_output_tokens=followup.MAX_OUTPUT_TOKENS
+                baseline.config,
+                max_output_tokens=followup.MAX_OUTPUT_TOKENS,
+                output_mode=GenerationOutputMode.PROMPT_JSON,
             ),
             prompt_profile=followup.PROFILE,
         )
@@ -55,7 +58,11 @@ class RoutingOutputBudgetTests(unittest.TestCase):
             )
 
         too_small = SimpleNamespace(
-            config=replace(baseline.config, max_output_tokens=4096),
+            config=replace(
+                baseline.config,
+                max_output_tokens=4096,
+                output_mode=GenerationOutputMode.PROMPT_JSON,
+            ),
             prompt_profile=followup.PROFILE,
         )
         with (

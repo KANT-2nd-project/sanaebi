@@ -3,12 +3,22 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
+from retrieval.experiments import answers
 from retrieval.experiments.calibration_prepare import prepare
+from tests.support.generation_settings import historical_prompt_json_settings
 
 
 class CalibrationPrepareConfirmationTests(unittest.TestCase):
     def setUp(self):
+        self.enterContext(
+            patch.object(
+                answers,
+                "load_runtime_settings",
+                side_effect=historical_prompt_json_settings,
+            )
+        )
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)

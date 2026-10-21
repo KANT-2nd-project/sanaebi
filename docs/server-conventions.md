@@ -161,7 +161,7 @@ trace는 모드·라벨 출처·분류 상태·단계 경과 시간·처리 경�
 
 snapshot은 요청마다 한 번 읽는다. `RunnablePassthrough.assign`은 입력과 snapshot/검색 문맥을 연결하고, 빈 문서·빈 근거는 명시적 분기로 처리한다. 분류·검색·생성의 의존 순서를 유지하며 서로 병렬 실행하지 않는다. HTTP admission, 취소 후 worker 종료까지의 slot 유지, SQLite 트랜잭션과 생성 예산 예약은 체인 밖의 기존 경계를 따른다.
 
-생성 체인은 profile/advisory 구성 → ChatPromptTemplate → 모델 → 응답 정규화 → 결과 검증이다. 문자열만 추출하지 않고 finish_reason·거절·usage를 보존한다. 프로필 본문과 등록 목록을 분리하되 기존 프로필 이름과 문구를 유지한다. 기본 모델은 ChatOpenAI Runnable이며 strict JSON은 공개 SDK adapter를 사용한다.
+생성 체인은 profile/advisory 구성 → ChatPromptTemplate → 모델 → 응답 정규화 → 결과 검증이다. 문자열만 추출하지 않고 finish_reason·거절·usage를 보존한다. 프로필 본문과 등록 목록을 분리하되 기존 프로필 이름과 문구를 유지한다. 활성 Luna 설정은 strict JSON의 공개 SDK adapter를 Runnable로 연결하며 호환용 prompt_json은 ChatOpenAI Runnable을 사용한다. 현재 채택 설정은 [최종 프롬프트 기준](generation-final-prompt.md)을 따른다.
 
 진단은 callback·단계 이벤트·HTTP middleware·파일 저장으로 분리한다. `diagnostics/trace.py`는 archive와 기존 소비자를 위한 import 경계를 유지한다. 단계 이름·역할은 명시적 metadata로 연결하고, generic chain 입력/출력은 허용된 진단 필드만 기록한다. 전체 snapshot의 객체 표현을 저장하지 않는다.
 

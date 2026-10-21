@@ -44,7 +44,7 @@ COMPLETED는 정확성·근거 충분성·한국어 준수·모델 품질의 합
 
 ## 독립 실행
 
-저장소 루트에서 실행한다. [models.json](models.json)에는 GPT-6 Luna 하나만 두며, [experiments.json](experiments.json)의 기본 프리셋은 company-final-v1이다. 두 CLI가 같은 설정 로더를 사용한다. 기본값은 examples_answer_scope_v5 / single / xhigh / 16384토큰 / 180초 / prompt_json이며 temperature는 전달하지 않는다. --model과 --experiment는 생략할 수 있고, 없는 별칭은 오류다.
+저장소 루트에서 실행한다. [models.json](models.json)에는 GPT-6 Luna 하나만 두며, [experiments.json](experiments.json)의 기본 프리셋은 company-final-v1이다. 두 CLI가 같은 설정 로더를 사용한다. 기본값은 examples_answer_scope_v5 / single / xhigh / 16384토큰 / 180초 / strict_json_schema이며 temperature는 전달하지 않는다. --model과 --experiment는 생략할 수 있고, 없는 별칭은 오류다.
 
 먼저 게시 문서를 내보낸다. 생성 모듈은 서버 DB를 직접 읽지 않고 이 snapshot만 사용한다. 기존 출력 파일은 덮어쓰지 않으므로 문서 갱신 시 기존 snapshot을 보존하고 새로 내보낸다.
 
@@ -144,9 +144,9 @@ OpenAI GPT-6 Luna와 로컬 GPU 프로필의 실행·키 로딩·측정 기준�
 
 ## 후속 출력 옵션과 프롬프트 후보
 
-`output_mode` 기본값은 `prompt_json`이며 구형 설정도 이 값으로 읽는다. OpenAI에서 `strict_json_schema`를 선택하면 Chat Completions에 answer 한 키의 strict schema를 전달한다. Ollama에는 이 모드를 허용하지 않는다. strict 지원 오류를 일반 모드로 자동 재시도하지 않는다.
+활성 Luna 설정의 `output_mode`는 `strict_json_schema`다. Chat Completions에 answer 문자열 한 키의 strict schema를 전달한다. `GenerationConfig`의 기본값과 필드가 없는 구형 설정의 해석은 `prompt_json`으로 유지한다. Ollama에는 strict 모드를 허용하지 않는다. strict 지원 오류를 일반 모드로 자동 재시도하지 않는다. [채택·검증·배포 기록](../docs/worklogs/2026-10-21-strict-json-output.md)을 따른다.
 
-설치된 SDK의 자동 parse 경로가 잘림 응답을 예외로 바꾸므로, strict 호출은 raw create 응답을 LangChain AIMessage로 변환한다. 원문·사용량·종료 사유·refusal을 보존하며 명시적 거절이 길이 판정보다 우선한다. 내부 SDK 메서드에 의존하므로 uv.lock과 전송 경로 회귀 테스트를 함께 유지한다.
+설치된 SDK의 자동 parse 경로가 잘림 응답을 예외로 바꾸므로, strict 호출은 공개 create 응답을 LangChain AIMessage로 변환한다. 원문·사용량·종료 사유·refusal을 보존하며 명시적 거절이 길이 판정보다 우선한다. uv.lock과 전송 경로 회귀 테스트를 함께 유지한다.
 
 `examples_answer_scope_v1`은 기존 examples에 부분 답변·질문별 필수 안내 문단만 추가한다. 기존 프로필은 보존한다. 현재 독립 CLI·generate_from_documents·full 서버 기본값은 사용자용 말투·서비스 범위 구분을 보완한 `examples_answer_scope_v5`이며 [채택 기준](../docs/generation-final-prompt.md)을 따른다. 설정별 후보와 검증 상태는 [후속 실험 설정](../generation_evaluation/experiments/luna-reference-followup-v1/README.md)을 따른다. JSON 형식 성공은 내용 품질을 보장하지 않는다.
 
@@ -174,7 +174,7 @@ GPT-6 Luna 답변 범위·strict 출력 후속 비교는 [결과와 채택 판�
 
 기본 사용 프로필은 `examples_answer_scope_v5`(독립 CLI/full)와 `examples_answer_scope_v7_rag_readability`(서버 RAG)다. 이전 `examples_answer_scope_v5_rag_service_v1`은 비교·원복용이며 RAG 가독성 후보도 명시적으로 호출할 수 있다. 나머지 14개 과거 후보는 [보관 자료](archive/README.md)로 분리했다. 과거 실험을 명시적으로 재현하는 호출은 계속 지원하지만 새 실행 구성으로 권장하지 않는다.
 
-이 프로필들은 모두 `prompts.build_prompt`의 공통 시스템 JSON 출력 지침을 그대로 포함한다. `prompt_json`은 지침으로 JSON을 요청하는 설정이며 OpenAI JSON mode나 strict schema가 아니다. `strict_json_schema`는 별도 지원 옵션으로 보존하며 이번 정리에서 기본값을 바꾸지 않았다.
+이 프로필들은 모두 `prompts.build_prompt`의 공통 시스템 JSON 출력 지침을 그대로 포함한다. `prompt_json`은 지침으로 JSON을 요청하는 설정이며 OpenAI JSON mode나 strict schema가 아니다. 현재 활성 Luna 설정은 후속 채택된 `strict_json_schema`이며, 과거 프로필 본문과 실험 당시 설정은 보존한다.
 
 
 ### 현재 RAG 기반 가독성 재비교 (2026-10-16)

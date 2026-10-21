@@ -10,9 +10,11 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
+from generation.presets import load_runtime_settings
 from generation.types import ModelResponse
 from generation_evaluation.budget import BudgetExceeded
 from retrieval.experiments import answers
+from tests.support.generation_settings import historical_prompt_json_settings
 
 
 class FakeManagedClient:
@@ -40,6 +42,13 @@ class FakeManagedClient:
 
 class AnswerEvaluationTests(unittest.TestCase):
     def setUp(self):
+        self.enterContext(
+            patch.object(
+                answers,
+                "load_runtime_settings",
+                side_effect=historical_prompt_json_settings,
+            )
+        )
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
@@ -64,6 +73,18 @@ class AnswerEvaluationTests(unittest.TestCase):
         ]["case_id"]
         self.client = FakeManagedClient()
         self._write_prepared()
+
+    def test_active_strict_settings_are_rejected_for_frozen_evaluation(self):
+        with (
+            patch.object(
+                answers,
+                "load_runtime_settings",
+                return_value=load_runtime_settings(answers.ROOT),
+            ),
+            self.assertRaisesRegex(answers.AnswerEvaluationError, "고정 평가 설정"),
+        ):
+            answers._runtime_settings(answers.ROOT)
+        self.assertEqual(self.client.calls, [])
 
     def _write_prepared(self):
         from app.documents.context import (
