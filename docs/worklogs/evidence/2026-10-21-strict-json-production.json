@@ -1,0 +1,277 @@
+{
+  "deployment_commit": "fc1c576cd8b07d5f1b03696c9b8f4e11a2599a8a",
+  "workflow": {
+    "databaseId": 39539155082,
+    "url": "https://github.com/KANT-2nd-project/sanaebi/actions/runs/39539155082",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "jobs": [
+    {
+      "name": "python",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-21T03:32:45Z",
+      "completedAt": "2026-10-21T03:35:11Z"
+    },
+    {
+      "name": "web",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-21T03:32:43Z",
+      "completedAt": "2026-10-21T03:33:29Z"
+    },
+    {
+      "name": "image",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-21T03:35:16Z",
+      "completedAt": "2026-10-21T03:36:32Z"
+    },
+    {
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-21T03:36:36Z",
+      "completedAt": "2026-10-21T03:37:53Z"
+    }
+  ],
+  "before": {
+    "checked_at_utc": "2026-10-21T03:29:28.103536+00:00",
+    "runtime": {
+      "settings": {
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "context_window": null,
+          "max_output_tokens": 16384,
+          "reasoning_effort": "xhigh",
+          "temperature": null,
+          "output_mode": "prompt_json"
+        },
+        "prompt_profile": "examples_answer_scope_v7_rag_readability"
+      },
+      "routing_mode": "advisory",
+      "retrieval_mode": "rag",
+      "expand_context": true,
+      "document_db_logical_sha256": "ad867e79cb0368d78328750333c4813f6a6f1e6c632932b02a636be80dc7e94c",
+      "snapshot_fingerprint": "ee9352243f7d1215ecfb735f2e85aa14fb5f255c4724e315a9e42b0696064c50",
+      "published_count": 71,
+      "index": {
+        "ready": true,
+        "expected": 71,
+        "ready_count": 71,
+        "missing": 0
+      }
+    },
+    "release": "/srv/sanaebi/releases/adf4d2a84e698e0e83f0cac4c64d04208229cf20-38836320237",
+    "containers": [
+      {
+        "name": "sanaebi-api",
+        "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:c2e3ae91bbf3306f1b5fcc5dbe2d2f663563d578bc8fc9f74ff2883a0348bb71",
+        "status": "running",
+        "started": "2026-10-16T01:48:12.985854201Z",
+        "restarts": 0,
+        "oom": false
+      },
+      {
+        "name": "sanaebi-retrieval-indexer",
+        "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:c2e3ae91bbf3306f1b5fcc5dbe2d2f663563d578bc8fc9f74ff2883a0348bb71",
+        "status": "running",
+        "started": "2026-10-20T15:00:04.116706886Z",
+        "restarts": 0,
+        "oom": false
+      }
+    ],
+    "journal": {
+      "phase": "complete",
+      "release_id": "adf4d2a84e698e0e83f0cac4c64d04208229cf20-38836320237",
+      "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:c2e3ae91bbf3306f1b5fcc5dbe2d2f663563d578bc8fc9f74ff2883a0348bb71",
+      "updated_at": "2026-10-16T01:48:27.534916+00:00",
+      "finished_at": "2026-10-16T01:48:27.534893+00:00"
+    },
+    "ready": {
+      "status": "ready"
+    },
+    "timers": "Id=sanaebi-production-reset.timer\nActiveState=active\nUnitFileState=enabled\n\nId=sanaebi-production-backup.timer\nActiveState=active\nUnitFileState=enabled"
+  },
+  "after": {
+    "checked_at_utc": "2026-10-21T03:45:14.344508+00:00",
+    "runtime": {
+      "settings": {
+        "config": {
+          "provider": "openai",
+          "model_name": "gpt-6-luna",
+          "timeout_seconds": 180,
+          "context_window": null,
+          "max_output_tokens": 16384,
+          "reasoning_effort": "xhigh",
+          "temperature": null,
+          "output_mode": "strict_json_schema"
+        },
+        "prompt_profile": "examples_answer_scope_v7_rag_readability"
+      },
+      "routing_mode": "advisory",
+      "retrieval_mode": "rag",
+      "expand_context": true,
+      "document_db_logical_sha256": "ad867e79cb0368d78328750333c4813f6a6f1e6c632932b02a636be80dc7e94c",
+      "snapshot_fingerprint": "ee9352243f7d1215ecfb735f2e85aa14fb5f255c4724e315a9e42b0696064c50",
+      "published_count": 71,
+      "index": {
+        "ready": true,
+        "expected": 71,
+        "ready_count": 71,
+        "missing": 0
+      }
+    },
+    "release": "/srv/sanaebi/releases/fc1c576cd8b07d5f1b03696c9b8f4e11a2599a8a-39539155082",
+    "containers": [
+      {
+        "name": "sanaebi-api",
+        "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:09a00350e4c53a382a48603ba7a539dc7348416ce9dabb8850a64a4345d7c31c",
+        "status": "running",
+        "started": "2026-10-21T03:37:33.326744913Z",
+        "restarts": 0,
+        "oom": false
+      },
+      {
+        "name": "sanaebi-retrieval-indexer",
+        "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:09a00350e4c53a382a48603ba7a539dc7348416ce9dabb8850a64a4345d7c31c",
+        "status": "running",
+        "started": "2026-10-21T03:37:32.769228988Z",
+        "restarts": 0,
+        "oom": false
+      }
+    ],
+    "journal": {
+      "phase": "complete",
+      "release_id": "fc1c576cd8b07d5f1b03696c9b8f4e11a2599a8a-39539155082",
+      "image": "ghcr.io/kant-2nd-project/sanaebi-api@sha256:09a00350e4c53a382a48603ba7a539dc7348416ce9dabb8850a64a4345d7c31c",
+      "updated_at": "2026-10-21T03:37:45.861227+00:00",
+      "finished_at": "2026-10-21T03:37:45.861210+00:00"
+    },
+    "ready": {
+      "status": "ready"
+    },
+    "timers": "Id=sanaebi-production-reset.timer\nActiveState=active\nUnitFileState=enabled\n\nId=sanaebi-production-backup.timer\nActiveState=active\nUnitFileState=enabled"
+  },
+  "preservation": {
+    "document_db_logical_hash_equal": true,
+    "published_snapshot_equal": true,
+    "timer_states_equal": true
+  },
+  "public_https_probes": [
+    {
+      "case_id": "public-first",
+      "question": "휴가 절차에 대해 궁금해요",
+      "started_at_utc": "2026-10-21T03:38:19.329403+00:00",
+      "finished_at_utc": "2026-10-21T03:38:34.709452+00:00",
+      "http_status": 200,
+      "seconds": 15.380042,
+      "passed": true,
+      "body": {
+        "ok": true,
+        "text": "휴가 종류에 따라 절차가 다릅니다.\n\n- **예정된 연차:** 사용 시작일 기준 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하고, 사용할 날짜와 필요한 인수인계 항목을 적습니다. 날짜 변경이나 취소는 기존 신청을 수정하고, 수정이 잠겨 있거나 처리가 끝났다면 같은 신청 번호로 People팀에 정정을 요청합니다.\n- **경조 휴가:** 가능하면 행사일 3영업일 전까지 **인사 > 경조 휴가**에 사유 유형과 날짜를 등록합니다. 사망처럼 급박한 경우 팀장에게 먼저 알리고, 포털 신청은 첫 근무 복귀일까지 보완합니다.\n- **갑작스러운 연차 사정:** 가능하면 근무 시작 전에 팀장에게 Slack으로 알리고, 여건이 되는 가장 빠른 시점에 포털 신청을 보완합니다.\n- **병가:** 회사 단기 병가는 연간 최대 5근무일이며, 연속 3근무일 초과가 예상되거나 한도를 넘는 요청은 People팀이 적용 기준을 확인합니다. 최초 신청 방법은 현재 확인하기 어렵습니다.\n\n연차, 경조 휴가, 병가 중 어떤 절차를 자세히 알고 싶으신가요?",
+        "reason": ""
+      },
+      "attempts": 1
+    },
+    {
+      "case_id": "public-repeat",
+      "question": "휴가 절차에 대해 궁금해요",
+      "started_at_utc": "2026-10-21T03:38:59.032446+00:00",
+      "finished_at_utc": "2026-10-21T03:39:16.121273+00:00",
+      "http_status": 200,
+      "seconds": 17.088816,
+      "passed": true,
+      "body": {
+        "ok": true,
+        "text": "휴가 종류에 따라 절차가 다릅니다.\n\n- **연차:** 예정된 사용은 시작일 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하고, 필요한 업무 인수인계만 적습니다. 제출 후 포털 접수 상태를 확인하세요. 팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남깁니다. 날짜 변경은 기존 신청을 수정하고, 취소는 사용 시작 전에 포털에서 처리합니다.\n- **경조 휴가:** 가능하면 행사일 3영업일 전까지 **인사 > 경조 휴가**에서 사유 유형과 날짜를 등록합니다. 사망처럼 급박하면 팀장에게 먼저 알리고 첫 근무 복귀일까지 포털 신청을 보완합니다. 날짜 변경·취소는 기존 신청을 수정하고 공유한 업무 일정도 갱신합니다. 기본 사용 기간은 행사 발생일부터 30일 이내입니다.\n- **병가:** 연속 3근무일을 초과할 것으로 예상되거나 회사 단기 병가 연간 한도를 넘는 요청은 People팀이 적용 기준을 확인합니다. 예상 복귀일이 바뀌면 예상 부재 기간과 업무 인계를 업데이트합니다. 병가 최초 신청의 제출 경로와 기한은 현재 확인하기 어렵습니다.\n\n어떤 휴가의 신청·변경 절차가 필요하신지 알려주시면 해당 내용에 맞춰 안내해 드리겠습니다.",
+        "reason": ""
+      },
+      "attempts": 1
+    },
+    {
+      "case_id": "public-after-five-minutes",
+      "question": "휴가 절차에 대해 궁금해요",
+      "started_at_utc": "2026-10-21T03:44:39.574716+00:00",
+      "finished_at_utc": "2026-10-21T03:44:53.341862+00:00",
+      "http_status": 200,
+      "seconds": 13.767137,
+      "passed": true,
+      "body": {
+        "ok": true,
+        "text": "휴가 종류에 따라 절차가 다릅니다.\n\n- **연차:** 사용 시작일 3영업일 전까지 이음 포털 **인사 > 휴가**에서 신청하고, 날짜와 필요한 업무 인수인계를 적습니다. 제출 후 접수 상태를 확인하며, 팀장은 접수 후 1영업일 안에 승인하거나 People팀 확인 필요 상태를 남깁니다.\n- **경조 휴가:** 가능하면 행사일 3영업일 전까지 **인사 > 경조 휴가**에 사유 유형과 사용할 날짜를 등록합니다. 사망처럼 급박한 경우에는 팀장에게 먼저 알리고, 포털 신청은 첫 근무 복귀일까지 보완합니다.\n- **병가:** 회사의 유급 단기 병가는 연간 최대 5근무일입니다. 연속 3근무일 초과가 예상되거나 한도를 넘는 요청은 People팀이 적용 기준을 확인합니다. 구체적인 최초 신청 경로는 현재 확인하기 어렵습니다.\n\n연차, 병가, 경조 휴가 중 어떤 절차가 궁금하신가요?",
+        "reason": ""
+      },
+      "attempts": 1
+    }
+  ],
+  "seconds_between_second_response_and_third_request": 323.453443,
+  "production_generation_events": [
+    {
+      "event": "generation_result",
+      "profile": "examples_answer_scope_v7_rag_readability",
+      "prompt_roles_sha256": "1ea95b49522ffaf69da2c07840456cd638b02080eb8c12aaa140caf5e4394941",
+      "status": "completed",
+      "provider_attempted": true,
+      "input_tokens": 8451,
+      "output_tokens": 1286,
+      "seconds": 14.657932541973423,
+      "at_utc": "2026-10-21T03:38:35.324832197Z"
+    },
+    {
+      "event": "generation_result",
+      "profile": "examples_answer_scope_v7_rag_readability",
+      "prompt_roles_sha256": "1ea95b49522ffaf69da2c07840456cd638b02080eb8c12aaa140caf5e4394941",
+      "status": "completed",
+      "provider_attempted": true,
+      "input_tokens": 8451,
+      "output_tokens": 1490,
+      "seconds": 16.544888485979754,
+      "at_utc": "2026-10-21T03:39:16.736251329Z"
+    },
+    {
+      "event": "generation_result",
+      "profile": "examples_answer_scope_v7_rag_readability",
+      "prompt_roles_sha256": "1ea95b49522ffaf69da2c07840456cd638b02080eb8c12aaa140caf5e4394941",
+      "status": "completed",
+      "provider_attempted": true,
+      "input_tokens": 8451,
+      "output_tokens": 1256,
+      "seconds": 13.270119246968534,
+      "at_utc": "2026-10-21T03:44:53.960024005Z"
+    }
+  ],
+  "notion": {
+    "new_block_attempt": "Rejected because free workspace block limit was reached; no blocks created; original request not retried.",
+    "existing_paragraph_updates": [
+      {
+        "id": "3f805a3cdadc81d7b909fc71ed78381b",
+        "title": "🧭 서비스 처리 기준",
+        "url": "https://app.notion.com/p/3f805a3cdadc81d7b909fc71ed78381b?pvs=204",
+        "last_edited_at": "2026-10-21T03:41:50.283Z",
+        "method": "Updated existing paragraph without creating blocks",
+        "verified": true,
+        "existing_paragraphs_checked": 308,
+        "missing_previous_paragraphs": 0
+      },
+      {
+        "id": "3f805a3cdadc81e1a70bfe82c89cebe7",
+        "title": "📘 프로젝트 문서 안내",
+        "url": "https://app.notion.com/p/3f805a3cdadc81e1a70bfe82c89cebe7?pvs=204",
+        "last_edited_at": "2026-10-21T03:41:51.715Z",
+        "method": "Updated existing paragraph without creating blocks",
+        "verified": true,
+        "existing_paragraphs_checked": 286,
+        "missing_previous_paragraphs": 0
+      }
+    ]
+  },
+  "limitations": [
+    "Three public HTTP calls and six predeployment model calls are a small smoke sample; not a general answer-quality or reliability evaluation.",
+    "Predeployment first strict call took 104.405 seconds; additional latency cause was not isolated.",
+    "Only read-only document/index inspections and budgeted generation were performed; no document reset or DB restore."
+  ]
+}

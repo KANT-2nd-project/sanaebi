@@ -40,3 +40,33 @@ AI가 답변을 읽어 휴가별 신청 경로 구분, 출장비 개인 선결�
 ### 게시 전 검사
 
 전체 Python1082개가 통과했다. Ruff check 및 format check629파일, 변경 문서의 상대 링크·앵커와 `git diff --check`를 확인했다. 기존 HTTP 오류 계약·프롬프트 본문 동등성·CLI/평가 설정 공유·과거 설정 차단 검사가 포함된다. 이 회귀 검사의 모델 응답은 대체되어 있으며 위 실제 모델6회와 구분한다. 웹·ARM64 이미지·배포는 Delivery의 실제 결과로 별도 확인한다.
+
+### Git 게시와 자동 배포 완료
+
+기능 커밋은 `c29c1717539bd8fbcdff6a63f81d535054bb6811`이며 [PR #20](https://github.com/KANT-2nd-project/sanaebi/pull/20)의 [Delivery 39538712482](https://github.com/KANT-2nd-project/sanaebi/actions/runs/39538712482)에서 Python·웹·ARM64 이미지가 모두 통과했다. GitHub 연결 도구의 PR 생성은403으로 거부되어 기존 GitHub CLI를 사용했다. 요청된 범위의 브랜치 푸시·PR 병합 외 설정·권한은 바꾸지 않았다.
+
+main 병합 SHA는 `fc1c576cd8b07d5f1b03696c9b8f4e11a2599a8a`다. 이미 켜진 `ENABLE_AUTO_DEPLOY=true`에 따라 [Delivery 39539155082](https://github.com/KANT-2nd-project/sanaebi/actions/runs/39539155082)가 한 번 자동 실행됐으며 Python·웹·ARM64 이미지·배포 네 job이 모두 성공했다. 별도 수동 dispatch는 하지 않았다.
+
+운영 journal은 2026-10-21 12:37:45 KST에 complete다. 활성 릴리스는 `fc1c576cd8b07d5f1b03696c9b8f4e11a2599a8a-39539155082`, API·indexer 이미지 digest는 `sha256:09a00350e4c53a382a48603ba7a539dc7348416ce9dabb8850a64a4345d7c31c`다. 실제 strict 모드·v7 RAG·advisory·문맥 보충과 나머지 모델 설정을 확인했다. API ready, 검색71/71·missing0, 두 컨테이너 running·OOM 없음·재시작0, 기존 reset/backup timer enabled/active다.
+
+배포 전후 문서 DB 논리 해시는 `ad867e79cb0368d78328750333c4813f6a6f1e6c632932b02a636be80dc7e94c`로 동일하며 게시 snapshot fingerprint도 동일하다. 운영 문서 전체 초기화나 DB 복원은 하지 않았다. 기록 전용 후속 커밋에는 `[skip ci]`를 사용하므로 운영 기능 SHA와 최종 문서용 main SHA를 구분한다.
+
+### Notion 저장 후 확인
+
+[서비스 처리 기준](https://www.notion.so/3f805a3cdadc81d7b909fc71ed78381b)과 [프로젝트 문서 안내](https://www.notion.so/3f805a3cdadc81e1a70bfe82c89cebe7)에 현재 strict 설정·Git 기준 문서·실제 배포 SHA·Delivery 링크·검증 한계를 반영하고 재조회했다. 무료 블록 한도로 새 구역 추가는 부작용 없이 거부됐다. 같은 추가 요청은 재시도하지 않았으며 기존 요약 문단의 내용을 수정하는 방식으로 두 페이지를 갱신했다. 이전 문단308개·286개의 내용이 보존됐고 새 모드·SHA·핵심 링크를 저장 후 확인했다. 이 확인은 수정 구역의 의미·링크 대조이며 전체 페이지의 모든 블록 형식 검증을 뜻하지 않는다.
+
+### 공개 HTTPS 3회와 최종 운영 확인
+
+세 요청 모두 「휴가 절차에 대해 궁금해요」를 공개 `/api/ask`에 한 번씩 POST했다. 정상 공개 응답 `{ok:true,text:<답변>,reason:""}`과 실제 휴가별 안내를 확인했다. 아래 시각은 한국시간이며 소요시간은 클라이언트의 전체 HTTP 경과 시간이다.
+
+| 사례 | 시작 시각 | HTTP | 소요시간 |
+|---|---|---:|---:|
+| 배포 후 첫 문의 | 12:38:19 | 200 | 15.380초 |
+| 같은 문의 반복 | 12:38:59 | 200 | 17.089초 |
+| 5분 이상 경과 뒤 문의 | 12:44:39 | 200 | 13.767초 |
+
+두 번째 응답 완료부터 세 번째 요청 시작까지323.453초가 지났다. 새 API 컨테이너의 생성 결과 로그는 이 세 건뿐이며 모두 같은 프롬프트 해시·completed다. 확인한 구간에 추가 생성이나 parse_error는 기록되지 않았다. 서버 생성 단계 시간은 각각14.658·16.545·13.270초이며 HTTP 전체 시간과 구분한다.
+
+12:45:14 KST 최종 재조회에서도 같은 릴리스·strict 설정·ready·검색71/71·문서 DB 해시·기존 타이머 상태를 확인했다. [배포 전후 상태·CI 결과·공개 응답·안전 로그·Notion 확인](evidence/2026-10-21-strict-json-production.json)을 보존한다.
+
+이번 구현 검증의 실제 생성은 사전6회와 공개3회로 총9회이며 자동 재시도는0회다. 작은 표본의 형식·연결 확인이고 모든 질문의 품질이나 장기 무오류 운영을 입증하지 않는다. 최초 진단의 추가 호출1회와 과거 평가 결과는 이9회에 포함하지 않는다.

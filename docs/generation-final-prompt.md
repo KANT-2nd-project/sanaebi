@@ -19,7 +19,7 @@
 
 ## 2026-10-21 후속: JSON 출력 형식 고정
 
-운영 문의의 `parse_error`와 같은 입력의 실제 재현을 확인한 뒤, 사용자 요청으로 활성 Luna 설정을 `strict_json_schema`로 전환한다. 기존 공개 SDK 어댑터가 Chat Completions에 `answer` 문자열 하나의 strict JSON 스키마를 전달한다. 서버·CLI·평가기는 같은 활성 모델 설정을 읽으며 구형 설정의 `prompt_json` 기본 해석은 보존한다.
+운영 문의의 `parse_error`와 같은 입력의 실제 재현을 확인한 뒤, 사용자 요청으로 활성 Luna 설정을 `strict_json_schema`로 전환했다. 기존 공개 SDK 어댑터가 Chat Completions에 `answer` 문자열 하나의 strict JSON 스키마를 전달한다. 서버·CLI·평가기는 같은 활성 모델 설정을 읽으며 구형 설정의 `prompt_json` 기본 해석은 보존한다.
 
 프롬프트 본문·모델·검색·추론·출력 한도·timeout과 공개 HTTP 계약은 유지한다. 거절·잘림·timeout은 기존처럼 구분하며 자동 재시도나 일반 모드 fallback은 없다. 형식 보장은 답변 내용의 정확도·완전성 보장이 아니다. 검증과 실제 배포 완료 여부는 [작업 기록](worklogs/2026-10-21-strict-json-output.md)을 따른다.
 

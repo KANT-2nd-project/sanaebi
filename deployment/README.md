@@ -8,7 +8,9 @@
 
 공개 도메인의 nginx·HTTPS에서 정적 웹과 `/api/`를 함께 제공한다. API는 ARM64 CPU Docker 컨테이너, Uvicorn 1 worker이며 `127.0.0.1:18000`만 수신한다. 웹에 필요한 질문·문서 API만 공개한다. 기존 로컬 실행은 [로컬 nginx](local-nginx.md)를 따른다.
 
-구성 파일과 실제 운영 검증 상태는 구분한다. 최초 배포는 [초기 기록](../docs/worklogs/2026-10-15-deployment-cicd.md), 당시 shadow + full 설정 확인은 [main 배포 기록](../docs/worklogs/2026-10-15-main-deploy-doc-sync.md)을 따른다. 2026-10-16 후속 RAG v7 배포·확인 범위는 [채택·배포 기록](../docs/worklogs/2026-10-16-rag-v7-adoption.md)을 따른다. 이 문서 편집에서 운영 설정을 새로 조회하지는 않았다. 배포 성공은 전체 답변 품질 승인이나 무중단 운영 보장을 뜻하지 않는다.
+구성 파일과 실제 운영 검증 상태는 구분한다. 최초 배포는 [초기 기록](../docs/worklogs/2026-10-15-deployment-cicd.md), 당시 shadow + full 설정 확인은 [main 배포 기록](../docs/worklogs/2026-10-15-main-deploy-doc-sync.md)을 따른다. 2026-10-16 후속 RAG v7 배포·확인 범위는 [채택·배포 기록](../docs/worklogs/2026-10-16-rag-v7-adoption.md)을 따른다. 위 2026-10-16 안내를 정리할 때 운영 설정을 새로 조회하지는 않았다. 배포 성공은 전체 답변 품질 승인이나 무중단 운영 보장을 뜻하지 않는다.
+
+2026-10-21에는 활성 Luna 출력을 `strict_json_schema`로 전환하고 자동 배포 후 실제 운영 설정·문서 보존·readiness를 확인했다. [출력 형식 고정·배포 기록](../docs/worklogs/2026-10-21-strict-json-output.md)에서 해당 릴리스와 공개 HTTPS 요청 결과를 확인한다. 위 2026-10-16 확인 범위는 당시 기록이다.
 
 ## 모델과 영속 데이터
 
